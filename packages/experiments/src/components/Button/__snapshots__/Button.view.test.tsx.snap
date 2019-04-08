@@ -7,13 +7,13 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
+        background-color: #f3f2f1;
+        border-color: #8a8886;
         border-radius: 0px;
         border-style: solid;
         border-width: 0px;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -46,31 +46,29 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         bottom: 1px;
         content: "";
         left: 1px;
-        outline: 1px solid #666666;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 1px;
         top: 1px;
         z-index: 1;
       }
       &:hover {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+        background-color: #edebe9;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       &:hover:active {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+        background-color: #edebe9;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       &:hover .ms-Icon-47 {
-        color: #212121;
+        color: #201f1e;
       }
       &:hover:active .ms-Icon-47 {
-        color: #212121;
+        color: #201f1e;
       }
-  content="Default button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -108,15 +106,13 @@ exports[`Button view renders a default Button with content correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
-            text-overflow: ellipsis;
             webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       Default button
@@ -133,13 +129,13 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
         border-radius: 0px;
         border-style: solid;
         border-width: 0px;
         box-sizing: border-box;
-        color: #a6a6a6;
+        color: #a19f9d;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -172,31 +168,29 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         bottom: 1px;
         content: "";
         left: 1px;
-        outline: 1px solid #666666;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 1px;
         top: 1px;
         z-index: 1;
       }
       &:hover {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
       }
       &:hover:active {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
       }
       &:hover .ms-Icon-57 {
-        color: #a6a6a6;
+        color: #a19f9d;
       }
       &:hover:active .ms-Icon-57 {
-        color: #a6a6a6;
+        color: #a19f9d;
       }
-  content="Disabled primary button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -234,15 +228,13 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
-            text-overflow: ellipsis;
             webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       Disabled primary button
@@ -297,7 +289,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         bottom: 1px;
         content: "";
         left: 1px;
-        outline: 1px solid #666666;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 1px;
         top: 1px;
@@ -305,12 +297,12 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       &:hover {
         background-color: #106ebe;
-        border-color: transparent;
+        border-color: #8a8886;
         color: #ffffff;
       }
       &:hover:active {
         background-color: #005a9e;
-        border-color: transparent;
+        border-color: #8a8886;
         color: #ffffff;
       }
       &:hover .ms-Icon-55 {
@@ -319,9 +311,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       &:hover:active .ms-Icon-55 {
         color: #ffffff;
       }
-  content="Primary button"
   onClick={[Function]}
-  onKeyDown={[Function]}
   role="button"
   type="button"
 >
@@ -359,15 +349,13 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
-            text-overflow: ellipsis;
             webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       Primary button

@@ -9,11 +9,11 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -36,14 +36,14 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -60,16 +60,16 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #f3f2f1;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -126,7 +126,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -219,7 +219,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   -webkit-overflow-scrolling: touch;
                   background-color: #ffffff;
                   bottom: 0px;
-                  box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
+                  box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                   display: flex;
                   flex-direction: column;
                   left: auto;
@@ -238,10 +238,23 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 @media (min-width: 480px){& {
                   width: 340px;
                 }
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
             style={Object {}}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               className=
                   ms-Panel-commands
@@ -271,10 +284,10 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
-                        border-radius: 0px;
+                        border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
-                        color: #666666;
+                        color: #605e5c;
                         cursor: pointer;
                         display: inline-block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -297,14 +310,14 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 2px;
                         content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
+                        left: 2px;
+                        outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 2px;
+                        top: 2px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -321,14 +334,16 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         top: 0px;
                       }
                       &:hover {
-                        color: #333333;
+                        background-color: #f3f2f1;
+                        color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        color: #0078d4;
+                        background-color: #edebe9;
+                        color: #005a9e;
                       }
                   data-is-focusable={true}
                   data-is-visible={true}
@@ -427,11 +442,11 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #333333;
+                        color: #323130;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 21px;
-                        font-weight: 100;
-                        line-height: 32px;
+                        font-size: 20px;
+                        font-weight: 600;
+                        line-height: 27px;
                         margin-bottom: 0px;
                         margin-left: 0px;
                         margin-right: 0px;
@@ -479,6 +494,18 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 </div>
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>

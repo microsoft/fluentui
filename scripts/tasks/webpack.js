@@ -1,7 +1,7 @@
 // @ts-check
 
 const { argv } = require('just-task');
-const { webpackTask } = require('just-task-preset');
+const { webpackTask } = require('just-scripts');
 const path = require('path');
 const fs = require('fs');
 
@@ -18,4 +18,26 @@ exports.webpackDevServer = async function() {
 
     execSync(`node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`);
   }
+};
+
+exports.webpackDevServerWithCompileResolution = async function() {
+  return new Promise((resolve, reject) => {
+    const webpack = require('webpack');
+    const webpackDevServer = require('webpack-dev-server');
+    const webpackConfig = require(path.resolve(process.cwd(), 'webpack.serve.config.js'));
+
+    const compiler = webpack(webpackConfig);
+    compiler.plugin('done', () => {
+      resolve();
+    });
+
+    const devServerOptions = Object.assign({}, webpackConfig.devServer, {
+      stats: 'minimal'
+    });
+    const server = new webpackDevServer(compiler, devServerOptions);
+    const port = webpackConfig.devServer.port;
+    server.listen(port, '127.0.0.1', () => {
+      console.log(`started server on http://localhost:${port}`);
+    });
+  });
 };

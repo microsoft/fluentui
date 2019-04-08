@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import {
   ComboBox,
@@ -82,6 +81,15 @@ export class ComboBoxBasicExample extends React.Component<{}, {}> {
           placeholder="Select or type an option"
           allowFreeform
           autoComplete="on"
+          options={INITIAL_OPTIONS}
+        />
+
+        <ComboBox
+          label="ComboBox with persisted menu"
+          defaultSelectedKey="B"
+          allowFreeform
+          autoComplete="on"
+          persistMenu={true}
           options={INITIAL_OPTIONS}
         />
 

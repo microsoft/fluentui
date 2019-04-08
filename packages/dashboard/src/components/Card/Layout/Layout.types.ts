@@ -8,6 +8,7 @@ import { IAction } from '../ActionBar/ActionBar.types';
 import { IGridListProps } from '../GridList/GridList.types';
 import { IChartProps } from '../Chart/Chart.types';
 import { IMultiCountProps } from '@uifabric/dashboard';
+import { IFocusZoneProps } from 'office-ui-fabric-react/lib/components/FocusZone/FocusZone.types';
 
 export interface ICardContentDetails {
   /**
@@ -69,6 +70,13 @@ export interface ILayoutProps {
    * loading for card animations
    */
   loading?: boolean;
+
+  /**
+   * Custom properties for FocusZone (ActionBar -> OverflowSet -> FocusZone).
+   * If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored.
+   * Use one or the other.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**

@@ -30,23 +30,21 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
           {
             align-items: center;
             background: #ffffff;
-            border-color: #666666;
-            border-radius: 1em;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 10px;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             cursor: pointer;
             display: flex;
             font-size: 20px;
-            height: 1em;
+            height: 20px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: .2em;
-            padding-right: .2em;
+            padding-left: 3px;
+            padding-right: 3px;
             padding-top: 0;
             position: relative;
             transition: all 0.1s ease;
-            width: 2.2em;
+            width: 40px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -56,14 +54,17 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
             bottom: -2px;
             content: "";
             left: -2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: -2px;
             top: -2px;
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-Toggle-thumb {
+            background-color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
@@ -83,15 +84,15 @@ exports[`Toggle renders hidden toggle correctly 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #605e5c;
               border-color: transparent;
-              border-radius: .5em;
+              border-radius: 50%;
               border-style: solid;
               border-width: .28em;
               box-sizing: border-box;
-              height: .5em;
+              height: 12px;
               transition: all 0.1s ease;
-              width: .5em;
+              width: 12px;
             }
       />
     </button>
@@ -122,11 +123,11 @@ exports[`Toggle renders toggle correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -139,6 +140,7 @@ exports[`Toggle renders toggle correctly 1`] = `
           word-wrap: break-word;
         }
     htmlFor="Toggle1"
+    id="Toggle1-label"
   >
     Label
   </label>
@@ -152,28 +154,27 @@ exports[`Toggle renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
+      aria-labelledby="Toggle1-label"
       className=
           ms-Toggle-background
           {
             align-items: center;
             background: #ffffff;
-            border-color: #666666;
-            border-radius: 1em;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 10px;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             cursor: pointer;
             display: flex;
             font-size: 20px;
-            height: 1em;
+            height: 20px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: .2em;
-            padding-right: .2em;
+            padding-left: 3px;
+            padding-right: 3px;
             padding-top: 0;
             position: relative;
             transition: all 0.1s ease;
-            width: 2.2em;
+            width: 40px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -183,14 +184,17 @@ exports[`Toggle renders toggle correctly 1`] = `
             bottom: -2px;
             content: "";
             left: -2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: -2px;
             top: -2px;
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-Toggle-thumb {
+            background-color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
@@ -209,15 +213,15 @@ exports[`Toggle renders toggle correctly 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #605e5c;
               border-color: transparent;
-              border-radius: .5em;
+              border-radius: 50%;
               border-style: solid;
               border-width: .28em;
               box-sizing: border-box;
-              height: .5em;
+              height: 12px;
               transition: all 0.1s ease;
-              width: .5em;
+              width: 12px;
             }
       />
     </button>
@@ -250,11 +254,11 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 16px;
           margin-right: 0px;
@@ -268,6 +272,7 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
           word-wrap: break-word;
         }
     htmlFor="Toggle2"
+    id="Toggle2-label"
   >
     Label
   </label>
@@ -281,28 +286,27 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
   >
     <button
       aria-checked={false}
+      aria-labelledby="Toggle2-label"
       className=
           ms-Toggle-background
           {
             align-items: center;
             background: #ffffff;
-            border-color: #666666;
-            border-radius: 1em;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 10px;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             cursor: pointer;
             display: flex;
             font-size: 20px;
-            height: 1em;
+            height: 20px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: .2em;
-            padding-right: .2em;
+            padding-left: 3px;
+            padding-right: 3px;
             padding-top: 0;
             position: relative;
             transition: all 0.1s ease;
-            width: 2.2em;
+            width: 40px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -312,14 +316,17 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
             bottom: -2px;
             content: "";
             left: -2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: -2px;
             top: -2px;
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-Toggle-thumb {
+            background-color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
@@ -338,15 +345,15 @@ exports[`Toggle renders toggle correctly with inline label 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #605e5c;
               border-color: transparent;
-              border-radius: .5em;
+              border-radius: 50%;
               border-style: solid;
               border-width: .28em;
               box-sizing: border-box;
-              height: .5em;
+              height: 12px;
               transition: all 0.1s ease;
-              width: .5em;
+              width: 12px;
             }
       />
     </button>
@@ -379,11 +386,11 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 16px;
@@ -396,6 +403,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
           word-wrap: break-word;
         }
     htmlFor="Toggle3"
+    id="Toggle3-label"
   >
     Label
   </label>
@@ -409,28 +417,27 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
   >
     <button
       aria-checked={false}
+      aria-labelledby="Toggle3-label"
       className=
           ms-Toggle-background
           {
             align-items: center;
             background: #ffffff;
-            border-color: #666666;
-            border-radius: 1em;
-            border-style: solid;
-            border-width: 1px;
+            border-radius: 10px;
+            border: 1px solid #605e5c;
             box-sizing: border-box;
             cursor: pointer;
             display: flex;
             font-size: 20px;
-            height: 1em;
+            height: 20px;
             outline: transparent;
             padding-bottom: 0;
-            padding-left: .2em;
-            padding-right: .2em;
+            padding-left: 3px;
+            padding-right: 3px;
             padding-top: 0;
             position: relative;
             transition: all 0.1s ease;
-            width: 2.2em;
+            width: 40px;
           }
           &::-moz-focus-inner {
             border: 0;
@@ -440,14 +447,17 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             bottom: -2px;
             content: "";
             left: -2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
             position: absolute;
             right: -2px;
             top: -2px;
             z-index: 1;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-Toggle-thumb {
+            background-color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
@@ -466,15 +476,15 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
         className=
             ms-Toggle-thumb
             {
-              background-color: #333333;
+              background-color: #605e5c;
               border-color: transparent;
-              border-radius: .5em;
+              border-radius: 50%;
               border-style: solid;
               border-width: .28em;
               box-sizing: border-box;
-              height: .5em;
+              height: 12px;
               transition: all 0.1s ease;
-              width: .5em;
+              width: 12px;
             }
       />
     </button>
@@ -487,11 +497,11 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -504,6 +514,7 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             word-wrap: break-word;
           }
           && {
+            font-weight: 400;
             margin-bottom: 0;
             margin-left: 8px;
             margin-right: 8px;
@@ -514,6 +525,8 @@ exports[`Toggle renders toggle correctly with inline label and on/off text provi
             padding-top: 0;
             user-select: none;
           }
+      htmlFor="Toggle3"
+      id="Toggle3-stateText"
     >
       Off
     </label>

@@ -5,7 +5,7 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getImageVisualizationStyles } from './ImageVisualization.styles';
 import { IImageVisualizationProps, IImageVisualizationStyles } from './ImageVisualization.types';
 
-export const ImageVisualization: React.SFC<IImageVisualizationProps> = (props: IImageVisualizationProps) => {
+export const ImageVisualization: React.FunctionComponent<IImageVisualizationProps> = (props: IImageVisualizationProps) => {
   const getClassNames = classNamesFunction<{}, IImageVisualizationStyles>();
   const classNames = getClassNames(getImageVisualizationStyles);
   const { imageSrc, imageAlt } = props;

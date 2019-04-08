@@ -1,6 +1,81 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 14 Feb 2019 13:34:54 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 12:36:20 GMT and should not be manually modified.
+
+## 6.13.2
+Tue, 02 Apr 2019 12:36:20 GMT
+
+### Patches
+
+- handle TSDoc default value tag
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.13.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Code and documentation cleanup
+
+### Patches
+
+- Make CodepenComponent specify SCSS preprocessor
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Enable stricter lint and compiler options
+- ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes
+
+## 6.12.3
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- Remove ExampleCardComponent now that Stack has been promoted.
+
+## 6.12.2
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- FeedbackList: Iterate Github issues collection directly to avoid total_count disparity
+
+## 6.12.1
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Improve autodoc to deal with line breaks in extends clause.
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove not null assertion for optional prop
+
+## 6.11.8
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- Feedback button: Increase styles specificity to override MWF conflicts.
+
+## 6.11.7
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
 
 ## 6.11.6
 Thu, 14 Feb 2019 13:34:54 GMT

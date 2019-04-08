@@ -15,9 +15,23 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-11"`,
-      src: `url('${baseUrl}fabric-icons-11-1821d7ea.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-11-93bad8ee.woff') format('woff')`
     },
     icons: {
+      ImageDiff: '\uF30B',
+      ImagePixel: '\uF30C',
+      FileBug: '\uF30D',
+      FileCode: '\uF30E',
+      FileComment: '\uF30F',
+      BusinessHoursSign: '\uF310',
+      FileImage: '\uF311',
+      FileSymlink: '\uF312',
+      AutoFillTemplate: '\uF313',
+      WorkItem: '\uF314',
+      WorkItemBug: '\uF315',
+      LogRemove: '\uF316',
+      ColumnOptions: '\uF317',
+      Packages: '\uF318',
       BuildIssue: '\uF319',
       AssessmentGroup: '\uF31A',
       VariableGroup: '\uF31B',
@@ -103,21 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       VSTSAltLogo2: '\uF383',
       FileTypeSolution: '\uF387',
       WordLogoInverse16: '\uF390',
-      WordLogo16: '\uF391',
-      WordLogoFill16: '\uF392',
-      PowerPointLogoInverse16: '\uF393',
-      PowerPointLogo16: '\uF394',
-      PowerPointLogoFill16: '\uF395',
-      ExcelLogoInverse16: '\uF396',
-      ExcelLogo16: '\uF397',
-      ExcelLogoFill16: '\uF398',
-      OneNoteLogoInverse16: '\uF399',
-      OneNoteLogo16: '\uF39A',
-      OneNoteLogoFill16: '\uF39B',
-      OutlookLogoInverse16: '\uF39C',
-      OutlookLogo16: '\uF39D',
-      OutlookLogoFill16: '\uF39E',
-      PublisherLogoInverse16: '\uF39F'
+      WordLogo16: '\uF391'
     }
   };
 

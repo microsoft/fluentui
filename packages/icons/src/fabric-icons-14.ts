@@ -15,9 +15,24 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-14"`,
-      src: `url('${baseUrl}fabric-icons-14-19b735bc.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-14-9a8324a9.woff') format('woff')`
     },
     icons: {
+      TextOverflow: '\uF51F',
+      VisualsFolder: '\uF520',
+      VisualsStore: '\uF521',
+      PictureCenter: '\uF522',
+      PictureFill: '\uF523',
+      PicturePosition: '\uF524',
+      PictureStretch: '\uF525',
+      PictureTile: '\uF526',
+      Slider: '\uF527',
+      SliderHandleSize: '\uF528',
+      DefaultRatio: '\uF529',
+      NumberSequence: '\uF52A',
+      GUID: '\uF52B',
+      ReportAdd: '\uF52C',
+      DashboardAdd: '\uF52D',
       MapPinSolid: '\uF52E',
       WebPublish: '\uF52F',
       PieSingleSolid: '\uF530',
@@ -94,6 +109,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       DeleteRows: '\uF64F',
       DeleteRowsMirrored: '\uF650',
       DeleteTable: '\uF651',
+      AccountBrowser: '\uF652',
       VersionControlPush: '\uF664',
       StackedColumnChart2: '\uF666',
       TripleColumnWide: '\uF66E',
@@ -101,23 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       WhiteBoardApp16: '\uF673',
       WhiteBoardApp32: '\uF674',
       InsertSignatureLine: '\uF677',
-      ArrangeByFrom: '\uF678',
-      Phishing: '\uF679',
-      CreateMailRule: '\uF67A',
-      PublishCourse: '\uF699',
-      DictionaryRemove: '\uF69A',
-      UserRemove: '\uF69B',
-      UserEvent: '\uF69C',
-      Encryption: '\uF69D',
-      D365TalentLearn: '\uF6BB',
-      D365TalentInsight: '\uF6BC',
-      D365TalentHRCore: '\uF6BD',
-      BacklogList: '\uF6BF',
-      ButtonControl: '\uF6C0',
-      TableGroup: '\uF6D9',
-      MountainClimbing: '\uF6DB',
-      TagUnknown: '\uF6DF',
-      TagUnknownMirror: '\uF6E0'
+      ArrangeByFrom: '\uF678'
     }
   };
 

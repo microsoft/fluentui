@@ -34,7 +34,6 @@ const ANIMATIONS: { [key: number]: string | undefined } = {
 };
 
 const getClassNames = classNamesFunction<ICalloutContentStyleProps, ICalloutContentStyles>();
-const BORDER_WIDTH = 1;
 const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // Microsoft Edge will overwrite inline styles if there is an animation pertaining to that style.
 // To help ensure that edge will respect the offscreen style opacity
@@ -101,6 +100,14 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   }
 
+  public shouldComponentUpdate(newProps: ICalloutProps): boolean {
+    if (this.props.hidden && newProps.hidden) {
+      // Do not update when hidden.
+      return false;
+    }
+    return true;
+  }
+
   public componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
   }
@@ -122,8 +129,11 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
       this._setHeightOffsetEveryFrame();
     }
 
-    // if the callout becomes hidden, then remove any positions, bounds that were placed on it.
-    if (newProps.hidden && newProps.hidden !== this.props.hidden) {
+    // Ensure positioning is recalculated when we are about to show a persisted menu.
+    if (!newProps.hidden && newProps.hidden !== this.props.hidden) {
+      this._maxHeight = undefined;
+      // Target might have been updated while hidden.
+      this._setTargetWindowAndElement(newTarget);
       this.setState({
         positions: undefined
       });
@@ -391,7 +401,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
         const gapSpace = this.props.gapSpace ? this.props.gapSpace : 0;
         // Since the callout cannot measure it's border size it must be taken into account here. Otherwise it will
         // overlap with the target.
-        const totalGap = gapSpace + beakWidth! + BORDER_WIDTH * 2;
+        const totalGap = gapSpace + beakWidth!;
         this._async.requestAnimationFrame(() => {
           if (this._target) {
             this._maxHeight = getMaxHeight(this._target, this.props.directionalHint!, totalGap, this._getBounds(), this.props.coverTarget);
@@ -400,7 +410,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
           }
         });
       } else {
-        this._maxHeight = this._getBounds().height! - BORDER_WIDTH * 2;
+        this._maxHeight = this._getBounds().height!;
       }
     }
     return this._maxHeight!;

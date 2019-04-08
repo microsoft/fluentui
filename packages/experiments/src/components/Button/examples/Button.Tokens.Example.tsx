@@ -1,11 +1,18 @@
 import * as React from 'react';
-import { Button, IButtonProps } from '@uifabric/experiments';
+import { Button, IButtonProps, MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { createTheme, Spinner, Stack } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
-const sectionGap = 32;
+const tokens = {
+  sectionStack: {
+    childrenGap: 32
+  },
+  buttonStack: {
+    childrenGap: 8
+  }
+};
 
 const testTheme = createTheme({
   semanticColors: {
@@ -22,7 +29,7 @@ const testTheme = createTheme({
 export class ButtonTokensExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const ButtonSet = (props: IButtonProps) => (
-      <Stack horizontal disableShrink verticalAlign="center" gap={8}>
+      <Stack horizontal disableShrink verticalAlign="center" tokens={tokens.buttonStack}>
         <Button {...props} />
         <Button {...props} primary />
         <Button {...props} disabled />
@@ -40,8 +47,27 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
       </Stack>
     );
 
+    const MenuButtonSet = (props: IMenuButtonProps) => (
+      <Stack horizontal disableShrink verticalAlign="center" tokens={tokens.buttonStack}>
+        <MenuButton {...props} />
+        <MenuButton {...props} primary />
+        <MenuButton {...props} disabled />
+        <MenuButton
+          {...props}
+          tokens={{
+            backgroundColor: 'red',
+            backgroundColorHovered: 'pink',
+            color: 'white',
+            colorHovered: 'white',
+            iconColor: 'white',
+            iconColorHovered: 'white'
+          }}
+        />
+      </Stack>
+    );
+
     return (
-      <Stack gap={sectionGap}>
+      <Stack tokens={tokens.sectionStack}>
         <ButtonSet />
         <ButtonSet content="No Icon" />
         <ButtonSet content={<Spinner />} />
@@ -49,12 +75,12 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
         <ButtonSet icon="upload" href="http://www.microsoft.com" content="Button with href" />
         <ButtonSet circular />
         <ButtonSet circular icon="share" />
-        <ButtonSet
+        <MenuButtonSet
           icon={render => render((IconType, iconProps) => <IconType {...iconProps} iconName="upload" />)}
           content="Menu button with icon"
           menu={buttonMenu}
         />
-        <Stack horizontal disableShrink verticalAlign="center" gap={8}>
+        <Stack horizontal disableShrink verticalAlign="center" tokens={tokens.buttonStack}>
           <Button
             primary
             icon="PeopleAdd"

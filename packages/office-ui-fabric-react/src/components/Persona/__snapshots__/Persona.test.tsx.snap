@@ -11,7 +11,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -32,7 +32,7 @@ exports[`Persona renders Persona children correctly 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={13}
 >
@@ -107,7 +107,7 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 17px;
             font-weight: 400;
             overflow: hidden;
@@ -133,7 +133,7 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -145,7 +145,7 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -158,7 +158,7 @@ exports[`Persona renders Persona children correctly 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -185,7 +185,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -206,7 +206,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={13}
 >
@@ -295,7 +295,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 17px;
             font-weight: 400;
             overflow: hidden;
@@ -321,7 +321,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -333,7 +333,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -346,7 +346,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -370,7 +370,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -391,7 +391,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={13}
 >
@@ -493,7 +493,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 17px;
             font-weight: 400;
             overflow: hidden;
@@ -519,7 +519,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -531,7 +531,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -544,7 +544,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -568,7 +568,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -589,7 +589,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={13}
 >
@@ -664,7 +664,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 17px;
             font-weight: 400;
             overflow: hidden;
@@ -690,7 +690,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -702,7 +702,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -715,7 +715,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -739,7 +739,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -760,7 +760,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={13}
 >
@@ -849,7 +849,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 17px;
             font-weight: 400;
             overflow: hidden;
@@ -861,7 +861,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 12px;
             font-weight: 400;
             overflow: hidden;
@@ -873,7 +873,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -886,7 +886,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: none;
             font-size: 12px;
             font-weight: 400;
@@ -911,7 +911,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -932,7 +932,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={15}
 >
@@ -1085,7 +1085,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 21px;
             font-weight: 300;
             overflow: hidden;
@@ -1111,7 +1111,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 14px;
             font-weight: 400;
             overflow: hidden;
@@ -1137,7 +1137,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
             font-size: 12px;
             font-weight: 400;
@@ -1164,7 +1164,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
             font-size: 12px;
             font-weight: 400;
@@ -1203,7 +1203,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         align-items: center;
         box-shadow: none;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -1224,7 +1224,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
         display: none;
       }
       &:hover $primaryText {
-        color: #212121;
+        color: #201f1e;
       }
   size={15}
 >
@@ -1401,7 +1401,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-primaryText
           {
-            color: #333333;
+            color: #323130;
             font-size: 21px;
             font-weight: 300;
             overflow: hidden;
@@ -1427,7 +1427,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-secondaryText
           {
-            color: #666666;
+            color: #605e5c;
             font-size: 14px;
             font-weight: 400;
             overflow: hidden;
@@ -1453,7 +1453,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-tertiaryText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
             font-size: 12px;
             font-weight: 400;
@@ -1480,7 +1480,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       className=
           ms-Persona-optionalText
           {
-            color: #666666;
+            color: #605e5c;
             display: block;
             font-size: 12px;
             font-weight: 400;

@@ -9,13 +9,22 @@ export const getSetupWizardStyles = (): ISetupWizardStyles => {
       {
         color: NeutralColors.gray130,
         display: 'flex',
-        flexDirection: 'column'
+        flexDirection: 'column',
+        height: '100%'
       }
     ],
     titleSection: {
       border: `1px solid ${NeutralColors.gray40}`,
+      height: '75px'
+    },
+    actionBarSection: {
+      whiteSpace: 'nowrap',
+      width: '100%',
+      display: 'flex',
+      flexDirection: 'row',
+      border: `1px solid ${NeutralColors.gray40}`,
       height: '75px',
-      padding: '30px'
+      alignItems: 'center'
     }
   };
 };

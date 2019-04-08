@@ -9,7 +9,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -20,11 +20,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -44,7 +44,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           ms-DocumentCardPreview
           {
             background-color: #ffffff;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid #edebe9;
             overflow: hidden;
             position: relative;
           }
@@ -75,7 +75,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 white-space: nowrap;
               }
               & a {
-                color: #212121;
+                color: #201f1e;
                 font-size: 12px;
                 text-decoration: none;
               }
@@ -138,7 +138,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -148,8 +148,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -216,7 +214,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -226,8 +224,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -294,7 +290,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -304,8 +300,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -339,7 +333,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       className=
           ms-DocumentCardLocation
           {
-            color: #333333;
+            color: #323130;
             display: block;
             font-size: 12px;
             overflow: hidden;
@@ -366,7 +360,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 17px;
@@ -603,7 +597,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -620,7 +614,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -650,7 +644,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className=
             ms-DocumentCardActions-action
             {
-              color: #666666;
+              color: #605e5c;
               cursor: pointer;
               float: left;
               margin-right: 4px;
@@ -661,7 +655,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               width: 34px;
             }
             & .ms-Button:hover .ms-Button-icon {
-              color: #333333;
+              color: #323130;
               cursor: pointer;
             }
       >
@@ -674,10 +668,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -700,14 +694,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -724,14 +718,16 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -787,7 +783,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className=
             ms-DocumentCardActions-action
             {
-              color: #666666;
+              color: #605e5c;
               cursor: pointer;
               float: left;
               margin-right: 4px;
@@ -798,7 +794,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               width: 34px;
             }
             & .ms-Button:hover .ms-Button-icon {
-              color: #333333;
+              color: #323130;
               cursor: pointer;
             }
       >
@@ -811,10 +807,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -837,14 +833,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -861,14 +857,16 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -924,7 +922,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         className=
             ms-DocumentCardActions-action
             {
-              color: #666666;
+              color: #605e5c;
               cursor: pointer;
               float: left;
               margin-right: 4px;
@@ -935,7 +933,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               width: 34px;
             }
             & .ms-Button:hover .ms-Button-icon {
-              color: #333333;
+              color: #323130;
               cursor: pointer;
             }
       >
@@ -948,10 +946,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -974,14 +972,14 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -998,14 +996,16 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           onClick={[Function]}
@@ -1099,7 +1099,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -1110,11 +1110,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -1169,7 +1169,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 17px;
@@ -1193,7 +1193,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -1219,8 +1219,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              color: #333333;
+              background-color: #f3f2f1;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -1474,7 +1474,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -1491,7 +1491,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -1514,7 +1514,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -1525,11 +1525,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -1584,7 +1584,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 17px;
@@ -1608,7 +1608,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -1632,8 +1632,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              color: #333333;
+              background-color: #f3f2f1;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -1887,7 +1887,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -1904,7 +1904,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -1927,7 +1927,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -1938,11 +1938,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -1997,7 +1997,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 17px;
@@ -2021,7 +2021,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -2259,7 +2259,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -2276,7 +2276,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -2299,7 +2299,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -2310,11 +2310,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -2333,8 +2333,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
             overflow: hidden;
             position: relative;
           }
@@ -2393,7 +2393,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 17px;
@@ -2548,7 +2548,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -2565,7 +2565,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -2589,7 +2589,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -2600,11 +2600,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -2623,8 +2623,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       className=
 
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
             height: 100px;
             overflow: hidden;
             position: relative;
@@ -2728,7 +2728,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 17px;
@@ -2966,7 +2966,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -2983,7 +2983,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -3006,7 +3006,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           max-width: 320px;
           min-width: 206px;
@@ -3017,11 +3017,11 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -3040,8 +3040,8 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
       className=
 
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
             height: 150px;
             overflow: hidden;
             position: relative;
@@ -3101,7 +3101,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 17px;
@@ -3230,7 +3230,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -3247,7 +3247,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;

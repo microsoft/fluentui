@@ -1,10 +1,9 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { IIconProps, IconType, IIconStyleProps, IIconStyles } from './Icon.types';
 import { Image } from '../Image/Image';
 import { ImageLoadState } from '../Image/Image.types';
-import { getNativeProps, htmlElementProperties, BaseComponent, classNamesFunction } from '../../Utilities';
+import { getNativeProps, htmlElementProperties, classNamesFunction } from '../../Utilities';
 import { getIcon } from '../../Styling';
 
 export interface IIconState {
@@ -13,7 +12,7 @@ export interface IIconState {
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
 
-export class IconBase extends BaseComponent<IIconProps, IIconState> {
+export class IconBase extends React.PureComponent<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {
@@ -46,7 +45,10 @@ export class IconBase extends BaseComponent<IIconProps, IIconState> {
     const RootType = isImage ? 'div' : 'i';
     const nativeProps = getNativeProps(this.props, htmlElementProperties);
     const { imageLoadError } = this.state;
-    const imageProps = { ...this.props.imageProps, onLoadingStateChange: this.onImageLoadingStateChange };
+    const imageProps = {
+      ...this.props.imageProps,
+      onLoadingStateChange: this.onImageLoadingStateChange
+    };
     const ImageType = (imageLoadError && imageErrorAs) || Image;
 
     return (

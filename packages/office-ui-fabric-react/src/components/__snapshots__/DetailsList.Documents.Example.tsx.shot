@@ -7,7 +7,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        color: #333333;
+        color: #323130;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
@@ -63,11 +63,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -80,6 +80,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               word-wrap: break-word;
             }
         htmlFor="Toggle0"
+        id="Toggle0-label"
       >
         Enable compact mode
       </label>
@@ -93,29 +94,28 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle0-label"
           checked={false}
           className=
               ms-Toggle-background
               {
                 align-items: center;
                 background: #ffffff;
-                border-color: #666666;
-                border-radius: 1em;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 10px;
+                border: 1px solid #605e5c;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: flex;
                 font-size: 20px;
-                height: 1em;
+                height: 20px;
                 outline: transparent;
                 padding-bottom: 0;
-                padding-left: .2em;
-                padding-right: .2em;
+                padding-left: 3px;
+                padding-right: 3px;
                 padding-top: 0;
                 position: relative;
                 transition: all 0.1s ease;
-                width: 2.2em;
+                width: 40px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -125,14 +125,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 bottom: -2px;
                 content: "";
                 left: -2px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: -2px;
                 top: -2px;
                 z-index: 1;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
+              }
+              &:hover .ms-Toggle-thumb {
+                background-color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
@@ -151,15 +154,15 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             className=
                 ms-Toggle-thumb
                 {
-                  background-color: #333333;
+                  background-color: #605e5c;
                   border-color: transparent;
-                  border-radius: .5em;
+                  border-radius: 50%;
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
-                  height: .5em;
+                  height: 12px;
                   transition: all 0.1s ease;
-                  width: .5em;
+                  width: 12px;
                 }
           />
         </button>
@@ -172,11 +175,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -189,6 +192,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 word-wrap: break-word;
               }
               && {
+                font-weight: 400;
                 margin-bottom: 0;
                 margin-left: 8px;
                 margin-right: 8px;
@@ -199,6 +203,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 0;
                 user-select: none;
               }
+          htmlFor="Toggle0"
+          id="Toggle0-stateText"
         >
           Normal
         </label>
@@ -230,11 +236,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -247,6 +253,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               word-wrap: break-word;
             }
         htmlFor="Toggle1"
+        id="Toggle1-label"
       >
         Enable modal selection
       </label>
@@ -260,29 +267,28 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle1-label"
           checked={false}
           className=
               ms-Toggle-background
               {
                 align-items: center;
                 background: #ffffff;
-                border-color: #666666;
-                border-radius: 1em;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 10px;
+                border: 1px solid #605e5c;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: flex;
                 font-size: 20px;
-                height: 1em;
+                height: 20px;
                 outline: transparent;
                 padding-bottom: 0;
-                padding-left: .2em;
-                padding-right: .2em;
+                padding-left: 3px;
+                padding-right: 3px;
                 padding-top: 0;
                 position: relative;
                 transition: all 0.1s ease;
-                width: 2.2em;
+                width: 40px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -292,14 +298,17 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 bottom: -2px;
                 content: "";
                 left: -2px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: -2px;
                 top: -2px;
                 z-index: 1;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
+              }
+              &:hover .ms-Toggle-thumb {
+                background-color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
@@ -318,15 +327,15 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             className=
                 ms-Toggle-thumb
                 {
-                  background-color: #333333;
+                  background-color: #605e5c;
                   border-color: transparent;
-                  border-radius: .5em;
+                  border-radius: 50%;
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
-                  height: .5em;
+                  height: 12px;
                   transition: all 0.1s ease;
-                  width: .5em;
+                  width: 12px;
                 }
           />
         </button>
@@ -339,11 +348,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -356,6 +365,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 word-wrap: break-word;
               }
               && {
+                font-weight: 400;
                 margin-bottom: 0;
                 margin-left: 8px;
                 margin-right: 8px;
@@ -366,6 +376,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 0;
                 user-select: none;
               }
+          htmlFor="Toggle1"
+          id="Toggle1-stateText"
         >
           Normal
         </label>
@@ -375,8 +387,13 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       className=
           ms-TextField
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
             margin-bottom: 20px;
             margin-left: 0;
             margin-right: 30px;
@@ -402,11 +419,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -428,7 +445,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #a19f9d;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -446,7 +464,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -457,14 +475,18 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
             className=
                 ms-TextField-field
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-color: transparent;
                   background: none;
                   border-radius: 0px;
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
+                  font-weight: 400;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -472,8 +494,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -485,11 +507,21 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField2"

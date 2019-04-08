@@ -2,6 +2,138 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.4",
+      "tag": "@uifabric/fluent-theme_v0.16.4",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.0` to `^6.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.3",
+      "tag": "@uifabric/fluent-theme_v0.16.3",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IconButton style fixes and removing the SwatchColorPicker styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0c04b004f69676a2a0aba9219d76caf98961dd84"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.1 <7.0.0` to `>=6.16.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.45.0 <7.0.0` to `>=6.45.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.2",
+      "tag": "@uifabric/fluent-theme_v0.16.2",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "2db50f202254e0222e7c7979154162a46df45f21"
+          },
+          {
+            "comment": "Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c55e05bd509fa16a87d31cec0627a101507c84a0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.1",
+      "tag": "@uifabric/fluent-theme_v0.16.1",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixed last-child styling",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "e64f3beede5328eb553dac20ced49170e1227892"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.0",
+      "tag": "@uifabric/fluent-theme_v0.16.0",
+      "date": "Wed, 27 Feb 2019 01:28:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "4f0b6edde9d6fe846bf84cad542fceca9eb1e729"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.41.0 <7.0.0` to `>=6.42.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.145.0 <7.0.0` to `>=6.146.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.15.1",
+      "tag": "@uifabric/fluent-theme_v0.15.1",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update DetailsList Fluent styles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f548938819def5e9e8a2f81bf9cd11aaa401e68c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.15.0",
       "tag": "@uifabric/fluent-theme_v0.15.0",
       "date": "Wed, 20 Feb 2019 13:30:29 GMT",

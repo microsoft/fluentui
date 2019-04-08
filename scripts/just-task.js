@@ -1,9 +1,22 @@
 // @ts-check
 
 const { task, series, parallel, condition, option, argv, logger } = require('just-task');
-const { rig } = require('./tasks/rig');
 const path = require('path');
 const fs = require('fs');
+
+const { clean } = require('./tasks/clean');
+const { copy } = require('./tasks/copy');
+const { jest, jestWatch, jestDom } = require('./tasks/jest');
+const { sass } = require('./tasks/sass');
+const { ts } = require('./tasks/ts');
+const { tslint } = require('./tasks/tslint');
+const { webpack, webpackDevServer, webpackDevServerWithCompileResolution } = require('./tasks/webpack');
+const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
+const lintImports = require('./tasks/lint-imports');
+const prettier = require('./tasks/prettier');
+const bundleSizeCollect = require('./tasks/bundle-size-collect');
+const checkForModifiedFiles = require('./tasks/check-for-modified-files');
+const generateVersionFiles = require('./tasks/generate-version-files');
 
 let packageJson;
 
@@ -16,15 +29,29 @@ option('prdeploy');
 
 option('webpackConfig', { alias: 'w' });
 
-Object.keys(rig).forEach(taskFunction => {
-  if (typeof rig[taskFunction] === 'function') {
-    registerTask(kebabCase(taskFunction), rig[taskFunction]);
-  } else if (typeof rig[taskFunction] === 'object') {
-    Object.keys(rig[taskFunction]).forEach(name => {
-      registerTask(kebabCase(`${taskFunction}:${name}`), rig[taskFunction][name]);
-    });
-  }
-});
+// Build only commonjs (not other TS variants) but still run other tasks
+option('commonjs');
+
+registerTask('clean', clean);
+registerTask('copy', copy);
+registerTask('jest', jest);
+registerTask('jest-watch', jestWatch);
+registerTask('jest-dom', jestDom);
+registerTask('sass', sass);
+registerTask('ts:commonjs', ts.commonjs);
+registerTask('ts:esm', ts.esm);
+registerTask('ts:amd', ts.amd);
+registerTask('tslint', tslint);
+registerTask('ts:commonjs-only', ts.commonjsOnly);
+registerTask('webpack', webpack);
+registerTask('webpack-dev-server', webpackDevServer);
+registerTask('verify-api-extractor', verifyApiExtractor);
+registerTask('update-api-extractor', updateApiExtractor);
+registerTask('lint-imports', lintImports);
+registerTask('prettier', prettier);
+registerTask('bundle-size-collect', bundleSizeCollect);
+registerTask('check-for-modified-files', checkForModifiedFiles);
+registerTask('generate-version-files', generateVersionFiles);
 
 task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min && !argv().prdeploy)));
 
@@ -38,8 +65,7 @@ task(
       condition('tslint', () => !argv().min && !argv().prdeploy),
       condition('jest', () => !argv().min && !argv().prdeploy),
       series(
-        'ts',
-        'build-codepen-examples',
+        argv().commonjs ? 'ts:commonjs-only' : 'ts',
         condition('lint-imports', () => !argv().min && !argv().prdeploy),
         parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
       )
@@ -53,12 +79,12 @@ task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
-task('dev', series('clean', 'copy', 'sass', 'build-codepen-examples', 'webpack-dev-server'));
-
+task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
+task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom'));
 // Utility functions
 
 function getPackage() {
-  if (typeof packageJson !== 'undefined') {
+  if (packageJson) {
     return packageJson;
   }
 
@@ -73,14 +99,8 @@ function getPackage() {
 }
 
 function getDisabledTasks() {
-  return getPackage().disabledTasks || [];
-}
-
-function kebabCase(name) {
-  return name
-    .replace(/([a-z])([A-Z])/g, '$1-$2')
-    .replace(/\s+/g, '-')
-    .toLowerCase();
+  const pkgJson = getPackage();
+  return (pkgJson && pkgJson.disabledTasks) || [];
 }
 
 function registerTask(name, taskFunction) {

@@ -15,7 +15,7 @@ import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseCommonAction & IDetailPanelAnalytics;
 
-const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActionBarProps) => {
+const actionBar: React.FunctionComponent<DetailPanelActionBarProps> = (props: DetailPanelActionBarProps) => {
   const _onClickAnalyticsHandler = (onCallBack: () => void, componentType: string, componentProps: {}) => () => {
     const { analyticsHandler } = props;
     if (analyticsHandler) {
@@ -54,7 +54,7 @@ const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActio
       .catch((err: IDetailPanelErrorResult) => {
         if (err) {
           // set message banner
-          const messageBannerSetting = Object.assign({}, err.messageBannerSetting);
+          const messageBannerSetting = { ...err.messageBannerSetting };
           if (messageBannerSetting.messageType === undefined) {
             messageBannerSetting.messageType = MessageBarType.error;
           }

@@ -12,11 +12,11 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          background-color: #ffffff;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           cursor: pointer;
           display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -39,14 +39,14 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -63,16 +63,16 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
           top: 0px;
         }
         &:hover {
-          background-color: #eaeaea;
-          color: #212121;
+          background-color: #f3f2f1;
+          color: #201f1e;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          background-color: #c8c8c8;
-          color: #212121;
+          background-color: #edebe9;
+          color: #201f1e;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -154,7 +154,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -222,10 +222,8 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    border-color: #eaeaea;
-                    border-style: solid;
-                    border-width: 1px;
-                    box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+                    border-radius: 2px;
+                    box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                     box-sizing: border-box;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
@@ -256,6 +254,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                     ms-Callout-main
                     {
                       background-color: #ffffff;
+                      border-radius: 2px;
                       overflow-x: hidden;
                       overflow-y: auto;
                       position: relative;
@@ -264,7 +263,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                 onScroll={[Function]}
                 style={
                   Object {
-                    "maxHeight": 750,
+                    "maxHeight": 752,
                     "outline": "none",
                     "overflowY": undefined,
                   }
@@ -281,7 +280,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                   onFocusCapture={[Function]}
                   onKeyDown={[Function]}
                   onKeyUp={[Function]}
-                  role="menu"
                   tabIndex={0}
                 >
                   <div
@@ -331,7 +329,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -350,14 +348,14 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 -webkit-font-smoothing: antialiased;
                                 background-color: transparent;
                                 border: none;
-                                color: #333333;
+                                color: #323130;
                                 cursor: pointer;
                                 display: block;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -375,14 +373,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
                                 z-index: 1;
                               }
                               &:hover {
-                                background-color: #f4f4f4;
+                                background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -391,7 +390,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               &:active {
-                                background-color: #eaeaea;
+                                background-color: #edebe9;
                               }
                               @media screen and (-ms-high-contrast: active){&:active {
                                 -ms-high-contrast-adjust: none;
@@ -400,7 +399,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f4f4f4;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -412,7 +411,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -456,7 +454,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                         className=
                             ms-ContextualMenu-divider
                             {
-                              background-color: #eaeaea;
+                              background-color: #edebe9;
                               display: block;
                               height: 1px;
                               position: relative;
@@ -470,7 +468,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -489,14 +487,14 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 -webkit-font-smoothing: antialiased;
                                 background-color: transparent;
                                 border: none;
-                                color: #333333;
+                                color: #323130;
                                 cursor: pointer;
                                 display: block;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -514,14 +512,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
                                 z-index: 1;
                               }
                               &:hover {
-                                background-color: #f4f4f4;
+                                background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -530,7 +529,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               &:active {
-                                background-color: #eaeaea;
+                                background-color: #edebe9;
                               }
                               @media screen and (-ms-high-contrast: active){&:active {
                                 -ms-high-contrast-adjust: none;
@@ -539,7 +538,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f4f4f4;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -551,7 +550,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -597,7 +595,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -616,14 +614,14 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 -webkit-font-smoothing: antialiased;
                                 background-color: transparent;
                                 border: none;
-                                color: #333333;
+                                color: #323130;
                                 cursor: pointer;
                                 display: block;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -641,14 +639,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
                                 z-index: 1;
                               }
                               &:hover {
-                                background-color: #f4f4f4;
+                                background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -657,7 +656,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               &:active {
-                                background-color: #eaeaea;
+                                background-color: #edebe9;
                               }
                               @media screen and (-ms-high-contrast: active){&:active {
                                 -ms-high-contrast-adjust: none;
@@ -666,7 +665,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f4f4f4;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -678,7 +677,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -724,7 +722,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -743,14 +741,14 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 -webkit-font-smoothing: antialiased;
                                 background-color: transparent;
                                 border: none;
-                                color: #333333;
+                                color: #323130;
                                 cursor: pointer;
                                 display: block;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -768,14 +766,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
                                 z-index: 1;
                               }
                               &:hover {
-                                background-color: #f4f4f4;
+                                background-color: #f3f2f1;
+                                color: #201f1e;
                               }
                               @media screen and (-ms-high-contrast: active){&:hover {
                                 -ms-high-contrast-adjust: none;
@@ -784,7 +783,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               &:active {
-                                background-color: #eaeaea;
+                                background-color: #edebe9;
                               }
                               @media screen and (-ms-high-contrast: active){&:active {
                                 -ms-high-contrast-adjust: none;
@@ -793,7 +792,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 color: HighlightText;
                               }
                               .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                background-color: #f4f4f4;
+                                background-color: #ffffff;
                               }
                               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                 -ms-high-contrast-adjust: none;
@@ -805,7 +804,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 background: inherit;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}
@@ -851,7 +849,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -878,9 +876,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
+                                  height: 36px;
                                   letter-spacing: normal;
-                                  line-height: 32px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -904,14 +902,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   bottom: 1px;
                                   content: "";
                                   left: 1px;
-                                  outline: 1px solid #666666;
+                                  outline: 1px solid #605e5c;
                                   position: absolute;
                                   right: 1px;
                                   top: 1px;
                                   z-index: 1;
                                 }
                                 &:hover {
-                                  background-color: #f4f4f4;
+                                  background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -920,7 +919,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 &:active {
-                                  background-color: #eaeaea;
+                                  background-color: #edebe9;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:active {
                                   -ms-high-contrast-adjust: none;
@@ -929,7 +928,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f4f4f4;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -942,7 +941,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                             href="http://bing.com"
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
@@ -988,7 +986,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -1015,9 +1013,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
+                                  height: 36px;
                                   letter-spacing: normal;
-                                  line-height: 32px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -1041,14 +1039,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   bottom: 1px;
                                   content: "";
                                   left: 1px;
-                                  outline: 1px solid #666666;
+                                  outline: 1px solid #605e5c;
                                   position: absolute;
                                   right: 1px;
                                   top: 1px;
                                   z-index: 1;
                                 }
                                 &:hover {
-                                  background-color: #f4f4f4;
+                                  background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1057,7 +1056,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 &:active {
-                                  background-color: #eaeaea;
+                                  background-color: #edebe9;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:active {
                                   -ms-high-contrast-adjust: none;
@@ -1066,7 +1065,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f4f4f4;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1079,7 +1078,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 }
                             href="http://bing.com"
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
@@ -1127,7 +1125,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -1154,9 +1152,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                   font-size: 14px;
                                   font-weight: 400;
-                                  height: 32px;
+                                  height: 36px;
                                   letter-spacing: normal;
-                                  line-height: 32px;
+                                  line-height: 36px;
                                   outline: transparent;
                                   padding-bottom: 0;
                                   padding-left: 4px;
@@ -1180,14 +1178,15 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   bottom: 1px;
                                   content: "";
                                   left: 1px;
-                                  outline: 1px solid #666666;
+                                  outline: 1px solid #605e5c;
                                   position: absolute;
                                   right: 1px;
                                   top: 1px;
                                   z-index: 1;
                                 }
                                 &:hover {
-                                  background-color: #f4f4f4;
+                                  background-color: #f3f2f1;
+                                  color: #201f1e;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1196,7 +1195,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 &:active {
-                                  background-color: #eaeaea;
+                                  background-color: #edebe9;
                                 }
                                 @media screen and (-ms-high-contrast: active){&:active {
                                   -ms-high-contrast-adjust: none;
@@ -1205,7 +1204,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                   color: HighlightText;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
-                                  background-color: #f4f4f4;
+                                  background-color: #ffffff;
                                 }
                                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus, .ms-Fabric--isFocusVisible &:focus:hover {
                                   -ms-high-contrast-adjust: none;
@@ -1219,7 +1218,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                             href="http://bing.com"
                             name="Link click"
                             onClick={[Function]}
-                            onKeyDown={null}
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
@@ -1267,7 +1265,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
                               box-sizing: border-box;
-                              color: #333333;
+                              color: #323130;
                               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                               font-size: 14px;
                               font-weight: 400;
@@ -1287,14 +1285,14 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 -webkit-font-smoothing: antialiased;
                                 background-color: transparent;
                                 border: none;
-                                color: #a6a6a6;
+                                color: #a19f9d;
                                 cursor: default;
                                 display: block;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                                 font-size: 14px;
                                 font-weight: 400;
-                                height: 32px;
-                                line-height: 32px;
+                                height: 36px;
+                                line-height: 36px;
                                 outline: transparent;
                                 padding-bottom: 0;
                                 padding-left: 4px;
@@ -1313,7 +1311,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
-                                outline: 1px solid #666666;
+                                outline: 1px solid #605e5c;
                                 position: absolute;
                                 right: 1px;
                                 top: 1px;
@@ -1324,7 +1322,6 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                                 opacity: 1;
                               }
                           onClick={[Function]}
-                          onKeyDown={null}
                           onMouseDown={[Function]}
                           onMouseEnter={[Function]}
                           onMouseLeave={[Function]}

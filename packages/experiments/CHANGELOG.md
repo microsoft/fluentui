@@ -1,6 +1,136 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 22 Feb 2019 13:31:09 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+
+## 6.67.1
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- Use styles instead of className on theming example dialog
+
+## 6.67.0
+Wed, 03 Apr 2019 12:38:51 GMT
+
+### Minor changes
+
+- Button: Improvements on Button docs.
+
+### Patches
+
+- Button: Fixing SplitButton styling issues and correctly placing divider.
+
+## 6.66.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+- add proxy component for experiments/Separator
+
+## 6.66.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- Separator: remove from experiments and promote to OUFR
+
+### Patches
+
+- Updating examples using Stack to use childrenGap token instead of gap prop.
+
+## 6.65.0
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Minor changes
+
+- Add support for maxRowCount in TilesList
+
+## 6.64.2
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Patches
+
+- Toggle: Fix invalid references to this object.
+
+## 6.64.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- fix a bug in the tooltip of last page button in pagination component, experiment package
+
+## 6.64.0
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Minor changes
+
+- Button: Separating MenuButton and SplitButton as variants to decouple ContextualMenu from Button.
+
+## 6.63.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- update snapshots to reflect default change in Text
+
+## 6.63.0
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Minor changes
+
+- Removing Card component from experiments package.
+
+### Patches
+
+- folder cover ux cleaned up
+- Signals: changes icon color of `follow` signal.
+
+## 6.62.2
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Clean up a few imports.
+
+## 6.62.1
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 6.62.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove Announced
+
+### Patches
+
+- add yellowDark as required
+
+## 6.61.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Card: Exporting Card from experiments.
+
+## 6.60.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- move Text component from experiments -> OUFR
+
+## 6.59.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Stack: Making doc block in `Stack.ts` in the `experiments` package so that @deprecated is recognized.
 
 ## 6.59.1
 Fri, 22 Feb 2019 13:31:09 GMT

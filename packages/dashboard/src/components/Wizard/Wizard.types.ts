@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { ISubwayNavNodeProps, SubwayNavNodeState } from '../SubwayNav/SubwayNode.types';
 
 export interface IWizardProps {
@@ -7,7 +7,14 @@ export interface IWizardProps {
 
   wizardComplete?: boolean;
 
+  /* Step that is not part of navigation, only shown when wizard is complete */
+  wizardCompleteStep?: IWizardStepProps;
+
   stepToShow?: IWizardStepProps;
+
+  styles?: IWizardStyles;
+
+  theme?: ITheme;
 }
 
 export interface IWizardStepProps {
@@ -27,19 +34,24 @@ export interface IWizardStepProps {
 
   isSubStep?: boolean;
 
+  // This property is used for animation
+  isFirstSubStep?: boolean;
+
   onClickStep?: (step: ISubwayNavNodeProps) => void;
 
   wizardContent?: IWizardContentProps;
 
   subSteps?: IWizardStepProps[];
+
+  titleElement?: JSX.Element;
+
+  footerElement: JSX.Element;
 }
 
 export interface IWizardContentProps {
-  contentTitle?: string;
+  contentTitleElement?: JSX.Element;
 
   content: JSX.Element;
-
-  mainAction: IWizardStepAction;
 }
 
 export interface IWizardStepAction {
@@ -77,5 +89,15 @@ export interface IWizardStyles {
 
   contentSection: IStyle;
 
+  contentTitle: IStyle;
+
   content: IStyle;
+}
+
+export interface IWizardStyleProps {
+  isSubStep: boolean;
+
+  isFirstSubStep: boolean;
+
+  theme: ITheme;
 }

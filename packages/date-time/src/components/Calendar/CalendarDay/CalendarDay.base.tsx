@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction } from '@uifabric/utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction, find } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import {
@@ -280,6 +280,8 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!day.isInBounds}
           type="button"
+          role="gridcell" // create grid structure
+          aria-readonly={true} // prevent grid from being "editable"
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         </button>
@@ -298,28 +300,75 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
   }
 
   private _navigateMonthEdge(ev: React.KeyboardEvent<HTMLElement>, date: Date, weekIndex: number, dayIndex: number): void {
-    const { minDate, maxDate } = this.props;
     let targetDate: Date | undefined = undefined;
+    let direction = 1; // by default search forward
 
-    if (weekIndex === 0 && ev.which === KeyCodes.up) {
+    if (ev.which === KeyCodes.up) {
       targetDate = addWeeks(date, -1);
-    } else if (weekIndex === this.state.weeks!.length - 1 && ev.which === KeyCodes.down) {
+      direction = -1;
+    } else if (ev.which === KeyCodes.down) {
       targetDate = addWeeks(date, 1);
-    } else if (dayIndex === 0 && ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
+    } else if (ev.which === getRTLSafeKeyCode(KeyCodes.left)) {
       targetDate = addDays(date, -1);
-    } else if (dayIndex === DAYS_IN_WEEK - 1 && ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
+      direction = -1;
+    } else if (ev.which === getRTLSafeKeyCode(KeyCodes.right)) {
       targetDate = addDays(date, 1);
     }
 
-    // Don't navigate to out-of-bounds date
-    if (
-      targetDate &&
-      (minDate ? compareDatePart(minDate, targetDate) < 1 : true) &&
-      (maxDate ? compareDatePart(targetDate, maxDate) < 1 : true)
-    ) {
-      this.props.onNavigateDate(targetDate, true);
+    if (!targetDate) {
+      // if we couldn't find a target date at all, do nothing
+      return;
+    }
+
+    // target date is restricted, search in whatever direction until finding the next possible date, stopping at boundaries
+    let nextDate = this._findAvailableDate(date, targetDate, direction);
+
+    if (!nextDate) {
+      // if no dates available in initial direction, try going backwards
+      nextDate = this._findAvailableDate(date, targetDate, -direction);
+    }
+
+    // if the nextDate is still inside the same focusZone area, let the focusZone handle setting the focus so we don't jump
+    // the view unnecessarily
+    const isInCurrentView =
+      this.state.weeks &&
+      nextDate &&
+      this.state.weeks.some((week: IDayInfo[]) => {
+        return week.some((day: IDayInfo) => {
+          return compareDates(day.originalDate, nextDate!);
+        });
+      });
+    if (isInCurrentView) {
+      return;
+    }
+
+    // else, fire navigation on the date to change the view to show it
+    if (nextDate) {
+      this.props.onNavigateDate(nextDate, true);
       ev.preventDefault();
     }
+  }
+
+  private _findAvailableDate(initialDate: Date, targetDate: Date, direction: number): Date | undefined {
+    // if the target date is available, return it immediately
+    if (!this._getIsRestrictedDate(targetDate)) {
+      return targetDate;
+    }
+
+    while (
+      compareDatePart(initialDate, targetDate) !== 0 &&
+      this._getIsRestrictedDate(targetDate) &&
+      !this._getIsAfterMaxDate(targetDate) &&
+      !this._getIsBeforeMinDate(targetDate)
+    ) {
+      targetDate = addDays(targetDate, direction);
+    }
+
+    if (compareDatePart(initialDate, targetDate) !== 0 && !this._getIsRestrictedDate(targetDate)) {
+      return targetDate;
+    }
+
+    return undefined;
   }
 
   private _onDayKeyDown = (originalDate: Date, weekIndex: number, dayIndex: number): ((ev: React.KeyboardEvent<HTMLElement>) => void) => {
@@ -339,6 +388,9 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     if (dateRangeType !== DateRangeType.Day) {
       dateRange = this._getBoundedDateRange(dateRange, minDate, maxDate);
     }
+    dateRange = dateRange.filter((d: Date) => {
+      return !this._getIsRestrictedDate(d);
+    });
 
     if (onSelectDate) {
       onSelectDate(selectedDate, dateRange);
@@ -432,7 +484,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           isToday: compareDates(todaysDate, date),
           isSelected: isInDateRangeArray(date, selectedDates),
           onSelected: this._onSelectDate.bind(this, originalDate),
-          isInBounds: (minDate ? compareDatePart(minDate, date) < 1 : true) && (maxDate ? compareDatePart(date, maxDate) < 1 : true)
+          isInBounds: !this._getIsRestrictedDate(date)
         };
 
         week.push(dayInfo);
@@ -452,6 +504,27 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     }
 
     return weeks;
+  }
+
+  private _getIsRestrictedDate(date: Date): boolean {
+    const { restrictedDates } = this.props;
+    if (!restrictedDates) {
+      return false;
+    }
+    const inRestrictedDates = !!find(restrictedDates, (rd: Date) => {
+      return compareDates(rd, date);
+    });
+    return inRestrictedDates && !this._getIsBeforeMinDate(date) && !this._getIsAfterMaxDate(date);
+  }
+
+  private _getIsBeforeMinDate(date: Date): boolean {
+    const { minDate } = this.props;
+    return minDate ? compareDatePart(minDate, date) >= 1 : false;
+  }
+
+  private _getIsAfterMaxDate(date: Date): boolean {
+    const { maxDate } = this.props;
+    return maxDate ? compareDatePart(date, maxDate) >= 1 : false;
   }
 
   private _getBoundedDateRange(dateRange: Date[], minDate?: Date, maxDate?: Date): Date[] {
@@ -572,7 +645,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
     // gets all the day refs for the given dates
     const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
-      return accumulatedValue.concat(currentWeek.filter((weekDay: IDayInfo) => dateRange.includes(weekDay.originalDate.getTime())));
+      return accumulatedValue.concat(currentWeek.filter((weekDay: IDayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1));
     }, []);
 
     let dayRefs: (HTMLElement | null)[] = [];

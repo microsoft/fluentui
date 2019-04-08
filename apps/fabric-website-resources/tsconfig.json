@@ -15,13 +15,16 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
+    "skipLibCheck": true,
     "lib": [
-      "es2017",
+      "es5",
       "dom"
     ],
     "types": [
       "jest",
-      "webpack-env"
+      "webpack-env",
+      "puppeteer",
+      "es6-promise"
     ]
   },
   "include": [

@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
@@ -55,8 +54,17 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
       }
     });
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 10
+      },
+      wrapStack: {
+        childrenGap: 20
+      }
+    };
+
     return (
-      <Stack gap={10}>
+      <Stack tokens={tokens.sectionStack}>
         <Stack horizontal>
           <Stack.Item grow>
             <Slider label="Stack height:" min={1} max={420} step={1} defaultValue={420} showValue={true} onChange={this._onHeightChange} />
@@ -74,7 +82,7 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal gap={20}>
+        <Stack horizontal tokens={tokens.wrapStack}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -112,7 +120,13 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
         </Stack>
 
         <div className={styles.container}>
-          <Stack wrap gap={20} horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} className={styles.root}>
+          <Stack
+            wrap
+            tokens={tokens.wrapStack}
+            horizontalAlign={horizontalAlignment}
+            verticalAlign={verticalAlignment}
+            className={styles.root}
+          >
             <span>1</span>
             <span>2</span>
             <span>3</span>

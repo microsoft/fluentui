@@ -11,7 +11,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -73,10 +73,8 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              border-color: #eaeaea;
-              border-style: solid;
-              border-width: 1px;
-              box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
               box-sizing: border-box;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -123,6 +121,7 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               ms-Callout-main
               {
                 background-color: #ffffff;
+                border-radius: 2px;
                 overflow-x: hidden;
                 overflow-y: hidden;
                 position: relative;
@@ -130,16 +129,29 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
           onKeyDown={[Function]}
           style={
             Object {
-              "maxHeight": 718,
+              "maxHeight": 720,
               "outline": "none",
               "overflowY": "hidden",
             }
           }
         >
           <div
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               onKeyDown={[Function]}
             >
@@ -156,6 +168,18 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
                 </div>
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>
@@ -175,7 +199,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -237,10 +261,8 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              border-color: #eaeaea;
-              border-style: solid;
-              border-width: 1px;
-              box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
+              border-radius: 2px;
+              box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
               box-sizing: border-box;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -285,6 +307,7 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               ms-Callout-main
               {
                 background-color: #ffffff;
+                border-radius: 2px;
                 overflow-x: hidden;
                 overflow-y: auto;
                 position: relative;
@@ -292,16 +315,29 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
           onKeyDown={[Function]}
           style={
             Object {
-              "maxHeight": 718,
+              "maxHeight": 720,
               "outline": "none",
               "overflowY": undefined,
             }
           }
         >
           <div
+            onBlur={[Function]}
+            onFocus={[Function]}
             onFocusCapture={[Function]}
-            onKeyDown={[Function]}
           >
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
             <div
               onKeyDown={[Function]}
             >
@@ -316,6 +352,18 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
                 TEST
               </div>
             </div>
+            <div
+              aria-hidden={true}
+              data-is-visible={true}
+              onFocus={[Function]}
+              style={
+                Object {
+                  "pointerEvents": "none",
+                  "position": "fixed",
+                }
+              }
+              tabIndex={0}
+            />
           </div>
         </div>
       </div>

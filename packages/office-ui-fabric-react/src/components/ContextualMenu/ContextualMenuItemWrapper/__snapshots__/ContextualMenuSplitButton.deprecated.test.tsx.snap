@@ -43,7 +43,7 @@ exports[`ContextualMenuSplitButton creates a normal split button renders the con
       className=
 
           {
-            background-color: #c8c8c8;
+            background-color: #c8c6c4;
             height: 16px;
             width: 1px;
           }

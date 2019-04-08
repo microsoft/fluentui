@@ -58,9 +58,9 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 17px;
-                font-weight: 300;
-                height: 40px;
-                line-height: 40px;
+                font-weight: 400;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 0px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -81,7 +81,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 bottom: 1px;
                 content: "";
                 left: 1px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 1px;
                 top: 1px;
@@ -101,7 +101,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #106ebe;
+                color: #ffffff;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -116,16 +117,15 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 outline: none;
               }
               &:active {
-                color: #000000;
+                background-color: #005a9e;
+                color: #ffffff;
               }
               &:active .ms-Button-icon {
                 color: #004578;
               }
               &:before {
                 background-color: transparent;
-                border-bottom: 2px solid #0078d4;
                 bottom: 0px;
-                box-sizing: border-box;
                 content: "";
                 height: auto;
                 left: 0px;
@@ -144,7 +144,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
@@ -152,16 +152,17 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 transition: none;
               }
               @media screen and (-ms-high-contrast: active){&:before {
-                border-bottom-color: Highlight;
+                background-color: Highlight;
+              }
+              &:hover::before {
+                left: 0px;
+                right: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
                 background: Highlight;
                 color: HighlightText;
                 font-weight: 600;
-              }
-              &:active, &:hover {
-                color: #ffffff;
               }
           data-is-focusable={true}
           id="Pivot0-Tab0"
@@ -215,18 +216,18 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 17px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 0px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -247,7 +248,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 bottom: 1px;
                 content: "";
                 left: 1px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 1px;
                 top: 1px;
@@ -267,7 +268,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -282,7 +284,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 outline: none;
               }
               &:active {
-                background-color: #0078d4;
+                background-color: #edebe9;
                 color: #000000;
               }
               &:active .ms-Button-icon {
@@ -296,7 +298,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -308,19 +311,19 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
                 height: auto;
                 transition: none;
               }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
-              }
               &:hover, &:focus {
                 color: #000000;
+              }
+              &:active, &:hover {
+                background-color: #0078d4;
+                color: #ffffff;
               }
           data-is-focusable={true}
           id="Pivot0-Tab1"
@@ -374,18 +377,18 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 17px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 0px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -406,7 +409,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 bottom: 1px;
                 content: "";
                 left: 1px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 1px;
                 top: 1px;
@@ -426,7 +429,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -441,7 +445,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 outline: none;
               }
               &:active {
-                background-color: #0078d4;
+                background-color: #edebe9;
                 color: #000000;
               }
               &:active .ms-Button-icon {
@@ -455,7 +459,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -467,19 +472,19 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
                 height: auto;
                 transition: none;
               }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
-              }
               &:hover, &:focus {
                 color: #000000;
+              }
+              &:active, &:hover {
+                background-color: #0078d4;
+                color: #ffffff;
               }
           data-is-focusable={true}
           id="Pivot0-Tab2"
@@ -533,18 +538,18 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 17px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 0px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -565,7 +570,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 bottom: 1px;
                 content: "";
                 left: 1px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: 1px;
                 top: 1px;
@@ -585,7 +590,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -600,7 +606,7 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 outline: none;
               }
               &:active {
-                background-color: #0078d4;
+                background-color: #edebe9;
                 color: #000000;
               }
               &:active .ms-Button-icon {
@@ -614,7 +620,8 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -626,19 +633,19 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
               }
               .ms-Fabric--isFocusVisible &:focus::before {
                 background: transparent;
                 height: auto;
                 transition: none;
               }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
-              }
               &:hover, &:focus {
                 color: #000000;
+              }
+              &:active, &:hover {
+                background-color: #0078d4;
+                color: #ffffff;
               }
           data-is-focusable={true}
           id="Pivot0-Tab3"
@@ -697,11 +704,11 @@ exports[`Component Examples renders Pivot.TabsLarge.Example.tsx correctly 1`] = 
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;

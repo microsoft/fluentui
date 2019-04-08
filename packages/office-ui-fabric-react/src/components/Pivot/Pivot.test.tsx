@@ -22,6 +22,22 @@ describe('Pivot', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('supports JSX expressions', () => {
+    const component = renderer.create(
+      <Pivot defaultSelectedIndex={1}>
+        <PivotItem headerText="Test Link 1">
+          <div>This is item 1</div>
+        </PivotItem>
+        {false && <PivotItem headerText="Test Link 2" />}
+        <PivotItem headerText="Test Link 3">
+          <div>This is Item 3</div>
+        </PivotItem>
+      </Pivot>
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders large link Pivot correctly', () => {
     const component = renderer.create(
       <Pivot linkSize={PivotLinkSize.large}>

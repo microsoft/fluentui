@@ -87,7 +87,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
       sharedCircleCheck,
 
       {
-        color: palette.neutralTertiaryAlt,
+        color: palette.neutralSecondary,
 
         selectors: {
           [HighContrastSelector]: {
@@ -107,7 +107,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
 
       {
         opacity: 0,
-        color: palette.neutralTertiaryAlt,
+        color: palette.neutralSecondary,
         fontSize: '16px',
         left: isRTL ? '-0.5px' : '.5px', // for centering the check icon inside the circle.
 

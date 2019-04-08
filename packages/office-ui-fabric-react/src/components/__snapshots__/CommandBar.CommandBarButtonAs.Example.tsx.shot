@@ -26,15 +26,15 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
+              background-color: transparent;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 40px;
+              height: 44px;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 24px;
+              padding-right: 14px;
               padding-top: 0;
             }
         data-focuszone-id="FocusZone0"
@@ -67,7 +67,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -76,11 +76,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -103,14 +103,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -130,14 +130,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -220,7 +220,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -261,11 +261,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -288,14 +288,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -315,14 +315,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-automation-id="uploadButton"
@@ -420,11 +420,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -447,14 +447,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -474,14 +474,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -578,11 +578,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -605,14 +605,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -632,14 +632,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -739,11 +739,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -765,14 +765,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -792,14 +792,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -828,7 +828,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -876,6 +876,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 }
           >
             <button
+              aria-label="Sort"
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -883,11 +884,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -910,14 +911,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -937,14 +938,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1044,6 +1045,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Grid view"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1051,11 +1053,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1078,14 +1080,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1105,14 +1107,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -1189,6 +1191,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Info"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -1196,11 +1199,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1223,14 +1226,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1250,14 +1253,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -1347,15 +1350,15 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
+              background-color: transparent;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 40px;
+              height: 44px;
               padding-bottom: 0;
-              padding-left: 16px;
-              padding-right: 16px;
+              padding-left: 24px;
+              padding-right: 14px;
               padding-top: 0;
             }
         data-focuszone-id="FocusZone0"
@@ -1388,7 +1391,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
             <button
               aria-expanded={false}
               aria-haspopup={true}
-              aria-label="New. Use left and right arrow keys to navigate"
+              aria-label="New"
               aria-owns={null}
               className=
                   ms-Button
@@ -1397,11 +1400,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1424,14 +1427,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1451,14 +1454,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -1541,7 +1544,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1582,11 +1585,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1609,14 +1612,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1636,14 +1639,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-automation-id="uploadButton"
@@ -1741,11 +1744,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1768,14 +1771,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1795,14 +1798,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -1892,7 +1895,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #333333;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
@@ -2105,9 +2108,22 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 id="coachmark-desc1"
                               />
                               <div
+                                onBlur={[Function]}
+                                onFocus={[Function]}
                                 onFocusCapture={[Function]}
-                                onKeyDown={[Function]}
                               >
+                                <div
+                                  aria-hidden={true}
+                                  data-is-visible={true}
+                                  onFocus={[Function]}
+                                  style={
+                                    Object {
+                                      "pointerEvents": "none",
+                                      "position": "fixed",
+                                    }
+                                  }
+                                  tabIndex={0}
+                                />
                                 <div
                                   className=
 
@@ -2135,7 +2151,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             animation-name: keyframes 0%{transform:matrix3d(0.5, 0, 0, 0, 0, 0.5, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}1.7%{transform:matrix3d(0.658, 0, 0, 0, 0, 0.703, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}2.35%{transform:matrix3d(0.725, 0, 0, 0, 0, 0.8, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}3.4%{transform:matrix3d(0.83, 0, 0, 0, 0, 0.946, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}4.7%{transform:matrix3d(0.942, 0, 0, 0, 0, 1.084, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}5.11%{transform:matrix3d(0.971, 0, 0, 0, 0, 1.113, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}6.81%{transform:matrix3d(1.062, 0, 0, 0, 0, 1.166, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}7.06%{transform:matrix3d(1.07, 0, 0, 0, 0, 1.165, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}8.76%{transform:matrix3d(1.104, 0, 0, 0, 0, 1.12, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}9.36%{transform:matrix3d(1.106, 0, 0, 0, 0, 1.094, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}10.66%{transform:matrix3d(1.098, 0, 0, 0, 0, 1.035, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.16%{transform:matrix3d(1.075, 0, 0, 0, 0, 0.98, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}12.61%{transform:matrix3d(1.067, 0, 0, 0, 0, 0.969, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.51%{transform:matrix3d(1.031, 0, 0, 0, 0, 0.948, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}14.96%{transform:matrix3d(1.024, 0, 0, 0, 0, 0.949, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}17.77%{transform:matrix3d(0.99, 0, 0, 0, 0, 0.981, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}18.37%{transform:matrix3d(0.986, 0, 0, 0, 0, 0.989, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}20.52%{transform:matrix3d(0.98, 0, 0, 0, 0, 1.011, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}22.22%{transform:matrix3d(0.983, 0, 0, 0, 0, 1.016, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}26.08%{transform:matrix3d(0.996, 0, 0, 0, 0, 1.003, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}29.93%{transform:matrix3d(1.003, 0, 0, 0, 0, 0.995, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}31.63%{transform:matrix3d(1.004, 0, 0, 0, 0, 0.996, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}37.64%{transform:matrix3d(1.001, 0, 0, 0, 0, 1.002, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}42.74%{transform:matrix3d(0.999, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}45.35%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}49.9%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}50%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}52.15%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}54.3%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}56.46%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}58.61%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}64.16%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}69.72%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}80.83%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}91.99%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);}100%{transform:matrix3d(1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1, 0, 0, 0, 0, 1);} keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.25,.75,.9);}26.26%{opacity:1;}100%{opacity:1;};
                                             animation-timing-function: linear;
                                             border: 0px;
-                                            box-shadow: none !important;
                                             display: block;
                                             max-width: 364px;
                                             outline: transparent;
@@ -2167,12 +2182,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                             className=
                                                 ms-TeachingBubble-headline
                                                 {
-                                                  -moz-osx-font-smoothing: grayscale;
-                                                  -webkit-font-smoothing: antialiased;
                                                   color: #ffffff;
-                                                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                                  font-size: 28px;
-                                                  font-weight: 100;
+                                                  font-size: 20px;
+                                                  font-weight: 600;
                                                   margin-bottom: 0px;
                                                   margin-left: 0px;
                                                   margin-right: 0px;
@@ -2246,14 +2258,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               border: 0;
                                             }
                                             .ms-Fabric--isFocusVisible &:focus:after {
-                                              border: 1px solid #ffffff;
-                                              bottom: 0px;
+                                              border: 1px solid transparent;
+                                              bottom: 2px;
                                               content: "";
-                                              left: 0px;
-                                              outline: 1px solid #666666;
+                                              left: 2px;
+                                              outline: 1px solid #605e5c;
                                               position: absolute;
-                                              right: 0px;
-                                              top: 0px;
+                                              right: 2px;
+                                              top: 2px;
                                               z-index: 1;
                                             }
                                             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2270,15 +2282,18 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               top: 0px;
                                             }
                                             &:hover {
-                                              background: transparent;
-                                              color: #212121;
+                                              background-color: #f3f2f1;
+                                              background: #106ebe;
+                                              color: #ffffff;
                                             }
                                             @media screen and (-ms-high-contrast: active){&:hover {
                                               border-color: Highlight;
                                               color: Highlight;
                                             }
                                             &:active {
-                                              color: #0078d4;
+                                              background-color: #edebe9;
+                                              background: #005a9e;
+                                              color: #ffffff;
                                             }
                                         data-is-focusable={true}
                                         onClick={[Function]}
@@ -2333,6 +2348,18 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                     </div>
                                   </div>
                                 </div>
+                                <div
+                                  aria-hidden={true}
+                                  data-is-visible={true}
+                                  onFocus={[Function]}
+                                  style={
+                                    Object {
+                                      "pointerEvents": "none",
+                                      "position": "fixed",
+                                    }
+                                  }
+                                  tabIndex={0}
+                                />
                               </div>
                             </div>
                           </div>
@@ -2360,11 +2387,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2387,14 +2414,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2414,14 +2441,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2521,11 +2548,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2547,14 +2574,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2574,14 +2601,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2610,7 +2637,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #666666;
+                        color: #605e5c;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2658,6 +2685,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                 }
           >
             <button
+              aria-label="Sort"
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2665,11 +2693,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #f4f4f4;
+                    background-color: transparent;
                     border-radius: 0px;
-                    border: 1px solid transparent;
+                    border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2692,14 +2720,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 3px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 3px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 3px;
+                    top: 3px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2719,14 +2747,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     border: none;
                   }
                   &:hover {
-                    background-color: #eaeaea;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
                   &:active {
-                    background-color: #dadada;
+                    background-color: #edebe9;
                     color: #000000;
                   }
               data-is-focusable={true}
@@ -2826,6 +2854,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Grid view"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -2833,11 +2862,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2860,14 +2889,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2887,14 +2916,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}
@@ -2971,6 +3000,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
               onMouseLeave={[Function]}
             >
               <button
+                aria-label="Info"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -2978,11 +3008,11 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      background-color: #f4f4f4;
+                      background-color: transparent;
                       border-radius: 0px;
-                      border: 1px solid transparent;
+                      border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3005,14 +3035,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 3px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 3px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 3px;
+                      top: 3px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3032,14 +3062,14 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       border: none;
                     }
                     &:hover {
-                      background-color: #eaeaea;
-                      color: #212121;
+                      background-color: #f3f2f1;
+                      color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       color: Highlight;
                     }
                     &:active {
-                      background-color: #dadada;
+                      background-color: #edebe9;
                       color: #000000;
                     }
                 data-is-focusable={true}

@@ -2,7 +2,7 @@
 
 const path = require('path');
 const { argv } = require('just-task');
-const { tscTask } = require('just-task-preset');
+const { tscTask } = require('just-scripts');
 const libPath = path.resolve(process.cwd(), 'lib');
 const srcPath = path.resolve(process.cwd(), 'src');
 

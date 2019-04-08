@@ -60,14 +60,16 @@ const steps = [
   { template: 'Readme', output: 'README.md' },
   { template: 'IndexHtml', output: 'index.html' },
   { template: 'JestConfig', output: 'jest.config.js' },
+  { template: 'JestDomConfig', output: 'jest.dom.config.js' },
   { template: 'JsConfig', output: 'jsconfig.json' },
   { template: 'PackageJson', output: 'package.json' },
+  { template: 'PrettierConfig', output: 'prettier.config.js' },
   { template: 'TsConfig', output: 'tsconfig.json' },
   { template: 'TsLint', output: 'tslint.json' },
   { template: 'WebpackConfig', output: 'webpack.config.js' },
   { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
-  { template: 'VsCodeLaunch', output: path.join('.vscode', 'launch.json') },
   { template: 'Tests', output: path.join('config', 'tests.js') },
+  { template: 'PreCopy', output: path.join('config', 'pre-copy.json') },
   { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
   { template: 'IndexTs', output: path.join('src', 'index.ts') },
   { template: 'Version', output: path.join('src', 'version.ts') },
@@ -139,7 +141,7 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
   if (templateName.toLowerCase().indexOf('packagejson') !== -1) {
     // The package.json template has an additional tag for the version of each dependency.
     // This is preferable over hardcoding dependency versions to prevent errors with rush check.
-    // As of writing, @uifabric/examples also depends on all the packages the template needs,
+    // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
     const deps = { ...templatePackageJson.devDependencies, ...templatePackageJson.dependencies };

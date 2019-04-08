@@ -117,7 +117,7 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Localized strings to use in the Calendar
    */
-  strings: ICalendarStrings | null;
+  strings?: ICalendarStrings;
 
   /**
    * Customize navigation icons using ICalendarIconStrings
@@ -138,6 +138,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
    * If set the Calendar will not allow navigation to or selection of a date later than this value.
    */
   maxDate?: Date;
+
+  /**
+   * If set the Calendar will not allow selection of dates in this array.
+   */
+  restrictedDates?: Date[];
 
   /**
    * Whether the calendar should show 6 weeks by default.

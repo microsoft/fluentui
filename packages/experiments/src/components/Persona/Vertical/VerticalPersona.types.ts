@@ -1,6 +1,6 @@
 import { IStyle, IFontWeight } from '@uifabric/styling';
 import { IComponent, IHTMLSlot, IStyleableComponentProps } from '../../../Foundation';
-import { ITextSlot } from '../../../Text';
+import { ITextSlot } from 'office-ui-fabric-react';
 import { IPersonaCoinSlot } from '../../PersonaCoin/PersonaCoin.types';
 
 export type IVerticalPersonaComponent = IComponent<IVerticalPersonaProps, IVerticalPersonaTokens, IVerticalPersonaStyles>;

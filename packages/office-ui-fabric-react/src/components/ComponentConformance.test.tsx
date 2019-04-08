@@ -4,7 +4,7 @@ import * as glob from 'glob';
 import * as path from 'path';
 import * as fs from 'fs';
 
-/**
+/*
  * These tests verify that Fabric components fulfill the following conditions:
  *
  *    1) The component accepts a className prop.
@@ -25,6 +25,9 @@ const listProps = {
 const requiredProps: { [key: string]: any } = {
   PlainCard: {
     onRenderPlainCard: () => null
+  },
+  Announced: {
+    message: 'TestMessage'
   },
   ColorPicker: {
     color: '#ffffff'
@@ -83,6 +86,9 @@ const requiredProps: { [key: string]: any } = {
   SwatchColorPicker: {
     colorCells: [{ id: 'TestId', color: '#ffffff' }],
     columnCount: 1
+  },
+  Text: {
+    children: 'TestText'
   }
 };
 
@@ -232,7 +238,8 @@ describe('Component File Conformance', () => {
 });
 
 describe('Top Level Component File Conformance', () => {
-  const privateComponents = new Set(['ContextualMenuItemWrapper']);
+  const privateComponents = new Set<string>();
+  privateComponents.add('ContextualMenuItemWrapper');
 
   const components: string[] = glob
     .sync(path.resolve(process.cwd(), 'src/components/**/index.ts*'))

@@ -70,7 +70,7 @@ exports[`Nav renders Nav correctly 1`] = `
                   ms-Nav-compositeLink
                   {
                     background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
@@ -86,10 +86,10 @@ exports[`Nav renders Nav correctly 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -120,7 +120,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -156,8 +156,8 @@ exports[`Nav renders Nav correctly 1`] = `
                       color: #004578;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}

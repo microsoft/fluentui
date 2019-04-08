@@ -20,7 +20,7 @@
     "@types/webpack-env": "1.13.0",
     "css-loader": "^0.28.7",
     "enzyme": "^3.4.1",
-    "jest": "^23.1.0",
+    "jest": "24.1.0",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0",
     "style-loader": "^0.21.0",
@@ -45,6 +45,5 @@
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
     // "typescript": ["~2.4.0"]
-    "webpack": [">=4.0.0"]
   }
 }

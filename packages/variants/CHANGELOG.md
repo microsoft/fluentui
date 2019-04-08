@@ -1,6 +1,13 @@
 # Change Log - @uifabric/variants
 
-This log was last generated on Tue, 04 Dec 2018 13:36:40 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+
+## 6.14.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 6.14.0
 Tue, 04 Dec 2018 13:36:40 GMT

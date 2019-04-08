@@ -9,14 +9,6 @@ export interface ISliderState {
   renderedValue?: number;
 }
 
-/**
- * @deprecated Unused.
- */
-export enum ValuePosition {
-  Previous = 0,
-  Next = 1
-}
-
 const getClassNames = classNamesFunction<ISliderStyleProps, ISliderStyles>();
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
   public static defaultProps: ISliderProps = {
@@ -46,27 +38,15 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
 
     this.state = {
       value: value,
-      renderedValue: value
+      renderedValue: undefined
     };
-  }
-
-  /**
-   * Invoked when a component is receiving new props. This method is not called for the initial render.
-   */
-  public componentWillReceiveProps(newProps: ISliderProps): void {
-    if (newProps.value !== undefined) {
-      const value = Math.max(newProps.min as number, Math.min(newProps.max as number, newProps.value));
-
-      this.setState({
-        value: value,
-        renderedValue: value
-      });
-    }
   }
 
   public render(): React.ReactElement<{}> {
     const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, valueFormat, styles, theme } = this.props;
-    const { value, renderedValue } = this.state;
+    const value = this.value;
+    const renderedValue = this.renderedValue;
+
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
@@ -124,6 +104,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       </div>
     ) as React.ReactElement<{}>;
   }
+
   public focus(): void {
     if (this._thumb.current) {
       this._thumb.current.focus();
@@ -131,7 +112,18 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public get value(): number | undefined {
-    return this.state.value;
+    const { value = this.state.value } = this.props;
+    if (this.props.min === undefined || this.props.max === undefined || value === undefined) {
+      return undefined;
+    } else {
+      return Math.max(this.props.min, Math.min(this.props.max, value));
+    }
+  }
+
+  private get renderedValue(): number | undefined {
+    // renderedValue is expected to be defined while user is interacting with control, otherwise `undefined`. Fall back to `value`.
+    const { renderedValue = this.value } = this.state;
+    return renderedValue;
   }
 
   private _getAriaValueText = (value: number | undefined): string | undefined => {
@@ -244,9 +236,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   private _onMouseUpOrTouchEnd = (event: MouseEvent | TouchEvent): void => {
-    // Synchronize the renderedValue to the actual value.
+    // Disable renderedValue override.
     this.setState({
-      renderedValue: this.state.value
+      renderedValue: undefined
     });
 
     if (this.props.onChanged) {

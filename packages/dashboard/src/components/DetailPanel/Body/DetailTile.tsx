@@ -5,7 +5,7 @@ import { detailTileClassNames } from '../DetailPanel.styles';
 import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 type DetailInfoTileProps = IDetailInfoTileProps & IDetailPanelAnalytics;
-const detailInfoTile: React.SFC<DetailInfoTileProps> = (props: DetailInfoTileProps) => {
+const detailInfoTile: React.FunctionComponent<DetailInfoTileProps> = (props: DetailInfoTileProps) => {
   const { title, message, actionText, onAction, tileId } = props;
 
   const css = detailTileClassNames;
@@ -21,8 +21,8 @@ const detailInfoTile: React.SFC<DetailInfoTileProps> = (props: DetailInfoTilePro
   };
 
   return (
-    <div className={css.item}>
-      <div className={css.title}>{title}</div>
+    <div className={`${css.item} ms-DetailPanel-Pivot-Item`}>
+      <div className={`${css.title} ms-DetailPanel-Pivot-Item-Title`}>{title}</div>
       {message && <div className={css.message}>{message}</div>}
       {actionText && onAction && (
         <div className={css.action}>

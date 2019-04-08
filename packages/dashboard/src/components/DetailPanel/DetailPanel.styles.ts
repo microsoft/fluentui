@@ -1,4 +1,4 @@
-import { IStyle, FontSizes, FontWeights, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, FontSizes, FontWeights, DefaultPalette, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 const PrimaryTextColor = '#323130';
@@ -192,21 +192,28 @@ const getDetailTileStyles = (): IDetailTileStyles => {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       lineHeight: 20,
-      paddingBottom: 2
+      paddingBottom: 2,
+      textOverflow: 'ellipsis',
+      overflowWrap: 'break-word'
     },
     message: {
       fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       lineHeight: 20,
       color: 'rgba(0, 0, 0, 0.6)',
-      paddingBottom: 2
+      paddingBottom: 2,
+      textOverflow: 'ellipsis',
+      overflowWrap: 'break-word'
     },
     action: {
       fontSize: FontSizes.small,
       lineHeight: 20,
+      textOverflow: 'ellipsis',
+      overflowWrap: 'break-word',
       selectors: {
         '.ms-Link': {
-          height: 20
+          height: 20,
+          maxWidth: '100%'
         }
       }
     }
@@ -275,14 +282,26 @@ const getDetailPanelConfirmationStyles = (): IDetailPanelConfirmationStyles => {
   };
 };
 
-export const detailPanelBaseStyles = classNamesFunction<{}, IDetailPanelBaseStyles>()(getDetailPanelBaseStyles);
+export const detailPanelBaseStyles: IProcessedStyleSet<IDetailPanelBaseStyles> = classNamesFunction<{}, IDetailPanelBaseStyles>()(
+  getDetailPanelBaseStyles
+);
 
-export const detailPanelLoadingStyles = classNamesFunction<{}, IDetailPanelLoadingStyles>()(getDetailPanelLoadingStyles);
+export const detailPanelLoadingStyles: IProcessedStyleSet<IDetailPanelLoadingStyles> = classNamesFunction<{}, IDetailPanelLoadingStyles>()(
+  getDetailPanelLoadingStyles
+);
 
-export const detailPanelPivotItemStyles = classNamesFunction<{}, IDetailPanelPivotItemStyles>()(getDetailPanelPivotItemStyles);
+export const detailPanelPivotItemStyles: IProcessedStyleSet<IDetailPanelPivotItemStyles> = classNamesFunction<
+  {},
+  IDetailPanelPivotItemStyles
+>()(getDetailPanelPivotItemStyles);
 
-export const detailTileClassNames = classNamesFunction<{}, IDetailTileStyles>()(getDetailTileStyles);
+export const detailTileClassNames: IProcessedStyleSet<IDetailTileStyles> = classNamesFunction<{}, IDetailTileStyles>()(getDetailTileStyles);
 
-export const detailPanelHeaderStyles = classNamesFunction<{}, IDetailPanelHederStyles>()(getDetailPanelHeaderStyles);
+export const detailPanelHeaderStyles: IProcessedStyleSet<IDetailPanelHederStyles> = classNamesFunction<{}, IDetailPanelHederStyles>()(
+  getDetailPanelHeaderStyles
+);
 
-export const detailPanelConfirmationStyles = classNamesFunction<{}, IDetailPanelConfirmationStyles>()(getDetailPanelConfirmationStyles);
+export const detailPanelConfirmationStyles: IProcessedStyleSet<IDetailPanelConfirmationStyles> = classNamesFunction<
+  {},
+  IDetailPanelConfirmationStyles
+>()(getDetailPanelConfirmationStyles);

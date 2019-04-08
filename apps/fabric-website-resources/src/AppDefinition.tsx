@@ -361,6 +361,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/selectedpeoplelist'
         },
         {
+          component: require<any>('./components/pages/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#examples/separator'
+        },
+        {
           component: require<any>('./components/pages/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
@@ -401,6 +407,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TeachingBubble',
           name: 'TeachingBubble',
           url: '#/examples/teachingbubble'
+        },
+        {
+          component: require<any>('./components/pages/TextPage').TextPage,
+          key: 'Text',
+          name: 'Text',
+          url: '#/examples/text'
         },
         {
           component: require<any>('./components/pages/TextFieldPage').TextFieldPage,
@@ -480,6 +492,41 @@ export const AppDefinition: IAppDefinition = {
         }
       ],
       name: 'Utilities'
+    },
+    {
+      links: [
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedQuickActionsPage').AnnouncedQuickActionsPage,
+          key: 'Announced - Quick Actions',
+          name: 'Announced - Quick Actions',
+          url: '#/examples/announced/quickactions'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedSearchResultsPage').AnnouncedSearchResultsPage,
+          key: 'Announced - Search Results',
+          name: 'Announced - Search Results',
+          url: '#/examples/announced/searchresults'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedLazyLoadingPage').AnnouncedLazyLoadingPage,
+          key: 'Announced - Lazy Loading',
+          name: 'Announced - Lazy Loading',
+          url: '#/examples/announced/lazyloading'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedBulkOperationsPage').AnnouncedBulkOperationsPage,
+          key: 'Announced - Bulk Operations',
+          name: 'Announced - Bulk Operations',
+          url: '#/examples/announced/bulkoperations'
+        }
+      ],
+      name: 'Accessibility'
     }
   ],
 

@@ -102,7 +102,8 @@ function _createLayout(props: IDashboardGridLayoutBaseProps, layoutFromProps?: D
 
   const layouts: Layouts = {};
   if (layoutFromProps) {
-    for (const [key, value] of Object.entries(layoutFromProps)) {
+    for (const key of Object.keys(layoutFromProps)) {
+      const value = layoutFromProps[key as keyof DashboardGridBreakpointLayouts];
       if (value === undefined) {
         continue;
       }

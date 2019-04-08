@@ -86,11 +86,11 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -103,6 +103,7 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
             word-wrap: break-word;
           }
       htmlFor="Toggle1"
+      id="Toggle1-label"
     >
       Controlled component
     </label>
@@ -116,28 +117,27 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle1-label"
         className=
             ms-Toggle-background
             {
               align-items: center;
               background: #ffffff;
-              border-color: #666666;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               cursor: pointer;
               display: flex;
               font-size: 20px;
-              height: 1em;
+              height: 20px;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
+              padding-left: 3px;
+              padding-right: 3px;
               padding-top: 0;
               position: relative;
               transition: all 0.1s ease;
-              width: 2.2em;
+              width: 40px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -147,14 +147,17 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -173,15 +176,15 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           className=
               ms-Toggle-thumb
               {
-                background-color: #333333;
+                background-color: #605e5c;
                 border-color: transparent;
-                border-radius: .5em;
+                border-radius: 50%;
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
-                height: .5em;
+                height: 12px;
                 transition: all 0.1s ease;
-                width: .5em;
+                width: 12px;
               }
         />
       </button>
@@ -195,8 +198,8 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          border-radius: 2px;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -221,14 +224,15 @@ exports[`Component Examples renders ExtendedPeoplePicker.Basic.Example.tsx corre
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border-color: #ffffff;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

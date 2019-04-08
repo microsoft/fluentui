@@ -29,6 +29,7 @@ import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 
@@ -46,7 +47,6 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 40;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
@@ -167,7 +167,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
-  public componentDidUpdate(prevProps: any, prevState: any) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -204,7 +204,16 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   public componentWillReceiveProps(newProps: IDetailsListProps): void {
-    const { checkboxVisibility, items, setKey, selectionMode = this._selection.mode, columns, viewport, compact } = this.props;
+    const {
+      checkboxVisibility,
+      items,
+      setKey,
+      selectionMode = this._selection.mode,
+      columns,
+      viewport,
+      compact,
+      dragDropEvents
+    } = this.props;
     const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
 
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
@@ -246,6 +255,17 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         isCollapsed: newProps.groupProps.isAllGroupsCollapsed,
         isSomeGroupExpanded: !newProps.groupProps.isAllGroupsCollapsed
       });
+    }
+
+    if (newProps.dragDropEvents !== dragDropEvents) {
+      this._dragDropHelper && this._dragDropHelper.dispose();
+      this._dragDropHelper = newProps.dragDropEvents
+        ? new DragDropHelper({
+            selection: this._selection,
+            minimumPixelsForDrag: newProps.minimumPixelsForDrag
+          })
+        : undefined;
+      shouldForceUpdates = true;
     }
 
     if (shouldForceUpdates) {
@@ -350,7 +370,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         selection={selection}
         selectionMode={checkboxVisibility !== CheckboxVisibility.hidden ? selectionMode : SelectionMode.none}
         dragDropEvents={dragDropEvents}
-        dragDropHelper={dragDropHelper as DragDropHelper}
+        dragDropHelper={dragDropHelper}
         eventsToRegister={rowElementEventMap}
         listProps={additionalListProps}
         onGroupExpandStateChanged={this._onGroupExpandStateChanged}
@@ -464,7 +484,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._forceListUpdates();
   }
 
-  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
     return <DetailsRow {...props} />;
   };
 
@@ -484,7 +504,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   private _onRenderListCell = (nestingDepth: number): ((item: any, itemIndex: number) => React.ReactNode) => {
     return (item: any, itemIndex: number): React.ReactNode => {
-      return this._onRenderCell(nestingDepth, item, itemIndex as number);
+      return this._onRenderCell(nestingDepth, item, itemIndex);
     };
   };
 
@@ -517,7 +537,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       item: item,
       itemIndex: index,
       compact: compact,
-      columns: columns as IColumn[],
+      columns: columns,
       groupNestingDepth: nestingDepth,
       selectionMode: selectionMode,
       selection: selection,
@@ -801,8 +821,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       const overflowWidth = totalWidth - availableWidth;
 
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
+        const originalWidth = column.calculatedWidth!;
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
-        totalWidth = availableWidth;
+        totalWidth -= originalWidth - column.calculatedWidth;
       } else {
         totalWidth -= getPaddedWidth(column, false, props);
         adjustedColumns.splice(lastIndex, 1);
@@ -855,7 +876,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   private _getColumnOverride(key: string): IColumn {
-    return (this._columnOverrides[key] = this._columnOverrides[key] || ({} as IColumn));
+    return (this._columnOverrides[key] = this._columnOverrides[key] || {});
   }
 
   /**
@@ -863,10 +884,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
    * which will measure the column cells of all the active rows and resize the
    * column to the max cell width.
    *
-   * @private
-   * @param {IColumn} column (double clicked column definition)
-   * @param {number} columnIndex (double clicked column index)
-   * @todo min width 100 should be changed to const value and should be consistent with the
+   * @param column - double clicked column definition
+   * @param columnIndex - double clicked column index
+   * TODO: min width 100 should be changed to const value and should be consistent with the
    * value used on _onSizerMove method in DetailsHeader
    */
   private _onColumnAutoResized(column: IColumn, columnIndex: number): void {
@@ -892,9 +912,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
    * Call back function when an element in FocusZone becomes active. It will translate it into item
    * and call onActiveItemChanged callback if specified.
    *
-   * @private
-   * @param {el} row element that became active in Focus Zone
-   * @param {ev} focus event from Focus Zone
+   * @param row - element that became active in Focus Zone
+   * @param focus - event from Focus Zone
    */
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>): void {
     const { items, onActiveItemChanged } = this.props;
@@ -1024,9 +1043,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         }
       : undefined;
 
-    const groupProps = detailsGroupProps as IGroupRenderProps;
     return {
-      ...groupProps,
+      ...detailsGroupProps,
       onRenderFooter,
       onRenderHeader
     };
@@ -1036,7 +1054,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 export function buildColumns(
   items: any[],
   canResizeColumns?: boolean,
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
   groupedColumnKey?: string,

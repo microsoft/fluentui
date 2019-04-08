@@ -33,7 +33,8 @@ exports[`TagPicker renders correctly 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -42,19 +43,9 @@ exports[`TagPicker renders correctly 1`] = `
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
       >
-        <span
-          className=
-              ms-BasePicker-itemsWrapper
-              {
-                display: flex;
-                flex-wrap: wrap;
-              }
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "
@@ -67,6 +58,7 @@ exports[`TagPicker renders correctly 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                border-radius: 2px;
                 border: none;
                 flex-grow: 1;
                 height: 30px;

@@ -67,7 +67,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   /**
    * The title text to display at the top of the dialog.
    */
-  title?: string;
+  title?: string | JSX.Element;
 
   /**
    * Responsive mode passed in from decorator.
@@ -85,11 +85,6 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * @defaultvalue DialogType.normal
    */
   type?: DialogType;
-
-  /**
-   * React children
-   */
-  children?: any; // FABRIC7VALIDATE this should be implicit
 }
 
 export enum DialogType {

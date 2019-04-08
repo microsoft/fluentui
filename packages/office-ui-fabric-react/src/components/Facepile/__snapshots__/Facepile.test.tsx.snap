@@ -49,6 +49,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <div
           className=
@@ -172,6 +173,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <div
           className=
@@ -295,6 +297,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
               margin-right: 2px;
               margin-top: 2px;
             }
+        role="option"
       >
         <button
           className=
@@ -333,14 +336,14 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 padding-top: 0px;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

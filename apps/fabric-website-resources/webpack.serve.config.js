@@ -17,7 +17,6 @@ module.exports = resources.createServeConfig({
     alias: {
       'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib/codepen': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib/codepen'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       '@uifabric/fluent-theme$': path.join(__dirname, '../../packages/fluent-theme/src'),
       '@uifabric/theme-samples$': path.join(__dirname, '../../packages/theme-samples/src'),

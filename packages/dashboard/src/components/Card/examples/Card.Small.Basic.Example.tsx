@@ -58,10 +58,14 @@ export class SmallCardBasicExample extends React.Component<{}, {}> {
         }
       }
     ];
+    const headerClick = () => {
+      alert('header clicked');
+    };
 
     const header = {
-      headerText: 'Header Text ',
-      annotationText: 'Annotation Text '
+      headerText: 'Header Text small card ',
+      annotationText: 'Annotation Text ',
+      cardHeaderCallback: headerClick
     };
     return <Card cardFrameContent={cardFrameContent} header={header} cardContentList={contentAreaList} cardSize={CardSize.small} />;
   }

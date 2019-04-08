@@ -41,7 +41,7 @@ export function getOpenGraphProperties(url: string): IChicletCardProps {
   return attributes;
 }
 
-function extractMetaTags(url: string): NodeListOf<HTMLMetaElement> {
+function extractMetaTags(url: string) {
   const xmlHttp = new XMLHttpRequest();
   xmlHttp.open('GET', url, false);
   xmlHttp.overrideMimeType('application/xml');

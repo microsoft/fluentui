@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Button, IButtonProps } from '@uifabric/experiments';
+import { Button, MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
@@ -13,15 +13,23 @@ const testTheme = createTheme({
   }
 });
 
-const sectionGap = 32;
-const headingGap = 16;
-const buttonGap = 12;
+const tokens = {
+  sectionStack: {
+    childrenGap: 32
+  },
+  headingStack: {
+    childrenGap: 16
+  },
+  buttonStack: {
+    childrenGap: 12
+  }
+};
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={tokens.buttonStack}>
     {props.children}
   </Stack>
 );
@@ -32,10 +40,10 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
     const testClassName = mergeStyles({ color: 'blue' });
 
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack tokens={tokens.headingStack} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Theme: Red Icon and Text" theme={testTheme} />
                 <Button icon="PeopleAdd" content={{ children: 'Slot Theme: Purple Text', theme: testTheme }} />
@@ -119,7 +127,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                     className: 'content-classname'
                   }}
                 />
-                <Button
+                <MenuButton
                   content="All Classnames"
                   icon="PeopleAdd"
                   menu={buttonMenu}

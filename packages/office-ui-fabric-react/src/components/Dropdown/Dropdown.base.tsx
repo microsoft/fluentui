@@ -72,7 +72,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this._warnDeprecations({
       isDisabled: 'disabled',
       onChanged: 'onChange',
-      placeHolder: 'placeholder'
+      placeHolder: 'placeholder',
+      onRenderPlaceHolder: 'onRenderPlaceholder'
     });
 
     this._warnMutuallyExclusive({
@@ -159,6 +160,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   public render(): JSX.Element {
     const id = this._id;
 
+    const props = this.props;
     const {
       className,
       label,
@@ -174,13 +176,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       calloutProps,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderPlaceHolder = this._onRenderPlaceholder,
       onRenderCaretDown = this._onRenderCaretDown
-    } = this.props;
+    } = props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
+    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
 
@@ -209,7 +211,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
-      hasError: Boolean(errorMessage && errorMessage.length > 0),
+      hasError: !!(errorMessage && errorMessage.length > 0),
       isOpen,
       required,
       disabled,
@@ -269,13 +271,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                  : onRenderPlaceHolder(this.props, this._onRenderPlaceholder)}
+                  : onRenderPlaceholder(props, this._onRenderPlaceholder)}
               </span>
-              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
+              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
             </div>
           )}
         </KeytipData>
-        {isOpen && onRenderContainer(this.props, this._onRenderContainer)}
+        {isOpen && onRenderContainer(props, this._onRenderContainer)}
         {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
       </div>
     );
@@ -328,7 +330,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChange(event, changedOpt, index);
+
+      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
     }
 
     if (onChanged) {
@@ -354,9 +357,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /**
    * Finds the next valid Dropdown option and sets the selected index to it.
-   * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
-   * @param index Index of where the search should start
-   * @param selectedIndex The selectedIndex Dropdown's state
+   * @param stepValue - Value of how many items the function should traverse.  Should be -1 or 1.
+   * @param index - Index of where the search should start
+   * @param selectedIndex - The selectedIndex Dropdown's state
    * @returns The next valid dropdown option's index
    */
   private _moveIndex(event: React.FormEvent<HTMLDivElement>, stepValue: number, index: number, selectedIndex: number): number {
@@ -401,10 +404,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /** Render text in dropdown input */
-  private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
+  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
+    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
     return <span>{displayTxt}</span>;
   };
 
@@ -697,7 +700,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   /** Get all selected indexes for multi-select mode */
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | null | undefined): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);

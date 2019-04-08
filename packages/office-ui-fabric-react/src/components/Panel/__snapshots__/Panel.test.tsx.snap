@@ -11,7 +11,7 @@ exports[`Panel renders Panel correctly 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
+          color: #323130;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -134,7 +134,7 @@ exports[`Panel renders Panel correctly 1`] = `
                 animation-timing-function: cubic-bezier(.1,.9,.2,1);
                 background-color: #ffffff;
                 bottom: 0px;
-                box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
+                box-shadow: 0 25.6px 57.6px 0 rgba(0, 0, 0, 0.22), 0 4.8px 14.4px 0 rgba(0, 0, 0, 0.18);
                 display: flex;
                 flex-direction: column;
                 left: auto;
@@ -153,10 +153,23 @@ exports[`Panel renders Panel correctly 1`] = `
               @media (min-width: 480px){& {
                 width: 340px;
               }
+          onBlur={[Function]}
+          onFocus={[Function]}
           onFocusCapture={[Function]}
-          onKeyDown={[Function]}
           style={Object {}}
         >
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
           <div
             className=
                 ms-Panel-commands
@@ -186,10 +199,10 @@ exports[`Panel renders Panel correctly 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: none;
                       box-sizing: border-box;
-                      color: #666666;
+                      color: #605e5c;
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -212,14 +225,14 @@ exports[`Panel renders Panel correctly 1`] = `
                       border: 0;
                     }
                     .ms-Fabric--isFocusVisible &:focus:after {
-                      border: 1px solid #ffffff;
-                      bottom: 0px;
+                      border: 1px solid transparent;
+                      bottom: 2px;
                       content: "";
-                      left: 0px;
-                      outline: 1px solid #666666;
+                      left: 2px;
+                      outline: 1px solid #605e5c;
                       position: absolute;
-                      right: 0px;
-                      top: 0px;
+                      right: 2px;
+                      top: 2px;
                       z-index: 1;
                     }
                     @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -236,14 +249,16 @@ exports[`Panel renders Panel correctly 1`] = `
                       top: 0px;
                     }
                     &:hover {
-                      color: #333333;
+                      background-color: #f3f2f1;
+                      color: #323130;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover {
                       border-color: Highlight;
                       color: Highlight;
                     }
                     &:active {
-                      color: #0078d4;
+                      background-color: #edebe9;
+                      color: #005a9e;
                     }
                 data-is-focusable={true}
                 data-is-visible={true}
@@ -342,11 +357,11 @@ exports[`Panel renders Panel correctly 1`] = `
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #333333;
+                      color: #323130;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 21px;
-                      font-weight: 100;
-                      line-height: 32px;
+                      font-size: 20px;
+                      font-weight: 600;
+                      line-height: 27px;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -394,6 +409,18 @@ exports[`Panel renders Panel correctly 1`] = `
               </div>
             </div>
           </div>
+          <div
+            aria-hidden={true}
+            data-is-visible={true}
+            onFocus={[Function]}
+            style={
+              Object {
+                "pointerEvents": "none",
+                "position": "fixed",
+              }
+            }
+            tabIndex={0}
+          />
         </div>
       </div>
     </div>

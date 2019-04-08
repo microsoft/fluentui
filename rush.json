@@ -16,7 +16,7 @@
    * path segment in the "$schema" field for all your Rush config files.  This will ensure
    * correct error-underlining and tab-completion for editors such as VS Code.
    */
-  "rushVersion": "5.5.4",
+  "rushVersion": "5.6.0",
 
   /**
    * The next field selects which package manager should be installed and determines its version.
@@ -396,6 +396,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "perf-test",
+      "projectFolder": "apps/perf-test",
+      "shouldPublish": false
+    },
+    {
       "packageName": "server-rendered-app",
       "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
@@ -408,12 +413,12 @@
     {
       "packageName": "@uifabric/tslint-rules",
       "projectFolder": "packages/tslint-rules",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/prettier-rules",
       "projectFolder": "packages/prettier-rules",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/theme-samples",
@@ -450,6 +455,21 @@
       "packageName": "@uifabric/pr-deploy-site",
       "projectFolder": "apps/pr-deploy-site",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/react-cards",
+      "projectFolder": "packages/react-cards",
+      "versionPolicyName": "lockedMajor"
+    },
+    {
+      "packageName": "@uifabric/codepen-loader",
+      "projectFolder": "packages/codepen-loader",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/migration",
+      "projectFolder": "packages/migration",
+      "shouldPublish": true
     }
   ]
 }

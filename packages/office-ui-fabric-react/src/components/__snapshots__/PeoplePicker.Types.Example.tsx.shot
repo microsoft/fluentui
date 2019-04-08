@@ -35,7 +35,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               ms-BasePicker-text
               {
                 align-items: center;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #a19f9d;
                 box-sizing: border-box;
                 display: flex;
                 flex-wrap: wrap;
@@ -44,19 +45,9 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
         >
-          <span
-            className=
-                ms-BasePicker-itemsWrapper
-                {
-                  display: flex;
-                  flex-wrap: wrap;
-                }
-            id="selected-items-id__0"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "
@@ -70,6 +61,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  border-radius: 2px;
                   border: none;
                   flex-grow: 1;
                   height: 30px;
@@ -118,11 +110,11 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -148,9 +140,10 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              border-color: #605e5c;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -167,15 +160,15 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               user-select: none;
             }
             &:hover .ms-Dropdown-title {
-              border-color: #212121;
-              color: #212121;
+              border-color: #323130;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
               border-color: Highlight;
             }
             &:focus .ms-Dropdown-title {
               border-color: #0078d4;
-              color: #212121;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
               background-color: Highlight;
@@ -189,17 +182,17 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-title {
-              border-color: #005a9e;
-              color: #212121;
+              border-color: #0078d4;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
               border-color: Highlight;
             }
             &:hover .ms-Dropdown-caretDown {
-              color: #212121;
+              color: #323130;
             }
             &:focus .ms-Dropdown-caretDown {
-              color: #212121;
+              color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
               color: HighlightText;
@@ -208,25 +201,25 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               -ms-high-contrast-adjust: none;
             }
             &:active .ms-Dropdown-caretDown {
-              color: #212121;
+              color: #323130;
             }
             &:hover .ms-Dropdown-titleIsPlaceHolder {
-              color: #666666;
+              color: #323130;
             }
             &:focus .ms-Dropdown-titleIsPlaceHolder {
-              color: #666666;
+              color: #323130;
             }
             &:active .ms-Dropdown-titleIsPlaceHolder {
-              color: #666666;
+              color: #323130;
             }
             &:hover .ms-Dropdown-title--hasError {
-              border-color: #a80000;
+              border-color: #a4262c;
             }
             &:active .ms-Dropdown-title--hasError {
-              border-color: #a80000;
+              border-color: #a4262c;
             }
             &:focus .ms-Dropdown-title--hasError {
-              border-color: #a80000;
+              border-color: #a4262c;
             }
         data-is-focusable={true}
         id="Dropdown2"
@@ -250,7 +243,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               ms-Dropdown-title
               {
                 background-color: #ffffff;
-                border-color: #a6a6a6;
+                border-color: #a19f9d;
+                border-radius: 2px;
                 border-style: solid;
                 border-width: 1px;
                 box-shadow: none;
@@ -265,8 +259,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 margin-top: 0px;
                 overflow: hidden;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 32px;
+                padding-left: 8px;
+                padding-right: 28px;
                 padding-top: 0;
                 position: relative;
                 text-overflow: ellipsis;
@@ -287,7 +281,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 height: 32px;
                 line-height: 30px;
                 position: absolute;
-                right: 12px;
+                right: 8px;
                 top: 1px;
               }
         >
@@ -297,7 +291,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #666666;
+                  color: #605e5c;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-size: 12px;
@@ -324,26 +318,26 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             position: relative;
           }
           &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
+            border-color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
             border-color: Highlight;
           }
           &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
+            border-color: #323130;
           }
           &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
+            color: #605e5c;
             opacity: 1;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
-            color: #333333;
+            color: #201f1e;
           }
           &:focus .ms-Checkbox-text {
-            color: #333333;
+            color: #201f1e;
           }
     >
       <input
@@ -357,7 +351,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             }
             .ms-Fabric--isFocusVisible &:focus + label::before {
               outline-offset: 2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
@@ -400,9 +394,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               ms-Checkbox-checkbox
               {
                 align-items: center;
-                border-color: #666666;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 2px;
+                border: 1px solid #323130;
                 box-sizing: border-box;
                 display: flex;
                 flex-shrink: 0;
@@ -444,7 +437,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           className=
               ms-Checkbox-text
               {
-                color: #333333;
+                color: #323130;
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
@@ -476,11 +469,11 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -493,6 +486,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               word-wrap: break-word;
             }
         htmlFor="Toggle4"
+        id="Toggle4-label"
       >
         Delay Suggestion Results
       </label>
@@ -506,28 +500,27 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle4-label"
           className=
               ms-Toggle-background
               {
                 align-items: center;
                 background: #ffffff;
-                border-color: #666666;
-                border-radius: 1em;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 10px;
+                border: 1px solid #605e5c;
                 box-sizing: border-box;
                 cursor: pointer;
                 display: flex;
                 font-size: 20px;
-                height: 1em;
+                height: 20px;
                 outline: transparent;
                 padding-bottom: 0;
-                padding-left: .2em;
-                padding-right: .2em;
+                padding-left: 3px;
+                padding-right: 3px;
                 padding-top: 0;
                 position: relative;
                 transition: all 0.1s ease;
-                width: 2.2em;
+                width: 40px;
               }
               &::-moz-focus-inner {
                 border: 0;
@@ -537,14 +530,17 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 bottom: -2px;
                 content: "";
                 left: -2px;
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
                 position: absolute;
                 right: -2px;
                 top: -2px;
                 z-index: 1;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
+              }
+              &:hover .ms-Toggle-thumb {
+                background-color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
@@ -563,15 +559,15 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             className=
                 ms-Toggle-thumb
                 {
-                  background-color: #333333;
+                  background-color: #605e5c;
                   border-color: transparent;
-                  border-radius: .5em;
+                  border-radius: 50%;
                   border-style: solid;
                   border-width: .28em;
                   box-sizing: border-box;
-                  height: .5em;
+                  height: 12px;
                   transition: all 0.1s ease;
-                  width: .5em;
+                  width: 12px;
                 }
           />
         </button>
@@ -586,8 +582,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          border-radius: 2px;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -612,14 +608,15 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border-color: #ffffff;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

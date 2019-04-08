@@ -536,6 +536,14 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="Persona" />,
               getComponent: cb =>
                 require.ensure([], require => cb(require<any>('../../pages/Components/PersonaComponentPage').PersonaComponentPage))
+            },
+            {
+              title: 'Separator',
+              url: '#/components/separator',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Separator" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/SeparatorComponentPage').SeparatorComponentPage))
             }
           ]
         },
@@ -797,6 +805,14 @@ export const AppState: IAppState = {
                 require.ensure([], require => cb(require<any>('../../pages/Components/SelectionUtilityPage').SelectionUtilityPage))
             },
             {
+              title: 'Text',
+              url: '#/components/text',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Text" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
+            },
+            {
               title: 'Themes',
               url: '#/components/themes',
               isHiddenFromMainNav: true, // moved to Customizations but entry left here to preserve old URL
@@ -832,6 +848,86 @@ export const AppState: IAppState = {
                 require.ensure([], require =>
                   cb(require<any>('../../pages/Customizations/ColorsCustomizationPage').ColorsCustomizationPage)
                 )
+            }
+          ]
+        },
+        {
+          title: 'Accessibility',
+          url: '#/components/accessibility',
+          className: 'componentsPage',
+          isCategory: true,
+          component: () => <LoadingComponent title="Accessibility" />,
+          pages: [
+            {
+              title: 'Announced',
+              url: '#/components/announced',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Announced" />,
+              getComponent: cb =>
+                require.ensure([], require =>
+                  cb(require<any>('../../pages/Components/Announced/AnnouncedComponentPage').AnnouncedComponentPage)
+                ),
+              pages: [
+                {
+                  title: 'Quick Actions',
+                  url: '#/components/announced/quickactions',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Quick Actions" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedQuickActionsComponentPage')
+                          .AnnouncedQuickActionsComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Search Results',
+                  url: '#/components/announced/searchresults',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Search Results" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedSearchResultsComponentPage')
+                          .AnnouncedSearchResultsComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Lazy Loading',
+                  url: '#/components/announced/lazyloading',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Lazy Loading" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedLazyLoadingComponentPage').AnnouncedLazyLoadingComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Bulk Operations',
+                  url: '#/components/announced/bulkoperations',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Bulk Operations" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedBulkOperationsComponentPage')
+                          .AnnouncedBulkOperationsComponentPage
+                      )
+                    )
+                }
+              ]
+            },
+            {
+              title: 'Keytips',
+              url: '#/components/keytips',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Keytips" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/KeytipsComponentPage').KeytipsComponentPage))
             }
           ]
         }

@@ -39,15 +39,12 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 19.2px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: hidden;
-            text-overflow: ellipsis;
             webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       JB
@@ -59,8 +56,8 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
-          display: block;
+          color: #323130;
+          display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -82,8 +79,8 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #666666;
-          display: block;
+          color: #605e5c;
+          display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;
@@ -142,15 +139,12 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 19.2px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: hidden;
-            text-overflow: ellipsis;
             webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       JB
@@ -162,8 +156,8 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
-          display: block;
+          color: #323130;
+          display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -221,15 +215,12 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             color: inherit;
-            display: block;
+            display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 19.2px;
             font-weight: 400;
             moz-osx-font-smoothing: grayscale;
-            overflow: hidden;
-            text-overflow: ellipsis;
             webkit-font-smoothing: antialiased;
-            white-space: nowrap;
           }
     >
       MI6
@@ -241,8 +232,8 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #333333;
-          display: block;
+          color: #323130;
+          display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
@@ -264,8 +255,8 @@ exports[`VerticalPersona renders the coin with the passed coinProps 1`] = `
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          color: #666666;
-          display: block;
+          color: #605e5c;
+          display: inline;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
           font-weight: 400;

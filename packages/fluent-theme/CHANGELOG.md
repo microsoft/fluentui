@@ -1,6 +1,49 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 0.16.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 0.16.3
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- IconButton style fixes and removing the SwatchColorPicker styles.
+
+## 0.16.2
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.
+- Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.
+
+## 0.16.1
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- Breadcrumb: fixed last-child styling
+
+## 0.16.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.
+
+## 0.15.1
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Update DetailsList Fluent styles
 
 ## 0.15.0
 Wed, 20 Feb 2019 13:30:29 GMT

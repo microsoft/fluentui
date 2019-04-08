@@ -13,12 +13,12 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             position: relative;
           }
           &:hover .ms-Checkbox-checkbox {
-            background: #106ebe;
-            border-color: #106ebe;
+            background: #005a9e;
+            border-color: #005a9e;
           }
           &:focus .ms-Checkbox-checkbox {
-            background: #106ebe;
-            border-color: #106ebe;
+            background: #005a9e;
+            border-color: #005a9e;
           }
           @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
             background: Window;
@@ -37,10 +37,10 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             color: Highlight;
           }
           &:hover .ms-Checkbox-text {
-            color: #333333;
+            color: #201f1e;
           }
           &:focus .ms-Checkbox-text {
-            color: #333333;
+            color: #201f1e;
           }
     >
       <input
@@ -54,7 +54,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
             }
             .ms-Fabric--isFocusVisible &:focus + label::before {
               outline-offset: 2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
               outline: 1px solid ActiveBorder;
@@ -99,8 +99,8 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 align-items: center;
                 background: #0078d4;
                 border-color: #0078d4;
-                border-style: solid;
-                border-width: 1px;
+                border-radius: 2px;
+                border: 1px solid #323130;
                 box-sizing: border-box;
                 display: flex;
                 flex-shrink: 0;
@@ -146,7 +146,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           className=
               ms-Checkbox-text
               {
-                color: #333333;
+                color: #323130;
                 font-size: 14px;
                 line-height: 20px;
                 margin-left: 4px;
@@ -165,11 +165,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -194,7 +194,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -215,7 +215,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={9}
   >
@@ -275,7 +275,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 12px;
               font-weight: 400;
               line-height: 20px;
@@ -302,7 +302,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -329,7 +329,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -356,7 +356,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -389,11 +389,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -419,7 +419,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -440,7 +440,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={9}
   >
@@ -504,7 +504,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 12px;
               font-weight: 400;
               line-height: 20px;
@@ -531,7 +531,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -558,7 +558,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -585,7 +585,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -618,11 +618,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -648,7 +648,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -669,7 +669,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={10}
   >
@@ -794,7 +794,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -820,7 +820,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -847,7 +847,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -874,7 +874,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -907,11 +907,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -937,7 +937,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -958,7 +958,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={7}
   >
@@ -1083,7 +1083,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -1109,7 +1109,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1136,7 +1136,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1163,7 +1163,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1196,11 +1196,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1226,7 +1226,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1247,7 +1247,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={11}
   >
@@ -1372,7 +1372,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -1398,7 +1398,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1425,7 +1425,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1452,7 +1452,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1485,11 +1485,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1515,7 +1515,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1536,7 +1536,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={12}
   >
@@ -1688,7 +1688,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -1714,7 +1714,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -1740,7 +1740,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1767,7 +1767,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -1800,11 +1800,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -1830,7 +1830,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1851,7 +1851,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={13}
   >
@@ -1995,7 +1995,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 17px;
               font-weight: 400;
               overflow: hidden;
@@ -2021,7 +2021,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -2047,7 +2047,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -2074,7 +2074,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -2107,11 +2107,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2137,7 +2137,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -2158,7 +2158,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={14}
   >
@@ -2308,7 +2308,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 21px;
               font-weight: 400;
               overflow: hidden;
@@ -2334,7 +2334,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -2360,7 +2360,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-size: 12px;
               font-weight: 400;
@@ -2387,7 +2387,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
               font-size: 12px;
               font-weight: 400;
@@ -2420,11 +2420,11 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
-          font-weight: 400;
+          font-weight: 600;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
@@ -2450,7 +2450,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -2471,7 +2471,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={15}
   >
@@ -2648,7 +2648,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 21px;
               font-weight: 300;
               overflow: hidden;
@@ -2674,7 +2674,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -2700,7 +2700,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-size: 12px;
               font-weight: 400;
@@ -2727,7 +2727,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-size: 12px;
               font-weight: 400;

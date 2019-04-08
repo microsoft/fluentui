@@ -1,6 +1,153 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Wed, 20 Feb 2019 13:30:29 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 0.58.2
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Fix issue show less on the left nav shows up all items selected  in customize navigation
+- Use ^ ranges instead of >=
+
+## 0.58.1
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- Add Click event for card header and provide a prop for dashboard card
+
+## 0.58.0
+Tue, 26 Mar 2019 12:32:51 GMT
+
+### Minor changes
+
+- Remove IE 11-incompatible constructs
+
+## 0.57.2
+Mon, 25 Mar 2019 12:33:48 GMT
+
+### Patches
+
+- expose FocuseZone component props in dashboard Card component
+
+## 0.57.1
+Thu, 21 Mar 2019 17:21:42 GMT
+
+### Patches
+
+- Fix issue with add card from panel using drag and drop
+
+## 0.57.0
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Minor changes
+
+- Add title native tool-tip for the refresh icon and close icon in DetailPanel with pivot
+
+## 0.56.0
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Dashboard Card Header ellipsis border issue resolved.
+
+## 0.55.2
+Mon, 18 Mar 2019 17:04:23 GMT
+
+### Patches
+
+- DetailPanel: Enable overflow handling on Tiles
+
+## 0.55.1
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- DetailPanel: Update allow Message Banner to show inside or/and outside Pivot
+- Update dashboard dependency
+- DetailPanel: Fix ActionBar lifecylce in Pivot Item change outside, expose onPivotLinkClick
+
+## 0.55.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Fixed dashboard grid layout example for low resolution screen
+
+## 0.54.1
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Patches
+
+- DetailPanel: Enable use the currentL2Id on Panel load to load L2 page directly
+
+## 0.54.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Added props required for content animation in wizard, Moved util functions from exampls to main util file, Added util methods "getPrevStep, getParentStep, getStep", Animations in progress
+
+## 0.53.1
+Thu, 07 Mar 2019 13:32:46 GMT
+
+### Patches
+
+- DetailPanel: Allow persona header set image icon 
+- DetailPanel: Allow header property to take JSX.Element
+
+## 0.53.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- Added wizard to dashboard package index
+- Replacing elementType usage with as in SubwayNavBase and SubwayNodeBase
+
+## 0.52.2
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.52.1
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Patches
+
+- Make the stepToShow parameter take effect on footerAction
+
+## 0.52.0
+Thu, 28 Feb 2019 13:29:07 GMT
+
+### Minor changes
+
+- Implemented full parent wizard in dashboard package
+- Make titleElement optional as SetupWizard design has no title bar
+
+### Patches
+
+- first time cards not added on dashboard and onLayoutChange calling issue fixed
+
+## 0.51.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Make updates to SetupWizard and Wizard Base
+
+## 0.50.0
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Minor changes
+
+- Add panel wizard implementation
+
+### Patches
+
+- Add styling to WizardBase, refactor examples
 
 ## 0.49.0
 Wed, 20 Feb 2019 13:30:29 GMT
