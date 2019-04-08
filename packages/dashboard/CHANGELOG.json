@@ -2,6 +2,28 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.59.0",
+      "tag": "@uifabric/dashboard_v0.59.0",
+      "date": "Mon, 08 Apr 2019 12:37:14 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailPanel: Update typo property name: onDetailPanelDimiss -> onDetailPanelDismiss",
+            "author": "Tim Tong <mingtong@outlook.com>",
+            "commit": "d60a43035013269132dde0532b29def663fee3dc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.68.0` to `^6.69.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.6` to `^6.164.7`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.58.2",
       "tag": "@uifabric/dashboard_v0.58.2",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",

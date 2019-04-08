@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.69.0",
+      "tag": "@uifabric/experiments_v6.69.0",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Supporting high contrast in Button, MenuButton and SplitButton.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1f3afa6704bc39758d4055a74b23f6d2150b3bf3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.3` to `^6.35.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.6` to `^6.164.7`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.68.0",
       "tag": "@uifabric/experiments_v6.68.0",
       "date": "Fri, 05 Apr 2019 22:09:48 GMT",
