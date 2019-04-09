@@ -15,7 +15,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     color: palette.neutralPrimary,
     colorHovered: palette.themePrimary,
     colorPressed: palette.black,
-    contentPadding: '0px 4px',
+    contentPadding: '0px 8px',
     height: '40px',
     iconColor: palette.neutralPrimary,
     iconColorHovered: palette.themePrimary,
