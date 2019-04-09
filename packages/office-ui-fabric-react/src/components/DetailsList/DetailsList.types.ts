@@ -13,7 +13,6 @@ import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
-import { IGroupHeaderCheckboxProps } from '../GroupedList/GroupHeader.types';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
@@ -643,4 +642,4 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
 
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
 
-export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps, IGroupHeaderCheckboxProps {}
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}

@@ -365,7 +365,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       <GroupedList
         componentRef={this._groupedList}
         groups={groups}
-        groupProps={groupProps ? this._getGroupProps(groupProps) : this._getDefaultGroupProps()}
+        groupProps={groupProps ? this._getGroupProps(groupProps) : undefined}
         items={items}
         onRenderCell={this._onRenderCell}
         selection={selection}
@@ -999,7 +999,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   }
 
   private _getGroupProps(detailsGroupProps: IDetailsGroupRenderProps): IGroupRenderProps {
-    const defaultDetailsGroupProps = this._getDefaultGroupProps();
     const { onRenderFooter: onRenderDetailsGroupFooter, onRenderHeader: onRenderDetailsGroupHeader } = detailsGroupProps;
     const { adjustedColumns: columns } = this.state;
     const {
@@ -1049,23 +1048,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       : undefined;
 
     return {
-      ...defaultDetailsGroupProps,
       ...detailsGroupProps,
       onRenderFooter,
       onRenderHeader
     };
   }
-
-  private _getDefaultGroupProps = (): IGroupRenderProps | undefined => {
-    const { onRenderCheckbox } = this.props;
-    return (
-      onRenderCheckbox && {
-        headerProps: {
-          onRenderGroupHeaderCheckbox: onRenderCheckbox
-        }
-      }
-    );
-  };
 }
 
 export function buildColumns(

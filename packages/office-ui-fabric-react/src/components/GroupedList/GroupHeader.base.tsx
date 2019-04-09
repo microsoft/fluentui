@@ -6,7 +6,7 @@ import { Icon } from '../../Icon';
 import { GroupSpacer } from './GroupSpacer';
 import { Spinner } from '../../Spinner';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps, IGroupHeaderCheckboxProps } from './GroupHeader.types';
+import { IGroupHeaderStyleProps, IGroupHeaderStyles, IGroupHeaderProps } from './GroupHeader.types';
 
 const getClassNames = classNamesFunction<IGroupHeaderStyleProps, IGroupHeaderStyles>();
 
@@ -62,8 +62,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       styles,
       className,
       groupedListId,
-      compact,
-      onRenderGroupHeaderCheckbox = this._onRenderGroupHeaderCheckbox
+      compact
     } = this.props;
 
     const { isCollapsed, isLoadingVisible } = this.state;
@@ -104,7 +103,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
               onClick={this._onToggleSelectGroupClick}
               {...selectAllButtonProps}
             >
-              {onRenderGroupHeaderCheckbox({ checked: currentlySelected }, this._onRenderGroupHeaderCheckbox)}
+              <Check checked={currentlySelected} />
             </button>
           ) : (
             selectionMode !== SelectionMode.none && <GroupSpacer indentWidth={indentWidth} count={1} />
@@ -196,9 +195,5 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
         </span>
       </div>
     );
-  };
-
-  private _onRenderGroupHeaderCheckbox = (props: IGroupHeaderCheckboxProps): JSX.Element => {
-    return <Check checked={props.checked} />;
   };
 }
