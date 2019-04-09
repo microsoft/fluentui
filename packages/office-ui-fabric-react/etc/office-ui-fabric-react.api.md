@@ -2683,7 +2683,7 @@ export interface ICommandBarData {
     primaryItems: ICommandBarItemProps[];
 }
 
-// @public (undocumented)
+// @public
 export interface ICommandBarItemProps extends IContextualMenuItem {
     buttonStyles?: IButtonStyles;
     cacheKey?: string;
@@ -7245,7 +7245,7 @@ export interface ITextFieldSubComponentStyles {
     label: IStyleFunctionOrObject<any, any>;
 }
 
-// @public (undocumented)
+// @public
 export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     block?: boolean;
@@ -9061,7 +9061,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 // 
-// lib/components/DetailsList/DetailsList.types.d.ts:104:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
+// lib/components/DetailsList/DetailsList.types.d.ts:110:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
