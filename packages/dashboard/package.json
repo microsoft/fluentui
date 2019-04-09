@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.59.0",
+  "version": "0.60.0",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
