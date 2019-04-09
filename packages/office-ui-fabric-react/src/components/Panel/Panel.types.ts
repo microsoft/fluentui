@@ -74,6 +74,16 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   headerText?: string;
 
   /**
+   * A callback function for when the Panel is opened, before the animation completes.
+   */
+  onOpen?: () => void;
+
+  /**
+   * A callback function for when the Panel is opened, after the animation completes.
+   */
+  onOpened?: () => void;
+
+  /**
    * A callback function for when the panel is closed, before the animation completes.
    * If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it
    */
