@@ -130,6 +130,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       return null;
     }
 
+    const layerClassName = layerProps === undefined ? '' : layerProps.className;
+
     const classNames = getClassNames(styles, {
       theme: theme!,
       className,
@@ -141,7 +143,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       modalRectangleTop,
       topOffsetFixed,
       isModeless,
-      layerProps
+      layerClassName
     });
 
     const mergedLayerProps = {

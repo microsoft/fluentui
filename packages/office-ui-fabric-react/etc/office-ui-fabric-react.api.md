@@ -5140,11 +5140,12 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
 }
 
 // @public (undocumented)
-export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless' | 'layerProps'> & {
+export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     isOpen?: boolean;
     isVisible?: boolean;
     hasBeenOpened?: boolean;
     modalRectangleTop?: number;
+    layerClassName?: string;
 };
 
 // @public (undocumented)

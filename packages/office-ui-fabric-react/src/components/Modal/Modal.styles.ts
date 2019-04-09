@@ -23,7 +23,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     theme,
     topOffsetFixed,
     isModeless,
-    layerProps
+    layerClassName
   } = props;
   const { palette } = theme;
 
@@ -90,7 +90,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       scrollableContentClassName
     ],
     layer: isModeless && [
-      layerProps && layerProps.className,
+      layerClassName,
       classNames.layer,
       {
         position: 'static',
