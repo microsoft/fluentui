@@ -27,9 +27,9 @@ const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) =
         </div>
         <div className={css.navRight}>
           {onRefresh && !_shouldHideOnLoading() && (
-            <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} title={refreshTooltip} />
+            <IconButton iconProps={{ iconName: 'Refresh' }} onClick={onRefresh} title={refreshTooltip} ariaLabel={refreshTooltip} />
           )}
-          <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} title={closeTooltip} />
+          <IconButton iconProps={{ iconName: 'ChromeClose' }} onClick={onDismiss} title={closeTooltip} ariaLabel={closeTooltip} />
         </div>
       </div>
     );
