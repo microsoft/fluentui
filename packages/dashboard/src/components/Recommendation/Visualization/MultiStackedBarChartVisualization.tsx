@@ -7,7 +7,7 @@ import { IStackedBarChartVisualizationProps, IStackedBarChartVisualizationStyles
 
 import { IRecommendationBannerChartData, IRecommendationBannerChartDataPoint } from '../Recommendation.types';
 
-export const MultiStackedBarChartVisualization: React.SFC<IStackedBarChartVisualizationProps> = (
+export const MultiStackedBarChartVisualization: React.FunctionComponent<IStackedBarChartVisualizationProps> = (
   props: IStackedBarChartVisualizationProps
 ) => {
   const { visualizationDatapoints } = props;

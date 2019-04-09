@@ -1,6 +1,24 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+
+## 6.67.1
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- Use styles instead of className on theming example dialog
+
+## 6.67.0
+Wed, 03 Apr 2019 12:38:51 GMT
+
+### Minor changes
+
+- Button: Improvements on Button docs.
+
+### Patches
+
+- Button: Fixing SplitButton styling issues and correctly placing divider.
 
 ## 6.66.1
 Tue, 02 Apr 2019 00:38:14 GMT

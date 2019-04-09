@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/FluentDecorator';
 import { IPersonaProps, Persona, PersonaPresence, PersonaSize } from 'office-ui-fabric-react';
 import { TestImages } from '../common/TestImages';
 

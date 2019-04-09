@@ -43,11 +43,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
+              background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -69,14 +69,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 3px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 3px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 3px;
+              top: 3px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -96,14 +96,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               border: none;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               color: Highlight;
             }
             &:active {
-              background-color: #dadada;
+              background-color: #edebe9;
               color: #000000;
             }
         data-is-focusable={true}
@@ -184,11 +184,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
+              background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -210,14 +210,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 3px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 3px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 3px;
+              top: 3px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -237,14 +237,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               border: none;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               color: Highlight;
             }
             &:active {
-              background-color: #dadada;
+              background-color: #edebe9;
               color: #000000;
             }
         data-is-focusable={true}
@@ -325,11 +325,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
+              background-color: transparent;
               border-radius: 0px;
-              border: 1px solid transparent;
+              border: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -351,14 +351,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 3px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 3px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 3px;
+              top: 3px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -378,14 +378,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               border: none;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               color: Highlight;
             }
             &:active {
-              background-color: #dadada;
+              background-color: #edebe9;
               color: #000000;
             }
         data-is-focusable={true}
@@ -458,11 +458,11 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
+            background-color: transparent;
             border-radius: 0px;
-            border: 1px solid transparent;
+            border: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -484,14 +484,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border: 1px solid transparent;
+            bottom: 3px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 3px;
+            outline: 1px solid #605e5c;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 3px;
+            top: 3px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -511,14 +511,14 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
             border: none;
           }
           &:hover {
-            background-color: #eaeaea;
-            color: #212121;
+            background-color: #f3f2f1;
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             color: Highlight;
           }
           &:active {
-            background-color: #dadada;
+            background-color: #edebe9;
             color: #000000;
           }
       data-is-focusable={true}
@@ -547,7 +547,7 @@ exports[`Component Examples renders OverflowSet.Vertical.Example.tsx correctly 1
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                color: #666666;
+                color: #605e5c;
                 display: inline-block;
                 flex-shrink: 0;
                 font-family: "FabricMDL2Icons";

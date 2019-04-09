@@ -4,7 +4,15 @@ import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric
 import { createFactory } from './slots';
 import { assign } from './utilities';
 
-import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, IViewRenderer } from './IComponent';
+import {
+  IComponent,
+  ICustomizationProps,
+  IStyleableComponentProps,
+  IStylesFunctionOrObject,
+  IToken,
+  IViewRenderer,
+  ITokenFunction
+} from './IComponent';
 import { IDefaultSlotProps, ISlotCreator } from './ISlots';
 
 /**
@@ -28,11 +36,11 @@ export function createComponent<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
   TStatics = {}
->(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics {
+>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {} } = component;
   const { defaultProp } = factoryOptions;
 
-  const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
+  const result: React.FunctionComponent<TComponentProps> = (componentProps: TComponentProps) => {
     return (
       // TODO: createComponent is also affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
       <CustomizerContext.Consumer>
@@ -96,7 +104,7 @@ export function createComponent<
   assign(result, component.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as React.StatelessComponent<TComponentProps> & TStatics;
+  return result as React.FunctionComponent<TComponentProps> & TStatics;
 }
 
 /**
@@ -127,7 +135,8 @@ function _resolveTokens<TViewProps, TTokens>(
 
   for (let currentTokens of allTokens) {
     if (currentTokens) {
-      currentTokens = typeof currentTokens === 'function' ? currentTokens(props, theme) : currentTokens;
+      currentTokens =
+        typeof currentTokens === 'function' ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme) : currentTokens;
 
       if (Array.isArray(currentTokens)) {
         currentTokens = _resolveTokens(props, theme, ...currentTokens);

@@ -31,9 +31,9 @@ export function appendFunction(parent: any, ...functions: (any)[]): () => void;
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ComponentType<TProps & {
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ForwardRefExoticComponent<React_2.PropsWithoutRef<TProps & {
     asyncPlaceholder?: React_2.ReactType;
-}>;
+}>>;
 
 // @public
 export function assertNever(x: never): never;
@@ -844,9 +844,6 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
 
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
-
-// @public @deprecated (undocumented)
-export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React_2.ComponentType<TProps>;
 
 // @public
 export function raiseClick(target: Element): void;

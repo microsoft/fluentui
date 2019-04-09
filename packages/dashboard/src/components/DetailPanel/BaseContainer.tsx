@@ -11,7 +11,7 @@ import { _isReactComponent } from './Utils';
 
 type BodyContainerType = IBaseContainerProps & IDetailPanelBaseCommonAction;
 
-const baseContainer: React.SFC<BodyContainerType> = (props: BodyContainerType) => {
+const baseContainer: React.FunctionComponent<BodyContainerType> = (props: BodyContainerType) => {
   const css = detailPanelBaseStyles;
   const _shouldHideOnLoading = () => {
     const { loadingElement, inlineLoading } = props;

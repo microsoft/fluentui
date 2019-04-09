@@ -6,7 +6,7 @@ import * as React from 'react';
 import { LoadingType, IDetailPanelLoadingProps } from '../DetailPanel.types';
 import { detailPanelLoadingStyles } from '../DetailPanel.styles';
 
-const loading: React.SFC<IDetailPanelLoadingProps> = (props: IDetailPanelLoadingProps): JSX.Element | null => {
+const loading: React.FunctionComponent<IDetailPanelLoadingProps> = (props: IDetailPanelLoadingProps): JSX.Element | null => {
   const css = detailPanelLoadingStyles;
   const _renderSpinner = (overlay: boolean) => {
     const spinner = (

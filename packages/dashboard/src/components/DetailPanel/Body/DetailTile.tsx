@@ -5,7 +5,7 @@ import { detailTileClassNames } from '../DetailPanel.styles';
 import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 type DetailInfoTileProps = IDetailInfoTileProps & IDetailPanelAnalytics;
-const detailInfoTile: React.SFC<DetailInfoTileProps> = (props: DetailInfoTileProps) => {
+const detailInfoTile: React.FunctionComponent<DetailInfoTileProps> = (props: DetailInfoTileProps) => {
   const { title, message, actionText, onAction, tileId } = props;
 
   const css = detailTileClassNames;

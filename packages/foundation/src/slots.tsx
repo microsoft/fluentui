@@ -10,6 +10,7 @@ import {
   ISlotDefinition,
   ISlotFactory,
   ISlotProps,
+  ISlotPropRenderFunction,
   ISlotPropValue,
   ISlotRenderer,
   IDefaultSlotProps,
@@ -35,7 +36,7 @@ import {
  */
 // Can't use typeof on React.createElement since it's overloaded. Approximate createElement's signature for now and widen as needed.
 export function withSlots<P>(
-  type: ISlot<P> | React.SFC<P> | string,
+  type: ISlot<P> | React.FunctionComponent<P> | string,
   props?: React.Attributes & P | null,
   // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
@@ -92,15 +93,15 @@ export function createFactory<TProps>(
       const render: ISlotRenderer<TProps> = (slotRenderFunction, renderProps) => {
         // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
         // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
-        let finalRenderProps = _translateShorthand(defaultProp, renderProps) as TProps;
+        let finalRenderProps = _translateShorthand(defaultProp as string, renderProps) as TProps;
         finalRenderProps = _constructFinalProps(defaultStyles, componentProps, finalRenderProps);
 
         return slotRenderFunction(ComponentType, finalRenderProps);
       };
-      return userProps(render);
+      return (userProps as ISlotPropRenderFunction<TProps>)(render);
     }
 
-    userProps = _translateShorthand(defaultProp, userProps);
+    userProps = _translateShorthand(defaultProp as string, userProps);
     // TODO: _translateShorthand is returning TProps, so why is the finalProps cast required?
     // TS isn't respecting the difference between props arg type and return type and instead treating both as ISlotPropValue.
     const finalProps = _constructFinalProps(defaultStyles, componentProps, userProps) as TProps;
@@ -127,7 +128,6 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
   slots: ISlotDefinition<Required<TSlots>>
 ): ISlots<Required<TSlots>> {
   const result: ISlots<Required<TSlots>> = {} as ISlots<Required<TSlots>>;
-
   // userProps already has default props mixed in by createComponent. Recast here to gain typing for this function.
   const mixedProps = userProps as TProps & IDefaultSlotProps<TSlots>;
 
@@ -136,7 +136,7 @@ export function getSlots<TProps extends TSlots, TSlots extends ISlotProps<TProps
       // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
       //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
-      const slot: ISlot<keyof TSlots> = (componentProps, ...args: any[]) => {
+      const slot: ISlots<Required<TSlots>>[keyof TSlots] = (componentProps, ...args: any[]) => {
         if (args.length > 0) {
           // If React.createElement is being incorrectly used with slots, there will be additional arguments.
           // We can detect these additional arguments and error on their presence.

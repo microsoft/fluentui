@@ -184,6 +184,12 @@ export interface IRecommendationProps {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IRecommendationStyleProps, IRecommendationStyles>;
+
+  /**
+   * Children
+   */
+  // tslint:disable-next-line:no-any
+  children?: any;
 }
 
 /**

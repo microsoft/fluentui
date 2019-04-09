@@ -36,6 +36,8 @@ export interface ICardTokens extends IStackTokens {
   boxShadow?: string;
   boxShadowHovered?: string;
   height?: number | string;
+  highContrastBoxShadow?: string;
+  highContrastBoxShadowHovered?: string;
   minHeight?: number | string;
   minWidth?: number | string;
   maxWidth?: number | string;

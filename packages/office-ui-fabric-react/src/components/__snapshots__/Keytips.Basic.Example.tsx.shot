@@ -55,14 +55,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 600;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 8px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -79,14 +79,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -103,7 +103,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -117,22 +118,22 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 outline: none;
               }
               &:active {
+                background-color: #edebe9;
                 color: #000000;
               }
               &:active .ms-Button-icon {
                 color: #004578;
               }
               &:before {
-                background-color: transparent;
-                border-bottom: 2px solid #0078d4;
+                background-color: #0078d4;
                 bottom: 0px;
-                box-sizing: border-box;
                 content: "";
                 height: 2px;
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -144,10 +145,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
+                outline: 1px solid #605e5c;
               }
               @media screen and (-ms-high-contrast: active){&:before {
-                border-bottom-color: Highlight;
+                background-color: Highlight;
+              }
+              &:hover::before {
+                left: 0px;
+                right: 0px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
@@ -211,14 +216,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 8px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -235,14 +240,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -259,7 +264,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -273,6 +279,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 outline: none;
               }
               &:active {
+                background-color: #edebe9;
                 color: #000000;
               }
               &:active .ms-Button-icon {
@@ -286,7 +293,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -298,11 +306,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
-              }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
+                outline: 1px solid #605e5c;
               }
           data-is-focusable={true}
           data-ktp-execute-target="ktp-b"
@@ -363,14 +367,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border-radius: 0px;
                 border: 0px;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
-                height: 40px;
-                line-height: 40px;
+                height: 44px;
+                line-height: 44px;
                 margin-right: 8px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -387,14 +391,14 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -411,7 +415,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -425,6 +430,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 outline: none;
               }
               &:active {
+                background-color: #edebe9;
                 color: #000000;
               }
               &:active .ms-Button-icon {
@@ -438,7 +444,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 left: 8px;
                 position: absolute;
                 right: 8px;
-                transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+                transition: left 0.267s cubic-bezier(.1,.25,.75,.9),
+                                    right 0.267s cubic-bezier(.1,.25,.75,.9);
               }
               &:after {
                 color: transparent;
@@ -450,11 +457,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 visibility: hidden;
               }
               .ms-Fabric--isFocusVisible &:focus {
-                outline: 1px solid #666666;
-              }
-              &:hover::before {
-                border-bottom: 2px solid transparent;
-                box-sizing: border-box;
+                outline: 1px solid #605e5c;
               }
           data-is-focusable={true}
           data-ktp-execute-target="ktp-c"
@@ -550,8 +553,10 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               className=
 
                   {
+                    align-items: center;
                     display: inline-flex;
                     float: left;
+                    height: 32px;
                     margin-right: 10px;
                   }
             >
@@ -563,20 +568,21 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
+                      line-height: 20px;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
                       margin-top: 0px;
                       overflow-wrap: break-word;
-                      padding-bottom: 2px;
-                      padding-left: 0;
-                      padding-right: 0;
-                      padding-top: 2px;
+                      padding-bottom: 0px;
+                      padding-left: 0px;
+                      padding-right: 0px;
+                      padding-top: 0px;
                       pointer-events: none;
                       word-wrap: break-word;
                     }
@@ -590,21 +596,18 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               className=
 
                   {
-                    border-color: #a6a6a6;
-                    border-style: solid;
-                    border-width: 1px;
+                    border-radius: 2px;
+                    border: 1px solid #a19f9d;
                     box-sizing: border-box;
                     display: flex;
                     height: 32px;
                     min-width: 86px;
                   }
                   &:hover {
-                    border-color: #333333;
-                    outline: 2px dashed transparent;
+                    border-color: #323130;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
-                    outline: none;
                   }
               data-ktp-target="ktp-a-3"
             >
@@ -619,29 +622,30 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 className=
                     ms-spinButton-input
                     {
+                      border-radius: 2px 0 0 2px;
                       border-style: none;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: text;
                       display: block;
-                      float: left;
+                      flex: 1;
                       font-size: 14px;
                       height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 0;
-                      margin-right: 0;
-                      margin-top: 0;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 72px;
-                      outline: 0;
+                      outline: 0px;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 12px;
-                      padding-right: 12px;
+                      padding-left: 8px;
+                      padding-right: 8px;
                       padding-top: 0;
                       text-overflow: ellipsis;
                       user-select: text;
-                      width: calc(100% - 14px);
+                      white-space: nowrap;
                     }
                     &::selection {
                       background-color: #0078d4;
@@ -670,17 +674,9 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 className=
 
                     {
-                      box-sizing: border-box;
                       cursor: default;
                       display: block;
-                      float: left;
-                      font-size: 12px;
                       height: 100%;
-                      outline: none;
-                      padding-bottom: 0;
-                      padding-left: 0;
-                      padding-right: 0;
-                      padding-top: 0;
                     }
               >
                 <button
@@ -693,10 +689,10 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
-                        border-radius: 0px;
+                        border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: default;
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -704,29 +700,29 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         font-weight: 400;
                         height: 50%;
                         outline: none;
-                        padding-bottom: 0;
-                        padding-left: 0;
-                        padding-right: 0;
-                        padding-top: 0;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
                         position: relative;
                         text-align: center;
                         text-decoration: none;
                         user-select: none;
                         vertical-align: top;
-                        width: 14px;
+                        width: 23px;
                       }
                       &::-moz-focus-inner {
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 2px;
                         content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
+                        left: 2px;
+                        outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 2px;
+                        top: 2px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -742,17 +738,23 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         position: relative;
                         top: 0px;
                       }
+                      &.ms-DownButton {
+                        border-radius: 0 0 2px 0;
+                      }
+                      &.ms-UpButton {
+                        border-radius: 0 2px 0 0;
+                      }
                       &:hover {
-                        background-color: #eaeaea;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #212121;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:active {
                         background-color: Highlight;
@@ -789,15 +791,15 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                             display: inline-block;
                             flex-shrink: 0;
                             font-family: "FabricMDL2Icons-2";
-                            font-size: 6px;
+                            font-size: 8px;
                             font-style: normal;
                             font-weight: normal;
                             height: 16px;
                             line-height: 16px;
-                            margin-bottom: 0;
-                            margin-left: 0;
-                            margin-right: 0;
-                            margin-top: 0;
+                            margin-bottom: 0px;
+                            margin-left: 0px;
+                            margin-right: 0px;
+                            margin-top: 0px;
                             speak: none;
                             text-align: center;
                             vertical-align: middle;
@@ -819,10 +821,10 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
                         background-color: transparent;
-                        border-radius: 0px;
+                        border-radius: 2px;
                         border: none;
                         box-sizing: border-box;
-                        color: #333333;
+                        color: #605e5c;
                         cursor: default;
                         display: block;
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -830,29 +832,29 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         font-weight: 400;
                         height: 50%;
                         outline: none;
-                        padding-bottom: 0;
-                        padding-left: 0;
-                        padding-right: 0;
-                        padding-top: 0;
+                        padding-bottom: 0px;
+                        padding-left: 0px;
+                        padding-right: 0px;
+                        padding-top: 0px;
                         position: relative;
                         text-align: center;
                         text-decoration: none;
                         user-select: none;
                         vertical-align: top;
-                        width: 14px;
+                        width: 23px;
                       }
                       &::-moz-focus-inner {
                         border: 0;
                       }
                       .ms-Fabric--isFocusVisible &:focus:after {
-                        border: 1px solid #ffffff;
-                        bottom: 0px;
+                        border: 1px solid transparent;
+                        bottom: 2px;
                         content: "";
-                        left: 0px;
-                        outline: 1px solid #666666;
+                        left: 2px;
+                        outline: 1px solid #605e5c;
                         position: absolute;
-                        right: 0px;
-                        top: 0px;
+                        right: 2px;
+                        top: 2px;
                         z-index: 1;
                       }
                       @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -868,17 +870,23 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                         position: relative;
                         top: 0px;
                       }
+                      &.ms-DownButton {
+                        border-radius: 0 0 2px 0;
+                      }
+                      &.ms-UpButton {
+                        border-radius: 0 2px 0 0;
+                      }
                       &:hover {
-                        background-color: #eaeaea;
-                        color: #212121;
+                        background-color: #f3f2f1;
+                        color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:hover {
                         border-color: Highlight;
                         color: Highlight;
                       }
                       &:active {
-                        background-color: #c8c8c8;
-                        color: #212121;
+                        background-color: #edebe9;
+                        color: #323130;
                       }
                       @media screen and (-ms-high-contrast: active){&:active {
                         background-color: Highlight;
@@ -915,15 +923,15 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                             display: inline-block;
                             flex-shrink: 0;
                             font-family: "FabricMDL2Icons-2";
-                            font-size: 6px;
+                            font-size: 8px;
                             font-style: normal;
                             font-weight: normal;
                             height: 16px;
                             line-height: 16px;
-                            margin-bottom: 0;
-                            margin-left: 0;
-                            margin-right: 0;
-                            margin-top: 0;
+                            margin-bottom: 0px;
+                            margin-left: 0px;
+                            margin-right: 0px;
+                            margin-top: 0px;
                             speak: none;
                             text-align: center;
                             vertical-align: middle;
@@ -962,28 +970,27 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               <button
                 aria-checked={false}
                 aria-describedby="ktp-layer-id ktp-a-1"
+                aria-labelledby="Toggle19-stateText"
                 className=
                     ms-Toggle-background
                     {
                       align-items: center;
                       background: #ffffff;
-                      border-color: #666666;
-                      border-radius: 1em;
-                      border-style: solid;
-                      border-width: 1px;
+                      border-radius: 10px;
+                      border: 1px solid #605e5c;
                       box-sizing: border-box;
                       cursor: pointer;
                       display: flex;
                       font-size: 20px;
-                      height: 1em;
+                      height: 20px;
                       outline: transparent;
                       padding-bottom: 0;
-                      padding-left: .2em;
-                      padding-right: .2em;
+                      padding-left: 3px;
+                      padding-right: 3px;
                       padding-top: 0;
                       position: relative;
                       transition: all 0.1s ease;
-                      width: 2.2em;
+                      width: 40px;
                     }
                     &::-moz-focus-inner {
                       border: 0;
@@ -993,14 +1000,17 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       bottom: -2px;
                       content: "";
                       left: -2px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: -2px;
                       top: -2px;
                       z-index: 1;
                     }
                     &:hover {
-                      border-color: #333333;
+                      border-color: #323130;
+                    }
+                    &:hover .ms-Toggle-thumb {
+                      background-color: #201f1e;
                     }
                     @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                       border-color: Highlight;
@@ -1021,15 +1031,15 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   className=
                       ms-Toggle-thumb
                       {
-                        background-color: #333333;
+                        background-color: #605e5c;
                         border-color: transparent;
-                        border-radius: .5em;
+                        border-radius: 50%;
                         border-style: solid;
                         border-width: .28em;
                         box-sizing: border-box;
-                        height: .5em;
+                        height: 12px;
                         transition: all 0.1s ease;
-                        width: .5em;
+                        width: 12px;
                       }
                 />
               </button>
@@ -1042,11 +1052,11 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       margin-bottom: 0px;
                       margin-left: 0px;
                       margin-right: 0px;
@@ -1059,6 +1069,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       word-wrap: break-word;
                     }
                     && {
+                      font-weight: 400;
                       margin-bottom: 0;
                       margin-left: 8px;
                       margin-right: 8px;
@@ -1069,6 +1080,8 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                       padding-top: 0;
                       user-select: none;
                     }
+                htmlFor="Toggle19"
+                id="Toggle19-stateText"
               >
                 No
               </label>
@@ -1092,7 +1105,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -1102,8 +1115,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {

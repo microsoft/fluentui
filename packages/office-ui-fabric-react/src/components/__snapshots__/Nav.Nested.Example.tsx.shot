@@ -70,11 +70,11 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                   ms-Nav-compositeLink
                   {
                     background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
-              name="Parent link"
+              name="Parent link 1"
             >
               <button
                 aria-expanded="false"
@@ -84,7 +84,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                     {
                       background-color: transparent;
                       border: none;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-size: 12px;
@@ -118,7 +118,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -128,12 +128,12 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       color: inherit;
                     }
                     &:hover {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                     $compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 onClick={[Function]}
               >
@@ -172,10 +172,10 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -206,7 +206,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -242,8 +242,8 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://example.com"
@@ -253,7 +253,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                title="Parent link"
+                title="Parent link 1"
               >
                 <div
                   className=
@@ -302,7 +302,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                           vertical-align: middle;
                         }
                   >
-                    Parent link
+                    Parent link 1
                   </div>
                 </div>
               </a>
@@ -324,11 +324,11 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                   ms-Nav-compositeLink
                   {
                     background-color: #ffffff;
-                    color: #333333;
+                    color: #323130;
                     display: block;
                     position: relative;
                   }
-              name="Parent link"
+              name="Parent link 2"
             >
               <button
                 aria-expanded="false"
@@ -338,7 +338,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                     {
                       background-color: transparent;
                       border: none;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-size: 12px;
@@ -372,7 +372,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -382,12 +382,12 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       color: inherit;
                     }
                     &:hover {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                     $compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 onClick={[Function]}
               >
@@ -426,10 +426,10 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
-                      border-radius: 0px;
+                      border-radius: 2px;
                       border: 1px solid transparent;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       cursor: pointer;
                       display: block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -460,7 +460,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -496,8 +496,8 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       color: #004578;
                     }
                     .ms-Nav-compositeLink:hover & {
-                      background-color: #f8f8f8;
-                      color: #333333;
+                      background-color: #faf9f8;
+                      color: #323130;
                     }
                 data-is-focusable={true}
                 href="http://example.com"
@@ -507,7 +507,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
-                title="Parent link"
+                title="Parent link 2"
               >
                 <div
                   className=
@@ -556,7 +556,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                           vertical-align: middle;
                         }
                   >
-                    Parent link
+                    Parent link 2
                   </div>
                 </div>
               </a>

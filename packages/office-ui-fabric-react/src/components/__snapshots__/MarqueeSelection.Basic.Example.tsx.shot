@@ -19,12 +19,12 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           position: relative;
         }
         &:hover .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
+          background: #005a9e;
+          border-color: #005a9e;
         }
         &:focus .ms-Checkbox-checkbox {
-          background: #106ebe;
-          border-color: #106ebe;
+          background: #005a9e;
+          border-color: #005a9e;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
           background: Window;
@@ -43,10 +43,10 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           color: Highlight;
         }
         &:hover .ms-Checkbox-text {
-          color: #333333;
+          color: #201f1e;
         }
         &:focus .ms-Checkbox-text {
-          color: #333333;
+          color: #201f1e;
         }
   >
     <input
@@ -59,7 +59,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
           }
           .ms-Fabric--isFocusVisible &:focus + label::before {
             outline-offset: 2px;
-            outline: 1px solid #666666;
+            outline: 1px solid #605e5c;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
             outline: 1px solid ActiveBorder;
@@ -105,8 +105,8 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
               align-items: center;
               background: #0078d4;
               border-color: #0078d4;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 2px;
+              border: 1px solid #323130;
               box-sizing: border-box;
               display: flex;
               flex-shrink: 0;
@@ -152,7 +152,7 @@ exports[`Component Examples renders MarqueeSelection.Basic.Example.tsx correctly
         className=
             ms-Checkbox-text
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               line-height: 20px;
               margin-left: 4px;

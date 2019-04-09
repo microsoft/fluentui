@@ -4,6 +4,8 @@ import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles): IButtonStyles => {
+    const { effects, palette } = theme;
+
     const buttonHighContrastFocus = {
       left: -2,
       top: -2,
@@ -16,7 +18,22 @@ export const getStyles = memoizeFunction(
       splitButtonContainer: [
         getFocusStyle(theme, 0, 'relative', buttonHighContrastFocus),
         {
-          display: 'inline-flex'
+          display: 'inline-flex',
+          selectors: {
+            '.ms-Button--default': {
+              borderTopRightRadius: '0',
+              borderBottomRightRadius: '0',
+              borderRight: 'none'
+            },
+            '.ms-Button--primary': {
+              borderTopRightRadius: '0',
+              borderBottomRightRadius: '0',
+              border: 'none'
+            },
+            '.ms-Button--primary + .ms-Button': {
+              border: 'none'
+            }
+          }
         }
       ],
       splitButtonContainerFocused: {
@@ -26,8 +43,11 @@ export const getStyles = memoizeFunction(
         padding: 6,
         height: 'auto',
         boxSizing: 'border-box',
-        border: 0,
         borderRadius: 0,
+        borderTopRightRadius: effects.roundedCorner2,
+        borderBottomRightRadius: effects.roundedCorner2,
+        border: `1px solid ${palette.neutralSecondaryAlt}`,
+        borderLeft: 'none',
         outline: 'transparent',
         userSelect: 'none',
         display: 'inline-block',
@@ -49,6 +69,7 @@ export const getStyles = memoizeFunction(
 
       splitButtonMenuButtonDisabled: {
         pointerEvents: 'none',
+        border: 'none',
         selectors: {
           ':hover': {
             cursor: 'default'

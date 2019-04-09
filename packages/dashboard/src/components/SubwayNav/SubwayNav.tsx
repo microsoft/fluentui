@@ -3,7 +3,7 @@ import { SubwayNavBase } from './SubwayNavBase';
 import { getSubwayNavStyles } from './SubwayNav.styles';
 import { ISubwayNavProps, ISubwayNavStyles } from './SubwayNav.types';
 
-export const SubwayNav: React.StatelessComponent<ISubwayNavProps> = styled<ISubwayNavProps, {}, ISubwayNavStyles>(
+export const SubwayNav: React.FunctionComponent<ISubwayNavProps> = styled<ISubwayNavProps, {}, ISubwayNavStyles>(
   SubwayNavBase,
   getSubwayNavStyles,
   undefined

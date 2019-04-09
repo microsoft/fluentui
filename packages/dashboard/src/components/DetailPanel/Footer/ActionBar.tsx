@@ -15,7 +15,7 @@ import { withAnalyticsHandler } from '../DetailPanelAnalyticsContext';
 
 type DetailPanelActionBarProps = IDetailPanelActionBarProps & IDetailPanelBaseCommonAction & IDetailPanelAnalytics;
 
-const actionBar: React.SFC<DetailPanelActionBarProps> = (props: DetailPanelActionBarProps) => {
+const actionBar: React.FunctionComponent<DetailPanelActionBarProps> = (props: DetailPanelActionBarProps) => {
   const _onClickAnalyticsHandler = (onCallBack: () => void, componentType: string, componentProps: {}) => () => {
     const { analyticsHandler } = props;
     if (analyticsHandler) {

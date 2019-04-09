@@ -103,7 +103,7 @@ export class FocusTrapZone extends BaseComponent<IFocusTrapZoneProps, {}> implem
     const focusSelector =
       typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
 
-    let _firstFocusableChild;
+    let _firstFocusableChild: HTMLElement | null = null;
 
     if (this._root.current) {
       if (focusSelector) {

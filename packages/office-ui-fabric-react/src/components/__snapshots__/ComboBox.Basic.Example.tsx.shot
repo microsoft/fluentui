@@ -7,7 +7,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        color: #333333;
+        color: #323130;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 400;
@@ -50,11 +50,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -78,12 +78,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: #ffffff;
-              border-color: #a6a6a6;
+              border-color: #a19f9d;
+              border-radius: 2px;
               border-style: solid;
               border-width: 1px;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: text;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -94,7 +95,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               outline: 0;
               overflow: hidden;
               padding-bottom: 1px;
-              padding-left: 12px;
+              padding-left: 8px;
               padding-right: 32px;
               padding-top: 1px;
               position: relative;
@@ -127,7 +128,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               top: -2px;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover .ms-ComboBox-Input {
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
@@ -183,7 +187,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 background-color: #ffffff;
                 border-style: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font: inherit;
                 height: 28px;
                 outline: none;
@@ -224,10 +228,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #666666;
+                color: #605e5c;
                 cursor: default;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -253,14 +257,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -283,8 +287,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 color: ButtonText;
               }
               &:hover {
-                background-color: #f4f4f4;
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #201f1e;
                 cursor: pointer;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
@@ -292,8 +296,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 color: Highlight;
               }
               &:active {
-                background-color: #eaeaea;
-                color: #212121;
+                background-color: #edebe9;
+                color: #201f1e;
               }
           data-is-focusable={false}
           onClick={[Function]}
@@ -356,8 +360,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #0078d4;
-            border-radius: 0px;
-            border: 1px solid transparent;
+            border-radius: 2px;
+            border: none;
             box-sizing: border-box;
             color: #ffffff;
             cursor: pointer;
@@ -382,14 +386,15 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             border: 0;
           }
           .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: 0px;
+            border-color: #ffffff;
+            border: 1px solid transparent;
+            bottom: 2px;
             content: "";
-            left: 0px;
-            outline: 1px solid #666666;
+            left: 2px;
+            outline: none;
             position: absolute;
-            right: 0px;
-            top: 0px;
+            right: 2px;
+            top: 2px;
             z-index: 1;
           }
           @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -491,11 +496,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -519,12 +524,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #a6a6a6;
+            border-color: #a19f9d;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: text;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -535,7 +541,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -568,7 +574,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -624,7 +633,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               background-color: #ffffff;
               border-style: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font: inherit;
               height: 28px;
               outline: none;
@@ -665,10 +674,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #666666;
+              color: #605e5c;
               cursor: default;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -694,14 +703,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -724,8 +733,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: ButtonText;
             }
             &:hover {
-              background-color: #f4f4f4;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -733,8 +742,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: Highlight;
             }
             &:active {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={false}
         onClick={[Function]}
@@ -802,11 +811,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -830,12 +839,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #a6a6a6;
+            border-color: #a19f9d;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: text;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -846,7 +856,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -879,7 +889,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -935,7 +948,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               background-color: #ffffff;
               border-style: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font: inherit;
               height: 28px;
               outline: none;
@@ -977,10 +990,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #666666;
+              color: #605e5c;
               cursor: default;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1006,14 +1019,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1036,8 +1049,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: ButtonText;
             }
             &:hover {
-              background-color: #f4f4f4;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1045,8 +1058,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: Highlight;
             }
             &:active {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={false}
         onClick={[Function]}
@@ -1113,11 +1126,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -1141,12 +1154,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #a6a6a6;
+            border-color: #a19f9d;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: text;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1157,7 +1171,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -1190,7 +1204,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -1246,7 +1263,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               background-color: #ffffff;
               border-style: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font: inherit;
               height: 28px;
               outline: none;
@@ -1287,10 +1304,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #666666;
+              color: #605e5c;
               cursor: default;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1316,14 +1333,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1346,8 +1363,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: ButtonText;
             }
             &:hover {
-              background-color: #f4f4f4;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -1355,8 +1372,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: Highlight;
             }
             &:active {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={false}
         onClick={[Function]}
@@ -1420,7 +1437,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -1488,10 +1505,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border-color: #eaeaea;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-shadow: 0 0px 5px 0px rgba(0, 0, 0, 0.4);
+                  border-radius: 2px;
+                  box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
                   box-sizing: border-box;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -1522,6 +1537,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   ms-Callout-main
                   {
                     background-color: #ffffff;
+                    border-radius: 2px;
                     overflow-x: hidden;
                     overflow-y: auto;
                     position: relative;
@@ -1530,7 +1546,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               onScroll={[Function]}
               style={
                 Object {
-                  "maxHeight": 750,
+                  "maxHeight": 752,
                   "outline": "none",
                   "overflowY": undefined,
                 }
@@ -1562,12 +1578,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
                           font-weight: 600;
-                          height: 32px;
-                          line-height: 32px;
-                          padding-bottom: 0px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 0px;
+                          height: 36px;
+                          line-height: 36px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           text-align: left;
                           user-select: none;
                         }
@@ -1577,10 +1593,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           ms-ComboBox-optionText
                           {
                             display: inline-block;
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
                             max-width: 100%;
                             min-width: 0px;
                             overflow-wrap: break-word;
@@ -1612,7 +1624,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1620,13 +1632,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -1639,14 +1651,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1665,9 +1677,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -1677,7 +1705,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -1717,6 +1745,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -1725,10 +1755,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -1756,7 +1782,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                           border-color: transparent;
                           border-radius: 0px;
                           border-style: solid;
@@ -1771,13 +1797,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -1790,14 +1816,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1819,15 +1845,31 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-color: Highlight;
                           color: HighlightText;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         .ms-Fabric--isFocusVisible &:after {
                           border: 1px solid #ffffff;
-                          bottom: 1px;
+                          bottom: 0px;
                           content: "";
-                          left: 1px;
-                          outline: 1px solid #666666;
+                          left: 0px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 1px;
-                          top: 1px;
+                          right: 0px;
+                          top: 0px;
                           z-index: 1;
                         }
                     data-index={2}
@@ -1862,6 +1904,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -1870,10 +1914,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -1907,7 +1947,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1915,13 +1955,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -1934,14 +1974,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1960,9 +2000,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -1972,7 +2028,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -2012,6 +2068,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2020,10 +2078,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2057,7 +2111,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2065,13 +2119,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2084,14 +2138,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2110,9 +2164,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2122,7 +2192,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -2162,6 +2232,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2170,10 +2242,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2192,9 +2260,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                     className=
                         ms-ComboBox-divider
                         {
-                          border-color: #eaeaea;
-                          border-style: solid;
-                          border-width: 1px;
+                          background-color: #edebe9;
+                          height: 1px;
                         }
                     role="separator"
                   />
@@ -2211,12 +2278,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 14px;
                           font-weight: 600;
-                          height: 32px;
-                          line-height: 32px;
-                          padding-bottom: 0px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 0px;
+                          height: 36px;
+                          line-height: 36px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           text-align: left;
                           user-select: none;
                         }
@@ -2226,10 +2293,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           ms-ComboBox-optionText
                           {
                             display: inline-block;
-                            margin-bottom: 1px;
-                            margin-left: 1px;
-                            margin-right: 1px;
-                            margin-top: 1px;
                             max-width: 100%;
                             min-width: 0px;
                             overflow-wrap: break-word;
@@ -2261,7 +2324,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2269,13 +2332,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2288,14 +2351,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2314,9 +2377,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2326,7 +2405,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -2366,6 +2445,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2374,10 +2455,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2413,7 +2490,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #a6a6a6;
+                          color: #a19f9d;
                           cursor: default;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2421,13 +2498,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           pointer-events: none;
                           position: relative;
                           text-align: left;
@@ -2441,14 +2518,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2465,18 +2542,30 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           top: 0px;
                         }
                         @media screen and (-ms-high-contrast: active){& {
-                          border-color: Background;
-                          bordercolor: grayText;
+                          border-color: grayText;
                           color: grayText;
+                        }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
                         }
                         &:hover {
                           outline: 0px;
                         }
                         &:focus {
                           outline: 0px;
-                        }
-                        & .ms-Button-flexContainer {
-                          justify-content: flex-start;
                         }
                     data-index={8}
                     data-is-focusable={false}
@@ -2511,6 +2600,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2519,10 +2610,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2556,7 +2643,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2564,13 +2651,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2583,14 +2670,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2609,9 +2696,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2621,7 +2724,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -2661,6 +2764,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2669,10 +2774,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2706,7 +2807,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2714,13 +2815,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2733,14 +2834,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2759,9 +2860,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2771,7 +2888,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -2811,6 +2928,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2819,10 +2938,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -2856,7 +2971,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2864,13 +2979,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -2883,14 +2998,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2909,9 +3024,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -2921,7 +3052,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -2961,6 +3092,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -2969,10 +3102,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -3006,7 +3135,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border-width: 1px;
                           border: 1px solid transparent;
                           box-sizing: border-box;
-                          color: #333333;
+                          color: #323130;
                           cursor: pointer;
                           display: block;
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3014,13 +3143,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
-                          min-height: 32px;
+                          min-height: 36px;
                           outline: transparent;
                           overflow-wrap: break-word;
-                          padding-bottom: 5px;
-                          padding-left: 16px;
-                          padding-right: 16px;
-                          padding-top: 5px;
+                          padding-bottom: 0;
+                          padding-left: 8px;
+                          padding-right: 8px;
+                          padding-top: 0;
                           position: relative;
                           text-align: left;
                           text-decoration: none;
@@ -3033,14 +3162,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           border: 0;
                         }
                         .ms-Fabric--isFocusVisible &:focus:after {
-                          border: 1px solid #ffffff;
-                          bottom: 0px;
+                          border: 1px solid transparent;
+                          bottom: 2px;
                           content: "";
-                          left: 0px;
-                          outline: 1px solid #666666;
+                          left: 2px;
+                          outline: 1px solid #605e5c;
                           position: absolute;
-                          right: 0px;
-                          top: 0px;
+                          right: 2px;
+                          top: 2px;
                           z-index: 1;
                         }
                         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3059,9 +3188,25 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         @media screen and (-ms-high-contrast: active){& {
                           border-color: Background;
                         }
+                        &.ms-Checkbox {
+                          align-items: center;
+                          display: flex;
+                        }
+                        &.ms-Checkbox:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &.is-checked {
+                          background-color: transparent;
+                        }
+                        &.is-checked:hover {
+                          background-color: #f3f2f1;
+                        }
+                        &:hover:active {
+                          background-color: #edebe9;
+                        }
                         &:hover {
-                          background-color: #f4f4f4;
-                          color: #333333;
+                          background-color: #f3f2f1;
+                          color: #323130;
                         }
                         @media screen and (-ms-high-contrast: active){&:hover {
                           border-color: Highlight;
@@ -3071,7 +3216,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           color: #0078d4;
                         }
                         &:focus {
-                          background-color: #f4f4f4;
+                          background-color: #f3f2f1;
                         }
                         &:active {
                           color: #000000;
@@ -3111,6 +3256,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                         className=
 
                             {
+                              align-items: center;
+                              display: flex;
                               max-width: 100%;
                             }
                       >
@@ -3119,10 +3266,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                               ms-ComboBox-optionText
                               {
                                 display: inline-block;
-                                margin-bottom: 1px;
-                                margin-left: 1px;
-                                margin-right: 1px;
-                                margin-top: 1px;
                                 max-width: 100%;
                                 min-width: 0px;
                                 overflow-wrap: break-word;
@@ -3157,11 +3300,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -3185,12 +3328,13 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #a80000;
+            border-color: #a4262c;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: text;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3202,7 +3346,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -3235,15 +3379,15 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             top: -2px;
           }
           &:hover {
-            border-color: #a80000;
+            border-color: #a4262c;
             margin-bottom: 5px;
           }
           &:active {
-            border-color: #a80000;
+            border-color: #a4262c;
             margin-bottom: 5px;
           }
           &:focus {
-            border-color: #a80000;
+            border-color: #a4262c;
             margin-bottom: 5px;
           }
       id="ComboBox19wrapper"
@@ -3260,7 +3404,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               background-color: #ffffff;
               border-style: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font: inherit;
               height: 28px;
               outline: none;
@@ -3301,10 +3445,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #666666;
+              color: #605e5c;
               cursor: default;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3330,14 +3474,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3360,8 +3504,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: ButtonText;
             }
             &:hover {
-              background-color: #f4f4f4;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -3369,8 +3513,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: Highlight;
             }
             &:active {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={false}
         onClick={[Function]}
@@ -3428,7 +3572,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       className=
 
           {
-            color: #a80000;
+            color: #a4262c;
           }
     >
       Oh no! This ComboBox has an error!
@@ -3446,11 +3590,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #a6a6a6;
+            color: #a19f9d;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -3477,13 +3621,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
-            background-color: #f4f4f4;
-            border-color: #f4f4f4;
+            background-color: #f3f2f1;
+            border-color: #f3f2f1;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #a6a6a6;
+            color: #a19f9d;
             cursor: default;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3494,7 +3639,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -3542,11 +3687,11 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         className=
             ms-ComboBox-Input
             {
-              background-color: #f4f4f4;
-              border-color: #f4f4f4;
+              background-color: #f3f2f1;
+              border-color: #f3f2f1;
               border-style: none;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               font: inherit;
               height: 28px;
@@ -3593,12 +3738,12 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              border-color: #f4f4f4;
-              border-radius: 0px;
+              background-color: #f3f2f1;
+              border-color: #f3f2f1;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #a6a6a6;
+              color: #a19f9d;
               cursor: default;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3625,14 +3770,14 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3652,7 +3797,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               -ms-high-contrast-adjust: none;
               background-color: ButtonFace;
               border-color: GrayText;
-              bordercolor: grayText;
               color: GrayText;
             }
             &:hover {
@@ -3690,7 +3834,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons";

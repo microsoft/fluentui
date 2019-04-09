@@ -30,7 +30,7 @@
     "@types/prettier": "^1.16.1",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1",
-    "ts-jest": "^22.4.6",
+    "ts-jest": "24.0.1",
     "webpack": "4.29.5"
   },
   "dependencies": {

@@ -10,7 +10,7 @@ import {
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/FluentDecorator';
 
 interface IDocumentItem { name: string; activity: string; }
 

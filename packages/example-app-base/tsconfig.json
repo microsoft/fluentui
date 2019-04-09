@@ -16,7 +16,7 @@
     "outDir": "lib",
     "lib": ["es5", "dom"],
     "types": ["webpack-env", "jest", "es6-promise", "markdown-to-jsx"],
-    "typeRoots": ["node_modules/@types", "../../typings"]
+    "typeRoots": ["node_modules/@types", "./typings"]
   },
   "include": ["src"]
 }

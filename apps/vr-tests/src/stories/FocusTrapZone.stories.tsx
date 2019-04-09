@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator } from '../utilities/FluentDecorator';
 import { Panel, PanelType, Dialog, DialogType } from 'office-ui-fabric-react';
 
 storiesOf('FocusTrapZones', module)
@@ -40,8 +40,7 @@ storiesOf('FocusTrapZones', module)
             modalProps={{
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
-              isBlocking: false,
-              containerClassName: 'ms-dialogMainOverride'
+              isBlocking: false
             }}
           >
             {null}

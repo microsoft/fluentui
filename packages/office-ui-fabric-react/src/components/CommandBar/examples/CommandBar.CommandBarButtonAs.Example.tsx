@@ -5,7 +5,7 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { Coachmark } from 'office-ui-fabric-react/lib/Coachmark';
 import { BaseComponent, IComponentAsProps, IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { TeachingBubbleContent } from 'office-ui-fabric-react/lib/TeachingBubble';
-import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
+import { CommandBarButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 export interface IIndividualCommandBarButtonAsExampleProps {
   onDismissCoachmark: () => void;
@@ -27,13 +27,19 @@ class CoachmarkCommandBarButton extends BaseComponent<ICoachmarkCommandBarButton
   private _targetButton = React.createRef<HTMLDivElement>();
 
   public render(): JSX.Element {
-    const { defaultRender: DefaultRender = CommandBarButton, isCoachmarkVisible, onDismiss, ...buttonProps } = this.props;
+    const { defaultRender, isCoachmarkVisible, onDismiss, ...buttonProps } = this.props;
+    const castButtonProps = buttonProps as IButtonProps; // TODO fix cast
+    let defaultRenderElement: JSX.Element;
+    if (defaultRender) {
+      const DefaultRender = defaultRender;
+      defaultRenderElement = <DefaultRender {...buttonProps} />;
+    } else {
+      defaultRenderElement = <CommandBarButton {...castButtonProps} />;
+    }
 
     return (
       <>
-        <div ref={this._targetButton}>
-          <DefaultRender {...buttonProps} />
-        </div>
+        <div ref={this._targetButton}>{defaultRenderElement}</div>
         {isCoachmarkVisible && (
           <Coachmark
             target={this._targetButton.current}

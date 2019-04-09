@@ -120,6 +120,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
       classNames.removeButton,
       {
         borderRadius: 15,
+        color: palette.neutralPrimary,
         flex: '0 0 auto',
         width: REMOVE_BUTTON_SIZE,
         height: REMOVE_BUTTON_SIZE,
@@ -139,6 +140,10 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
               color: palette.white,
               background: palette.themeDark
             },
+            ':active': {
+              color: palette.white,
+              background: palette.themeDarker
+            },
             [HighContrastSelector]: {
               color: 'HighlightText'
             }
@@ -148,6 +153,9 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
           selectors: {
             ':hover': {
               background: palette.red
+            },
+            ':active': {
+              background: palette.redDark
             }
           }
         }

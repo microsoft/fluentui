@@ -68,8 +68,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       {
         overflowY: 'auto',
         overflowX: 'hidden',
-        maxHeight: 300,
-        borderBottom: `1px solid ${palette.neutralLight}`
+        maxHeight: 300
       },
       suggestionsClassName
     ],

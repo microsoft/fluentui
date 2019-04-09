@@ -1,14 +1,22 @@
-import { HighContrastSelector, getFocusStyle } from '../../Styling';
+import { HighContrastSelector, getFocusStyle, FontWeights } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
+
+const DEFAULT_PILL_WIDTH = 40;
+const DEFAULT_PILL_HEIGHT = 20;
+const DEFAULT_THUMB_SIZE = 12;
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
   const { theme, className, disabled, checked, inlineLabel, onOffMissing } = props;
-  const { semanticColors } = theme;
+  const { semanticColors, palette } = theme;
+
+  // Tokens
   const pillUncheckedBackground = semanticColors.bodyBackground;
   const pillCheckedBackground = semanticColors.inputBackgroundChecked;
-  const pillCheckedHoveredBackground = semanticColors.inputBackgroundCheckedHovered;
+  // TODO: after updating the semanticColors slots mapping this needs to be semanticColors.inputBackgroundCheckedHovered
+  const pillCheckedHoveredBackground = palette.themeDark;
+  const thumbUncheckedHoveredBackground = palette.neutralDark;
   const pillCheckedDisabledBackground = semanticColors.disabledBodySubtext;
-  const thumbBackground = semanticColors.inputBorderHovered;
+  const thumbBackground = semanticColors.smallInputBorder;
   const thumbCheckedBackground = semanticColors.inputForegroundChecked;
   const thumbDisabledBackground = semanticColors.disabledBodySubtext;
   const thumbCheckedDisabledBackground = semanticColors.disabledBackground;
@@ -69,18 +77,16 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       {
         fontSize: '20px',
         boxSizing: 'border-box',
-        width: '2.2em',
-        height: '1em',
-        borderRadius: '1em',
+        width: DEFAULT_PILL_WIDTH,
+        height: DEFAULT_PILL_HEIGHT,
+        borderRadius: DEFAULT_PILL_HEIGHT / 2,
         transition: 'all 0.1s ease',
-        borderWidth: '1px',
-        borderStyle: 'solid',
+        border: `1px solid ${pillBorderColor}`,
         background: pillUncheckedBackground,
-        borderColor: pillBorderColor,
         cursor: 'pointer',
         display: 'flex',
         alignItems: 'center',
-        padding: '0 .2em'
+        padding: '0 3px'
       },
       !disabled && [
         !checked && {
@@ -92,6 +98,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
             ],
             ':hover .ms-Toggle-thumb': [
               {
+                backgroundColor: thumbUncheckedHoveredBackground,
                 selectors: {
                   [HighContrastSelector]: {
                     borderColor: 'Highlight'
@@ -160,9 +167,9 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
     thumb: [
       'ms-Toggle-thumb',
       {
-        width: '.5em',
-        height: '.5em',
-        borderRadius: '.5em',
+        width: DEFAULT_THUMB_SIZE,
+        height: DEFAULT_THUMB_SIZE,
+        borderRadius: '50%',
         transition: 'all 0.1s ease',
         backgroundColor: thumbBackground,
         /* Border is added to handle high contrast mode for Firefox */
@@ -205,7 +212,8 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
           '&&': {
             padding: '0',
             margin: '0 8px',
-            userSelect: 'none'
+            userSelect: 'none',
+            fontWeight: FontWeights.regular
           }
         }
       },
