@@ -5,6 +5,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { PanelBase } from './Panel.base';
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanel {
   /**
    * Forces the panel to open.
@@ -16,6 +19,10 @@ export interface IPanel {
    */
   dismiss: (ev?: React.KeyboardEvent<HTMLElement>) => void;
 }
+
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
   /**
    * Optional callback to access the IPanel interface. Use this instead of ref for accessing
@@ -205,6 +212,7 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
  * the panel's title. This allows the `aria-labelledby` for the panel popup to work correctly.
  * Note that if `headerTextId` is provided, it **must** be used on an element, or screen readers
  * will be confused by the reference to a nonexistent ID.
+ * {@docCategory Panel}
  */
 export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   /**
@@ -217,6 +225,9 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
   (props?: IPanelProps, defaultRender?: IPanelHeaderRenderer, headerTextId?: string | undefined): JSX.Element | null;
 }
 
+/**
+ * {@docCategory Panel}
+ */
 export enum PanelType {
   /**
    * Renders the Panel with a `fluid` (full screen) width.
@@ -307,6 +318,9 @@ export enum PanelType {
   customNear = 8
 }
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -379,6 +393,9 @@ export interface IPanelStyleProps {
 //   button: IStyleFunctionOrObject<any, any>;
 // }
 
+/**
+ * {@docCategory Panel}
+ */
 export interface IPanelStyles {
   /**
    * Style for the root element.

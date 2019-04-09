@@ -1,6 +1,9 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory SwatchColorPicker}
+ */
 export interface IColorPickerGridCellProps {
   /**
    * Item to render
@@ -116,6 +119,9 @@ export interface IColorPickerGridCellProps {
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
+/**
+ * {@docCategory SwatchColorPicker}
+ */
 export interface IColorCellProps {
   /**
    * Arbitrary unique string associated with this option
@@ -142,6 +148,7 @@ export interface IColorCellProps {
 
 /**
  * Properties required to build the styles for the color picker component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface IColorPickerGridCellStyleProps {
   /**
@@ -187,6 +194,7 @@ export interface IColorPickerGridCellStyleProps {
 
 /**
  * Styles for the Color Picker Component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface IColorPickerGridCellStyles {
   /**
