@@ -3172,10 +3172,8 @@ export interface IDetailsList extends IList {
     getStartItemIndexInView: () => number;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IGroupHeaderCheckboxProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
-export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps, IGroupHeaderCheckboxProps {
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithViewportProps" needs to be exported by the entry point index.d.ts
@@ -4471,7 +4469,6 @@ export interface IGroupFooterStyles {
 export interface IGroupHeaderProps extends IGroupDividerProps {
     expandButtonProps?: React_2.HTMLAttributes<HTMLButtonElement>;
     groupedListId?: string;
-    onRenderGroupHeaderCheckbox?: IRenderFunction<IGroupHeaderCheckboxProps>;
     selectAllButtonProps?: React_2.HTMLAttributes<HTMLButtonElement>;
     styles?: IStyleFunctionOrObject<IGroupHeaderStyleProps, IGroupHeaderStyles>;
 }
@@ -9078,7 +9075,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 // 
-// lib/components/DetailsList/DetailsList.types.d.ts:106:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
+// lib/components/DetailsList/DetailsList.types.d.ts:105:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
