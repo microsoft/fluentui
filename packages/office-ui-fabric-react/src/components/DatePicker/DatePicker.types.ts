@@ -116,6 +116,12 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   disableAutoFocus?: boolean;
 
   /**
+   * Whether the DatePicker should be focused automatically when the control is opened
+   * @defaultvalue false
+   */
+  disableCalloutAutoFocus?: boolean;
+
+  /**
    * Placeholder text for the DatePicker
    */
   placeholder?: string;

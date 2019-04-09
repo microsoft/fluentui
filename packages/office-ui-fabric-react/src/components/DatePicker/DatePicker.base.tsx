@@ -296,7 +296,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onCalloutPositioned = (): void => {
-    if (this._calendar.current && !this.props.disableAutoFocus) {
+    if (this._calendar.current && !this.props.disableCalloutAutoFocus) {
       this._calendar.current.focus();
     }
   };
