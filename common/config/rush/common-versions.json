@@ -4,7 +4,6 @@
  */
 {
   "$schema": "https://developer.microsoft.com/json-schemas/rush/v5/common-versions.schema.json",
-
   /**
    * A table that specifies a "preferred version" for a dependency package. The "preferred version"
    * is typically used to hold an indirect dependency back to a specific version, however generally
@@ -21,14 +20,13 @@
     "css-loader": "^0.28.7",
     "enzyme": "^3.4.1",
     "jest": "^23.1.0",
-    "react": ">=16.3.2-0 <17.0.0",
-    "react-dom": ">=16.3.2-0 <17.0.0",
+    "react": "~16.6.3",
+    "react-dom": "~16.6.3",
     "style-loader": "^0.21.0",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
     "webpack-dev-server": "3.1.14"
   },
-
   /**
    * The "rush check" command can be used to enforce that every project in the repo must specify
    * the same SemVer range for a given dependency.  However, sometimes exceptions are needed.
@@ -44,7 +42,7 @@
      * For example, allow some projects to use an older TypeScript compiler
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
-    // "typescript": ["~2.4.0"]
-    "webpack": [">=4.0.0"]
+    "react": ["~16.8.0"],
+    "react-dom": ["~16.8.0"]
   }
 }

@@ -22,11 +22,12 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   protected root = React.createRef<HTMLDivElement>();
   protected suggestionStore: SuggestionsStore<T>;
-  protected suggestionsControl: SuggestionsControl<T>;
+  protected suggestionsControl: React.RefObject<SuggestionsControl<T>> = React.createRef();
   protected SuggestionsControlOfProperType: new (props: ISuggestionsControlProps<T>) => SuggestionsControl<T> = SuggestionsControl as new (
     props: ISuggestionsControlProps<T>
   ) => SuggestionsControl<T>;
   protected currentPromise: PromiseLike<T[]>;
+  protected isComponentMounted: boolean = false;
 
   constructor(basePickerProps: P) {
     super(basePickerProps);
@@ -48,7 +49,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public forceResolveSuggestion(): void {
-    if (this.suggestionsControl && this.suggestionsControl.hasSuggestionSelected()) {
+    if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
       this.completeSuggestion();
     } else {
       this._onValidateInput();
@@ -56,7 +57,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   }
 
   public get currentSelectedSuggestionIndex(): number {
-    return this.suggestionsControl ? this.suggestionsControl.currentSuggestionIndex : -1;
+    return this.suggestionsControl.current ? this.suggestionsControl.current.currentSuggestionIndex : -1;
   }
 
   public get isSuggestionsShown(): boolean {
@@ -105,6 +106,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   public componentDidMount(): void {
     this._bindToInputElement();
+    this.isComponentMounted = true;
 
     this._onResolveSuggestions = this._async.debounce(this._onResolveSuggestions, this.props.resolveDelay);
   }
@@ -115,17 +117,18 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
   public componentWillUnmount(): void {
     this._unbindFromInputElement();
+    this.isComponentMounted = false;
   }
 
-  public componentWillReceiveProps(newProps: P): void {
+  public componentWillReceiveProps(newProps: IBaseFloatingPickerProps<T>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
     }
   }
 
   public completeSuggestion = (): void => {
-    if (this.suggestionsControl && this.suggestionsControl.hasSuggestionSelected()) {
-      this.onChange(this.suggestionsControl.currentSuggestion!.item);
+    if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
+      this.onChange(this.suggestionsControl.current.currentSuggestion!.item);
     }
   };
 
@@ -164,7 +167,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
-          ref={this._resolveRef('suggestionsControl')}
+          componentRef={this.suggestionsControl}
           completeSuggestion={this.completeSuggestion}
           shouldLoopSelection={false}
           {...this.props.pickerSuggestionsProps}
@@ -207,7 +210,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       // Ensure that the promise will only use the callback if it was the most recent one.
       const promise: PromiseLike<T[]> = (this.currentPromise = suggestionsPromiseLike);
       promise.then((newSuggestions: T[]) => {
-        if (promise === this.currentPromise) {
+        // Only update if the next promise has not yet resolved and
+        // the floating picker is still mounted.
+        if (promise === this.currentPromise && this.isComponentMounted) {
           this.updateSuggestions(newSuggestions, true /*forceUpdate*/);
         }
       });
@@ -230,8 +235,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       (this.props.onRemoveSuggestion as ((item: T) => void))(item);
     }
 
-    if (this.suggestionsControl) {
-      this.suggestionsControl.removeSuggestion(index);
+    if (this.suggestionsControl.current) {
+      this.suggestionsControl.current.removeSuggestion(index);
     }
   };
 
@@ -252,7 +257,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
 
       case KeyCodes.tab:
       case KeyCodes.enter:
-        if (!ev.shiftKey && !ev.ctrlKey && this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
+        if (!ev.shiftKey && !ev.ctrlKey && this.suggestionsControl.current && this.suggestionsControl.current.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
         } else {
@@ -263,21 +268,21 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
       case KeyCodes.del:
         if (
           this.props.onRemoveSuggestion &&
-          this.suggestionsControl &&
-          this.suggestionsControl.hasSuggestionSelected &&
-          this.suggestionsControl.currentSuggestion &&
+          this.suggestionsControl.current &&
+          this.suggestionsControl.current.hasSuggestionSelected &&
+          this.suggestionsControl.current.currentSuggestion &&
           ev.shiftKey
         ) {
-          (this.props.onRemoveSuggestion as ((item: T) => void))(this.suggestionsControl.currentSuggestion!.item);
+          (this.props.onRemoveSuggestion as ((item: T) => void))(this.suggestionsControl.current.currentSuggestion!.item);
 
-          this.suggestionsControl.removeSuggestion();
+          this.suggestionsControl.current.removeSuggestion();
           this.forceUpdate();
           ev.stopPropagation();
         }
         break;
 
       case KeyCodes.up:
-        if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
+        if (this.suggestionsControl.current && this.suggestionsControl.current.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
           this._updateActiveDescendant();
@@ -285,7 +290,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         break;
 
       case KeyCodes.down:
-        if (this.suggestionsControl && this.suggestionsControl.handleKeyDown(keyCode)) {
+        if (this.suggestionsControl.current && this.suggestionsControl.current.handleKeyDown(keyCode)) {
           ev.preventDefault();
           ev.stopPropagation();
           this._updateActiveDescendant();
@@ -295,8 +300,8 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
   };
 
   private _updateActiveDescendant(): void {
-    if (this.props.inputElement && this.suggestionsControl && this.suggestionsControl.selectedElement) {
-      const selectedElId = this.suggestionsControl.selectedElement.getAttribute('id');
+    if (this.props.inputElement && this.suggestionsControl.current && this.suggestionsControl.current.selectedElement) {
+      const selectedElId = this.suggestionsControl.current.selectedElement.getAttribute('id');
       if (selectedElId) {
         this.props.inputElement.setAttribute('aria-activedescendant', selectedElId as string);
       }

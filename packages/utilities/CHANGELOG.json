@@ -2,6 +2,45 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.35.4",
+      "tag": "@uifabric/utilities_v6.35.4",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Customizer modified to avoid BaseComponent.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c352f028d072a7ead8c9d25ee06975f4f7d02beb"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.3",
+      "tag": "@uifabric/utilities_v6.35.3",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.2` to `^6.0.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.2",
       "tag": "@uifabric/utilities_v6.35.2",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

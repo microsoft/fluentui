@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
+import { IStackTokens } from '../Stack.types';
 import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
@@ -37,8 +38,10 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
       }
     });
 
+    const stackTokens: IStackTokens = { childrenGap: 5 };
+
     return (
-      <Stack gap={5}>
+      <Stack tokens={stackTokens}>
         <Slider
           label="Change the stack height to see how child items shrink:"
           min={1}
@@ -49,7 +52,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
           onChange={this._onHeightChange}
         />
         <div className={styles.container}>
-          <Stack gap={5} padding={10} className={styles.root}>
+          <Stack tokens={stackTokens} padding={10} className={styles.root}>
             <Stack.Item grow className={styles.item}>
               I shrink
             </Stack.Item>

@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Announced } from '../Announced';
 import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
 const _testTags = [
@@ -55,8 +55,10 @@ export class AnnouncedSearchResultsExample extends React.Component<
   }
 
   public render(): JSX.Element {
+    const stackTokens: IStackTokens = { childrenGap: 10 };
+
     return (
-      <Stack gap={10}>
+      <Stack tokens={stackTokens}>
         <Text>
           Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
         </Text>

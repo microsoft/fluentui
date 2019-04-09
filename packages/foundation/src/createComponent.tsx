@@ -71,6 +71,8 @@ export function createComponent<
 
             const viewComponentProps: typeof mergedProps & IDefaultSlotProps<any> = {
               ...(mergedProps as any),
+              styles,
+              tokens,
               _defaultStyles: styles
             };
 

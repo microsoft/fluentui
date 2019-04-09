@@ -78,6 +78,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
             word-wrap: break-word;
           }
       htmlFor="Toggle0"
+      id="Toggle0-label"
     >
       Check to start loading photos
     </label>
@@ -91,6 +92,7 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle0-label"
         className=
             ms-Toggle-background
             {
@@ -196,6 +198,8 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
               padding-top: 0;
               user-select: none;
             }
+        htmlFor="Toggle0"
+        id="Toggle0-stateText"
       >
         Pause
       </label>

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export interface IDropdownErrorExampleState {
@@ -13,8 +13,11 @@ export class DropdownErrorExample extends React.Component<{}, IDropdownErrorExam
 
   public render() {
     const { showError } = this.state;
+
+    const stackTokens: IStackTokens = { childrenGap: 30 };
+
     return (
-      <Stack horizontal gap={30} verticalAlign="start">
+      <Stack horizontal tokens={stackTokens} verticalAlign="start">
         <Toggle label="Show error message" onText="Yes" offText="No" checked={showError} onChange={this._updateShowError} />
         <Dropdown
           placeholder="Select an option"

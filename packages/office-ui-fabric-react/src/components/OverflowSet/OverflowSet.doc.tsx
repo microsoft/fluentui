@@ -7,8 +7,11 @@ import { OverflowSetVerticalExample } from './examples/OverflowSet.Vertical.Exam
 import { OverflowSetStatus } from './OverflowSet.checklist';
 
 const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
+const OverflowSetCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
 const OverflowSetBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
+const OverflowSetBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Basic.Example.tsx') as string;
 const OverflowSetVerticalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
+const OverflowSetVerticalExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Vertical.Example.tsx') as string;
 
 export const OverflowSetPageProps: IDocPageProps = {
   title: 'OverflowSet',
@@ -20,16 +23,19 @@ export const OverflowSetPageProps: IDocPageProps = {
     {
       title: 'OverflowSet Basic Example',
       code: OverflowSetBasicExampleCode,
+      codepenJS: OverflowSetBasicExampleCodepen,
       view: <OverflowSetBasicExample />
     },
     {
       title: 'OverflowSet Vertical Example',
       code: OverflowSetVerticalExampleCode,
+      codepenJS: OverflowSetVerticalExampleCodepen,
       view: <OverflowSetVerticalExample />
     },
     {
       title: 'OverflowSet Custom Example',
       code: OverflowSetCustomExampleCode,
+      codepenJS: OverflowSetCustomExampleCodepen,
       view: <OverflowSetCustomExample />
     }
   ],

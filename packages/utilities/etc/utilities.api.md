@@ -149,7 +149,7 @@ export class Customizations {
 }
 
 // @public
-export class Customizer extends BaseComponent<ICustomizerProps> {
+export class Customizer extends React_2.Component<ICustomizerProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -885,6 +885,12 @@ export function resetIds(counter?: number): void;
 
 // @public
 export function resetMemoizations(): void;
+
+// @public
+export const safeRequestAnimationFrame: (component: React_2.Component<{}, {}, any>) => (cb: Function) => void;
+
+// @public
+export const safeSetTimeout: (component: React_2.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
 
 // @public
 export function setBaseUrl(baseUrl: string): void;

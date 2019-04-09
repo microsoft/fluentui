@@ -5,7 +5,7 @@ import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { List } from 'office-ui-fabric-react/lib/List';
-import './List.Basic.Example.scss';
+import * as styles from './List.Basic.Example.scss';
 
 export type IExampleItem = { name: string; thumbnail: string; description: string };
 
@@ -37,13 +37,13 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, IL
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
-        <TextField label={'Filter by name' + resultCountText} onBeforeChange={this._onFilterChanged} />
+        <TextField label={'Filter by name' + resultCountText} onChange={this._onFilterChanged} />
         <List items={items} onRenderCell={this._onRenderCell} />
       </FocusZone>
     );
   }
 
-  private _onFilterChanged(text: string): void {
+  private _onFilterChanged(_: any, text: string): void {
     const { items } = this.props;
 
     this.setState({
@@ -54,14 +54,14 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, IL
 
   private _onRenderCell(item: IExampleItem, index: number | undefined): JSX.Element {
     return (
-      <div className="ms-ListBasicExample-itemCell" data-is-focusable={true}>
-        <Image className="ms-ListBasicExample-itemImage" src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
-        <div className="ms-ListBasicExample-itemContent">
-          <div className="ms-ListBasicExample-itemName">{item.name}</div>
-          <div className="ms-ListBasicExample-itemIndex">{`Item ${index}`}</div>
-          <div className="ms-ListBasicExample-itemDesc">{item.description}</div>
+      <div className={styles.itemCell} data-is-focusable={true}>
+        <Image className={styles.itemImage} src={item.thumbnail} width={50} height={50} imageFit={ImageFit.cover} />
+        <div className={styles.itemContent}>
+          <div className={styles.itemName}>{item.name}</div>
+          <div className={styles.itemIndex}>{`Item ${index}`}</div>
+          <div>{item.description}</div>
         </div>
-        <Icon className="ms-ListBasicExample-chevron" iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
+        <Icon className={styles.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} />
       </div>
     );
   }
