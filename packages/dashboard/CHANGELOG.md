@@ -1,6 +1,17 @@
 # Change Log - @uifabric/dashboard
 
-This log was last generated on Mon, 08 Apr 2019 12:37:15 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Apr 2019 19:15:27 GMT and should not be manually modified.
+
+## 0.60.0
+Tue, 09 Apr 2019 19:15:27 GMT
+
+### Minor changes
+
+- Deprecate dashboard package
+
+### Patches
+
+- added screen reader support for the nav bar icons
 
 ## 0.59.0
 Mon, 08 Apr 2019 12:37:14 GMT

@@ -2,6 +2,27 @@
   "name": "@uifabric/dashboard",
   "entries": [
     {
+      "version": "0.60.0",
+      "tag": "@uifabric/dashboard_v0.60.0",
+      "date": "Tue, 09 Apr 2019 19:15:27 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Deprecate dashboard package",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "1f61fad83c026df3896a46ea0c1dcd1ac68eb4b7"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "added screen reader support for the nav bar icons",
+            "author": "shivasai09 <33802398+shivasai09@users.noreply.github.com>",
+            "commit": "be4a6d74898068a20743386a7c4beadc0504cc21"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.59.0",
       "tag": "@uifabric/dashboard_v0.59.0",
       "date": "Mon, 08 Apr 2019 12:37:14 GMT",
