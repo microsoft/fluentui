@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.70.0",
+      "tag": "@uifabric/experiments_v6.70.0",
+      "date": "Tue, 09 Apr 2019 12:35:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding DefaultButton and PrimaryButton variants.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "63cf8144e33150d05c45fdce3e57f34c7bfb78f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.7` to `^6.164.8`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.69.0",
       "tag": "@uifabric/experiments_v6.69.0",
       "date": "Mon, 08 Apr 2019 12:37:15 GMT",
