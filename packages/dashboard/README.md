@@ -1,3 +1,3 @@
 # dashboard
 
-This component is a wrapper for intended for use with [fabric dashboard cards](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/dashboard/src/components/Card). Please follow the example to see usage and guidelines.
+We've moved the Dashboard code to a new dedicated repo and have deprecated this experimental package. Please contact m365admincomponents@microsoft.com for information about using and contributing to these controls.
