@@ -9,7 +9,6 @@
   "license": "MIT",
   "dependencies": {
     "@uifabric/charting": "^0.28.12",
-    "@uifabric/dashboard": "0.60.0",
     "@uifabric/date-time": "0.3.5",
     "@uifabric/experiments": "^6.70.0",
     "@uifabric/fabric-website-resources": "^6.14.1",
