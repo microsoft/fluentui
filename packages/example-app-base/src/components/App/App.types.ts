@@ -1,5 +1,5 @@
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink, INavLinkGroup } from '@uifabric/legacy/lib/Nav';
 import { IAppCustomizations } from '../../utilities/customizations';
 
 export enum ExampleStatus {

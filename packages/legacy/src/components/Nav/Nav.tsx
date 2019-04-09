@@ -1,4 +1,4 @@
-import { styled } from '../../Utilities';
+import { styled } from 'office-ui-fabric-react/lib/Utilities';
 import { INavProps, INavStyleProps, INavStyles } from './Nav.types';
 import { NavBase } from './Nav.base';
 import { getStyles } from './Nav.styles';

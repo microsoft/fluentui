@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLinkGroup } from '../index';
 
 export const NavCustomGroupHeadersExample: React.StatelessComponent = () => {
   return (

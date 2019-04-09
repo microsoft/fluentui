@@ -1,5 +1,5 @@
 import { INavStyleProps, INavStyles } from './Nav.types';
-import { IButtonStyles } from '../../Button';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import {
   AnimationClassNames,
   DefaultFontStyles,
@@ -8,7 +8,7 @@ import {
   FontWeights,
   ZIndexes,
   getGlobalClassNames
-} from '../../Styling';
+} from 'office-ui-fabric-react/lib/Styling';
 
 const GlobalClassNames = {
   root: 'ms-Nav',

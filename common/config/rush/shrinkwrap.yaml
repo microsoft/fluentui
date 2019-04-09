@@ -18,6 +18,7 @@ dependencies:
   '@rush-temp/foundation-scenarios': 'file:projects/foundation-scenarios.tgz'
   '@rush-temp/icons': 'file:projects/icons.tgz'
   '@rush-temp/jest-serializer-merge-styles': 'file:projects/jest-serializer-merge-styles.tgz'
+  '@rush-temp/legacy': 'file:projects/legacy.tgz'
   '@rush-temp/merge-styles': 'file:projects/merge-styles.tgz'
   '@rush-temp/migration': 'file:projects/migration.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:projects/office-ui-fabric-react.tgz'
@@ -527,6 +528,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-yuqG+J69MOdf9zrYjJHZPJC+//jPeckl40aKEdJGr0C7/Nqel6rCC2qnzDJh8UbKRHIvH339MRrWa69rXSsl+g==
+  /@microsoft/load-themed-styles/1.8.84:
+    dev: false
+    resolution:
+      integrity: sha512-2wva5i4gxGD+CdVudZkMb0HZyZo8ANXDTmUEohl9oak+NpCgBtXdruRh6UfrIJ59jTCcOV30rYoxSpieA6rYdA==
   /@microsoft/loader-load-themed-styles/1.7.127:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.59
@@ -1564,6 +1569,25 @@ packages:
     dev: false
     resolution:
       integrity: sha512-h8UtyB/TCdOwWoEPQJGHgsWwSnTqPrRZbhyZYjAwY9/AbjdjfkKy9L/T3fIFS6MKX8YrpWFRm6xqFSgU+2DRGw==
+  /airbnb-prop-types/2.13.2/react@16.8.6:
+    dependencies:
+      array.prototype.find: 2.0.4
+      function.prototype.name: 1.1.0
+      has: 1.0.3
+      is-regex: 1.0.4
+      object-is: 1.0.1
+      object.assign: 4.1.0
+      object.entries: 1.1.0
+      prop-types: 15.7.2
+      prop-types-exact: 1.2.0
+      react: 16.8.6
+      react-is: 16.8.6
+    dev: false
+    id: registry.npmjs.org/airbnb-prop-types/2.13.2
+    peerDependencies:
+      react: ^0.14 || ^15.0.0 || ^16.0.0-alpha
+    resolution:
+      integrity: sha512-2FN6DlHr6JCSxPPi25EnqGaXC4OC3/B3k1lCd6MMYrZ51/Gf/1qDfaR+JElzWa+Tl7cY2aYOlsYJGFeQyVHIeQ==
   /ajv-errors/1.0.1/ajv@6.9.1:
     dependencies:
       ajv: 6.9.1
@@ -1904,6 +1928,13 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
+  /array.prototype.find/2.0.4:
+    dependencies:
+      define-properties: 1.1.3
+      es-abstract: 1.13.0
+    dev: false
+    resolution:
+      integrity: sha1-VWpcU2LAhkgyPdrrnenRS8GGTJA=
   /array.prototype.flat/1.2.1:
     dependencies:
       define-properties: 1.1.3
@@ -4748,7 +4779,7 @@ packages:
       integrity: sha1-vLgrqnKtebQmp2cy8aga1t8m1oQ=
   /define-properties/1.1.3:
     dependencies:
-      object-keys: 1.1.0
+      object-keys: 1.1.1
     dev: false
     engines:
       node: '>= 0.4'
@@ -5148,6 +5179,26 @@ packages:
       react-dom: ^16.0.0-0
     resolution:
       integrity: sha512-0QqwEZcBv1xEEla+a3H7FMci+y4ybLia9cZzsdIrId7qcig4MK0kqqf6iiCILH1lsKS6c6AVqL3wGPhCevv5aQ==
+  /enzyme-adapter-react-16/1.12.1/ee2efeb9ba09e3479f87e6d53c5a2c00:
+    dependencies:
+      enzyme: 3.9.0
+      enzyme-adapter-utils: /enzyme-adapter-utils/1.11.0/react@16.8.6
+      object.assign: 4.1.0
+      object.values: 1.1.0
+      prop-types: 15.7.2
+      react: 16.8.6
+      react-dom: /react-dom/16.8.6/react@16.8.6
+      react-is: 16.8.6
+      react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
+      semver: 5.7.0
+    dev: false
+    id: registry.npmjs.org/enzyme-adapter-react-16/1.12.1
+    peerDependencies:
+      enzyme: ^3.0.0
+      react: ^16.0.0-0
+      react-dom: ^16.0.0-0
+    resolution:
+      integrity: sha512-GB61gvY97XvrA6qljExGY+lgI6BBwz+ASLaRKct9VQ3ozu0EraqcNn3CcrUckSGIqFGa1+CxO5gj5is5t3lwrw==
   /enzyme-adapter-react-16/1.9.1:
     dependencies:
       enzyme-adapter-utils: 1.10.0
@@ -5224,6 +5275,21 @@ packages:
       react: 0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0
     resolution:
       integrity: sha512-VnIXJDYVTzKGbdW+lgK8MQmYHJquTQZiGzu/AseCZ7eHtOMAj4Rtvk8ZRopodkfPves0EXaHkXBDkVhPa3t0jA==
+  /enzyme-adapter-utils/1.11.0/react@16.8.6:
+    dependencies:
+      airbnb-prop-types: /airbnb-prop-types/2.13.2/react@16.8.6
+      function.prototype.name: 1.1.0
+      object.assign: 4.1.0
+      object.fromentries: 2.0.0
+      prop-types: 15.7.2
+      react: 16.8.6
+      semver: 5.7.0
+    dev: false
+    id: registry.npmjs.org/enzyme-adapter-utils/1.11.0
+    peerDependencies:
+      react: 0.13.x || 0.14.x || ^15.0.0-0 || ^16.0.0-0
+    resolution:
+      integrity: sha512-0VZeoE9MNx+QjTfsjmO1Mo+lMfunucYB4wt5ficU85WB/LoetTJrbuujmHP3PJx6pSoaAuLA+Mq877x4LoxdNg==
   /enzyme-to-json/3.3.5:
     dependencies:
       lodash: 4.17.11
@@ -5237,6 +5303,18 @@ packages:
   /enzyme-to-json/3.3.5/enzyme@3.8.0:
     dependencies:
       enzyme: 3.8.0
+      lodash: 4.17.11
+    dev: false
+    engines:
+      node: '>=4.0.0'
+    id: registry.npmjs.org/enzyme-to-json/3.3.5
+    peerDependencies:
+      enzyme: ^3.0.0
+    resolution:
+      integrity: sha512-DmH1wJ68HyPqKSYXdQqB33ZotwfUhwQZW3IGXaNXgR69Iodaoj8TF/D9RjLdz4pEhGq2Tx2zwNUIjBuqoZeTgA==
+  /enzyme-to-json/3.3.5/enzyme@3.9.0:
+    dependencies:
+      enzyme: 3.9.0
       lodash: 4.17.11
     dev: false
     engines:
@@ -5316,7 +5394,7 @@ packages:
       has: 1.0.3
       is-callable: 1.1.4
       is-regex: 1.0.4
-      object-keys: 1.1.0
+      object-keys: 1.1.1
     dev: false
     engines:
       node: '>= 0.4'
@@ -6819,6 +6897,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Nc6YNECYpxyJABGYJAyw7dBAYbXEuIzwzkqoJnwbc1nIpCiN+3ioYf0XrBnLiyyG0JLuJhpPtt2iTSbXiKLoyA==
+  /highlight.js/9.15.6:
+    dev: false
+    resolution:
+      integrity: sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
   /hmac-drbg/1.0.1:
     dependencies:
       hash.js: 1.1.7
@@ -10031,6 +10113,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-6OO5X1+2tYkNyNEx6TsCxEqFfRWaqx6EtMiSbGrw8Ob8v9Ne+Hl8rBAgLBZn5wjEz3s/s6U1WXFUFOcxxAwUpg==
+  /object-keys/1.1.1:
+    dev: false
+    engines:
+      node: '>= 0.4'
+    resolution:
+      integrity: sha512-NuAESUOUMrlIXOfHKzD6bpPu3tYt3xvjNdRIQ+FeT0lNb4K8WR70CaDxhuNguS2XG+GjkyMwOzsN5ZktImfhLA==
   /object-visit/1.0.1:
     dependencies:
       isobject: 3.0.1
@@ -11080,6 +11168,14 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-H8oWEoRZpybm6NV4to9/1limhttEo13xK62pNvn2JzY0MA03p7s0OjtmhXyon3uJmxiJJVSuUwEJFFssI3eBiQ==
+  /prop-types-exact/1.2.0:
+    dependencies:
+      has: 1.0.3
+      object.assign: 4.1.0
+      reflect.ownkeys: 0.2.0
+    dev: false
+    resolution:
+      integrity: sha512-K+Tk3Kd9V0odiXFP9fwDHUYRyvK3Nun3GVyPapSIs5OBkITAm15W0CPFD/YKTkMUAbc0b9CUwRQp2ybiBIq+eA==
   /prop-types/15.7.2:
     dependencies:
       loose-envify: 1.4.0
@@ -11403,6 +11499,19 @@ packages:
       react: ^16.0.0
     resolution:
       integrity: sha512-Ob2wK7XG2tUDt7ps7LtLzGYYB6DXMCLj0G5fO6WeEICtT4/HdpOi7W/xLzZnR6RCG1tYza60nMdqtxzA8FaPJQ==
+  /react-dom/16.8.6/react@16.8.6:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+      react: 16.8.6
+      scheduler: 0.13.6
+    dev: false
+    id: registry.npmjs.org/react-dom/16.8.6
+    peerDependencies:
+      react: ^16.0.0
+    resolution:
+      integrity: sha512-1nL7PIq9LTL3fthPqwkvr2zY7phIPjYrT0jp4HjyEQrEROnw4dG41VVwi/wfoCneoleqrNX7iAD+pXebJZwrwA==
   /react-error-overlay/4.0.1:
     dev: false
     resolution:
@@ -11521,6 +11630,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-PVadd+WaUDOAciICm/J1waJaSvgq+4rHE/K70j0PFqKhkTBsPv/82UGQJNXAngz1fOQLLxI6z1sEDmJDQhCTAA==
+  /react-is/16.8.6:
+    dev: false
+    resolution:
+      integrity: sha512-aUk3bHfZ2bRSVFFbbeVS4i+lNPZr3/WM5jT2J5omUVV1zzcs1nAaf3l51ctA5FFvCRbhrH0bdAsRRQddFJZPtA==
   /react-lifecycles-compat/3.0.4:
     dev: false
     resolution:
@@ -11639,6 +11752,19 @@ packages:
       react: ^16.0.0
     resolution:
       integrity: sha512-jQ9Tf/ilIGSr55Cz23AZ/7H3ABEdo9oy2zF9nDHZyhLHDSLKuoILxw2ifpBfuuwQvj4LCoqdru9iZf7gwFH28A==
+  /react-test-renderer/16.8.6/react@16.8.6:
+    dependencies:
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+      react: 16.8.6
+      react-is: 16.8.6
+      scheduler: 0.13.6
+    dev: false
+    id: registry.npmjs.org/react-test-renderer/16.8.6
+    peerDependencies:
+      react: ^16.0.0
+    resolution:
+      integrity: sha512-H2srzU5IWYT6cZXof6AhUcx/wEyJddQ8l7cLM/F7gDXYyPr4oq+vCIxJYXVGhId1J706sqziAjuOEjyNkfgoEw==
   /react-transition-group/2.5.3:
     dependencies:
       dom-helpers: 3.4.0
@@ -11731,6 +11857,17 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-0GQ6gFXfUH7aZcjGVymlPOASTuSjlQL4ZtVC5YKH+3JL6bBLCVO21DknzmaPlI90LN253ojj02nsapy+j7wIjg==
+  /react/16.8.6:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+      prop-types: 15.7.2
+      scheduler: 0.13.6
+    dev: false
+    engines:
+      node: '>=0.10.0'
+    resolution:
+      integrity: sha512-pC0uMkhLaHm11ZSJULfOBqV4tIZkx87ZLvbbQYunNixAAvjnC+snJCg0XQXn9VIsttVsbZP/H/ewzgsd5fxKXw==
   /read-pkg-up/1.0.1:
     dependencies:
       find-up: 1.1.2
@@ -11937,6 +12074,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==
+  /reflect.ownkeys/0.2.0:
+    dev: false
+    resolution:
+      integrity: sha1-dJrO7H8/34tj+SegSAnpDFwLNGA=
   /refractor/2.6.2:
     dependencies:
       hastscript: 5.0.0
@@ -12477,6 +12618,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-cvSOlRPxOHs5dAhP9yiS/6IDmVAVxmk33f0CtTJRkmUWcb1Us+t7b1wqdzoC0REw2muC9V5f1L/w5R5uKGaepA==
+  /scheduler/0.13.6:
+    dependencies:
+      loose-envify: 1.4.0
+      object-assign: 4.1.1
+    dev: false
+    resolution:
+      integrity: sha512-IWnObHt413ucAYKsD9J1QShUKkbKLQQHdxRyw73sw4FN26iWr3DY/H34xGPe4nmL1DwXyWmSWmMrA9TfQbE/XQ==
   /schema-utils/0.3.0:
     dependencies:
       ajv: 5.5.2
@@ -15033,7 +15181,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-Pl5HOEouvKDT1O2MapxUYg25D6wW47+hzfCO0kC/QUTi+2SNYdvusw7KLUtux4gKN1WoHYMGtYAz3J4vI6cOEQ==
+      integrity: sha512-i+/WRpblLHBsKeMCsN8oQx40JWiWD58OXrf6BZJYmeDbE+C8xGnkQtDmRKdWyM59/PqjNww0h1Vm0+sndPTVzA==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -15212,7 +15360,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-OBe7Li3fsSkcykHfo6xWuaYWUpzSKmC0WhnYsDUzioVtQnkVomxGZHrQp9qxNEyfmKjRpWAVzc6eLDlbggbX+w==
+      integrity: sha512-AnvaL+hgPZWGO7e8u+zmMlR0INwu4pU8HNeatzTLVshc3xgOyWGuIKGjRJf2C6oxp+hZx8uTgEkLL9/8ry1G7w==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -15287,7 +15435,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-MdubThg3vcIn0pph1x6zozyvDSGiIIAbRuFkwEf4Dzb8wKQMJZ9NzEzMmZc8fiv6G45R7/63gUsZ5rBc10G76A==
+      integrity: sha512-8wlPkciHwcJ4/pvFjmYFrzv30qDDnh1stgvpIBEVDszeQS3yUQuP+58r7aAU7DatCugveIJqndKU5qK//6F72w==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15314,7 +15462,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-ZNP7bnnwdXBgdFWVDvmWNJA9H4RARxZxIxW1sx/49c9hpe+xKOTzwa5RC+OfyD86MbmwNnez6tEO9bF9LEvnXg==
+      integrity: sha512-4mCaqaiywKxjCgB18gmmp/026zldFe07UN6dPlup6L3NEn2Pz4y/Do7bbbTK0txGDhXh7ETdAcOflJVLaCwOWA==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15410,6 +15558,46 @@ packages:
     resolution:
       integrity: sha512-p+SRVB5ktzWPxVoYG8cis5GVdJmXtJooPTjJgA4nZiVP461/78Nz5wd/qHJ2776bUKgNUKlUXEl9q+rPRm0KhA==
       tarball: 'file:projects/jest-serializer-merge-styles.tgz'
+    version: 0.0.0
+  'file:projects/legacy.tgz':
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.84
+      '@types/enzyme': 3.1.13
+      '@types/enzyme-adapter-react-16': 1.0.3
+      '@types/es6-promise': 0.0.32
+      '@types/glob': 7.1.1
+      '@types/jest': 23.0.0
+      '@types/node': 8.10.45
+      '@types/prop-types': 15.5.9
+      '@types/react': 16.8.3
+      '@types/react-dom': 16.8.1
+      '@types/react-test-renderer': 16.8.1
+      '@types/resemblejs': 1.3.28
+      '@types/sinon': 2.2.2
+      '@types/webpack-env': 1.13.0
+      enzyme: 3.9.0
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.12.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-to-json: /enzyme-to-json/3.3.5/enzyme@3.9.0
+      es6-map: 0.1.5
+      es6-promise: 4.2.6
+      es6-weak-map: 2.0.2
+      glob: 7.1.3
+      highlight.js: 9.15.6
+      jest-snapshot: 24.1.0
+      office-ui-fabric-core: 9.6.1
+      prop-types: 15.7.2
+      react: 16.8.6
+      react-dom: /react-dom/16.8.6/react@16.8.6
+      react-highlight: 0.10.0
+      react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
+      resemblejs: 2.2.6
+      sinon: 4.5.0
+      tslib: 1.9.3
+    dev: false
+    name: '@rush-temp/legacy'
+    resolution:
+      integrity: sha512-BT1in3LarlIV8tpGBbjU6knXysWM3pTVH57TNUwoPhqAkwqnvsBr4/lM6RHWr2v7d3p8rfVkRMMc2018OXCHUQ==
+      tarball: 'file:projects/legacy.tgz'
     version: 0.0.0
   'file:projects/merge-styles.tgz':
     dependencies:
@@ -15579,7 +15767,7 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-2LrzJUDc/FIKgMduSl8YwHoJ3VOGe47sB6c0gnrqEr3v7xCiZE/izfbPI1lmyqjz//wN1PrsauMxxwZnkqM3VA==
+      integrity: sha512-J1DMPDZb8r7Hf+pcRDY/c6S6iGuQvAq/8l+3GKKshcnbd0/ZvzTIGan+fVg05tofl/qPylTqn0QRiLxhT+YFiA==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -15737,7 +15925,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-5ekZ/qz5tbAHJsPlxzctnx8bZOaQ6ko8JonYHzfYfOAizhoJidOfLQlQsYkivYq6EvAwcYrRU4I+JoaDm32aKA==
+      integrity: sha512-/SnSBTpnqXphTq/T2OvaxqYDT+nGnL2JLVAQH0WReHIn9UiZkh058aSHrQQr9uUrgt5FQnT8UlmeclIR5SHUwA==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -15778,6 +15966,7 @@ specifiers:
   '@rush-temp/foundation-scenarios': 'file:./projects/foundation-scenarios.tgz'
   '@rush-temp/icons': 'file:./projects/icons.tgz'
   '@rush-temp/jest-serializer-merge-styles': 'file:./projects/jest-serializer-merge-styles.tgz'
+  '@rush-temp/legacy': 'file:./projects/legacy.tgz'
   '@rush-temp/merge-styles': 'file:./projects/merge-styles.tgz'
   '@rush-temp/migration': 'file:./projects/migration.tgz'
   '@rush-temp/office-ui-fabric-react': 'file:./projects/office-ui-fabric-react.tgz'
