@@ -29,7 +29,7 @@ export class PivotSeparateNoSelectedKeyExample extends React.Component<any, any>
             getTabId={this._getTabId}
           >
             {Object.keys(pivotItems).map(name => (
-              <PivotItem headerText={name} itemKey={name} />
+              <PivotItem key={`pivotItemKey_${name}`} headerText={name} itemKey={name} />
             ))}
           </Pivot>
           <IconButton
