@@ -5420,6 +5420,8 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
     onDismissed?: () => void;
     onLightDismissClick?: () => void;
+    onOpen?: () => void;
+    onOpened?: () => void;
     onOuterClick?: () => void;
     onRenderBody?: IRenderFunction<IPanelProps>;
     onRenderFooter?: IRenderFunction<IPanelProps>;

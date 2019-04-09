@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 08 Apr 2019 12:37:15 GMT and should not be manually modified.
+This log was last generated on Tue, 09 Apr 2019 12:35:20 GMT and should not be manually modified.
+
+## 6.70.0
+Tue, 09 Apr 2019 12:35:20 GMT
+
+### Minor changes
+
+- Button: Adding DefaultButton and PrimaryButton variants.
 
 ## 6.69.0
 Mon, 08 Apr 2019 12:37:15 GMT
