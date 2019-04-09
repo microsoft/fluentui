@@ -7,14 +7,14 @@ import './TextField.Styled.Example.scss';
 
 export const TextFieldStyledExample: React.StatelessComponent = () => {
   return (
-    <Stack gap={15}>
+    <Stack tokens={{ childrenGap: 15 }}>
       <Text styles={{ root: { maxWidth: 600 } }}>
         These examples show how components that used to be styled using CSS can be styled using JS styling. The preferred method is JS
         styling for several reasons: type safety for styling, more predictable behavior, and clear feedback via typing when component
         changes affect existing styling code.
       </Text>
-      <TextField label="Theme Primary Label, Red Top Border (JS):" required={true} styles={getStyles} />
-      <TextField label="Theme Primary Label, Red Top Border (CSS):" required={true} className="textField-cssStyled" />
+      <TextField label="Theme Primary Label, Red Top Border (JS):" required styles={getStyles} />
+      <TextField label="Theme Primary Label, Red Top Border (CSS):" required className="textField-cssStyled" />
     </Stack>
   );
 };

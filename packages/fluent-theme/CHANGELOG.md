@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Wed, 27 Mar 2019 12:34:02 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 0.16.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 0.16.3
 Wed, 27 Mar 2019 12:34:02 GMT

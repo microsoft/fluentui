@@ -20,8 +20,9 @@ export class TextFieldErrorMessageExample extends React.Component<{}, ITextField
 
   public render(): JSX.Element {
     const { showFields } = this.state;
+
     return (
-      <Stack gap={20} maxWidth={350}>
+      <Stack tokens={{ childrenGap: 20 }} maxWidth={350}>
         <Toggle label="Show text fields" inlineLabel checked={showFields} onChange={this._toggleShowFields} />
         {showFields && (
           <>

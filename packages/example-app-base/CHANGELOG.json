@@ -2,6 +2,70 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.13.2",
+      "tag": "@uifabric/example-app-base_v6.13.2",
+      "date": "Tue, 02 Apr 2019 12:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "handle TSDoc default value tag",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "00ac1fea4ae3afd066683b919ebeca20244cda4c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.1` to `^6.164.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.1",
+      "tag": "@uifabric/example-app-base_v6.13.1",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/example-app-base_v6.13.0",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Code and documentation cleanup",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Make CodepenComponent specify SCSS preprocessor",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "2921eadc749c31276fac1a81c4ad1744f35d3308"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.1 <7.0.0` to `>=6.163.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.12.4",
       "tag": "@uifabric/example-app-base_v6.12.4",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

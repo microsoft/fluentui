@@ -4,6 +4,7 @@ import {
   AnimationVariables,
   DefaultFontStyles,
   getGlobalClassNames,
+  HighContrastSelector,
   ScreenWidthMinMedium,
   ScreenWidthMinLarge,
   ScreenWidthMinXLarge,
@@ -257,6 +258,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
+          },
+          [HighContrastSelector]: {
+            borderLeft: `3px solid ${palette.neutralLight}`,
+            borderRight: `3px solid ${palette.neutralLight}`
           },
           ...getPanelBreakpoints(type)
         }

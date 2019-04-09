@@ -175,9 +175,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Called after the input's value updates but before re-rendering.
+   * Unlike `onChange`, this is also called when the value is updated via props.
+   *
+   * NOTE: This should be used *very* rarely. `onChange` is more appropriate for most situations.
+   *
    * @param newValue - The new value. Type should be string.
    */
-  onBeforeChange?: (newValue: any) => void;
+  onBeforeChange?: (newValue?: string) => void;
 
   /**
    * Function called after validation completes.
