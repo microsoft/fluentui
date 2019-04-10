@@ -6,7 +6,7 @@ const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
 const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
 
 module.exports = async function getPerfRegressions() {
-  const browser = await require('puppeteer').launch({ headless: false });
+  const browser = await require('puppeteer').launch({ headless: true });
   let page = await browser.newPage();
 
   // get perf numbers for existing code
