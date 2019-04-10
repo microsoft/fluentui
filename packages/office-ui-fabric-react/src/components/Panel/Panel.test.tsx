@@ -38,19 +38,30 @@ describe('Panel', () => {
       ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('fires the correct events when opening', () => {
+    it('fires the correct events', () => {
       let openedCalled = false;
       let openCalled = false;
+      let dismissedCalled = false;
+      let dismissCalled = false;
+
       const setOpenTrue = (): void => {
         openCalled = true;
       };
       const setOpenedTrue = (): void => {
         openedCalled = true;
       };
-
+      const setDismissTrue = (): void => {
+        dismissCalled = true;
+      };
+      const setDismissedTrue = (): void => {
+        dismissedCalled = true;
+      };
       jest.useFakeTimers();
 
-      const panel: PanelBase = ReactDOM.render(<PanelBase isOpen={false} onOpen={setOpenTrue} onOpened={setOpenedTrue} />, div) as any;
+      const panel: PanelBase = ReactDOM.render(
+        <PanelBase onOpen={setOpenTrue} onOpened={setOpenedTrue} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+        div
+      ) as any;
 
       panel.open();
 
@@ -60,6 +71,18 @@ describe('Panel', () => {
       jest.runOnlyPendingTimers();
 
       expect(openedCalled).toEqual(true);
+
+      expect(dismissCalled).toEqual(false);
+      expect(dismissedCalled).toEqual(false);
+
+      panel.dismiss();
+
+      expect(dismissCalled).toEqual(true);
+      expect(dismissedCalled).toEqual(false);
+
+      jest.runOnlyPendingTimers();
+
+      expect(dismissedCalled).toEqual(true);
     });
   });
 
@@ -70,33 +93,6 @@ describe('Panel', () => {
 
     afterEach(() => {
       ReactDOM.unmountComponentAtNode(div);
-    });
-
-    it('fires the correct events when closing', () => {
-      let dismissedCalled = false;
-      let dismissCalled = false;
-      const setDismissTrue = (): void => {
-        dismissCalled = true;
-      };
-      const setDismissedTrue = (): void => {
-        dismissedCalled = true;
-      };
-
-      jest.useFakeTimers();
-
-      const panel: PanelBase = ReactDOM.render(
-        <PanelBase isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
-        div
-      ) as any;
-
-      panel.dismiss();
-
-      expect(dismissCalled).toEqual(true);
-      expect(dismissedCalled).toEqual(false);
-
-      jest.runOnlyPendingTimers();
-
-      expect(dismissedCalled).toEqual(true);
     });
   });
 });
