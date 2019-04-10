@@ -1,3 +1,4 @@
+// TODO: add the ability to run this perf-test against a non PR deployed site
 const urlFromDeployJob = `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`;
 const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
 
