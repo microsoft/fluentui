@@ -19,6 +19,8 @@ export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
   searchMoreAvailable: boolean;
+  currentlySelectedItems: IExtendedPersonaProps[];
+  suggestionItems: IPersonaProps[];
 }
 
 interface IClassNames {
@@ -28,7 +30,7 @@ interface IClassNames {
   to: IStyle;
 }
 
-export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeoplePickerExampleState> {
+export class ExtendedPeoplePickerControlledExample extends React.Component<{}, IPeoplePickerExampleState> {
   private _picker = React.createRef<ExtendedPeoplePicker>();
   private _floatingPickerProps: IBaseFloatingPickerProps<IPersonaProps>;
   private _selectedItemsListProps: ISelectedPeopleProps;
@@ -42,7 +44,9 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     this.state = {
       peopleList: people,
       mostRecentlyUsed: mru,
-      searchMoreAvailable: true
+      searchMoreAvailable: true,
+      currentlySelectedItems: [],
+      suggestionItems: []
     };
 
     this._suggestionProps = {
@@ -169,6 +173,10 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
   private _renderExtendedPicker(): JSX.Element {
     return (
       <ExtendedPeoplePicker
+        selectedItems={this.state.currentlySelectedItems}
+        suggestionItems={this.state.suggestionItems}
+        onItemAdded={this._onItemAdded}
+        onItemsRemoved={this._onItemsRemoved}
         floatingPickerProps={this._floatingPickerProps}
         selectedItemsListProps={this._selectedItemsListProps}
         onRenderFloatingPicker={FloatingPeoplePicker}
@@ -196,7 +204,7 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
   }
 
   private _getEditingItemText = (item: IExtendedPersonaProps): string => {
-    return item.text as string;
+    return item.text || '';
   };
 
   private _onSetFocusButtonClicked = (): void => {
@@ -206,12 +214,11 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
   };
 
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
-    const picker = this._picker.current;
-    const selectedItemsList = picker && picker.selectedItemsList.current;
-    if (selectedItemsList) {
-      // tslint:disable-next-line:no-any
-      (selectedItemsList as SelectedPeopleList).replaceItem(item, this._getExpandedGroupItems(item));
-    }
+    const { currentlySelectedItems } = this.state;
+    const indexToRemove = currentlySelectedItems.indexOf(item);
+    const newItems = currentlySelectedItems;
+    newItems.splice(indexToRemove, 1, ...this._getExpandedGroupItems(item));
+    this.setState({ currentlySelectedItems: newItems });
   };
 
   private _onRemoveSuggestion = (item: IPersonaProps): void => {
@@ -236,14 +243,16 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
       filteredPersonas = this._removeDuplicates(filteredPersonas, currentPersonas);
     }
 
-    return this._convertResultsToPromise(filteredPersonas);
+    this.setState({ suggestionItems: filteredPersonas });
+    return null;
   };
 
   private _returnMostRecentlyUsed = (): IPersonaProps[] | Promise<IPersonaProps[]> | null => {
     let { mostRecentlyUsed } = this.state;
     const items = (this._picker.current && this._picker.current.items) || [];
     mostRecentlyUsed = this._removeDuplicates(mostRecentlyUsed, items);
-    return this._convertResultsToPromise(mostRecentlyUsed);
+    this.setState({ suggestionItems: mostRecentlyUsed });
+    return null;
   };
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
@@ -273,9 +282,14 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     this.setState({ searchMoreAvailable: true });
   };
 
-  private _convertResultsToPromise(results: IPersonaProps[]): Promise<IPersonaProps[]> {
-    return new Promise<IPersonaProps[]>(resolve => setTimeout(() => resolve(results), 150));
-  }
+  private _onItemAdded = (selectedSuggestion: IExtendedPersonaProps) => {
+    this.setState({ currentlySelectedItems: this.state.currentlySelectedItems.concat(selectedSuggestion) });
+  };
+
+  private _onItemsRemoved = (items: IExtendedPersonaProps[]): void => {
+    const newItems = this.state.currentlySelectedItems.filter(value => items.indexOf(value) === -1);
+    this.setState({ currentlySelectedItems: newItems });
+  };
 
   private _validateInput = (input: string): boolean => {
     return input.indexOf('@') !== -1;
