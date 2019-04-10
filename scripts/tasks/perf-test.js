@@ -32,7 +32,7 @@ module.exports = async function getPerfRegressions() {
   // Write results to file
   require('fs').writeFileSync(require('path').join('apps/perf-test/dist', 'perfCounts.txt'), comment);
 
-  let cmd = `echo ##vso[task.setvariable variable=PerfComment.FilePath;]apps/perf-test/dist/perfCounts.txt}`;
+  let cmd = `echo ##vso[task.setvariable variable=PerfComment.FilePath;]apps/perf-test/dist/perfCounts.txt`;
   execSync(cmd);
 
   cmd = `echo ##vso[task.setvariable variable=PerfComment.Status;]${status}`;
