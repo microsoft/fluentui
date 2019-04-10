@@ -35,7 +35,7 @@ for (const fileInfo of Object.values(exampleDataFiles)) {
   // Strip the first few lines of comments from the files--they all have notes at the top which
   // don't need to be in the resulting codepen
   while (contents.startsWith('//')) {
-    contents = contents.replace(/^.*?\n/, '');
+    contents = contents.replace(/^.*?\r?\n/, '');
   }
   // Hack to quickly get rid of exports
   contents = contents.replace(/^export /gm, '');
@@ -45,7 +45,7 @@ for (const fileInfo of Object.values(exampleDataFiles)) {
 // PeopleExampleData imports TestImages and uses it in a constant.
 // Replace the import with the TestImages file contents to avoid a runtime error.
 exampleDataFiles.peopleExampleData.contents = exampleDataFiles.peopleExampleData.contents.replace(
-  /import .*?\bTestImages\b.*?\n/,
+  /import .*?\bTestImages\b.*?\r?\n/,
   exampleDataFiles.testImages.contents
 );
 
