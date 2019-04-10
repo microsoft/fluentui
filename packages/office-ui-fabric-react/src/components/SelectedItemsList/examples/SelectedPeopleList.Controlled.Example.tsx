@@ -11,11 +11,12 @@ import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { people, groupOne, groupTwo } from '../../ExtendedPicker/examples/PeopleExampleData';
 
-export interface ISelectedPeopleListBasicExampleState {
+export interface ISelectedPeopleListControlledExampleState {
+  currentSelectedItems: IExtendedPersonaProps[];
   nextPersonIndex: number;
 }
 
-export class SelectedPeopleListBasicExample extends React.Component<{}, ISelectedPeopleListBasicExampleState> {
+export class SelectedPeopleListControlledExample extends React.Component<{}, ISelectedPeopleListControlledExampleState> {
   private _selectionList = React.createRef<SelectedPeopleList>();
   private _selection: Selection;
 
@@ -23,6 +24,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, ISelecte
     super(props);
 
     this.state = {
+      currentSelectedItems: [people[40]],
       nextPersonIndex: 0
     };
     this._selection = new Selection({ onSelectionChanged: () => this.forceUpdate() });
@@ -37,11 +39,11 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, ISelecte
           disabled={this.state.nextPersonIndex >= people.length}
           styles={{ root: { display: 'block', marginBottom: 20 } }}
         />
-        <Stack horizontal wrap>
+        <Stack horizontal wrap styles={{ root: { maxWidth: '100%' } }}>
           <SelectedPeopleList
             key="normal"
             removeButtonAriaLabel="Remove"
-            defaultSelectedItems={[people[40]]}
+            selectedItems={this.state.currentSelectedItems}
             componentRef={this._selectionList}
             onCopyItems={this._onCopyItems}
             onExpandGroup={this._onExpandItem}
@@ -49,6 +51,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, ISelecte
             removeMenuItemText="Remove"
             selection={this._selection}
             onRenderItem={this._onRenderItem}
+            onItemDeleted={this._onItemDeleted}
           />
         </Stack>
       </div>
@@ -60,16 +63,31 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, ISelecte
   };
 
   private _onAddItemButtonClicked = (): void => {
-    if (this._selectionList.current) {
-      const { nextPersonIndex } = this.state;
-      this._selectionList.current.addItems([people[nextPersonIndex]]);
-      this.setState({ nextPersonIndex: nextPersonIndex + 1 });
-    }
+    const { nextPersonIndex, currentSelectedItems } = this.state;
+    this.setState({
+      currentSelectedItems: [...currentSelectedItems, people[nextPersonIndex]],
+      nextPersonIndex: nextPersonIndex + 1
+    });
+  };
+
+  private _onItemDeleted = (item: IExtendedPersonaProps): void => {
+    const { currentSelectedItems } = this.state;
+    const indexToRemove = currentSelectedItems.indexOf(item);
+    const newSelectedItems = [...currentSelectedItems];
+    newSelectedItems.splice(indexToRemove, 1);
+    this.setState({ currentSelectedItems: newSelectedItems });
   };
 
   private _onExpandItem = (item: IExtendedPersonaProps): void => {
+    const { currentSelectedItems } = this.state;
     const expandedItem = item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
-    this._selectionList.current!.replaceItem(item, expandedItem);
+    const indexToExpand = currentSelectedItems.indexOf(item);
+    this.setState({
+      currentSelectedItems: currentSelectedItems
+        .slice(0, indexToExpand)
+        .concat(expandedItem)
+        .concat(currentSelectedItems.slice(indexToExpand + 1))
+    });
   };
 
   private _onCopyItems(items: IExtendedPersonaProps[]): string {

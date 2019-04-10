@@ -1,8 +1,14 @@
 import * as React from 'react';
 
-import { PeopleSelectedItemsListExample } from '../examples/SelectedPeopleList.Basic.Example';
 import { IDocPageProps } from '../../../common/DocPage.types';
-const PeopleSelectedItemsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
+
+import { SelectedPeopleListBasicExample } from '../examples/SelectedPeopleList.Basic.Example';
+import { SelectedPeopleListControlledExample } from '../examples/SelectedPeopleList.Controlled.Example';
+
+const SelectedPeopleListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
+const SelectedPeopleListBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Basic.Example.tsx') as string;
+const SelectedPeopleListControlledExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Controlled.Example.tsx') as string;
+const SelectedPeopleListControlledExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SelectedItemsList/examples/SelectedPeopleList.Controlled.Example.tsx') as string;
 
 export const SelectedPeopleListPageProps: IDocPageProps = {
   title: 'SelectedPeopleList',
@@ -11,9 +17,16 @@ export const SelectedPeopleListPageProps: IDocPageProps = {
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SelectedPeopleList',
   examples: [
     {
-      title: 'Selected People List',
-      code: PeopleSelectedItemsListExampleCode,
-      view: <PeopleSelectedItemsListExample />
+      title: 'Selected People List (uncontrolled)',
+      code: SelectedPeopleListBasicExampleCode,
+      codepenJS: SelectedPeopleListBasicExampleCodepen,
+      view: <SelectedPeopleListBasicExample />
+    },
+    {
+      title: 'Selected People List (controlled)',
+      code: SelectedPeopleListControlledExampleCode,
+      codepenJS: SelectedPeopleListControlledExampleCodepen,
+      view: <SelectedPeopleListControlledExample />
     }
   ],
   propertiesTablesSources: [
