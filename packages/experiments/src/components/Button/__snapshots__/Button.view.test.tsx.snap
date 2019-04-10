@@ -14,7 +14,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         border-width: 1px;
         box-sizing: border-box;
         color: #333333;
-        cursor: default;
+        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -293,7 +293,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-width: 1px;
         box-sizing: border-box;
         color: #ffffff;
-        cursor: default;
+        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
