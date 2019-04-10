@@ -121,7 +121,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: inherit;
             font-size: 14px;
             font-weight: 600;
             moz-osx-font-smoothing: grayscale;
@@ -266,7 +266,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: inherit;
             font-size: 14px;
             font-weight: 600;
             moz-osx-font-smoothing: grayscale;
@@ -408,7 +408,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
             -webkit-font-smoothing: antialiased;
             color: inherit;
             display: inline;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-family: inherit;
             font-size: 14px;
             font-weight: 600;
             moz-osx-font-smoothing: grayscale;
