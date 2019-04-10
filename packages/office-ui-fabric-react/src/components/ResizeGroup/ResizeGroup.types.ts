@@ -3,6 +3,9 @@ import { ResizeGroupBase } from './ResizeGroup.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory ResizeGroup}
+ */
 export interface IResizeGroup {
   /**
    * Remeasures the available space.
@@ -10,6 +13,9 @@ export interface IResizeGroup {
   remeasure(): void;
 }
 
+/**
+ * {@docCategory ResizeGroup}
+ */
 export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase | HTMLElement> {
   /**
    * Optional callback to access the IResizeGroup interface. Use this instead of ref for accessing
@@ -71,6 +77,9 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
   dataDidRender?: (renderedData: any) => void;
 }
 
+/**
+ * {@docCategory ResizeGroup}
+ */
 export interface IResizeGroupStyleProps {
   /**
    * Accept theme prop.
@@ -83,6 +92,9 @@ export interface IResizeGroupStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory ResizeGroup}
+ */
 export interface IResizeGroupStyles {
   /**
    * Style for the root element.

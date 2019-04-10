@@ -6,6 +6,9 @@ import { IDragDropHelper } from '../../utilities/dragdrop/index';
 import { ICellStyleProps } from './DetailsRow.types';
 import { ITheme, IStyle } from '../../Styling';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumnBase> {
   theme?: ITheme;
   styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
@@ -25,6 +28,9 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
   cellStyleProps?: ICellStyleProps;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme' | 'cellStyleProps'>> & {
   headerClassName?: string;
   isActionable?: boolean;
@@ -37,6 +43,9 @@ export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme
   transitionDurationDrop?: number;
 };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsColumnStyles {
   root: IStyle;
   gripperBarVerticalStyle: IStyle;

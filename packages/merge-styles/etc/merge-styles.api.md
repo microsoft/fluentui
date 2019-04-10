@@ -31,8 +31,6 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
 // @public
 export function fontFace(font: IFontFace): void;
 
-// Warning: (ae-forgotten-export) The symbol "Omit" needs to be exported by the entry point index.d.ts
-// 
 // @public
 export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
@@ -42,13 +40,13 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     };
 };
 
-// Warning: (ae-forgotten-export) The symbol "IRawFontStyle" needs to be exported by the entry point index.d.ts
-// 
+// @public (undocumented)
+export type ICSSRule = 'initial' | 'inherit' | 'unset';
+
 // @public
 export interface IFontFace extends IRawFontStyle {
     fontFeatureSettings?: string;
     src?: string;
-    // Warning: (ae-forgotten-export) The symbol "ICSSRule" needs to be exported by the entry point index.d.ts
     unicodeRange?: ICSSRule | string;
 }
 
@@ -74,8 +72,23 @@ export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     };
 };
 
-// Warning: (ae-forgotten-export) The symbol "IRawStyleBase" needs to be exported by the entry point index.d.ts
-// 
+// @public
+export interface IRawFontStyle {
+    font?: ICSSRule | string;
+    fontFamily?: ICSSRule | string;
+    fontKerning?: ICSSRule | string;
+    // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
+    fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
+    fontSizeAdjust?: ICSSRule | 'none' | number;
+    fontStretch?: ICSSRule | 'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded';
+    fontStyle?: ICSSRule | 'normal' | 'italic' | 'oblique';
+    fontSynthesis?: ICSSRule | string;
+    fontVariant?: ICSSRule | string;
+    fontVariantAlternates?: ICSSRule | string;
+    fontWeight?: IFontWeight;
+}
+
 // @public
 export interface IRawStyle extends IRawStyleBase {
     displayName?: string;
@@ -84,11 +97,287 @@ export interface IRawStyle extends IRawStyleBase {
     };
 }
 
-// Warning: (ae-forgotten-export) The symbol "IStyleBase" needs to be exported by the entry point index.d.ts
-// Warning: (ae-forgotten-export) The symbol "IStyleBaseArray" needs to be exported by the entry point index.d.ts
-// 
+// @public
+export interface IRawStyleBase extends IRawFontStyle {
+    alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
+    alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
+    alignmentAdjust?: ICSSRule | string;
+    alignmentBaseline?: ICSSRule | string;
+    // Warning: (ae-forgotten-export) The symbol "ICSSBaselinePositionRule" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ICSSOverflowAndSelfPositionRule" needs to be exported by the entry point index.d.ts
+    alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
+    animation?: ICSSRule | string;
+    animationDelay?: ICSSRule | string;
+    animationDirection?: ICSSRule | string;
+    animationDuration?: ICSSRule | string;
+    animationFillMode?: ICSSRule | 'none' | 'forwards' | 'backwards' | 'both';
+    animationIterationCount?: ICSSRule | string;
+    animationName?: ICSSRule | string;
+    animationPlayState?: ICSSRule | string;
+    animationTimingFunction?: ICSSRule | string;
+    appearance?: ICSSRule | string;
+    backdropFilter?: ICSSRule | string;
+    backfaceVisibility?: ICSSRule | string;
+    background?: ICSSRule | string;
+    backgroundAttachment?: ICSSRule | 'scroll' | 'fixed' | 'local';
+    backgroundBlendMode?: ICSSRule | string;
+    backgroundClip?: ICSSRule | 'border-box' | 'padding-box' | 'content-box' | 'text';
+    backgroundColor?: ICSSRule | string;
+    backgroundComposite?: ICSSRule | string;
+    backgroundImage?: ICSSRule | string;
+    backgroundOrigin?: ICSSRule | string;
+    backgroundPosition?: ICSSRule | string;
+    backgroundRepeat?: ICSSRule | string;
+    backgroundSize?: ICSSRule | string;
+    border?: ICSSRule | 0 | string;
+    borderBottom?: ICSSRule | ICSSPixelUnitRule;
+    borderBottomColor?: ICSSRule | string;
+    borderBottomLeftRadius?: ICSSRule | string;
+    borderBottomRightRadius?: ICSSRule | string;
+    borderBottomStyle?: ICSSRule | string;
+    borderBottomWidth?: ICSSRule | ICSSPixelUnitRule;
+    borderCollapse?: ICSSRule | string;
+    borderColor?: ICSSRule | string;
+    borderCornerShape?: ICSSRule | string;
+    borderImageSource?: ICSSRule | string;
+    borderImageWidth?: ICSSRule | ICSSPixelUnitRule;
+    borderLeft?: ICSSRule | ICSSPixelUnitRule;
+    borderLeftColor?: ICSSRule | string;
+    borderLeftStyle?: ICSSRule | string;
+    borderLeftWidth?: ICSSRule | ICSSPixelUnitRule;
+    borderRadius?: ICSSRule | ICSSPixelUnitRule;
+    borderRight?: ICSSRule | ICSSPixelUnitRule;
+    borderRightColor?: ICSSRule | string;
+    borderRightStyle?: ICSSRule | string;
+    borderRightWidth?: ICSSRule | ICSSPixelUnitRule;
+    borderSpacing?: ICSSRule | string;
+    borderStyle?: ICSSRule | string;
+    borderTop?: ICSSRule | ICSSPixelUnitRule;
+    borderTopColor?: ICSSRule | string;
+    borderTopLeftRadius?: ICSSRule | string;
+    borderTopRightRadius?: ICSSRule | string;
+    borderTopStyle?: ICSSRule | string;
+    borderTopWidth?: ICSSRule | ICSSPixelUnitRule;
+    borderWidth?: ICSSRule | ICSSPixelUnitRule;
+    bottom?: ICSSRule | ICSSPixelUnitRule;
+    boxDecorationBreak?: ICSSRule | string;
+    boxShadow?: ICSSRule | string;
+    boxSizing?: ICSSRule | 'border-box' | 'content-box';
+    breakAfter?: ICSSRule | string;
+    breakBefore?: ICSSRule | string;
+    breakInside?: ICSSRule | string;
+    clear?: ICSSRule | string;
+    clipRule?: ICSSRule | string;
+    color?: ICSSRule | string;
+    columnCount?: ICSSRule | number | 'auto';
+    columnFill?: ICSSRule | string;
+    columnGap?: ICSSRule | string;
+    columnRule?: ICSSRule | string;
+    columnRuleColor?: ICSSRule | string;
+    columnRuleWidth?: ICSSRule | ICSSPixelUnitRule;
+    columns?: ICSSRule | string;
+    columnSpan?: ICSSRule | string;
+    columnWidth?: ICSSRule | ICSSPixelUnitRule;
+    content?: string;
+    counterIncrement?: ICSSRule | string;
+    counterReset?: ICSSRule | string;
+    cue?: ICSSRule | string;
+    cueAfter?: ICSSRule | string;
+    cursor?: ICSSRule | string;
+    direction?: ICSSRule | string;
+    // Warning: (ae-forgotten-export) The symbol "ICSSDisplayRule" needs to be exported by the entry point index.d.ts
+    display?: ICSSRule | ICSSDisplayRule;
+    fill?: ICSSRule | string;
+    fillOpacity?: ICSSRule | number;
+    fillRule?: ICSSRule | string;
+    filter?: ICSSRule | string;
+    flex?: ICSSRule | string | number;
+    flexBasis?: ICSSRule | string | number;
+    flexDirection?: ICSSRule | 'row' | 'row-reverse' | 'column' | 'column-reverse';
+    flexFlow?: ICSSRule | string;
+    flexGrow?: ICSSRule | number | string;
+    flexShrink?: ICSSRule | number | string;
+    flexWrap?: ICSSRule | 'nowrap' | 'wrap' | 'wrap-reverse';
+    float?: ICSSRule | string;
+    flowFrom?: ICSSRule | string;
+    gridArea?: ICSSRule | string;
+    gridAutoColumns?: ICSSRule | string;
+    gridAutoFlow?: ICSSRule | string;
+    gridAutoRows?: ICSSRule | string;
+    gridColumn?: ICSSRule | string;
+    gridColumnEnd?: ICSSRule | string;
+    gridColumnGap?: ICSSRule | string;
+    gridColumnStart?: ICSSRule | string;
+    gridGap?: ICSSRule | string;
+    gridRow?: ICSSRule | string;
+    gridRowEnd?: ICSSRule | string;
+    gridRowGap?: ICSSRule | string;
+    gridRowPosition?: ICSSRule | string;
+    gridRowStart?: ICSSRule | string;
+    gridTemplate?: ICSSRule | string;
+    gridTemplateAreas?: ICSSRule | string;
+    gridTemplateColumns?: ICSSRule | string;
+    gridTemplateRows?: ICSSRule | string;
+    height?: ICSSRule | ICSSPixelUnitRule;
+    hyphenateLimitChars?: ICSSRule | string;
+    hyphenateLimitLines?: ICSSRule | string;
+    hyphenateLimitZone?: ICSSRule | string;
+    hyphens?: ICSSRule | string;
+    justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
+    justifySelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule | 'left' | 'right' | 'safe left' | 'safe right' | 'unsafe left' | 'unsafe right';
+    left?: ICSSRule | ICSSPixelUnitRule;
+    letterSpacing?: ICSSRule | string;
+    lineHeight?: ICSSRule | 'normal' | ICSSPixelUnitRule | ICSSPercentageRule;
+    listStyle?: ICSSRule | string;
+    listStyleImage?: ICSSRule | string;
+    listStylePosition?: ICSSRule | string;
+    listStyleType?: ICSSRule | string;
+    margin?: ICSSRule | ICSSPixelUnitRule;
+    marginBottom?: ICSSRule | ICSSPixelUnitRule;
+    marginLeft?: ICSSRule | ICSSPixelUnitRule;
+    marginRight?: ICSSRule | ICSSPixelUnitRule;
+    marginTop?: ICSSRule | ICSSPixelUnitRule;
+    marqueeDirection?: ICSSRule | string;
+    marqueeStyle?: ICSSRule | string;
+    mask?: ICSSRule | string;
+    maskBorder?: ICSSRule | string;
+    maskBorderRepeat?: ICSSRule | string;
+    maskBorderSlice?: ICSSRule | string;
+    maskBorderSource?: ICSSRule | string;
+    maskBorderWidth?: ICSSRule | ICSSPixelUnitRule;
+    maskClip?: ICSSRule | string;
+    maskOrigin?: ICSSRule | string;
+    maxFontSize?: ICSSRule | ICSSPixelUnitRule;
+    maxHeight?: ICSSRule | ICSSPixelUnitRule;
+    maxWidth?: ICSSRule | ICSSPixelUnitRule;
+    minHeight?: ICSSRule | ICSSPixelUnitRule;
+    minWidth?: ICSSRule | ICSSPixelUnitRule;
+    // Warning: (ae-forgotten-export) The symbol "IMixBlendModes" needs to be exported by the entry point index.d.ts
+    mixBlendMode?: ICSSRule | IMixBlendModes;
+    MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+    MsHighContrastAdjust?: ICSSRule | string;
+    objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
+    opacity?: ICSSRule | number | string;
+    order?: ICSSRule | number;
+    orphans?: ICSSRule | number;
+    outline?: ICSSRule | 0 | string;
+    outlineColor?: ICSSRule | string;
+    outlineOffset?: ICSSRule | string;
+    overflow?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+    overflowStyle?: ICSSRule | string;
+    overflowWrap?: ICSSRule | 'normal' | 'break-word';
+    overflowX?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+    overflowY?: ICSSRule | 'auto' | 'hidden' | 'scroll' | 'visible';
+    padding?: ICSSRule | ICSSPixelUnitRule;
+    paddingBlockEnd?: ICSSRule | ICSSPixelUnitRule;
+    paddingBlockStart?: ICSSRule | ICSSPixelUnitRule;
+    paddingBottom?: ICSSRule | ICSSPixelUnitRule;
+    paddingInlineEnd?: ICSSRule | ICSSPixelUnitRule;
+    paddingInlineStart?: ICSSRule | ICSSPixelUnitRule;
+    paddingLeft?: ICSSRule | ICSSPixelUnitRule;
+    paddingRight?: ICSSRule | ICSSPixelUnitRule;
+    paddingTop?: ICSSRule | ICSSPixelUnitRule;
+    pageBreakAfter?: ICSSRule | string;
+    pageBreakBefore?: ICSSRule | string;
+    pageBreakInside?: ICSSRule | string;
+    pause?: ICSSRule | string;
+    pauseAfter?: ICSSRule | string;
+    pauseBefore?: ICSSRule | string;
+    perspective?: ICSSRule | string;
+    perspectiveOrigin?: ICSSRule | string;
+    pointerEvents?: ICSSRule | string;
+    position?: ICSSRule | 'static' | 'relative' | 'absolute' | 'fixed' | 'sticky';
+    quotes?: ICSSRule | string;
+    regionFragment?: ICSSRule | string;
+    resize?: ICSSRule | 'none' | 'both' | 'horizontal' | 'vertical' | 'block' | 'inline';
+    restAfter?: ICSSRule | string;
+    restBefore?: ICSSRule | string;
+    right?: ICSSRule | ICSSPixelUnitRule;
+    shapeImageThreshold?: ICSSRule | string;
+    shapeInside?: ICSSRule | string;
+    shapeMargin?: ICSSRule | string;
+    shapeOutside?: ICSSRule | string;
+    speak?: ICSSRule | string;
+    speakAs?: ICSSRule | string;
+    stroke?: ICSSRule | string;
+    strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
+    strokeOpacity?: ICSSRule | number;
+    strokeWidth?: ICSSRule | ICSSPixelUnitRule;
+    tableLayout?: ICSSRule | string;
+    tabSize?: ICSSRule | string;
+    textAlign?: ICSSRule | string;
+    textAlignLast?: ICSSRule | string;
+    textDecoration?: ICSSRule | string;
+    textDecorationColor?: ICSSRule | string;
+    textDecorationLine?: ICSSRule | string;
+    textDecorationSkip?: ICSSRule | string;
+    textDecorationStyle?: ICSSRule | string;
+    textEmphasis?: ICSSRule | string;
+    textEmphasisColor?: ICSSRule | string;
+    textEmphasisStyle?: ICSSRule | string;
+    textHeight?: ICSSRule | string;
+    textIndent?: ICSSRule | string;
+    textOverflow?: ICSSRule | string;
+    textOverline?: ICSSRule | string;
+    textOverlineColor?: ICSSRule | string;
+    textOverlineMode?: ICSSRule | string;
+    textOverlineStyle?: ICSSRule | string;
+    textOverlineWidth?: ICSSRule | ICSSPixelUnitRule;
+    textRendering?: ICSSRule | string;
+    textShadow?: ICSSRule | string;
+    textTransform?: ICSSRule | string;
+    textUnderlinePosition?: ICSSRule | string;
+    textUnderlineStyle?: ICSSRule | string;
+    top?: ICSSRule | ICSSPixelUnitRule;
+    touchAction?: ICSSRule | string;
+    transform?: ICSSRule | string;
+    transformOrigin?: ICSSRule | string;
+    transformOriginZ?: ICSSRule | string;
+    transformStyle?: ICSSRule | string;
+    transition?: ICSSRule | string;
+    transitionDelay?: ICSSRule | string;
+    transitionDuration?: ICSSRule | string;
+    transitionProperty?: ICSSRule | string;
+    transitionTimingFunction?: ICSSRule | string;
+    unicodeBidi?: ICSSRule | string;
+    userFocus?: ICSSRule | string;
+    userInput?: ICSSRule | string;
+    userSelect?: ICSSRule | 'none' | 'auto' | 'text' | 'all' | 'contain';
+    verticalAlign?: ICSSRule | string;
+    visibility?: ICSSRule | string;
+    voiceBalance?: ICSSRule | string;
+    voiceDuration?: ICSSRule | string;
+    voiceFamily?: ICSSRule | string;
+    voicePitch?: ICSSRule | string;
+    voiceRange?: ICSSRule | string;
+    voiceRate?: ICSSRule | string;
+    voiceStress?: ICSSRule | string;
+    voiceVolume?: ICSSRule | string;
+    WebkitBackdropFilter?: ICSSRule | string;
+    WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
+    WebkitOverflowScrolling?: 'auto' | 'touch';
+    whiteSpace?: ICSSRule | string;
+    widows?: ICSSRule | number;
+    width?: ICSSRule | ICSSPixelUnitRule;
+    wordBreak?: ICSSRule | string;
+    wordSpacing?: ICSSRule | string;
+    wordWrap?: ICSSRule | string;
+    wrapFlow?: ICSSRule | string;
+    wrapMargin?: ICSSRule | string;
+    writingMode?: ICSSRule | string;
+    zIndex?: ICSSRule | 'auto' | number;
+    zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;
+}
+
 // @public
 export type IStyle = IStyleBase | IStyleBaseArray;
+
+// @public (undocumented)
+export type IStyleBase = IRawStyle | string | false | null | undefined;
+
+// @public (undocumented)
+export interface IStyleBaseArray extends Array<IStyle> {
+}
 
 // @public
 export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => Partial<TStyleSet>;
@@ -136,6 +425,11 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
 // @public
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
+// Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
+// 
+// @public (undocumented)
+export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
+
 // @public
 export function setRTL(isRTL: boolean): void;
 
@@ -160,7 +454,7 @@ export class Stylesheet {
 
 // Warnings were encountered during analysis:
 // 
-// lib/IStyleSet.d.ts:45:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
+// lib/IStyleSet.d.ts:48:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

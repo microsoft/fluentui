@@ -2,6 +2,7 @@ import { IRawStyle } from '@uifabric/merge-styles';
 
 /**
  * UI Fabric font set.
+ * {@docCategory IFontStyles}
  */
 export interface IFontStyles {
   tiny: IRawStyle;
