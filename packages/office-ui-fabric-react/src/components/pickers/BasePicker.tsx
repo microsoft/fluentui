@@ -300,7 +300,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
-          onRenderSuggestion={this.props.onRenderSuggestionsItem}
+          onRenderSuggestion={this.props.onRenderSuggestionsItem!}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
