@@ -38,7 +38,8 @@
     "prettier": "node scripts/prettier.js",
     "generate-version-files": "node scripts/just.js generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
-    "precommit": "node scripts/node_modules/lint-staged/index.js"
+    "precommit": "node scripts/node_modules/lint-staged/index.js",
+    "perf-test": "node scripts/just.js perf-test"
   },
   "license": "MIT",
   "lint-staged": {
