@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Panel: add onOpen and onOpened properties",
-      "type": "minor"
+      "comment": "Documentation: add @docCategory inline tags",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "kakje@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

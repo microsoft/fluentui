@@ -5,6 +5,7 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 const baseTokens: IButtonComponent['tokens'] = {
   borderRadius: 0,
   borderWidth: 1,
+  cursor: 'pointer',
   minWidth: 100,
   minHeight: 32,
   lineHeight: 1,
@@ -96,7 +97,9 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 
     highContrastBorderColor: 'GrayText',
     highContrastBorderColorHovered: 'GrayText',
-    highContrastBorderColorPressed: 'GrayText'
+    highContrastBorderColorPressed: 'GrayText',
+
+    cursor: 'default'
   };
 };
 
@@ -165,7 +168,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         borderWidth: tokens.borderWidth,
         boxSizing: 'border-box',
         color: tokens.color,
-        cursor: 'default',
+        cursor: tokens.cursor,
         display: 'inline-block',
         fontSize: tokens.textSize,
         fontWeight: tokens.textWeight,

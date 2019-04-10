@@ -8,9 +8,8 @@ import {
 } from 'office-ui-fabric-react/lib/DocumentCard';
 import { ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { TestImages } from '../../../common/TestImages';
-import './DocumentCard.Example.scss';
 
-export class DocumentCardBasicExample extends React.Component<any, any> {
+export class DocumentCardBasicExample extends React.PureComponent {
   public render(): JSX.Element {
     const previewProps: IDocumentCardPreviewProps = {
       previewImages: [

@@ -41,6 +41,7 @@ fabric-website/ @jordandrako
 
 #### Packages
 packages/charting/ @Raghurk @veeray @chankev
+packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
 # packages/example-app-base/
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
@@ -81,14 +82,14 @@ Checkbox/ @cliffkoh
 ChoiceGroup/ @srideshpande
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
-ComboBox/ @JasonGore
-CommandBar/ @micahgodbolt @JasonGore
+ComboBox/ @ecraig12345
+CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
 DatePicker/ @OfficeDev/uifabric-calendar
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
 DocumentCard/ @yiminwu
-Dropdown/ @JasonGore
+Dropdown/ @ecraig12345
 Fabric/ @dzearing
 FacePile/ @markionium
 FolderCover/ @ThomasMichon
@@ -107,7 +108,7 @@ MessageBar/ @ecraig12345
 Modal/ @JasonGore
 Nav/ @jdhuntington
 OverflowSet/ @micahgodbolt
-Overlay/ @JasonGore
+Overlay/ @kkjeer
 Pagination/ @caradong
 Panel/ @kkjeer
 Persona/ @markionium

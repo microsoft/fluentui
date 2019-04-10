@@ -11,5 +11,12 @@
   },
   "validationRules": {
     "missingReleaseTags": "allow"
+  },
+  "messages": {
+    "tsdocMessageReporting": {
+      "tsdoc-undefined-tag": {
+        "logLevel": "none"
+      }
+    }
   }
 }
