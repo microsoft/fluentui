@@ -12,7 +12,9 @@
     "preserveConstEnums": true,
     "strict": true,
     "lib": ["es6", "dom"],
-    "types": ["webpack-env"]
+    "typeRoots": ["node_modules/@types"],
+    "types": ["webpack-env"],
+    "skipLibCheck": true
   },
   "include": ["src"]
 }

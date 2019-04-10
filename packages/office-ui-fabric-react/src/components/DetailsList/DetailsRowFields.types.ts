@@ -3,8 +3,14 @@ import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
 import { IDetailsListProps } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   /**
    * Data source for this component

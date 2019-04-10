@@ -45,9 +45,5 @@ exports[`Spinner renders Spinner correctly 1`] = `
   >
     Standard spinner
   </div>
-  <div
-    aria-live="polite"
-    role="status"
-  />
 </div>
 `;

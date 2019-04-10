@@ -2,6 +2,9 @@ import * as React from 'react';
 import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
+/**
+ * {@docCategory List}
+ */
 export const ScrollToMode = {
   /**
    * Does not make any consideration to where in the viewport the item should align to.
@@ -21,8 +24,14 @@ export const ScrollToMode = {
   center: 3 as 3
 };
 
+/**
+ * {@docCategory List}
+ */
 export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 
+/**
+ * {@docCategory List}
+ */
 export interface IList {
   /**
    * Force the component to update.
@@ -49,6 +58,9 @@ export interface IList {
   getStartItemIndexInView: () => number;
 }
 
+/**
+ * {@docCategory List}
+ */
 export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
   /**
    * Optional callback to access the IList interface. Use this instead of ref for accessing
@@ -164,6 +176,9 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
   onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
 }
 
+/**
+ * {@docCategory List}
+ */
 export interface IPage<T = any> {
   key: string;
   items: T[] | undefined;
@@ -176,6 +191,9 @@ export interface IPage<T = any> {
   isSpacer?: boolean;
 }
 
+/**
+ * {@docCategory List}
+ */
 export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
@@ -187,6 +205,9 @@ export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement
   page: IPage<T>;
 }
 
+/**
+ * {@docCategory List}
+ */
 export interface IPageSpecification {
   /**
    * The number of items to allocate to the page.
