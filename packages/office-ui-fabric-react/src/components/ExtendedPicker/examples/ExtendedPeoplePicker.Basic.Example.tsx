@@ -115,9 +115,8 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
       pickerSuggestionsProps: this._suggestionProps,
       key: 'normal',
       onRemoveSuggestion: this._onRemoveSuggestion,
-      onValidateInput: this._validateInput,
+      isQueryForceResolveable: this._isQueryForceResolveable,
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
-      showForceResolve: this._shouldShowForceResolve,
       onInputChanged: this._onInputChanged,
       onSuggestionsHidden: () => {
         console.log('FLOATINGPICKER: hidden');
@@ -271,14 +270,6 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     return copyText;
   }
 
-  private _shouldShowForceResolve = (): boolean => {
-    return Boolean(
-      this._picker.floatingPicker.current &&
-        this._validateInput(this._picker.floatingPicker.current.inputText) &&
-        this._picker.floatingPicker.current.suggestions.length === 0
-    );
-  };
-
   private _shouldShowSuggestedContacts = (): boolean => {
     return this._picker !== undefined && this._picker.inputElement !== null && this._picker.inputElement.value === '';
   };
@@ -324,14 +315,9 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     this.setState({ currentlySelectedItems: newItems });
   };
 
-  private _validateInput = (input: string): boolean => {
-    if (input.indexOf('@') !== -1) {
-      return true;
-    } else if (input.length > 1) {
-      return false;
-    } else {
-      return false;
-    }
+  private _isQueryForceResolveable = (input: string): boolean => {
+    // Good enough of an 'is an email address' check for a UI demo
+    return input.indexOf('@') !== -1;
   };
 
   private _getExpandedGroupItems(item: IExtendedPersonaProps): IExtendedPersonaProps[] {

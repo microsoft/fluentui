@@ -93,23 +93,24 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    */
   onRemoveSuggestion?: (item: IPersonaProps) => void;
   /**
-   * A function used to validate if raw text entered into the well can be added
+   * Determines if the input string should be resolved to an item in the well.
+   *
+   * Called only if the suggestion list is empty and we are not focused on a
+   * focusable header / footer item.
+   *
+   * If unset, all insertions of unmatched content will not be inserted.
    */
-  onValidateInput?: (input: string) => boolean;
+  isQueryForceResolveable?: (inputQuery: string) => boolean;
+
+  /**
+   * Function that specifies how a force resolved suggestion is entered into the well.
+   */
+  createForceResolvedItem?: (input: string) => ISuggestionModel<T>;
+
   /**
    * The text to display while searching for more results in a limited suggestions list
    */
   searchingText?: ((props: { input: string }) => string) | string;
-
-  /**
-   * Function that specifies how arbitrary text entered into the well is handled.
-   */
-  createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
-
-  /**
-   * The callback that should be called to see if the force resolve command should be shown
-   */
-  showForceResolve?: () => boolean;
 
   /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled

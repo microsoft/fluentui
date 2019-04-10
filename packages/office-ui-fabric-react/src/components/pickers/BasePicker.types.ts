@@ -222,7 +222,7 @@ export enum ValidationState {
   /** User input could be valid or invalid, its state is not known yet. */
   warning,
 
-  /** User input is invalid. */
+  /** User input is invalid. Do not resolve it to a selected item. */
   invalid
 }
 

@@ -248,7 +248,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     protected updateSuggestionWithZeroState(): void;
     // (undocumented)
     protected updateValue(updatedValue: string): void;
-}
+    }
 
 // @public (undocumented)
 export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {
@@ -1546,9 +1546,10 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     className?: string;
     // (undocumented)
     componentRef?: IRefObject<IBaseFloatingPicker>;
-    createGenericItem?: (input: string, isValid: boolean) => ISuggestionModel<T>;
+    createForceResolvedItem?: (input: string) => ISuggestionModel<T>;
     getTextFromItem?: (item: T, currentValue?: string) => string;
     inputElement?: HTMLInputElement | null;
+    isQueryForceResolveable?: (inputQuery: string) => boolean;
     onChange?: (item: T) => void;
     onInputChanged?: (filter: string) => void;
     onRemoveSuggestion?: (item: IPersonaProps) => void;
@@ -1556,7 +1557,6 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
     onSuggestionsHidden?: () => void;
     onSuggestionsShown?: () => void;
-    onValidateInput?: (input: string) => boolean;
     onZeroQuerySuggestion?: (selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
     pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
     resolveDelay?: number;
@@ -1564,7 +1564,6 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
         input: string;
     }) => string) | string;
     selectedItems?: T[];
-    showForceResolve?: () => boolean;
     suggestionItems?: T[];
     suggestionsStore: SuggestionsStore<T>;
 }
