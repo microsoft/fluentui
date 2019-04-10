@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 09 Apr 2019 12:35:20 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+
+## 6.71.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Button: Creating ActionButton variant and cleaning styling.
 
 ## 6.70.0
 Tue, 09 Apr 2019 12:35:20 GMT
