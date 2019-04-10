@@ -45,16 +45,6 @@ exports[`TagPicker renders correctly 1`] = `
               border-color: #333333;
             }
       >
-        <span
-          className=
-              ms-BasePicker-itemsWrapper
-              {
-                display: flex;
-                flex-wrap: wrap;
-              }
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "

@@ -1,42 +1,82 @@
 import { IRGB } from './interfaces';
 import { MAX_COLOR_ALPHA } from './consts';
-import { COLOR_VALUES } from './colorValues';
 import { hsl2rgb } from './hsl2rgb';
 
 /**
  * Converts a valid CSS color string to an RGB color.
  * Note that hex colors *must* be prefixed with # to be considered valid.
  * Alpha in returned color defaults to 100.
+ * Four and eight digit hex values (with alpha) are supported if the current browser supports them.
  */
-export function cssColor(color: string): IRGB | undefined {
+export function cssColor(color?: string): IRGB | undefined {
   if (!color) {
     return undefined;
   }
-  return _named(color) || _hex3(color) || _hex6(color) || _rgba(color) || _hsla(color);
+
+  // Need to check the following valid color formats: RGB(A), HSL(A), hex, named color
+
+  // First check for well formatted RGB(A), HSL(A), and hex formats at the start.
+  // This is for perf (no creating an element) and catches the intentional "transparent" color
+  //   case early on.
+  const easyColor: IRGB | undefined = _rgba(color) || _hex6(color) || _hex3(color) || _hsla(color);
+  if (easyColor) {
+    return easyColor;
+  }
+
+  // if the above fails, do the more expensive catch-all
+  return _browserCompute(color);
 }
 
 /**
- * If `str` is a valid HTML color name, returns an RGB color (with alpha 100).
- * Otherwise returns undefined.
+ * Uses the browser's getComputedStyle() to determine what the passed-in color is.
+ * This assumes _rgba, _hex6, _hex3, and _hsla have already been tried and all failed.
+ * This works by attaching an element to the DOM, which may fail in server-side rendering
+ *   or with headless browsers.
  */
-function _named(str: string): IRGB | undefined {
-  const c = (COLOR_VALUES as any)[str.toLowerCase()];
-
-  if (c) {
-    return {
-      r: c[0],
-      g: c[1],
-      b: c[2],
-      a: MAX_COLOR_ALPHA
-    };
+function _browserCompute(str: string): IRGB | undefined {
+  if (typeof document === 'undefined') {
+    // don't throw an error when used server-side
+    return undefined;
   }
+  const elem = document.createElement('div');
+  elem.style.backgroundColor = str;
+  // This element must be attached to the DOM for getComputedStyle() to have a value
+  elem.style.position = 'absolute';
+  elem.style.top = '-9999px';
+  elem.style.left = '-9999px';
+  elem.style.height = '1px';
+  elem.style.width = '1px';
+  document.body.appendChild(elem);
+  const eComputedStyle = getComputedStyle(elem);
+  const computedColor = eComputedStyle && eComputedStyle.backgroundColor;
+  document.body.removeChild(elem);
+  // computedColor is always an RGB(A) string, except for invalid colors in IE/Edge which return 'transparent'
+
+  // browsers return one of these if the color string is invalid,
+  // so need to differentiate between an actual error and intentionally passing in this color
+  if (computedColor === 'rgba(0, 0, 0, 0)' || computedColor === 'transparent') {
+    switch (str.trim()) {
+      // RGB and HSL were already checked at the start of the function
+      case 'transparent':
+      case '#0000':
+      case '#00000000':
+        return { r: 0, g: 0, b: 0, a: 0 };
+    }
+    return undefined;
+  }
+
+  return _rgba(computedColor);
 }
 
 /**
  * If `str` is in valid `rgb()` or `rgba()` format, returns an RGB color (alpha defaults to 100).
  * Otherwise returns undefined.
  */
-function _rgba(str: string): IRGB | undefined {
+function _rgba(str?: string | null): IRGB | undefined {
+  if (!str) {
+    return undefined;
+  }
+
   const match = str.match(/^rgb(a?)\(([\d., ]+)\)$/);
   if (match) {
     const hasAlpha = !!match[1];
@@ -50,6 +90,25 @@ function _rgba(str: string): IRGB | undefined {
         b: parts[2],
         a: hasAlpha ? parts[3] * 100 : MAX_COLOR_ALPHA
       };
+    }
+  }
+}
+
+/**
+ * If `str` is in `hsl()` or `hsla()` format, returns an RGB color (alpha defaults to 100).
+ * Otherwise returns undefined.
+ */
+function _hsla(str: string): IRGB | undefined {
+  const match = str.match(/^hsl(a?)\(([\d., ]+)\)$/);
+  if (match) {
+    const hasAlpha = !!match[1];
+    const expectedPartCount = hasAlpha ? 4 : 3;
+    const parts = match[2].split(/ *, */).map(Number);
+
+    if (parts.length === expectedPartCount) {
+      const rgba = hsl2rgb(parts[0], parts[1], parts[2]);
+      rgba.a = hasAlpha ? parts[3] * 100 : MAX_COLOR_ALPHA;
+      return rgba;
     }
   }
 }
@@ -81,24 +140,5 @@ function _hex3(str: string): IRGB | undefined {
       b: parseInt(str[3] + str[3], 16),
       a: MAX_COLOR_ALPHA
     };
-  }
-}
-
-/**
- * If `str` is in `hsl()` or `hsla()` format, returns an RGB color (alpha defaults to 100).
- * Otherwise returns undefined.
- */
-function _hsla(str: string): IRGB | undefined {
-  const match = str.match(/^hsl(a?)\(([\d., ]+)\)$/);
-  if (match) {
-    const hasAlpha = !!match[1];
-    const expectedPartCount = hasAlpha ? 4 : 3;
-    const parts = match[2].split(/ *, */).map(Number);
-
-    if (parts.length === expectedPartCount) {
-      const rgba = hsl2rgb(parts[0], parts[1], parts[2]);
-      rgba.a = hasAlpha ? parts[3] * 100 : MAX_COLOR_ALPHA;
-      return rgba;
-    }
   }
 }

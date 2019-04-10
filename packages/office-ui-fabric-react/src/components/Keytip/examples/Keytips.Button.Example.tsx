@@ -2,12 +2,13 @@ import * as React from 'react';
 import { DefaultButton, CompoundButton } from 'office-ui-fabric-react/lib/Button';
 import { keytipMap } from './KeytipSetup';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface IKeytipsButtonExampleState {
   btnDisabled: boolean;
 }
 
+const stackTokens: IStackTokens = { childrenGap: 20 };
 const marginBottom = { root: { marginBottom: 28 } };
 
 export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExampleState> {
@@ -24,7 +25,7 @@ export class KeytipsButtonExample extends React.Component<{}, IKeytipsButtonExam
     return (
       <div>
         <p>When multiple Keytips start with the same character, typing that character will filter the visible keytips.</p>
-        <Stack horizontal gap={20}>
+        <Stack horizontal tokens={stackTokens}>
           <DefaultButton
             keytipProps={keytipMap.Button}
             text="Button"

@@ -2,6 +2,20 @@
   "name": "@uifabric/migration",
   "entries": [
     {
+      "version": "0.2.1",
+      "tag": "@uifabric/migration_v0.2.1",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.0",
       "tag": "@uifabric/migration_v0.2.0",
       "date": "Fri, 22 Mar 2019 17:56:40 GMT",

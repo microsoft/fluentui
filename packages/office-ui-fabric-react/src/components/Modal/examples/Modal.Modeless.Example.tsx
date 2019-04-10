@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Modal } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import './Modal.Example.scss';
+import * as styles from './Modal.Example.scss';
 
 export interface IModalModelessExampleState {
   showModal: boolean;
@@ -27,12 +27,12 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
           isOpen={this.state.showModal}
           onDismiss={this._closeModal}
           isModeless={true}
-          containerClassName="ms-modalStickyExample-container"
+          containerClassName={styles.stickyContainer}
         >
-          <div className="ms-modalExample-header">
+          <div className={styles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>
           </div>
-          <div id={this._subtitleId} className="ms-modalExample-body">
+          <div id={this._subtitleId} className={styles.body}>
             <DefaultButton onClick={this._closeModal} text="Close" />
             <p>
               Lorem ipsum dolor sit amet, consectetur adipiscing elit. Maecenas lorem nulla, malesuada ut sagittis sit amet, vulputate in

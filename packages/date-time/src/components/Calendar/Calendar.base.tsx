@@ -18,6 +18,19 @@ import { IProcessedStyleSet } from '@uifabric/styling';
 
 const getClassNames = classNamesFunction<ICalendarStyleProps, ICalendarStyles>();
 
+const DEFAULT_STRINGS = {
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
+  shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
+  days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
+  shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
+  goToToday: 'Go to today',
+  prevMonthAriaLabel: 'Go to previous month',
+  nextMonthAriaLabel: 'Go to next month',
+  prevYearAriaLabel: 'Go to previous year',
+  nextYearAriaLabel: 'Go to next year',
+  closeButtonAriaLabel: 'Close date picker'
+};
+
 const leftArrow = 'Up';
 const rightArrow = 'Down';
 const closeIcon = 'CalculatorMultiply';
@@ -72,7 +85,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
     firstDayOfWeek: DayOfWeek.Sunday,
     dateRangeType: DateRangeType.Day,
     showGoToToday: true,
-    strings: null,
+    strings: DEFAULT_STRINGS,
     highlightCurrentMonth: false,
     highlightSelectedMonth: false,
     navigationIcons: defaultIconStrings,
@@ -227,7 +240,18 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   }
 
   private _renderGoToTodayButton = (classes: IProcessedStyleSet<ICalendarStyles>) => {
-    const { showGoToToday, strings } = this.props;
+    const { showGoToToday, strings, today } = this.props;
+    const { navigatedDayDate, navigatedMonthDate } = this.state;
+    let goTodayEnabled = showGoToToday;
+
+    if (goTodayEnabled && navigatedDayDate && navigatedMonthDate && today) {
+      goTodayEnabled =
+        navigatedDayDate.getFullYear() !== today.getFullYear() ||
+        navigatedDayDate.getMonth() !== today.getMonth() ||
+        navigatedMonthDate.getFullYear() !== today.getFullYear() ||
+        navigatedMonthDate.getMonth() !== today.getMonth();
+    }
+
     return (
       showGoToToday && (
         <button
@@ -235,6 +259,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
           onClick={this._onGotoToday}
           onKeyDown={this._onButtonKeyDown(this._onGotoToday)}
           type="button"
+          disabled={!goTodayEnabled}
         >
           {strings!.goToToday}
         </button>
@@ -303,6 +328,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
   private _onGotoToday = (): void => {
     const { today } = this.props;
     this._navigateDayPickerDay(today!);
+    this.focus();
   };
 
   private _onButtonKeyDown = (callback: () => void): ((ev: React.KeyboardEvent<HTMLButtonElement>) => void) => {

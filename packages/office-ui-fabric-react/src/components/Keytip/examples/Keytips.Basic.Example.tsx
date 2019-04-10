@@ -7,9 +7,10 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SpinButton } from 'office-ui-fabric-react/lib/SpinButton';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const pivotItemStyle: React.CSSProperties = { width: 500, paddingTop: 20 };
+const stackTokens: IStackTokens = { childrenGap: 20 };
 
 export class KeytipsBasicExample extends React.Component<{}> {
   private _sampleOptions = [{ key: 'A', text: 'Option 1' }, { key: 'B', text: 'Option 2' }, { key: 'C', text: 'Option 3' }];
@@ -21,7 +22,7 @@ export class KeytipsBasicExample extends React.Component<{}> {
         <p>For Pivots, keytips will first show for each of the pivots. After selecting a pivot, the Keytips for its content are shown.</p>
         <Pivot>
           <PivotItem headerText="Pivot 1" keytipProps={keytipMap.Pivot1Keytip} style={pivotItemStyle}>
-            <Stack gap={20}>
+            <Stack tokens={stackTokens}>
               <SpinButton label="Spin Button" keytipProps={keytipMap.SpinButtonKeytip} styles={{ root: { maxWidth: 200 } }} />
               <Toggle onText="Yes" offText="No" keytipProps={keytipMap.ToggleKeytip} />
               <span>
@@ -34,7 +35,7 @@ export class KeytipsBasicExample extends React.Component<{}> {
           </PivotItem>
 
           <PivotItem headerText="Pivot 2" keytipProps={keytipMap.Pivot2Keytip} style={pivotItemStyle}>
-            <Stack gap={20}>
+            <Stack tokens={stackTokens}>
               <Checkbox label="Checkbox" keytipProps={keytipMap.CheckboxKeytip} />
               <Dropdown label="Dropdown" keytipProps={keytipMap.DropdownKeytip} options={this._sampleOptions} />
             </Stack>

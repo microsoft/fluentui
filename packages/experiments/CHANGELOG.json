@@ -2,6 +2,228 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.71.0",
+      "tag": "@uifabric/experiments_v6.71.0",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Creating ActionButton variant and cleaning styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "98347544dc0eabb461beea23bc50a1fec10be873"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.4` to `^6.4.5`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.8` to `^6.165.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.70.0",
+      "tag": "@uifabric/experiments_v6.70.0",
+      "date": "Tue, 09 Apr 2019 12:35:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding DefaultButton and PrimaryButton variants.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "63cf8144e33150d05c45fdce3e57f34c7bfb78f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.7` to `^6.164.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.69.0",
+      "tag": "@uifabric/experiments_v6.69.0",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Supporting high contrast in Button, MenuButton and SplitButton.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1f3afa6704bc39758d4055a74b23f6d2150b3bf3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.3` to `^6.35.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.6` to `^6.164.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.68.0",
+      "tag": "@uifabric/experiments_v6.68.0",
+      "date": "Fri, 05 Apr 2019 22:09:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding ariaLabel prop and updating examples to fix accessibility issues.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0fe9a28b970f4d9b5a7a575e9b679ff92b9d8004"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.5` to `^6.164.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.67.1",
+      "tag": "@uifabric/experiments_v6.67.1",
+      "date": "Fri, 05 Apr 2019 12:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use styles instead of className on theming example dialog",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "40feb7581c56d191c3ad6ee7c958e9b7efe4267a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.4` to `^6.164.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.67.0",
+      "tag": "@uifabric/experiments_v6.67.0",
+      "date": "Wed, 03 Apr 2019 12:38:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Improvements on Button docs.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1638c988fadd418537debd78d4244144d3b63527"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Fixing SplitButton styling issues and correctly placing divider.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "bfe9b414a7620ea54351f98c805aef36bf3567d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.2` to `^6.164.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.66.1",
+      "tag": "@uifabric/experiments_v6.66.1",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          },
+          {
+            "comment": "add proxy component for experiments/Separator",
+            "author": "jijizz <liu_zhi8@hotmail.com>",
+            "commit": "84eb35052997bfaa4055605d0ecf55ec83e28820"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.5` to `^0.1.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.11` to `^0.28.12`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.3` to `^6.4.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.3` to `^0.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.3` to `^0.7.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.4` to `^0.1.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.2` to `^6.35.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.0` to `^6.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.0` to `^6.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.66.0",
+      "tag": "@uifabric/experiments_v6.66.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Separator: remove from experiments and promote to OUFR",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8db1d9bfc880dfbe533fb469dda8aa87f468a503"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Updating examples using Stack to use childrenGap token instead of gap prop.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.7.2 <1.0.0` to `>=0.7.3 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.2 <7.0.0` to `>=6.16.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.163.0 <7.0.0` to `>=6.164.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.65.0",
       "tag": "@uifabric/experiments_v6.65.0",
       "date": "Wed, 27 Mar 2019 12:34:02 GMT",

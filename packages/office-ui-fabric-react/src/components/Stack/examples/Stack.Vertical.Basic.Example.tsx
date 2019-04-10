@@ -16,8 +16,17 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
       }
     });
 
+    const tokens = {
+      fiveGapStack: {
+        childrenGap: 5
+      },
+      tenGapStack: {
+        childrenGap: 10
+      }
+    };
+
     return (
-      <Stack gap={5}>
+      <Stack tokens={tokens.fiveGapStack}>
         <span>Default vertical stack</span>
         <Stack className={styles.root}>
           <span>Item One</span>
@@ -25,15 +34,28 @@ export class VerticalStackBasicExample extends React.Component<{}, {}> {
           <span>Item Three</span>
         </Stack>
 
+        <span>Ordered stack</span>
+        <Stack className={styles.root}>
+          <Stack.Item order={2}>
+            <span>Item One</span>
+          </Stack.Item>
+          <Stack.Item order={3}>
+            <span>Item Two</span>
+          </Stack.Item>
+          <Stack.Item order={1}>
+            <span>Item Three</span>
+          </Stack.Item>
+        </Stack>
+
         <span>Vertical gap between items</span>
-        <Stack gap={10} padding={10} className={styles.root}>
+        <Stack tokens={tokens.tenGapStack} padding={10} className={styles.root}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack gap={5} padding={10} className={styles.root}>
+        <Stack tokens={tokens.fiveGapStack} padding={10} className={styles.root}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>

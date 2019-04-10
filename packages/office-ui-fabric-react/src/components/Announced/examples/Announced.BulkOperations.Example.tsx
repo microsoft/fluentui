@@ -5,7 +5,7 @@ import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import './Announced.Example.scss';
@@ -122,9 +122,10 @@ export class AnnouncedBulkOperationsExample extends React.Component<
 
   public render(): JSX.Element {
     const { items, columns } = this.state;
+    const stackTokens: IStackTokens = { childrenGap: 10 };
 
     return (
-      <Stack gap={10}>
+      <Stack tokens={stackTokens}>
         <Text>Turn on Narrator and drag and drop the items.</Text>
         <Text>
           Note: This example is to showcase the concept of copying, uploading, or moving many items and not fully illustrative of the real

@@ -5,12 +5,20 @@ import { Stack, Text } from 'office-ui-fabric-react';
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
 const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
 
-const sectionGap = 32;
-const headingGap = 16;
-const buttonGap = 12;
+const tokens = {
+  sectionStack: {
+    childrenGap: 32
+  },
+  headingStack: {
+    childrenGap: 16
+  },
+  buttonStack: {
+    childrenGap: 12
+  }
+};
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal disableShrink gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={tokens.buttonStack}>
     {props.children}
   </Stack>
 );
@@ -19,10 +27,10 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 export class MenuButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack tokens={tokens.headingStack} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
                 <MenuButton content="Menu button" menu={buttonMenu} />
                 <MenuButton primary content="Menu primary button" menu={buttonMenu} />
