@@ -105,7 +105,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * Function that specifies how a force resolved suggestion is entered into the well.
    */
-  createForceResolvedItem?: (input: string) => ISuggestionModel<T>;
+  createForceResolvedItem?: (input: string) => T;
 
   /**
    * The text to display while searching for more results in a limited suggestions list

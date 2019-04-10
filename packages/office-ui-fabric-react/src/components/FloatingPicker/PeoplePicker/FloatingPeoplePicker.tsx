@@ -4,7 +4,7 @@ import { IBaseFloatingPickerProps } from '../BaseFloatingPicker.types';
 import { SuggestionItemNormal } from './PeoplePickerItems/SuggestionItemDefault';
 import { IPersonaProps } from '../../../Persona';
 import './PeoplePicker.scss';
-import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers';
+import { IBasePickerSuggestionsProps } from '../../../Pickers';
 
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {}
 
@@ -19,13 +19,9 @@ export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
   };
 }
 
-export function createItem(name: string): ISuggestionModel<IPersonaProps> {
-  // tslint:disable-next-line:no-any
-  const personaToConvert: any = {
-    key: name,
-    primaryText: name,
+export function createItem(name: string): IPersonaProps {
+  return {
+    text: name,
     imageInitials: getInitials(name, getRTL())
   };
-
-  return personaToConvert;
 }

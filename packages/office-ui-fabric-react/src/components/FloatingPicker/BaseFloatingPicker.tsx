@@ -325,7 +325,7 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
         return;
       }
 
-      const itemToConvert: ISuggestionModel<T> = this.props.createForceResolvedItem(this.state.queryString);
+      const itemToConvert = this.props.createForceResolvedItem(this.state.queryString);
       const convertedItems = this.suggestionStore.convertSuggestionsToSuggestionItems([itemToConvert]);
       this.onChange(convertedItems[0].item);
     }
