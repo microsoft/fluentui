@@ -45,16 +45,6 @@ exports[`PeoplePicker renders correctly 1`] = `
               border-color: #333333;
             }
       >
-        <span
-          className=
-              ms-BasePicker-itemsWrapper
-              {
-                display: flex;
-                flex-wrap: wrap;
-              }
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "
@@ -146,6 +136,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               {
                 display: flex;
                 flex-wrap: wrap;
+                max-width: 100%;
               }
           id="selected-items-id__0"
           role="list"
@@ -165,6 +156,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   margin-right: 2px;
                   margin-top: 1px;
                   max-width: 300px;
+                  min-width: 0px;
                   outline: transparent;
                   position: relative;
                   user-select: none;
@@ -370,6 +362,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -397,6 +390,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -424,6 +418,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -451,6 +446,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=

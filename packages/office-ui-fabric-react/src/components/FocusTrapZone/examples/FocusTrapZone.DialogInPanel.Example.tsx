@@ -1,7 +1,5 @@
 import * as React from 'react';
 
-/* tslint:disable:no-string-literal */
-
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
@@ -12,20 +10,16 @@ export interface IFocusTrapZoneDialogInPanelExampleState {
   showPanel: boolean;
 }
 
-export default class FocusTrapDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      hideDialog: true,
-      showPanel: false
-    };
-  }
+export class FocusTrapZoneDialogInPanelExample extends React.Component<{}, IFocusTrapZoneDialogInPanelExampleState> {
+  public state: IFocusTrapZoneDialogInPanelExampleState = {
+    hideDialog: true,
+    showPanel: false
+  };
 
   public render() {
     return (
       <div>
-        <DefaultButton secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} text="Open Panel" />
+        <DefaultButton text="Open Panel" secondaryText="Opens the Sample Panel" onClick={this._onShowPanel} />
         <Panel
           isOpen={this.state.showPanel}
           type={PanelType.smallFixedFar}
@@ -33,7 +27,7 @@ export default class FocusTrapDialogInPanelExample extends React.Component<{}, I
           headerText="This panel makes use of FocusTrapZone. Focus should be trapped in the panel."
           closeButtonAriaLabel="Close"
         >
-          <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
+          <DefaultButton text="Open Dialog" secondaryText="Opens the Sample Dialog" onClick={this._showDialog} />
           <Dialog
             hidden={this.state.hideDialog}
             onDismiss={this._closeDialog}
@@ -47,10 +41,9 @@ export default class FocusTrapDialogInPanelExample extends React.Component<{}, I
               titleAriaId: 'myLabelId',
               subtitleAriaId: 'mySubTextId',
               isBlocking: false,
-              containerClassName: 'ms-dialogMainOverride'
+              styles: { main: { maxWidth: 450 } }
             }}
           >
-            {null /** You can also include null values as the result of conditionals */}
             <DialogFooter>
               <PrimaryButton onClick={this._closeDialog} text="OK" />
               <DefaultButton onClick={this._closeDialog} text="Cancel" />

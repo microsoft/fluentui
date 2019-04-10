@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { IStyle } from '../../Styling';
-import { IRefObject, IRenderFunction } from '../../Utilities';
+import { IRenderFunction } from '../../Utilities';
 import { IPersonaSharedProps } from '../../Persona';
 
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
@@ -39,11 +39,6 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
    * @deprecated Use `comments` instead.
    */
   commentText?: string;
-
-  /**
-   * Gets ref to component interface.
-   */
-  componentRef?: IRefObject<{}>;
 
   /**
    * Indicated if the compact styling should be used.

@@ -1,103 +1,70 @@
 import * as React from 'react';
 
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export interface IBoxExampleExampleState {
-  isChecked: boolean;
+export interface IFocusTrapZoneBoxCustomElementExampleState {
+  useTrapZone: boolean;
 }
 
-export default class BoxExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxExampleExampleState> {
-  private _toggle: IToggle;
-  private focusClassName = 'shouldFocusInput';
+const _focusClassName = 'shouldFocusInput';
 
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
+export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IFocusTrapZoneBoxCustomElementExampleState> {
+  public state: IFocusTrapZoneBoxCustomElementExampleState = {
+    useTrapZone: false
+  };
 
-    this.state = {
-      isChecked: false
-    };
-  }
+  private _toggle = React.createRef<IToggle>();
 
   public render() {
-    const { isChecked } = this.state;
-
     return (
       <div>
-        <DefaultButton onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
-        {(() => {
-          if (isChecked) {
-            return <FocusTrapZone firstFocusableSelector={this.focusClassName}>{this._internalContents()}</FocusTrapZone>;
-          } else {
-            return <div>{this._internalContents()}</div>;
-          }
-        })()}
+        {this.state.useTrapZone ? (
+          <FocusTrapZone firstFocusableSelector={_focusClassName}>{this._internalContents()}</FocusTrapZone>
+        ) : (
+          this._internalContents()
+        )}
       </div>
     );
   }
 
   private _internalContents() {
-    const { isChecked } = this.state;
+    const { useTrapZone } = this.state;
 
     return (
-      <div className="ms-FocusTrapZoneBoxExample">
-        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
-        <Link href="" className="">
-          Hyperlink inside FocusTrapZone
+      <Stack
+        horizontalAlign="start"
+        tokens={{ childrenGap: 15 }}
+        styles={{
+          root: { border: `2px solid ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
+        }}
+      >
+        <Toggle
+          label="Use trap zone"
+          componentRef={this._toggle}
+          checked={useTrapZone}
+          onChange={this._onFocusTrapZoneToggleChanged}
+          onText="On (toggle to exit)"
+          offText="Off"
+        />
+        <TextField label="Input inside trap zone" styles={{ root: { width: 300 } }} />
+        <Link href="https://bing.com" className={_focusClassName}>
+          Hyperlink which will receive initial focus when trap zone is activated
         </Link>
-        <br />
-        <br />
-        <div>
-          <Toggle
-            componentRef={this._setRef}
-            checked={isChecked}
-            onChange={this._onFocusTrapZoneToggleChanged}
-            label="Focus Trap Zone"
-            onText="On"
-            offText="Off"
-          />
-        </div>
-        {(() => {
-          if (isChecked) {
-            return (
-              <DefaultButton
-                className={this.focusClassName}
-                secondaryText="Exit Focus Trap Zone"
-                onClick={this._onExitButtonClickHandler}
-                text="Exit Focus Trap Zone"
-              />
-            );
-          }
-        })()}
-      </div>
+      </Stack>
     );
   }
 
-  private _onButtonClickHandler = (): void => {
-    this.setState({
-      isChecked: true
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
+    this.setState({ useTrapZone: !!checked }, () => {
+      // Restore focus to toggle after disabling the trap zone
+      // (the trap zone itself will handle initial focus when it's enabled)
+      if (!checked) {
+        this._toggle.current!.focus();
+      }
     });
-  };
-
-  private _onExitButtonClickHandler = (): void => {
-    this.setState({
-      isChecked: false
-    });
-  };
-
-  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isChecked: boolean): void => {
-    this.setState(
-      {
-        isChecked: isChecked
-      },
-      () => this._toggle.focus()
-    );
-  };
-
-  private _setRef = (toggle: IToggle): void => {
-    this._toggle = toggle;
   };
 }

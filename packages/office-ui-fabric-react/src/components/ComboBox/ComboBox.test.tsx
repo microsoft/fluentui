@@ -406,6 +406,36 @@ describe.only('ComboBox', () => {
     expect(indexSeen).toContain(1);
   });
 
+  it('onPendingValueChanged is called with an empty string when the input is cleared', () => {
+    let changedValue: string | undefined = undefined;
+    const pendingValueChangedHandler = (option?: IComboBoxOption, index?: number, value?: string) => {
+      changedValue = value;
+    };
+
+    const baseNode = document.createElement('div');
+    document.body.appendChild(baseNode);
+
+    const component = ReactDOM.render(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} onPendingValueChanged={pendingValueChangedHandler} />,
+      baseNode
+    );
+
+    const input = (ReactDOM.findDOMNode(component as React.ReactInstance) as Element).querySelector('input') as HTMLInputElement;
+    if (input === null) {
+      throw 'ComboBox input element is null';
+    }
+
+    // Simulate typing one character into the ComboBox input
+    input.value = 'a';
+    ReactTestUtils.Simulate.input(input);
+    expect(changedValue).toEqual('a');
+
+    // Simulate clearing the ComboBox input
+    input.value = '';
+    ReactTestUtils.Simulate.input(input);
+    expect(changedValue).toEqual('');
+  });
+
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
     let updatedOption;
     let updatedIndex;
@@ -523,6 +553,26 @@ describe.only('ComboBox', () => {
     const inputElement = comboBoxRoot.find('input').getDOMNode();
     const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
     expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+  });
+
+  it('adds aria-required to the DOM when the required prop is set to true', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} required={true} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
+    expect(ariaRequiredAttribute).toEqual('true');
+  });
+
+  it('does not add aria-required to the DOM when the required prop is not set', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
+    expect(ariaRequiredAttribute).toBeNull();
   });
 
   it('test persistMenu, callout should exist before and after opening menu', () => {

@@ -25,12 +25,12 @@ export interface IMenuButtonSlots extends IButtonSlots {
   button?: IButtonSlot;
 
   /**
-   * Defines the contextual menu that appears when you click on the Button.
+   * Defines the contextual menu that appears when you click on the MenuButton.
    */
   menu: IContextualMenuSlot;
 
   /**
-   * Defines the menu chevron icon that is displayed insisde the Button.
+   * Defines the menu chevron icon that is displayed insisde the MenuButton.
    */
   menuIcon?: IIconSlot;
 }
@@ -39,30 +39,31 @@ export interface IMenuButton {}
 
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick'>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton> {
   /**
-   * Defines the inital expanded state of the Button. If you want the Button to maintain its own state, use this.
+   * Defines the inital expanded state of the MenuButton. If you want the MenuButton to maintain its own state, use this.
    * Otherwise refer to `expanded`.
+   * @defaultvalue false
    */
   defaultExpanded?: boolean;
 
   /**
-   * Defines whether the Button is in an expanded state.
+   * Defines whether the MenuButton is in an expanded state.
    * @defaultvalue defaultExpanded
    */
   expanded?: boolean;
 
   /**
-   * Defines an event callback that is triggered when a keypress is made with the focus on a Button.
+   * Defines an event callback that is triggered when a keypress is made with the focus on a MenuButton.
    */
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 export interface IMenuButtonViewProps extends IMenuButtonProps {
   /**
-   * Defines a callback that runs after the Button's contextual menu has been closed (removed from the DOM).
+   * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */
   onMenuDismiss: () => void;
 

@@ -2,9 +2,314 @@
 
 exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1`] = `
 <div>
-  <div
-    className="ms-FocusTrapComponent"
+  <button
+    className=
+        ms-Button
+        ms-Button--default
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          background-color: #f4f4f4;
+          border-radius: 0px;
+          border: 1px solid transparent;
+          box-sizing: border-box;
+          color: #333333;
+          cursor: pointer;
+          display: inline-block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: 32px;
+          margin-bottom: 10px;
+          min-width: 80px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+          vertical-align: top;
+        }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #eaeaea;
+          color: #212121;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #c8c8c8;
+          color: #212121;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
   >
+    <div
+      className=
+          ms-Button-flexContainer
+          {
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
+          }
+    >
+      <div
+        className=
+            ms-Button-textContainer
+            {
+              flex-grow: 1;
+            }
+      >
+        <div
+          className=
+              ms-Button-label
+              {
+                font-weight: 600;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
+              }
+          id="id__0"
+        >
+          Randomize
+        </div>
+      </div>
+    </div>
+  </button>
+  <div
+    className=
+        ms-Stack
+        {
+          align-items: flex-start;
+          border: 2px solid transparent;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
+          height: auto;
+          padding-bottom: 10px;
+          padding-left: 10px;
+          padding-right: 10px;
+          padding-top: 10px;
+          width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 10px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
+  >
+    <div
+      className=
+          ms-Toggle
+          is-enabled
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 8px;
+          }
+    >
+      <label
+        className=
+            ms-Label
+            ms-Toggle-label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+        htmlFor="Toggle3"
+        id="Toggle3-label"
+      >
+        Enable trap zone 1
+      </label>
+      <div
+        className=
+            ms-Toggle-innerContainer
+            {
+              display: inline-flex;
+              position: relative;
+            }
+      >
+        <button
+          aria-checked={false}
+          aria-labelledby="Toggle3-label"
+          className=
+              ms-Toggle-background
+              {
+                align-items: center;
+                background: #ffffff;
+                border-color: #666666;
+                border-radius: 1em;
+                border-style: solid;
+                border-width: 1px;
+                box-sizing: border-box;
+                cursor: pointer;
+                display: flex;
+                font-size: 20px;
+                height: 1em;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: .2em;
+                padding-right: .2em;
+                padding-top: 0;
+                position: relative;
+                transition: all 0.1s ease;
+                width: 2.2em;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: -2px;
+                content: "";
+                left: -2px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: -2px;
+                top: -2px;
+                z-index: 1;
+              }
+              &:hover {
+                border-color: #333333;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                border-color: Highlight;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+              }
+          data-is-focusable={true}
+          id="Toggle3"
+          onChange={[Function]}
+          onClick={[Function]}
+          role="switch"
+          type="button"
+        >
+          <div
+            className=
+                ms-Toggle-thumb
+                {
+                  background-color: #333333;
+                  border-color: transparent;
+                  border-radius: .5em;
+                  border-style: solid;
+                  border-width: .28em;
+                  box-sizing: border-box;
+                  height: .5em;
+                  transition: all 0.1s ease;
+                  width: .5em;
+                }
+          />
+        </button>
+        <label
+          className=
+              ms-Label
+              ms-Toggle-stateText
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
+              && {
+                margin-bottom: 0;
+                margin-left: 8px;
+                margin-right: 8px;
+                margin-top: 0;
+                padding-bottom: 0;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 0;
+                user-select: none;
+              }
+          htmlFor="Toggle3"
+          id="Toggle3-stateText"
+        >
+          Off
+        </label>
+      </div>
+    </div>
     <button
       className=
           ms-Button
@@ -112,138 +417,58 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   margin-right: 4px;
                   margin-top: 0;
                 }
-            id="id__0"
+            id="id__4"
           >
-            One
+            Zone 1 button
           </div>
         </div>
       </div>
     </button>
     <div
       className=
-          ms-Toggle
-          is-enabled
+          ms-Stack
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 8px;
+            border: 2px solid transparent;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: auto;
+            justify-content: flex-start;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 10px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
           }
     >
-      <label
+      <div
         className=
-            ms-Label
-            ms-Toggle-label
+            ms-Toggle
+            is-enabled
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #333333;
-              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-        htmlFor="Toggle3"
-      >
-        Focus Trap Zone
-      </label>
-      <div
-        className=
-            ms-Toggle-innerContainer
-            {
-              display: inline-flex;
-              position: relative;
+              margin-bottom: 8px;
+              width: 200px;
             }
       >
-        <button
-          aria-checked={false}
-          className=
-              ms-Toggle-background
-              {
-                align-items: center;
-                background: #ffffff;
-                border-color: #666666;
-                border-radius: 1em;
-                border-style: solid;
-                border-width: 1px;
-                box-sizing: border-box;
-                cursor: pointer;
-                display: flex;
-                font-size: 20px;
-                height: 1em;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: .2em;
-                padding-right: .2em;
-                padding-top: 0;
-                position: relative;
-                transition: all 0.1s ease;
-                width: 2.2em;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: -2px;
-                content: "";
-                left: -2px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: -2px;
-                top: -2px;
-                z-index: 1;
-              }
-              &:hover {
-                border-color: #333333;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                border-color: Highlight;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-              }
-          data-is-focusable={true}
-          id="Toggle3"
-          onChange={[Function]}
-          onClick={[Function]}
-          role="switch"
-          type="button"
-        >
-          <div
-            className=
-                ms-Toggle-thumb
-                {
-                  background-color: #333333;
-                  border-color: transparent;
-                  border-radius: .5em;
-                  border-style: solid;
-                  border-width: .28em;
-                  box-sizing: border-box;
-                  height: .5em;
-                  transition: all 0.1s ease;
-                  width: .5em;
-                }
-          />
-        </button>
         <label
           className=
               ms-Label
-              ms-Toggle-stateText
+              ms-Toggle-label
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -265,25 +490,134 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-              && {
-                margin-bottom: 0;
-                margin-left: 8px;
-                margin-right: 8px;
-                margin-top: 0;
-                padding-bottom: 0;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 0;
-                user-select: none;
+          htmlFor="Toggle7"
+          id="Toggle7-label"
+        >
+          Enable trap zone 2
+        </label>
+        <div
+          className=
+              ms-Toggle-innerContainer
+              {
+                display: inline-flex;
+                position: relative;
               }
         >
-          Off
-        </label>
+          <button
+            aria-checked={false}
+            aria-labelledby="Toggle7-label"
+            className=
+                ms-Toggle-background
+                {
+                  align-items: center;
+                  background: #ffffff;
+                  border-color: #666666;
+                  border-radius: 1em;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: flex;
+                  font-size: 20px;
+                  height: 1em;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: .2em;
+                  padding-right: .2em;
+                  padding-top: 0;
+                  position: relative;
+                  transition: all 0.1s ease;
+                  width: 2.2em;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                &:hover {
+                  border-color: #333333;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                  border-color: Highlight;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
+            data-is-focusable={true}
+            id="Toggle7"
+            onChange={[Function]}
+            onClick={[Function]}
+            role="switch"
+            type="button"
+          >
+            <div
+              className=
+                  ms-Toggle-thumb
+                  {
+                    background-color: #333333;
+                    border-color: transparent;
+                    border-radius: .5em;
+                    border-style: solid;
+                    border-width: .28em;
+                    box-sizing: border-box;
+                    height: .5em;
+                    transition: all 0.1s ease;
+                    width: .5em;
+                  }
+            />
+          </button>
+          <label
+            className=
+                ms-Label
+                ms-Toggle-stateText
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
+                && {
+                  margin-bottom: 0;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  user-select: none;
+                }
+            htmlFor="Toggle7"
+            id="Toggle7-stateText"
+          >
+            Off
+          </label>
+        </div>
       </div>
-    </div>
-    <div
-      className="ms-FocusTrapComponent"
-    >
       <button
         className=
             ms-Button
@@ -391,292 +725,40 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__4"
+              id="id__8"
             >
-              Two
+              Zone 2 button
             </div>
           </div>
         </div>
       </button>
       <div
         className=
-            ms-Toggle
-            is-enabled
+            ms-Stack
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-bottom: 8px;
+              align-items: flex-start;
+              border: 2px solid transparent;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              width: auto;
+            }
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
+              margin-top: 10px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
             }
       >
-        <label
-          className=
-              ms-Label
-              ms-Toggle-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: #333333;
-                display: block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                overflow-wrap: break-word;
-                padding-bottom: 5px;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 5px;
-                word-wrap: break-word;
-              }
-          htmlFor="Toggle7"
-        >
-          Focus Trap Zone
-        </label>
-        <div
-          className=
-              ms-Toggle-innerContainer
-              {
-                display: inline-flex;
-                position: relative;
-              }
-        >
-          <button
-            aria-checked={false}
-            className=
-                ms-Toggle-background
-                {
-                  align-items: center;
-                  background: #ffffff;
-                  border-color: #666666;
-                  border-radius: 1em;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  cursor: pointer;
-                  display: flex;
-                  font-size: 20px;
-                  height: 1em;
-                  outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: .2em;
-                  padding-right: .2em;
-                  padding-top: 0;
-                  position: relative;
-                  transition: all 0.1s ease;
-                  width: 2.2em;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: -2px;
-                  content: "";
-                  left: -2px;
-                  outline: 1px solid #666666;
-                  position: absolute;
-                  right: -2px;
-                  top: -2px;
-                  z-index: 1;
-                }
-                &:hover {
-                  border-color: #333333;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                  border-color: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover {
-                  border-color: Highlight;
-                }
-            data-is-focusable={true}
-            id="Toggle7"
-            onChange={[Function]}
-            onClick={[Function]}
-            role="switch"
-            type="button"
-          >
-            <div
-              className=
-                  ms-Toggle-thumb
-                  {
-                    background-color: #333333;
-                    border-color: transparent;
-                    border-radius: .5em;
-                    border-style: solid;
-                    border-width: .28em;
-                    box-sizing: border-box;
-                    height: .5em;
-                    transition: all 0.1s ease;
-                    width: .5em;
-                  }
-            />
-          </button>
-          <label
-            className=
-                ms-Label
-                ms-Toggle-stateText
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  box-shadow: none;
-                  box-sizing: border-box;
-                  color: #333333;
-                  display: block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  overflow-wrap: break-word;
-                  padding-bottom: 5px;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 5px;
-                  word-wrap: break-word;
-                }
-                && {
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 0;
-                  padding-bottom: 0;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 0;
-                  user-select: none;
-                }
-          >
-            Off
-          </label>
-        </div>
-      </div>
-      <div
-        className="ms-FocusTrapComponent"
-      >
-        <button
-          className=
-              ms-Button
-              ms-Button--default
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: #f4f4f4;
-                border-radius: 0px;
-                border: 1px solid transparent;
-                box-sizing: border-box;
-                color: #333333;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                min-width: 80px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                background-color: #eaeaea;
-                color: #212121;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                background-color: #c8c8c8;
-                color: #212121;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
-        >
-          <div
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-          >
-            <div
-              className=
-                  ms-Button-textContainer
-                  {
-                    flex-grow: 1;
-                  }
-            >
-              <div
-                className=
-                    ms-Button-label
-                    {
-                      font-weight: 600;
-                      line-height: 100%;
-                      margin-bottom: 0;
-                      margin-left: 4px;
-                      margin-right: 4px;
-                      margin-top: 0;
-                    }
-                id="id__8"
-              >
-                Three
-              </div>
-            </div>
-          </div>
-        </button>
         <div
           className=
               ms-Toggle
@@ -688,6 +770,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
                 margin-bottom: 8px;
+                width: 200px;
               }
         >
           <label
@@ -716,8 +799,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   word-wrap: break-word;
                 }
             htmlFor="Toggle11"
+            id="Toggle11-label"
           >
-            Focus Trap Zone
+            Enable trap zone 3
           </label>
           <div
             className=
@@ -729,6 +813,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <button
               aria-checked={false}
+              aria-labelledby="Toggle11-label"
               className=
                   ms-Toggle-background
                   {
@@ -834,15 +919,13 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 0;
                     user-select: none;
                   }
+              htmlFor="Toggle11"
+              id="Toggle11-stateText"
             >
               Off
             </label>
           </div>
         </div>
-      </div>
-      <div
-        className="ms-FocusTrapComponent"
-      >
         <button
           className=
               ms-Button
@@ -952,11 +1035,39 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     }
                 id="id__12"
               >
-                Four
+                Zone 3 button
               </div>
             </div>
           </div>
         </button>
+      </div>
+      <div
+        className=
+            ms-Stack
+            {
+              align-items: flex-start;
+              border: 2px solid transparent;
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: column;
+              flex-wrap: nowrap;
+              height: auto;
+              padding-bottom: 10px;
+              padding-left: 10px;
+              padding-right: 10px;
+              padding-top: 10px;
+              width: auto;
+            }
+            & > * {
+              text-overflow: ellipsis;
+            }
+            & > *:not(:first-child) {
+              margin-top: 10px;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
         <div
           className=
               ms-Toggle
@@ -968,6 +1079,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 font-size: 14px;
                 font-weight: 400;
                 margin-bottom: 8px;
+                width: 200px;
               }
         >
           <label
@@ -996,8 +1108,9 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   word-wrap: break-word;
                 }
             htmlFor="Toggle15"
+            id="Toggle15-label"
           >
-            Focus Trap Zone
+            Enable trap zone 4
           </label>
           <div
             className=
@@ -1009,6 +1122,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           >
             <button
               aria-checked={false}
+              aria-labelledby="Toggle15-label"
               className=
                   ms-Toggle-background
                   {
@@ -1114,16 +1228,322 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     padding-top: 0;
                     user-select: none;
                   }
+              htmlFor="Toggle15"
+              id="Toggle15-stateText"
             >
               Off
             </label>
           </div>
         </div>
+        <button
+          className=
+              ms-Button
+              ms-Button--default
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                background-color: #f4f4f4;
+                border-radius: 0px;
+                border: 1px solid transparent;
+                box-sizing: border-box;
+                color: #333333;
+                cursor: pointer;
+                display: inline-block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                height: 32px;
+                min-width: 80px;
+                outline: transparent;
+                padding-bottom: 0;
+                padding-left: 16px;
+                padding-right: 16px;
+                padding-top: 0;
+                position: relative;
+                text-align: center;
+                text-decoration: none;
+                user-select: none;
+                vertical-align: top;
+              }
+              &::-moz-focus-inner {
+                border: 0;
+              }
+              .ms-Fabric--isFocusVisible &:focus:after {
+                border: 1px solid #ffffff;
+                bottom: 0px;
+                content: "";
+                left: 0px;
+                outline: 1px solid #666666;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+                z-index: 1;
+              }
+              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+                border: none;
+                bottom: -2px;
+                left: -2px;
+                outline-color: ButtonText;
+                right: -2px;
+                top: -2px;
+              }
+              &:active > * {
+                left: 0px;
+                position: relative;
+                top: 0px;
+              }
+              &:hover {
+                background-color: #eaeaea;
+                color: #212121;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover {
+                border-color: Highlight;
+                color: Highlight;
+              }
+              &:active {
+                background-color: #c8c8c8;
+                color: #212121;
+              }
+          data-is-focusable={true}
+          onClick={[Function]}
+          onKeyDown={[Function]}
+          onKeyPress={[Function]}
+          onKeyUp={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          type="button"
+        >
+          <div
+            className=
+                ms-Button-flexContainer
+                {
+                  align-items: center;
+                  display: flex;
+                  flex-wrap: nowrap;
+                  height: 100%;
+                  justify-content: center;
+                }
+          >
+            <div
+              className=
+                  ms-Button-textContainer
+                  {
+                    flex-grow: 1;
+                  }
+            >
+              <div
+                className=
+                    ms-Button-label
+                    {
+                      font-weight: 600;
+                      line-height: 100%;
+                      margin-bottom: 0;
+                      margin-left: 4px;
+                      margin-right: 4px;
+                      margin-top: 0;
+                    }
+                id="id__16"
+              >
+                Zone 4 button
+              </div>
+            </div>
+          </div>
+        </button>
       </div>
     </div>
     <div
-      className="ms-FocusTrapComponent"
+      className=
+          ms-Stack
+          {
+            align-items: flex-start;
+            border: 2px solid transparent;
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: column;
+            flex-wrap: nowrap;
+            height: auto;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-top: 10px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
     >
+      <div
+        className=
+            ms-Toggle
+            is-enabled
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 8px;
+            }
+      >
+        <label
+          className=
+              ms-Label
+              ms-Toggle-label
+              {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                box-shadow: none;
+                box-sizing: border-box;
+                color: #333333;
+                display: block;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
+                overflow-wrap: break-word;
+                padding-bottom: 5px;
+                padding-left: 0;
+                padding-right: 0;
+                padding-top: 5px;
+                word-wrap: break-word;
+              }
+          htmlFor="Toggle19"
+          id="Toggle19-label"
+        >
+          Enable trap zone 5
+        </label>
+        <div
+          className=
+              ms-Toggle-innerContainer
+              {
+                display: inline-flex;
+                position: relative;
+              }
+        >
+          <button
+            aria-checked={false}
+            aria-labelledby="Toggle19-label"
+            className=
+                ms-Toggle-background
+                {
+                  align-items: center;
+                  background: #ffffff;
+                  border-color: #666666;
+                  border-radius: 1em;
+                  border-style: solid;
+                  border-width: 1px;
+                  box-sizing: border-box;
+                  cursor: pointer;
+                  display: flex;
+                  font-size: 20px;
+                  height: 1em;
+                  outline: transparent;
+                  padding-bottom: 0;
+                  padding-left: .2em;
+                  padding-right: .2em;
+                  padding-top: 0;
+                  position: relative;
+                  transition: all 0.1s ease;
+                  width: 2.2em;
+                }
+                &::-moz-focus-inner {
+                  border: 0;
+                }
+                .ms-Fabric--isFocusVisible &:focus:after {
+                  border: 1px solid #ffffff;
+                  bottom: -2px;
+                  content: "";
+                  left: -2px;
+                  outline: 1px solid #666666;
+                  position: absolute;
+                  right: -2px;
+                  top: -2px;
+                  z-index: 1;
+                }
+                &:hover {
+                  border-color: #333333;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+                  border-color: Highlight;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
+            data-is-focusable={true}
+            id="Toggle19"
+            onChange={[Function]}
+            onClick={[Function]}
+            role="switch"
+            type="button"
+          >
+            <div
+              className=
+                  ms-Toggle-thumb
+                  {
+                    background-color: #333333;
+                    border-color: transparent;
+                    border-radius: .5em;
+                    border-style: solid;
+                    border-width: .28em;
+                    box-sizing: border-box;
+                    height: .5em;
+                    transition: all 0.1s ease;
+                    width: .5em;
+                  }
+            />
+          </button>
+          <label
+            className=
+                ms-Label
+                ms-Toggle-stateText
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #333333;
+                  display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
+                && {
+                  margin-bottom: 0;
+                  margin-left: 8px;
+                  margin-right: 8px;
+                  margin-top: 0;
+                  padding-bottom: 0;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 0;
+                  user-select: none;
+                }
+            htmlFor="Toggle19"
+            id="Toggle19-stateText"
+          >
+            Off
+          </label>
+        </div>
+      </div>
       <button
         className=
             ms-Button
@@ -1231,290 +1651,14 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__16"
+              id="id__20"
             >
-              Five
+              Zone 5 button
             </div>
           </div>
         </div>
       </button>
-      <div
-        className=
-            ms-Toggle
-            is-enabled
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-bottom: 8px;
-            }
-      >
-        <label
-          className=
-              ms-Label
-              ms-Toggle-label
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                box-shadow: none;
-                box-sizing: border-box;
-                color: #333333;
-                display: block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                overflow-wrap: break-word;
-                padding-bottom: 5px;
-                padding-left: 0;
-                padding-right: 0;
-                padding-top: 5px;
-                word-wrap: break-word;
-              }
-          htmlFor="Toggle19"
-        >
-          Focus Trap Zone
-        </label>
-        <div
-          className=
-              ms-Toggle-innerContainer
-              {
-                display: inline-flex;
-                position: relative;
-              }
-        >
-          <button
-            aria-checked={false}
-            className=
-                ms-Toggle-background
-                {
-                  align-items: center;
-                  background: #ffffff;
-                  border-color: #666666;
-                  border-radius: 1em;
-                  border-style: solid;
-                  border-width: 1px;
-                  box-sizing: border-box;
-                  cursor: pointer;
-                  display: flex;
-                  font-size: 20px;
-                  height: 1em;
-                  outline: transparent;
-                  padding-bottom: 0;
-                  padding-left: .2em;
-                  padding-right: .2em;
-                  padding-top: 0;
-                  position: relative;
-                  transition: all 0.1s ease;
-                  width: 2.2em;
-                }
-                &::-moz-focus-inner {
-                  border: 0;
-                }
-                .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: -2px;
-                  content: "";
-                  left: -2px;
-                  outline: 1px solid #666666;
-                  position: absolute;
-                  right: -2px;
-                  top: -2px;
-                  z-index: 1;
-                }
-                &:hover {
-                  border-color: #333333;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-                  border-color: Highlight;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover {
-                  border-color: Highlight;
-                }
-            data-is-focusable={true}
-            id="Toggle19"
-            onChange={[Function]}
-            onClick={[Function]}
-            role="switch"
-            type="button"
-          >
-            <div
-              className=
-                  ms-Toggle-thumb
-                  {
-                    background-color: #333333;
-                    border-color: transparent;
-                    border-radius: .5em;
-                    border-style: solid;
-                    border-width: .28em;
-                    box-sizing: border-box;
-                    height: .5em;
-                    transition: all 0.1s ease;
-                    width: .5em;
-                  }
-            />
-          </button>
-          <label
-            className=
-                ms-Label
-                ms-Toggle-stateText
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  box-shadow: none;
-                  box-sizing: border-box;
-                  color: #333333;
-                  display: block;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
-                  overflow-wrap: break-word;
-                  padding-bottom: 5px;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 5px;
-                  word-wrap: break-word;
-                }
-                && {
-                  margin-bottom: 0;
-                  margin-left: 8px;
-                  margin-right: 8px;
-                  margin-top: 0;
-                  padding-bottom: 0;
-                  padding-left: 0;
-                  padding-right: 0;
-                  padding-top: 0;
-                  user-select: none;
-                }
-          >
-            Off
-          </label>
-        </div>
-      </div>
     </div>
   </div>
-  <button
-    className=
-        ms-Button
-        ms-Button--default
-        {
-          -moz-osx-font-smoothing: grayscale;
-          -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
-          box-sizing: border-box;
-          color: #333333;
-          cursor: pointer;
-          display: inline-block;
-          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
-          font-weight: 400;
-          height: 32px;
-          min-width: 80px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0;
-          position: relative;
-          text-align: center;
-          text-decoration: none;
-          user-select: none;
-          vertical-align: top;
-        }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          outline-color: ButtonText;
-          right: -2px;
-          top: -2px;
-        }
-        &:active > * {
-          left: 0px;
-          position: relative;
-          top: 0px;
-        }
-        &:hover {
-          background-color: #eaeaea;
-          color: #212121;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-          color: Highlight;
-        }
-        &:active {
-          background-color: #c8c8c8;
-          color: #212121;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    type="button"
-  >
-    <div
-      className=
-          ms-Button-flexContainer
-          {
-            align-items: center;
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100%;
-            justify-content: center;
-          }
-    >
-      <div
-        className=
-            ms-Button-textContainer
-            {
-              flex-grow: 1;
-            }
-      >
-        <div
-          className=
-              ms-Button-label
-              {
-                font-weight: 600;
-                line-height: 100%;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
-              }
-          id="id__20"
-        >
-          Randomize
-        </div>
-      </div>
-    </div>
-  </button>
 </div>
 `;

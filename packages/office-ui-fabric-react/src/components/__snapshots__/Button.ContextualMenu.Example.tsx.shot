@@ -550,7 +550,6 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                     onFocusCapture={[Function]}
                     onKeyDown={[Function]}
                     onKeyUp={[Function]}
-                    role="menu"
                     tabIndex={-1}
                   >
                     <div

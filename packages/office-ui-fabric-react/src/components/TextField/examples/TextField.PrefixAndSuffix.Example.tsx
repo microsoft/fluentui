@@ -1,20 +1,43 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import './TextField.Examples.scss';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 
-export class TextFieldPrefixAndSuffixExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <div className="docs-TextFieldExample">
-        <TextField ariaLabel="Example text field with https:// prefix and .com suffix" prefix="https://" suffix=".com" />
+export const TextFieldPrefixAndSuffixExample: React.StatelessComponent = () => {
+  const columnProps: Partial<IStackProps> = {
+    tokens: { childrenGap: 15 },
+    styles: { root: { width: 300 } }
+  };
+
+  return (
+    <Stack horizontal tokens={{ childrenGap: 50 }} styles={{ root: { width: 650 } }}>
+      <Stack {...columnProps}>
+        <TextField // prettier-ignore
+          label="With prefix"
+          prefix="https://"
+          ariaLabel="Example text field with https:// prefix"
+        />
+        <TextField // prettier-ignore
+          label="Disabled with prefix"
+          prefix="https://"
+          disabled
+          ariaLabel="Example text field with https:// prefix"
+        />
+      </Stack>
+
+      <Stack {...columnProps}>
+        <TextField // prettier-ignore
+          label="With suffix"
+          suffix=".com"
+          ariaLabel="Example text field with .com suffix"
+        />
+
         <TextField
-          ariaLabel="Example text field with https:// prefix and .com suffix"
-          label="Disabled"
+          label="With prefix and suffix"
           prefix="https://"
           suffix=".com"
-          disabled
+          ariaLabel="Example text field with https:// prefix and .com suffix"
         />
-      </div>
-    );
-  }
-}
+      </Stack>
+    </Stack>
+  );
+};

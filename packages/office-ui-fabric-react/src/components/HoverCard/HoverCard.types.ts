@@ -5,7 +5,13 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject, KeyCodes } from '../../Utilities';
 import { IPlainCardProps } from './PlainCard/PlainCard.types';
 
-export interface IHoverCard {}
+export interface IHoverCard {
+  /**
+   * Public `dismiss` method to be used through `componentRef` of the HoverCard.
+   * Boolean argument controls if the dismiss happens with a timeout delay.
+   */
+  dismiss: (withTimeOut?: boolean) => void;
+}
 
 /**
  * HoverCard component props.

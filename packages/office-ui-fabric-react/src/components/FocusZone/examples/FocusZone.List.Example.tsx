@@ -4,7 +4,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { DetailsRow, IColumn, Selection, SelectionMode } from 'office-ui-fabric-react/lib/DetailsList';
-import './FocusZone.List.Example.scss';
 
 const ITEMS = createArray(10, index => ({
   key: index.toString(),
@@ -35,7 +34,7 @@ const COLUMNS: IColumn[] = [
   }
 ];
 
-export class FocusZoneListExample extends React.Component {
+export class FocusZoneListExample extends React.PureComponent {
   private _selection: Selection;
 
   constructor(props: {}) {
@@ -47,27 +46,23 @@ export class FocusZoneListExample extends React.Component {
 
   public render(): JSX.Element {
     return (
-      <FocusZone
-        className="ms-FocusZoneListExample"
-        direction={FocusZoneDirection.vertical}
-        isCircularNavigation={true}
-        isInnerZoneKeystroke={this._isInnerZoneKeystroke}
-      >
+      <FocusZone direction={FocusZoneDirection.vertical} isCircularNavigation={true} isInnerZoneKeystroke={this._isInnerZoneKeystroke}>
         {ITEMS.map((item, index) => (
           <DetailsRow
-            key={index}
+            key={item.name}
             item={item}
             itemIndex={index}
             columns={COLUMNS}
-            selectionMode={SelectionMode.single}
+            selectionMode={SelectionMode.none}
             selection={this._selection}
+            styles={{ root: { display: 'block', width: '100%' } }}
           />
         ))}
       </FocusZone>
     );
   }
 
-  private _isInnerZoneKeystroke(ev: React.KeyboardEvent<HTMLElement>): boolean {
+  private _isInnerZoneKeystroke = (ev: React.KeyboardEvent<HTMLElement>): boolean => {
     return ev.which === getRTLSafeKeyCode(KeyCodes.right);
-  }
+  };
 }

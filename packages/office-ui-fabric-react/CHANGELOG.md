@@ -1,6 +1,153 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 26 Mar 2019 12:32:51 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+
+## 6.165.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Panel: add onOpen and onOpened properties
+
+### Patches
+
+- ComboBox: call onPendingValuedChanged with an empty value string when the user clears the input
+
+## 6.164.8
+Tue, 09 Apr 2019 12:35:21 GMT
+
+### Patches
+
+- Panel: set forceFocusInsideTrap to false for non-blocking Panels
+- Spinner: only render an aria-live polite message when ariaLabel is provided.
+
+## 6.164.7
+Mon, 08 Apr 2019 12:37:15 GMT
+
+### Patches
+
+- A number of components have been updated to reduce the dependencies, lowering bundle size impact for a variety of scenarios.
+- TextField: clarify onBeforeChange documentation
+
+## 6.164.6
+Fri, 05 Apr 2019 22:09:49 GMT
+
+### Patches
+
+- Persona: now sets dir=auto for text fields rendered in persona.
+- Fix layer and modal codepen links
+- Fixing submenu dismissal when parent menu has a hidden prop
+- Panel: add border to main div in high contrast
+
+## 6.164.5
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- SelectionZone: Disallow selection when selection mode is SelectionMode.none
+- Dialog, Layer, and Modal partial css-in-js conversions
+- Modal: constrain scrollableContent height to 100vh and window.innerHeight for mobile Safari to support DetailsList virtualization
+- Convert OverflowSet examples and one Panel example to css-in-js
+- Fix for  scrolling functionality in Suggestions component.
+- Toggle: make on/off text clickable
+- Tooltip: fixing the color and font size of subText not to be overriden by external UHF css.
+
+## 6.164.4
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- List and other example updates
+- Nav and MessageBar example updates
+- Colors: reduce size of utility file by changing implementation
+- SelectionZone: Defer dom inspection until interaction
+
+## 6.164.3
+Wed, 03 Apr 2019 12:38:51 GMT
+
+### Patches
+
+- Button: Adding missing parenthesis in ev.stopPropagation function call.
+- CommandBar: Meeting color contrast accessibility standards in examples.
+- Button: Allowing menu navigation with keyboard when shouldFocusOnMount is set to false.
+- PeoplePicker: Fix persona overflowing container
+- Small bug fixes for keytips
+- BaseFloatingPicker: do not update unmounted component on promise resolution
+
+## 6.164.2
+Tue, 02 Apr 2019 12:36:20 GMT
+
+### Patches
+
+- FocusZone: fixing logic to track outer FZ components correctly.
+- Image: fixes a visual bug where during fade in animation the image was shifted slightly.
+
+## 6.164.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Dropdown: The `onChange` callback's event target should always be the dropdown element, which contains the id attribute passed in through props.
+- Fixed a problem with Pivot showing the wrong PivotItems when using JSX expressions. Extended the test case
+- FocusZone and FocusTrapZone example improvements
+- GroupedList: Respect groupProps isAllGroupsCollapsed on initial render
+- List and other example updates
+- Use ^ ranges instead of >=
+
+## 6.164.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- Stack: Adding margin as a token of StackItem and childrenGap as a token of Stack and updating examples accordingly.
+- Separator: promote to OUFR
+
+### Patches
+
+- ContextualMenu: Remove extra role=menu
+- MaskedTextField: fixes the state update when the value it's controlled by the host app.
+- More TextField example updates
+
+## 6.163.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Dropdown: add correctly cased onRenderPlaceholder prop and deprecate onRenderPlaceHolder, plus example updates
+- Added order property to StackItem
+- HoverCard: adds a public `dismiss` method to allow instant dismiss of the card.
+
+### Patches
+
+- Persisted callout fixes
+- DocPage: add separate prop for overriding native props component name
+- Pickers: condionally render the list of the selected items only if there are any items to display. Fixes the aria role="list" bug where a list must contain one or more list items.
+- Spinner and Slider example updates
+- TextField example updates
+
+## 6.162.1
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- ComboBox: Add aria-required field to assist screen readers to read out required field
+
+## 6.162.0
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Minor changes
+
+- List: Parameterize generic T for item type with default type any
+
+### Patches
+
+- Calendar: Making calendar days aria-readonly: true so that Narrator doesn't read them as editable.
+- DocumentCard: Removing blank 1px line below preview images in compact layout.
+- Remove custom high contrast selectors and example utility CSS classes
+- Split up color utility functions into separate files for perf
+- GroupHeader: tighten componentWillReceiveProps parameter typing
+- update API file
+- update api file generated by api-extractor 7
 
 ## 6.161.0
 Tue, 26 Mar 2019 12:32:51 GMT

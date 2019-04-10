@@ -1,93 +1,39 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import './Slider.Basic.Example.scss';
+import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export class SliderBasicExample extends React.Component<
-  {},
-  {
-    value: number;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
+export interface ISliderBasicExampleState {
+  value: number;
+}
 
-    this.state = {
-      value: 0
-    };
-  }
+// tslint:disable:jsx-no-lambda
+export class SliderBasicExample extends React.Component<{}, ISliderBasicExampleState> {
+  public state: ISliderBasicExampleState = { value: 0 };
 
   public render(): JSX.Element {
+    const stackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <div className="ms-basicSlider">
-        <div className="ms-SliderBasicExample">
-          <Slider
-            label="Basic example:"
-            min={1}
-            max={5}
-            step={1}
-            defaultValue={2}
-            showValue={true}
-            // tslint:disable-next-line:jsx-no-lambda
-            onChange={(value: any) => console.log(value)}
-          />
-          <Slider label="Disabled example:" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
-          <Slider
-            label="Controlled example:"
-            max={10}
-            value={this.state.value}
-            // tslint:disable-next-line:jsx-no-lambda
-            onChange={(value: any) => this.setState({ value })}
-            showValue={true}
-          />
-          <Slider
-            label="Example with formatted value:"
-            max={100}
-            // tslint:disable-next-line:jsx-no-lambda
-            valueFormat={(value: number) => `${value}%`}
-            showValue={true}
-          />
-        </div>
-        <div className="ms-SliderVertical ">
-          <div className="ms-verticalBox">
-            <Slider
-              label="Basic example:"
-              min={1}
-              max={5}
-              step={1}
-              defaultValue={2}
-              showValue={true}
-              vertical={true}
-              // tslint:disable-next-line:jsx-no-lambda
-              onChange={(value: any) => console.log(value)}
-            />
-          </div>
-          <div className="ms-verticalBox">
-            <Slider
-              label="Disabled example:"
-              min={50}
-              max={500}
-              step={50}
-              defaultValue={300}
-              showValue={true}
-              vertical={true}
-              disabled={true}
-            />
-          </div>
-          <div className="ms-verticalBox">
-            <Slider label="Controlled example:" max={10} vertical={true} showValue={true} />
-          </div>
-          <div className="ms-verticalBox">
-            <Slider
-              label="Example with formatted value:"
-              max={100}
-              // tslint:disable-next-line:jsx-no-lambda
-              valueFormat={(value: number) => `${value}%`}
-              showValue={true}
-              vertical={true}
-            />
-          </div>
-        </div>
-      </div>
+      <Stack tokens={stackTokens} styles={{ root: { maxWidth: 300 } }}>
+        <Slider
+          label="Basic example"
+          min={1}
+          max={5}
+          step={1}
+          defaultValue={2}
+          showValue={true}
+          onChange={(value: number) => console.log(value)}
+        />
+        <Slider label="Disabled example" min={50} max={500} step={50} defaultValue={300} showValue={true} disabled={true} />
+        <Slider
+          label="Controlled example"
+          max={10}
+          value={this.state.value}
+          onChange={(value: number) => this.setState({ value })}
+          showValue={true}
+        />
+        <Slider label="Example with formatted value" max={100} valueFormat={(value: number) => `${value}%`} showValue={true} />
+      </Stack>
     );
   }
 }

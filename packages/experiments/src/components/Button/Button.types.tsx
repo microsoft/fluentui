@@ -21,7 +21,7 @@ export interface IButtonSlots {
   root?: IHTMLElementSlot<'button'>;
 
   /**
-   * Defines the horizontal stack used for specifying inner layout of Button.
+   * Defines the horizontal stack used for specifying the inner layout of the Button.
    */
   stack?: IStackSlot;
 
@@ -70,6 +70,11 @@ export interface IButtonProps
    * Defines an event callback that is triggered when the Button is clicked.
    */
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * The aria label that the screen readers use when focus goes on the Button.
+   */
+  ariaLabel?: string;
 }
 
 export interface IButtonViewProps extends IButtonProps {}
@@ -78,21 +83,35 @@ export interface IButtonTokens {
   backgroundColor?: string;
   backgroundColorHovered?: string;
   backgroundColorPressed?: string;
+  highContrastBackgroundColor?: string;
+  highContrastBackgroundColorHovered?: string;
+  highContrastBackgroundColorPressed?: string;
   color?: string;
   colorHovered?: string;
   colorPressed?: string;
+  highContrastColor?: string;
+  highContrastColorHovered?: string;
+  highContrastColorPressed?: string;
   borderColor?: string;
   borderColorFocused?: string;
   borderColorHovered?: string;
   borderColorPressed?: string;
+  highContrastBorderColor?: string;
+  highContrastBorderColorHovered?: string;
+  highContrastBorderColorPressed?: string;
+  msHighContrastAdjust?: string;
   iconColor?: string;
   iconColorHovered?: string;
   iconColorPressed?: string;
+  highContrastIconColor?: string;
+  highContrastIconColorHovered?: string;
+  highContrastIconColorPressed?: string;
   outlineColor?: string;
   borderRadius?: number | string;
   borderWidth?: number | string;
   contentPadding?: number | string;
   contentPaddingFocused?: number | string;
+  cursor?: string | undefined;
   textFamily?: string;
   textSize?: number | string;
   textWeight?: IFontWeight;

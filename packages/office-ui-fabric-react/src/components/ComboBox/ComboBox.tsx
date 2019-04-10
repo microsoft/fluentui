@@ -388,6 +388,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 aria-label={ariaLabel && !label ? ariaLabel : undefined}
                 aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 aria-activedescendant={this._getAriaActiveDescentValue()}
+                aria-required={required}
                 aria-disabled={disabled}
                 aria-owns={isOpen ? id + '-list' : undefined}
                 spellCheck={false}
@@ -1573,7 +1574,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ) {
       // Set new pending index if currentPendingValueValidIndex was changed
       newPendingIndex = currentPendingValueValidIndex;
-    } else if (currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '') {
+    } else if (currentPendingValue !== prevState.currentPendingValue) {
       // Set pendingValue in the case it was changed and no index was changed
       newPendingValue = currentPendingValue;
     }

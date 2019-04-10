@@ -258,7 +258,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._adjustedFocusZoneProps = { ...focusZoneProps, direction: this._getFocusZoneDirection() };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
-    const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
+    const submenuProps = this.state.expandedMenuItemKey && this.props.hidden !== true ? this._getSubmenuProps() : null;
 
     isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
     /**
@@ -318,7 +318,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           hidden={this.props.hidden}
         >
           <div
-            role="menu"
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
@@ -372,6 +371,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._previousActiveElement && this._previousActiveElement!.focus();
       }, 0);
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+
+    // We need to dismiss any submenu related state properties,
+    // so that when the menu is shown again, the submenu is collapsed
+    this.setState({
+      expandedByMouseClick: undefined,
+      dismissedMenuItemKey: undefined,
+      expandedMenuItemKey: undefined,
+      submenuTarget: undefined
+    });
   }
 
   /**

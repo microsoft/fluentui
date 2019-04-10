@@ -2,8 +2,10 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
-import './Dialog.Basic.Example.scss';
+import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+
+const screenReaderOnly = mergeStyles(hiddenContentStyle);
 
 export interface IDialogBasicExampleState {
   hideDialog: boolean;
@@ -26,10 +28,10 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
       <div>
         <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={isDraggable} />
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
-        <label id={this._labelId} className="screenReaderOnly">
+        <label id={this._labelId} className={screenReaderOnly}>
           My sample Label
         </label>
-        <label id={this._subTextId} className="screenReaderOnly">
+        <label id={this._subTextId} className={screenReaderOnly}>
           My Sample description
         </label>
 
@@ -45,7 +47,7 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
             titleAriaId: this._labelId,
             subtitleAriaId: this._subTextId,
             isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride',
+            styles: { main: { maxWidth: 450 } },
             isDraggable: isDraggable
           }}
         >

@@ -70,6 +70,7 @@ const excludedExampleFiles: string[] = [
   'ExampleHelper.tsx', // Helper file with no actual component
   'GroupedList.Basic.Example.tsx',
   'GroupedList.Custom.Example.tsx',
+  'HoverCard.InstantDismiss.Example.tsx', // https://github.com/OfficeDev/office-ui-fabric-react/issues/6681
   'List.Basic.Example.tsx',
   'List.Ghosting.Example.tsx',
   'List.Grid.Example.tsx',

@@ -30,7 +30,8 @@ export class CodepenComponent extends React.Component<ICodepenProps> {
       html: htmlContent,
       head: headContent,
       js: jsContent,
-      js_pre_processor: 'typescript'
+      js_pre_processor: 'typescript',
+      css_pre_processor: 'scss'
     };
 
     // reformat the JSON string to take out the quotes so it'll work with the Codepen API

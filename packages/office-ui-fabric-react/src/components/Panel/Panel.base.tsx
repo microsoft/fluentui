@@ -164,7 +164,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
             {overlay}
             <FocusTrapZone
               ignoreExternalFocusing={ignoreExternalFocusing}
-              forceFocusInsideTrap={isHiddenOnDismiss && !isOpen ? false : forceFocusInsideTrap}
+              forceFocusInsideTrap={!isBlocking || (isHiddenOnDismiss && !isOpen) ? false : forceFocusInsideTrap}
               firstFocusableSelector={firstFocusableSelector}
               isClickableOutsideFocusTrap={true}
               {...focusTrapZoneProps}
@@ -200,6 +200,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           this._async.setTimeout(this._onTransitionComplete, 200);
         }
       );
+
+      if (this.props.onOpen) {
+        this.props.onOpen();
+      }
     }
   }
 
@@ -349,6 +353,10 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
     this.setState({
       isAnimating: false
     });
+
+    if (this.state.isOpen && this.props.onOpened) {
+      this.props.onOpened();
+    }
 
     if (!this.state.isOpen && this.props.onDismissed) {
       this.props.onDismissed();

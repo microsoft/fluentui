@@ -9,11 +9,15 @@ import { DialogStatus } from './Dialog.checklist';
 import { DialogModelessExample } from './examples/Dialog.Modeless.Example';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
+const DialogBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
 const DialogLargeHeaderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
+const DialogLargeHeaderExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.LargeHeader.Example.tsx') as string;
 const DialogBlockingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
-const DialogTopOffsetFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
 const DialogBlockingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Blocking.Example.tsx') as string;
+const DialogTopOffsetFixedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
+const DialogTopOffsetFixedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.TopOffsetFixed.Example.tsx') as string;
 const DialogModelessExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Modeless.Example.tsx') as string;
+const DialogModelessExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Modeless.Example.tsx') as string;
 
 export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
@@ -24,11 +28,13 @@ export const DialogPageProps: IDocPageProps = {
     {
       title: 'Default Dialog',
       code: DialogBasicExampleCode,
+      codepenJS: DialogBasicExampleCodepen,
       view: <DialogBasicExample />
     },
     {
       title: 'Dialog with large header and ChoiceGroup',
       code: DialogLargeHeaderExampleCode,
+      codepenJS: DialogLargeHeaderExampleCodepen,
       view: (
         <>
           <p>
@@ -57,6 +63,7 @@ export const DialogPageProps: IDocPageProps = {
     {
       title: 'Dialog with Top Offset Fixed',
       code: DialogTopOffsetFixedExampleCode,
+      codepenJS: DialogTopOffsetFixedExampleCodepen,
       view: (
         <>
           <p>
@@ -70,6 +77,7 @@ export const DialogPageProps: IDocPageProps = {
     {
       title: 'Modeless Dialog',
       code: DialogModelessExampleCode,
+      codepenJS: DialogModelessExampleCodepen,
       view: <DialogModelessExample />
     }
   ],

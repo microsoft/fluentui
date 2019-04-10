@@ -2,7 +2,26 @@
 
 exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly 1`] = `
 <div
-  className="docs-TextFieldErrorExample"
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        max-width: 350px;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
@@ -11,6 +30,8 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          align-items: center;
+          display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -32,9 +53,10 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
             margin-bottom: 0px;
-            margin-left: 0px;
+            margin-left: 16px;
             margin-right: 0px;
             margin-top: 0px;
+            order: 1;
             overflow-wrap: break-word;
             padding-bottom: 5px;
             padding-left: 0;
@@ -43,6 +65,7 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
             word-wrap: break-word;
           }
       htmlFor="Toggle0"
+      id="Toggle0-label"
     >
       Show text fields
     </label>
@@ -56,6 +79,8 @@ exports[`Component Examples renders TextField.ErrorMessage.Example.tsx correctly
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle0-label"
+        checked={false}
         className=
             ms-Toggle-background
             {

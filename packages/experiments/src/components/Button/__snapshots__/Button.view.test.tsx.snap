@@ -11,14 +11,14 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         border-color: transparent;
         border-radius: 0px;
         border-style: solid;
-        border-width: 0px;
+        border-width: 1px;
         box-sizing: border-box;
         color: #333333;
-        cursor: default;
+        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 600;
         justify-content: center;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -57,16 +57,30 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         border-color: transparent;
         color: #212121;
       }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:hover:active {
         background-color: #eaeaea;
         border-color: transparent;
         color: #212121;
       }
+      @media screen and (-ms-high-contrast: active){&:hover:active {
+        border-color: Highlight;
+        color: Highlight;
+      }
       &:hover .ms-Icon-47 {
         color: #212121;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-47 {
+        color: Highlight;
+      }
       &:hover:active .ms-Icon-47 {
         color: #212121;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover:active .ms-Icon-47 {
+        color: Highlight;
       }
   onClick={[Function]}
   role="button"
@@ -83,10 +97,10 @@ exports[`Button view renders a default Button with content correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: 8px;
+          padding-bottom: 0px;
           padding-left: 16px;
           padding-right: 16px;
-          padding-top: 8px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -109,7 +123,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -133,14 +147,14 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         border-color: transparent;
         border-radius: 0px;
         border-style: solid;
-        border-width: 0px;
+        border-width: 1px;
         box-sizing: border-box;
         color: #a6a6a6;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 600;
         justify-content: center;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -174,21 +188,43 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         top: 1px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
+        background-color: Window;
+        border-color: GrayText;
+        color: GrayText;
+      }
       &:hover {
         background-color: #f4f4f4;
         border-color: transparent;
         color: #a6a6a6;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        background-color: Window;
+        border-color: GrayText;
+        color: GrayText;
       }
       &:hover:active {
         background-color: #f4f4f4;
         border-color: transparent;
         color: #a6a6a6;
       }
+      @media screen and (-ms-high-contrast: active){&:hover:active {
+        background-color: Window;
+        border-color: GrayText;
+        color: GrayText;
+      }
       &:hover .ms-Icon-57 {
         color: #a6a6a6;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
+        color: GrayText;
+      }
       &:hover:active .ms-Icon-57 {
         color: #a6a6a6;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover:active .ms-Icon-57 {
+        color: GrayText;
       }
   onClick={[Function]}
   role="button"
@@ -205,10 +241,10 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: 8px;
+          padding-bottom: 0px;
           padding-left: 16px;
           padding-right: 16px;
-          padding-top: 8px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -231,7 +267,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
@@ -254,14 +290,14 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-color: transparent;
         border-radius: 0px;
         border-style: solid;
-        border-width: 0px;
+        border-width: 1px;
         box-sizing: border-box;
         color: #ffffff;
-        cursor: default;
+        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
-        font-weight: 400;
+        font-weight: 600;
         justify-content: center;
         margin-bottom: 0px;
         margin-left: 0px;
@@ -295,21 +331,42 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         top: 1px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        -ms-high-contrast-adjust: none;
+        background-color: WindowText;
+        color: Window;
+      }
       &:hover {
         background-color: #106ebe;
         border-color: transparent;
         color: #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover {
+        background-color: Highlight;
+        border-color: Highlight;
+        color: Window;
       }
       &:hover:active {
         background-color: #005a9e;
         border-color: transparent;
         color: #ffffff;
       }
+      @media screen and (-ms-high-contrast: active){&:hover:active {
+        background-color: Highlight;
+        border-color: Highlight;
+        color: Window;
+      }
       &:hover .ms-Icon-55 {
         color: #ffffff;
       }
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-55 {
+        color: Window;
+      }
       &:hover:active .ms-Icon-55 {
         color: #ffffff;
+      }
+      @media screen and (-ms-high-contrast: active){&:hover:active .ms-Icon-55 {
+        color: Window;
       }
   onClick={[Function]}
   role="button"
@@ -326,10 +383,10 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
           flex-wrap: nowrap;
           height: 100%;
           justify-content: center;
-          padding-bottom: 8px;
+          padding-bottom: 0px;
           padding-left: 16px;
           padding-right: 16px;
-          padding-top: 8px;
+          padding-top: 0px;
           width: auto;
         }
         & > * {
@@ -352,7 +409,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
             display: inline;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             moz-osx-font-smoothing: grayscale;
             overflow: visible;
             webkit-font-smoothing: antialiased;
