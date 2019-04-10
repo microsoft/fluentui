@@ -7,10 +7,10 @@ import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { DraggableCore, DraggableData } from 'react-draggable';
 import { ContextualMenu } from '../../ContextualMenu';
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
+import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
 
 // @TODO - need to change this to a panel whenever the breakpoint is under medium (verify the spec)
 
@@ -194,7 +194,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         onKeyDown={isDraggable ? this._onDialogKeyDown : undefined}
         onKeyUp={isDraggable ? this._onDialogKeyUp : undefined}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
-        style={isDraggable ? { transform: `translate(${x}px, ${y}px)` } : undefined}
       >
         {isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
@@ -240,15 +239,16 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
             <div className={classNames.root}>
               {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
               {isDraggable ? (
-                <DraggableCore
-                  handle={dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
-                  cancel="button"
+                <DraggableZone
+                  handleSelector={dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
+                  preventDragSelector="button"
                   onStart={this._onDragStart}
-                  onDrag={this._onDrag}
+                  onDragChange={this._onDrag}
                   onStop={this._onDragStop}
+                  position={{ x: x, y: y }}
                 >
                   {modalContent}
-                </DraggableCore>
+                </DraggableZone>
               ) : (
                 modalContent
               )}
@@ -298,22 +298,17 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     }
   };
 
-  /**
-   * On dragStop set focus back on the FocusTrapZone
-   * and return false so that Draggable's base stop logic still runs
-   */
-  private _onDragStop = (_: Event, ui: DraggableData): false => {
-    this.focus();
-    return false;
-  };
-
-  private _onDrag = (_: Event, ui: DraggableData): void => {
-    const { x, y } = this.state;
-    this.setState({ x: x + ui.deltaX, y: y + ui.deltaY });
-  };
-
-  private _onDragStart = (_: Event, ui: DraggableData): void => {
+  private _onDragStart = (): void => {
     this.setState({ isModalMenuOpen: false, isInKeyboardMoveMode: false });
+  };
+
+  private _onDrag = (_: React.MouseEvent<HTMLElement> & React.TouchEvent<HTMLElement>, ui: IDragData): void => {
+    const { x, y } = this.state;
+    this.setState({ x: x + ui.delta.x, y: y + ui.delta.y });
+  };
+
+  private _onDragStop = (): void => {
+    this.focus();
   };
 
   private _onDialogKeyUp = (event: React.KeyboardEvent<HTMLDivElement>): void => {

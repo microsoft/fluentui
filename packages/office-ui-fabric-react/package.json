@@ -61,7 +61,6 @@
     "office-ui-fabric-core": ">=9.0.0 <10.0.0",
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0",
-    "react-draggable": "^3.0.5",
     "react-highlight": "0.10.0",
     "react-test-renderer": "^16.3.0",
     "resemblejs": "~2.2.3",
