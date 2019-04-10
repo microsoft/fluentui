@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { EditSection } from './EditSection';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
+/** @deprecated Not used */
 export interface IEditSection {}
 
-export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
+export interface IEditSectionProps {
   /** @deprecated Not used */
   componentRef?: IRefObject<IEditSection>;
 

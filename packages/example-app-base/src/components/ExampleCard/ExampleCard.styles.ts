@@ -1,6 +1,7 @@
-import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
-import { DefaultPalette, DefaultFontStyles, AnimationVariables, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
+import { AnimationVariables, IRawStyle, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
+import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
 
 const globalClassNames = {
@@ -21,31 +22,72 @@ const globalClassNames = {
   isScrollable: 'is-scrollable'
 };
 
-const sharedToggleButtonStyles: IRawStyle = {
-  marginRight: 0,
-  background: 'none',
-  backgroundColor: 'transparent',
-  border: `1px solid ${DefaultPalette.neutralTertiary}`,
-  borderBottom: 0,
-  borderTopLeftRadius: '4px',
-  borderTopRightRadius: '4px',
-  padding: '4px 12px',
-  minWidth: 100,
-  transition: `border ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
-};
-
-const codeButtonActiveStyles: IRawStyle = {
-  backgroundColor: DefaultPalette.neutralDark,
-  borderColor: DefaultPalette.neutralDark,
-  selectors: {
-    '.ms-Button-icon, .ms-Button-label': {
-      color: DefaultPalette.white
-    }
-  }
-};
-
 export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyles> = props => {
-  const { isRightAligned, isScrollable, isCodeVisible } = props;
+  const { isRightAligned, isScrollable, isCodeVisible, theme = getTheme() } = props;
+
+  const sharedToggleButtonStyles = {
+    marginRight: 0,
+    background: 'none',
+    backgroundColor: 'transparent',
+    border: `1px solid ${theme.palette.neutralTertiary}`,
+    borderBottom: 0,
+    borderTopLeftRadius: '4px',
+    borderTopRightRadius: '4px',
+    padding: '4px 12px',
+    minWidth: 100,
+    transition: `border ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
+  };
+
+  const codeButtonActiveStyles: IRawStyle = {
+    backgroundColor: theme.palette.neutralDark,
+    borderColor: theme.palette.neutralDark,
+    selectors: {
+      '.ms-Button-icon, .ms-Button-label': {
+        color: theme.palette.white
+      }
+    }
+  };
+
+  const dropdownStyles: Partial<IDropdownStyles> = {
+    caretDownWrapper: {
+      top: '6px'
+    },
+    title: [
+      sharedToggleButtonStyles,
+      {
+        alignItems: 'center',
+        display: 'flex',
+        height: 40,
+        width: 150,
+        selectors: {
+          [`&.${globalClassNames.themeDropdown}:focus`]: {
+            borderColor: theme.palette.neutralDark,
+            outlineColor: theme.palette.neutralDark
+          }
+        }
+      },
+      globalClassNames.themeDropdown
+    ]
+  };
+
+  const buttonStyles: Partial<IButtonStyles> = {
+    root: [
+      sharedToggleButtonStyles,
+      {
+        // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
+        lineHeight: '1',
+        selectors: {
+          '&:hover': codeButtonActiveStyles
+        }
+      },
+      globalClassNames.codeButton,
+      isCodeVisible && [codeButtonActiveStyles, globalClassNames.isActive]
+    ],
+    label: {
+      color: theme.palette.neutralDark,
+      borderColor: theme.palette.neutralDark
+    }
+  };
 
   return {
     root: [
@@ -57,19 +99,19 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     ],
     header: [
       {
-        borderBottom: `1px solid ${DefaultPalette.neutralTertiary}`,
+        borderBottom: `1px solid ${theme.palette.neutralTertiary}`,
         overflow: 'hidden',
         textOverflow: 'ellipsis',
         whiteSpace: 'nowrap',
         position: 'relative'
       },
       isCodeVisible && {
-        borderColor: DefaultPalette.neutralDark
+        borderColor: theme.palette.neutralDark
       },
       globalClassNames.header
     ],
     title: [
-      DefaultFontStyles.large,
+      theme.fonts.large,
       {
         marginBottom: 10,
         display: 'inline-block'
@@ -77,28 +119,12 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       globalClassNames.title
     ],
     toggleButtons: [
-      DefaultFontStyles.large,
+      theme.fonts.large,
       {
         display: 'flex',
         float: 'right'
       },
       globalClassNames.toggleButtons
-    ],
-    codeButton: [
-      sharedToggleButtonStyles,
-      {
-        // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
-        lineHeight: '1',
-        selectors: {
-          '&:hover': codeButtonActiveStyles,
-          '.ms-Button-label': {
-            color: DefaultPalette.neutralDark,
-            borderColor: DefaultPalette.neutralDark
-          }
-        }
-      },
-      globalClassNames.codeButton,
-      isCodeVisible && [codeButtonActiveStyles, globalClassNames.isActive]
     ],
     example: [
       globalClassNames.example,
@@ -117,7 +143,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     ],
     code: [
       {
-        backgroundColor: DefaultPalette.neutralDark,
+        backgroundColor: theme.palette.neutralDark,
         overflow: 'hidden',
         selectors: {
           pre: [
@@ -153,7 +179,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-block',
         marginRight: 50,
         selectors: {
-          h4: [DefaultFontStyles.large, { color: '#177d3e' }]
+          h4: [theme.fonts.large, { color: '#177d3e' }]
         }
       },
       globalClassNames.dos
@@ -163,34 +189,14 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         width: 'calc(50%)',
         display: 'inline-block',
         selectors: {
-          h4: [DefaultFontStyles.large, { color: '#a61e22' }]
+          h4: [theme.fonts.large, { color: '#a61e22' }]
         }
       },
       globalClassNames.donts
-    ]
-  };
-};
-
-export const getDropdownStyles: IStyleFunction<IExampleCardStyleProps, IDropdownStyles> = props => {
-  return {
-    caretDownWrapper: {
-      top: '6px'
-    },
-    title: [
-      sharedToggleButtonStyles,
-      {
-        alignItems: 'center',
-        display: 'flex',
-        height: 40,
-        width: 150,
-        selectors: {
-          [`&.${globalClassNames.themeDropdown}:focus`]: {
-            borderColor: DefaultPalette.neutralDark,
-            outlineColor: DefaultPalette.neutralDark
-          }
-        }
-      },
-      globalClassNames.themeDropdown
-    ]
+    ],
+    subComponentStyles: {
+      dropdowns: dropdownStyles,
+      codeButtons: buttonStyles
+    }
   };
 };

@@ -1,8 +1,10 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IWithResponsiveModeState } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { INavLink, INavLinkGroup } from 'office-ui-fabric-react/lib/Nav';
+import { INavLink, INavLinkGroup, INavStyleProps } from 'office-ui-fabric-react/lib/Nav';
+import { IPanelStyleProps } from 'office-ui-fabric-react/lib/Panel';
 import { IAppCustomizations } from '../../utilities/customizations';
+import { IHeaderStyleProps } from '../Header';
 
 export enum ExampleStatus {
   placeholder = 0,
@@ -34,24 +36,37 @@ export interface IAppDefinition {
 
 export interface IAppProps extends IWithResponsiveModeState {
   appDefinition: IAppDefinition;
+
+  /** Theme provided by higher-order component. */
+  theme?: ITheme;
+
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IAppStyleProps, IAppStyles>;
 }
 
-export type IAppStyleProps = Pick<IAppProps, 'responsiveMode'>;
+export type IAppStyleProps = Required<Pick<IAppProps, 'responsiveMode'>> & Pick<IAppProps, 'theme'>;
 
 export interface IAppStyles {
   root: IStyle;
-  header: IStyle;
-  /** Styles for the Nav itself, applied regardless of screen size */
-  nav: IStyle;
+  /** Styles for the container of the actual Header */
+  headerContainer: IStyle;
   /** Styles for the container when the nav is displayed on the left */
   leftNavContainer: IStyle;
-  /** Styles for the container when the nav is displayed in a panel */
-  panelNavContainer: IStyle;
   content: IStyle;
   linkFlair: IStyle;
   linkFlairStarted: IStyle;
   linkFlairBeta: IStyle;
   linkFlairRelease: IStyle;
+  subComponentStyles: IAppSubComponentStyles;
+}
+
+export interface IAppSubComponentStyles {
+  // TODO: remove anys after TS 3 upgrade
+  // tslint:disable:no-any
+  /** Styles for the Header itself. To style the container, use `styles.headerContainer`. */
+  header: IStyleFunctionOrObject<IHeaderStyleProps, any>;
+  /** Styles for the Nav itself, applied regardless of screen size */
+  nav: IStyleFunctionOrObject<INavStyleProps, any>;
+  /** Styles for the Panel used to display the nav on small screens */
+  navPanel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }

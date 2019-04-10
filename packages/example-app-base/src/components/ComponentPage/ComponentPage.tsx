@@ -10,6 +10,9 @@ import { getStyles } from './ComponentPage.styles';
 
 const getClassNames = classNamesFunction<IComponentPageStyleProps, IComponentPageStyles>();
 
+/**
+ * Extended section interface used internally for de-duplicating section rendering code.
+ */
 interface IExtendedComponentPageSection extends IComponentPageSection {
   /** URL for editing the section markdown */
   editUrl?: string;
@@ -28,7 +31,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   };
 
   private _baseUrl: string;
-  private _classNames: IProcessedStyleSet<IComponentPageStyles>;
+  private _styles: IProcessedStyleSet<IComponentPageStyles>;
 
   constructor(props: IComponentPageProps) {
     super(props);
@@ -38,9 +41,9 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   }
 
   public render() {
-    const { componentName, className, otherSections, styles } = this.props;
+    const { componentName, className, otherSections, styles, theme } = this.props;
 
-    const classNames = (this._classNames = getClassNames(styles, {}));
+    const classNames = (this._styles = getClassNames(styles, { theme }));
 
     return (
       <div className={css(classNames.root, className)}>
@@ -62,7 +65,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   }
 
   private _pageHeader(): JSX.Element | undefined {
-    const classNames = this._classNames;
+    const classNames = this._styles;
     if (this.props.isHeaderVisible) {
       return (
         <div className={classNames.header}>
@@ -74,7 +77,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   }
 
   private _navigationLinks(): JSX.Element {
-    const classNames = this._classNames;
+    const classNames = this._styles;
     const props = this.props;
 
     const sections = [
@@ -88,9 +91,9 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     ].filter(section => !!section) as Array<{ title: string }>;
 
     return (
-      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5 40' }} className={classNames.navigation}>
+      <Stack horizontal maxWidth="100%" wrap tokens={{ childrenGap: '5px 40px' }} className={classNames.navigation}>
         {sections.map(section => (
-          <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} styles={{ root: classNames.navLink }}>
+          <Link key={section.title} href={this._baseUrl + '#' + _idFromSectionTitle(section.title)} className={classNames.headerLink}>
             {section.title}
           </Link>
         ))}
@@ -136,14 +139,14 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             {this.props.propertiesTables}
           </>
         ),
-        wrapperClass: this._classNames.implementationSection,
+        wrapperClass: this._styles.implementationSection,
         titleClass: null
       });
     }
   }
 
   private _getBestPractices(): JSX.Element | undefined {
-    const classNames = this._classNames;
+    const classNames = this._styles;
     const props = this.props;
     const { bestPractices, dos, donts, title } = props;
     if (!(bestPractices || (dos && donts))) {
@@ -209,19 +212,19 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       return this._getSection({
         title: 'Implementation Examples',
         section: implementationExampleCards,
-        wrapperClass: this._classNames.implementationExamplesSection
+        wrapperClass: this._styles.implementationExamplesSection
       });
     }
   }
 
   private _getFeedback(): JSX.Element | undefined {
     if (this.props.isFeedbackVisible && this.props.feedback) {
-      return this._getSection({ title: 'Feedback', section: this.props.feedback, wrapperClass: this._classNames.feedbackSection });
+      return this._getSection({ title: 'Feedback', section: this.props.feedback, wrapperClass: this._styles.feedbackSection });
     }
   }
 
   private _getComponentStatusBadges(): JSX.Element | undefined {
-    const classNames = this._classNames;
+    const classNames = this._styles;
     if (this.props.componentStatus && this.props.areBadgesVisible) {
       return <div className={classNames.statusSection}>{this.props.componentStatus}</div>;
     }
@@ -234,8 +237,8 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         title: 'Overview',
         section: overview,
         editUrl: this._getURL('Overview', editOverviewUrl),
-        wrapperClass: this._classNames.overviewSection,
-        titleClass: this._classNames.overviewHeading
+        wrapperClass: this._styles.overviewSection,
+        titleClass: this._styles.overviewHeading
       });
     }
 
@@ -246,12 +249,12 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     const {
       title,
       section: sectionContent,
-      wrapperClass = this._classNames.variantsSection,
-      titleClass = this._classNames.variantsTitle,
+      wrapperClass = this._styles.variantsSection,
+      titleClass = this._styles.variantsTitle,
       id = _idFromSectionTitle(section.title),
       editUrl
     } = section;
-    const classNames = this._classNames;
+    const classNames = this._styles;
     return (
       <div key={id || title} className={css(wrapperClass)}>
         <Stack horizontal verticalAlign="center" horizontalAlign="space-between">

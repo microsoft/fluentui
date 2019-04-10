@@ -1,4 +1,4 @@
-import { DefaultPalette, DefaultFontStyles, FontSizes, ScreenWidthMinUhfMobile, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
+import { ScreenWidthMinUhfMobile, IRawStyle, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IComponentPageStyleProps, IComponentPageStyles } from './ComponentPage.types';
 
@@ -6,9 +6,9 @@ const globalClassNames = {
   root: 'ComponentPage',
   body: 'ComponentPage-body',
   header: 'ComponentPage-header',
+  headerLink: 'ComponentPage-navLink',
   title: 'ComponentPage-title',
   navigation: 'ComponentPage-navigation',
-  navLink: 'ComponentPage-navLink',
   subHeading: 'ComponentPage-subHeading',
   overviewSection: 'ComponentPage-overviewSection',
   overviewText: 'ComponentPage-overview',
@@ -40,11 +40,12 @@ const sectionStyles: IRawStyle = {
 };
 
 export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageStyles> = props => {
+  const { theme = getTheme() } = props;
   return {
-    ...globalClassNames,
+    body: globalClassNames.body,
     root: [
       {
-        backgroundColor: DefaultPalette.white,
+        backgroundColor: theme.palette.white,
         overflow: 'hidden'
       },
       globalClassNames.root
@@ -58,12 +59,21 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       },
       globalClassNames.header
     ],
+    headerLink: [
+      theme.fonts.large,
+      {
+        color: theme.palette.white,
+        textDecoration: 'none',
+        selectors: { '&:hover': { color: theme.palette.neutralLight } }
+      },
+      globalClassNames.headerLink
+    ],
     title: [
-      DefaultFontStyles.xxLarge,
+      theme.fonts.xxLarge,
       {
         fontSize: 82,
         lineHeight: 94,
-        color: DefaultPalette.white,
+        color: theme.palette.white,
         display: 'inline-block',
         width: '100%',
         marginTop: componentPagePadding,
@@ -72,17 +82,8 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.title
     ],
     navigation: globalClassNames.navigation,
-    navLink: [
-      DefaultFontStyles.large,
-      {
-        color: DefaultPalette.white,
-        textDecoration: 'none',
-        selectors: { '&:hover': { color: DefaultPalette.neutralLight } }
-      },
-      globalClassNames.navLink
-    ],
     subHeading: [
-      DefaultFontStyles.xxLarge,
+      theme.fonts.xxLarge,
       {
         fontSize: 36,
         marginTop: 10,
@@ -100,7 +101,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     ],
     overviewText: [
       {
-        fontSize: FontSizes.medium,
+        fontSize: theme.fonts.medium.fontSize,
         // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
         lineHeight: '1.5',
         marginBottom: -6, // Trim padding off last paragraph
@@ -111,7 +112,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
           },
           ul: { paddingLeft: ulLeftPadding },
           li: [
-            DefaultFontStyles.medium,
+            theme.fonts.medium,
             {
               marginBottom: 16
             }
@@ -121,6 +122,8 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       },
       globalClassNames.overviewText
     ],
+    overviewHeading: globalClassNames.overviewHeading,
+    usageSection: globalClassNames.usageSection,
     usageHeading: [
       {
         marginTop: 10,
@@ -134,6 +137,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.usageHeading
     ],
     variantsSection: [sectionStyles, globalClassNames.variantsSection],
+    variantsTitle: globalClassNames.variantsTitle,
     variantsList: [
       {
         paddingLeft: ulLeftPadding,
@@ -149,10 +153,11 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     bestPracticesSection: [
       sectionStyles,
       {
-        backgroundColor: DefaultPalette.neutralLighterAlt
+        backgroundColor: theme.palette.neutralLighterAlt
       },
       globalClassNames.bestPracticesSection
     ],
+    doSections: globalClassNames.doSections,
     dosDontsSection: [
       {
         width: '100%',
@@ -161,7 +166,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         verticalAlign: 'top',
         marginBottom: 20,
         selectors: {
-          h3: DefaultFontStyles.xLarge,
+          h3: theme.fonts.xLarge,
           ul: { paddingLeft: ulLeftPadding },
           li: {
             listStyle: 'disc',
@@ -207,6 +212,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     dontsLine: {
       backgroundColor: '#e74856'
     },
+    dontsSection: globalClassNames.dontsSection,
     statusSection: [
       sectionStyles,
       {

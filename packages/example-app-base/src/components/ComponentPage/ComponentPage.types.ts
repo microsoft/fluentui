@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IComponentPageSection {
@@ -87,19 +87,22 @@ export interface IComponentPageProps {
    */
   editOverviewUrl?: string;
 
+  /** Theme provided by higher-order component. */
+  theme?: ITheme;
+
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IComponentPageStyleProps, IComponentPageStyles>;
 }
 
-export type IComponentPageStyleProps = {};
+export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme'>;
 
 export interface IComponentPageStyles {
   root: IStyle;
   body: IStyle;
   header: IStyle;
+  headerLink: IStyle;
   title: IStyle;
   navigation: IStyle;
-  navLink: IStyle;
   subHeading: IStyle;
   overviewSection: IStyle;
   overviewText: IStyle;

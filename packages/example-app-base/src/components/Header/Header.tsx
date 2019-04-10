@@ -2,9 +2,8 @@ import * as React from 'react';
 
 import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 import { getRTL, setRTL, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
-import { Icon, IIconStyles } from 'office-ui-fabric-react/lib/Icon';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
 import { IHeaderProps, IHeaderStyleProps, IHeaderStyles } from './Header.types';
 import { getStyles } from './Header.styles';
@@ -16,13 +15,8 @@ export interface IHeaderState {
   };
 }
 
-const iconStyles: Partial<IIconStyles> = {
-  root: { fontSize: 18 }
-};
-
 const getClassNames = classNamesFunction<IHeaderStyleProps, IHeaderStyles>();
 
-@withResponsiveMode
 export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
   private _isRTLEnabled: boolean;
 
@@ -36,21 +30,21 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
   }
 
   public render(): JSX.Element {
-    const { title, styles, responsiveMode = ResponsiveMode.xLarge } = this.props;
+    const { title, styles, isLargeDown = false, theme } = this.props;
     const { contextMenu } = this.state;
-    const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
     // For screen sizes large down, hide the side links.
     const sideLinks = isLargeDown ? [] : this.props.sideLinks;
 
-    const classNames = getClassNames(styles, {});
+    const classNames = getClassNames(styles, { theme });
+    const { subComponentStyles } = classNames;
 
     return (
       <div>
         <div className={classNames.root}>
           {isLargeDown && (
             <button className={classNames.button} onClick={this._onMenuClick}>
-              <Icon iconName="GlobalNavButton" styles={iconStyles} />
+              <Icon iconName="GlobalNavButton" styles={subComponentStyles.icons} />
             </button>
           )}
           <div className={classNames.title}>{title}</div>
@@ -64,7 +58,7 @@ export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
                 ))
                 .concat([
                   <button key="headerButton" className={classNames.button} onClick={this._onGearClick}>
-                    <Icon iconName="Settings" styles={iconStyles} />
+                    <Icon iconName="Settings" styles={subComponentStyles.icons} />
                   </button>
                 ])}
             </FocusZone>

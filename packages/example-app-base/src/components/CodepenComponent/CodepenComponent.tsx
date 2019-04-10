@@ -1,18 +1,25 @@
 import * as React from 'react';
-import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
-import { CommandButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { IComponentAs, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { CommandButton, IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 
 export interface ICodepenProps {
   /** JS string to be passed into Codepen */
   jsContent: string;
   /** Optional button type */
   buttonAs?: IComponentAs<IButtonProps>;
-  /** Custom class name for the button */
+  /** Custom styles for the button */
+  // TODO: remove any once button fully supports styling
+  // tslint:disable-next-line:no-any
+  buttonStyles?: IStyleFunctionOrObject<any, IButtonStyles>;
+  /**
+   * Custom class name for the button.
+   * @deprecated Use `buttonStyles`
+   */
   buttonClassName?: string;
 }
 
 export const CodepenComponent: React.StatelessComponent<ICodepenProps> = props => {
-  const { jsContent, buttonAs: ButtonType = CommandButton, buttonClassName } = props;
+  const { jsContent, buttonAs: ButtonType = CommandButton, buttonClassName, buttonStyles } = props;
 
   // boilerplate for codepen API
   const htmlContent = '<script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.js"></script>\n<div id="content"></div>';
@@ -37,7 +44,13 @@ export const CodepenComponent: React.StatelessComponent<ICodepenProps> = props =
   return (
     <form action="https://codepen.io/pen/define" method="POST" target="_blank">
       <input type="hidden" name="data" value={JSONstring} />
-      <ButtonType type="submit" iconProps={{ iconName: 'OpenInNewWindow' }} text="Export to CodePen" className={buttonClassName} />
+      <ButtonType
+        type="submit"
+        iconProps={{ iconName: 'OpenInNewWindow' }}
+        text="Export to CodePen"
+        className={buttonClassName}
+        styles={typeof buttonStyles === 'function' ? buttonStyles({}) : buttonStyles}
+      />
     </form>
   );
 };

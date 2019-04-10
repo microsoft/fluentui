@@ -13,6 +13,7 @@
     "strictNullChecks": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
+    "skipLibCheck": true,
     "outDir": "lib",
     "lib": ["es5", "dom"],
     "types": ["webpack-env", "jest", "es6-promise", "markdown-to-jsx"]

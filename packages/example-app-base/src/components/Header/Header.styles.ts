@@ -1,6 +1,7 @@
-import { ScreenWidthMaxLarge, IRawStyle, DefaultFontStyles, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IRawStyle, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IHeaderStyleProps, IHeaderStyles } from './Header.types';
+import { IIconStyles } from 'office-ui-fabric-react';
 
 const globalClassNames = {
   root: 'Header',
@@ -9,10 +10,9 @@ const globalClassNames = {
   buttons: 'Header-buttons'
 };
 
-const lgDown = `@media (max-width: ${ScreenWidthMaxLarge}px)`;
-
 export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props => {
-  const theme = getTheme();
+  const { theme = getTheme(), isLargeDown } = props;
+
   const commonStyles: IRawStyle = {
     display: 'inline-block',
     verticalAlign: 'top',
@@ -20,28 +20,25 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
     borderRadius: 0
   };
 
+  const iconStyles: IIconStyles = { root: { fontSize: 18 } };
+
   return {
     root: [
       {
         height: 50,
         lineHeight: 50,
-        padding: '0 20px',
+        padding: isLargeDown ? 0 : '0 20px',
         backgroundColor: '#272630',
         overflow: 'hidden',
         whiteSpace: 'no-wrap',
         userSelect: 'none',
-        color: 'white',
-        selectors: {
-          [lgDown]: {
-            padding: 0
-          }
-        }
+        color: 'white'
       },
       globalClassNames.root
     ],
     title: [
       commonStyles,
-      DefaultFontStyles.large,
+      theme.fonts.large,
       {
         lineHeight: 48
       },
@@ -59,18 +56,14 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
         padding: '0 10px',
         minWidth: 50,
         lineHeight: 50,
-        margin: '0 5px',
+        margin: isLargeDown ? 0 : '0 5px',
         textTransform: 'uppercase',
         display: 'inline-block',
         verticalAlign: 'top',
         boxSizing: 'border-box',
         selectors: {
           '&:hover': {
-            background: theme.palette.themePrimary
-          },
-          [lgDown]: {
-            margin: 0,
-            selectors: { '&:hover': { background: 'inherit' } }
+            background: isLargeDown ? 'inherit' : theme.palette.themePrimary
           }
         }
       },
@@ -82,6 +75,9 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
         float: 'right'
       },
       globalClassNames.buttons
-    ]
+    ],
+    subComponentStyles: {
+      icons: iconStyles
+    }
   };
 };

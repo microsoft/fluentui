@@ -23,11 +23,11 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
   private _classNames: IProcessedStyleSet<IAppStyles>;
 
   public render(): JSX.Element {
-    const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge } = this.props;
+    const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const classNames = (this._classNames = getClassNames(styles, { responsiveMode }));
+    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme }));
 
     const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
@@ -36,18 +36,20 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
         groups={appDefinition.examplePages}
         onLinkClick={this._onLinkClick}
         onRenderLink={this._onRenderLink}
-        styles={{ root: classNames.nav }}
+        styles={classNames.subComponentStyles.nav}
       />
     );
 
     const app = (
       <Fabric className={classNames.root}>
-        <div className={classNames.header}>
+        <div className={classNames.headerContainer}>
           <Header
+            isLargeDown={isLargeDown}
             title={appDefinition.appTitle}
             sideLinks={appDefinition.headerLinks}
             isMenuVisible={isMenuVisible}
             onIsMenuVisibleChanged={this._onIsMenuVisibleChanged}
+            styles={classNames.subComponentStyles.header}
           />
         </div>
 
@@ -67,7 +69,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
             // Use onDismissed (not onDismiss) to prevent _onIsMenuVisibleChanged being called twice
             // (once by the panel and once by the header button)
             onDismissed={this._onIsMenuVisibleChanged.bind(this, false)}
-            styles={{ root: classNames.panelNavContainer }}
+            styles={classNames.subComponentStyles.navPanel}
           >
             {nav}
           </Panel>

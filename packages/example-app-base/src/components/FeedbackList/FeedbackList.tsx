@@ -69,10 +69,11 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
   }
 
   public render(): JSX.Element | null {
-    const { styles } = this.props;
+    const { styles, theme } = this.props;
     const { openIssues, closedIssues } = this.state;
 
-    const classNames = (this._classNames = getClassNames(styles, {}));
+    const classNames = (this._classNames = getClassNames(styles, { theme }));
+    const { subComponentStyles } = classNames;
 
     return (
       <div className={classNames.root}>
@@ -86,7 +87,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
           </PrimaryButton>
         </div>
         {(openIssues.length > 0 || closedIssues.length > 0) && (
-          <Pivot className={classNames.pivot}>
+          <Pivot styles={subComponentStyles.pivot}>
             <PivotItem headerText="Open Issues">
               <List items={openIssues} onRenderCell={this._onRenderCell} data-is-scrollable={true} className={classNames.issueList} />
             </PivotItem>
