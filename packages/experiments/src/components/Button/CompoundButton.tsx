@@ -21,6 +21,16 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
   };
 };
 
+const primaryTokens: IButtonComponent['tokens'] = (props, theme) => {
+  const { semanticColors } = theme;
+
+  return {
+    color: semanticColors.primaryButtonText,
+    colorHovered: semanticColors.primaryButtonTextHovered,
+    colorPressed: semanticColors.primaryButtonTextPressed
+  };
+};
+
 const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
   const { semanticColors } = theme;
 
@@ -32,11 +42,12 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
 
 const CompoundButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
+  props.primary && primaryTokens,
   props.disabled && disabledTokens
 ];
 
 const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
-  const { disabled } = props;
+  const { disabled, primary } = props;
   const { semanticColors } = theme;
 
   return {
@@ -44,10 +55,14 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
       lineHeight: '100%'
     },
     content: {
-      color: disabled ? semanticColors.buttonTextDisabled : semanticColors.buttonText,
+      color: disabled ? semanticColors.buttonTextDisabled : primary ? semanticColors.primaryButtonText : semanticColors.buttonText,
       selectors: {
         ':hover': {
-          color: disabled ? semanticColors.buttonTextDisabled : semanticColors.buttonTextHovered
+          color: disabled
+            ? semanticColors.buttonTextDisabled
+            : primary
+            ? semanticColors.primaryButtonTextHovered
+            : semanticColors.buttonTextHovered
         }
       }
     }

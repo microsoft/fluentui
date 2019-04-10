@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": " Button: Creating CompoundButton variant.",
+      "comment": " Button: Creating CompoundButton and BaseButton variants.",
       "type": "minor"
     }
   ],

@@ -273,6 +273,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
     ],
     content: {
       overflow: 'visible',
+      fontSize: tokens.textSize,
       fontWeight: tokens.textWeight
     }
   };
