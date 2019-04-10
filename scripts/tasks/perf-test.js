@@ -25,7 +25,6 @@ module.exports = async function getPerfRegressions() {
   // Output comment blob and status as task variables
   const comment = createBlobFromResults({ now: perfAveragesNow, new: perfAveragesNew });
 
-  console.log(comment);
   // TODO: determine status according to perf numbers
   const status = 'success';
 
