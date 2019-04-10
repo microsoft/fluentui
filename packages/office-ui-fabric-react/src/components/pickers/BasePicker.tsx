@@ -300,6 +300,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
         {...this.props.pickerCalloutProps}
       >
         <StyledTypedSuggestions
+          // Assumed to set in derived component's defaultProps
           onRenderSuggestion={this.props.onRenderSuggestionsItem!}
           onSuggestionClick={this.onSuggestionClick}
           onSuggestionRemove={this.onSuggestionRemove}
