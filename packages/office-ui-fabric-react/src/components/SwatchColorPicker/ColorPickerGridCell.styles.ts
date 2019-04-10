@@ -42,6 +42,7 @@ export const getStyles = (props: IColorPickerGridCellStyleProps): IColorPickerGr
       // In focus state for circle we want a round border which is not possible with outline.
       circle && {
         borderRadius: '50%',
+        overflow: 'hidden',
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus::after`]: {
             outline: 'none',
