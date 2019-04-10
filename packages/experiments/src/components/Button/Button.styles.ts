@@ -10,7 +10,7 @@ const baseTokens: IButtonComponent['tokens'] = {
   minHeight: 32,
   lineHeight: 1,
   contentPadding: '0px 16px',
-  textFamily: 'default',
+  textFamily: 'inherit',
   textSize: 14,
   textWeight: FontWeights.semibold,
   iconSize: 14,

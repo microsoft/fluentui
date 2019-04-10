@@ -2,6 +2,7 @@ import * as React from 'react';
 import { Button } from './Button';
 import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
 import { IButtonVariantProps } from './ButtonVariants.types';
+import { HighContrastSelector } from '../../Styling';
 import { Text } from 'office-ui-fabric-react';
 
 export interface ICompoundButtonProps extends IButtonVariantProps {
@@ -16,6 +17,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
   return {
     color: palette.neutralSecondary,
     colorHovered: palette.neutralDark,
+    colorPressed: 'inherit',
     contentPadding: 20,
     minHeight: 72
   };
@@ -36,7 +38,8 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
 
   return {
     color: semanticColors.buttonTextDisabled,
-    colorHovered: semanticColors.buttonTextDisabled
+    colorHovered: semanticColors.buttonTextDisabled,
+    colorPressed: semanticColors.buttonTextDisabled
   };
 };
 
@@ -58,11 +61,21 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
       color: disabled ? semanticColors.buttonTextDisabled : primary ? semanticColors.primaryButtonText : semanticColors.buttonText,
       selectors: {
         ':hover': {
-          color: disabled
-            ? semanticColors.buttonTextDisabled
-            : primary
-            ? semanticColors.primaryButtonTextHovered
-            : semanticColors.buttonTextHovered
+          selectors: {
+            [HighContrastSelector]: {
+              color: tokens.highContrastColorHovered
+            }
+          }
+        },
+        ':active': {
+          selectors: {
+            [HighContrastSelector]: {
+              color: tokens.highContrastColorPressed
+            }
+          }
+        },
+        [HighContrastSelector]: {
+          color: tokens.highContrastColor
         }
       }
     }
