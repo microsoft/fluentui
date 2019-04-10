@@ -19,7 +19,7 @@ const baseTokens: IButtonComponent['tokens'] = {
   cursor: 'default',
   minHeight: undefined,
   minWidth: undefined,
-  textFamily: 'inherit',
+  textFamily: 'Arial',
   textSize: 13.3333,
   textWeight: 400
 };
@@ -42,9 +42,7 @@ const BaseButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IBu
     root: {
       borderStyle: 'outset',
       overflow: 'visible',
-      outline: undefined,
       padding: '1px 6px',
-      textDecoration: undefined,
 
       selectors: {
         ':active': {
