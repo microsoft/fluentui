@@ -12,25 +12,20 @@ export class BaseFloatingPeoplePicker extends BaseFloatingPicker<IPersonaProps, 
 
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
   // tslint:disable-next-line:no-any
-  public static defaultProps: any = {
+  public static defaultProps: Partial<IBaseFloatingPickerProps<IPersonaProps>> = {
     onRenderSuggestionsItem: (props: IPersonaProps, itemProps?: IBasePickerSuggestionsProps) =>
       SuggestionItemNormal({ ...props }, { ...itemProps }),
-    createGenericItem: createItem
+    createForceResolvedItem: createItem
   };
 }
 
-export function createItem(name: string, isValid: boolean): ISuggestionModel<IPersonaProps> {
+export function createItem(name: string): ISuggestionModel<IPersonaProps> {
   // tslint:disable-next-line:no-any
   const personaToConvert: any = {
     key: name,
     primaryText: name,
-    imageInitials: '!',
-    isValid: isValid
+    imageInitials: getInitials(name, getRTL())
   };
-
-  if (!isValid) {
-    personaToConvert.imageInitials = getInitials(name, getRTL());
-  }
 
   return personaToConvert;
 }
