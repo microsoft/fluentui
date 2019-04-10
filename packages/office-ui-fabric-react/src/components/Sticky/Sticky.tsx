@@ -111,7 +111,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyBottom, isStickyTop, distanceFromTop } = this.state;
     let syncScroll: boolean = false;
     if (prevState.distanceFromTop !== distanceFromTop) {
-      scrollablePane.sortSticky(this, true);
+      scrollablePane.sortSticky(this, true /*sortAgain*/);
       syncScroll = true;
     }
     if (prevState.isStickyTop !== isStickyTop || prevState.isStickyBottom !== isStickyBottom) {
@@ -190,11 +190,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public setDistanceFromTop(container: HTMLDivElement): void {
-    this._setDistanceFromTop(this._getNonStickyDistanceFromTop(container));
-  }
-
-  private _setDistanceFromTop(distance: number): void {
-    this.setState({ distanceFromTop: distance });
+    const distanceFromTop = this._getNonStickyDistanceFromTop(container);
+    this.setState({ distanceFromTop: distanceFromTop });
   }
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
