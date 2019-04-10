@@ -28,7 +28,6 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"

@@ -28,7 +28,6 @@ exports[`DetailsList renders List correctly 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -609,7 +608,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -2360,7 +2358,6 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -3317,7 +3314,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -4500,7 +4496,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"

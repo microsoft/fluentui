@@ -27,7 +27,6 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
         color: semanticColors.listText,
         selectors: {
           [`& .${classNames.listCell}`]: {
-            minHeight: 38,
             wordBreak: 'break-word'
           }
         }

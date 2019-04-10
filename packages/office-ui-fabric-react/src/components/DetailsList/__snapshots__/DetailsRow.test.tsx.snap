@@ -28,7 +28,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -837,7 +836,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -2178,7 +2176,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
@@ -2987,7 +2984,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           position: relative;
         }
         & .ms-List-cell {
-          min-height: 38px;
           word-break: break-word;
         }
     data-automationid="DetailsList"
