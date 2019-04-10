@@ -14,7 +14,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         border-width: 1px;
         box-sizing: border-box;
         color: #333333;
-        cursor: default;
+        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -61,12 +61,12 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover:active {
+      &:active {
         background-color: #eaeaea;
         border-color: transparent;
         color: #212121;
       }
-      @media screen and (-ms-high-contrast: active){&:hover:active {
+      @media screen and (-ms-high-contrast: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
@@ -76,10 +76,10 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-47 {
         color: Highlight;
       }
-      &:hover:active .ms-Icon-47 {
+      & active .ms-Icon-47 {
         color: #212121;
       }
-      @media screen and (-ms-high-contrast: active){&:hover:active .ms-Icon-47 {
+      @media screen and (-ms-high-contrast: active){& active .ms-Icon-47 {
         color: Highlight;
       }
   onClick={[Function]}
@@ -204,12 +204,12 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover:active {
+      &:active {
         background-color: #f4f4f4;
         border-color: transparent;
         color: #a6a6a6;
       }
-      @media screen and (-ms-high-contrast: active){&:hover:active {
+      @media screen and (-ms-high-contrast: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
@@ -220,10 +220,10 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
         color: GrayText;
       }
-      &:hover:active .ms-Icon-57 {
+      & active .ms-Icon-57 {
         color: #a6a6a6;
       }
-      @media screen and (-ms-high-contrast: active){&:hover:active .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){& active .ms-Icon-57 {
         color: GrayText;
       }
   onClick={[Function]}
@@ -293,7 +293,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-width: 1px;
         box-sizing: border-box;
         color: #ffffff;
-        cursor: default;
+        cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -346,12 +346,12 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover:active {
+      &:active {
         background-color: #005a9e;
         border-color: transparent;
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover:active {
+      @media screen and (-ms-high-contrast: active){&:active {
         background-color: Highlight;
         border-color: Highlight;
         color: Window;
@@ -362,10 +362,10 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-55 {
         color: Window;
       }
-      &:hover:active .ms-Icon-55 {
+      & active .ms-Icon-55 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover:active .ms-Icon-55 {
+      @media screen and (-ms-high-contrast: active){& active .ms-Icon-55 {
         color: Window;
       }
   onClick={[Function]}

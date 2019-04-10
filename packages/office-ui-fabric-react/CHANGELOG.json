@@ -2,6 +2,46 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.165.0",
+      "tag": "office-ui-fabric-react_v6.165.0",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComboBox: call onPendingValuedChanged with an empty value string when the user clears the input",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "ff56a37f8c740d04633e9e28a125f1197e2e6b98"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Panel: add onOpen and onOpened properties",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "07a5a8af7ed023f1300309a04e07bf2aafbd7ee2"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.164.8",
+      "tag": "office-ui-fabric-react_v6.164.8",
+      "date": "Tue, 09 Apr 2019 12:35:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Panel: set forceFocusInsideTrap to false for non-blocking Panels",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "c4cc77ff0731afab2f9a8aa6bbdac2a78ac6625e"
+          },
+          {
+            "comment": "Spinner: only render an aria-live polite message when ariaLabel is provided.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "fb0c64d1e946a59c98651973d9b4cef7940f5ea7"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.164.7",
       "tag": "office-ui-fabric-react_v6.164.7",
       "date": "Mon, 08 Apr 2019 12:37:15 GMT",

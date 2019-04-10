@@ -2,6 +2,47 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.71.0",
+      "tag": "@uifabric/experiments_v6.71.0",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Creating ActionButton variant and cleaning styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "98347544dc0eabb461beea23bc50a1fec10be873"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.4` to `^6.4.5`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.8` to `^6.165.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.70.0",
+      "tag": "@uifabric/experiments_v6.70.0",
+      "date": "Tue, 09 Apr 2019 12:35:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding DefaultButton and PrimaryButton variants.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "63cf8144e33150d05c45fdce3e57f34c7bfb78f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.7` to `^6.164.8`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.69.0",
       "tag": "@uifabric/experiments_v6.69.0",
       "date": "Mon, 08 Apr 2019 12:37:15 GMT",
