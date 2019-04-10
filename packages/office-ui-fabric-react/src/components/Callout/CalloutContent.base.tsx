@@ -13,7 +13,8 @@ import {
   getDocument,
   getNativeProps,
   getWindow,
-  on
+  on,
+  shallowCompare
 } from '../../Utilities';
 import {
   positionCallout,
@@ -111,7 +112,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       // Do not update when hidden.
       return false;
     }
-    return true;
+
+    return !shallowCompare(this.props, newProps);
   }
 
   public componentWillMount() {
