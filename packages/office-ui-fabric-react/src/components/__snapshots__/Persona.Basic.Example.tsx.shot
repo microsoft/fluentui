@@ -283,6 +283,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -310,6 +311,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -337,6 +339,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -364,6 +367,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -512,6 +516,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -539,6 +544,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -566,6 +572,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -593,6 +600,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -801,6 +809,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -828,6 +837,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -855,6 +865,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -882,6 +893,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1090,6 +1102,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1117,6 +1130,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1144,6 +1158,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1171,6 +1186,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1406,6 +1422,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1432,6 +1449,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1459,6 +1477,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1486,6 +1505,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1713,6 +1733,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1739,6 +1760,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1766,6 +1788,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1793,6 +1816,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2026,6 +2050,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2052,6 +2077,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2079,6 +2105,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2106,6 +2133,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2339,6 +2367,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2365,6 +2394,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2392,6 +2422,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2419,6 +2450,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2679,6 +2711,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2705,6 +2738,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2732,6 +2766,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2759,6 +2794,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=

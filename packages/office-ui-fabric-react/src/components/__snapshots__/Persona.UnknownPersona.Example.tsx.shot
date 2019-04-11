@@ -134,6 +134,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -160,6 +161,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -187,6 +189,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
       <div
         className=
@@ -200,6 +203,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
     </div>
   </div>
@@ -333,6 +337,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -359,6 +364,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -386,6 +392,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -413,6 +420,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
     </div>
   </div>

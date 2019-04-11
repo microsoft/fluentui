@@ -147,6 +147,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -177,6 +178,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -204,6 +206,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -231,6 +234,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -391,6 +395,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -421,6 +426,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -448,6 +454,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -475,6 +482,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -659,6 +667,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -689,6 +698,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -716,6 +726,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -743,6 +754,7 @@ exports[`Component Examples renders Persona.Alternate.Example.tsx correctly 1`] 
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=

@@ -8,6 +8,10 @@ let div: HTMLElement;
 const ReactDOM = require('react-dom');
 
 describe('Panel', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('renders Panel correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     ReactDOM.createPortal = jest.fn(element => {
@@ -25,6 +29,40 @@ describe('Panel', () => {
     ReactDOM.createPortal.mockClear();
   });
 
+  describe('open', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
+
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
+    });
+
+    it('fires the correct events when opening', () => {
+      let openedCalled = false;
+      let openCalled = false;
+      const setOpenTrue = (): void => {
+        openCalled = true;
+      };
+      const setOpenedTrue = (): void => {
+        openedCalled = true;
+      };
+
+      jest.useFakeTimers();
+
+      const panel: PanelBase = ReactDOM.render(<PanelBase isOpen={false} onOpen={setOpenTrue} onOpened={setOpenedTrue} />, div) as any;
+
+      panel.open();
+
+      expect(openCalled).toEqual(true);
+      expect(openedCalled).toEqual(false);
+
+      jest.runOnlyPendingTimers();
+
+      expect(openedCalled).toEqual(true);
+    });
+  });
+
   describe('onClose', () => {
     beforeEach(() => {
       div = document.createElement('div');
@@ -34,7 +72,7 @@ describe('Panel', () => {
       ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('fires the correct events when closing', done => {
+    it('fires the correct events when closing', () => {
       let dismissedCalled = false;
       let dismissCalled = false;
       const setDismissTrue = (): void => {
@@ -43,6 +81,8 @@ describe('Panel', () => {
       const setDismissedTrue = (): void => {
         dismissedCalled = true;
       };
+
+      jest.useFakeTimers();
 
       const panel: PanelBase = ReactDOM.render(
         <PanelBase isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
@@ -54,14 +94,9 @@ describe('Panel', () => {
       expect(dismissCalled).toEqual(true);
       expect(dismissedCalled).toEqual(false);
 
-      setTimeout(() => {
-        try {
-          expect(dismissedCalled).toEqual(true);
-          done();
-        } catch (e) {
-          done(e);
-        }
-      }, 250);
+      jest.runOnlyPendingTimers();
+
+      expect(dismissedCalled).toEqual(true);
     });
   });
 });
