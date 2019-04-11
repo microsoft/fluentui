@@ -9062,13 +9062,8 @@ export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
-<<<<<<< HEAD
 //
-// lib/components/DetailsList/DetailsList.types.d.ts:104:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
-=======
-// 
 // lib/components/DetailsList/DetailsList.types.d.ts:110:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
->>>>>>> 439a82ab0af8f77cb0068a040c036c59c66439f5
 
 // (No @packageDocumentation comment for this package)
 
