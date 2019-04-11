@@ -321,49 +321,104 @@ export interface IPersonaPresenceStyles {
 
 export enum PersonaSize {
   /**
-   * tiny size has been deprecated in favor of standardized numeric sizing. Use `size10` instead.
-   * @deprecated Use `size10` instead.
+   * `tiny` size has been deprecated in favor of standardized numeric sizing. Use `size8` instead.
+   * @deprecated Use `size8` instead.
    */
   tiny = 0,
+
   /**
    *
-   * extraExtraSmall size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
+   * `extraExtraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
    * @deprecated Use `size24` instead.
    */
   extraExtraSmall = 1,
+
   /**
-   * extraSmall size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
+   * `extraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
    * @deprecated Use `size32` instead.
    */
   extraSmall = 2,
+
   /**
-   * small size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
+   * `small` size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
    * @deprecated Use `size40` instead.
    */
   small = 3,
+
   /**
-   * regular size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
+   * `regular` size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
    * @deprecated Use `size48` instead.
    */
   regular = 4,
+
   /**
-   * large size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
+   * `large` size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
    * @deprecated Use `size72` instead.
    */
   large = 5,
+
   /**
-   * extraLarge size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
+   * `extraLarge` size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
    * @deprecated Use `size100` instead.
    */
   extraLarge = 6,
-  size28 = 7,
-  size16 = 8,
+
+  /**
+   * No `PersonaCoin` is rendered.
+   */
+  size8 = 17,
+
+  /**
+   * No `PersonaCoin` is rendered. Deprecated in favor of `size8` to align with design specifications.
+   * @deprecated Use `size8` instead. Will be removed in a future major release.
+   */
   size10 = 9,
+
+  /**
+   * Renders a 16px `PersonaCoin`. Deprecated due to not being in the design specification.
+   * @deprecated Will be removed in a future major release.
+   */
+  size16 = 8,
+
+  /**
+   * Renders a 24px `PersonaCoin`.
+   */
   size24 = 10,
+
+  /**
+   * Renders a 28px `PersonaCoin`. Deprecated due to not being in the design specification.
+   * @deprecated Will be removed in a future major release.
+   */
+  size28 = 7,
+
+  /**
+   * Renders a 32px `PersonaCoin`.
+   */
   size32 = 11,
+
+  /**
+   * Renders a 40px `PersonaCoin`.
+   */
   size40 = 12,
+
+  /**
+   * Renders a 48px `PersonaCoin`.
+   */
   size48 = 13,
+
+  /**
+   * Renders a 56px `PersonaCoin`.
+   */
+  size56 = 16,
+
+  /**
+   * Renders a 72px `PersonaCoin`.
+   */
   size72 = 14,
+
+  /**
+   * Renders a 100px `PersonaCoin`.
+   */
   size100 = 15
 }
 
