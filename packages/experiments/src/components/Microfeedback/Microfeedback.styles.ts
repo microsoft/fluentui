@@ -6,18 +6,7 @@ const GlobalClassNames = {
   text: 'ms-Microfeedback-text'
 };
 
-const baseTokens: IMicrofeedbackComponent['tokens'] = {
-  textColor: 'blue'
-};
-
-const warningTokens: IMicrofeedbackComponent['tokens'] = {
-  textColor: 'red'
-};
-
-export const MicrofeedbackTokens: IMicrofeedbackComponent['tokens'] = (props, theme): IMicrofeedbackTokenReturnType => [
-  baseTokens,
-  props.warning && warningTokens
-];
+export const MicrofeedbackTokens: IMicrofeedbackComponent['tokens'] = (props, theme): IMicrofeedbackTokenReturnType => [];
 
 export const MicrofeedbackStyles: IMicrofeedbackComponent['styles'] = (props, theme, tokens): IMicrofeedbackStylesReturnType => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -30,12 +19,6 @@ export const MicrofeedbackStyles: IMicrofeedbackComponent['styles'] = (props, th
         borderStyle: 'solid',
         margin: 8,
         padding: 8
-      }
-    ],
-    text: [
-      classNames.text,
-      {
-        color: tokens.textColor
       }
     ]
   };

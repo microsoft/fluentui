@@ -13,7 +13,7 @@ import { MicrofeedbackView } from './Microfeedback.view';
 // with snapshot tests exercising permutations of the props.
 describe('MicrofeedbackView', () => {
   it('renders status view prop correctly', () => {
-    const tree = renderer.create(<MicrofeedbackView status="statusProp" />).toJSON();
+    const tree = renderer.create(<MicrofeedbackView />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

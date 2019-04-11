@@ -2,83 +2,184 @@
 import * as React from 'react';
 import { withSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
-import { Text } from '../../Text';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
+import { IconButton, IButtonStyles, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
+import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
+import { List } from 'office-ui-fabric-react/lib/List';
 
 import { IMicrofeedbackComponent, IMicrofeedbackProps } from './Microfeedback.types';
+import { getTheme, mergeStyleSets, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IMicrofeedbackState } from './Microfeedback.state';
 
-const stackStyles: IStackStyles = {
+import { initializeIcons } from '@uifabric/icons';
+
+const theme = getTheme();
+
+const microfeedbackStyles: IStackStyles = {
   root: [
     {
-      background: 'white',
-      opacity: 0.5,
-      bottom: '0',
-      color: 'black',
-      position: 'absolute',
-      right: '0',
       margin: 8,
-      // padding: 8,
-      border: '1px red solid'
+      float: 'right'
     }
   ]
 };
 
+const microfeedbackItemStyles: IButtonStyles = {
+  root: [
+    theme.fonts.small,
+    {
+      width: '100%',
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.light,
+      fontSize: 12
+    }
+  ]
+};
+
+const styles = mergeStyleSets({
+  title: [
+    theme.fonts.medium,
+    {
+      margin: 8,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.semibold
+    }
+  ],
+  body: [
+    theme.fonts.small,
+    {
+      margin: 6,
+      color: theme.palette.neutralPrimary,
+      fontWeight: FontWeights.regular
+    }
+  ]
+});
+
 class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
-  constructor(props: {}) {
+  private dislikeRef = React.createRef<HTMLDivElement>();
+  private likeRef = React.createRef<HTMLDivElement>();
+
+  constructor(props: IMicrofeedbackProps) {
     super(props);
-    this.state = { isLiked: false, isDisliked: false };
+
+    initializeIcons();
+
+    this.state = {
+      vote: 0,
+      isFollowupVisible: false
+    };
   }
 
   public render() {
-    const { isLiked, isDisliked } = this.state;
-
-    const likeIcon = isLiked ? 'LikeSolid' : 'Like';
-    const dislikeIcon = isDisliked ? 'DislikeSolid' : 'Dislike';
+    const likeIcon = this.state.vote > 0 ? 'LikeSolid' : 'Like';
+    const dislikeIcon = this.state.vote < 0 ? 'DislikeSolid' : 'Dislike';
+    const hideThumbsDownCallout = this.state.vote !== -1 || !this.state.isFollowupVisible;
+    const hideThumbsUpCallout = this.state.vote !== 1 || !this.state.isFollowupVisible;
 
     return (
       <div>
-        <div>
-          {this.props.children}
-          <Stack horizontal styles={stackStyles}>
-            <IconButton menuIconProps={{ iconName: likeIcon }} onClick={this._onToggleLike} />
-            <IconButton menuIconProps={{ iconName: dislikeIcon }} onClick={this._onToggleDislike} />
-          </Stack>
-        </div>
-        {isDisliked && (
-          <Stack styles={{ root: { padding: 8 } }}>
-            <Stack horizontal horizontalAlign="space-between" verticalAlign="center">
-              <Text variant="large">What did you expect differently?</Text>
-              <IconButton menuIconProps={{ iconName: 'ChromeClose' }} onClick={this._onToggleDislike} />
-            </Stack>
-            <Text variant="medium">Question 1?</Text>
-            <Text variant="medium">Question 2?</Text>
-          </Stack>
+        <Stack horizontal styles={microfeedbackStyles}>
+          <div ref={this.likeRef}>
+            <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._vote.bind(this, 1)} />
+          </div>
+          <div ref={this.dislikeRef}>
+            <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._vote.bind(this, -1)} />
+          </div>
+        </Stack>
+        {this.props.ThumbsUpQuestion ? (
+          <Callout
+            hidden={hideThumbsUpCallout}
+            role="alertdialog"
+            gapSpace={0}
+            target={this.likeRef.current}
+            setInitialFocus={true}
+            onDismiss={this._onCalloutDismiss}
+          >
+            <div>
+              <FocusZone direction={FocusZoneDirection.vertical}>
+                <p className={styles.title}>{this.props.ThumbsUpQuestion.question}</p>
+                <List items={this.props.ThumbsUpQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+              </FocusZone>
+            </div>
+          </Callout>
+        ) : (
+          <div />
+        )}
+        {this.props.ThumbsDownQuestion ? (
+          <Callout
+            hidden={hideThumbsDownCallout}
+            role="alertdialog"
+            gapSpace={0}
+            target={this.dislikeRef.current}
+            setInitialFocus={true}
+            onDismiss={this._onCalloutDismiss}
+          >
+            <div>
+              <FocusZone direction={FocusZoneDirection.vertical}>
+                <p className={styles.title}>{this.props.ThumbsDownQuestion.question}</p>
+                <List items={this.props.ThumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+              </FocusZone>
+            </div>
+          </Callout>
+        ) : (
+          <div />
         )}
       </div>
     );
   }
 
-  private _onToggleDislike() {
-    console.log('setState');
-    this.setState(state => {
-      return { isDisliked: !state.isDisliked };
-    });
+  private _onCalloutDismiss(): void {
+    this.setState({ isFollowupVisible: false });
   }
 
-  private _onToggleLike() {
-    console.log('setState');
-    this.setState(state => {
-      return { isLiked: !state.isLiked };
-    });
+  private _onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
+    return (
+      <DefaultButton
+        data-is-focusable={true}
+        styles={microfeedbackItemStyles}
+        text={`${item}`}
+        onClick={this._listOption.bind(this, index)}
+      />
+    );
+  };
+
+  private _listOption(option: any): void {
+    this.props.sendFeedback(option);
+    this._onCalloutDismiss();
+  }
+
+  private _vote(vote: number): void {
+    // If the vote that is already selected is picked, then toggle off
+    const updatedVote: number = this.state.vote === vote ? 0 : vote;
+    this.setState({ isFollowupVisible: true, vote: updatedVote });
+    if (updatedVote !== 0) {
+      this.props.sendFeedback(vote);
+    }
   }
 }
+
+class MicrofeedbackQuestion {
+  public question: string;
+  public options: string[];
+}
+
+const followUpOnThumbsDown = new MicrofeedbackQuestion();
+followUpOnThumbsDown.options = ['Translation is incorrect', 'Context is incorrect', 'Language can be better'];
+followUpOnThumbsDown.question = 'Please help us improve';
+const followUpOnThumbsUp = new MicrofeedbackQuestion();
+followUpOnThumbsUp.options = ['Translation is great', 'Context is great'];
+followUpOnThumbsUp.question = 'Please help us improve';
 
 export const MicrofeedbackView: IMicrofeedbackComponent['view'] = props => {
   return (
     <div>
-      <Microfeedback />
+      <Microfeedback
+        ThumbsDownQuestion={followUpOnThumbsDown}
+        ThumbsUpQuestion={followUpOnThumbsUp}
+        thumbsUpTitle="Like"
+        thumbsDownTitle="Dislike"
+      />
     </div>
   );
 };

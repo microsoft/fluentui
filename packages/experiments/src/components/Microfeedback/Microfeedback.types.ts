@@ -21,26 +21,21 @@ export interface IMicrofeedbackProps
     IStyleableComponentProps<IMicrofeedbackViewProps, IMicrofeedbackTokens, IMicrofeedbackStyles>,
     IBaseProps<IMicrofeedback> {
   // All props for your component are to be defined here.
-  /**
-   * Component sample default prop for use if component is uncontrolled.
-   * @defaultValue 'Default Text'
-   */
+  sendFeedback?: any;
+  thumbsUpTitle?: string;
+  thumbsDownTitle?: string;
+  ThumbsUpQuestion?: MicrofeedbackQuestion;
+  ThumbsDownQuestion?: MicrofeedbackQuestion;
   defaultText?: string;
-
-  // Setting this prop to true will apply different styling to the text slot.
-  warning?: boolean;
 }
 
-export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {
-  // You can define view only props here.
-  isDisliked: boolean;
-  isLiked: boolean;
+class MicrofeedbackQuestion {
+  public question: string;
+  public options: string[];
 }
 
-export interface IMicrofeedbackTokens {
-  // Define tokens for your component here. Tokens are styling 'knobs' that your component will automatically
-  // apply to styling sections in the styles file.
-  textColor?: string;
-}
+export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {}
+
+export interface IMicrofeedbackTokens {}
 
 export type IMicrofeedbackStyles = IComponentStyles<IMicrofeedbackSlots>;
