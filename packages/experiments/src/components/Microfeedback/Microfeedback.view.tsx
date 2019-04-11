@@ -76,6 +76,7 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
     const dislikeIcon = this.state.vote < 0 ? 'DislikeSolid' : 'Dislike';
     const hideThumbsDownCallout = this.state.vote !== -1 || !this.state.isFollowupVisible;
     const hideThumbsUpCallout = this.state.vote !== 1 || !this.state.isFollowupVisible;
+    const onCalloutDismiss = this._onCalloutDismiss.bind(this);
 
     return (
       <div>
@@ -94,7 +95,7 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
             gapSpace={0}
             target={this.likeRef.current}
             setInitialFocus={true}
-            onDismiss={this._onCalloutDismiss}
+            onDismiss={onCalloutDismiss}
           >
             <div>
               <FocusZone direction={FocusZoneDirection.vertical}>
@@ -113,7 +114,7 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
             gapSpace={0}
             target={this.dislikeRef.current}
             setInitialFocus={true}
-            onDismiss={this._onCalloutDismiss}
+            onDismiss={onCalloutDismiss}
           >
             <div>
               <FocusZone direction={FocusZoneDirection.vertical}>
@@ -159,7 +160,7 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
   }
 }
 
-class MicrofeedbackQuestion {
+export class MicrofeedbackQuestion {
   public question: string;
   public options: string[];
 }
