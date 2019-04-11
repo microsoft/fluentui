@@ -90,7 +90,7 @@ describe('CalloutContentBase', () => {
 
     // Shallow updating props should not trigger another update
     callout.setProps({ ...props, bounds: new Rectangle(0, 0, 0, 0) });
-    expect(renderMock).not.toHaveBeenCalled();
+    expect(renderMock).toHaveBeenCalled();
     renderMock.mockClear();
   });
 });
