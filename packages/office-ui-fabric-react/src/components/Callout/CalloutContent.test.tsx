@@ -46,7 +46,7 @@ describe('CalloutContentBase', () => {
       target: targetElement,
       backgroundColor: '#ffffff',
       bounds: new Rectangle(0, 0, 0, 0),
-      onLayerMounter: () => {
+      onLayerMounted: () => {
         return;
       }
     };
@@ -62,6 +62,34 @@ describe('CalloutContentBase', () => {
 
     // Shallow updating props should not trigger another update
     callout.setProps({ ...props });
+    expect(renderMock).not.toHaveBeenCalled();
+    renderMock.mockClear();
+  });
+
+  it('Ensure callout content updates when props are not shallow equal', () => {
+    const renderMock = jest.spyOn(CalloutContentBase.prototype, 'render');
+    const targetElement = document.createElement('div');
+    document.body.appendChild(targetElement);
+    const props = {
+      target: targetElement,
+      backgroundColor: '#ffffff',
+      bounds: new Rectangle(0, 0, 0, 0),
+      onLayerMounted: () => {
+        return;
+      }
+    };
+
+    const callout = mount(
+      <CalloutContentBase {...props}>
+        <div>Content</div>
+      </CalloutContentBase>
+    );
+
+    expect(renderMock).toHaveBeenCalled();
+    renderMock.mockClear();
+
+    // Shallow updating props should not trigger another update
+    callout.setProps({ ...props, bounds: new Rectangle(0, 0, 0, 0) });
     expect(renderMock).not.toHaveBeenCalled();
     renderMock.mockClear();
   });
