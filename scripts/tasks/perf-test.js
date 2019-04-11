@@ -1,4 +1,5 @@
 const { execSync } = require('child_process');
+const { logger } = require('just-task');
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
@@ -12,12 +13,12 @@ module.exports = async function getPerfRegressions() {
   // get perf numbers for existing code
   await page.goto(urlForMaster);
   const perfAveragesNow = await runAvailableScenarios(page, 1000, 100);
-  console.log(perfAveragesNow);
+  logger.info(perfAveragesNow);
 
   // get perf numbers for new code
   await page.goto(urlFromDeployJob);
   const perfAveragesNew = await runAvailableScenarios(page, 1000, 100);
-  console.log(perfAveragesNew);
+  logger.info(perfAveragesNew);
 
   // Clean up
   await browser.close();
@@ -28,13 +29,16 @@ module.exports = async function getPerfRegressions() {
   // TODO: determine status according to perf numbers
   const status = 'success';
 
+  logger.info(`Perf evaluation status: ${status}`);
+  logger.info(`Writing comment to file:\n${comment}`);
+
   // Write results to file
   require('fs').writeFileSync(require('path').join('apps/perf-test/dist', 'perfCounts.txt'), comment);
 
-  let cmd = `echo ##vso[task.setvariable variable=PerfComment.FilePath;]apps/perf-test/dist/perfCounts.txt`;
+  let cmd = `echo ##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`;
   execSync(cmd);
 
-  cmd = `echo ##vso[task.setvariable variable=PerfComment.Status;]${status}`;
+  cmd = `echo ##vso[task.setvariable variable=PerfCommentStatus;]${status}`;
   execSync(cmd);
 };
 
@@ -101,14 +105,15 @@ async function runScenarioNTimes(page, times) {
 }
 
 function createBlobFromResults(perfBlob) {
-  return `| Scenario Name | Current Avg Total | New Avg Total | Current Avg Per Item | New Avg Per Item |
+  return `Component Perf Results:
+  | Scenario Name | Current Avg Total | New Avg Total | Current Avg Per Item | New Avg Per Item |
   |----------|-------------------|---------------|----------------------|------------------|\n`.concat(
     Object.keys(perfBlob.now)
       .map(
         scenario =>
-          `| ${scenario}(ms) | ${perfBlob.now[scenario].total}(ms) | ${perfBlob.new[scenario].total}(ms)| ${
+          `| ${scenario}ms | ${perfBlob.now[scenario].total}ms | ${perfBlob.new[scenario].total}ms| ${perfBlob.new[scenario].peritem}ms | ${
             perfBlob.new[scenario].peritem
-          }(ms) | ${perfBlob.new[scenario].peritem}(ms)|`
+          }ms|`
       )
       .join('\n')
   );
