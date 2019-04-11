@@ -222,7 +222,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
-          background-color: #E81123;
+          background-color: #C50F1F;
           border-radius: 50%;
           border: 2px solid #ffffff;
           bottom: -2px;
@@ -319,7 +319,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
-          background-color: #E81123;
+          background-color: #C50F1F;
           border-radius: 50%;
           border: 2px solid #ffffff;
           bottom: -2px;

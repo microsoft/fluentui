@@ -106,8 +106,8 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   background-color: #2D89EF;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -117,6 +117,9 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -379,8 +382,8 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   background-color: #2D89EF;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -390,6 +393,9 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -538,8 +544,8 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   background-color: #2D89EF;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -549,6 +555,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -693,8 +702,8 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   background-color: #00ABA9;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -704,6 +713,9 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -816,7 +828,7 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   border-radius: 50%;
                   color: #ffffff;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   height: 32px;
                   line-height: 32px;
                 }
@@ -826,6 +838,9 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -1053,8 +1068,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   background-color: #2D89EF;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -1064,6 +1079,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>
@@ -1186,8 +1204,8 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   background-color: #00ABA9;
                   border-radius: 50%;
                   color: #ffffff;
-                  font-size: 11px;
-                  font-weight: 400;
+                  font-size: 10px;
+                  font-weight: 600;
                   height: 16px;
                   line-height: 16px;
                 }
@@ -1197,6 +1215,9 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
                   border: 1px solid WindowText;
                   box-sizing: border-box;
                   color: WindowText;
+                }
+                & i {
+                  font-weight: 600;
                 }
           >
             <span>

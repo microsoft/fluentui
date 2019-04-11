@@ -125,7 +125,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
               {
                 -ms-high-contrast-adjust: none;
                 background-clip: content-box;
-                background-color: #93ABBD;
+                background-color: #8A8886;
                 border-radius: 50%;
                 border: 2px solid #ffffff;
                 bottom: -2px;
@@ -184,7 +184,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
             ms-Persona-primaryText
             {
               color: #323130;
-              font-size: 21px;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -246,7 +246,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
             {
               color: #605e5c;
               display: block;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -274,7 +274,7 @@ exports[`Component Examples renders Persona.CustomRender.Example.tsx correctly 1
             {
               color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
