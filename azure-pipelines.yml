@@ -46,7 +46,7 @@ steps:
     inputs:
       githubOwner: OfficeDev
       githubRepo: 'office-ui-fabric-react'
-      blobFilePath: '$(PerfComment.FilePath)'
+      blobFilePath: '$(Build.SourcesDirectory)$(PerfComment.FilePath)'
       status: '$(PerfComment.Status)'
 
   - task: GithubPRStatus@0
