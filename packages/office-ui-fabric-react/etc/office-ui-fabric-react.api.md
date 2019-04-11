@@ -7918,6 +7918,8 @@ export namespace personaPresenceSize {
     const // (undocumented)
     size12 = "12px";
     const // (undocumented)
+    size16 = "16px";
+    const // (undocumented)
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
@@ -7937,24 +7939,20 @@ export enum PersonaSize {
     large = 5,
     // @deprecated
     regular = 4,
-    // (undocumented)
+    // @deprecated
     size10 = 9,
-    // (undocumented)
     size100 = 15,
-    // (undocumented)
+    // @deprecated
     size16 = 8,
-    // (undocumented)
     size24 = 10,
-    // (undocumented)
+    // @deprecated
     size28 = 7,
-    // (undocumented)
     size32 = 11,
-    // (undocumented)
     size40 = 12,
-    // (undocumented)
     size48 = 13,
-    // (undocumented)
+    size56 = 16,
     size72 = 14,
+    size8 = 17,
     // @deprecated
     small = 3,
     // @deprecated
@@ -7963,6 +7961,8 @@ export enum PersonaSize {
 
 // @public (undocumented)
 export namespace personaSize {
+    const // (undocumented)
+    size8 = "20px";
     const // (undocumented)
     size10 = "20px";
     const // (undocumented)
@@ -7977,6 +7977,8 @@ export namespace personaSize {
     size40 = "40px";
     const // (undocumented)
     size48 = "48px";
+    const // (undocumented)
+    size56 = "56px";
     const // (undocumented)
     size72 = "72px";
     const // (undocumented)
@@ -8472,6 +8474,7 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
 
 // @public (undocumented)
 export const sizeBoolean: (size: PersonaSize) => {
+    isSize8: boolean;
     isSize10: boolean;
     isSize16: boolean;
     isSize24: boolean;
@@ -8479,6 +8482,7 @@ export const sizeBoolean: (size: PersonaSize) => {
     isSize32: boolean;
     isSize40: boolean;
     isSize48: boolean;
+    isSize56: boolean;
     isSize72: boolean;
     isSize100: boolean;
 };
