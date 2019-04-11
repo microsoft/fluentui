@@ -27,12 +27,6 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
   selected?: boolean;
 
   /**
-   * Deprecated, use `selected` instead.
-   * @deprecated Use `selected` instead.
-   */
-  isSelected?: boolean;
-
-  /**
    * Is any selected - also true for isSelectionModal
    */
   anySelected?: boolean;
