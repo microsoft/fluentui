@@ -4,13 +4,13 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from '../../Fabric';
 import { ILayerProps, ILayerStyleProps, ILayerStyles } from './Layer.types';
 import {
-  BaseComponent,
   classNamesFunction,
   customizable,
   getDocument,
   createRef,
   setPortalAttribute,
-  setVirtualParent
+  setVirtualParent,
+  warnDeprecations
 } from '../../Utilities';
 import { registerLayer, getDefaultTarget, unregisterLayer } from './Layer.notification';
 
@@ -21,7 +21,7 @@ export type ILayerBaseState = {
 const getClassNames = classNamesFunction<ILayerStyleProps, ILayerStyles>();
 
 @customizable('Layer', ['theme', 'hostId'])
-export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
+export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
   public static defaultProps: ILayerProps = {
     onLayerDidMount: () => undefined,
     onLayerWillUnmount: () => undefined
@@ -38,9 +38,11 @@ export class LayerBase extends BaseComponent<ILayerProps, ILayerBaseState> {
       hasMounted: false
     };
 
-    this._warnDeprecations({
-      onLayerMounted: 'onLayerDidMount'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Layer', props, {
+        onLayerMounted: 'onLayerDidMount'
+      });
+    }
 
     if (this.props.hostId) {
       registerLayer(this.props.hostId, this);

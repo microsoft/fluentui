@@ -1,103 +1,167 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`codepen transform handles examples importing exampleData 1`] = `
-"const { IGroup, Fabric } = window.Fabric;
+exports[`codepen transform handles examples importing PeopleExampleData 1`] = `
+"const {
+  IExtendedPersonaProps,
+  SelectedPeopleList,
+  ISelectedPeopleItemProps,
+  ExtendedSelectedItem,
+  PrimaryButton,
+  Selection,
+  Stack,
+  PersonaPresence,
+  IExtendedPersonaProps,
+  Fabric
+} = window.Fabric;
 
-const FakeExampleDataExample = () => {
-  return <div>hi</div>;
-};
-
-const LOREM_IPSUM = (
-  'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut ' +
-  'labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut ' +
-  'aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
-  'eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt ' +
-  'mollit anim id est laborum'
-).split(' ');
-
-const DATA = {
-  color: ['red', 'blue', 'green', 'yellow'],
-  shape: ['circle', 'square', 'triangle'],
-  location: ['Seattle', 'New York', 'Chicago', 'Los Angeles', 'Portland']
-};
-
-interface IExampleItem {
-  thumbnail: string;
-  key: string;
-  name: string;
-  description: string;
-  color: string;
-  shape: string;
-  location: string;
-  width: number;
-  height: number;
+interface ISelectedPeopleListBasicExampleState {
+  nextPersonIndex: number;
 }
 
-function createListItems(count: number, startIndex: number = 0): IExampleItem[] {
-  return Array.apply(null, Array(count)).map((item: number, index: number) => {
-    const size = 150 + Math.round(Math.random() * 100);
+class SelectedPeopleListBasicExample extends React.Component<
+  {},
+  ISelectedPeopleListBasicExampleState
+> {
+  private _selectionList = React.createRef<SelectedPeopleList>();
+  private _selection: Selection;
 
-    return {
-      thumbnail: \`//placehold.it/\${size}x\${size}\`,
-      key: 'item-' + (index + startIndex) + ' ' + lorem(4),
-      name: lorem(5),
-      description: lorem(10 + Math.round(Math.random() * 50)),
-      color: _randWord(DATA.color),
-      shape: _randWord(DATA.shape),
-      location: _randWord(DATA.location),
-      width: size,
-      height: size
+  constructor(props: {}) {
+    super(props);
+
+    this.state = {
+      nextPersonIndex: 0
     };
-  });
-}
-
-function createGroups(
-  groupCount: number,
-  groupDepth: number,
-  startIndex: number,
-  itemsPerGroup: number,
-  level: number = 0,
-  key: string = '',
-  isCollapsed?: boolean
-): IGroup[] {
-  if (key !== '') {
-    key = key + '-';
+    this._selection = new Selection({ onSelectionChanged: () => this.forceUpdate() });
   }
-  const count = Math.pow(itemsPerGroup, groupDepth);
-  return Array.apply(null, Array(groupCount)).map((value: number, index: number) => {
-    return {
-      count: count,
-      key: 'group' + key + index,
-      name: 'group ' + key + index,
-      startIndex: index * count + startIndex,
-      level: level,
-      isCollapsed: isCollapsed,
-      children:
-        groupDepth > 1
-          ? createGroups(groupCount, groupDepth - 1, index * count + startIndex, itemsPerGroup, level + 1, key + index)
-          : []
+
+  public render(): JSX.Element {
+    return (
+      <div>
+        <PrimaryButton
+          text=\\"Add another item\\"
+          onClick={this._onAddItemButtonClicked}
+          disabled={this.state.nextPersonIndex >= people.length}
+          styles={{ root: { display: 'block', marginBottom: 20 } }}
+        />
+        <Stack horizontal wrap>
+          <SelectedPeopleList
+            key=\\"normal\\"
+            removeButtonAriaLabel=\\"Remove\\"
+            defaultSelectedItems={[people[40]]}
+            componentRef={this._selectionList}
+            onCopyItems={this._onCopyItems}
+            onExpandGroup={this._onExpandItem}
+            copyMenuItemText=\\"Copy\\"
+            removeMenuItemText=\\"Remove\\"
+            selection={this._selection}
+            onRenderItem={this._onRenderItem}
+          />
+        </Stack>
+      </div>
+    );
+  }
+
+  private _onRenderItem = (props: ISelectedPeopleItemProps): JSX.Element => {
+    return <ExtendedSelectedItem {...props} />;
+  };
+
+  private _onAddItemButtonClicked = (): void => {
+    if (this._selectionList.current) {
+      const { nextPersonIndex } = this.state;
+      this._selectionList.current.addItems([people[nextPersonIndex]]);
+      this.setState({ nextPersonIndex: nextPersonIndex + 1 });
+    }
+  };
+
+  private _onExpandItem = (item: IExtendedPersonaProps): void => {
+    const expandedItem =
+      item.text === 'Group One' ? groupOne : item.text === 'Group Two' ? groupTwo : [];
+    this._selectionList.current!.replaceItem(item, expandedItem);
+  };
+
+  private _onCopyItems(items: IExtendedPersonaProps[]): string {
+    return items.map((item: IExtendedPersonaProps) => item.text).join(', ');
+  }
+}
+
+const baseProductionCdnUrl =
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+
+const TestImages = {};
+
+const people: (IExtendedPersonaProps & { key: string | number })[] = [];
+
+const mru: IExtendedPersonaProps[] = people.slice(0, 5);
+
+const groupOne: IExtendedPersonaProps[] = people.slice(6, 10);
+
+const groupTwo: IExtendedPersonaProps[] = people.slice(11, 16);
+
+ReactDOM.render(
+  <Fabric>
+    <SelectedPeopleListBasicExample />
+  </Fabric>,
+  document.getElementById('content')
+);
+"
+`;
+
+exports[`codepen transform handles examples importing TestImages 1`] = `
+"const {
+  DocumentCard,
+  DocumentCardActivity,
+  DocumentCardPreview,
+  DocumentCardTitle,
+  IDocumentCardPreviewProps,
+  ImageFit,
+  Fabric
+} = window.Fabric;
+
+class DocumentCardBasicExample extends React.PureComponent<{}> {
+  public render(): JSX.Element {
+    const previewProps: IDocumentCardPreviewProps = {
+      previewImages: [
+        {
+          name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
+          linkProps: {
+            href: 'http://bing.com'
+          },
+          previewImageSrc: TestImages.documentPreview,
+          iconSrc: TestImages.iconPpt,
+          imageFit: ImageFit.cover,
+          width: 318,
+          height: 196
+        }
+      ]
     };
-  });
+
+    return (
+      <DocumentCard onClickHref=\\"http://bing.com\\">
+        <DocumentCardPreview {...previewProps} />
+        <DocumentCardTitle
+          title=\\"Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx\\"
+          shouldTruncate={true}
+        />
+        <DocumentCardActivity
+          activity=\\"Created a few minutes ago\\"
+          people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
+        />
+      </DocumentCard>
+    );
+  }
 }
 
-function lorem(wordCount: number): string {
-  return Array.apply(null, Array(wordCount))
-    .map((item: number, idx: number) => {
-      return LOREM_IPSUM[idx % LOREM_IPSUM.length];
-    })
-    .join(' ');
-}
+const baseProductionCdnUrl =
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
 
-function isGroupable(key: string): boolean {
-  return key === 'color' || key === 'shape' || key === 'location';
-}
+const TestImages = {};
 
-function _randWord(array: string[]): string {
-  const index = Math.floor(Math.random() * array.length);
-  return array[index];
-}
-
-ReactDOM.render(<FakeExampleDataExample />, document.getElementById('content'));
+ReactDOM.render(
+  <Fabric>
+    <DocumentCardBasicExample />
+  </Fabric>,
+  document.getElementById('content')
+);
 "
 `;
 
@@ -123,7 +187,12 @@ class SpinButtonBasicExample extends React.Component<any, any> {
   }
 }
 
-ReactDOM.render(<SpinButtonBasicExample />, document.getElementById('content'));
+ReactDOM.render(
+  <Fabric>
+    <SpinButtonBasicExample />
+  </Fabric>,
+  document.getElementById('content')
+);
 "
 `;
 
@@ -138,6 +207,11 @@ const LabelBasicExample = () => {
   );
 };
 
-ReactDOM.render(<LabelBasicExample />, document.getElementById('content'));
+ReactDOM.render(
+  <Fabric>
+    <LabelBasicExample />
+  </Fabric>,
+  document.getElementById('content')
+);
 "
 `;

@@ -178,6 +178,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -204,6 +205,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -231,6 +233,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
       <div
         className=
@@ -244,6 +247,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=

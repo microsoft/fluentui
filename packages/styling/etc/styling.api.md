@@ -663,9 +663,9 @@ export namespace ZIndexes {
 
 // Warnings were encountered during analysis:
 // 
-// lib/interfaces/ITheme.d.ts:58:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:59:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:60:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:69:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:6:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationDouble" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:7:5 - (ae-forgotten-export) The symbol "_continuousPulseAnimationSingle" needs to be exported by the entry point index.d.ts
 // lib/styles/PulsingBeaconAnimationStyles.d.ts:8:5 - (ae-forgotten-export) The symbol "_createDefaultAnimation" needs to be exported by the entry point index.d.ts

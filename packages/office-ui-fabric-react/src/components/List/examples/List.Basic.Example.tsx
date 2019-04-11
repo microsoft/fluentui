@@ -37,13 +37,13 @@ export class ListBasicExample extends React.Component<IListBasicExampleProps, IL
 
     return (
       <FocusZone direction={FocusZoneDirection.vertical}>
-        <TextField label={'Filter by name' + resultCountText} onBeforeChange={this._onFilterChanged} />
+        <TextField label={'Filter by name' + resultCountText} onChange={this._onFilterChanged} />
         <List items={items} onRenderCell={this._onRenderCell} />
       </FocusZone>
     );
   }
 
-  private _onFilterChanged(text: string): void {
+  private _onFilterChanged(_: any, text: string): void {
     const { items } = this.props;
 
     this.setState({

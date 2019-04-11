@@ -1574,7 +1574,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     ) {
       // Set new pending index if currentPendingValueValidIndex was changed
       newPendingIndex = currentPendingValueValidIndex;
-    } else if (currentPendingValue !== prevState.currentPendingValue && currentPendingValue !== '') {
+    } else if (currentPendingValue !== prevState.currentPendingValue) {
       // Set pendingValue in the case it was changed and no index was changed
       newPendingValue = currentPendingValue;
     }

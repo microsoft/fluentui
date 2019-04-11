@@ -6,6 +6,9 @@ import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Util
 import { ICalloutProps } from '../../Callout';
 import { ITextFieldProps } from '../TextField/TextField.types';
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePicker {
   /** Sets focus to the text field */
   focus(): void;
@@ -14,6 +17,9 @@ export interface IDatePicker {
   reset(): void;
 }
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IDatePicker interface. Use this instead of ref for accessing
@@ -236,6 +242,9 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAtt
   tabIndex?: number;
 }
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerStrings {
   /**
    * An array of strings for the full names of months.
@@ -306,6 +315,10 @@ export interface IDatePickerStrings {
    */
   closeButtonAriaLabel?: string;
 }
+
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -323,6 +336,9 @@ export interface IDatePickerStyleProps {
   isDatePickerShown?: boolean;
 }
 
+/**
+ * {@docCategory DatePicker}
+ */
 export interface IDatePickerStyles {
   /**
    * Style for the root element.

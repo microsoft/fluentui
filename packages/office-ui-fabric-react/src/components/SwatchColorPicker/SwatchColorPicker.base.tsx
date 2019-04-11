@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { Async, BaseComponent, classNamesFunction, findIndex, KeyCodes, getId } from '../../Utilities';
 import {
-  ISwatchColorPicker,
-  ISwatchColorPickerProps,
-  ISwatchColorPickerStyleProps,
-  ISwatchColorPickerStyles
-} from './SwatchColorPicker.types';
+  Async,
+  classNamesFunction,
+  findIndex,
+  KeyCodes,
+  getId,
+  warnMutuallyExclusive,
+  warnConditionallyRequiredProps
+} from '../../Utilities';
+import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
@@ -16,7 +19,7 @@ export interface ISwatchColorPickerState {
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
-export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
+export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
   public static defaultProps = {
     cellShape: 'circle',
     disabled: false,
@@ -37,11 +40,19 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
 
     this._id = props.id || getId('swatchColorPicker');
 
-    this._warnMutuallyExclusive({
-      focusOnHover: 'onHover'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnMutuallyExclusive('SwatchColorPicker', this.props, {
+        focusOnHover: 'onHover'
+      });
 
-    this._warnConditionallyRequiredProps(['focusOnHover'], 'mouseLeaveParentSelector', !!this.props.mouseLeaveParentSelector);
+      warnConditionallyRequiredProps(
+        'SwatchColorPicker',
+        this.props,
+        ['focusOnHover'],
+        'mouseLeaveParentSelector',
+        !!this.props.mouseLeaveParentSelector
+      );
+    }
 
     this.isNavigationIdle = true;
     this.async = new Async(this);

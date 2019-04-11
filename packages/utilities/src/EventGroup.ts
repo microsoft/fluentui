@@ -55,6 +55,7 @@ export interface IDeclaredEventsByName {
  *  (which is passed in in the constructor).
  *
  * @public
+ * {@docCategory EventGroup}
  */
 export class EventGroup {
   // tslint:disable-next-line:no-inferrable-types

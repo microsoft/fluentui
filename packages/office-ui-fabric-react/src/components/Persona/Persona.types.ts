@@ -6,8 +6,14 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { PersonaCoinBase } from './PersonaCoin/PersonaCoin.base';
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersona {}
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | PersonaCoinBase | HTMLDivElement> {
   /**
    * Primary text to display, usually the name of the person.
@@ -142,6 +148,9 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   primaryText?: string;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaProps extends IPersonaSharedProps {
   /**
    * Optional callback to access the IPersona interface. Use this instead of ref for accessing
@@ -180,6 +189,9 @@ export interface IPersonaProps extends IPersonaSharedProps {
   onRenderOptionalText?: IRenderFunction<IPersonaProps>;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -214,6 +226,9 @@ export interface IPersonaStyleProps {
   showSecondaryText?: boolean;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaStyles {
   root: IStyle;
   details: IStyle;
@@ -224,6 +239,9 @@ export interface IPersonaStyles {
   textContent: IStyle;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaCoinProps extends IPersonaSharedProps {
   /**
    * Gets the component ref.
@@ -242,6 +260,9 @@ export interface IPersonaCoinProps extends IPersonaSharedProps {
   className?: string;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaCoinStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -270,6 +291,9 @@ export interface IPersonaCoinStyleProps {
   showUnknownPersonaCoin?: boolean;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaCoinStyles {
   coin: IStyle;
   imageArea: IStyle;
@@ -278,6 +302,9 @@ export interface IPersonaCoinStyles {
   size10WithoutPresenceIcon: IStyle;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaPresenceProps extends IPersonaSharedProps {
   /**
    * Gets the component ref.
@@ -290,6 +317,9 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
   styles?: IStyleFunctionOrObject<IPersonaPresenceStyleProps, IPersonaPresenceStyles>;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaPresenceStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -314,11 +344,17 @@ export interface IPersonaPresenceStyleProps {
   size?: PersonaSize;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export interface IPersonaPresenceStyles {
   presence: IStyle;
   presenceIcon: IStyle;
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export enum PersonaSize {
   /**
    * tiny size has been deprecated in favor of standardized numeric sizing. Use `size10` instead.
@@ -367,6 +403,9 @@ export enum PersonaSize {
   size100 = 15
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export enum PersonaPresence {
   none = 0,
   offline = 1,
@@ -377,6 +416,9 @@ export enum PersonaPresence {
   busy = 6
 }
 
+/**
+ * {@docCategory Persona}
+ */
 export enum PersonaInitialsColor {
   lightBlue = 0,
   blue = 1,
