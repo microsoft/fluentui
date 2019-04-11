@@ -2811,7 +2811,7 @@ export interface IContextualMenuItemProps extends React_2.HTMLAttributes<IContex
     hasIcons: boolean | undefined;
     index: number;
     item: IContextualMenuItem;
-    onCheckmarkClick?: ((item: IContextualMenuItem, ev: React_2.MouseEvent<HTMLElement>) => void);
+    onCheckmarkClick?: (item: IContextualMenuItem, ev: React_2.MouseEvent<HTMLElement>) => void;
     openSubMenu?: (item: any, target: HTMLElement) => void;
     styles?: IStyleFunctionOrObject<IContextualMenuItemStyleProps, IContextualMenuItemStyles>;
     theme?: ITheme;
