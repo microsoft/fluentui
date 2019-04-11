@@ -3328,8 +3328,6 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
     className?: string;
     compact?: boolean;
     isHeader?: boolean;
-    // @deprecated
-    isSelected?: boolean;
     isVisible?: boolean;
     selected?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
