@@ -15,6 +15,7 @@
     "@uifabric/fabric-website-resources": "^6.14.1",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
+    "axe-sarif-converter": "^1.0.0",
     "concurrently": "^4.1.0",
     "mkdirp": "^0.5.1",
     "office-ui-fabric-react": "^6.165.1",
