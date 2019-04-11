@@ -1,3 +1,5 @@
+// If this file is moved or split, the scripts for building codepen examples will likely need to be updated.
+
 import { PersonaPresence } from '../../../Persona';
 import { IExtendedPersonaProps } from '../../../SelectedItemsList';
 import { TestImages } from '../../../common/TestImages';

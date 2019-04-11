@@ -2,10 +2,14 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Shimmer}
+ */
 export interface IShimmer {}
 
 /**
  * Shimmer component props.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -64,6 +68,7 @@ export interface IShimmerProps extends React.AllHTMLAttributes<HTMLElement> {
 
 /**
  * Shimmer Elements Interface representing all common properties between Gap, Circle and Line.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerElement {
   /**
@@ -93,6 +98,7 @@ export interface IShimmerElement {
 
 /**
  * Line element interface
+ * {@docCategory Shimmer}
  */
 export interface ILine extends IShimmerElement {
   /**
@@ -110,6 +116,7 @@ export interface ILine extends IShimmerElement {
 
 /**
  * Circle element interface
+ * {@docCategory Shimmer}
  */
 export interface ICircle extends IShimmerElement {
   /**
@@ -122,6 +129,7 @@ export interface ICircle extends IShimmerElement {
 
 /**
  * Gap element interface
+ * {@docCategory Shimmer}
  */
 export interface IGap extends IShimmerElement {
   /**
@@ -139,6 +147,7 @@ export interface IGap extends IShimmerElement {
 
 /**
  * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerStyleProps {
   /** Boolean flag to trigger fadeIn/fadeOut transition animation when content is loaded. */
@@ -162,6 +171,7 @@ export interface IShimmerStyleProps {
 
 /**
  * Represents the stylable areas of the control.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerStyles {
   /** Refers to the root wrapper element. */
@@ -179,6 +189,7 @@ export interface IShimmerStyles {
 
 /**
  * Describes the possible types for shimmer elements used.
+ * {@docCategory Shimmer}
  */
 export enum ShimmerElementType {
   /**
@@ -199,6 +210,7 @@ export enum ShimmerElementType {
 
 /**
  * Describes the default heights for shimmer elements when omitted in implementation.
+ * {@docCategory Shimmer}
  */
 export enum ShimmerElementsDefaultHeights {
   /**
@@ -219,6 +231,7 @@ export enum ShimmerElementsDefaultHeights {
 
 /**
  * Interface describing the possible color customizations of Shimmer.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerColors {
   /**

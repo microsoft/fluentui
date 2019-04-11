@@ -37,6 +37,10 @@ steps:
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
+  - script: |
+      npm run perf-test
+    displayName: perf test
+
   - task: GithubPRStatus@0
     displayName: 'Update Github Pull Request Status'
     inputs:

@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { Popup } from './Popup';
 
+/**
+ * {@docCategory Popup}
+ */
 export interface IPopupProps extends React.HTMLAttributes<Popup> {
   /**
    * Aria role for popup

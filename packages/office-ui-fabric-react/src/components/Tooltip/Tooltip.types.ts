@@ -6,10 +6,14 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltip {}
 
 /**
  * Tooltip component props.
+ * {@docCategory Tooltip}
  */
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
   /**
@@ -74,12 +78,18 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   styles?: IStyleFunctionOrObject<ITooltipStyleProps, ITooltipStyles>;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export enum TooltipDelay {
   zero = 0,
   medium = 1,
   long = 2
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipStyleProps {
   /**
    * Accept theme prop.
@@ -102,6 +112,9 @@ export interface ITooltipStyleProps {
   maxWidth?: string;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipStyles {
   /**
    * Style for the root element.

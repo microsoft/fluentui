@@ -8,6 +8,9 @@ import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { IRefObject } from '../../Utilities';
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButton {
   /**
    * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
@@ -21,6 +24,9 @@ export interface ISpinButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonProps {
   /**
    * Gets the component ref.
@@ -230,6 +236,9 @@ export interface ISpinButtonProps {
   keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonStyles {
   /**
    * Styles for the root of the spin button component.

@@ -1,3265 +1,1008 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 1`] = `
-<div>
+<div
+  className=
+      ms-DocumentCard
+      ms-DocumentCard--actionable
+      {
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        border: 1px solid #eaeaea;
+        box-sizing: border-box;
+        max-width: 320px;
+        min-width: 206px;
+        position: relative;
+        user-select: none;
+      }
+      & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+        padding-top: 4px;
+      }
+      &:hover {
+        border-color: #c8c8c8;
+        cursor: pointer;
+      }
+      &:hover:after {
+        border: 1px solid #c8c8c8;
+        bottom: 0px;
+        content: " ";
+        left: 0px;
+        pointer-events: none;
+        position: absolute;
+        right: 0px;
+        top: 0px;
+      }
+  data-is-focusable={true}
+  onClick={[Function]}
+  onKeyDown={[Function]}
+  role="button"
+  tabIndex={0}
+>
   <div
     className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
+        ms-DocumentCardPreview
         {
-          -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
+          border-bottom: 1px solid #eaeaea;
+          overflow: hidden;
           position: relative;
-          user-select: none;
         }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
-          padding-top: 4px;
-        }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="button"
-    tabIndex={0}
   >
-    <div
-      className=
-          ms-DocumentCardPreview
-          {
-            background-color: #ffffff;
-            border-bottom: 1px solid #eaeaea;
-            overflow: hidden;
-            position: relative;
-          }
-    >
-      <div>
-        <ul
-          className=
-
-              {
-                list-style-type: none;
-                margin-bottom: 0px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
-                padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 16px;
-              }
-              & li {
-                height: 16px;
-                line-height: 16px;
-                margin-bottom: 8px;
-                overflow: hidden;
-                padding-left: 24px;
-                position: relative;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-              & a {
-                color: #212121;
-                font-size: 12px;
-                text-decoration: none;
-              }
-              & a:hover {
-                color: #0078d4;
-              }
-        >
-          <li>
-            <div
-              className=
-                  ms-Image
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    left: 0px;
-                    overflow: hidden;
-                    position: absolute;
-                    top: 0px;
-                  }
-              style={
-                Object {
-                  "height": "16px",
-                  "width": "16px",
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: 100%;
-                      opacity: 0;
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
-              />
-            </div>
-            <a
-              className=
-                  ms-Link
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #0078d4;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: inherit;
-                    font-weight: inherit;
-                    outline: none;
-                    text-decoration: none;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid WindowText;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-bottom: none;
-                  }
-                  &:active, &:hover, &:active:hover {
-                    color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                    text-decoration: underline;
-                  }
-                  &:focus {
-                    color: #0078d4;
-                  }
-              href="http://bing.com"
-              onClick={[Function]}
-            >
-              2016 Conference Presentation
-            </a>
-          </li>
-          <li>
-            <div
-              className=
-                  ms-Image
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    left: 0px;
-                    overflow: hidden;
-                    position: absolute;
-                    top: 0px;
-                  }
-              style={
-                Object {
-                  "height": "16px",
-                  "width": "16px",
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: 100%;
-                      opacity: 0;
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
-              />
-            </div>
-            <a
-              className=
-                  ms-Link
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #0078d4;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: inherit;
-                    font-weight: inherit;
-                    outline: none;
-                    text-decoration: none;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid WindowText;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-bottom: none;
-                  }
-                  &:active, &:hover, &:active:hover {
-                    color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                    text-decoration: underline;
-                  }
-                  &:focus {
-                    color: #0078d4;
-                  }
-              href="http://bing.com"
-              onClick={[Function]}
-            >
-              New Contoso Collaboration for Conference Presentation Draft
-            </a>
-          </li>
-          <li>
-            <div
-              className=
-                  ms-Image
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
-                    left: 0px;
-                    overflow: hidden;
-                    position: absolute;
-                    top: 0px;
-                  }
-              style={
-                Object {
-                  "height": "16px",
-                  "width": "16px",
-                }
-              }
-            >
-              <img
-                alt=""
-                className=
-                    ms-Image-image
-                    ms-Image-image--portrait
-                    is-notLoaded
-                    is-fadeIn
-                    {
-                      display: block;
-                      height: 100%;
-                      opacity: 0;
-                      width: 100%;
-                    }
-                onError={[Function]}
-                onLoad={[Function]}
-                role="presentation"
-                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
-              />
-            </div>
-            <a
-              className=
-                  ms-Link
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    color: #0078d4;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: inherit;
-                    font-weight: inherit;
-                    outline: none;
-                    text-decoration: none;
-                  }
-                  .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
-                  }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
-                    outline: 1px solid WindowText;
-                  }
-                  @media screen and (-ms-high-contrast: active){& {
-                    border-bottom: none;
-                  }
-                  &:active, &:hover, &:active:hover {
-                    color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
-                    text-decoration: underline;
-                  }
-                  &:focus {
-                    color: #0078d4;
-                  }
-              href="http://bing.com"
-              onClick={[Function]}
-            >
-              Spec Sheet for design
-            </a>
-          </li>
-        </ul>
-        <span
-          className=
-
-              {
-                display: block;
-                font-size: 12px;
-                padding-bottom: 8px;
-                padding-left: 16px;
-                padding-right: 16px;
-                padding-top: 0px;
-              }
-        >
-          +3 more
-        </span>
-      </div>
-    </div>
-    <a
-      aria-label="Location, Marketing Documents"
-      className=
-          ms-DocumentCardLocation
-          {
-            color: #333333;
-            display: block;
-            font-size: 12px;
-            overflow: hidden;
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-            text-decoration: none;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-          }
-          &:hover {
-            color: #0078d4;
-            cursor: pointer;
-          }
-      href="http://microsoft.com"
-    >
-      Marketing Documents
-    </a>
-    <div
-      className=
-          ms-DocumentCardTitle
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 17px;
-            font-weight: 300;
-            height: 38px;
-            line-height: 21px;
-            overflow: hidden;
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            word-wrap: break-word;
-          }
-      title="6 files were uploaded"
-    >
-      6 files were uploaded
-    </div>
-    <div
-      className=
-          ms-DocumentCardActivity
-          ms-DocumentCardActivity--multiplePeople
-          {
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActivity-avatars
-            {
-              height: 32px;
-              margin-left: -2px;
-            }
-      >
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #00ABA9;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                    }
-              >
-                <span>
-                  JH
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        left: 50% /* @noflip */;
-                        object-fit: cover;
-                        opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActivity-details
-            {
-              height: 32px;
-              left: 72px;
-              position: absolute;
-              top: 8px;
-              width: calc(100% - 72px);
-            }
-      >
-        <span
-          className=
-              ms-DocumentCardActivity-name
-              {
-                color: #333333;
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Annie Lindqvist +2
-        </span>
-        <span
-          className=
-              ms-DocumentCardActivity-activity
-              {
-                color: #666666;
-                display: block;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Created Feb 23, 2016
-        </span>
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardActions
-          {
-            height: 34px;
-            padding-bottom: 4px;
-            padding-left: 12px;
-            padding-right: 12px;
-            padding-top: 4px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActions-action
-            {
-              color: #666666;
-              cursor: pointer;
-              float: left;
-              margin-right: 4px;
-            }
-            & .ms-Button {
-              font-size: 16px;
-              height: 34px;
-              width: 34px;
-            }
-            & .ms-Button:hover .ms-Button-icon {
-              color: #333333;
-              cursor: pointer;
-            }
-      >
-        <button
-          aria-label="share action"
-          className=
-              ms-Button
-              ms-Button--icon
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: none;
-                box-sizing: border-box;
-                color: #333333;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-                width: 32px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                color: #212121;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                color: #0078d4;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
-        >
-          <div
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-          >
-            <i
-              className=
-                  ms-Button-icon
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: "FabricMDL2Icons";
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: normal;
-                    height: 16px;
-                    line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                    speak: none;
-                    text-align: center;
-                    vertical-align: middle;
-                  }
-              data-icon-name="Share"
-              role="presentation"
-            >
-              
-            </i>
-          </div>
-        </button>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActions-action
-            {
-              color: #666666;
-              cursor: pointer;
-              float: left;
-              margin-right: 4px;
-            }
-            & .ms-Button {
-              font-size: 16px;
-              height: 34px;
-              width: 34px;
-            }
-            & .ms-Button:hover .ms-Button-icon {
-              color: #333333;
-              cursor: pointer;
-            }
-      >
-        <button
-          aria-label="pin action"
-          className=
-              ms-Button
-              ms-Button--icon
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: none;
-                box-sizing: border-box;
-                color: #333333;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-                width: 32px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                color: #212121;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                color: #0078d4;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
-        >
-          <div
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-          >
-            <i
-              className=
-                  ms-Button-icon
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: "FabricMDL2Icons-0";
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: normal;
-                    height: 16px;
-                    line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                    speak: none;
-                    text-align: center;
-                    vertical-align: middle;
-                  }
-              data-icon-name="Pin"
-              role="presentation"
-            >
-              
-            </i>
-          </div>
-        </button>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActions-action
-            {
-              color: #666666;
-              cursor: pointer;
-              float: left;
-              margin-right: 4px;
-            }
-            & .ms-Button {
-              font-size: 16px;
-              height: 34px;
-              width: 34px;
-            }
-            & .ms-Button:hover .ms-Button-icon {
-              color: #333333;
-              cursor: pointer;
-            }
-      >
-        <button
-          aria-label="ringer action"
-          className=
-              ms-Button
-              ms-Button--icon
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                background-color: transparent;
-                border-radius: 0px;
-                border: none;
-                box-sizing: border-box;
-                color: #333333;
-                cursor: pointer;
-                display: inline-block;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
-                height: 32px;
-                outline: transparent;
-                padding-bottom: 0;
-                padding-left: 4px;
-                padding-right: 4px;
-                padding-top: 0;
-                position: relative;
-                text-align: center;
-                text-decoration: none;
-                user-select: none;
-                vertical-align: top;
-                width: 32px;
-              }
-              &::-moz-focus-inner {
-                border: 0;
-              }
-              .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
-                content: "";
-                left: 0px;
-                outline: 1px solid #666666;
-                position: absolute;
-                right: 0px;
-                top: 0px;
-                z-index: 1;
-              }
-              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-                border: none;
-                bottom: -2px;
-                left: -2px;
-                outline-color: ButtonText;
-                right: -2px;
-                top: -2px;
-              }
-              &:active > * {
-                left: 0px;
-                position: relative;
-                top: 0px;
-              }
-              &:hover {
-                color: #212121;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover {
-                border-color: Highlight;
-                color: Highlight;
-              }
-              &:active {
-                color: #0078d4;
-              }
-          data-is-focusable={true}
-          onClick={[Function]}
-          onKeyDown={[Function]}
-          onKeyPress={[Function]}
-          onKeyUp={[Function]}
-          onMouseDown={[Function]}
-          onMouseUp={[Function]}
-          type="button"
-        >
-          <div
-            className=
-                ms-Button-flexContainer
-                {
-                  align-items: center;
-                  display: flex;
-                  flex-wrap: nowrap;
-                  height: 100%;
-                  justify-content: center;
-                }
-          >
-            <i
-              className=
-                  ms-Button-icon
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    display: inline-block;
-                    flex-shrink: 0;
-                    font-family: "FabricMDL2Icons-3";
-                    font-size: 16px;
-                    font-style: normal;
-                    font-weight: normal;
-                    height: 16px;
-                    line-height: 16px;
-                    margin-bottom: 0;
-                    margin-left: 4px;
-                    margin-right: 4px;
-                    margin-top: 0;
-                    speak: none;
-                    text-align: center;
-                    vertical-align: middle;
-                  }
-              data-icon-name="Ringer"
-              role="presentation"
-            >
-              
-            </i>
-          </div>
-        </button>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActions-views
-            {
-              line-height: 34px;
-              text-align: right;
-            }
-      >
-        <i
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons";
-                font-size: 14px;
-                font-style: normal;
-                font-weight: normal;
-                margin-right: 8px;
-                speak: none;
-                vertical-align: top;
-              }
-          data-icon-name="View"
-          role="presentation"
-        >
-          
-        </i>
-        432
-      </div>
-    </div>
-  </div>
-  <p />
-  Card Logo, Text Preview CardStatus are used on below examples.
-  <p />
-  <div
-    className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
-        {
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
-          position: relative;
-          user-select: none;
-        }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
-          padding-top: 4px;
-        }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
-  >
-    <div
-      className=
-          ms-DocumentCardLogo
-          {
-            color: #0078d4;
-            display: block;
-            font-size: 32px;
-            padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 16px;
-          }
-    >
-      <i
+    <div>
+      <ul
         className=
 
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons-9";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-        data-icon-name="OutlookLogo"
-        role="presentation"
-      >
-        
-      </i>
-    </div>
-    <div
-      className="ms-ConversationTile-TitlePreviewArea"
-    >
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #333333;
-              display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
-              height: 38px;
-              line-height: 21px;
-              overflow: hidden;
-              padding-bottom: 8px;
+              list-style-type: none;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0;
               padding-left: 16px;
               padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
+              padding-top: 16px;
             }
-        title="Conversation about annual report a very long long name, Title should be truncated on the long name."
-      >
-        Conversation about annual report a very long long name, Title should be truncated on the long name.
-      </div>
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #666666;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 45px;
-              line-height: 18px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="This is the email content preview, please feel free to give feedback.
-                SharePoint Site Activity add conversation card! This is the last."
-      >
-        This is the email content preview, please feel free to give feedback.
-                SharePoint Site Activity add conversation card! This is the last.
-      </div>
-      <div
-        className=
-            ms-DocumentCardStatus
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              color: #333333;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
+            & li {
+              height: 16px;
+              line-height: 16px;
               margin-bottom: 8px;
-              margin-left: 16px;
-              margin-right: 16px;
-              margin-top: 8px;
-            }
-      >
-        <i
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-0";
-                font-style: normal;
-                font-weight: normal;
-                padding-bottom: 8px;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 8px;
-                speak: none;
-              }
-          data-icon-name="attach"
-          role="presentation"
-        >
-          
-        </i>
-         3 Attachments
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardActivity
-          ms-DocumentCardActivity--multiplePeople
-          {
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActivity-avatars
-            {
-              height: 32px;
-              margin-left: -2px;
-            }
-      >
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #00ABA9;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                    }
-              >
-                <span>
-                  JH
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        left: 50% /* @noflip */;
-                        object-fit: cover;
-                        opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActivity-details
-            {
-              height: 32px;
-              left: 72px;
-              position: absolute;
-              top: 8px;
-              width: calc(100% - 72px);
-            }
-      >
-        <span
-          className=
-              ms-DocumentCardActivity-name
-              {
-                color: #333333;
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Annie Lindqvist +2
-        </span>
-        <span
-          className=
-              ms-DocumentCardActivity-activity
-              {
-                color: #666666;
-                display: block;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Sent March 13, 2018
-        </span>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
-        {
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
-          position: relative;
-          user-select: none;
-        }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
-          padding-top: 4px;
-        }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
-  >
-    <div
-      className=
-          ms-DocumentCardLogo
-          {
-            color: #0078d4;
-            display: block;
-            font-size: 32px;
-            padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 16px;
-          }
-    >
-      <i
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons-9";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-        data-icon-name="OutlookLogo"
-        role="presentation"
-      >
-        
-      </i>
-    </div>
-    <div
-      className="ms-ConversationTile-TitlePreviewArea"
-    >
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #333333;
-              display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
-              height: 38px;
-              line-height: 21px;
               overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="Conversation about annual Report"
-      >
-        Conversation about annual Report
-      </div>
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #666666;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 45px;
-              line-height: 18px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="This is the email content preview, help."
-      >
-        This is the email content preview, help.
-      </div>
-      <div
-        className=
-            ms-DocumentCardStatus
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              color: #333333;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 32px;
-              margin-bottom: 8px;
-              margin-left: 16px;
-              margin-right: 16px;
-              margin-top: 8px;
-            }
-      >
-        <i
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-0";
-                font-style: normal;
-                font-weight: normal;
-                padding-bottom: 8px;
-                padding-left: 8px;
-                padding-right: 8px;
-                padding-top: 8px;
-                speak: none;
-              }
-          data-icon-name="attach"
-          role="presentation"
-        >
-          
-        </i>
-         3 Attachments
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardActivity
-          ms-DocumentCardActivity--multiplePeople
-          {
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActivity-avatars
-            {
-              height: 32px;
-              margin-left: -2px;
-            }
-      >
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #00ABA9;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                    }
-              >
-                <span>
-                  JH
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        left: 50% /* @noflip */;
-                        object-fit: cover;
-                        opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActivity-details
-            {
-              height: 32px;
-              left: 72px;
-              position: absolute;
-              top: 8px;
-              width: calc(100% - 72px);
-            }
-      >
-        <span
-          className=
-              ms-DocumentCardActivity-name
-              {
-                color: #333333;
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Annie Lindqvist +2
-        </span>
-        <span
-          className=
-              ms-DocumentCardActivity-activity
-              {
-                color: #666666;
-                display: block;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Sent March 13, 2018
-        </span>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
-        {
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
-          position: relative;
-          user-select: none;
-        }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
-          padding-top: 4px;
-        }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
-  >
-    <div
-      className=
-          ms-DocumentCardLogo
-          {
-            color: #0078d4;
-            display: block;
-            font-size: 32px;
-            padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 16px;
-          }
-    >
-      <i
-        className=
-
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              display: inline-block;
-              font-family: "FabricMDL2Icons-9";
-              font-style: normal;
-              font-weight: normal;
-              speak: none;
-            }
-        data-icon-name="OutlookLogo"
-        role="presentation"
-      >
-        
-      </i>
-    </div>
-    <div
-      className="ms-ConversationTile-TitlePreviewArea"
-    >
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #333333;
-              display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
-              height: 38px;
-              line-height: 21px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="Conversation about annual report"
-      >
-        Conversation about annual report
-      </div>
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #666666;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              height: 45px;
-              line-height: 18px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="This is the email content preview, please feel free to give!"
-      >
-        This is the email content preview, please feel free to give!
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardActivity
-          ms-DocumentCardActivity--multiplePeople
-          {
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActivity-avatars
-            {
-              height: 32px;
-              margin-left: -2px;
-            }
-      >
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #00ABA9;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                    }
-              >
-                <span>
-                  JH
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        left: 50% /* @noflip */;
-                        object-fit: cover;
-                        opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActivity-details
-            {
-              height: 32px;
-              left: 72px;
-              position: absolute;
-              top: 8px;
-              width: calc(100% - 72px);
-            }
-      >
-        <span
-          className=
-              ms-DocumentCardActivity-name
-              {
-                color: #333333;
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Annie Lindqvist +2
-        </span>
-        <span
-          className=
-              ms-DocumentCardActivity-activity
-              {
-                color: #666666;
-                display: block;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Sent March 13, 2018
-        </span>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
-        {
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
-          position: relative;
-          user-select: none;
-        }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
-          padding-top: 4px;
-        }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
-  >
-    <div
-      className=
-          ms-DocumentCardPreview
-          {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
-            overflow: hidden;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardPreview-iconContainer
-            {
-              align-items: center;
-              display: flex;
-              height: 100%;
-              justify-content: center;
-            }
-        style={
-          Object {
-            "height": 196,
-            "width": 318,
-          }
-        }
-      >
-        <i
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #ffffff;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-1";
-                font-size: 42px;
-                font-style: normal;
-                font-weight: normal;
-                speak: none;
-              }
-          data-icon-name="OpenFile"
-          role="presentation"
-        >
-          
-        </i>
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardDetails
-          {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            justify-content: space-between;
-            overflow: hidden;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardTitle
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              color: #333333;
-              display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
-              height: 38px;
-              line-height: 21px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="View and share files"
-      >
-        View and share files
-      </div>
-      <div
-        className=
-            ms-DocumentCardActivity
-            {
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
+              padding-left: 24px;
               position: relative;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+            & a {
+              color: #212121;
+              font-size: 12px;
+              text-decoration: none;
+            }
+            & a:hover {
+              color: #0078d4;
+            }
+      >
+        <li>
+          <div
+            className=
+                ms-Image
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  left: 0px;
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0px;
+                }
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+          >
+            <img
+              alt=""
+              className=
+                  ms-Image-image
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: 100%;
+                    opacity: 0;
+                    width: 100%;
+                  }
+              onError={[Function]}
+              onLoad={[Function]}
+              role="presentation"
+              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+            />
+          </div>
+          <a
+            className=
+                ms-Link
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #0078d4;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: inherit;
+                  font-weight: inherit;
+                  outline: none;
+                  text-decoration: none;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  box-shadow: 0 0 0 1px #666666 inset;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid WindowText;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-bottom: none;
+                }
+                &:active, &:hover, &:active:hover {
+                  color: #004578;
+                }
+                @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                  text-decoration: underline;
+                }
+                &:focus {
+                  color: #0078d4;
+                }
+            href="http://bing.com"
+            onClick={[Function]}
+          >
+            2016 Conference Presentation
+          </a>
+        </li>
+        <li>
+          <div
+            className=
+                ms-Image
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  left: 0px;
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0px;
+                }
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+          >
+            <img
+              alt=""
+              className=
+                  ms-Image-image
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: 100%;
+                    opacity: 0;
+                    width: 100%;
+                  }
+              onError={[Function]}
+              onLoad={[Function]}
+              role="presentation"
+              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+            />
+          </div>
+          <a
+            className=
+                ms-Link
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #0078d4;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: inherit;
+                  font-weight: inherit;
+                  outline: none;
+                  text-decoration: none;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  box-shadow: 0 0 0 1px #666666 inset;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid WindowText;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-bottom: none;
+                }
+                &:active, &:hover, &:active:hover {
+                  color: #004578;
+                }
+                @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                  text-decoration: underline;
+                }
+                &:focus {
+                  color: #0078d4;
+                }
+            href="http://bing.com"
+            onClick={[Function]}
+          >
+            New Contoso Collaboration for Conference Presentation Draft
+          </a>
+        </li>
+        <li>
+          <div
+            className=
+                ms-Image
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  left: 0px;
+                  overflow: hidden;
+                  position: absolute;
+                  top: 0px;
+                }
+            style={
+              Object {
+                "height": "16px",
+                "width": "16px",
+              }
+            }
+          >
+            <img
+              alt=""
+              className=
+                  ms-Image-image
+                  ms-Image-image--portrait
+                  is-notLoaded
+                  is-fadeIn
+                  {
+                    display: block;
+                    height: 100%;
+                    opacity: 0;
+                    width: 100%;
+                  }
+              onError={[Function]}
+              onLoad={[Function]}
+              role="presentation"
+              src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/icon-ppt.png"
+            />
+          </div>
+          <a
+            className=
+                ms-Link
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #0078d4;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: inherit;
+                  font-weight: inherit;
+                  outline: none;
+                  text-decoration: none;
+                }
+                .ms-Fabric--isFocusVisible &:focus {
+                  box-shadow: 0 0 0 1px #666666 inset;
+                }
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                  outline: 1px solid WindowText;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  border-bottom: none;
+                }
+                &:active, &:hover, &:active:hover {
+                  color: #004578;
+                }
+                @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                  text-decoration: underline;
+                }
+                &:focus {
+                  color: #0078d4;
+                }
+            href="http://bing.com"
+            onClick={[Function]}
+          >
+            Spec Sheet for design
+          </a>
+        </li>
+      </ul>
+      <span
+        className=
+
+            {
+              display: block;
+              font-size: 12px;
+              padding-bottom: 8px;
+              padding-left: 16px;
+              padding-right: 16px;
+              padding-top: 0px;
+            }
+      >
+        +3 more
+      </span>
+    </div>
+  </div>
+  <a
+    aria-label="Location, Marketing Documents"
+    className=
+        ms-DocumentCardLocation
+        {
+          color: #333333;
+          display: block;
+          font-size: 12px;
+          overflow: hidden;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          position: relative;
+          text-decoration: none;
+          text-overflow: ellipsis;
+          white-space: nowrap;
+        }
+        &:hover {
+          color: #0078d4;
+          cursor: pointer;
+        }
+    href="http://microsoft.com"
+  >
+    Marketing Documents
+  </a>
+  <div
+    className=
+        ms-DocumentCardTitle
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 17px;
+          font-weight: 300;
+          height: 38px;
+          line-height: 21px;
+          overflow: hidden;
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          word-wrap: break-word;
+        }
+    title="6 files were uploaded"
+  >
+    6 files were uploaded
+  </div>
+  <div
+    className=
+        ms-DocumentCardActivity
+        {
+          padding-bottom: 8px;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 8px;
+          position: relative;
+        }
+  >
+    <div
+      className=
+          ms-DocumentCardActivity-avatars
+          {
+            height: 32px;
+            margin-left: -2px;
+          }
+    >
+      <div
+        className=
+            ms-DocumentCardActivity-avatar
+            {
+              display: inline-block;
+              height: 32px;
+              position: relative;
+              text-align: center;
+              vertical-align: top;
+              width: 32px;
+            }
+            &:after {
+              border-radius: 50%;
+              border: 2px solid #ffffff;
+              bottom: -1px;
+              content: " ";
+              left: -1px;
+              position: absolute;
+              right: -1px;
+              top: -1px;
             }
       >
         <div
           className=
-              ms-DocumentCardActivity-avatars
+              ms-Persona-coin
+              ms-Persona--size32
               {
-                height: 32px;
-                margin-left: -2px;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
               }
+          role="presentation"
+          size={11}
         >
           <div
             className=
-                ms-DocumentCardActivity-avatar
+                ms-Persona-imageArea
                 {
-                  display: inline-block;
+                  flex: 0 0 auto;
                   height: 32px;
                   position: relative;
                   text-align: center;
-                  vertical-align: top;
                   width: 32px;
-                }
-                &:after {
-                  border-radius: 50%;
-                  border: 2px solid #ffffff;
-                  bottom: -1px;
-                  content: " ";
-                  left: -1px;
-                  position: absolute;
-                  right: -1px;
-                  top: -1px;
                 }
           >
             <div
               className=
-                  ms-Persona-coin
-                  ms-Persona--size32
+                  ms-Image
+                  ms-Persona-image
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
+                    border-radius: 50%;
+                    border: 0px;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    height: 32px;
+                    left: 0px;
+                    margin-right: 10px;
+                    overflow: hidden;
+                    perspective: 1px;
+                    position: absolute;
+                    top: 0px;
+                    width: 32px;
                   }
-              role="presentation"
-              size={11}
+              style={
+                Object {
+                  "height": 32,
+                  "width": 32,
+                }
+              }
             >
-              <div
+              <img
+                alt=""
                 className=
-                    ms-Persona-imageArea
+                    ms-Image-image
+                    ms-Image-image--cover
+                    ms-Image-image--portrait
+                    is-notLoaded
+                    is-fadeIn
                     {
-                      flex: 0 0 auto;
-                      height: 32px;
-                      position: relative;
-                      text-align: center;
-                      width: 32px;
+                      display: block;
+                      height: 100%;
+                      left: 50% /* @noflip */;
+                      object-fit: cover;
+                      opacity: 0;
+                      position: absolute;
+                      top: 50%;
+                      transform: translate(-50%,-50%);
+                      width: 100%;
                     }
-              >
-                <div
-                  className=
-                      ms-Image
-                      ms-Persona-image
-                      {
-                        -moz-osx-font-smoothing: grayscale;
-                        -webkit-font-smoothing: antialiased;
-                        border-radius: 50%;
-                        border: 0px;
-                        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                        font-size: 14px;
-                        font-weight: 400;
-                        height: 32px;
-                        left: 0px;
-                        margin-right: 10px;
-                        overflow: hidden;
-                        perspective: 1px;
-                        position: absolute;
-                        top: 0px;
-                        width: 32px;
-                      }
-                  style={
-                    Object {
-                      "height": 32,
-                      "width": 32,
-                    }
-                  }
-                >
-                  <img
-                    alt=""
-                    className=
-                        ms-Image-image
-                        ms-Image-image--cover
-                        ms-Image-image--portrait
-                        is-notLoaded
-                        is-fadeIn
-                        {
-                          display: block;
-                          height: 100%;
-                          left: 50% /* @noflip */;
-                          object-fit: cover;
-                          opacity: 0;
-                          position: absolute;
-                          top: 50%;
-                          transform: translate(-50%,-50%);
-                          width: 100%;
-                        }
-                    onError={[Function]}
-                    onLoad={[Function]}
-                    src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                  />
-                </div>
-              </div>
+                onError={[Function]}
+                onLoad={[Function]}
+                src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
+              />
             </div>
           </div>
         </div>
-        <div
-          className=
-              ms-DocumentCardActivity-details
-              {
-                height: 32px;
-                left: 56px;
-                position: absolute;
-                top: 8px;
-                width: calc(100% - 72px);
-              }
-        >
-          <span
-            className=
-                ms-DocumentCardActivity-name
-                {
-                  color: #333333;
-                  display: block;
-                  font-size: 12px;
-                  font-weight: 600;
-                  height: 15px;
-                  line-height: 15px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-          >
-            Kat Larrson
-          </span>
-          <span
-            className=
-                ms-DocumentCardActivity-activity
-                {
-                  color: #666666;
-                  display: block;
-                  font-size: 12px;
-                  height: 15px;
-                  line-height: 15px;
-                  overflow: hidden;
-                  text-overflow: ellipsis;
-                  white-space: nowrap;
-                }
-          >
-            Created a few minutes ago
-          </span>
-        </div>
       </div>
     </div>
+    <div
+      className=
+          ms-DocumentCardActivity-details
+          {
+            height: 32px;
+            left: 56px;
+            position: absolute;
+            top: 8px;
+            width: calc(100% - 72px);
+          }
+    >
+      <span
+        className=
+            ms-DocumentCardActivity-name
+            {
+              color: #333333;
+              display: block;
+              font-size: 12px;
+              font-weight: 600;
+              height: 15px;
+              line-height: 15px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+      >
+        Annie Lindqvist
+      </span>
+      <span
+        className=
+            ms-DocumentCardActivity-activity
+            {
+              color: #666666;
+              display: block;
+              font-size: 12px;
+              height: 15px;
+              line-height: 15px;
+              overflow: hidden;
+              text-overflow: ellipsis;
+              white-space: nowrap;
+            }
+      >
+        Created Feb 23, 2016
+      </span>
+    </div>
   </div>
-  <p />
   <div
     className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
+        ms-DocumentCardActions
         {
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
-          position: relative;
-          user-select: none;
-        }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
+          height: 34px;
+          padding-bottom: 4px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 4px;
+          position: relative;
         }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
   >
     <div
       className=
-
+          ms-DocumentCardActions-action
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
-            height: 100px;
-            overflow: hidden;
-            position: relative;
+            color: #666666;
+            cursor: pointer;
+            float: left;
+            margin-right: 4px;
+          }
+          & .ms-Button {
+            font-size: 16px;
+            height: 34px;
+            width: 34px;
+          }
+          & .ms-Button:hover .ms-Button-icon {
+            color: #333333;
+            cursor: pointer;
           }
     >
-      <div
+      <button
+        aria-label="share action"
         className=
-            ms-Image
+            ms-Button
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: none;
+              box-sizing: border-box;
+              color: #333333;
+              cursor: pointer;
+              display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              overflow: hidden;
+              height: 32px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
               position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+              width: 32px;
             }
-        style={
-          Object {
-            "height": 100,
-            "width": undefined,
-          }
-        }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:active {
+              color: #0078d4;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
-        <img
-          alt=""
+        <div
           className=
-              ms-Image-image
-              ms-Image-image--cover
-              ms-Image-image--portrait
-              is-notLoaded
-              is-fadeIn
+              ms-Button-flexContainer
               {
-                display: block;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
                 height: 100%;
-                left: 50% /* @noflip */;
-                object-fit: cover;
-                opacity: 0;
-                position: absolute;
-                top: 50%;
-                transform: translate(-50%,-50%);
-                width: 100%;
+                justify-content: center;
               }
-          onError={[Function]}
-          onLoad={[Function]}
-          role="presentation"
-          src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/document-preview2.png"
-        />
-      </div>
-      <div
-        className=
-
-            {
-              align-items: center;
-              display: flex;
-              height: 100%;
-              justify-content: center;
-              left: 0px;
-              position: absolute;
-              top: 0px;
-              width: 100%;
-            }
-      >
-        <i
-          className=
-
-              {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #813a7c;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-9";
-                font-size: 42px;
-                font-style: normal;
-                font-weight: normal;
-                height: 42px;
-                speak: none;
-                width: 42px;
-              }
-          data-icon-name="OneNoteLogo"
-          role="presentation"
         >
-          
-        </i>
-      </div>
+          <i
+            className=
+                ms-Button-icon
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  flex-shrink: 0;
+                  font-family: "FabricMDL2Icons";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  speak: none;
+                  text-align: center;
+                  vertical-align: middle;
+                }
+            data-icon-name="Share"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
     </div>
     <div
       className=
-          ms-DocumentCardDetails
+          ms-DocumentCardActions-action
           {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            justify-content: space-between;
-            overflow: hidden;
+            color: #666666;
+            cursor: pointer;
+            float: left;
+            margin-right: 4px;
+          }
+          & .ms-Button {
+            font-size: 16px;
+            height: 34px;
+            width: 34px;
+          }
+          & .ms-Button:hover .ms-Button-icon {
+            color: #333333;
+            cursor: pointer;
           }
     >
-      <div
+      <button
+        aria-label="pin action"
         className=
-            ms-DocumentCardTitle
+            ms-Button
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: none;
+              box-sizing: border-box;
               color: #333333;
-              display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
-              height: 38px;
-              line-height: 21px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="How to make good design"
-      >
-        How to make good design
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardActivity
-          ms-DocumentCardActivity--multiplePeople
-          {
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActivity-avatars
-            {
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 32px;
-              margin-left: -2px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+              width: 32px;
             }
-      >
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #00ABA9;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                    }
-              >
-                <span>
-                  JH
-                </span>
-              </div>
-            </div>
-          </div>
-        </div>
-        <div
-          className=
-              ms-DocumentCardActivity-avatar
-              {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
-              }
-              &:nth-of-type(2) {
-                margin-left: -16px;
-              }
-        >
-          <div
-            className=
-                ms-Persona-coin
-                ms-Persona--size32
-                {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
-                }
-            role="presentation"
-            size={11}
-          >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                className=
-                    ms-Image
-                    ms-Persona-image
-                    {
-                      -moz-osx-font-smoothing: grayscale;
-                      -webkit-font-smoothing: antialiased;
-                      border-radius: 50%;
-                      border: 0px;
-                      font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      left: 0px;
-                      margin-right: 10px;
-                      overflow: hidden;
-                      perspective: 1px;
-                      position: absolute;
-                      top: 0px;
-                      width: 32px;
-                    }
-                style={
-                  Object {
-                    "height": 32,
-                    "width": 32,
-                  }
-                }
-              >
-                <img
-                  alt=""
-                  className=
-                      ms-Image-image
-                      ms-Image-image--cover
-                      ms-Image-image--portrait
-                      is-notLoaded
-                      is-fadeIn
-                      {
-                        display: block;
-                        height: 100%;
-                        left: 50% /* @noflip */;
-                        object-fit: cover;
-                        opacity: 0;
-                        position: absolute;
-                        top: 50%;
-                        transform: translate(-50%,-50%);
-                        width: 100%;
-                      }
-                  onError={[Function]}
-                  onLoad={[Function]}
-                  src="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png"
-                />
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div
-        className=
-            ms-DocumentCardActivity-details
-            {
-              height: 32px;
-              left: 72px;
-              position: absolute;
-              top: 8px;
-              width: calc(100% - 72px);
+            &::-moz-focus-inner {
+              border: 0;
             }
-      >
-        <span
-          className=
-              ms-DocumentCardActivity-name
-              {
-                color: #333333;
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Annie Lindqvist +1
-        </span>
-        <span
-          className=
-              ms-DocumentCardActivity-activity
-              {
-                color: #666666;
-                display: block;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Modified March 13, 2018
-        </span>
-      </div>
-    </div>
-  </div>
-  <p />
-  <div
-    className=
-        ms-DocumentCard
-        ms-DocumentCard--actionable
-        {
-          -webkit-font-smoothing: antialiased;
-          background-color: #ffffff;
-          border: 1px solid #eaeaea;
-          box-sizing: border-box;
-          max-width: 320px;
-          min-width: 206px;
-          position: relative;
-          user-select: none;
-        }
-        & .ms-DocumentCardLocation + .ms-DocumentCardTitle {
-          padding-top: 4px;
-        }
-        &:hover {
-          border-color: #c8c8c8;
-          cursor: pointer;
-        }
-        &:hover:after {
-          border: 1px solid #c8c8c8;
-          bottom: 0px;
-          content: " ";
-          left: 0px;
-          pointer-events: none;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    role="link"
-    tabIndex={0}
-  >
-    <div
-      className=
-
-          {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
-            height: 150px;
-            overflow: hidden;
-            position: relative;
-          }
-    >
-      <div
-        className=
-
-            {
-              align-items: center;
-              display: flex;
-              height: 100%;
-              justify-content: center;
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 0px;
+              content: "";
               left: 0px;
+              outline: 1px solid #666666;
               position: absolute;
+              right: 0px;
               top: 0px;
-              width: 100%;
+              z-index: 1;
             }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:active {
+              color: #0078d4;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
-        <i
+        <div
           className=
-
+              ms-Button-flexContainer
               {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
-                color: #813a7c;
-                display: inline-block;
-                font-family: "FabricMDL2Icons-9";
-                font-size: 120px;
-                font-style: normal;
-                font-weight: normal;
-                height: 120px;
-                speak: none;
-                width: 120px;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
-          data-icon-name="OneNoteLogo"
-          role="presentation"
         >
-          
-        </i>
-      </div>
+          <i
+            className=
+                ms-Button-icon
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  display: inline-block;
+                  flex-shrink: 0;
+                  font-family: "FabricMDL2Icons-0";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  speak: none;
+                  text-align: center;
+                  vertical-align: middle;
+                }
+            data-icon-name="Pin"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+      </button>
     </div>
     <div
       className=
-          ms-DocumentCardDetails
+          ms-DocumentCardActions-action
           {
-            display: flex;
-            flex-direction: column;
-            flex: 1;
-            justify-content: space-between;
-            overflow: hidden;
+            color: #666666;
+            cursor: pointer;
+            float: left;
+            margin-right: 4px;
+          }
+          & .ms-Button {
+            font-size: 16px;
+            height: 34px;
+            width: 34px;
+          }
+          & .ms-Button:hover .ms-Button-icon {
+            color: #333333;
+            cursor: pointer;
           }
     >
-      <div
+      <button
+        aria-label="notifications action"
         className=
-            ms-DocumentCardTitle
+            ms-Button
+            ms-Button--icon
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: none;
+              box-sizing: border-box;
               color: #333333;
-              display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
-              height: 38px;
-              line-height: 21px;
-              overflow: hidden;
-              padding-bottom: 8px;
-              padding-left: 16px;
-              padding-right: 16px;
-              padding-top: 8px;
-              word-wrap: break-word;
-            }
-        title="How to make good design without an image"
-      >
-        How to make good design without an image
-      </div>
-    </div>
-    <div
-      className=
-          ms-DocumentCardActivity
-          {
-            padding-bottom: 8px;
-            padding-left: 16px;
-            padding-right: 16px;
-            padding-top: 8px;
-            position: relative;
-          }
-    >
-      <div
-        className=
-            ms-DocumentCardActivity-avatars
-            {
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               height: 32px;
-              margin-left: -2px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 4px;
+              padding-right: 4px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+              width: 32px;
             }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: 0px;
+              content: "";
+              left: 0px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #212121;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:active {
+              color: #0078d4;
+            }
+        data-is-focusable={true}
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        type="button"
       >
         <div
           className=
-              ms-DocumentCardActivity-avatar
+              ms-Button-flexContainer
               {
-                display: inline-block;
-                height: 32px;
-                position: relative;
-                text-align: center;
-                vertical-align: top;
-                width: 32px;
-              }
-              &:after {
-                border-radius: 50%;
-                border: 2px solid #ffffff;
-                bottom: -1px;
-                content: " ";
-                left: -1px;
-                position: absolute;
-                right: -1px;
-                top: -1px;
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: center;
               }
         >
-          <div
+          <i
             className=
-                ms-Persona-coin
-                ms-Persona--size32
+                ms-Button-icon
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
+                  display: inline-block;
+                  flex-shrink: 0;
+                  font-family: "FabricMDL2Icons-3";
+                  font-size: 16px;
+                  font-style: normal;
+                  font-weight: normal;
+                  height: 16px;
+                  line-height: 16px;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                  speak: none;
+                  text-align: center;
+                  vertical-align: middle;
                 }
+            data-icon-name="Ringer"
             role="presentation"
-            size={11}
           >
-            <div
-              className=
-                  ms-Persona-imageArea
-                  {
-                    flex: 0 0 auto;
-                    height: 32px;
-                    position: relative;
-                    text-align: center;
-                    width: 32px;
-                  }
-            >
-              <div
-                aria-hidden="true"
-                className=
-                    ms-Persona-initials
-                    {
-                      background-color: #00ABA9;
-                      border-radius: 50%;
-                      color: #ffffff;
-                      font-size: 14px;
-                      font-weight: 400;
-                      height: 32px;
-                      line-height: 32px;
-                    }
-                    @media screen and (-ms-high-contrast: active){& {
-                      -ms-high-contrast-adjust: none;
-                      background-color: Window !important;
-                      border: 1px solid WindowText;
-                      box-sizing: border-box;
-                      color: WindowText;
-                    }
-              >
-                <span>
-                  JH
-                </span>
-              </div>
-            </div>
-          </div>
+            
+          </i>
         </div>
-      </div>
-      <div
+      </button>
+    </div>
+    <div
+      className=
+          ms-DocumentCardActions-views
+          {
+            line-height: 34px;
+            text-align: right;
+          }
+    >
+      <i
         className=
-            ms-DocumentCardActivity-details
+
             {
-              height: 32px;
-              left: 56px;
-              position: absolute;
-              top: 8px;
-              width: calc(100% - 72px);
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              display: inline-block;
+              font-family: "FabricMDL2Icons";
+              font-size: 14px;
+              font-style: normal;
+              font-weight: normal;
+              margin-right: 8px;
+              speak: none;
+              vertical-align: top;
             }
+        data-icon-name="View"
+        role="presentation"
       >
-        <span
-          className=
-              ms-DocumentCardActivity-name
-              {
-                color: #333333;
-                display: block;
-                font-size: 12px;
-                font-weight: 600;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Roko Kolar
-        </span>
-        <span
-          className=
-              ms-DocumentCardActivity-activity
-              {
-                color: #666666;
-                display: block;
-                font-size: 12px;
-                height: 15px;
-                line-height: 15px;
-                overflow: hidden;
-                text-overflow: ellipsis;
-                white-space: nowrap;
-              }
-        >
-          Modified January 1, 2019
-        </span>
-      </div>
+        
+      </i>
+      432
     </div>
   </div>
 </div>
