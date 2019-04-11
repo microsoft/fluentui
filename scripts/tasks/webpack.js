@@ -16,7 +16,7 @@ exports.webpackDevServer = async function() {
     const webpackDevServerPath = path.resolve(__dirname, '../node_modules/webpack-dev-server/bin/webpack-dev-server.js');
     const execSync = require('../exec-sync');
 
-    execSync(`node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`);
+    execSync(`node ${webpackDevServerPath} --config ${configPath} --host 0.0.0.0 --port ${port} --open`);
   }
 };
 

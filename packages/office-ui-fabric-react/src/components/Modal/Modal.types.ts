@@ -6,6 +6,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModal {
   /**
    * Sets focus on the first focusable, or configured, child in focus trap zone
@@ -13,6 +16,9 @@ export interface IModal {
   focus: () => void;
 }
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
@@ -108,6 +114,9 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
   topOffsetFixed?: boolean;
 }
 
+/**
+ * {@docCategory Modal}
+ */
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
   Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
@@ -120,6 +129,9 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     modalRectangleTop?: number;
   };
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModalStyles {
   root: IStyle;
   main: IStyle;

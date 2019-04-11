@@ -1,15 +1,11 @@
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject } from '../../Utilities';
 import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
-export interface ISwatchColorPicker {}
-
+/**
+ * {@docCategory SwatchColorPicker}
+ */
 export interface ISwatchColorPickerProps {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<ISwatchColorPicker>;
-
   /**
    * the number of columns for the swatch color picker
    */
@@ -142,6 +138,7 @@ export interface ISwatchColorPickerProps {
 
 /**
  * Properties required to build the styles for the color picker component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerStyleProps {
   /**
@@ -162,6 +159,7 @@ export interface ISwatchColorPickerStyleProps {
 
 /**
  * Styles for the Color Picker Component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerStyles {
   /**

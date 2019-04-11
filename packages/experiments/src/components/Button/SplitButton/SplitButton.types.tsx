@@ -40,7 +40,7 @@ export interface ISplitButton {}
 
 export interface ISplitButtonProps
   extends ISplitButtonSlots,
-    Pick<IMenuButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'defaultExpanded' | 'expanded' | 'onKeyDown'>,
+    Pick<IMenuButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel' | 'defaultExpanded' | 'expanded' | 'onKeyDown'>,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
     IBaseProps<ISplitButton> {
   /**
