@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+
+## 6.45.3
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
 
 ## 6.45.2
 Tue, 02 Apr 2019 00:38:15 GMT

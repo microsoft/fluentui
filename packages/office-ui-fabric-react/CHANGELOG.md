@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+
+## 6.165.1
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
+- css-in-js conversions for DocumentCard, ExtendedPeoplePicker, FloatingPeoplePicker, SelectedPeopleList
 
 ## 6.165.0
 Wed, 10 Apr 2019 12:33:17 GMT

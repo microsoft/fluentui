@@ -2,6 +2,36 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.165.1",
+      "tag": "office-ui-fabric-react_v6.165.1",
+      "date": "Thu, 11 Apr 2019 12:37:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: add @docCategory inline tags",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "61ffe7ba8a1f40a61a8335ac9ef9fb6e4dc30fd7"
+          },
+          {
+            "comment": "css-in-js conversions for DocumentCard, ExtendedPeoplePicker, FloatingPeoplePicker, SelectedPeopleList",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "c4a87826fbb9e3d85cba04be9b829d179b1e7af7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.4` to `^6.16.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.2` to `^6.45.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.4` to `^6.35.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.165.0",
       "tag": "office-ui-fabric-react_v6.165.0",
       "date": "Wed, 10 Apr 2019 12:33:17 GMT",
