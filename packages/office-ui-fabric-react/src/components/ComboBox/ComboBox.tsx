@@ -1246,6 +1246,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         isSelected={isSelected}
         text={item.text}
         render={getOptionComponent}
+        data={item.data}
       />
     );
   };
