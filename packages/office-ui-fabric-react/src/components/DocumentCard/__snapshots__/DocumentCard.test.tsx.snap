@@ -128,7 +128,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     height: 32px;
                     line-height: 32px;
                   }
@@ -138,6 +138,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <i

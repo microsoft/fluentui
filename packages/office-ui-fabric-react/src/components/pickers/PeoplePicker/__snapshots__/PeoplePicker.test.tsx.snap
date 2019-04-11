@@ -319,7 +319,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           {
                             -ms-high-contrast-adjust: none;
                             background-clip: content-box;
-                            background-color: #7FBA00;
+                            background-color: #6BB700;
                             border-radius: 50%;
                             border: 2px solid #ffffff;
                             bottom: -2px;
@@ -347,8 +347,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         justify-content: space-around;
                         min-width: 0px;
                         padding-bottom: 0;
-                        padding-left: 12px;
-                        padding-right: 12px;
+                        padding-left: 8px;
+                        padding-right: 8px;
                         padding-top: 0;
                         text-align: left;
                         width: 100%;
@@ -413,7 +413,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         {
                           color: #605e5c;
                           display: none;
-                          font-size: 12px;
+                          font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
                           text-overflow: ellipsis;
@@ -440,7 +440,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         {
                           color: #605e5c;
                           display: none;
-                          font-size: 12px;
+                          font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
                           text-overflow: ellipsis;

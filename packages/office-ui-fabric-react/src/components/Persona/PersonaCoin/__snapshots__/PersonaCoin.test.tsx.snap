@@ -68,8 +68,8 @@ exports[`Persona renders Persona children correctly 1`] = `
               background-color: #5E4B8B;
               border-radius: 50%;
               color: #ffffff;
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -79,6 +79,9 @@ exports[`Persona renders Persona children correctly 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <span>
@@ -96,8 +99,8 @@ exports[`Persona renders Persona children correctly 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -108,7 +111,7 @@ exports[`Persona renders Persona children correctly 1`] = `
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -147,7 +150,7 @@ exports[`Persona renders Persona children correctly 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -160,7 +163,7 @@ exports[`Persona renders Persona children correctly 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -242,8 +245,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               background-color: rgb(234, 234, 234);
               border-radius: 50%;
               color: rgb(168, 0, 0);
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -253,6 +256,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <i
@@ -284,8 +290,8 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -296,7 +302,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -335,7 +341,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -348,7 +354,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -482,8 +488,8 @@ exports[`Persona renders Persona correctly with image 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -494,7 +500,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -533,7 +539,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -546,7 +552,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -625,8 +631,8 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               background-color: #5E4B8B;
               border-radius: 50%;
               color: #ffffff;
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -636,6 +642,9 @@ exports[`Persona renders Persona correctly with initials 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <span>
@@ -653,8 +662,8 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -665,7 +674,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -704,7 +713,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -717,7 +726,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -796,8 +805,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               background-color: #2D89EF;
               border-radius: 50%;
               color: #ffffff;
-              font-size: 17px;
-              font-weight: 400;
+              font-size: 16px;
+              font-weight: 600;
               height: 48px;
               line-height: 46px;
             }
@@ -807,6 +816,9 @@ exports[`Persona renders Persona correctly with no props 1`] = `
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <i
@@ -838,8 +850,8 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           justify-content: space-around;
           min-width: 0px;
           padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 24px;
+          padding-left: 12px;
+          padding-right: 12px;
           padding-top: 0;
           text-align: left;
           width: 100%;
@@ -850,7 +862,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 17px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -875,7 +887,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -888,7 +900,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           {
             color: #605e5c;
             display: none;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -969,7 +981,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               border-radius: 50%;
               color: #ffffff;
               font-size: 42px;
-              font-weight: 400;
+              font-weight: 600;
               height: 100px;
               line-height: 100px;
             }
@@ -979,6 +991,9 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               border: 1px solid WindowText;
               box-sizing: border-box;
               color: WindowText;
+            }
+            & i {
+              font-weight: 600;
             }
       >
         <span>
@@ -1012,7 +1027,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
             &:before {
               border-radius: 50%;
-              border: 2px solid #D93B3B;
+              border: 2px solid #C43148;
               box-sizing: border-box;
               content: "";
               height: 100%;
@@ -1022,7 +1037,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
               width: 100%;
             }
             &:after {
-              background-color: #D93B3B;
+              background-color: #C43148;
               content: "";
               height: 2px;
               left: 0px;
@@ -1086,8 +1101,8 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 21px;
-            font-weight: 300;
+            font-size: 20px;
+            font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1139,7 +1154,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           {
             color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1166,7 +1181,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           {
             color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1328,7 +1343,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
             &:before {
               border-radius: 50%;
-              border: 2px solid #D93B3B;
+              border: 2px solid #C43148;
               box-sizing: border-box;
               content: "";
               height: 100%;
@@ -1338,7 +1353,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               width: 100%;
             }
             &:after {
-              background-color: #D93B3B;
+              background-color: #C43148;
               content: "";
               height: 2px;
               left: 0px;
@@ -1402,8 +1417,8 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           ms-Persona-primaryText
           {
             color: #323130;
-            font-size: 21px;
-            font-weight: 300;
+            font-size: 20px;
+            font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
             white-space: nowrap;
@@ -1455,7 +1470,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           {
             color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1482,7 +1497,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           {
             color: #605e5c;
             display: block;
-            font-size: 12px;
+            font-size: 14px;
             font-weight: 400;
             overflow: hidden;
             text-overflow: ellipsis;
@@ -1621,8 +1636,8 @@ exports[`PersonaCoin renders correctly 1`] = `
             background-color: #2D89EF;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1632,6 +1647,9 @@ exports[`PersonaCoin renders correctly 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <i
@@ -1771,7 +1789,7 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             border-radius: 50%;
             color: #ffffff;
             font-size: 42px;
-            font-weight: 400;
+            font-weight: 600;
             height: 100px;
             line-height: 100px;
           }
@@ -1781,6 +1799,9 @@ exports[`PersonaCoin renders correctly with onRender callback 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -1824,8 +1845,8 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             background-color: #2D89EF;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1835,6 +1856,9 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -1878,8 +1902,8 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             background-color: #5E4B8B;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1889,6 +1913,9 @@ exports[`PersonaCoin renders correctly with text 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
@@ -1932,8 +1959,8 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             background-color: #5E4B8B;
             border-radius: 50%;
             color: #ffffff;
-            font-size: 17px;
-            font-weight: 400;
+            font-size: 16px;
+            font-weight: 600;
             height: 48px;
             line-height: 46px;
           }
@@ -1943,6 +1970,9 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             border: 1px solid WindowText;
             box-sizing: border-box;
             color: WindowText;
+          }
+          & i {
+            font-weight: 600;
           }
     >
       <span>
