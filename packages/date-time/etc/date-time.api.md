@@ -4,6 +4,156 @@
 
 ```ts
 
+import * as CSS from 'csstype';
+import { IBaseProps } from '@uifabric/utilities';
+import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { IRefObject } from '@uifabric/utilities';
+import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyle } from '@uifabric/styling';
+import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { ITheme } from '@uifabric/styling';
+
+// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+// 
+// @public
+export const Calendar: React.StatelessComponent<ICalendarProps>;
+
+// @public
+export enum DateRangeType {
+    // (undocumented)
+    Day = 0,
+    // (undocumented)
+    Month = 2,
+    // (undocumented)
+    Week = 1,
+    // (undocumented)
+    WorkWeek = 3,
+}
+
+// @public
+export enum DayOfWeek {
+    // (undocumented)
+    Friday = 5,
+    // (undocumented)
+    Monday = 1,
+    // (undocumented)
+    Saturday = 6,
+    // (undocumented)
+    Sunday = 0,
+    // (undocumented)
+    Thursday = 4,
+    // (undocumented)
+    Tuesday = 2,
+    // (undocumented)
+    Wednesday = 3,
+}
+
+// @public
+export enum FirstWeekOfYear {
+    // (undocumented)
+    FirstDay = 0,
+    // (undocumented)
+    FirstFourDayWeek = 2,
+    // (undocumented)
+    FirstFullWeek = 1,
+}
+
+// @public (undocumented)
+export interface ICalendar {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface ICalendarFormatDateCallbacks {
+    formatDay: (date: Date) => string;
+    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatYear: (date: Date) => string;
+}
+
+// @public (undocumented)
+export interface ICalendarIconStrings {
+    closeIcon?: string;
+    leftNavigation?: string;
+    rightNavigation?: string;
+}
+
+// @public (undocumented)
+export interface ICalendarProps extends IBaseProps<ICalendar> {
+    allFocusable?: boolean;
+    // Warning: (ae-forgotten-export) The symbol "ICalendarDayProps" needs to be exported by the entry point index.d.ts
+    calendarDayProps?: ICalendarDayProps;
+    // Warning: (ae-forgotten-export) The symbol "ICalendarMonthProps" needs to be exported by the entry point index.d.ts
+    calendarMonthProps?: ICalendarMonthProps;
+    className?: string;
+    componentRef?: IRefObject<ICalendar>;
+    dateRangeType?: DateRangeType;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    firstDayOfWeek?: DayOfWeek;
+    firstWeekOfYear?: FirstWeekOfYear;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    navigationIcons?: ICalendarIconStrings;
+    onDismiss?: () => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    restrictedDates?: Date[];
+    showCloseButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showSixWeeksByDefault?: boolean;
+    showWeekNumbers?: boolean;
+    strings?: ICalendarStrings;
+    styles?: IStyleFunctionOrObject<ICalendarStyleProps, ICalendarStyles>;
+    theme?: ITheme;
+    today?: Date;
+    value?: Date;
+    workWeekDays?: DayOfWeek[];
+}
+
+// @public (undocumented)
+export interface ICalendarStrings {
+    closeButtonAriaLabel?: string;
+    days: string[];
+    goToToday: string;
+    months: string[];
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    shortDays: string[];
+    shortMonths: string[];
+    weekNumberFormatString?: string;
+}
+
+// @public (undocumented)
+export interface ICalendarStyleProps {
+    className?: string;
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    monthPickerOnly?: boolean;
+    overlayedWithButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showWeekNumbers?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface ICalendarStyles {
+    // (undocumented)
+    divider: IStyle;
+    // (undocumented)
+    goTodayButton: IStyle;
+    // (undocumented)
+    monthPickerWrapper: IStyle;
+    root: IStyle;
+}
+
 
 // (No @packageDocumentation comment for this package)
 
