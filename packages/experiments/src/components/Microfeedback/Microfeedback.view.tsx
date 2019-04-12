@@ -57,6 +57,7 @@ const styles = mergeStyleSets({
 });
 
 class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
+  // ref's will be linked to each of the icons for callout placement
   private dislikeRef = React.createRef<HTMLDivElement>();
   private likeRef = React.createRef<HTMLDivElement>();
 
@@ -66,6 +67,7 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
     initializeIcons();
 
     this.state = {
+      // initial state of icons is neutral and followup is not visible
       vote: 0,
       isFollowupVisible: false
     };
@@ -146,15 +148,17 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
   };
 
   private _listOption(option: any): void {
-    this.props.sendFeedback(option);
     this._onCalloutDismiss();
+    if (this.props.sendFeedback) {
+      this.props.sendFeedback(option);
+    }
   }
 
   private _vote(vote: number): void {
     // If the vote that is already selected is picked, then toggle off
     const updatedVote: number = this.state.vote === vote ? 0 : vote;
     this.setState({ isFollowupVisible: true, vote: updatedVote });
-    if (updatedVote !== 0) {
+    if (updatedVote !== 0 && this.props.sendFeedback) {
       this.props.sendFeedback(vote);
     }
   }

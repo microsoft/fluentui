@@ -12,7 +12,7 @@ export class MicrofeedbackPage extends React.Component<IComponentDemoPageProps, 
         componentName="MicroFeedback"
         exampleCards={
           <div>
-            <ExampleCard title="Folder Cover" isOptIn={true} code={MicroFeedbackBasicExampleCode}>
+            <ExampleCard title="Default with Callout" isOptIn={true} code={MicroFeedbackBasicExampleCode}>
               <MicrofeedbackBasicExample />
             </ExampleCard>
           </div>
@@ -27,14 +27,17 @@ export class MicrofeedbackPage extends React.Component<IComponentDemoPageProps, 
         dos={
           <div>
             <ul>
-              <li>Use them to represent a folder which may contain visual content.</li>
+              <li>Use this for gathering item level feedback.</li>
+              <li>Use this where a follow up question may provide information on user's choice.</li>
+              <li>Use this to send user feedback to a backend of your choice.</li>
+              <li>More to come here.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>To represent the concept of a folder as opposed to an actual folder item.</li>
+              <li>More to come here.</li>
             </ul>
           </div>
         }
