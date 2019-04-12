@@ -2,17 +2,18 @@ import * as React from 'react';
 import { ICalloutProps, ICalloutContentStyleProps, ICalloutContentStyles } from './Callout.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import {
-  BaseComponent,
+  Async,
   IPoint,
   IRectangle,
   assign,
+  css,
+  divProperties,
   elementContains,
   focusFirstChild,
-  getWindow,
   getDocument,
-  css,
   getNativeProps,
-  divProperties
+  getWindow,
+  on
 } from '../../Utilities';
 import {
   positionCallout,
@@ -47,7 +48,7 @@ export interface ICalloutState {
   heightOffset?: number;
 }
 
-export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutState> {
+export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutState> {
   public static defaultProps = {
     preventDismissOnLostFocus: false,
     preventDismissOnScroll: false,
@@ -72,9 +73,13 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
   private _maxHeight: number | undefined;
   private _blockResetHeight: boolean;
 
+  private _async: Async;
+  private _disposables: (() => void)[] = [];
+
   constructor(props: ICalloutProps) {
     super(props);
 
+    this._async = new Async(this);
     this._didSetInitialFocus = false;
     this.state = {
       positions: undefined,
@@ -110,6 +115,11 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
 
   public componentWillMount() {
     this._setTargetWindowAndElement(this._getTarget());
+  }
+
+  public componentWillUnmount() {
+    this._async.dispose();
+    this._disposables.forEach((dispose: () => void) => dispose());
   }
 
   public componentWillUpdate(newProps: ICalloutProps): void {
@@ -243,21 +253,21 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     }
   };
 
-  protected _dismissOnScroll(ev: Event) {
+  protected _dismissOnScroll = (ev: Event) => {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
       this._dismissOnLostFocus(ev);
     }
-  }
+  };
 
-  protected _dismissOnResize(ev: Event) {
+  protected _dismissOnResize = (ev: Event) => {
     const { preventDismissOnResize } = this.props;
     if (!preventDismissOnResize) {
       this.dismiss(ev);
     }
-  }
+  };
 
-  protected _dismissOnLostFocus(ev: Event) {
+  protected _dismissOnLostFocus = (ev: Event) => {
     const target = ev.target as HTMLElement;
     const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
     const { preventDismissOnLostFocus } = this.props;
@@ -272,7 +282,7 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     ) {
       this.dismiss(ev);
     }
-  }
+  };
 
   protected _setInitialFocus = (): void => {
     if (this.props.setInitialFocus && !this._didSetInitialFocus && this.state.positions && this._calloutElement.current) {
@@ -298,19 +308,19 @@ export class CalloutContentBase extends BaseComponent<ICalloutProps, ICalloutSta
     // to be required to avoid React firing an async focus event in IE from
     // the target changing focus quickly prior to rendering the callout.
     this._async.setTimeout(() => {
-      this._events.on(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-      this._events.on(this._targetWindow, 'resize', this._dismissOnResize, true);
-      this._events.on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
-      this._events.on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
+      this._disposables.push(
+        on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
+        on(this._targetWindow, 'resize', this._dismissOnResize, true),
+        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
+        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
+      );
       this._hasListeners = true;
     }, 0);
   }
 
   private _removeListeners() {
-    this._events.off(this._targetWindow, 'scroll', this._dismissOnScroll, true);
-    this._events.off(this._targetWindow, 'resize', this._dismissOnResize, true);
-    this._events.off(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true);
-    this._events.off(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true);
+    this._disposables.forEach((dispose: () => void) => dispose());
+    this._disposables = [];
     this._hasListeners = false;
   }
 

@@ -4,11 +4,12 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
-import { IContextualMenuProps, IContextualMenuStyles } from './ContextualMenu.types';
+import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -915,6 +916,84 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(customRenderer).toHaveBeenCalledTimes(2);
+  });
+
+  describe('ContextualMenu with hidden prop tests', () => {
+    const contextualItem = React.createRef<IContextualMenuRenderItem>();
+    const contextualMenu = React.createRef<IContextualMenu>();
+    const button = React.createRef<IButton>();
+    const menu: IContextualMenuItem[] = [
+      {
+        text: 'Test1',
+        key: 'Test1',
+        componentRef: contextualItem,
+        subMenuProps: {
+          items: [
+            {
+              text: 'Test2',
+              key: 'Test2',
+              className: 'SubMenuClass'
+            },
+            {
+              text: 'Test3',
+              key: 'Test3',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      }
+    ];
+
+    beforeEach(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={button}
+          menuProps={{
+            items: menu,
+            hidden: false,
+            componentRef: contextualMenu
+          }}
+        />
+      );
+    });
+
+    it('ContextualMenu should be present in DOM when hidden', () => {
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+    });
+
+    it('Submenu should not be shown when ContextualMenu is hidden', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      // Submenus are not persisted using the hidden prop as of now
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
+
+    it('Submenu should not be shown by default when ContextualMenu is shown', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+
+      // 4. Reopen parent menu - sub menu should not be present by default
+      button.current!.openMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
   });
 
   describe('canAnyMenuItemsCheck', () => {

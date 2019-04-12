@@ -3,8 +3,14 @@ import { ISelection } from '../../utilities/selection/interfaces';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunction } from '../../Utilities';
 
+/**
+ * {@docCategory MarqueeSelection}
+ */
 export interface IMarqueeSelection {}
 
+/**
+ * {@docCategory MarqueeSelection}
+ */
 export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing
@@ -60,11 +66,17 @@ export interface IMarqueeSelectionProps extends React.HTMLAttributes<HTMLDivElem
   styles?: IStyleFunction<IMarqueeSelectionStyleProps, IMarqueeSelectionStyles>;
 }
 
+/**
+ * {@docCategory MarqueeSelection}
+ */
 export interface IMarqueeSelectionStyleProps {
   theme: ITheme;
   className?: string;
 }
 
+/**
+ * {@docCategory MarqueeSelection}
+ */
 export interface IMarqueeSelectionStyles {
   root?: IStyle;
   dragMask?: IStyle;

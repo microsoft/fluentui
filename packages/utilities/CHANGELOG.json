@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.35.4",
+      "tag": "@uifabric/utilities_v6.35.4",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Customizer modified to avoid BaseComponent.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c352f028d072a7ead8c9d25ee06975f4f7d02beb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.3",
       "tag": "@uifabric/utilities_v6.35.3",
       "date": "Tue, 02 Apr 2019 00:38:15 GMT",

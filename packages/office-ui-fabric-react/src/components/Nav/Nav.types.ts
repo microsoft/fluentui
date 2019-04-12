@@ -4,6 +4,9 @@ import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } fro
 import { IIconProps } from '../Icon/Icon.types';
 import { IButtonProps } from '../../Button';
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INav {
   /**
    * The meta 'key' property of the currently selected NavItem of the Nav. Can return
@@ -14,6 +17,9 @@ export interface INav {
   selectedKey: string | undefined;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavProps {
   /**
    * Optional callback to access the INav interface. Use this instead of ref for accessing
@@ -108,6 +114,9 @@ export interface INavProps {
   collapsedStateText?: string;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavLinkGroup {
   /**
    * Text to render as the header of a group
@@ -135,6 +144,9 @@ export interface INavLinkGroup {
   onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavLink {
   /**
    * Text to render for this link
@@ -239,6 +251,9 @@ export interface INavLink {
   [propertyName: string]: any;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavStyleProps {
   /**
    * Accept theme prop.
@@ -317,6 +332,9 @@ export interface INavStyleProps {
   groups: INavLinkGroup[] | null;
 }
 
+/**
+ * {@docCategory Nav}
+ */
 export interface INavStyles {
   /**
    * Style set for the root element.

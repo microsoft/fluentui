@@ -7,7 +7,10 @@ import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 
-/** BasePicker component. */
+/**
+ * BasePicker component.
+ * {@docCategory Pickers}
+ */
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
   items: T[] | undefined;
@@ -19,9 +22,11 @@ export interface IBasePicker<T> {
   focusInput: () => void;
 }
 
-// Type T is the type of the item that is displayed
-// and searched for by the picker. For example, if the picker is
-// displaying persona's then type T could either be of Persona or IPersona props
+/* Type T is the type of the item that is displayed
+ * and searched for by the picker. For example, if the picker is
+ * displaying persona's then type T could either be of Persona or IPersona props
+ * {@docCategory Pickers}
+ */
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
@@ -191,6 +196,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
 /**
  * Subset of picker options that may be legally passed through a picker to its
  * internal Suggestions component.
+ * {@docCategory Pickers}
  */
 export interface IBasePickerSuggestionsProps<T = any>
   extends Pick<
@@ -214,7 +220,10 @@ export interface IBasePickerSuggestionsProps<T = any>
     | 'suggestionsContainerAriaLabel'
   > {}
 
-/** Validation state of the user's input. */
+/**
+ * Validation state of the user's input.
+ * {@docCategory Pickers}
+ */
 export enum ValidationState {
   /** User input is valid. */
   valid,
@@ -226,7 +235,10 @@ export enum ValidationState {
   invalid
 }
 
-/** Pickers' input props interface */
+/**
+ * Pickers' input props interface
+ * {@docCategory Pickers}
+ */
 export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * Screen reader label to apply to an input element.
@@ -241,7 +253,10 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
   defaultVisibleValue?: string;
 }
 
-/** The props needed to construct styles. */
+/**
+ * The props needed to construct styles.
+ * {@docCategory Pickers}
+ */
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
   /** Whether text style area is focused */
   isFocused?: boolean;
@@ -250,7 +265,10 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
   inputClassName?: string;
 };
 
-/** Represents the stylable areas of the control. */
+/**
+ * Represents the stylable areas of the control.
+ * {@docCategory Pickers}
+ */
 export interface IBasePickerStyles {
   /** Root element of any picker extending from BasePicker (wraps all the elements). */
   root: IStyle;

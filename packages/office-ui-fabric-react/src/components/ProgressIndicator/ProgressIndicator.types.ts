@@ -3,6 +3,9 @@ import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
+/**
+ * {@docCategory ProgressIndicator}
+ */
 export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -64,6 +67,9 @@ export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressI
   barHeight?: number;
 }
 
+/**
+ * {@docCategory ProgressIndicator}
+ */
 export interface IProgressIndicatorStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -78,6 +84,9 @@ export interface IProgressIndicatorStyleProps {
   barHeight?: number;
 }
 
+/**
+ * {@docCategory ProgressIndicator}
+ */
 export interface IProgressIndicatorStyles {
   /**
    * Style for the root element.

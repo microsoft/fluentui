@@ -2,6 +2,9 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Theme provided by High-Order Component.
@@ -22,12 +25,6 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * Whether or not this check is selected
    */
   selected?: boolean;
-
-  /**
-   * Deprecated, use `selected` instead.
-   * @deprecated Use `selected` instead.
-   */
-  isSelected?: boolean;
 
   /**
    * Is any selected - also true for isSelectionModal
@@ -60,12 +57,18 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
   isVisible?: boolean;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> &
   Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
     /** Is checkbox visible */
     isVisible?: boolean;
   };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowCheckStyles {
   root: IStyle;
   check: IStyle;

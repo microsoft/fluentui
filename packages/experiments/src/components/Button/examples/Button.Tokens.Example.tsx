@@ -16,7 +16,7 @@ const tokens = {
 
 const testTheme = createTheme({
   semanticColors: {
-    buttonText: 'red'
+    buttonText: '#E20000'
   },
   fonts: {
     medium: {
@@ -36,12 +36,12 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
         <Button
           {...props}
           tokens={{
-            backgroundColor: 'red',
+            backgroundColor: '#E20000',
             backgroundColorHovered: 'pink',
             color: 'white',
-            colorHovered: 'white',
+            colorHovered: '#595959',
             iconColor: 'white',
-            iconColorHovered: 'white'
+            iconColorHovered: '#595959'
           }}
         />
       </Stack>
@@ -55,12 +55,12 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
         <MenuButton
           {...props}
           tokens={{
-            backgroundColor: 'red',
+            backgroundColor: '#E20000',
             backgroundColorHovered: 'pink',
             color: 'white',
-            colorHovered: 'white',
+            colorHovered: '#595959',
             iconColor: 'white',
-            iconColorHovered: 'white'
+            iconColorHovered: '#595959'
           }}
         />
       </Stack>
@@ -68,12 +68,12 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={tokens.sectionStack}>
-        <ButtonSet />
+        <ButtonSet ariaLabel="Button with no icon or content" />
         <ButtonSet content="No Icon" />
-        <ButtonSet content={<Spinner />} />
+        <ButtonSet content={<Spinner />} ariaLabel="Button that has a Spinner as its content" />
         <ButtonSet icon="upload" content="Button with Icon" />
         <ButtonSet icon="upload" href="http://www.microsoft.com" content="Button with href" />
-        <ButtonSet circular />
+        <ButtonSet circular ariaLabel="Circular Button with no icon" />
         <ButtonSet circular icon="share" />
         <MenuButtonSet
           icon={render => render((IconType, iconProps) => <IconType {...iconProps} iconName="upload" />)}
@@ -87,12 +87,12 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
             content="Token Function: Red BG, White Text"
             tokens={(props, theme) =>
               props.primary && {
-                backgroundColor: 'red',
+                backgroundColor: '#E20000',
                 backgroundColorHovered: 'pink',
                 color: 'white',
-                colorHovered: 'white',
+                colorHovered: '#595959',
                 iconColor: 'white',
-                iconColorHovered: 'white'
+                iconColorHovered: '#595959'
               }
             }
           />

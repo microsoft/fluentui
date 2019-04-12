@@ -2,6 +2,88 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.71.0",
+      "tag": "@uifabric/experiments_v6.71.0",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Creating ActionButton variant and cleaning styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "98347544dc0eabb461beea23bc50a1fec10be873"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.4` to `^6.4.5`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.8` to `^6.165.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.70.0",
+      "tag": "@uifabric/experiments_v6.70.0",
+      "date": "Tue, 09 Apr 2019 12:35:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding DefaultButton and PrimaryButton variants.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "63cf8144e33150d05c45fdce3e57f34c7bfb78f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.7` to `^6.164.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.69.0",
+      "tag": "@uifabric/experiments_v6.69.0",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Supporting high contrast in Button, MenuButton and SplitButton.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1f3afa6704bc39758d4055a74b23f6d2150b3bf3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.3` to `^6.35.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.6` to `^6.164.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.68.0",
+      "tag": "@uifabric/experiments_v6.68.0",
+      "date": "Fri, 05 Apr 2019 22:09:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding ariaLabel prop and updating examples to fix accessibility issues.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0fe9a28b970f4d9b5a7a575e9b679ff92b9d8004"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.5` to `^6.164.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.67.1",
       "tag": "@uifabric/experiments_v6.67.1",
       "date": "Fri, 05 Apr 2019 12:36:12 GMT",
