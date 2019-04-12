@@ -218,7 +218,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return;
     }
 
-    this._clearExistingAnimationTimer();
     if (this.props.onOpen) {
       this.props.onOpen();
     }
@@ -234,7 +233,6 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
       return;
     }
 
-    this._clearExistingAnimationTimer();
     this.setState({ visibility: PanelVisibilityState.animatingClosed });
   }
 
