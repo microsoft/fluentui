@@ -103,14 +103,14 @@ async function runScenarioNTimes(page, times) {
 }
 
 function createBlobFromResults(perfBlob) {
-  return `Component Perf Results:
+  return `Component perf results:
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Current Avg Total (ms)</th>
-    <th>New Avg Total (ms)</th>
-    <th>Current Avg Per Item (ms)</th>
-    <th>New Avg Per Item (ms)</th>
+    <th>Target branch avg total (ms)</th>
+    <th>PR avg total (ms)</th>
+    <th>Target branch avg per item (ms)</th>
+    <th>PR avg per item (ms)</th>
   </tr>`.concat(
     Object.keys(perfBlob.now)
       .map(
