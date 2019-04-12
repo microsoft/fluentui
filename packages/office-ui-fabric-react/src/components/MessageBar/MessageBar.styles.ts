@@ -175,7 +175,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
               [HighContrastSelector]: {
                 background: 'WindowText',
                 color: 'Window',
-                content: ' '
+                content: '""'
               }
             }
           }
