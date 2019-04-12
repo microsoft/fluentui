@@ -73,6 +73,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -236,6 +237,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -399,6 +401,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -562,6 +565,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -729,6 +733,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -892,6 +897,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1055,6 +1061,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1218,6 +1225,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1385,6 +1393,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1548,6 +1557,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;
@@ -1711,6 +1721,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 1px;
                   padding-left: 1px;
                   padding-right: 1px;
@@ -1874,6 +1885,7 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-weight: 400;
                   height: 20px;
                   outline: transparent;
+                  overflow: hidden;
                   padding-bottom: 0px;
                   padding-left: 0px;
                   padding-right: 0px;

@@ -77,6 +77,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 20px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -240,6 +241,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 20px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -403,6 +405,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 20px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -566,6 +569,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 20px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -729,6 +733,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 20px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 1px;
                     padding-left: 1px;
                     padding-right: 1px;
@@ -2560,6 +2565,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -2723,6 +2729,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -2886,6 +2893,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -3049,6 +3057,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -3216,6 +3225,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -3379,6 +3389,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -3542,6 +3553,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -3705,6 +3717,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -3872,6 +3885,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -4035,6 +4049,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -4198,6 +4213,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -4361,6 +4377,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-weight: 400;
                     height: 35px;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -4574,6 +4591,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     height: 20px;
                     opacity: 0.3;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -4741,6 +4759,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     height: 20px;
                     opacity: 0.3;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -4908,6 +4927,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     height: 20px;
                     opacity: 0.3;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -5075,6 +5095,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     height: 20px;
                     opacity: 0.3;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 0px;
                     padding-left: 0px;
                     padding-right: 0px;
@@ -5242,6 +5263,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     height: 20px;
                     opacity: 0.3;
                     outline: transparent;
+                    overflow: hidden;
                     padding-bottom: 1px;
                     padding-left: 1px;
                     padding-right: 1px;
