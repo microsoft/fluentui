@@ -22,6 +22,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
   const _onClick = (ev: React.MouseEvent<HTMLElement>) => {
     if (!disabled && onClick) {
       onClick(ev);
+      ev.stopPropagation();
 
       if (ev.defaultPrevented) {
         return;

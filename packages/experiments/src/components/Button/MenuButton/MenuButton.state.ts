@@ -31,6 +31,7 @@ export class MenuButtonState extends BaseState<IMenuButtonProps, IMenuButtonView
     if (!disabled) {
       if (onClick) {
         onClick(ev);
+        ev.stopPropagation();
 
         if (ev.defaultPrevented) {
           return;
