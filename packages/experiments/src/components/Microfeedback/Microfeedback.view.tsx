@@ -56,7 +56,7 @@ const styles = mergeStyleSets({
   ]
 });
 
-class MicrofeedbackComponent extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
+class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
   // ref's will be linked to each of the icons for callout placement
   private dislikeRef = React.createRef<HTMLDivElement>();
   private likeRef = React.createRef<HTMLDivElement>();
@@ -142,12 +142,12 @@ class MicrofeedbackComponent extends React.Component<IMicrofeedbackProps, IMicro
         data-is-focusable={true}
         styles={microfeedbackItemStyles}
         text={`${item}`}
-        onClick={this._listOption.bind(this, index)}
+        onClick={this._listOptions.bind(this, index)}
       />
     );
   };
 
-  private _listOption(option: any): void {
+  private _listOptions(option: any): void {
     this._onCalloutDismiss();
     if (this.props.sendFeedback) {
       this.props.sendFeedback(option);
@@ -167,7 +167,7 @@ class MicrofeedbackComponent extends React.Component<IMicrofeedbackProps, IMicro
 export const MicrofeedbackView: IMicrofeedbackComponent['view'] = props => {
   return (
     <div>
-      <MicrofeedbackComponent
+      <MicrofeedbackViewComponent
         ThumbsDownQuestion={props.ThumbsDownQuestion}
         ThumbsUpQuestion={props.ThumbsUpQuestion}
         thumbsUpTitle={props.thumbsUpTitle}
