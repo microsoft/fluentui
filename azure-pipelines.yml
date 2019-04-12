@@ -48,6 +48,7 @@ steps:
       githubRepo: 'office-ui-fabric-react'
       blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
       status: '$(PerfCommentStatus)'
+      uniqueId: 'perfComment9423'
 
   - task: GithubPRStatus@0
     displayName: 'Update Github Pull Request Status'

@@ -107,20 +107,20 @@ function createBlobFromResults(perfBlob) {
   <table>
   <tr>
     <th>Scenario</th>
-    <th>Current Avg Total</th>
-    <th>New Avg Total</th>
-    <th>Current Avg Per Item</th>
-    <th>New Avg Per Item</th>
+    <th>Current Avg Total (ms)</th>
+    <th>New Avg Total (ms)</th>
+    <th>Current Avg Per Item (ms)</th>
+    <th>New Avg Per Item (ms)</th>
   </tr>`.concat(
     Object.keys(perfBlob.now)
       .map(
         scenario =>
           `<tr>
             <td>${scenario}</td>
-            <td>${perfBlob.now[scenario].total} ms</td>
-            <td>${perfBlob.new[scenario].total} ms</td>
-            <td>${perfBlob.now[scenario].peritem} ms</td>
-            <td>${perfBlob.new[scenario].peritem} ms</td>
+            <td>${perfBlob.now[scenario].total}</td>
+            <td>${perfBlob.new[scenario].total}</td>
+            <td>${perfBlob.now[scenario].peritem}</td>
+            <td>${perfBlob.new[scenario].peritem}</td>
            </tr>  `
       )
       .join('\n')
