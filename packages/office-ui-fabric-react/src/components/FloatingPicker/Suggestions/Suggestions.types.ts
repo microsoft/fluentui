@@ -3,6 +3,7 @@ import { ISuggestionModel } from '../../../Pickers';
 import { IPersonaProps } from '../../../Persona';
 import { IRefObject } from '../../../Utilities';
 
+// tslint:disable-next-line:no-any
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * Gets the component ref.
@@ -15,7 +16,8 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * What should occur when a suggestion is clicked
    */
-  onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
+  // tslint:disable-next-line:no-any
+  onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
   /**
    * The list of Suggestions that will be displayed
    */
@@ -23,7 +25,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * Function to fire when one of the optional remove buttons on a suggestion is clicked.
    */
-  onSuggestionRemove?: (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) => void;
+  onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
   /**
    * Screen reader message to read when there are suggestions available.
    */
@@ -51,6 +53,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   shouldLoopSelection: boolean;
 }
 
+// tslint:disable-next-line:no-any
 export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>, ISuggestionsCoreProps<T> {
   /**
    * An ARIA label for the container that is the parent of the suggestions header items.
