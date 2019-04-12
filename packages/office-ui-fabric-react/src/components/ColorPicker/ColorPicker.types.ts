@@ -2,11 +2,17 @@ import { ITheme, IStyle } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IColor } from '../../utilities/color/interfaces';
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPicker {
   /** The currently selected color. */
   color: IColor;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   /**
    * Gets the component ref.
@@ -83,6 +89,9 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
   styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPickerStyleProps {
   /**
    * Theme (provided through customization).
@@ -95,6 +104,9 @@ export interface IColorPickerStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorPickerStyles {
   /**
    * Style set for the root element.

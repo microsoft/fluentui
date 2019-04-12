@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.35.5",
+      "tag": "@uifabric/utilities_v6.35.5",
+      "date": "Thu, 11 Apr 2019 12:37:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: add @docCategory inline tags",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "61ffe7ba8a1f40a61a8335ac9ef9fb6e4dc30fd7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.4` to `^6.16.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.4",
       "tag": "@uifabric/utilities_v6.35.4",
       "date": "Mon, 08 Apr 2019 12:37:15 GMT",

@@ -5,11 +5,12 @@ import { IsFocusVisibleClassName } from '../../Utilities';
 const baseTokens: IButtonComponent['tokens'] = {
   borderRadius: 0,
   borderWidth: 1,
+  cursor: 'pointer',
   minWidth: 100,
   minHeight: 32,
   lineHeight: 1,
   contentPadding: '0px 16px',
-  textFamily: 'default',
+  textFamily: 'inherit',
   textSize: 14,
   textWeight: FontWeights.semibold,
   iconSize: 14,
@@ -96,7 +97,9 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 
     highContrastBorderColor: 'GrayText',
     highContrastBorderColorHovered: 'GrayText',
-    highContrastBorderColorPressed: 'GrayText'
+    highContrastBorderColorPressed: 'GrayText',
+
+    cursor: 'default'
   };
 };
 
@@ -165,7 +168,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         borderWidth: tokens.borderWidth,
         boxSizing: 'border-box',
         color: tokens.color,
-        cursor: 'default',
+        cursor: tokens.cursor,
         display: 'inline-block',
         fontSize: tokens.textSize,
         fontWeight: tokens.textWeight,
@@ -203,7 +206,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          ':hover:active': {
+          ':active': {
             backgroundColor: tokens.backgroundColorPressed,
             color: tokens.colorPressed,
             borderColor: tokens.borderColorPressed,
@@ -225,7 +228,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          [`:hover:active .${globalClassNames.icon}`]: {
+          [`active .${globalClassNames.icon}`]: {
             color: tokens.iconColorPressed,
 
             selectors: {
@@ -270,6 +273,8 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
     ],
     content: {
       overflow: 'visible',
+      fontFamily: tokens.textFamily,
+      fontSize: tokens.textSize,
       fontWeight: tokens.textWeight
     }
   };

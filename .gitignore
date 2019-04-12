@@ -112,6 +112,7 @@ gulp-cache
 npm-debug.log.*
 
 package-lock.json
+yarn.lock
 
 *.swp
 

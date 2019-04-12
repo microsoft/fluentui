@@ -3,6 +3,9 @@ import { IStyle } from '../../Styling';
 import { IRenderFunction } from '../../Utilities';
 import { IPersonaSharedProps } from '../../Persona';
 
+/**
+ * {@docCategory ActivityItem}
+ */
 export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * An element describing the activity that took place. If no activityDescription, activityDescriptionText, or
@@ -93,6 +96,9 @@ export interface IActivityItemProps extends React.AllHTMLAttributes<HTMLElement>
   animateBeaconSignal?: boolean;
 }
 
+/**
+ * {@docCategory ActivityItem}
+ */
 export interface IActivityItemStyles {
   /**
    * Styles applied to the root activity item container.

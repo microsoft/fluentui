@@ -296,11 +296,6 @@
       "versionPolicyName": "lockedMajor"
     },
     {
-      "packageName": "@uifabric/dashboard",
-      "projectFolder": "packages/dashboard",
-      "versionPolicyName": "lockedMajor"
-    },
-    {
       "packageName": "@uifabric/merge-styles",
       "projectFolder": "packages/merge-styles",
       "versionPolicyName": "lockedMajor"

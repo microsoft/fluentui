@@ -28,6 +28,9 @@ export enum IconType {
   Image = 100001
 }
 
+/**
+ * {@docCategory Icon}
+ */
 export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement> {
   /**
    * The name of the icon to use from the icon font. If string is empty, a placeholder icon will be rendered the same width as an icon
@@ -61,6 +64,9 @@ export interface IIconProps extends IBaseProps, React.HTMLAttributes<HTMLElement
   theme?: ITheme;
 }
 
+/**
+ * {@docCategory Icon}
+ */
 export interface IIconStyleProps {
   className?: string;
   iconClassName?: string;
@@ -70,6 +76,9 @@ export interface IIconStyleProps {
   theme?: ITheme;
 }
 
+/**
+ * {@docCategory Icon}
+ */
 export interface IIconStyles {
   root?: IStyle;
 
