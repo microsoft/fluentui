@@ -2,8 +2,14 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Image}
+ */
 export interface IImage {}
 
+/**
+ * {@docCategory Image}
+ */
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
   /**
    * Optional callback to access the ICheckbox interface. Use this instead of ref for accessing
@@ -77,6 +83,7 @@ export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
 
 /**
  * The possible methods that can be used to fit the image.
+ * {@docCategory Image}
  */
 export enum ImageFit {
   /**
@@ -113,6 +120,7 @@ export enum ImageFit {
 
 /**
  * The cover style to be used on the image
+ * {@docCategory Image}
  */
 export enum ImageCoverStyle {
   /**
@@ -126,6 +134,9 @@ export enum ImageCoverStyle {
   portrait = 1
 }
 
+/**
+ * {@docCategory Image}
+ */
 export enum ImageLoadState {
   /**
    * The image has not yet been loaded, and there is no error yet.
@@ -151,6 +162,9 @@ export enum ImageLoadState {
   errorLoaded = 3
 }
 
+/**
+ * {@docCategory Image}
+ */
 export interface IImageStyleProps {
   /**
    * Accept theme prop.
@@ -220,6 +234,9 @@ export interface IImageStyleProps {
   height?: number | string;
 }
 
+/**
+ * {@docCategory Image}
+ */
 export interface IImageStyles {
   /**
    * Style set for the root div element.

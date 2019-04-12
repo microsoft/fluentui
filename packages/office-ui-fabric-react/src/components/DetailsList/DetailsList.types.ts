@@ -15,6 +15,9 @@ import { IDetailsColumnProps } from './DetailsColumn';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
@@ -45,6 +48,9 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
   /**
    * Theme provided by the Higher Order Component
@@ -290,6 +296,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   disableSelectionZone?: boolean;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumn {
   /**
    * A unique key for identifying the column.
@@ -479,6 +488,7 @@ export interface IColumn {
  * Enum to describe how a particular column header behaves.... This enum is used to
  * to specify the property IColumn:columnActionsMode.
  * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
+ * {@docCategory DetailsList}
  */
 export enum ColumnActionsMode {
   /**
@@ -497,6 +507,9 @@ export enum ColumnActionsMode {
   hasDropdown = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum ConstrainMode {
   /** If specified, lets the content grow which allows the page to manage scrolling. */
   unconstrained = 0,
@@ -507,6 +520,9 @@ export enum ConstrainMode {
   horizontalConstrained = 1
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnReorderOptions {
   /**
    * Specifies the number fixed columns from left(0th index)
@@ -546,6 +562,9 @@ export interface IColumnReorderOptions {
   onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnDragDropDetails {
   /**
    * Specifies the source column index
@@ -562,6 +581,7 @@ export interface IColumnDragDropDetails {
 
 /**
  * Enum to describe where the column has been dropped, after starting the drag
+ * {@docCategory DetailsList}
  */
 export enum ColumnDragEndLocation {
   /**
@@ -580,6 +600,9 @@ export enum ColumnDragEndLocation {
   header = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum DetailsListLayoutMode {
   /**
    * Lets the user resize columns and makes not attempt to fit them.
@@ -593,6 +616,9 @@ export enum DetailsListLayoutMode {
   justified = 1
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum CheckboxVisibility {
   /**
    * Visible on hover.
@@ -610,6 +636,9 @@ export enum CheckboxVisibility {
   hidden = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
     /** Whether the the list is horizontally constrained */
@@ -622,6 +651,9 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
     isFixed?: boolean;
   };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
@@ -629,9 +661,15 @@ export interface IDetailsListStyles {
   contentWrapper: IStyle;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}

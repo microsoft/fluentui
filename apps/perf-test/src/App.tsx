@@ -23,6 +23,7 @@ export const App = () => {
         <Stack gap={20} style={{ width: 300 }}>
           <Dropdown
             label="Scenario"
+            className="scenario"
             options={Scenarios}
             selectedKey={scenario.key}
             onChange={(ev, option) => {
@@ -34,6 +35,7 @@ export const App = () => {
           />
           <TextField
             label="Component count"
+            className="componentCount"
             value={String(count)}
             type="number"
             onChange={(ev, value) => {
@@ -43,6 +45,7 @@ export const App = () => {
           />
           <TextField
             label="Iterations"
+            className="iterations"
             value={String(iterations)}
             type="number"
             onChange={(ev, value) => {
@@ -50,7 +53,7 @@ export const App = () => {
               setIterations(Number(value));
             }}
           />
-          <PrimaryButton text={itemsVisible ? 'Reset' : 'Run test'} onClick={() => setItemsVisible(!itemsVisible)} />
+          <PrimaryButton text={itemsVisible ? 'Reset' : 'Run test'} onClick={() => setItemsVisible(!itemsVisible)} className="runTest" />
         </Stack>
         {timingsVisible && <MeasurerTimings />}
       </Stack>

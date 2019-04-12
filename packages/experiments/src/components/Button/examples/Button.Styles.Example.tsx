@@ -4,7 +4,7 @@ import { createTheme, mergeStyles, Stack } from 'office-ui-fabric-react';
 
 const testTheme = createTheme({
   semanticColors: {
-    buttonText: 'red'
+    buttonText: '#E20000'
   },
   fonts: {
     medium: {
@@ -49,11 +49,11 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button icon="PeopleAdd" content={{ children: 'Slot Theme: Purple Text', theme: testTheme }} />
               </ButtonStack>
               <ButtonStack>
-                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (root)" styles={{ root: { color: 'red' } }} />
-                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (stack)" styles={{ stack: { color: 'red' } }} />
+                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (root)" styles={{ root: { color: '#E20000' } }} />
+                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (stack)" styles={{ stack: { color: '#E20000' } }} />
               </ButtonStack>
               <ButtonStack>
-                <Button icon="PeopleAdd" content="Stack Styles Object: Red Text" stack={{ styles: { root: { color: 'red' } } }} />
+                <Button icon="PeopleAdd" content="Stack Styles Object: Red Text" stack={{ styles: { root: { color: '#E20000' } } }} />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Styles Object: Pink Icon" styles={{ icon: { color: 'pink ' } }} />
@@ -62,8 +62,8 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
               <ButtonStack>
                 <Button
                   icon="PeopleAdd"
-                  content="Button Styles Function: Theme.warningHighlight Content"
-                  styles={(props, theme) => ({ content: { color: theme.semanticColors.warningHighlight } })}
+                  content="Button Styles Function: Golden Brown Content"
+                  styles={(props, theme) => ({ content: { color: '#8F6800' } })}
                 />
               </ButtonStack>
               <ButtonStack>
@@ -78,8 +78,8 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon="PeopleAdd"
                   content={{
-                    children: 'Content Styles Function: Theme.warningHighlight Text',
-                    styles: (props, theme) => ({ root: { color: theme.semanticColors.warningHighlight } })
+                    children: 'Content Styles Function: Golden Brown Text',
+                    styles: (props, theme) => ({ root: { color: '#8F6800' } })
                   }}
                 />
               </ButtonStack>
@@ -97,9 +97,9 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => ({ root: { color: props.theme!.semanticColors.warningHighlight } })
+                    styles: props => ({ root: { color: '#8F6800' } })
                   }}
-                  content="Icon Styles Function: Theme.warningHighlight Icon"
+                  content="Icon Styles Function: Golden Brown Icon"
                 />
               </ButtonStack>
               <ButtonStack>
@@ -146,7 +146,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   content="Icon ClassName Overrides Button Styles: Blue Icon"
                   styles={{
                     icon: {
-                      color: 'red'
+                      color: '#E20000'
                     }
                   }}
                   icon={{
@@ -167,7 +167,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   icon="PeopleAdd"
                   content={{
                     children: 'Text Styles Overrides ClassName: Red Text',
-                    styles: { root: { color: 'red' } },
+                    styles: { root: { color: '#E20000' } },
                     className: testClassName
                   }}
                 />
@@ -184,7 +184,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   content="Icon Styles Overrides ClassName: Red Icon"
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: { root: { color: 'red' } },
+                    styles: { root: { color: '#E20000' } },
                     className: testClassName
                   }}
                 />

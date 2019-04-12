@@ -2,6 +2,9 @@ import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextField {
   /** Gets the current value of the input. */
   value: string | undefined;
@@ -38,6 +41,7 @@ export interface ITextField {
 
 /**
  * TextField component props.
+ * {@docCategory TextField}
  */
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
@@ -175,9 +179,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Called after the input's value updates but before re-rendering.
+   * Unlike `onChange`, this is also called when the value is updated via props.
+   *
+   * NOTE: This should be used *very* rarely. `onChange` is more appropriate for most situations.
+   *
    * @param newValue - The new value. Type should be string.
    */
-  onBeforeChange?: (newValue: any) => void;
+  onBeforeChange?: (newValue?: string) => void;
 
   /**
    * Function called after validation completes.
@@ -296,6 +304,9 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentId?: string;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
@@ -320,6 +331,9 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     focused?: boolean;
   };
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldSubComponentStyles {
   /**
    * Styling for Label child component.
@@ -329,6 +343,9 @@ export interface ITextFieldSubComponentStyles {
   label: IStyleFunctionOrObject<any, any>;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
   /**
    * Style for root element.

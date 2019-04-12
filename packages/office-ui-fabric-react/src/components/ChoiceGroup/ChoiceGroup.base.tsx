@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Label } from '../../Label';
-import { BaseComponent, classNamesFunction, find, getId } from '../../Utilities';
+import { initializeComponentRef, warnDeprecations, warnMutuallyExclusive, classNamesFunction, find, getId } from '../../Utilities';
 import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import { ChoiceGroupOption, OnChangeCallback, OnFocusCallback } from './ChoiceGroupOption/index';
 
@@ -14,7 +14,7 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
+export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {
     options: []
   };
@@ -28,10 +28,14 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   constructor(props: IChoiceGroupProps) {
     super(props);
 
-    this._warnDeprecations({ onChanged: 'onChange' });
-    this._warnMutuallyExclusive({
-      selectedKey: 'defaultSelectedKey'
-    });
+    initializeComponentRef(this);
+
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
+      warnMutuallyExclusive('ChoiceGroup', props, {
+        selectedKey: 'defaultSelectedKey'
+      });
+    }
 
     const validDefaultSelectedKey: boolean = !!props.options && props.options.some(option => option.key === props.defaultSelectedKey);
 

@@ -3,19 +3,37 @@ import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponent
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
  * properties can take.
+ * {@docCategory Stack}
  */
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
+/**
+ * {@docCategory Stack}
+ */
 export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
-// These types are redundant with IStackComponent but are needed until TS function return widening issue is resolved:
+// The following two types are redundant with IStackComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+
+/**
+ * {@docCategory Stack}
+ */
 export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens'], Function>>;
+
+/**
+ * {@docCategory Stack}
+ */
 export type IStackStylesReturnType = ReturnType<Extract<IStackComponent['styles'], Function>>;
 
+/**
+ * {@docCategory Stack}
+ */
 export type IStackSlot = ISlotProp<IStackProps>;
 
+/**
+ * {@docCategory Stack}
+ */
 export interface IStackSlots {
   /**
    * Defines root slot of the component.
@@ -29,6 +47,9 @@ export interface IStackSlots {
   inner?: IHTMLSlot;
 }
 
+/**
+ * {@docCategory Stack}
+ */
 export interface IStackProps
   extends IStackSlots,
     IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>,
@@ -110,8 +131,14 @@ export interface IStackProps
   wrap?: boolean;
 }
 
+/**
+ * {@docCategory Stack}
+ */
 export interface IStackTokens {
   childrenGap?: number | string;
 }
 
+/**
+ * {@docCategory Stack}
+ */
 export type IStackStyles = IComponentStyles<IStackSlots>;

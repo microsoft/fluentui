@@ -4,6 +4,7 @@ import { IRefObject } from '../../Utilities';
 
 /**
  * FocusZone component class interface.
+ * {@docCategory FocusZone}
  */
 export interface IFocusZone {
   /**
@@ -26,6 +27,7 @@ export interface IFocusZone {
 
 /**
  * FocusZone component props.
+ * {@docCategory FocusZone}
  */
 export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | FocusZone> {
   /**
@@ -153,6 +155,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
   onFocusNotification?: () => void;
 }
 
+/**
+ * {@docCategory FocusZone}
+ */
 export const FocusZoneTabbableElements = {
   /** Tabbing is not allowed */
   none: 0 as 0,
@@ -164,8 +169,14 @@ export const FocusZoneTabbableElements = {
   inputOnly: 2 as 2
 };
 
+/**
+ * {@docCategory FocusZone}
+ */
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
+/**
+ * {@docCategory FocusZone}
+ */
 export enum FocusZoneDirection {
   /** Only react to up/down arrows. */
   vertical = 0,

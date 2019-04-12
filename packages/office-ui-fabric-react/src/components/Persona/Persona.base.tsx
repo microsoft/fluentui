@@ -111,7 +111,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     return (
       <div {...divProps} className={classNames.root} style={coinSize ? { height: coinSize, minWidth: coinSize } : undefined}>
         <PersonaCoin {...personaCoinProps} />
-        {(!hidePersonaDetails || (size === PersonaSize.size10 || size === PersonaSize.tiny)) && personaDetails}
+        {(!hidePersonaDetails || (size === PersonaSize.size8 || size === PersonaSize.size10 || size === PersonaSize.tiny)) &&
+          personaDetails}
       </div>
     );
   }
@@ -128,7 +129,11 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
     defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
   ): JSX.Element {
-    return <div className={classNames}>{renderFunction && renderFunction(this.props, defaultRenderFunction)}</div>;
+    return (
+      <div dir="auto" className={classNames}>
+        {renderFunction && renderFunction(this.props, defaultRenderFunction)}
+      </div>
+    );
   }
 
   /**

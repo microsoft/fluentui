@@ -95,7 +95,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               {
                 -ms-high-contrast-adjust: none;
                 background-clip: content-box;
-                background-color: #7FBA00;
+                background-color: #6BB700;
                 border-radius: 50%;
                 border: 2px solid #ffffff;
                 bottom: -2px;
@@ -172,12 +172,13 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             ms-Persona-primaryText
             {
               color: #323130;
-              font-size: 21px;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -204,6 +205,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -225,12 +227,13 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             {
               color: #605e5c;
               display: block;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
       <div
         className=
@@ -238,12 +241,13 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             {
               color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=

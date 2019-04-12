@@ -10,8 +10,14 @@ import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities'
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRow {}
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsItemProps {
   /**
    * Column metadata
@@ -54,6 +60,9 @@ export interface IDetailsItemProps {
   cellStyleProps?: ICellStyleProps;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
   /**
    * Theme provided by styled() function
@@ -168,6 +177,9 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
   };
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowProps extends IDetailsRowBaseProps {
   /**
    * Column metadata
@@ -185,6 +197,9 @@ export interface IDetailsRowProps extends IDetailsRowBaseProps {
   selectionMode: SelectionMode;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
   /** Whether the row is selected  */
   isSelected?: boolean;
@@ -216,12 +231,18 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   cellStyleProps?: ICellStyleProps;
 };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface ICellStyleProps {
   cellLeftPadding: number;
   cellRightPadding: number;
   cellExtraRightPadding: number;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowStyles {
   root: IStyle;
   cell: IStyle;

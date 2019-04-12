@@ -1011,8 +1011,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                     background-color: #2D89EF;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 14px;
-                    font-weight: 400;
+                    font-size: 16px;
+                    font-weight: 600;
                     height: 40px;
                     line-height: 40px;
                   }
@@ -1022,6 +1022,9 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <i
@@ -1048,7 +1051,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   {
                     -ms-high-contrast-adjust: none;
                     background-clip: content-box;
-                    background-color: #FCD116;
+                    background-color: #FFAA44;
                     border-radius: 50%;
                     border: 2px solid #ffffff;
                     bottom: -2px;
@@ -1103,8 +1106,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 justify-content: space-around;
                 min-width: 0px;
                 padding-bottom: 0;
-                padding-left: 16px;
-                padding-right: 24px;
+                padding-left: 12px;
+                padding-right: 12px;
                 padding-top: 0;
                 text-align: left;
                 width: 100%;
@@ -1121,6 +1124,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
           <div
             className=
@@ -1133,6 +1137,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
           <div
             className=
@@ -1140,12 +1145,13 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 {
                   color: #605e5c;
                   display: none;
-                  font-size: 12px;
+                  font-size: 14px;
                   font-weight: 400;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
           <div
             className=
@@ -1153,12 +1159,13 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 {
                   color: #605e5c;
                   display: none;
-                  font-size: 12px;
+                  font-size: 14px;
                   font-weight: 400;
                   overflow: hidden;
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
         </div>
       </div>
