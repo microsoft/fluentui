@@ -3008,7 +3008,6 @@ export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLA
     componentRef?: IRefObject<IDatePicker>;
     dateTimeFormatter?: ICalendarFormatDateCallbacks;
     disableAutoFocus?: boolean;
-    disableCalloutAutoFocus?: boolean;
     disabled?: boolean;
     firstDayOfWeek?: DayOfWeek;
     firstWeekOfYear?: FirstWeekOfYear;
