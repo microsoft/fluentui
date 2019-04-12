@@ -154,11 +154,13 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             // Selected State hover meta cell
             $cell: {
               color: colors.focusMetaTextColor,
-              [HighContrastSelector]: {
-                color: 'HighlightText',
-                selectors: {
-                  '> a': {
-                    color: 'HighlightText'
+              selectors: {
+                [HighContrastSelector]: {
+                  color: 'HighlightText',
+                  selectors: {
+                    '> a': {
+                      color: 'HighlightText'
+                    }
                   }
                 }
               },
