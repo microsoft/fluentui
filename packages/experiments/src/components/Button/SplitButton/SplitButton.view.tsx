@@ -10,7 +10,6 @@ import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots } from './S
 export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const {
     styles,
-    tokens,
     children,
     primary,
     disabled,
