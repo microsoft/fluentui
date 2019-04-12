@@ -61,7 +61,7 @@ async function runAvailableScenarios(page, componentCount, iterations) {
 
   // Iterate through scenarios available
   const scenarioDropdown = await page.$('.scenario');
-  let scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z]/g, '');
+  let scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   while (!perfNumbers[scenarioName]) {
     // get numbers
     perfNumbers[scenarioName] = await runScenarioNTimes(page, 10);
@@ -69,7 +69,7 @@ async function runAvailableScenarios(page, componentCount, iterations) {
     // go to next scenario
     await scenarioDropdown.focus();
     await page.keyboard.press('ArrowDown');
-    scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z]/g, '');
+    scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   }
 
   return perfNumbers;
@@ -104,15 +104,26 @@ async function runScenarioNTimes(page, times) {
 
 function createBlobFromResults(perfBlob) {
   return `Component Perf Results:
-  | Scenario Name | Current Avg Total | New Avg Total | Current Avg Per Item | New Avg Per Item |
-  |----------|-------------------|---------------|----------------------|------------------|\n`.concat(
+  <table>
+  <tr>
+    <th>Scenario</th>
+    <th>Current Avg Total</th>
+    <th>New Avg Total</th>
+    <th>Current Avg Per Item</th>
+    <th>New Avg Per Item</th>
+  </tr>`.concat(
     Object.keys(perfBlob.now)
       .map(
         scenario =>
-          `| ${scenario}ms | ${perfBlob.now[scenario].total}ms | ${perfBlob.new[scenario].total}ms| ${perfBlob.new[scenario].peritem}ms | ${
-            perfBlob.new[scenario].peritem
-          }ms|`
+          `<tr>
+            <td>${scenario}</td>
+            <td>${perfBlob.now[scenario].total} ms</td>
+            <td>${perfBlob.new[scenario].total} ms</td>
+            <td>${perfBlob.now[scenario].peritem} ms</td>
+            <td>${perfBlob.new[scenario].peritem} ms</td>
+           </tr>  `
       )
       .join('\n')
+      .concat(`</table>`)
   );
 }
