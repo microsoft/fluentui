@@ -118,7 +118,6 @@ describe('DetailsRow', () => {
       />
     );
 
-    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
-    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
+    expect(onRenderCheckboxMock).toHaveBeenCalledWith({ checked: false }, expect.any(Function));
   });
 });
