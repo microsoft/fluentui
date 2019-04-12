@@ -32,6 +32,8 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
 
   resolve: {
     alias: {
+      '@uifabric/legacy/src': path.join(__dirname, 'node_modules/@uifabric/legacy/src'),
+      '@uifabric/legacy/lib': path.join(__dirname, 'node_modules/@uifabric/legacy/lib'),
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
       'Props.ts.js': 'Props',
