@@ -2,6 +2,30 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.14.2",
+      "tag": "@uifabric/fabric-website-resources_v6.14.2",
+      "date": "Fri, 12 Apr 2019 12:34:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed: make demo-app also deploy in demo site like experiments",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "9f53848fd8a46de03663331b87d331840fd7cf61"
+          },
+          {
+            "comment": "ThemeGeneratorPage: fix it so it looks right",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "99bce0e5fa02bee8bdfeb86f951eaf2284e25849"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.165.1` to `^6.166.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.1",
       "tag": "@uifabric/fabric-website-resources_v6.14.1",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",
