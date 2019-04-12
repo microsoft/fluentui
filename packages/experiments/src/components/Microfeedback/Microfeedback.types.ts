@@ -29,7 +29,7 @@ export interface IMicrofeedbackProps
   defaultText?: string;
 }
 
-class MicrofeedbackQuestion {
+export class MicrofeedbackQuestion {
   public question: string;
   public options: string[];
 }

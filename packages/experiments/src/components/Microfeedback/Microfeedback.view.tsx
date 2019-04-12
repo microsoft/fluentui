@@ -56,7 +56,7 @@ const styles = mergeStyleSets({
   ]
 });
 
-class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
+class MicrofeedbackComponent extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
   // ref's will be linked to each of the icons for callout placement
   private dislikeRef = React.createRef<HTMLDivElement>();
   private likeRef = React.createRef<HTMLDivElement>();
@@ -164,26 +164,14 @@ class Microfeedback extends React.Component<IMicrofeedbackProps, IMicrofeedbackS
   }
 }
 
-export class MicrofeedbackQuestion {
-  public question: string;
-  public options: string[];
-}
-
-const followUpOnThumbsDown = new MicrofeedbackQuestion();
-followUpOnThumbsDown.options = ['Translation is incorrect', 'Context is incorrect', 'Language can be better'];
-followUpOnThumbsDown.question = 'Please help us improve';
-const followUpOnThumbsUp = new MicrofeedbackQuestion();
-followUpOnThumbsUp.options = ['Translation is great', 'Context is great'];
-followUpOnThumbsUp.question = 'Please help us improve';
-
 export const MicrofeedbackView: IMicrofeedbackComponent['view'] = props => {
   return (
     <div>
-      <Microfeedback
-        ThumbsDownQuestion={followUpOnThumbsDown}
-        ThumbsUpQuestion={followUpOnThumbsUp}
-        thumbsUpTitle="Like"
-        thumbsDownTitle="Dislike"
+      <MicrofeedbackComponent
+        ThumbsDownQuestion={props.ThumbsDownQuestion}
+        ThumbsUpQuestion={props.ThumbsUpQuestion}
+        thumbsUpTitle={props.thumbsUpTitle}
+        thumbsDownTitle={props.thumbsDownTitle}
       />
     </div>
   );
