@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2019 12:34:16 GMT and should not be manually modified.
+
+## 6.14.2
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Patches
+
+- Fixed: make demo-app also deploy in demo site like experiments
+- ThemeGeneratorPage: fix it so it looks right
 
 ## 6.14.1
 Tue, 02 Apr 2019 00:38:14 GMT

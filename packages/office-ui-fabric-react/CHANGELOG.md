@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2019 12:34:16 GMT and should not be manually modified.
+
+## 6.166.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+- These changes allow for a controlled Pivot to have no selected PivotItem by specifying null as the selectedKey prop.
+
+### Patches
+
+- ThemeGeneratorPage: fix it so it looks right
+- Updating CalloutContentBase's shouldComponentUpdate to do shallow comparision
 
 ## 6.165.1
 Thu, 11 Apr 2019 12:37:10 GMT

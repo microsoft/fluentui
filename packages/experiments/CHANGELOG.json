@@ -2,6 +2,32 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.72.0",
+      "tag": "@uifabric/experiments_v6.72.0",
+      "date": "Fri, 12 Apr 2019 12:34:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Styling fixes to issues found while working on Multiline Ribbon buttons.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f0b1b882a7cd1f25957b8550d5c557e0a2e94f1f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": " Button: Creating CompoundButton and BaseButton variants.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "7ab1d90394574f6723920c229641a30f49b0d1bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.165.1` to `^6.166.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.71.0",
       "tag": "@uifabric/experiments_v6.71.0",
       "date": "Wed, 10 Apr 2019 12:33:17 GMT",
