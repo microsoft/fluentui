@@ -296,7 +296,14 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onCalloutPositioned = (): void => {
-    if (this._calendar.current && !this.props.disableCalloutAutoFocus) {
+    let shouldFocus = true;
+    // If the user has sepecified that the callout shouldn't use initial focus, then respect
+    // that and don't attempt to set focus. That will default to true within the callout
+    // so we need to check if it's undefined here.
+    if (this.props.calloutProps && this.props.calloutProps.setInitialFocus !== undefined) {
+      shouldFocus = this.props.calloutProps.setInitialFocus;
+    }
+    if (this._calendar.current && shouldFocus) {
       this._calendar.current.focus();
     }
   };
