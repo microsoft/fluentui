@@ -1,2 +1,2 @@
 export * from './FloatingPeopleSuggestions';
-export * from './defaults/DefaultPeoplePickerItem';
+export * from './defaults/DefaultPeopleSuggestionsItem';
