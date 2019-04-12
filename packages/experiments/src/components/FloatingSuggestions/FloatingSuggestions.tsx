@@ -1,5 +1,5 @@
 import * as React from 'react';
-import * as stylesImport from './FloatingSuggestions.scss';
+import * as styles from './FloatingSuggestions.scss';
 import { BaseComponent, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
 import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { IFloatingSuggestions, IFloatingSuggestionsProps, IFloatingSuggestionsInnerSuggestionProps } from './FloatingSuggestions.types';
@@ -7,8 +7,6 @@ import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsControl } from './Suggestions/SuggestionsControl';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
-// tslint:disable-next-line:no-any
-const styles: any = stylesImport;
 
 export interface IFloatingSuggestionsState {
   queryString: string;
@@ -16,11 +14,8 @@ export interface IFloatingSuggestionsState {
   didBind: boolean;
 }
 
-// TODO the TProps here is not needed when binding in a renderProp.
-// Remove once the props is deprecated.
-export class FloatingSuggestions<TItem, TProps extends IFloatingSuggestionsProps<TItem> = IFloatingSuggestionsProps<TItem>>
-  extends BaseComponent<TProps, IFloatingSuggestionsState>
-  implements IFloatingSuggestions {
+export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestionsProps<TItem>, IFloatingSuggestionsState>
+  implements IFloatingSuggestions<TItem> {
   protected selection: Selection;
 
   protected root = React.createRef<HTMLDivElement>();
@@ -30,7 +25,7 @@ export class FloatingSuggestions<TItem, TProps extends IFloatingSuggestionsProps
   protected currentPromise: PromiseLike<TItem[]>;
   protected isComponentMounted: boolean = false;
 
-  constructor(basePickerProps: TProps) {
+  constructor(basePickerProps: IFloatingSuggestionsProps<TItem>) {
     super(basePickerProps);
 
     this.suggestionStore = basePickerProps.suggestionsStore;
@@ -44,8 +39,7 @@ export class FloatingSuggestions<TItem, TProps extends IFloatingSuggestionsProps
     return this.state.queryString;
   }
 
-  // tslint:disable-next-line:no-any
-  public get suggestions(): any[] {
+  public get suggestions(): ISuggestionModel<TItem>[] {
     return this.suggestionStore.suggestions;
   }
 
@@ -121,7 +115,7 @@ export class FloatingSuggestions<TItem, TProps extends IFloatingSuggestionsProps
     this.isComponentMounted = false;
   }
 
-  public componentWillReceiveProps(newProps: TProps): void {
+  public componentWillReceiveProps(newProps: IFloatingSuggestionsProps<TItem>): void {
     if (newProps.suggestionItems) {
       this.updateSuggestions(newProps.suggestionItems);
     }

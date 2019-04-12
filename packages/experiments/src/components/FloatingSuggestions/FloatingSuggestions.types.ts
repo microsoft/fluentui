@@ -5,7 +5,7 @@ import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionsCoreProps } from './Suggestions/Suggestions.types';
 
-export interface IFloatingSuggestions {
+export interface IFloatingSuggestions<TItem> {
   /** Whether the suggestions are shown */
   isSuggestionsShown: boolean;
 
@@ -21,8 +21,7 @@ export interface IFloatingSuggestions {
   showPicker: (updateValue?: boolean) => void;
 
   /** Gets the suggestions */
-  // tslint:disable-next-line:no-any
-  suggestions: any[];
+  suggestions: ISuggestionModel<TItem>[];
 
   /** Gets the input text */
   inputText: string;
@@ -31,9 +30,8 @@ export interface IFloatingSuggestions {
 // Type T is the type of the item that is displayed
 // and searched for by the people picker. For example, if the picker is
 // displaying persona's than type T could either be of Persona or Ipersona props
-// tslint:disable-next-line:no-any
 export interface IFloatingSuggestionsProps<T> extends React.ClassAttributes<any> {
-  componentRef?: IRefObject<IFloatingSuggestions>;
+  componentRef?: IRefObject<IFloatingSuggestions<T>>;
 
   /**
    * The suggestions store
@@ -144,7 +142,7 @@ export interface IFloatingSuggestionsProps<T> extends React.ClassAttributes<any>
  * Props which are passed on to the inner Suggestions component by
  * BaseFloatingPicker.
  */
-export type IFloatingSuggestionsInnerSuggestionProps<T = any> = Pick<
+export type IFloatingSuggestionsInnerSuggestionProps<T> = Pick<
   ISuggestionsControlProps<T>,
   | 'onSuggestionClick'
   | 'onSuggestionRemove'

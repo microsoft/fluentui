@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
