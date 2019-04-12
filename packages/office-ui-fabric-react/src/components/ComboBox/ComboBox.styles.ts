@@ -216,6 +216,7 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootColorErrored = semanticColors.errorText;
     const ComboBoxOptionHeaderTextColor = semanticColors.menuHeader;
     const ComboBoxOptionDividerBorderColor = semanticColors.bodyDivider;
+
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
       borderColor: 'Highlight',
@@ -272,6 +273,12 @@ export const getStyles = memoizeFunction(
               selectors: {
                 '::-ms-clear': {
                   display: 'none'
+                },
+                '::placeholder': {
+                  color: semanticColors.inputPlaceholderText
+                },
+                ':-ms-input-placeholder': {
+                  color: semanticColors.inputPlaceholderText
                 }
               }
             },
@@ -289,7 +296,15 @@ export const getStyles = memoizeFunction(
         borderColor: ComboBoxRootBorderColorHovered,
         selectors: {
           '.ms-ComboBox-Input': {
-            color: palette.neutralDark
+            color: palette.neutralDark,
+            selectors: {
+              '::placeholder': {
+                color: palette.neutralPrimary
+              },
+              ':-ms-input-placeholder': {
+                color: palette.neutralPrimary
+              }
+            }
           },
           [HighContrastSelector]: {
             color: 'HighlightText',
@@ -336,7 +351,19 @@ export const getStyles = memoizeFunction(
         padding: '0'
       },
 
-      inputDisabled: getDisabledStyles(theme),
+      inputDisabled: [
+        getDisabledStyles(theme),
+        {
+          selectors: {
+            '::placeholder': {
+              color: semanticColors.disabledText
+            },
+            ':-ms-input-placeholder': {
+              color: semanticColors.disabledText
+            }
+          }
+        }
+      ],
       errorMessage: {
         color: ComboBoxRootColorErrored
       },
