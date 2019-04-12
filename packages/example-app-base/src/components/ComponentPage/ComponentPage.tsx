@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, getDocument, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
 import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
@@ -23,6 +23,12 @@ interface IExtendedComponentPageSection extends IComponentPageSection {
   /** Class for the section title (default variantsTitle). Null means don't use a class. */
   titleClass?: string | null;
 }
+
+const headingWithEditStackProps: IStackProps = {
+  horizontal: true,
+  verticalAlign: 'center',
+  horizontalAlign: 'space-between'
+};
 
 export class ComponentPageBase extends React.PureComponent<IComponentPageProps> {
   public static defaultProps: Partial<IComponentPageProps> = {
@@ -169,20 +175,20 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             id: null
           })}
         {!!(dos && donts) && (
-          <div className={classNames.doSections}>
+          <div className={css(classNames.section, classNames.doSections)}>
             <div className={classNames.dosDontsSection}>
-              <div className={classNames.dosDontsHeading}>
+              <Stack className={classNames.dosDontsHeading} {...headingWithEditStackProps}>
                 <h3>Do</h3>
                 {dosUrl && <EditSection title={title} section="Dos" url={dosUrl} />}
-              </div>
+              </Stack>
               <hr className={css(classNames.dosDontsLine, classNames.dosLine)} />
               {dos}
             </div>
             <div className={css(classNames.dosDontsSection, classNames.dontsSection)}>
-              <div className={classNames.dosDontsHeading}>
+              <Stack className={classNames.dosDontsHeading} {...headingWithEditStackProps}>
                 <h3>Don&rsquo;t</h3>
                 {dontsUrl && <EditSection title={title} section="Don'ts" url={dontsUrl} />}
-              </div>
+              </Stack>
               <hr className={css(classNames.dosDontsLine, classNames.dontsLine)} />
               {donts}
             </div>
@@ -226,7 +232,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   private _getComponentStatusBadges(): JSX.Element | undefined {
     const classNames = this._styles;
     if (this.props.componentStatus && this.props.areBadgesVisible) {
-      return <div className={classNames.statusSection}>{this.props.componentStatus}</div>;
+      return <div className={css(classNames.section, classNames.statusSection)}>{this.props.componentStatus}</div>;
     }
   }
 
@@ -256,9 +262,9 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     } = section;
     const classNames = this._styles;
     return (
-      <div key={id || title} className={css(wrapperClass)}>
-        <Stack horizontal verticalAlign="center" horizontalAlign="space-between">
-          <h2 className={css(classNames.subHeading, titleClass)} id={!!id ? id : undefined}>
+      <div key={id || title} className={css(classNames.section, wrapperClass)}>
+        <Stack className={classNames.subHeading} {...headingWithEditStackProps}>
+          <h2 className={css(titleClass)} id={!!id ? id : undefined}>
             {title}
           </h2>
           {editUrl && <EditSection title={this.props.title} section={title} url={editUrl} />}

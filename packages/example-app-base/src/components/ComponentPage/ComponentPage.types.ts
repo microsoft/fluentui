@@ -94,7 +94,7 @@ export interface IComponentPageProps {
   styles?: IStyleFunctionOrObject<IComponentPageStyleProps, IComponentPageStyles>;
 }
 
-export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme'>;
+export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme' | 'componentStatus'>;
 
 export interface IComponentPageStyles {
   root: IStyle;
@@ -104,10 +104,17 @@ export interface IComponentPageStyles {
   title: IStyle;
   navigation: IStyle;
   subHeading: IStyle;
+  /** Styles applied to all sections */
+  section: IStyle;
   overviewSection: IStyle;
   overviewText: IStyle;
   overviewHeading: IStyle;
+  /**
+   * Used on the actual (rarely shown) "Best Practices" part of the best practices/dos/don'ts section.
+   * For the wrapper of both this section and the dos/don'ts, use `bestPracticesSection`.
+   */
   usageSection: IStyle;
+  /** Used on the actual (rarely shown) "Best Practices" heading. */
   usageHeading: IStyle;
   variantsSection: IStyle;
   variantsTitle: IStyle;
@@ -115,8 +122,9 @@ export interface IComponentPageStyles {
   implementationSection: IStyle;
   implementationExamplesSection: IStyle;
   feedbackSection: IStyle;
+  /** Wrapper for best practices, dos, and don'ts */
   bestPracticesSection: IStyle;
-  /** Used on wrapper for the dos/don'ts sections */
+  /** Wrapper for the dos/don'ts sections */
   doSections: IStyle;
   /** Used on each of the dos and don'ts sections */
   dosDontsSection: IStyle;

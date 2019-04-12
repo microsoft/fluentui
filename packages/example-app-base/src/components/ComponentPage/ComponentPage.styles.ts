@@ -1,4 +1,4 @@
-import { ScreenWidthMinUhfMobile, IRawStyle, getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { ScreenWidthMinUhfMobile, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IComponentPageStyleProps, IComponentPageStyles } from './ComponentPage.types';
 
@@ -32,15 +32,10 @@ const globalClassNames = {
 
 const componentPageColor = '#0f8387';
 const componentPagePadding = 50;
-const componentSubHeadMargin = 24;
 const ulLeftPadding = 18;
 
-const sectionStyles: IRawStyle = {
-  padding: componentPagePadding
-};
-
 export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageStyles> = props => {
-  const { theme = getTheme() } = props;
+  const { theme = getTheme(), componentStatus } = props;
   return {
     body: globalClassNames.body,
     root: [
@@ -83,20 +78,26 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     ],
     navigation: globalClassNames.navigation,
     subHeading: [
-      theme.fonts.xxLarge,
       {
-        fontSize: 36,
-        marginTop: 10,
-        marginBottom: componentSubHeadMargin
+        // Set margins on the heading container not heading text to fix vertical alignment on sections
+        // with an edit button
+        marginTop: 0,
+        marginBottom: 24,
+        selectors: {
+          // Set font here to be more specific
+          h2: [theme.fonts.xxLarge, { fontSize: 36, margin: 0 }]
+        }
       },
       globalClassNames.subHeading
     ],
+    section: {
+      padding: componentPagePadding
+    },
     overviewSection: [
-      sectionStyles,
       {
-        paddingTop: 15,
-        maxWidth: '50em'
+        maxWidth: '60em'
       },
+      !!componentStatus && { paddingTop: 15 },
       globalClassNames.overviewSection
     ],
     overviewText: [
@@ -122,21 +123,26 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       },
       globalClassNames.overviewText
     ],
-    overviewHeading: globalClassNames.overviewHeading,
-    usageSection: globalClassNames.usageSection,
-    usageHeading: [
+    overviewHeading: [
       {
-        marginTop: 10,
-        marginBottom: componentSubHeadMargin,
         selectors: {
-          [`.${globalClassNames.subHeading}`]: {
-            margin: 0
+          [`&.${globalClassNames.subHeading}`]: {
+            marginTop: 0
           }
         }
       },
-      globalClassNames.usageHeading
+      globalClassNames.overviewHeading
     ],
-    variantsSection: [sectionStyles, globalClassNames.variantsSection],
+    // These are for the actual "Best Practices" heading/text (rarely shown).
+    // The wrapper for this section plus dos/don'ts is bestPracticesSection.
+    usageSection: [
+      {
+        marginBottom: 16
+      },
+      globalClassNames.usageSection
+    ],
+    usageHeading: globalClassNames.usageHeading,
+    variantsSection: globalClassNames.variantsSection,
     variantsTitle: globalClassNames.variantsTitle,
     variantsList: [
       {
@@ -147,11 +153,10 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       },
       globalClassNames.variantsList
     ],
-    implementationSection: [sectionStyles, globalClassNames.implementationSection],
-    implementationExamplesSection: [sectionStyles, globalClassNames.implementationExamplesSection],
-    feedbackSection: [sectionStyles, globalClassNames.feedbackSection],
+    implementationSection: globalClassNames.implementationSection,
+    implementationExamplesSection: globalClassNames.implementationExamplesSection,
+    feedbackSection: globalClassNames.feedbackSection,
     bestPracticesSection: [
-      sectionStyles,
       {
         backgroundColor: theme.palette.neutralLighterAlt
       },
@@ -166,7 +171,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         verticalAlign: 'top',
         marginBottom: 20,
         selectors: {
-          h3: theme.fonts.xLarge,
           ul: { paddingLeft: ulLeftPadding },
           li: {
             listStyle: 'disc',
@@ -189,9 +193,8 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     ],
     dosDontsHeading: [
       {
-        margin: '16px 0 0 0',
         selectors: {
-          h3: { margin: 0 }
+          h3: [theme.fonts.xLarge, { margin: 0 }]
         }
       },
       globalClassNames.dosDontsHeading
@@ -214,7 +217,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     },
     dontsSection: globalClassNames.dontsSection,
     statusSection: [
-      sectionStyles,
       {
         paddingBottom: 0
       },
