@@ -10,12 +10,10 @@ import { List } from 'office-ui-fabric-react/lib/List';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 
 import { IMicrofeedbackComponent, IMicrofeedbackProps } from './Microfeedback.types';
-import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IMicrofeedbackState } from './Microfeedback.state';
 
 import { initializeIcons } from '@uifabric/icons';
-
-const theme = getTheme();
 
 const microfeedbackStyles: IStackStyles = {
   root: [
@@ -28,12 +26,8 @@ const microfeedbackStyles: IStackStyles = {
 
 const microfeedbackItemStyles: IButtonStyles = {
   root: [
-    theme.fonts.small,
     {
-      width: '100%',
-      color: theme.palette.neutralPrimary,
-      fontWeight: FontWeights.light,
-      fontSize: 12
+      width: '100%'
     }
   ]
 };
