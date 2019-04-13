@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "MessageBar: fixes the transparency of the background issue when rendered on top of themed backgrounds.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "vitaliebraga@gmail.com"
+}
