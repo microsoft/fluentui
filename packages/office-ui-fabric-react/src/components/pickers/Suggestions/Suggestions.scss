@@ -75,13 +75,13 @@
   width: 100%;
   font-size: 12px;
   &:hover {
-      background-color: $ms-color-neutralLight;
-      cursor: pointer;
+    background-color: $ms-color-neutralLight;
+    cursor: pointer;
   }
   // TODO: Works in Chrome, but not working in IE
   &:focus,
   &:active {
-      background-color: $ms-color-themeLight;
+    background-color: $ms-color-themeLight;
   }
 
   :global(.ms-Button-icon) {
@@ -181,6 +181,6 @@
   padding: 0;
   margin: -1px;
   overflow: hidden;
-  clip: rect(0,0,0,0);
+  clip: rect(0, 0, 0, 0);
   border: 0;
 }

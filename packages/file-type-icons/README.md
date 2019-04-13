@@ -4,7 +4,6 @@
 
 Fabric File Type Icons includes a collection of icons to represent file types.
 
-
 # Getting started
 
 If you are using Fabric React components, you can make all file type icons available by calling the `initializeFileTypeIcons` function from the `@uifabric/file-type-icons` package:

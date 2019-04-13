@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Run prettier on all files",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "elcraig@microsoft.com"
+}

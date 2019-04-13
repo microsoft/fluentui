@@ -2,7 +2,7 @@
 
 ##### ThemeSamples package for Office UI Fabric React
 
-This is not a production ready package and __should never be used in product__. This ThemeSamples space is useful for serving as an example for theme definition and for testing new themes before finalizing them for use elsewhere.
+This is not a production ready package and **should never be used in product**. This ThemeSamples space is useful for serving as an example for theme definition and for testing new themes before finalizing them for use elsewhere.
 
 To import ThemeSamples themes:
 

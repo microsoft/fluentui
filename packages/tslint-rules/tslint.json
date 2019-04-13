@@ -1,12 +1,7 @@
 {
-  "extends": [
-    "tslint-react"
-  ],
+  "extends": ["tslint-react"],
   "linterOptions": {
-    "exclude": [
-      "temp/*.ts",
-      "etc/*.ts"
-    ]
+    "exclude": ["temp/*.ts", "etc/*.ts"]
   },
   "rules": {
     "deprecation": true,
@@ -24,9 +19,7 @@
       "when": "always"
     },
     "jsx-no-bind": true,
-    "jsx-boolean-value": [
-      "never"
-    ],
+    "jsx-boolean-value": ["never"],
     "jsx-equals-spacing": "never",
     "jsx-key": true,
     "jsx-no-lambda": true,
@@ -43,9 +36,7 @@
     ],
     "no-duplicate-variable": true,
     "use-isnan": true,
-    "triple-equals": [
-      true
-    ],
+    "triple-equals": [true],
     "max-line-length": [
       true,
       {
@@ -63,21 +54,12 @@
       "property-declaration"
     ],
     "prefer-const": true,
-    "quotemark": [
-      true,
-      "single",
-      "jsx-double",
-      "avoid-escape"
-    ],
+    "quotemark": [true, "single", "jsx-double", "avoid-escape"],
     "no-inferrable-types": false,
     "no-null-keyword": false,
     "export-name": false,
-    "trailing-comma": [
-      false
-    ],
-    "whitespace": [
-      false
-    ],
+    "trailing-comma": [false],
+    "whitespace": [false],
     "no-switch-case-fall-through": false,
     "variable-name": [
       true,
@@ -87,22 +69,12 @@
       "ban-keywords"
     ],
     "class-name": true,
-    "comment-format": [
-      true,
-      "check-space"
-    ],
+    "comment-format": [true, "check-space"],
     "curly": true,
     "eofline": false,
     "forin": true,
-    "indent": [
-      true,
-      "spaces",
-      2
-    ],
-    "interface-name": [
-      true,
-      "always-prefix"
-    ],
+    "indent": [true, "spaces", 2],
+    "interface-name": [true, "always-prefix"],
     "label-position": true,
     "member-access": true,
     "member-ordering": [
@@ -131,14 +103,7 @@
     "no-any": true,
     "no-bitwise": true,
     "no-consecutive-blank-lines": true,
-    "no-console": [
-      true,
-      "debug",
-      "info",
-      "time",
-      "timeEnd",
-      "trace"
-    ],
+    "no-console": [true, "debug", "info", "time", "timeEnd", "trace"],
     "no-constant-condition": true,
     "no-construct": true,
     "no-debugger": true,
@@ -165,11 +130,7 @@
       "check-else",
       "check-whitespace"
     ],
-    "semicolon": [
-      true,
-      "always",
-      "ignore-bound-class-methods"
-    ],
+    "semicolon": [true, "always", "ignore-bound-class-methods"],
     "typedef-whitespace": [
       true,
       {

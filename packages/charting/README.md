@@ -2,7 +2,7 @@
 
 ##### Charting components for Office UI Fabric React
 
-These are not production ready components and __should never be used in product__. This charting space is useful for testing new components whose APIs might change before final release.
+These are not production ready components and **should never be used in product**. This charting space is useful for testing new components whose APIs might change before final release.
 
 To import charting components:
 

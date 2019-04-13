@@ -35,81 +35,81 @@ var DndSimulatorDataTransfer = function() {
 };
 
 /*!
-* \brief Controls the feedback currently given to the user.
-*
-* Must be any of the following strings:
-*
-* - "move"
-* - "copy"
-* - "link"
-* - "none"
-*
-* The default is "move".
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect
-*/
+ * \brief Controls the feedback currently given to the user.
+ *
+ * Must be any of the following strings:
+ *
+ * - "move"
+ * - "copy"
+ * - "link"
+ * - "none"
+ *
+ * The default is "move".
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/dropEffect
+ */
 DndSimulatorDataTransfer.prototype.dropEffect = 'move';
 
 /*!
-* \brief Controls which kind of drag/drop operatins are allowed.
-*
-* Must be any of the following strings:
-*
-* - "none"
-* - "copy"
-* - "copyLink"
-* - "copyMove"
-* - "link"
-* - "linkMove"
-* - "move"
-* - "all"
-* - "uninitialized"
-*
-* The default is "all".
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed
-*/
+ * \brief Controls which kind of drag/drop operatins are allowed.
+ *
+ * Must be any of the following strings:
+ *
+ * - "none"
+ * - "copy"
+ * - "copyLink"
+ * - "copyMove"
+ * - "link"
+ * - "linkMove"
+ * - "move"
+ * - "all"
+ * - "uninitialized"
+ *
+ * The default is "all".
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/effectAllowed
+ */
 DndSimulatorDataTransfer.prototype.effectAllowed = 'all';
 
 /*!
-* \brief List of files being dragged.
-*
-* This property will remain an empty list when the drag and drop operation
-* does not involve any files.
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/files
-*/
+ * \brief List of files being dragged.
+ *
+ * This property will remain an empty list when the drag and drop operation
+ * does not involve any files.
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/files
+ */
 DndSimulatorDataTransfer.prototype.files = [];
 
 /*!
-* \brief Read-only list of items being dragged.
-*
-* This is actually a list of \see DataTransferItem
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem
-*
-* This property will remain an empty list when the drag and drop
-* operation does not involve any files.
-*/
+ * \brief Read-only list of items being dragged.
+ *
+ * This is actually a list of \see DataTransferItem
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransferItem
+ *
+ * This property will remain an empty list when the drag and drop
+ * operation does not involve any files.
+ */
 DndSimulatorDataTransfer.prototype.items = [];
 
 /*!
-* \brief Read-only list of data formats that were set in
-*           the "dragstart" event.
-*
-* The order of the formats is the same order as the data
-* included in the drag operation.
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types
-*/
+ * \brief Read-only list of data formats that were set in
+ *           the "dragstart" event.
+ *
+ * The order of the formats is the same order as the data
+ * included in the drag operation.
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/types
+ */
 DndSimulatorDataTransfer.prototype.types = [];
 
 /*!
-* \brief Removes all data.
-*
-* \param format Optional: Only remove the data associated with this format.
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData
-*/
+ * \brief Removes all data.
+ *
+ * \param format Optional: Only remove the data associated with this format.
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/clearData
+ */
 DndSimulatorDataTransfer.prototype.clearData = function(format) {
   if (format) {
     delete this.data[format];
@@ -123,15 +123,15 @@ DndSimulatorDataTransfer.prototype.clearData = function(format) {
 };
 
 /*!
-* \brief Sets the drag operation"s drag data to the specified data
-*          and type.
-*
-* \param format A string describing the data"s format.
-* \param data   The data to store (formatted according to the
-*                 specified format).
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
-*/
+ * \brief Sets the drag operation"s drag data to the specified data
+ *          and type.
+ *
+ * \param format A string describing the data"s format.
+ * \param data   The data to store (formatted according to the
+ *                 specified format).
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/setData
+ */
 DndSimulatorDataTransfer.prototype.setData = function(format, data) {
   this.data[format] = data;
   this.items.push(data);
@@ -139,14 +139,14 @@ DndSimulatorDataTransfer.prototype.setData = function(format, data) {
 };
 
 /*!
-* \brief Retrives drag dta for the specified type.
-*
-* \param format A string describing the type of data to retrieve.
-*
-* \returns The drag data for the specified type, otherwise an empty string.
-*
-* \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData
-*/
+ * \brief Retrives drag dta for the specified type.
+ *
+ * \param format A string describing the type of data to retrieve.
+ *
+ * \returns The drag data for the specified type, otherwise an empty string.
+ *
+ * \see https://developer.mozilla.org/en-US/docs/Web/API/DataTransfer/getData
+ */
 DndSimulatorDataTransfer.prototype.getData = function(format) {
   if (format in this.data) {
     return this.data[format];
@@ -156,12 +156,12 @@ DndSimulatorDataTransfer.prototype.getData = function(format) {
 };
 
 /*!
-* \brief Sets a custom image to be displayed during dragging.
-*
-* \param img         An image elment to use for the drag feedback image.
-* \param xOffset    A long indicating the horizontal offset within the image.
-* \param yOffset   A long indicating the veritcal offset within the image.
-*/
+ * \brief Sets a custom image to be displayed during dragging.
+ *
+ * \param img         An image elment to use for the drag feedback image.
+ * \param xOffset    A long indicating the horizontal offset within the image.
+ * \param yOffset   A long indicating the veritcal offset within the image.
+ */
 DndSimulatorDataTransfer.prototype.setDragImage = function(img, xOffset, yOffset) {
   /* since simulation doesn"t replicate the visual effects, there is
   no point in implementing this */

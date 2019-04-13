@@ -57,7 +57,8 @@
 }
 
 .reachOut {
-  a, a:visited,
+  a,
+  a:visited,
   .reachOutLink {
     color: $color-resources-darker;
   }
@@ -91,7 +92,6 @@
       position: absolute;
       width: 95%;
     }
-
   }
 
   .relatedLink {

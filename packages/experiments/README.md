@@ -2,7 +2,7 @@
 
 ##### Experimental components for Office UI Fabric React
 
-These are not production ready components and __should never be used in product__ unless you are the [CODEOWNER](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/.github/CODEOWNERS) of the component and are responsibility for reviewing all PRs involving this component. This experimental space is useful for testing new components whose APIs might change before final release.
+These are not production ready components and **should never be used in product** unless you are the [CODEOWNER](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/.github/CODEOWNERS) of the component and are responsible for reviewing all PRs involving this component. This experimental space is useful for testing new components whose APIs might change before final release.
 
 To import experimental components:
 
