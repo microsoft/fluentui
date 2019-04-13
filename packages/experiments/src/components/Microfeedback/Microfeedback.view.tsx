@@ -106,9 +106,7 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
               </FocusZone>
             </div>
           </Callout>
-        ) : (
-          <div />
-        )}
+        ) : null}
         {this.props.ThumbsDownQuestion ? (
           <Callout
             hidden={hideThumbsDownCallout}
@@ -118,16 +116,12 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
             setInitialFocus={true}
             onDismiss={onCalloutDismiss}
           >
-            <div>
-              <FocusZone direction={FocusZoneDirection.vertical}>
-                <p className={styles.title}>{this.props.ThumbsDownQuestion.question}</p>
-                <List items={this.props.ThumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
-              </FocusZone>
-            </div>
+            <FocusZone direction={FocusZoneDirection.vertical}>
+              <p className={styles.title}>{this.props.ThumbsDownQuestion.question}</p>
+              <List items={this.props.ThumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+            </FocusZone>
           </Callout>
-        ) : (
-          <div />
-        )}
+        ) : null}
       </div>
     );
   }
