@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
-    "code-style": "node -v",
+    "code-style": "node ./just.js code-style",
     "bundlesize": "bundlesize --debug",
     "test": "jest"
   },

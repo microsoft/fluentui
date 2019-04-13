@@ -11,6 +11,7 @@ const repoRoot = path.resolve(__dirname, '..', '..');
 const prettierRulesConfig = path.join(repoRoot, 'packages', 'prettier-rules', prettierConfig);
 const prettierIgnorePath = path.join(repoRoot, prettierIgnore);
 const prettierBin = path.join(__dirname, '..', 'node_modules', 'prettier', 'bin-prettier.js');
+/** Array of absolute project paths with prettier configs */
 let projectsWithPrettierConfig;
 
 function init() {
@@ -41,6 +42,7 @@ function init() {
  */
 function runPrettier(files, configPath, runAsync) {
   const cmd = `node ${prettierBin} --config ${configPath} --ignore-path "${prettierIgnorePath}" --write ${files.join(' ')}`;
+  console.log(cmd);
   if (runAsync) {
     return exec(cmd, undefined, undefined, process);
   } else {
@@ -56,9 +58,9 @@ function runPrettier(files, configPath, runAsync) {
 function runPrettierForProject(projectPath) {
   init();
 
-  const sourcePath = path.join(projectPath, '**', '*.{ts,tsx,json,js}');
-  const configPath = projectsWithPrettierConfig[projectPath] || prettierRulesConfig;
-  runPrettier([sourcePath], configPath);
+  const sourcePath = path.join(projectPath, '**', '*.{ts,tsx,js,jsx,json,scss,html,yml,md}');
+  const configPath = projectsWithPrettierConfig.includes(projectPath) ? path.join(projectPath, prettierConfig) : prettierRulesConfig;
+  runPrettier([sourcePath], configPath, true);
 }
 
 /**
