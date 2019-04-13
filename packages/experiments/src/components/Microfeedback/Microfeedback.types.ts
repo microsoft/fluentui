@@ -20,17 +20,18 @@ export interface IMicrofeedbackProps
   extends IMicrofeedbackSlots,
     IStyleableComponentProps<IMicrofeedbackViewProps, IMicrofeedbackTokens, IMicrofeedbackStyles>,
     IBaseProps<IMicrofeedback> {
-  sendFeedback?: any; // Callback for sending feedback to a backend such as OCV or substrate
+  sendFeedback?: (vote: number) => void; // Callback for sending feedback to a backend
+  sendFollowupIndex?: (index: number) => void; // Callback for sending followup index to a backend
   thumbsUpTitle?: string; // Localized string for the thumbsUp icon
   thumbsDownTitle?: string; // Localized string for the thumbsDown icon
-  ThumbsUpQuestion?: MicrofeedbackQuestion; // Optional question to be asked if user selected thumbsUp
-  ThumbsDownQuestion?: MicrofeedbackQuestion; // Optional question to be asked if user selectes thumbsDown
+  ThumbsUpQuestion?: IMicrofeedbackQuestion; // Optional question to be asked if user selected thumbsUp
+  ThumbsDownQuestion?: IMicrofeedbackQuestion; // Optional question to be asked if user selectes thumbsDown
   defaultText?: string;
 }
 
-export class MicrofeedbackQuestion {
-  public question: string; // Question to be asked after a vote
-  public options: string[]; // List of options to be shown as answers
+export interface IMicrofeedbackQuestion {
+  question: string; // Question to be asked after a vote
+  options: string[]; // List of options to be shown as answers
 }
 
 export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {}

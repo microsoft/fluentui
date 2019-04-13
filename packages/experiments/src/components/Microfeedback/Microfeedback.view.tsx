@@ -147,10 +147,10 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
     );
   };
 
-  private _listOptions(option: any): void {
+  private _listOptions(option: number): void {
     this._onCalloutDismiss();
-    if (this.props.sendFeedback) {
-      this.props.sendFeedback(option);
+    if (this.props.sendFollowupIndex) {
+      this.props.sendFollowupIndex(option);
     }
   }
 
