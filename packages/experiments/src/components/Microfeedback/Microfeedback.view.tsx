@@ -7,9 +7,10 @@ import { IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 
 import { IMicrofeedbackComponent, IMicrofeedbackProps } from './Microfeedback.types';
-import { getTheme, mergeStyleSets, FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IMicrofeedbackState } from './Microfeedback.state';
 
 import { initializeIcons } from '@uifabric/icons';
@@ -36,25 +37,6 @@ const microfeedbackItemStyles: IButtonStyles = {
     }
   ]
 };
-
-const styles = mergeStyleSets({
-  title: [
-    theme.fonts.medium,
-    {
-      margin: 8,
-      color: theme.palette.neutralPrimary,
-      fontWeight: FontWeights.semibold
-    }
-  ],
-  body: [
-    theme.fonts.small,
-    {
-      margin: 6,
-      color: theme.palette.neutralPrimary,
-      fontWeight: FontWeights.regular
-    }
-  ]
-});
 
 class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
   // ref's will be linked to each of the icons for callout placement
@@ -101,7 +83,9 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
           >
             <div>
               <FocusZone direction={FocusZoneDirection.vertical}>
-                <p className={styles.title}>{this.props.ThumbsUpQuestion.question}</p>
+                <Stack padding={10}>
+                  <Text variant="small">{this.props.ThumbsUpQuestion.question}</Text>
+                </Stack>
                 <List items={this.props.ThumbsUpQuestion.options} onRenderCell={this._onRenderCalloutItem} />
               </FocusZone>
             </div>
@@ -117,7 +101,9 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
             onDismiss={onCalloutDismiss}
           >
             <FocusZone direction={FocusZoneDirection.vertical}>
-              <p className={styles.title}>{this.props.ThumbsDownQuestion.question}</p>
+              <Stack padding={10}>
+                <Text variant="small">{this.props.ThumbsDownQuestion.question}</Text>
+              </Stack>
               <List items={this.props.ThumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
             </FocusZone>
           </Callout>
@@ -132,12 +118,9 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
 
   private _onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
     return (
-      <DefaultButton
-        data-is-focusable={true}
-        styles={microfeedbackItemStyles}
-        text={`${item}`}
-        onClick={this._listOptions.bind(this, index)}
-      />
+      <DefaultButton data-is-focusable={true} styles={microfeedbackItemStyles} onClick={this._listOptions.bind(this, index)}>
+        <Text variant="small">{`${item}`}</Text>
+      </DefaultButton>
     );
   };
 
