@@ -14,13 +14,15 @@ export interface IMicrofeedback {}
 
 export interface IMicrofeedbackSlots {}
 
+export type VoteType = 'dislike' | 'no_vote' | 'like';
+
 // Extending IStyleableComponentProps will automatically add styleable props for you, such as styles, tokens and theme.
 // If you don't want these props to be included in your component, just remove this extension.
 export interface IMicrofeedbackProps
   extends IMicrofeedbackSlots,
     IStyleableComponentProps<IMicrofeedbackViewProps, IMicrofeedbackTokens, IMicrofeedbackStyles>,
     IBaseProps<IMicrofeedback> {
-  sendFeedback?: (vote: number) => void; // Callback for sending feedback to a backend
+  sendFeedback?: (vote: VoteType) => void; // Callback for sending feedback to a backend
   sendFollowupIndex?: (index: number) => void; // Callback for sending followup index to a backend
   thumbsUpTitle?: string; // Localized string for the thumbsUp icon
   thumbsDownTitle?: string; // Localized string for the thumbsDown icon

@@ -1,8 +1,8 @@
-import { IMicrofeedbackProps, IMicrofeedbackViewProps } from './Microfeedback.types';
+import { IMicrofeedbackProps, IMicrofeedbackViewProps, VoteType } from './Microfeedback.types';
 import { BaseState } from '../../utilities/BaseState';
 
 export interface IMicrofeedbackState extends IMicrofeedbackViewProps {
-  vote: number; // -1, 0, 1 based on dislike, no vote, like
+  vote: VoteType;
   isFollowupVisible: boolean;
 }
 
@@ -11,7 +11,7 @@ export class MicrofeedbackState extends BaseState<IMicrofeedbackProps, IMicrofee
     super(props, {});
 
     this.state = {
-      vote: 0, // -1, 0, 1 based on dislike, no vote, like
+      vote: 'no_vote',
       isFollowupVisible: false
     };
   }

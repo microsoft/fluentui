@@ -9,8 +9,7 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 
-import { IMicrofeedbackComponent, IMicrofeedbackProps } from './Microfeedback.types';
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
+import { IMicrofeedbackComponent, IMicrofeedbackProps, VoteType } from './Microfeedback.types';
 import { IMicrofeedbackState } from './Microfeedback.state';
 
 import { initializeIcons } from '@uifabric/icons';
@@ -44,26 +43,30 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
 
     this.state = {
       // initial state of icons is neutral and followup is not visible
-      vote: 0,
+      vote: 'no_vote',
       isFollowupVisible: false
     };
   }
 
   public render() {
-    const likeIcon = this.state.vote > 0 ? 'LikeSolid' : 'Like';
-    const dislikeIcon = this.state.vote < 0 ? 'DislikeSolid' : 'Dislike';
-    const hideThumbsDownCallout = this.state.vote !== -1 || !this.state.isFollowupVisible;
-    const hideThumbsUpCallout = this.state.vote !== 1 || !this.state.isFollowupVisible;
+    const likeIcon = this.state.vote === 'like' ? 'LikeSolid' : 'Like';
+    const dislikeIcon = this.state.vote === 'dislike' ? 'DislikeSolid' : 'Dislike';
+    const hideThumbsDownCallout = this.state.vote !== 'dislike' || !this.state.isFollowupVisible;
+    const hideThumbsUpCallout = this.state.vote !== 'like' || !this.state.isFollowupVisible;
     const onCalloutDismiss = this._onCalloutDismiss.bind(this);
 
     return (
       <div>
         <Stack horizontal styles={microfeedbackStyles}>
           <div ref={this.likeRef}>
-            <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._vote.bind(this, 1)} />
+            <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._vote.bind(this, 'like')} />
           </div>
           <div ref={this.dislikeRef}>
-            <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._vote.bind(this, -1)} />
+            <IconButton
+              menuIconProps={{ iconName: dislikeIcon }}
+              title={this.props.thumbsDownTitle}
+              onClick={this._vote.bind(this, 'dislike')}
+            />
           </div>
         </Stack>
         {this.props.ThumbsUpQuestion ? (
@@ -125,11 +128,11 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
     }
   }
 
-  private _vote(vote: number): void {
+  private _vote(vote: VoteType): void {
     // If the vote that is already selected is picked, then toggle off
-    const updatedVote: number = this.state.vote === vote ? 0 : vote;
+    const updatedVote: VoteType = this.state.vote === vote ? 'no_vote' : vote;
     this.setState({ isFollowupVisible: true, vote: updatedVote });
-    if (updatedVote !== 0 && this.props.sendFeedback) {
+    if (updatedVote !== 'no_vote' && this.props.sendFeedback) {
       this.props.sendFeedback(vote);
     }
   }
