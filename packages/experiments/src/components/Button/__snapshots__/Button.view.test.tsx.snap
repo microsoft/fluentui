@@ -76,10 +76,10 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-47 {
         color: Highlight;
       }
-      & active .ms-Icon-47 {
+      &:active .ms-Icon-47 {
         color: #212121;
       }
-      @media screen and (-ms-high-contrast: active){& active .ms-Icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-47 {
         color: Highlight;
       }
   onClick={[Function]}
@@ -220,10 +220,10 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
         color: GrayText;
       }
-      & active .ms-Icon-57 {
+      &:active .ms-Icon-57 {
         color: #a6a6a6;
       }
-      @media screen and (-ms-high-contrast: active){& active .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
         color: GrayText;
       }
   disabled={true}
@@ -363,10 +363,10 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-55 {
         color: Window;
       }
-      & active .ms-Icon-55 {
+      &:active .ms-Icon-55 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){& active .ms-Icon-55 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-55 {
         color: Window;
       }
   onClick={[Function]}
