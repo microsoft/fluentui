@@ -24,7 +24,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
           min-height: 32px;
-          position: relative;
           width: 100%;
           word-break: break-word;
         }
@@ -38,6 +37,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
         }
         @media screen and (-ms-high-contrast: active){& {
           background: windowText;
+          color: Window;
         }
   >
     <div
@@ -49,23 +49,6 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
             flex-direction: row;
             line-height: normal;
             width: 100%;
-          }
-          &:before {
-            bottom: 0px;
-            left: 0px;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            pointer-events: none;
-            position: absolute;
-            right: 0px;
-            top: 0px;
-          }
-          @media screen and (-ms-high-contrast: active){&:before {
-            background: WindowText;
-            color: Window;
-            content: "";
           }
     >
       <div
