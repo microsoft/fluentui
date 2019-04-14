@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities/FluentDecorator';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
+import { Nav, INavLink } from '@uifabric/legacy/lib/Nav';
 
 const links: INavLink[] = [
   {
@@ -85,7 +85,7 @@ const disabledLinks: INavLink[] = [
     disabled: true,
     key: 'key4'
   }
-]
+];
 
 storiesOf('Nav', module)
   .addDecorator(FabricDecorator)

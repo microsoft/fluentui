@@ -1,7 +1,9 @@
 import { getTheme, mergeStyleSets, DefaultFontStyles, getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
-export const classNames = mergeStyleSets({
+// TODO any is used because of a strange dependency resolution issue with @uifabric/legacy
+// tslint:disable-next-line: no-any
+export const classNames: any = mergeStyleSets({
   itemCell: [
     getFocusStyle(theme, -1),
     {

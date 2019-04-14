@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from '../../Utilities';
-import { IIconProps } from '../Icon/Icon.types';
-import { IButtonProps } from '../../Button';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject, IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
+import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
+import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
 /**
  * {@docCategory Nav}

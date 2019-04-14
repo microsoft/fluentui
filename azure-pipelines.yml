@@ -46,16 +46,16 @@ steps:
       githubDescription: 'Click "Details" to go to the Deployed Site'
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
-  - script: |
-      cd ./apps/a11y-tests
-      npm run start-generate-reports
-    displayName: generate sarif a11y reports
+  # - script: |
+  #     cd ./apps/a11y-tests
+  #     npm run start-generate-reports
+  #   displayName: generate sarif a11y reports
 
-  - task: PublishBuildArtifacts@1
-    inputs:
-      pathtoPublish: './apps/a11y-tests/dist/reports'
-      artifactName: 'CodeAnalysisLogs'
-    displayName: publish sarif a11y reports
+  # - task: PublishBuildArtifacts@1
+  #   inputs:
+  #     pathtoPublish: './apps/a11y-tests/dist/reports'
+  #     artifactName: 'CodeAnalysisLogs'
+  #   displayName: publish sarif a11y reports
 
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"
@@ -65,9 +65,9 @@ steps:
     env:
       SCREENER_API_KEY: $(screener.key)
 
-  - script: |
-      npm run a11ytest
-    displayName: run a11y tests
+  # - script: |
+  #     npm run a11ytest
+  #   displayName: run a11y tests
 
   - script: |
       npm run check-for-changed-files

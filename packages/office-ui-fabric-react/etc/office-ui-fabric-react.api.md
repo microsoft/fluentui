@@ -5159,115 +5159,6 @@ export interface IModalStyles {
 }
 
 // @public (undocumented)
-export interface INav {
-    selectedKey: string | undefined;
-}
-
-// @public (undocumented)
-export interface INavLink {
-    [propertyName: string]: any;
-    // @deprecated
-    altText?: string;
-    ariaLabel?: string;
-    automationId?: string;
-    disabled?: boolean;
-    // @deprecated
-    engagementName?: string;
-    forceAnchor?: boolean;
-    icon?: string;
-    // @deprecated
-    iconClassName?: string;
-    iconProps?: IIconProps;
-    isExpanded?: boolean;
-    key?: string;
-    links?: INavLink[];
-    name: string;
-    onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    // @deprecated (undocumented)
-    parentId?: string;
-    target?: string;
-    title?: string;
-    url: string;
-}
-
-// @public (undocumented)
-export interface INavLinkGroup {
-    automationId?: string;
-    collapseByDefault?: boolean;
-    links: INavLink[];
-    name?: string;
-    onHeaderClick?: (ev?: React.MouseEvent<HTMLElement>, isCollapsing?: boolean) => void;
-}
-
-// @public (undocumented)
-export interface INavProps {
-    ariaLabel?: string;
-    className?: string;
-    // @deprecated
-    collapsedStateText?: string;
-    componentRef?: IRefObject<INav>;
-    expandButtonAriaLabel?: string;
-    // @deprecated
-    expandedStateText?: string;
-    groups: INavLinkGroup[] | null;
-    initialSelectedKey?: string;
-    isOnTop?: boolean;
-    linkAs?: IComponentAs<IButtonProps>;
-    onLinkClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    onLinkExpandClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    onRenderGroupHeader?: IRenderFunction<INavLinkGroup>;
-    onRenderLink?: IRenderFunction<INavLink>;
-    selectedKey?: string;
-    styles?: IStyleFunctionOrObject<INavStyleProps, INavStyles>;
-    theme?: ITheme;
-}
-
-// @public (undocumented)
-export interface INavState {
-    // (undocumented)
-    isGroupCollapsed?: {
-        [key: string]: boolean;
-    };
-    // (undocumented)
-    isLinkExpandStateChanged?: boolean;
-    // (undocumented)
-    selectedKey?: string;
-}
-
-// @public (undocumented)
-export interface INavStyleProps {
-    className?: string;
-    groups: INavLinkGroup[] | null;
-    isButtonEntry?: boolean;
-    isDisabled?: boolean;
-    isExpanded?: boolean;
-    isGroup?: boolean;
-    isLink?: boolean;
-    isOnTop?: boolean;
-    isSelected?: boolean;
-    leftPadding?: number;
-    leftPaddingExpanded?: number;
-    navHeight?: number;
-    position?: number;
-    rightPadding?: number;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface INavStyles {
-    chevronButton: IStyle;
-    chevronIcon: IStyle;
-    compositeLink: IStyle;
-    group: IStyle;
-    groupContent: IStyle;
-    link: IStyle;
-    linkText: IStyle;
-    navItem: IStyle;
-    navItems: IStyle;
-    root: IStyle;
-}
-
-// @public (undocumented)
 export interface IObjectWithKey {
     // (undocumented)
     key?: string | number;
@@ -6688,9 +6579,6 @@ export interface ISpinnerStyles {
 }
 
 // @public (undocumented)
-export function isRelativeUrl(url: string): boolean;
-
-// @public (undocumented)
 export type IStackComponent = IComponent<IStackProps, IStackTokens, IStackStyles>;
 
 // @public (undocumented)
@@ -7713,22 +7601,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 
 // @public (undocumented)
 export const mru: IExtendedPersonaProps[];
-
-// @public (undocumented)
-export const Nav: React_2.StatelessComponent<INavProps>;
-
-// @public (undocumented)
-export class NavBase extends React.Component<INavProps, INavState> implements INav {
-    constructor(props: INavProps);
-    // (undocumented)
-    componentWillReceiveProps(newProps: INavProps): void;
-    // (undocumented)
-    static defaultProps: INavProps;
-    // (undocumented)
-    render(): JSX.Element | null;
-    // (undocumented)
-    readonly selectedKey: string | undefined;
-}
 
 // @public (undocumented)
 export const NormalPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;

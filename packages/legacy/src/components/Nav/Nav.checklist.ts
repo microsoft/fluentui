@@ -1,4 +1,4 @@
-import { ChecklistStatus } from '../../common/DocPage.types';
+import { ChecklistStatus } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 export const NavStatus = {
   keyboardAccessibilitySupport: ChecklistStatus.unknown,

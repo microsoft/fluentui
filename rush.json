@@ -286,6 +286,11 @@
       "versionPolicyName": "lockedMajor"
     },
     {
+      "packageName": "@uifabric/legacy",
+      "projectFolder": "packages/legacy",
+      "versionPolicyName": "lockedMajor"
+    },
+    {
       "packageName": "@uifabric/foundation",
       "projectFolder": "packages/foundation",
       "versionPolicyName": "lockedMajor"

@@ -44,7 +44,6 @@ export * from './List';
 export * from './MarqueeSelection';
 export * from './MessageBar';
 export * from './Modal';
-export * from './Nav';
 export * from './OverflowSet';
 export * from './Overlay';
 export * from './Panel';
