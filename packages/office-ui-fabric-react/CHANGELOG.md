@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 12 Apr 2019 12:34:16 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Apr 2019 12:33:43 GMT and should not be manually modified.
+
+## 6.166.1
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Patches
+
+- DetailsList: Fix high contrast focus color
+- MessageBar: fixes the transparency of the background issue when rendered on top of themed backgrounds.
+- Adding data parameter to the ComboBoxOptionWrapper. This will allow ShallowCompare to compare against this extra parameter
 
 ## 6.166.0
 Fri, 12 Apr 2019 12:34:16 GMT

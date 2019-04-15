@@ -2,6 +2,28 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/date-time_v6.0.1",
+      "date": "Mon, 15 Apr 2019 12:33:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump to create first major release",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "74343561e50c139afb1aa51f5f952212ad0e9662"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.3` to `^6.46.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.0` to `^6.166.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.5",
       "tag": "@uifabric/date-time_v0.3.5",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",
