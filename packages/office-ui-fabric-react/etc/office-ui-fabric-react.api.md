@@ -3083,6 +3083,12 @@ export interface IDatePickerStyles {
 }
 
 // @public (undocumented)
+export interface IDetailsCheckboxProps {
+    // (undocumented)
+    checked: boolean;
+}
+
+// @public (undocumented)
 export interface IDetailsFooterBaseProps extends IDetailsItemProps {
 }
 
@@ -3129,6 +3135,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onColumnIsSizingChanged?: (column: IColumn, isSizing: boolean) => void;
     onColumnResized?: (column: IColumn, newWidth: number, columnIndex: number) => void;
     onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+    onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
     // Warning: (ae-forgotten-export) The symbol "SelectAllVisibility" needs to be exported by the entry point index.d.ts
     selectAllVisibility?: SelectAllVisibility;
@@ -3163,6 +3170,10 @@ export interface IDetailsList extends IList {
     focusIndex: (index: number, forceIntoFirstElement?: boolean, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode) => void;
     forceUpdate: () => void;
     getStartItemIndexInView: () => number;
+}
+
+// @public (undocumented)
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithViewportProps" needs to be exported by the entry point index.d.ts
@@ -3209,6 +3220,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     onDidUpdate?: (detailsList?: DetailsListBase) => void;
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
     onItemInvoked?: (item?: any, index?: number, ev?: Event) => void;
+    onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
     onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
     onRenderDetailsHeader?: IRenderFunction<IDetailsHeaderProps>;
     onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
@@ -3301,6 +3313,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     itemIndex: number;
     onDidMount?: (row?: DetailsRowBase) => void;
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
+    onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
     // Warning: (ae-forgotten-export) The symbol "IDetailsRowFieldsProps" needs to be exported by the entry point index.d.ts
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
@@ -3321,6 +3334,7 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
     // @deprecated
     isSelected?: boolean;
     isVisible?: boolean;
+    onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     selected?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>;
     theme?: ITheme;
@@ -9063,7 +9077,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 // 
-// lib/components/DetailsList/DetailsList.types.d.ts:110:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
+// lib/components/DetailsList/DetailsList.types.d.ts:111:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
