@@ -11,6 +11,7 @@ import { IDetailsColumnProps } from 'office-ui-fabric-react/lib/components/Detai
 import { IDetailsHeaderProps, DetailsHeader } from './DetailsHeader';
 import { EventGroup, IRenderFunction } from '../../Utilities';
 import { IDragDropEvents } from './../../utilities/dragdrop/index';
+import { SelectionMode, Selection } from '../../utilities/selection/index';
 
 // Populate mock data for testing
 function mockData(count: number, isColumn: boolean = false, customDivider: boolean = false): any {
@@ -448,5 +449,30 @@ describe('DetailsList', () => {
     );
 
     expect(onRenderColumnHeaderTooltipMock).toHaveBeenCalledTimes(NUM_COLUMNS);
+  });
+
+  it('invokes optional onRenderCheckbox callback to customize checkbox rendering when provided', () => {
+    const onRenderCheckboxMock = jest.fn();
+    const selection = new Selection();
+    mount(
+      <DetailsList
+        items={mockData(2)}
+        skipViewportMeasures={true}
+        // tslint:disable-next-line:jsx-no-lambda
+        onShouldVirtualize={() => false}
+        onRenderCheckbox={onRenderCheckboxMock}
+        checkboxVisibility={CheckboxVisibility.always}
+        selectionMode={SelectionMode.multiple}
+        selection={selection}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(3);
+    expect(onRenderCheckboxMock.mock.calls[2][0]).toEqual({ checked: false });
+
+    selection.setAllSelected(true);
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(6);
+    expect(onRenderCheckboxMock.mock.calls[5][0]).toEqual({ checked: true });
   });
 });
