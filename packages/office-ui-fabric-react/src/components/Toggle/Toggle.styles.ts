@@ -73,7 +73,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
 
     pill: [
       'ms-Toggle-background',
-      getFocusStyle(theme, -3),
+      getFocusStyle(theme, { inset: -3 }),
       {
         fontSize: '20px',
         boxSizing: 'border-box',

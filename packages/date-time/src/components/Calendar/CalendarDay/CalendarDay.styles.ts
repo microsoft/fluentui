@@ -43,7 +43,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: '100%'
     },
     monthAndYear: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         alignItems: 'center',
         fontSize: FontSizes.medium,
@@ -85,7 +85,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       alignSelf: 'flex-end'
     },
     headerIconButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         width: 28,
         height: 28,
@@ -160,7 +160,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       fontWeight: FontWeights.regular
     },
     dayButton: [
-      getFocusStyle(theme, -2, 'relative'),
+      getFocusStyle(theme, { inset: -2 }),
       {
         width: 24,
         height: 24,

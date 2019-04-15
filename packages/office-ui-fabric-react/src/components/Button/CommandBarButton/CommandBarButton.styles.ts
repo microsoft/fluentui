@@ -21,7 +21,7 @@ export const getStyles = memoizeFunction(
 
     const commandButtonStyles: IButtonStyles = {
       root: [
-        getFocusStyle(theme, 2, 'relative', commandButtonHighContrastFocus, 'transparent'),
+        getFocusStyle(theme, { inset: 2, highContrastStyle: commandButtonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
           minWidth: '40px',

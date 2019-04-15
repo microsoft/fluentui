@@ -39,7 +39,7 @@ export const getStyles = memoizeFunction(
 
     return {
       root: [
-        getFocusStyle(theme, 1, 'relative', buttonHighContrastFocus, 'transparent'),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
           boxSizing: 'border-box',
@@ -65,7 +65,7 @@ export const getStyles = memoizeFunction(
       ],
 
       rootDisabled: [
-        getFocusStyle(theme, 1, 'relative', buttonHighContrastFocus, 'transparent'),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         {
           backgroundColor: disabledBackground,
           borderColor: disabledBackground,

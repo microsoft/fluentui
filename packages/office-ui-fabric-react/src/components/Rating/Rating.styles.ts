@@ -103,7 +103,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
       _getColorWithHighContrast(ratingStarCheckedColor, 'Highlight')
     ],
     ratingButton: [
-      getFocusStyle(theme, 0),
+      getFocusStyle(theme),
       classNames.ratingButton,
       {
         backgroundColor: 'transparent',
