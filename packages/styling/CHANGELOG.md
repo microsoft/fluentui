@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Apr 2019 12:33:42 GMT and should not be manually modified.
+
+## 6.46.0
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Minor changes
+
+- Export ICSPSettings from MergeStyles.ts
 
 ## 6.45.3
 Thu, 11 Apr 2019 12:37:10 GMT

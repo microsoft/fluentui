@@ -19,6 +19,9 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
     colorHovered: palette.neutralDark,
     colorPressed: 'inherit',
     contentPadding: 20,
+    iconColor: palette.neutralSecondary,
+    iconColorHovered: palette.neutralDark,
+    iconColorPressed: 'inherit',
     minHeight: 72
   };
 };
@@ -29,7 +32,10 @@ const primaryTokens: IButtonComponent['tokens'] = (props, theme) => {
   return {
     color: semanticColors.primaryButtonText,
     colorHovered: semanticColors.primaryButtonTextHovered,
-    colorPressed: semanticColors.primaryButtonTextPressed
+    colorPressed: semanticColors.primaryButtonTextPressed,
+    iconColor: semanticColors.primaryButtonText,
+    iconColorHovered: semanticColors.primaryButtonTextHovered,
+    iconColorPressed: semanticColors.primaryButtonTextPressed
   };
 };
 
@@ -39,7 +45,10 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme) => {
   return {
     color: semanticColors.buttonTextDisabled,
     colorHovered: semanticColors.buttonTextDisabled,
-    colorPressed: semanticColors.buttonTextDisabled
+    colorPressed: semanticColors.buttonTextDisabled,
+    iconColor: semanticColors.buttonTextDisabled,
+    iconColorHovered: semanticColors.buttonTextDisabled,
+    iconColorPressed: semanticColors.buttonTextDisabled
   };
 };
 

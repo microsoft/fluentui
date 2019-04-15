@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.17.0",
+      "tag": "@uifabric/merge-styles_v6.17.0",
+      "date": "Mon, 15 Apr 2019 12:33:42 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Inject nonce to style tag if specified in csp settings in FabricConfig.",
+            "author": "apneer <sasha050909@gmail.com>",
+            "commit": "2dde466c2c3ec7975e3aa75969600ef535121ecb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.5",
       "tag": "@uifabric/merge-styles_v6.16.5",
       "date": "Thu, 11 Apr 2019 12:37:10 GMT",

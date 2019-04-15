@@ -228,7 +228,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          [`active .${globalClassNames.icon}`]: {
+          [`:active .${globalClassNames.icon}`]: {
             color: tokens.iconColorPressed,
 
             selectors: {
