@@ -1,6 +1,6 @@
 import { getSarifReport } from '../getSarifReport';
-import { SarifLog } from 'src/axe-sarif-converter/sarif/sarifLog';
-import { Result } from 'src/axe-sarif-converter/sarif/sarifv2';
+import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log';
+import { Result } from 'axe-sarif-converter/dist/sarif/sarif-2.0.0';
 
 // Extract interesting info to reduce snapshot size
 function dehydrateSarifReport(report: SarifLog): Result[] {

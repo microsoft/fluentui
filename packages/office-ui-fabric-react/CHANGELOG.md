@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 08 Apr 2019 12:37:15 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+
+## 6.165.1
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
+- css-in-js conversions for DocumentCard, ExtendedPeoplePicker, FloatingPeoplePicker, SelectedPeopleList
+
+## 6.165.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Panel: add onOpen and onOpened properties
+
+### Patches
+
+- ComboBox: call onPendingValuedChanged with an empty value string when the user clears the input
+
+## 6.164.8
+Tue, 09 Apr 2019 12:35:21 GMT
+
+### Patches
+
+- Panel: set forceFocusInsideTrap to false for non-blocking Panels
+- Spinner: only render an aria-live polite message when ariaLabel is provided.
 
 ## 6.164.7
 Mon, 08 Apr 2019 12:37:15 GMT

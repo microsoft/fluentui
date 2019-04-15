@@ -4,6 +4,9 @@ import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The target that the Callout should try to position itself based on.
@@ -220,6 +223,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
 }
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutContentStyleProps {
   /**
    * Theme to apply to the calloutContent.
@@ -263,6 +269,9 @@ export interface ICalloutContentStyleProps {
   calloutMaxWidth?: number;
 }
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutContentStyles {
   /**
    * Style for wrapper of Callout component.

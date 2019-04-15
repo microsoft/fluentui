@@ -2,37 +2,49 @@ import { transform } from '../codepenTransform';
 import * as fs from 'fs';
 import * as path from 'path';
 
-describe('exampleData', () => {
-  it('contains all expected interfaces', () => {
-    // This test is protection against interfaces/functions being split out from
-    // office-ui-fabric-react/src/utilities/exampleData.ts without the loader also being updated.
-    const filename = path.resolve(__dirname, '../../lib/exampleData.ts');
-    const exampleData = fs.readFileSync(filename).toString();
-    expect(exampleData).toContain('export interface IExampleItem');
-    expect(exampleData).toContain('export function createListItems');
-    expect(exampleData).toContain('export function createGroups');
-    expect(exampleData).toContain('export function lorem');
-    expect(exampleData).toContain('export function isGroupable');
-  });
-});
-
 describe('codepen transform', () => {
-  function testFile(file: string): void {
+  function transformFile(file: string): string {
     const filename = path.resolve(__dirname, './examples/' + file);
     const fileContents = fs.readFileSync(filename).toString();
-    const transformResult = transform(fileContents);
-    expect(transformResult).toMatchSnapshot();
+    return transform(fileContents);
   }
 
   it('handles examples with function components', () => {
-    testFile('function.txt');
+    const result = transformFile('function.txt');
+    expect(result).toMatchSnapshot();
   });
 
   it('handles examples with class components', () => {
-    testFile('class.txt');
+    const result = transformFile('class.txt');
+    expect(result).toMatchSnapshot();
   });
 
   it('handles examples importing exampleData', () => {
-    testFile('exampleData.txt');
+    // Don't do a snapshot test on this file to avoid being sensitive to inconsequential changes.
+    // Instead, just check for the main expected interface/functions.
+    const result = transformFile('exampleData.txt');
+    expect(result).toMatch(/^interface IExampleItem/m);
+    expect(result).toMatch(/^function createListItems/m);
+    expect(result).toMatch(/^function createGroups/m);
+    expect(result).toMatch(/^function lorem/m);
+    expect(result).toMatch(/^function isGroupable/m);
+  });
+
+  it('handles examples importing TestImages', () => {
+    let result = transformFile('testImages.txt');
+    result = shortenTestImages(result);
+    expect(result).toMatchSnapshot();
+  });
+
+  it('handles examples importing PeopleExampleData', () => {
+    let result = transformFile('people.txt');
+    // Shorten the output and make it less sensitive to (likely inconsequential) data changes
+    result = result.replace(/^(const people.*? = \[)$[\s\S]*?^(\];)$/m, '$1$2');
+    result = shortenTestImages(result);
+    expect(result).toMatchSnapshot();
   });
 });
+
+function shortenTestImages(result: string): string {
+  return result.replace(/^(const TestImages = \{)$[\s\S]*?^(\};)$/m, '$1$2');
+}

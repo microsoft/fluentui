@@ -2683,7 +2683,7 @@ export interface ICommandBarData {
     primaryItems: ICommandBarItemProps[];
 }
 
-// @public (undocumented)
+// @public
 export interface ICommandBarItemProps extends IContextualMenuItem {
     buttonStyles?: IButtonStyles;
     cacheKey?: string;
@@ -5434,6 +5434,8 @@ export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     onDismiss?: (ev?: React.SyntheticEvent<HTMLElement>) => void;
     onDismissed?: () => void;
     onLightDismissClick?: () => void;
+    onOpen?: () => void;
+    onOpened?: () => void;
     onOuterClick?: () => void;
     onRenderBody?: IRenderFunction<IPanelProps>;
     onRenderFooter?: IRenderFunction<IPanelProps>;
@@ -5751,7 +5753,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
     linkFormat?: PivotLinkFormat;
     linkSize?: PivotLinkSize;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
-    selectedKey?: string;
+    selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
     theme?: ITheme;
 }
@@ -7259,7 +7261,7 @@ export interface ITextFieldSubComponentStyles {
     label: IStyleFunctionOrObject<any, any>;
 }
 
-// @public (undocumented)
+// @public
 export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     block?: boolean;
@@ -9068,6 +9070,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 }
 
 
+
 export * from "@uifabric/foundation";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
@@ -9075,7 +9078,7 @@ export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
 // 
-// lib/components/DetailsList/DetailsList.types.d.ts:105:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
+// lib/components/DetailsList/DetailsList.types.d.ts:110:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

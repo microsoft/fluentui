@@ -35,6 +35,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       role="button"
       onClick={_onClick}
       {...buttonProps}
+      disabled={disabled}
       aria-disabled={disabled}
       aria-label={ariaLabel}
     >

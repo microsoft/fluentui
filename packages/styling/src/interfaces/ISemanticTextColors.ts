@@ -1,3 +1,6 @@
+/**
+ * {@docCategory ISemanticTextColors}
+ */
 export interface ISemanticTextColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
 
