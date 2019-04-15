@@ -2,7 +2,6 @@ import * as path from 'path';
 import { generateJson, PageKind } from './PageJsonGenerator';
 
 // Generate JSON for office-ui-fabric-react, styling, utilities, and merge-styles
-// TODO: this could potentially pull from the index.ts file or list of page files in fabric-website-resources/src/components/pages
 
 generateJson([
   {

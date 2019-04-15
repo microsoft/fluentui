@@ -4,6 +4,7 @@ import { ActionButton } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { PropertiesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './PropertiesTable';
 import { IPropertiesTableSetProps, IEnumTableRowJson, ITableRowJson } from './PropertiesTableSet.types';
 
@@ -88,8 +89,9 @@ export class PropertiesTableSet extends React.Component<IPropertiesTableSetProps
   }
 
   public render(): JSX.Element {
+    const { className } = this.props;
     return (
-      <Stack gap={LARGE_GAP_SIZE} className={propertiesTableTopMargin}>
+      <Stack gap={LARGE_GAP_SIZE} className={css(propertiesTableTopMargin, className)}>
         {this.renderFirst()}
         {this.renderEach()}
       </Stack>

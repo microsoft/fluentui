@@ -962,7 +962,6 @@ export const AppState: IAppState = {
           url: '#/components/references',
           className: 'componentsPage',
           isCategory: true,
-          // pull these pages from pages/References/
           pages: loadReferences()
         }
       ]

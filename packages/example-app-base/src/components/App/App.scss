@@ -1,5 +1,4 @@
 @import '../../common/common';
-@import '../../styles/mixins';
 
 :global {
   body {
@@ -36,7 +35,6 @@
   }
 
   .ms-App-content {
-    @include contentPadding();
     position: absolute;
     @include ms-left(300px);
     @include ms-right(0);

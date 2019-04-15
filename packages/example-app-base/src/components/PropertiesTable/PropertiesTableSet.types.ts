@@ -1,4 +1,4 @@
-export interface IPropertiesTableSetProps {
+export interface IPropertiesTableSetProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Component name. Assumes component resides in `components/[name]` folder
    * and properties are at `components/[name]/[name].types.ts`.
