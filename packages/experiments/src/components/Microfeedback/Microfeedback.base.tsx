@@ -27,6 +27,7 @@ const microfeedbackStyles: IStackStyles = {
 const microfeedbackItemStyles: IButtonStyles = {
   root: [
     {
+      border: '0px',
       width: '100%'
     }
   ]
