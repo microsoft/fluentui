@@ -119,6 +119,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/staticlist'
         },
         {
+          component: require<any>('../components/ObserverList/ObserverListPage').ObserverListPage,
+          key: 'ObserverList',
+          name: 'ObserverList',
+          url: '#/examples/observerlist'
+        },
+        {
           component: require<any>('../components/fluent/examplePages/FluentThemePage').FluentThemePage,
           key: 'FluentColorTheme',
           name: 'Fluent Color Theme',
