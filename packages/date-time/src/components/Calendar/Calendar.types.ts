@@ -237,7 +237,7 @@ export interface ICalendarStrings {
   closeButtonAriaLabel?: string;
 
   /**
-   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number 0"
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number `{0}`"
    */
   weekNumberFormatString?: string;
 }
