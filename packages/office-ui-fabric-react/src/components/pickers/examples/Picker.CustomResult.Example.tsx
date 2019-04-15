@@ -20,7 +20,6 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 // Helper imports to generate data for this particular examples. Not exported by any package.
 import { TestImages } from '../../../common/TestImages';
 
-import './Picker.CustomResult.Example.scss';
 import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
 const exampleStyles: any = exampleStylesImport;
 
@@ -262,10 +261,6 @@ const data: IFullDocumentCardProps[] = [
     }
   }
 ];
-
-export const SuggestedDocumentItem: (documentProps: IFullDocumentCardProps) => JSX.Element = (documentProps: IFullDocumentCardProps) => {
-  return <div> {documentProps.documentTitleProps && documentProps.documentTitleProps.title} </div>;
-};
 
 export const SuggestedBigItem: (documentProps: IFullDocumentCardProps, itemProps: ISuggestionItemProps<any>) => JSX.Element = (
   documentProps: IFullDocumentCardProps,

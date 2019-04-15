@@ -148,7 +148,8 @@ export const getItemClassNames = memoizeFunction(
         styles.root,
         {
           flexBasis: '0',
-          padding: '0 8px'
+          padding: '0 8px',
+          minWidth: 28
         },
         expanded && ['is-expanded', styles.rootExpanded],
         disabled && ['is-disabled', styles.rootDisabled],
@@ -187,6 +188,9 @@ export const getItemClassNames = memoizeFunction(
       secondaryText: [classNames.secondaryText, styles.secondaryText],
       splitContainer: [
         styles.splitButtonFlexContainer,
+        {
+          alignItems: 'flex-start'
+        },
         !disabled &&
           !checked && [
             {

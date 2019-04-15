@@ -16,6 +16,7 @@ export const getStyles = (props: IDialogStyleProps): IDialogStyles => {
     main: [
       {
         width: dialogDefaultMinWidth,
+        outline: '3px solid transparent',
 
         selectors: {
           [`@media (min-width: ${ScreenWidthMinMedium}px)`]: {

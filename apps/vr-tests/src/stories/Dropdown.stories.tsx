@@ -1,9 +1,15 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { Dropdown, DropdownMenuItemType, IDropdownProps, Icon, IDropdownOption } from 'office-ui-fabric-react';
+import {
+  Dropdown,
+  DropdownMenuItemType,
+  IDropdownProps,
+  Icon,
+  IDropdownOption
+} from 'office-ui-fabric-react';
 
 storiesOf('Dropdown', module)
   .addDecorator(FabricDecorator)
@@ -102,7 +108,7 @@ storiesOf('Dropdown', module)
         label="Custom example:"
         id="Customdrop1"
         ariaLabel="Custom dropdown example"
-        onRenderPlaceHolder={(props: IDropdownProps): JSX.Element => {
+        onRenderPlaceholder={(props: IDropdownProps): JSX.Element => {
           return (
             <div className="dropdownExample-placeholder">
               <Icon style={{ marginRight: '8px' }} iconName={'MessageFill'} aria-hidden="true" />
@@ -114,9 +120,14 @@ storiesOf('Dropdown', module)
           const option = options[0];
 
           return (
-            <div className="dropdownExample-option">
+            <div>
               {option.data && option.data.icon && (
-                <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+                <Icon
+                  style={{ marginRight: '8px' }}
+                  iconName={option.data.icon}
+                  aria-hidden="true"
+                  title={option.data.icon}
+                />
               )}
               <span>{option.text}</span>
             </div>
@@ -124,9 +135,14 @@ storiesOf('Dropdown', module)
         }}
         onRenderOption={(option: IDropdownOption): JSX.Element => {
           return (
-            <div className="dropdownExample-option">
+            <div>
               {option.data && option.data.icon && (
-                <Icon style={{ marginRight: '8px' }} iconName={option.data.icon} aria-hidden="true" title={option.data.icon} />
+                <Icon
+                  style={{ marginRight: '8px' }}
+                  iconName={option.data.icon}
+                  aria-hidden="true"
+                  title={option.data.icon}
+                />
               )}
               <span>{option.text}</span>
             </div>

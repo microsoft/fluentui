@@ -1,6 +1,92 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Thu, 25 Oct 2018 12:30:06 GMT and should not be manually modified.
+This log was last generated on Fri, 12 Apr 2019 12:34:16 GMT and should not be manually modified.
+
+## 6.14.2
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Patches
+
+- Fixed: make demo-app also deploy in demo site like experiments
+- ThemeGeneratorPage: fix it so it looks right
+
+## 6.14.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.14.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- add Separator page
+
+## 6.13.2
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- DemoPage: pass all extra props to ComponentPage
+
+## 6.13.1
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Improve imports of color utilities
+
+## 6.13.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages
+- Export all theme variables in one file
+
+## 6.12.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.11.1
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Remove IColorPickerProps.onColorChanged usage
+
+## 6.11.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackPage to AppDefinition.tsx.
+
+## 6.10.1
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Switch PivotItems to use headerText not linkText
+
+## 6.10.0
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Minor changes
+
+- config: add _themeVariables.scss and _legacyThemePalette.scss to pre-copy
+
+## 6.9.9
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- Added azure themes to demo page
 
 ## 6.9.8
 Thu, 25 Oct 2018 12:30:05 GMT

@@ -1,38 +1,53 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import './DetailsListExample.scss';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
-let _items: IDocument[] = [];
-
-const fileIcons: { name: string }[] = [
-  { name: 'accdb' },
-  { name: 'csv' },
-  { name: 'docx' },
-  { name: 'dotx' },
-  { name: 'mpp' },
-  { name: 'mpt' },
-  { name: 'odp' },
-  { name: 'ods' },
-  { name: 'odt' },
-  { name: 'one' },
-  { name: 'onepkg' },
-  { name: 'onetoc' },
-  { name: 'potx' },
-  { name: 'ppsx' },
-  { name: 'pptx' },
-  { name: 'pub' },
-  { name: 'vsdx' },
-  { name: 'vssx' },
-  { name: 'vstx' },
-  { name: 'xls' },
-  { name: 'xlsx' },
-  { name: 'xltx' },
-  { name: 'xsn' }
-];
+const classNames = mergeStyleSets({
+  fileIconHeaderIcon: {
+    padding: 0,
+    fontSize: '16px'
+  },
+  fileIconCell: {
+    textAlign: 'center',
+    selectors: {
+      '&:before': {
+        content: '.',
+        display: 'inline-block',
+        verticalAlign: 'middle',
+        height: '100%',
+        width: '0px',
+        visibility: 'hidden'
+      }
+    }
+  },
+  fileIconImg: {
+    verticalAlign: 'middle',
+    maxHeight: '16px',
+    maxWidth: '16px'
+  },
+  controlWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
+  exampleToggle: {
+    display: 'inline-block',
+    marginBottom: '10px',
+    marginRight: '30px'
+  },
+  selectionDetails: {
+    marginBottom: '20px'
+  }
+});
+const controlStyles = {
+  root: {
+    margin: '0 30px 20px 0',
+    maxWidth: '300px'
+  }
+};
 
 export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
@@ -43,7 +58,6 @@ export interface IDetailsListDocumentsExampleState {
 }
 
 export interface IDocument {
-  [key: string]: any;
   name: string;
   value: string;
   iconName: string;
@@ -55,47 +69,21 @@ export interface IDocument {
   fileSizeRaw: number;
 }
 
-export class DetailsListDocumentsExample extends React.Component<any, IDetailsListDocumentsExampleState> {
+export class DetailsListDocumentsExample extends React.Component<{}, IDetailsListDocumentsExampleState> {
   private _selection: Selection;
+  private _allItems: IDocument[];
 
-  constructor(props: any) {
+  constructor(props: {}) {
     super(props);
 
-    //  Populate with items for demos.
-    if (_items.length === 0) {
-      for (let i = 0; i < 500; i++) {
-        const randomDate = this._randomDate(new Date(2012, 0, 1), new Date());
-        const randomFileSize = this._randomFileSize();
-        const randomFileType = this._randomFileIcon();
-        let fileName: string = lorem(2).replace(/\W/g, '');
-        let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
-        fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
-        userName = userName
-          .split(' ')
-          .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
-          .join(' ');
-        _items.push({
-          name: fileName,
-          value: fileName,
-          iconName: randomFileType.url,
-          fileType: randomFileType.docType,
-          modifiedBy: userName,
-          dateModified: randomDate.dateFormatted,
-          dateModifiedValue: randomDate.value,
-          fileSize: randomFileSize.value,
-          fileSizeRaw: randomFileSize.rawSize
-        });
-      }
-      _items = this._sortItems(_items, 'name');
-    }
+    this._allItems = _generateDocuments();
 
-    const _columns: IColumn[] = [
+    const columns: IColumn[] = [
       {
         key: 'column1',
         name: 'File Type',
-        headerClassName: 'DetailsListExample-header--FileIcon',
-        className: 'DetailsListExample-cell--FileIcon',
-        iconClassName: 'DetailsListExample-Header-FileTypeIcon',
+        className: classNames.fileIconCell,
+        iconClassName: classNames.fileIconHeaderIcon,
         ariaLabel: 'Column operations for File type, Press to sort on File type',
         iconName: 'Page',
         isIconOnly: true,
@@ -104,7 +92,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         maxWidth: 16,
         onColumnClick: this._onColumnClick,
         onRender: (item: IDocument) => {
-          return <img src={item.iconName} className={'DetailsListExample-documentIconImage'} alt={item.fileType + ' file icon'} />;
+          return <img src={item.iconName} className={classNames.fileIconImg} alt={item.fileType + ' file icon'} />;
         }
       },
       {
@@ -177,8 +165,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     });
 
     this.state = {
-      items: _items,
-      columns: _columns,
+      items: this._allItems,
+      columns: columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
       isCompactMode: false
@@ -189,23 +177,27 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
     const { columns, isCompactMode, items, selectionDetails, isModalSelection } = this.state;
 
     return (
-      <div>
-        <Toggle
-          label="Enable Compact Mode"
-          checked={isCompactMode}
-          onChange={this._onChangeCompactMode}
-          onText="Compact"
-          offText="Normal"
-        />
-        <Toggle
-          label="Enable Modal Selection"
-          checked={isModalSelection}
-          onChange={this._onChangeModalSelection}
-          onText="Modal"
-          offText="Normal"
-        />
-        <div>{selectionDetails}</div>
-        <TextField label="Filter by name:" onChange={this._onChangeText} />
+      <Fabric>
+        <div className={classNames.controlWrapper}>
+          <Toggle
+            label="Enable compact mode"
+            checked={isCompactMode}
+            onChange={this._onChangeCompactMode}
+            onText="Compact"
+            offText="Normal"
+            styles={controlStyles}
+          />
+          <Toggle
+            label="Enable modal selection"
+            checked={isModalSelection}
+            onChange={this._onChangeModalSelection}
+            onText="Modal"
+            offText="Normal"
+            styles={controlStyles}
+          />
+          <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
+        </div>
+        <div className={classNames.selectionDetails}>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -223,15 +215,13 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
-      </div>
+      </Fabric>
     );
   }
 
   public componentDidUpdate(previousProps: any, previousState: IDetailsListDocumentsExampleState) {
-    if (previousState.isModalSelection !== this.state.isModalSelection) {
-      if (!this.state.isModalSelection) {
-        this._selection.setAllSelected(false);
-      }
+    if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
+      this._selection.setAllSelected(false);
     }
   }
 
@@ -244,36 +234,13 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
   };
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+    this.setState({
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems
+    });
   };
 
   private _onItemInvoked(item: any): void {
     alert(`Item invoked: ${item.name}`);
-  }
-
-  private _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
-    const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-    const dateData = {
-      value: date.valueOf(),
-      dateFormatted: date.toLocaleDateString()
-    };
-    return dateData;
-  }
-
-  private _randomFileIcon(): { docType: string; url: string } {
-    const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
-    return {
-      docType,
-      url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
-    };
-  }
-
-  private _randomFileSize(): { value: string; rawSize: number } {
-    const fileSize: number = Math.floor(Math.random() * 100) + 30;
-    return {
-      value: `${fileSize} KB`,
-      rawSize: fileSize
-    };
   }
 
   private _getSelectionDetails(): string {
@@ -283,7 +250,7 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
       case 0:
         return 'No items selected';
       case 1:
-        return '1 item selected: ' + (this._selection.getSelection()[0] as any).name;
+        return '1 item selected: ' + (this._selection.getSelection()[0] as IDocument).name;
       default:
         return `${selectionCount} items selected`;
     }
@@ -291,11 +258,8 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
 
   private _onColumnClick = (ev: React.MouseEvent<HTMLElement>, column: IColumn): void => {
     const { columns, items } = this.state;
-    let newItems: IDocument[] = items.slice();
     const newColumns: IColumn[] = columns.slice();
-    const currColumn: IColumn = newColumns.filter((currCol: IColumn, idx: number) => {
-      return column.key === currCol.key;
-    })[0];
+    const currColumn: IColumn = newColumns.filter(currCol => column.key === currCol.key)[0];
     newColumns.forEach((newCol: IColumn) => {
       if (newCol === currColumn) {
         currColumn.isSortedDescending = !currColumn.isSortedDescending;
@@ -305,34 +269,98 @@ export class DetailsListDocumentsExample extends React.Component<any, IDetailsLi
         newCol.isSortedDescending = true;
       }
     });
-    newItems = this._sortItems(newItems, currColumn.fieldName || '', currColumn.isSortedDescending);
+    const newItems = _copyAndSort(items, currColumn.fieldName!, currColumn.isSortedDescending);
     this.setState({
       columns: newColumns,
       items: newItems
     });
   };
+}
 
-  private _sortItems = (items: IDocument[], sortBy: string, descending = false): IDocument[] => {
-    if (descending) {
-      return items.sort((a: IDocument, b: IDocument) => {
-        if (a[sortBy] < b[sortBy]) {
-          return 1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return -1;
-        }
-        return 0;
-      });
-    } else {
-      return items.sort((a: IDocument, b: IDocument) => {
-        if (a[sortBy] < b[sortBy]) {
-          return -1;
-        }
-        if (a[sortBy] > b[sortBy]) {
-          return 1;
-        }
-        return 0;
-      });
-    }
+function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {
+  const key = columnKey as keyof T;
+  return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
+}
+
+function _generateDocuments() {
+  const items: IDocument[] = [];
+  for (let i = 0; i < 500; i++) {
+    const randomDate = _randomDate(new Date(2012, 0, 1), new Date());
+    const randomFileSize = _randomFileSize();
+    const randomFileType = _randomFileIcon();
+    let fileName = _lorem(2);
+    fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
+    let userName = _lorem(2);
+    userName = userName
+      .split(' ')
+      .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
+      .join(' ');
+    items.push({
+      name: fileName,
+      value: fileName,
+      iconName: randomFileType.url,
+      fileType: randomFileType.docType,
+      modifiedBy: userName,
+      dateModified: randomDate.dateFormatted,
+      dateModifiedValue: randomDate.value,
+      fileSize: randomFileSize.value,
+      fileSizeRaw: randomFileSize.rawSize
+    });
+  }
+  return items;
+}
+
+function _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
+  const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
+  return {
+    value: date.valueOf(),
+    dateFormatted: date.toLocaleDateString()
   };
+}
+
+const FILE_ICONS: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpt' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xsn' }
+];
+
+function _randomFileIcon(): { docType: string; url: string } {
+  const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
+  return {
+    docType,
+    url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
+  };
+}
+
+function _randomFileSize(): { value: string; rawSize: number } {
+  const fileSize: number = Math.floor(Math.random() * 100) + 30;
+  return {
+    value: `${fileSize} KB`,
+    rawSize: fileSize
+  };
+}
+
+const LOREM_IPSUM = (
+  'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut ' +
+  'labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut ' +
+  'aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+  'eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt '
+).split(' ');
+let loremIndex = 0;
+function _lorem(wordCount: number): string {
+  const startIndex = loremIndex + wordCount > LOREM_IPSUM.length ? 0 : loremIndex;
+  loremIndex = startIndex + wordCount;
+  return LOREM_IPSUM.slice(startIndex, loremIndex).join(' ');
 }

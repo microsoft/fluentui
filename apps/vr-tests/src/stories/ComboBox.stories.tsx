@@ -3,7 +3,7 @@ import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorTallFixedWidth } from '../utilities';
-import { ComboBox, SelectableOptionMenuItemType } from 'office-ui-fabric-react';
+import { ComboBox, SelectableOptionMenuItemType, ISelectableOption } from 'office-ui-fabric-react';
 
 const testOptions = [
   { key: 'Header', text: 'Theme Fonts', itemType: SelectableOptionMenuItemType.Header },
@@ -14,13 +14,16 @@ const testOptions = [
   { key: 'D', text: 'Option d' }
 ];
 
-const fontMapping = {
-  ['Arial Black']: '"Arial Black", "Arial Black_MSFontService", sans-serif',
-  ['Time New Roman']: '"Times New Roman", "Times New Roman_MSFontService", serif'
+const fontMapping: { [key: string]: string } = {
+  'Arial Black': '"Arial Black", "Arial Black_MSFontService", sans-serif',
+  'Time New Roman': '"Times New Roman", "Times New Roman_MSFontService", serif'
 };
 
-const onRenderFontOption = item => {
-  if (item.itemType === SelectableOptionMenuItemType.Header || item.itemType === SelectableOptionMenuItemType.Divider) {
+const onRenderFontOption = (item: ISelectableOption) => {
+  if (
+    item.itemType === SelectableOptionMenuItemType.Header ||
+    item.itemType === SelectableOptionMenuItemType.Divider
+  ) {
     return <span>{item.text}</span>;
   }
 
@@ -51,9 +54,18 @@ storiesOf('ComboBox', module)
       {story()}
     </Screener>
   ))
-  .addStory('Root', () => <ComboBox defaultSelectedKey="A" label="Default with dividers" autoComplete="on" options={testOptions} />, {
-    rtl: true
-  })
+  .addStory(
+    'Root',
+    () => (
+      <ComboBox
+        defaultSelectedKey="A"
+        label="Default with dividers"
+        autoComplete="on"
+        options={testOptions}
+      />
+    ),
+    { rtl: true }
+  )
   .addStory('Styled', () => (
     <ComboBox
       defaultSelectedKey="A"
@@ -63,5 +75,18 @@ storiesOf('ComboBox', module)
       onRenderOption={onRenderFontOption}
     />
   ))
-  .addStory('Disabled', () => <ComboBox defaultSelectedKey="A" label="Disabled" options={testOptions} disabled />)
-  .addStory('Placeholder', () => <ComboBox placeholder="Select an option" label="With a placeholder" options={testOptions} />);
+  .addStory('Disabled', () =>
+    // prettier-ignore
+    <ComboBox
+      defaultSelectedKey="A"
+      label="Disabled"
+      options={testOptions}
+      disabled />
+  )
+  .addStory('Placeholder', () =>
+    // prettier-ignore
+    <ComboBox
+      placeholder="Select an option"
+      label="With a placeholder"
+      options={testOptions} />
+  );

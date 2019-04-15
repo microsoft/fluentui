@@ -22,7 +22,6 @@ exports[`Icon renders Icon correctly 1`] = `
 
 exports[`Icon renders Icon correctly using iconName 1`] = `
 <i
-  aria-hidden={true}
   className=
 
       {
@@ -43,7 +42,6 @@ exports[`Icon renders Icon correctly using iconName 1`] = `
 
 exports[`Icon renders Icon with custom styles 1`] = `
 <i
-  aria-hidden={true}
   className=
       root
       {
@@ -64,7 +62,6 @@ exports[`Icon renders Icon with custom styles 1`] = `
 
 exports[`Icon renders Icon with getStyles 1`] = `
 <i
-  aria-hidden={true}
   className=
       className
       root

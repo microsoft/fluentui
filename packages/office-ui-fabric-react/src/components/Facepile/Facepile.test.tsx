@@ -202,4 +202,11 @@ describe('Facepile', () => {
     expect(wrapper.find(PersonaCoin).length).toEqual(1);
     expect(wrapper.find(Persona).length).toEqual(1);
   });
+
+  it('renders no Persona or PersonaCoin if 0 is passed in for maxDisplayablePersonas', () => {
+    const wrapper = mount(<Facepile personas={facepilePersonas} maxDisplayablePersonas={0} />);
+
+    expect(wrapper.find(PersonaCoin).length).toEqual(0);
+    expect(wrapper.find(Persona).length).toEqual(0);
+  });
 });

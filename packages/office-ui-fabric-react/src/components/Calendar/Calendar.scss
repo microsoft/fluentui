@@ -121,7 +121,6 @@ $Calendar-dayPicker-margin: 10px;
   @include ms-font-m-plus;
   color: $ms-color-neutralPrimary;
   box-sizing: border-box;
-  display: inline-flex;
   justify-content: center;
   align-items: center;
   cursor: default;
@@ -296,7 +295,7 @@ $Calendar-dayPicker-margin: 10px;
   .weekNumbers {
     border-right: 1px solid $ms-color-neutralLight;
     box-sizing: border-box;
-    width: 28x;
+    width: 28px;
     padding: 0;
     .dayWrapper {
       color: $ms-color-neutralSecondary;
@@ -327,13 +326,11 @@ $Calendar-dayPicker-margin: 10px;
     }
   }
   .table {
-    &:not(.weekNumbers) {
-      margin-right: 30px;
-    }
     .dayWrapper,
     .weekday {
       width: 30px;
     }
+    width: 225px;
   }
 }
 

@@ -10,6 +10,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import { divProperties, getNativeProps } from '../../Utilities';
 
 import {
   assign,
@@ -46,6 +47,7 @@ const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemSt
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;
+  /** True if the menu was expanded by mouse click OR hover (as opposed to by keyboard) */
   expandedByMouseClick?: boolean;
   dismissedMenuItemKey?: string;
   contextualMenuItems?: IContextualMenuItem[];
@@ -57,7 +59,7 @@ export interface IContextualMenuState {
   submenuDirection?: DirectionalHint;
 }
 
-export function getSubmenuItems(item: IContextualMenuItem) {
+export function getSubmenuItems(item: IContextualMenuItem): IContextualMenuItem[] | undefined {
   return item.subMenuProps ? item.subMenuProps.items : item.items;
 }
 
@@ -256,7 +258,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._adjustedFocusZoneProps = { ...focusZoneProps, direction: this._getFocusZoneDirection() };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
-    const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
+    const submenuProps = this.state.expandedMenuItemKey && this.props.hidden !== true ? this._getSubmenuProps() : null;
 
     isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
     /**
@@ -306,7 +308,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           gapSpace={gapSpace}
           coverTarget={coverTarget}
           doNotLayer={doNotLayer}
-          className={css('ms-ContextualMenu-Callout', calloutProps ? calloutProps.className : undefined)}
+          className={css('ms-ContextualMenu-Callout', calloutProps && calloutProps.className)}
           setInitialFocus={shouldFocusOnMount}
           onDismiss={this.props.onDismiss}
           onScroll={this._onScroll}
@@ -316,7 +318,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           hidden={this.props.hidden}
         >
           <div
-            role={'menu'}
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
@@ -370,6 +371,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._previousActiveElement && this._previousActiveElement!.focus();
       }, 0);
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+
+    // We need to dismiss any submenu related state properties,
+    // so that when the menu is shown again, the submenu is collapsed
+    this.setState({
+      expandedByMouseClick: undefined,
+      dismissedMenuItemKey: undefined,
+      expandedMenuItemKey: undefined,
+      submenuTarget: undefined
+    });
   }
 
   /**
@@ -391,7 +401,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): JSX.Element => {
     let indexCorrection = 0;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
           const menuItem = this._renderMenuItem(
             item,
@@ -507,38 +517,38 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _renderSectionItem(
-    item: IContextualMenuItem,
+    sectionItem: IContextualMenuItem,
     menuClassNames: IMenuItemClassNames,
     index: number,
     hasCheckmarks: boolean,
     hasIcons: boolean
   ) {
-    const section = item.sectionProps;
-    if (!section) {
+    const sectionProps = sectionItem.sectionProps;
+    if (!sectionProps) {
       return;
     }
 
     let headerItem;
-    if (section.title) {
+    if (sectionProps.title) {
       const headerContextualMenuItem: IContextualMenuItem = {
-        key: `section-${section.title}-title`,
+        key: `section-${sectionProps.title}-title`,
         itemType: ContextualMenuItemType.Header,
-        text: section.title
+        text: sectionProps.title
       };
       headerItem = this._renderHeaderMenuItem(headerContextualMenuItem, menuClassNames, index, hasCheckmarks, hasIcons);
     }
 
-    if (section.items && section.items.length > 0) {
+    if (sectionProps.items && sectionProps.items.length > 0) {
       return (
-        <li role="presentation" key={section.key}>
+        <li role="presentation" key={sectionProps.key || sectionItem.key || `section-${index}`}>
           <div role="group">
             <ul className={this._classNames.list}>
-              {section.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
-              {headerItem && this._renderListItem(headerItem, item.key || index, menuClassNames, item.title)}
-              {section.items.map((contextualMenuItem, itemsIndex) =>
-                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, section.items.length, hasCheckmarks, hasIcons)
+              {sectionProps.topDivider && this._renderSeparator(index, menuClassNames, true, true)}
+              {headerItem && this._renderListItem(headerItem, sectionItem.key || index, menuClassNames, sectionItem.title)}
+              {sectionProps.items.map((contextualMenuItem, itemsIndex) =>
+                this._renderMenuItem(contextualMenuItem, itemsIndex, itemsIndex, sectionProps.items.length, hasCheckmarks, hasIcons)
               )}
-              {section.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
+              {sectionProps.bottomDivider && this._renderSeparator(index, menuClassNames, false, true)}
             </ul>
           </div>
         </li>
@@ -600,9 +610,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const { itemProps } = item;
-
+    const divHtmlProperties = itemProps && getNativeProps(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} style={item.style}>
+      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
@@ -781,9 +791,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   /**
    * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
    * if so, stops event propagation and dismisses menu(s).
-   * @param ev The keyboard event.
-   * @param shouldHandleKey Returns whether we should handle this keyboard event.
-   * @param dismissAllMenus If true, dismiss all menus. Otherwise, dismiss only the current menu.
+   * @param ev - The keyboard event.
+   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
+   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
    * Only does anything if `shouldHandleKey` returns true.
    * @returns Whether the event was handled.
    */
@@ -876,8 +886,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _onItemMouseMoveBase = (item: any, ev: React.MouseEvent<HTMLElement>, target: HTMLElement): void => {
     const targetElement = ev.currentTarget as HTMLElement;
 
-    // Always do this check to make sure we record
-    // a mouseMove if needed (even if we are timed out)
+    // Always do this check to make sure we record a mouseMove if needed (even if we are timed out)
     if (this._shouldUpdateFocusOnMouseEvent) {
       this._gotMouseMove = true;
     } else {
@@ -1003,8 +1012,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this.setState({
           // When Edge + Narrator are used together (regardless of if the button is in a form or not), pressing
           // "Enter" fires this method and not _onMenuKeyDown. Checking ev.nativeEvent.detail differentiates
-          // between a real click event and a keypress event.
-          expandedByMouseClick: ev.nativeEvent.detail !== 0
+          // between a real click event and a keypress event (detail should be the number of mouse clicks).
+          // ...Plot twist! For a real click event in IE 11, detail is always 0 (Edge sets it properly to 1).
+          // So we also check the pointerType property, which both Edge and IE set to "mouse" for real clicks
+          // and "" for pressing "Enter" with Narrator on.
+          expandedByMouseClick: ev.nativeEvent.detail !== 0 || (ev.nativeEvent as PointerEvent).pointerType === 'mouse'
         });
         this._onItemSubMenuExpand(item, target);
       }
@@ -1076,7 +1088,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   private _getSubmenuProps() {
     const { submenuTarget, expandedMenuItemKey } = this.state;
     const item = this._findItemByKey(expandedMenuItemKey!);
-    let submenuProps = null;
+    let submenuProps: IContextualMenuProps | null = null;
 
     if (item) {
       submenuProps = {
@@ -1107,8 +1119,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   /**
    * Returns the item that mathes a given key if any.
-   * @param key The key of the item to match
-   * @param items The items to look for the key
+   * @param key - The key of the item to match
+   * @param items - The items to look for the key
    */
   private _findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
     for (const item of items) {

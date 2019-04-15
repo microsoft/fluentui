@@ -7,7 +7,7 @@
 
 const path = require('path');
 const PACKAGE_NAME = require('./package.json').name;
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 const WriteFilePlugin = require('write-file-webpack-plugin');
 const HOST_NAME = require('os').hostname();
 const version = require('./package.json').version;

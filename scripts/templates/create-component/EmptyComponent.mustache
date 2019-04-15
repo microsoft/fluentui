@@ -1,16 +1,13 @@
 import { {{componentName}}View } from './{{componentName}}.view';
-import { {{componentName}}Styles } from './{{componentName}}.styles';
+import { {{componentName}}Styles, {{componentName}}Tokens } from './{{componentName}}.styles';
 import { {{componentName}}State } from './{{componentName}}.state';
-import { I{{componentName}}Props, I{{componentName}}ViewProps, I{{componentName}}Styles } from './{{componentName}}.types';
+import { I{{componentName}}Props } from './{{componentName}}.types';
 import { createComponent } from '../../Foundation';
 
-export const {{componentName}}: React.StatelessComponent< I{{componentName}}Props> = createComponent<
-  I{{componentName}}Props,
-  I{{componentName}}ViewProps,
-  I{{componentName}}Styles
->({
+export const {{componentName}}: React.StatelessComponent<I{{componentName}}Props> = createComponent({
   displayName: '{{componentName}}',
   view: {{componentName}}View,
   state: {{componentName}}State,
-  styles: {{componentName}}Styles
+  styles: {{componentName}}Styles,
+  tokens: {{componentName}}Tokens
 });

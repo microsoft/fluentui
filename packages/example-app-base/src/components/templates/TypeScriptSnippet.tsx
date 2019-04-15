@@ -1,9 +1,6 @@
 import * as React from 'react';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-// tslint:disable-next-line:no-any
-declare const require: (location: string) => any;
-
 const { default: SyntaxHighlighter, registerLanguage } = require('react-syntax-highlighter/light');
 const { default: ts } = require('react-syntax-highlighter/languages/hljs/typescript');
 const { default: style } = require('react-syntax-highlighter/styles/hljs/vs2015');

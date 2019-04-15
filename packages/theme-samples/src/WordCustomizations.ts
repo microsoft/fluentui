@@ -20,18 +20,20 @@ export const WordCustomizations: ICustomizations = {
 
   scopedSettings: {
     Button: {
-      styleVariables: {
-        baseVariant: {
-          baseState: {
+      // tslint:disable:no-any
+      tokens: (props: any) => {
+        return [
+          {
             borderWidth: 1,
-            minHeight: 26,
             textSize: 13.5,
-            lineHeight: 13.5,
             textWeight: 600,
             iconSize: 12,
             contentPadding: '0px 6px'
+          },
+          !props.circular && {
+            minHeight: 26
           }
-        }
+        ];
       }
     }
   }

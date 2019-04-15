@@ -1,3 +1,5 @@
+// @ts-check
+
 const execSync = require('../exec-sync');
 const path = require('path');
 const fs = require('fs');
@@ -16,7 +18,7 @@ runTsLintOnFilesGroupedPerPackage(groupFilesByPackage(files));
  * in that package as the value.
  *
  * @param {string[]} files
- * @returns {[packageName: string]: string[]}
+ * @returns {{[packageName: string]: string[]}}
  */
 function groupFilesByPackage(files) {
   const rootDirectory = path.join(path.resolve(__dirname, '..', '..'), path.sep);
@@ -28,12 +30,15 @@ function groupFilesByPackage(files) {
 
       return [packageRoot, fileName];
     })
-    .reduce((acc, [package, file]) => {
-      if (!acc[package]) {
-        acc[package] = [];
+    .reduce((filesByPackage, [package, file]) => {
+      if (path.dirname(package) === 'typings') {
+        return filesByPackage; // ignore custom typings package
       }
-      acc[package].push(file);
-      return acc;
+      if (!filesByPackage[package]) {
+        filesByPackage[package] = [];
+      }
+      filesByPackage[package].push(file);
+      return filesByPackage;
     }, {});
 }
 
@@ -41,22 +46,20 @@ function groupFilesByPackage(files) {
  * Runs tslint for the staged files in the packages that require it.
  * Excludes all API extractor files.
  *
- * @param {[packageName: string]: string[]} filesGroupedByPackage
+ * @param {{[packageName: string]: string[]}} filesGroupedByPackage
  */
 function runTsLintOnFilesGroupedPerPackage(filesGroupedByPackage) {
   // Log an empty line on error to make the tslint output look better
   console.log('');
 
-  const fileEntries = Object.keys(filesGroupedByPackage).reduce((entries, package) => {
-    entries.push([package, filesGroupedByPackage[package]]);
-    return entries;
-  }, []);
+  /** @type {[string, string[]][]} */
+  // prettier-ignore
+  const fileEntries = (/** @type {any} */ Object.keys(filesGroupedByPackage)
+    .map(package => [package, filesGroupedByPackage[package]]));
 
   for (let [package, files] of fileEntries) {
     const tslintConfig = path.join(path.resolve(__dirname, '..', '..'), package, 'tslint.json');
-    let filteredFiles = files.filter(f => {
-      return !f.endsWith('.api.ts');
-    });
+    const filteredFiles = files.filter(f => !f.endsWith('.api.ts'));
 
     if (filteredFiles.length === 0) {
       continue;

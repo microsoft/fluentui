@@ -40,7 +40,9 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
 
     const { _classNames } = this;
 
-    const numPersonasToShow: number = Math.min(personas.length, maxDisplayablePersonas || personas.length);
+    // Add a check to make sure maxDisplayalePersonas is defined to cover the edge case of it being 0.
+    const numPersonasToShow: number =
+      typeof maxDisplayablePersonas === 'number' ? Math.min(personas.length, maxDisplayablePersonas) : personas.length;
 
     // Added for deprecating chevronButtonProps.  Can remove after v1.0
     if (chevronButtonProps && !overflowButtonProps) {
@@ -56,7 +58,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {this.onRenderAriaDescription()}
         <div className={_classNames.itemContainer}>
           {showAddButton ? this._getAddNewElement() : null}
-          <ul className={_classNames.members}>
+          <ul className={_classNames.members} role="listbox">
             {this._onRenderVisiblePersonas(personasPrimary, personasOverflow.length === 0 && personas.length === 1)}
           </ul>
           {overflowButtonProps ? this._getOverflowElement(personasOverflow) : null}
@@ -85,7 +87,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     return personas.map((persona: IFacepilePersona, index: number) => {
       const personaControl: JSX.Element = singlePersona ? this._getPersonaControl(persona) : this._getPersonaCoinControl(persona);
       return (
-        <li key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
+        <li role="option" key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
           {persona.onClick
             ? this._getElementWithOnClickEvent(personaControl, persona, index)
             : this._getElementWithoutOnClickEvent(personaControl, persona, index)}

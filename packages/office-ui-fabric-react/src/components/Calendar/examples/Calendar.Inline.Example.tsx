@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
@@ -36,6 +35,7 @@ export interface ICalendarInlineExampleProps {
   showWeekNumbers?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  restrictedDates?: Date[];
   showSixWeeksByDefault?: boolean;
   workWeekDays?: DayOfWeek[];
   firstDayOfWeek?: DayOfWeek;
@@ -58,7 +58,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
 
   public render(): JSX.Element {
     const divStyle: React.CSSProperties = {
-      height: '340px'
+      height: 'auto'
     };
 
     const buttonStyle: React.CSSProperties = {
@@ -93,6 +93,15 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             </span>
           </div>
         )}
+        {this.props.restrictedDates && (
+          <div>
+            Disabled date(s):
+            <span>
+              {' '}
+              {this.props.restrictedDates.length > 0 ? this.props.restrictedDates.map(d => d.toLocaleDateString()).join(', ') : 'Not set'}
+            </span>
+          </div>
+        )}
         <Calendar
           onSelectDate={this._onSelectDate}
           onDismiss={this._onDismiss}
@@ -110,6 +119,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           showWeekNumbers={this.props.showWeekNumbers}
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
+          restrictedDates={this.props.restrictedDates}
           showSixWeeksByDefault={this.props.showSixWeeksByDefault}
           workWeekDays={this.props.workWeekDays}
         />

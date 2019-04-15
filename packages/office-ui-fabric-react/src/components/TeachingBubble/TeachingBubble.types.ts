@@ -9,6 +9,9 @@ import { ICalloutProps } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory TeachingBubble}
+ */
 export interface ITeachingBubble {
   /** Sets focus to the TeachingBubble root element */
   focus(): void;
@@ -16,8 +19,9 @@ export interface ITeachingBubble {
 
 /**
  * TeachingBubble component props.
+ * {@docCategory TeachingBubble}
  */
-export interface ITeachingBubbleProps extends React.Props<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
+export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubbleBase | TeachingBubbleContentBase>, IAccessiblePopupProps {
   /**
    * Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -100,6 +104,9 @@ export interface ITeachingBubbleProps extends React.Props<TeachingBubbleBase | T
   ariaDescribedBy?: string;
 }
 
+/**
+ * {@docCategory TeachingBubble}
+ */
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> &
   Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
     /** Class name for callout. */
@@ -110,6 +117,9 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
     secondaryButtonClassName?: string;
   };
 
+/**
+ * {@docCategory TeachingBubble}
+ */
 export interface ITeachingBubbleStyles {
   root: IStyle;
   body: IStyle;
@@ -126,6 +136,9 @@ export interface ITeachingBubbleStyles {
   subComponentStyles?: ITeachingBubbleSubComponentStyles;
 }
 
+/**
+ * {@docCategory TeachingBubble}
+ */
 export interface ITeachingBubbleSubComponentStyles {
   /** Refers to the callout that hosts the teaching bubble. */
   // TODO: this should be the interface once we're on TS 2.9.2 but otherwise causes errors in 2.8.4

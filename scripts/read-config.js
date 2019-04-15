@@ -12,11 +12,9 @@ const jju = require('jju');
  */
 function readConfig(file) {
   file = findConfig(file);
-  if (!file) {
-    return;
+  if (file && fs.existsSync(file)) {
+    return jju.parse(fs.readFileSync(file, 'utf8'));
   }
-
-  return jju.parse(fs.readFileSync(file, 'utf8'));
 }
 
 module.exports = readConfig;

@@ -11,7 +11,7 @@ exports[`Button renders ActionButton correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         background-color: transparent;
         border-radius: 0px;
-        border: none;
+        border: 1px solid transparent;
         box-sizing: border-box;
         color: #333333;
         cursor: pointer;
@@ -215,7 +215,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         }
   >
     <i
-      aria-hidden={true}
       className=
           ms-Button-icon
           {
@@ -267,7 +266,6 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       </div>
     </div>
     <i
-      aria-hidden={true}
       className=
           ms-Button-menuIcon
           {
@@ -656,7 +654,6 @@ exports[`Button renders IconButton correctly 1`] = `
         }
   >
     <i
-      aria-hidden={true}
       className=
           ms-Button-icon
           {
@@ -689,7 +686,7 @@ exports[`Button renders IconButton correctly 1`] = `
 
 exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
 <button
-  aria-describedby=" ktp-layer-id ktp-a"
+  aria-describedby="ktp-layer-id ktp-a"
   className=
       ms-Button
       ms-Button--default

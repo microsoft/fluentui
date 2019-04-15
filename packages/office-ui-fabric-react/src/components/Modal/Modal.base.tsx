@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction, getId, allowScrollOnElement } from '../../Utilities';
 import { FocusTrapZone, IFocusTrapZone } from '../FocusTrapZone/index';
-import { animationDuration, getOverlayStyles } from './Modal.styles';
+import { animationDuration } from './Modal.styles';
 import { IModalProps, IModalStyleProps, IModalStyles, IModal } from './Modal.types';
 import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
@@ -121,15 +121,10 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       subtitleAriaId,
       theme,
       topOffsetFixed,
-      onLayerDidMount
+      onLayerDidMount,
+      isModeless
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop } = this.state;
-
-    const mergedLayerProps = {
-      ...DefaultLayerProps,
-      ...this.props.layerProps,
-      onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount
-    };
 
     if (!isOpen) {
       return null;
@@ -144,32 +139,48 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       isVisible,
       hasBeenOpened,
       modalRectangleTop,
-      topOffsetFixed
+      topOffsetFixed,
+      isModeless
     });
+
+    // if the modal is modeless, add the classname to correctly style the layer
+    const layerClassName = isModeless
+      ? this.props.className
+        ? `${this.props.className} ${classNames.layer}`
+        : classNames.layer
+      : this.props.className;
+
+    const mergedLayerProps = {
+      ...DefaultLayerProps,
+      ...this.props.layerProps,
+      onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
+      className: layerClassName,
+      insertFirst: isModeless
+    };
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
     if (responsiveMode! >= ResponsiveMode.small) {
       return (
         <Layer {...mergedLayerProps}>
           <Popup
-            role={isBlocking ? 'alertdialog' : 'dialog'}
-            aria-modal="true"
+            role={isModeless || !isBlocking ? 'dialog' : 'alertdialog'}
+            aria-modal={!isModeless}
             ariaLabelledBy={titleAriaId}
             ariaDescribedBy={subtitleAriaId}
             onDismiss={onDismiss}
           >
             <div className={classNames.root}>
-              <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} styles={getOverlayStyles} />
+              {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
               <FocusTrapZone
                 componentRef={this._focusTrapZone}
                 className={classNames.main}
                 elementToFocusOnDismiss={elementToFocusOnDismiss}
-                isClickableOutsideFocusTrap={isClickableOutsideFocusTrap ? isClickableOutsideFocusTrap : !isBlocking}
+                isClickableOutsideFocusTrap={isModeless || isClickableOutsideFocusTrap || !isBlocking}
                 ignoreExternalFocusing={ignoreExternalFocusing}
-                forceFocusInsideTrap={forceFocusInsideTrap}
+                forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
                 firstFocusableSelector={firstFocusableSelector}
               >
-                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent}>
+                <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>
                   {this.props.children}
                 </div>
               </FocusTrapZone>

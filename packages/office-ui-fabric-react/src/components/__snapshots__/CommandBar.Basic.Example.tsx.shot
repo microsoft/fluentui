@@ -68,7 +68,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
-                aria-label="New. Use left and right arrow keys to navigate"
+                aria-label="New"
                 aria-owns={null}
                 className=
                     ms-Button
@@ -164,7 +164,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -217,7 +216,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     </div>
                   </div>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-menuIcon
                         {
@@ -352,7 +350,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -510,7 +507,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -668,7 +664,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -734,6 +729,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
               <button
                 aria-expanded={false}
                 aria-haspopup={true}
+                aria-label="More commands"
                 aria-owns={null}
                 className=
                     ms-Button
@@ -826,7 +822,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-menuIcon
                         {
@@ -880,6 +875,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                   }
             >
               <button
+                aria-label="Sort"
                 className=
                     ms-Button
                     ms-Button--commandBar
@@ -974,7 +970,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1049,6 +1044,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 onMouseLeave={[Function]}
               >
                 <button
+                  aria-label="Grid view"
                   className=
                       ms-Button
                       ms-Button--commandBar
@@ -1143,7 +1139,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                         }
                   >
                     <i
-                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1195,6 +1190,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                 onMouseLeave={[Function]}
               >
                 <button
+                  aria-label="Info"
                   className=
                       ms-Button
                       ms-Button--commandBar
@@ -1289,7 +1285,6 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                         }
                   >
                     <i
-                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {

@@ -16,6 +16,7 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button'
 import { Promise } from 'es6-promise';
 // Helper imports to generate data for this particular examples. Not exported by any package.
 import { people, mru } from './PeoplePickerExampleData';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
 export interface IPeoplePickerExampleState {
   currentPicker?: number | string;
@@ -23,6 +24,7 @@ export interface IPeoplePickerExampleState {
   peopleList: IPersonaProps[];
   mostRecentlyUsed: IPersonaProps[];
   currentSelectedItems?: IPersonaProps[];
+  isPickerDisabled?: boolean;
 }
 
 const suggestionProps: IBasePickerSuggestionsProps = {
@@ -55,7 +57,8 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
       delayResults: false,
       peopleList: people,
       mostRecentlyUsed: mru,
-      currentSelectedItems: []
+      currentSelectedItems: [],
+      isPickerDisabled: false
     };
   }
 
@@ -105,6 +108,12 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
             selectedKey={this.state.currentPicker}
             onChange={this._dropDownSelected}
           />
+          <Checkbox
+            styles={{ root: { marginTop: 10 } }}
+            label="Disable People Picker"
+            checked={this.state.isPickerDisabled}
+            onChange={this._onDisabledButtonClick}
+          />
           <Toggle label="Delay Suggestion Results" defaultChecked={false} onChange={this._toggleDelayResultsChange} />
         </div>
         <PrimaryButton text="Set focus" onClick={this._onSetFocusButtonClicked} />
@@ -133,6 +142,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         }}
         componentRef={this._picker}
         resolveDelay={300}
+        disabled={this.state.isPickerDisabled}
       />
     );
   }
@@ -157,6 +167,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         componentRef={this._picker}
         onInputChange={this._onInputChange}
         resolveDelay={300}
+        disabled={this.state.isPickerDisabled}
       />
     );
   }
@@ -178,6 +189,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         }}
         componentRef={this._picker}
         resolveDelay={300}
+        disabled={this.state.isPickerDisabled}
       />
     );
   }
@@ -201,6 +213,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         }}
         componentRef={this._picker}
         resolveDelay={300}
+        disabled={this.state.isPickerDisabled}
       />
     );
   }
@@ -224,6 +237,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         }}
         componentRef={this._picker}
         resolveDelay={300}
+        disabled={this.state.isPickerDisabled}
       />
     );
   }
@@ -247,6 +261,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
         }}
         componentRef={this._picker}
         resolveDelay={300}
+        disabled={this.state.isPickerDisabled}
       />
     );
   }
@@ -275,6 +290,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
           }}
           componentRef={this._picker}
           resolveDelay={300}
+          disabled={this.state.isPickerDisabled}
         />
         <label> Click to Add a person </label>
         {controlledItems.map((item, index) => (
@@ -331,7 +347,7 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
   };
 
   private _onItemSelected = (item: IPersonaProps): Promise<IPersonaProps> => {
-    const processedItem = Object.assign({}, item);
+    const processedItem = { ...item };
     processedItem.text = `${item.text} (selected)`;
     return new Promise<IPersonaProps>((resolve, reject) => setTimeout(() => resolve(processedItem), 250));
   };
@@ -438,4 +454,10 @@ export class PeoplePickerTypesExample extends BaseComponent<any, IPeoplePickerEx
 
     return input;
   }
+
+  private _onDisabledButtonClick = (): void => {
+    this.setState({
+      isPickerDisabled: !this.state.isPickerDisabled
+    });
+  };
 }

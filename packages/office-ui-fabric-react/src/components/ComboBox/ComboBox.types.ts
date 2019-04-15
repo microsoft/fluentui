@@ -6,7 +6,11 @@ import { IButtonStyles } from '../../Button';
 import { IRefObject, IRenderFunction } from '../../Utilities';
 import { IComboBoxClassNames } from './ComboBox.classNames';
 import { IKeytipProps } from '../../Keytip';
+import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBox {
   /**
    * If there is a menu open this will dismiss the menu
@@ -22,6 +26,9 @@ export interface IComboBox {
   focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxOption extends ISelectableOption {
   /**
    * Specific styles for each comboBox option. If you intend to give
@@ -38,6 +45,9 @@ export interface IComboBoxOption extends ISelectableOption {
   useAriaLabelAsText?: boolean;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   /**
    * Optional callback to access the IComboBox interface. Use this instead of ref for accessing
@@ -119,6 +129,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   buttonIconProps?: IIconProps;
 
   /**
+   * The AutofillProps to be passed into the Autofill component inside combobox
+   */
+  autofill?: IAutofillProps;
+
+  /**
    * Theme provided by HOC.
    */
   theme?: ITheme;
@@ -195,6 +210,11 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
   isButtonAriaHidden?: boolean;
 
   /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * Optional keytip for this combo box
    */
   keytipProps?: IKeytipProps;
@@ -205,8 +225,20 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * @deprecated Use `text` instead.
    */
   value?: string;
+
+  /**
+   * Menu will not be created or destroyed when opened or closed, instead it
+   * will be hidden. This will improve perf of the menu opening but could potentially
+   * impact overall perf by having more elemnts in the dom. Should only be used
+   * when perf is important.
+   * Note: This may increase the amount of time it takes for the comboBox itself to mount.
+   */
+  persistMenu?: boolean;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxStyles {
   /**
    * Style for the container which has the ComboBox and the label
@@ -305,6 +337,9 @@ export interface IComboBoxStyles {
   divider: IStyle;
 }
 
+/**
+ * {@docCategory ComboBox}
+ */
 export interface IComboBoxOptionStyles extends IButtonStyles {
   /**
    * Styles for the text inside the comboBox option.

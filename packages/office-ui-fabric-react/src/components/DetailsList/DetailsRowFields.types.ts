@@ -1,15 +1,17 @@
 import { IColumn } from './DetailsList.types';
 import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import { IBaseProps, IRefObject } from '../../Utilities';
+import { IDetailsListProps } from './DetailsList';
+import { IDetailsRowProps } from './DetailsRow';
 
-export interface IDetailsRowFields {}
+/**
+ * {@docCategory DetailsList}
+ */
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
-export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
-  /**
-   * Ref of component
-   */
-  componentRef?: IRefObject<IDetailsRowFields>;
-
+/**
+ * {@docCategory DetailsList}
+ */
+export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   /**
    * Data source for this component
    */
@@ -34,11 +36,6 @@ export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
    * whether to render as a compact field
    */
   compact?: boolean;
-
-  /**
-   * Callback for rendering an item column
-   */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
 
   /**
    * Whether to show shimmer

@@ -3,12 +3,18 @@ import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
+/**
+ * {@docCategory Slider}
+ */
 export interface ISlider {
   value: number | undefined;
 
   focus: () => void;
 }
 
+/**
+ * {@docCategory Slider}
+ */
 export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
@@ -106,8 +112,16 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional mixin for additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * Optional function to format the slider value.
+   */
+  valueFormat?: (value: number) => string;
 }
 
+/**
+ * {@docCategory Slider}
+ */
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
   Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
     showTransitions?: boolean;
@@ -115,6 +129,9 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
     titleLabelClassName?: string;
   };
 
+/**
+ * {@docCategory Slider}
+ */
 export interface ISliderStyles {
   root: IStyle;
   titleLabel: IStyle;

@@ -108,6 +108,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         whiteSpace: 'nowrap',
         boxSizing: 'content-box',
         paddingBottom: '1px',
+        paddingTop: '1px',
         borderBottom: `1px solid ${semanticColors.bodyDivider}`,
         cursor: 'default',
         userSelect: 'none',
@@ -292,7 +293,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         selectors: {
           [HighContrastSelector]: {
             background: 'transparent',
-            '-ms-high-contrast-adjust': 'none'
+            MsHighContrastAdjust: 'none'
           }
         }
       }

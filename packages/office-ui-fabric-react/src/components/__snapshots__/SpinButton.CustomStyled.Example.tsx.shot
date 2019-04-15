@@ -147,6 +147,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             }
       >
         <button
+          aria-label="Increase value by 1"
           checked={false}
           className=
               ms-Button
@@ -244,7 +245,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -274,6 +274,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           </div>
         </button>
         <button
+          aria-label="Decrease value by 1"
           checked={false}
           className=
               ms-Button
@@ -371,7 +372,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

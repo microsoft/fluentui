@@ -19,7 +19,7 @@ import { ITooltipHostProps } from '../../Tooltip';
 import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/selection/interfaces';
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
-import { IColumnResizeDetails, SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps } from './DetailsHeader.types';
+import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
 import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
 import { classNamesFunction } from '../../Utilities';
 
@@ -34,20 +34,12 @@ export interface IDetailsHeader {
   focus: () => boolean;
 }
 
-export interface IDetailsHeaderState {
-  columnReorderProps?: IColumnReorderHeaderProps;
-  columnResizeDetails?: IColumnResizeDetails;
-  isAllSelected?: boolean;
-  isSizing?: boolean;
-  groupNestingDepth?: number;
-  isAllCollapsed?: boolean;
-}
-
 export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
     selectAllVisibility: SelectAllVisibility.visible,
     collapseAllVisibility: CollapseAllVisibility.visible
   };
+
   private _classNames: IClassNames<IDetailsHeaderStyles>;
   private _rootElement: HTMLElement | undefined;
   private _rootComponent = React.createRef<IFocusZone>();
@@ -64,6 +56,21 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     sourceIndex: number;
     targetIndex: number;
   };
+
+  public static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState {
+    const columnReorderProps: IColumnReorderHeaderProps | undefined =
+      newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
+    const { groupNestingDepth } = newProps;
+
+    const newState: IDetailsHeaderState = { columnReorderProps, groupNestingDepth };
+
+    if (newProps.isAllCollapsed !== undefined) {
+      newState.isAllCollapsed = newProps.isAllCollapsed;
+    }
+
+    return newState;
+  }
+
   constructor(props: IDetailsHeaderBaseProps) {
     super(props);
     const columnReorderProps: IColumnReorderHeaderProps | undefined =
@@ -90,11 +97,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     this._onRootRef = this._onRootRef.bind(this);
     this._isEventOnHeader = this._isEventOnHeader.bind(this);
     this._onDropIndexInfo = {
-      sourceIndex: Number.MIN_SAFE_INTEGER,
-      targetIndex: Number.MIN_SAFE_INTEGER
+      sourceIndex: -1,
+      targetIndex: -1
     };
     this._id = getId('header');
-    this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
+    this._currentDropHintIndex = -1;
   }
 
   public componentDidMount(): void {
@@ -129,32 +136,10 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const { columns = NO_COLUMNS } = this.props;
       if (previousColumns[this._onDropIndexInfo.sourceIndex].key === columns[this._onDropIndexInfo.targetIndex].key) {
         this._onDropIndexInfo = {
-          sourceIndex: Number.MIN_SAFE_INTEGER,
-          targetIndex: Number.MIN_SAFE_INTEGER
+          sourceIndex: -1,
+          targetIndex: -1
         };
       }
-    }
-  }
-
-  public componentWillReceiveProps(newProps: IDetailsHeaderBaseProps): void {
-    const columnReorderProps: IColumnReorderHeaderProps | undefined =
-      newProps.columnReorderProps || (newProps.columnReorderOptions && getLegacyColumnReorderProps(newProps.columnReorderOptions));
-
-    const { groupNestingDepth } = this.state;
-
-    if (newProps.groupNestingDepth !== groupNestingDepth) {
-      this.setState({
-        columnReorderProps,
-        groupNestingDepth: newProps.groupNestingDepth
-      });
-    } else {
-      this.setState({ columnReorderProps });
-    }
-
-    if (newProps.isAllCollapsed !== undefined) {
-      this.setState({
-        isAllCollapsed: newProps.isAllCollapsed
-      });
     }
   }
 
@@ -163,12 +148,17 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       this._subscriptionObject.dispose();
       delete this._subscriptionObject;
     }
+
+    if (this._dragDropHelper) {
+      this._dragDropHelper.dispose();
+    }
   }
 
   public render(): JSX.Element {
     const {
       columns = NO_COLUMNS,
       ariaLabel,
+      ariaLabelForToggleAllGroupsButton,
       ariaLabelForSelectAllCheckbox,
       selectAllVisibility,
       ariaLabelForSelectionColumn,
@@ -178,13 +168,16 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
-      theme
+      theme,
+      onRenderDetailsCheckbox
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed, columnReorderProps } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
     const isCheckboxHidden = selectAllVisibility === SelectAllVisibility.hidden;
 
     if (!this._dragDropHelper && columnReorderProps) {
+      // TODO Do not assign local fields during render.
+      // This behavior needs to be moved to the appropriate React lifecycle methods.
       this._dragDropHelper = new DragDropHelper({
         selection: {
           getSelection: () => {
@@ -210,6 +203,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     });
 
     const classNames = this._classNames;
+
     const isRTL = getRTL();
     return (
       <FocusZone
@@ -232,7 +226,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                 onClick={!isCheckboxHidden ? this._onSelectAllClicked : undefined}
                 aria-colindex={1}
                 role={'columnheader'}
-                aria-hidden={isCheckboxHidden ? true : undefined}
               >
                 {onRenderColumnHeaderTooltip(
                   {
@@ -245,29 +238,48 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                         id={`${this._id}-check`}
                         aria-label={ariaLabelForSelectionColumn}
                         aria-describedby={
-                          ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? `${this._id}-checkTooltip` : undefined
+                          !isCheckboxHidden
+                            ? ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip
+                              ? `${this._id}-checkTooltip`
+                              : undefined
+                            : ariaLabelForSelectionColumn && !this.props.onRenderColumnHeaderTooltip
+                            ? `${this._id}-checkTooltip`
+                            : undefined
                         }
-                        data-is-focusable={!isCheckboxHidden}
+                        data-is-focusable={!isCheckboxHidden || undefined}
                         isHeader={true}
                         selected={isAllSelected}
                         anySelected={false}
                         canSelect={!isCheckboxHidden}
                         className={classNames.check}
+                        onRenderDetailsCheckbox={onRenderDetailsCheckbox}
                       />
                     )
                   },
                   this._onRenderColumnHeaderTooltip
                 )}
               </div>,
-              ariaLabelForSelectAllCheckbox && !this.props.onRenderColumnHeaderTooltip ? (
-                <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
-                  {ariaLabelForSelectAllCheckbox}
-                </label>
+              !this.props.onRenderColumnHeaderTooltip ? (
+                ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                    {ariaLabelForSelectAllCheckbox}
+                  </label>
+                ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                    {ariaLabelForSelectionColumn}
+                  </label>
+                ) : null
               ) : null
             ]
           : null}
         {groupNestingDepth! > 0 && this.props.collapseAllVisibility === CollapseAllVisibility.visible ? (
-          <div className={classNames.cellIsGroupExpander} onClick={this._onToggleCollapseAll} data-is-focusable={true}>
+          <div
+            className={classNames.cellIsGroupExpander}
+            onClick={this._onToggleCollapseAll}
+            data-is-focusable={true}
+            aria-label={ariaLabelForToggleAllGroupsButton}
+            aria-expanded={!isAllCollapsed}
+          >
             <Icon className={classNames.collapseButton} iconName={isRTL ? 'ChevronLeftMed' : 'ChevronRightMed'} />
           </div>
         ) : null}
@@ -337,7 +349,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   }
 
   private _isValidCurrentDropHintIndex() {
-    return this._currentDropHintIndex! >= 0;
+    return this._currentDropHintIndex >= 0;
   }
 
   private _onDragOver(item: any, event: DragEvent): void {
@@ -353,15 +365,13 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
     // Target index will not get changed if draggeditem is after target item.
     if (this._draggedColumnIndex >= 0 && event) {
       const targetIndex =
-        this._draggedColumnIndex > this._currentDropHintIndex! ? this._currentDropHintIndex! : this._currentDropHintIndex! - 1;
-      let isValidDrop = false;
+        this._draggedColumnIndex > this._currentDropHintIndex ? this._currentDropHintIndex : this._currentDropHintIndex - 1;
+      const isValidDrop = this._isValidCurrentDropHintIndex();
       event.stopPropagation();
-      if (this._isValidCurrentDropHintIndex()) {
-        isValidDrop = true;
+      if (isValidDrop) {
         this._onDropIndexInfo.sourceIndex = this._draggedColumnIndex;
         this._onDropIndexInfo.targetIndex = targetIndex;
-      }
-      if (isValidDrop) {
+
         if (columnReorderProps && columnReorderProps.onColumnDrop) {
           const dragDropDetails: IColumnDragDropDetails = {
             draggedIndex: this._draggedColumnIndex,
@@ -412,7 +422,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
   private _resetDropHints(): void {
     if (this._currentDropHintIndex >= 0) {
       this._updateDropHintElement(this._dropHintDetails[this._currentDropHintIndex].dropHintElementRef, 'none');
-      this._currentDropHintIndex = Number.MIN_SAFE_INTEGER;
+      this._currentDropHintIndex = -1;
     }
   }
 
@@ -484,7 +494,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       const clientRect = this._rootElement.getBoundingClientRect();
       const headerOriginX = clientRect.left;
       const eventXRelativePosition = clientX - headerOriginX;
-      const currentDropHintIndex = this._currentDropHintIndex!;
+      const currentDropHintIndex = this._currentDropHintIndex;
       if (this._isValidCurrentDropHintIndex()) {
         if (
           this._liesBetween(
@@ -640,7 +650,6 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * double click on the column sizer will auto ajust column width
    * to fit the longest content among current rendered rows.
    *
-   * @private
    * @param {number} columnIndex (index of the column user double clicked)
    * @param {React.MouseEvent} ev (mouse double click event)
    */
@@ -767,8 +776,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * mouse move event handler in the header
    * it will set isSizing state to true when user clicked on the sizer and move the mouse.
    *
-   * @private
-   * @param {React.MouseEvent} ev (mouse move event)
+   * @param ev - mouse move event
    */
   private _onSizerMouseMove = (ev: React.MouseEvent<HTMLElement>): void => {
     const {
@@ -822,8 +830,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * clear the resize related state.
    * This is to ensure we can catch double click event
    *
-   * @private
-   * @param {React.MouseEvent} ev (mouse up event)
+   * @param ev - mouse up event
    */
   private _onSizerMouseUp = (ev: React.MouseEvent<HTMLElement>): void => {
     const { columns = NO_COLUMNS, onColumnIsSizingChanged } = this.props;

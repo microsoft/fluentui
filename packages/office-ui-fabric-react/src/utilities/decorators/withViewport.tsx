@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
-import { findScrollableParent, getRect, createRef, getWindow } from '../../Utilities';
+import { findScrollableParent, getRect, getWindow } from '../../Utilities';
 
 export interface IViewport {
   width: number;
@@ -22,7 +22,7 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
 ): any {
   return class WithViewportComponent extends BaseDecorator<TProps, IWithViewportState> {
-    private _root = createRef<HTMLDivElement>();
+    private _root = React.createRef<HTMLDivElement>();
     private _resizeAttempts: number;
     private _viewportResizeObserver: any;
 

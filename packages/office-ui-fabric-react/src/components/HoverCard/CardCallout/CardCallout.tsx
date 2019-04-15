@@ -3,8 +3,8 @@ import * as React from 'react';
 import { divProperties, getNativeProps } from '../../../Utilities';
 import { Callout } from '../../../Callout';
 import { DirectionalHint } from '../../../common/DirectionalHint';
-import { FocusTrapZone } from '../../../FocusTrapZone';
 import { IBaseCardProps } from '../BaseCard.types';
+import { FocusTrapCallout, ICalloutProps } from '../../../Callout';
 
 export interface ICardCalloutProps extends IBaseCardProps<{}, {}, {}> {
   finalHeight?: number;
@@ -25,26 +25,35 @@ export const CardCallout = (props: ICardCalloutProps) => {
     content
   } = props;
 
+  const calloutProps: ICalloutProps = {
+    ...getNativeProps(props, divProperties),
+    className: className,
+    target: targetElement,
+    isBeakVisible: false,
+    directionalHint: directionalHint,
+    directionalHintFixed: directionalHintFixed,
+    finalHeight: finalHeight,
+    minPagePadding: 24,
+    onDismiss: onLeave,
+    gapSpace: gapSpace
+  };
+
   return (
-    <Callout
-      {...getNativeProps(props, divProperties)}
-      className={className}
-      target={targetElement}
-      isBeakVisible={false}
-      directionalHint={directionalHint}
-      directionalHintFixed={directionalHintFixed}
-      finalHeight={finalHeight}
-      minPagePadding={24}
-      onDismiss={onLeave}
-      gapSpace={gapSpace}
-    >
+    <React.Fragment>
       {trapFocus ? (
-        <FocusTrapZone forceFocusInsideTrap={false} isClickableOutsideFocusTrap={true} disableFirstFocus={!firstFocus}>
+        <FocusTrapCallout
+          {...calloutProps}
+          focusTrapProps={{
+            forceFocusInsideTrap: false,
+            isClickableOutsideFocusTrap: true,
+            disableFirstFocus: !firstFocus
+          }}
+        >
           {content}
-        </FocusTrapZone>
+        </FocusTrapCallout>
       ) : (
-        content
+        <Callout {...calloutProps}>{content}</Callout>
       )}
-    </Callout>
+    </React.Fragment>
   );
 };

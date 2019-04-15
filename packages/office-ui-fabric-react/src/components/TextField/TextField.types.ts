@@ -2,6 +2,9 @@ import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextField {
   /** Gets the current value of the input. */
   value: string | undefined;
@@ -38,6 +41,7 @@ export interface ITextField {
 
 /**
  * TextField component props.
+ * {@docCategory TextField}
  */
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
@@ -103,11 +107,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
   prefix?: string;
 
   /**
    * Suffix displayed after the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
    */
   suffix?: string;
 
@@ -173,9 +179,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Called after the input's value updates but before re-rendering.
+   * Unlike `onChange`, this is also called when the value is updated via props.
+   *
+   * NOTE: This should be used *very* rarely. `onChange` is more appropriate for most situations.
+   *
    * @param newValue - The new value. Type should be string.
    */
-  onBeforeChange?: (newValue: any) => void;
+  onBeforeChange?: (newValue?: string) => void;
 
   /**
    * Function called after validation completes.
@@ -254,8 +264,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
+   * Common values are 'on' and 'off' but for all possible values see the following links:
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values
+   * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
 
   /**
    * The masking string that defines the mask's behavior.
@@ -291,6 +304,9 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentId?: string;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
@@ -315,6 +331,9 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     focused?: boolean;
   };
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldSubComponentStyles {
   /**
    * Styling for Label child component.
@@ -324,6 +343,9 @@ export interface ITextFieldSubComponentStyles {
   label: IStyleFunctionOrObject<any, any>;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
   /**
    * Style for root element.

@@ -3,9 +3,8 @@ import { IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles } f
 import { DialogContentBase } from './DialogContent.base';
 import { getStyles } from './DialogContent.styles';
 
-export const DialogContent = styled<IDialogContentProps, IDialogContentStyleProps, IDialogContentStyles>(
-  DialogContentBase,
-  getStyles,
-  undefined,
-  { scope: 'DialogContent' }
-);
+export const DialogContent: React.StatelessComponent<IDialogContentProps> = styled<
+  IDialogContentProps,
+  IDialogContentStyleProps,
+  IDialogContentStyles
+>(DialogContentBase, getStyles, undefined, { scope: 'DialogContent' });

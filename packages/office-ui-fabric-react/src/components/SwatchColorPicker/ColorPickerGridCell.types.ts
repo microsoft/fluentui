@@ -1,6 +1,9 @@
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory SwatchColorPicker}
+ */
 export interface IColorPickerGridCellProps {
   /**
    * Item to render
@@ -62,7 +65,8 @@ export interface IColorPickerGridCellProps {
   width?: number;
 
   /**
-   * Width of the border that indicates a selected/hovered cell, in pixels
+   * Width of the border that indicates a selected/hovered cell, in pixels.
+   * If `cellWidth` is less than 24px, then default value is 2px. Otherwise it defaults to 4px.
    * @defaultvalue 2
    */
   borderWidth?: number;
@@ -115,6 +119,9 @@ export interface IColorPickerGridCellProps {
   onKeyDown?: (ev: React.KeyboardEvent<HTMLButtonElement>) => void;
 }
 
+/**
+ * {@docCategory SwatchColorPicker}
+ */
 export interface IColorCellProps {
   /**
    * Arbitrary unique string associated with this option
@@ -141,6 +148,7 @@ export interface IColorCellProps {
 
 /**
  * Properties required to build the styles for the color picker component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface IColorPickerGridCellStyleProps {
   /**
@@ -186,6 +194,7 @@ export interface IColorPickerGridCellStyleProps {
 
 /**
  * Styles for the Color Picker Component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface IColorPickerGridCellStyles {
   /**
