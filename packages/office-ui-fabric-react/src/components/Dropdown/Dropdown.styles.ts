@@ -210,9 +210,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:active .' + globalClassnames.caretDown]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
-          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralPrimaryMixin,
-          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralPrimaryMixin,
-          ['&:active .' + globalClassnames.titleIsPlaceHolder]: rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:hover .' + globalClassnames.titleIsPlaceHolder]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:focus .' + globalClassnames.titleIsPlaceHolder]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
+          ['&:active .' + globalClassnames.titleIsPlaceHolder]: !disabled && rootHoverFocusActiveSelectorNeutralPrimaryMixin,
 
           ['&:hover .' + globalClassnames.titleHasError]: borderColorError,
           ['&:active .' + globalClassnames.titleHasError]: borderColorError,
