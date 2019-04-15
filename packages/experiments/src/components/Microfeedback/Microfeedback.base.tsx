@@ -2,17 +2,18 @@
 import * as React from 'react';
 import { withSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
+import { classNamesFunction } from '../../Utilities';
 import { IconButton, IButtonStyles, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { IStackStyles } from 'office-ui-fabric-react/lib/Stack';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-
-import { IMicrofeedbackComponent, IMicrofeedbackProps, VoteType } from './Microfeedback.types';
+import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
 import { IMicrofeedbackState } from './Microfeedback.state';
-
 import { initializeIcons } from '@uifabric/icons';
+
+const getClassNames = classNamesFunction<IMicrofeedbackStyleProps, IMicrofeedbackStyles>();
 
 const microfeedbackStyles: IStackStyles = {
   root: [
@@ -31,7 +32,7 @@ const microfeedbackItemStyles: IButtonStyles = {
   ]
 };
 
-class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
+export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
   // ref's will be linked to each of the icons for callout placement
   private dislikeRef = React.createRef<HTMLDivElement>();
   private likeRef = React.createRef<HTMLDivElement>();
@@ -55,8 +56,12 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
     const hideThumbsUpCallout = this.state.vote !== 'like' || !this.state.isFollowupVisible;
     const onCalloutDismiss = this._onCalloutDismiss.bind(this);
 
+    const classNames = getClassNames(this.props.styles, {
+      theme: this.props.theme
+    });
+
     return (
-      <div>
+      <div className={classNames.root}>
         <Stack horizontal styles={microfeedbackStyles}>
           <div ref={this.likeRef}>
             <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._vote.bind(this, 'like')} />
@@ -137,16 +142,3 @@ class MicrofeedbackViewComponent extends React.Component<IMicrofeedbackProps, IM
     }
   }
 }
-
-export const MicrofeedbackView: IMicrofeedbackComponent['view'] = props => {
-  return (
-    <div>
-      <MicrofeedbackViewComponent
-        ThumbsDownQuestion={props.ThumbsDownQuestion}
-        ThumbsUpQuestion={props.ThumbsUpQuestion}
-        thumbsUpTitle={props.thumbsUpTitle}
-        thumbsDownTitle={props.thumbsDownTitle}
-      />
-    </div>
-  );
-};

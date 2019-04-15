@@ -1,13 +1,10 @@
-import { MicrofeedbackView } from './Microfeedback.view';
-import { MicrofeedbackStyles, MicrofeedbackTokens } from './Microfeedback.styles';
-import { MicrofeedbackState } from './Microfeedback.state';
-import { IMicrofeedbackProps } from './Microfeedback.types';
-import { createComponent } from '../../Foundation';
+import { styled } from '../../Utilities';
+import { MicrofeedbackBase } from './Microfeedback.base';
+import { getStyles } from './Microfeedback.styles';
+import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles } from './Microfeedback.types';
 
-export const Microfeedback: React.StatelessComponent<IMicrofeedbackProps> = createComponent({
-  displayName: 'Microfeedback',
-  view: MicrofeedbackView,
-  state: MicrofeedbackState,
-  styles: MicrofeedbackStyles,
-  tokens: MicrofeedbackTokens
-});
+export const Microfeedback: React.StatelessComponent<IMicrofeedbackProps> = styled<
+  IMicrofeedbackProps,
+  IMicrofeedbackStyleProps,
+  IMicrofeedbackStyles
+>(MicrofeedbackBase, getStyles, undefined, { scope: 'Microfeedback' });

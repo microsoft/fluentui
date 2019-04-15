@@ -1,13 +1,5 @@
-import { IComponent, IComponentStyles, IStyleableComponentProps } from '../../Foundation';
-import { IBaseProps } from '../../Utilities';
-
-export type IMicrofeedbackComponent = IComponent<IMicrofeedbackProps, IMicrofeedbackTokens, IMicrofeedbackStyles, IMicrofeedbackViewProps>;
-
-// These types are redundant with IMicrofeedbackComponent but are needed until TS function return widening issue is resolved:
-// https://github.com/Microsoft/TypeScript/issues/241
-// For now, these helper types can be used to provide return type safety for tokens and styles functions.
-export type IMicrofeedbackTokenReturnType = ReturnType<Extract<IMicrofeedbackComponent['tokens'], Function>>;
-export type IMicrofeedbackStylesReturnType = ReturnType<Extract<IMicrofeedbackComponent['styles'], Function>>;
+import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 
 // Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
 export interface IMicrofeedback {}
@@ -18,10 +10,7 @@ export type VoteType = 'dislike' | 'no_vote' | 'like';
 
 // Extending IStyleableComponentProps will automatically add styleable props for you, such as styles, tokens and theme.
 // If you don't want these props to be included in your component, just remove this extension.
-export interface IMicrofeedbackProps
-  extends IMicrofeedbackSlots,
-    IStyleableComponentProps<IMicrofeedbackViewProps, IMicrofeedbackTokens, IMicrofeedbackStyles>,
-    IBaseProps<IMicrofeedback> {
+export interface IMicrofeedbackProps extends IMicrofeedbackSlots {
   sendFeedback?: (vote: VoteType) => void; // Callback for sending feedback to a backend
   sendFollowupIndex?: (index: number) => void; // Callback for sending followup index to a backend
   thumbsUpTitle?: string; // Localized string for the thumbsUp icon
@@ -29,6 +18,13 @@ export interface IMicrofeedbackProps
   ThumbsUpQuestion?: IMicrofeedbackQuestion; // Optional question to be asked if user selected thumbsUp
   ThumbsDownQuestion?: IMicrofeedbackQuestion; // Optional question to be asked if user selectes thumbsDown
   defaultText?: string;
+
+  styles?: IStyleFunctionOrObject<IMicrofeedbackStyleProps, IMicrofeedbackStyles>;
+  theme?: ITheme;
+}
+
+export interface IMicrofeedbackStyleProps {
+  theme?: ITheme;
 }
 
 export interface IMicrofeedbackQuestion {
@@ -38,6 +34,6 @@ export interface IMicrofeedbackQuestion {
 
 export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {}
 
-export interface IMicrofeedbackTokens {}
-
-export type IMicrofeedbackStyles = IComponentStyles<IMicrofeedbackSlots>;
+export interface IMicrofeedbackStyles {
+  root: IStyle;
+}
