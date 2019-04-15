@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ThemeGeneratorPage: fix it so it looks right",
+      "comment": "DetailsList: Fix high contrast focus color",
       "type": "patch"
     }
   ],
