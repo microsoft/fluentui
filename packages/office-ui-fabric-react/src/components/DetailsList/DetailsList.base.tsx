@@ -316,7 +316,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getGroupHeight,
       styles,
       theme,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      onRenderCheckbox
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -436,7 +437,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   minimumPixelsForDrag: minimumPixelsForDrag,
                   cellStyleProps: cellStyleProps,
                   checkboxVisibility,
-                  indentWidth
+                  indentWidth,
+                  onRenderDetailsCheckbox: onRenderCheckbox
                 },
                 this._onRenderDetailsHeader
               )}
@@ -526,7 +528,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       groupProps,
       useReducedRowRenderer,
       indentWidth,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      onRenderCheckbox
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -556,7 +559,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       checkboxCellClassName: checkboxCellClassName,
       useReducedRowRenderer: useReducedRowRenderer,
       indentWidth,
-      cellStyleProps: cellStyleProps
+      cellStyleProps: cellStyleProps,
+      onRenderDetailsCheckbox: onRenderCheckbox
     };
 
     if (!item) {

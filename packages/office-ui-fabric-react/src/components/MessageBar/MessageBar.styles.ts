@@ -125,7 +125,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         width: '100%',
         boxSizing: 'border-box',
         display: 'flex',
-        position: 'relative',
         wordBreak: 'break-word',
         selectors: {
           '& .ms-Link': {
@@ -133,7 +132,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
             ...fonts.small
           },
           [HighContrastSelector]: {
-            background: 'windowText'
+            background: 'windowText',
+            color: 'Window'
           }
         }
       },
@@ -161,25 +161,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         display: 'flex',
         lineHeight: 'normal',
         width: '100%',
-        boxSizing: 'border-box',
-        selectors: {
-          '&:before': {
-            pointerEvents: 'none',
-            position: 'absolute',
-            right: 0,
-            bottom: 0,
-            left: 0,
-            top: 0,
-            margin: 0,
-            selectors: {
-              [HighContrastSelector]: {
-                background: 'WindowText',
-                color: 'Window',
-                content: ' '
-              }
-            }
-          }
-        }
+        boxSizing: 'border-box'
       },
       !isMultiline && {
         selectors: {

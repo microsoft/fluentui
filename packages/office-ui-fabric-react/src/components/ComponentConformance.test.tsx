@@ -105,7 +105,8 @@ const classNameSelectors: { [key: string]: string } = {
   Nav: 'ms-Nav',
   Panel: 'ms-Panel',
   PlainCard: 'ms-Callout',
-  Tooltip: 'ms-Tooltip'
+  Tooltip: 'ms-Tooltip',
+  MessageBar: 'ms-MessageBar'
 };
 
 // NOTE: Please consider modifying your component to work with this test instead

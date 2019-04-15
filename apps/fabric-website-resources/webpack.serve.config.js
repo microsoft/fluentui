@@ -15,6 +15,9 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
+      '@uifabric/legacy/src': path.join(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy/lib': path.join(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy$': path.join(__dirname, '../../packages/legacy/src'),
       'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
