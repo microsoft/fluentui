@@ -1,8 +1,8 @@
 ## Overview
 
-Fabric React components are built as production ready components to be used in Microsoft products, but generalized, documented, and reusable. This enables us and our partners to more easily build great applications without spending a ton of time implementing the same things over and over.
+Fabric React components are built as production-ready, generalized, documented, and reusable components to be used in Microsoft products. This enables us and our partners to more easily build great applications without spending a ton of time implementing the same things over and over.
 
-Each component is designed to be RTL friendly, keyboard accessible, screen reader friendly, themeable, and generalized. TypeScript definition files are also included, so if you use TypeScript (which isn't a requirement), you will get compiler validation and using an editor like VS Code, you'll get intellisense. Each component is exported as a named module that can be easily imported in your code, allowing your external bundler to create small bundles that include just what you need.
+Each component is designed to be RTL-friendly, keyboard accessible, screen reader-friendly, themeable, and generalized. TypeScript definition files are also included, so if you use TypeScript (which isn't a requirement), you will get compiler validation and using an editor like VS Code, you'll get intellisense. Each component is exported as a named module that can be easily imported in your code, allowing your external bundler to create small bundles that include just what you need.
 
 ## Getting Started
 
@@ -24,7 +24,11 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 
-const MyPage = () => (<Fabric><DefaultButton>I am a button.</DefaultButton></Fabric>);
+const MyPage = () => (
+  <Fabric>
+    <DefaultButton>I am a button.</DefaultButton>
+  </Fabric>
+);
 
 ReactDOM.render(<MyPage />, document.body.firstChild);
 ```

@@ -4,6 +4,7 @@ shrinkwrap.yml
 CHANGELOG.*
 fabric-icons-*
 version.ts
+dndSim.js
 
 *.d.ts
 *.api.md
@@ -17,3 +18,4 @@ lib-commonjs
 dist
 node_modules
 common/changes
+common/scripts
