@@ -1,0 +1,124 @@
+{
+  "tables": [
+    {
+      "kind": "class",
+      "name": "DelayedRender",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "Component"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IDelayedRenderProps"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IDelayedRenderState"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "Utility component for delaying the render of a child component after a given delay. This component requires a single child component; don't pass in many components. Wrap multiple components in a DIV if necessary.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "componentDidMount",
+          "typeTokens": [
+            {
+              "text": "componentDidMount"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "componentWillUnmount",
+          "typeTokens": [
+            {
+              "text": "componentWillUnmount"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "defaultProps",
+          "typeTokens": [
+            {
+              "text": "{\n        "
+            },
+            {
+              "text": "delay"
+            },
+            {
+              "text": ": number;\n    }"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "render",
+          "typeTokens": [
+            {
+              "text": "render"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactElement"
+            },
+            {
+              "text": "<{}> | null"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        }
+      ]
+    }
+  ]
+}

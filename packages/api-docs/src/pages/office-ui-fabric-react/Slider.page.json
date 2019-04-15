@@ -1,0 +1,463 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ISlider",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "value",
+          "typeTokens": [
+            {
+              "text": "number | undefined"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ISliderProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "SliderBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A description of the Slider for the benefit of screen readers.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaValueText",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": number) => string"
+            }
+          ],
+          "descriptionHtml": "A text description of the Slider number value for the benefit of screen readers. This should be used when the Slider number value is not accurately represented by a number.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "buttonProps",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "HTMLAttributes"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLButtonElement"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional mixin for additional props on the thumb button within the slider.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional className to attach to the slider root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ISlider",
+              "hyperlinkedPage": "Slider",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ISlider interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "defaultValue",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The initial value of the Slider. Use this if you intend for the Slider to be an uncontrolled component. This value is mutually exclusive to value. Use one or the other.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "disabled",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional flag to render the Slider as disabled.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Description label of the Slider\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "max",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The max value of the Slider\n\n",
+          "deprecated": false,
+          "defaultValue": "10"
+        },
+        {
+          "name": "min",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The min value of the Slider\n\n",
+          "deprecated": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "onChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback when the value has been changed\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "event"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "TouchEvent"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback on mouse up or touch end\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "showValue",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether to show the value on the right of the Slider.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "step",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The difference between the two adjacent values of the Slider\n\n",
+          "deprecated": false,
+          "defaultValue": "1"
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ISliderStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ISliderStyles",
+              "hyperlinkedPage": "Slider",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "value",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The initial value of the Slider. Use this if you intend to pass in a new value as a result of onChange events. This value is mutually exclusive to defaultValue. Use one or the other.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "valueFormat",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": number) => string"
+            }
+          ],
+          "descriptionHtml": "Optional function to format the slider value.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "vertical",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional flag to render the slider vertically. Defaults to rendering horizontal.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ISliderStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "activeSection",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "container",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "inactiveSection",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "line",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "lineContainer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideBox",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "thumb",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "titleLabel",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "valueLabel",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

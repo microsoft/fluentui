@@ -1,0 +1,32 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ISize",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "height",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "width",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

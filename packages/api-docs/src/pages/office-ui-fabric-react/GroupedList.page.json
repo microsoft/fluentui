@@ -1,0 +1,1635 @@
+{
+  "tables": [
+    {
+      "kind": "enum",
+      "name": "CollapseAllVisibility",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "hidden",
+          "descriptionHtml": "",
+          "value": "0"
+        },
+        {
+          "name": "visible",
+          "descriptionHtml": "",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroup",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional accessibility label (aria-label) attribute that will be stamped on to the element. If none is specified, the arai-label attribute will contain the group name\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "children",
+          "typeTokens": [
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Nested groups, if any.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "count",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "How many items should be rendered within the group.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "data",
+          "typeTokens": [
+            {
+              "text": "any"
+            }
+          ],
+          "descriptionHtml": "Arbitrary data required to be preserved by the caller.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hasMoreData",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional flag to indicate the group has more data to load than the current group count indicated. This can be used to indicate that a plus should be rendered next to the group count in the header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCollapsed",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If all the items in the group are collapsed.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isDropEnabled",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If drag/drop is enabled for the group header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isSelected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Deprecated at 1.0.0, selection state will be controled by the selection store only.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "isShowingAll",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If the items within the group are summarized or showing all.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "key",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Unique identifier for the group.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "level",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Number indicating the level of nested groups.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "name",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Display name for the group, rendered on the header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "startIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Start index for the group within the given items.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupDividerProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Custom className\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "compact",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean value to indicate if the component should render in compact mode. Set to false by default\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<{}>"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "expandButtonProps",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "HTMLAttributes"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLButtonElement"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Props for expand/collapse button\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "footerText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text to display for the group footer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "group",
+          "typeTokens": [
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "The group to be rendered by the header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The index of the group.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupLevel",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The indent level of the group.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groups",
+          "typeTokens": [
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Stores parent group's children.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "indentWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Width corresponding to a single level. This is multiplied by the groupLevel to get the full spacer width for the group.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCollapsedGroupSelectVisible",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if the group selection check box is shown for collapsed groups.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isGroupLoading",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => boolean"
+            }
+          ],
+          "descriptionHtml": "Callback to determine if a group has missing items and needs to load them from the server.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isSelected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Deprecated at v.65.1 and will be removed by v 1.0. Use `selected` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "loadingText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text shown on group headers to indicate the group is being loaded.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onGroupHeaderClick",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the group header is clicked.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderTitle",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupHeaderProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Override which allows the caller to provider a custom renderer for the GroupHeader title.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onToggleCollapse",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the group is expanded or collapsed.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onToggleSelectGroup",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the group is selected.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onToggleSummarize",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the group \"Show All\" link is clicked\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If all items in the group are selected.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            }
+          ],
+          "descriptionHtml": "The selection mode of the list the group lives within.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "showAllLinkText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text to display for the group \"Show All\" link.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by the Higher Order Component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "viewport",
+          "typeTokens": [
+            {
+              "text": "IViewport"
+            }
+          ],
+          "descriptionHtml": "A reference to the viewport in which the header is rendered.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupedList",
+      "extendsTokens": [
+        {
+          "text": "IList",
+          "hyperlinkedPage": "List",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "forceUpdate",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "toggleCollapseAll",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "allCollapsed"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Toggles the collapsed state of all the groups in the list.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupedListProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "GroupedListBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional class name to add to the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "compact",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean value to indicate if the component should render in compact mode. Set to false by default\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupedList",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IGroupedList interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "dragDropEvents",
+          "typeTokens": [
+            {
+              "text": "IDragDropEvents"
+            }
+          ],
+          "descriptionHtml": "Map of callback functions related to drag and drop functionality.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "dragDropHelper",
+          "typeTokens": [
+            {
+              "text": "IDragDropHelper"
+            }
+          ],
+          "descriptionHtml": "helper to manage drag/drop across item and groups\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "eventsToRegister",
+          "typeTokens": [
+            {
+              "text": "{\n        "
+            },
+            {
+              "text": "eventName"
+            },
+            {
+              "text": ": string;\n        "
+            },
+            {
+              "text": "callback"
+            },
+            {
+              "text": ": ("
+            },
+            {
+              "text": "context"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IDragDropContext"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "event"
+            },
+            {
+              "text": "?: any) => void;\n    }[]"
+            }
+          ],
+          "descriptionHtml": "Event names and corresponding callbacks that will be registered to groups and rendered elements\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getGroupHeight",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "groupIndex"
+            },
+            {
+              "text": ": number) => number"
+            }
+          ],
+          "descriptionHtml": "Optional function to override default group height calculation used by list virtualization.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupProps",
+          "typeTokens": [
+            {
+              "text": "IGroupRenderProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional override properties to render groups.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groups",
+          "typeTokens": [
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Optional grouping instructions.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "items",
+          "typeTokens": [
+            {
+              "text": "any[]"
+            }
+          ],
+          "descriptionHtml": "List of items to render.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "listProps",
+          "typeTokens": [
+            {
+              "text": "IListProps",
+              "hyperlinkedPage": "List",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional properties to pass through to the list components being rendered.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onGroupExpandStateChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "isSomeGroupExpanded"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Optional callback when the group expand state changes between all collapsed and at least one group is expanded.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderCell",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "nestingDepth"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number) => "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "Rendering callback to render the group items.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onShouldVirtualize",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "props"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IListProps",
+              "hyperlinkedPage": "List",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => boolean"
+            }
+          ],
+          "descriptionHtml": "Optional callback to determine whether the list should be rendered in full, or virtualized. Virtualization will add and remove pages of items as the user scrolls them into the visible range. This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists. The default implementation will virtualize when this callback is not provided.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            }
+          ],
+          "descriptionHtml": "Optional selection model to track selection state.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            }
+          ],
+          "descriptionHtml": "Controls how/if the list manages selection.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupedListStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IGroupedListStyles",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style function to be passed in to override the themed or default styles\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme that is passed in from Higher Order Component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "usePageCache",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "boolean to control if pages containing unchanged items should be cached, this is a perf optimization The same property in List.Props\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "viewport",
+          "typeTokens": [
+            {
+              "text": "IViewport"
+            }
+          ],
+          "descriptionHtml": "Optional Viewport, provided by the parent component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupedListStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "group",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "groupIsDropping",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupFooterProps",
+      "extendsTokens": [
+        {
+          "text": "IGroupDividerProps",
+          "hyperlinkedPage": "GroupedList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupFooterStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IGroupFooterStyles",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style function to be passed in to override the themed or default styles\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupFooterStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupHeaderProps",
+      "extendsTokens": [
+        {
+          "text": "IGroupDividerProps",
+          "hyperlinkedPage": "GroupedList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "expandButtonProps",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "HTMLAttributes"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLButtonElement"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Native props for the GroupHeader expand and collapse button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupedListId",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "GroupedList id for aria-controls\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectAllButtonProps",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "HTMLAttributes"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLButtonElement"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Native props for the GroupHeader select all button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupHeaderStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IGroupHeaderStyles",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style function to be passed in to override the themed or default styles\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupHeaderStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "check",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "dropIcon",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "expand",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "expandIsCollapsed",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "groupHeaderContainer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "headerCount",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "title",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupRenderProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "collapseAllVisibility",
+          "typeTokens": [
+            {
+              "text": "CollapseAllVisibility",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Flag to indicate whether to ignore the collapsing icon on header.\n\n",
+          "deprecated": false,
+          "defaultValue": "CheckboxVisibility.visible"
+        },
+        {
+          "name": "footerProps",
+          "typeTokens": [
+            {
+              "text": "IGroupFooterProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Information to pass in to the group footer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getGroupItemLimit",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "group"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => number"
+            }
+          ],
+          "descriptionHtml": "Grouping item limit.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "headerProps",
+          "typeTokens": [
+            {
+              "text": "IGroupHeaderProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Information to pass in to the group header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isAllGroupsCollapsed",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean indicating if all groups are in collapsed state.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderFooter",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupFooterProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Override which allows the caller to provide a custom footer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderHeader",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupHeaderProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Override which allows the caller to provide a custom header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderShowAll",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupShowAllProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Override which allows the caller to provide a custom Show All link.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onToggleCollapseAll",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "isAllCollapsed"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when all groups are expanded or collapsed.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "showAllProps",
+          "typeTokens": [
+            {
+              "text": "IGroupShowAllProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Information to pass in to the group Show all footer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "showEmptyGroups",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean indicating if empty groups are shown\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupShowAllProps",
+      "extendsTokens": [
+        {
+          "text": "IGroupDividerProps",
+          "hyperlinkedPage": "GroupedList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "showAllLinkText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The Show All link text.\n\n",
+          "deprecated": false,
+          "defaultValue": "'Show All'"
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupShowAllStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IGroupShowAllStyles",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style function to be passed in to override the themed or default styles\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupShowAllStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupSpacerProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "count",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Count of spacer(s)\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "indentWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "How much to indent\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IGroupSpacerStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IGroupSpacerStyles",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style function to be passed in to override the themed or default styles\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme from Higher Order Component\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IGroupSpacerStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n\n",
+      "members": [
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

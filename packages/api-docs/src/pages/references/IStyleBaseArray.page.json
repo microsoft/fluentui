@@ -1,0 +1,24 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IStyleBaseArray",
+      "extendsTokens": [
+        {
+          "text": "Array"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IStyle"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": []
+    }
+  ]
+}

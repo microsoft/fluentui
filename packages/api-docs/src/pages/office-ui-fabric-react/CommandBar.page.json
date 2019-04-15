@@ -1,0 +1,546 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ICommandBar",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "focus"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Sets focus to the active command in the list.\n",
+          "deprecated": false
+        },
+        {
+          "name": "remeasure",
+          "typeTokens": [
+            {
+              "text": "remeasure"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Remeasures the available space.\n",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICommandBarItemProps",
+      "extendsTokens": [
+        {
+          "text": "IContextualMenuItem",
+          "hyperlinkedPage": "ContextualMenu",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "ICommandBarItemProps extends IContextualMenuItem and adds a few CommandBar specific props \n",
+      "members": [
+        {
+          "name": "buttonStyles",
+          "typeTokens": [
+            {
+              "text": "IButtonStyles",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Custom styles for individual button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "cacheKey",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A custom cache key to be used for this item. If cacheKey is changed, the cache will invalidate. Defaults to key value;\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "commandBarButtonAs",
+          "typeTokens": [
+            {
+              "text": "IComponentAs"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ICommandBarItemProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Method to override the render of the individual command bar button. Note, is not used when rendered in overflow\n\n",
+          "deprecated": false,
+          "defaultValue": "CommandBarButton"
+        },
+        {
+          "name": "iconOnly",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Remove text when button is not in the overflow\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "renderedInOverflow",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Context under which the item is being rendered This value is controlled by the component and useful for adjusting onRender function\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "tooltipHostProps",
+          "typeTokens": [
+            {
+              "text": "ITooltipHostProps"
+            }
+          ],
+          "descriptionHtml": "Props to pass into tooltip during iconOnly\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICommandBarProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Accessibility text to be read by the screen reader when the user's focus enters the command bar. The screen reader will read this text after reading information about the first focusable item in the command bar.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "buttonAs",
+          "typeTokens": [
+            {
+              "text": "IComponentAs"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom button to be used as near and far items\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional css class to apply to the command bar\n\n",
+          "deprecated": false,
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ICommandBar",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ICommandBar interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "farItems",
+          "typeTokens": [
+            {
+              "text": "ICommandBarItemProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Items to render on the right side (or left, in RTL). ICommandBarItemProps extend IContextualMenuItem\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "items",
+          "typeTokens": [
+            {
+              "text": "ICommandBarItemProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Items to render. ICommandBarItemProps extend IContextualMenuItem\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDataGrown",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "movedItem"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ICommandBarItemProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Function callback invoked when data has been grown.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDataReduced",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "movedItem"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ICommandBarItemProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Function callback invoked when data has been reduced.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onGrowData",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "data"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ICommandBarData"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "ICommandBarData"
+            }
+          ],
+          "descriptionHtml": "Custom function to grow data if items are too small for the given space. Return `undefined` if no more steps can be taken to avoid infinate loop.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onReduceData",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "data"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ICommandBarData"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "ICommandBarData"
+            }
+          ],
+          "descriptionHtml": "Custom function to reduce data if items do not fit in given space. Return `undefined` if no more steps can be taken to avoid infinate loop.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowButtonAs",
+          "typeTokens": [
+            {
+              "text": "IComponentAs"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom button to be used as oveflow button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowButtonProps",
+          "typeTokens": [
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Props to be passed to overflow button. If menuProps are passed through this prop, any items provided will be prepended to the top of the existing menu.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowItems",
+          "typeTokens": [
+            {
+              "text": "ICommandBarItemProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Default items to have in the overflow menu. ICommandBarItemProps extend IContextualMenuItem\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "shiftOnReduce",
+          "typeTokens": [
+            {
+              "text": "Boolean"
+            }
+          ],
+          "descriptionHtml": "When true, items will be 'shifted' off the front of the array when reduced, and unshifted during grow\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ICommandBarStyleProps",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ICommandBarStyles",
+              "hyperlinkedPage": "CommandBar",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by HOC.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICommandBarStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICommandBarStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "primarySet",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "secondarySet",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

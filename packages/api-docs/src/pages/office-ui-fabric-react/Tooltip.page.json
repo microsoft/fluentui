@@ -1,0 +1,332 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ITooltip",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "ITooltipProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": " | "
+        },
+        {
+          "text": "TooltipBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "Tooltip component props. \n",
+      "members": [
+        {
+          "name": "calloutProps",
+          "typeTokens": [
+            {
+              "text": "ICalloutProps",
+              "hyperlinkedPage": "Callout",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Properties to pass through for Callout, reference detail properties in ICalloutProps\n\n",
+          "deprecated": false,
+          "defaultValue": "isBeakVisible: true, beakWidth: 16, gapSpace: 0, setInitialFocus: true, doNotLayer: false"
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITooltip",
+              "hyperlinkedPage": "Tooltip",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ITooltip interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "content",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "String to be passed to the tooltip\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "delay",
+          "typeTokens": [
+            {
+              "text": "TooltipDelay",
+              "hyperlinkedPage": "Tooltip",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Length of delay. Can be set to zero if you do not want a delay.\n\n",
+          "deprecated": false,
+          "defaultValue": "medium"
+        },
+        {
+          "name": "directionalHint",
+          "typeTokens": [
+            {
+              "text": "DirectionalHint"
+            }
+          ],
+          "descriptionHtml": "Indicator of how the tooltip should be anchored to its targetElement.\n\n",
+          "deprecated": false,
+          "defaultValue": "DirectionalHint.topCenter"
+        },
+        {
+          "name": "directionalHintForRTL",
+          "typeTokens": [
+            {
+              "text": "DirectionalHint"
+            }
+          ],
+          "descriptionHtml": "How the element should be positioned in RTL layouts. If not specified, a mirror of `directionalHint` will be used instead\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "maxWidth",
+          "typeTokens": [
+            {
+              "text": "string | null"
+            }
+          ],
+          "descriptionHtml": "Max width of tooltip\n\n",
+          "deprecated": false,
+          "defaultValue": "364px"
+        },
+        {
+          "name": "onRenderContent",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITooltipProps",
+              "hyperlinkedPage": "Tooltip",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Render function to populate content area\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITooltipStyleProps",
+              "hyperlinkedPage": "Tooltip",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ITooltipStyles",
+              "hyperlinkedPage": "Tooltip",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "targetElement",
+          "typeTokens": [
+            {
+              "text": "HTMLElement"
+            }
+          ],
+          "descriptionHtml": "Element to anchor the Tooltip to.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme to apply to the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITooltipStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Accept custom classNames\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "delay",
+          "typeTokens": [
+            {
+              "text": "TooltipDelay",
+              "hyperlinkedPage": "Tooltip",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Delay before tooltip appears.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "maxWidth",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Maximum width of tooltip.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Accept theme prop.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITooltipStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "content",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the content element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "subText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the subtext element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "TooltipDelay",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "long",
+          "descriptionHtml": "",
+          "value": "2"
+        },
+        {
+          "name": "medium",
+          "descriptionHtml": "",
+          "value": "1"
+        },
+        {
+          "name": "zero",
+          "descriptionHtml": "",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}

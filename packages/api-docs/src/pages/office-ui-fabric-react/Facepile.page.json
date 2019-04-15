@@ -1,0 +1,715 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IFacepile",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IFacepilePersona",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ButtonHTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLButtonElement"
+        },
+        {
+          "text": " | "
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "allowPhoneInitials",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether initials are calculated for phone numbers and number sequences. Example: Set property to true to get initials for project names consisting of numbers only.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "data",
+          "typeTokens": [
+            {
+              "text": "any"
+            }
+          ],
+          "descriptionHtml": "Extra data - not used directly but can be handy for passing additional data to custom event handlers.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "imageInitials",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The user's initials to display in the image area when there is no image.\n\n",
+          "deprecated": false,
+          "defaultValue": "[Derived from personaName]"
+        },
+        {
+          "name": "imageUrl",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Url to the image to use, should be a square aspect ratio and big enough to fit in the image area.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "initialsColor",
+          "typeTokens": [
+            {
+              "text": "PersonaInitialsColor",
+              "hyperlinkedPage": "Persona",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "The background color when the user's initials are displayed.\n\n",
+          "deprecated": false,
+          "defaultValue": "[Derived from personaName]"
+        },
+        {
+          "name": "keytipProps",
+          "typeTokens": [
+            {
+              "text": "IKeytipProps",
+              "hyperlinkedPage": "Keytip",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional keytip for this button that is only added when 'onClick' is defined for the persona\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onClick",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "persona"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IFacepilePersona",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "If provided, persona will be rendered with cursor:pointer and the handler will be called on click.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onMouseMove",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "persona"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IFacepilePersona",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "If provided, the handler will be called on mouse move.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onMouseOut",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "persona"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IFacepilePersona",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "If provided, the handler will be called when mouse moves out of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "personaName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Name of the person.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IFacepileProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "FacepileBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "addButtonProps",
+          "typeTokens": [
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Button properties for the add face button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaDescription",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA label for persona list\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "chevronButtonProps",
+          "typeTokens": [
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Deprecated at v0.70, use `overflowButtonProps` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional css class to apply to the Facepile\n\n",
+          "deprecated": false,
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IFacepile",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IFacepile interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getPersonaProps",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "persona"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IFacepilePersona",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "IPersonaSharedProps",
+              "hyperlinkedPage": "Persona",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Method to access properties on the underlying Persona control\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "maxDisplayablePersonas",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Maximum number of personas to show\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowButtonProps",
+          "typeTokens": [
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Properties for the overflow icon\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowButtonType",
+          "typeTokens": [
+            {
+              "text": "OverflowButtonType",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Type of overflow icon to use\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowPersonas",
+          "typeTokens": [
+            {
+              "text": "IFacepilePersona",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Personas to place in the overflow\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "personas",
+          "typeTokens": [
+            {
+              "text": "IFacepilePersona",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Array of IPersonaProps that define each Persona.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "personaSize",
+          "typeTokens": [
+            {
+              "text": "PersonaSize",
+              "hyperlinkedPage": "Persona",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Size to display the personas\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "showAddButton",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Show add person button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IFacepileStyleProps",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IFacepileStyles",
+              "hyperlinkedPage": "Facepile",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IFacepileStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Accept custom classNames\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "spacingAroundItemButton",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Pixel value for spacing around button. Number value set in pixels\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IFacepileStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "addButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "descriptiveOverflowButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "itemButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "itemContainer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "member",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "members",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "overflowButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "overflowInitialsIcon",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "screenReaderOnly",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "OverflowButtonType",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "descriptive",
+          "descriptionHtml": "+1 overflow icon\n",
+          "value": "1"
+        },
+        {
+          "name": "downArrow",
+          "descriptionHtml": "Chevron overflow icon\n",
+          "value": "3"
+        },
+        {
+          "name": "more",
+          "descriptionHtml": "More overflow icon\n",
+          "value": "2"
+        },
+        {
+          "name": "none",
+          "descriptionHtml": "No overflow\n",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}

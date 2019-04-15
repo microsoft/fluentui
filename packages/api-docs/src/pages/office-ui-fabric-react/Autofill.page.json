@@ -1,0 +1,309 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IAutofill",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "clear",
+          "typeTokens": [
+            {
+              "text": "clear"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Clear all text in the input. Sets value to '';\n",
+          "deprecated": false
+        },
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "focus"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Focus the input element.\n",
+          "deprecated": false
+        },
+        {
+          "name": "cursorLocation",
+          "typeTokens": [
+            {
+              "text": "number | null"
+            }
+          ],
+          "descriptionHtml": "The current index of the cursor in the input area. Returns -1 if the input element is not ready.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "inputElement",
+          "typeTokens": [
+            {
+              "text": "HTMLInputElement"
+            },
+            {
+              "text": " | null"
+            }
+          ],
+          "descriptionHtml": "The current input element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isValueSelected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "A boolean for whether or not there is a value selected in the input area.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionEnd",
+          "typeTokens": [
+            {
+              "text": "number | null"
+            }
+          ],
+          "descriptionHtml": "the current index of where the selection ends. Returns -1 if the input element is not ready.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionStart",
+          "typeTokens": [
+            {
+              "text": "number | null"
+            }
+          ],
+          "descriptionHtml": "The current index of where the selection starts. Returns -1 if the input element is not ready.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "value",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The current text value that the user has entered.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IAutofillProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "InputHTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLInputElement"
+        },
+        {
+          "text": " | "
+        },
+        {
+          "text": "Autofill"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IAutofill",
+              "hyperlinkedPage": "Autofill",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Gets the compoonent ref.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "defaultVisibleValue",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The default value to be visible. This is different from placeholder because it actually sets the current value of the picker Note: This will only be set upon component creation and will not update with subsequent prop updates.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "enableAutofillOnKeyPress",
+          "typeTokens": [
+            {
+              "text": "KeyCodes"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "When the user uses left arrow, right arrow, clicks, or deletes text autofill is disabled Since the user has taken control. It is automatically reenabled when the user enters text and the cursor is at the end of the text in the input box. This specifies other key presses that will reenabled autofill.\n\n",
+          "deprecated": false,
+          "defaultValue": "[KeyCodes.down, KeyCodes.up]"
+        },
+        {
+          "name": "onInputChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": string) => string"
+            }
+          ],
+          "descriptionHtml": "A callback used to modify the input string.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onInputValueChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "newValue"
+            },
+            {
+              "text": "?: string) => void"
+            }
+          ],
+          "descriptionHtml": "A callback for when the current input value changes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "preventValueSelection",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Should the value of the input be selected? True if we're focused on our input, false otherwise. We need to explicitly not select the text in the autofill if we are no longer focused. In IE11, selecting a input will also focus the input, causing other element's focus to be stolen.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "shouldSelectFullInputValueInComponentDidUpdate",
+          "typeTokens": [
+            {
+              "text": "() => boolean"
+            }
+          ],
+          "descriptionHtml": "Handler for checking if the full value of the input should be seleced in componentDidUpdate\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "suggestedDisplayValue",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The suggested autofill value that will display.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "updateValueInWillReceiveProps",
+          "typeTokens": [
+            {
+              "text": "() => string | null"
+            }
+          ],
+          "descriptionHtml": "Handler for checking and updating the value if needed in componentWillReceiveProps\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBaseAutoFill",
+      "extendsTokens": [
+        {
+          "text": "IAutofill",
+          "hyperlinkedPage": "Autofill",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "Deprecated, do not use.\n\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IBaseAutoFillProps",
+      "extendsTokens": [
+        {
+          "text": "IAutofillProps",
+          "hyperlinkedPage": "Autofill",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "Deprecated, do not use.\n\n",
+      "members": []
+    }
+  ]
+}

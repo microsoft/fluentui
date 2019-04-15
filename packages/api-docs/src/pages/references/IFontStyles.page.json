@@ -1,0 +1,144 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IFontStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "UI Fabric font set. \n",
+      "members": [
+        {
+          "name": "large",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "medium",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "mediumPlus",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "mega",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "small",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "smallPlus",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "superLarge",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "tiny",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "xLarge",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "xSmall",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "xxLarge",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

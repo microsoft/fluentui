@@ -1,0 +1,208 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IOverlay",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IOverlayProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional css class to apply to the Overlay\n\n",
+          "deprecated": false,
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IOverlay",
+              "hyperlinkedPage": "Overlay",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Gets the component ref.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isDarkThemed",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether to use the dark-themed overlay.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "onClick",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IOverlayStyleProps",
+              "hyperlinkedPage": "Overlay",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IOverlayStyles",
+              "hyperlinkedPage": "Overlay",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by HOC.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IOverlayStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Accept custom classNames\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isDark",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is overlay dark themed\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isNone",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is overlay visible\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Accept theme prop.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IOverlayStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

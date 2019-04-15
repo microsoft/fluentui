@@ -1,0 +1,390 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IOverflowSet",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "focus"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "forceIntoFirstElement"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "boolean"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "boolean"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Sets focus to the first tabbable item in the zone.\n\n",
+          "deprecated": false
+        },
+        {
+          "name": "focusElement",
+          "typeTokens": [
+            {
+              "text": "focusElement"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "childElement"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "boolean"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Sets focus to a specific child element within the zone. This can be used in conjunction with onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct location and then focus.)\n\n",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IOverflowSetItemProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "key",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Unique id to identify the item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "keytipProps",
+          "typeTokens": [
+            {
+              "text": "IKeytipProps",
+              "hyperlinkedPage": "Keytip",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional keytip for the overflowSetItem.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IOverflowSetProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "OverflowSetBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Class name\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IOverflowSet",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Gets the component ref.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "doNotContainWithinFocusZone",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true do not contain the OverflowSet inside of a FocusZone, otherwise the OverflowSet will contain a FocusZone. If this is set to true focusZoneProps will be ignored. Use one or the other.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "focusZoneProps",
+          "typeTokens": [
+            {
+              "text": "IFocusZoneProps",
+              "hyperlinkedPage": "FocusZone",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Custom properties for OverflowSet's FocusZone. If doNotContainWithinFocusZone is set to true focusZoneProps will be ignored. Use one or the other.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "items",
+          "typeTokens": [
+            {
+              "text": "IOverflowSetItemProps",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "An array of items to be rendered by your onRenderItem function in the primary content area\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "itemSubMenuProvider",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IOverflowSetItemProps",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => any[] | undefined"
+            }
+          ],
+          "descriptionHtml": "Function that will take in an IOverflowSetItemProps and return the subMenu for that item. If not provided, will use 'item.subMenuProps.items' by default. This is only used if your overflow set has keytips.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "keytipSequences",
+          "typeTokens": [
+            {
+              "text": "string[]"
+            }
+          ],
+          "descriptionHtml": "Optional full keytip sequence for the overflow button, if it will have a keytip.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderItem",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IOverflowSetItemProps",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => any"
+            }
+          ],
+          "descriptionHtml": "Method to call when trying to render an item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderOverflowButton",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<any[]>"
+            }
+          ],
+          "descriptionHtml": "Rendering method for overflow button and contextual menu. The argument to the function is the overflowItems passed in as props to this function.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowItems",
+          "typeTokens": [
+            {
+              "text": "IOverflowSetItemProps",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "An array of items to be passed to overflow contextual menu\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "role",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The role for the OverflowSet.\n\n",
+          "deprecated": false,
+          "defaultValue": "'menubar'"
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IOverflowSetProps",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IOverflowSetStyles",
+              "hyperlinkedPage": "OverflowSet",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "vertical",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Change item layout direction to vertical/stacked.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IOverflowSetStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "item",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "The style that is layered onto each individual item in the overflow set.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "The style that is layered onto the overflow button for the overflow set.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "The style that is layered onto the root element of OverflowSet.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,274 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IMarqueeSelection",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IMarqueeSelectionProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional CSS class(es) to apply to the MarqueeSelection.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IMarqueeSelection",
+              "hyperlinkedPage": "MarqueeSelection",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IMarqueeSelection interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isDraggingConstrainedToRoot",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional flag to restrict the drag rect to the root element, instead of allowing the drag rect to start outside of the root element boundaries.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isEnabled",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional flag to control the enabled state of marquee selection. This allows you to render it and have events all ready to go, but conditionally disable it. That way transitioning between enabled/disabled generate no difference in the DOM.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "onShouldStartSelection",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": ") => boolean"
+            }
+          ],
+          "descriptionHtml": "Optional callback that is called, when the mouse down event occurs, in order to determine if we should start a marquee selection. If true is returned, we will cancel the mousedown event to prevent upstream mousedown handlers from executing.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "rootProps",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "HTMLAttributes"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLDivElement"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional props to mix into the root DIV element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            }
+          ],
+          "descriptionHtml": "The selection object to interact with when updating selection changes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IMarqueeSelectionStyleProps",
+              "hyperlinkedPage": "MarqueeSelection",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IMarqueeSelectionStyles",
+              "hyperlinkedPage": "MarqueeSelection",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme (provided through customization.)\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IMarqueeSelectionStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IMarqueeSelectionStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "box",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "boxFill",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "dragMask",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

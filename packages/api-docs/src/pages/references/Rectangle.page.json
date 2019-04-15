@@ -1,0 +1,118 @@
+{
+  "tables": [
+    {
+      "kind": "class",
+      "name": "Rectangle",
+      "extendsTokens": [],
+      "descriptionHtml": "Rectangle helper class.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "bottom",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "equals",
+          "typeTokens": [
+            {
+              "text": "equals"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "rect"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "Rectangle",
+              "hyperlinkedPage": "Rectangle",
+              "pageKind": "References"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "boolean"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Tests if another rect is approximately equal to this rect (within 4 decimal places.)\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "height",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Calculated automatically by subtracting the bottom from top.\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "left",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "right",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "top",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "width",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Calculated automatically by subtracting the right from left\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

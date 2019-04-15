@@ -1,0 +1,201 @@
+{
+  "tables": [
+    {
+      "kind": "class",
+      "name": "GlobalSettings",
+      "extendsTokens": [],
+      "descriptionHtml": "Global settings helper, which stores settings in the global (window) namespace. If window is not provided, it will store settings in module scope. Provides a way to observe changes as well when their values change.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "addChangeListener",
+          "typeTokens": [
+            {
+              "text": "static "
+            },
+            {
+              "text": "addChangeListener"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "cb"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IChangeEventCallback",
+              "hyperlinkedPage": "IChangeEventCallback",
+              "pageKind": "References"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "getValue",
+          "typeTokens": [
+            {
+              "text": "static "
+            },
+            {
+              "text": "getValue"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ">("
+            },
+            {
+              "text": "key"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "string"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "defaultValue"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": " | (() => "
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ")"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "removeChangeListener",
+          "typeTokens": [
+            {
+              "text": "static "
+            },
+            {
+              "text": "removeChangeListener"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "cb"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IChangeEventCallback",
+              "hyperlinkedPage": "IChangeEventCallback",
+              "pageKind": "References"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "setValue",
+          "typeTokens": [
+            {
+              "text": "static "
+            },
+            {
+              "text": "setValue"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ">("
+            },
+            {
+              "text": "key"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "string"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        }
+      ]
+    }
+  ]
+}

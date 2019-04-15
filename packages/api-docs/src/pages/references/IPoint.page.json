@@ -1,0 +1,32 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IPoint",
+      "extendsTokens": [],
+      "descriptionHtml": "Point interface.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "x",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "y",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

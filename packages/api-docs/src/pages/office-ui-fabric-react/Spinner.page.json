@@ -1,0 +1,338 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ISpinner",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "ISpinnerProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "Spinner component props. \n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Alternative status label for screen reader\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLive",
+          "typeTokens": [
+            {
+              "text": "'assertive' | 'polite' | 'off'"
+            }
+          ],
+          "descriptionHtml": "Politeness setting for label update announcement.\n\n",
+          "deprecated": false,
+          "defaultValue": "polite"
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional CSS class(es) to apply to the Spinner.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ISpinner",
+              "hyperlinkedPage": "Spinner",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ISpinner interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The label to show next to the Spinner. Label updates will be announced to the screen readers. Use ariaLive to control politeness level.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "labelPosition",
+          "typeTokens": [
+            {
+              "text": "SpinnerLabelPosition"
+            }
+          ],
+          "descriptionHtml": "The position of the label in regards of the spinner animation.\n\n",
+          "deprecated": false,
+          "defaultValue": "SpinnerLabelPosition.bottom"
+        },
+        {
+          "name": "size",
+          "typeTokens": [
+            {
+              "text": "SpinnerSize",
+              "hyperlinkedPage": "Spinner",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "The size of Spinner to render. \\{ extraSmall, small, medium, large \\}\n\n",
+          "deprecated": false,
+          "defaultValue": "SpinnerType.medium"
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ISpinnerStyleProps",
+              "hyperlinkedPage": "Spinner",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ISpinnerStyles",
+              "hyperlinkedPage": "Spinner",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme (provided through customization.)\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "type",
+          "typeTokens": [
+            {
+              "text": "SpinnerType",
+              "hyperlinkedPage": "Spinner",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Deprecated and will be removed at \\>= 2.0.0. Use `SpinnerSize` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ISpinnerStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "The props needed to construct styles. This represents the simplified set of immutable things which control the class names. \n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "CSS class name for the component attached to the root stylable area.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "labelPosition",
+          "typeTokens": [
+            {
+              "text": "SpinnerLabelPosition"
+            }
+          ],
+          "descriptionHtml": "Position of the label in regards to the spinner animation.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "size",
+          "typeTokens": [
+            {
+              "text": "SpinnerSize",
+              "hyperlinkedPage": "Spinner",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Size of the spinner animation.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ISpinnerStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "Represents the stylable areas of the control. \n",
+      "members": [
+        {
+          "name": "circle",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles for the spinner circle animation.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles for the label accompanying the circle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles for the root element. Refers to the wrapper containing both the circle and the label.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "screenReaderText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles for the hidden helper element to aid with screen readers.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "SpinnerSize",
+      "extendsTokens": [],
+      "descriptionHtml": "Possible variations of the spinner circle size. \n",
+      "members": [
+        {
+          "name": "large",
+          "descriptionHtml": "28px Spinner diameter\n",
+          "value": "3"
+        },
+        {
+          "name": "medium",
+          "descriptionHtml": "20px Spinner diameter\n",
+          "value": "2"
+        },
+        {
+          "name": "small",
+          "descriptionHtml": "16px Spinner diameter\n",
+          "value": "1"
+        },
+        {
+          "name": "xSmall",
+          "descriptionHtml": "12px Spinner diameter\n",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "SpinnerType",
+      "extendsTokens": [],
+      "descriptionHtml": "Deprecated at v2.0.0, use `SpinnerSize` instead.\n\n",
+      "members": [
+        {
+          "name": "large",
+          "descriptionHtml": "Deprecated and will be removed at \\>= 2.0.0. Use `SpinnerSize.large` instead.\n\n",
+          "value": "1"
+        },
+        {
+          "name": "normal",
+          "descriptionHtml": "Deprecated and will be removed at \\>= 2.0.0. Use `SpinnerSize.medium` instead.\n\n",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}

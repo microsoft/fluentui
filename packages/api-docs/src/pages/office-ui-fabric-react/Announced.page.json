@@ -1,0 +1,136 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IAnnounced",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IAnnouncedProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "Props"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "AnnouncedBase"
+        },
+        {
+          "text": ">"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "component"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IAnnounced",
+              "hyperlinkedPage": "Announced",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IAnnounced interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "message",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The status message provided as screen reader output\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<{}, "
+            },
+            {
+              "text": "IAnnouncedStyles",
+              "hyperlinkedPage": "Announced",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IAnnouncedStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "screenReaderText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style override for the screen reader text.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

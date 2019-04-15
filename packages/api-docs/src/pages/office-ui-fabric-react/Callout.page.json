@@ -1,0 +1,683 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ICallout",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "ICalloutContentStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "backgroundColor",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Background color for the beak and callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "beakWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Width of Callout beak\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calloutMaxWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Max width for callout including borders.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calloutWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Width for callout including borders.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "CSS class to apply to the callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overflowYHidden",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not to clip content of the callout, if it overflows vertically.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "positions",
+          "typeTokens": [
+            {
+              "text": "ICalloutPositionedInfo"
+            }
+          ],
+          "descriptionHtml": "Callout positioning data\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme to apply to the calloutContent.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICalloutContentStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "beak",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for callout beak.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "beakCurtain",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for callout beak curtain.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calloutMain",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for content component of the callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "container",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for wrapper of Callout component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for callout container root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICalloutProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "alignTargetEdge",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds, thus making sure the element aligns perfectly with target's alignment edge\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaDescribedBy",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Defines the element id referencing the element containing the description for the callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Accessible label text for callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelledBy",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Defines the element id referencing the element containing label text for callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "backgroundColor",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The background color of the Callout in hex format ie. #ffffff.\n\n",
+          "deprecated": false,
+          "defaultValue": "$ms-color-white"
+        },
+        {
+          "name": "beakWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The width of the beak.\n\n",
+          "deprecated": false,
+          "defaultValue": "16"
+        },
+        {
+          "name": "bounds",
+          "typeTokens": [
+            {
+              "text": "IRectangle",
+              "hyperlinkedPage": "IRectangle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "The bounding rectangle for which the contextual menu can appear in.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calloutMaxHeight",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Set max height of callout When not set the callout will expand with contents up to the bottom of the screen\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calloutMaxWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Custom width for callout including borders. If value is 0, no width is applied.\n\n",
+          "deprecated": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "calloutWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Custom width for callout including borders. If value is 0, no width is applied.\n\n",
+          "deprecated": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "CSS class to apply to the callout.\n\n",
+          "deprecated": false,
+          "defaultValue": "null"
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ICallout",
+              "hyperlinkedPage": "Callout",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ICallout interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "coverTarget",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true the position returned will have the menu element cover the target. If false then it will position next to the target;\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "directionalHint",
+          "typeTokens": [
+            {
+              "text": "DirectionalHint"
+            }
+          ],
+          "descriptionHtml": "How the element should be positioned\n\n",
+          "deprecated": false,
+          "defaultValue": "DirectionalHint.BottomAutoEdge"
+        },
+        {
+          "name": "directionalHintFixed",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true the position will not change sides in an attempt to fit the callout within bounds. It will still attempt to align it to whatever bounds are given.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "directionalHintForRTL",
+          "typeTokens": [
+            {
+              "text": "DirectionalHint"
+            }
+          ],
+          "descriptionHtml": "How the element should be positioned in RTL layouts. If not specified, a mirror of `directionalHint` will be used instead\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "doNotLayer",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true do not render on a new layer. If false render on a new layer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "finalHeight",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Specify the final height of the content. To be used when expanding the content dynamically so that callout can adjust its position.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "gapSpace",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The gap between the Callout and the target\n\n",
+          "deprecated": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "hidden",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If specified, renders the Callout in a hidden state. Use this flag, rather than rendering a callout conditionally based on visibility, to improve rendering performance when it becomes visible. Note: When callout is hidden its content will not be rendered. It will only render once the callout is visible.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hideOverflow",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Manually set OverflowYHidden style prop to true on calloutMain element A variety of callout load animations will need this to hide the scollbar that can appear\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isBeakVisible",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true then the beak is visible. If false it will not be shown.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "layerProps",
+          "typeTokens": [
+            {
+              "text": "ILayerProps",
+              "hyperlinkedPage": "Layer",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional props to pass to the Layer component hosting the panel.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "minPagePadding",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The minimum distance the callout will be away from the edge of the screen.\n\n",
+          "deprecated": false,
+          "defaultValue": "8"
+        },
+        {
+          "name": "onDismiss",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: any) => void"
+            }
+          ],
+          "descriptionHtml": "Callback when the Callout tries to close.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onLayerMounted",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Optional callback when the layer content has mounted.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onPositioned",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "positions"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "ICalloutPositionedInfo"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Optional callback that is called once the callout has been correctly positioned.\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onScroll",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Callback when the Callout body is scrolled.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "preventDismissOnLostFocus",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true then the callout will not dismiss when it loses focus\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "preventDismissOnResize",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true then the callout will not dismiss on resize\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "preventDismissOnScroll",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true then the callout will not dismiss on scroll\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "role",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Aria role assigned to the callout (Eg. dialog, alertdialog).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "setInitialFocus",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true then the callout will attempt to focus the first focusable element that it contains. If it doesn't find an element, no focus will be set and the method will return false. This means that it's the contents responsibility to either set focus or have focusable items.\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "style",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "CSSProperties"
+            }
+          ],
+          "descriptionHtml": "CSS style to apply to the callout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ICalloutContentStyleProps",
+              "hyperlinkedPage": "Callout",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ICalloutContentStyles",
+              "hyperlinkedPage": "Callout",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional styles for the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "target",
+          "typeTokens": [
+            {
+              "text": "Element"
+            },
+            {
+              "text": " | string | "
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "IPoint",
+              "hyperlinkedPage": "IPoint",
+              "pageKind": "References"
+            },
+            {
+              "text": " | null"
+            }
+          ],
+          "descriptionHtml": "The target that the Callout should try to position itself based on. It can be either an Element a querySelector string of a valid Element or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Optional theme for component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

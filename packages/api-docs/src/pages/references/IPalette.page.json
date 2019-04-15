@@ -1,0 +1,562 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IPalette",
+      "extendsTokens": [],
+      "descriptionHtml": "UI Fabric color palette. \n",
+      "members": [
+        {
+          "name": "accent",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for the accent.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "black",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for the strongest color, which is black in the default theme. This is a very light color in inverted themes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "blackTranslucent40",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for blackTranslucent40.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "blue",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for blue.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "blueDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for blueDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "blueLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for blueLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "blueMid",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for blueMid.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "green",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for green.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "greenDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for greenDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "greenLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for greenLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "magenta",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for magenta.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "magentaDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for magentaDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "magentaLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for magentaLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralLighter",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralLighter.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralLighterAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralLighterAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralPrimary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralPrimary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralPrimaryAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralPrimaryAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralQuaternary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralQuaternary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralQuaternaryAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralQuaternaryAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralSecondary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralSecondary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralSecondaryAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralSecondaryAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralTertiary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralTertiary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "neutralTertiaryAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for neutralTertiaryAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "orange",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for orange.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "orangeLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for orangeLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "orangeLighter",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for orangeLighter.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "purple",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for purple.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "purpleDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for purpleDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "purpleLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for purpleLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "red",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for red.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "redDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for redDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "teal",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for teal.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "tealDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for tealDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "tealLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for tealLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeDarkAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeDarkAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeDarker",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeDarker.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeLighter",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeLighter.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeLighterAlt",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeLighterAlt.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themePrimary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themePrimary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeSecondary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeSecondary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "themeTertiary",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for themeTertiary.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "white",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for the softest color, which is white in the default theme. This is a very dark color in dark themes. This is the page background.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "whiteTranslucent40",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for whiteTranslucent40\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "yellow",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for yellow.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "yellowDark",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for yellowDark.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "yellowLight",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Color code for yellowLight.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

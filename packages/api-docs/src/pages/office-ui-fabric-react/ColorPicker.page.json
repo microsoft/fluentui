@@ -1,0 +1,386 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IColorPicker",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "color",
+          "typeTokens": [
+            {
+              "text": "IColor"
+            }
+          ],
+          "descriptionHtml": "The currently selected color.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IColorPickerProps",
+      "extendsTokens": [
+        {
+          "text": "IBaseProps",
+          "hyperlinkedPage": "IBaseProps",
+          "pageKind": "References"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IColorPicker",
+          "hyperlinkedPage": "ColorPicker",
+          "pageKind": "Components"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "alphaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Label for the alpha textfield.\n\n",
+          "deprecated": false,
+          "defaultValue": "Alpha"
+        },
+        {
+          "name": "alphaSliderHidden",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether to hide the alpha control slider.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "blueLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Label for the blue text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "Blue"
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional CSS class(es) to apply to the ColorPicker.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "color",
+          "typeTokens": [
+            {
+              "text": "IColor"
+            },
+            {
+              "text": " | string"
+            }
+          ],
+          "descriptionHtml": "Object or CSS-compatible string to describe the color.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IColorPicker",
+              "hyperlinkedPage": "ColorPicker",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Gets the component ref.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "greenLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Label for the green text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "Green"
+        },
+        {
+          "name": "hexLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Label for the hex text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "Hex"
+        },
+        {
+          "name": "onChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "SyntheticEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "color"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColor"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the user changes the color. (Not called when the color is changed via props.)\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColorChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "color"
+            },
+            {
+              "text": ": string, "
+            },
+            {
+              "text": "colorObject"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColor"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the user changes the color. (To preserve existing behavior, this is also called when the color changes via props.)\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "redLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Label for the red text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "Red"
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IColorPickerStyleProps",
+              "hyperlinkedPage": "ColorPicker",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IColorPickerStyles",
+              "hyperlinkedPage": "ColorPicker",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme (provided through customization).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IColorPickerStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional CSS class(es) to apply to the ColorPicker.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme (provided through customization).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IColorPickerStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "input",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style set for each text field input.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "panel",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style set for the panel element that contains the color rectangle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style set for the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "table",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style set for the table element that contains the color sliders and inputs.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "tableHeader",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style set for the table header that contains the labels.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "tableHexCell",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style set for the table cell that contains the hex label.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

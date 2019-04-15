@@ -1,0 +1,31 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IBaseProps",
+      "extendsTokens": [],
+      "descriptionHtml": "BaseProps interface.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

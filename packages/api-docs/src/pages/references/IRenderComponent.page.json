@@ -1,0 +1,44 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IRenderComponent",
+      "extendsTokens": [],
+      "descriptionHtml": "An interface representing a component that will not output any DOM, will just render its children and pass through items to modify the children.\n\n\n",
+      "members": [
+        {
+          "name": "children",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "props"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "TProps"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "JSX"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "Element"
+            }
+          ],
+          "descriptionHtml": "JSX.Element to return in this component's render() function.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

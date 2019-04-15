@@ -1,0 +1,32 @@
+{
+  "tables": [
+    {
+      "kind": "enum",
+      "name": "DateRangeType",
+      "extendsTokens": [],
+      "descriptionHtml": "The supported date range types \n",
+      "members": [
+        {
+          "name": "Day",
+          "descriptionHtml": "",
+          "value": "0"
+        },
+        {
+          "name": "Month",
+          "descriptionHtml": "",
+          "value": "2"
+        },
+        {
+          "name": "Week",
+          "descriptionHtml": "",
+          "value": "1"
+        },
+        {
+          "name": "WorkWeek",
+          "descriptionHtml": "",
+          "value": "3"
+        }
+      ]
+    }
+  ]
+}

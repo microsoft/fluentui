@@ -1,0 +1,525 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IActivityItemProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "AllHTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "activityDescription",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            },
+            {
+              "text": "[] | "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "An element describing the activity that took place. If no activityDescription, activityDescriptionText, or onRenderActivityDescription are included, no description of the activity is shown.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "activityDescriptionText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text describing the activity that occurred and naming the people involved in it. Deprecated, use `activityDescription` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "activityIcon",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "An element containing an icon shown next to the activity item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "activityPersonas",
+          "typeTokens": [
+            {
+              "text": "Array"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPersonaSharedProps",
+              "hyperlinkedPage": "Persona",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "If activityIcon is not set, then the persona props in this array will be used as the icon for the this activity item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "animateBeaconSignal",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Enables/Disables the beacon that radiates from the center of the center of the activity icon. Signals an activity has started.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "beaconColorOne",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Beacon color one\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "beaconColorTwo",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Beacon color two\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "comments",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            },
+            {
+              "text": "[] | "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "An element containing the text of comments or \\@mention messages. If no comments, commentText, or onRenderComments are included, no comments are shown.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "commentText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text of comments or \\@mention messages. Deprecated, use `comments` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<{}>"
+            }
+          ],
+          "descriptionHtml": "Gets ref to component interface.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompact",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicated if the compact styling should be used.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderActivityDescription",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IActivityItemProps",
+              "hyperlinkedPage": "ActivityItem",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "A renderer for the description of the current activity.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderComments",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IActivityItemProps",
+              "hyperlinkedPage": "ActivityItem",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "A renderer that adds the text of a comment below the activity description.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderIcon",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IActivityItemProps",
+              "hyperlinkedPage": "ActivityItem",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "A renderer to create the icon next to the activity item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderTimeStamp",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IActivityItemProps",
+              "hyperlinkedPage": "ActivityItem",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "A renderer adds a time stamp. If not included, timeStamp is shown as plain text below the activity.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IActivityItemStyles",
+              "hyperlinkedPage": "ActivityItem",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional styling for the elements within the Activity Item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "timeStamp",
+          "typeTokens": [
+            {
+              "text": "string | "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            },
+            {
+              "text": "[] | "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "Element shown as a timestamp on this activity. If not included, no timestamp is shown.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IActivityItemStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "activityContent",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the main container of the activity's description.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "activityPersona",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the persona of the user that did this activity.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "activityText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the activity's description.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "activityTypeIcon",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the icon indicating the type of the activity. Only shown when personas are unavailable.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "commentText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the text of comments.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "doublePersona",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to personas when two users are involved in a single activity.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompactContent",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to main text container in the compact variant.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompactIcon",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to personas and icons in the compact variant.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompactPersona",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to personas in the compact variant.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompactPersonaContainer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to a wrapper around personas in the compact variant.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompactRoot",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to root in the compact variant.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCompactTimeStamp",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the timestamp in compact mode. This can occur if a host overrides the render behavior to force the timestamp to render.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "personaContainer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the container of the persona image or activity type icon.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "pulsingBeacon",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the root activity item container.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the root activity item container.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "timeStamp",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Styles applied to the timestamp at the end of each activity item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,55 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IRawStyle",
+      "extendsTokens": [
+        {
+          "text": "IRawStyleBase",
+          "hyperlinkedPage": "IRawStyleBase",
+          "pageKind": "References"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "IStyleObject extends a raw style objects, but allows selectors to be defined under the selectors node.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "displayName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Display name for the style.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectors",
+          "typeTokens": [
+            {
+              "text": "{\n        ["
+            },
+            {
+              "text": "key"
+            },
+            {
+              "text": ": string]: "
+            },
+            {
+              "text": "IStyle"
+            },
+            {
+              "text": ";\n    }"
+            }
+          ],
+          "descriptionHtml": "Custom selectors for the style.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

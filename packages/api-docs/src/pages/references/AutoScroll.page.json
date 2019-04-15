@@ -1,0 +1,32 @@
+{
+  "tables": [
+    {
+      "kind": "class",
+      "name": "AutoScroll",
+      "extendsTokens": [],
+      "descriptionHtml": "AutoScroll simply hooks up mouse events given a parent element, and scrolls the container up/down depending on how close the mouse is to the top/bottom of the container.\n\nOnce you don't want autoscroll any more, just dispose the helper and it will unhook events.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "dispose",
+          "typeTokens": [
+            {
+              "text": "dispose"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false,
+          "kind": "Method"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,20 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ITheme",
+      "extendsTokens": [
+        {
+          "text": "IScheme",
+          "hyperlinkedPage": "IScheme",
+          "pageKind": "References"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": []
+    }
+  ]
+}

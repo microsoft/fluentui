@@ -1,0 +1,160 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IFocusTrapZone",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Sets focus to a descendant in the Trap Zone. See firstFocusableSelector and focusPreviouslyFocusedInnerElement for details.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IFocusTrapZoneProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLDivElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabelledBy",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Sets the aria-labelledby attribute.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IFocusTrapZone",
+              "hyperlinkedPage": "FocusTrapZone",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "disableFirstFocus",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Do not put focus onto first element when render focus trap zone\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "elementToFocusOnDismiss",
+          "typeTokens": [
+            {
+              "text": "HTMLElement"
+            }
+          ],
+          "descriptionHtml": "Sets the HTMLElement to focus on when exiting the FocusTrapZone.\n\n",
+          "deprecated": false,
+          "defaultValue": "The element.target that triggered the FTZ."
+        },
+        {
+          "name": "firstFocusableSelector",
+          "typeTokens": [
+            {
+              "text": "string | (() => string)"
+            }
+          ],
+          "descriptionHtml": "Indicates the selector for first focusable item. Only applies if focusPreviouslyFocusedInnerElement == false.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "focusPreviouslyFocusedInnerElement",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Specifies the algorithm used to determine which descendant element to focus when focus() is called. If false, the first focusable descendant, filtered by the firstFocusableSelector property if present, is chosen. If true, the element that was focused when the Trap Zone last had a focused descendant is chosen. If it has never had a focused descendant before, behavior falls back to the first focused descendant.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "forceFocusInsideTrap",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicates whether focus trap zone should force focus inside the focus trap zone\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "ignoreExternalFocusing",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicates if this Trap Zone will ignore keeping track of HTMLElement that activated the Zone.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isClickableOutsideFocusTrap",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicates if this Trap Zone will allow clicks outside the FocusTrapZone\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        }
+      ]
+    }
+  ]
+}

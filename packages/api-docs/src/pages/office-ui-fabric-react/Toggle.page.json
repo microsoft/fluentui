@@ -1,0 +1,477 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IToggle",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IToggleProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "Toggle component props. \n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text for screen-reader to announce as the name of the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "as",
+          "typeTokens": [
+            {
+              "text": "IComponentAs"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "HTMLAttributes"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">>"
+            }
+          ],
+          "descriptionHtml": "Render the root element as another type.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checked",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Checked state of the toggle. If you are maintaining state yourself, use this property. Otherwise refer to `defaultChecked`.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IToggle",
+              "hyperlinkedPage": "Toggle",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IToggle interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "defaultChecked",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Initial state of the toggle. If you want the toggle to maintain its own state, use this. Otherwise refer to `checked`.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "disabled",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional disabled flag.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "inlineLabel",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the label (not the onText/offText) should be positioned inline with the toggle control. Left (right in RTL) side when on/off text provided VS right (left in RTL) side when no on/off text. Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "keytipProps",
+          "typeTokens": [
+            {
+              "text": "IKeytipProps",
+              "hyperlinkedPage": "Keytip",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional keytip for this toggle\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A label for the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "offAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "offText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text to display when toggle is OFF. Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "onChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "event"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "checked"
+            },
+            {
+              "text": "?: boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Callback issued when the value changes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "checked"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "onText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Text to display when toggle is ON. Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IToggleStyleProps",
+              "hyperlinkedPage": "Toggle",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IToggleStyles",
+              "hyperlinkedPage": "Toggle",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional styles for the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by HOC.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IToggleStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "Properties required to build the styles for the Toggle component. \n",
+      "members": [
+        {
+          "name": "checked",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Component is checked.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Root element class name.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "disabled",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Component is disabled.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "inlineLabel",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether label should be positioned inline with the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onOffMissing",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the user did not specify a on/off text. Influencing only when inlineLabel is used.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme values.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IToggleStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "Styles for the Toggle component. \n",
+      "members": [
+        {
+          "name": "container",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Container for the toggle pill and the text next to it.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Label element above the toggle.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "pill",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Pill, rendered as a button.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "text",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Text next to the pill.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "thumb",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Thumb inside of the pill.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

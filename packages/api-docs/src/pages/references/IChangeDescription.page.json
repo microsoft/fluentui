@@ -1,0 +1,42 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IChangeDescription",
+      "extendsTokens": [],
+      "descriptionHtml": "Change description used for change callbacks in GlobalSettings.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "key",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "oldValue",
+          "typeTokens": [
+            {
+              "text": "any"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "value",
+          "typeTokens": [
+            {
+              "text": "any"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

@@ -79,5 +79,6 @@
   "peerDependencies": {
     "react": ">=16.3.2-0 <17.0.0",
     "react-dom": ">=16.3.2-0 <17.0.0"
-  }
+  },
+  "disabledTasks": []
 }

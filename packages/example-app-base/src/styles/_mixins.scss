@@ -1,0 +1,14 @@
+@import './variables';
+
+// Apply content padding, based on device size
+@mixin contentPadding($paddingTop:0px, $paddingBottom:$contentPaddingBottom) {
+  padding: $paddingTop $contentPadding-sm $paddingBottom $contentPadding-sm;
+
+  @media screen and (min-width: $uhf-screen-min-mobile) {
+    padding: $paddingTop $contentPadding-lg $paddingBottom $contentPadding-lg;
+  }
+
+  @media screen and (min-width: $ms-screen-min-xl) {
+    padding: $paddingTop $contentPadding-xl $paddingBottom $contentPadding-xl;
+  }
+}

@@ -1,0 +1,455 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ITeachingBubble",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "focus"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Sets focus to the TeachingBubble root element\n",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITeachingBubbleProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "TeachingBubbleBase"
+        },
+        {
+          "text": " | "
+        },
+        {
+          "text": "TeachingBubbleContentBase"
+        },
+        {
+          "text": ">"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IAccessiblePopupProps"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "TeachingBubble component props. \n",
+      "members": [
+        {
+          "name": "ariaDescribedBy",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Defines the element id referencing the element containing the description for the TeachingBubble.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelledBy",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Defines the element id referencing the element containing label text for TeachingBubble.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calloutProps",
+          "typeTokens": [
+            {
+              "text": "ICalloutProps",
+              "hyperlinkedPage": "Callout",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Properties to pass through for Callout, reference detail properties in ICalloutProps\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITeachingBubble",
+              "hyperlinkedPage": "TeachingBubble",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ITeachingBubble interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hasCloseIcon",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Does the TeachingBubble have a close button in the top right corner?\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hasCondensedHeadline",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "A variation with smaller bold headline and no margins.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hasSmallHeadline",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "A variation with smaller bold headline and margins to the body (hasCondensedHeadline takes precedence if it is also set to true).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "headline",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A headline for the Teaching Bubble.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "illustrationImage",
+          "typeTokens": [
+            {
+              "text": "IImageProps",
+              "hyperlinkedPage": "Image",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "An Image for the Teaching Bubble.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isWide",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not the Teaching Bubble is wide, with image on the left side.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDismiss",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: any) => void"
+            }
+          ],
+          "descriptionHtml": "Callback when the TeachingBubble tries to close.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "primaryButtonProps",
+          "typeTokens": [
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "The Primary interaction button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "secondaryButtonProps",
+          "typeTokens": [
+            {
+              "text": "IButtonProps",
+              "hyperlinkedPage": "Button",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "The Secondary interaction button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITeachingBubbleStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ITeachingBubbleStyles",
+              "hyperlinkedPage": "TeachingBubble",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "targetElement",
+          "typeTokens": [
+            {
+              "text": "HTMLElement"
+            }
+          ],
+          "descriptionHtml": "Element to anchor the TeachingBubble to.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITeachingBubbleStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "body",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "bodyContent",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "closeButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "content",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "footer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "header",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "headline",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "imageContent",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "primaryButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "secondaryButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "subComponentStyles",
+          "typeTokens": [
+            {
+              "text": "ITeachingBubbleSubComponentStyles",
+              "hyperlinkedPage": "TeachingBubble",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "subText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITeachingBubbleSubComponentStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "callout",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<any, any>"
+            }
+          ],
+          "descriptionHtml": "Refers to the callout that hosts the teaching bubble.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

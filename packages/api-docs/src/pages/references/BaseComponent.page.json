@@ -1,0 +1,447 @@
+{
+  "tables": [
+    {
+      "kind": "class",
+      "name": "BaseComponent",
+      "extendsTokens": [],
+      "descriptionHtml": "BaseComponent class, which provides basic helpers for all components.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "_async",
+          "typeTokens": [
+            {
+              "text": "Async"
+            }
+          ],
+          "descriptionHtml": "Gets the async instance associated with the component, created on demand. The async instance gives subclasses a way to execute setTimeout/setInterval async calls safely, where the callbacks will be cleared/ignored automatically after unmounting. The helpers within the async object also preserve the this pointer so that you don't need to \"bind\" the callbacks.\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "_disposables",
+          "typeTokens": [
+            {
+              "text": "IDisposable",
+              "hyperlinkedPage": "IDisposable",
+              "pageKind": "References"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Allows subclasses to push things to this._disposables to be auto disposed.\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "_events",
+          "typeTokens": [
+            {
+              "text": "EventGroup",
+              "hyperlinkedPage": "EventGroup",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Gets the event group instance assocaited with the component, created on demand. The event instance provides on/off methods for listening to DOM (or regular javascript object) events. The event callbacks will be automatically disconnected after unmounting. The helpers within the events object also preserve the this reference so that you don't need to \"bind\" the callbacks.\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "_resolveRef",
+          "typeTokens": [
+            {
+              "text": "protected "
+            },
+            {
+              "text": "_resolveRef"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "refName"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "string"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "ref"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Helper to return a memoized ref resolver function.\n\n",
+          "deprecated": true,
+          "kind": "Method"
+        },
+        {
+          "name": "_skipComponentRefResolution",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Controls whether the componentRef prop will be resolved by this component instance. If you are implementing a passthrough (higher-order component), you would set this to false and pass through the props to the inner component, allowing it to resolve the componentRef.\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "_updateComponentRef",
+          "typeTokens": [
+            {
+              "text": "protected "
+            },
+            {
+              "text": "_updateComponentRef"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "currentProps"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IBaseProps",
+              "hyperlinkedPage": "IBaseProps",
+              "pageKind": "References"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "newProps"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IBaseProps",
+              "hyperlinkedPage": "IBaseProps",
+              "pageKind": "References"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Updates the componentRef (by calling it with \"this\" when necessary.)\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "_warnConditionallyRequiredProps",
+          "typeTokens": [
+            {
+              "text": "protected "
+            },
+            {
+              "text": "_warnConditionallyRequiredProps"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "requiredProps"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "string[]"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "conditionalPropName"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "string"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "condition"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "boolean"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Warns when props are required if a condition is met.\n\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "_warnDeprecations",
+          "typeTokens": [
+            {
+              "text": "protected "
+            },
+            {
+              "text": "_warnDeprecations"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "deprecationMap"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ISettingsMap"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "TProps"
+            },
+            {
+              "text": ">"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Warns when a deprecated props are being used.\n\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "_warnMutuallyExclusive",
+          "typeTokens": [
+            {
+              "text": "protected "
+            },
+            {
+              "text": "_warnMutuallyExclusive"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "mutuallyExclusiveMap"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ISettingsMap"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "TProps"
+            },
+            {
+              "text": ">"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "Warns when props which are mutually exclusive with each other are both used.\n\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Gets the object's class name.\n",
+          "deprecated": false,
+          "kind": "Property",
+          "defaultValue": ""
+        },
+        {
+          "name": "componentDidMount",
+          "typeTokens": [
+            {
+              "text": "componentDidMount"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "When the component has mounted, update the componentRef.\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "componentDidUpdate",
+          "typeTokens": [
+            {
+              "text": "componentDidUpdate"
+            },
+            {
+              "text": "("
+            },
+            {
+              "text": "prevProps"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "TProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "prevState"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "TState"
+            },
+            {
+              "text": "): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "When the component receives props, make sure the componentRef is updated.\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "componentWillUnmount",
+          "typeTokens": [
+            {
+              "text": "componentWillUnmount"
+            },
+            {
+              "text": "(): "
+            },
+            {
+              "text": "void"
+            },
+            {
+              "text": ";"
+            }
+          ],
+          "descriptionHtml": "If we have disposables, dispose them automatically on unmount.\n",
+          "deprecated": false,
+          "kind": "Method"
+        },
+        {
+          "name": "onError",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "errorMessage"
+            },
+            {
+              "text": "?: string, "
+            },
+            {
+              "text": "ex"
+            },
+            {
+              "text": "?: any) => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "kind": "Property",
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

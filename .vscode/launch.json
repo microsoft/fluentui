@@ -8,9 +8,14 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i"],
+      "args": [
+        "-i"
+      ],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
@@ -23,9 +28,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=${file}"],
+      "args": [
+        "-i",
+        "--testPathPattern=${file}"
+      ],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
@@ -39,9 +50,14 @@
       "program": "${workspaceRoot}/apps/server-rendered-app/server/index.js",
       "cwd": "${workspaceRoot}/apps/server-rendered-app",
       "stopOnEntry": false,
-      "args": ["-i"],
+      "args": [
+        "-i"
+      ],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
@@ -54,9 +70,14 @@
       "program": "${workspaceRoot}/scripts/just.js",
       "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "stopOnEntry": false,
-      "args": ["ts"],
+      "args": [
+        "ts"
+      ],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
@@ -68,10 +89,15 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just.js",
       "stopOnEntry": false,
-      "args": ["tslint"],
+      "args": [
+        "tslint"
+      ],
       "cwd": "${workspaceRoot}/packages/styling",
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       }
@@ -82,10 +108,18 @@
       "request": "launch",
       "program": "${workspaceRoot}/scripts/just.js",
       "stopOnEntry": false,
-      "args": ["webpack", "--", "--production", "--dogfood"],
+      "args": [
+        "webpack",
+        "--",
+        "--production",
+        "--dogfood"
+      ],
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       }
@@ -101,7 +135,13 @@
       "cwd": "${workspaceRoot}/apps/fabric-website",
       "runtimeExecutable": null,
       // Use the config file for fabric-website, plus command line options used in start.js
-      "args": ["--nolazy", "--debug", "--config", "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js", "--open"],
+      "args": [
+        "--nolazy",
+        "--debug",
+        "--config",
+        "${workspaceRoot}/apps/fabric-website/webpack.serve.config.js",
+        "--open"
+      ],
       "env": {
         "NODE_ENV": "development"
       }
@@ -112,10 +152,16 @@
       "request": "launch",
       "program": "${workspaceRoot}/apps/ssr-tests/node_modules/mocha/bin/_mocha",
       "stopOnEntry": false,
-      "args": ["--debug", "dist/ssr-tests.js"],
+      "args": [
+        "--debug",
+        "dist/ssr-tests.js"
+      ],
       "cwd": "${workspaceRoot}/apps/ssr-tests",
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
@@ -128,9 +174,15 @@
       "program": "${workspaceRoot}/scripts/create-component.js",
       "cwd": "${workspaceRoot}",
       "stopOnEntry": false,
-      "args": ["--name", "TestComponentName"],
+      "args": [
+        "--name",
+        "TestComponentName"
+      ],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },
@@ -143,9 +195,32 @@
       "program": "${workspaceRoot}/scripts/lint-imports.js",
       "cwd": "${workspaceRoot}/packages/charting/src",
       "stopOnEntry": false,
-      "args": ["--name", "TestComponentName"],
+      "args": [
+        "--name",
+        "TestComponentName"
+      ],
       "runtimeExecutable": null,
-      "runtimeArgs": ["--nolazy", "--debug"],
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug page json generator",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/packages/api-docs/lib-commonjs/generatePageJsonFiles.js",
+      "cwd": "${workspaceRoot}/packages/api-docs",
+      "stopOnEntry": false,
+      "runtimeExecutable": null,
+      "runtimeArgs": [
+        "--nolazy",
+        "--debug"
+      ],
       "env": {
         "NODE_ENV": "development"
       },

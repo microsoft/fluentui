@@ -58,7 +58,10 @@ export class App extends React.Component<IAppProps, any> {
 
   public componentWillReceiveProps(nextProps: IAppProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
-      document.body.scrollTop = document.documentElement.scrollTop = 0;
+      const hash = this._extractAnchorLink(window.location.hash);
+      if (hash.startsWith('/components')) {
+        document.body.scrollTop = document.documentElement.scrollTop = 0;
+      }
     }
   }
 
@@ -164,6 +167,18 @@ export class App extends React.Component<IAppProps, any> {
       isLeftNavOpen: false
     });
   };
+
+  private _extractAnchorLink(path) {
+    let split = path.split('#');
+    let cleanedSplit = split.filter(value => {
+      if (value === '') {
+        return false;
+      } else {
+        return true;
+      }
+    });
+    return cleanedSplit[cleanedSplit.length - 1];
+  }
 
   private _openLeftNav = () => {
     this.setState({ isLeftNavOpen: true });

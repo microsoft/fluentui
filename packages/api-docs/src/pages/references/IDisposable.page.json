@@ -1,0 +1,22 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IDisposable",
+      "extendsTokens": [],
+      "descriptionHtml": "Disposable interface.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "dispose",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

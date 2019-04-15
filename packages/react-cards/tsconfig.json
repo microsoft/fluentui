@@ -15,12 +15,25 @@
     "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es5", "dom"],
-    "types": ["jest", "webpack-env"],
+    "lib": [
+      "es5",
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "webpack-env"
+    ],
     "paths": {
-      "@uifabric/react-cards/lib/*": ["./src/*"],
-      "@uifabric/react-cards": ["./src"]
-    }
+      "@uifabric/react-cards/lib/*": [
+        "./src/*"
+      ],
+      "@uifabric/react-cards": [
+        "./src"
+      ]
+    },
+    "skipLibCheck": true
   },
-  "include": ["src"]
+  "include": [
+    "src"
+  ]
 }

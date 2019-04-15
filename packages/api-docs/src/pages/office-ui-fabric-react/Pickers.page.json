@@ -1,0 +1,360 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IBasePicker",
+      "extendsTokens": [],
+      "descriptionHtml": "BasePicker component. \n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Sets focus to the focus zone.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "focusInput",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Set focus to the input\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "items",
+          "typeTokens": [
+            {
+              "text": "T"
+            },
+            {
+              "text": "[] | undefined"
+            }
+          ],
+          "descriptionHtml": "Gets the current value of the input.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBasePickerStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "Represents the stylable areas of the control. \n",
+      "members": [
+        {
+          "name": "input",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Refers to the input were to type new selections(picks).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "itemsWrapper",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Refers to the items already selected(picked).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Root element of any picker extending from BasePicker (wraps all the elements).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "screenReaderText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Refers to helper element used for accessibility tools (hidden from view on screen).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "text",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Refers to the elements already selected(picked) wrapped by `itemsWrapper` along with the input to type new selection.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IBasePickerSuggestionsProps",
+      "extendsTokens": [
+        {
+          "text": "Pick"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "ISuggestionsProps"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "T"
+        },
+        {
+          "text": ">, 'onRenderNoResultFound' | 'suggestionsHeaderText' | 'mostRecentlyUsedHeaderText' | 'noResultsFoundText' | 'className' | 'suggestionsClassName' | 'suggestionsItemClassName' | 'searchForMoreText' | 'forceResolveText' | 'loadingText' | 'searchingText' | 'resultsFooterFull' | 'resultsFooter' | 'resultsMaximumNumber' | 'showRemoveButtons' | 'suggestionsAvailableAlertText' | 'suggestionsContainerAriaLabel'> "
+        }
+      ],
+      "descriptionHtml": "Subset of picker options that may be legally passed through a picker to its internal Suggestions component. \n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IInputProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "InputHTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLInputElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "Pickers' input props interface \n",
+      "members": [
+        {
+          "name": "aria-label",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Screen reader label to apply to an input element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "defaultVisibleValue",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The default value to be visible when the autofill first created. This is different than placeholder text because the placeholder text will disappear and re-appear. This text persists until deleted or changed.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IPickerItem",
+      "extendsTokens": [],
+      "descriptionHtml": "PickerItem component. \n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IPickerItemProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "AllHTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "PickerItem props common for any type of items. \n",
+      "members": [
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPickerItem",
+              "hyperlinkedPage": "Pickers",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IPickerItem interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "index",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Index number of the item in the array of picked items.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "item",
+          "typeTokens": [
+            {
+              "text": "T"
+            }
+          ],
+          "descriptionHtml": "The item of Type T (Persona, Tag, or any other custom item provided).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "key",
+          "typeTokens": [
+            {
+              "text": "string | number"
+            }
+          ],
+          "descriptionHtml": "Unique key for each picked item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onItemChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "T"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Internal Use only, gives a callback to the renderer to call when an item has changed. This allows the base picker to keep track of changes in the items.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRemoveItem",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Callback issued when the item is removed from the array of picked items.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "removeButtonAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Aria-label for the picked item remove button.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Wether the picked item is selected or not.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "ValidationState",
+      "extendsTokens": [],
+      "descriptionHtml": "Validation state of the user's input. \n",
+      "members": [
+        {
+          "name": "invalid",
+          "descriptionHtml": "User input is invalid.\n",
+          "value": "2"
+        },
+        {
+          "name": "valid",
+          "descriptionHtml": "User input is valid.\n",
+          "value": "0"
+        },
+        {
+          "name": "warning",
+          "descriptionHtml": "User input could be valid or invalid, its state is not known yet.\n",
+          "value": "1"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,937 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IPanel",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "dismiss",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "KeyboardEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">) => void"
+            }
+          ],
+          "descriptionHtml": "Forces the panel to dismiss.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "open",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Forces the panel to open.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IPanelHeaderRenderer",
+      "extendsTokens": [
+        {
+          "text": "IRenderFunction"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IPanelProps",
+          "hyperlinkedPage": "Panel",
+          "pageKind": "Components"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "Renderer function which takes an additional parameter, the ID to use for the element containing the panel's title. This allows the `aria-labelledby` for the panel popup to work correctly. Note that if `headerTextId` is provided, it **must** be used on an element, or screen readers will be confused by the reference to a nonexistent ID. \n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IPanelProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "PanelBase"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Additional css class to apply to the Panel\n\n",
+          "deprecated": false,
+          "defaultValue": "undefined"
+        },
+        {
+          "name": "closeButtonAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Aria label on close button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentId",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Deprecated property. Serves no function.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanel",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IPanel interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "customWidth",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Custom panel width, used only when `type` is set to `PanelType.custom`.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "elementToFocusOnDismiss",
+          "typeTokens": [
+            {
+              "text": "HTMLElement"
+            }
+          ],
+          "descriptionHtml": "Sets the HTMLElement to focus on when exiting the FocusTrapZone.\n\n",
+          "deprecated": false,
+          "defaultValue": "The element.target that triggered the Panel."
+        },
+        {
+          "name": "firstFocusableSelector",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Indicates the selector for first focusable item. Deprecated, use `focusTrapZoneProps`.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "focusTrapZoneProps",
+          "typeTokens": [
+            {
+              "text": "IFocusTrapZoneProps",
+              "hyperlinkedPage": "FocusTrapZone",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional props to pass to the FocusTrapZone component to manage focus in the panel.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "forceFocusInsideTrap",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicates whether Panel should force focus inside the focus trap zone. If not explicitly specified, behavior aligns with FocusTrapZone's default behavior. Deprecated, use `focusTrapZoneProps`.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "hasCloseButton",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Has the close button visible.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "headerClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional parameter to provider the class name for header text\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "headerText",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Header text for the Panel.\n\n",
+          "deprecated": false,
+          "defaultValue": "\"\""
+        },
+        {
+          "name": "ignoreExternalFocusing",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicates if this Panel will ignore keeping track of HTMLElement that activated the Zone. Deprecated, use `focusTrapZoneProps`.\n\n",
+          "deprecated": true,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isBlocking",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the panel uses a modal overlay or not\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "isFooterAtBottom",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if content should stretch to fill available space putting footer at the bottom of the page\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isHiddenOnDismiss",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the panel is hidden on dismiss, instead of destroyed in the DOM. Protects the contents from being destroyed when the panel is dismissed.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isLightDismiss",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the panel can be light dismissed.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isOpen",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the panel is displayed.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "layerProps",
+          "typeTokens": [
+            {
+              "text": "ILayerProps",
+              "hyperlinkedPage": "Layer",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional props to pass to the Layer component hosting the panel.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDismiss",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "SyntheticEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">) => void"
+            }
+          ],
+          "descriptionHtml": "A callback function for when the panel is closed, before the animation completes. If the panel should NOT be dismissed based on some keyboard event, then simply call ev.preventDefault() on it\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDismissed",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "A callback function which is called after the Panel is dismissed and the animation is complete.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onLightDismissClick",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Optional custom function to handle clicks outside the panel in lightdismiss mode\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onOuterClick",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Optional custom function to handle clicks outside this component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderBody",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanelProps",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional custom renderer for body region. Replaces any children passed into the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderFooter",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanelProps",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional custom renderer for footer region. Replaces sticky footer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderFooterContent",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanelProps",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom renderer for content in the sticky footer\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderHeader",
+          "typeTokens": [
+            {
+              "text": "IPanelHeaderRenderer",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional custom renderer for header region. Replaces current title\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderNavigation",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanelProps",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional custom renderer navigation region. Replaces the region that contains the close button.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderNavigationContent",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanelProps",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional custom renderer for content in the navigation region. Replaces current close button.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IPanelStyleProps",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IPanelStyles",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "type",
+          "typeTokens": [
+            {
+              "text": "PanelType",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Type of the panel.\n\n",
+          "deprecated": false,
+          "defaultValue": "PanelType.smallFixedRight"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IPanelStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Accept custom classNames\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "focusTrapZoneClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Classname for FocusTrapZone element\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hasCloseButton",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Panel has close button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "headerClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional parameter to provider the class name for header text\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isAnimating",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is animation currently running\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isFooterAtBottom",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if content should stretch to fill available space putting footer at the bottom of the page\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isFooterSticky",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Based on state value setting footer to sticky or not\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isHiddenOnDismiss",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is panel hidden on dismiss\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isOnRightSide",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is panel on right side\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isOpen",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is Panel open\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "type",
+          "typeTokens": [
+            {
+              "text": "PanelType",
+              "hyperlinkedPage": "Panel",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Type of the panel.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IPanelStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "closeButton",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the close button IconButton element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "commands",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the navigation container element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "content",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the body div element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "contentInner",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the Body and Footer container element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "footer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the footer div element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "footerInner",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the inner footer div element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "header",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the header container div element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "headerText",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the header inner p element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "hiddenPanel",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the hidden element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "main",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the main section element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "navigation",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the close button container element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "overlay",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the overlay element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "scrollableContent",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for the scrollable content area container element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "PanelType",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "custom",
+          "descriptionHtml": "Renders the Panel in `custom` size using `customWidth`, anchored to the far side (right in LTR mode). - Has a fixed width provided by the `customWidth` prop - When screen width reaches the `customWidth` value it will behave like a fluid width Panel taking up 100% of the viewport width\n",
+          "value": "7"
+        },
+        {
+          "name": "customNear",
+          "descriptionHtml": "Renders the Panel in `custom` size using `customWidth`, anchored to the near side (left in LTR mode). - Has a fixed width provided by the `customWidth` prop - When screen width reaches the `customWidth` value it will behave like a fluid width Panel taking up 100% of the viewport width\n",
+          "value": "8"
+        },
+        {
+          "name": "extraLarge",
+          "descriptionHtml": "Renders the Panel in `extra large` size, anchored to the far side (right in LTR mode). - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint - Large (640-1023): adapts to `PanelType.medium` at this breakpoint - XLarge (1024-1365): adapts to `PanelType.large` at this breakpoint - XXLarge (1366-1919): 176px fixed left margin, fluid width, 40px left/right padding - XXXLarge (1920-up): 176px fixed left margin, fluid width, 40px left/right padding\n",
+          "value": "6"
+        },
+        {
+          "name": "large",
+          "descriptionHtml": "Renders the Panel in `large` size, anchored to the far side (right in LTR mode). - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint - Large (640-1023): adapts to `PanelType.medium` at this breakpoint - XLarge (1024-1365): 48px fixed left margin, fluid width, 32px left/right padding - XXLarge (1366-up): 428px fixed left margin, fluid width, 40px left/right padding\n",
+          "value": "4"
+        },
+        {
+          "name": "largeFixed",
+          "descriptionHtml": "Renders the Panel in `large` size, anchored to the far side (right in LTR mode), with a fixed width at XX-Large breakpoint. - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint - Large (640-1023): adapts to `PanelType.medium` at this breakpoint - XLarge (1024-1365): 48px fixed left margin, fluid width, 32px left/right padding - XXLarge (1366-up): 940px width, 40px left/right padding\n",
+          "value": "5"
+        },
+        {
+          "name": "medium",
+          "descriptionHtml": "Renders the Panel in `medium` size, anchored to the far side (right in LTR mode). - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint - Medium (480-639): adapts to `PanelType.smallFixedFar` at this breakpoint - Large (640-1023): 592px width, 32px left/right padding - XLarge (1024-1365): 644px width, 32px left/right padding - XXLarge (1366-up): 644px width, 40px left/right padding\n",
+          "value": "3"
+        },
+        {
+          "name": "smallFixedFar",
+          "descriptionHtml": "Renders the Panel in fixed-width `small` size, anchored to the far side (right in LTR mode). - Small (320-479): adapts to `PanelType.smallFluid` at this breakpoint - Medium (480-639): 340px width, 16px left/right padding - Large (640-1023): 340px width, 32px left/right padding - XLarge (1024-1365): 340px width, 32px left/right padding - XXLarge (1366-up): 340px width, 40px left/right padding\n",
+          "value": "1"
+        },
+        {
+          "name": "smallFixedNear",
+          "descriptionHtml": "Renders the Panel in fixed-width `small` size, anchored to the near side (left in LTR mode). - Small (320-479): 272px width, 16px left/right padding - Medium (480-639): 272px width, 16px left/right padding - Large (640-1023): 272px width, 32px left/right padding - XLarge (1024-1365): 272px width, 32px left/right padding - XXLarge (1366-up): 272px width, 40px left/right padding\n",
+          "value": "2"
+        },
+        {
+          "name": "smallFluid",
+          "descriptionHtml": "Renders the Panel with a `fluid` (full screen) width. Recommended for use on small screen breakpoints. - Small (320-479): full screen width, 16px left/right padding - Medium (480-639): full screen width, 16px left/right padding - Large (640-1023): full screen width, 32px left/right padding - XLarge (1024-1365): full screen width, 32px left/right padding - XXLarge (1366-up): full screen width, 40px left/right padding\n",
+          "value": "0"
+        }
+      ]
+    }
+  ]
+}

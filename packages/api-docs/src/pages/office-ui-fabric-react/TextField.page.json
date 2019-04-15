@@ -1,0 +1,958 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "ITextField",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "blur",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Blurs the input\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Sets focus to the input.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "select",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Select the value of the text field.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionEnd",
+          "typeTokens": [
+            {
+              "text": "number | null"
+            }
+          ],
+          "descriptionHtml": "Gets the selection end of the text field. Returns -1 if there is no selection.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionStart",
+          "typeTokens": [
+            {
+              "text": "number | null"
+            }
+          ],
+          "descriptionHtml": "Gets the selection start of the text field. Returns -1 if there is no selection.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "setSelectionEnd",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Sets the selection end of the text field to a specified value.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "setSelectionRange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "start"
+            },
+            {
+              "text": ": number, "
+            },
+            {
+              "text": "end"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Sets the start and end positions of a selection in a text field. Call with start and end set to the same value to set the cursor position.\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "setSelectionStart",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Sets the selection start of the text field to a specified value.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "value",
+          "typeTokens": [
+            {
+              "text": "string | undefined"
+            }
+          ],
+          "descriptionHtml": "Gets the current value of the input.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITextFieldProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "AllHTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLInputElement"
+        },
+        {
+          "text": " | "
+        },
+        {
+          "text": "HTMLTextAreaElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "TextField component props. \n",
+      "members": [
+        {
+          "name": "addonString",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Aria label for the text field.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "autoAdjustHeight",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not to auto adjust text field height. Applies only to multiline text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "autoComplete",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Whether the input field should have autocomplete enabled. This tells the browser to display options based on earlier typed values. Common values are 'on' and 'off' but for all possible values see the following links: https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "borderless",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not the text field is borderless.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional class name that is added to the container of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentId",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextField",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the ITextField component. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "defaultValue",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Default value of the text field. Only provide this if the text field is an uncontrolled component; otherwise, use the `value` property.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "deferredValidationTime",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.\n\n",
+          "deprecated": false,
+          "defaultValue": "200"
+        },
+        {
+          "name": "description",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Description displayed below the text field to provide additional details about what text to enter.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "disabled",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Disabled state of the text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "errorMessage",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically change the error message displayed (if any) based on the current value.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "iconClass",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "iconProps",
+          "typeTokens": [
+            {
+              "text": "IIconProps",
+              "hyperlinkedPage": "Icon",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Props for an optional icon, displayed in the far right end of the text field.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "inputClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional class name that is added specifically to the input/textarea element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Label displayed above the text field (and read by screen readers).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "mask",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The masking string that defines the mask's behavior. A backslash will escape any character. Special format characters are: '9': [0-9] 'a': [a-zA-Z] '*': [a-zA-Z0-9]\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "maskChar",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The character to show in place of unfilled characters of the mask.\n\n",
+          "deprecated": false,
+          "defaultValue": "'_'"
+        },
+        {
+          "name": "maskFormat",
+          "typeTokens": [
+            {
+              "text": "{\n        ["
+            },
+            {
+              "text": "key"
+            },
+            {
+              "text": ": string]: "
+            },
+            {
+              "text": "RegExp"
+            },
+            {
+              "text": ";\n    }"
+            }
+          ],
+          "descriptionHtml": "An object defining the format characters and corresponding regexp values. Default format characters: \\{ '9': /[0-9]/, 'a': /[a-zA-Z]/, '*': /[a-zA-Z0-9]/ \\}\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "multiline",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not the text field is a multiline text field.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "onBeforeChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "newValue"
+            },
+            {
+              "text": ": any) => void"
+            }
+          ],
+          "descriptionHtml": "Called after the input's value updates but before re-rendering.\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onChange",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "event"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "FormEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLInputElement"
+            },
+            {
+              "text": " | "
+            },
+            {
+              "text": "HTMLTextAreaElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "newValue"
+            },
+            {
+              "text": "?: string) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the input value changes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "newValue"
+            },
+            {
+              "text": ": any) => void"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "onGetErrorMessage",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": string) => string | "
+            },
+            {
+              "text": "PromiseLike"
+            },
+            {
+              "text": "<string> | undefined"
+            }
+          ],
+          "descriptionHtml": "Function used to determine whether the input value is valid and get an error message if not.\n\nWhen it returns string: - If valid, it returns empty string. - If invalid, it returns the error message string and the text field will show a red border and show an error message below the text field.\n\nWhen it returns Promise<string>: - The resolved value is display as error message. - The rejected, the value is thrown away.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onNotifyValidationResult",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "errorMessage"
+            },
+            {
+              "text": ": string, "
+            },
+            {
+              "text": "value"
+            },
+            {
+              "text": ": string | undefined) => void"
+            }
+          ],
+          "descriptionHtml": "Function called after validation completes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderAddon",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextFieldProps",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderDescription",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextFieldProps",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom renderer for the description.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderLabel",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextFieldProps",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom renderer for the label.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderPrefix",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextFieldProps",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom render function for prefix.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderSuffix",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextFieldProps",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Custom render function for suffix.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "prefix",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Prefix displayed before the text field contents. This is not included in the value. Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "readOnly",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If true, the text field is readonly.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "resizable",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not the multiline text field is resizable.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITextFieldStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ITextFieldStyles",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "suffix",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Suffix displayed after the text field contents. This is not included in the value. Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme (provided through customization).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "underlined",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not the text field is underlined.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "validateOnFocusIn",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Run validation only on input focus.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "validateOnFocusOut",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Run validation only on input focus out.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "validateOnLoad",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Disable on-load validation.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "value",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Current value of the text field. Only provide this if the text field is a controlled component where you are maintaining its current state; otherwise, use the `defaultValue` property.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITextFieldStyles",
+      "extendsTokens": [
+        {
+          "text": "IStyleSet"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "ITextFieldStyles",
+          "hyperlinkedPage": "TextField",
+          "pageKind": "Components"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "description",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for description element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "errorMessage",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for error message element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "field",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for main field entry element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "fieldGroup",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for field group encompassing entry area (prefix, field, icon and suffix).\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "icon",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for icon prop element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "prefix",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for prefix element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "subComponentStyles",
+          "typeTokens": [
+            {
+              "text": "ITextFieldSubComponentStyles",
+              "hyperlinkedPage": "TextField",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Styling for subcomponents.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "suffix",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for suffix element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "wrapper",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "Style for TextField wrapper element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ITextFieldSubComponentStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "label",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<any, any>"
+            }
+          ],
+          "descriptionHtml": "Styling for Label child component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    }
+  ]
+}

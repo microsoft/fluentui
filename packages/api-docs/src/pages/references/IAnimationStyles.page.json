@@ -1,0 +1,468 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IAnimationStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "All Fabric standard animations, exposed as json objects referencing predefined keyframes. These objects can be mixed in with other class definitions. \n",
+      "members": [
+        {
+          "name": "fadeIn100",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeIn200",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeIn400",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeIn500",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeOut100",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeOut200",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeOut400",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fadeOut500",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "rotate90deg",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "rotateN90deg",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "scaleDownIn100",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "scaleDownOut98",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "scaleUpIn100",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "scaleUpOut103",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideDownIn10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideDownIn20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideDownOut10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideDownOut20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftIn10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftIn20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftIn40",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftIn400",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftOut10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftOut20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftOut40",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideLeftOut400",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightIn10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightIn20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightIn40",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightIn400",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightOut10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightOut20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightOut40",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideRightOut400",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideUpIn10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideUpIn20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideUpOut10",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "slideUpOut20",
+          "typeTokens": [
+            {
+              "text": "IRawStyle",
+              "hyperlinkedPage": "IRawStyle",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

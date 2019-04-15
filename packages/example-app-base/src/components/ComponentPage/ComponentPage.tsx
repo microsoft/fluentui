@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { css, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
 import './ComponentPage.scss';
 import { IComponentPageProps, IComponentPageSection } from './ComponentPage.types';
@@ -91,34 +90,6 @@ export class ComponentPage extends React.PureComponent<IComponentPageProps> {
     }
   }
 
-  private _getNativePropsInfo(): JSX.Element | undefined {
-    const { allowNativeProps, allowNativePropsForComponentName, nativePropsElement = 'div' } = this.props;
-    if (allowNativeProps) {
-      const nativePropsElems = Array.isArray(nativePropsElement) ? nativePropsElement : [nativePropsElement];
-
-      const elementsArr: (JSX.Element | string)[] = [];
-      for (const elem of nativePropsElems) {
-        elementsArr.push(<code key={elem}>{`<${elem}>`}</code>);
-        elementsArr.push(' and ');
-      }
-      elementsArr.pop(); // remove last ' and '
-      elementsArr.push(` tag${nativePropsElems.length > 1 ? 's' : ''}`);
-
-      let componentNameJsx: JSX.Element | undefined;
-      if (allowNativePropsForComponentName) {
-        componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
-      }
-
-      return (
-        <MessageBar>
-          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
-          {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
-          {componentNameJsx || 'this component'}.
-        </MessageBar>
-      );
-    }
-  }
-
   private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
       return (
@@ -126,7 +97,6 @@ export class ComponentPage extends React.PureComponent<IComponentPageProps> {
           <h2 className="ComponentPage-subHeading" id="Implementation">
             Implementation
           </h2>
-          {this._getNativePropsInfo()}
           {this.props.propertiesTables}
         </div>
       );

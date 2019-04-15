@@ -47,7 +47,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
           </div>
         )
       }
-      propertiesTables={propertiesTablesSources && <PropertiesTableSet sources={propertiesTablesSources} />}
+      propertiesTables={componentPageProps.jsonDocs && <PropertiesTableSet jsonDocs={componentPageProps.jsonDocs} />}
       overview={overview ? <PageMarkdown>{overview}</PageMarkdown> : undefined}
       bestPractices={bestPractices ? <PageMarkdown>{bestPractices}</PageMarkdown> : undefined}
       dos={dos ? <PageMarkdown>{dos}</PageMarkdown> : undefined}

@@ -1,0 +1,27 @@
+{
+  "tables": [
+    {
+      "kind": "enum",
+      "name": "FirstWeekOfYear",
+      "extendsTokens": [],
+      "descriptionHtml": "First week of the year settings types \n",
+      "members": [
+        {
+          "name": "FirstDay",
+          "descriptionHtml": "",
+          "value": "0"
+        },
+        {
+          "name": "FirstFourDayWeek",
+          "descriptionHtml": "",
+          "value": "2"
+        },
+        {
+          "name": "FirstFullWeek",
+          "descriptionHtml": "",
+          "value": "1"
+        }
+      ]
+    }
+  ]
+}

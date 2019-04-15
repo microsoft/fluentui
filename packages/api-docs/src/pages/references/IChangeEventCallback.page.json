@@ -1,0 +1,22 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IChangeEventCallback",
+      "extendsTokens": [],
+      "descriptionHtml": "Change event callback.\n\n\n\n\n",
+      "members": [
+        {
+          "name": "__id__",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

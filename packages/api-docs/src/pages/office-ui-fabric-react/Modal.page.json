@@ -1,0 +1,356 @@
+{
+  "tables": [
+    {
+      "kind": "interface",
+      "name": "IModal",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focus",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Sets focus on the first focusable, or configured, child in focus trap zone\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IModalProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "ModalBase"
+        },
+        {
+          "text": ">"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IWithResponsiveModeState"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IAccessiblePopupProps"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional class name to be added to the root class\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IModal",
+              "hyperlinkedPage": "Modal",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IDialog interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "containerClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional override for container class\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isBlocking",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isDarkOverlay",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the overlay is dark themed.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "isModeless",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog). if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored), isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isOpen",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the dialog is displayed.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "layerProps",
+          "typeTokens": [
+            {
+              "text": "ILayerProps",
+              "hyperlinkedPage": "Layer",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Props to be passed through to Layer\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDismiss",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLButtonElement"
+            },
+            {
+              "text": ">) => any"
+            }
+          ],
+          "descriptionHtml": "A callback function for when the Modal is dismissed light dismiss, before the animation completes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDismissed",
+          "typeTokens": [
+            {
+              "text": "() => any"
+            }
+          ],
+          "descriptionHtml": "A callback function which is called after the Modal is dismissed and the animation is complete.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onLayerDidMount",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "A callback function for when the Modal content is mounted on the overlay layer\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "scrollableContentClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional override for scrollable content class\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IModalStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IModalStyles",
+              "hyperlinkedPage": "Modal",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "subtitleAriaId",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA id for the subtitle of the Modal, if any\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "titleAriaId",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA id for the title of the Modal, if any\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "topOffsetFixed",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether the modal should have top offset fixed once opened and expand from the bottom only when the content changes dynamically.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IModalStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "layer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "main",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "scrollableContent",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}

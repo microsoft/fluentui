@@ -4,70 +4,51 @@
 
 ```ts
 
-import { concatStyleSets } from '@uifabric/merge-styles';
-import { fontFace } from '@uifabric/merge-styles';
-import { ICSPSettings } from '@uifabric/merge-styles';
-import { ICustomizerContext } from '@uifabric/utilities';
-import { IFontFace } from '@uifabric/merge-styles';
-import { IFontWeight } from '@uifabric/merge-styles';
-import { InjectionMode } from '@uifabric/merge-styles';
-import { IProcessedStyleSet } from '@uifabric/merge-styles';
-import { IRawStyle } from '@uifabric/merge-styles';
-import { IStyle } from '@uifabric/merge-styles';
-import { IStyleSet } from '@uifabric/merge-styles';
-import { IStyleSheetConfig } from '@uifabric/merge-styles';
-import { keyframes } from '@uifabric/merge-styles';
-import { mergeStyles } from '@uifabric/merge-styles';
-import { mergeStyleSets } from '@uifabric/merge-styles';
-import { Stylesheet } from '@uifabric/merge-styles';
-
 // @public (undocumented)
-export const AnimationClassNames: {
+declare const AnimationClassNames: {
     [key in keyof IAnimationStyles]?: string;
 };
 
 // @public
-export const AnimationStyles: IAnimationStyles;
+declare const AnimationStyles: IAnimationStyles;
 
 // @public
-export const AnimationVariables: IAnimationVariables;
+declare const AnimationVariables: IAnimationVariables;
 
 // @public
-export function buildClassMap<T>(styles: T): {
+declare function buildClassMap<T>(styles: T): {
     [key in keyof T]?: string;
 };
 
 // Warning: (ae-forgotten-export) The symbol "IColorClassNames" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
-export const ColorClassNames: IColorClassNames;
+declare const ColorClassNames: IColorClassNames;
 
-export { concatStyleSets }
-
+export { concatStyleSets } from '@uifabric/merge-styles';
 // @public (undocumented)
-export function createFontStyles(localeCode: string | null): IFontStyles;
+declare function createFontStyles(localeCode: string | null): IFontStyles;
 
 // @public
-export function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+declare function createTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 
 // @public (undocumented)
-export const DefaultFontStyles: IFontStyles;
+declare const DefaultFontStyles: IFontStyles;
 
 // @public (undocumented)
-export const DefaultPalette: IPalette;
+declare const DefaultPalette: IPalette;
 
 // @public
-export function focusClear(): IRawStyle;
+declare function focusClear(): IRawStyle;
 
 // @public (undocumented)
-export const FontClassNames: {
+declare const FontClassNames: {
     [key in keyof IFontStyles]?: string;
 };
 
-export { fontFace }
-
+export { fontFace } from '@uifabric/merge-styles';
 // @public (undocumented)
-export namespace FontSizes {
+declare namespace FontSizes {
     const // (undocumented)
     mini: string;
     const // (undocumented)
@@ -95,7 +76,7 @@ export namespace FontSizes {
 }
 
 // @public (undocumented)
-export namespace FontWeights {
+declare namespace FontWeights {
     const // (undocumented)
     light: IFontWeight;
     const // (undocumented)
@@ -109,48 +90,46 @@ export namespace FontWeights {
 }
 
 // @public
-export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
+declare function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
 // @public
-export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
+declare function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
 
 // @public
-export function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
+declare function getGlobalClassNames<T>(classNames: GlobalClassNames<T>, theme: ITheme, disableGlobalClassNames?: boolean): Partial<GlobalClassNames<T>>;
 
 // @public
-export function getIcon(name?: string): IIconRecord | undefined;
+declare function getIcon(name?: string): IIconRecord | undefined;
 
 // @public
-export function getIconClassName(name: string): string;
+declare function getIconClassName(name: string): string;
 
 // @public (undocumented)
-export function getScreenSelector(min: number, max: number): string;
+declare function getScreenSelector(min: number, max: number): string;
 
 // @public
-export function getTheme(depComments?: boolean): ITheme;
+declare function getTheme(depComments?: boolean): ITheme;
 
-// Warning: (ae-internal-missing-underscore) The name getThemedContext should be prefixed with an underscore because the declaration is marked as "@internal"
-//
 // @internal
-export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
+declare function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
 // @public (undocumented)
-export type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
+declare type GlobalClassNames<IStyles> = Record<keyof IStyles, string>;
 
 // @public (undocumented)
-export const hiddenContentStyle: IRawStyle;
+declare const hiddenContentStyle: IRawStyle;
 
 // @public (undocumented)
-export const HighContrastSelector = "@media screen and (-ms-high-contrast: active)";
+declare const HighContrastSelector = "@media screen and (-ms-high-contrast: active)";
 
 // @public (undocumented)
-export const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black)";
+declare const HighContrastSelectorBlack = "@media screen and (-ms-high-contrast: white-on-black)";
 
 // @public (undocumented)
-export const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white)";
+declare const HighContrastSelectorWhite = "@media screen and (-ms-high-contrast: black-on-white)";
 
 // @public
-export interface IAnimationStyles {
+interface IAnimationStyles {
     // (undocumented)
     fadeIn100: IRawStyle;
     // (undocumented)
@@ -230,7 +209,7 @@ export interface IAnimationStyles {
 }
 
 // @public (undocumented)
-export interface IAnimationVariables {
+interface IAnimationVariables {
     // (undocumented)
     durationValue1: string;
     // (undocumented)
@@ -246,7 +225,7 @@ export interface IAnimationVariables {
 }
 
 // @public (undocumented)
-export namespace IconFontSizes {
+declare namespace IconFontSizes {
     const // (undocumented)
     xSmall: string;
     const // (undocumented)
@@ -257,12 +236,9 @@ export namespace IconFontSizes {
     large: string;
 }
 
-export { ICSPSettings }
-
-// Warning: (ae-internal-missing-underscore) The name IEffects should be prefixed with an underscore because the declaration is marked as "@internal"
-//
+export { ICSPSettings } from '@uifabric/merge-styles';
 // @internal
-export interface IEffects {
+interface IEffects {
     elevation16: string;
     elevation4: string;
     elevation64: string;
@@ -270,10 +246,9 @@ export interface IEffects {
     roundedCorner2: string;
 }
 
-export { IFontFace }
-
+export { IFontFace } from '@uifabric/merge-styles';
 // @public
-export interface IFontStyles {
+interface IFontStyles {
     // (undocumented)
     large: IRawStyle;
     // (undocumented)
@@ -298,27 +273,26 @@ export interface IFontStyles {
     xxLarge: IRawStyle;
 }
 
-export { IFontWeight }
-
+export { IFontWeight } from '@uifabric/merge-styles';
 // @public (undocumented)
-export interface IIconOptions {
+interface IIconOptions {
     disableWarnings: boolean;
     // @deprecated (undocumented)
     warnOnMissingIcons?: boolean;
 }
 
 // @public (undocumented)
-export interface IIconRecord {
+interface IIconRecord {
     // (undocumented)
     code: string | undefined;
     // Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     subset: IIconSubsetRecord;
 }
 
 // @public (undocumented)
-export interface IIconSubset {
+interface IIconSubset {
     // (undocumented)
     fontFace?: IFontFace;
     // (undocumented)
@@ -329,10 +303,9 @@ export interface IIconSubset {
     style?: IRawStyle;
 }
 
-export { InjectionMode }
-
+export { InjectionMode } from '@uifabric/merge-styles';
 // @public
-export interface IPalette {
+interface IPalette {
     accent: string;
     black: string;
     blackTranslucent40: string;
@@ -386,7 +359,7 @@ export interface IPalette {
 }
 
 // @public (undocumented)
-export type IPartialTheme = {
+declare type IPartialTheme = {
     palette?: Partial<IPalette>;
     fonts?: Partial<IFontStyles>;
     defaultFontStyle?: IRawStyle;
@@ -400,15 +373,11 @@ export type IPartialTheme = {
     };
 };
 
-export { IProcessedStyleSet }
-
-export { IRawStyle }
-
+export { IProcessedStyleSet } from '@uifabric/merge-styles';
+export { IRawStyle } from '@uifabric/merge-styles';
 // @public (undocumented)
-export interface IScheme {
+interface IScheme {
     disableGlobalClassNames: boolean;
-    // Warning: (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
-    //
     // (undocumented)
     effects: IEffects;
     // (undocumented)
@@ -423,13 +392,11 @@ export interface IScheme {
     spacing: ISpacing;
 }
 
-// Warning: (ae-internal-missing-underscore) The name ISchemeNames should be prefixed with an underscore because the declaration is marked as "@internal"
-//
 // @internal
-export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
+declare type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
 // @public
-export interface ISemanticColors extends ISemanticTextColors {
+interface ISemanticColors extends ISemanticTextColors {
     accentButtonBackground: string;
     blockingBackground: string;
     bodyBackground: string;
@@ -487,7 +454,7 @@ export interface ISemanticColors extends ISemanticTextColors {
 }
 
 // @public (undocumented)
-export interface ISemanticTextColors {
+interface ISemanticTextColors {
     accentButtonText: string;
     actionLink: string;
     actionLinkHovered: string;
@@ -520,10 +487,8 @@ export interface ISemanticTextColors {
     warningText: string;
 }
 
-// Warning: (ae-internal-missing-underscore) The name ISpacing should be prefixed with an underscore because the declaration is marked as "@internal"
-//
 // @internal
-export interface ISpacing {
+interface ISpacing {
     // (undocumented)
     l1: string;
     // (undocumented)
@@ -536,106 +501,99 @@ export interface ISpacing {
     s2: string;
 }
 
-export { IStyle }
-
-export { IStyleSet }
-
-export { IStyleSheetConfig }
-
+export { IStyle } from '@uifabric/merge-styles';
+export { IStyleSet } from '@uifabric/merge-styles';
+export { IStyleSheetConfig } from '@uifabric/merge-styles';
 // @public (undocumented)
-export interface ITheme extends IScheme {
+interface ITheme extends IScheme {
     // @internal
     schemes?: {
         [P in ISchemeNames]?: IScheme;
     };
 }
 
-export { keyframes }
-
+export { keyframes } from '@uifabric/merge-styles';
 // @public
-export function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
+declare function loadTheme(theme: IPartialTheme, depComments?: boolean): ITheme;
 
-export { mergeStyles }
-
-export { mergeStyleSets }
+export { mergeStyles } from '@uifabric/merge-styles';
+export { mergeStyleSets } from '@uifabric/merge-styles';
+// @public (undocumented)
+declare const normalize: IRawStyle;
 
 // @public (undocumented)
-export const normalize: IRawStyle;
+declare const noWrap: IRawStyle;
 
 // @public (undocumented)
-export const noWrap: IRawStyle;
-
-// @public (undocumented)
-export const PulsingBeaconAnimationStyles: {
+declare const PulsingBeaconAnimationStyles: {
     continuousPulseAnimationDouble: (beaconColorOne: string, beaconColorTwo: string, innerDimension: string, outerDimension: string, borderWidth: string) => string;
     continuousPulseAnimationSingle: (beaconColorOne: string, beaconColorTwo: string, innerDimension: string, outerDimension: string, borderWidth: string) => string;
     createDefaultAnimation: (animationName: string, delayLength?: string | undefined) => IRawStyle;
 };
 
 // @public (undocumented)
-export function registerDefaultFontFaces(baseUrl: string): void;
+declare function registerDefaultFontFaces(baseUrl: string): void;
 
 // @public
-export function registerIconAlias(iconName: string, mappedToName: string): void;
+declare function registerIconAlias(iconName: string, mappedToName: string): void;
 
 // @public
-export function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOptions>): void;
+declare function registerIcons(iconSubset: IIconSubset, options?: Partial<IIconOptions>): void;
 
 // @public
-export function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+declare function registerOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
 
 // @public
-export function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
+declare function removeOnThemeChangeCallback(callback: (theme: ITheme) => void): void;
 
 // @public (undocumented)
-export const ScreenWidthMaxLarge: number;
+declare const ScreenWidthMaxLarge: number;
 
 // @public (undocumented)
-export const ScreenWidthMaxMedium: number;
+declare const ScreenWidthMaxMedium: number;
 
 // @public (undocumented)
-export const ScreenWidthMaxSmall: number;
+declare const ScreenWidthMaxSmall: number;
 
 // @public (undocumented)
-export const ScreenWidthMaxXLarge: number;
+declare const ScreenWidthMaxXLarge: number;
 
 // @public (undocumented)
-export const ScreenWidthMaxXXLarge: number;
+declare const ScreenWidthMaxXXLarge: number;
 
 // @public (undocumented)
-export const ScreenWidthMinLarge = 640;
+declare const ScreenWidthMinLarge = 640;
 
 // @public (undocumented)
-export const ScreenWidthMinMedium = 480;
+declare const ScreenWidthMinMedium = 480;
 
 // @public (undocumented)
-export const ScreenWidthMinSmall = 320;
+declare const ScreenWidthMinSmall = 320;
 
 // @public (undocumented)
-export const ScreenWidthMinUhfMobile = 768;
+declare const ScreenWidthMinUhfMobile = 768;
 
 // @public (undocumented)
-export const ScreenWidthMinXLarge = 1024;
+declare const ScreenWidthMinXLarge = 1024;
 
 // @public (undocumented)
-export const ScreenWidthMinXXLarge = 1366;
+declare const ScreenWidthMinXXLarge = 1366;
 
 // @public (undocumented)
-export const ScreenWidthMinXXXLarge = 1920;
+declare const ScreenWidthMinXXXLarge = 1920;
 
 // @public
-export function setIconOptions(options: Partial<IIconOptions>): void;
+declare function setIconOptions(options: Partial<IIconOptions>): void;
 
-export { Stylesheet }
-
+export { Stylesheet } from '@uifabric/merge-styles';
 // @public (undocumented)
-export const ThemeSettingName = "theme";
+declare const ThemeSettingName = "theme";
 
 // @public
-export function unregisterIcons(iconNames: string[]): void;
+declare function unregisterIcons(iconNames: string[]): void;
 
 // @public (undocumented)
-export namespace ZIndexes {
+declare namespace ZIndexes {
     const // (undocumented)
     Nav: number;
     const // (undocumented)
@@ -650,12 +608,6 @@ export namespace ZIndexes {
     KeytipLayer: number;
 }
 
-
-// Warnings were encountered during analysis:
-//
-// lib/interfaces/ITheme.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:69:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

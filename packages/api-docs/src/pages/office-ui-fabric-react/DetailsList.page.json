@@ -1,0 +1,3759 @@
+{
+  "tables": [
+    {
+      "kind": "enum",
+      "name": "CheckboxVisibility",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "always",
+          "descriptionHtml": "Visible always.\n",
+          "value": "1"
+        },
+        {
+          "name": "hidden",
+          "descriptionHtml": "Hide checkboxes.\n",
+          "value": "2"
+        },
+        {
+          "name": "onHover",
+          "descriptionHtml": "Visible on hover.\n",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "ColumnActionsMode",
+      "extendsTokens": [],
+      "descriptionHtml": "Enum to describe how a particular column header behaves.... This enum is used to to specify the property IColumn:columnActionsMode. If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable \n",
+      "members": [
+        {
+          "name": "clickable",
+          "descriptionHtml": "Renders the column header is clickable.\n",
+          "value": "1"
+        },
+        {
+          "name": "disabled",
+          "descriptionHtml": "Renders the column header as disabled.\n",
+          "value": "0"
+        },
+        {
+          "name": "hasDropdown",
+          "descriptionHtml": "Renders the column header ias clickable and displays the dropdown cheveron.\n",
+          "value": "2"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "ColumnDragEndLocation",
+      "extendsTokens": [],
+      "descriptionHtml": "Enum to describe where the column has been dropped, after starting the drag \n",
+      "members": [
+        {
+          "name": "header",
+          "descriptionHtml": "Drag ended on Header\n",
+          "value": "2"
+        },
+        {
+          "name": "outside",
+          "descriptionHtml": "Drag ended outside of current list\n",
+          "value": "0"
+        },
+        {
+          "name": "surface",
+          "descriptionHtml": "Drag ended on current List\n",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "ConstrainMode",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "horizontalConstrained",
+          "descriptionHtml": "If specified, constrains the list to the given layout space.\n",
+          "value": "1"
+        },
+        {
+          "name": "unconstrained",
+          "descriptionHtml": "If specified, lets the content grow which allows the page to manage scrolling.\n",
+          "value": "0"
+        }
+      ]
+    },
+    {
+      "kind": "enum",
+      "name": "DetailsListLayoutMode",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "fixedColumns",
+          "descriptionHtml": "Lets the user resize columns and makes not attempt to fit them.\n",
+          "value": "0"
+        },
+        {
+          "name": "justified",
+          "descriptionHtml": "Manages which columns are visible, tries to size them according to their min/max rules and drops off columns that can't fit and have isCollapsible set.\n",
+          "value": "1"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "ICellStyleProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "cellExtraRightPadding",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "cellLeftPadding",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "cellRightPadding",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IColumn",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional accessibility label (aria-label) attribute that will be stamped on to the element. If none is specified, the arai-label attribute will contain the column name\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "calculatedWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Internal only value.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "An optional class name to stick on the column cell within each row.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "columnActionsMode",
+          "typeTokens": [
+            {
+              "text": "ColumnActionsMode",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Defines how the column's header should render.\n\n",
+          "deprecated": false,
+          "defaultValue": "ColumnActionsMode.clickable"
+        },
+        {
+          "name": "currentWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Internal only value. Remembers the actual witdh of the column on any case. On the other hand, calculatedWidth is only saved when it's defined by user, not for justified calculations.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "data",
+          "typeTokens": [
+            {
+              "text": "any"
+            }
+          ],
+          "descriptionHtml": "Arbitrary data passthrough which can be used by the caller.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "fieldName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The field to pull the text value from for the column. This can be null if a custom onRender method is provided.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "filterAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA label for the status of this column when filtered.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA label for the status of this column when grouped.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "headerClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "An optional class name to stick on the column cell within each header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "iconClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Class name to add to the Icon component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "iconName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional iconName to use for the column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCollapsable",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If specified will allow the column to be collapsed when rendered in justified layout.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "isCollapsible",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If specified will allow the column to be collapsed when rendered in justified layout.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isFiltered",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if the column is filtered, and if so shows a filter icon.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isGrouped",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If set will show a grouped icon next to the column header name.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isIconOnly",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not only the icon is used in the column header. Set this to true so the column name and dropdown chevron are not displayed.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isMenuOpen",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Indicates whether a dropdown menu is open so that the appropriate ARIA attributes are rendered.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isMultiline",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if the column can render multi-line text.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isPadded",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If set, will add additional LTR padding-right to column and cells.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isResizable",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if the column can be resized.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isRowHeader",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Optional flag on whether the column is a header for the given row. There should be only one column with row header set to true.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "isSorted",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if the column is currently sorted. Renders a sort arrow in the column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isSortedDescending",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Determines if the arrow is pointed down (descending) or up.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "key",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A unique key for identifying the column.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "maxWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Maximum width for the column, if stretching is allowed in justified scenarios.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "minWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Minimum width for the column.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "name",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Name to render on the column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnClick",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "If provided, will be executed when the user clicks on the column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnContextMenu",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">) => void"
+            }
+          ],
+          "descriptionHtml": "If provided, will be executed when the user accesses the contextmenu on a column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnResize",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "width"
+            },
+            {
+              "text": "?: number) => void"
+            }
+          ],
+          "descriptionHtml": "If provided, will be executed when the column is resized with the column's current width. Prefer this callback over `DetailsList` `onColumnResize` if you require the `IColumn` to report its width after every resize event. Consider debouncing the callback if resize events occur frequently.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRender",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => any"
+            }
+          ],
+          "descriptionHtml": "If provided uses this method to render custom cell content, rather than the default text rendering.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderDivider",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsColumnProps"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "If provider, can be used to render a custom column header divider\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "sortAscendingAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA label for the sort order of this column when sorted ascending.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "sortDescendingAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ARIA label for the sort order of this column when sorted descending.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IColumnDragDropDetails",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "draggedIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Specifies the source column index\n\n",
+          "deprecated": false,
+          "defaultValue": "-1"
+        },
+        {
+          "name": "targetIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Specifies the target column index\n\n",
+          "deprecated": false,
+          "defaultValue": "-1"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IColumnReorderOptions",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "frozenColumnCountFromEnd",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Specifies the number fixed columns from right\n\n",
+          "deprecated": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "frozenColumnCountFromStart",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Specifies the number fixed columns from left(0th index)\n\n",
+          "deprecated": false,
+          "defaultValue": "0"
+        },
+        {
+          "name": "handleColumnReorder",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "draggedIndex"
+            },
+            {
+              "text": ": number, "
+            },
+            {
+              "text": "targetIndex"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback to handle the column reorder draggedIndex is the source column index, that need to be placed in targetIndex Deprecated, use `onColumnDrop` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnDragStart",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "dragStarted"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Callback to handle the column dragstart draggedStarted indicates that the column drag has been started on DetailsHeader\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnDrop",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "dragDropDetails"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumnDragDropDetails",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback to handle the column reorder draggedIndex is the source column index, that need to be placed in targetIndex\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDragEnd",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "columnDropLocationDetails"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "ColumnDragEndLocation",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback to handle the column reorder\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsFooterBaseProps",
+      "extendsTokens": [
+        {
+          "text": "IDetailsItemProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsFooterProps",
+      "extendsTokens": [
+        {
+          "text": "IDetailsFooterBaseProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "columns",
+          "typeTokens": [
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Column metadata\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            }
+          ],
+          "descriptionHtml": "Selection from utilities\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            }
+          ],
+          "descriptionHtml": "Selection mode\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsGroupDividerProps",
+      "extendsTokens": [
+        {
+          "text": "IGroupDividerProps",
+          "hyperlinkedPage": "GroupedList",
+          "pageKind": "Components"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IDetailsItemProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsGroupRenderProps",
+      "extendsTokens": [
+        {
+          "text": "IGroupRenderProps",
+          "hyperlinkedPage": "GroupedList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "onRenderFooter",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsGroupDividerProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "onRenderHeader",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsGroupDividerProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsHeaderBaseProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "ClassAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "DetailsHeaderBase"
+        },
+        {
+          "text": ">"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IDetailsItemProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ariaLabel for the entire header\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForSelectAllCheckbox",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ariaLabel for the header checkbox that selects or deselects everything\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForSelectionColumn",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ariaLabel for the selection column\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForToggleAllGroupsButton",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "ariaLabel for expand/collapse group button\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Overriding class name\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "collapseAllVisibility",
+          "typeTokens": [
+            {
+              "text": "CollapseAllVisibility",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Whether to collapse for all visibility\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "columnReorderOptions",
+          "typeTokens": [
+            {
+              "text": "IColumnReorderOptions",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Column reordering options\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "columnReorderProps",
+          "typeTokens": [
+            {
+              "text": "IColumnReorderHeaderProps"
+            }
+          ],
+          "descriptionHtml": "Column reordering options\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsHeader"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Ref to the component itself\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isAllCollapsed",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not all is collapsed\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "layoutMode",
+          "typeTokens": [
+            {
+              "text": "DetailsListLayoutMode",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Layout mode - fixedColumns or justified\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "minimumPixelsForDrag",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Minimum pixels to be moved before dragging is registered\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnAutoResized",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "columnIndex"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when column is automatically resized\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnClick",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the column is clicked\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnContextMenu",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the column needs to show a context menu\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnIsSizingChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "isSizing"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when column sizing has changed\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnResized",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "newWidth"
+            },
+            {
+              "text": ": number, "
+            },
+            {
+              "text": "columnIndex"
+            },
+            {
+              "text": ": number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when column is resized\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderColumnHeaderTooltip",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "ITooltipHostProps"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Callback to render a tooltip for the column header\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onToggleCollapseAll",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "isAllCollapsed"
+            },
+            {
+              "text": ": boolean) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when collapse all is toggled\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectAllVisibility",
+          "typeTokens": [
+            {
+              "text": "SelectAllVisibility"
+            }
+          ],
+          "descriptionHtml": "Select all button visibility\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsHeaderStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IDetailsHeaderStyles"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Call to provide customized styling that will layer on top of the variant rules.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme from the Higher Order Component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsHeaderProps",
+      "extendsTokens": [
+        {
+          "text": "IDetailsHeaderBaseProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "columns",
+          "typeTokens": [
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Column metadata\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            }
+          ],
+          "descriptionHtml": "Selection from utilities\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            }
+          ],
+          "descriptionHtml": "Selection mode\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsItemProps",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "cellStyleProps",
+          "typeTokens": [
+            {
+              "text": "ICellStyleProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Rules for rendering column cells.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checkboxVisibility",
+          "typeTokens": [
+            {
+              "text": "CheckboxVisibility",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": " | undefined"
+            }
+          ],
+          "descriptionHtml": "Checkbox visibility\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "columns",
+          "typeTokens": [
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Column metadata\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupNestingDepth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Nesting depth of a grouping\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "indentWidth",
+          "typeTokens": [
+            {
+              "text": "number | undefined"
+            }
+          ],
+          "descriptionHtml": "How much to indent\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            },
+            {
+              "text": " | undefined"
+            }
+          ],
+          "descriptionHtml": "Selection from utilities\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            },
+            {
+              "text": " | undefined"
+            }
+          ],
+          "descriptionHtml": "Selection mode\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "viewport",
+          "typeTokens": [
+            {
+              "text": "IViewport"
+            },
+            {
+              "text": " | undefined"
+            }
+          ],
+          "descriptionHtml": "View port of the virtualized list\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsList",
+      "extendsTokens": [
+        {
+          "text": "IList",
+          "hyperlinkedPage": "List",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "focusIndex",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": ": number, "
+            },
+            {
+              "text": "forceIntoFirstElement"
+            },
+            {
+              "text": "?: boolean, "
+            },
+            {
+              "text": "measureItem"
+            },
+            {
+              "text": "?: ("
+            },
+            {
+              "text": "itemIndex"
+            },
+            {
+              "text": ": number) => number, "
+            },
+            {
+              "text": "scrollToMode"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "ScrollToMode"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Scroll to and focus the item at the given index. focusIndex will call scrollToIndex on the specified index.\n\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "forceUpdate",
+          "typeTokens": [
+            {
+              "text": "() => void"
+            }
+          ],
+          "descriptionHtml": "Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list still needs to be re-evaluated. For example, if a sizer bar is adjusted and causes the list width to change, you can call this to force a re-evaluation. Be aware that this can be an expensive operation and should be done sparingly.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getStartItemIndexInView",
+          "typeTokens": [
+            {
+              "text": "() => number"
+            }
+          ],
+          "descriptionHtml": "Get the start index of the page that is currently in view\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsListProps",
+      "extendsTokens": [
+        {
+          "text": "IBaseProps",
+          "hyperlinkedPage": "IBaseProps",
+          "pageKind": "References"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IDetailsList",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": ">"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IWithViewportProps"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "ariaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A text summary of the table set via aria-label.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForGrid",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Aria label for grid in details list.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForListHeader",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The aria-label attribute to stamp out on the list header\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForSelectAllCheckbox",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The aria-label attribute to stamp out on select all checkbox for the list\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "ariaLabelForSelectionColumn",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "An ARIA label for the name of the selection column, for localization.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "cellStyleProps",
+          "typeTokens": [
+            {
+              "text": "ICellStyleProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Props impacting the render style of cells. Since these have an impact on calculated column widths, they are handled separately from normal theme styling, but they are passed to the styling system.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checkboxCellClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional class name to add to the cell of a checkbox\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checkboxVisibility",
+          "typeTokens": [
+            {
+              "text": "CheckboxVisibility",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Controls the visibility of selection check box.\n\n",
+          "deprecated": false,
+          "defaultValue": "CheckboxVisibility.onHover"
+        },
+        {
+          "name": "checkButtonAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Check button aria label for details list.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional class name to add to the root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "columnReorderOptions",
+          "typeTokens": [
+            {
+              "text": "IColumnReorderOptions",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Options for column re-order using drag and drop\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "columns",
+          "typeTokens": [
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Given column defitions. If none are provided, default columns will be created based on the item's properties.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "compact",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean value to indicate if the component should render in compact mode. Set to false by default\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsList",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Optional callback to access the IDetailsList interface. Use this instead of ref for accessing the public methods and properties of the component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "constrainMode",
+          "typeTokens": [
+            {
+              "text": "ConstrainMode",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Controls how the list contrains overflow.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "disableSelectionZone",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not to disable the built-in SelectionZone, so the host component can provide its own.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "dragDropEvents",
+          "typeTokens": [
+            {
+              "text": "IDragDropEvents"
+            }
+          ],
+          "descriptionHtml": "Map of callback functions related to row drag and drop functionality.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "enableShimmer",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "enterModalSelectionOnTouch",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not the selection zone should enter modal state on touch.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getGroupHeight",
+          "typeTokens": [
+            {
+              "text": "IGroupedListProps",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "['getGroupHeight']"
+            }
+          ],
+          "descriptionHtml": "Optional function to override default group height calculation used by list virtualization.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getKey",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number) => string"
+            }
+          ],
+          "descriptionHtml": "Optional callback to get the item key, to be used in the selection and on render.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getRowAriaDescribedBy",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": any) => string"
+            }
+          ],
+          "descriptionHtml": "Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getRowAriaLabel",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": any) => string"
+            }
+          ],
+          "descriptionHtml": "Optional callback to get the aria-label string for a given item.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groupProps",
+          "typeTokens": [
+            {
+              "text": "IDetailsGroupRenderProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional override properties to render groups. The definition for IGroupRenderProps can be found under the GroupedList component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "groups",
+          "typeTokens": [
+            {
+              "text": "IGroup",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Optional grouping instructions. The definition for IGroup can be found under the GroupedList component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "indentWidth",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Optional override for the indent width used for group nesting.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "initialFocusedIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Optional default focused index to set focus to once the items have rendered and the index exists.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isHeaderVisible",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Controls the visibility of the details header.\n\n",
+          "deprecated": false,
+          "defaultValue": "true"
+        },
+        {
+          "name": "items",
+          "typeTokens": [
+            {
+              "text": "any[]"
+            }
+          ],
+          "descriptionHtml": "The items to render.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "layoutMode",
+          "typeTokens": [
+            {
+              "text": "DetailsListLayoutMode",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Controls how the columns are adjusted.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "listProps",
+          "typeTokens": [
+            {
+              "text": "IListProps",
+              "hyperlinkedPage": "List",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Optional properties to pass through to the list components being rendered.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "minimumPixelsForDrag",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "The minimum mouse move distance to interpret the action as drag event.\n\n",
+          "deprecated": false,
+          "defaultValue": "5"
+        },
+        {
+          "name": "onActiveItemChanged",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "FocusEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when an item in the list becomes active by clicking anywhere inside the row or navigating to it with keyboard.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnHeaderClick",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">, "
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the user clicks on the column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnHeaderContextMenu",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "MouseEvent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "HTMLElement"
+            },
+            {
+              "text": ">) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the user asks for a contextual menu (usually via right click) from a column header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onColumnResize",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "newWidth"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "columnIndex"
+            },
+            {
+              "text": "?: number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback fired on column resize\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDidUpdate",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "detailsList"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "DetailsListBase"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when the details list has been updated. Useful for telemetry tracking externally.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onItemContextMenu",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "Event"
+            },
+            {
+              "text": ") => void | boolean"
+            }
+          ],
+          "descriptionHtml": "Callback for when the context menu of an item has been accessed. If undefined or false are returned, ev.preventDefault() will be called.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onItemInvoked",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "ev"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "Event"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when a given row has been invoked (by pressing enter while it is selected.)\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderDetailsFooter",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsFooterProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "An override to render the details footer.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderDetailsHeader",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsHeaderProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "An override to render the details header.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderItemColumn",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "column"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "If provided, will be the \"default\" item column renderer method. This affects cells within the rows; not the rows themselves. If a column definition provides its own onRender method, that will be used instead of this.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderMissingItem",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "rowProps"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "IDetailsRowProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            }
+          ],
+          "descriptionHtml": "Callback for what to render when the item is missing.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderRow",
+          "typeTokens": [
+            {
+              "text": "IRenderFunction"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsRowProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "If provided, will allow the caller to override the default row rendering.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRowDidMount",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRowWillUnmount",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number) => void"
+            }
+          ],
+          "descriptionHtml": "Callback for when a given row has been unmounted. Useful for identifying when a row has been removed from the page.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onShouldVirtualize",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "props"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IListProps",
+              "hyperlinkedPage": "List",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => boolean"
+            }
+          ],
+          "descriptionHtml": "Optional callback to determine whether the list should be rendered in full, or virtualized. Virtualization will add and remove pages of items as the user scrolls them into the visible range. This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists. The default implementation will virtualize when this callback is not provided.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "rowElementEventMap",
+          "typeTokens": [
+            {
+              "text": "{\n        "
+            },
+            {
+              "text": "eventName"
+            },
+            {
+              "text": ": string;\n        "
+            },
+            {
+              "text": "callback"
+            },
+            {
+              "text": ": ("
+            },
+            {
+              "text": "context"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IDragDropContext"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "event"
+            },
+            {
+              "text": "?: any) => void;\n    }[]"
+            }
+          ],
+          "descriptionHtml": "Event names and corresponding callbacks that will be registered to rendered row elements.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            }
+          ],
+          "descriptionHtml": "Optional selection model to track selection state.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            }
+          ],
+          "descriptionHtml": "Controls how/if the details list manages selection. Options include none, single, multiple\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionPreservedOnEmptyClick",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "By default, selection is cleared when clicking on an empty (non-focusable) section of the screen. Setting this value to true overrides that behavior and maintains selection.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "selectionZoneProps",
+          "typeTokens": [
+            {
+              "text": "ISelectionZoneProps"
+            }
+          ],
+          "descriptionHtml": "Addition props to pass through to the selection zone created by default.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "setKey",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "A key that uniquely identifies the given items. If provided, the selection will be reset when the key changes.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "shouldApplyApplicationRole",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean value to indicate if the role application should be applied on details list. Set to false by default\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsListStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IDetailsListStyles",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style function to be passed in to override the themed or default styles\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by the Higher Order Component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "usePageCache",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Boolean value to enable render page caching. This is an experimental performance optimization that is off by default.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "useReducedRowRenderer",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        },
+        {
+          "name": "viewport",
+          "typeTokens": [
+            {
+              "text": "IViewport"
+            }
+          ],
+          "descriptionHtml": "Viewport, provided by the withViewport decorator.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsListStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "contentWrapper",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "focusZone",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "headerWrapper",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsRow",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": []
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsRowBaseProps",
+      "extendsTokens": [
+        {
+          "text": "Pick"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IDetailsListProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": ", 'onRenderItemColumn'>"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IBaseProps",
+          "hyperlinkedPage": "IBaseProps",
+          "pageKind": "References"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "IDetailsRow",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": ">"
+        },
+        {
+          "text": ", "
+        },
+        {
+          "text": "IDetailsItemProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "cellsByColumn",
+          "typeTokens": [
+            {
+              "text": "{\n        ["
+            },
+            {
+              "text": "columnKey"
+            },
+            {
+              "text": ": string]: "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ReactNode"
+            },
+            {
+              "text": ";\n    }"
+            }
+          ],
+          "descriptionHtml": "Optional pre-rendered content per column. Preferred over onRender or onRenderItemColumn if provided.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checkboxCellClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Class name for the checkbox cell\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checkButtonAriaLabel",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Check button's aria label\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Overriding class name\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "collapseAllVisibility",
+          "typeTokens": [
+            {
+              "text": "CollapseAllVisibility",
+              "hyperlinkedPage": "GroupedList",
+              "pageKind": "Components"
+            }
+          ],
+          "descriptionHtml": "Collapse all visibility\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "compact",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether to render in compact mode\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "componentRef",
+          "typeTokens": [
+            {
+              "text": "IRefObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsRow",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Ref of the component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "dragDropEvents",
+          "typeTokens": [
+            {
+              "text": "IDragDropEvents"
+            }
+          ],
+          "descriptionHtml": "Handling drag and drop events\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "dragDropHelper",
+          "typeTokens": [
+            {
+              "text": "IDragDropHelper"
+            }
+          ],
+          "descriptionHtml": "Helper for the drag and drop\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "eventsToRegister",
+          "typeTokens": [
+            {
+              "text": "{\n        "
+            },
+            {
+              "text": "eventName"
+            },
+            {
+              "text": ": string;\n        "
+            },
+            {
+              "text": "callback"
+            },
+            {
+              "text": ": ("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": "?: any, "
+            },
+            {
+              "text": "index"
+            },
+            {
+              "text": "?: number, "
+            },
+            {
+              "text": "event"
+            },
+            {
+              "text": "?: any) => void;\n    }[]"
+            }
+          ],
+          "descriptionHtml": "A list of events to register\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getRowAriaDescribedBy",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": any) => string"
+            }
+          ],
+          "descriptionHtml": "Callback for getting the row aria-describedby\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "getRowAriaLabel",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "item"
+            },
+            {
+              "text": ": any) => string"
+            }
+          ],
+          "descriptionHtml": "Callback for getting the row aria label\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "item",
+          "typeTokens": [
+            {
+              "text": "any"
+            }
+          ],
+          "descriptionHtml": "Data source for this component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "itemIndex",
+          "typeTokens": [
+            {
+              "text": "number"
+            }
+          ],
+          "descriptionHtml": "Index of the collection of items of the DetailsList\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onDidMount",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "row"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "DetailsRowBase"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for did mount for parent\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onRenderCheck",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "props"
+            },
+            {
+              "text": ": "
+            },
+            {
+              "text": "IDetailsRowCheckProps",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ") => "
+            },
+            {
+              "text": "JSX"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "Element"
+            }
+          ],
+          "descriptionHtml": "Callback for rendering a checkbox\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "onWillUnmount",
+          "typeTokens": [
+            {
+              "text": "("
+            },
+            {
+              "text": "row"
+            },
+            {
+              "text": "?: "
+            },
+            {
+              "text": "DetailsRowBase"
+            },
+            {
+              "text": ") => void"
+            }
+          ],
+          "descriptionHtml": "Callback for will mount for parent\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "rowFieldsAs",
+          "typeTokens": [
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "StatelessComponent"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsRowFieldsProps"
+            },
+            {
+              "text": "> | "
+            },
+            {
+              "text": "React"
+            },
+            {
+              "text": "."
+            },
+            {
+              "text": "ComponentClass"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsRowFieldsProps"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "DOM element into which to render row field\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "shimmer",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether to render shimmer\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsRowStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IDetailsRowStyles",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Overriding styles to this row\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by styled() function\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "useReducedRowRenderer",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.\n\n",
+          "deprecated": false,
+          "defaultValue": "false"
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsRowCheckProps",
+      "extendsTokens": [
+        {
+          "text": "React"
+        },
+        {
+          "text": "."
+        },
+        {
+          "text": "HTMLAttributes"
+        },
+        {
+          "text": "<"
+        },
+        {
+          "text": "HTMLElement"
+        },
+        {
+          "text": "> "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "anySelected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is any selected - also true for isSelectionModal\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "canSelect",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Can this checkbox be selectable\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "checkClassName",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "The classname to be passed down to Check component\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "className",
+          "typeTokens": [
+            {
+              "text": "string"
+            }
+          ],
+          "descriptionHtml": "Optional className to attach to the slider root element.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "compact",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is this in compact mode?\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isHeader",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Is the check part of the header in a DetailsList\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "isSelected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Deprecated, use `selected` instead.\n\n",
+          "deprecated": true,
+          "defaultValue": ""
+        },
+        {
+          "name": "isVisible",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not this checkbox is visible\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selected",
+          "typeTokens": [
+            {
+              "text": "boolean"
+            }
+          ],
+          "descriptionHtml": "Whether or not this check is selected\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "styles",
+          "typeTokens": [
+            {
+              "text": "IStyleFunctionOrObject"
+            },
+            {
+              "text": "<"
+            },
+            {
+              "text": "IDetailsRowCheckStyleProps"
+            },
+            {
+              "text": ", "
+            },
+            {
+              "text": "IDetailsRowCheckStyles",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": ">"
+            }
+          ],
+          "descriptionHtml": "Style override\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "theme",
+          "typeTokens": [
+            {
+              "text": "ITheme",
+              "hyperlinkedPage": "ITheme",
+              "pageKind": "References"
+            }
+          ],
+          "descriptionHtml": "Theme provided by High-Order Component.\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsRowCheckStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "check",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "isDisabled",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsRowProps",
+      "extendsTokens": [
+        {
+          "text": "IDetailsRowBaseProps",
+          "hyperlinkedPage": "DetailsList",
+          "pageKind": "Components"
+        },
+        {
+          "text": " "
+        }
+      ],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "columns",
+          "typeTokens": [
+            {
+              "text": "IColumn",
+              "hyperlinkedPage": "DetailsList",
+              "pageKind": "Components"
+            },
+            {
+              "text": "[]"
+            }
+          ],
+          "descriptionHtml": "Column metadata\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selection",
+          "typeTokens": [
+            {
+              "text": "ISelection"
+            }
+          ],
+          "descriptionHtml": "Selection from utilities\n",
+          "deprecated": false,
+          "defaultValue": ""
+        },
+        {
+          "name": "selectionMode",
+          "typeTokens": [
+            {
+              "text": "SelectionMode"
+            }
+          ],
+          "descriptionHtml": "Selection mode\n",
+          "deprecated": false,
+          "defaultValue": ""
+        }
+      ]
+    },
+    {
+      "kind": "interface",
+      "name": "IDetailsRowStyles",
+      "extendsTokens": [],
+      "descriptionHtml": "\n",
+      "members": [
+        {
+          "name": "cell",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "cellMeasurer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "cellPadded",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "cellUnpadded",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "check",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "checkCell",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "checkCover",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "fields",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "isMultiline",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "isRowHeader",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "root",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "shimmer",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "shimmerBottomBorder",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "shimmerIconPlaceholder",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        },
+        {
+          "name": "shimmerLeftBorder",
+          "typeTokens": [
+            {
+              "text": "IStyle"
+            }
+          ],
+          "descriptionHtml": "",
+          "deprecated": false
+        }
+      ]
+    }
+  ]
+}
