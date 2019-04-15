@@ -5629,7 +5629,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
     linkFormat?: PivotLinkFormat;
     linkSize?: PivotLinkSize;
     onLinkClick?: (item?: PivotItem, ev?: React.MouseEvent<HTMLElement>) => void;
-    selectedKey?: string;
+    selectedKey?: string | null;
     styles?: IStyleFunctionOrObject<IPivotStyleProps, IPivotStyles>;
     theme?: ITheme;
 }

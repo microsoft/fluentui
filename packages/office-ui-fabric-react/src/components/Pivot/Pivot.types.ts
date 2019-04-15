@@ -77,7 +77,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
    * Only provide this if the pivot is a controlled component where you are maintaining the
    * current state; otherwise, use `defaultSelectedKey`.
    */
-  selectedKey?: string;
+  selectedKey?: string | null;
 
   /**
    * Callback for when the selected pivot item is changed.

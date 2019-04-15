@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Mon, 08 Apr 2019 12:37:15 GMT and should not be manually modified.
+This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+
+## 6.35.5
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
 
 ## 6.35.4
 Mon, 08 Apr 2019 12:37:15 GMT

@@ -412,8 +412,7 @@
     {
       "packageName": "@uifabric/date-time",
       "projectFolder": "packages/date-time",
-      "versionPolicyName": "lockedMajor",
-      "shouldPublish": true
+      "versionPolicyName": "lockedMajor"
     },
     {
       "packageName": "@uifabric/foundation-scenarios",
