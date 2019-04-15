@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { App as AppBase, IAppDefinition, IAppProps, IAppLink, PropertiesTableSet } from '@uifabric/example-app-base';
+import { App as AppBase, IAppDefinition, IAppProps, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
@@ -20,7 +20,7 @@ function loadReferences(): IAppLink[] {
   pageList.pages.forEach(pageName => {
     myPages.push({
       component: () => (
-        <PropertiesTableSet
+        <ApiReferencesTableSet
           className={propertiesTableMargins}
           jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')}
         />

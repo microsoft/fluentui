@@ -8,6 +8,7 @@ export * from './components/Header/index';
 export * from './components/Highlight/Highlight';
 export * from './components/MarkdownTable/index';
 export * from './components/PropertiesTable/index';
+export * from './components/ApiReferencesTable/index';
 export * from './components/templates/index';
 export * from './utilities/beep';
 export * from './utilities/createApp';

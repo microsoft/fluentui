@@ -1,5 +1,5 @@
 import { IDemoPageProps } from './DemoPage.types';
-import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown, FeedbackList } from '@uifabric/example-app-base';
+import { ComponentPage, ExampleCard, ApiReferencesTableSet, PageMarkdown, FeedbackList } from '@uifabric/example-app-base';
 import * as React from 'react';
 import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
@@ -47,7 +47,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
           </div>
         )
       }
-      propertiesTables={componentPageProps.jsonDocs && <PropertiesTableSet jsonDocs={componentPageProps.jsonDocs} />}
+      propertiesTables={componentPageProps.jsonDocs && <ApiReferencesTableSet jsonDocs={componentPageProps.jsonDocs} />}
       overview={overview ? <PageMarkdown>{overview}</PageMarkdown> : undefined}
       bestPractices={bestPractices ? <PageMarkdown>{bestPractices}</PageMarkdown> : undefined}
       dos={dos ? <PageMarkdown>{dos}</PageMarkdown> : undefined}

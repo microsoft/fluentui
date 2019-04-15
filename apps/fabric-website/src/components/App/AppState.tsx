@@ -4,7 +4,7 @@ import * as React from 'react';
 import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
-import { PropertiesTableSet } from '@uifabric/example-app-base';
+import { ApiReferencesTableSet } from '@uifabric/example-app-base';
 import { IReferencesList } from '@uifabric/fabric-website-resources/lib/AppDefinition';
 const pageStyles: any = require('../../pages/PageStyles.module.scss');
 
@@ -45,7 +45,7 @@ function loadReferences(): INavPage[] {
         <div className={pageStyles.basePage}>
           <ComponentPage>
             <PageHeader pageTitle={pageName} backgroundColor="#038387" />
-            <PropertiesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
+            <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
           </ComponentPage>
         </div>
       )
