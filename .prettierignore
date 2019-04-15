@@ -5,6 +5,7 @@ CHANGELOG.*
 fabric-icons-*
 version.ts
 dndSim.js
+packages/tslint-rules/tslint.json
 
 *.d.ts
 *.api.md
