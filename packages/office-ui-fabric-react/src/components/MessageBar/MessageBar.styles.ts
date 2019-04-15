@@ -104,7 +104,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
     }
   };
 
-  const focusStyle = getFocusStyle(theme, 0, 'relative', undefined, palette.black);
+  const focusStyle = getFocusStyle(theme, { borderColor: palette.black });
 
   return {
     root: [
