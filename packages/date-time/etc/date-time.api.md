@@ -64,6 +64,39 @@ export interface ICalendar {
     focus: () => void;
 }
 
+// Warning: (ae-forgotten-export) The symbol "ICalendarDay" needs to be exported by the entry point index.d.ts
+// 
+// @public (undocumented)
+export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay> {
+    allFocusable?: boolean;
+    className?: string;
+    componentRef?: IRefObject_2<ICalendarDay>;
+    dateRangeType: DateRangeType;
+    dateTimeFormatter: ICalendarFormatDateCallbacks;
+    firstDayOfWeek: DayOfWeek;
+    firstWeekOfYear: FirstWeekOfYear;
+    maxDate?: Date;
+    minDate?: Date;
+    navigatedDate: Date;
+    navigationIcons: ICalendarIconStrings;
+    onDismiss?: () => void;
+    onHeaderSelect?: () => void;
+    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    restrictedDates?: Date[];
+    selectedDate: Date;
+    showCloseButton?: boolean;
+    showSixWeeksByDefault?: boolean;
+    showWeekNumbers?: boolean;
+    strings: ICalendarStrings;
+    // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyleProps" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyles" needs to be exported by the entry point index.d.ts
+    styles?: IStyleFunctionOrObject_2<ICalendarDayStyleProps, ICalendarDayStyles>;
+    theme?: ITheme;
+    today?: Date;
+    workWeekDays?: DayOfWeek[];
+}
+
 // @public (undocumented)
 export interface ICalendarFormatDateCallbacks {
     formatDay: (date: Date) => string;
@@ -79,12 +112,37 @@ export interface ICalendarIconStrings {
     rightNavigation?: string;
 }
 
+// Warning: (ae-forgotten-export) The symbol "ICalendarMonth" needs to be exported by the entry point index.d.ts
+// 
+// @public (undocumented)
+export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
+    allFocusable?: boolean;
+    className?: string;
+    componentRef?: IRefObject_2<ICalendarMonth>;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    navigatedDate: Date;
+    navigationIcons?: ICalendarIconStrings;
+    onHeaderSelect?: () => void;
+    onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    selectedDate: Date;
+    strings: ICalendarStrings;
+    // Warning: (ae-forgotten-export) The symbol "ICalendarMonthStyleProps" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ICalendarMonthStyles" needs to be exported by the entry point index.d.ts
+    styles?: IStyleFunctionOrObject_2<ICalendarMonthStyleProps, ICalendarMonthStyles>;
+    theme?: ITheme;
+    today?: Date;
+    yearPickerHidden?: boolean;
+}
+
 // @public (undocumented)
 export interface ICalendarProps extends IBaseProps<ICalendar> {
     allFocusable?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "ICalendarDayProps" needs to be exported by the entry point index.d.ts
     calendarDayProps?: ICalendarDayProps;
-    // Warning: (ae-forgotten-export) The symbol "ICalendarMonthProps" needs to be exported by the entry point index.d.ts
     calendarMonthProps?: ICalendarMonthProps;
     className?: string;
     componentRef?: IRefObject<ICalendar>;

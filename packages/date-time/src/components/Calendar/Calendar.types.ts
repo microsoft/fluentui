@@ -4,7 +4,7 @@ import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
 
-export { DayOfWeek, DateRangeType, FirstWeekOfYear };
+export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarMonthProps };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
