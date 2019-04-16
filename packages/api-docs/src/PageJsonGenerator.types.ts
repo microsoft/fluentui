@@ -1,4 +1,29 @@
-import { PageKind } from './PageJsonGenerator';
+/**
+ * Options that define the information necessary to find the api.json file
+ * and create individual page json files out of it
+ */
+export interface IPageJsonOptions {
+  apiJsonPaths: string[];
+  pageJsonFolderPath: string;
+  pageNames: string[];
+  kind: PageKind;
+}
+
+/**
+ * The name of the page and what kind of page it is
+ */
+export interface IPage {
+  pageName: string;
+  kind: PageKind;
+}
+
+/**
+ * Used to keep track of where the page will live on the site
+ */
+export enum PageKind {
+  References = 'References',
+  Components = 'Components'
+}
 
 export interface ITokenJson {
   text: string;

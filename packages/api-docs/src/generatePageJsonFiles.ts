@@ -1,5 +1,6 @@
 import * as path from 'path';
-import { generateJson, PageKind } from './PageJsonGenerator';
+import { generateJson } from './PageJsonGenerator';
+import { PageKind } from './PageJsonGenerator.types';
 
 // Generate JSON for office-ui-fabric-react, styling, utilities, and merge-styles
 
