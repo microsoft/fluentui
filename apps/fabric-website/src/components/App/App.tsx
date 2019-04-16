@@ -59,7 +59,7 @@ export class App extends React.Component<IAppProps, any> {
   public componentWillReceiveProps(nextProps: IAppProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
       const hash = this._extractAnchorLink(window.location.hash);
-      if (hash.startsWith('/components')) {
+      if (hash.substring(0, 11) === '/components') {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
       }
     }

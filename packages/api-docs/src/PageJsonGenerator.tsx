@@ -218,7 +218,8 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
       tableJson.extendsTokens.push({ text: ', ' });
     }
     // This API could be improved
-    for (let i: number = extendsType.excerpt.tokenRange.startIndex; i < extendsType.excerpt.tokenRange.endIndex; ++i) {
+    const tokenRange = extendsType.excerpt.tokenRange;
+    for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
       const token: ExcerptToken = extendsType.excerpt.tokens[i];
       if (token.kind === ExcerptTokenKind.Reference) {
         // search for reference in collectedData
@@ -263,11 +264,8 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
           tableRowJson.defaultValue = defaultValueAsString;
         }
 
-        for (
-          let i: number = apiPropertySignature.propertyTypeExcerpt.tokenRange.startIndex;
-          i < apiPropertySignature.propertyTypeExcerpt.tokenRange.endIndex;
-          ++i
-        ) {
+        const tokenRange = apiPropertySignature.propertyTypeExcerpt.tokenRange;
+        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
           const token: ExcerptToken = apiPropertySignature.excerptTokens[i];
           if (token.kind === ExcerptTokenKind.Reference) {
             // search for reference in collectedData
@@ -300,7 +298,8 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
           deprecated: false
         };
 
-        for (let i: number = apiMethodSignature.excerpt.tokenRange.startIndex; i < apiMethodSignature.excerpt.tokenRange.endIndex; ++i) {
+        const tokenRange = apiMethodSignature.excerpt.tokenRange;
+        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
           const token: ExcerptToken = apiMethodSignature.excerptTokens[i];
           if (token.kind === ExcerptTokenKind.Reference) {
             // search for reference in collectedData
@@ -368,7 +367,8 @@ function createEnumPageJson(enumItem: ApiEnum): ITableJson {
           value: '0'
         };
 
-        for (let i: number = apiEnumMember.excerpt.tokenRange.startIndex; i < apiEnumMember.excerpt.tokenRange.endIndex; ++i) {
+        const tokenRange = apiEnumMember.excerpt.tokenRange;
+        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
           const token: ExcerptToken = apiEnumMember.excerptTokens[i];
           tableRowJson.value = token.text;
         }
@@ -408,7 +408,8 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
   }
 
   if (classItem.extendsType) {
-    for (let i: number = classItem.extendsType.excerpt.tokenRange.startIndex; i < classItem.extendsType.excerpt.tokenRange.endIndex; ++i) {
+    const tokenRange = classItem.extendsType.excerpt.tokenRange;
+    for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
       const token: ExcerptToken = classItem.extendsType.excerpt.tokens[i];
       tableJson.extendsTokens.push({ text: token.text });
     }
@@ -444,11 +445,8 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
           tableRowJson.defaultValue = defaultValueAsString;
         }
 
-        for (
-          let i: number = apiProperty.propertyTypeExcerpt.tokenRange.startIndex;
-          i < apiProperty.propertyTypeExcerpt.tokenRange.endIndex;
-          ++i
-        ) {
+        const tokenRange = apiProperty.propertyTypeExcerpt.tokenRange;
+        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
           const token: ExcerptToken = apiProperty.excerptTokens[i];
           if (token.kind === ExcerptTokenKind.Reference) {
             // search for reference in collectedData
@@ -482,7 +480,8 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
           kind: 'Method'
         };
 
-        for (let i: number = apiMethod.excerpt.tokenRange.startIndex; i < apiMethod.excerpt.tokenRange.endIndex; ++i) {
+        const tokenRange = apiMethod.excerpt.tokenRange;
+        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
           const token: ExcerptToken = apiMethod.excerptTokens[i];
           if (token.kind === ExcerptTokenKind.Reference) {
             // search for reference in collectedData
