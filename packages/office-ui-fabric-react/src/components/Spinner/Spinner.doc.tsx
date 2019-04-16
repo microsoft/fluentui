@@ -29,7 +29,6 @@ export const SpinnerPageProps: IDocPageProps = {
       codepenJS: SpinnerLabeledExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/Spinner.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Spinner/docs/SpinnerDos.md'),

@@ -41,7 +41,6 @@ export const IconPageProps: IDocPageProps = {
       view: <IconImageSheetExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/Icon.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Icon/docs/IconDos.md'),

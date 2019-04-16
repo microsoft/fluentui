@@ -62,7 +62,6 @@ export const DatePickerPageProps: IDocPageProps = {
       view: <DatePickerBoundedExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/DatePicker.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DatePicker/docs/DatePickerDos.md'),

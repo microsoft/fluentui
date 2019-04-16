@@ -19,7 +19,6 @@ export const LabelPageProps: IDocPageProps = {
       codepenJS: require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/docs/LabelDos.md'),

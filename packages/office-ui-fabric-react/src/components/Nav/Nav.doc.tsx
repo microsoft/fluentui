@@ -47,7 +47,6 @@ export const NavPageProps: IDocPageProps = {
       view: <NavCustomGroupHeadersExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/Nav.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Nav/docs/NavDos.md'),

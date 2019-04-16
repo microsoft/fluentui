@@ -27,7 +27,6 @@ export const CheckboxPageProps: IDocPageProps = {
       view: <CheckboxImplementationExamples />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),

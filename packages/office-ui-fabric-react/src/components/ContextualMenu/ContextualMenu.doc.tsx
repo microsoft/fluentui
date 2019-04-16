@@ -113,10 +113,6 @@ export const ContextualMenuPageProps: IDocPageProps = {
       view: <ContextualMenuHeaderExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Callout/Callout.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/docs/ContextualMenuDos.md'),

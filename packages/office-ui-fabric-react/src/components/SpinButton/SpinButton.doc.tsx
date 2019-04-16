@@ -62,7 +62,6 @@ export const SpinButtonPageProps: IDocPageProps = {
       view: <SpinButtonCustomStyledExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/SpinButton.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/SpinButton/docs/SpinButtonDos.md'),

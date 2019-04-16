@@ -58,8 +58,6 @@ export const ShimmerPageProps: IDocPageProps = {
       view: <ShimmerStylingExample />
     }
   ],
-
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/Shimmer.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),

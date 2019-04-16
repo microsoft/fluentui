@@ -33,10 +33,6 @@ export const ScrollablePanePageProps: IDocPageProps = {
       isScrollable: false
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
