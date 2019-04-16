@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Update example-app-base styling overrides to use css-in-js",
+      "comment": "Run prettier on all files",
       "type": "patch"
     }
   ],

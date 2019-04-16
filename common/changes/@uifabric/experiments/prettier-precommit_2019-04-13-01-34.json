@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Sidebar: update example card styling approach",
+      "comment": "Run prettier on all files",
       "type": "patch"
     }
   ],

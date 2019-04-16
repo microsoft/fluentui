@@ -37,9 +37,9 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
   }
 
   /*
-     * ComponentDidMount is used in the sidebar to adjust the height of the sidebar content
-     * to allow the content scrollbar to be correctly sized.
-     */
+   * ComponentDidMount is used in the sidebar to adjust the height of the sidebar content
+   * to allow the content scrollbar to be correctly sized.
+   */
   public componentDidMount(): void {
     const parentId = this.props.id ? this.props.id : '';
     const sidebar = document.getElementsByClassName(`ba-Sidebar-${parentId}`)[0] as HTMLElement;

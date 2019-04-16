@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Remove nonexistent related links from docs",
-      "type": "patch"
+      "comment": "Run prettier on all files",
+      "type": "none"
     }
   ],
   "packageName": "@uifabric/charting",

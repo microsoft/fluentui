@@ -49,14 +49,17 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.js": [
+      "*.{js,jsx,json,scss,html,yml,md}": [
         "node ./scripts/lint-staged/prettier",
         "git add"
       ]
     },
     "ignore": [
       "common/scripts/*.js",
-      "apps/vr-tests/**/*.{ts,tsx}"
+      "packages/tslint-rules/tslint.json",
+      "**/CHANGELOG.*",
+      "**/*.api.md",
+      "**/_*.scss"
     ]
   }
 }

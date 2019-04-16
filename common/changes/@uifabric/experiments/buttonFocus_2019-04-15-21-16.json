@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Button: Creating CommandBarButton, IconButton and MessageBarButton variants.",
+      "comment": "Button: Add focus() call in IButton interface.",
       "type": "minor"
     }
   ],

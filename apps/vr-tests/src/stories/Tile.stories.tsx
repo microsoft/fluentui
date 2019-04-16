@@ -12,30 +12,35 @@ import { storiesOf } from '@storybook/react';
 import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
 import { FabricDecorator } from '../utilities';
 
-interface IDocumentItem { name: string; activity: string; }
+interface IDocumentItem {
+  name: string;
+  activity: string;
+}
 
 interface IDocumentTileWithThumbnailProps {
   originalImageSize: ISize;
   item: IDocumentItem;
 }
 
-const DocumentTileBox = (props: React.Props<{}>): JSX.Element => {
+const DocumentTileBox = (props: { children: React.ReactNode }): JSX.Element => {
   return (
-    <div style={{
-      position: 'relative',
-      width: '176px',
-      height: '171px'
-    }}>{props.children}</div>
+    <div
+      style={{
+        position: 'relative',
+        width: '176px',
+        height: '171px'
+      }}
+    >
+      {props.children}
+    </div>
   );
 };
 
 const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumbnailProps> = (
   props: IDocumentTileWithThumbnailProps
 ): JSX.Element => {
-  function renderForeground(foregroundProps: { foregroundSize?: ISize; }) {
-    const {
-      foregroundSize = { width: 0, height: 0 }
-    } = foregroundProps;
+  function renderForeground(foregroundProps: { foregroundSize?: ISize }) {
+    const { foregroundSize = { width: 0, height: 0 } } = foregroundProps;
 
     const imageSize = fitContentToBounds({
       contentSize: props.originalImageSize,
@@ -59,7 +64,11 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
           height: 171
         }}
         itemName={<SignalField before={<TrendingSignal />}>{props.item.name}</SignalField>}
-        itemActivity={<SignalField before={<CommentsSignal>{'12'}</CommentsSignal>}>{props.item.activity}</SignalField>}
+        itemActivity={
+          <SignalField before={<CommentsSignal>12</CommentsSignal>}>
+            {props.item.activity}
+          </SignalField>
+        }
         foreground={renderForeground}
         showForegroundFrame={true}
       />
@@ -68,9 +77,7 @@ const DocumentTileWithThumbnail: React.StatelessComponent<IDocumentTileWithThumb
 };
 
 storiesOf('Tile', module)
-  .addDecorator(story => (
-    <Fabric>{story()}</Fabric>
-  ))
+  .addDecorator(story => <Fabric>{story()}</Fabric>)
   .addDecorator(FabricDecorator)
   .addDecorator(story =>
     // prettier-ignore
@@ -141,8 +148,14 @@ storiesOf('Tile', module)
   .addStory('Tile with no content and long text', () => (
     <DocumentTileBox>
       <Tile
-        itemName={<SignalField before={<NewSignal />}>{'This is a name which should overflow'}</SignalField>}
-        itemActivity={<SignalField before={<SharedSignal />}>{'This is an activity which should overflow'}</SignalField>}
+        itemName={
+          <SignalField before={<NewSignal />}>{'This is a name which should overflow'}</SignalField>
+        }
+        itemActivity={
+          <SignalField before={<SharedSignal />}>
+            {'This is an activity which should overflow'}
+          </SignalField>
+        }
         showForegroundFrame={false}
       />
     </DocumentTileBox>

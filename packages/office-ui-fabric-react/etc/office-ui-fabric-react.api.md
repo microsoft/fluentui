@@ -5159,6 +5159,7 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     isVisible?: boolean;
     hasBeenOpened?: boolean;
     modalRectangleTop?: number;
+    layerClassName?: string;
 };
 
 // @public (undocumented)

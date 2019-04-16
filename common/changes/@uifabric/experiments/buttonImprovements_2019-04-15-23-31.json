@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "Humberto.Morimoto@microsoft.com"
+}

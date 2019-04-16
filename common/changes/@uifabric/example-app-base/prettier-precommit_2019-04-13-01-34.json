@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Convert components to css-in-js",
-      "type": "minor"
+      "comment": "Run prettier on all files",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/example-app-base",
