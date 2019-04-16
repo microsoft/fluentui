@@ -22,7 +22,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     modalRectangleTop,
     theme,
     topOffsetFixed,
-    isModeless
+    isModeless,
+    layerClassName
   } = props;
   const { palette } = theme;
 
@@ -78,11 +79,18 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
       classNames.scrollableContent,
       {
         overflowY: 'auto',
-        flexGrow: 1
+        flexGrow: 1,
+        maxHeight: '100vh',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: window.innerHeight
+          }
+        }
       },
       scrollableContentClassName
     ],
     layer: isModeless && [
+      layerClassName,
       classNames.layer,
       {
         position: 'static',

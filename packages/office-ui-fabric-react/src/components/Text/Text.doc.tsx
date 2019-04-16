@@ -2,21 +2,17 @@ import * as React from 'react';
 import { TextRampExample } from './examples/Text.Ramp.Example';
 import { TextWrapExample } from './examples/Text.Wrap.Example';
 import { TextBlockExample } from './examples/Text.Block.Example';
-import { TextInheritsExample } from './examples/Text.Inherits.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const TextRampExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Ramp.Example.tsx') as string;
-const TextRampExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Ramp.Example.Codepen.txt') as string;
+const TextRampExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Text/examples/Text.Ramp.Example.tsx') as string;
 
 const TextWrapExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Wrap.Example.tsx') as string;
-const TextWrapExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Wrap.Example.Codepen.txt') as string;
+const TextWrapExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Text/examples/Text.Wrap.Example.tsx') as string;
 
 const TextBlockExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Block.Example.tsx') as string;
-const TextBlockExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Block.Example.Codepen.txt') as string;
-
-const TextInheritsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Text/examples/Text.Inherits.Example.tsx') as string;
-const TextInheritsExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Text/Text.Inherits.Example.Codepen.txt') as string;
+const TextBlockExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Text/examples/Text.Block.Example.tsx') as string;
 
 export const TextPageProps: IDocPageProps = {
   title: 'Text',
@@ -40,12 +36,6 @@ export const TextPageProps: IDocPageProps = {
       code: TextBlockExampleCode,
       view: <TextBlockExample />,
       codepenJS: TextBlockExampleCodepen
-    },
-    {
-      title: 'Text Inherit Styles Example',
-      code: TextInheritsExampleCode,
-      view: <TextInheritsExample />,
-      codepenJS: TextInheritsExampleCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/Text.types.tsx')],

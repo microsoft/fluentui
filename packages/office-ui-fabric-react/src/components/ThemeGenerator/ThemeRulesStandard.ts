@@ -1,5 +1,5 @@
 import { Shade } from '../../utilities/color/shades';
-import { getColorFromString } from '../../utilities/color/colors';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { mapEnumByName } from '../../Utilities';
 
 import { IThemeRules } from './IThemeRules';
@@ -53,9 +53,16 @@ export enum FabricSlots {
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety. */
 export enum SemanticColorSlots {
   bodyBackground,
+  bodyStandoutBackground,
   bodyText,
-  disabledBackground,
-  disabledText
+  bodySubtext,
+  bodyDivider,
+
+  link,
+  linkHovered,
+
+  buttonBackground,
+  buttonBackgroundHovered
 }
 
 export function themeRulesStandardCreator(): IThemeRules {
@@ -178,21 +185,76 @@ export function themeRulesStandardCreator(): IThemeRules {
   /*** SEMANTIC SLOTS */
   // This code is commented out for now but left for future semantic color customization.
   // create the SlotRule for a semantic slot
-  // function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
-  //   const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-  //   const thisSlotRule = {
-  //     name: SemanticColorSlots[semanticSlot],
-  //     inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-  //     isCustomized: false,
-  //     dependentRules: []
-  //   };
-  //   slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
-  //   inherits.dependentRules.push(thisSlotRule);
-  // }
+  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
+    const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
+    const thisSlotRule = {
+      name: SemanticColorSlots[semanticSlot],
+      inherits: slotRules[FabricSlots[inheritedFabricSlot]],
+      isCustomized: false,
+      dependentRules: []
+    };
+    slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
+    inherits.dependentRules.push(thisSlotRule);
+  }
 
-  // Basic simple slots
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  // BODY
+  // None
+  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.neutralPrimaryAlt);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.neutralSecondary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.neutralPrimary);
+
+  // Neutral
+  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.neutralLighter);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.neutralLight);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.neutralSecondary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.neutralQuaternaryAlt);
+
+  // Soft
+  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themeLighterAlt);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.themeLighter);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.neutralSecondary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.themeLighter);
+
+  // Strong
+  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themePrimary);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.themeDarkAlt);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.white);
+  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.white);
+  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.themeDarkAlt);
+
+  // LINKS
+  // None
+  // Neutral
+  // Soft
+  // Strong
+
+  // BUTTONS
+  // None
+  // Neutral
+  // Soft
+  // Strong
+
+  // INPUTS
+  // None
+  // Neutral
+  // Soft
+  // Strong
+
+  // LISTS
+  // None
+  // Neutral
+  // Soft
+  // Strong
+
+  // MENUS
+  // None
+  // Neutral
+  // Soft
+  // Strong
 
   return slotRules;
 }

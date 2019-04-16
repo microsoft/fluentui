@@ -16,6 +16,7 @@ const MAX_SCROLL_VELOCITY = 15;
  * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
  *
  * @public
+ * {@docCategory AutoScroll}
  */
 export class AutoScroll {
   private _events: EventGroup;

@@ -3,15 +3,18 @@ import { IProcessedStyleSet } from '../../Styling';
 import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
 import { Icon } from '../../Icon';
 import {
+  Async,
   DelayedRender,
-  BaseComponent,
+  IStyleFunctionOrObject,
+  classNamesFunction,
+  createRef,
   getId,
   getNativeProps,
+  initializeComponentRef,
   inputProperties,
   textAreaProperties,
-  createRef,
-  classNamesFunction,
-  IStyleFunctionOrObject
+  warnDeprecations,
+  warnMutuallyExclusive
 } from '../../Utilities';
 import { ITextField, ITextFieldProps, ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 
@@ -34,7 +37,7 @@ export interface ITextFieldState {
 
 const DEFAULT_STATE_VALUE = '';
 
-export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldState> implements ITextField {
+export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState> implements ITextField {
   public static defaultProps: ITextFieldProps = {
     multiline: false,
     resizable: true,
@@ -67,6 +70,8 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   private _latestValidateValue: string | undefined;
   private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
   private _classNames: IProcessedStyleSet<ITextFieldStyles>;
+  private _async: Async;
+
   /**
    * If true, the text field is changing between single- and multi-line, so we'll need to reset
    * focus after the change completes.
@@ -81,16 +86,22 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
   public constructor(props: ITextFieldProps) {
     super(props);
 
-    this._warnDeprecations({
-      iconClass: 'iconProps',
-      addonString: 'prefix',
-      onRenderAddon: 'onRenderPrefix',
-      onChanged: 'onChange'
-    });
+    initializeComponentRef(this);
 
-    this._warnMutuallyExclusive({
-      value: 'defaultValue'
-    });
+    this._async = new Async(this);
+
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('TextField', props, {
+        iconClass: 'iconProps',
+        addonString: 'prefix',
+        onRenderAddon: 'onRenderPrefix',
+        onChanged: 'onChange'
+      });
+
+      warnMutuallyExclusive('TextField', props, {
+        value: 'defaultValue'
+      });
+    }
 
     this._id = props.id || getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
@@ -178,6 +189,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
 
   public componentWillUnmount(): void {
     this._isMounted = false;
+    this._async.dispose();
   }
 
   public render(): JSX.Element {
@@ -438,7 +450,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         onChange={this._onInputChange}
         className={this._classNames.field}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this.state.errorMessage}
+        aria-invalid={!!this._errorMessage}
         aria-label={this.props.ariaLabel}
         readOnly={this.props.readOnly}
         onFocus={this._onFocus}
@@ -462,7 +474,7 @@ export class TextFieldBase extends BaseComponent<ITextFieldProps, ITextFieldStat
         className={this._classNames.field}
         aria-label={this.props.ariaLabel}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
-        aria-invalid={!!this.state.errorMessage}
+        aria-invalid={!!this._errorMessage}
         readOnly={this.props.readOnly}
         onFocus={this._onFocus}
         onBlur={this._onBlur}

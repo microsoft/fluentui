@@ -1,56 +1,54 @@
 import * as React from 'react';
 import { Nav } from 'office-ui-fabric-react/lib/Nav';
 
-export class NavNestedExample extends React.Component<any, any> {
-  public render(): JSX.Element {
-    return (
-      <Nav
-        groups={[
-          {
-            links: [
-              {
-                name: 'Parent link',
-                url: 'http://example.com',
-                links: [
-                  {
-                    name: 'Child link',
-                    url: 'http://example.com'
-                  },
-                  {
-                    name: 'Child link',
-                    url: 'http://example.com',
-                    links: [
-                      {
-                        name: 'Child link',
-                        url: 'http://example.com'
-                      },
-                      {
-                        name: 'Child link',
-                        url: 'http://example.com'
-                      }
-                    ]
-                  },
-                  {
-                    name: 'Child link',
-                    url: 'http://example.com'
-                  }
-                ]
-              },
-              {
-                name: 'Parent link',
-                url: 'http://example.com',
-                links: [
-                  {
-                    name: 'Child link',
-                    url: 'http://example.com'
-                  }
-                ]
-              }
-            ]
-          }
-        ]}
-        expandButtonAriaLabel={'Expand or collapse'}
-      />
-    );
-  }
-}
+export const NavNestedExample: React.StatelessComponent = () => {
+  return (
+    <Nav
+      expandButtonAriaLabel="Expand or collapse"
+      groups={[
+        {
+          links: [
+            {
+              name: 'Parent link 1',
+              url: 'http://example.com',
+              links: [
+                {
+                  name: 'Child link 1',
+                  url: 'http://example.com'
+                },
+                {
+                  name: 'Child link 2',
+                  url: 'http://example.com',
+                  links: [
+                    {
+                      name: '3rd level link 1',
+                      url: 'http://example.com'
+                    },
+                    {
+                      name: '3rd level link 2',
+                      url: 'http://example.com'
+                    }
+                  ]
+                },
+                {
+                  name: 'Child link 3',
+                  url: 'http://example.com'
+                }
+              ]
+            },
+            {
+              name: 'Parent link 2',
+              url: 'http://example.com',
+              links: [
+                {
+                  name: 'Child link 4',
+                  url: 'http://example.com'
+                }
+              ]
+            }
+          ]
+        }
+      ]}
+    />
+  );
+};

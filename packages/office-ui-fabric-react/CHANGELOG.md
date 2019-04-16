@@ -1,6 +1,405 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 04 Mar 2019 13:29:58 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.167.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- DatePicker: Fix props not matching their description. Add new prop to provide old functionality
+- DetailsList: Expose optional onRenderCheckbox callback option
+
+### Patches
+
+- Update Announced examples
+- Panel: Fix double dismiss
+
+## 6.166.1
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Patches
+
+- DetailsList: Fix high contrast focus color
+- MessageBar: fixes the transparency of the background issue when rendered on top of themed backgrounds.
+- Adding data parameter to the ComboBoxOptionWrapper. This will allow ShallowCompare to compare against this extra parameter
+
+## 6.166.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+- These changes allow for a controlled Pivot to have no selected PivotItem by specifying null as the selectedKey prop.
+
+### Patches
+
+- ThemeGeneratorPage: fix it so it looks right
+- Updating CalloutContentBase's shouldComponentUpdate to do shallow comparision
+
+## 6.165.1
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
+- css-in-js conversions for DocumentCard, ExtendedPeoplePicker, FloatingPeoplePicker, SelectedPeopleList
+
+## 6.165.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Panel: add onOpen and onOpened properties
+
+### Patches
+
+- ComboBox: call onPendingValuedChanged with an empty value string when the user clears the input
+
+## 6.164.8
+Tue, 09 Apr 2019 12:35:21 GMT
+
+### Patches
+
+- Panel: set forceFocusInsideTrap to false for non-blocking Panels
+- Spinner: only render an aria-live polite message when ariaLabel is provided.
+
+## 6.164.7
+Mon, 08 Apr 2019 12:37:15 GMT
+
+### Patches
+
+- A number of components have been updated to reduce the dependencies, lowering bundle size impact for a variety of scenarios.
+- TextField: clarify onBeforeChange documentation
+
+## 6.164.6
+Fri, 05 Apr 2019 22:09:49 GMT
+
+### Patches
+
+- Persona: now sets dir=auto for text fields rendered in persona.
+- Fix layer and modal codepen links
+- Fixing submenu dismissal when parent menu has a hidden prop
+- Panel: add border to main div in high contrast
+
+## 6.164.5
+Fri, 05 Apr 2019 12:36:12 GMT
+
+### Patches
+
+- SelectionZone: Disallow selection when selection mode is SelectionMode.none
+- Dialog, Layer, and Modal partial css-in-js conversions
+- Modal: constrain scrollableContent height to 100vh and window.innerHeight for mobile Safari to support DetailsList virtualization
+- Convert OverflowSet examples and one Panel example to css-in-js
+- Fix for  scrolling functionality in Suggestions component.
+- Toggle: make on/off text clickable
+- Tooltip: fixing the color and font size of subText not to be overriden by external UHF css.
+
+## 6.164.4
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- List and other example updates
+- Nav and MessageBar example updates
+- Colors: reduce size of utility file by changing implementation
+- SelectionZone: Defer dom inspection until interaction
+
+## 6.164.3
+Wed, 03 Apr 2019 12:38:51 GMT
+
+### Patches
+
+- Button: Adding missing parenthesis in ev.stopPropagation function call.
+- CommandBar: Meeting color contrast accessibility standards in examples.
+- Button: Allowing menu navigation with keyboard when shouldFocusOnMount is set to false.
+- PeoplePicker: Fix persona overflowing container
+- Small bug fixes for keytips
+- BaseFloatingPicker: do not update unmounted component on promise resolution
+
+## 6.164.2
+Tue, 02 Apr 2019 12:36:20 GMT
+
+### Patches
+
+- FocusZone: fixing logic to track outer FZ components correctly.
+- Image: fixes a visual bug where during fade in animation the image was shifted slightly.
+
+## 6.164.1
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Dropdown: The `onChange` callback's event target should always be the dropdown element, which contains the id attribute passed in through props.
+- Fixed a problem with Pivot showing the wrong PivotItems when using JSX expressions. Extended the test case
+- FocusZone and FocusTrapZone example improvements
+- GroupedList: Respect groupProps isAllGroupsCollapsed on initial render
+- List and other example updates
+- Use ^ ranges instead of >=
+
+## 6.164.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- Stack: Adding margin as a token of StackItem and childrenGap as a token of Stack and updating examples accordingly.
+- Separator: promote to OUFR
+
+### Patches
+
+- ContextualMenu: Remove extra role=menu
+- MaskedTextField: fixes the state update when the value it's controlled by the host app.
+- More TextField example updates
+
+## 6.163.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Dropdown: add correctly cased onRenderPlaceholder prop and deprecate onRenderPlaceHolder, plus example updates
+- Added order property to StackItem
+- HoverCard: adds a public `dismiss` method to allow instant dismiss of the card.
+
+### Patches
+
+- Persisted callout fixes
+- DocPage: add separate prop for overriding native props component name
+- Pickers: condionally render the list of the selected items only if there are any items to display. Fixes the aria role="list" bug where a list must contain one or more list items.
+- Spinner and Slider example updates
+- TextField example updates
+
+## 6.162.1
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- ComboBox: Add aria-required field to assist screen readers to read out required field
+
+## 6.162.0
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Minor changes
+
+- List: Parameterize generic T for item type with default type any
+
+### Patches
+
+- Calendar: Making calendar days aria-readonly: true so that Narrator doesn't read them as editable.
+- DocumentCard: Removing blank 1px line below preview images in compact layout.
+- Remove custom high contrast selectors and example utility CSS classes
+- Split up color utility functions into separate files for perf
+- GroupHeader: tighten componentWillReceiveProps parameter typing
+- update API file
+- update api file generated by api-extractor 7
+
+## 6.161.0
+Tue, 26 Mar 2019 12:32:51 GMT
+
+### Minor changes
+
+- Remove IE 11-incompatible constructs
+
+### Patches
+
+- FloatingPicker: Change width to min-width for Suggestions
+- ContextualMenu: Improve typings and remove unnecessary casts
+
+## 6.160.0
+Mon, 25 Mar 2019 12:33:48 GMT
+
+### Minor changes
+
+- GroupSpacer: Reduce render calls by refactoring styled HOC to React.SFC
+
+### Patches
+
+- FocusZone: focus alignment is now reset when first receiving focus (programatically or via `defaultActiveElement`.
+
+## 6.159.1
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- ColorPicker: Showing picked color in high contrast mode.
+- List: Avoid setting role to list in case of empty list
+
+## 6.159.0
+Fri, 22 Mar 2019 02:41:51 GMT
+
+### Minor changes
+
+- Dialog: changing type of `title` prop to allow JSX to be injected.
+
+### Patches
+
+- Calendar: Fixing typo is scss.
+- Add shouldComponentUpdate to ContextualMenuItems to ensure items are only updated when needed.
+- Pivot did not support PivotItems used in JSX-expressions (e.g. {this.state.something && <PivotItem ...>}. I fixed this functionality and added a simple test case.
+- Fix focus zone virtual parent focus restoration
+- FocusZone: minor performance tweak to have a single capture keydown handler, rather than one per outer zone instance.
+- Fixing componentURL to point to correct url.
+- Popup: Revert change to find active element within iframe
+
+## 6.158.0
+Thu, 21 Mar 2019 12:36:30 GMT
+
+### Minor changes
+
+- SelectedPeopleList: Key wrapped selectedItem children when they are keyed
+
+### Patches
+
+- Breadcrumb: Update custom divider example to have aria-hidden on divider
+- GroupHeader & GroupFooter: Extend React.Component instead of BaseComponent
+- Improve TextField example accessibility
+- TextField: Fixed flex bug in IE11
+- move replaceItem from SelectedPeopleList to BaseSelectedItemsList
+
+## 6.157.3
+Wed, 20 Mar 2019 16:14:56 GMT
+
+### Patches
+
+- FocusTrapZone: Make sure to call passed in focus and blur handlers
+
+## 6.157.2
+Wed, 20 Mar 2019 03:15:21 GMT
+
+### Patches
+
+- Callout: Fix beak position for dynamically sized callouts.
+- ComboBox: if `options` are null, make sure the code doesn't crash.
+- Icon: remove BaseComponent dependency.
+
+## 6.157.1
+Tue, 19 Mar 2019 18:05:11 GMT
+
+### Patches
+
+- Fix typing on BaseSelectedItemList.removeItem
+
+## 6.157.0
+Fri, 15 Mar 2019 12:34:07 GMT
+
+### Minor changes
+
+- DetailsHeader: Add ariaLabelForToggleAllGroupsButton to IDetailsHeaderProps
+- Add new icons to OUIFR API
+- Export Foundation package.
+- SpinButton: label prop should be marked as optional
+- Rating: unchecked stars should be unfilled.
+
+### Patches
+
+- Popup: If framed, set focus to frame's activeElement on dismiss
+- Use codepen loader in examples
+- For multiSelectComboBox, if allowFreeForm is true, currentPendingValue should get added to option and be selected onBlur
+- Nav: Fix selection state to only check URL if state.selectedKey is undefined
+- Fix combobox behaviour: multiple selections are now correctly shown in dropdown
+- TeachingBubble examples: separate onDismiss into onDismiss and onShow
+- List: Remove duplicate page rows iteration and add tests for SparseArray scenarios
+- Fix color contrast ratio of unchecked Rating stars
+- Use typeof check on process before checking process.env.NODE_ENV
+- Turn IBasePickerSuggestionsProps into a Pick<> type
+- Drop space from DetailsList header aria-labeledby
+- HoverCard: fixes the native event listeners assignment when the target prop is updated.
+
+## 6.156.0
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Minor changes
+
+- Text: default to fonts.medium
+- Dropdown: Type onRenderTitle as Array<IDropdownOption> only
+
+### Patches
+
+- BaseButton: Correctly clone props instead of mutating them
+
+## 6.155.0
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Minor changes
+
+- Provide a way to pass cell contents directly to DetailsRow
+- FocusTrapZone: Refactor trapping behavior to fix multiple outstanding issues.
+
+### Patches
+
+- Fix overflow calculation for non-collapsible columns
+- FocusTrapZone: Fix for zones that have zero tabbable elements.
+- updating calendaryear to work when react version upgrades
+- DetailsHeader: remove duplicate IDetailsHeaderState
+- Panel: fixes regression when no custom navigation renderer provided and `hasCloseButton` prop is set to false there should not be an empty div rendered occupying the space.
+
+## 6.154.0
+Mon, 11 Mar 2019 12:31:10 GMT
+
+### Minor changes
+
+- Shimmer: adds new props `shimmerColors` to Shimmer and `backgroundColor` to ShimmerElementsGroup to allow easy customization of Shimmer colors when placed on elements with background colors other than white.
+
+## 6.153.0
+Fri, 08 Mar 2019 13:32:10 GMT
+
+### Minor changes
+
+- Expose persistMenu in combobox similar to baseButton
+- SpinButton: Stateful example should restrict input value to range.
+
+### Patches
+
+- List: Revert remove usage of string refs for List pages #7704
+
+## 6.152.1
+Thu, 07 Mar 2019 13:32:47 GMT
+
+### Patches
+
+- Remove console log in Tooltip absolute position example
+- Pivot - remove deprecated lifecycle method, and deterministically render selected PivotItem. Will change behavior of Pivot instances that specified `selectedKey` but use in an uncontrolled fashion. 
+- Suggestions: set className on Suggestion header/footer
+- SwatchColorPicker: updates the styles so that they align to the toolkit specs.
+
+## 6.152.0
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Minor changes
+
+- BaseButton does not call onAfterMenuDismiss when persistMenu is true
+- Change FocusZone to use the as pattern
+
+### Patches
+
+- Tooltip: Add absolute position example to documentation
+- FocusZone: removing dependency on BaseComponent, slicing about 3k gzipped off the payload.
+
+## 6.151.0
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Minor changes
+
+- Update version of 'styled', add type annotations to usages of 'styled'.
+
+## 6.150.1
+Tue, 05 Mar 2019 13:30:24 GMT
+
+### Patches
+
+- DetailsRowFields: Inherit from React.Component instead of BaseComponent"
+
+## 6.150.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced component
+- Breadcrumb: Add native props support
+- Export all theme variables in one file, and emit basic font token mixins
+
+### Patches
+
+- CommandBar: Adding aria-label to Grid View and Information Buttons in examples.
+- ChoiceGroup: Fix disabled selected styles
 
 ## 6.149.0
 Mon, 04 Mar 2019 13:29:58 GMT

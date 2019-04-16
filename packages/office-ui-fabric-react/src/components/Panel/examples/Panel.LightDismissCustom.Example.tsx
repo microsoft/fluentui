@@ -9,7 +9,7 @@ export interface IPanelLightDismissCustomExampleState {
 }
 
 export class PanelLightDismissCustomExample extends React.Component<{}, IPanelLightDismissCustomExampleState> {
-  public state = {
+  public state: IPanelLightDismissCustomExampleState = {
     showPanel: false,
     hideDialog: true
   };
@@ -38,7 +38,7 @@ export class PanelLightDismissCustomExample extends React.Component<{}, IPanelLi
             titleAriaId: 'myLabelId',
             subtitleAriaId: 'mySubTextId',
             isBlocking: true,
-            containerClassName: 'ms-dialogMainOverride'
+            styles: { main: { maxWidth: 450 } }
           }}
         >
           <DialogFooter>

@@ -1,0 +1,117 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Card Item renders correctly 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: space-between;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: space-between;
+        max-width: 286px;
+        min-width: 212px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-StackItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;
+
+exports[`Card Item renders correctly when having tokens passed to it 1`] = `
+<div
+  className=
+      ms-Stack
+      ms-Card
+      {
+        align-items: space-between;
+        border-radius: 2px;
+        box-shadow: 0 1.6px 3.6px 0 rgba(0, 0, 0, 0.132), 0 0.3px 0.9px 0 rgba(0, 0, 0, 0.108);
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: inherit;
+        justify-content: space-between;
+        max-width: 286px;
+        min-width: 212px;
+        padding-bottom: 12px;
+        padding-left: 12px;
+        padding-right: 12px;
+        padding-top: 12px;
+        transition: box-shadow 0.5s ease;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 12px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+      @media screen and (-ms-high-contrast: active){& {
+        box-shadow: 0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight;
+      }
+>
+  <div
+    className=
+        ms-StackItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          margin-bottom: 12px;
+          margin-left: 8px;
+          margin-right: 8px;
+          margin-top: 12px;
+          width: auto;
+        }
+  >
+    <div />
+  </div>
+</div>
+`;

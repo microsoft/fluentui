@@ -80,6 +80,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               word-wrap: break-word;
             }
         htmlFor="Toggle0"
+        id="Toggle0-label"
       >
         Enable compact mode
       </label>
@@ -93,6 +94,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle0-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -199,6 +201,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 0;
                 user-select: none;
               }
+          htmlFor="Toggle0"
+          id="Toggle0-stateText"
         >
           Normal
         </label>
@@ -247,6 +251,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
               word-wrap: break-word;
             }
         htmlFor="Toggle1"
+        id="Toggle1-label"
       >
         Enable modal selection
       </label>
@@ -260,6 +265,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle1-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -366,6 +372,8 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 padding-top: 0;
                 user-select: none;
               }
+          htmlFor="Toggle1"
+          id="Toggle1-stateText"
         >
           Normal
         </label>

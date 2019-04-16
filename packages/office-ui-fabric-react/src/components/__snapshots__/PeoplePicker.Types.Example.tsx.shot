@@ -47,16 +47,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 border-color: #333333;
               }
         >
-          <span
-            className=
-                ms-BasePicker-itemsWrapper
-                {
-                  display: flex;
-                  flex-wrap: wrap;
-                }
-            id="selected-items-id__0"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "
@@ -493,6 +483,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               word-wrap: break-word;
             }
         htmlFor="Toggle4"
+        id="Toggle4-label"
       >
         Delay Suggestion Results
       </label>
@@ -506,6 +497,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle4-label"
           className=
               ms-Toggle-background
               {

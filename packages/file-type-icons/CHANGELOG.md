@@ -1,6 +1,28 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Fri, 01 Mar 2019 13:33:08 GMT and should not be manually modified.
+This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+
+## 6.4.5
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Patches
+
+- decoupled the icon mapping from ts in file-type-icons so that it can be use in an upcoming cocoapod for fabric-cdn icons
+
+## 6.4.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.4.3
+Tue, 12 Mar 2019 12:31:43 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
 
 ## 6.4.2
 Fri, 01 Mar 2019 13:33:08 GMT

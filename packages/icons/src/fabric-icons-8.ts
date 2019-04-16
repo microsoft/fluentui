@@ -15,12 +15,21 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-8"`,
-      src: `url('${baseUrl}fabric-icons-8-58fb017e.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-8-50fd817c.woff') format('woff')`
     },
     icons: {
+      CRMServices: '\uEFD2',
+      EditContact: '\uEFD3',
+      ConnectContacts: '\uEFD4',
+      AppIconDefaultAdd: '\uEFDA',
+      AppIconDefaultList: '\uEFDE',
+      ActivateOrders: '\uEFE0',
+      DeactivateOrders: '\uEFE1',
+      DocumentManagement: '\uEFFC',
       CRMReport: '\uEFFE',
       KnowledgeArticle: '\uF000',
       Relationship: '\uF003',
+      HomeVerify: '\uF00E',
       ZipFolder: '\uF012',
       SurveyQuestions: '\uF01B',
       TextDocument: '\uF029',
@@ -30,6 +39,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Script: '\uF03A',
       Archive: '\uF03F',
       ActivityFeed: '\uF056',
+      Compare: '\uF057',
       EventDate: '\uF059',
       ArrowUpRight: '\uF069',
       CaretRight: '\uF06B',
@@ -65,6 +75,8 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       BufferTimeAfter: '\uF0D0',
       BufferTimeBoth: '\uF0D1',
       PublishContent: '\uF0D4',
+      ClipboardList: '\uF0E3',
+      ClipboardListMirrored: '\uF0E4',
       CannedChat: '\uF0F2',
       SkypeForBusinessLogo: '\uF0FC',
       TabCenter: '\uF100',
@@ -97,6 +109,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       ProgressRingDots: '\uF16A',
       CaloriesAdd: '\uF172',
       BranchFork: '\uF173',
+      AddHome: '\uF17B',
       MobileReport: '\uF18A',
       ScaleVolume: '\uF18C',
       HardDriveGroup: '\uF18F',
@@ -104,20 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       ToggleLeft: '\uF19E',
       ToggleRight: '\uF19F',
       TriangleShape: '\uF1A7',
-      RectangleShape: '\uF1A9',
-      Trophy2: '\uF1AE',
-      BucketColor: '\uF1B6',
-      BucketColorFill: '\uF1B7',
-      Taskboard: '\uF1C2',
-      SingleColumn: '\uF1D3',
-      DoubleColumn: '\uF1D4',
-      TripleColumn: '\uF1D5',
-      ColumnLeftTwoThirds: '\uF1D6',
-      ColumnRightTwoThirds: '\uF1D7',
-      AccessLogoFill: '\uF1DB',
-      AnalyticsLogo: '\uF1DE',
-      AnalyticsQuery: '\uF1DF',
-      NewAnalyticsQuery: '\uF1E0'
+      RectangleShape: '\uF1A9'
     }
   };
 

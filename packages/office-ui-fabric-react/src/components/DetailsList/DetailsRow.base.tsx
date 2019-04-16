@@ -159,6 +159,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       item,
       itemIndex,
       onRenderCheck = this._onRenderCheck,
+      onRenderDetailsCheckbox,
       onRenderItemColumn,
       selectionMode,
       viewport,
@@ -174,7 +175,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       shimmer,
       compact,
       theme,
-      styles
+      styles,
+      cellsByColumn
     } = this.props;
     const { columnMeasureInfo, isDropping, groupNestingDepth } = this.state;
     const { isSelected = false, isSelectionModal = false } = this.state.selectionState as IDetailsRowSelectionState;
@@ -201,6 +203,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const rowFields = (
       <RowFields
         rowClassNames={classNames}
+        cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
         itemIndex={itemIndex}
@@ -247,7 +250,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
               compact,
               className: classNames.check,
               theme,
-              isVisible: checkboxVisibility === CheckboxVisibility.always
+              isVisible: checkboxVisibility === CheckboxVisibility.always,
+              onRenderDetailsCheckbox: onRenderDetailsCheckbox
             })}
           </div>
         )}
@@ -369,7 +373,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
    *
    * when change to false, that means drag leave. we will remove the dropping class name from root element.
    *
-   * @private
    * @param newValue - New isDropping state value
    * @param event - The event trigger dropping state change which can be dragenter, dragleave etc
    */

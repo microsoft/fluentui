@@ -75,6 +75,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         userSelect: 'none',
         maxWidth: 300,
         verticalAlign: 'middle',
+        minWidth: 0,
         selectors: {
           ':hover': {
             background: !selected && !disabled ? palette.neutralLight : ''

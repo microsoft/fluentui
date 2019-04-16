@@ -72,11 +72,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 
   public componentDidMount(): void {
     const win = getWindow(this._root.current);
-    const scrollElement = findScrollableParent(this._root.current);
 
     // Track the latest modifier keys globally.
     this._events.on(win, 'keydown, keyup', this._updateModifiers, true);
-    this._events.on(scrollElement, 'click', this._tryClearOnEmptyClick);
+    this._events.on(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
     this._events.on(document.body, 'touchstart', this._onTouchStartCapture, true);
     this._events.on(document.body, 'touchend', this._onTouchStartCapture, true);
   }
@@ -280,6 +279,10 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   };
 
   private _isSelectionDisabled(target: HTMLElement): boolean {
+    if (this._getSelectionMode() === SelectionMode.none) {
+      return true;
+    }
+
     while (target !== this._root.current) {
       if (this._hasAttribute(target, SELECTION_DISABLED_ATTRIBUTE_NAME)) {
         return true;
@@ -487,6 +490,25 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     }
 
     this._clearAndSelectIndex(index);
+  }
+
+  /**
+   * To avoid high startup cost of traversing the DOM on component mount,
+   * defer finding the scrollable parent until a click interaction.
+   *
+   * The styles will probably already calculated since we're running in a click handler,
+   * so this is less likely to cause layout thrashing then doing it in mount.
+   */
+  private _findScrollParentAndTryClearOnEmptyClick(ev: MouseEvent) {
+    const scrollParent = findScrollableParent(this._root.current);
+    // unbind this handler and replace binding with a binding on the actual scrollable parent
+    this._events.off(document, 'click', this._findScrollParentAndTryClearOnEmptyClick);
+    this._events.on(scrollParent, 'click', this._tryClearOnEmptyClick);
+
+    // If we clicked inside the scrollable parent, call through to the handler on this click.
+    if ((scrollParent && ev.target instanceof Node && scrollParent.contains(ev.target)) || scrollParent === ev.target) {
+      this._tryClearOnEmptyClick(ev);
+    }
   }
 
   private _tryClearOnEmptyClick(ev: MouseEvent): void {

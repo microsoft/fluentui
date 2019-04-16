@@ -6,9 +6,8 @@ import { getItemStyles } from './ContextualMenu.classNames';
 /**
  * ContextualMenuItem description
  */
-export const ContextualMenuItem = styled<IContextualMenuItemProps, IContextualMenuItemStyleProps, IContextualMenuItemStyles>(
-  ContextualMenuItemBase,
-  getItemStyles,
-  undefined,
-  { scope: 'ContextualMenuItem' }
-);
+export const ContextualMenuItem: React.StatelessComponent<IContextualMenuItemProps> = styled<
+  IContextualMenuItemProps,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemStyles
+>(ContextualMenuItemBase, getItemStyles, undefined, { scope: 'ContextualMenuItem' });

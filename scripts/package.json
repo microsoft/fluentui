@@ -16,10 +16,11 @@
     }
   ],
   "devDependencies": {
-    "@microsoft/api-extractor": "^6.0.4",
+    "@microsoft/api-extractor": "7.0.34",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/merge-styles": ">=6.16.0 <7.0.0",
+    "@uifabric/codepen-loader": "^0.1.0",
+    "@uifabric/merge-styles": "^6.17.0",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
@@ -52,6 +53,7 @@
     "postcss-loader": "^2.0.9",
     "postcss-modules": "^0.8.0",
     "prettier": "^1.12.1",
+    "puppeteer": "^1.13.0",
     "raf": "^3.4.0",
     "raw-loader": "^0.5.1",
     "recast": "~0.15.0",

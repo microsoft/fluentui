@@ -1,0 +1,183 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`runs Axe on Button 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-194\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(1) > .css-194[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "http://localhost:4322/#/examples/button",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(1) > .css-194[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-194\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(2) > .css-194[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "http://localhost:4322/#/examples/button",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(2) > .css-194[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-194\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(3) > .css-194[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "http://localhost:4322/#/examples/button",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(3) > .css-194[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-219\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-219",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "http://localhost:4322/#/examples/button",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-219",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"false\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-249\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-249",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "http://localhost:4322/#/examples/button",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-249",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
+exports[`runs Axe on Button 2`] = `"Found 5 a11y errors for Button. Please check 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps"`;

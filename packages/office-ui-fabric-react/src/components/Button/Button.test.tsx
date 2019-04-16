@@ -11,6 +11,7 @@ import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
 import { KeyCodes } from '../../Utilities';
 import { renderIntoDocument } from '../../common/testUtilities';
+import { IContextualMenuProps } from '../ContextualMenu/index';
 
 const alertClicked = (): void => {
   /*noop*/
@@ -281,6 +282,28 @@ describe('Button', () => {
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
+      });
+
+      it('does not mutate menuprops hidden property', () => {
+        const menuProps: IContextualMenuProps = {
+          hidden: false,
+          items: [
+            {
+              key: 'emailMessage',
+              text: 'Email message',
+              iconProps: { iconName: 'Mail' }
+            }
+          ]
+        };
+        const button: any = ReactTestUtils.renderIntoDocument<any>(
+          <DefaultButton toggle={true} split={true} onClick={alertClicked} persistMenu={true} menuProps={menuProps}>
+            Hello
+          </DefaultButton>
+        );
+
+        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        expect(renderedDOM).toBeTruthy();
+        expect(menuProps.hidden).toEqual(false);
       });
 
       it('applies aria-pressed to a checked split button', () => {
@@ -609,13 +632,15 @@ describe('Button', () => {
         didClick = false;
       });
 
-      it('Clicking SplitButton button triggers action', () => {
+      function buildRenderButtonWithMenu(callbackMock?: jest.Mock<{}>, persistMenu?: boolean): HTMLElement {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id="test"
             text="Create account"
             split={true}
             onClick={setTrue}
+            onAfterMenuDismiss={callbackMock}
+            persistMenu={persistMenu}
             menuProps={{
               items: [
                 {
@@ -632,6 +657,11 @@ describe('Button', () => {
             }}
           />
         );
+        return renderedDOM;
+      }
+
+      it('Clicking SplitButton button triggers action', () => {
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu();
         const menuButtonDOM: HTMLButtonElement = renderedDOM.querySelectorAll('button')[0];
 
         ReactTestUtils.Simulate.click(menuButtonDOM);
@@ -639,29 +669,7 @@ describe('Button', () => {
       });
 
       it('Pressing alt + down on SplitButton triggers menu', () => {
-        const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
-            data-automation-id="test"
-            text="Create account"
-            split={true}
-            onClick={setTrue}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        );
-
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu();
         const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.keyDown(menuButtonElement, {
@@ -674,30 +682,21 @@ describe('Button', () => {
       it('Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
         const callbackMock = jest.fn();
 
-        const renderedDOM: HTMLElement = renderIntoDocument(
-          <DefaultButton
-            data-automation-id="test"
-            text="Create account"
-            split={true}
-            onClick={setTrue}
-            onAfterMenuDismiss={callbackMock}
-            menuProps={{
-              items: [
-                {
-                  key: 'emailMessage',
-                  text: 'Email message',
-                  iconProps: { iconName: 'Mail' }
-                },
-                {
-                  key: 'calendarEvent',
-                  text: 'Calendar event',
-                  iconProps: { iconName: 'Calendar' }
-                }
-              ]
-            }}
-          />
-        );
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu(callbackMock);
+        const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
+        ReactTestUtils.Simulate.click(menuButtonElement);
+        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
+
+        ReactTestUtils.Simulate.click(menuButtonElement);
+        expect(renderedDOM.getAttribute('aria-expanded')).toEqual('false');
+        expect(callbackMock.mock.calls.length).toBe(1);
+      });
+
+      it('[PersistedMenu] Click on button opens the menu, a second click closes the menu and calls onAfterMenuDismiss', () => {
+        const callbackMock = jest.fn();
+
+        const renderedDOM: HTMLElement = buildRenderButtonWithMenu(callbackMock, true);
         const menuButtonElement = renderedDOM.querySelectorAll('button')[1];
 
         ReactTestUtils.Simulate.click(menuButtonElement);

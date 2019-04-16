@@ -17,6 +17,7 @@
     "postinstall": "npm run _rushInstall && npm run _rushBuildToExperiments -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
+    "a11ytest": "cd apps && cd a11y-tests && npm run start-test",
     "start": "cd apps && cd fabric-website-resources && npm start",
     "start-exp": "cd packages && cd experiments && npm start",
     "build": "npm run _rushRebuild",
@@ -24,7 +25,7 @@
     "buildfast": "npm run _rushBuild",
     "code-style": "node common/scripts/install-run-rush.js code-style",
     "change": "node common/scripts/install-run-rush.js change",
-    "rush-update": "node common/scripts/install-run-rush.js update",
+    "rush-update": "npm run _rushInstall && node common/scripts/install-run-rush.js update",
     "generate": "npm run rush-update",
     "bundlesize": "cd scripts && npm run bundlesize",
     "bundlesizecollect": "node scripts/just.js bundle-size-collect",
@@ -37,7 +38,8 @@
     "prettier": "node scripts/prettier.js",
     "generate-version-files": "node scripts/just.js generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
-    "precommit": "node scripts/node_modules/lint-staged/index.js"
+    "precommit": "node scripts/node_modules/lint-staged/index.js",
+    "perf-test": "node scripts/just.js perf-test"
   },
   "license": "MIT",
   "lint-staged": {
