@@ -12,7 +12,7 @@ const GlobalClassNames = {
   inner: 'ms-Stack-inner'
 };
 
-export const styles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => {
+export const styles: IStackComponent['styles'] = (props, theme, tokens): IStackStylesReturnType => {
   const {
     verticalFill,
     maxWidth,
@@ -31,7 +31,8 @@ export const styles: IStackComponent['styles'] = (props, theme): IStackStylesRet
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { rowGap, columnGap } = parseGap(gap, theme);
+  const childrenGap = tokens && tokens.childrenGap ? tokens.childrenGap : gap;
+  const { rowGap, columnGap } = parseGap(childrenGap, theme);
 
   const horizontalMargin = `${-0.5 * columnGap.value}${columnGap.unit}`;
   const verticalMargin = `${-0.5 * rowGap.value}${rowGap.unit}`;

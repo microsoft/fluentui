@@ -2,12 +2,200 @@
 
 exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
 <div
-  className="docs-DropdownExample"
+  className=
+      ms-Stack
+      {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 30px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
     className=
+        ms-Toggle
+        is-enabled
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 8px;
+        }
+  >
+    <label
+      className=
+          ms-Label
+          ms-Toggle-label
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #333333;
+            display: block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            overflow-wrap: break-word;
+            padding-bottom: 5px;
+            padding-left: 0;
+            padding-right: 0;
+            padding-top: 5px;
+            word-wrap: break-word;
+          }
+      htmlFor="Toggle0"
+      id="Toggle0-label"
+    >
+      Show error message
+    </label>
+    <div
+      className=
+          ms-Toggle-innerContainer
+          {
+            display: inline-flex;
+            position: relative;
+          }
+    >
+      <button
+        aria-checked={false}
+        aria-labelledby="Toggle0-label"
+        checked={false}
+        className=
+            ms-Toggle-background
+            {
+              align-items: center;
+              background: #ffffff;
+              border-color: #666666;
+              border-radius: 1em;
+              border-style: solid;
+              border-width: 1px;
+              box-sizing: border-box;
+              cursor: pointer;
+              display: flex;
+              font-size: 20px;
+              height: 1em;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: .2em;
+              padding-right: .2em;
+              padding-top: 0;
+              position: relative;
+              transition: all 0.1s ease;
+              width: 2.2em;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 1px solid #ffffff;
+              bottom: -2px;
+              content: "";
+              left: -2px;
+              outline: 1px solid #666666;
+              position: absolute;
+              right: -2px;
+              top: -2px;
+              z-index: 1;
+            }
+            &:hover {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+            }
+        data-is-focusable={true}
+        id="Toggle0"
+        onChange={[Function]}
+        onClick={[Function]}
+        role="switch"
+        type="button"
+      >
+        <div
+          className=
+              ms-Toggle-thumb
+              {
+                background-color: #333333;
+                border-color: transparent;
+                border-radius: .5em;
+                border-style: solid;
+                border-width: .28em;
+                box-sizing: border-box;
+                height: .5em;
+                transition: all 0.1s ease;
+                width: .5em;
+              }
+        />
+      </button>
+      <label
+        className=
+            ms-Label
+            ms-Toggle-stateText
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              color: #333333;
+              display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              overflow-wrap: break-word;
+              padding-bottom: 5px;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 5px;
+              word-wrap: break-word;
+            }
+            && {
+              margin-bottom: 0;
+              margin-left: 8px;
+              margin-right: 8px;
+              margin-top: 0;
+              padding-bottom: 0;
+              padding-left: 0;
+              padding-right: 0;
+              padding-top: 0;
+              user-select: none;
+            }
+        htmlFor="Toggle0"
+        id="Toggle0-stateText"
+      >
+        No
+      </label>
+    </div>
+  </div>
+  <div
+    className=
         ms-Dropdown-container
-
+        {
+          height: 100px;
+        }
   >
     <label
       className=
@@ -34,15 +222,15 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown0"
-      id="Dropdown0-label"
+      htmlFor="Dropdown1"
+      id="Dropdown1-label"
     >
-      Error message example:
+      Dropdown with error message
     </label>
     <div
-      aria-describedby="Dropdown0-option"
+      aria-describedby="Dropdown1-option"
       aria-expanded="false"
-      aria-label="Error message dropdown example"
+      aria-labelledby="Dropdown1-label"
       className=
           ms-Dropdown
           {
@@ -65,6 +253,7 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             padding-top: 0px;
             position: relative;
             user-select: none;
+            width: 300px;
           }
           &:hover .ms-Dropdown-title {
             border-color: #212121;
@@ -129,28 +318,27 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Dropdown0"
+      id="Dropdown1"
       onBlur={[Function]}
       onClick={[Function]}
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      placeholder="Select an Option"
+      placeholder="Select an option"
       role="listbox"
       tabIndex={0}
     >
       <span
         aria-atomic={true}
-        aria-label="Select an Option"
+        aria-label="Select an option"
         aria-live="off"
         aria-setsize={5}
         className=
             ms-Dropdown-title
             ms-Dropdown-titleIsPlaceHolder
-            ms-Dropdown-title--hasError
             {
               background-color: #ffffff;
-              border-color: #a80000;
+              border-color: #a6a6a6;
               border-style: solid;
               border-width: 1px;
               box-shadow: none;
@@ -173,11 +361,11 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown0-option"
+        id="Dropdown1-option"
         role="option"
       >
         <span>
-          Select an Option
+          Select an option
         </span>
       </span>
       <span
@@ -213,21 +401,6 @@ exports[`Component Examples renders Dropdown.Error.Example.tsx correctly 1`] = `
           
         </i>
       </span>
-    </div>
-    <div
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: #a80000;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 12px;
-            font-weight: 400;
-            padding-top: 5px;
-          }
-    >
-      Error message
     </div>
   </div>
 </div>

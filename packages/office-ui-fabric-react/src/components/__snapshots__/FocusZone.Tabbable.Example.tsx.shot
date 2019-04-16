@@ -2,18 +2,55 @@
 
 exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`] = `
 <div
-  className="ms-FocusZoneTabbableExample"
+  className=
+      ms-Stack
+      {
+        align-items: flex-start;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 20px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
 >
   <div
-    className="ms-Row"
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone0"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
   >
     <div
-      className="ms-FocusZone"
-      data-focuszone-id="FocusZone0"
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="presentation"
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 20px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
     >
       <span>
         Circular Tabbable FocusZone: 
@@ -249,7 +286,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       <div
         className=
             ms-TextField
-            ms-FocusZoneTabbableExample-textField
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -267,6 +303,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               padding-right: 0px;
               padding-top: 0px;
               position: relative;
+              width: 200px;
             }
       >
         <div
@@ -751,15 +788,33 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
     </div>
   </div>
   <div
-    className="ms-Row"
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone18"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
   >
     <div
-      className="ms-FocusZone"
-      data-focuszone-id="FocusZone18"
-      onFocus={[Function]}
-      onKeyDown={[Function]}
-      onMouseDownCapture={[Function]}
-      role="presentation"
+      className=
+          ms-Stack
+          {
+            box-sizing: border-box;
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            height: auto;
+            width: auto;
+          }
+          & > * {
+            text-overflow: ellipsis;
+          }
+          & > *:not(:first-child) {
+            margin-left: 20px;
+          }
+          & > *:not(.ms-StackItem) {
+            flex-shrink: 1;
+          }
     >
       <span>
         Input Only FocusZone: 
@@ -995,7 +1050,6 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
       <div
         className=
             ms-TextField
-            ms-FocusZoneTabbableExample-textField
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1013,6 +1067,7 @@ exports[`Component Examples renders FocusZone.Tabbable.Example.tsx correctly 1`]
               padding-right: 0px;
               padding-top: 0px;
               position: relative;
+              width: 200px;
             }
       >
         <div

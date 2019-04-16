@@ -17,6 +17,22 @@
       "sourceMaps": true
     },
     {
+      "name": "Debug current open test",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/scripts/debug-test.js",
+      "cwd": "${fileDirname}",
+      "stopOnEntry": false,
+      "args": ["-i", "--testPathPattern=${file}"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true,
+      "outputCapture": "std"
+    },
+    {
       "name": "Run server",
       "type": "node",
       "request": "launch",
@@ -95,8 +111,8 @@
       "type": "node",
       "request": "launch",
       "program": "${workspaceRoot}/apps/ssr-tests/node_modules/mocha/bin/_mocha",
-      "stopOnEntry": true,
-      "args": ["--debug", "dist/test-bundle.js"],
+      "stopOnEntry": false,
+      "args": ["--debug", "dist/ssr-tests.js"],
       "cwd": "${workspaceRoot}/apps/ssr-tests",
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],

@@ -37,10 +37,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   private get _isExpanded(): boolean {
+    const { menuProps } = this.state;
     if (this.props.persistMenu) {
-      return !this.state.menuProps!.hidden;
+      return !!menuProps && !menuProps.hidden;
     }
-    return !!this.state.menuProps;
+    return !!menuProps;
   }
 
   public static defaultProps: Partial<IBaseButtonProps> = {
@@ -73,8 +74,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._ariaDescriptionId = getId();
     let menuProps = null;
     if (props.persistMenu && props.menuProps) {
-      menuProps = props.menuProps;
-      menuProps.hidden = true;
+      // Clone props so we don't mutate them.
+      menuProps = { ...props.menuProps, hidden: true };
     }
     this.state = {
       menuProps: menuProps
@@ -221,9 +222,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
-    // If Button's menu was closed, run onAfterMenuDismiss
-    if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
-      this.props.onAfterMenuDismiss();
+    // If Button's menu was closed, run onAfterMenuDismiss. If the menu is being persisted
+    // this condition is tested by checking on a change on the menuProps hidden value.
+    if (this.props.onAfterMenuDismiss && prevState.menuProps) {
+      if (!this.state.menuProps || (this.props.persistMenu && !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
+        this.props.onAfterMenuDismiss();
+      }
     }
   }
 
@@ -435,8 +439,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _dismissMenu = (): void => {
     let menuProps = null;
     if (this.props.persistMenu && this.state.menuProps) {
-      menuProps = this.state.menuProps;
-      menuProps.hidden = true;
+      // Create a new object to trigger componentDidUpdate
+      menuProps = { ...this.state.menuProps, hidden: true };
     }
     this.setState({ menuProps: menuProps });
   };
@@ -658,6 +662,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
+    const isUp = ev.which === KeyCodes.up;
+    const isDown = ev.which === KeyCodes.down;
+
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
@@ -665,6 +672,18 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       }
 
       this._onToggleMenu(false);
+      ev.preventDefault();
+      ev.stopPropagation();
+    }
+
+    if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {
+      this.setState(state => {
+        if (state.menuProps && !state.menuProps.shouldFocusOnMount) {
+          return { menuProps: { ...state.menuProps, shouldFocusOnMount: true } };
+        }
+        return state;
+      });
+
       ev.preventDefault();
       ev.stopPropagation();
     }

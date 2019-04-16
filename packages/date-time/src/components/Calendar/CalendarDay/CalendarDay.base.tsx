@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction } from '@uifabric/utilities';
+import { BaseComponent, KeyCodes, css, getId, getRTL, getRTLSafeKeyCode, format, classNamesFunction, find } from '@uifabric/utilities';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import {
@@ -280,6 +280,8 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           disabled={!allFocusable && !day.isInBounds}
           aria-disabled={!day.isInBounds}
           type="button"
+          role="gridcell" // create grid structure
+          aria-readonly={true} // prevent grid from being "editable"
         >
           <span aria-hidden="true">{dateTimeFormatter.formatDay(day.originalDate)}</span>
         </button>
@@ -509,7 +511,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     if (!restrictedDates) {
       return false;
     }
-    const inRestrictedDates = !!restrictedDates.find((rd: Date) => {
+    const inRestrictedDates = !!find(restrictedDates, (rd: Date) => {
       return compareDates(rd, date);
     });
     return inRestrictedDates && !this._getIsBeforeMinDate(date) && !this._getIsAfterMaxDate(date);
@@ -643,7 +645,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
 
     // gets all the day refs for the given dates
     const dayInfosInRange = weeks!.reduce((accumulatedValue: IDayInfo[], currentWeek: IDayInfo[]) => {
-      return accumulatedValue.concat(currentWeek.filter((weekDay: IDayInfo) => dateRange.includes(weekDay.originalDate.getTime())));
+      return accumulatedValue.concat(currentWeek.filter((weekDay: IDayInfo) => dateRange.indexOf(weekDay.originalDate.getTime()) !== -1));
     }, []);
 
     let dayRefs: (HTMLElement | null)[] = [];

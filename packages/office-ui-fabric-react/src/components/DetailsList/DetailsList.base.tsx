@@ -167,7 +167,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     }
   }
 
-  public componentDidUpdate(prevProps: any, prevState: any) {
+  public componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState) {
     if (this._initialFocusedIndex !== undefined) {
       const item = this.props.items[this._initialFocusedIndex];
       if (item) {
@@ -316,7 +316,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       getGroupHeight,
       styles,
       theme,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      onRenderCheckbox
     } = this.props;
     const { adjustedColumns, isCollapsed, isSizing, isSomeGroupExpanded } = this.state;
     const { _selection: selection, _dragDropHelper: dragDropHelper } = this;
@@ -436,7 +437,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   minimumPixelsForDrag: minimumPixelsForDrag,
                   cellStyleProps: cellStyleProps,
                   checkboxVisibility,
-                  indentWidth
+                  indentWidth,
+                  onRenderDetailsCheckbox: onRenderCheckbox
                 },
                 this._onRenderDetailsHeader
               )}
@@ -484,7 +486,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._forceListUpdates();
   }
 
-  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: any): JSX.Element => {
+  protected _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
     return <DetailsRow {...props} />;
   };
 
@@ -526,7 +528,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       groupProps,
       useReducedRowRenderer,
       indentWidth,
-      cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+      cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+      onRenderCheckbox
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -556,7 +559,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       checkboxCellClassName: checkboxCellClassName,
       useReducedRowRenderer: useReducedRowRenderer,
       indentWidth,
-      cellStyleProps: cellStyleProps
+      cellStyleProps: cellStyleProps,
+      onRenderDetailsCheckbox: onRenderCheckbox
     };
 
     if (!item) {
@@ -821,8 +825,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       const overflowWidth = totalWidth - availableWidth;
 
       if (column.calculatedWidth! - minWidth >= overflowWidth || !(column.isCollapsable || column.isCollapsible)) {
+        const originalWidth = column.calculatedWidth!;
         column.calculatedWidth = Math.max(column.calculatedWidth! - overflowWidth, minWidth);
-        totalWidth = availableWidth;
+        totalWidth -= originalWidth - column.calculatedWidth;
       } else {
         totalWidth -= getPaddedWidth(column, false, props);
         adjustedColumns.splice(lastIndex, 1);
@@ -883,10 +888,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
    * which will measure the column cells of all the active rows and resize the
    * column to the max cell width.
    *
-   * @private
-   * @param {IColumn} column (double clicked column definition)
-   * @param {number} columnIndex (double clicked column index)
-   * @todo min width 100 should be changed to const value and should be consistent with the
+   * @param column - double clicked column definition
+   * @param columnIndex - double clicked column index
+   * TODO: min width 100 should be changed to const value and should be consistent with the
    * value used on _onSizerMove method in DetailsHeader
    */
   private _onColumnAutoResized(column: IColumn, columnIndex: number): void {
@@ -912,9 +916,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
    * Call back function when an element in FocusZone becomes active. It will translate it into item
    * and call onActiveItemChanged callback if specified.
    *
-   * @private
-   * @param {el} row element that became active in Focus Zone
-   * @param {ev} focus event from Focus Zone
+   * @param row - element that became active in Focus Zone
+   * @param focus - event from Focus Zone
    */
   private _onActiveRowChanged(el?: HTMLElement, ev?: React.FocusEvent<HTMLElement>): void {
     const { items, onActiveItemChanged } = this.props;
@@ -1055,7 +1058,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 export function buildColumns(
   items: any[],
   canResizeColumns?: boolean,
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any,
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void,
   sortedColumnKey?: string,
   isSortedDescending?: boolean,
   groupedColumnKey?: string,

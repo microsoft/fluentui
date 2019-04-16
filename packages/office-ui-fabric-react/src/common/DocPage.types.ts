@@ -112,13 +112,22 @@ export interface IDocPageProps {
   /** Passed through header visibility flag from the demo component page component */
   isHeaderVisible: boolean;
 
-  /** Allows native props */
-  allowNativeProps?: boolean | string;
+  /** If true, the component accepts all native props from elements specified in `nativePropsElement` */
+  allowNativeProps?: boolean;
 
-  /** Native props root element */
+  /** Override component name to use in the native props message */
+  allowNativePropsForComponentName?: string;
+
+  /**
+   * Element(s) whose native props this component accepts (default div).
+   * Only relevant if `allowNativeProps` is true.
+   */
   nativePropsElement?: string | string[];
 
-  /** Related link */
+  /**
+   * Related link
+   * @deprecated No longer shown on ComponentPage
+   */
   related?: JSX.Element;
 
   /** Pass through other sections for ComponentPage */

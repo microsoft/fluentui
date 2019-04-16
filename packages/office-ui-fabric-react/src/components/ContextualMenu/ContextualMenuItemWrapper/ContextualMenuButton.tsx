@@ -4,6 +4,7 @@ import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
+import { IKeytipDataProps } from '../../KeytipData/KeytipData.types';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
@@ -34,17 +35,17 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     const itemHasSubmenu = hasSubmenu(item);
     const { itemProps, ariaLabel } = item;
 
-    const buttonNativeProperties = getNativeProps(item, buttonProperties);
+    const buttonNativeProperties = getNativeProps<React.ButtonHTMLAttributes<HTMLButtonElement>>(item, buttonProperties);
     // Do not add the disabled attribute to the button so that it is focusable
-    delete (buttonNativeProperties as any).disabled;
+    delete buttonNativeProperties.disabled;
 
     const itemButtonProperties = {
       className: classNames.root,
       onClick: this._onItemClick,
-      onKeyDown: itemHasSubmenu ? this._onItemKeyDown : null,
+      onKeyDown: itemHasSubmenu ? this._onItemKeyDown : undefined,
       onMouseEnter: this._onItemMouseEnter,
       onMouseLeave: this._onItemMouseLeave,
-      onMouseDown: (ev: any) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
+      onMouseDown: (ev: React.MouseEvent<HTMLButtonElement>) => (onItemMouseDown ? onItemMouseDown(item, ev) : undefined),
       onMouseMove: this._onItemMouseMove,
       href: item.href,
       title: item.title,
@@ -69,18 +70,9 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
     }
 
     return (
-      <KeytipData
-        keytipProps={keytipProps}
-        ariaDescribedBy={(buttonNativeProperties as any)['aria-describedby']}
-        disabled={isItemDisabled(item)}
-      >
-        {(keytipAttributes: any): JSX.Element => (
-          <button
-            ref={this._btn}
-            {...buttonNativeProperties as React.ButtonHTMLAttributes<HTMLButtonElement>}
-            {...itemButtonProperties as React.ButtonHTMLAttributes<HTMLButtonElement>}
-            {...keytipAttributes}
-          >
+      <KeytipData keytipProps={keytipProps} ariaDescribedBy={buttonNativeProperties['aria-describedby']} disabled={isItemDisabled(item)}>
+        {(keytipAttributes: IKeytipDataProps): JSX.Element => (
+          <button ref={this._btn} {...buttonNativeProperties} {...itemButtonProperties} {...keytipAttributes}>
             <ChildrenRenderer
               componentRef={item.componentRef}
               item={item}

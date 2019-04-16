@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -10,7 +10,7 @@ export interface IImageState {
 
 const KEY_PREFIX = 'fabricImage';
 
-export class ImageBase extends BaseComponent<IImageProps, IImageState> {
+export class ImageBase extends React.Component<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
   };

@@ -3,7 +3,7 @@ import { IStyle, ITheme, IStyleFunctionOrObject } from 'office-ui-fabric-react';
 export interface IMarkdownTableProps {
   className?: string;
 
-  /** Theme provided by High-Order Component. */
+  /** Theme provided by higher-order component. */
   theme?: ITheme;
 
   /** Call to provide customized styling that will layer on top of the variant rules. */

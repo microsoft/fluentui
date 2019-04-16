@@ -10,8 +10,8 @@ const alignMap: { [key: string]: string } = {
   end: 'flex-end'
 };
 
-export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemStylesReturnType => {
-  const { grow, shrink, disableShrink, align, verticalFill, className } = props;
+export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tokens): IStackItemStylesReturnType => {
+  const { grow, shrink, disableShrink, align, verticalFill, order, className } = props;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -20,8 +20,9 @@ export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemS
       theme.fonts.medium,
       classNames.root,
       {
-        width: 'auto',
-        height: verticalFill ? '100%' : 'auto'
+        margin: tokens.margin,
+        height: verticalFill ? '100%' : 'auto',
+        width: 'auto'
       },
       grow && { flexGrow: grow === true ? 1 : grow },
       (disableShrink || (!grow && !shrink)) && {
@@ -33,6 +34,9 @@ export const styles: IStackItemComponent['styles'] = (props, theme): IStackItemS
         },
       align && {
         alignSelf: alignMap[align] || align
+      },
+      order && {
+        order: order
       },
       className
     ]

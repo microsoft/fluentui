@@ -151,12 +151,6 @@
       "parameterKind": "flag",
       "description": "Skips tasks that are irrelevant during npm install",
       "associatedCommands": ["build", "rebuild"]
-    },
-    {
-      "longName": "--prdeploy",
-      "parameterKind": "flag",
-      "description": "Skips tasks that are irrelevant during PR Deploy",
-      "associatedCommands": ["build", "rebuild"]
     }
     // {
     //   "parameterKind": "choice",

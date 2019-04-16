@@ -1,9 +1,6 @@
-// @codepen
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { Calendar, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
-import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { DefaultButton, FocusTrapZone, Callout, DirectionalHint } from 'office-ui-fabric-react';
+import { Calendar, DayOfWeek } from '@uifabric/date-time';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],

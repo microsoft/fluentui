@@ -1,6 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Fri, 01 Feb 2019 13:37:18 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+
+## 0.1.6
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
 
 ## 0.1.5
 Fri, 01 Feb 2019 13:37:18 GMT

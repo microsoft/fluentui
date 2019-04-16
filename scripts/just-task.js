@@ -12,12 +12,12 @@ const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
 const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
-const buildCodepenExamples = require('./tasks/build-codepen-examples');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
 const bundleSizeCollect = require('./tasks/bundle-size-collect');
 const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
+const perfTest = require('./tasks/perf-test');
 
 let packageJson;
 
@@ -26,9 +26,10 @@ option('production');
 // Adds an alias for 'npm-install-mode' for backwards compatibility
 option('min', { alias: 'npm-install-mode' });
 
-option('prdeploy');
-
 option('webpackConfig', { alias: 'w' });
+
+// Build only commonjs (not other TS variants) but still run other tasks
+option('commonjs');
 
 registerTask('clean', clean);
 registerTask('copy', copy);
@@ -44,14 +45,14 @@ registerTask('webpack', webpack);
 registerTask('webpack-dev-server', webpackDevServer);
 registerTask('verify-api-extractor', verifyApiExtractor);
 registerTask('update-api-extractor', updateApiExtractor);
-registerTask('build-codepen-examples', buildCodepenExamples);
 registerTask('lint-imports', lintImports);
 registerTask('prettier', prettier);
 registerTask('bundle-size-collect', bundleSizeCollect);
 registerTask('check-for-modified-files', checkForModifiedFiles);
 registerTask('generate-version-files', generateVersionFiles);
+registerTask('perf-test', perfTest);
 
-task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min && !argv().prdeploy)));
+task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)));
 
 task(
   'build',
@@ -60,13 +61,12 @@ task(
     'copy',
     'sass',
     parallel(
-      condition('tslint', () => !argv().min && !argv().prdeploy),
-      condition('jest', () => !argv().min && !argv().prdeploy),
+      condition('tslint', () => !argv().min),
+      condition('jest', () => !argv().min),
       series(
-        'ts',
-        'build-codepen-examples',
-        condition('lint-imports', () => !argv().min && !argv().prdeploy),
-        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
+        argv().commonjs ? 'ts:commonjs-only' : 'ts',
+        condition('lint-imports', () => !argv().min),
+        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min))
       )
     )
   )
@@ -78,7 +78,7 @@ task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
-task('dev', series('clean', 'copy', 'sass', 'build-codepen-examples', 'webpack-dev-server'));
+task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
 // Utility functions
 

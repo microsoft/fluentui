@@ -2,10 +2,14 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Rating}
+ */
 export interface IRating {}
 
 /**
  * Rating component props.
+ * {@docCategory Rating}
  */
 export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -43,8 +47,7 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
 
   /**
    * Custom icon for unselected rating elements.
-   * If an `icon` property is provided, defaults to the value of the `icon` property.
-   * @defaultvalue FavoriteStarFill
+   * @defaultvalue FavoriteStar
    */
   unselectedIcon?: string;
 
@@ -97,17 +100,26 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   theme?: ITheme;
 }
 
+/**
+ * {@docCategory Rating}
+ */
 export enum RatingSize {
   Small = 0,
   Large = 1
 }
 
+/**
+ * {@docCategory Rating}
+ */
 export interface IRatingStyleProps {
   disabled?: boolean;
   readOnly?: boolean;
   theme: ITheme;
 }
 
+/**
+ * {@docCategory Rating}
+ */
 export interface IRatingStyles {
   root: IStyle;
   ratingStar: IStyle;
