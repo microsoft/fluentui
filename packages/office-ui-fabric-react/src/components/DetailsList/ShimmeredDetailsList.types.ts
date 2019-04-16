@@ -2,6 +2,11 @@ import { IDetailsListProps } from './DetailsList.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * ShimmeredDetailsList props interface
+ * {@docCategory ShimmeredDetailsList}
+ * @deprecated The inheritance from `IDetailsListProps` will be dropped in favor of `detailsListProps` in Fabric 7.0.
+ */
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
   /**
    * DetailsList props to pass through.
@@ -33,6 +38,10 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
   theme?: ITheme;
 }
 
+/**
+ * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * {@docCategory ShimmeredDetailsList}
+ */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
   /**
    * Class name passed to the root area which then is passed to `List` component.
@@ -47,6 +56,11 @@ export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsLis
   enableShimmer?: boolean;
 };
 
+/**
+ * Represents the stylable areas of the control.
+ * {@docCategory ShimmeredDetailsList}
+ */
 export interface IShimmeredDetailsListStyles {
+  /** Represents styles passed to the `List` component for creating a fade-out to the bottom overlay. */
   root: IStyle;
 }
