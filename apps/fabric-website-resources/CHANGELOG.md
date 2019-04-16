@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 12 Apr 2019 12:34:16 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.14.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Hide status badges, import updates
 
 ## 6.14.2
 Fri, 12 Apr 2019 12:34:16 GMT

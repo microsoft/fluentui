@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 04 Apr 2019 12:34:57 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.13.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Update example-app-base styling overrides to use css-in-js
 
 ## 6.13.2
 Thu, 04 Apr 2019 12:34:57 GMT

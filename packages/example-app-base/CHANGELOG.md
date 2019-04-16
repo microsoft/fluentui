@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 02 Apr 2019 12:36:20 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.14.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- Convert components to css-in-js
 
 ## 6.13.2
 Tue, 02 Apr 2019 12:36:20 GMT
