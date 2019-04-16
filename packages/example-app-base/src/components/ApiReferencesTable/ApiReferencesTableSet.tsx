@@ -149,13 +149,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
   private _extractAnchorLink = (path: string): string => {
     const split = path.split('#');
-    const cleanedSplit = split.filter(value => {
-      if (value === '') {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    const cleanedSplit = split.filter(value => !!value);
     return cleanedSplit[cleanedSplit.length - 1];
   };
 

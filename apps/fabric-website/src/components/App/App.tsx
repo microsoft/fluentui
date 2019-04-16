@@ -170,13 +170,7 @@ export class App extends React.Component<IAppProps, any> {
 
   private _extractAnchorLink(path) {
     let split = path.split('#');
-    let cleanedSplit = split.filter(value => {
-      if (value === '') {
-        return false;
-      } else {
-        return true;
-      }
-    });
+    const cleanedSplit = split.filter(value => !!value);
     return cleanedSplit[cleanedSplit.length - 1];
   }
 
