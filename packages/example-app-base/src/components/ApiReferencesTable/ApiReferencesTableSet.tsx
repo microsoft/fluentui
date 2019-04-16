@@ -121,7 +121,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
       if (el) {
         // update scroll position
-        window.scrollTo({ top: el.offsetTop - 128 /* header */, behavior: 'smooth' });
+        window.scrollTo({ top: el.offsetTop - 31.5 /* title */, behavior: 'smooth' });
       }
     }
   }
@@ -134,7 +134,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     if (el) {
       // update scroll position
-      window.scrollTo({ top: el.offsetTop - 128 /* header */, behavior: 'smooth' });
+      window.scrollTo({ top: el.offsetTop - 31.5 /* title */, behavior: 'smooth' });
     }
 
     if (!showSeeMore) {
