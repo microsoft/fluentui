@@ -35,24 +35,19 @@ const StylesLoadingComponent = (props: any): JSX.Element => {
 function loadReferences(): INavPage[] {
   const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
 
-  const myPages: INavPage[] = [];
-  pageList.pages.forEach(pageName => {
-    myPages.push({
-      title: pageName,
-      url: '#/components/references/' + pageName.toLowerCase(),
-      isFilterable: true,
-      component: () => (
-        <div className={pageStyles.basePage}>
-          <ComponentPage>
-            <PageHeader pageTitle={pageName} backgroundColor="#038387" />
-            <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
-          </ComponentPage>
-        </div>
-      )
-    });
-  });
-
-  return myPages;
+  return pageList.pages.map(pageName => ({
+    title: pageName,
+    url: '#/components/references/' + pageName.toLowerCase(),
+    isFilterable: true,
+    component: () => (
+      <div className={pageStyles.basePage}>
+        <ComponentPage>
+          <PageHeader pageTitle={pageName} backgroundColor="#038387" />
+          <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
+        </ComponentPage>
+      </div>
+    )
+  }));
 }
 
 export const AppState: IAppState = {

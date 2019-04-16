@@ -16,22 +16,17 @@ const propertiesTableMargins = mergeStyles({
 function loadReferences(): IAppLink[] {
   const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
 
-  const myPages: IAppLink[] = [];
-  pageList.pages.forEach(pageName => {
-    myPages.push({
-      component: () => (
-        <ApiReferencesTableSet
-          className={propertiesTableMargins}
-          jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')}
-        />
-      ),
-      key: pageName,
-      name: pageName,
-      url: '#/examples/references/' + pageName.toLowerCase()
-    });
-  });
-
-  return myPages;
+  return pageList.pages.map(pageName => ({
+    component: () => (
+      <ApiReferencesTableSet
+        className={propertiesTableMargins}
+        jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')}
+      />
+    ),
+    key: pageName,
+    name: pageName,
+    url: '#/examples/references/' + pageName.toLowerCase()
+  }));
 }
 
 export const AppDefinition: IAppDefinition = {
