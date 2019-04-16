@@ -130,6 +130,8 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       return null;
     }
 
+    const layerClassName = layerProps === undefined ? '' : layerProps.className;
+
     const classNames = getClassNames(styles, {
       theme: theme!,
       className,
@@ -140,22 +142,16 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       hasBeenOpened,
       modalRectangleTop,
       topOffsetFixed,
-      isModeless
+      isModeless,
+      layerClassName
     });
-
-    // if the modal is modeless, add the classname to correctly style the layer
-    const layerClassName = isModeless
-      ? this.props.className
-        ? `${this.props.className} ${classNames.layer}`
-        : classNames.layer
-      : this.props.className;
 
     const mergedLayerProps = {
       ...DefaultLayerProps,
       ...this.props.layerProps,
       onLayerDidMount: layerProps && layerProps.onLayerDidMount ? layerProps.onLayerDidMount : onLayerDidMount,
-      className: layerClassName,
-      insertFirst: isModeless
+      insertFirst: isModeless,
+      className: classNames.layer
     };
 
     // @temp tuatology - Will adjust this to be a panel at certain breakpoints
