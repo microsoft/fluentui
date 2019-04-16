@@ -4,7 +4,7 @@ import { convertAxeToSarif } from 'axe-sarif-converter';
 import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log'; // TODO - merge with prev line when SarifLog is exported from index
 
 const TEST_URL_ROOT = process.env.BUILD_SOURCEBRANCH
-  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
+  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/fabric-website-resources/dist/`
   : 'http://localhost:4322';
 
 export async function getSarifReport(subUrl: string): Promise<SarifLog> {
