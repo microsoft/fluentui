@@ -13,7 +13,7 @@ Array [
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".prefix-185 > span",
+        "fullyQualifiedLogicalName": ".prefix-240 > span",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "http://localhost:4322/#/examples/textfield",
@@ -27,7 +27,7 @@ Array [
       "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".prefix-185 > span",
+      "fullyQualifiedLogicalName": ".prefix-240 > span",
       "ruleId": "color-contrast",
     },
     "properties": Object {
@@ -44,7 +44,7 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField111\\" class=\\"ms-TextField-field field-175\\" aria-describedby=\\"TextFieldDescription112\\" aria-invalid=\\"false\\" value=\\"\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField111\\" class=\\"ms-TextField-field field-230\\" aria-describedby=\\"TextFieldDescription112\\" aria-invalid=\\"false\\" value=\\"\\">",
             },
           },
         ],
@@ -79,7 +79,7 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField111\\" class=\\"ms-TextField-field field-175\\" aria-describedby=\\"TextFieldDescription112\\" aria-invalid=\\"false\\" value=\\"\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField111\\" class=\\"ms-TextField-field field-230\\" aria-describedby=\\"TextFieldDescription112\\" aria-invalid=\\"false\\" value=\\"\\">",
             },
           },
         ],
