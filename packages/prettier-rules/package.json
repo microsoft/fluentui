@@ -6,7 +6,7 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
-    "code-style": "node -v"
+    "code-style": "node ../../scripts/just.js code-style"
   },
   "disabledTasks": [
     "verify-api-extractor"

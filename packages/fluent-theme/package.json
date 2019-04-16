@@ -16,6 +16,7 @@
   "scripts": {
     "build": "node ../../scripts/just.js build",
     "just": "node ../../scripts/just.js",
+    "code-style": "node ../../scripts/just.js code-style",
     "clean": "node ../../scripts/just.js clean"
   },
   "disabledTasks": [

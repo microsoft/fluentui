@@ -62,10 +62,20 @@ storiesOf('Panel', module)
     <Panel {...defaultProps} type={PanelType.custom} headerText="Custom" customWidth="200vw" />
   ))
   .addStory('Custom anchored left', () => (
-    <Panel {...defaultProps} type={PanelType.customNear} headerText="Custom left" customWidth="320px" />
+    <Panel
+      {...defaultProps}
+      type={PanelType.customNear}
+      headerText="Custom left"
+      customWidth="320px"
+    />
   ))
   .addStory('With no navigation', () => (
-    <Panel {...defaultProps} type={PanelType.smallFixedFar} headerText="No navigation" hasCloseButton={false} />
+    <Panel
+      {...defaultProps}
+      type={PanelType.smallFixedFar}
+      headerText="No navigation"
+      hasCloseButton={false}
+    />
   ));
 
 storiesOf('Panel', module)

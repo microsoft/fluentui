@@ -6,7 +6,7 @@
   "scripts": {
     "build": "node ../../scripts/just.js build-commonjs-only",
     "clean": "",
-    "code-style": "node -v",
+    "code-style": "node ../../scripts/just.js code-style",
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
     "start": "start-storybook --port 5555"
