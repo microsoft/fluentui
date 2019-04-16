@@ -17,6 +17,7 @@
     "build": "node ../../scripts/just.js build",
     "just": "node ../../scripts/just.js",
     "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style",
     "start": "node ../../scripts/just.js dev",
     "start-test": "node ../../scripts/just.js jest-watch",
     "update-snapshots": "node ../../scripts/just.js jest -u"

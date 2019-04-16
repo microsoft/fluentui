@@ -20,18 +20,14 @@ export class FabricIOSPage extends React.Component<any, any> {
             <div className="ms-Grid-row">
               <div className="ms-Grid-col ms-sm12 ms-lg8">
                 <p className={styles.overviewText}>
-                  Use Fabric styling and components written in native Swift to integrate your iOS experience with
-                  Office.
+                  Use Fabric styling and components written in native Swift to integrate your iOS experience with Office.
                 </p>
                 <p className={styles.overviewText}>
-                  Fabric iOS includes core design elements along with components that are used in iOS Office products
-                  like the{' '}
-                  <a
-                    className={styles.overviewLink}
-                    href="https://itunes.apple.com/us/app/microsoft-sharepoint/id1091505266"
-                  >
+                  Fabric iOS includes core design elements along with components that are used in iOS Office products like the{' '}
+                  <a className={styles.overviewLink} href="https://itunes.apple.com/us/app/microsoft-sharepoint/id1091505266">
                     SharePoint iOS app
-                  </a>.
+                  </a>
+                  .
                 </p>
               </div>
             </div>
@@ -44,22 +40,21 @@ export class FabricIOSPage extends React.Component<any, any> {
               <div className="ms-Grid-col ms-sm12 ms-lg4">
                 <span className={styles.featureHeadline}>Includes core Fabric styles</span>
                 <p>
-                  Fabric iOS includes core styles such as colors, the official Office iOS type ramp, and guidance for
-                  adding your own icons.
+                  Fabric iOS includes core styles such as colors, the official Office iOS type ramp, and guidance for adding your own icons.
                 </p>
               </div>
               <div className="ms-Grid-col ms-sm12 ms-lg4">
                 <span className={styles.featureHeadline}>Adds unique components</span>
                 <p>
-                  Fabric iOS includes native customizations to buttons, labels, and text fields along with unique
-                  components like InitialsView and LogoView.
+                  Fabric iOS includes native customizations to buttons, labels, and text fields along with unique components like
+                  InitialsView and LogoView.
                 </p>
               </div>
               <div className="ms-Grid-col ms-sm12 ms-lg4">
                 <span className={styles.featureHeadline}>Open source</span>
                 <p>
-                  Fabric iOS is open source so you can file issues, submit bug fixes, or add new functionality. We
-                  welcome your contributions!
+                  Fabric iOS is open source so you can file issues, submit bug fixes, or add new functionality. We welcome your
+                  contributions!
                 </p>
               </div>
             </div>

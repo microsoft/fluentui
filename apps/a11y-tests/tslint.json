@@ -5,8 +5,6 @@
     "jsx-no-lambda": false
   },
   "linterOptions": {
-    "exclude": [
-        "src/axe-sarif-converter/**"
-    ]
+    "exclude": ["src/axe-sarif-converter/**"]
   }
 }

@@ -11,9 +11,9 @@ export interface IAccordion {}
 
 export interface IAccordionProps extends IButtonProps {
   /*
-     * Renders the content for the accordion
-     * @type { IRenderFunction<IContextualMenuProps> }
-     */
+   * Renders the content for the accordion
+   * @type { IRenderFunction<IContextualMenuProps> }
+   */
   onRenderContent: IRenderFunction<IContextualMenuProps>;
 
   /**

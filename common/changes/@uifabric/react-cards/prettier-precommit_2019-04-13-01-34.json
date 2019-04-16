@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Run prettier on all files",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "elcraig@microsoft.com"
+}
