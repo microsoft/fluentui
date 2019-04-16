@@ -36,7 +36,12 @@ export interface IButtonSlots {
   icon?: IIconSlot;
 }
 
-export interface IButton {}
+export interface IButton {
+  /**
+   * Sets focus to the Button.
+   */
+  focus: () => void;
+}
 
 export interface IButtonProps
   extends IButtonSlots,
@@ -72,12 +77,17 @@ export interface IButtonProps
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
-   * The aria label that the screen readers use when focus goes on the Button.
+   * Defines the aria label that the screen readers use when focus goes on the Button.
    */
   ariaLabel?: string;
 }
 
-export interface IButtonViewProps extends IButtonProps {}
+export interface IButtonViewProps extends IButtonProps {
+  /**
+   * Defines a reference to the inner button.
+   */
+  buttonRef?: React.RefObject<HTMLButtonElement>;
+}
 
 export interface IButtonTokens {
   backgroundClip?: IRawStyleBase['backgroundClip'];
