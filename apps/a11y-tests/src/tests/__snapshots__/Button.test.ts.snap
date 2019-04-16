@@ -14,11 +14,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": "div:nth-child(1) > .css-250[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/button",
-          },
-        },
       },
     ],
     "message": Object {
@@ -49,11 +44,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": "div:nth-child(2) > .css-250[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/button",
-          },
-        },
       },
     ],
     "message": Object {
@@ -84,11 +74,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": "div:nth-child(3) > .css-250[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/button",
-          },
-        },
       },
     ],
     "message": Object {
@@ -119,11 +104,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": ".css-275",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/button",
-          },
-        },
       },
     ],
     "message": Object {
@@ -154,11 +134,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": ".css-306",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/button",
-          },
-        },
       },
     ],
     "message": Object {

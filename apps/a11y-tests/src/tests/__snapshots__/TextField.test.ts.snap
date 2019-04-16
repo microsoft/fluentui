@@ -14,11 +14,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": ".prefix-240 > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/textfield",
-          },
-        },
       },
     ],
     "message": Object {
@@ -49,11 +44,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": "#TextField111",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/textfield",
-          },
-        },
       },
     ],
     "message": Object {
@@ -84,11 +74,6 @@ Array [
           },
         ],
         "fullyQualifiedLogicalName": "#TextField111",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "http://localhost:4322/#/examples/textfield",
-          },
-        },
       },
     ],
     "message": Object {
