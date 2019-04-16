@@ -25,7 +25,7 @@
   &::after {
     // Use http://pressbin.com/tools/urlencode_urldecode/ and encodeURIComponent() to change contents below
     // SVG content: <svg xmlns="http://www.w3.org/2000/svg" viewBox="5 0 395 25"><polygon fill="#333333" points="0 25 0 0 200 21 400 0 400 25"/></svg>
-    background-image: url("data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%225%200%20395%2025%22%3E%3Cpolygon%20fill%3D%22%23333333%22%20points%3D%220%2025%200%200%20200%2021%20400%200%20400%2025%22%2F%3E%3C%2Fsvg%3E");
+    background-image: url('data:image/svg+xml,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20viewBox%3D%225%200%20395%2025%22%3E%3Cpolygon%20fill%3D%22%23333333%22%20points%3D%220%2025%200%200%20200%2021%20400%200%20400%2025%22%2F%3E%3C%2Fsvg%3E');
     background-position: center bottom;
     background-repeat: no-repeat;
     background-size: contain;
@@ -124,7 +124,8 @@
 
 // UHF specific breakpoint
 @media only screen and (max-width: $uhf-screen-max-lg) and (min-width: $uhf-screen-min-mobile) {
-  .title, .button {
+  .title,
+  .button {
     text-align: center;
   }
 }
@@ -218,7 +219,6 @@
   }
 }
 
-
 //== Products
 
 .product {
@@ -251,12 +251,15 @@
 .productDescription {
   font-size: $ms-font-size-l;
 
-  a, a:visited, .homePageLink {
+  a,
+  a:visited,
+  .homePageLink {
     color: $color-home-medium;
     transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
 
-  a:hover, a:active {
+  a:hover,
+  a:active {
     color: $color-home-darker;
   }
 }
@@ -297,7 +300,6 @@
     width: 50%;
   }
 }
-
 
 //== Featured features
 

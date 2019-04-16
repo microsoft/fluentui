@@ -37,6 +37,19 @@ steps:
       ContainerName: '$web'
       BlobPrefix: 'pr-deploy-site/$(Build.SourceBranch)'
 
+  - script: |
+      npm run perf-test
+    displayName: perf test
+
+  - task: GithubPRComment@0
+    displayName: 'Post Perf Results to Github Pull Request'
+    inputs:
+      githubOwner: OfficeDev
+      githubRepo: 'office-ui-fabric-react'
+      blobFilePath: '$(Build.SourcesDirectory)/$(PerfCommentFilePath)'
+      status: '$(PerfCommentStatus)'
+      uniqueId: 'perfComment9423'
+
   - task: GithubPRStatus@0
     displayName: 'Update Github Pull Request Status'
     inputs:
@@ -48,7 +61,7 @@ steps:
 
   - script: |
       cd ./apps/a11y-tests
-      npm run start-generate-reports
+      npm run generate-reports
     displayName: generate sarif a11y reports
 
   - task: PublishBuildArtifacts@1

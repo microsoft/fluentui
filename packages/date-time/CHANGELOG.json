@@ -2,6 +2,50 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.0.2",
+      "tag": "@uifabric/date-time_v6.0.2",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add Calendar to top level export",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "ede25d9f31745cde4f402988299fea52d2b5df59"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.0.1",
+      "tag": "@uifabric/date-time_v6.0.1",
+      "date": "Mon, 15 Apr 2019 12:33:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bump to create first major release",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "74343561e50c139afb1aa51f5f952212ad0e9662"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.3` to `^6.46.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.0` to `^6.166.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.5",
       "tag": "@uifabric/date-time_v0.3.5",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",

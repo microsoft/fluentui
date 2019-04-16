@@ -1,6 +1,48 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.167.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- DatePicker: Fix props not matching their description. Add new prop to provide old functionality
+- DetailsList: Expose optional onRenderCheckbox callback option
+
+### Patches
+
+- Update Announced examples
+- Panel: Fix double dismiss
+
+## 6.166.1
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Patches
+
+- DetailsList: Fix high contrast focus color
+- MessageBar: fixes the transparency of the background issue when rendered on top of themed backgrounds.
+- Adding data parameter to the ComboBoxOptionWrapper. This will allow ShallowCompare to compare against this extra parameter
+
+## 6.166.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+- These changes allow for a controlled Pivot to have no selected PivotItem by specifying null as the selectedKey prop.
+
+### Patches
+
+- ThemeGeneratorPage: fix it so it looks right
+- Updating CalloutContentBase's shouldComponentUpdate to do shallow comparision
+
+## 6.165.1
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
+- css-in-js conversions for DocumentCard, ExtendedPeoplePicker, FloatingPeoplePicker, SelectedPeopleList
 
 ## 6.165.0
 Wed, 10 Apr 2019 12:33:17 GMT

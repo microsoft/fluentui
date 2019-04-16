@@ -17,7 +17,7 @@ module.exports = resources.createServeConfig({
     alias: {
       '@uifabric/date-time/src': path.join(__dirname, 'src'),
       '@uifabric/date-time/lib': path.join(__dirname, 'lib'),
-      '@uifabric/date-time': path.join(__dirname, 'lib'),
+      '@uifabric/date-time': path.join(__dirname, 'src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

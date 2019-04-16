@@ -3,6 +3,9 @@ import { ScrollablePaneBase } from './ScrollablePane.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePane {
   /** Triggers a layout update for the pane. */
   forceLayoutUpdate(): void;
@@ -10,6 +13,9 @@ export interface IScrollablePane {
   getScrollPosition(): number;
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement | ScrollablePaneBase> {
   // export interface IScrollablePaneProps extends React.Props<ScrollablePaneBase> {
   /**
@@ -42,6 +48,9 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   scrollbarVisibility?: ScrollbarVisibility;
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePaneStyleProps {
   /**
    * Accept theme prop.
@@ -58,6 +67,9 @@ export interface IScrollablePaneStyleProps {
   // Insert ScrollablePane style props below
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export interface IScrollablePaneStyles {
   /**
    * Style set for the root element.
@@ -81,9 +93,15 @@ export interface IScrollablePaneStyles {
   contentContainer: IStyle;
 }
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export const ScrollbarVisibility = {
   auto: 'auto' as 'auto',
   always: 'always' as 'always'
 };
 
+/**
+ * {@docCategory ScrollablePane}
+ */
 export type ScrollbarVisibility = typeof ScrollbarVisibility[keyof typeof ScrollbarVisibility];

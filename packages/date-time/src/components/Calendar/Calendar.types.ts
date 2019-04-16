@@ -4,7 +4,7 @@ import { IStyle, ITheme } from '@uifabric/styling';
 import { ICalendarDayProps } from './CalendarDay/CalendarDay.types';
 import { ICalendarMonthProps } from './CalendarMonth/CalendarMonth.types';
 
-export { DayOfWeek, DateRangeType, FirstWeekOfYear };
+export { DayOfWeek, DateRangeType, FirstWeekOfYear, ICalendarDayProps, ICalendarMonthProps };
 
 export interface ICalendar {
   /** Sets focus to the selected date. */
@@ -237,7 +237,7 @@ export interface ICalendarStrings {
   closeButtonAriaLabel?: string;
 
   /**
-   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number {0}"
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number `{0}`"
    */
   weekNumberFormatString?: string;
 }

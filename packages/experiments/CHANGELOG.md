@@ -1,6 +1,28 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.73.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- Button: Creating CommandBarButton, IconButton and MessageBarButton variants.
+
+### Patches
+
+- Sidebar: update example card styling approach
+
+## 6.72.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+-  Button: Creating CompoundButton and BaseButton variants.
+
+### Patches
+
+- Button: Styling fixes to issues found while working on Multiline Ribbon buttons.
 
 ## 6.71.0
 Wed, 10 Apr 2019 12:33:17 GMT
