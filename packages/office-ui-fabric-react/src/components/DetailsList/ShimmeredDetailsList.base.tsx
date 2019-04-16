@@ -52,18 +52,17 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       enableShimmer
     });
 
-    // Adds to the optional listProp className a fading out overlay className only when shimmer enabled.
     const newListProps = {
       ...listProps,
       ...(detailsListProps && detailsListProps.listProps),
-      className: enableShimmer ? classNames.root : ''
+      // Adds to the optional listProp className a fading out overlay className only when shimmer enabled.
+      className: enableShimmer ? classNames.root : listClassName
     };
 
     return (
       <DetailsList
         {...restProps}
         {...detailsListProps}
-        enableShimmer={enableShimmer}
         items={enableShimmer ? this._shimmerItems : items}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
         listProps={newListProps}

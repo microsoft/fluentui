@@ -22,7 +22,7 @@ const fileIcons: { name: string }[] = [
   { name: 'xsn' }
 ];
 
-const ITEMS_COUNT = 500;
+const ITEMS_COUNT = 200;
 const INTERVAL_DELAY = 2500;
 
 let _items: IExampleItem[];
