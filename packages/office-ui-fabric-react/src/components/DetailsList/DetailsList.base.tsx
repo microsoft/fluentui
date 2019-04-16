@@ -104,7 +104,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     this._onColumnDragEnd = this._onColumnDragEnd.bind(this);
 
     this.state = {
-      focusedItemIndex: -1,
+      focusedItemIndex: this.props.initialFocusedIndex || -1,
       lastWidth: 0,
       adjustedColumns: this._getAdjustedColumns(props),
       isSizing: false,
@@ -164,6 +164,25 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (this._dragDropHelper) {
       // TODO If the DragDropHelper was passed via props, this will dispose it, which is incorrect behavior.
       this._dragDropHelper.dispose();
+    }
+  }
+
+  public componentDidMount() {
+    // Only attempt to focus/scroll to a new item if the user has set an index
+    // and if we have items
+    if (
+      this._initialFocusedIndex !== undefined &&
+      this.props.items &&
+      this.props.items.length > 0 &&
+      this.state.focusedItemIndex !== -1 &&
+      !elementContains(this._root.current, document.activeElement as HTMLElement, false)
+    ) {
+      // Set focus to the item that has the highest index possible. If the index exceeds the list length then
+      // focus to the last item.
+      const index = this.state.focusedItemIndex < this.props.items.length ? this.state.focusedItemIndex : this.props.items.length - 1;
+      if (this._list.current) {
+        this._list.current.scrollToIndexAsync(index);
+      }
     }
   }
 

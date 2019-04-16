@@ -265,6 +265,10 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     }
   }
 
+  public scrollToIndexAsync(index: number, measureItem?: (itemIndex: number) => number, scrollToMode: ScrollToMode = ScrollToMode.auto) {
+    this._async.setTimeout(() => this.scrollToIndex(index, measureItem, scrollToMode), 0);
+  }
+
   public getStartItemIndexInView(measureItem?: (itemIndex: number) => number): number {
     const pages = this.state.pages || [];
     for (const page of pages) {
