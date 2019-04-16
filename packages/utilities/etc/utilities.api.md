@@ -4,38 +4,45 @@
 
 ```ts
 
-// @public
-declare function addDirectionalKeyCode(which: number): void;
+import * as CSS from 'csstype';
+import { IProcessedStyleSet } from '@uifabric/merge-styles';
+import { IStyleFunction } from '@uifabric/merge-styles';
+import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { IStyleSet } from '@uifabric/merge-styles';
+import * as PropTypes from 'prop-types';
+import * as React from 'react';
 
 // @public
-declare function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
+export function addDirectionalKeyCode(which: number): void;
 
 // @public
-declare const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
+export function addElementAtIndex<T>(array: T[], index: number, itemToAdd: T): T[];
 
 // @public
-declare const anchorProperties: string[];
+export const allowScrollOnElement: (element: HTMLElement | null, events: EventGroup) => void;
 
 // @public
-declare function appendFunction(parent: any, ...functions: (any)[]): () => void;
+export const anchorProperties: string[];
 
 // @public
-declare function arraysEqual<T>(array1: T[], array2: T[]): boolean;
+export function appendFunction(parent: any, ...functions: (any)[]): () => void;
 
 // @public
-declare function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
+
+// @public
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
     asyncPlaceholder?: React.ReactType;
 }>;
 
 // @public
-declare function assertNever(x: never): never;
+export function assertNever(x: never): never;
 
 // @public
-declare function assign(target: any, ...args: any[]): any;
+export function assign(target: any, ...args: any[]): any;
 
 // @public
-declare class Async {
-    // (undocumented)
+export class Async {
     constructor(parent?: object, onError?: (e: any) => void);
     // (undocumented)
     cancelAnimationFrame(id: number): void;
@@ -62,22 +69,21 @@ declare class Async {
     }
 
 // @public @deprecated
-declare function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
+export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
     configurable: boolean;
     get(): T;
     set(newValue: any): void;
 } | void;
 
 // @public
-declare class AutoScroll {
-    // (undocumented)
+export class AutoScroll {
     constructor(element: HTMLElement);
     // (undocumented)
     dispose(): void;
     }
 
 // @public
-declare class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
+export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected readonly _async: Async;
     readonly className: string;
@@ -98,34 +104,36 @@ declare class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends
 }
 
 // @public
-declare const baseElementEvents: string[];
+export const baseElementEvents: string[];
 
 // @public
-declare const baseElementProperties: string[];
+export const baseElementProperties: string[];
 
 // @public
-declare const buttonProperties: string[];
+export const buttonProperties: string[];
 
 // @public
-declare function calculatePrecision(value: number | string): number;
+export function calculatePrecision(value: number | string): number;
 
 // @public
-declare function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public
-declare function createArray<T>(size: number, getItem: (index: number) => T): T[];
+export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
 // @public @deprecated (undocumented)
-declare function createRef<T>(): RefObject<T>;
+export function createRef<T>(): RefObject<T>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
+// 
 // @public
-declare function css(...args: ICssInput[]): string;
+export function css(...args: ICssInput[]): string;
 
 // @public (undocumented)
-declare function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
+export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
 
 // @public (undocumented)
-declare class Customizations {
+export class Customizations {
     // (undocumented)
     static applyScopedSettings(scopeName: string, settings: ISettings): void;
     // (undocumented)
@@ -141,7 +149,7 @@ declare class Customizations {
 }
 
 // @public
-declare class Customizer extends React.Component<ICustomizerProps> {
+export class Customizer extends React.Component<ICustomizerProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
@@ -151,17 +159,18 @@ declare class Customizer extends React.Component<ICustomizerProps> {
 }
 
 // @public (undocumented)
-declare const CustomizerContext: React.Context<ICustomizerContext>;
+export const CustomizerContext: React.Context<ICustomizerContext>;
 
 // @public
-declare const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
+export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
 
 // @public (undocumented)
-declare const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
+export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
 
+// Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
+// 
 // @public
-declare class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
-    // (undocumented)
+export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
     constructor(props: IDelayedRenderProps);
     // (undocumented)
     componentDidMount(): void;
@@ -176,25 +185,25 @@ declare class DelayedRender extends React.Component<IDelayedRenderProps, IDelaye
     }
 
 // @public
-declare function disableBodyScroll(): void;
+export function disableBodyScroll(): void;
 
 // @public
-declare const divProperties: string[];
+export const divProperties: string[];
 
 // @public
-declare function doesElementContainFocus(element: HTMLElement): boolean;
+export function doesElementContainFocus(element: HTMLElement): boolean;
 
 // @public
-declare function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents?: boolean): boolean;
+export function elementContains(parent: HTMLElement | null, child: HTMLElement | null, allowVirtualParents?: boolean): boolean;
 
 // @public
-declare function elementContainsAttribute(element: HTMLElement, attribute: string): string | null;
+export function elementContainsAttribute(element: HTMLElement, attribute: string): string | null;
 
 // @public
-declare function enableBodyScroll(): void;
+export function enableBodyScroll(): void;
 
 // @public
-declare class EventGroup {
+export class EventGroup {
     constructor(parent: any);
     declare(event: string | string[]): void;
     // (undocumented)
@@ -217,127 +226,129 @@ declare class EventGroup {
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
 // 
 // @public
-declare function extendComponent<T extends React_2.Component>(parent: T, methods: {
+export function extendComponent<T extends React_2.Component>(parent: T, methods: {
     [key in keyof T]?: T[key];
 }): void;
 
 // @public
-declare class FabricPerformance {
+export class FabricPerformance {
     static measure(name: string, func: () => void): void;
     // (undocumented)
     static reset(): void;
     // (undocumented)
     static setPeriodicReset(): void;
+    // Warning: (ae-incompatible-release-tags) The symbol "summary" is marked as @public, but its signature references "IPerfSummary" which is marked as @internal
+    // 
     // (undocumented)
     static summary: IPerfSummary;
     }
 
 // @public
-declare function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]): any;
+export function filteredAssign(isAllowed: (propName: string) => boolean, target: any, ...args: any[]): any;
 
 // @public
-declare function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
+export function find<T>(array: T[], cb: (item: T, index: number) => boolean): T | undefined;
 
 // @public
-declare function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
+export function findElementRecursive(element: HTMLElement | null, matchFunction: (element: HTMLElement) => boolean): HTMLElement | null;
 
 // @public
-declare function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number;
+export function findIndex<T>(array: T[], cb: (item: T, index: number) => boolean): number;
 
 // @public
-declare function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
+export function findScrollableParent(startingElement: HTMLElement | null): HTMLElement | null;
 
 // @public
-declare function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
+export function fitContentToBounds(options: IFitContentToBoundsOptions): ISize;
 
 // @public
-declare type FitMode = 'contain' | 'cover';
+export type FitMode = 'contain' | 'cover';
 
 // @public
-declare function flatten<T>(array: (T | T[])[]): T[];
+export function flatten<T>(array: (T | T[])[]): T[];
 
 // @public
-declare function focusAsync(element: HTMLElement | {
+export function focusAsync(element: HTMLElement | {
     focus: () => void;
 } | undefined | null): void;
 
 // @public
-declare function focusFirstChild(rootElement: HTMLElement): boolean;
+export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
-declare function format(s: string, ...values: any[]): string;
+export function format(s: string, ...values: any[]): string;
 
 // @public
-declare function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
+export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
 
 // @public
-declare function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
+export function getDistanceBetweenPoints(point1: IPoint, point2: IPoint): number;
 
 // @public
-declare function getDocument(rootElement?: HTMLElement | null): Document | undefined;
+export function getDocument(rootElement?: HTMLElement | null): Document | undefined;
 
 // @public
-declare function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
+export function getElementIndexPath(fromElement: HTMLElement, toElement: HTMLElement): number[];
 
 // @public
-declare function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getFirstFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-declare function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getFirstTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
-declare function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
+export function getFocusableByIndexPath(parent: HTMLElement, path: number[]): HTMLElement | undefined;
 
 // @public
-declare function getId(prefix?: string): string;
+export function getId(prefix?: string): string;
 
 // @public
-declare function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
+export function getInitials(displayName: string | undefined | null, isRtl: boolean, allowPhoneInitials?: boolean): string;
 
 // @public
-declare function getLanguage(): string | null;
+export function getLanguage(): string | null;
 
 // @public
-declare function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
+export function getLastFocusable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean): HTMLElement | null;
 
 // @public
-declare function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
+export function getLastTabbable(rootElement: HTMLElement, currentElement: HTMLElement, includeElementsInFocusZones?: boolean, checkNode?: boolean): HTMLElement | null;
 
 // @public
-declare function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
+export function getNativeProps<T>(props: {}, allowedPropNames: string[], excludedPropNames?: string[]): T;
 
 // @public
-declare function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getNextElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, suppressChildTraversal?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
 
 // @public
-declare function getParent(child: HTMLElement, allowVirtualParents?: boolean): HTMLElement | null;
+export function getParent(child: HTMLElement, allowVirtualParents?: boolean): HTMLElement | null;
 
 // @public
-declare function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
+export function getPreviousElement(rootElement: HTMLElement, currentElement: HTMLElement | null, checkNode?: boolean, suppressParentTraversal?: boolean, traverseChildren?: boolean, includeElementsInFocusZones?: boolean, allowFocusRoot?: boolean, tabbable?: boolean): HTMLElement | null;
 
 // @public
-declare function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
+export function getRect(element: HTMLElement | Window | null): IRectangle | undefined;
 
 // @public
-declare function getResourceUrl(url: string): string;
+export function getResourceUrl(url: string): string;
 
 // @public
-declare function getRTL(): boolean;
+export function getRTL(): boolean;
 
 // @public
-declare function getRTLSafeKeyCode(key: number): number;
+export function getRTLSafeKeyCode(key: number): number;
 
 // @public
-declare function getScrollbarWidth(): number;
+export function getScrollbarWidth(): number;
 
 // @public
-declare function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
+export function getVirtualParent(child: HTMLElement): HTMLElement | undefined;
 
 // @public
-declare function getWindow(rootElement?: Element | null): Window | undefined;
+export function getWindow(rootElement?: Element | null): Window | undefined;
 
 // @public
-declare class GlobalSettings {
+export class GlobalSettings {
     // (undocumented)
     static addChangeListener(cb: IChangeEventCallback): void;
     // (undocumented)
@@ -349,45 +360,45 @@ declare class GlobalSettings {
 }
 
 // @public
-declare function hasHorizontalOverflow(element: HTMLElement): boolean;
+export function hasHorizontalOverflow(element: HTMLElement): boolean;
 
 // @public
-declare function hasOverflow(element: HTMLElement): boolean;
+export function hasOverflow(element: HTMLElement): boolean;
 
 // @public
-declare function hasVerticalOverflow(element: HTMLElement): boolean;
+export function hasVerticalOverflow(element: HTMLElement): boolean;
 
 // @public
-declare function hoistMethods(destination: any, source: any, exclusions?: string[]): string[];
+export function hoistMethods(destination: any, source: any, exclusions?: string[]): string[];
 
 // @public
-declare function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
+export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public
-declare const htmlElementProperties: string[];
+export const htmlElementProperties: string[];
 
 // @public (undocumented)
-interface IAsAsyncOptions<TProps> {
+export interface IAsAsyncOptions<TProps> {
     load: () => Promise<React.ReactType<TProps>>;
     onError?: (error: Error) => void;
     onLoad?: () => void;
 }
 
 // @public
-interface IBaseProps<T = any> {
+export interface IBaseProps<T = any> {
     // (undocumented)
     componentRef?: IRefObject<T>;
 }
 
 // @public (undocumented)
-declare type ICancelable<T> = {
+export type ICancelable<T> = {
     flush: () => T;
     cancel: () => void;
     pending: () => boolean;
 };
 
 // @public
-interface IChangeDescription {
+export interface IChangeDescription {
     // (undocumented)
     key: string;
     // (undocumented)
@@ -397,7 +408,7 @@ interface IChangeDescription {
 }
 
 // @public
-interface IChangeEventCallback {
+export interface IChangeEventCallback {
     // (undocumented)
     (changeDescription?: IChangeDescription): void;
     // (undocumented)
@@ -405,29 +416,31 @@ interface IChangeEventCallback {
 }
 
 // @public @deprecated (undocumented)
-declare type IClassNames<T> = {
+export type IClassNames<T> = {
     [key in keyof T]: string;
 };
 
 // @public
-declare type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
+export type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
 
 // @public
-declare type IComponentAsProps<T> = T & {
+export type IComponentAsProps<T> = T & {
     defaultRender?: React_2.ComponentType<T>;
 };
 
+// Warning: (ae-internal-missing-underscore) The name ICssInput should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-declare type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
+export type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
 
 // @public (undocumented)
-interface ICustomizableProps {
+export interface ICustomizableProps {
     fields?: string[];
     scope: string;
 }
 
 // @public (undocumented)
-interface ICustomizations {
+export interface ICustomizations {
     // (undocumented)
     inCustomizerContext?: boolean;
     // (undocumented)
@@ -439,49 +452,57 @@ interface ICustomizations {
 }
 
 // @public (undocumented)
-interface ICustomizerContext {
+export interface ICustomizerContext {
     // (undocumented)
     customizations: ICustomizations;
 }
 
 // @public (undocumented)
-declare type ICustomizerProps = IBaseProps & Partial<{
+export type ICustomizerProps = IBaseProps & Partial<{
     settings: ISettings | ISettingsFunction;
     scopedSettings: ISettings | ISettingsFunction;
 }> & {
     contextTransform?: (context: Readonly<ICustomizerContext>) => ICustomizerContext;
 };
 
+// Warning: (ae-internal-missing-underscore) The name IDeclaredEventsByName should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IDeclaredEventsByName {
+export interface IDeclaredEventsByName {
     // (undocumented)
     [eventName: string]: boolean;
 }
 
 // @public
-interface IDelayedRenderProps extends React.Props<{}> {
+export interface IDelayedRenderProps extends React.Props<{}> {
     delay?: number;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IDelayedRenderState should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IDelayedRenderState {
+export interface IDelayedRenderState {
     isRendered: boolean;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IDictionary should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IDictionary {
+export interface IDictionary {
     // (undocumented)
     [className: string]: boolean;
 }
 
 // @public
-interface IDisposable {
+export interface IDisposable {
     // (undocumented)
     dispose: () => void;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IEventRecord should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IEventRecord {
+export interface IEventRecord {
     // (undocumented)
     callback: (args?: any) => void;
     // (undocumented)
@@ -498,22 +519,26 @@ interface IEventRecord {
     target: any;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IEventRecordList should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IEventRecordList {
+export interface IEventRecordList {
     // (undocumented)
     [id: string]: IEventRecord[] | number;
     // (undocumented)
     count: number;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IEventRecordsByName should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IEventRecordsByName {
+export interface IEventRecordsByName {
     // (undocumented)
     [eventName: string]: IEventRecordList;
 }
 
 // @public
-interface IFitContentToBoundsOptions {
+export interface IFitContentToBoundsOptions {
     boundsSize: ISize;
     contentSize: ISize;
     maxScale?: number;
@@ -521,27 +546,31 @@ interface IFitContentToBoundsOptions {
 }
 
 // @public
-declare const imageProperties: string[];
+export const imageProperties: string[];
 
 // @public
-declare function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React_2.Component<TProps, TState>): void;
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React_2.Component<TProps, TState>): void;
 
 // @public
-declare function initializeFocusRects(window?: Window): void;
+export function initializeFocusRects(window?: Window): void;
 
 // @public
-declare const inputProperties: string[];
+export const inputProperties: string[];
 
+// Warning: (ae-internal-missing-underscore) The name IPerfData should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IPerfData {
+export interface IPerfData {
     // (undocumented)
     duration: number;
     // (undocumented)
     timeStamp: number;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IPerfMeasurement should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IPerfMeasurement {
+export interface IPerfMeasurement {
     // (undocumented)
     all: IPerfData[];
     // (undocumented)
@@ -550,14 +579,16 @@ interface IPerfMeasurement {
     totalDuration: number;
 }
 
+// Warning: (ae-internal-missing-underscore) The name IPerfSummary should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface IPerfSummary {
+export interface IPerfSummary {
     // (undocumented)
     [key: string]: IPerfMeasurement;
 }
 
 // @public
-interface IPoint {
+export interface IPoint {
     // (undocumented)
     x: number;
     // (undocumented)
@@ -565,13 +596,13 @@ interface IPoint {
 }
 
 // @public (undocumented)
-interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
+export interface IPropsWithStyles<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>> {
     // (undocumented)
     styles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 }
 
 // @public
-interface IRectangle {
+export interface IRectangle {
     // (undocumented)
     bottom?: number;
     // (undocumented)
@@ -587,61 +618,63 @@ interface IRectangle {
 }
 
 // @public (undocumented)
-declare type IRefObject<T> = React.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
+export type IRefObject<T> = React.RefObject<T> | RefObject<T> | ((ref: T | null) => void);
 
 // @public
-interface IRenderComponent<TProps> {
+export interface IRenderComponent<TProps> {
     children: (props: TProps) => JSX.Element;
 }
 
 // @public
-interface IRenderFunction<P> {
+export interface IRenderFunction<P> {
     // (undocumented)
     (props?: P, defaultRender?: (props?: P) => JSX.Element | null): JSX.Element | null;
 }
 
 // @public
-declare function isDirectionalKeyCode(which: number): boolean;
+export function isDirectionalKeyCode(which: number): boolean;
 
 // @public
-declare function isElementFocusSubZone(element?: HTMLElement): boolean;
+export function isElementFocusSubZone(element?: HTMLElement): boolean;
 
 // @public
-declare function isElementFocusZone(element?: HTMLElement): boolean;
+export function isElementFocusZone(element?: HTMLElement): boolean;
 
 // @public
-declare function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean;
+export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean): boolean;
 
 // @public
-declare function isElementVisible(element: HTMLElement | undefined | null): boolean;
+export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
+// Warning: (ae-internal-missing-underscore) The name ISerializableObject should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-interface ISerializableObject {
+export interface ISerializableObject {
     // (undocumented)
     toString?: () => string;
 }
 
 // @public (undocumented)
-declare type ISettings = {
+export type ISettings = {
     [key: string]: any;
 };
 
 // @public (undocumented)
-declare type ISettingsFunction = (settings: ISettings) => ISettings;
+export type ISettingsFunction = (settings: ISettings) => ISettings;
 
 // @public (undocumented)
-declare type ISettingsMap<T> = {
+export type ISettingsMap<T> = {
     [P in keyof T]?: string;
 };
 
 // @public (undocumented)
-declare const IsFocusVisibleClassName = "ms-Fabric--isFocusVisible";
+export const IsFocusVisibleClassName = "ms-Fabric--isFocusVisible";
 
 // @public
-declare const isIOS: () => boolean;
+export const isIOS: () => boolean;
 
 // @public (undocumented)
-interface ISize {
+export interface ISize {
     // (undocumented)
     height: number;
     // (undocumented)
@@ -649,15 +682,17 @@ interface ISize {
 }
 
 // @public
-declare function isMac(reset?: boolean): boolean;
+export function isMac(reset?: boolean): boolean;
 
-export { IStyleFunction } from '@uifabric/merge-styles';
-export { IStyleFunctionOrObject } from '@uifabric/merge-styles';
-// @public
-declare function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
+export { IStyleFunction }
+
+export { IStyleFunctionOrObject }
 
 // @public
-interface IVirtualElement extends HTMLElement {
+export function isVirtualElement(element: HTMLElement | IVirtualElement): element is IVirtualElement;
+
+// @public
+export interface IVirtualElement extends HTMLElement {
     // (undocumented)
     _virtual: {
         parent?: IVirtualElement;
@@ -666,7 +701,7 @@ interface IVirtualElement extends HTMLElement {
 }
 
 // @public
-declare const KeyCodes: {
+export const KeyCodes: {
     backspace: 8;
     tab: 9;
     enter: 13;
@@ -769,56 +804,55 @@ declare const KeyCodes: {
 };
 
 // @public (undocumented)
-declare type KeyCodes = number;
+export type KeyCodes = number;
 
 // @public (undocumented)
-declare function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
+export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
 // @public
-declare function memoize<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
+export function memoize<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
     configurable: boolean;
     get(): T;
 };
 
 // @public
-declare function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number): T;
+export function memoizeFunction<T extends (...args: any[]) => RET_TYPE, RET_TYPE>(cb: T, maxCacheSize?: number): T;
 
 // @public
-declare function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
+export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T;
 
 // @public
-declare function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
+export function mergeAriaAttributeValues(...ariaAttributes: (string | undefined)[]): string | undefined;
 
 // @public
-declare function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
+export function mergeCustomizations(props: ICustomizerProps, parentContext: ICustomizerContext): ICustomizerContext;
 
 // @public (undocumented)
-declare function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
+export function mergeScopedSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
-declare function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
+export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings | ISettingsFunction): ISettings;
 
 // @public
-declare function nullRender(): JSX.Element | null;
+export function nullRender(): JSX.Element | null;
 
 // @public (undocumented)
-declare function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
 
 // @public
-declare function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
+export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
 
 // @public
-declare function precisionRound(value: number, precision: number, base?: number): number;
+export function precisionRound(value: number, precision: number, base?: number): number;
 
 // @public @deprecated (undocumented)
-declare function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
+export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public
-declare function raiseClick(target: Element): void;
+export function raiseClick(target: Element): void;
 
 // @public
-declare class Rectangle {
-    // (undocumented)
+export class Rectangle {
     constructor(left?: number, right?: number, top?: number, bottom?: number);
     // (undocumented)
     bottom: number;
@@ -834,92 +868,94 @@ declare class Rectangle {
 }
 
 // @public (undocumented)
-declare type RefObject<T> = {
+export type RefObject<T> = {
     (component: T | null): void;
     current: T | null;
     value: T | null;
 };
 
 // @public
-declare function removeIndex<T>(array: T[], index: number): T[];
+export function removeIndex<T>(array: T[], index: number): T[];
 
 // @public
-declare function replaceElement<T>(array: T[], newElement: T, index: number): T[];
+export function replaceElement<T>(array: T[], newElement: T, index: number): T[];
 
 // @public
-declare function resetIds(counter?: number): void;
+export function resetIds(counter?: number): void;
 
 // @public
-declare function resetMemoizations(): void;
+export function resetMemoizations(): void;
 
 // @public
-declare const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>) => (cb: Function) => void;
+export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>) => (cb: Function) => void;
 
 // @public
-declare const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
+export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
 
 // @public
-declare function setBaseUrl(baseUrl: string): void;
+export function setBaseUrl(baseUrl: string): void;
 
 // @public
-declare function setLanguage(language: string, avoidPersisting?: boolean): void;
+export function setLanguage(language: string, avoidPersisting?: boolean): void;
 
+// Warning: (ae-internal-missing-underscore) The name setMemoizeWeakMap should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
 // @internal
-declare function setMemoizeWeakMap(weakMap: any): void;
+export function setMemoizeWeakMap(weakMap: any): void;
 
 // @public
-declare function setPortalAttribute(element: HTMLElement): void;
+export function setPortalAttribute(element: HTMLElement): void;
 
 // @public
-declare function setRTL(isRTL: boolean, persistSetting?: boolean): void;
+export function setRTL(isRTL: boolean, persistSetting?: boolean): void;
 
 // @public
-declare function setSSR(isEnabled: boolean): void;
+export function setSSR(isEnabled: boolean): void;
 
 // @public @deprecated (undocumented)
-declare type Settings = ISettings;
+export type Settings = ISettings;
 
 // @public @deprecated (undocumented)
-declare type SettingsFunction = ISettingsFunction;
+export type SettingsFunction = ISettingsFunction;
 
 // @public
-declare function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
+export function setVirtualParent(child: HTMLElement, parent: HTMLElement): void;
 
 // @public
-declare function setWarningCallback(warningCallback?: (message: string) => void): void;
+export function setWarningCallback(warningCallback?: (message: string) => void): void;
 
 // @public
-declare function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
+export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 
 // @public
-declare function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
+export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-declare function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
-declare const textAreaProperties: string[];
+export const textAreaProperties: string[];
 
 // @public
-declare function toMatrix<T>(items: T[], columnCount: number): T[][];
+export function toMatrix<T>(items: T[], columnCount: number): T[][];
 
 // @public
-declare function unhoistMethods(source: any, methodNames: string[]): void;
+export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
-declare function values<T>(obj: any): T[];
+export function values<T>(obj: any): T[];
 
 // @public
-declare function warn(message: string): void;
+export function warn(message: string): void;
 
 // @public
-declare function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
+export function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
 
 // @public
-declare function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;
+export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;
 
 // @public
-declare function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
+export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void;
 
 
 // (No @packageDocumentation comment for this package)

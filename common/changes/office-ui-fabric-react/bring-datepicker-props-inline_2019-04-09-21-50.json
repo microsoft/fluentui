@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DetailsList: Fix high contrast focus color",
-      "type": "patch"
+      "comment": "DatePicker: Fix props not matching their description. Add new prop to provide old functionality",
+      "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",

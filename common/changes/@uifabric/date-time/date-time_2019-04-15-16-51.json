@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/date-time",
-      "comment": "Bump to create first major release",
+      "comment": "Add Calendar to top level export",
       "type": "patch"
     }
   ],

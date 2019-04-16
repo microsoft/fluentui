@@ -1,11 +1,12 @@
 import * as React from 'react';
-import { IProperty, PropertyType } from '../../utilities/parser/index';
+import { IProperty, PropertyType, parse } from '../../utilities/parser/index';
 import { PropertiesTable } from './PropertiesTable';
-import { IPropertiesTableSetProps } from './PropertiesTableSet.types';
-import { parse } from '../../utilities/parser/index';
+import { IPropertiesTableSetProps, IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
+import { getStyles } from './PropertiesTableSet.styles';
+import { styled } from 'office-ui-fabric-react/lib/Utilities';
 
-export const PropertiesTableSet: React.StatelessComponent<IPropertiesTableSetProps> = props => {
-  const { componentName, componentPath, sources } = props;
+const PropertiesTableSetBase: React.StatelessComponent<IPropertiesTableSetProps> = props => {
+  const { componentName, componentPath, sources, styles } = props;
   let src: string;
   let properties: IProperty[] = [];
 
@@ -33,8 +34,17 @@ export const PropertiesTableSet: React.StatelessComponent<IPropertiesTableSetPro
           title={item.name === 'I' + props.componentName ? props.componentName + ' class' : item.propertyName}
           properties={item.property}
           renderAsEnum={item.propertyType === PropertyType.enum}
+          styles={styles}
         />
       ))}
     </div>
   );
 };
+
+export const PropertiesTableSet: React.StatelessComponent<IPropertiesTableSetProps> = styled<
+  IPropertiesTableSetProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles
+>(PropertiesTableSetBase, getStyles, undefined, {
+  scope: 'PropertiesTableSet'
+});

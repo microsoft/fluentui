@@ -1,18 +1,21 @@
 import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
-import './examples/Announced.Example.scss';
 
 import { AnnouncedSearchResultsExample } from './examples/Announced.SearchResults.Example';
 const AnnouncedSearchResultsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
+const AnnouncedSearchResultsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.SearchResults.Example.tsx') as string;
 
 import { AnnouncedLazyLoadingExample } from './examples/Announced.LazyLoading.Example';
 const AnnouncedLazyLoadingExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
+const AnnouncedLazyLoadingExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.LazyLoading.Example.tsx') as string;
 
 import { AnnouncedBulkOperationsExample } from './examples/Announced.BulkOperations.Example';
 const AnnouncedBulkOperationsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
+const AnnouncedBulkOperationsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.BulkOperations.Example.tsx') as string;
 
 import { AnnouncedQuickActionsExample } from './examples/Announced.QuickActions.Example';
 const AnnouncedQuickActionsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
+const AnnouncedQuickActionsExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Announced/examples/Announced.QuickActions.Example.tsx') as string;
 
 export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',
@@ -31,6 +34,7 @@ export const AnnouncedQuickActionsPageProps: IDocPageProps = {
     {
       title: 'Quick actions',
       code: AnnouncedQuickActionsExampleCode,
+      codepenJS: AnnouncedQuickActionsExampleCodepen,
       view: <AnnouncedQuickActionsExample />
     }
   ],
@@ -48,6 +52,7 @@ export const AnnouncedSearchResultsPageProps: IDocPageProps = {
     {
       title: 'Search results',
       code: AnnouncedSearchResultsExampleCode,
+      codepenJS: AnnouncedSearchResultsExampleCodepen,
       view: <AnnouncedSearchResultsExample />
     }
   ],
@@ -65,6 +70,7 @@ export const AnnouncedLazyLoadingPageProps: IDocPageProps = {
     {
       title: 'Asynchronous',
       code: AnnouncedLazyLoadingExampleCode,
+      codepenJS: AnnouncedLazyLoadingExampleCodepen,
       view: <AnnouncedLazyLoadingExample />
     }
   ],
@@ -82,6 +88,7 @@ export const AnnouncedBulkOperationsPageProps: IDocPageProps = {
     {
       title: 'Bulk long running',
       code: AnnouncedBulkOperationsExampleCode,
+      codepenJS: AnnouncedBulkOperationsExampleCodepen,
       view: <AnnouncedBulkOperationsExample />
     }
   ],

@@ -5,34 +5,34 @@
 ```ts
 
 // @public
-declare function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<TStyleSet>;
+export function concatStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IConcatenatedStyleSet<TStyleSet>;
 
 // @public
-declare function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
-declare function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
-declare function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet3 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 // @public
-declare function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 // @public
-declare function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>, TStyleSet5 extends IStyleSet<TStyleSet5>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>, TStyleSet5 extends IStyleSet<TStyleSet5>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5>;
 
 // @public
-declare function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>, TStyleSet5 extends IStyleSet<TStyleSet5>, TStyleSet6 extends IStyleSet<TStyleSet6>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
+export function concatStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>, TStyleSet5 extends IStyleSet<TStyleSet5>, TStyleSet6 extends IStyleSet<TStyleSet6>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined, styleSet5: TStyleSet5 | false | null | undefined, styleSet6: TStyleSet6 | false | null | undefined): IConcatenatedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4 & TStyleSet5 & TStyleSet6>;
 
 // @public
-declare function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any>;
+export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any>;
 
 // @public
-declare function fontFace(font: IFontFace): void;
+export function fontFace(font: IFontFace): void;
 
 // @public
-declare type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
@@ -41,35 +41,35 @@ declare type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
 };
 
 // @public
-interface ICSPSettings {
+export interface ICSPSettings {
     nonce?: string;
 }
 
 // @public (undocumented)
-declare type ICSSRule = 'initial' | 'inherit' | 'unset';
+export type ICSSRule = 'initial' | 'inherit' | 'unset';
 
 // @public
-interface IFontFace extends IRawFontStyle {
+export interface IFontFace extends IRawFontStyle {
     fontFeatureSettings?: string;
     src?: string;
     unicodeRange?: ICSSRule | string;
 }
 
 // @public (undocumented)
-declare type IFontWeight = ICSSRule | 'normal' | 'bold' | 'bolder' | 'lighter' | '100' | 100 | '200' | 200 | '300' | 300 | '400' | 400 | '500' | 500 | '600' | 600 | '700' | 700 | '800' | 800 | '900' | 900;
+export type IFontWeight = ICSSRule | 'normal' | 'bold' | 'bolder' | 'lighter' | '100' | 100 | '200' | 200 | '300' | 300 | '400' | 400 | '500' | 500 | '600' | 600 | '700' | 700 | '800' | 800 | '900' | 900;
 
 // @public (undocumented)
-declare const InjectionMode: {
+export const InjectionMode: {
     none: 0;
     insertNode: 1;
     appendChild: 2;
 };
 
 // @public (undocumented)
-declare type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
+export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
 
 // @public
-declare type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string;
 } & {
     subComponentStyles: {
@@ -78,10 +78,12 @@ declare type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
 };
 
 // @public
-interface IRawFontStyle {
+export interface IRawFontStyle {
     font?: ICSSRule | string;
     fontFamily?: ICSSRule | string;
     fontKerning?: ICSSRule | string;
+    // Warning: (ae-forgotten-export) The symbol "ICSSPixelUnitRule" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ICSSPercentageRule" needs to be exported by the entry point index.d.ts
     fontSize?: ICSSRule | 'xx-small' | 'x-small' | 'small' | 'medium' | 'large' | 'x-large' | 'xx-large' | 'larger' | 'smaller' | ICSSPixelUnitRule | ICSSPercentageRule;
     fontSizeAdjust?: ICSSRule | 'none' | number;
     fontStretch?: ICSSRule | 'normal' | 'ultra-condensed' | 'extra-condensed' | 'condensed' | 'semi-condensed' | 'semi-expanded' | 'expanded' | 'extra-expanded' | 'ultra-expanded';
@@ -93,7 +95,7 @@ interface IRawFontStyle {
 }
 
 // @public
-interface IRawStyle extends IRawStyleBase {
+export interface IRawStyle extends IRawStyleBase {
     displayName?: string;
     selectors?: {
         [key: string]: IStyle;
@@ -101,11 +103,13 @@ interface IRawStyle extends IRawStyleBase {
 }
 
 // @public
-interface IRawStyleBase extends IRawFontStyle {
+export interface IRawStyleBase extends IRawFontStyle {
     alignContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'stretch';
     alignItems?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'baseline' | 'stretch';
     alignmentAdjust?: ICSSRule | string;
     alignmentBaseline?: ICSSRule | string;
+    // Warning: (ae-forgotten-export) The symbol "ICSSBaselinePositionRule" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "ICSSOverflowAndSelfPositionRule" needs to be exported by the entry point index.d.ts
     alignSelf?: ICSSRule | 'auto' | 'normal' | 'stretch' | ICSSBaselinePositionRule | ICSSOverflowAndSelfPositionRule;
     animation?: ICSSRule | string;
     animationDelay?: ICSSRule | string;
@@ -186,6 +190,7 @@ interface IRawStyleBase extends IRawFontStyle {
     cueAfter?: ICSSRule | string;
     cursor?: ICSSRule | string;
     direction?: ICSSRule | string;
+    // Warning: (ae-forgotten-export) The symbol "ICSSDisplayRule" needs to be exported by the entry point index.d.ts
     display?: ICSSRule | ICSSDisplayRule;
     fill?: ICSSRule | string;
     fillOpacity?: ICSSRule | number;
@@ -252,6 +257,7 @@ interface IRawStyleBase extends IRawFontStyle {
     maxWidth?: ICSSRule | ICSSPixelUnitRule;
     minHeight?: ICSSRule | ICSSPixelUnitRule;
     minWidth?: ICSSRule | ICSSPixelUnitRule;
+    // Warning: (ae-forgotten-export) The symbol "IMixBlendModes" needs to be exported by the entry point index.d.ts
     mixBlendMode?: ICSSRule | IMixBlendModes;
     MozOsxFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
     MsHighContrastAdjust?: ICSSRule | string;
@@ -369,23 +375,23 @@ interface IRawStyleBase extends IRawFontStyle {
 }
 
 // @public
-declare type IStyle = IStyleBase | IStyleBaseArray;
+export type IStyle = IStyleBase | IStyleBaseArray;
 
 // @public (undocumented)
-declare type IStyleBase = IRawStyle | string | false | null | undefined;
+export type IStyleBase = IRawStyle | string | false | null | undefined;
 
 // @public (undocumented)
-interface IStyleBaseArray extends Array<IStyle> {
+export interface IStyleBaseArray extends Array<IStyle> {
 }
 
 // @public
-declare type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => Partial<TStyleSet>;
+export type IStyleFunction<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = (props: TStylesProps) => Partial<TStyleSet>;
 
 // @public
-declare type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | Partial<TStyleSet>;
+export type IStyleFunctionOrObject<TStylesProps, TStyleSet extends IStyleSet<TStyleSet>> = IStyleFunction<TStylesProps, TStyleSet> | Partial<TStyleSet>;
 
 // @public
-declare type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
+export type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
     [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: IStyle;
 } & {
     subComponentStyles?: {
@@ -394,7 +400,7 @@ declare type IStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
 };
 
 // @public
-interface IStyleSheetConfig {
+export interface IStyleSheetConfig {
     cspSettings?: ICSPSettings;
     defaultPrefix?: string;
     injectionMode?: InjectionMode;
@@ -403,39 +409,38 @@ interface IStyleSheetConfig {
 }
 
 // @public
-declare function keyframes(timeline: {
+export function keyframes(timeline: {
     [key: string]: {};
 }): string;
 
 // @public
-declare function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
+export function mergeStyles(...args: (IStyle | IStyleBaseArray | false | null | undefined)[]): string;
 
 // @public
-declare function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<TStyleSet>;
+export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(styleSet: TStyleSet | false | null | undefined): IProcessedStyleSet<TStyleSet>;
 
 // @public
-declare function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
+export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2>;
 
 // @public
-declare function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
+export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3>;
 
 // @public
-declare function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
+export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>, TStyleSet3 extends IStyleSet<TStyleSet3>, TStyleSet4 extends IStyleSet<TStyleSet4>>(styleSet1: TStyleSet1 | false | null | undefined, styleSet2: TStyleSet2 | false | null | undefined, styleSet3: TStyleSet3 | false | null | undefined, styleSet4: TStyleSet4 | false | null | undefined): IProcessedStyleSet<TStyleSet1 & TStyleSet2 & TStyleSet3 & TStyleSet4>;
 
 // @public
-declare function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
+export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
-declare type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
+export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
 // @public
-declare function setRTL(isRTL: boolean): void;
+export function setRTL(isRTL: boolean): void;
 
 // @public
-declare class Stylesheet {
-    // (undocumented)
+export class Stylesheet {
     constructor(config?: IStyleSheetConfig);
     argsFromClassName(className: string): IStyle[] | undefined;
     cacheClassName(className: string, key: string, args: IStyle[], rules: string[]): void;
