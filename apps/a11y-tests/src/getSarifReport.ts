@@ -3,7 +3,9 @@ import * as puppeteer from 'puppeteer';
 import { convertAxeToSarif } from 'axe-sarif-converter';
 import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log'; // TODO - merge with prev line when SarifLog is exported from index
 
-const TEST_URL_ROOT = 'http://localhost:4322/';
+const TEST_URL_ROOT = process.env.BUILD_SOURCEBRANCH
+  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
+  : 'http://localhost:4322';
 
 export async function getSarifReport(subUrl: string): Promise<SarifLog> {
   const browser = await puppeteer.launch();
