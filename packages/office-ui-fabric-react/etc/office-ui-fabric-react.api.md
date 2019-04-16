@@ -845,6 +845,8 @@ export const DetailsList: React_2.StatelessComponent<IDetailsListProps>;
 export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
     constructor(props: IDetailsListProps);
     // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
     componentDidUpdate(prevProps: IDetailsListProps, prevState: IDetailsListState): void;
     // (undocumented)
     componentWillReceiveProps(newProps: IDetailsListProps): void;
@@ -7597,6 +7599,8 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     // (undocumented)
     render(): JSX.Element;
     scrollToIndex(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
+    // (undocumented)
+    scrollToIndexAsync(index: number, measureItem?: (itemIndex: number) => number, scrollToMode?: ScrollToMode): void;
     // (undocumented)
     shouldComponentUpdate(newProps: IListProps<T>, newState: IListState<T>): boolean;
     }
