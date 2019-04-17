@@ -20,10 +20,7 @@ export interface IPage {
 /**
  * Used to keep track of where the page will live on the site
  */
-export enum PageKind {
-  References = 'References',
-  Components = 'Components'
-}
+export type PageKind = 'References' | 'Components';
 
 export interface ITokenJson {
   text: string;

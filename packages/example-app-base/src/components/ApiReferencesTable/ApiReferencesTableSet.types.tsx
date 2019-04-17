@@ -55,10 +55,7 @@ export interface IApiProperty {
 /**
  * Used to keep track of where the page will live on the site
  */
-export enum PageKind {
-  References = 'References',
-  Components = 'Components'
-}
+export type PageKind = 'References' | 'Components';
 
 export interface ILinkToken {
   text: string;

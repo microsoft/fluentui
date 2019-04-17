@@ -593,9 +593,9 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
             let pageData: PageData | undefined = collectedData.pageDataByPageName.get(pageName);
 
             if (pageData === undefined) {
-              collectedData.pageDataByPageName.set(pageName, new PageData(pageName, PageKind.References));
+              collectedData.pageDataByPageName.set(pageName, new PageData(pageName, 'References'));
               pageData = collectedData.pageDataByPageName.get(pageName);
-              collectedData.apiToPage.set(apiItem.displayName, { pageName, kind: PageKind.References });
+              collectedData.apiToPage.set(apiItem.displayName, { pageName, kind: 'References' });
             } else {
               collectedData.apiToPage.set(apiItem.displayName, { pageName, kind: pageData.kind });
             }

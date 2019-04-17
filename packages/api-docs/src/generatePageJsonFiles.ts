@@ -1,6 +1,5 @@
 import * as path from 'path';
 import { generateJson } from './PageJsonGenerator';
-import { PageKind } from './PageJsonGenerator.types';
 
 // Generate JSON for office-ui-fabric-react, styling, utilities, and merge-styles
 
@@ -13,7 +12,7 @@ generateJson([
     ],
     pageJsonFolderPath: path.join(__dirname, '../lib/pages/references'),
     pageNames: [],
-    kind: PageKind.References
+    kind: 'References'
   },
   {
     apiJsonPaths: [path.resolve(__dirname, '../../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
@@ -88,6 +87,6 @@ generateJson([
       'Toggle',
       'Tooltip'
     ],
-    kind: PageKind.Components
+    kind: 'Components'
   }
 ]);
