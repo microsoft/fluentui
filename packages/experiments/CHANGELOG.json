@@ -2,6 +2,45 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.74.0",
+      "tag": "@uifabric/experiments_v6.74.0",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Add focus() call in IButton interface.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "1aad16a747e5336325705595771a6ed412370c2e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "cbbfff4910b5918b93b11ed6e3472c8287751607"
+          },
+          {
+            "comment": "Button: Adding overview, dos and don'ts documentation",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "b1057174b0291b4c1ee26a6abd6a081315c45893"
+          },
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.0` to `^6.167.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.0` to `^6.14.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.73.0",
       "tag": "@uifabric/experiments_v6.73.0",
       "date": "Tue, 16 Apr 2019 12:32:59 GMT",

@@ -1,6 +1,19 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+
+## 6.74.0
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Minor changes
+
+- Button: Add focus() call in IButton interface.
+
+### Patches
+
+- Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.
+- Button: Adding overview, dos and don'ts documentation
+- Run prettier on all files
 
 ## 6.73.0
 Tue, 16 Apr 2019 12:32:59 GMT
