@@ -1,25 +1,23 @@
 import * as React from 'react';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
-
-let _items: any[];
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IDetailsListCustomColumnsExampleState {
-  sortedItems?: any[];
-  columns?: IColumn[];
+  sortedItems: IExampleItem[];
+  columns: IColumn[];
 }
 
 export class DetailsListCustomColumnsExample extends React.Component<{}, IDetailsListCustomColumnsExampleState> {
   constructor(props: {}) {
     super(props);
 
-    _items = _items || createListItems(500);
-
+    const items = createListItems(500);
     this.state = {
-      sortedItems: _items,
-      columns: _buildColumns()
+      sortedItems: items,
+      columns: _buildColumns(items)
     };
   }
 
@@ -28,13 +26,15 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
 
     return (
       <DetailsList
-        items={sortedItems as any[]}
+        items={sortedItems}
         setKey="set"
         columns={columns}
         onRenderItemColumn={_renderItemColumn}
         onColumnHeaderClick={this._onColumnClick}
         onItemInvoked={this._onItemInvoked}
         onColumnHeaderContextMenu={this._onColumnHeaderContextMenu}
+        ariaLabelForSelectionColumn="Toggle selection"
+        ariaLabelForSelectAllCheckbox="Toggle selection for all items"
       />
     );
   }
@@ -50,21 +50,12 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
     }
 
     // Sort the items.
-    sortedItems = sortedItems!.concat([]).sort((a, b) => {
-      const firstValue = a[column.fieldName || ''];
-      const secondValue = b[column.fieldName || ''];
-
-      if (isSortedDescending) {
-        return firstValue > secondValue ? -1 : 1;
-      } else {
-        return firstValue > secondValue ? 1 : -1;
-      }
-    });
+    sortedItems = _copyAndSort(sortedItems, column.fieldName!, isSortedDescending);
 
     // Reset the items and columns to match the state.
     this.setState({
       sortedItems: sortedItems,
-      columns: columns!.map(col => {
+      columns: columns.map(col => {
         col.isSorted = col.key === column.key;
 
         if (col.isSorted) {
@@ -85,8 +76,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   }
 }
 
-function _buildColumns() {
-  const columns = buildColumns(_items);
+function _buildColumns(items: IExampleItem[]): IColumn[] {
+  const columns = buildColumns(items);
 
   const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
 
@@ -97,8 +88,8 @@ function _buildColumns() {
   return columns;
 }
 
-function _renderItemColumn(item: any, index: number, column: IColumn) {
-  const fieldContent = item[column.fieldName || ''];
+function _renderItemColumn(item: IExampleItem, index: number, column: IColumn) {
+  const fieldContent = item[column.fieldName as keyof IExampleItem] as string;
 
   switch (column.key) {
     case 'thumbnail':
@@ -109,7 +100,7 @@ function _renderItemColumn(item: any, index: number, column: IColumn) {
 
     case 'color':
       return (
-        <span data-selection-disabled={true} style={{ color: fieldContent, height: '100%', display: 'block' }}>
+        <span data-selection-disabled={true} className={mergeStyles({ color: fieldContent, height: '100%', display: 'block' })}>
           {fieldContent}
         </span>
       );
@@ -117,4 +108,9 @@ function _renderItemColumn(item: any, index: number, column: IColumn) {
     default:
       return <span>{fieldContent}</span>;
   }
+}
+
+function _copyAndSort<T>(items: T[], columnKey: string, isSortedDescending?: boolean): T[] {
+  const key = columnKey as keyof T;
+  return items.slice(0).sort((a: T, b: T) => ((isSortedDescending ? a[key] < b[key] : a[key] > b[key]) ? 1 : -1));
 }

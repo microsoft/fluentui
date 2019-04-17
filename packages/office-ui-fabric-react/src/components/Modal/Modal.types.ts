@@ -3,8 +3,12 @@ import { ModalBase } from './Modal.base';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
 import { IStyle, ITheme } from '../../Styling';
+import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModal {
   /**
    * Sets focus on the first focusable, or configured, child in focus trap zone
@@ -12,7 +16,10 @@ export interface IModal {
   focus: () => void;
 }
 
-export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+/**
+ * {@docCategory Modal}
+ */
+export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -31,13 +38,13 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * Whether the dialog is displayed.
-   * @default false
+   * @defaultvalue false
    */
   isOpen?: boolean;
 
   /**
    * Whether the overlay is dark themed.
-   * @default true
+   * @defaultvalue true
    */
   isDarkOverlay?: boolean;
 
@@ -52,10 +59,22 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   onDismissed?: () => any;
 
   /**
+   * Props to be passed through to Layer
+   */
+  layerProps?: ILayerProps;
+
+  /**
    * Whether the dialog can be light dismissed by clicking outside the dialog (on the overlay).
-   * @default false
+   * @defaultvalue false
    */
   isBlocking?: boolean;
+
+  /**
+   * Whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
+   * if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored),
+   * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
+   */
+  isModeless?: boolean;
 
   /**
    * Optional class name to be added to the root class
@@ -74,6 +93,7 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
 
   /**
    * A callback function for when the Modal content is mounted on the overlay layer
+   * @deprecated Use layerProps.onLayerDidMount instead
    */
   onLayerDidMount?: () => void;
 
@@ -94,8 +114,11 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   topOffsetFixed?: boolean;
 }
 
+/**
+ * {@docCategory Modal}
+ */
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
@@ -104,10 +127,16 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
+    /** Classname for layer element */
+    layerClassName?: string;
   };
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModalStyles {
   root: IStyle;
   main: IStyle;
   scrollableContent: IStyle;
+  layer: IStyle;
 }

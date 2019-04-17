@@ -1,12 +1,4 @@
-import {
-  FontSizes,
-  FontWeights,
-  IRawStyle,
-  ITheme,
-  concatStyleSets,
-  getFocusStyle,
-  HighContrastSelector
-} from '../../Styling';
+import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
@@ -68,6 +60,7 @@ export const getOptionStyles = memoizeFunction(
 
     const optionStyles: IComboBoxOptionStyles = {
       root: [
+        theme.fonts.medium,
         {
           backgroundColor: isPending ? ComboBoxOptionBackgroundHovered : 'transparent',
           boxSizing: 'border-box',
@@ -230,7 +223,7 @@ export const getStyles = memoizeFunction(
       label: {},
       labelDisabled: {},
       root: [
-        fonts.medium,
+        theme.fonts.medium,
         {
           boxShadow: 'none',
           marginLeft: '0',

@@ -26,7 +26,7 @@ export interface ITilesGridItem<TItem> {
    * Invoked to render the virtual DOM for the item.
    * This content will be rendered inside the cell allocated for the item.
    */
-  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode | React.ReactNode[];
+  onRender: (content: TItem, finalSize?: ISize) => React.ReactNode;
 }
 
 export const enum TilesGridMode {
@@ -68,6 +68,10 @@ export interface ITilesGridSegment<TItem> {
    */
   minRowHeight: number;
   /**
+   * A maximum number of rows to fill, before 'hiding' all other items in the grid.
+   */
+  maxRowCount?: number;
+  /**
    * The maximum scale factor to use when stretching items to fill a row.
    */
   maxScaleFactor?: number;
@@ -99,10 +103,7 @@ export interface ITilesGridSegment<TItem> {
 
 export { ISize as ITileSize };
 
-export interface ITilesListProps<TItem>
-  extends IBaseProps,
-    React.Props<TilesList<TItem>>,
-    React.HTMLAttributes<HTMLDivElement> {
+export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesList<TItem>>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * An array of items to assign to the list.
    * This should be complete and not contain any holes.

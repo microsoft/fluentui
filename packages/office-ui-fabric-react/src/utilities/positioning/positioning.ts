@@ -264,6 +264,32 @@ function _flipToFit(
 }
 
 /**
+ * Flips only the alignment edge of an element rectangle. This is used instead of nudging the alignment edges into position,
+ * when alignTargetEdge is specified.
+ * @param elementEstimate
+ * @param target
+ * @param bounding
+ * @param gap
+ */
+function _flipAlignmentEdge(elementEstimate: IElementPosition, target: Rectangle, gap: number, coverTarget?: boolean): IElementPosition {
+  const { alignmentEdge, targetEdge, elementRectangle } = elementEstimate;
+  const oppositeEdge = alignmentEdge! * -1;
+  const newEstimate = _estimatePosition(
+    elementRectangle,
+    target,
+    { targetEdge: targetEdge, alignmentEdge: oppositeEdge },
+    gap,
+    coverTarget
+  );
+
+  return {
+    elementRectangle: newEstimate,
+    targetEdge: targetEdge,
+    alignmentEdge: oppositeEdge
+  };
+}
+
+/**
  * Adjusts a element rectangle to fit within the bounds given. If directionalHintFixed or covertarget is passed in
  * then the element will not flip sides on the target. They will, however, be nudged to fit within the bounds given.
  *
@@ -285,7 +311,7 @@ function _adjustFitWithinBounds(
   directionalHintFixed?: boolean,
   coverTarget?: boolean
 ): IElementPosition {
-  const { alignmentEdge } = positionData;
+  const { alignmentEdge, alignTargetEdge } = positionData;
   let elementEstimate: IElementPosition = {
     elementRectangle: element,
     targetEdge: positionData.targetEdge,
@@ -298,8 +324,18 @@ function _adjustFitWithinBounds(
 
   const outOfBounds = _getOutOfBoundsEdges(element, bounding);
 
-  for (const direction of outOfBounds) {
-    elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+  if (alignTargetEdge) {
+    // The edge opposite to the alignment edge might be out of bounds. Flip alignment to see if we can get it within bounds.
+    if (elementEstimate.alignmentEdge && outOfBounds.indexOf(elementEstimate.alignmentEdge * -1) > -1) {
+      const flippedElementEstimate = _flipAlignmentEdge(elementEstimate, target, gap, coverTarget);
+      if (_isRectangleWithinBounds(flippedElementEstimate.elementRectangle, bounding)) {
+        return flippedElementEstimate;
+      }
+    }
+  } else {
+    for (const direction of outOfBounds) {
+      elementEstimate.elementRectangle = _alignEdges(elementEstimate.elementRectangle, bounding, direction);
+    }
   }
 
   return elementEstimate;
@@ -379,6 +415,26 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
 }
 
 /**
+ * Retrieve the final value for the return edge of elementRectangle.
+ * If the elementRectangle is closer to one side of the bounds versus the other, the return edge is flipped to grow inward.
+ *
+ * @param elementRectangle
+ * @param targetEdge
+ * @param bounds
+ */
+function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleEdge, bounds?: Rectangle): RectangleEdge {
+  if (
+    bounds &&
+    Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
+      Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
+  ) {
+    return returnEdge * -1;
+  }
+
+  return returnEdge;
+}
+
+/**
  * Finalizes the element positon based on the hostElement. Only returns the
  * rectangle values to position such that they are anchored to the target.
  * This helps prevent resizing from looking very strange.
@@ -388,6 +444,7 @@ function _getFlankingEdges(edge: RectangleEdge): { positiveEdge: RectangleEdge; 
  * @param {Rectangle} elementRectangle
  * @param {HTMLElement} hostElement
  * @param {RectangleEdge} targetEdge
+ * @param {RectangleEdge} bounds
  * @param {RectangleEdge} [alignmentEdge]
  * @param {boolean} coverTarget
  * @returns {IPartialIRectangle}
@@ -396,6 +453,7 @@ function _finalizeElementPosition(
   elementRectangle: Rectangle,
   hostElement: HTMLElement,
   targetEdge: RectangleEdge,
+  bounds?: Rectangle,
   alignmentEdge?: RectangleEdge,
   coverTarget?: boolean
 ): IPartialIRectangle {
@@ -404,7 +462,11 @@ function _finalizeElementPosition(
   const hostRect: Rectangle = _getRectangleFromElement(hostElement);
   const elementEdge = coverTarget ? targetEdge : targetEdge * -1;
   const elementEdgeString = RectangleEdge[elementEdge];
-  const returnEdge = alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
+  const returnEdge = _finalizeReturnEdge(
+    elementRectangle,
+    alignmentEdge ? alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge,
+    bounds
+  );
 
   returnValue[elementEdgeString] = _getRelativeEdgeDifference(elementRectangle, hostRect, elementEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(elementRectangle, hostRect, returnEdge);
@@ -468,12 +530,14 @@ function _getAlignmentData(
   positionData: IPositionDirectionalHintData,
   target: Rectangle,
   boundingRect: Rectangle,
-  coverTarget?: boolean
+  coverTarget?: boolean,
+  alignTargetEdge?: boolean
 ): IPositionDirectionalHintData {
   if (positionData.isAuto) {
     positionData.alignmentEdge = getClosestEdge(positionData.targetEdge, target, boundingRect);
   }
 
+  positionData.alignTargetEdge = alignTargetEdge;
   return positionData;
 }
 
@@ -509,12 +573,20 @@ function _positionElementWithinBounds(
   }
 }
 
-function _finalizeBeakPosition(elementPosition: IElementPosition, positionedBeak: Rectangle): ICalloutBeakPositionedInfo {
+function _finalizeBeakPosition(
+  elementPosition: IElementPosition,
+  positionedBeak: Rectangle,
+  bounds?: Rectangle
+): ICalloutBeakPositionedInfo {
   const targetEdge = elementPosition.targetEdge * -1;
   // The "host" element that we will use to help position the beak.
   const actualElement = new Rectangle(0, elementPosition.elementRectangle.width, 0, elementPosition.elementRectangle.height);
-  const returnEdge = elementPosition.alignmentEdge ? elementPosition.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge;
   const returnValue: IPartialIRectangle = {};
+  const returnEdge = _finalizeReturnEdge(
+    elementPosition.elementRectangle,
+    elementPosition.alignmentEdge ? elementPosition.alignmentEdge : _getFlankingEdges(targetEdge).positiveEdge,
+    bounds
+  );
 
   returnValue[RectangleEdge[targetEdge]] = _getEdgeValue(positionedBeak, targetEdge);
   returnValue[RectangleEdge[returnEdge]] = _getRelativeEdgeDifference(positionedBeak, actualElement, returnEdge);
@@ -633,20 +705,18 @@ function _getMaxHeightFromTargetRectangle(
 
 function _positionElementRelative(
   props: IPositionProps,
-  hostElement: HTMLElement,
   elementToPosition: HTMLElement,
+  boundingRect: Rectangle,
   previousPositions?: IPositionedData
 ): IElementPositionInfo {
   const gap: number = props.gapSpace ? props.gapSpace : 0;
-  const boundingRect: Rectangle = props.bounds
-    ? _getRectangleFromIRect(props.bounds)
-    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
   const targetRect: Rectangle = _getTargetRect(boundingRect, props.target);
   const positionData: IPositionDirectionalHintData = _getAlignmentData(
     _getPositionData(props.directionalHint, props.directionalHintForRTL, previousPositions)!,
     targetRect,
     boundingRect,
-    props.coverTarget
+    props.coverTarget,
+    props.alignTargetEdge
   );
   const positionedElement: IElementPosition = _positionElementWithinBounds(
     _getRectangleFromElement(elementToPosition),
@@ -660,11 +730,17 @@ function _positionElementRelative(
   return { ...positionedElement, targetRectangle: targetRect };
 }
 
-function _finalizePositionData(positionedElement: IElementPosition, hostElement: HTMLElement, coverTarget?: boolean): IPositionedData {
+function _finalizePositionData(
+  positionedElement: IElementPosition,
+  hostElement: HTMLElement,
+  bounds?: Rectangle,
+  coverTarget?: boolean
+): IPositionedData {
   const finalizedElement: IPartialIRectangle = _finalizeElementPosition(
     positionedElement.elementRectangle,
     hostElement,
     positionedElement.targetEdge,
+    bounds,
     positionedElement.alignmentEdge,
     coverTarget
   );
@@ -681,8 +757,11 @@ function _positionElement(
   elementToPosition: HTMLElement,
   previousPositions?: IPositionedData
 ): IPositionedData {
-  const positionedElement: IElementPosition = _positionElementRelative(props, hostElement, elementToPosition, previousPositions);
-  return _finalizePositionData(positionedElement, hostElement, props.coverTarget);
+  const boundingRect: Rectangle = props.bounds
+    ? _getRectangleFromIRect(props.bounds)
+    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  const positionedElement: IElementPosition = _positionElementRelative(props, elementToPosition, boundingRect, previousPositions);
+  return _finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget);
 }
 
 function _positionCallout(
@@ -695,11 +774,14 @@ function _positionCallout(
   const gap: number = _calculateActualBeakWidthInPixels(beakWidth) / 2 + (props.gapSpace ? props.gapSpace : 0);
   const positionProps: IPositionProps = props;
   positionProps.gapSpace = gap;
-  const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, hostElement, callout, previousPositions);
+  const boundingRect: Rectangle = props.bounds
+    ? _getRectangleFromIRect(props.bounds)
+    : new Rectangle(0, window.innerWidth - getScrollbarWidth(), 0, window.innerHeight);
+  const positionedElement: IElementPositionInfo = _positionElementRelative(positionProps, callout, boundingRect, previousPositions);
   const beakPositioned: Rectangle = _positionBeak(beakWidth, positionedElement);
-  const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned);
+  const finalizedBeakPosition: ICalloutBeakPositionedInfo = _finalizeBeakPosition(positionedElement, beakPositioned, boundingRect);
   return {
-    ..._finalizePositionData(positionedElement, hostElement, props.coverTarget),
+    ..._finalizePositionData(positionedElement, hostElement, boundingRect, props.coverTarget),
     beakPosition: finalizedBeakPosition
   };
 }
@@ -708,6 +790,7 @@ function _positionCallout(
 /* tslint:disable:variable-name */
 export const __positioningTestPackage = {
   _finalizePositionData,
+  _finalizeBeakPosition,
   _calculateActualBeakWidthInPixels,
   _positionElementWithinBounds,
   _positionBeak,

@@ -49,6 +49,7 @@ import { ISemanticTextColors } from './ISemanticTextColors';
  * Lists differ from menus in that they are designed to show infinite amounts of items, often scroll,
  * and have a large and complex interaction surface.
  * This category covers all kinds of lists, whether they're typical one-item-per-row lists (like DetailsList) or ones with a tiled layout.
+ * {@docCategory ISemanticColors}
  */
 export interface ISemanticColors extends ISemanticTextColors {
   /* ANY ADDITIONS/REMOVALS HERE MUST ALSO BE MADE TO \packages\office-ui-fabric-react\src\common\_semanticSlots.scss */
@@ -195,7 +196,6 @@ export interface ISemanticColors extends ISemanticTextColors {
   /**
    * Background of a hovered standard button
    */
-
   buttonBackgroundHovered: string;
 
   /**
@@ -247,6 +247,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    * Border of a primary button
    */
   primaryButtonBorder: string;
+
+  /**
+   * Background of an accent button (kicker)
+   */
+  accentButtonBackground: string;
 
   //// Menus, popups, etc
 

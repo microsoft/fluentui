@@ -24,8 +24,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     }
 
     const styleSet =
-      styleFunctionOrObject &&
-      (typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps!) : styleFunctionOrObject);
+      styleFunctionOrObject && (typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps!) : styleFunctionOrObject);
 
     return mergeStyleSets(styleSet as TStyleSet);
   };

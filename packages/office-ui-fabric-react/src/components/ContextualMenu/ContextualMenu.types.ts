@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
 import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
@@ -10,9 +10,12 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
-import { IContextualMenuItemProps, IContextualMenuRenderItem } from './ContextualMenuItem.types';
+import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
@@ -20,10 +23,14 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenu {}
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
   /**
@@ -57,7 +64,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.bottomAutoEdge
+   * @defaultvalue DirectionalHint.bottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
@@ -69,25 +76,25 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * The gap between the ContextualMenu and the target
-   * @default 0
+   * @defaultvalue 0
    */
   gapSpace?: number;
 
   /**
    * The width of the beak.
-   * @default 16
+   * @defaultvalue 16
    */
   beakWidth?: number;
 
   /**
    * If true the context menu will render as the same width as the target element
-   * @default false
+   * @defaultvalue false
    */
   useTargetWidth?: boolean;
 
   /**
    * If true the context menu will have a minimum width equal to the width of the target element
-   * @default false
+   * @defaultvalue false
    */
   useTargetAsMinWidth?: boolean;
 
@@ -104,32 +111,38 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
-   * @default false
+   * @defaultvalue false
    */
 
   coverTarget?: boolean;
 
   /**
+   * If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds,
+   * thus making sure the element aligns perfectly with target's alignment edge
+   */
+  alignTargetEdge?: boolean;
+
+  /**
    * Collection of menu items.
-   * @default []
+   * @defaultvalue []
    */
   items: IContextualMenuItem[];
 
   /**
    * Aria Labelled by labelElementId
-   * @default null
+   * @defaultvalue null
    */
   labelElementId?: string;
 
   /**
    * Whether to focus on the menu when mounted.
-   * @default true
+   * @defaultvalue true
    */
   shouldFocusOnMount?: boolean;
 
   /**
    * Whether to focus on the contextual menu container (as opposed to the first menu item).
-   * @default null
+   * @defaultvalue null
    */
   shouldFocusOnContainer?: boolean;
 
@@ -165,14 +178,14 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * If true do not render on a new layer. If false render on a new layer.
-   * @default false
+   * @defaultvalue false
    */
   doNotLayer?: boolean;
 
   /**
    * If true the position will not change sides in an attempt to fit the ContextualMenu within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
 
@@ -199,7 +212,8 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   /**
    * Method to provide the classnames to style the contextual menu. Default value is the getMenuClassnames func
    * defined in ContextualMenu.classnames.
-   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyle API.
+   * Deprecated, use `styles` prop of `IContextualMenuProps` to leverage mergeStyles API.
+   * @deprecated Use `styles` prop of `IContextualMenuProps` to leverage mergeStyles API.
    */
   getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
 
@@ -218,7 +232,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
 
   /**
    * Method to override the render of the individual menu items
-   * @default ContextualMenuItem
+   * @defaultvalue ContextualMenuItem
    */
   contextualMenuItemAs?: React.ComponentClass<IContextualMenuItemProps> | React.StatelessComponent<IContextualMenuItemProps>;
 
@@ -226,7 +240,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * Props to pass down to the FocusZone.
    * NOTE: the default FocusZoneDirection will be used unless a direction
    * is specified in the focusZoneProps (even if other focusZoneProps are defined)
-   * @default {direction: FocusZoneDirection.vertical}
+   * @defaultvalue \{direction: FocusZoneDirection.vertical\}
    */
   focusZoneProps?: IFocusZoneProps;
 
@@ -243,11 +257,14 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * If true, the contextual menu will not be updated until
    * focus enters the menu via other means. This will only result
    * in different behavior when shouldFocusOnMount = false
-   * @default null
+   * @defaultvalue null
    */
   delayUpdateFocusOnHover?: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuListProps {
   items: IContextualMenuItem[];
   totalItemCount: number;
@@ -255,6 +272,9 @@ export interface IContextualMenuListProps {
   hasIcons: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuItem {
   /**
    * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
@@ -356,15 +376,17 @@ export interface IContextualMenuItem {
 
   /**
    * Properties to apply to a submenu to this item.
-   * The ContextualMenu will provide default values for 'target', 'onDismiss', 'isSubMenu',
-   *  'id', 'shouldFocusOnMount', 'directionalHint', 'className', and 'gapSpace', all of which
-   *  can be overridden.
+   *
+   * The ContextualMenu will provide default values for `target`, `onDismiss`, `isSubMenu`,
+   * `id`, `shouldFocusOnMount`, `directionalHint`, `className`, and `gapSpace`, all of which
+   * can be overridden.
    */
   subMenuProps?: IContextualMenuProps;
 
   /**
    * Method to provide the classnames to style the individual items inside a menu.
-   * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyle API.
+   * Deprecated, use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyles API.
+   * @deprecated Use `styles` prop of `IContextualMenuItemProps` to leverage mergeStyles API.
    */
   getItemClassNames?: (
     theme: ITheme,
@@ -388,7 +410,7 @@ export interface IContextualMenuItem {
   /**
    * Method to provide the classnames to style the Vertical Divider of a split button inside a menu.
    * Default value is the getVerticalDividerClassnames func defined in ContextualMenu.classnames
-   * @default getSplitButtonVerticalDividerClassNames
+   * @defaultvalue getSplitButtonVerticalDividerClassNames
    */
   getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
 
@@ -406,8 +428,9 @@ export interface IContextualMenuItem {
 
   /**
    * Additional styles to apply to the menu item
+   * Deprecated, use `styles` instead.
    * @defaultvalue undefined
-   * @deprecated in favor of the styles prop to leverage mergeStyles API.
+   * @deprecated in favor of the `styles` prop to leverage mergeStyles API.
    */
   style?: React.CSSProperties;
 
@@ -438,7 +461,7 @@ export interface IContextualMenuItem {
    * be used to interrupt native on click events as well. The click event should still handle
    * the commands. This should only be used in special cases when react and non-react are mixed.
    */
-  onMouseDown?: (item: IContextualMenuItem, event: any) => void;
+  onMouseDown?: (item: IContextualMenuItem, event: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * Optional override for the role attribute on the menu button. If one is not provided, it will
@@ -471,6 +494,7 @@ export interface IContextualMenuItem {
 
   /**
    * Text description for the menu item to display
+   * Deprecated, use `text` instead.
    * @deprecated Use `text` instead.
    */
   name?: string;
@@ -478,8 +502,9 @@ export interface IContextualMenuItem {
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ * {@docCategory ContextualMenu}
  */
-export interface IContextualMenuSection extends React.Props<any> {
+export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
    * The items to include inside the section.
    */
@@ -501,6 +526,9 @@ export interface IContextualMenuSection extends React.Props<any> {
   bottomDivider?: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IMenuItemStyles extends IButtonStyles {
   /**
    * Styles for a menu item that is an anchor link.
@@ -538,6 +566,9 @@ export interface IMenuItemStyles extends IButtonStyles {
   divider: IStyle;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -552,6 +583,9 @@ export interface IContextualMenuStyleProps {
   // Insert ContextualMenu style props below
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuStyles {
   /**
    * Style override for the contextual menu title.
@@ -577,4 +611,20 @@ export interface IContextualMenuStyles {
    * Styles for the list that contains all menuItems.
    */
   list: IStyle;
+
+  /**
+   * SubComponent styles.
+   */
+  subComponentStyles: IContextualMenuSubComponentStyles;
+}
+
+/**
+ * {@docCategory ContextualMenu}
+ */
+export interface IContextualMenuSubComponentStyles {
+  /** Refers to the callout that hosts the ContextualMenu options */
+  callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;
+
+  /** Refers to the item in the list */
+  menuItem: IStyleFunctionOrObject<IContextualMenuItemStyleProps, any>;
 }

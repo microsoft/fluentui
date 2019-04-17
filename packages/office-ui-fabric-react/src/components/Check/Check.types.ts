@@ -3,7 +3,10 @@ import { CheckBase } from './Check.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
-export interface ICheckProps extends React.Props<CheckBase> {
+/**
+ * {@docCategory Check}
+ */
+export interface ICheckProps extends React.ClassAttributes<CheckBase> {
   /**
    * Gets the component ref.
    */
@@ -37,6 +40,9 @@ export interface ICheckProps extends React.Props<CheckBase> {
   className?: string;
 }
 
+/**
+ * {@docCategory Check}
+ */
 export interface ICheckStyleProps {
   /**
    * Accept theme prop.
@@ -57,6 +63,9 @@ export interface ICheckStyleProps {
   checked?: boolean;
 }
 
+/**
+ * {@docCategory Check}
+ */
 export interface ICheckStyles {
   /**
    * Style for the root element.

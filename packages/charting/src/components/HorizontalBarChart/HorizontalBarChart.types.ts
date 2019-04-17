@@ -54,7 +54,18 @@ export interface IHorizontalBarChartStyleProps {
   /**
    * Width of the chart.
    */
-  width: number;
+  width: number | undefined;
+
+  /**
+   * line color for callout
+   */
+  color?: string;
+
+  /**
+   * Height of bar chart
+   * @default 15
+   */
+  barHeight?: number;
 }
 
 export interface IHorizontalBarChartStyles {
@@ -76,4 +87,19 @@ export interface IHorizontalBarChartStyles {
    * Style for the chart Title.
    */
   chartTitle: IStyle;
+
+  /**
+   * styles for hover card root
+   */
+  hoverCardRoot?: IStyle;
+
+  /**
+   * styles for hover card text
+   */
+  hoverCardTextStyles?: IStyle;
+
+  /**
+   * styles for hover card data
+   */
+  hoverCardDataStyles?: IStyle;
 }

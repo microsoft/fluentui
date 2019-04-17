@@ -5,7 +5,7 @@ import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles }
 import { TestImages } from '../../../common/TestImages';
 import { Link } from '../../../Link';
 
-export class ActivityItemPersonaExample extends React.Component<React.Props<ActivityItemPersonaExample>, {}> {
+export class ActivityItemPersonaExample extends React.Component<React.ClassAttributes<ActivityItemPersonaExample>, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles, {});

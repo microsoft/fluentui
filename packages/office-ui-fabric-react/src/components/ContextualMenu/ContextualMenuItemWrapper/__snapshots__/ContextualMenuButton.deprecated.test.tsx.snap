@@ -3,12 +3,10 @@
 exports[`ContextualMenuButton creates a normal button renders the contextual menu split button correctly 1`] = `
 <button
   aria-disabled={false}
-  aria-label=""
   aria-posinset={1}
   aria-setsize={1}
   className="root"
   onClick={[Function]}
-  onKeyDown={null}
   onMouseDown={[Function]}
   onMouseEnter={[Function]}
   onMouseLeave={[Function]}

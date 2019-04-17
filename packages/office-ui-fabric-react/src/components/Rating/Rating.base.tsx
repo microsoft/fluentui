@@ -12,24 +12,24 @@ interface IRatingStarProps extends React.AllHTMLAttributes<HTMLElement> {
   disabled: boolean;
   readOnly: boolean;
   classNames: IProcessedStyleSet<IRatingStyles>;
+  icon?: string;
 }
 
 export interface IRatingState {
   rating: number | null | undefined;
 }
 
-const RatingStar = (props: IRatingStarProps) => (
-  <div className={props.classNames.ratingStar} key={props.id}>
-    <Icon className={props.classNames.ratingStarBack} iconName="FavoriteStarFill" />
-    {!props.disabled && (
-      <Icon
-        className={props.classNames.ratingStarFront}
-        iconName="FavoriteStarFill"
-        style={{ width: props.fillPercentage + '%' }}
-      />
-    )}
-  </div>
-);
+const RatingStar = (props: IRatingStarProps) => {
+  const icon = props.icon || 'FavoriteStarFill';
+  return (
+    <div className={props.classNames.ratingStar} key={props.id}>
+      <Icon className={props.classNames.ratingStarBack} iconName={icon} />
+      {!props.disabled && (
+        <Icon className={props.classNames.ratingStarFront} iconName={icon} style={{ width: props.fillPercentage + '%' }} />
+      )}
+    </div>
+  );
+};
 
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
   public static defaultProps: IRatingProps = {
@@ -72,7 +72,18 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     const id = this._id;
     const stars = [];
     const starIds = [];
-    const { disabled, getAriaLabel, styles, max, rating, readOnly, size, theme } = this.props;
+    const {
+      disabled,
+      getAriaLabel,
+      styles,
+      max,
+      rating,
+      readOnly,
+      size,
+      theme,
+      icon = 'FavoriteStarFill',
+      unselectedIcon = 'FavoriteStar'
+    } = this.props;
 
     this._classNames = getClassNames(styles!, {
       disabled,
@@ -82,11 +93,13 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
 
     for (let i = this._min as number; i <= (max as number); i++) {
       if (i !== 0) {
+        const fillPercentage = this._getFillingPercentage(i);
         const ratingStarProps: IRatingStarProps = {
-          fillPercentage: this._getFillingPercentage(i),
+          fillPercentage,
           disabled: disabled ? true : false,
           readOnly: readOnly ? true : false,
-          classNames: this._classNames
+          classNames: this._classNames,
+          icon: fillPercentage > 0 ? icon : unselectedIcon
         };
 
         starIds.push(this._getStarId(i - 1));
@@ -119,9 +132,7 @@ export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
           [this._classNames.rootIsLarge]: size === RatingSize.Large,
           [this._classNames.rootIsSmall]: size !== RatingSize.Large
         })}
-        aria-label={
-          getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : ''
-        }
+        aria-label={getAriaLabel ? getAriaLabel(this.state.rating ? this.state.rating : 0, this.props.max as number) : ''}
         id={id}
       >
         <FocusZone

@@ -1,7 +1,8 @@
+// @ts-check
 const { execSync } = require('child_process');
-const exec = require('./exec');
 const path = require('path');
 const { EOL, cpus } = require('os');
+const { runPrettierMultiProject } = require('./prettier/prettier-helpers');
 
 const prettierIntroductionCommit = 'HEAD~1';
 const passedDiffTarget = process.argv.slice(2).length ? process.argv.slice(2)[0] : prettierIntroductionCommit;
@@ -15,24 +16,17 @@ const filesChangedSinceLastRun = gitDiffOutput
   .split(EOL)
   .filter(fileName => /\.(ts|tsx|js)$/.test(fileName));
 
-const prettierPath = path.resolve(__dirname, './node_modules/prettier/bin-prettier.js');
-const prettierIgnorePath = path.resolve(path.join(__dirname, '..', '.prettierignore'));
-const prettierConfigPath = path.join(__dirname, '..', 'packages', 'prettier-rules', 'prettier.config.js');
-
+/**
+ * Run prettier for some files.
+ * @param {string[]} filePaths Run for these file paths
+ */
 function runPrettierForFiles(filePaths) {
   if (filePaths.length === 0) {
     return Promise.resolve();
   }
 
   console.log(`Running for ${filePaths.length} files!`);
-
-  const sources = filePaths.join(' ');
-  return exec(
-    `node ${prettierPath} --config ${prettierConfigPath} --ignore-path ${prettierIgnorePath} --write ${sources}`,
-    undefined,
-    undefined,
-    process
-  );
+  return runPrettierMultiProject(filePaths, true /*async*/);
 }
 
 const numberOfCpus = cpus().length / 2;

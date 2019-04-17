@@ -10,7 +10,8 @@ const GlobalClassNames = {
   innerField: 'ms-ChoiceField-innerField',
   imageWrapper: 'ms-ChoiceField-imageWrapper',
   iconWrapper: 'ms-ChoiceField-iconWrapper',
-  labelWrapper: 'ms-ChoiceField-labelWrapper'
+  labelWrapper: 'ms-ChoiceField-labelWrapper',
+  checked: 'is-checked'
 };
 
 const labelWrapperLineHeight = 15;
@@ -145,7 +146,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     checked && {
       borderWidth: 1,
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBackgroundChecked,
+      borderColor: disabled ? semanticColors.disabledText : semanticColors.inputBackgroundChecked,
       selectors: {
         [HighContrastSelector]: {
           borderColor: 'Highlight'
@@ -177,7 +178,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     checked && {
       borderWidth: 5,
       borderStyle: 'solid',
-      borderColor: semanticColors.inputBackgroundChecked,
+      borderColor: disabled ? semanticColors.disabledText : semanticColors.inputBackgroundChecked,
       left: 5,
       top: 5,
       width: 10,
@@ -199,6 +200,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         display: 'flex',
         alignItems: 'center',
@@ -236,22 +238,15 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         height: '100%'
       }
     ],
-    choiceFieldWrapper: [
-      classNames.choiceFieldWrapper,
-      focused && getChoiceGroupFocusStyle(palette, hasIcon || hasImage)
-    ],
+    choiceFieldWrapper: [classNames.choiceFieldWrapper, focused && getChoiceGroupFocusStyle(palette, hasIcon || hasImage)],
     // The hidden input
     input: [
       classNames.input,
       {
         position: 'absolute',
         opacity: 0,
-        top: 8
-      },
-      (hasIcon || hasImage) && {
         top: 0,
         right: 0,
-        opacity: 0,
         width: '100%',
         height: '100%',
         margin: 0
@@ -259,6 +254,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
     ],
     field: [
       classNames.field,
+      checked && classNames.checked,
       {
         display: 'inline-block',
         cursor: 'pointer',

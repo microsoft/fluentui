@@ -1,4 +1,3 @@
-import * as webpack from 'webpack';
 import * as path from 'path';
 import * as loaderUtils from 'loader-utils';
 
@@ -50,9 +49,7 @@ module.exports.pitch = function(remainingRequest: string, precedingRequest: stri
   return [
     "import Loadable from 'react-loadable';",
     `export var ${moduleName} = Loadable({`,
-    `  loader: function() { return import(${getMagicComments(
-      options
-    )} ${request}).then(function(m) { return m.${moduleName}; }); },`,
+    `  loader: function() { return import(${getMagicComments(options)} ${request}).then(function(m) { return m.${moduleName}; }); },`,
     `  loading: function() { return null; }`,
     `});`
   ].join('\n');

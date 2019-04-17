@@ -1,4 +1,5 @@
-import { IColor, getColorFromString } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { isValidShade, getShade, getBackgroundShade } from '../../utilities/color/shades';
 import { format } from '../../Utilities';
 
@@ -77,6 +78,27 @@ export class ThemeGenerator {
     return theme;
   }
 
+  /*
+   * Gets code-formatted load theme blob that can be copy and pasted.
+   */
+  public static getThemeAsCode(slotRules: IThemeRules): any {
+    const attributeTemplate = "    {0}: '{1}',\n";
+    let output = '';
+
+    output += 'loadTheme({\n  palette: {\n';
+
+    for (const ruleName in slotRules) {
+      if (slotRules.hasOwnProperty(ruleName)) {
+        const rule: IThemeSlotRule = slotRules[ruleName];
+        const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
+        const outputColor = rule.color ? '#' + rule.color.hex : rule.value || '';
+        output += format(attributeTemplate, camelCasedName, outputColor);
+      }
+    }
+    output += '  }\n});';
+    return output;
+  }
+
   /* Gets the theme as a list of SASS variables that can be used in code
    * $tokenName: "[theme:tokenName, default:#f00f00]";
    * $tokenName2: "[theme:tokenName2, default:#ba2ba2]";
@@ -90,12 +112,7 @@ export class ThemeGenerator {
       if (slotRules.hasOwnProperty(ruleName)) {
         const rule: IThemeSlotRule = slotRules[ruleName];
         const camelCasedName = rule.name.charAt(0).toLowerCase() + rule.name.slice(1);
-        output += format(
-          sassVarTemplate,
-          camelCasedName,
-          camelCasedName,
-          rule.color ? rule.color.str : rule.value || ''
-        );
+        output += format(sassVarTemplate, camelCasedName, camelCasedName, rule.color ? rule.color.str : rule.value || '');
       }
     }
     return output;
@@ -135,13 +152,7 @@ export class ThemeGenerator {
      Then, iterates through all other rules (that are this rule's dependents) to update them accordingly.
      isCustomization=true means it's a user provided color, set it to that raw color
      isCustomization=false means the rule it's inheriting from changed, so updated using asShade */
-  private static _setSlot(
-    rule: IThemeSlotRule,
-    color: IColor,
-    isInverted: boolean,
-    isCustomization: boolean,
-    overwriteCustomColor = true
-  ) {
+  private static _setSlot(rule: IThemeSlotRule, color: IColor, isInverted: boolean, isCustomization: boolean, overwriteCustomColor = true) {
     if (!rule.color && rule.value) {
       // not a color rule
       return;
@@ -149,12 +160,7 @@ export class ThemeGenerator {
 
     if (overwriteCustomColor || !rule.color || !rule.isCustomized || !rule.inherits) {
       // set the rule's color under these conditions
-      if (
-        (overwriteCustomColor || !rule.isCustomized) &&
-        !isCustomization &&
-        rule.inherits &&
-        isValidShade(rule.asShade)
-      ) {
+      if ((overwriteCustomColor || !rule.isCustomized) && !isCustomization && rule.inherits && isValidShade(rule.asShade)) {
         // it's inheriting by shade
         if (rule.isBackgroundShade) {
           rule.color = getBackgroundShade(color, rule.asShade!, isInverted)!;

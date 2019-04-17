@@ -8,8 +8,7 @@ import { getIcon } from '../../Styling';
 import { IPersonaSharedProps, IPersonaProps, PersonaPresence, PersonaSize } from '../../index';
 import { TestImages } from 'office-ui-fabric-react/lib/common/TestImages';
 
-const testImage1x1 =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const STYLES = {
   green: '.ms-Persona-initials--green',
   initials: '.ms-Persona-initials',
@@ -77,9 +76,7 @@ describe('Persona', () => {
   it('renders Persona which calls onRenderCoin callback without imageUrl', () => {
     // removing imageUrl prop from example
     const { imageUrl, ...exampleWithoutImage } = examplePersona;
-    const component = renderer.create(
-      <Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />
-    );
+    const component = renderer.create(<Persona {...exampleWithoutImage} onRenderCoin={wrapPersona(exampleWithoutImage, true)} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -92,6 +89,16 @@ describe('Persona', () => {
         onRenderSecondaryText={wrapPersona(examplePersona)}
         onRenderTertiaryText={wrapPersona(examplePersona)}
       />
+    );
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders Persona children correctly', () => {
+    const component = renderer.create(
+      <Persona text="Kat Larrson">
+        <span>Persona Children</span>
+      </Persona>
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

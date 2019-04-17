@@ -9,9 +9,7 @@ describe('merge', () => {
   });
 
   it('can handle falsey', () => {
-    expect(
-      merge<{ a: string; b: string | undefined }>({}, null, undefined, false, { a: '1' }, { b: '2' }, { b: undefined })
-    ).toEqual({
+    expect(merge<{ a: string; b: string | undefined }>({}, null, undefined, false, { a: '1' }, { b: '2' }, { b: undefined })).toEqual({
       a: '1',
       b: undefined
     });

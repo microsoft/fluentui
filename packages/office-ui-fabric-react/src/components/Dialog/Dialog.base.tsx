@@ -1,8 +1,9 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, getId } from '../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps } from '../../Modal';
+import { ILayerProps } from '../../Layer';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
@@ -24,7 +25,7 @@ const DefaultDialogContentProps: IDialogContentProps = {
 };
 
 @withResponsiveMode
-export class DialogBase extends BaseComponent<IDialogProps, {}> {
+export class DialogBase extends React.Component<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
     hidden: true
   };
@@ -40,21 +41,23 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
     this._defaultTitleTextId = this._id + '-title';
     this._defaultSubTextId = this._id + '-subText';
 
-    this._warnDeprecations({
-      isOpen: 'hidden',
-      type: 'dialogContentProps.type',
-      subText: 'dialogContentProps.subText',
-      contentClassName: 'dialogContentProps.className',
-      topButtonsProps: 'dialogContentProps.topButtonsProps',
-      className: 'modalProps.className',
-      isDarkOverlay: 'modalProps.isDarkOverlay',
-      isBlocking: 'modalProps.isBlocking',
-      containerClassName: 'modalProps.containerClassName',
-      onDismissed: 'modalProps.onDismissed',
-      onLayerDidMount: 'modalProps.onLayerDidMount',
-      ariaDescribedById: 'modalProps.subtitleAriaId',
-      ariaLabelledById: 'modalProps.titleAriaId'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Dialog', props, {
+        isOpen: 'hidden',
+        type: 'dialogContentProps.type',
+        subText: 'dialogContentProps.subText',
+        contentClassName: 'dialogContentProps.className',
+        topButtonsProps: 'dialogContentProps.topButtonsProps',
+        className: 'modalProps.className',
+        isDarkOverlay: 'modalProps.isDarkOverlay',
+        isBlocking: 'modalProps.isBlocking',
+        containerClassName: 'modalProps.containerClassName',
+        onDismissed: 'modalProps.onDismissed',
+        onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
+        ariaDescribedById: 'modalProps.subtitleAriaId',
+        ariaLabelledById: 'modalProps.titleAriaId'
+      });
+    }
   }
 
   public render(): JSX.Element {
@@ -82,12 +85,21 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
       topButtonsProps,
       type,
       minWidth,
-      maxWidth
+      maxWidth,
+      modalProps
     } = this.props;
 
-    const modalProps = {
+    const mergedLayerProps: ILayerProps = {
+      ...(modalProps ? modalProps.layerProps : { onLayerDidMount })
+    };
+    if (onLayerDidMount && !mergedLayerProps.onLayerDidMount) {
+      mergedLayerProps.onLayerDidMount = onLayerDidMount;
+    }
+
+    const mergedModalProps = {
       ...DefaultModalProps,
-      ...this.props.modalProps
+      ...modalProps,
+      layerProps: mergedLayerProps
     };
 
     const dialogContentProps: IDialogContentProps = {
@@ -97,8 +109,8 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
-      className: className || modalProps!.className,
-      containerClassName: containerClassName || modalProps!.containerClassName,
+      className: className || mergedModalProps.className,
+      containerClassName: containerClassName || mergedModalProps.containerClassName,
       hidden,
       dialogDefaultMinWidth: minWidth,
       dialogDefaultMaxWidth: maxWidth
@@ -112,15 +124,14 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
         ignoreExternalFocusing={ignoreExternalFocusing}
         isClickableOutsideFocusTrap={isClickableOutsideFocusTrap}
         onDismissed={onDismissed}
-        onLayerDidMount={onLayerDidMount}
         responsiveMode={responsiveMode}
-        {...modalProps}
-        isDarkOverlay={isDarkOverlay !== undefined ? isDarkOverlay : modalProps!.isDarkOverlay}
-        isBlocking={isBlocking !== undefined ? isBlocking : modalProps!.isBlocking}
+        {...mergedModalProps}
+        isDarkOverlay={isDarkOverlay !== undefined ? isDarkOverlay : mergedModalProps.isDarkOverlay}
+        isBlocking={isBlocking !== undefined ? isBlocking : mergedModalProps.isBlocking}
         isOpen={isOpen !== undefined ? isOpen : !hidden}
         className={classNames.root}
         containerClassName={classNames.main}
-        onDismiss={onDismiss ? onDismiss : modalProps!.onDismiss}
+        onDismiss={onDismiss ? onDismiss : mergedModalProps.onDismiss}
         subtitleAriaId={this._getSubTextId()}
         titleAriaId={this._getTitleTextId()}
       >
@@ -129,7 +140,7 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
           subTextId={this._defaultSubTextId}
           title={title}
           subText={subText}
-          showCloseButton={isBlocking !== undefined ? !isBlocking : !modalProps!.isBlocking}
+          showCloseButton={isBlocking !== undefined ? !isBlocking : !mergedModalProps.isBlocking}
           topButtonsProps={topButtonsProps ? topButtonsProps : dialogContentProps!.topButtonsProps}
           type={type !== undefined ? type : dialogContentProps!.type}
           onDismiss={onDismiss ? onDismiss : dialogContentProps!.onDismiss}

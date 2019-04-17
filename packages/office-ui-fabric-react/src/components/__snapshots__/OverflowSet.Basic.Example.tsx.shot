@@ -28,6 +28,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
       className=
           ms-Link
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: transparent;
             background: none;
             border-bottom: 1px solid transparent;
@@ -35,10 +37,12 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
             cursor: pointer;
             display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
+            font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 0px;
+            margin-right: 10px;
             margin-top: 0px;
             outline: none;
             overflow: inherit;
@@ -51,16 +55,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             user-select: text;
           }
           .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #666666;
+            box-shadow: 0 0 0 1px #666666 inset;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-bottom: none;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
             color: #FFFF00;
           }
           @media screen and (-ms-high-contrast: black-on-white){& {
             color: #00009F;
-          }
-          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-            border-bottom: none;
           }
           &:active, &:hover, &:active:hover {
             color: #004578;
@@ -72,6 +79,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       onClick={[Function]}
+      type="button"
     >
       Link 1
     </button>
@@ -88,6 +96,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
       className=
           ms-Link
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: transparent;
             background: none;
             border-bottom: 1px solid transparent;
@@ -95,10 +105,12 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
             cursor: pointer;
             display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
+            font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 0px;
+            margin-right: 10px;
             margin-top: 0px;
             outline: none;
             overflow: inherit;
@@ -111,16 +123,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             user-select: text;
           }
           .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #666666;
+            box-shadow: 0 0 0 1px #666666 inset;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-bottom: none;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
             color: #FFFF00;
           }
           @media screen and (-ms-high-contrast: black-on-white){& {
             color: #00009F;
-          }
-          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-            border-bottom: none;
           }
           &:active, &:hover, &:active:hover {
             color: #004578;
@@ -132,6 +147,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       onClick={[Function]}
+      type="button"
     >
       Link 2
     </button>
@@ -148,6 +164,8 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
       className=
           ms-Link
           {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
             background-color: transparent;
             background: none;
             border-bottom: 1px solid transparent;
@@ -155,10 +173,12 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
             cursor: pointer;
             display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: inherit;
+            font-weight: inherit;
             margin-bottom: 0px;
             margin-left: 0px;
-            margin-right: 0px;
+            margin-right: 10px;
             margin-top: 0px;
             outline: none;
             overflow: inherit;
@@ -171,16 +191,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             user-select: text;
           }
           .ms-Fabric--isFocusVisible &:focus {
-            outline: 1px solid #666666;
+            box-shadow: 0 0 0 1px #666666 inset;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+            outline: 1px solid WindowText;
+          }
+          @media screen and (-ms-high-contrast: active){& {
+            border-bottom: none;
           }
           @media screen and (-ms-high-contrast: white-on-black){& {
             color: #FFFF00;
           }
           @media screen and (-ms-high-contrast: black-on-white){& {
             color: #00009F;
-          }
-          @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-            border-bottom: none;
           }
           &:active, &:hover, &:active:hover {
             color: #004578;
@@ -192,6 +215,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             color: #0078d4;
           }
       onClick={[Function]}
+      type="button"
     >
       Link 3
     </button>
@@ -214,16 +238,19 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
+            align-self: stretch;
             background-color: transparent;
             border-radius: 0px;
             border: none;
             box-sizing: border-box;
+            color: #333333;
             cursor: pointer;
             display: inline-block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
-            height: 32px;
+            height: auto;
+            min-width: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -264,7 +291,7 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             top: 0px;
           }
           &:hover {
-            color: #004578;
+            color: #212121;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             border-color: Highlight;
@@ -294,7 +321,6 @@ exports[`Component Examples renders OverflowSet.Basic.Example.tsx correctly 1`] 
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Button-menuIcon
               {

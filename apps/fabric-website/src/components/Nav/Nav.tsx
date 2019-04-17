@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
-import { SearchBox } from 'office-ui-fabric-react/lib/SearchBox';
+import { SearchBox, ISearchBoxStyles } from 'office-ui-fabric-react/lib/SearchBox';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import {
   CollapsibleSection,
   CollapsibleSectionTitle,
   ICollapsibleSectionTitleComponent,
-  ICollapsibleSectionTitleStyles
+  ICollapsibleSectionTitleStyles,
+  ICollapsibleSectionTitleStylesReturnType
 } from '@uifabric/experiments';
 
 import { getPathMinusLastHash } from '../../utilities/pageroute';
@@ -15,6 +16,7 @@ import * as stylesImport from './Nav.module.scss';
 const styles: any = stylesImport;
 import { INavProps, INavPage } from './Nav.types';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 export interface INavState {
   searchQuery: string;
@@ -22,7 +24,7 @@ export interface INavState {
   filterState: boolean;
 }
 
-const searchBoxStyles = {
+const searchBoxStyles: IStyleSet<ISearchBoxStyles> = {
   root: {
     marginBottom: '5px',
     width: '152px',
@@ -44,8 +46,7 @@ const searchBoxStyles = {
   }
 };
 
-const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = props => {
-  const { theme } = props;
+const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => {
   return {
     root: [
       {
@@ -95,34 +96,38 @@ export class Nav extends React.Component<INavProps, INavState> {
   private _renderLinkList(pages: INavPage[], isSubMenu: boolean, title?: string): React.ReactElement<{}> {
     const { filterState } = this.state;
 
-    const links = pages.filter(page => !page.hasOwnProperty('isHiddenFromMainNav')).map((page: INavPage, linkIndex: number) => {
-      if (page.isCategory && !filterState) {
-        return <span>{page.pages.map((innerPage: INavPage, innerLinkIndex) => this._renderLink(innerPage, innerLinkIndex))}</span>;
-      }
-      return page.isCategory && filterState ? this._renderCategory(page, linkIndex) : this._renderLink(page, linkIndex);
-    });
+    const links = pages
+      // Don't render pages that are explicitly told not to, as well as top-level pages that aren't active.
+      .filter(page => (!page.hasOwnProperty('isHiddenFromMainNav') && !(page.isUhfLink && !_hasActiveChild(page))) || _isPageActive(page))
+      .map((page: INavPage) => {
+        if (page.isCategory && !filterState) {
+          return <>{page.pages.map(innerPage => this._renderLink(innerPage))}</>;
+        }
+        return page.isCategory && filterState ? this._renderCategory(page) : this._renderLink(page);
+      });
 
     return (
-      <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
-        {title === 'Components' ? this._getSearchBox() : ''}
-        {links}
-      </ul>
+      <>
+        <ul className={css(styles.links, isSubMenu ? styles.isSubMenu : '')} aria-label="Main website navigation">
+          <li>{title === 'Components' ? this._getSearchBox() : ''}</li>
+          {links}
+        </ul>
+      </>
     );
   }
 
-  private _renderCategory(page: INavPage, categoryIndex: number): React.ReactElement<{}> {
+  private _renderCategory(page: INavPage): React.ReactElement<{}> {
     if (page.isCategory && page.pages) {
       return (
-        <span key={categoryIndex} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
+        <li key={page.title + '-heading'} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
-            titleAs={CollapsibleSectionTitle}
-            titleProps={{ text: page.title, styles: getTitleStyles }}
+            title={{ text: page.title, styles: getTitleStyles }}
             styles={{ body: [{ marginLeft: '28px' }] }}
             defaultCollapsed={!_hasActiveChild(page)}
           >
-            {page.pages.map((innerPage: INavPage, indexNumber: number) => this._renderLink(innerPage, indexNumber))}
+            <ul>{page.pages.map(innerPage => this._renderLink(innerPage))}</ul>
           </CollapsibleSection>
-        </span>
+        </li>
       );
     }
   }
@@ -142,15 +147,15 @@ export class Nav extends React.Component<INavProps, INavState> {
     return this._renderLinkList(links, true, title);
   }
 
-  private _renderLink(page: INavPage, linkIndex: number): React.ReactElement<{}> {
+  private _renderLink(page: INavPage): React.ReactElement<{}> {
     const ariaLabel = page.pages ? 'Hit enter to open sub menu, tab to access sub menu items.' : '';
     const title = page.title === 'Fabric' ? 'Home page' : page.title;
     const childLinks =
       page.pages && title === 'Components' && !this.state.filterState
         ? this._renderSortedLinks(page.pages, title)
         : page.pages
-          ? this._renderLinkList(page.pages, true, title)
-          : null;
+        ? this._renderLinkList(page.pages, true, title)
+        : null;
     const { searchQuery } = this.state;
     const text = page.title;
     let linkText = <>{text}</>;
@@ -175,26 +180,24 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
 
     return (
-      <span>
-        <li
-          className={css(
-            styles.link,
-            _isPageActive(page) && searchQuery === '' ? styles.isActive : '',
-            _hasActiveChild(page) ? styles.hasActiveChild : '',
-            page.isHomePage ? styles.isHomePage : '',
-            page.className ? styles[page.className] : ''
-          )}
-          key={linkIndex}
-        >
-          {!(page.isUhfLink && location.hostname !== 'localhost') &&
-            (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
-              <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
-                {linkText}
-              </a>
-            )}
-          {childLinks}
-        </li>
-      </span>
+      <li
+        className={css(
+          styles.link,
+          _isPageActive(page) && searchQuery === '' ? styles.isActive : '',
+          _hasActiveChild(page) ? styles.hasActiveChild : '',
+          page.isHomePage ? styles.isHomePage : '',
+          page.className ? styles[page.className] : '',
+          page.isUhfLink ? styles.isUhfLink : ''
+        )}
+        key={page.url || title}
+      >
+        {!page.isUhfLink && (page.isFilterable && searchQuery !== '' ? matchIndex > -1 : true) && (
+          <a href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+            {linkText}
+          </a>
+        )}
+        {childLinks}
+      </li>
     );
   }
 

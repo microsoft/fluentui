@@ -43,6 +43,11 @@ export interface IMultiStackedBarChartProps {
    * Url that the data-viz needs to redirect to upon clicking on it
    */
   href?: string;
+
+  /**
+   * If this value is set to true the denominator will not be shown for the ratio above the chart
+   */
+  hideDenominator?: boolean[];
 }
 
 export interface IMultiStackedBarChartStyleProps {
@@ -127,6 +132,11 @@ export interface IMultiStackedBarChartStyles {
    * Style to change the opacity of bars in dataviz when we hover on a single bar or legends
    */
   opacityChangeOnHover: IStyle;
+
+  /**
+   * Style to change the opacity of placeholder data point when we hover a single bar or legend
+   */
+  placeHolderOnHover: IStyle;
 
   /**
    * Style for the legends container

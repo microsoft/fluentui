@@ -25,10 +25,15 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
         className=
             ms-Label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
               display: block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -60,7 +65,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             min-width: 86px;
           }
           &:hover {
-            border-color: #212121;
+            border-color: #333333;
             outline: 2px dashed transparent;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
@@ -142,6 +147,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
             }
       >
         <button
+          aria-label="Increase value by 1"
           checked={false}
           className=
               ms-Button
@@ -239,7 +245,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -269,6 +274,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
           </div>
         </button>
         <button
+          aria-label="Decrease value by 1"
           checked={false}
           className=
               ms-Button
@@ -366,7 +372,6 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 }
           >
             <i
-              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

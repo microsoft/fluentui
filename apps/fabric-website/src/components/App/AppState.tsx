@@ -52,85 +52,69 @@ export const AppState: IAppState = {
       url: '#/styles',
       className: 'stylesPage',
       isUhfLink: true,
-      getComponent: cb =>
-        require.ensure([], require => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
+      component: () => <LoadingComponent title="Styles" />,
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Overviews/StylesPage').StylesPage)),
       pages: [
         {
           title: 'Animations',
           url: '#/styles/animations',
           component: () => <StylesLoadingComponent title="Animations" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Styles/AnimationsPage/AnimationsPage').AnimationsPage)
-            )
+            require.ensure([], require => cb(require<any>('../../pages/Styles/AnimationsPage/AnimationsPage').AnimationsPage))
         },
         {
           title: 'Brand icons',
           url: '#/styles/brand-icons',
           component: () => <StylesLoadingComponent title="Brand icons" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Styles/BrandIconsPage/BrandIconsPage').BrandIconsPage)
-            )
+            require.ensure([], require => cb(require<any>('../../pages/Styles/BrandIconsPage/BrandIconsPage').BrandIconsPage))
         },
         {
           title: 'Colors',
           url: '#/styles/colors',
           component: () => <StylesLoadingComponent title="Colors" />,
-          getComponent: cb =>
-            require.ensure([], require => cb(require<any>('../../pages/Styles/ColorsPage/ColorsPage').ColorsPage))
+          getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Styles/ColorsPage/ColorsPage').ColorsPage))
         },
         {
           title: 'Icons',
           url: '#/styles/icons',
           component: () => <StylesLoadingComponent title="Icons" />,
-          getComponent: cb =>
-            require.ensure([], require => cb(require<any>('../../pages/Styles/IconsPage/IconsPage').IconsPage))
+          getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Styles/IconsPage/IconsPage').IconsPage))
         },
         {
           title: 'Layout',
           url: '#/styles/layout',
           component: () => <StylesLoadingComponent title="Layout" />,
-          getComponent: cb =>
-            require.ensure([], require => cb(require<any>('../../pages/Styles/LayoutPage/LayoutPage').LayoutPage))
+          getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Styles/LayoutPage/LayoutPage').LayoutPage))
         },
         {
           title: 'Localization',
           url: '#/styles/localization',
           component: () => <StylesLoadingComponent title="Localization" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage)
-            )
+            require.ensure([], require => cb(require<any>('../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
         },
         {
-          title: 'Theme generator',
+          title: 'Colors',
           url: '#/styles/themegenerator',
-          component: () => <StylesLoadingComponent title="Theme generator" />,
+          isHiddenFromMainNav: true, // moved to Customizations but entry left here to preserve old URL
+          component: () => <StylesLoadingComponent title="Colors" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(
-                require<any>('../../pages/Styles/ThemeGeneratorToolPage/ThemeGeneratorToolPage').ThemeGeneratorToolPage
-              )
-            )
+            require.ensure([], require => cb(require<any>('../../pages/Customizations/ColorsCustomizationPage').ColorsCustomizationPage))
         },
         {
           title: 'Typography',
           url: '#/styles/typography',
           component: () => <StylesLoadingComponent title="Typography" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Styles/TypographyPage/TypographyPage').TypographyPage)
-            )
+            require.ensure([], require => cb(require<any>('../../pages/Styles/TypographyPage/TypographyPage').TypographyPage))
         },
         {
           title: 'Utilities',
           url: '#/styles/utilities',
           component: () => <StylesLoadingComponent title="Utilities" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage)
-            )
+            require.ensure([], require => cb(require<any>('../../pages/Styles/UtilitiesPage/UtilitiesPage').UtilitiesPage))
         }
       ]
     },
@@ -139,13 +123,12 @@ export const AppState: IAppState = {
       url: '#/components',
       className: 'componentsPage',
       isUhfLink: true,
-      component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage)),
       pages: [
         {
           title: 'Basic Inputs',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -154,9 +137,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Button" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ButtonComponentPage').ButtonComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ButtonComponentPage').ButtonComponentPage))
             },
             {
               title: 'Checkbox',
@@ -164,9 +145,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Checkbox" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/CheckboxComponentPage').CheckboxComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/CheckboxComponentPage').CheckboxComponentPage))
             },
             {
               title: 'ChoiceGroup',
@@ -174,9 +153,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="ChoiceGroup" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ChoiceGroupComponentPage').ChoiceGroupComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ChoiceGroupComponentPage').ChoiceGroupComponentPage))
             },
             {
               title: 'ComboBox',
@@ -184,9 +161,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="ComboBox" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ComboBoxComponentPage').ComboBoxComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ComboBoxComponentPage').ComboBoxComponentPage))
             },
             {
               title: 'ContextualMenu',
@@ -204,9 +179,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Dropdown" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/DropdownComponentPage').DropdownComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/DropdownComponentPage').DropdownComponentPage))
             },
             {
               title: 'Label',
@@ -214,9 +187,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Label" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/LabelComponentPage').LabelComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/LabelComponentPage').LabelComponentPage))
             },
             {
               title: 'Link',
@@ -224,9 +195,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Link" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/LinkComponentPage').LinkComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/LinkComponentPage').LinkComponentPage))
             },
             {
               title: 'Rating',
@@ -234,9 +203,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Rating" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/RatingComponentPage').RatingComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/RatingComponentPage').RatingComponentPage))
             },
             {
               title: 'Slider',
@@ -244,9 +211,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Slider" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/SliderComponentPage').SliderComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/SliderComponentPage').SliderComponentPage))
             },
             {
               title: 'SpinButton',
@@ -254,9 +219,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="SpinButton" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/SpinButtonComponentPage').SpinButtonComponentPage))
             },
             {
               title: 'TextField',
@@ -264,9 +227,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="TextField" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/TextFieldComponentPage').TextFieldComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextFieldComponentPage').TextFieldComponentPage))
             },
             {
               title: 'Toggle',
@@ -274,9 +235,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Toggle" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ToggleComponentPage').ToggleComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ToggleComponentPage').ToggleComponentPage))
             }
           ]
         },
@@ -284,7 +243,6 @@ export const AppState: IAppState = {
           title: 'Navigation',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -293,9 +251,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Breadcrumb" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/BreadcrumbComponentPage').BreadcrumbComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/BreadcrumbComponentPage').BreadcrumbComponentPage))
             },
             {
               title: 'CommandBar',
@@ -303,9 +259,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="CommandBar" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/CommandBarComponentPage').CommandBarComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/CommandBarComponentPage').CommandBarComponentPage))
             },
             {
               title: 'Nav',
@@ -313,9 +267,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Nav" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/NavComponentPage').NavComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/NavComponentPage').NavComponentPage))
             },
             {
               title: 'OverflowSet',
@@ -323,9 +275,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="OverflowSet" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/OverflowSetComponentPage').OverflowSetComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/OverflowSetComponentPage').OverflowSetComponentPage))
             },
             {
               title: 'Pivot',
@@ -333,9 +283,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Pivot" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/PivotComponentPage').PivotComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/PivotComponentPage').PivotComponentPage))
             },
             {
               title: 'SearchBox',
@@ -343,9 +291,23 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="SearchBox" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/SearchBoxComponentPage').SearchBoxComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/SearchBoxComponentPage').SearchBoxComponentPage))
+            }
+          ]
+        },
+        {
+          title: 'Layout',
+          url: '#/components',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: [
+            {
+              title: 'Stack',
+              url: '#/components/stack',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Stack" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/StackComponentPage').StackComponentPage))
             }
           ]
         },
@@ -353,7 +315,6 @@ export const AppState: IAppState = {
           title: 'Content',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -372,9 +333,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Calendar" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/CalendarComponentPage').CalendarComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/CalendarComponentPage').CalendarComponentPage))
             },
             {
               title: 'DetailsList',
@@ -383,9 +342,7 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="DetailsList" />,
               getComponent: cb =>
                 require.ensure([], require =>
-                  cb(
-                    require<any>('../../pages/Components/DetailsList/DetailsListComponentPage').DetailsListComponentPage
-                  )
+                  cb(require<any>('../../pages/Components/DetailsList/DetailsListComponentPage').DetailsListComponentPage)
                 ),
               pages: [
                 {
@@ -395,10 +352,7 @@ export const AppState: IAppState = {
                   component: () => <LoadingComponent title="Basic DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
-                      cb(
-                        require<any>('../../pages/Components/DetailsList/DetailsListBasicComponentPage')
-                          .DetailsListBasicComponentPage
-                      )
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListBasicComponentPage').DetailsListBasicComponentPage)
                     )
                 },
                 {
@@ -408,10 +362,7 @@ export const AppState: IAppState = {
                   component: () => <LoadingComponent title="Compact DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
-                      cb(
-                        require<any>('../../pages/Components/DetailsList/DetailsListCompactComponentPage')
-                          .DetailsListCompactComponentPage
-                      )
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListCompactComponentPage').DetailsListCompactComponentPage)
                     )
                 },
                 {
@@ -421,9 +372,19 @@ export const AppState: IAppState = {
                   component: () => <LoadingComponent title="Grouped DetailsList" />,
                   getComponent: cb =>
                     require.ensure([], require =>
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListGroupedComponentPage').DetailsListGroupedComponentPage)
+                    )
+                },
+                {
+                  title: 'Large Grouped',
+                  url: '#/components/detailslist/largegrouped',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Large Grouped DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
                       cb(
-                        require<any>('../../pages/Components/DetailsList/DetailsListGroupedComponentPage')
-                          .DetailsListGroupedComponentPage
+                        require<any>('../../pages/Components/DetailsList/DetailsListLargeGroupedComponentPage')
+                          .DetailsListLargeGroupedComponentPage
                       )
                     )
                 },
@@ -487,8 +448,7 @@ export const AppState: IAppState = {
                   getComponent: cb =>
                     require.ensure([], require =>
                       cb(
-                        require<any>('../../pages/Components/DetailsList/DetailsListAdvancedComponentPage')
-                          .DetailsListAdvancedComponentPage
+                        require<any>('../../pages/Components/DetailsList/DetailsListAdvancedComponentPage').DetailsListAdvancedComponentPage
                       )
                     )
                 },
@@ -500,8 +460,7 @@ export const AppState: IAppState = {
                   getComponent: cb =>
                     require.ensure([], require =>
                       cb(
-                        require<any>('../../pages/Components/DetailsList/DetailsListDragDropComponentPage')
-                          .DetailsListDragDropComponentPage
+                        require<any>('../../pages/Components/DetailsList/DetailsListDragDropComponentPage').DetailsListDragDropComponentPage
                       )
                     )
                 },
@@ -517,6 +476,16 @@ export const AppState: IAppState = {
                           .DetailsListNavigatingFocusComponentPage
                       )
                     )
+                },
+                {
+                  title: 'Shimmer',
+                  url: '#/components/detailslist/shimmer',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Shimmer DetailsList" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(require<any>('../../pages/Components/DetailsList/DetailsListShimmerComponentPage').DetailsListShimmerComponentPage)
+                    )
                 }
               ]
             },
@@ -526,9 +495,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Facepile" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/FacepileComponentPage').FacepileComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/FacepileComponentPage').FacepileComponentPage))
             },
             {
               title: 'GroupedList',
@@ -536,9 +503,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="GroupedList" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/GroupedListComponentPage').GroupedListComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/GroupedListComponentPage').GroupedListComponentPage))
             },
             {
               title: 'Icon',
@@ -546,9 +511,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Icon" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/IconComponentPage').IconComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/IconComponentPage').IconComponentPage))
             },
             {
               title: 'Image',
@@ -556,9 +519,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Image" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ImageComponentPage').ImageComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ImageComponentPage').ImageComponentPage))
             },
             {
               title: 'List',
@@ -566,9 +527,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="List" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ListComponentPage').ListComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ListComponentPage').ListComponentPage))
             },
             {
               title: 'Persona',
@@ -576,9 +535,15 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Persona" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/PersonaComponentPage').PersonaComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/PersonaComponentPage').PersonaComponentPage))
+            },
+            {
+              title: 'Separator',
+              url: '#/components/separator',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Separator" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/SeparatorComponentPage').SeparatorComponentPage))
             }
           ]
         },
@@ -586,7 +551,6 @@ export const AppState: IAppState = {
           title: 'Pickers',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -595,9 +559,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Pickers" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/PickersComponentPage').PickersComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/PickersComponentPage').PickersComponentPage))
             },
             {
               title: 'ColorPicker',
@@ -605,9 +567,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="ColorPicker" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ColorPickerComponentPage').ColorPickerComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ColorPickerComponentPage').ColorPickerComponentPage))
             },
             {
               title: 'DatePicker',
@@ -615,9 +575,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="DatePicker" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/DatePickerComponentPage').DatePickerComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/DatePickerComponentPage').DatePickerComponentPage))
             },
             {
               title: 'PeoplePicker',
@@ -636,9 +594,7 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="SwatchColorPicker" />,
               getComponent: cb =>
                 require.ensure([], require =>
-                  cb(
-                    require<any>('../../pages/Components/SwatchColorPickerComponentPage').SwatchColorPickerComponentPage
-                  )
+                  cb(require<any>('../../pages/Components/SwatchColorPickerComponentPage').SwatchColorPickerComponentPage)
                 )
             }
           ]
@@ -647,7 +603,6 @@ export const AppState: IAppState = {
           title: 'Progress & Validation',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           pages: [
             {
@@ -656,9 +611,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="MessageBar" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/MessageBarComponentPage').MessageBarComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/MessageBarComponentPage').MessageBarComponentPage))
             },
             {
               title: 'ProgressIndicator',
@@ -667,9 +620,7 @@ export const AppState: IAppState = {
               component: () => <LoadingComponent title="ProgressIndicator" />,
               getComponent: cb =>
                 require.ensure([], require =>
-                  cb(
-                    require<any>('../../pages/Components/ProgressIndicatorComponentPage').ProgressIndicatorComponentPage
-                  )
+                  cb(require<any>('../../pages/Components/ProgressIndicatorComponentPage').ProgressIndicatorComponentPage)
                 )
             },
             {
@@ -678,9 +629,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Shimmer" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ShimmerComponentPage').ShimmerComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ShimmerComponentPage').ShimmerComponentPage))
             },
             {
               title: 'Spinner',
@@ -688,9 +637,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Spinner" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/SpinnerComponentPage').SpinnerComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/SpinnerComponentPage').SpinnerComponentPage))
             }
           ]
         },
@@ -698,9 +645,9 @@ export const AppState: IAppState = {
           title: 'Surfaces',
           url: '#/components',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
-          component: require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage,
+          component: () => <LoadingComponent title="Surfaces" />,
+          getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Overviews/ComponentsPage').ComponentsPage)),
           pages: [
             {
               title: 'Callout',
@@ -708,9 +655,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Callout" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/CalloutComponentPage').CalloutComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/CalloutComponentPage').CalloutComponentPage))
             },
             {
               title: 'Dialog',
@@ -718,9 +663,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Dialog" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/DialogComponentPage').DialogComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/DialogComponentPage').DialogComponentPage))
             },
             {
               title: 'DocumentCard',
@@ -738,9 +681,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="HoverCard" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/HoverCardComponentPage').HoverCardComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/HoverCardComponentPage').HoverCardComponentPage))
             },
             {
               title: 'Layer',
@@ -748,9 +689,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Layer" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/LayerComponentPage').LayerComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/LayerComponentPage').LayerComponentPage))
             },
             {
               title: 'Modal',
@@ -758,9 +697,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Modal" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ModalComponentPage').ModalComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ModalComponentPage').ModalComponentPage))
             },
             {
               title: 'Overlay',
@@ -768,9 +705,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Overlay" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/OverlayComponentPage').OverlayComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/OverlayComponentPage').OverlayComponentPage))
             },
             {
               title: 'Panel',
@@ -778,9 +713,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Panel" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/PanelComponentPage').PanelComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/PanelComponentPage').PanelComponentPage))
             },
             {
               title: 'ScrollablePane',
@@ -808,9 +741,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Tooltip" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/TooltipComponentPage').TooltipComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/TooltipComponentPage').TooltipComponentPage))
             },
             {
               title: 'Coachmark',
@@ -818,9 +749,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Coachmark" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/CoachmarkComponentPage').CoachmarkComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/CoachmarkComponentPage').CoachmarkComponentPage))
             }
           ]
         },
@@ -828,13 +757,10 @@ export const AppState: IAppState = {
           title: 'Utilities',
           url: '#/components/utilities',
           className: 'componentsPage',
-          isUhfLink: true,
           isCategory: true,
           component: () => <LoadingComponent title="Utilities" />,
           getComponent: cb =>
-            require.ensure([], require =>
-              cb(require<any>('../../pages/Components/ComponentUtilitiesPage').ComponentUtilitiesPage)
-            ),
+            require.ensure([], require => cb(require<any>('../../pages/Components/ComponentUtilitiesPage').ComponentUtilitiesPage)),
           pages: [
             {
               title: 'FocusTrapZone',
@@ -842,9 +768,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="FocusTrapZone" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/FocusTrapZoneUtilityPage').FocusTrapZoneUtilityPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/FocusTrapZoneUtilityPage').FocusTrapZoneUtilityPage))
             },
             {
               title: 'FocusZone',
@@ -852,9 +776,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="FocusZone" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/FocusZoneUtilityPage').FocusZoneUtilityPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/FocusZoneUtilityPage').FocusZoneUtilityPage))
             },
             {
               title: 'MarqueeSelection',
@@ -872,9 +794,7 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="ResizeGroup" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ResizeGroupComponentPage').ResizeGroupComponentPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/ResizeGroupComponentPage').ResizeGroupComponentPage))
             },
             {
               title: 'Selection',
@@ -882,19 +802,132 @@ export const AppState: IAppState = {
               isFilterable: true,
               component: () => <LoadingComponent title="Selection" />,
               getComponent: cb =>
-                require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/SelectionUtilityPage').SelectionUtilityPage)
-                )
+                require.ensure([], require => cb(require<any>('../../pages/Components/SelectionUtilityPage').SelectionUtilityPage))
+            },
+            {
+              title: 'Text',
+              url: '#/components/text',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Text" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/TextComponentPage').TextComponentPage))
             },
             {
               title: 'Themes',
               url: '#/components/themes',
+              isHiddenFromMainNav: true, // moved to Customizations but entry left here to preserve old URL
+              component: () => <LoadingComponent title="Themes" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/ThemesUtilityPage').ThemesUtilityPage))
+            }
+          ]
+        },
+        {
+          title: 'Customization',
+          url: '#/components/customizations',
+          className: 'componentsPage',
+          isCategory: true,
+          component: () => <LoadingComponent title="Customization" />,
+          getComponent: cb =>
+            require.ensure([], require => cb(require<any>('../../pages/Components/ComponentUtilitiesPage').ComponentUtilitiesPage)),
+          pages: [
+            {
+              title: 'Themes',
+              url: '#/components/customizations/themes',
               isFilterable: true,
               component: () => <LoadingComponent title="Themes" />,
               getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/ThemesUtilityPage').ThemesUtilityPage))
+            },
+            {
+              title: 'Colors',
+              url: '#/components/customizations/colors',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Colors" />,
+              getComponent: cb =>
                 require.ensure([], require =>
-                  cb(require<any>('../../pages/Components/ThemesUtilityPage').ThemesUtilityPage)
+                  cb(require<any>('../../pages/Customizations/ColorsCustomizationPage').ColorsCustomizationPage)
                 )
+            }
+          ]
+        },
+        {
+          title: 'Accessibility',
+          url: '#/components/accessibility',
+          className: 'componentsPage',
+          isCategory: true,
+          component: () => <LoadingComponent title="Accessibility" />,
+          pages: [
+            {
+              title: 'Announced',
+              url: '#/components/announced',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Announced" />,
+              getComponent: cb =>
+                require.ensure([], require =>
+                  cb(require<any>('../../pages/Components/Announced/AnnouncedComponentPage').AnnouncedComponentPage)
+                ),
+              pages: [
+                {
+                  title: 'Quick Actions',
+                  url: '#/components/announced/quickactions',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Quick Actions" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedQuickActionsComponentPage')
+                          .AnnouncedQuickActionsComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Search Results',
+                  url: '#/components/announced/searchresults',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Search Results" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedSearchResultsComponentPage')
+                          .AnnouncedSearchResultsComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Lazy Loading',
+                  url: '#/components/announced/lazyloading',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Lazy Loading" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedLazyLoadingComponentPage').AnnouncedLazyLoadingComponentPage
+                      )
+                    )
+                },
+                {
+                  title: 'Bulk Operations',
+                  url: '#/components/announced/bulkoperations',
+                  isFilterable: true,
+                  component: () => <LoadingComponent title="Announced Bulk Operations" />,
+                  getComponent: cb =>
+                    require.ensure([], require =>
+                      cb(
+                        require<any>('../../pages/Components/Announced/AnnouncedBulkOperationsComponentPage')
+                          .AnnouncedBulkOperationsComponentPage
+                      )
+                    )
+                }
+              ]
+            },
+            {
+              title: 'Keytips',
+              url: '#/components/keytips',
+              isFilterable: true,
+              component: () => <LoadingComponent title="Keytips" />,
+              getComponent: cb =>
+                require.ensure([], require => cb(require<any>('../../pages/Components/KeytipsComponentPage').KeytipsComponentPage))
             }
           ]
         }
@@ -905,14 +938,14 @@ export const AppState: IAppState = {
       url: '#/resources',
       className: 'resourcesPage',
       isUhfLink: true,
-      getComponent: cb =>
-        require.ensure([], require => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesPage))
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/ResourcesPage/ResourcesPage').ResourcesPage))
     },
     {
       title: 'Blog',
       url: '#/blog',
       className: 'blogPage',
       isUhfLink: true,
+      isHiddenFromMainNav: true,
       getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/BlogPage/BlogPage').BlogPage))
     },
     {
@@ -927,24 +960,21 @@ export const AppState: IAppState = {
       url: '#/fabric-js',
       className: 'fabricJsPage',
       isHiddenFromMainNav: true,
-      getComponent: cb =>
-        require.ensure([], require => cb(require<any>('../../pages/Interstitials/FabricJSPage').FabricJSPage))
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Interstitials/FabricJSPage').FabricJSPage))
     },
     {
       title: 'Angular JS',
       url: '#/angular-js',
       className: 'angularJsPage',
       isHiddenFromMainNav: true,
-      getComponent: cb =>
-        require.ensure([], require => cb(require<any>('../../pages/Interstitials/AngularJSPage').AngularJSPage))
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Interstitials/AngularJSPage').AngularJSPage))
     },
     {
       title: 'Fabric iOS',
       url: '#/fabric-ios',
       className: 'fabricIosPage',
       isHiddenFromMainNav: true,
-      getComponent: cb =>
-        require.ensure([], require => cb(require<any>('../../pages/Interstitials/FabricIOSPage').FabricIOSPage))
+      getComponent: cb => require.ensure([], require => cb(require<any>('../../pages/Interstitials/FabricIOSPage').FabricIOSPage))
     }
   ]
 };

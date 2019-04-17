@@ -1,7 +1,7 @@
-import { mergeStyles } from '@uifabric/merge-styles';
+import { mergeStyles, IStyle } from '@uifabric/merge-styles';
 import { getIcon } from './icons';
 
-const defaultIconStyles = {
+const defaultIconStyles: IStyle = {
   display: 'inline-block'
 };
 

@@ -1,19 +1,27 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../Utilities';
-import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles } from './ColorPicker.types';
-import { ITextField, TextField } from '../../TextField';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { IColorPickerProps, IColorPickerStyleProps, IColorPickerStyles, IColorPicker } from './ColorPicker.types';
+import { TextField } from '../../TextField';
 import { ColorRectangle } from './ColorRectangle/ColorRectangle';
 import { ColorSlider } from './ColorSlider/ColorSlider';
-import { MAX_COLOR_HUE, IColor, getColorFromString, getColorFromRGBA, updateA, updateH, updateSV } from '../../utilities/color/colors';
+import { IColor } from '../../utilities/color/interfaces';
+import { MAX_COLOR_HUE } from '../../utilities/color/consts';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
+import { getColorFromRGBA } from '../../utilities/color/getColorFromRGBA';
+import { updateA } from '../../utilities/color/updateA';
+import { updateH } from '../../utilities/color/updateH';
+
+type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
 
 export interface IColorPickerState {
-  isOpen: boolean;
   color: IColor;
 }
 
 const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerStyles>();
 
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> {
+const colorComponents: Array<keyof IRGBHex> = ['hex', 'r', 'g', 'b', 'a'];
+
+export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
   public static defaultProps = {
     hexLabel: 'Hex',
     redLabel: 'Red',
@@ -22,28 +30,49 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     alphaLabel: 'Alpha'
   };
 
-  private _hexText = createRef<ITextField>();
-  private _rText = createRef<ITextField>();
-  private _gText = createRef<ITextField>();
-  private _bText = createRef<ITextField>();
-  private _aText = createRef<ITextField>();
+  private _textChangeHandlers: {
+    [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
+  };
+  private _textLabels: { [K in keyof IRGBHex]?: string };
 
   constructor(props: IColorPickerProps) {
     super(props);
 
+    this._warnDeprecations({
+      onColorChanged: 'onChange'
+    });
+
     this.state = {
-      color: getColorFromString(props.color)
-    } as IColorPickerState;
+      color: _getColorFromProps(props) || getColorFromString('#ffffff')!
+    };
+
+    this._textChangeHandlers = {} as any;
+    for (const component of colorComponents) {
+      this._textChangeHandlers[component] = this._onTextChange.bind(this, component);
+    }
+    this._textLabels = {
+      r: props.redLabel,
+      g: props.greenLabel,
+      b: props.blueLabel,
+      a: props.alphaLabel,
+      hex: props.hexLabel
+    };
+  }
+
+  public get color(): IColor {
+    return this.state.color;
   }
 
   public componentWillReceiveProps(newProps: IColorPickerProps): void {
-    if (newProps.color) {
-      this._updateColor(getColorFromString(newProps.color));
+    const color = _getColorFromProps(newProps);
+    if (color) {
+      this._updateColor(undefined, color);
     }
   }
 
   public render(): JSX.Element {
-    const { theme, className, styles } = this.props;
+    const props = this.props;
+    const { theme, className, styles } = props;
     const { color } = this.state;
 
     const classNames = getClassNames(styles!, {
@@ -54,13 +83,13 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     return (
       <div className={classNames.root}>
         <div className={classNames.panel}>
-          <ColorRectangle color={color} onSVChanged={this._onSVChanged} />
+          <ColorRectangle color={color} onChange={this._onSVChanged} />
           <ColorSlider className="is-hue" minValue={0} maxValue={MAX_COLOR_HUE} value={color.h} onChange={this._onHChanged} />
-          {!this.props.alphaSliderHidden && (
+          {!props.alphaSliderHidden && (
             <ColorSlider
               className="is-alpha"
               isAlpha
-              overlayStyle={{ background: `linear-gradient(to right, transparent 0, ${color.str} 100%)` }}
+              overlayStyle={{ background: `linear-gradient(to right, transparent 0, #${color.hex} 100%)` }}
               minValue={0}
               maxValue={100}
               value={color.a}
@@ -70,67 +99,31 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
           <table className={classNames.table} cellPadding="0" cellSpacing="0">
             <thead>
               <tr className={classNames.tableHeader}>
-                <td className={classNames.tableHexCell}>{this.props.hexLabel}</td>
-                <td>{this.props.redLabel}</td>
-                <td>{this.props.greenLabel}</td>
-                <td>{this.props.blueLabel}</td>
-                {!this.props.alphaSliderHidden && <td>{this.props.alphaLabel}</td>}
+                <td className={classNames.tableHexCell}>{props.hexLabel}</td>
+                <td>{props.redLabel}</td>
+                <td>{props.greenLabel}</td>
+                <td>{props.blueLabel}</td>
+                {!props.alphaSliderHidden && <td>{props.alphaLabel}</td>}
               </tr>
             </thead>
             <tbody>
               <tr>
-                <td>
-                  <TextField
-                    className={classNames.input}
-                    value={color.hex}
-                    componentRef={this._hexText}
-                    onBlur={this._onHexChanged}
-                    spellCheck={false}
-                    ariaLabel={this.props.hexLabel}
-                  />
-                </td>
-                <td style={{ width: '18%' }}>
-                  <TextField
-                    className={classNames.input}
-                    onBlur={this._onRGBAChanged}
-                    value={String(color.r)}
-                    componentRef={this._rText}
-                    spellCheck={false}
-                    ariaLabel={this.props.redLabel}
-                  />
-                </td>
-                <td style={{ width: '18%' }}>
-                  <TextField
-                    className={classNames.input}
-                    onBlur={this._onRGBAChanged}
-                    value={String(color.g)}
-                    componentRef={this._gText}
-                    spellCheck={false}
-                    ariaLabel={this.props.greenLabel}
-                  />
-                </td>
-                <td style={{ width: '18%' }}>
-                  <TextField
-                    className={classNames.input}
-                    onBlur={this._onRGBAChanged}
-                    value={String(color.b)}
-                    componentRef={this._bText}
-                    spellCheck={false}
-                    ariaLabel={this.props.blueLabel}
-                  />
-                </td>
-                {!this.props.alphaSliderHidden && (
-                  <td style={{ width: '18%' }}>
-                    <TextField
-                      className={classNames.input}
-                      onBlur={this._onRGBAChanged}
-                      value={String(color.a ? color.a.toPrecision(3) : color.a)}
-                      componentRef={this._aText}
-                      spellCheck={false}
-                      ariaLabel={this.props.alphaLabel}
-                    />
-                  </td>
-                )}
+                {...colorComponents.map((comp: keyof IRGBHex) => {
+                  if (comp === 'a' && props.alphaSliderHidden) {
+                    return null;
+                  }
+                  return (
+                    <td key={comp} style={comp === 'hex' ? undefined : { width: '18%' }}>
+                      <TextField
+                        className={classNames.input}
+                        onChange={this._textChangeHandlers[comp]}
+                        value={this._getDisplayValue(comp)}
+                        spellCheck={false}
+                        ariaLabel={this._textLabels[comp]}
+                      />
+                    </td>
+                  );
+                })}
               </tr>
             </tbody>
           </table>
@@ -139,58 +132,79 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     );
   }
 
-  private _onSVChanged = (s: number, v: number): void => {
-    this._updateColor(updateSV(this.state.color, s, v));
+  private _getDisplayValue(component: keyof IColor): string {
+    const { color } = this.state;
+    if (typeof color[component] === 'number') {
+      return String(component === 'a' ? color.a!.toPrecision(3) : color[component]);
+    }
+    return (color[component] as string) || '';
+  }
+
+  private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
+    this._updateColor(ev, color);
   };
 
   private _onHChanged = (ev: React.MouseEvent<HTMLElement>, h: number): void => {
-    this._updateColor(updateH(this.state.color, h));
+    this._updateColor(ev, updateH(this.state.color, h));
   };
 
   private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
-    this._updateColor(updateA(this.state.color, a));
+    this._updateColor(ev, updateA(this.state.color, a));
   };
 
-  private _onHexChanged = (): void => {
-    if (this._hexText.current) {
-      this._updateColor(getColorFromString('#' + this._hexText.current.value));
-    }
-  };
-
-  private _onRGBAChanged = (): void => {
-    if (!this._rText.current || !this._gText.current || !this._bText.current || !this._aText.current) {
+  private _onTextChange(component: keyof IRGBHex, event: React.FormEvent<HTMLInputElement>, newValue?: string): void {
+    const color = this.state.color;
+    const isHex = component === 'hex';
+    if (String(color[component]) === newValue) {
       return;
     }
 
-    this._updateColor(
-      getColorFromRGBA({
-        r: Number(this._rText.current.value),
-        g: Number(this._gText.current.value),
-        b: Number(this._bText.current.value),
-        a: Number(this._aText.current.value || 100)
-      })
-    );
-  };
+    let newColor: IColor | undefined;
+    if (isHex) {
+      newColor = getColorFromString('#' + newValue);
+    } else {
+      newColor = getColorFromRGBA({
+        r: color.r,
+        g: color.g,
+        b: color.b,
+        a: color.a || 100,
+        [component]: Number(newValue)
+      });
+    }
+    this._updateColor(event, newColor);
+  }
 
-  private _updateColor(newColor?: IColor): void {
+  /**
+   * Update the displayed color and call change handlers if appropriate.
+   * @param ev - Event if call was triggered by an event (undefined if triggered by props change)
+   * @param newColor - Updated color
+   */
+  private _updateColor(ev: React.SyntheticEvent<HTMLElement> | undefined, newColor: IColor | undefined): void {
     if (!newColor) {
       return;
     }
 
-    const { onColorChanged } = this.props;
+    const props = this.props;
     const { color } = this.state;
-    const hasColorStringChanged = newColor.str !== color.str;
-    if (newColor.h !== color.h || hasColorStringChanged) {
-      this.setState(
-        {
-          color: newColor
-        } as IColorPickerState,
-        () => {
-          if (hasColorStringChanged && onColorChanged) {
-            onColorChanged(newColor.str, newColor);
-          }
+    const isDifferentColor = newColor.h !== color.h || newColor.str !== color.str;
+
+    if (isDifferentColor) {
+      this.setState({ color: newColor }, () => {
+        if (ev && props.onChange) {
+          props.onChange(ev, newColor);
         }
-      );
+
+        // To preserve the existing behavior, this one is called even when the change comes from a
+        // props update (which is not very useful)
+        if (props.onColorChanged) {
+          props.onColorChanged(newColor.str, newColor);
+        }
+      });
     }
   }
+}
+
+function _getColorFromProps(props: IColorPickerProps): IColor | undefined {
+  const { color } = props;
+  return typeof color === 'string' ? getColorFromString(color) : color;
 }

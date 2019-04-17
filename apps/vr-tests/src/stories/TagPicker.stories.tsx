@@ -1,11 +1,11 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { TagPicker } from 'office-ui-fabric-react';
+import { TagPicker, Fabric, ITag } from 'office-ui-fabric-react';
 
-let testTags = [
+const testTags: ITag[] = [
   'black',
   'blue',
   'brown',
@@ -23,19 +23,14 @@ let testTags = [
   'yellow'
 ].map(item => ({ key: item, name: item }));
 
-let getTextFromItem = (item) => item.name;
+const getTextFromItem = (item: ITag) => item.name;
 
-let getList = () => testTags;
+const getList = () => testTags;
 
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('TagPicker', module)
   .addDecorator(FabricDecorator)
-  .addStory('TagPicker disabled', () => (
-    <TagPicker
-      onResolveSuggestions={getList}
-      disabled
-    />
-  ))
+  .addStory('TagPicker disabled', () => <TagPicker onResolveSuggestions={getList} disabled />)
   .addDecorator(story => (
     <Screener
       steps={new Screener.Steps()
@@ -43,8 +38,7 @@ storiesOf('TagPicker', module)
         .click('.ms-BasePicker-input')
         .hover('.ms-Suggestions-item')
         .snapshot('suggestions')
-        .end()
-      }
+        .end()}
     >
       {story()}
     </Screener>
@@ -54,26 +48,29 @@ storiesOf('TagPicker', module)
       onResolveSuggestions={getList}
       onEmptyInputFocus={getList}
       getTextFromItem={getTextFromItem}
-      pickerSuggestionsProps={
-        {
-          suggestionsHeaderText: 'Suggested Tags',
-          noResultsFoundText: 'No Color Tags Found'
-        }
-      }
+      pickerSuggestionsProps={{
+        suggestionsHeaderText: 'Suggested Tags',
+        noResultsFoundText: 'No Color Tags Found'
+      }}
       itemLimit={2}
     />
-  )).addStory('Selected', () => (
-    <TagPicker
-      defaultSelectedItems={[testTags[4]]}
-      onResolveSuggestions={getList}
-      onEmptyInputFocus={getList}
-      getTextFromItem={getTextFromItem}
-      pickerSuggestionsProps={
-        {
-          suggestionsHeaderText: 'Suggested Tags',
-          noResultsFoundText: 'No Color Tags Found'
-        }
-      }
-      itemLimit={2}
-    />
-  ), { rtl: true });
+  ))
+  .addStory(
+    'Selected',
+    () => (
+      <Fabric>
+        <TagPicker
+          defaultSelectedItems={[testTags[4]]}
+          onResolveSuggestions={getList}
+          onEmptyInputFocus={getList}
+          getTextFromItem={getTextFromItem}
+          pickerSuggestionsProps={{
+            suggestionsHeaderText: 'Suggested Tags',
+            noResultsFoundText: 'No Color Tags Found'
+          }}
+          itemLimit={2}
+        />
+      </Fabric>
+    ),
+    { rtl: true }
+  );

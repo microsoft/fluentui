@@ -12,16 +12,9 @@ export class ButtonIconExample extends React.Component<IButtonProps> {
 
     return (
       <div className={css(classNames.example)}>
-        <IconButton
-          disabled={disabled}
-          checked={checked}
-          iconProps={{ iconName: 'Emoji2' }}
-          title="Emoji"
-          ariaLabel="Emoji"
-        />
+        <IconButton disabled={disabled} checked={checked} iconProps={{ iconName: 'Emoji2' }} title="Emoji" ariaLabel="Emoji" />
         <p>
-          For a list of Icons, visit our{' '}
-          <a href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</a>.
+          For a list of Icons, visit our <a href="https://developer.microsoft.com/en-us/fabric#/styles/icons">Icon documentation</a>.
         </p>
       </div>
     );

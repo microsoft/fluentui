@@ -4,6 +4,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
   const { className, width, height, theme, color } = props;
   return {
     root: [
+      theme.fonts.medium,
       'ms-DonutChart',
       {
         alignItems: 'center',

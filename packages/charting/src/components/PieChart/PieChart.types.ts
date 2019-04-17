@@ -51,8 +51,7 @@ export interface IPieChartProps {
   strokeWidth?: number;
 }
 
-export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> &
-  Pick<IPieChartProps, 'className'>;
+export type IPieChartStyleProps = Required<Pick<IPieChartProps, 'theme' | 'width' | 'height'>> & Pick<IPieChartProps, 'className'>;
 export interface IPieChartStyles {
   /**
    *  Style for the root element.

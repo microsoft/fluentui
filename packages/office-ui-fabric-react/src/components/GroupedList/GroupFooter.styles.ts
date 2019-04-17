@@ -11,6 +11,7 @@ export const getStyles = (props: IGroupFooterStyleProps): IGroupFooterStyles => 
 
   return {
     root: [
+      theme.fonts.medium,
       classNames.root,
       {
         position: 'relative',

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, createRef } from '../../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
@@ -31,7 +31,7 @@ export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSlid
     value: 0
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorSliderProps) {
     super(props);

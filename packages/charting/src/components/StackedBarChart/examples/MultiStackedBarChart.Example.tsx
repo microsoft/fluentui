@@ -13,11 +13,12 @@ export const MultiStackedBarChartExample: React.SFC<{}> = () => {
 
   const secondChartPoints: IChartDataPoint[] = [
     { legend: 'Phone Numbers', data: 40, color: DefaultPalette.blue },
-    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green },
-    { legend: 'Asset Numbers', data: 35, color: DefaultPalette.yellow }
+    { legend: 'Credit card Numbers', data: 23, color: DefaultPalette.green }
   ];
 
   const hideRatio: boolean[] = [true, false];
+
+  const hideDenominator: boolean[] = [true, true];
 
   const data: IChartProps[] = [
     {
@@ -30,5 +31,13 @@ export const MultiStackedBarChartExample: React.SFC<{}> = () => {
     }
   ];
 
-  return <MultiStackedBarChart data={data} hideRatio={hideRatio} width={600} href={'https://developer.microsoft.com/en-us/'} />;
+  return (
+    <MultiStackedBarChart
+      data={data}
+      hideDenominator={hideDenominator}
+      hideRatio={hideRatio}
+      width={600}
+      href={'https://developer.microsoft.com/en-us/'}
+    />
+  );
 };

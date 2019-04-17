@@ -6,8 +6,8 @@
   <meta http-equiv="X-UA-Compatible" content="IE=edge" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
   <title>Office UI Fabric</title>
-  <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon" type="image/x-icon"
-  />
+  <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon"
+    type="image/x-icon" />
   <script src="https://cdn.optimizely.com/js/5703250400.js"></script>
   <style>
     body,
@@ -29,32 +29,128 @@
 <body>
   <div id="main">
     <div class="loading">
-      <img class="loadingImage" src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif" alt="Loading"
+      <img class="loadingImage"
+        src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/spinner.gif" alt="Loading"
         width="32" height="32" />
     </div>
   </div>
 
   <script type="text/javascript">
-    function loadScript(n) {
-      for (var i = 0; i < n.length; i++) {
-        var s = document.createElement('script');
-        s.src = n[i];
-        s.async = false;
-        document.body.appendChild(s);
-      }
+    var isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
+    var isDogfood = false;
+    var isProduction = false;
+
+    // Query params
+    var dogfoodParam = getParameterByName('isDogfood');
+    var productionParam = getParameterByName('isProduction');
+    var noCompress = isLocal || getParameterByName('noCompress');
+    var devhost = getParameterByName('devhost');
+
+    var entryPointFilename = 'fabric-sitev5';
+    var appPath = '';
+    var Flight = {};
+
+    // Determine production or staging/dogfood
+    if (location.hostname === 'developer.microsoft.com' || productionParam) {
+      isProduction = true;
+    } else if (location.hostname === 'uifabric-tst.azurewebsites.net' || dogfoodParam) {
+      isDogfood = true;
     }
 
-    var isLocal = window.location.hostname === 'localhost';
-    // This path allows minified files to be served locally for testing purposes.
-    var appPath = isLocal ? '' : '';
+    // If the site is hosted, load the flight config script for production or dogfood
+    if (!isLocal) {
+      // Update as new fabric versions and its documentation are supported
+      var fabricVersions = [5, 6];
 
-    var scripts = [
-      '//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.production.min.js',
-      '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.production.min.js',
-      appPath + '/fabric-sitev5.js'
-    ];
+      // Get fabricVer from URL param, session value, or latest version in array
+      var fabricVersion = Number(
+        getParameterByName('fabricVer') ||
+        window.sessionStorage.getItem('fabricVer') ||
+        fabricVersions[fabricVersions.length - 1]
+      );
 
-    loadScript(scripts);
+      // Set session value if it's in array
+      if (fabricVersions.indexOf(fabricVersion) > -1) {
+        window.sessionStorage.setItem('fabricVer', fabricVersion);
+      }
+
+      var prefixVer = fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ?
+        'v' + fabricVersion + '-' :
+        '';
+
+      var configPrefix = isProduction ? 'fabric-website-' + prefixVer + 'prod' : 'fabric-website-' + prefixVer + 'df';
+
+      var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
+
+      loadScripts(configScript, function () {
+        if (window.Flight) {
+          appPath += window.Flight.baseCDNUrl;
+
+          loadAppScripts(appPath);
+        }
+      });
+    }
+
+    else {
+      loadAppScripts(appPath);
+    }
+
+    // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
+    function loadScripts(array, callback) {
+      var loader = function (src, handler) {
+        var script = document.createElement('script');
+        script.src = src;
+        script.onload = script.onreadystatechange = function () {
+          script.onreadystatechange = script.onload = null;
+          handler();
+        }
+        var head = document.getElementsByTagName('head')[0];
+        (head || document.body).appendChild(script);
+      };
+      (function run() {
+        if (array.length != 0) {
+          loader(array.shift(), run);
+        } else {
+          callback && callback();
+        }
+      })();
+    }
+
+    function loadAppScripts(appPath) {
+      var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react';
+      var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom';
+
+      if (noCompress) {
+        reactPath = reactPath + '.development.js';
+        reactDomPath = reactDomPath + '.development.js';
+        appPath += entryPointFilename + '.js';
+      } else {
+        reactPath = reactPath + '.production.min.js';
+        reactDomPath = reactDomPath + '.production.min.js';
+        appPath += entryPointFilename + '.min.js';
+      }
+
+      var scripts = [
+        reactPath,
+        reactDomPath,
+        appPath
+      ];
+
+      // Load React and app scripts
+      loadScripts(scripts);
+    }
+
+    function getParameterByName(name, url) {
+      if (!url) {
+        url = window.location.href;
+      }
+      name = name.replace(/[\[\]]/g, "\\$&");
+      var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+      if (!results) return null;
+      if (!results[2]) return '';
+      return decodeURIComponent(results[2].replace(/\+/g, " "));
+    }
   </script>
 </body>
 

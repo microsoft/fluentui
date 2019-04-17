@@ -39,6 +39,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         width: 'auto'
       },

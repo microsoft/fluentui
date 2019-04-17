@@ -3,27 +3,29 @@
 exports[`ResizeGroup renders the ResizeGroup correctly 1`] = `
 <div
   className="TestClassName"
-  style={
-    Object {
-      "display": "block",
-      "position": "relative",
-    }
-  }
 >
   <div
-    data-automation-id="visibleContent"
     style={
       Object {
-        "position": "fixed",
-        "visibility": "hidden",
+        "position": "relative",
       }
     }
   >
     <div
-      id="onRenderDataId"
+      data-automation-id="visibleContent"
+      style={
+        Object {
+          "position": "fixed",
+          "visibility": "hidden",
+        }
+      }
     >
-       Rendered data: 
-      5
+      <div
+        id="onRenderDataId"
+      >
+         Rendered data: 
+        5
+      </div>
     </div>
   </div>
 </div>

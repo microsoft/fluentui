@@ -14,10 +14,7 @@ export class ImageCenterExample extends React.Component<any, any> {
 
     return (
       <div>
-        <p>
-          Setting the imageFit property to "center" behaves the same as "none", while centering the image within the
-          frame.
-        </p>
+        <p>Setting the imageFit property to "center" behaves the same as "none", while centering the image within the frame.</p>
         <Label>The image is larger than the frame, so all sides are cropped to center the image.</Label>
         <Image
           {...imageProps as any}
@@ -26,8 +23,7 @@ export class ImageCenterExample extends React.Component<any, any> {
         />
         <br />
         <Label>
-          The image is smaller than the frame, so there is empty space within the frame. The image is centered in the
-          available space.
+          The image is smaller than the frame, so there is empty space within the frame. The image is centered in the available space.
         </Label>
         <Image
           {...imageProps as any}

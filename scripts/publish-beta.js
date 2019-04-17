@@ -1,12 +1,12 @@
-const fs = require('fs');
 const path = require('path');
 const chalk = require('chalk');
-const execSync = require('./exec-sync');
+const readConfig = require('./read-config');
 
-const newVersion = process.argv[2];
-const newDep = process.argv[3] || newVersion;
-
-const rushPackages = JSON.parse(fs.readFileSync('../rush.json', 'utf8'));
+const rushJson = readConfig('rush.json');
+if (!rushJson) {
+  console.error('Could not find rush.json');
+  return;
+}
 
 const packages = rushPackages.projects.filter(project => project.shouldPublish);
 

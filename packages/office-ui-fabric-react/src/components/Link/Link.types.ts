@@ -5,11 +5,17 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Link}
+ */
 export interface ILink {
   /** Sets focus to the link. */
   focus(): void;
 }
 
+/**
+ * {@docCategory Link}
+ */
 export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   // Shared
   type?: string;
@@ -38,8 +44,10 @@ export interface ILinkHTMLAttributes<T> extends React.HTMLAttributes<T> {
   [index: string]: any;
 }
 
-export interface ILinkProps
-  extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
+/**
+ * {@docCategory Link}
+ */
+export interface ILinkProps extends ILinkHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLElement | LinkBase> {
   /**
    * Optional callback to access the ILink interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -72,6 +80,9 @@ export interface ILinkProps
   keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory Link}
+ */
 export interface ILinkStyleProps {
   className?: string;
   isButton?: boolean;
@@ -79,6 +90,9 @@ export interface ILinkStyleProps {
   theme: ITheme;
 }
 
+/**
+ * {@docCategory Link}
+ */
 export interface ILinkStyles {
   root: IStyle;
 }

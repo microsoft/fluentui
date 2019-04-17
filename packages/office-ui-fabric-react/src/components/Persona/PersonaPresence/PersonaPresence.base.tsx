@@ -37,8 +37,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
 
     // Render Presence Icon if Persona is above size 32.
     const renderIcon =
-      !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) &&
-      (coinSize ? coinSize > 32 : true);
+      !(size.isSize10 || size.isSize16 || size.isSize24 || size.isSize28 || size.isSize32) && (coinSize ? coinSize > 32 : true);
 
     const presenceHeightWidth: string = coinSize
       ? coinSize / coinSizePresenceScaleFactor < presenceMaxSize
@@ -50,12 +49,8 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
         ? coinSize / coinSizeFontScaleFactor + 'px'
         : presenceFontMaxSize + 'px'
       : '';
-    const coinSizeWithPresenceIconStyle = coinSize
-      ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth }
-      : undefined;
-    const coinSizeWithPresenceStyle = coinSize
-      ? { width: presenceHeightWidth, height: presenceHeightWidth }
-      : undefined;
+    const coinSizeWithPresenceIconStyle = coinSize ? { fontSize: presenceFontSize, lineHeight: presenceHeightWidth } : undefined;
+    const coinSizeWithPresenceStyle = coinSize ? { width: presenceHeightWidth, height: presenceHeightWidth } : undefined;
 
     // Use getStyles from props, or fall back to getStyles from styles file.
     const classNames = getClassNames(styles, {

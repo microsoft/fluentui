@@ -1,6 +1,230 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.13.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Update example-app-base styling overrides to use css-in-js
+
+## 6.13.2
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- HomePage: check sessionStorage for fabricVer
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.13.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- add Separator page
+
+### Patches
+
+- move Text under Utilities
+
+## 6.12.6
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add session storage to index to preserve fabricVer between page navigation
+- Fix key errors from Nav
+
+## 6.12.5
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- Remove unused state in HomePage.tsx
+- Keytips: Adding component page to AppState.
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- HomePage: Add ContextualMenu to enable switching documentation versions
+
+## 6.12.3
+Fri, 22 Mar 2019 02:41:50 GMT
+
+### Patches
+
+- Add missing hypen for prefixVer
+
+## 6.12.2
+Wed, 20 Mar 2019 12:34:45 GMT
+
+### Patches
+
+- Remove template literal in fabric-website/index
+
+## 6.12.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add query parameter to change Fabric version
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages and values to redirect map for Announced links
+
+## 6.11.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.10.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.10.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Icon Page: updated directions for adding dir tag
+- Fix usage of 'ms-text-align'
+
+## 6.10.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackComponentPage to AppState.tsx.
+
+## 6.9.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Website: redirects defunct URLs to new
+
+## 6.8.7
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Patches
+
+- Adds documentation for setting the 'dir' attribute for Fabric Core
+
+## 6.8.6
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fix site links to allow for deeplinks to the customizations
+
+## 6.8.5
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- DetailsList examples: Fix copy paste error causing infinite loop
+
+## 6.8.4
+Mon, 21 Jan 2019 13:36:01 GMT
+
+### Patches
+
+- Strengthen typing of styles function.
+
+## 6.8.3
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Add shimmered DetailsList to website
+- Documentation: Updating README to mention buildfast as an advanced build alternative.
+- Updates for new CollapsibleSection API.
+
+## 6.8.2
+Tue, 08 Jan 2019 13:34:49 GMT
+
+### Patches
+
+- Remove string refs from IconGrid
+
+## 6.8.1
+Fri, 30 Nov 2018 13:37:17 GMT
+
+### Patches
+
+- Add missing dependency
+
+## 6.8.0
+Wed, 07 Nov 2018 13:31:00 GMT
+
+### Minor changes
+
+- Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.
+
+### Patches
+
+- Website: Update iconography implementation documentation
+
+## 6.7.2
+Tue, 06 Nov 2018 13:31:09 GMT
+
+### Patches
+
+- Update TypeScript instructions in getting started tutorial
+- Fix visual bugs caused by MWF overrides on Fabric site
+
+## 6.7.1
+Fri, 02 Nov 2018 12:28:54 GMT
+
+### Patches
+
+- Update website getting started docs
+
+## 6.7.0
+Tue, 30 Oct 2018 18:45:48 GMT
+
+### Minor changes
+
+- Carry over website pipeline improvements to prod-deployed index
+
+## 6.6.2
+Wed, 24 Oct 2018 12:28:58 GMT
+
+### Patches
+
+- Nav: fix loosely typed const after changes in display property type of IRawStyleBase.
+
+## 6.6.1
+Wed, 17 Oct 2018 01:29:55 GMT
+
+### Patches
+
+- Modify theme generator output and add codepen export option.
+
+## 6.6.0
+Mon, 15 Oct 2018 12:29:12 GMT
+
+### Minor changes
+
+- Enable website to load bundle scripts from manifest JS file
 
 ## 6.5.0
 Mon, 08 Oct 2018 12:24:15 GMT

@@ -51,6 +51,25 @@ export interface IChartDataPoint {
    * color for the legend in the chart
    */
   color?: string;
+
+  /**
+   * placeholder data point
+   */
+  placeHolder?: boolean;
+}
+
+export interface ILineChartDataPoint {
+  /**
+   * Independent value of the data point, rendered along the x-axis.
+   * If x is a number, then each y-coordinate is plotted at its x-coordinate.
+   * If data type on x is Date, then the data is spaced evenly by d3-scale
+   */
+  x: number | Date;
+
+  /**
+   * Dependent value of the data point, rendered along the y-axis.
+   */
+  y: number;
 }
 
 export interface ILineChartPoints {
@@ -58,10 +77,12 @@ export interface ILineChartPoints {
    * Legend text for the datapoint in the chart
    */
   legend: string;
+
   /**
-   * data the datapoint in the chart
+   * dataPoints for the line chart
    */
-  data: IDataPoint[];
+  data: ILineChartDataPoint[];
+
   /**
    * color for the legend in the chart
    */

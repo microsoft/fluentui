@@ -5,11 +5,13 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { List, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import './List.Scrolling.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import * as styles from './List.Scrolling.Example.scss';
+
+export type IExampleItem = { name: string };
 
 export interface IListScrollingExampleProps {
-  items: any[];
+  items: IExampleItem[];
 }
 
 export interface IListScrollingExampleState {
@@ -23,7 +25,7 @@ const oddItemHeight = 50;
 const numberOfItemsOnPage = 10;
 
 export class ListScrollingExample extends React.Component<IListScrollingExampleProps, IListScrollingExampleState> {
-  private _list: List;
+  private _list: List<IExampleItem>;
 
   constructor(props: IListScrollingExampleProps) {
     super(props);
@@ -47,9 +49,8 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
           <DefaultButton onClick={this._scrollRelative(10)}>+10</DefaultButton>
         </div>
         <Dropdown
-          placeHolder="Select an Option"
+          placeholder="Select an Option"
           label="Scroll To Mode:"
-          id="Scrolldrop1"
           ariaLabel="Scroll To Mode"
           defaultSelectedKey={'auto'}
           options={[
@@ -71,13 +72,8 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
             onChange={this._onShowItemIndexInViewChanged}
           />
         </div>
-        <div className="ms-ListScrollingExample-container" data-is-scrollable={true}>
-          <List
-            ref={this._resolveList}
-            items={items}
-            getPageHeight={this._getPageHeight}
-            onRenderCell={this._onRenderCell}
-          />
+        <div className={styles.container} data-is-scrollable={true}>
+          <List ref={this._resolveList} items={items} getPageHeight={this._getPageHeight} onRenderCell={this._onRenderCell} />
         </div>
       </FocusZone>
     );
@@ -125,16 +121,10 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
     this._scroll(this.state.selectedIndex, scrollMode);
   };
 
-  private _onRenderCell = (item: any, index: number): JSX.Element => {
+  private _onRenderCell = (item: IExampleItem, index: number): JSX.Element => {
     return (
-      <div className="ms-ListScrollingExample-itemCell" data-is-focusable={true}>
-        <div
-          className={css(
-            'ms-ListScrollingExample-itemContent',
-            index % 2 === 0 && 'ms-ListScrollingExample-itemContent-even',
-            index % 2 === 1 && 'ms-ListScrollingExample-itemContent-odd'
-          )}
-        >
+      <div data-is-focusable={true}>
+        <div className={css(styles.itemContent, index % 2 === 0 ? styles.itemContentEven : styles.itemContentOdd)}>
           {index} &nbsp; {item.name}
         </div>
       </div>
@@ -156,16 +146,12 @@ export class ListScrollingExample extends React.Component<IListScrollingExampleP
         scrollToMode: scrollToMode
       },
       () => {
-        this._list.scrollToIndex(
-          updatedSelectedIndex,
-          idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight),
-          scrollToMode
-        );
+        this._list.scrollToIndex(updatedSelectedIndex, idx => (idx % 2 === 0 ? evenItemHeight : oddItemHeight), scrollToMode);
       }
     );
   };
 
-  private _resolveList = (list: List): void => {
+  private _resolveList = (list: List<IExampleItem>): void => {
     this._list = list;
   };
 

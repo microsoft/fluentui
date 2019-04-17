@@ -1,5 +1,6 @@
 import { ICheckStyleProps, ICheckStyles } from './Check.types';
 import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
+import { getRTL } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Check',
@@ -11,6 +12,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   const { checkBoxHeight = '18px', checked, className, theme } = props;
 
   const { palette, semanticColors } = theme;
+  const isRTL = getRTL();
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
@@ -28,6 +30,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
@@ -106,7 +109,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
         opacity: 0,
         color: palette.neutralTertiaryAlt,
         fontSize: '16px',
-        left: '.5px',
+        left: isRTL ? '-0.5px' : '.5px', // for centering the check icon inside the circle.
 
         selectors: {
           ':hover': {

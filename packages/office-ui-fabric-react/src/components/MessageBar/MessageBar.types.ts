@@ -3,8 +3,14 @@ import { BaseButton, Button } from '../../Button';
 import { ITheme, IStyle } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory MessageBar}
+ */
 export interface IMessageBar {}
 
+/**
+ * {@docCategory MessageBar}
+ */
 export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IMessageBar interface. Use this instead of ref for accessing
@@ -25,6 +31,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
 
   /**
    * A description of the message bar for the benefit of screen readers.
+   * @deprecated Use native prop `aria-label` instead.
    */
   ariaLabel?: string;
 
@@ -33,9 +40,7 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
    * If null, we don't show a dismiss button.
    * @defaultvalue null
    */
-  onDismiss?: (
-    ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | HTMLDivElement | Button>
-  ) => any;
+  onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement | BaseButton | HTMLAnchorElement | HTMLDivElement | Button>) => any;
 
   /**
    * Determines if the message bar is multi lined.
@@ -78,6 +83,9 @@ export interface IMessageBarProps extends React.HTMLAttributes<HTMLElement> {
   styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
 }
 
+/**
+ * {@docCategory MessageBar}
+ */
 export interface IMessageBarStyleProps {
   /**
    * Theme (provided through customization).
@@ -120,6 +128,9 @@ export interface IMessageBarStyleProps {
   actions?: boolean;
 }
 
+/**
+ * {@docCategory MessageBar}
+ */
 export interface IMessageBarStyles {
   /**
    * Style set for the root element.
@@ -177,6 +188,9 @@ export interface IMessageBarStyles {
   actions?: IStyle;
 }
 
+/**
+ * {@docCategory MessageBar}
+ */
 export enum MessageBarType {
   /** Info styled MessageBar */
   info = 0,
@@ -191,8 +205,8 @@ export enum MessageBarType {
   /** Warning styled MessageBar */
   warning = 5,
   /**
-   * Deprecated at v0.48.0, to be removed at >= v1.0.0. Use 'blocked' instead.
-   * @deprecated
+   * Deprecated at v0.48.0, to be removed at \>= v1.0.0. Use `blocked` instead.
+   * @deprecated Use `blocked` instead.
    */
   remove = 90000
 }

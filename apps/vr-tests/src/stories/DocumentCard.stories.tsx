@@ -1,8 +1,8 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities';
+import { FabricDecorator, FabricDecoratorFullWidth } from '../utilities';
 import {
   DocumentCard,
   DocumentCardPreview,
@@ -10,12 +10,14 @@ import {
   DocumentCardActivity,
   DocumentCardType,
   ImageFit,
-  DocumentCardActions
+  DocumentCardDetails,
+  Fabric,
+  IDocumentCardPreviewProps
 } from 'office-ui-fabric-react';
 
 import { TestImages } from '../common/TestImages';
 
-let previewProps = {
+const previewProps: IDocumentCardPreviewProps = {
   previewImages: [
     {
       name: 'Revenue stream proposal fiscal year 2016 version02.pptx',
@@ -31,7 +33,7 @@ let previewProps = {
   ]
 };
 
-let previewPropsCompact = {
+const previewPropsCompact: IDocumentCardPreviewProps = {
   getOverflowDocumentCountText: (overflowCount: number) => `+${overflowCount} more`,
   previewImages: [
     {
@@ -73,65 +75,95 @@ let previewPropsCompact = {
   ]
 };
 
-let DocActivity = (
-  <DocumentCardActivity
-    activity="Created a few minutes ago"
-    people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
-  />
+const docActivity = (
+  <Fabric>
+    <DocumentCardActivity
+      activity="Created a few minutes ago"
+      people={[{ name: 'Annie Lindqvist', profileImageSrc: TestImages.personaFemale }]}
+    />
+  </Fabric>
 );
 
 storiesOf('DocumentCard', module)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>
-  ))
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
   .addStory('Root', () => (
-    <DocumentCard onClickHref="http://bing.com">
-      <DocumentCardPreview {...previewProps} />
-      <DocumentCardTitle
-        title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
-        shouldTruncate={true}
-      />
-      {DocActivity}
-    </DocumentCard>
+    <Fabric>
+      <DocumentCard onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewProps} />
+        <DocumentCardTitle
+          title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+          shouldTruncate={true}
+        />
+        {docActivity}
+      </DocumentCard>
+    </Fabric>
   ))
   .addStory('Not truncated', () => (
-    <DocumentCard onClickHref="http://bing.com">
-      <DocumentCardPreview {...previewProps} />
-      <DocumentCardTitle
-        title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
-        shouldTruncate={false}
-      />
-      {DocActivity}
-    </DocumentCard>
+    <Fabric>
+      <DocumentCard onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewProps} />
+        <DocumentCardTitle
+          title="Large_file_name_with_underscores_used_to_separate_all_of_the_words_and_there_are_so_many_words_it_needs_truncating.pptx"
+          shouldTruncate={false}
+        />
+        {docActivity}
+      </DocumentCard>
+    </Fabric>
   ))
   .addStory('With secondary title style', () => (
-    <DocumentCard onClickHref="http://bing.com">
-      <DocumentCardPreview {...previewProps} />
-      <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
-      {DocActivity}
-    </DocumentCard>
+    <Fabric>
+      <DocumentCard onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewProps} />
+        <DocumentCardTitle title="4 files were uploaded" showAsSecondaryTitle={true} />
+        {docActivity}
+      </DocumentCard>
+    </Fabric>
+  ));
+
+storiesOf('DocumentCard', module)
+  .addDecorator(FabricDecoratorFullWidth)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
+  .addStory('Compact with preview list', () => (
+    <Fabric>
+      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCardPreview {...previewPropsCompact} />
+        <DocumentCardDetails>
+          <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
+          {docActivity}
+        </DocumentCardDetails>
+      </DocumentCard>
+    </Fabric>
   ))
-  .addStory('Compact', () => (
-    <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
-      <DocumentCardPreview {...previewPropsCompact} />
-      <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
-      {DocActivity}
-    </DocumentCard>
-  ))
-  .addStory('With Views', () => (
-    <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
-      <DocumentCardPreview {...previewPropsCompact} />
-      <DocumentCardTitle title="4 files were uploaded" shouldTruncate={true} />
-      {DocActivity}
-      <DocumentCardActions
-        actions={[
-          {
-            iconProps: { iconName: 'Share' },
-            ariaLabel: 'share action'
-          }
-        ]}
-        views={432}
-      />
-    </DocumentCard>
-  ), { rtl: true });
+  .addStory('Compact with preview image', () => (
+    <Fabric>
+      <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
+        <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />
+        <DocumentCardDetails>
+          <DocumentCardTitle
+            title="Revenue stream proposal fiscal year 2016 version02.pptx"
+            shouldTruncate={true}
+          />
+          {docActivity}
+        </DocumentCardDetails>
+      </DocumentCard>
+    </Fabric>
+  ));

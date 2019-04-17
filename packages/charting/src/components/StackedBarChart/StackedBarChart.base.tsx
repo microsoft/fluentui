@@ -29,7 +29,8 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
   public static defaultProps: Partial<IStackedBarChartProps> = {
     barHeight: 16,
     hideNumberDisplay: false,
-    hideLegend: false
+    hideLegend: false,
+    ignoreFixStyle: false
   };
   private _classNames: IProcessedStyleSet<IStackedBarChartStyles>;
 
@@ -52,17 +53,17 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
 
   public render(): JSX.Element {
     this._adjustProps();
-    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor, href } = this.props;
+    const { data, hideNumberDisplay, hideLegend, theme, styles, barBackgroundColor, href, ignoreFixStyle, hideDenominator } = this.props;
     const { palette } = theme!;
-    const barHeight = data!.chartData!.length > 2 ? this.props.barHeight : 8;
+    const barHeight = ignoreFixStyle || data!.chartData!.length > 2 ? this.props.barHeight : 8;
     const bars = this._createBarsAndLegends(data!, barHeight!, palette, barBackgroundColor, href);
-    const showRatio = hideNumberDisplay === false && data!.chartData!.length === 2;
-    const showNumber = hideNumberDisplay === false && data!.chartData!.length === 1;
+    const showRatio = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 2);
+    const showNumber = hideNumberDisplay === false && (!ignoreFixStyle && data!.chartData!.length === 1);
     let total = 0;
     if (showRatio === true) {
       total = data!.chartData!.reduce((acc: number, value: IChartDataPoint) => acc + (value.data ? value.data : 0), 0);
     }
-    const showLegend = hideLegend === false && data!.chartData!.length > 2;
+    const showLegend = hideLegend === false && (ignoreFixStyle || data!.chartData!.length > 2);
     const { isCalloutVisible } = this.state;
     this._classNames = getClassNames(styles!, {
       legendColor: this.state.color,
@@ -78,8 +79,12 @@ export class StackedBarChartBase extends React.Component<IStackedBarChartProps, 
           )}
           {showRatio && (
             <div>
-              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data}</span>/
-              <span className={this._classNames.ratioDenominator}>{total}</span>
+              <span className={this._classNames.ratioNumerator}>{data!.chartData![0].data ? data!.chartData![0].data : 0}</span>
+              {!hideDenominator && (
+                <span>
+                  /<span className={this._classNames.ratioDenominator}>{total}</span>
+                </span>
+              )}
             </div>
           )}
           {showNumber && (

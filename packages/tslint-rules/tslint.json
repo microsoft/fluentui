@@ -2,6 +2,12 @@
   "extends": [
     "tslint-react"
   ],
+  "linterOptions": {
+    "exclude": [
+      "temp/*.ts",
+      "etc/*.ts"
+    ]
+  },
   "rules": {
     "deprecation": true,
     "function-name": [
@@ -63,10 +69,7 @@
       "jsx-double",
       "avoid-escape"
     ],
-    "no-inferrable-types": [
-      true,
-      "ignore-params"
-    ],
+    "no-inferrable-types": false,
     "no-null-keyword": false,
     "export-name": false,
     "trailing-comma": [
@@ -177,6 +180,7 @@
         "variable-declaration": "nospace"
       }
     ],
-    "use-named-parameter": true
+    "use-named-parameter": true,
+    "react-a11y-tabindex-no-positive": true
   }
 }

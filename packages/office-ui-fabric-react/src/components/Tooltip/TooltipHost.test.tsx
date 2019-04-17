@@ -21,7 +21,9 @@ describe('TooltipHost', () => {
   it('uses default documented properties', () => {
     const component = mount(<TooltipHost />);
 
-    expect(component.prop('delay')).toEqual(TooltipDelay.medium);
+    const tooltip = component.find('TooltipHostBase');
+
+    expect(tooltip.prop('delay')).toEqual(TooltipDelay.medium);
     // TODO: should be tested or doc updated. https://github.com/OfficeDev/office-ui-fabric-react/issues/4708
     // expect(component.prop('directionalHint')).toEqual(DirectionalHint.topCenter);
   });

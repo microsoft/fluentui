@@ -21,11 +21,7 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
         }
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<
-                string
-              >('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/HorizontalBarChart.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/HorizontalBarChart/HorizontalBarChart.types.ts')]}
           />
         }
         overview={
@@ -47,9 +43,6 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
               <li />
             </ul>
           </div>
-        }
-        related={
-          <a href="https://dev.office.com/fabric-js/Components/HorizontalBarChart/HorizontalBarChart.html">Fabric JS</a>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

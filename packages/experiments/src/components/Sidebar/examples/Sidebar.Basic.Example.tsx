@@ -5,7 +5,6 @@
 import { getTheme } from 'office-ui-fabric-react';
 import * as React from 'react';
 import { Sidebar, SidebarButton } from '@uifabric/experiments/lib/Sidebar';
-import './Sidebar.Examples.scss';
 
 export class SidebarBasicExample extends React.Component {
   public render(): JSX.Element {
@@ -14,18 +13,17 @@ export class SidebarBasicExample extends React.Component {
     };
 
     /*
-         * Basic sidebar example, with position override so that the example fits into the example page.
-         * Here is the wrapper class. By default the sidebar takes all of the left height and is positioned on the left.
-         *
-         *   .sidebar-position-override {
-         *       top: auto;
-         *       bottom: auto;
-         *       left: auto;
-         *   }
-         */
+     * Basic sidebar example, with position override so that the example fits into the example page.
+     * Here is the wrapper class. By default the sidebar takes all of the left height and is positioned on the left.
+     *
+     *   .sidebar-position-override {
+     *       top: auto;
+     *       bottom: auto;
+     *       left: auto;
+     *   }
+     */
     return (
       <Sidebar
-        id={'sidebar-basic'}
         footerItems={[
           {
             key: 'basic-example-footer-item',

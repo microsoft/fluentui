@@ -1,43 +1,22 @@
-module.exports = function(options) {
-  const path = require('path');
-  const fs = require('fs');
-  const exec = require('../exec-sync');
-  const findConfig = require('../find-config');
-  const jestConfigPath = findConfig('jest.config.js');
-  const resolve = require('resolve');
+// @ts-check
 
-  if (fs.existsSync(jestConfigPath)) {
-    const jestPath = resolve.sync('jest/bin/jest');
-    const customArgs = options && options.argv ? options.argv.slice(3).join(' ') : '';
+const { argv } = require('just-task');
+const { jestTask } = require('just-scripts');
 
-    const args = [
-      // Specify the config file.
-      `--config ${jestConfigPath}`,
+exports.jest = () =>
+  jestTask({
+    ...(process.env.TF_BUILD && { runInBand: true }),
+    ...(process.env.TF_BUILD || argv().production ? { coverage: true } : undefined),
+    ...(argv().u || argv().updateSnapshot ? { updateSnapshot: true } : undefined)
+  });
 
-      // When there are no tests we still want to consider that a success.
-      // packages like `variants` do not have any tests (yet).
-      '--passWithNoTests',
-
-      // Forces test results output highlighting even if stdout is not a TTY.
-      '--colors',
-
-      // On Travis, run tests in serial as supposedly, the free Travis build terminates if multiple processes are spun up.
-      process.env.TRAVIS ? `--runInBand` : undefined,
-
-      // In production builds, produce coverage information.
-      options.isProduction && '--coverage',
-
-      // If the -u flag is passed, pass it through.
-      options.argv && options.argv.indexOf('-u') >= 0 ? '-u' : '',
-
-      // Pass in custom arguments.
-      options.args
-    ]
-      .filter(arg => !!arg)
-      .join(' ');
-
-    const command = `node ${jestPath} ${args}`;
-
-    return exec(command, undefined, path.dirname(jestConfigPath), process);
-  }
+exports.jestWatch = () => {
+  const args = argv();
+  return jestTask({
+    ...(process.env.TF_BUILD && { runInBand: true }),
+    ...(process.env.TF_BUILD || args.production ? { coverage: true } : undefined),
+    ...(args.u || args.updateSnapshot ? { updateSnapshot: true } : undefined),
+    watch: true,
+    _: ['-i', ...(args._ || []).filter(arg => arg !== 'jest-watch')]
+  });
 };

@@ -1,18 +1,12 @@
 import * as React from 'react';
 import { ProgressIndicatorBase } from './ProgressIndicator.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject, IRenderFunction, IRefObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
-export interface IProgressIndicator {
-  focus: () => void;
-}
-
-export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBase> {
-  /**
-   * Gets the component ref.
-   */
-  componentRef?: IRefObject<IProgressIndicator>;
-
+/**
+ * {@docCategory ProgressIndicator}
+ */
+export interface IProgressIndicatorProps extends React.ClassAttributes<ProgressIndicatorBase> {
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
@@ -40,7 +34,8 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   description?: React.ReactNode;
 
   /**
-   * Percentage of the operation's completeness. If this is not set, the indeterminate progress animation will be shown instead.
+   * Percentage of the operation's completeness, numerically between 0 and 1. If this is not set,
+   * the indeterminate progress animation will be shown instead.
    */
   percentComplete?: number;
 
@@ -60,18 +55,21 @@ export interface IProgressIndicatorProps extends React.Props<ProgressIndicatorBa
   ariaValueText?: string;
 
   /**
-   * Deprecated at v0.43.0, to be removed at >= v0.53.0. Use 'label' instead.
-   * @deprecated
+   * Deprecated at v0.43.0, to be removed at \>= v0.53.0. Use `label` instead.
+   * @deprecated Use `label` instead.
    */
   title?: string;
 
   /**
    * Height of the ProgressIndicator
-   * @default 2
+   * @defaultvalue 2
    */
   barHeight?: number;
 }
 
+/**
+ * {@docCategory ProgressIndicator}
+ */
 export interface IProgressIndicatorStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -86,6 +84,9 @@ export interface IProgressIndicatorStyleProps {
   barHeight?: number;
 }
 
+/**
+ * {@docCategory ProgressIndicator}
+ */
 export interface IProgressIndicatorStyles {
   /**
    * Style for the root element.

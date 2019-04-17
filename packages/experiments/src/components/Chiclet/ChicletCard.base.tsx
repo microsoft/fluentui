@@ -45,12 +45,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     const preview = this._renderPreviewImage(image, imageHeight, imageWidth, itemType, imageAlt);
 
     return (
-      <div
-        tabIndex={tabIndex}
-        role={role}
-        onClick={actionable ? this._onClick : undefined}
-        className={this._classNames.root}
-      >
+      <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>{preview}</div>
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>
@@ -70,15 +65,7 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
   ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
     let image;
     if (imageUrl) {
-      image = (
-        <Image
-          width={imageWidth}
-          height={imageHeight}
-          src={imageUrl}
-          role="presentation"
-          alt={imageAlt ? imageAlt : undefined}
-        />
-      );
+      image = <Image width={imageWidth} height={imageHeight} src={imageUrl} role="presentation" alt={imageAlt ? imageAlt : undefined} />;
     } else {
       image = (
         <Image
@@ -105,29 +92,14 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     ) {
       case 'word':
       case 'docx':
-        icon = (
-          <img
-            className={this._classNames.icon}
-            src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`}
-          />
-        );
+        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`} />;
         break;
       case 'powerpoint':
       case 'pptx':
-        icon = (
-          <img
-            className={this._classNames.icon}
-            src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`}
-          />
-        );
+        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`} />;
         break;
       case 'excel':
-        icon = (
-          <img
-            className={this._classNames.icon}
-            src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`}
-          />
-        );
+        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`} />;
         break;
     }
 

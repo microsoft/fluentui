@@ -1,24 +1,10 @@
-// @codepen
 import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -52,14 +38,7 @@ export class DatePickerBasicExample extends React.Component<{}, IDatePickerBasic
 
     return (
       <div className="docs-DatePickerExample">
-        <DatePicker
-          firstDayOfWeek={firstDayOfWeek}
-          strings={DayPickerStrings}
-          placeholder="Select a date..."
-          // tslint:disable:jsx-no-lambda
-          onAfterMenuDismiss={() => console.log('onAfterMenuDismiss called')}
-          // tslint:enable:jsx-no-lambda
-        />
+        <DatePicker firstDayOfWeek={firstDayOfWeek} strings={DayPickerStrings} placeholder="Select a date..." ariaLabel="Select a date" />
         <Dropdown
           label="Select the first day of the week"
           options={[

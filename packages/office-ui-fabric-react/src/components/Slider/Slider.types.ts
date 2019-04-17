@@ -3,13 +3,19 @@ import { SliderBase } from './Slider.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../Utilities';
 
+/**
+ * {@docCategory Slider}
+ */
 export interface ISlider {
   value: number | undefined;
 
   focus: () => void;
 }
 
-export interface ISliderProps extends React.Props<SliderBase> {
+/**
+ * {@docCategory Slider}
+ */
+export interface ISliderProps extends React.ClassAttributes<SliderBase> {
   /**
    * Optional callback to access the ISlider interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -45,25 +51,25 @@ export interface ISliderProps extends React.Props<SliderBase> {
 
   /**
    * The min value of the Slider
-   * @default 0
+   * @defaultvalue 0
    */
   min?: number;
 
   /**
    * The max value of the Slider
-   * @default 10
+   * @defaultvalue 10
    */
   max?: number;
 
   /**
    * The difference between the two adjacent values of the Slider
-   * @default 1
+   * @defaultvalue 1
    */
   step?: number;
 
   /**
    * Whether to show the value on the right of the Slider.
-   * @default true
+   * @defaultvalue true
    */
   showValue?: boolean;
 
@@ -106,8 +112,16 @@ export interface ISliderProps extends React.Props<SliderBase> {
    * Optional mixin for additional props on the thumb button within the slider.
    */
   buttonProps?: React.HTMLAttributes<HTMLButtonElement>;
+
+  /**
+   * Optional function to format the slider value.
+   */
+  valueFormat?: (value: number) => string;
 }
 
+/**
+ * {@docCategory Slider}
+ */
 export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
   Pick<ISliderProps, 'className' | 'disabled' | 'vertical'> & {
     showTransitions?: boolean;
@@ -115,6 +129,9 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> &
     titleLabelClassName?: string;
   };
 
+/**
+ * {@docCategory Slider}
+ */
 export interface ISliderStyles {
   root: IStyle;
   titleLabel: IStyle;

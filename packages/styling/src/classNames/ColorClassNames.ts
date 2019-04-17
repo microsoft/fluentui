@@ -2,6 +2,9 @@ import { IRawStyle, mergeStyles } from '@uifabric/merge-styles';
 import { DefaultPalette } from '../styles/DefaultPalette';
 import { getTheme } from '../styles/index';
 
+/**
+ * {@docCategory IColorClassNames}
+ */
 export interface IColorClassNames {
   themeDarker: string;
   themeDarkerHover: string;
@@ -320,13 +323,7 @@ for (const colorName in DefaultPalette) {
 /**
  * Defines a getter for the given class configuration.
  */
-function _defineGetter(
-  obj: IColorClassNames,
-  colorName: string,
-  suffix: string,
-  isHover: boolean,
-  cssProperty: string
-): void {
+function _defineGetter(obj: IColorClassNames, colorName: string, suffix: string, isHover: boolean, cssProperty: string): void {
   Object.defineProperty(obj, colorName + suffix, {
     get: (): string => {
       // tslint:disable-next-line:no-any

@@ -15,14 +15,10 @@
   flex-direction: row nowrap;
 }
 
-.signalFieldBefore {
-  margin: 0 4px;
-}
-
 .signalFieldValue {
   text-overflow: ellipsis;
   overflow: hidden;
   white-space: nowrap;
-  text-align: left;
+  @include text-align(left);
   flex: 1 1 auto;
 }

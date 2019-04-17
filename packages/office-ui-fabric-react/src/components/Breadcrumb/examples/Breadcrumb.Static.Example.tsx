@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
 
@@ -18,7 +17,8 @@ export class BreadcrumbStaticExample extends React.Component {
           // Returning undefined to OnReduceData tells the breadcrumb not to shrink
           onReduceData={this._returnUndefined}
           maxDisplayedItems={3}
-          ariaLabel={'Website breadcrumb'}
+          ariaLabel={'Breadcrumb with static width'}
+          overflowAriaLabel={'More items'}
         />
       </div>
     );

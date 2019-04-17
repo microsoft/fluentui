@@ -13,7 +13,12 @@ exports[`Nav renders Nav correctly 1`] = `
     className=
         ms-Nav
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
           -webkit-overflow-scrolling: touch;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           overflow-y: auto;
           user-select: none;
         }
@@ -82,7 +87,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -176,7 +181,6 @@ exports[`Nav renders Nav correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -207,6 +211,7 @@ exports[`Nav renders Nav correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }

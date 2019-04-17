@@ -6,6 +6,7 @@ import { IKeytipProps } from '../../Keytip';
 
 /**
  * Checkbox class interface.
+ * {@docCategory Checkbox}
  */
 export interface ICheckbox {
   /** Gets the current checked state. */
@@ -17,6 +18,7 @@ export interface ICheckbox {
 
 /**
  * Checkbox properties.
+ * {@docCategory Checkbox}
  */
 export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement | HTMLInputElement> {
   /**
@@ -67,7 +69,7 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
 
   /**
    * Allows you to set the checkbox to be at the before (start) or after (end) the label.
-   * @default 'start'
+   * @defaultvalue 'start'
    */
   boxSide?: 'start' | 'end';
 
@@ -122,6 +124,9 @@ export interface ICheckboxProps extends React.ButtonHTMLAttributes<HTMLElement |
   keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyleProps {
   theme: ITheme;
   className?: string;
@@ -131,11 +136,20 @@ export interface ICheckboxStyleProps {
   isUsingCustomLabelRender: boolean;
 }
 
+/**
+ * {@docCategory Checkbox}
+ */
 export interface ICheckboxStyles {
   /**
    * Style for the root element (a button) of the checkbox component in the default enabled/unchecked state.
    */
   root?: IStyle;
+
+  /**
+   * INTERNAL: This is mostly an internal implementation detail which you should avoid styling.
+   * This refers to the <input type="checkbox"> element that is typically hidden and not rendered on screen.
+   */
+  input?: IStyle;
 
   /**
    * Style for the label part (contains the customized checkbox + text) when enabled.

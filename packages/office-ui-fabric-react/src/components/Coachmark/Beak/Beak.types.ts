@@ -11,15 +11,15 @@ export interface IBeakProps extends IBaseProps<IBeak> {
 
   /**
    * Beak width.
-   * @default 18
-   * @deprecated
+   * @defaultvalue 18
+   * @deprecated Do not use.
    */
   width?: number;
 
   /**
    * Beak height.
-   * @default 18
-   * @deprecated
+   * @defaultvalue 18
+   * @deprecated Do not use.
    */
   height?: number;
 

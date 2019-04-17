@@ -10,7 +10,7 @@ import { IStyleSet, IProcessedStyleSet, IConcatenatedStyleSet } from './IStyleSe
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSet The first style set to be merged and reigstered.
+ * @param styleSet - The first style set to be merged and reigstered.
  */
 export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
   styleSet: TStyleSet | false | null | undefined
@@ -22,8 +22,8 @@ export function mergeStyleSets<TStyleSet extends IStyleSet<TStyleSet>>(
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSet1 The first style set to be merged.
- * @param styleSet2 The second style set to be merged.
+ * @param styleSet1 - The first style set to be merged.
+ * @param styleSet2 - The second style set to be merged.
  */
 export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleSet2 extends IStyleSet<TStyleSet2>>(
   styleSet1: TStyleSet1 | false | null | undefined,
@@ -36,9 +36,9 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSet1 The first style set to be merged.
- * @param styleSet2 The second style set to be merged.
- * @param styleSet3 The third style set to be merged.
+ * @param styleSet1 - The first style set to be merged.
+ * @param styleSet2 - The second style set to be merged.
+ * @param styleSet3 - The third style set to be merged.
  */
 export function mergeStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -56,10 +56,10 @@ export function mergeStyleSets<
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSet1 The first style set to be merged.
- * @param styleSet2 The second style set to be merged.
- * @param styleSet3 The third style set to be merged.
- * @param styleSet4 The fourth style set to be merged.
+ * @param styleSet1 - The first style set to be merged.
+ * @param styleSet2 - The second style set to be merged.
+ * @param styleSet3 - The third style set to be merged.
+ * @param styleSet4 - The fourth style set to be merged.
  */
 export function mergeStyleSets<
   TStyleSet1 extends IStyleSet<TStyleSet1>,
@@ -79,7 +79,7 @@ export function mergeStyleSets<
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSets One or more style sets to be merged.
+ * @param styleSets - One or more style sets to be merged.
  */
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
@@ -89,11 +89,9 @@ export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | 
  * `mergeStyles` for each property in the object, but ensures we maintain the
  * set ordering when multiple style sets are merged.
  *
- * @param styleSets One or more style sets to be merged.
+ * @param styleSets - One or more style sets to be merged.
  */
-export function mergeStyleSets(
-  ...styleSets: Array<IStyleSet<any> | undefined | false | null>
-): IProcessedStyleSet<any> {
+export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any> {
   // tslint:disable-next-line:no-any
   const classNameSet: IProcessedStyleSet<any> = { subComponentStyles: {} };
   const classMap: { [key: string]: string } = {};
@@ -108,9 +106,7 @@ export function mergeStyleSets(
     // we have guarded against falsey values just above.
     styleSet!;
 
-  if (styleSets.length > 1) {
-    concatenatedStyleSet = concatStyleSets(...styleSets);
-  }
+  concatenatedStyleSet = concatStyleSets(...styleSets);
 
   const registrations = [];
 

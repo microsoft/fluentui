@@ -39,7 +39,7 @@ function mockItems(count: number): any[] {
   return items;
 }
 
-const renderRow = (row: IDetailsRowProps) => <div>{row!.item.name}</div>;
+const renderRow = (row: IDetailsRowProps) => <div>{row.item.name}</div>;
 
 const mockProps: IDetailsListProps = {
   items: mockItems(5),
@@ -72,9 +72,7 @@ describe('DetailsRow', () => {
     const selection = new Selection();
     selection.setKeySelected('0', true, true);
 
-    const component = renderer.create(
-      <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />
-    );
+    const component = renderer.create(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -85,9 +83,7 @@ describe('DetailsRow', () => {
     const selection = new Selection();
     selection.setAllSelected(true);
 
-    const component = renderer.create(
-      <DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />
-    );
+    const component = renderer.create(<DetailsList {...mockProps} selectionMode={SelectionMode.multiple} selection={selection} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -105,5 +101,23 @@ describe('DetailsRow', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
+  });
+
+  it('renders details list row with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    renderer.create(
+      <DetailsRow
+        item={mockProps.items[0]}
+        itemIndex={0}
+        columns={_columns}
+        checkboxVisibility={CheckboxVisibility.always}
+        selectionMode={SelectionMode.single}
+        selection={new Selection()}
+        onRenderDetailsCheckbox={onRenderCheckboxMock}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledWith({ checked: false }, expect.any(Function));
   });
 });

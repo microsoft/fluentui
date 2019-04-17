@@ -11,9 +11,8 @@ export class StylesPage extends React.Component<any, any> {
         <PageHeader pageTitle="Styles" backgroundColor="#006f94" />
         <div className={css(styles.header, styles.headerStyles)}>
           <p>
-            The <a href="https://github.com/OfficeDev/office-ui-fabric-core">Fabric Core project</a> includes all of the
-            base styling that&rsquo;s used throughout Microsoft. Explore each page to learn more about the core elements
-            of Office's design language.
+            The <a href="https://github.com/OfficeDev/office-ui-fabric-core">Fabric Core project</a> includes all of the base styling
+            that&rsquo;s used throughout Microsoft. Explore each page to learn more about the core elements of Office's design language.
           </p>
           <ul className={styles.features}>
             <li>
@@ -45,8 +44,8 @@ export class StylesPage extends React.Component<any, any> {
           />
           <span className={styles.title}>Design Toolkit</span>
           <span className={styles.descriptionLarge}>
-            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you
-            to create seamless, beautiful Office experiences.
+            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless,
+            beautiful Office experiences.
           </span>
           <a href="#/resources">Learn more</a>
         </div>

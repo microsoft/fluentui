@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, getRTL, createRef, classNamesFunction } from '../../Utilities';
+import { BaseComponent, getRTL, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
@@ -9,7 +9,7 @@ import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.styles';
+import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
 const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
@@ -30,7 +30,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   };
 
   private _classNames: IProcessedStyleSet<IBreadcrumbStyles>;
-  private _focusZone = createRef<FocusZone>();
+  private _focusZone = React.createRef<FocusZone>();
 
   constructor(props: IBreadcrumbProps) {
     super(props);
@@ -48,15 +48,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   public render(): JSX.Element {
-    const {
-      onReduceData = this._onReduceData,
-      overflowIndex,
-      maxDisplayedItems,
-      items,
-      className,
-      theme,
-      styles
-    } = this.props;
+    const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
     const breadCrumbData: IBreadCrumbData = {
@@ -118,11 +110,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       <li className={this._classNames.listItem} key={item.key || String(index)}>
         {onRenderItem(item, this._onRenderItem)}
         {(index !== lastItemIndex || (hasOverflowItems && index === overflowIndex! - 1)) && (
-          <DividerType
-            className={this._classNames.chevron}
-            iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'}
-            item={item}
-          />
+          <DividerType className={this._classNames.chevron} iconName={getRTL() ? 'ChevronLeft' : 'ChevronRight'} item={item} />
         )}
       </li>
     ));
@@ -155,8 +143,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       );
     }
 
+    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+
     return (
-      <div className={this._classNames.root} role="navigation" aria-label={ariaLabel}>
+      <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
         <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
           <ol className={this._classNames.list}>{itemElements}</ol>
         </FocusZone>
@@ -197,7 +187,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 
   /**
    * Validate incoming props
-   * @param props Props to validate
+   * @param props - Props to validate
    */
   private _validateProps(props: IBreadcrumbProps): void {
     const { maxDisplayedItems, overflowIndex, items } = props;

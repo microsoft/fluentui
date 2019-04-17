@@ -43,8 +43,7 @@ export function createMediaItems(count: number, indexOffset: number): IExampleIt
       key: `item-${indexOffset + i}`,
       name: lorem(4),
       index: indexOffset + i,
-      aspectRatio: ENTRIES.filter((entry: { probability: number; aspectRatio: number }) => seed >= entry.probability)[0]
-        .aspectRatio
+      aspectRatio: ENTRIES.filter((entry: { probability: number; aspectRatio: number }) => seed >= entry.probability)[0].aspectRatio
     });
   }
 
@@ -132,12 +131,7 @@ export function getTileCells(
       spacing: isLargeSize ? 8 : 12,
       marginBottom: shimmerMode ? 0 : 40,
       minRowHeight: isLargeSize ? 171 : 135,
-      mode:
-        group.type === 'document'
-          ? size === 'small'
-            ? TilesGridMode.fillHorizontal
-            : TilesGridMode.stack
-          : TilesGridMode.fill,
+      mode: group.type === 'document' ? (size === 'small' ? TilesGridMode.fillHorizontal : TilesGridMode.stack) : TilesGridMode.fill,
       key: group.key,
       isPlaceholder: shimmerMode
     });

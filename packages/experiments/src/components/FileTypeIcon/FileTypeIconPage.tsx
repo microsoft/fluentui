@@ -23,19 +23,14 @@ export class FileTypeIconPage extends React.Component<IComponentDemoPageProps, {
           <div>
             <ul>
               <li>Use document icons to indicate to users that they are creating a new document of that type.</li>
-              <li>
-                Make sure that a document of the type that the icon represents loads when the user selects the icon.
-              </li>
+              <li>Make sure that a document of the type that the icon represents loads when the user selects the icon.</li>
             </ul>
           </div>
         }
         donts={
           <div>
             <ul>
-              <li>
-                Use document icons to represent non-Microsoft Office documents, such as a Word .docx icon to open a .txt
-                file.
-              </li>
+              <li>Use document icons to represent non-Microsoft Office documents, such as a Word .docx icon to open a .txt file.</li>
             </ul>
           </div>
         }

@@ -1,12 +1,54 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly 1`] = `
-<div>
+<div
+  className=
+      ms-Fabric
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        color: #333333;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
+        font-weight: 400;
+        padding-bottom: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+      }
+      & button {
+        font-family: inherit;
+      }
+      & input {
+        font-family: inherit;
+      }
+      & textarea {
+        font-family: inherit;
+      }
+      button {
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: visible;
+      }
+      & > * {
+        margin-bottom: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 10px;
+      }
+>
   Using ShimmerElementsGroup component to build complex structures of the placeholder you need.
   <div
     className=
         ms-Shimmer-container
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           height: auto;
           position: relative;
         }
@@ -58,9 +100,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           className=
               ms-ShimmerElementsGroup-root
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 display: flex;
                 flex-wrap: nowrap;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
               }
           style={
             Object {
@@ -72,12 +119,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerLine-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 40px;
                   position: relative;
                 }
@@ -163,6 +215,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerGap-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-color: #ffffff;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
@@ -170,6 +224,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 40px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -188,9 +245,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           className=
               ms-ShimmerElementsGroup-root
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 display: flex;
                 flex-wrap: wrap;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
               }
           style={
             Object {
@@ -202,12 +264,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerLine-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 5px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 10px;
                   position: relative;
                 }
@@ -293,12 +360,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerLine-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 5px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 10px;
                   position: relative;
                 }
@@ -384,6 +456,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerGap-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-color: #ffffff;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
@@ -391,6 +465,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -412,6 +489,11 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
     className=
         ms-Shimmer-container
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           height: auto;
           position: relative;
         }
@@ -463,9 +545,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           className=
               ms-ShimmerElementsGroup-root
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 display: flex;
                 flex-wrap: nowrap;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
               }
           style={
             Object {
@@ -477,12 +564,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerCircle-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 40px;
                   min-width: 40px;
                   width: 40px;
@@ -514,6 +606,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerGap-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-color: #ffffff;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
@@ -521,6 +615,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 40px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -539,9 +636,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           className=
               ms-ShimmerElementsGroup-root
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 display: flex;
                 flex-wrap: wrap;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
               }
           style={
             Object {
@@ -553,12 +655,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerLine-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 5px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 10px;
                   position: relative;
                 }
@@ -644,6 +751,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerGap-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-color: #ffffff;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
@@ -651,6 +760,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 20px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -668,12 +780,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerLine-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 5px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 5px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 10px;
                   position: relative;
                 }
@@ -763,6 +880,11 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
     className=
         ms-Shimmer-container
         {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
           height: auto;
           position: relative;
         }
@@ -814,9 +936,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
           className=
               ms-ShimmerElementsGroup-root
               {
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
                 align-items: center;
                 display: flex;
                 flex-wrap: nowrap;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
               }
           style={
             Object {
@@ -828,12 +955,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerLine-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
                   border-color: #ffffff;
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 80px;
                   position: relative;
                 }
@@ -919,6 +1051,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerGap-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   background-color: #ffffff;
                   border-bottom-style: solid;
                   border-bottom-width: 0px;
@@ -926,6 +1060,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                   border-top-style: solid;
                   border-top-width: 0px;
                   box-sizing: content-box;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   height: 80px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -953,9 +1090,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerElementsGroup-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   display: flex;
                   flex-wrap: nowrap;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             style={
               Object {
@@ -967,12 +1109,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerCircle-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 0px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 40px;
                     min-width: 40px;
                     width: 40px;
@@ -1004,6 +1151,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerGap-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
@@ -1011,6 +1160,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-top-style: solid;
                     border-top-width: 0px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 40px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -1029,9 +1181,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerElementsGroup-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   display: flex;
                   flex-wrap: wrap;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             style={
               Object {
@@ -1043,12 +1200,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerLine-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-bottom-style: solid;
                     border-bottom-width: 5px;
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 5px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 10px;
                     position: relative;
                   }
@@ -1134,6 +1296,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerGap-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
@@ -1141,6 +1305,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-top-style: solid;
                     border-top-width: 0px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 20px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -1158,12 +1325,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerLine-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-bottom-style: solid;
                     border-bottom-width: 5px;
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 5px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 10px;
                     position: relative;
                   }
@@ -1250,9 +1422,14 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
             className=
                 ms-ShimmerElementsGroup-root
                 {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
                   align-items: center;
                   display: flex;
                   flex-wrap: wrap;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                 }
             style={
               Object {
@@ -1264,12 +1441,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerLine-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 10px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 10px;
                     position: relative;
                   }
@@ -1355,6 +1537,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerGap-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
@@ -1362,6 +1546,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-top-style: solid;
                     border-top-width: 0px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 20px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -1379,12 +1566,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerLine-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 10px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 10px;
                     position: relative;
                   }
@@ -1470,6 +1662,8 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerGap-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     background-color: #ffffff;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
@@ -1477,6 +1671,9 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
                     border-top-style: solid;
                     border-top-width: 0px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 20px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
@@ -1494,12 +1691,17 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
               className=
                   ms-ShimmerLine-root
                   {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
                     border-bottom-style: solid;
                     border-bottom-width: 0px;
                     border-color: #ffffff;
                     border-top-style: solid;
                     border-top-width: 10px;
                     box-sizing: content-box;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     height: 10px;
                     position: relative;
                   }

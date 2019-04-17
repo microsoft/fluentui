@@ -1,16 +1,19 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
+
 import { css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize, PersonaPresence } from '../../../../Persona';
-import { IPeoplePickerItemProps } from './PeoplePickerItem.types';
+import { IPeoplePickerItemSelectedProps } from './PeoplePickerItem.types';
 import { ValidationState } from '../../BasePicker.types';
 import { IconButton } from '../../../../Button';
+
 import * as stylesImport from './PickerItemsDefault.scss';
 const styles: any = stylesImport;
 
-export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element = (
-  peoplePickerItemProps: IPeoplePickerItemProps
+/**
+ * @deprecated Use the exported from the package level 'PeoplePickerItem'. Will be removed in Fabric 7.
+ */
+export const SelectedItemDefault: (props: IPeoplePickerItemSelectedProps) => JSX.Element = (
+  peoplePickerItemProps: IPeoplePickerItemSelectedProps
 ) => {
   const { item, onRemoveItem, index, selected, removeButtonAriaLabel } = peoplePickerItemProps;
 
@@ -38,11 +41,7 @@ export const SelectedItemDefault: (props: IPeoplePickerItemProps) => JSX.Element
       aria-labelledby={'selectedItemPersona-' + itemId}
     >
       <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
-        <Persona
-          {...item}
-          presence={item.presence !== undefined ? item.presence : PersonaPresence.none}
-          size={PersonaSize.size28}
-        />
+        <Persona {...item} presence={item.presence !== undefined ? item.presence : PersonaPresence.none} size={PersonaSize.size28} />
       </div>
       <IconButton
         onClick={onClickIconButton(onRemoveItem)}

@@ -1,62 +1,74 @@
 import * as React from 'react';
-import { GroupedList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/components/GroupedList/index';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
+import { GroupedList, IGroup, IGroupHeaderProps, IGroupFooterProps } from 'office-ui-fabric-react/lib/GroupedList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { createListItems, createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
-import './GroupedList.Custom.Example.scss';
+import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { getTheme, mergeStyleSets, IRawStyle } from 'office-ui-fabric-react/lib/Styling';
 
-let _items: any[];
-let _groups: IGroup[];
+const theme = getTheme();
+const headerAndFooterStyles: IRawStyle = {
+  minWidth: 300,
+  minHeight: 40,
+  lineHeight: 40,
+  paddingLeft: 16
+};
+const classNames = mergeStyleSets({
+  header: [headerAndFooterStyles, theme.fonts.xLarge],
+  footer: [headerAndFooterStyles, theme.fonts.large],
+  name: {
+    display: 'inline-block',
+    overflow: 'hidden',
+    height: 24,
+    cursor: 'default',
+    padding: 8,
+    boxSizing: 'border-box',
+    verticalAlign: 'top',
+    background: 'none',
+    backgroundColor: 'transparent',
+    border: 'none',
+    paddingLeft: 32
+  }
+});
 
 export class GroupedListCustomExample extends React.Component {
-  constructor(props: {}) {
-    super(props);
-
-    _items = _items || createListItems(20);
-    _groups = createGroups(4, 0, 0, 5);
-  }
+  private _items: IExampleItem[] = createListItems(20);
+  private _groups: IGroup[] = createGroups(4, 0, 0, 5);
 
   public render(): JSX.Element {
     return (
       <GroupedList
-        items={_items}
+        items={this._items}
         onRenderCell={this._onRenderCell}
         groupProps={{
           onRenderHeader: this._onRenderHeader,
           onRenderFooter: this._onRenderFooter
         }}
-        groups={_groups}
+        groups={this._groups}
       />
     );
   }
 
-  private _onRenderCell(nestingDepth: number, item: any, itemIndex: number): JSX.Element {
+  private _onRenderCell(nestingDepth: number, item: IExampleItem, itemIndex: number): JSX.Element {
     return (
       <div data-selection-index={itemIndex}>
-        <span className="ms-GroupedListExample-name">{item.name}</span>
+        <span className={classNames.name}>{item.name}</span>
       </div>
     );
   }
 
-  private _onRenderHeader(props: IGroupDividerProps): JSX.Element {
+  private _onRenderHeader(props: IGroupHeaderProps): JSX.Element {
     const toggleCollapse = (): void => {
       props.onToggleCollapse!(props.group!);
     };
 
     return (
-      <div className={css('ms-GroupedListExample-header', FontClassNames.xLarge)}>
+      <div className={classNames.header}>
         This is a custom header for {props.group!.name}
         &nbsp; (<Link onClick={toggleCollapse}>{props.group!.isCollapsed ? 'Expand' : 'Collapse'}</Link>)
       </div>
     );
   }
 
-  private _onRenderFooter(props: IGroupDividerProps): JSX.Element {
-    return (
-      <div className={css('ms-GroupedListExample-footer', FontClassNames.large)}>
-        This is a custom footer for {props.group!.name}
-      </div>
-    );
+  private _onRenderFooter(props: IGroupFooterProps): JSX.Element {
+    return <div className={classNames.footer}>This is a custom footer for {props.group!.name}</div>;
   }
 }

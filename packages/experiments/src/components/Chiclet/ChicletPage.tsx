@@ -17,19 +17,13 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Basic Medium-sized Chiclet" isOptIn={true} code={ChicletBasicExampleCode}>
               <ChicletBasicExample />
             </ExampleCard>
-            <ExampleCard
-              title="Medium-sized Chiclet with Breadcrumb"
-              isOptIn={true}
-              code={ChicletBreadcrumbExampleCode}
-            >
+            <ExampleCard title="Medium-sized Chiclet with Breadcrumb" isOptIn={true} code={ChicletBreadcrumbExampleCode}>
               <ChicletBreadcrumbExample />
             </ExampleCard>
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Chiclet/Chiclet.types.ts')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Chiclet/Chiclet.types.ts')]} />
         }
         overview={<div />}
         bestPractices={<div />}

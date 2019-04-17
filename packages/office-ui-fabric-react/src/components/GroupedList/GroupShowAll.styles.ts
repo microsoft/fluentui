@@ -15,6 +15,7 @@ export const getStyles = (props: IGroupShowAllStyleProps): IGroupShowAllStyles =
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         position: 'relative',
         padding: '10px 84px',

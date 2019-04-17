@@ -71,11 +71,16 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
         className=
             ms-Callout
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               border-color: #eaeaea;
               border-style: solid;
               border-width: 1px;
               box-shadow: 0 0 5px 0px rgba(0,0,0,0.4);
               box-sizing: border-box;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               outline: transparent;
               position: absolute;
             }
@@ -108,6 +113,7 @@ exports[`Tooltip renders default Tooltip correctly 1`] = `
           style={
             Object {
               "maxHeight": 750,
+              "outline": "none",
               "overflowY": undefined,
             }
           }

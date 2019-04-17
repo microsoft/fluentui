@@ -2,23 +2,17 @@ import * as React from 'react';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
-import './Dialog.Basic.Example.scss';
 
-export class DialogTopOffsetFixedExample extends React.Component<
-  {},
-  {
-    hideDialog: boolean;
-    optionSelected: string;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
+export interface IDialogTopOffsetFixedExampleState {
+  hideDialog: boolean;
+  optionSelected: string;
+}
 
-    this.state = {
-      hideDialog: true,
-      optionSelected: 'A'
-    };
-  }
+export class DialogTopOffsetFixedExample extends React.Component<{}, IDialogTopOffsetFixedExampleState> {
+  public state: IDialogTopOffsetFixedExampleState = {
+    hideDialog: true,
+    optionSelected: 'A'
+  };
 
   public render() {
     const { optionSelected, hideDialog } = this.state;
@@ -26,12 +20,6 @@ export class DialogTopOffsetFixedExample extends React.Component<
     return (
       <div>
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
-        <label id="myLabelId" className="screenReaderOnly">
-          My sample Label
-        </label>
-        <label id="mySubTextId" className="screenReaderOnly">
-          My Sample description
-        </label>
 
         <Dialog
           hidden={hideDialog}

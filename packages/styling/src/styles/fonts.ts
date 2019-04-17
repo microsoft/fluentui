@@ -69,35 +69,35 @@ const LanguageToFontMap = {
 
 // Standard font sizes.
 export namespace FontSizes {
-  export const mini = '10px';
-  export const xSmall = '11px';
-  export const small = '12px';
-  export const smallPlus = '13px';
-  export const medium = '14px';
-  export const mediumPlus = '15px';
-  export const icon = '16px';
-  export const large = '17px';
-  export const xLarge = '21px';
-  export const xxLarge = '28px';
-  export const superLarge = '42px';
-  export const mega = '72px';
+  export const mini: string = '10px';
+  export const xSmall: string = '11px';
+  export const small: string = '12px';
+  export const smallPlus: string = '13px';
+  export const medium: string = '14px';
+  export const mediumPlus: string = '15px';
+  export const icon: string = '16px';
+  export const large: string = '17px';
+  export const xLarge: string = '21px';
+  export const xxLarge: string = '28px';
+  export const superLarge: string = '42px';
+  export const mega: string = '72px';
 }
 
 // Standard font weights.
 export namespace FontWeights {
-  export const light = 100;
-  export const semilight = 300;
-  export const regular = 400;
-  export const semibold = 600;
-  export const bold = 700;
+  export const light: IFontWeight = 100;
+  export const semilight: IFontWeight = 300;
+  export const regular: IFontWeight = 400;
+  export const semibold: IFontWeight = 600;
+  export const bold: IFontWeight = 700;
 }
 
 // Standard Icon Sizes.
 export namespace IconFontSizes {
-  export const xSmall = '10px';
-  export const small = '12px';
-  export const medium = '16px';
-  export const large = '20px';
+  export const xSmall: string = '10px';
+  export const small: string = '12px';
+  export const medium: string = '16px';
+  export const large: string = '20px';
 }
 
 function _fontFamilyWithFallbacks(fontFamily: string): string {

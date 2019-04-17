@@ -6,15 +6,15 @@
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
+    "noEmit": true,
     "experimentalDecorators": true,
+    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
+    "strictNullChecks": true,
+    "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "types": [
-      "webpack-env"
-    ]
+    "types": ["webpack-env", "screener-storybook"]
   },
-  "include": [
-    "src"
-  ]
+  "include": ["src"]
 }

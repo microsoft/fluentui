@@ -63,16 +63,12 @@ describe('mergeStyles', () => {
 
     expect(className).toEqual('css-0');
     expect(newClassName).toEqual('css-1');
-    expect(_stylesheet.getRules()).toEqual(
-      '.css-0{background:red;color:black;}' + '.css-1{background:red;color:white;}'
-    );
+    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;color:black;}' + '.css-1{background:red;color:white;}');
   });
 
   it('can normalize margins', () => {
     mergeStyles({ margin: '4px' }, { marginRight: '8px' });
-    expect(_stylesheet.getRules()).toEqual(
-      '.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}'
-    );
+    expect(_stylesheet.getRules()).toEqual('.css-0{margin-top:4px;margin-right:8px;margin-bottom:4px;margin-left:4px;}');
   });
 
   it('can expand className lists', () => {
@@ -93,8 +89,6 @@ describe('mergeStyles', () => {
       }
     });
 
-    expect(_stylesheet.getRules()).toEqual(
-      '.css-0{background:red;}' + '@media screen and (max-width: 100px){.css-0{background:green;}}'
-    );
+    expect(_stylesheet.getRules()).toEqual('.css-0{background:red;}' + '@media screen and (max-width: 100px){.css-0{background:green;}}');
   });
 });

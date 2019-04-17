@@ -50,37 +50,26 @@ describe('ActivityItem', () => {
   });
 
   it('renders compact with an icon correctly', () => {
-    const component = renderer.create(
-      <ActivityItem {...defaultProps} activityIcon={<Icon iconName={'Message'} />} isCompact={true} />
-    );
+    const component = renderer.create(<ActivityItem {...defaultProps} activityIcon={<Icon iconName={'Message'} />} isCompact={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders compact with a single persona correctly', () => {
-    const component = renderer.create(
-      <ActivityItem {...defaultProps} activityPersonas={[defaultPersonaProps[0]]} isCompact={true} />
-    );
+    const component = renderer.create(<ActivityItem {...defaultProps} activityPersonas={[defaultPersonaProps[0]]} isCompact={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders compact with multiple personas correctly', () => {
-    const component = renderer.create(
-      <ActivityItem {...defaultProps} activityPersonas={defaultPersonaProps} isCompact={true} />
-    );
+    const component = renderer.create(<ActivityItem {...defaultProps} activityPersonas={defaultPersonaProps} isCompact={true} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders compact with animation correctly', () => {
     const component = renderer.create(
-      <ActivityItem
-        {...defaultProps}
-        activityPersonas={[defaultPersonaProps[0]]}
-        isCompact={true}
-        animateBeaconSignal={true}
-      />
+      <ActivityItem {...defaultProps} activityPersonas={[defaultPersonaProps[0]]} isCompact={true} animateBeaconSignal={true} />
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();

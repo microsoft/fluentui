@@ -2,10 +2,14 @@ import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Rating}
+ */
 export interface IRating {}
 
 /**
  * Rating component props.
+ * {@docCategory Rating}
  */
 export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -20,13 +24,13 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   rating?: number;
 
   /**
-   * Minimum rating, defaults to 1, has to be >= 0
-   * @deprecated
+   * Minimum rating, defaults to 1, has to be \>= 0
+   * @deprecated No longer used.
    */
   min?: number;
 
   /**
-   * Maximum rating, defaults to 5, has to be >= min
+   * Maximum rating, defaults to 5, has to be \>= min
    */
   max?: number;
 
@@ -36,9 +40,16 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   allowZeroStars?: boolean;
 
   /**
-   * Custom icon, defaults to FavoriteStar
+   * Custom icon
+   * @defaultvalue FavoriteStarFill
    */
   icon?: string;
+
+  /**
+   * Custom icon for unselected rating elements.
+   * @defaultvalue FavoriteStar
+   */
+  unselectedIcon?: string;
 
   /**
    * Size of rating, defaults to small
@@ -51,20 +62,20 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   onChange?: (event: React.FocusEvent<HTMLElement>, rating?: number) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (rating: number) => void;
 
   /**
    * Optional label format for star ratings, will be read by screen readers, defaults to ''.
-   * Can be used like "{0} of {1} stars selected".
-   * Where {0} will be subsituted by the current rating and {1} will be subsituted by the max rating.
+   * Can be used like "\{0\} of \{1\} stars selected".
+   * Where \{0\} will be subsituted by the current rating and \{1\} will be subsituted by the max rating.
    */
   ariaLabelFormat?: string;
 
   /**
-   * Deprecated: Optional id of label describing this instance of Rating. Instead of this use getArialabel
-   * @deprecated
+   * Deprecated: Optional id of label describing this instance of Rating. Use `getAriaLabel` instead.
+   * @deprecated Use `getAriaLabel` instead.
    */
   ariaLabelId?: string;
 
@@ -74,8 +85,8 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   readOnly?: boolean;
 
   /*
-  * Optional callback to set the arialabel for rating control.
-  */
+   * Optional callback to set the arialabel for rating control.
+   */
   getAriaLabel?: (rating: number, max: number) => string;
 
   /**
@@ -89,17 +100,26 @@ export interface IRatingProps extends React.AllHTMLAttributes<HTMLElement> {
   theme?: ITheme;
 }
 
+/**
+ * {@docCategory Rating}
+ */
 export enum RatingSize {
   Small = 0,
   Large = 1
 }
 
+/**
+ * {@docCategory Rating}
+ */
 export interface IRatingStyleProps {
   disabled?: boolean;
   readOnly?: boolean;
   theme: ITheme;
 }
 
+/**
+ * {@docCategory Rating}
+ */
 export interface IRatingStyles {
   root: IStyle;
   ratingStar: IStyle;

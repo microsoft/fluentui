@@ -1,63 +1,54 @@
-import * as React from 'react';
-import { IButtonComponent, IButtonViewProps } from './Button.types';
-import { Text } from '../../Text';
-import { HorizontalStack } from '../../Stack';
-import { Icon, IIconProps } from 'office-ui-fabric-react';
+/** @jsx withSlots */
+import { Stack, Text } from 'office-ui-fabric-react';
+import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, buttonProperties } from '../../Utilities';
+import { Icon } from '../../utilities/factoryComponents';
+
+import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const {
-    classNames,
-    as: RootType = _deriveRootType(props),
-    menu: Menu,
-    children,
-    text,
-    icon: IconProp,
-    expanded,
-    disabled,
-    onMenuDismiss,
-    menuTarget,
-    ...rest
-  } = props;
+  const { icon, content, children, disabled, onClick, ariaLabel, buttonRef, ...rest } = props;
 
-  const buttonProps = getNativeProps(rest, buttonProperties);
+  // TODO: 'href' is anchor property... consider getNativeProps by root type
+  const buttonProps = { ...getNativeProps(rest, buttonProperties) };
+
+  const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
+    root: _deriveRootType(props),
+    stack: Stack,
+    icon: Icon,
+    content: Text
+  });
+
+  const _onClick = (ev: React.MouseEvent<HTMLElement>) => {
+    if (!disabled && onClick) {
+      onClick(ev);
+
+      if (ev.defaultPrevented) {
+        return;
+      }
+    }
+  };
 
   return (
-    <RootType
+    <Slots.root
       type="button" // stack doesn't take in native button props
       role="button"
+      onClick={_onClick}
       {...buttonProps}
+      disabled={disabled}
       aria-disabled={disabled}
-      className={classNames.root}
+      aria-label={ariaLabel}
+      ref={buttonRef}
     >
-      <HorizontalStack className={classNames.stack} as="span" gap={8} verticalAlign="center" horizontalAlign="center">
-        {IconProp && typeof IconProp === 'string' && <Icon className={classNames.icon} iconName={IconProp} />}
-        {IconProp &&
-          typeof IconProp === 'object' &&
-          (React.isValidElement(IconProp) ? (
-            IconProp
-          ) : (
-            <Icon
-              className={classNames.icon}
-              {
-                // tslint:disable-next-line:no-any
-                ...IconProp as IIconProps
-              }
-            />
-          ))}
-        {text && <Text className={classNames.text}>{text}</Text>}
+      <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
+        {icon && <Slots.icon />}
+        {content && <Slots.content />}
         {children}
-        {Menu && (
-          <HorizontalStack.Item>
-            <Icon className={classNames.menuIcon} iconName="ChevronDown" />
-          </HorizontalStack.Item>
-        )}
-      </HorizontalStack>
-      {expanded && Menu && <Menu target={menuTarget} onDismiss={onMenuDismiss} />}
-    </RootType>
+      </Slots.stack>
+    </Slots.root>
   );
 };
 
-function _deriveRootType(props: IButtonViewProps): React.ReactType {
+function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
   return !!props.href ? 'a' : 'button';
 }

@@ -17,11 +17,7 @@ describe('CommandBar', () => {
 
   it('renders commands correctly', () => {
     expect(
-      renderer
-        .create(
-          <CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} className={'TestClassName'} />
-        )
-        .toJSON()
+      renderer.create(<CommandBar items={[{ key: '1', text: 'asdf' }, { key: '2', text: 'asdf' }]} className={'TestClassName'} />).toJSON()
     ).toMatchSnapshot();
   });
 

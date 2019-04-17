@@ -1,17 +1,8 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../../Utilities';
-import {
-  IShimmerElementsGroupProps,
-  IShimmerElementsGroupStyleProps,
-  IShimmerElementsGroupStyles
-} from './ShimmerElementsGroup.types';
+import { IShimmerElementsGroupProps, IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles } from './ShimmerElementsGroup.types';
 import { IStyle } from '../../../Styling';
-import {
-  ShimmerElementType,
-  ShimmerElementVerticalAlign,
-  ShimmerElementsDefaultHeights,
-  IShimmerElement
-} from '../Shimmer.types';
+import { ShimmerElementType, ShimmerElementVerticalAlign, ShimmerElementsDefaultHeights, IShimmerElement } from '../Shimmer.types';
 import { ShimmerLine } from '../ShimmerLine/ShimmerLine';
 import { ShimmerGap } from '../ShimmerGap/ShimmerGap';
 import { ShimmerCircle } from '../ShimmerCircle/ShimmerCircle';
@@ -50,9 +41,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
           const { type, ...filteredElem } = elem;
           switch (elem.type) {
             case ShimmerElementType.circle:
-              return (
-                <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />
-              );
+              return <ShimmerCircle key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
             case ShimmerElementType.gap:
               return <ShimmerGap key={index} {...filteredElem} borderStyle={this._getBorderStyles(elem, rowHeight)} />;
             case ShimmerElementType.line:

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/jest-serializer-merge-styles
 
-This log was last generated on Mon, 08 Oct 2018 12:24:15 GMT and should not be manually modified.
+This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+
+## 6.0.8
+Tue, 02 Apr 2019 00:38:15 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.0.7
+Tue, 15 Jan 2019 13:36:45 GMT
+
+### Patches
+
+- Keyframes no longer cause merge-styles jest serialization to throw an exception.
 
 ## 6.0.6
 Mon, 08 Oct 2018 12:24:15 GMT

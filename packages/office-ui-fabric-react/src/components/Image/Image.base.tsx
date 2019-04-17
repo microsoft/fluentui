@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getNativeProps, imageProperties, createRef } from '../../Utilities';
-import { IImageProps, IImageStyles, IImageStyleProps, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
+import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
 
@@ -10,7 +10,7 @@ export interface IImageState {
 
 const KEY_PREFIX = 'fabricImage';
 
-export class ImageBase extends BaseComponent<IImageProps, IImageState> {
+export class ImageBase extends React.Component<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
   };
@@ -21,8 +21,8 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
   // check the rendered element. The value here only takes effect when
   // shouldStartVisible is true.
   private _coverStyle: ImageCoverStyle = ImageCoverStyle.portrait;
-  private _imageElement = createRef<HTMLImageElement>();
-  private _frameElement = createRef<HTMLDivElement>();
+  private _imageElement = React.createRef<HTMLImageElement>();
+  private _frameElement = React.createRef<HTMLDivElement>();
 
   constructor(props: IImageProps) {
     super(props);
@@ -75,11 +75,10 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       maximizeFrame,
       shouldFadeIn,
       shouldStartVisible,
-      isLoaded:
-        loadState === ImageLoadState.loaded ||
-        (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
+      isLoaded: loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
       isLandscape: coverStyle === ImageCoverStyle.landscape,
       isCenter: imageFit === ImageFit.center,
+      isCenterCover: imageFit === ImageFit.centerCover,
       isContain: imageFit === ImageFit.contain,
       isCover: imageFit === ImageFit.cover,
       isNone: imageFit === ImageFit.none,
@@ -148,7 +147,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
 
     // Do not compute cover style if it was already specified in props
     if (
-      (imageFit === ImageFit.cover || imageFit === ImageFit.contain) &&
+      (imageFit === ImageFit.cover || imageFit === ImageFit.contain || imageFit === ImageFit.centerCover) &&
       this.props.coverStyle === undefined &&
       this._imageElement.current &&
       this._frameElement.current
@@ -156,7 +155,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       // Determine the desired ratio using the width and height props.
       // If those props aren't available, measure measure the frame.
       let desiredRatio;
-      if (!!width && !!height) {
+      if (!!width && !!height && imageFit !== ImageFit.centerCover) {
         desiredRatio = (width as number) / (height as number);
       } else {
         desiredRatio = this._frameElement.current.clientWidth / this._frameElement.current.clientHeight;

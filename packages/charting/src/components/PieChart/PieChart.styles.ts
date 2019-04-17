@@ -9,6 +9,7 @@ export const getStyles = (props: IPieChartStyleProps): IPieChartStyles => {
 
   return {
     root: [
+      theme.fonts.medium,
       'ms-PieChart',
       className,
       {

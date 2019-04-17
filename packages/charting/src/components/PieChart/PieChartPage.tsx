@@ -25,9 +25,7 @@ export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
           </div>
         }
         propertiesTables={
-          <PropertiesTableSet
-            sources={[require<string>('!raw-loader!@uifabric/charting/src/components/PieChart/PieChart.types.ts')]}
-          />
+          <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/charting/src/components/PieChart/PieChart.types.ts')]} />
         }
         /* tslint:disable:max-line-length */
         overview={
@@ -51,7 +49,6 @@ export class PieChartPage extends React.Component<IComponentDemoPageProps, {}> {
             </ul>
           </div>
         }
-        related={<a href="https://dev.office.com/fabric-js/Components/PieChart/PieChart.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

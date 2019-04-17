@@ -119,7 +119,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -179,9 +178,14 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -201,9 +205,14 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}
@@ -224,6 +233,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
       <div
         className=
@@ -237,9 +247,14 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
-          className="ms-TooltipHost"
+          className=
+              ms-TooltipHost
+              {
+                display: inline;
+              }
           onBlurCapture={[Function]}
           onFocusCapture={[Function]}
           onMouseEnter={[Function]}

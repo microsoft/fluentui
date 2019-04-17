@@ -10,13 +10,14 @@
   "scripts": {
     "_rushInstall": "node common/scripts/install-run-rush.js install --purge",
     "_rushBuild": "node common/scripts/install-run-rush.js build",
-    "_rushBuildToFabric": "node common/scripts/install-run-rush.js build --to @uifabric/fabric-website-resources",
+    "_rushBuildToExperiments": "node common/scripts/install-run-rush.js build --to @uifabric/experiments",
     "_rushRebuild": "node common/scripts/install-run-rush.js rebuild --production --verbose --lint",
     "_rushRebuildCi": "node common/scripts/install-run-rush.js rebuild --verbose --lint",
     "_rushRebuildFast": "node common/scripts/install-run-rush.js rebuild",
-    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabric -- --npm-install-mode",
+    "postinstall": "npm run _rushInstall && npm run _rushBuildToExperiments -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
+    "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
     "start-exp": "cd packages && cd experiments && npm start",
     "build": "npm run _rushRebuild",
@@ -24,17 +25,21 @@
     "buildfast": "npm run _rushBuild",
     "code-style": "node common/scripts/install-run-rush.js code-style",
     "change": "node common/scripts/install-run-rush.js change",
-    "generate": "node common/scripts/install-run-rush.js update --full",
-    "rush-update": "node common/scripts/install-run-rush.js update",
+    "rush-update": "npm run _rushInstall && node common/scripts/install-run-rush.js update",
+    "generate": "npm run rush-update",
     "bundlesize": "cd scripts && npm run bundlesize",
+    "bundlesizecollect": "node scripts/just.js bundle-size-collect",
     "create-component": "node scripts/create-component.js",
+    "create-package": "node scripts/create-package.js",
     "checkchange": "node common/scripts/install-run-rush.js change -v",
+    "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
-    "check-for-changed-files": "node ./scripts/check-for-modified-files.js",
+    "check-for-changed-files": "node scripts/just.js check-for-modified-files",
     "prettier": "node scripts/prettier.js",
-    "generate-version-files": "node scripts/generate-version-files.js",
+    "generate-version-files": "node scripts/just.js generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
-    "precommit": "node scripts/node_modules/lint-staged/index.js"
+    "precommit": "node scripts/node_modules/lint-staged/index.js",
+    "perf-test": "node scripts/just.js perf-test"
   },
   "license": "MIT",
   "lint-staged": {
@@ -44,14 +49,17 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.js": [
+      "*.{js,jsx,json,scss,html,yml,md}": [
         "node ./scripts/lint-staged/prettier",
         "git add"
       ]
     },
     "ignore": [
       "common/scripts/*.js",
-      "apps/vr-tests/**/*.{ts,tsx}"
+      "packages/tslint-rules/tslint.json",
+      "**/CHANGELOG.*",
+      "**/*.api.md",
+      "**/_*.scss"
     ]
   }
 }

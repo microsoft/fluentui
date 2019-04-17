@@ -5,29 +5,24 @@ import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles } from './Arc.styles';
 import { IChartDataPoint } from '../index';
 
-export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean }> {
+export interface IArcState {
+  isCalloutVisible?: boolean;
+}
+
+export class Arc extends React.Component<IArcProps, IArcState> {
   public static defaultProps: Partial<IArcProps> = {
     arc: shape.arc()
   };
-  constructor(props: IArcProps) {
-    super(props);
-    this.state = {
-      isCalloutVisible: false
-    };
-    this._hoverOff = this._hoverOff.bind(this);
+
+  public state: IArcState = {};
+
+  public static getDerivedStateFromProps(nextProps: Readonly<IArcProps>): null {
+    _updateChart(nextProps);
+    return null;
   }
 
   public updateChart(newProps: IArcProps): void {
-    newProps.arc.innerRadius(newProps.innerRadius);
-    newProps.arc.outerRadius(newProps.outerRadius);
-  }
-
-  public componentWillMount(): void {
-    this.updateChart(this.props);
-  }
-
-  public componentWillReceiveProps(newProps: IArcProps): void {
-    this.updateChart(newProps);
+    _updateChart(newProps);
   }
 
   public render(): JSX.Element {
@@ -58,11 +53,16 @@ export class Arc extends React.Component<IArcProps, { isCalloutVisible: boolean 
     }
   }
 
-  private _hoverOff(): void {
+  private _hoverOff = (): void => {
     this.props.hoverLeaveCallback!();
-  }
+  };
 
   private _redirectToUrl(href: string | undefined): void {
     href ? (window.location.href = href) : '';
   }
+}
+
+function _updateChart(newProps: IArcProps): void {
+  newProps.arc.innerRadius(newProps.innerRadius);
+  newProps.arc.outerRadius(newProps.outerRadius);
 }

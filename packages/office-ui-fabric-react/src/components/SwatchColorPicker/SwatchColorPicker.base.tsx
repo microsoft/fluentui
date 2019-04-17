@@ -1,11 +1,14 @@
 import * as React from 'react';
-import { Async, BaseComponent, classNamesFunction, findIndex, KeyCodes, getId } from '../../Utilities';
 import {
-  ISwatchColorPicker,
-  ISwatchColorPickerProps,
-  ISwatchColorPickerStyleProps,
-  ISwatchColorPickerStyles
-} from './SwatchColorPicker.types';
+  Async,
+  classNamesFunction,
+  findIndex,
+  KeyCodes,
+  getId,
+  warnMutuallyExclusive,
+  warnConditionallyRequiredProps
+} from '../../Utilities';
+import { ISwatchColorPickerProps, ISwatchColorPickerStyleProps, ISwatchColorPickerStyles } from './SwatchColorPicker.types';
 import { Grid } from '../../utilities/grid/Grid';
 import { IColorCellProps } from './ColorPickerGridCell.types';
 import { ColorPickerGridCell } from './ColorPickerGridCell';
@@ -16,7 +19,7 @@ export interface ISwatchColorPickerState {
 
 const getClassNames = classNamesFunction<ISwatchColorPickerStyleProps, ISwatchColorPickerStyles>();
 
-export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps, ISwatchColorPickerState> implements ISwatchColorPicker {
+export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerProps, ISwatchColorPickerState> {
   public static defaultProps = {
     cellShape: 'circle',
     disabled: false,
@@ -37,11 +40,19 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
 
     this._id = props.id || getId('swatchColorPicker');
 
-    this._warnMutuallyExclusive({
-      focusOnHover: 'onHover'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnMutuallyExclusive('SwatchColorPicker', this.props, {
+        focusOnHover: 'onHover'
+      });
 
-    this._warnConditionallyRequiredProps(['focusOnHover'], 'mouseLeaveParentSelector', !!this.props.mouseLeaveParentSelector);
+      warnConditionallyRequiredProps(
+        'SwatchColorPicker',
+        this.props,
+        ['focusOnHover'],
+        'mouseLeaveParentSelector',
+        !!this.props.mouseLeaveParentSelector
+      );
+    }
 
     this.isNavigationIdle = true;
     this.async = new Async(this);
@@ -57,15 +68,9 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   }
 
   public componentWillReceiveProps(newProps: ISwatchColorPickerProps): void {
-    let newSelectedIndex;
-
-    if (newProps.selectedId) {
-      newSelectedIndex = this._getSelectedIndex(newProps.colorCells, newProps.selectedId);
-    }
-
-    if (newSelectedIndex !== this.state.selectedIndex) {
+    if (newProps.selectedId !== undefined) {
       this.setState({
-        selectedIndex: newSelectedIndex
+        selectedIndex: this._getSelectedIndex(newProps.colorCells, newProps.selectedId)
       });
     }
   }
@@ -138,7 +143,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
    * Get the selected item's index
    * @param items - The items to search
    * @param selectedId - The selected item's id to find
-   * @returns {number} - The index of the selected item's id, -1 if there was no match
+   * @returns - The index of the selected item's id, -1 if there was no match
    */
   private _getSelectedIndex(items: IColorCellProps[], selectedId: string): number | undefined {
     const selectedIndex = findIndex(items, item => item.id === selectedId);
@@ -148,7 +153,7 @@ export class SwatchColorPickerBase extends BaseComponent<ISwatchColorPickerProps
   /**
    * Render a color cell
    * @param item - The item to render
-   * @returns {JSX.Element} - Element representing the item
+   * @returns - Element representing the item
    */
   private _renderOption = (item: IColorCellProps): JSX.Element => {
     const id = this._id;

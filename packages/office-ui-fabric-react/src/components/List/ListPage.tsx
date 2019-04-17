@@ -21,13 +21,7 @@ export class ListPage extends React.PureComponent<IListPageProps, IListPageStyle
     this.state = {
       hiddenStyle: undefined,
       backgroundColor:
-        `rgba(` +
-        Math.floor(255 * Math.random()) +
-        `,` +
-        Math.floor(255 * Math.random()) +
-        `,` +
-        Math.floor(255 * Math.random()) +
-        `1)`
+        `rgba(` + Math.floor(255 * Math.random()) + `,` + Math.floor(255 * Math.random()) + `,` + Math.floor(255 * Math.random()) + `1)`
     };
   }
 

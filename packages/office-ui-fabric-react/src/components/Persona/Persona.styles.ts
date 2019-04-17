@@ -212,7 +212,10 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         lineHeight: personaSize.size28
       },
 
-      size.isSize24 && showSecondaryText && { height: '18px' },
+      (size.isSize24 || size.isSize28 || size.isSize32 || size.isSize40) &&
+        showSecondaryText && {
+          height: '18px'
+        },
 
       size.isSize72 && {
         fontSize: FontSizes.xLarge

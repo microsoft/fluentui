@@ -11,6 +11,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
 
   return {
     root: [
+      theme.fonts.medium,
       'ms-VerticalBarChart',
       className,
       {

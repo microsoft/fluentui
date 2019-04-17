@@ -4,20 +4,7 @@ import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-reac
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {
-  months: [
-    'January',
-    'February',
-    'March',
-    'April',
-    'May',
-    'June',
-    'July',
-    'August',
-    'September',
-    'October',
-    'November',
-    'December'
-  ],
+  months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
 
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
 
@@ -58,6 +45,7 @@ export class DatePickerWeekNumbersExample extends React.Component<{}, IDatePicke
           firstWeekOfYear={1}
           showMonthPickerAsOverlay={true}
           placeholder="Select a date..."
+          ariaLabel="Select a date"
         />
         <Dropdown
           label="Select the first day of the week"

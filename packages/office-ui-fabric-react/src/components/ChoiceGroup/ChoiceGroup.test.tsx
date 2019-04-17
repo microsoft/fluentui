@@ -6,8 +6,8 @@ import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 
 import { ChoiceGroup } from './ChoiceGroup';
-import { IChoiceGroupOption } from './ChoiceGroup.types';
-import { resetIds } from '../../Utilities';
+import { IChoiceGroupOption, IChoiceGroup } from './ChoiceGroup.types';
+import { merge, resetIds } from '../../Utilities';
 
 const TEST_OPTIONS: IChoiceGroupOption[] = [
   { key: '1', text: '1', 'data-automation-id': 'auto1' } as IChoiceGroupOption,
@@ -23,7 +23,13 @@ describe('ChoiceGroup', () => {
   });
 
   it('renders ChoiceGroup correctly', () => {
-    const component = renderer.create(<ChoiceGroup options={TEST_OPTIONS} required />);
+    const component = renderer.create(<ChoiceGroup className="testClassName" options={TEST_OPTIONS} required />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('label does not have className prop from parent', () => {
+    const component = renderer.create(<ChoiceGroup className="testClassName" label="testLabel" options={TEST_OPTIONS} required />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -38,52 +44,37 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
 
     ReactTestUtils.Simulate.change(choiceOptions[0]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
 
     ReactTestUtils.Simulate.change(choiceOptions[1]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
 
     ReactTestUtils.Simulate.change(choiceOptions[0]);
 
     expect((choiceOptions[0] as HTMLInputElement).checked).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).checked).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).checked).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('An individual choice option can be disabled', () => {
-    const options = { ...TEST_OPTIONS };
+    const options: IChoiceGroupOption[] = merge([], TEST_OPTIONS) as IChoiceGroupOption[];
     options[0].disabled = true;
 
-    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS} required={true} />);
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={options} required={true} />);
 
     const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
 
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(false);
     expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(false);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('true');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('renders all choice options as disabled when disabled', () => {
@@ -94,9 +85,6 @@ describe('ChoiceGroup', () => {
     expect((choiceOptions[0] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[1] as HTMLInputElement).disabled).toEqual(true);
     expect((choiceOptions[2] as HTMLInputElement).disabled).toEqual(true);
-    expect((choiceOptions[0] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[1] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
-    expect((choiceOptions[2] as HTMLInputElement).getAttribute('data-is-focusable')).toEqual('false');
   });
 
   it('can act as an uncontrolled component', () => {
@@ -147,21 +135,43 @@ describe('ChoiceGroup', () => {
     expect(extraAttributeGetter(1)).toBeNull();
   });
 
-  // By default, we need to assign the role 'application' on the containing div
-  // because JAWS doesn't call OnKeyDown without this role
-  it('has role="application" by default on the containing element', () => {
-    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} />);
-    const choiceGroupEl: Element = choiceGroup.getDOMNode();
-    const role = choiceGroupEl.getAttribute('role');
-
-    expect(role).toEqual('application');
-  });
-
   it('has role attribute that can be omitted', () => {
     const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" />);
     const choiceGroupEl: Element = choiceGroup.getDOMNode();
     const role = choiceGroupEl.getAttribute('role');
-
     expect(role).toEqual('');
+  });
+
+  it('can assign a role attribute to the containing element', () => {
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="Test" />);
+    const choiceGroupEl: Element = choiceGroup.getDOMNode();
+    const role = choiceGroupEl.getAttribute('role');
+    expect(role).toEqual('Test');
+  });
+
+  it('can assign a custom aria label', () => {
+    const option4: IChoiceGroupOption[] = [{ key: '4', text: '4', ariaLabel: 'Custom aria label' }];
+    const choiceGroup = mount(<ChoiceGroup label="testgroup" options={TEST_OPTIONS.concat(option4)} required={true} />);
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    expect(choiceOptions.length).toBe(4);
+
+    expect((choiceOptions[0] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
+    expect((choiceOptions[1] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
+    expect((choiceOptions[2] as HTMLInputElement).getAttribute('aria-label')).toBeNull();
+    expect((choiceOptions[3] as HTMLInputElement).getAttribute('aria-label')).toEqual('Custom aria label');
+  });
+
+  it('can be accessed to get the current checked option', () => {
+    const choiceGroupRef = React.createRef<IChoiceGroup>();
+    const choiceGroup = mount(<ChoiceGroup options={TEST_OPTIONS} role="" componentRef={choiceGroupRef} />);
+
+    const choiceOptions = choiceGroup.getDOMNode().querySelectorAll(QUERY_SELECTOR);
+
+    expect(choiceGroupRef.current!.checkedOption).toBeUndefined();
+    ReactTestUtils.Simulate.change(choiceOptions[0]);
+    expect(choiceGroupRef.current!.checkedOption).toBeDefined();
+    expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
   });
 });

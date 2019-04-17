@@ -10,9 +10,7 @@ export class StaticListPage extends React.Component<IComponentDemoPageProps, {}>
         exampleCards={<div />}
         propertiesTables={
           <PropertiesTableSet
-            sources={[
-              require<string>('!raw-loader!@uifabric/experiments/src/components/StaticList/StaticList.types.ts')
-            ]}
+            sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/StaticList/StaticList.types.ts')]}
           />
         }
         overview={<div />}

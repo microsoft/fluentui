@@ -8,8 +8,7 @@ import {
   classNamesFunction,
   findScrollableParent,
   getDistanceBetweenPoints,
-  getRTL,
-  createRef
+  getRTL
 } from '../../Utilities';
 
 import { IMarqueeSelectionProps, IMarqueeSelectionStyleProps, IMarqueeSelectionStyles } from './MarqueeSelection.types';
@@ -38,7 +37,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     isEnabled: true
   };
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
   private _dragOrigin: IPoint | undefined;
   private _rootRect: IRectangle;
   private _lastMouseEvent: MouseEvent | undefined;
@@ -139,12 +138,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       return;
     }
 
-    if (
-      !this._isTouch &&
-      isEnabled &&
-      !this._isDragStartInSelection(ev) &&
-      (!onShouldStartSelection || onShouldStartSelection(ev))
-    ) {
+    if (!this._isTouch && isEnabled && !this._isDragStartInSelection(ev) && (!onShouldStartSelection || onShouldStartSelection(ev))) {
       if (this._scrollableSurface && ev.button === 0 && this._root.current) {
         this._selectedIndicies = {};
         this._preservedIndicies = undefined;
@@ -270,9 +264,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   }
 
   private _isPointInRectangle(rectangle: IRectangle, point: IPoint): boolean {
-    return (
-      rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x
-    );
+    return rectangle.top < point.y && rectangle.bottom! > point.y && rectangle.left < point.x && rectangle.right! > point.x;
   }
 
   /**
@@ -291,7 +283,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       const index = Number(element.getAttribute('data-selection-index'));
       if (selection.isIndexSelected(index)) {
         const itemRect = element.getBoundingClientRect();
-        if (this._isPointInRectangle(itemRect, { x: ev.x, y: ev.y })) {
+        if (this._isPointInRectangle(itemRect, { x: ev.clientX, y: ev.clientY })) {
           return true;
         }
       }

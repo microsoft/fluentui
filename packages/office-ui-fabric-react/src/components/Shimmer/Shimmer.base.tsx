@@ -61,7 +61,8 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       className,
       customElementsGroup,
       theme,
-      ariaLabel
+      ariaLabel,
+      shimmerColors
     } = this.props;
 
     const { contentLoaded } = this.state;
@@ -70,7 +71,9 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       theme: theme!,
       isDataLoaded,
       className,
-      transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL
+      transitionAnimationInterval: TRANSITION_ANIMATION_INTERVAL,
+      shimmerColor: shimmerColors && shimmerColors.shimmer,
+      shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave
     });
 
     const divProps = getNativeProps(this.props, divProperties);
@@ -79,18 +82,21 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       <div {...divProps} className={this._classNames.root}>
         {!contentLoaded && (
           <div style={{ width: width ? width : '100%' }} className={this._classNames.shimmerWrapper}>
-            {customElementsGroup ? customElementsGroup : <ShimmerElementsGroup shimmerElements={shimmerElements} />}
+            {customElementsGroup ? (
+              customElementsGroup
+            ) : (
+              <ShimmerElementsGroup shimmerElements={shimmerElements} backgroundColor={shimmerColors && shimmerColors.background} />
+            )}
           </div>
         )}
         {children && <div className={this._classNames.dataWrapper}>{children}</div>}
-        {ariaLabel &&
-          !isDataLoaded && (
-            <div role="status" aria-live="polite">
-              <DelayedRender>
-                <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
-              </DelayedRender>
-            </div>
-          )}
+        {ariaLabel && !isDataLoaded && (
+          <div role="status" aria-live="polite">
+            <DelayedRender>
+              <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
+            </DelayedRender>
+          </div>
+        )}
       </div>
     );
   }

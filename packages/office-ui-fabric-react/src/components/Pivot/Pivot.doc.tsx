@@ -11,6 +11,7 @@ import { PivotOnChangeExample } from './examples/Pivot.OnChange.Example';
 import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
+import { PivotSeparateNoSelectedKeyExample } from './examples/Pivot.SeparateNoSelectedKey.Example';
 import { PivotStatus } from './Pivot.checklist';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
@@ -23,12 +24,12 @@ const PivotOnChangeExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PivotIconCountExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.IconCount.Example.tsx') as string;
 const PivotOverrideExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Override.Example.tsx') as string;
 const PivotSeparateExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Separate.Example.tsx') as string;
+const PivotNoSelectedKeyExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.SeparateNoSelectedKey.Example.tsx') as string;
 
 export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
   componentName: 'Pivot',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
   componentStatus: PivotStatus,
   examples: [
     {
@@ -80,6 +81,11 @@ export const PivotPageProps: IDocPageProps = {
       title: 'Render content separately',
       code: PivotSeparateExampleCode,
       view: <PivotSeparateExample />
+    },
+    {
+      title: 'No pivots selected',
+      code: PivotNoSelectedKeyExampleCode,
+      view: <PivotSeparateNoSelectedKeyExample />
     }
   ],
   propertiesTablesSources: [
@@ -92,5 +98,6 @@ export const PivotPageProps: IDocPageProps = {
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
-  allowNativeProps: 'PivotItem'
+  allowNativePropsForComponentName: 'PivotItem',
+  allowNativeProps: true
 };

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { css, styled } from '../../Utilities';
 import { Check } from '../../Check';
 import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
@@ -24,10 +24,11 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     styles,
     theme,
     compact,
+    onRenderDetailsCheckbox,
     ...buttonProps
   } = props;
 
-  const isPressed = props.isSelected || props.selected;
+  const isPressed = isSelected || selected;
 
   const checkStyles = getCheckStyles({ theme: theme! });
 
@@ -46,7 +47,15 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     compact
   });
 
-  return (
+  const defaultCheckboxRender = (checkboxProps: IDetailsCheckboxProps) => {
+    return <Check checked={checkboxProps.checked} />;
+  };
+
+  const detailsCheckboxProps: IDetailsCheckboxProps = {
+    checked: isPressed
+  };
+
+  return canSelect ? (
     <div
       {...buttonProps}
       role="checkbox"
@@ -55,8 +64,12 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
     >
-      <Check checked={isPressed} />
+      {onRenderDetailsCheckbox
+        ? onRenderDetailsCheckbox(detailsCheckboxProps, defaultCheckboxRender)
+        : defaultCheckboxRender(detailsCheckboxProps)}
     </div>
+  ) : (
+    <div {...buttonProps} className={css(classNames.root, classNames.check)} />
   );
 };
 

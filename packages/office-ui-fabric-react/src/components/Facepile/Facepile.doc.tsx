@@ -12,8 +12,7 @@ const FacepileOverflowExampleCode = require('!raw-loader!office-ui-fabric-react/
 export const FacepilePageProps: IDocPageProps = {
   title: 'Facepile',
   componentName: 'Facepile',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Facepile',
   componentStatus: FacepileStatus,
   examples: [
     {
@@ -32,9 +31,7 @@ export const FacepilePageProps: IDocPageProps = {
       view: <FacepileAddFaceExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/Facepile.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Facepile/docs/FacepileDos.md'),

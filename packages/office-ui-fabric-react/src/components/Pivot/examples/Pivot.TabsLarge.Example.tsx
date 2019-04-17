@@ -7,19 +7,18 @@ export class PivotTabsLargeExample extends React.Component<any, any> {
     return (
       <div>
         <Pivot linkFormat={PivotLinkFormat.tabs} linkSize={PivotLinkSize.large}>
-          <PivotItem linkText="Foo">
+          <PivotItem headerText="Foo">
             <Label>Pivot #1</Label>
           </PivotItem>
-          <PivotItem linkText="Bar">
+          <PivotItem headerText="Bar">
             <Label>Pivot #2</Label>
           </PivotItem>
-          <PivotItem linkText="Bas">
+          <PivotItem headerText="Bas">
             <Label>Pivot #3</Label>
           </PivotItem>
-          <PivotItem linkText="Biz">
+          <PivotItem headerText="Biz">
             <Label>Pivot #4</Label>
           </PivotItem>
-          <div>content not in a PivotItem</div>
         </Pivot>
       </div>
     );

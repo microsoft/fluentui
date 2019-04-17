@@ -30,10 +30,7 @@ export function setRTL(isRTL: boolean): void {
  */
 export function getRTL(): boolean {
   if (_rtl === undefined) {
-    _rtl =
-      typeof document !== 'undefined' &&
-      !!document.documentElement &&
-      document.documentElement.getAttribute('dir') === 'rtl';
+    _rtl = typeof document !== 'undefined' && !!document.documentElement && document.documentElement.getAttribute('dir') === 'rtl';
   }
   return _rtl;
 }

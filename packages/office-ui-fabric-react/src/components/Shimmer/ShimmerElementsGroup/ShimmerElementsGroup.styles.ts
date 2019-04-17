@@ -13,6 +13,7 @@ export function getStyles(props: IShimmerElementsGroupStyleProps): IShimmerEleme
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         display: 'flex',
         alignItems: 'center',

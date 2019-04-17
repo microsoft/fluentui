@@ -1,96 +1,155 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import './ExampleCard.scss';
 import { CommandButton } from 'office-ui-fabric-react/lib/Button';
-import { Highlight } from '../Highlight/Highlight';
-import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
+import { styled, classNamesFunction, Customizer, css } from 'office-ui-fabric-react/lib/Utilities';
+import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
-export interface IExampleCardProps {
-  /* Example Title */
-  title: string;
-  /* Experimental Component? */
-  isOptIn?: boolean;
-  /* Example Code as a string */
-  code?: string;
-  /* Children of the Example */
-  children?: React.ReactNode;
-  /* Example is Right-Aligned ? */
-  isRightAligned?: boolean;
-  /* Example dos */
-  dos?: JSX.Element;
-  /* Example don'ts */
-  donts?: JSX.Element;
-  /* Example is scrollable ? */
-  isScrollable?: boolean;
-  /* JS string for Codepen portion of Example */
-  codepenJS?: string;
-}
+import { Highlight } from '../Highlight/Highlight';
+import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
+import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
+import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
+import { getStyles } from './ExampleCard.styles';
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
+  schemeIndex: number;
+  themeIndex: number;
 }
 
-export class ExampleCard extends React.Component<IExampleCardProps, IExampleCardState> {
+const getClassNames = classNamesFunction<IExampleCardStyleProps, IExampleCardStyles>();
+
+const _schemes: ISchemeNames[] = ['default', 'strong', 'soft', 'neutral'];
+const _schemeOptions: IDropdownOption[] = _schemes.map((item: string, index: number) => ({
+  key: index,
+  text: 'Scheme: ' + item
+}));
+
+const regionStyles: IStackComponent['styles'] = (props, theme) => ({
+  root: {
+    backgroundColor: theme.semanticColors.bodyBackground,
+    color: theme.semanticColors.bodyText
+  }
+});
+
+export class ExampleCardBase extends React.Component<IExampleCardProps, IExampleCardState> {
+  private _themeCustomizations: IExampleCardCustomizations[] | undefined;
+  private _themeOptions: IDropdownOption[];
+  private _classNames: IProcessedStyleSet<IExampleCardStyles>;
+
   constructor(props: IExampleCardProps) {
     super(props);
 
     this.state = {
-      isCodeVisible: false
+      isCodeVisible: false,
+      schemeIndex: 0,
+      themeIndex: 0
     };
-
-    this._onToggleCodeClick = this._onToggleCodeClick.bind(this);
   }
 
   public render(): JSX.Element {
-    const { title, code, children, isRightAligned = false, isScrollable = true, codepenJS } = this.props;
-
-    const { isCodeVisible } = this.state;
-    let rootClass = 'ExampleCard' + (this.state.isCodeVisible ? ' is-codeVisible' : '');
+    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
+    const { isCodeVisible, schemeIndex, themeIndex } = this.state;
 
     return (
-      <div className={rootClass}>
-        <div className="ExampleCard-header">
-          <span className="ExampleCard-title">{title}</span>
-          <div className="ExampleCard-toggleButtons">
-            {codepenJS && <CodepenComponent jsContent={codepenJS} />}
-            {code && (
-              <CommandButton
-                iconProps={{ iconName: 'Embed' }}
-                onClick={this._onToggleCodeClick}
-                className={css('ExampleCard-codeButton', isCodeVisible && 'is-active')}
-              >
-                {isCodeVisible ? 'Hide code' : 'Show code'}
-              </CommandButton>
-            )}
-          </div>
-        </div>
+      <AppCustomizationsContext.Consumer>
+        {(context: IAppCustomizations) => {
+          const { exampleCardCustomizations } = context;
+          const activeCustomizations =
+            exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
-        <div className="ExampleCard-code">{isCodeVisible && <Highlight>{code}</Highlight>}</div>
+          if (exampleCardCustomizations !== this._themeCustomizations) {
+            this._themeCustomizations = exampleCardCustomizations;
+            this._themeOptions = exampleCardCustomizations
+              ? exampleCardCustomizations.map((item: IExampleCardCustomizations, index: number) => ({
+                  key: index,
+                  text: 'Theme: ' + item.title
+                }))
+              : [];
+          }
 
-        <div
-          className={css('ExampleCard-example', {
-            'is-right-aligned': isRightAligned,
-            'is-scrollable': isScrollable
-          })}
-          data-is-scrollable={isScrollable}
-        >
-          {children}
-        </div>
+          const styleProps: IExampleCardStyleProps = { isRightAligned, isScrollable, isCodeVisible, theme };
+          const classNames = (this._classNames = getClassNames(styles, styleProps));
+          const { subComponentStyles } = classNames;
+          const { codeButtons: codeButtonStyles } = subComponentStyles;
 
-        {this._getDosAndDonts()}
-      </div>
+          const exampleCardContent = (
+            <div className={classNames.example} data-is-scrollable={isScrollable}>
+              {children}
+            </div>
+          );
+
+          const exampleCard = (
+            <div className={css(classNames.root, isCodeVisible && 'is-codeVisible')}>
+              <div className={classNames.header}>
+                <span className={classNames.title}>{title}</span>
+                <div className={classNames.toggleButtons}>
+                  {codepenJS && <CodepenComponent jsContent={codepenJS} buttonStyles={subComponentStyles.codeButtons} />}
+
+                  {exampleCardCustomizations && (
+                    <Dropdown
+                      defaultSelectedKey={0}
+                      onChange={this._onThemeChange}
+                      options={this._themeOptions}
+                      styles={subComponentStyles.dropdowns}
+                    />
+                  )}
+
+                  {exampleCardCustomizations && (
+                    <Dropdown
+                      defaultSelectedKey={0}
+                      onChange={this._onSchemeChange}
+                      options={_schemeOptions}
+                      styles={subComponentStyles.dropdowns}
+                    />
+                  )}
+
+                  {code && (
+                    <CommandButton
+                      iconProps={{ iconName: 'Embed' }}
+                      onClick={this._onToggleCodeClick}
+                      // TODO: fix once button has full styling support
+                      styles={typeof codeButtonStyles === 'function' ? codeButtonStyles({}) : codeButtonStyles}
+                    >
+                      {isCodeVisible ? 'Hide code' : 'Show code'}
+                    </CommandButton>
+                  )}
+                </div>
+              </div>
+
+              <div className={classNames.code}>{isCodeVisible && <Highlight>{code}</Highlight>}</div>
+
+              {activeCustomizations ? (
+                <Customizer {...activeCustomizations}>
+                  <ThemeProvider scheme={_schemes[schemeIndex]}>
+                    <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                  </ThemeProvider>
+                </Customizer>
+              ) : (
+                exampleCardContent
+              )}
+
+              {this._getDosAndDonts()}
+            </div>
+          );
+
+          return exampleCard;
+        }}
+      </AppCustomizationsContext.Consumer>
     );
   }
 
   private _getDosAndDonts(): JSX.Element | void {
+    const classNames = this._classNames;
     if (this.props.dos && this.props.donts) {
       return (
-        <div className="ExampleCard-dosAndDonts">
-          <div className="ExampleCard-dos">
+        <div className={classNames.dosAndDonts}>
+          <div className={classNames.dos}>
             <h4>Do</h4>
             {this.props.dos}
           </div>
-          <div className="ExampleCard-donts">
+          <div className={classNames.donts}>
             <h4>Do not</h4>
             {this.props.donts}
           </div>
@@ -99,9 +158,25 @@ export class ExampleCard extends React.Component<IExampleCardProps, IExampleCard
     }
   }
 
-  private _onToggleCodeClick(): void {
+  private _onSchemeChange = (ev: React.MouseEvent<HTMLDivElement>, value: IDropdownOption) => {
+    this.setState({ schemeIndex: value.key as number });
+  };
+
+  private _onThemeChange = (ev: React.MouseEvent<HTMLDivElement>, value: IDropdownOption) => {
+    this.setState({ themeIndex: value.key as number });
+  };
+
+  private _onToggleCodeClick = () => {
     this.setState({
       isCodeVisible: !this.state.isCodeVisible
     });
-  }
+  };
 }
+
+export const ExampleCard: React.StatelessComponent<IExampleCardProps> = styled<
+  IExampleCardProps,
+  IExampleCardStyleProps,
+  IExampleCardStyles
+>(ExampleCardBase, getStyles, undefined, {
+  scope: 'ExampleCard'
+});

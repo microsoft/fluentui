@@ -58,9 +58,7 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: { iconName: 'itemIcon' }, name: 'menuItem' };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(
-          <ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />
-        );
+        wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
       });
 
       it('renders the icon', () => {
@@ -77,9 +75,7 @@ describe('ContextMenuItemChildren', () => {
         menuItem = { key: '123', iconProps: {} };
         menuClassNames = getMenuItemClassNames();
 
-        wrapper = shallow(
-          <ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />
-        );
+        wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
       });
 
       it('renders the icon with iconName', () => {
@@ -98,9 +94,7 @@ describe('ContextMenuItemChildren', () => {
       menuItem = { key: '123', iconProps: {}, submenuIconProps: {} };
       menuClassNames = getMenuItemClassNames();
 
-      wrapper = shallow(
-        <ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />
-      );
+      wrapper = shallow(<ContextualMenuItemBase item={menuItem} classNames={menuClassNames} index={1} hasIcons={true} />);
     });
 
     it('renders the menu icon', () => {

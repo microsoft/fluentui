@@ -3,7 +3,7 @@ import { ChoiceGroupBase } from './ChoiceGroup.base';
 import { IChoiceGroupProps, IChoiceGroupStyles, IChoiceGroupStyleProps } from './ChoiceGroup.types';
 import { getStyles } from './ChoiceGroup.styles';
 
-export const ChoiceGroup: (props: IChoiceGroupProps) => JSX.Element = styled<
+export const ChoiceGroup: React.StatelessComponent<IChoiceGroupProps> = styled<
   IChoiceGroupProps,
   IChoiceGroupStyleProps,
   IChoiceGroupStyles

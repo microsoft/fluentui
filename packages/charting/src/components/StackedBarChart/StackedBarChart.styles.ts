@@ -5,6 +5,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
   return {
     root: [
+      theme.fonts.medium,
       'ms-StackedBarChart',
       {
         width: width ? width : '100%',
@@ -46,7 +47,9 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
     },
     opacityChangeOnHover: {
       opacity: shouldHighlight ? '' : '0.1',
-      cursor: href ? 'pointer' : 'default'
+      cursor: href ? 'pointer' : 'default',
+      stroke: theme.palette.white,
+      strokeWidth: 2
     },
     ratioNumerator: {
       fontSize: FontSizes.small,

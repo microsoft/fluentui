@@ -12,6 +12,6 @@ describe('Checkbox', () => {
   });
   it('renders Checkbox with id correctly', () => {
     const component = mount(<Checkbox label="Standard checkbox" ariaDescribedBy={'descriptionID'} id="my-checkbox" />);
-    expect(component.find('button').prop('id')).toEqual('my-checkbox');
+    expect(component.find('input').prop('id')).toEqual('my-checkbox');
   });
 });

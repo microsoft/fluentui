@@ -9,15 +9,14 @@ const LabelBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/co
 export const LabelPageProps: IDocPageProps = {
   title: 'Label',
   componentName: 'Label',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Label',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Label',
   componentStatus: LabelStatus,
   examples: [
     {
       title: 'Label',
       code: LabelBasicExampleCode,
       view: <LabelBasicExample />,
-      codepenJS: require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Label/Label.Basic.Example.Codepen.txt') as string
+      codepenJS: require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Label/examples/Label.Basic.Example.tsx') as string
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Label/Label.types.ts')],

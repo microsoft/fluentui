@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { HoverCard, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
-import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { HoverCard, HoverCardType, IExpandingCardProps } from 'office-ui-fabric-react/lib/HoverCard';
+import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { OverflowSet, IOverflowSetItemProps } from 'office-ui-fabric-react/lib/OverflowSet';
@@ -25,7 +25,6 @@ export interface ILegendState {
   selectedLegend: string;
   selectedState: boolean;
   hoverState: boolean;
-  hoverCardHeight: number;
 }
 export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
   private _classNames: IProcessedStyleSet<ILegendsStyles>;
@@ -35,8 +34,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
     this.state = {
       selectedLegend: 'none',
       selectedState: false,
-      hoverState: false,
-      hoverCardHeight: 0
+      hoverState: false
     };
   }
 
@@ -143,45 +141,45 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       items.push({ key: i.toString(), name: legend.title, onClick: legend.action });
     });
     const renderOverflowData: IExpandingCardProps = { renderData: legends };
-    const expandingCardProps: IExpandingCardProps = {
-      compactCardHeight: this.state.hoverCardHeight + 16,
-      onRenderCompactCard: this._onRenderCompactCard,
-      renderData: renderOverflowData,
-      mode: 0,
-      styles: {
-        root: {
-          width: 'auto',
-          height: 'auto'
-        },
-        compactCard: {
-          width: 'auto',
-          height: 'auto'
-        },
-        expandedCard: {
-          width: 0
-        }
-      }
-    };
     const { theme, className, styles } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className
     });
+    const plainCardProps = {
+      onRenderPlainCard: this._onRenderCompactCard,
+      renderData: renderOverflowData
+    };
+
+    // execute similar to "_onClick" and "_onLeave" logic at HoverCard onCardHide event
+    const onHoverCardHideHandler = () => {
+      if (this.state.selectedState) {
+        const selectedOverflowItem = find(legends, (legend: ILegend) => legend.title === this.state.selectedLegend);
+        if (selectedOverflowItem) {
+          this.setState({ selectedLegend: 'none', selectedState: false }, () => {
+            if (selectedOverflowItem.action) {
+              selectedOverflowItem.action();
+            }
+            this.setState({ hoverState: false }, () => {
+              if (selectedOverflowItem.onMouseOutAction) {
+                selectedOverflowItem.onMouseOutAction();
+              }
+            });
+          });
+        }
+      }
+    };
     return (
-      <HoverCard expandingCardProps={expandingCardProps} cardOpenDelay={10}>
-        <div className={classNames.overflowIndicationTextStyle} onMouseOver={this._calculateHoverCardLength}>
-          {items.length} more
-        </div>
+      <HoverCard
+        type={HoverCardType.plain}
+        plainCardProps={plainCardProps}
+        sticky={true}
+        instantOpenOnClick={true}
+        onCardHide={onHoverCardHideHandler}
+      >
+        <div className={classNames.overflowIndicationTextStyle}>{items.length} more</div>
       </HoverCard>
     );
-  };
-
-  private _calculateHoverCardLength = () => {
-    setTimeout(() => {
-      if (document.getElementsByClassName('hoverCardRoot')[0]) {
-        this.setState({ hoverCardHeight: document.getElementsByClassName('hoverCardRoot')[0].clientHeight });
-      }
-    }, 20);
   };
 
   private _onHoverOverLegend = (legend: ILegend) => {

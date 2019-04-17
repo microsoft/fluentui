@@ -32,7 +32,7 @@ $nav-group-header-height: 40px;
     a {
       color: $ms-color-white;
     }
-    >.links {
+    > .links {
       display: block;
       @include ms-margin-left(8px);
     }
@@ -67,7 +67,7 @@ $nav-group-header-height: 40px;
     }
     &.isActive,
     &:hover {
-      >a:first-child {
+      > a:first-child {
         color: $ms-color-white;
       } // Hide the line indicators on submenus
       &::before {
@@ -75,7 +75,7 @@ $nav-group-header-height: 40px;
       }
     }
     &.hasActiveChild {
-      >a:first-child {
+      > a:first-child {
         color: $ms-color-white;
         font-weight: $ms-font-weight-semibold;
       }
@@ -88,10 +88,4 @@ $nav-group-header-height: 40px;
 
 .matchesFilter {
   color: $ms-color-white;
-}
-
-@media only screen and (max-width: $uhf-screen-max-mobile) {
-  .nav {
-    display: none;
-  }
 }

@@ -12,12 +12,12 @@ export class ImageCoverExample extends React.Component<any, any> {
     return (
       <div>
         <p>
-          Setting the imageFit property to "cover" will cause the image to scale up or down proportionally, while
-          cropping from either the top and bottom or sides to completely fill the frame.
+          Setting the imageFit property to "cover" will cause the image to scale up or down proportionally, while cropping from either the
+          top and bottom or sides to completely fill the frame.
         </p>
         <Label>
-          The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled to fit the height
-          and the sides are cropped evenly.
+          The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled to fit the height and the sides are
+          cropped evenly.
         </Label>
         <Image
           {...imageProps as any}
@@ -27,8 +27,8 @@ export class ImageCoverExample extends React.Component<any, any> {
         />
         <br />
         <Label>
-          The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled to fit the width
-          and the top and bottom are cropped evenly.
+          The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled to fit the width and the top and bottom
+          are cropped evenly.
         </Label>
         <Image
           {...imageProps as any}

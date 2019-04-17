@@ -12,12 +12,12 @@ export class ImageContainExample extends React.Component<any, any> {
     return (
       <div>
         <p>
-          Setting the imageFit property to "contain" will scale the image up or down to fit the frame, while maintaining
-          its natural aspect ratio and without cropping the image.
+          Setting the imageFit property to "contain" will scale the image up or down to fit the frame, while maintaining its natural aspect
+          ratio and without cropping the image.
         </p>
         <Label>
-          The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled to fit the width
-          and centered in the available vertical space.
+          The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled to fit the width and centered in the
+          available vertical space.
         </Label>
         <Image
           {...imageProps as any}
@@ -27,8 +27,8 @@ export class ImageContainExample extends React.Component<any, any> {
         />
         <br />
         <Label>
-          The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled to fit the height
-          and centered in the available horizontal space.
+          The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled to fit the height and centered in the
+          available horizontal space.
         </Label>
         <Image
           {...imageProps as any}

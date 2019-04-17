@@ -1,17 +1,13 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
+import { ILayerProps } from '../../Layer';
 
-export interface ICallout {}
-
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Optional callback to access the ICallout interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ICallout>;
-
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
@@ -21,7 +17,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * How the element should be positioned
-   * @default DirectionalHint.BottomAutoEdge
+   * @defaultvalue DirectionalHint.BottomAutoEdge
    */
   directionalHint?: DirectionalHint;
 
@@ -33,31 +29,31 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * The gap between the Callout and the target
-   * @default 0
+   * @defaultvalue 0
    */
   gapSpace?: number;
 
   /**
    * The width of the beak.
-   * @default 16
+   * @defaultvalue 16
    */
   beakWidth?: number;
 
   /**
    * Custom width for callout including borders. If value is 0, no width is applied.
-   * @default 0
+   * @defaultvalue 0
    */
   calloutWidth?: number;
 
   /**
    * Custom width for callout including borders. If value is 0, no width is applied.
-   * @default 0
+   * @defaultvalue 0
    */
   calloutMaxWidth?: number;
 
   /**
    * The background color of the Callout in hex format ie. #ffffff.
-   * @default $ms-color-white
+   * @defaultvalue $ms-color-white
    */
   backgroundColor?: string;
 
@@ -68,34 +64,46 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * The minimum distance the callout will be away from the edge of the screen.
-   *  @default 8
+   *  @defaultvalue 8
    */
   minPagePadding?: number;
 
   /**
    * If true then the beak is visible. If false it will not be shown.
-   * @default true
+   * @defaultvalue true
    */
   isBeakVisible?: boolean;
 
   /**
    * If true then the callout will not dismiss on scroll
-   * @default false
+   * @defaultvalue false
    */
   preventDismissOnScroll?: boolean;
 
   /**
+   * If true then the callout will not dismiss on resize
+   * @defaultvalue false
+   */
+  preventDismissOnResize?: boolean;
+
+  /**
    * If true then the callout will not dismiss when it loses focus
-   * @default false
+   * @defaultvalue false
    */
   preventDismissOnLostFocus?: boolean;
 
   /**
    * If true the position returned will have the menu element cover the target.
    * If false then it will position next to the target;
-   * @default false
+   * @defaultvalue false
    */
   coverTarget?: boolean;
+
+  /**
+   * If true the positioning logic will prefer to flip edges rather than to nudge the rectangle to fit within bounds,
+   * thus making sure the element aligns perfectly with target's alignment edge
+   */
+  alignTargetEdge?: boolean;
 
   /**
    * Aria role assigned to the callout (Eg. dialog, alertdialog).
@@ -119,7 +127,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
 
   /**
    * CSS class to apply to the callout.
-   * @default null
+   * @defaultvalue null
    */
   className?: string;
 
@@ -134,8 +142,13 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   onLayerMounted?: () => void;
 
   /**
+   * Optional props to pass to the Layer component hosting the panel.
+   */
+  layerProps?: ILayerProps;
+
+  /**
    * Optional callback that is called once the callout has been correctly positioned.
-   * @param {ICalloutPositionedInfo} positions gives the user information about how the callout is positioned such as the
+   * @param positions - Gives the user information about how the callout is positioned such as the
    * final edge of the target that it positioned against, the beak position, and the beaks relationship to the
    * edges of the callout.
    */
@@ -154,7 +167,7 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * If true the position will not change sides in an attempt to fit the callout within bounds.
    * It will still attempt to align it to whatever bounds are given.
-   * @default false
+   * @defaultvalue false
    */
   directionalHintFixed?: boolean;
 
@@ -210,6 +223,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
 }
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutContentStyleProps {
   /**
    * Theme to apply to the calloutContent.
@@ -253,6 +269,9 @@ export interface ICalloutContentStyleProps {
   calloutMaxWidth?: number;
 }
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutContentStyles {
   /**
    * Style for wrapper of Callout component.

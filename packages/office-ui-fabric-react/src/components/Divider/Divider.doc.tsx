@@ -12,8 +12,7 @@ const VerticalDividerCustomExampleCode = require('!raw-loader!office-ui-fabric-r
 export const DividerPageProps: IDocPageProps = {
   title: 'Divider',
   componentName: 'Divider',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Divider',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Divider',
   componentStatus: DividerStatus,
   examples: [
     {
@@ -27,13 +26,9 @@ export const DividerPageProps: IDocPageProps = {
       view: <VerticalDividerCustomExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/VerticalDivider.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerOverview.md'),
-  bestPractices: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
+  bestPractices: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerBestPractices.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Divider/docs/DividerDonts.md'),
   isHeaderVisible: true,

@@ -3,7 +3,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
+import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
 import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
@@ -12,9 +12,13 @@ import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
+import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
@@ -26,11 +30,11 @@ export interface IDetailsList extends IList {
   /**
    * Scroll to and focus the item at the given index. focusIndex will call scrollToIndex on the specified index.
    *
-   * @param index Index of item to scroll to
-   * @param forceIntoFirstElement If true, focus will be set to the first focusable child element of the item rather
+   * @param index - Index of item to scroll to
+   * @param forceIntoFirstElement - If true, focus will be set to the first focusable child element of the item rather
    *  than the item itself.
-   * @param measureItem Optional callback to measure the height of an individual item
-   * @param scrollToMode Optional setting to determine where in the window the item should be scrolled to when focused.
+   * @param measureItem - Optional callback to measure the height of an individual item
+   * @param scrollToMode - Optional setting to determine where in the window the item should be scrolled to when focused.
    */
   focusIndex: (
     index: number,
@@ -45,6 +49,9 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
   /**
    * Theme provided by the Higher Order Component
@@ -97,7 +104,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * By default, selection is cleared when clicking on an empty (non-focusable) section of the screen. Setting this value to true
    * overrides that behavior and maintains selection.
-   * @default false
+   * @defaultvalue false
    **/
   selectionPreservedOnEmptyClick?: boolean;
 
@@ -111,13 +118,13 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /**
    * Controls the visibility of selection check box.
-   * @default CheckboxVisibility.onHover
+   * @defaultvalue CheckboxVisibility.onHover
    */
   checkboxVisibility?: CheckboxVisibility;
 
   /**
    * Controls the visibility of the details header.
-   * @default true
+   * @defaultvalue true
    */
   isHeaderVisible?: boolean;
 
@@ -131,7 +138,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   rowElementEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
-  onDidUpdate?: (detailsList?: DetailsListBase) => any;
+  onDidUpdate?: (detailsList?: DetailsListBase) => void;
 
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -166,7 +173,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
    * If a column definition provides its own onRender method, that will be used instead of this.
    */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
   /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -176,7 +183,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /**
    * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
-   * @default false
+   * @defaultvalue false
    */
   enableShimmer?: boolean;
 
@@ -189,6 +196,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * An override to render the details footer.
    */
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -230,7 +242,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
 
   /**
    * The minimum mouse move distance to interpret the action as drag event.
-   * @defaultValue 5
+   * @defaultvalue 5
    */
   minimumPixelsForDrag?: number;
 
@@ -240,7 +252,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * Boolean value to enable render page caching. This is an experimental performance optimization
    * that is off by default.
-   * @defaultValue false
+   * @defaultvalue false
    */
   usePageCache?: boolean;
 
@@ -268,19 +280,13 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   columnReorderOptions?: IColumnReorderOptions;
 
   /**
-   * Optional function which will be called to estimate the height (in pixels) of the given group.
-   *
-   * By default, scrolling through a large virtualized GroupedList will often "jump" due to the order
-   * in which heights are calculated. For more details, see https://github.com/OfficeDev/office-ui-fabric-react/issues/5094
-   *
-   * Pass this prop to ensure the list uses the computed height rather than cached DOM measurements,
-   * avoiding the scroll jumping issue.
+   * Optional function to override default group height calculation used by list virtualization.
    */
-  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+  getGroupHeight?: IGroupedListProps['getGroupHeight'];
 
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
-   * @default false
+   * @defaultvalue false
    */
   useReducedRowRenderer?: boolean;
 
@@ -296,6 +302,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   disableSelectionZone?: boolean;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumn {
   /**
    * A unique key for identifying the column.
@@ -332,7 +341,7 @@ export interface IColumn {
   /**
    * Optional flag on whether the column is a header for the given row. There should be only one column with
    * row header set to true.
-   * @default false
+   * @defaultvalue false
    */
   isRowHeader?: boolean;
 
@@ -343,7 +352,8 @@ export interface IColumn {
 
   /**
    * Defines how the column's header should render.
-   * @default ColumnActionsMode.clickable */
+   * @defaultvalue ColumnActionsMode.clickable
+   */
   columnActionsMode?: ColumnActionsMode;
 
   /**
@@ -364,8 +374,14 @@ export interface IColumn {
 
   /**
    * If specified will allow the column to be collapsed when rendered in justified layout.
+   * @deprecated Use `isCollapsible`
    */
   isCollapsable?: boolean;
+
+  /**
+   * If specified will allow the column to be collapsed when rendered in justified layout.
+   */
+  isCollapsible?: boolean;
 
   /**
    * Determines if the column is currently sorted. Renders a sort arrow in the column header.
@@ -405,12 +421,20 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.
    */
-  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * If provided, will be executed when the column is resized with the column's current width.
+   * Prefer this callback over `DetailsList` `onColumnResize` if you require the `IColumn` to
+   * report its width after every resize event. Consider debouncing the callback if resize events
+   * occur frequently.
+   */
+  onColumnResize?: (width?: number) => void;
 
   /**
    * If set will show a grouped icon next to the column header name.
@@ -460,12 +484,17 @@ export interface IColumn {
    * ARIA label for the status of this column when filtered.
    */
   filterAriaLabel?: string;
+  /**
+   * Indicates whether a dropdown menu is open so that the appropriate ARIA attributes are rendered.
+   */
+  isMenuOpen?: boolean;
 }
 
 /**
  * Enum to describe how a particular column header behaves.... This enum is used to
  * to specify the property IColumn:columnActionsMode.
  * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
+ * {@docCategory DetailsList}
  */
 export enum ColumnActionsMode {
   /**
@@ -484,6 +513,9 @@ export enum ColumnActionsMode {
   hasDropdown = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum ConstrainMode {
   /** If specified, lets the content grow which allows the page to manage scrolling. */
   unconstrained = 0,
@@ -494,16 +526,19 @@ export enum ConstrainMode {
   horizontalConstrained = 1
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnReorderOptions {
   /**
    * Specifies the number fixed columns from left(0th index)
-   * @default 0
+   * @defaultvalue 0
    */
   frozenColumnCountFromStart?: number;
 
   /**
    * Specifies the number fixed columns from right
-   * @default 0
+   * @defaultvalue 0
    */
   frozenColumnCountFromEnd?: number;
 
@@ -516,8 +551,8 @@ export interface IColumnReorderOptions {
   /**
    * Callback to handle the column reorder
    * draggedIndex is the source column index, that need to be placed in targetIndex
-   * Use onColumnDrop instead of this
-   * @deprecated
+   * Deprecated, use `onColumnDrop` instead.
+   * @deprecated Use `onColumnDrop` instead.
    */
   handleColumnReorder?: (draggedIndex: number, targetIndex: number) => void;
 
@@ -533,22 +568,26 @@ export interface IColumnReorderOptions {
   onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnDragDropDetails {
   /**
    * Specifies the source column index
-   * @default -1
+   * @defaultvalue -1
    */
   draggedIndex: number;
 
   /**
    * Specifies the target column index
-   * @default -1
+   * @defaultvalue -1
    */
   targetIndex: number;
 }
 
 /**
  * Enum to describe where the column has been dropped, after starting the drag
+ * {@docCategory DetailsList}
  */
 export enum ColumnDragEndLocation {
   /**
@@ -567,6 +606,9 @@ export enum ColumnDragEndLocation {
   header = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum DetailsListLayoutMode {
   /**
    * Lets the user resize columns and makes not attempt to fit them.
@@ -575,11 +617,14 @@ export enum DetailsListLayoutMode {
 
   /**
    * Manages which columns are visible, tries to size them according to their min/max rules and drops
-   * off columns that can't fit and have isCollapsable set.
+   * off columns that can't fit and have isCollapsible set.
    */
   justified = 1
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum CheckboxVisibility {
   /**
    * Visible on hover.
@@ -597,6 +642,9 @@ export enum CheckboxVisibility {
   hidden = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
     /** Whether the the list is horizontally constrained */
@@ -609,14 +657,27 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
     isFixed?: boolean;
   };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
+  headerWrapper: IStyle;
+  contentWrapper: IStyle;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}

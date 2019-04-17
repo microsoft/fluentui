@@ -14,18 +14,10 @@ import {
   elementContains,
   focusFirstChild,
   getWindow,
-  getDocument,
-  createRef
+  getDocument
 } from '../../../Utilities';
 
-import {
-  getMaxHeight,
-  positionElement,
-  IPositionedData,
-  IPositionProps,
-  IPosition,
-  RectangleEdge
-} from '../../../utilities/positioning';
+import { getMaxHeight, positionElement, IPositionedData, IPositionProps, IPosition, RectangleEdge } from '../../../utilities/positioning';
 
 import { AnimationClassNames, mergeStyles } from '../../../Styling';
 
@@ -69,10 +61,10 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   /**
    * The primary positioned div.
    */
-  private _positionedHost = createRef<HTMLDivElement>();
+  private _positionedHost = React.createRef<HTMLDivElement>();
 
   // @TODO rename to reflect the name of this class
-  private _contentHost = createRef<HTMLDivElement>();
+  private _contentHost = React.createRef<HTMLDivElement>();
 
   /**
    * Stores an instance of Window, used to check
@@ -186,8 +178,8 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
   }
 
   /**
-   * Deprecated. Use onResize instead.
-   * @deprecated
+   * Deprecated, use `onResize` instead.
+   * @deprecated Use `onResize` instead.
    */
   public dismiss = (ev?: Event | React.MouseEvent<HTMLElement> | React.KeyboardEvent<HTMLElement>): void => {
     this.onResize(ev);
@@ -211,8 +203,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
 
   protected _dismissOnLostFocus(ev: Event): void {
     const target = ev.target as HTMLElement;
-    const clickedOutsideCallout =
-      this._positionedHost.current && !elementContains(this._positionedHost.current, target);
+    const clickedOutsideCallout = this._positionedHost.current && !elementContains(this._positionedHost.current, target);
 
     if (
       (!this._target && clickedOutsideCallout) ||
@@ -412,9 +403,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     }
   }
 
-  private _getTarget(
-    props: IPositioningContainerProps = this.props
-  ): HTMLElement | string | MouseEvent | IPoint | null {
+  private _getTarget(props: IPositioningContainerProps = this.props): HTMLElement | string | MouseEvent | IPoint | null {
     const { target } = props;
     return target!;
   }

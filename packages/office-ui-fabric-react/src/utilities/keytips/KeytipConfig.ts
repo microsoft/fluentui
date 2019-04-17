@@ -59,11 +59,7 @@ export function buildKeytipConfigMap(config: IKeytipConfig): IKeytipConfigMap {
  * @param parentSequence - string of the parent keytip
  * @param keytip - IKeytipConfigItem data
  */
-export function constructKeytip(
-  configMap: IKeytipConfigMap,
-  parentSequence: string[],
-  keytip: IKeytipConfigItem
-): void {
+export function constructKeytip(configMap: IKeytipConfigMap, parentSequence: string[], keytip: IKeytipConfigItem): void {
   // Compute full key sequence
   const sequence = keytip.sequence ? keytip.sequence : keytip.content.toLocaleLowerCase();
   const keytipSequence = parentSequence.concat(sequence);

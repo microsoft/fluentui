@@ -2,12 +2,18 @@ import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextField {
   /** Gets the current value of the input. */
   value: string | undefined;
 
   /** Sets focus to the input. */
   focus: () => void;
+
+  /** Blurs the input */
+  blur: () => void;
 
   /** Select the value of the text field. */
   select: () => void;
@@ -20,8 +26,9 @@ export interface ITextField {
 
   /**
    * Sets the start and end positions of a selection in a text field.
-   * @param start Index of the start of the selection.
-   * @param end Index of the end of the selection.
+   * Call with start and end set to the same value to set the cursor position.
+   * @param start - Index of the start of the selection.
+   * @param end - Index of the end of the selection.
    */
   setSelectionRange: (start: number, end: number) => void;
 
@@ -34,83 +41,84 @@ export interface ITextField {
 
 /**
  * TextField component props.
+ * {@docCategory TextField}
  */
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
-   * Optional callback to access the ITextField interface. Use this instead of ref for accessing
+   * Optional callback to access the ITextField component. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ITextField>;
 
   /**
-   * Whether or not the textfield is a multiline textfield.
-   * @default false
+   * Whether or not the text field is a multiline text field.
+   * @defaultvalue false
    */
   multiline?: boolean;
 
   /**
-   * Whether or not the multiline textfield is resizable.
-   * @default true
+   * Whether or not the multiline text field is resizable.
+   * @defaultvalue true
    */
   resizable?: boolean;
 
   /**
-   * Whether or not to auto adjust textField height. Applies only to multiline textfield.
-   * @default false
+   * Whether or not to auto adjust text field height. Applies only to multiline text field.
+   * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
 
   /**
-   * Whether or not the textfield is underlined.
-   * @default false
+   * Whether or not the text field is underlined.
+   * @defaultvalue false
    */
   underlined?: boolean;
 
   /**
-   * Whether or not the textfield is borderless.
-   * @default false
+   * Whether or not the text field is borderless.
+   * @defaultvalue false
    */
   borderless?: boolean;
 
   /**
-   * Label for the textfield.
+   * Label displayed above the text field (and read by screen readers).
    */
   label?: string;
 
   /**
-   * Optional custom renderer for the label.
+   * Custom renderer for the label.
    */
   onRenderLabel?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * The textfield input description
+   * Description displayed below the text field to provide additional details about what text to enter.
    */
   description?: string;
 
   /**
-   * Optional custom renderer for the description.
+   * Custom renderer for the description.
    */
   onRenderDescription?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * @deprecated
-   * Deprecated; use prefix instead.
+   * @deprecated Use `prefix` instead.
    */
   addonString?: string;
 
   /**
-   * String for prefix
+   * Prefix displayed before the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
   prefix?: string;
 
   /**
-   * String for suffix
+   * Suffix displayed after the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
    */
   suffix?: string;
 
   /**
-   * @deprecated
-   * Deprecated; use onRenderPrefix instead.
+   * @deprecated Use `onRenderPrefix` instead.
    */
   onRenderAddon?: IRenderFunction<ITextFieldProps>;
 
@@ -125,36 +133,37 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onRenderSuffix?: IRenderFunction<ITextFieldProps>;
 
   /**
-   * Optional icon props for an icon.
+   * Props for an optional icon, displayed in the far right end of the text field.
    */
   iconProps?: IIconProps;
 
   /**
-   * Default value of the textfield, if any. Only provide this if the textfield is an uncontrolled component;
-   * otherwise, use the "value" property.
+   * Default value of the text field. Only provide this if the text field is an uncontrolled component;
+   * otherwise, use the `value` property.
    */
   defaultValue?: string;
 
   /**
-   * Current value of the textfield. Only provide this if the textfield is a controlled component where you
-   * are maintaining its current state; otherwise, use the "defaultValue" property.
+   * Current value of the text field. Only provide this if the text field is a controlled component where you
+   * are maintaining its current state; otherwise, use the `defaultValue` property.
    */
   value?: string;
 
   /**
-   * Disabled state of the textfield.
-   * @default false
+   * Disabled state of the text field.
+   * @defaultvalue false
    */
   disabled?: boolean;
 
   /**
-   * If true, the textfield is readonly.
-   * @default false
+   * If true, the text field is readonly.
+   * @defaultvalue false
    */
   readOnly?: boolean;
 
   /**
-   * If set, this will display an error message for the text field.
+   * Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically
+   * change the error message displayed (if any) based on the current value.
    */
   errorMessage?: string;
 
@@ -164,22 +173,27 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
   /**
-   * @deprecated Use onChange instead.
+   * @deprecated Use `onChange` instead.
    */
   onChanged?: (newValue: any) => void;
 
   /**
-   * Callback for the onBeforeChange event.
+   * Called after the input's value updates but before re-rendering.
+   * Unlike `onChange`, this is also called when the value is updated via props.
+   *
+   * NOTE: This should be used *very* rarely. `onChange` is more appropriate for most situations.
+   *
+   * @param newValue - The new value. Type should be string.
    */
-  onBeforeChange?: (newValue: any) => void;
+  onBeforeChange?: (newValue?: string) => void;
 
   /**
-   * Callback for the onNotifyValidationResult event.
+   * Function called after validation completes.
    */
   onNotifyValidationResult?: (errorMessage: string, value: string | undefined) => void;
 
   /**
-   * The method is used to get the validation error message and determine whether the input value is valid or not.
+   * Function used to determine whether the input value is valid and get an error message if not.
    *
    *   When it returns string:
    *   - If valid, it returns empty string.
@@ -195,7 +209,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.
-   * @default 200
+   * @defaultvalue 200
    */
   deferredValidationTime?: number;
 
@@ -210,30 +224,30 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   inputClassName?: string;
 
   /**
-   * Aria Label for textfield, if any.
+   * Aria label for the text field.
    */
   ariaLabel?: string;
 
   /**
-   * Run validation only on input focus
-   * @default false
+   * Run validation only on input focus.
+   * @defaultvalue false
    */
   validateOnFocusIn?: boolean;
 
   /**
-   * Run validation only on input focus out
-   * @default false
+   * Run validation only on input focus out.
+   * @defaultvalue false
    */
   validateOnFocusOut?: boolean;
 
   /**
-   * Optional flag to disable onload validation
-   * @default true
+   * Disable on-load validation.
+   * @defaultvalue true
    */
   validateOnLoad?: boolean;
 
   /**
-   * Theme (provided through customization.)
+   * Theme (provided through customization).
    */
   theme?: ITheme;
 
@@ -243,16 +257,18 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   styles?: IStyleFunctionOrObject<ITextFieldStyleProps, ITextFieldStyles>;
 
   /**
-   * @deprecated
-   * Deprecated; use iconProps instead.
+   * @deprecated Use `iconProps` instead.
    */
   iconClass?: string;
 
   /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
+   * Common values are 'on' and 'off' but for all possible values see the following links:
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values
+   * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
 
   /**
    * The masking string that defines the mask's behavior.
@@ -261,32 +277,36 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * '9': [0-9]
    * 'a': [a-zA-Z]
    * '*': [a-zA-Z0-9]
+   *
+   * @example `Phone Number: (999) 999-9999`
    */
   mask?: string;
 
   /**
    * The character to show in place of unfilled characters of the mask.
-   * @default '_'
+   * @defaultvalue '_'
    */
   maskChar?: string;
 
   /**
    * An object defining the format characters and corresponding regexp values.
-   * Default format characters: {
+   * Default format characters: \{
    *  '9': /[0-9]/,
    *  'a': /[a-zA-Z]/,
    *  '*': /[a-zA-Z0-9]/
-   * }
+   * \}
    */
   maskFormat?: { [key: string]: RegExp };
 
   /**
-   * Deprecated property. Serves no function.
-   * @deprecated
+   * @deprecated Serves no function.
    */
   componentId?: string;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
@@ -299,6 +319,7 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     | 'resizable'
     | 'underlined'
     | 'iconClass'
+    | 'autoAdjustHeight'
   > & {
     /** Element has an error message. */
     hasErrorMessage?: boolean;
@@ -310,6 +331,9 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     focused?: boolean;
   };
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldSubComponentStyles {
   /**
    * Styling for Label child component.
@@ -319,6 +343,9 @@ export interface ITextFieldSubComponentStyles {
   label: IStyleFunctionOrObject<any, any>;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
   /**
    * Style for root element.

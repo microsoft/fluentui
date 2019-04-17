@@ -1,14 +1,15 @@
 import * as React from 'react';
 import { Promise } from 'es6-promise';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { KeyCodes, createRef } from '../../Utilities';
+import { KeyCodes } from '../../Utilities';
 import { FocusZoneDirection } from '../../FocusZone';
 
-import { IContextualMenuProps, IContextualMenuStyles } from './ContextualMenu.types';
+import { IContextualMenuProps, IContextualMenuStyles, IContextualMenu } from './ContextualMenu.types';
 import { ContextualMenu } from './ContextualMenu';
 import { canAnyMenuItemsCheck } from './ContextualMenu.base';
 import { IContextualMenuItem, ContextualMenuItemType } from './ContextualMenu.types';
 import { IContextualMenuRenderItem, IContextualMenuItemStyles } from './ContextualMenuItem.types';
+import { DefaultButton, IButton } from 'office-ui-fabric-react/lib/Button';
 
 describe('ContextualMenu', () => {
   afterEach(() => {
@@ -18,6 +19,43 @@ describe('ContextualMenu', () => {
         i--;
       }
     }
+  });
+
+  it('allows setting aria-label per ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: '7:00 PM', ariaLabel: 'foo' }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+    const ariaLabel = menuItemButtonEl.getAttribute('aria-label');
+
+    expect(ariaLabel).toBe('foo');
+  });
+
+  // By default, do not set aria-label with value set to item text only.
+  // This is to ensure that screen-readers read both primary and (optional) secondary text,
+  // unless aria-label set explicitly. See https://github.com/OfficeDev/office-ui-fabric-react/pull/6670.
+  it('by default aria-label is undefined per ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: '7:00 PM' }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItemButtonEl = document.querySelector('.ms-ContextualMenu-link') as HTMLButtonElement;
+    const hasAriaLabel = menuItemButtonEl.hasAttribute('aria-label');
+
+    expect(hasAriaLabel).toBe(false);
+  });
+
+  it('renders secondary text if provided per ContextualMenuItem', () => {
+    const items: IContextualMenuItem[] = [{ text: 'Later Today', key: 'Today', secondaryText: 'foo' }];
+
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
+
+    const menuItemPrimaryText = document.querySelector('.ms-ContextualMenu-itemText') as HTMLSpanElement;
+    const menuItemSecondaryText = document.querySelector('.ms-ContextualMenu-secondaryText') as HTMLSpanElement;
+
+    expect(menuItemPrimaryText.textContent).toBe('Later Today');
+    expect(menuItemSecondaryText.textContent).toBe('foo');
   });
 
   it('does not have a scrollbar due to an overflowing icon', () => {
@@ -43,19 +81,14 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} isSubMenu={true} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
-    expect(spyCalled).toEqual(true);
+    expect(onDismissSpy).toHaveBeenCalled();
   });
 
   it('menu closes on alt only', () => {
@@ -66,10 +99,7 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
@@ -77,7 +107,7 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.alt });
     ReactTestUtils.Simulate.keyUp(menuList, { which: KeyCodes.alt });
 
-    expect(spyCalled).toEqual(true);
+    expect(onDismissSpy).toHaveBeenCalled();
   });
 
   it('menu closes on alt + up arrow', () => {
@@ -88,17 +118,14 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.up, altKey: true });
 
-    expect(spyCalled).toEqual(true);
+    expect(onDismissSpy).toHaveBeenCalled();
   });
 
   it('menu closes on alt + up arrow', () => {
@@ -109,17 +136,14 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.escape });
 
-    expect(spyCalled).toEqual(true);
+    expect(onDismissSpy).toHaveBeenCalled();
   });
 
   it('menu does not close on alt + other key', () => {
@@ -130,10 +154,7 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} onDismiss={onDismissSpy} />);
 
@@ -143,7 +164,7 @@ describe('ContextualMenu', () => {
     ReactTestUtils.Simulate.keyUp(menuList, { which: KeyCodes.a, altKey: true });
     ReactTestUtils.Simulate.keyUp(menuList, { which: KeyCodes.alt });
 
-    expect(spyCalled).toEqual(false);
+    expect(onDismissSpy).toHaveBeenCalledTimes(0);
   });
 
   it('does not close on left arrow if it is a submenu with horizontal arrowDirection', () => {
@@ -154,10 +175,7 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
       <ContextualMenu
@@ -171,7 +189,7 @@ describe('ContextualMenu', () => {
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
-    expect(spyCalled).toEqual(false);
+    expect(onDismissSpy).toHaveBeenCalledTimes(0);
   });
 
   it('does not close on left arrow if it is a submenu with bidirectional arrowDirection', () => {
@@ -182,10 +200,7 @@ describe('ContextualMenu', () => {
       { text: 'TestText 4', key: 'TestKey4' }
     ];
 
-    let spyCalled = false;
-    const onDismissSpy = (ev?: any, dismissAll?: boolean) => {
-      spyCalled = true;
-    };
+    const onDismissSpy = jest.fn();
 
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
       <ContextualMenu
@@ -199,7 +214,7 @@ describe('ContextualMenu', () => {
     const menuList = document.querySelector('ul.ms-ContextualMenu-list') as HTMLUListElement;
     ReactTestUtils.Simulate.keyDown(menuList, { which: KeyCodes.left });
 
-    expect(spyCalled).toEqual(false);
+    expect(onDismissSpy).toHaveBeenCalledTimes(0);
   });
 
   it('opens a submenu item on right arrow', () => {
@@ -470,29 +485,6 @@ describe('ContextualMenu', () => {
     expect(parentMenuItem.getAttribute('aria-owns')).toBe(submenuId);
   });
 
-  it('still works with deprecated IContextualMenuItem.items property', () => {
-    const items: IContextualMenuItem[] = [
-      {
-        text: 'TestText 1',
-        key: 'TestKey1',
-        items: [
-          {
-            text: 'SubmenuText 1',
-            key: 'SubmenuKey1',
-            className: 'SubMenuClass'
-          }
-        ]
-      }
-    ];
-
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} />);
-
-    const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
-    ReactTestUtils.Simulate.keyDown(menuItem, { which: KeyCodes.right });
-
-    expect(document.querySelector('.SubMenuClass')).toBeDefined();
-  });
-
   it('can focus on disabled items', () => {
     const items: IContextualMenuItem[] = [
       {
@@ -740,7 +732,7 @@ describe('ContextualMenu', () => {
     });
   });
 
-  it('does not return a value if no items are given', () => {
+  it('does not render a list if no items are given', () => {
     ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={[]} />);
     const menuList = document.querySelector('.ms-ContextualMenu-list');
 
@@ -918,14 +910,90 @@ describe('ContextualMenu', () => {
     ];
     const customRenderer = jest.fn(() => null);
 
-    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
-      <ContextualMenu items={items} contextualMenuItemAs={customRenderer} />
-    );
+    ReactTestUtils.renderIntoDocument<IContextualMenuProps>(<ContextualMenu items={items} contextualMenuItemAs={customRenderer} />);
 
     const menuItem = document.querySelector('button.ms-ContextualMenu-link') as HTMLButtonElement;
     ReactTestUtils.Simulate.click(menuItem);
 
     expect(customRenderer).toHaveBeenCalledTimes(2);
+  });
+
+  describe('ContextualMenu with hidden prop tests', () => {
+    const contextualItem = React.createRef<IContextualMenuRenderItem>();
+    const contextualMenu = React.createRef<IContextualMenu>();
+    const button = React.createRef<IButton>();
+    const menu: IContextualMenuItem[] = [
+      {
+        text: 'Test1',
+        key: 'Test1',
+        componentRef: contextualItem,
+        subMenuProps: {
+          items: [
+            {
+              text: 'Test2',
+              key: 'Test2',
+              className: 'SubMenuClass'
+            },
+            {
+              text: 'Test3',
+              key: 'Test3',
+              className: 'SubMenuClass'
+            }
+          ]
+        }
+      }
+    ];
+
+    beforeEach(() => {
+      ReactTestUtils.renderIntoDocument<IContextualMenuProps>(
+        <DefaultButton
+          persistMenu={true}
+          componentRef={button}
+          menuProps={{
+            items: menu,
+            hidden: false,
+            componentRef: contextualMenu
+          }}
+        />
+      );
+    });
+
+    it('ContextualMenu should be present in DOM when hidden', () => {
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+    });
+
+    it('Submenu should not be shown when ContextualMenu is hidden', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      // Submenus are not persisted using the hidden prop as of now
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
+
+    it('Submenu should not be shown by default when ContextualMenu is shown', () => {
+      // 1. Open parent menu
+      button.current!.openMenu();
+      expect(document.querySelector('.ms-ContextualMenu-Callout')).not.toEqual(null);
+
+      // 2. Open sub menu
+      contextualItem.current!.openSubMenu();
+      expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
+
+      // 3. Dismiss parent menu - sub menu should disappear from DOM.
+      button.current!.dismissMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+
+      // 4. Reopen parent menu - sub menu should not be present by default
+      button.current!.openMenu();
+      expect(document.querySelector('.SubMenuClass')).toEqual(null);
+    });
   });
 
   describe('canAnyMenuItemsCheck', () => {
@@ -964,11 +1032,7 @@ describe('ContextualMenu', () => {
           key: 'Item 3',
           sectionProps: {
             key: 'Section1',
-            items: [
-              { text: 'Item 1', key: 'Item 1' },
-              { text: 'Item 2', key: 'Item 2', canCheck: true },
-              { text: 'Item 3', key: 'Item 3' }
-            ]
+            items: [{ text: 'Item 1', key: 'Item 1' }, { text: 'Item 2', key: 'Item 2', canCheck: true }, { text: 'Item 3', key: 'Item 3' }]
           }
         }
       ];
@@ -978,7 +1042,7 @@ describe('ContextualMenu', () => {
   });
 
   describe('IContextualMenuRenderItem function tests', () => {
-    const contextualItem = createRef<IContextualMenuRenderItem>();
+    const contextualItem = React.createRef<IContextualMenuRenderItem>();
     let menuDismissed: boolean;
     const onDismiss = (ev?: any, dismissAll?: boolean) => {
       menuDismissed = true;
@@ -1012,19 +1076,19 @@ describe('ContextualMenu', () => {
       });
 
       it('openSubMenu will open the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
       });
 
       it('dismissSubMenu will close the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-        contextualItem.value!.dismissSubMenu();
+        contextualItem.current!.dismissSubMenu();
         expect(document.querySelector('.SubMenuClass')).toEqual(null);
       });
 
       it('dismissMenu will close the item`s menu', () => {
-        contextualItem.value!.dismissMenu();
+        contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
     });
@@ -1058,19 +1122,19 @@ describe('ContextualMenu', () => {
       });
 
       it('openSubMenu will open the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
       });
 
       it('dismissSubMenu will close the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-        contextualItem.value!.dismissSubMenu();
+        contextualItem.current!.dismissSubMenu();
         expect(document.querySelector('.SubMenuClass')).toEqual(null);
       });
 
       it('dismissMenu will close the item`s menu', () => {
-        contextualItem.value!.dismissMenu();
+        contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
     });
@@ -1104,19 +1168,19 @@ describe('ContextualMenu', () => {
       });
 
       it('openSubMenu will open the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
       });
 
       it('dismissSubMenu will close the item`s submenu if present', () => {
-        contextualItem.value!.openSubMenu();
+        contextualItem.current!.openSubMenu();
         expect(document.querySelector('.SubMenuClass')).not.toEqual(null);
-        contextualItem.value!.dismissSubMenu();
+        contextualItem.current!.dismissSubMenu();
         expect(document.querySelector('.SubMenuClass')).toEqual(null);
       });
 
       it('dismissMenu will close the item`s menu', () => {
-        contextualItem.value!.dismissMenu();
+        contextualItem.current!.dismissMenu();
         expect(menuDismissed).toEqual(true);
       });
     });
@@ -1136,7 +1200,8 @@ describe('ContextualMenu', () => {
         root: 'rootFoo',
         list: 'listFoo',
         header: 'headerFoo',
-        title: 'titleFoo'
+        title: 'titleFoo',
+        subComponentStyles: { callout: { root: ['calloutFoo'] }, menuItem: { root: ['itemFoo'] } }
       };
     };
 

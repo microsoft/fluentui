@@ -6,12 +6,7 @@ import { select as d3Select } from 'd3-selection';
 import { classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
-import {
-  IVerticalBarChartProps,
-  IVerticalBarChartStyleProps,
-  IVerticalBarChartStyles,
-  IDataPoint
-} from './VerticalBarChart.types';
+import { IVerticalBarChartProps, IVerticalBarChartStyleProps, IVerticalBarChartStyles, IDataPoint } from './VerticalBarChart.types';
 
 const getClassNames = classNamesFunction<IVerticalBarChartStyleProps, IVerticalBarChartStyles>();
 type numericAxis = D3Axis<number | { valueOf(): number }>;

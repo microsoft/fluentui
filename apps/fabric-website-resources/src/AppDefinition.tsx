@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
+import { AppCustomizations } from './customizations/customizations';
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
-
+  customizations: AppCustomizations,
   testPages: [
     {
       component: DetailsListBasicExample,
@@ -53,16 +54,22 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/checkbox'
         },
         {
+          component: require<any>('./components/pages/ChoiceGroupPage').ChoiceGroupPage,
+          key: 'ChoiceGroup',
+          name: 'ChoiceGroup',
+          url: '#/examples/choicegroup'
+        },
+        {
           component: require<any>('./components/pages/CoachmarkPage').CoachmarkPage,
           key: 'Coachmark',
           name: 'Coachmark',
           url: '#/examples/coachmark'
         },
         {
-          component: require<any>('./components/pages/ChoiceGroupPage').ChoiceGroupPage,
-          key: 'ChoiceGroup',
-          name: 'ChoiceGroup',
-          url: '#/examples/choicegroup'
+          component: require<any>('./components/pages/ColorPickerPage').ColorPickerPage,
+          key: 'ColorPicker',
+          name: 'ColorPicker',
+          url: '#/examples/colorpicker'
         },
         {
           component: require<any>('./components/pages/ComboBoxPage').ComboBoxPage,
@@ -114,15 +121,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/Compact'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListCustomColumnsPage')
-            .DetailsListCustomColumnsPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomColumnsPage').DetailsListCustomColumnsPage,
           key: 'DetailsList - CustomColumns',
           name: 'DetailsList - CustomColumns',
           url: '#/examples/detailslist/CustomColumns'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListCustomGroupHeadersPage')
-            .DetailsListCustomGroupHeadersPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomGroupHeadersPage').DetailsListCustomGroupHeadersPage,
           key: 'DetailsList - CustomGroupHeaders',
           name: 'DetailsList - CustomGroupHeaders',
           url: '#/examples/detailslist/CustomGroupHeaders'
@@ -134,8 +139,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/CustomRows'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage')
-            .DetailsListCustomFooterPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListCustomFooterPage').DetailsListCustomFooterPage,
           key: 'DetailsList - CustomFooter',
           name: 'DetailsList - CustomFooter',
           url: '#/examples/detailslist/CustomFooter'
@@ -147,15 +151,13 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/DragDrop'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListLargeGroupedPage')
-            .DetailsListLargeGroupedPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListLargeGroupedPage').DetailsListLargeGroupedPage,
           key: 'DetailsList - LargeGrouped',
           name: 'DetailsList - LargeGrouped',
           url: '#/examples/detailslist/LargeGrouped'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListNavigatingFocusPage')
-            .DetailsListNavigatingFocusPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListNavigatingFocusPage').DetailsListNavigatingFocusPage,
           key: 'DetailsList - NavigatingFocus',
           name: 'DetailsList - NavigatingFocus',
           url: '#/examples/detailslist/NavigatingFocus'
@@ -167,8 +169,7 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/detailslist/Shimmer'
         },
         {
-          component: require<any>('./components/pages/DetailsList/DetailsListSimpleGroupedPage')
-            .DetailsListSimpleGroupedPage,
+          component: require<any>('./components/pages/DetailsList/DetailsListSimpleGroupedPage').DetailsListSimpleGroupedPage,
           key: 'DetailsList - SimpleGrouped',
           name: 'DetailsList - SimpleGrouped',
           url: '#/examples/detailslist/SimpleGrouped'
@@ -210,6 +211,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/floatingpeoplepicker'
         },
         {
+          component: require<any>('./components/pages/GroupedListPage').GroupedListPage,
+          key: 'GroupedList',
+          name: 'GroupedList',
+          url: '#examples/groupedlist'
+        },
+        {
           component: require<any>('./components/pages/HoverCardPage').HoverCardPage,
           key: 'HoverCard',
           name: 'HoverCard',
@@ -222,6 +229,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/icon'
         },
         {
+          component: require<any>('./components/pages/ImagePage').ImagePage,
+          key: 'Image',
+          name: 'Image',
+          url: '#/examples/image'
+        },
+        {
           component: require<any>('./components/pages/KeytipsPage').KeytipsPage,
           key: 'Keytips',
           name: 'Keytips',
@@ -232,6 +245,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Label',
           name: 'Label',
           url: '#/examples/label'
+        },
+        {
+          component: require<any>('./components/pages/LayerPage').LayerPage,
+          key: 'Layer',
+          name: 'Layer',
+          url: '#/examples/layer'
         },
         {
           component: require<any>('./components/pages/LinkPage').LinkPage,
@@ -258,10 +277,10 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/modal'
         },
         {
-          component: require<any>('./components/pages/OverlayPage').OverlayPage,
-          key: 'Overlay',
-          name: 'Overlay',
-          url: '#/examples/overlay'
+          component: require<any>('./components/pages/NavPage').NavPage,
+          key: 'Nav',
+          name: 'Nav',
+          url: '#/examples/nav'
         },
         {
           component: require<any>('./components/pages/OverflowSetPage').OverflowSetPage,
@@ -270,16 +289,16 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/overflowset'
         },
         {
+          component: require<any>('./components/pages/OverlayPage').OverlayPage,
+          key: 'Overlay',
+          name: 'Overlay',
+          url: '#/examples/overlay'
+        },
+        {
           component: require<any>('./components/pages/PanelPage').PanelPage,
           key: 'Panel',
           name: 'Panel',
           url: '#/examples/panel'
-        },
-        {
-          component: require<any>('./components/pages/PickersPage').PickersPage,
-          key: 'Pickers',
-          name: 'Pickers',
-          url: '#/examples/pickers'
         },
         {
           component: require<any>('./components/pages/PeoplePickerPage').PeoplePickerPage,
@@ -292,6 +311,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Persona',
           name: 'Persona',
           url: '#/examples/persona'
+        },
+        {
+          component: require<any>('./components/pages/PickersPage').PickersPage,
+          key: 'Pickers',
+          name: 'Pickers',
+          url: '#/examples/pickers'
         },
         {
           component: require<any>('./components/pages/PivotPage').PivotPage,
@@ -330,16 +355,28 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/searchbox'
         },
         {
+          component: require<any>('./components/pages/SelectedPeopleListPage').SelectedPeopleListPage,
+          key: 'SelectedPeopleList',
+          name: 'SelectedPeopleList',
+          url: '#examples/selectedpeoplelist'
+        },
+        {
+          component: require<any>('./components/pages/SeparatorPage').SeparatorPage,
+          key: 'Separator',
+          name: 'Separator',
+          url: '#examples/separator'
+        },
+        {
           component: require<any>('./components/pages/ShimmerPage').ShimmerPage,
           key: 'Shimmer',
           name: 'Shimmer',
           url: '#/examples/shimmer'
         },
         {
-          component: require<any>('./components/pages/SelectedPeopleListPage').SelectedPeopleListPage,
-          key: 'SelectedPeopleList',
-          name: 'SelectedPeopleList',
-          url: '#examples/selectedpeoplelist'
+          component: require<any>('./components/pages/SliderPage').SliderPage,
+          key: 'Slider',
+          name: 'Slider',
+          url: '#/examples/slider'
         },
         {
           component: require<any>('./components/pages/SpinButtonPage').SpinButtonPage,
@@ -354,6 +391,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/spinner'
         },
         {
+          component: require<any>('./components/pages/StackPage').StackPage,
+          key: 'Stack',
+          name: 'Stack',
+          url: '#/examples/stack'
+        },
+        {
           component: require<any>('./components/pages/SwatchColorPickerPage').SwatchColorPickerPage,
           key: 'SwatchColorPicker',
           name: 'SwatchColorPicker',
@@ -364,6 +407,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'TeachingBubble',
           name: 'TeachingBubble',
           url: '#/examples/teachingbubble'
+        },
+        {
+          component: require<any>('./components/pages/TextPage').TextPage,
+          key: 'Text',
+          name: 'Text',
+          url: '#/examples/text'
         },
         {
           component: require<any>('./components/pages/TextFieldPage').TextFieldPage,
@@ -389,46 +438,10 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('./components/pages/ColorPickerPage').ColorPickerPage,
-          key: 'ColorPicker',
-          name: 'ColorPicker',
-          url: '#/examples/colorpicker'
-        },
-        {
           component: require<any>('./components/pages/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
           key: 'ExtendedPeoplePicker',
           name: 'ExtendedPeoplePicker',
           url: '#examples/extendedpeoplepicker'
-        },
-        {
-          component: require<any>('./components/pages/GroupedListPage').GroupedListPage,
-          key: 'GroupedList',
-          name: 'GroupedList',
-          url: '#examples/groupedlist'
-        },
-        {
-          component: require<any>('./components/pages/ImagePage').ImagePage,
-          key: 'Image',
-          name: 'Image',
-          url: '#/examples/image'
-        },
-        {
-          component: require<any>('./components/pages/LayerPage').LayerPage,
-          key: 'Layer',
-          name: 'Layer',
-          url: '#/examples/layer'
-        },
-        {
-          component: require<any>('./components/pages/NavPage').NavPage,
-          key: 'Nav',
-          name: 'Nav',
-          url: '#/examples/nav'
-        },
-        {
-          component: require<any>('./components/pages/SliderPage').SliderPage,
-          key: 'Slider',
-          name: 'Slider',
-          url: '#/examples/slider'
         }
       ],
       name: 'Extended components'
@@ -466,9 +479,9 @@ export const AppDefinition: IAppDefinition = {
           url: '#examples/themes'
         },
         {
-          component: require<any>('./components/pages/ThemeGeneratorPage').ThemeGeneratorPage,
-          key: 'Theme Generator',
-          name: 'Theme Generator',
+          component: require<any>('./components/pages/ColorsPage').ColorsPage,
+          key: 'Colors',
+          name: 'Colors',
           url: '#examples/themegenerator'
         },
         {
@@ -479,6 +492,41 @@ export const AppDefinition: IAppDefinition = {
         }
       ],
       name: 'Utilities'
+    },
+    {
+      links: [
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedPage').AnnouncedPage,
+          key: 'Announced',
+          name: 'Announced',
+          url: '#/examples/announced'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedQuickActionsPage').AnnouncedQuickActionsPage,
+          key: 'Announced - Quick Actions',
+          name: 'Announced - Quick Actions',
+          url: '#/examples/announced/quickactions'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedSearchResultsPage').AnnouncedSearchResultsPage,
+          key: 'Announced - Search Results',
+          name: 'Announced - Search Results',
+          url: '#/examples/announced/searchresults'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedLazyLoadingPage').AnnouncedLazyLoadingPage,
+          key: 'Announced - Lazy Loading',
+          name: 'Announced - Lazy Loading',
+          url: '#/examples/announced/lazyloading'
+        },
+        {
+          component: require<any>('./components/pages/Announced/AnnouncedBulkOperationsPage').AnnouncedBulkOperationsPage,
+          key: 'Announced - Bulk Operations',
+          name: 'Announced - Bulk Operations',
+          url: '#/examples/announced/bulkoperations'
+        }
+      ],
+      name: 'Accessibility'
     }
   ],
 

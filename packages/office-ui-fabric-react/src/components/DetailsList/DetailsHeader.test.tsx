@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
-import { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
-import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
+import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
+import { DetailsListLayoutMode, IColumn, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
-import { EventGroup, createRef } from '../../Utilities';
+import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
@@ -247,12 +247,25 @@ describe('DetailsHeader', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  it('can render a hidden select all checkbox in single selection mode', () => {
+    const component = renderer.create(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.single}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        selectAllVisibility={SelectAllVisibility.hidden}
+        columns={_columns}
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   it('can resize columns', () => {
     let lastResize = { size: -1, index: -1 };
 
     const onColumnResized = (column: IColumn, size: number, index: number): { size: number; index: number } =>
       (lastResize = { size, index });
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const wrapper = mount(
       <DetailsHeader
@@ -312,8 +325,66 @@ describe('DetailsHeader', () => {
     expect(component.toJSON()).toMatchSnapshot();
   });
 
+  // if ariaLabelForSelectAllCheckbox is not provided, the select all checkbox label should not
+  // be rendered and therefore aria-describedby should not exist on the select all checkbox
+  it('does not accessible label for select all checkbox or aria-describedby', () => {
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+      />
+    );
+
+    const selectAllCheckBoxAriaLabelledBy = component
+      .find('[aria-colindex=1]')
+      .getDOMNode()
+      .getAttribute('aria-labelledby');
+
+    expect(
+      component
+        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
+        .first()
+        .getDOMNode()
+        .hasAttribute('aria-describedby')
+    ).toBe(false);
+
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(0);
+  });
+
+  // if ariaLabelForSelectAllCheckbox is passed in and onRenderColumnHeaderTooltip is not,
+  // the select all checkbox label should be rendered and aria-describedby on select all
+  // checkbox should exist with a valid id
+  it('renders accessible label for select all checkbox and valid aria-describedby', () => {
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={columns}
+        ariaLabelForSelectAllCheckbox={'Toggle selection for all items'}
+      />
+    );
+
+    const selectAllCheckBoxAriaLabelledBy = component
+      .find('[aria-colindex=1]')
+      .getDOMNode()
+      .getAttribute('aria-labelledby');
+
+    expect(
+      component
+        .find(`#${selectAllCheckBoxAriaLabelledBy}`)
+        .first()
+        .getDOMNode()
+        .getAttribute('aria-describedby')!
+    ).toEqual(`${selectAllCheckBoxAriaLabelledBy}Tooltip`);
+
+    expect(component.find(`#${selectAllCheckBoxAriaLabelledBy}Tooltip`).length).toEqual(1);
+  });
+
   it('should mark the columns as draggable', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -346,7 +417,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should not let frozen columns to be dragged', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -382,7 +453,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should perform dragstart and dragend correctly', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -419,7 +490,7 @@ describe('DetailsHeader', () => {
   });
 
   it('should perform dragOver correctly', () => {
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const component = mount(
       <DetailsHeader
@@ -452,25 +523,28 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(1);
     let dropHintElement = component.find('#columnDropHint_1').getDOMNode();
     let dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     // dragover b/w b&c and c&d -> dead zone b/w 370 and 810
     _RaiseEvent(detailsColSourceC, _DRAGOVER, 400);
     expect(header._draggedColumnIndex).toBe(2);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
 
     _RaiseEvent(detailsColTargetD, _DRAGOVER, 710);
     expect(header._draggedColumnIndex).toBe(2);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
 
     // dead zone : idx 2 and 3 -> no hint shown
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual(null);
 
     dropHintElement = component.find('#columnDropHint_3').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual(null);
 
     // dragover e
     _RaiseEvent(detailsColTargetE, _DRAGOVER, 811);
@@ -478,7 +552,8 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(4);
     dropHintElement = component.find('#columnDropHint_4').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     // raise dragend on column c
     _RaiseEvent(detailsColSourceC, _DRAGEND, 490);
@@ -486,7 +561,8 @@ describe('DetailsHeader', () => {
     // drop hint should be hidden on doing a dragend
     dropHintElement = component.find('#columnDropHint_4').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: hidden;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: none;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // do a mousedown and dragstart on source column c
     _RaiseEvent(detailsColSourceC, _MOUSEDOWN, 490);
@@ -498,7 +574,9 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(5);
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     // dragover outside f's zone (frozen) -> should get last valid drop hint
     _RaiseEvent(detailsColTargetF, _DRAGOVER, 1169);
@@ -506,7 +584,8 @@ describe('DetailsHeader', () => {
     expect(header._currentDropHintIndex).toBe(5);
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
   });
 
   it('should set source and target index correctly on drop', () => {
@@ -523,7 +602,7 @@ describe('DetailsHeader', () => {
       _targetIndex = targetIndex;
     };
 
-    const headerRef = createRef<IDetailsHeader>();
+    const headerRef = React.createRef<IDetailsHeader>();
 
     const _columnReorderPropsForDrop = {
       frozenColumnCountFromStart: 1,
@@ -558,7 +637,8 @@ describe('DetailsHeader', () => {
 
     let dropHintElement = component.find('#columnDropHint_1').getDOMNode();
     let dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     _RaiseEvent(detailsColTarget, _DROP, 160);
     expect(_sourceIndex).toBe(4);
@@ -566,7 +646,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_1').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: hidden;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: none;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // try moving column c after frozen column f (abcdef -> abdecf)
     let detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
@@ -583,7 +664,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: visible;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: inline-block;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: inline-block;');
 
     _RaiseEvent(detailsColTarget, _DROP, 1169);
     expect(_sourceIndex).toBe(2);
@@ -591,7 +673,8 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_5').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual('visibility: hidden;');
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual('display: none;');
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual('display: none;');
 
     // source and target column are the same
     detailsColSourceC = component.find('[aria-colindex=4]').getDOMNode();
@@ -606,11 +689,54 @@ describe('DetailsHeader', () => {
 
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
     dropHintElementChildren = dropHintElement.children;
-    expect(dropHintElementChildren.item(0).getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(0)!.getAttribute('style')).toEqual(null);
+    expect(dropHintElementChildren.item(1)!.getAttribute('style')).toEqual(null);
 
     // drop on source column itself -> drophintindex should not be set and hence target index not updated
     _RaiseEvent(detailsColTarget, _DROP, 500);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
     expect(_sourceIndex).toBe(2);
+  });
+
+  it('should set optional headerClassName on header if provided', () => {
+    const headerClassName: string = 'foo';
+    const column: IColumn = {
+      key: 'a',
+      name: 'a',
+      fieldName: 'a',
+      minWidth: 200,
+      maxWidth: 400,
+      calculatedWidth: 200,
+      isResizable: true,
+      headerClassName
+    };
+
+    const component = mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={[column]}
+      />
+    );
+
+    expect(component.find(`.${headerClassName}`).exists()).toBe(true);
+  });
+
+  it('renders details header with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        onRenderDetailsCheckbox={onRenderCheckboxMock}
+        checkboxVisibility={CheckboxVisibility.always}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
   });
 });

@@ -1,15 +1,13 @@
+import { mount } from 'enzyme';
 import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
-
 import { Image } from './Image';
 import { ImageBase } from './Image.base';
 import { ImageFit } from './Image.types';
 
 /* tslint:disable:no-unused-variable */
-const testImage1x1 =
-  'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
+const testImage1x1 = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAAEAAAABCAYAAAAfFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 const brokenImage = 'data:image/png;base64,iVBORw0KGgoAAAANSUhEUgFcSJAAAAC0lEQVQImWP4DwQACfsD/eNV8pwAAAAASUVORK5CYII=';
 
 describe('Image', () => {
@@ -87,6 +85,11 @@ describe('Image', () => {
 
     component.find('img').simulate('load');
     expect(component.update().find('.ms-Image-image--landscape')).toHaveLength(1);
+  });
+
+  it('renders ImageFit.centerCover correctly', () => {
+    const component = renderer.create(<Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />);
+    expect(component.toJSON()).toMatchSnapshot();
   });
 
   it('allows onError events to be attached', done => {

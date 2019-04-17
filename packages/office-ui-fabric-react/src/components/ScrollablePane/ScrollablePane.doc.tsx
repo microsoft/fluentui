@@ -6,8 +6,10 @@ import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.Deta
 import { ScrollablePaneStatus } from './ScrollablePane.checklist';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
-
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
+
+const ScrollablePaneDefaultExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
+const ScrollablePaneDetailsListExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
 
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
@@ -19,12 +21,14 @@ export const ScrollablePanePageProps: IDocPageProps = {
     {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
+      codepenJS: ScrollablePaneDefaultExampleCodepen,
       view: <ScrollablePaneDefaultExample />,
       isScrollable: false
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
+      codepenJS: ScrollablePaneDetailsListExampleCodepen,
       view: <ScrollablePaneDetailsListExample />,
       isScrollable: false
     }
@@ -33,14 +37,10 @@ export const ScrollablePanePageProps: IDocPageProps = {
     require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/ScrollablePane.types.ts'),
     require<string>('!raw-loader!office-ui-fabric-react/src/components/Sticky/Sticky.types.ts')
   ],
-  overview: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
+  overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDos.md'),
-  donts: require<
-    string
-  >('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
+  donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/docs/ScrollablePaneDonts.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,
   allowNativeProps: true,

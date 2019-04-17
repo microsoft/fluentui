@@ -22,9 +22,11 @@ node_modules
 src/**/*
 !src/**/*.types.ts
 !src/**/examples/*.tsx
+!src/**/docs/*.md
 tsconfig.json
 tsd.json
 tslint.json
 typings
 webpack.config.js
 fabric-test*
+*.api.json

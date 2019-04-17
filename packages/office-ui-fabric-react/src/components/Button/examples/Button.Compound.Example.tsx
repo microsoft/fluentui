@@ -25,12 +25,7 @@ export class ButtonCompoundExample extends React.Component<IButtonProps> {
         </div>
         <div>
           <Label>Primary</Label>
-          <CompoundButton
-            primary={true}
-            secondaryText="You can create a new account here."
-            disabled={disabled}
-            checked={checked}
-          >
+          <CompoundButton primary={true} secondaryText="You can create a new account here." disabled={disabled} checked={checked}>
             Create account
           </CompoundButton>
         </div>

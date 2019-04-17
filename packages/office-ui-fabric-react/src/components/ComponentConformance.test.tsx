@@ -4,7 +4,7 @@ import * as glob from 'glob';
 import * as path from 'path';
 import * as fs from 'fs';
 
-/**
+/*
  * These tests verify that Fabric components fulfill the following conditions:
  *
  *    1) The component accepts a className prop.
@@ -23,6 +23,12 @@ const listProps = {
 
 // Props required by certain components in order for tests to pass
 const requiredProps: { [key: string]: any } = {
+  PlainCard: {
+    onRenderPlainCard: () => null
+  },
+  Announced: {
+    message: 'TestMessage'
+  },
   ColorPicker: {
     color: '#ffffff'
   },
@@ -39,6 +45,10 @@ const requiredProps: { [key: string]: any } = {
     items: [{ text: 'TestText', key: 'TestKey', canCheck: true, isChecked: true }]
   },
   DetailsList: listProps,
+  ExpandingCard: {
+    onRenderCompactCard: () => null,
+    onRenderExpandedCard: () => null
+  },
   GroupedList: {
     ...listProps,
     groups: []
@@ -63,6 +73,9 @@ const requiredProps: { [key: string]: any } = {
     onRenderItem: () => <div key="TestItem" />,
     selectedItems: ['TestItem']
   },
+  StackItem: {
+    children: ['TestItem']
+  },
   Suggestions: {
     suggestions: []
   },
@@ -73,6 +86,9 @@ const requiredProps: { [key: string]: any } = {
   SwatchColorPicker: {
     colorCells: [{ id: 'TestId', color: '#ffffff' }],
     columnCount: 1
+  },
+  Text: {
+    children: 'TestText'
   }
 };
 
@@ -84,10 +100,13 @@ const classNameSelectors: { [key: string]: string } = {
   ContextualMenu: 'ms-ContextualMenu',
   DetailsList: 'ms-DetailsList',
   Dropdown: 'ms-Dropdown',
+  ExpandingCard: 'ms-Callout',
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',
   Panel: 'ms-Panel',
-  Tooltip: 'ms-Tooltip'
+  PlainCard: 'ms-Callout',
+  Tooltip: 'ms-Tooltip',
+  MessageBar: 'ms-MessageBar'
 };
 
 // NOTE: Please consider modifying your component to work with this test instead
@@ -95,12 +114,12 @@ const classNameSelectors: { [key: string]: string } = {
 const excludedComponents: string[] = [
   'Beak', // className is not injected
   'Button', // deprecated, test Button variants instead
+  'CardCallout', // className injected one level above
   'ChoiceGroupOption', // className is not injected
   'Coachmark', // className is not injected
   'ColorRectangle', // className is not injected
   'ContextualMenuItemWrapper', // className is not injected
   'Dialog', // className is deprecated
-  'HoverCard', // className is not injected
   'Keytip', // helper component, not meant to take a className
   'KeytipData', // helper component, not meant to take a className
   'KeytipLayer', // helper component, not meant to take a className
@@ -220,7 +239,8 @@ describe('Component File Conformance', () => {
 });
 
 describe('Top Level Component File Conformance', () => {
-  const privateComponents = new Set(['ContextualMenuItemWrapper']);
+  const privateComponents = new Set<string>();
+  privateComponents.add('ContextualMenuItemWrapper');
 
   const components: string[] = glob
     .sync(path.resolve(process.cwd(), 'src/components/**/index.ts*'))

@@ -6,10 +6,13 @@ import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { OverflowSetBase } from './OverflowSet.base';
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSet {
   /**
    * Sets focus to the first tabbable item in the zone.
-   * @param {boolean} forceIntoFirstElement If true, focus will be forced into the first element, even if
+   * @param forceIntoFirstElement - If true, focus will be forced into the first element, even if
    * focus is already in the focus zone.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
@@ -19,13 +22,16 @@ export interface IOverflowSet {
    * Sets focus to a specific child element within the zone. This can be used in conjunction with
    * onBeforeFocus to created delayed focus scenarios (like animate the scroll position to the correct
    * location and then focus.)
-   * @param {HTMLElement} childElement The child element within the zone to focus.
+   * @param childElement - The child element within the zone to focus.
    * @returns True if focus could be set to an active element, false if no operation was taken.
    */
   focusElement(childElement?: HTMLElement): boolean;
 }
 
-export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
+/**
+ * {@docCategory OverflowSet}
+ */
+export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   /**
    * Gets the component ref.
    */
@@ -43,7 +49,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
 
   /**
    * Change item layout direction to vertical/stacked.
-   * @default false
+   * @defaultvalue false
    */
   vertical?: boolean;
 
@@ -80,7 +86,7 @@ export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
 
   /**
    * The role for the OverflowSet.
-   * @default 'menubar'
+   * @defaultvalue 'menubar'
    */
   role?: string;
 
@@ -102,6 +108,9 @@ export interface IOverflowSetProps extends React.Props<OverflowSetBase> {
   styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
 }
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSetStyles {
   /** The style that is layered onto the root element of OverflowSet. */
   root?: IStyle;
@@ -113,9 +122,13 @@ export interface IOverflowSetStyles {
 
 /**
  * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * {@docCategory OverflowSet}
  */
 export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSetItemProps {
   /**
    * Unique id to identify the item.

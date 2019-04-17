@@ -1,40 +1,40 @@
 import * as React from 'react';
+import Markdown, { MarkdownProps } from 'markdown-to-jsx';
+import { DefaultButton, Image, IImageProps, Link } from 'office-ui-fabric-react';
+import * as MDTable from '../MarkdownTable/index';
 import { IPageImageSetProps, PageHeader, PageImageSet, PageParagraph, PageTag } from '../templates/index';
-import { Link } from 'office-ui-fabric-react/lib/Link';
-import { Image, IImageProps } from 'office-ui-fabric-react/lib/Image';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import Markdown, { IMarkdownProps } from 'markdown-to-jsx';
 
-function _getImageSetProps(props: React.Props<{}>, markdownProps: IPageMarkdownProps): IPageImageSetProps | undefined {
-  let imageSet: IImageProps[] | undefined;
-  if (props && props.children) {
-    // tslint:disable-next-line:no-any
-    React.Children.forEach(props.children, (child: any) => {
-      if (child && child.type === 'li') {
+type PropsWithChildren = { children?: React.ReactNode };
+
+function _getImageSetProps(props: React.Props<PropsWithChildren>, markdownProps: IPageMarkdownProps): IPageImageSetProps | undefined {
+  const images: IImageProps[] = [];
+  const { resources } = markdownProps;
+  if (props && props.children && resources && resources.images) {
+    React.Children.forEach(props.children, (child: React.ReactChild) => {
+      if (isReactElement(child) && child.type === 'li') {
         const textContent = child.props.children;
-        const { resources } = markdownProps;
 
-        if (typeof textContent === 'string' && textContent.indexOf('image:') === 0 && resources && resources.images) {
-          const imageProps = resources.images[textContent.substr(6).trim()];
+        if (typeof textContent === 'string' && textContent.indexOf('image:') === 0) {
+          const imageProps = resources.images![textContent.substr(6).trim()];
 
           if (imageProps) {
-            imageSet = imageSet || [];
-
-            imageSet.push(imageProps);
+            images.push(imageProps);
           }
         }
       }
     });
   }
 
-  if (imageSet) {
-    return {
-      images: imageSet
-    };
+  if (images.length) {
+    return { images };
   }
 }
 
-const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => ({
+function isReactElement(child: React.ReactChild): child is React.ReactElement<PropsWithChildren> {
+  return !!(child && (child as React.ReactElement<{}>).type);
+}
+
+const getMarkdownProps = (markdownProps: IPageMarkdownProps): MarkdownProps => ({
   options: {
     overrides: {
       h1: {
@@ -69,11 +69,12 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
         }
       },
       a: {
-        component: Link
+        component: Link,
+        props: { className: 'ms-mdLink' }
       },
       ul: {
         component: (props: React.HTMLAttributes<HTMLElement>) => {
-          let imageSetProps = _getImageSetProps(props, markdownProps);
+          const imageSetProps = _getImageSetProps(props, markdownProps);
 
           if (imageSetProps) {
             return <PageImageSet {...imageSetProps} />;
@@ -82,10 +83,32 @@ const getMarkdownProps = (markdownProps: IPageMarkdownProps): IMarkdownProps => 
         }
       },
       img: {
-        component: Image
+        component: Image,
+        props: { className: 'ms-mdImage' }
       },
       button: {
-        component: DefaultButton
+        component: DefaultButton,
+        props: { className: 'ms-mdButton' }
+      },
+      table: {
+        component: MDTable.MarkdownTable
+      },
+      thead: {
+        component: MDTable.MarkdownTHead
+      },
+      tbody: {
+        component: MDTable.MarkdownTBody
+      },
+      tr: {
+        component: MDTable.MarkdownTr
+      },
+      th: {
+        component: MDTable.MarkdownCell,
+        props: { as: 'th' }
+      },
+      td: {
+        component: MDTable.MarkdownCell,
+        props: { as: 'td' }
       }
     }
   }
@@ -101,6 +124,15 @@ export interface IPageMarkdownProps {
   resources?: IPageMarkdownResources;
   children: string;
 }
-export const PageMarkdown = (props: IPageMarkdownProps) => (
-  <Markdown {...getMarkdownProps(props)}>{props.children}</Markdown>
-);
+
+export class PageMarkdown extends React.PureComponent<IPageMarkdownProps> {
+  public static displayName = 'PageMarkdown';
+
+  public render(): JSX.Element {
+    return (
+      <div className="ms-PageMarkdown">
+        <Markdown {...getMarkdownProps(this.props)}>{this.props.children}</Markdown>
+      </div>
+    );
+  }
+}

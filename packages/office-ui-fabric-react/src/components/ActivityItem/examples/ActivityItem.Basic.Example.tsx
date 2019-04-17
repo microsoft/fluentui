@@ -5,7 +5,7 @@ import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles }
 import { Icon } from '../../../Icon';
 import { Link } from '../../../Link';
 
-export class ActivityItemBasicExample extends React.Component<React.Props<ActivityItemBasicExample>, {}> {
+export class ActivityItemBasicExample extends React.Component<React.ClassAttributes<ActivityItemBasicExample>, {}> {
   public render(): JSX.Element {
     const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
     const classNames = getClassNames(getStyles, {});

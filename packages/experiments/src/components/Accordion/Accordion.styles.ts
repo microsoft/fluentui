@@ -1,6 +1,6 @@
-import { IAccordionComponent } from './Accordion.types';
+import { IAccordionComponent, IAccordionStylesReturnType } from './Accordion.types';
 
-export const styles: IAccordionComponent['styles'] = props => {
+export const styles: IAccordionComponent['styles'] = (props): IAccordionStylesReturnType => {
   return {
     root: [props.className]
   };

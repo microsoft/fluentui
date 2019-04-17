@@ -40,6 +40,54 @@ export type ICSSOverflowAndSelfPositionRule =
   | 'unsafe flex-start'
   | 'unsafe flex-end';
 
+// See CSS Box Layout Modes: the 'display' property https://www.w3.org/TR/css-display-3/#the-display-properties
+export type ICSSDisplayRule =
+  // <display-outside> values
+  | 'block'
+  | 'inline'
+  | 'run-in'
+  // <display-inside> values
+  | 'flow'
+  | 'flow-root'
+  | 'table'
+  | 'flex'
+  | 'grid'
+  | 'ruby'
+  // <display-outside> plus <display-inside> values
+  | 'block flow'
+  | 'inline table'
+  | 'flex run-in'
+  // <display-listitem> values
+  | 'list-item'
+  | 'list-item block'
+  | 'list-item inline'
+  | 'list-item flow'
+  | 'list-item flow-root'
+  | 'list-item block flow'
+  | 'list-item block flow-root'
+  | 'flow list-item block'
+  // <display-internal> values
+  | 'table-row-group'
+  | 'table-header-group'
+  | 'table-footer-group'
+  | 'table-row'
+  | 'table-cell'
+  | 'table-column-group'
+  | 'table-column'
+  | 'table-caption'
+  | 'ruby-base'
+  | 'ruby-text'
+  | 'ruby-base-container'
+  | 'ruby-text-container'
+  // <display-box> values
+  | 'contents'
+  | 'none'
+  // <display-legacy> values
+  | 'inline-block'
+  | 'inline-table'
+  | 'inline-flex'
+  | 'inline-grid';
+
 export type IFontWeight =
   | ICSSRule
   | 'normal'
@@ -86,6 +134,7 @@ export type IMixBlendModes =
 
 /**
  * The base font style.
+ * {@docCategory IRawFontStyle}
  */
 export interface IRawFontStyle {
   /**
@@ -194,6 +243,7 @@ export interface IRawFontStyle {
  * Font face definition.
  *
  * @public
+ * {@docCategory IFontFace}
  */
 export interface IFontFace extends IRawFontStyle {
   /**
@@ -203,7 +253,7 @@ export interface IFontFace extends IRawFontStyle {
 
   /**
    * unicode-range allows you to set a specific range of characters to be downloaded
-   * from a font (embedded using @font-face) and made available for use on the current
+   * from a font (embedded using \@font-face) and made available for use on the current
    * page.
    */
   unicodeRange?: ICSSRule | string;
@@ -218,6 +268,7 @@ export interface IFontFace extends IRawFontStyle {
  * All raw style properties.
  *
  * @public
+ * {@docCategory IRawStyleBase}
  */
 export interface IRawStyleBase extends IRawFontStyle {
   /**
@@ -336,6 +387,18 @@ export interface IRawStyleBase extends IRawFontStyle {
   appearance?: ICSSRule | string;
 
   /**
+   * Lets you apply graphical effects such as blurring or color shifting to the area
+   * behind an element. Because it applies to everything behind the element, to see
+   * the effect you must make the element or its background at least partially transparent.
+   */
+  backdropFilter?: ICSSRule | string;
+
+  /**
+   * Edge requires the -webkit prefix backdrop-filter.
+   */
+  WebkitBackdropFilter?: ICSSRule | string;
+
+  /**
    * Determines whether or not the “back” side of a transformed element is visible when
    * facing the viewer.
    */
@@ -369,7 +432,7 @@ export interface IRawStyleBase extends IRawFontStyle {
 
   /**
    * The background-clip CSS property specifies if an element's background, whether a
-   * <color> or an <image>, extends underneath its border.
+   * `<color>` or an `<image>`, extends underneath its border.
    *
    * \* Does not work in IE
    *
@@ -790,8 +853,10 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * This property specifies the type of rendering box used for an element. It is a
    * shorthand property for many other display properties.
+   * W3: https://www.w3.org/TR/css-display-3/#the-display-properties
+   * MDN: https://developer.mozilla.org/en-US/docs/Web/CSS/display
    */
-  display?: ICSSRule | string;
+  display?: ICSSRule | ICSSDisplayRule;
 
   /**
    * The ‘fill’ property paints the interior of the given graphical element. The area to
@@ -894,6 +959,22 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridArea?: ICSSRule | string;
 
   /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoColumns?: ICSSRule | string;
+
+  /**
+   * Controls how the auto-placement algorithm works,
+   * specifying exactly how auto-placed items get flowed into the grid.
+   */
+  gridAutoFlow?: ICSSRule | string;
+
+  /**
+   * Specifies the size of an implicitly-created grid column track
+   */
+  gridAutoRows?: ICSSRule | string;
+
+  /**
    * Controls a grid item's placement in a grid area, particularly grid position and a
    * grid span. Shorthand for setting grid-column-start and grid-column-end in a single
    * declaration.
@@ -909,12 +990,23 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridColumnEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's columns
+   */
+  gridColumnGap?: ICSSRule | string;
+
+  /**
    * Determines a grid item's placement by specifying the starting grid lines of a grid
    * item's grid area . A grid item's placement in a grid area consists of a grid
    * position and a grid span. See also ( grid-row-start, grid-row-end, and
    * grid-column-end)
    */
   gridColumnStart?: ICSSRule | string;
+
+  /**
+   * Specifies the gaps (gutters) between grid rows and columns. It is a shorthand
+   * for grid-row-gap and grid-column-gap.
+   */
+  gridGap?: ICSSRule | string;
 
   /**
    * Gets or sets a value that indicates which row an element within a Grid should
@@ -933,6 +1025,18 @@ export interface IRawStyleBase extends IRawFontStyle {
   gridRowEnd?: ICSSRule | string;
 
   /**
+   * Sets the size of the gap (gutter) between an element's grid rows
+   */
+  gridRowGap?: ICSSRule | string;
+
+  /**
+   * Specifies a grid item’s start position within the grid row by contributing a line,
+   * a span, or nothing (automatic) to its grid placement, thereby specifying the
+   * inline-start edge of its grid area
+   */
+  gridRowStart?: ICSSRule | string;
+
+  /**
    * Specifies a row position based upon an integer location, string value, or desired
    * row size.
    * css/properties/grid-row is used as short-hand for grid-row-position and
@@ -945,6 +1049,11 @@ export interface IRawStyleBase extends IRawFontStyle {
    * but can be referenced from the grid-placement properties. The syntax of the
    * grid-template-areas property also provides a visualization of the structure of the
    * grid, making the overall layout of the grid container easier to understand.
+   */
+  gridTemplate?: ICSSRule | string;
+
+  /**
+   * Specifies named grid areas
    */
   gridTemplateAreas?: ICSSRule | string;
 
@@ -1000,7 +1109,7 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See CSS justify-content property
    * https://www.w3.org/TR/css-flexbox-1/#justify-content-property
    */
-  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly';
+  justifyContent?: ICSSRule | 'flex-start' | 'flex-end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'stretch';
 
   /**
    * Justifies the box (as the alignment subject) within its containing block (as the alignment container)
@@ -1203,6 +1312,13 @@ export interface IRawStyleBase extends IRawFontStyle {
    * with the content of the element's direct parent and the element's background.
    */
   mixBlendMode?: ICSSRule | IMixBlendModes;
+
+  /**
+   * The ‘object-fit’ property specifies how the contents of a replaced element should
+   * be fitted to the box established by its used height and width.
+   * See CSS 3 object-fit property https://www.w3.org/TR/css3-images/#the-object-fit
+   */
+  objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
 
   /**
    * Specifies the transparency of an element.
@@ -1495,8 +1611,8 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * A future level of CSS Shapes will define a shape-inside property, which will define
    * a shape to wrap content within the element. See Editor's Draft
-   * <http://dev.w3.org/csswg/css-shapes/> and CSSWG wiki page on next-level plans
-   * <http://wiki.csswg.org/spec/css-shapes>
+   * http://dev.w3.org/csswg/css-shapes and CSSWG wiki page on next-level plans
+   * http://wiki.csswg.org/spec/css-shapes
    */
   shapeInside?: ICSSRule | string;
 
@@ -1535,6 +1651,12 @@ export interface IRawStyleBase extends IRawFontStyle {
    * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#Stroke
    */
   stroke?: ICSSRule | string;
+
+  /**
+   * SVG: The stroke-linecap attribute defines the shape to be used at the end of open subpaths when they are stroked.
+   * See SVG 1.1 https://www.w3.org/TR/SVG/painting.html#LineCaps
+   */
+  strokeLinecap?: ICSSRule | 'butt' | 'round' | 'square';
 
   /**
    * SVG: Specifies the opacity of the outline on the current object.
@@ -1682,7 +1804,7 @@ export interface IRawStyleBase extends IRawFontStyle {
 
   /**
    * The CSS text-shadow property applies one or more drop shadows to the text and
-   * <text-decorations> of an element. Each shadow is specified as an offset from the
+   * `<text-decorations>` of an element. Each shadow is specified as an offset from the
    * text, along with optional color and blur radius values.
    */
   textShadow?: ICSSRule | string;
@@ -1938,7 +2060,7 @@ export interface IRawStyleBase extends IRawFontStyle {
   zIndex?: ICSSRule | 'auto' | number;
 
   /**
-   * Sets the initial zoom factor of a document defined by @viewport.
+   * Sets the initial zoom factor of a document defined by `@viewport`.
    * See CSS zoom descriptor https://drafts.csswg.org/css-device-adapt/#zoom-desc
    */
   zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;

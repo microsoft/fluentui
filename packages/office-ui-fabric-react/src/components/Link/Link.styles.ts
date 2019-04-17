@@ -14,14 +14,28 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
   return {
     root: [
       classNames.root,
+      theme.fonts.medium,
       {
         color: semanticColors.link,
         outline: 'none',
+        fontSize: 'inherit',
+        fontWeight: 'inherit',
         selectors: {
           '.ms-Fabric--isFocusVisible &:focus': {
             // Can't use getFocusStyle because it doesn't support wrapping links
             // https://github.com/OfficeDev/office-ui-fabric-react/issues/4883#issuecomment-406743543
-            outline: `1px solid ${theme.palette.neutralSecondary}`
+            // A box-shadow allows the focus rect to wrap links that span multiple lines
+            // and helps the focus rect avoid getting clipped.
+            boxShadow: `0 0 0 1px ${theme.palette.neutralSecondary} inset`,
+            selectors: {
+              [HighContrastSelector]: {
+                outline: '1px solid WindowText'
+              }
+            }
+          },
+          [HighContrastSelector]: {
+            // For IE high contrast mode
+            borderBottom: 'none'
           }
         }
       },
@@ -31,7 +45,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
         border: 'none',
         cursor: 'pointer',
         display: 'inline',
-        fontSize: 'inherit',
         margin: 0,
         overflow: 'inherit',
         padding: 0,
@@ -45,10 +58,6 @@ export const getStyles = (props: ILinkStyleProps): ILinkStyles => {
           },
           [HighContrastSelectorWhite]: {
             color: '#00009F'
-          },
-          '@media screen and (-ms-high-contrast: active), (-ms-high-contrast: none)': {
-            // For IE high contrast mode
-            borderBottom: 'none'
           }
         }
       },

@@ -11,15 +11,15 @@ export class PivotFabricExample extends React.Component<any, any> {
     return (
       <div>
         <Pivot linkFormat={PivotLinkFormat.links} linkSize={PivotLinkSize.normal}>
-          <PivotItem linkText="Callout">
+          <PivotItem headerText="Callout">
             <Label>Callout Example</Label>
             <CalloutBasicExample />
           </PivotItem>
-          <PivotItem linkText="Spinner">
+          <PivotItem headerText="Spinner">
             <Label>Spinner Example</Label>
             <SpinnerBasicExample />
           </PivotItem>
-          <PivotItem linkText="Persona">
+          <PivotItem headerText="Persona">
             <Label>Persona Example</Label>
             <PersonaBasicExample />
           </PivotItem>

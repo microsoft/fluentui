@@ -5,13 +5,12 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
-const ToggleBasicExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Toggle/Toggle.Basic.Example.Codepen.txt') as string;
+const ToggleBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 
 export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
   componentName: 'Toggle',
-  componentUrl:
-    'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
   componentStatus: ToggleStatus,
   examples: [
     {
@@ -21,9 +20,7 @@ export const TogglePageProps: IDocPageProps = {
       codepenJS: ToggleBasicExampleCodepen
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')
-  ],
+  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/Toggle.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md'),

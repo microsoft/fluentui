@@ -31,18 +31,8 @@ export class PersonaAlternateExample extends React.Component<
 
     return (
       <div className="ms-PersonaExample">
-        <Persona
-          {...examplePersona}
-          size={PersonaSize.size24}
-          presence={PersonaPresence.none}
-          hidePersonaDetails={!renderPersonaDetails}
-        />
-        <Persona
-          {...examplePersona}
-          size={PersonaSize.size28}
-          presence={PersonaPresence.none}
-          hidePersonaDetails={!renderPersonaDetails}
-        />
+        <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} hidePersonaDetails={!renderPersonaDetails} />
+        <Persona {...examplePersona} size={PersonaSize.size28} presence={PersonaPresence.none} hidePersonaDetails={!renderPersonaDetails} />
         <Persona
           {...examplePersona}
           size={PersonaSize.size32}

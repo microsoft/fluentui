@@ -51,38 +51,19 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
   }
 
   public render(): JSX.Element {
-    const {
-      beakWidth,
-      directionalHint,
-      directionalHintForRTL,
-      edgeFixed,
-      gapSpace,
-      isBeakVisible,
-      useDirectionalHintForRtl
-    } = this.state;
+    const { beakWidth, directionalHint, directionalHintForRTL, edgeFixed, gapSpace, isBeakVisible, useDirectionalHintForRtl } = this.state;
 
     return (
       <div className="ms-ContextualMenuDirectionalExample">
         <div className="ms-ContextualMenuDirectionalExample-configArea">
-          <Checkbox
-            className={exampleStyles.exampleCheckbox}
-            label="Show beak"
-            checked={isBeakVisible}
-            onChange={this._onShowBeakChange}
-          />
+          <Checkbox className={exampleStyles.exampleCheckbox} label="Show beak" checked={isBeakVisible} onChange={this._onShowBeakChange} />
           <Dropdown
             label="Directional hint"
             selectedKey={directionalHint!}
             options={DIRECTION_OPTIONS}
             onChange={this._onDirectionalChanged}
           />
-          {getRTL() && (
-            <Checkbox
-              label="Use RTL directional hint"
-              checked={useDirectionalHintForRtl}
-              onChange={this._onUseRtlHintChange}
-            />
-          )}
+          {getRTL() && <Checkbox label="Use RTL directional hint" checked={useDirectionalHintForRtl} onChange={this._onUseRtlHintChange} />}
           {getRTL() && (
             <Dropdown
               label="Directional hint for RTL"
@@ -151,13 +132,13 @@ export class ContextualMenuDirectionalExample extends React.Component<{}, IConte
 
   private _onDirectionalChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      directionalHint: option.key as number
+      directionalHint: option.key as DirectionalHint
     });
   };
 
   private _onDirectionalRtlChanged = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      directionalHintForRTL: option.key as number
+      directionalHintForRTL: option.key as DirectionalHint
     });
   };
 }

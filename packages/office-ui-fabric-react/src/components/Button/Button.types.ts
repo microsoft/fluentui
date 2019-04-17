@@ -9,6 +9,9 @@ import { IIconProps } from '../../Icon';
 import { IStyle, ITheme } from '../../Styling';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButton {
   /**
    * Sets focus to the button.
@@ -31,6 +34,9 @@ export interface IButton {
   openMenu: (shouldFocusOnContainer?: boolean, shouldFocusOnMount?: boolean) => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonProps
   extends React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button> {
   /**
@@ -41,13 +47,13 @@ export interface IButtonProps
 
   /**
    * If provided, this component will be rendered as an anchor.
-   * @default ElementType.anchor
+   * @defaultvalue ElementType.anchor
    */
   href?: string;
 
   /**
    * Changes the visual presentation of the button to be emphasized (if defined)
-   * @default false
+   * @defaultvalue false
    */
   primary?: boolean;
 
@@ -187,8 +193,8 @@ export interface IButtonProps
   onRenderMenuIcon?: IRenderFunction<IButtonProps>;
 
   /**
-   * Deprecated at v6.3.2, to be removed at >= v7.0.0. Use menuAs instead.
-   * @deprecated
+   * Deprecated at v6.3.2, to be removed at \>= v7.0.0. Use `menuAs` instead.
+   * @deprecated Use `menuAs` instead.
    */
   onRenderMenu?: IRenderFunction<IContextualMenuProps>;
 
@@ -204,23 +210,23 @@ export interface IButtonProps
   secondaryText?: string;
 
   /**
-   * Deprecated at v1.2.3, to be removed at >= v2.0.0. Use specific button component instead
+   * Deprecated at v1.2.3, to be removed at \>= v2.0.0. Use specific button component instead.
    * @defaultvalue ButtonType.default
-   * @deprecated
+   * @deprecated Use specific button component instead.
    */
 
   buttonType?: ButtonType;
 
   /**
-   * Deprecated at v0.56.2, to be removed at >= v1.0.0. Just pass in button props instead;
+   * Deprecated at v0.56.2, to be removed at \>= v1.0.0. Just pass in button props instead.
    * they will be mixed into the button/anchor element rendered by the component.
-   * @deprecated
+   * @deprecated Use button props instead.
    */
   rootProps?: React.ButtonHTMLAttributes<HTMLButtonElement> | React.AnchorHTMLAttributes<HTMLAnchorElement>;
 
   /**
    * Any custom data the developer wishes to associate with the menu item.
-   *
+   * Deprecated, use `checked` if setting state.
    * @deprecated unused, use `checked` if setting state.
    */
   toggled?: boolean;
@@ -234,7 +240,7 @@ export interface IButtonProps
    * Method to provide the classnames to style a button.
    * The default value for this prop is the getClassnames func
    * defined in BaseButton.classnames.
-   * @default getBaseButtonClassNames
+   * @defaultvalue getBaseButtonClassNames
    */
   getClassNames?: (
     theme: ITheme,
@@ -253,7 +259,7 @@ export interface IButtonProps
    * Method to provide the classnames to style a button.
    * The default value for this prop is the getClassnames func
    * defined in BaseButton.classnames.
-   * @default getBaseSplitButtonClassNames
+   * @defaultvalue getBaseSplitButtonClassNames
    */
   getSplitButtonClassNames?: (
     disabled: boolean,
@@ -284,11 +290,15 @@ export interface IButtonProps
 
   /**
    * Style for the description text if applicable (for compound buttons.)
-   * @deprecated Use 'secondaryText' instead.
+   * Deprecated, use `secondaryText` instead.
+   * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export enum ElementType {
   /** <button> element. */
   button = 0,
@@ -296,6 +306,9 @@ export enum ElementType {
   anchor = 1
 }
 
+/**
+ * {@docCategory Button}
+ */
 export enum ButtonType {
   normal = 0,
   primary = 1,
@@ -306,6 +319,9 @@ export enum ButtonType {
   default = 6
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonStyles {
   /**
    * Style for the root element in the default enabled, non-toggled state.

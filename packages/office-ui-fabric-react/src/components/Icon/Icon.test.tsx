@@ -17,9 +17,7 @@ describe('Icon', () => {
   });
 
   it('renders Icon with custom styles', () => {
-    const component = renderer.create(
-      <Icon iconName="Upload" styles={{ root: 'root', imageContainer: 'imageContainer' }} />
-    );
+    const component = renderer.create(<Icon iconName="Upload" styles={{ root: 'root', imageContainer: 'imageContainer' }} />);
     expect(component.toJSON()).toMatchSnapshot();
   });
 

@@ -5,7 +5,7 @@
  * via this enum.
  */
 
-export const enum FileIconType {
+export enum FileIconType {
   docset = 1, // Start at 1 so it will evaluate as "truthy"
   folder = 2,
   genericFile = 3,

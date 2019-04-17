@@ -1,29 +1,21 @@
-import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel } from 'office-ui-fabric-react/lib/Panel';
+import * as React from 'react';
 
-export class PanelHiddenOnDismissExample extends React.Component<
-  {},
-  {
-    showPanel: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
+export interface IPanelHiddenOnDismissExampleState {
+  showPanel: boolean;
+}
 
-    this.state = { showPanel: false };
-  }
+export class PanelHiddenOnDismissExample extends React.Component<{}, IPanelHiddenOnDismissExampleState> {
+  public state = {
+    showPanel: false
+  };
 
-  public render(): JSX.Element {
+  public render() {
     return (
       <div>
         <DefaultButton text="Open panel" onClick={this._showPanel} />
-        <Panel
-          isOpen={this.state.showPanel}
-          isHiddenOnDismiss={true}
-          headerText="Hidden on Dismiss Panel"
-          onDismiss={this._hidePanel}
-        >
+        <Panel isOpen={this.state.showPanel} isHiddenOnDismiss={true} headerText="Hidden on Dismiss Panel" onDismiss={this._hidePanel}>
           <span>When dismissed, this panel will be hidden instead of destroyed.</span>
         </Panel>
       </div>

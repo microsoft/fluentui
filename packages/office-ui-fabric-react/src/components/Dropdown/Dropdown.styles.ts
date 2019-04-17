@@ -7,7 +7,8 @@ import {
   IRawStyle,
   IStyle,
   getGlobalClassNames,
-  normalize
+  normalize,
+  HighContrastSelectorWhite
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -29,11 +30,10 @@ const GlobalClassNames = {
 };
 
 const DROPDOWN_HEIGHT = 32;
-const DROPDOWN_ITEMHEIGHT = 32;
+const DROPDOWN_ITEM_HEIGHT = 32;
 
 const highContrastAdjustMixin = {
-  // highContrastAdjust mixin
-  '@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white)': {
+  [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
     MsHighContrastAdjust: 'none'
   }
 };
@@ -63,17 +63,7 @@ const highContrastBorderState: IRawStyle = {
 };
 
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
-  const {
-    theme,
-    hasError,
-    className,
-    isOpen,
-    disabled,
-    required,
-    isRenderingPlaceholder,
-    panelClassName,
-    calloutClassName
-  } = props;
+  const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
@@ -103,7 +93,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       display: 'block',
       padding: '4px 16px',
       width: '100%',
-      minHeight: DROPDOWN_ITEMHEIGHT,
+      minHeight: DROPDOWN_ITEM_HEIGHT,
       lineHeight: 20,
       height: 'auto',
       position: 'relative',
@@ -217,6 +207,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         right: 12,
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
+      },
+      !disabled && {
+        cursor: 'pointer'
       }
     ],
     caretDown: [
@@ -232,20 +225,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         border: `1px solid ${palette.neutralLight}`
       },
       calloutClassName
-    ],
-    panel: [
-      globalClassnames.panel,
-      {
-        // #5689: use subcomponentstyles when panel is converted to use js styling.
-        selectors: {
-          '& .ms-Panel-main': {
-            // Force drop shadow even under medium breakpoint
-            boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
-          },
-          '& .ms-Panel-contentInner': { padding: '0 0 20px' }
-        }
-      },
-      panelClassName
     ],
     dropdownItemsWrapper: { selectors: { '&:focus': { outline: 0 } } },
     dropdownItems: [globalClassnames.dropdownItems, { display: 'block' }],
@@ -295,14 +274,24 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         background: 'none',
         backgroundColor: 'transparent',
         border: 'none',
-        height: DROPDOWN_ITEMHEIGHT,
-        lineHeight: DROPDOWN_ITEMHEIGHT,
+        height: DROPDOWN_ITEM_HEIGHT,
+        lineHeight: DROPDOWN_ITEM_HEIGHT,
         cursor: 'default',
         padding: '0px 16px',
         userSelect: 'none',
         textAlign: 'left'
       }
     ],
-    subComponentStyles: { label: { root: { display: 'inline-block' } } }
+    subComponentStyles: {
+      label: { root: { display: 'inline-block' } },
+      panel: {
+        root: [panelClassName],
+        main: {
+          // Force drop shadow even under medium breakpoint
+          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
+        },
+        contentInner: { padding: '0 0 20px' }
+      }
+    }
   };
 };

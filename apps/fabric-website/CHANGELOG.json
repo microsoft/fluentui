@@ -2,6 +2,748 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.13.3",
+      "tag": "@uifabric/fabric-website_v6.13.3",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update example-app-base styling overrides to use css-in-js",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.72.0` to `^6.73.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.2",
+      "tag": "@uifabric/fabric-website_v6.13.2",
+      "date": "Thu, 04 Apr 2019 12:34:57 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "HomePage: check sessionStorage for fabricVer",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "4cff270986c765ce25555bac6062be6dc05d1550"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.3` to `^6.164.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.1",
+      "tag": "@uifabric/fabric-website_v6.13.1",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.0` to `^6.13.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.66.0` to `^6.66.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.14.0` to `^6.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/fabric-website_v6.13.0",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "move Text under Utilities",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8e79513ebd2ce28910421d5d919c78b8ba02b8a3"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "add Separator page",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "8db1d9bfc880dfbe533fb469dda8aa87f468a503"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.13.2 <7.0.0` to `>=6.14.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.65.0 <7.0.0` to `>=6.66.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.163.0 <7.0.0` to `>=6.164.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.6",
+      "tag": "@uifabric/fabric-website_v6.12.6",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add session storage to index to preserve fabricVer between page navigation",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e361311b4517329ecbd4e7440bde43f46f22fac9"
+          },
+          {
+            "comment": "Fix key errors from Nav",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.13.1 <7.0.0` to `>=6.13.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.4 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.1 <7.0.0` to `>=6.163.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.5",
+      "tag": "@uifabric/fabric-website_v6.12.5",
+      "date": "Thu, 28 Mar 2019 12:36:39 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove unused state in HomePage.tsx",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "fe0c74524aabdc3fbd6ea20710ef6ff15b2ae7a7"
+          },
+          {
+            "comment": "Keytips: Adding component page to AppState.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "58c1714ffb68ff78e979bd9ae1344adb3983efd5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.0 <7.0.0` to `>=6.162.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.4",
+      "tag": "@uifabric/fabric-website_v6.12.4",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "HomePage: Add ContextualMenu to enable switching documentation versions",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "d1ae54f8f89fe6191b71f0dfcfcf4cfca65f1c0e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.13.0 <7.0.0` to `>=6.13.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.12.3 <7.0.0` to `>=6.12.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.64.2 <7.0.0` to `>=6.65.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.3",
+      "tag": "@uifabric/fabric-website_v6.12.3",
+      "date": "Fri, 22 Mar 2019 02:41:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing hypen for prefixVer",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "f76f2b67696a0f727950bf193f0cfa6c6f97e16b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.158.0 <7.0.0` to `>=6.159.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.2",
+      "tag": "@uifabric/fabric-website_v6.12.2",
+      "date": "Wed, 20 Mar 2019 12:34:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove template literal in fabric-website/index",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "913798e5ac0e463b30bd3f98675a4f699114c85f"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.1",
+      "tag": "@uifabric/fabric-website_v6.12.1",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add query parameter to change Fabric version",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "36bf0d3962d2f8993afefd86005afff54f555993"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.64.0 <7.0.0` to `>=6.64.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.0",
+      "tag": "@uifabric/fabric-website_v6.12.0",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Announced demo pages and values to redirect map for Announced links",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "ce2154375e321a95b86d0e7bb9be491ad933e7fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.12.0 <7.0.0` to `>=6.13.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.8 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.61.0 <7.0.0` to `>=6.62.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/fabric-website_v6.11.0",
+      "date": "Tue, 26 Feb 2019 13:31:28 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add Text component",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a79d1760a092e653aa48a6bbf9e34e2834b00da6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.11.1 <7.0.0` to `>=6.12.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.2 <7.0.0` to `>=6.60.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.1 <7.0.0` to `>=6.144.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.2",
+      "tag": "@uifabric/fabric-website_v6.10.2",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tweaking the package json to remove uneeded side effects, which helps with bundling.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9e04bf432ee5962ba9a7e6eeed5b598eed1661be"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.6 <7.0.0` to `>=6.11.7 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.1 <7.0.0` to `>=6.59.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.1",
+      "tag": "@uifabric/fabric-website_v6.10.1",
+      "date": "Fri, 22 Feb 2019 13:31:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon Page: updated directions for adding dir tag",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "55668e1836ac86a92e3c2bee3ce800b66242a83f"
+          },
+          {
+            "comment": "Fix usage of 'ms-text-align'",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "a0633a7c307576ed0feeefe8d5a1364071fba4f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.59.0 <7.0.0` to `>=6.59.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.142.1 <7.0.0` to `>=6.143.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/fabric-website_v6.10.0",
+      "date": "Fri, 15 Feb 2019 17:41:16 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Stack: Adding StackComponentPage to AppState.tsx.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "040ffd402e7ac92ba9d6640f6d9c6291be762a29"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.10.1 <7.0.0` to `>=6.11.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.56.0 <7.0.0` to `>=6.57.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.139.1 <7.0.0` to `>=6.140.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.0",
+      "tag": "@uifabric/fabric-website_v6.9.0",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Website: redirects defunct URLs to new",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bed1c2c2e1019257961334a8bc84a89c9a82aa99"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.10.0 <7.0.0` to `>=6.10.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.11.5 <7.0.0` to `>=6.11.6 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.55.0 <7.0.0` to `>=6.56.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.7",
+      "tag": "@uifabric/fabric-website_v6.8.7",
+      "date": "Wed, 13 Feb 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds documentation for setting the 'dir' attribute for Fabric Core",
+            "author": "Mike Wheaton <mike@wheaton.design>",
+            "commit": "0574b23c44346353a3ef163a733bcaeb12bed83e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.4 <7.0.0` to `>=6.55.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.0 <7.0.0` to `>=6.138.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.6",
+      "tag": "@uifabric/fabric-website_v6.8.6",
+      "date": "Fri, 08 Feb 2019 13:37:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix site links to allow for deeplinks to the customizations",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "a351868eecdb888797848d76144395ce7c3b748f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.54.2 <7.0.0` to `>=6.54.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.135.1 <7.0.0` to `>=6.136.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.5",
+      "tag": "@uifabric/fabric-website_v6.8.5",
+      "date": "Wed, 23 Jan 2019 22:53:13 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "DetailsList examples: Fix copy paste error causing infinite loop",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "e1e88b61e84310ae40ca9b158796a2ed7c690b9f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.1 <7.0.0` to `>=6.51.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.1 <7.0.0` to `>=6.129.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.4",
+      "tag": "@uifabric/fabric-website_v6.8.4",
+      "date": "Mon, 21 Jan 2019 13:36:01 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Strengthen typing of styles function.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2e3bdf997b10aad7afb88e462dc929a799085292"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.9.9 <7.0.0` to `>=6.10.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.51.0 <7.0.0` to `>=6.51.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.128.0 <7.0.0` to `>=6.129.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.3",
+      "tag": "@uifabric/fabric-website_v6.8.3",
+      "date": "Tue, 15 Jan 2019 13:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add shimmered DetailsList to website",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "45a18462510041769b034a495a9fab906d20a8a6"
+          },
+          {
+            "comment": "Documentation: Updating README to mention buildfast as an advanced build alternative.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "bc14f20836eed44160a53d367285cbd2110f752c"
+          },
+          {
+            "comment": "Updates for new CollapsibleSection API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1a3f5371a2f69c564c27094d602745a5d747253d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.4 <7.0.0` to `>=6.50.5 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.2 <7.0.0` to `>=6.125.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.2",
+      "tag": "@uifabric/fabric-website_v6.8.2",
+      "date": "Tue, 08 Jan 2019 13:34:49 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove string refs from IconGrid",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "0a35d9e6389d9b182b80a1ef1bc2704dca8c20d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.50.2 <7.0.0` to `>=6.50.3 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.120.0 <7.0.0` to `>=6.121.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.1",
+      "tag": "@uifabric/fabric-website_v6.8.1",
+      "date": "Fri, 30 Nov 2018 13:37:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add missing dependency",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "8276c66fdf75a4ad8b03614fd4e7c6e2c52203e5"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.43.0 <7.0.0` to `>=6.44.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.108.0 <7.0.0` to `>=6.109.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.8.0",
+      "tag": "@uifabric/fabric-website_v6.8.0",
+      "date": "Wed, 07 Nov 2018 13:31:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add TopNav and mobile left nav to local and non-UHF site. Allow left nav to be accessed by keyboard.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "9580e27dd0bae4e6c57f8298a8602f3d8220ca8b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Website: Update iconography implementation documentation",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "1d6c20753150e5337137a492d4cde3ff9b59a7fe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.1 <7.0.0` to `>=6.100.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.2",
+      "tag": "@uifabric/fabric-website_v6.7.2",
+      "date": "Tue, 06 Nov 2018 13:31:09 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Disable api-extractor build task",
+            "author": "kkjeer <kkjeer@wellesley.edu>",
+            "commit": "7b1ab4cf4295fce57364338746b066496acc9ce8"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update TypeScript instructions in getting started tutorial",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "788c2eacf35056bbd0266d3cdfe1596a9861f030"
+          },
+          {
+            "comment": "Fix visual bugs caused by MWF overrides on Fabric site",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "6ae35dc88698d2ffd3f0620b615ab7bd2f343652"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.9.1 <7.0.0` to `>=6.9.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.99.0 <7.0.0` to `>=6.99.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.1",
+      "tag": "@uifabric/fabric-website_v6.7.1",
+      "date": "Fri, 02 Nov 2018 12:28:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update website getting started docs",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "e06f4d66bcac4c052d1903c0ec83ccbea82c14d8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.40.1 <7.0.0` to `>=6.40.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.97.1 <7.0.0` to `>=6.98.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.7.0",
+      "tag": "@uifabric/fabric-website_v6.7.0",
+      "date": "Tue, 30 Oct 2018 18:45:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Carry over website pipeline improvements to prod-deployed index",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "bda21112a764910c54fcba11cae5a4d2e282124b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.95.0 <7.0.0` to `>=6.96.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.2",
+      "tag": "@uifabric/fabric-website_v6.6.2",
+      "date": "Wed, 24 Oct 2018 12:28:58 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Nav: fix loosely typed const after changes in display property type of IRawStyleBase.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "e8ac70df6f544134a4e8cbccf87a66d37327d9f6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.39.3 <7.0.0` to `>=6.39.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.91.0 <7.0.0` to `>=6.92.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.1",
+      "tag": "@uifabric/fabric-website_v6.6.1",
+      "date": "Wed, 17 Oct 2018 01:29:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modify theme generator output and add codepen export option.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "a6221962c23ff48cebe654f89ecde0e2956f80cf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `>=6.9.3 <7.0.0` to `>=6.9.4 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `>=6.8.0 <7.0.0` to `>=6.9.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.38.0 <7.0.0` to `>=6.38.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.85.0 <7.0.0` to `>=6.86.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.6.0",
+      "tag": "@uifabric/fabric-website_v6.6.0",
+      "date": "Mon, 15 Oct 2018 12:29:12 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Enable website to load bundle scripts from manifest JS file",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "8380bebb2c2db21c6712d68d02cf2373a717c93a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `>=6.37.0 <7.0.0` to `>=6.37.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.84.0 <7.0.0` to `>=6.84.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.0",
       "tag": "@uifabric/fabric-website_v6.5.0",
       "date": "Mon, 08 Oct 2018 12:24:15 GMT",

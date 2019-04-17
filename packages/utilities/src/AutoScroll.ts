@@ -1,6 +1,6 @@
 import { EventGroup } from './EventGroup';
 import { findScrollableParent } from './scroll';
-import { getRect } from './dom';
+import { getRect } from './dom/getRect';
 import { IRectangle } from './IRectangle';
 
 declare function setTimeout(cb: Function, delay: number): number;
@@ -16,6 +16,7 @@ const MAX_SCROLL_VELOCITY = 15;
  * Once you don't want autoscroll any more, just dispose the helper and it will unhook events.
  *
  * @public
+ * {@docCategory AutoScroll}
  */
 export class AutoScroll {
   private _events: EventGroup;
@@ -71,10 +72,7 @@ export class AutoScroll {
         -MAX_SCROLL_VELOCITY * ((SCROLL_GUTTER_HEIGHT - (clientY - scrollRectTop)) / SCROLL_GUTTER_HEIGHT)
       );
     } else if (clientY > scrollClientBottom) {
-      this._scrollVelocity = Math.min(
-        MAX_SCROLL_VELOCITY,
-        MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT)
-      );
+      this._scrollVelocity = Math.min(MAX_SCROLL_VELOCITY, MAX_SCROLL_VELOCITY * ((clientY - scrollClientBottom) / SCROLL_GUTTER_HEIGHT));
     } else {
       this._scrollVelocity = 0;
     }

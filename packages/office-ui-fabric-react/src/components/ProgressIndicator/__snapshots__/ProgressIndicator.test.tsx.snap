@@ -5,6 +5,10 @@ exports[`ProgressIndicator renders ProgressIndicator correctly 1`] = `
   className=
       ms-ProgressIndicator
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
         font-weight: 400;
       }
 >
@@ -93,6 +97,10 @@ exports[`ProgressIndicator renders React content 1`] = `
   className=
       ms-ProgressIndicator
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
         font-weight: 400;
       }
 >
@@ -145,7 +153,7 @@ exports[`ProgressIndicator renders React content 1`] = `
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, transparent 0%, #0078d4 50%, transparent 100%);
+            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;
@@ -185,6 +193,10 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
   className=
       ms-ProgressIndicator
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
         font-weight: 400;
       }
 >
@@ -235,7 +247,7 @@ exports[`ProgressIndicator renders indeterminate ProgressIndicator correctly 1`]
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, transparent 0%, #0078d4 50%, transparent 100%);
+            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;
@@ -273,6 +285,10 @@ exports[`ProgressIndicator renders with no label or description 1`] = `
   className=
       ms-ProgressIndicator
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
         font-weight: 400;
       }
 >
@@ -308,7 +324,7 @@ exports[`ProgressIndicator renders with no label or description 1`] = `
           {
             animation: keyframes 0%{left:-30%;}100%{left:100%;} 3s infinite;
             background-color: #0078d4;
-            background: linear-gradient(to right, transparent 0%, #0078d4 50%, transparent 100%);
+            background: linear-gradient(to right, #eaeaea 0%, #0078d4 50%, #eaeaea 100%);
             height: 2px;
             min-width: 33%;
             position: absolute;
@@ -335,6 +351,10 @@ exports[`ProgressIndicator renders with no progress 1`] = `
   className=
       ms-ProgressIndicator
       {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 14px;
         font-weight: 400;
       }
 >
