@@ -391,8 +391,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const deprecatedRowStyles = mergeStyles([
       {
         background: '#ffffcc'
-      },
-      'DetailsRow-deprecated'
+      }
     ]);
 
     if (item.deprecated === true) {
@@ -425,74 +424,55 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     if (linkTokens && linkTokens.length > 0) {
       if (extend) {
         return (
-          <Text variant={'small'} className="ApiReferencesTable-extends">
+          <Text variant={'small'}>
             {'Extends '}
-            {linkTokens.map((token: ILinkToken, index: number) => {
-              let match: RegExpMatchArray | null = null;
-              let hash: string = '/components/';
-              if (this._baseUrl !== '') {
-                match = this._baseUrl.match(/\/\w+\//);
-                if (match !== null) {
-                  hash = match[0];
-                }
-              }
-              if (token.pageKind && token.hyperlinkedPage) {
-                let href;
-                if (token.pageKind === 'References') {
-                  href = '#' + hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
-                } else {
-                  href = '#' + hash + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
-                }
-                return (
-                  <Link href={href} key={token.text + index}>
-                    {token.text}
-                  </Link>
-                );
-              } else if (token.text) {
-                return token.text;
-              } else {
-                return undefined;
-              }
-            })}
+            {this._parseILinkTokensHelper(linkTokens, true)}
           </Text>
         );
       } else {
         return (
-          <Text variant={'small'} className="ApiReferencesTable-extends">
-            <code>
-              {linkTokens.map((token: ILinkToken, index: number) => {
-                let match: RegExpMatchArray | null = null;
-                let hash: string = '/components/';
-                if (this._baseUrl !== '') {
-                  match = this._baseUrl.match(/\/\w+\//);
-                  if (match !== null) {
-                    hash = match[0];
-                  }
-                }
-                if (token.pageKind && token.hyperlinkedPage) {
-                  let href;
-                  if (token.pageKind === 'References') {
-                    href = '#' + hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
-                  } else {
-                    href = '#' + hash + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
-                  }
-                  return (
-                    <Link href={href} key={token.text + index}>
-                      <code>{token.text}</code>
-                    </Link>
-                  );
-                } else if (token.text) {
-                  return <code>{token.text}</code>;
-                } else {
-                  return undefined;
-                }
-              })}
-            </code>
+          <Text variant={'small'}>
+            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
           </Text>
         );
       }
     }
 
     return undefined;
+  }
+
+  private _parseILinkTokensHelper(linkTokens: ILinkToken[], extend: boolean): JSX.Element | undefined {
+    return (
+      <>
+        {linkTokens.map((token: ILinkToken, index: number) => {
+          let match: RegExpMatchArray | null = null;
+          let hash: string = '/components/';
+          // get hash to set correct href value on the links for the local site vs. the Fabric site
+          if (this._baseUrl !== '') {
+            match = this._baseUrl.match(/\/\w+\//);
+            if (match !== null) {
+              hash = match[0];
+            }
+          }
+          if (token.pageKind && token.hyperlinkedPage) {
+            let href;
+            if (token.pageKind === 'References') {
+              href = '#' + hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
+            } else {
+              href = '#' + hash + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
+            }
+            return (
+              <Link href={href} key={token.text + index}>
+                {extend ? token.text : <code>{token.text}</code>}
+              </Link>
+            );
+          } else if (token.text) {
+            return extend ? token.text : <code>{token.text}</code>;
+          } else {
+            return undefined;
+          }
+        })}
+      </>
+    );
   }
 }
