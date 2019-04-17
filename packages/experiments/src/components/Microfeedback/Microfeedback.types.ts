@@ -32,5 +32,5 @@ export interface IMicrofeedbackQuestion {
 export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {}
 
 export interface IMicrofeedbackStyles {
-  root: IStyle;
+  root?: IStyle;
 }
