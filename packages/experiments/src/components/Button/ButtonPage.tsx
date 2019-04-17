@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { ButtonExample } from './examples/Button.Example';
 import { MenuButtonExample } from './MenuButton/examples/MenuButton.Example';
@@ -53,21 +53,13 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             ]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
+        overview={
+          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonOverview.md')}</PageMarkdown>
         }
+        bestPractices={<div />}
+        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDos.md')}</PageMarkdown>}
         donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
+          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDonts.md')}</PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

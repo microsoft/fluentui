@@ -1,6 +1,27 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 15 Apr 2019 12:33:43 GMT and should not be manually modified.
+This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+
+## 6.167.1
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Modal: Ensure that the "ms-Dialog" class name is only applied once.
+- Run prettier on all files
+
+## 6.167.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- DatePicker: Fix props not matching their description. Add new prop to provide old functionality
+- DetailsList: Expose optional onRenderCheckbox callback option
+
+### Patches
+
+- Update Announced examples
+- Panel: Fix double dismiss
 
 ## 6.166.1
 Mon, 15 Apr 2019 12:33:42 GMT
