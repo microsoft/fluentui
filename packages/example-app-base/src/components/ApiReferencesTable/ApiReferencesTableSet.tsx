@@ -29,79 +29,18 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
 
-    this._onClickSeeMore = this._onClickSeeMore.bind(this);
-
     this.state = {
       properties: this._generatePropertyArray(),
       showSeeMore: false
     };
   }
 
-  public renderFirst(): JSX.Element | undefined {
-    if (this.state.properties.length >= 1) {
-      const item = this.state.properties[0];
-      return (
-        <ApiReferencesTable
-          key={item.propertyName}
-          name={item.propertyName}
-          title={item.title}
-          description={item.description}
-          extendsTokens={item.extendsTokens}
-          properties={item.property}
-          methods={item.methods}
-          renderAsEnum={item.propertyType === PropertyType.enum}
-          renderAsClass={item.propertyType === PropertyType.class}
-        />
-      );
-    }
-    return undefined;
-  }
-
-  public renderEach(): JSX.Element | undefined {
-    if (this.state.properties.length > 1) {
-      return (
-        <Stack gap={MEDIUM_GAP_SIZE}>
-          <ActionButton
-            iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
-            onClick={this._onClickSeeMore}
-            onRenderText={this._onRenderText}
-            styles={{ root: { paddingLeft: '0px' }, textContainer: { paddingLeft: '4px' } }}
-          >
-            See More
-          </ActionButton>
-          {this.state.showSeeMore && (
-            <Stack gap={LARGE_GAP_SIZE}>
-              {this.state.properties.map((item: IApiProperty, index: number) =>
-                index !== 0 ? (
-                  <ApiReferencesTable
-                    key={item.propertyName}
-                    name={item.propertyName}
-                    title={item.title}
-                    description={item.description}
-                    extendsTokens={item.extendsTokens}
-                    properties={item.property}
-                    methods={item.methods}
-                    renderAsEnum={item.propertyType === PropertyType.enum}
-                    renderAsClass={item.propertyType === PropertyType.class}
-                  />
-                ) : (
-                  undefined
-                )
-              )}
-            </Stack>
-          )}
-        </Stack>
-      );
-    }
-    return undefined;
-  }
-
   public render(): JSX.Element {
     const { className } = this.props;
     return (
       <Stack gap={LARGE_GAP_SIZE} className={css(apiReferencesTableTopMargin, className)}>
-        {this.renderFirst()}
-        {this.renderEach()}
+        {this._renderFirst()}
+        {this._renderEach()}
       </Stack>
     );
   }
@@ -124,6 +63,55 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
         window.scrollTo({ top: el.offsetTop - 31.5 /* title */, behavior: 'smooth' });
       }
     }
+  }
+
+  private _renderFirst(): JSX.Element | undefined {
+    if (this.state.properties.length >= 1) {
+      const item = this.state.properties[0];
+      return this._renderReferencesTable(item);
+    }
+    return undefined;
+  }
+
+  private _renderEach(): JSX.Element | undefined {
+    if (this.state.properties.length > 1) {
+      return (
+        <Stack gap={MEDIUM_GAP_SIZE}>
+          <ActionButton
+            iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
+            onClick={this._onClickSeeMore}
+            onRenderText={this._onRenderText}
+            styles={{ root: { paddingLeft: '0px' }, textContainer: { paddingLeft: '4px' } }}
+          >
+            See More
+          </ActionButton>
+          {this.state.showSeeMore && (
+            <Stack gap={LARGE_GAP_SIZE}>
+              {this.state.properties.map((item: IApiProperty, index: number) =>
+                index !== 0 ? this._renderReferencesTable(item) : undefined
+              )}
+            </Stack>
+          )}
+        </Stack>
+      );
+    }
+    return undefined;
+  }
+
+  private _renderReferencesTable(item: IApiProperty): JSX.Element {
+    return (
+      <ApiReferencesTable
+        key={item.propertyName}
+        name={item.propertyName}
+        title={item.title}
+        description={item.description}
+        extendsTokens={item.extendsTokens}
+        properties={item.property}
+        methods={item.methods}
+        renderAsEnum={item.propertyType === PropertyType.enum}
+        renderAsClass={item.propertyType === PropertyType.class}
+      />
+    );
   }
 
   private _onHashChange = (): void => {
@@ -157,11 +145,11 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     return <Text variant="xLarge">See more</Text>;
   }
 
-  private _onClickSeeMore(): void {
+  private _onClickSeeMore = (): void => {
     this.setState({
       showSeeMore: !this.state.showSeeMore
     });
-  }
+  };
 
   private _generatePropertyArray(): Array<IApiProperty> {
     let results: Array<IApiProperty> = [];
