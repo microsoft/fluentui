@@ -227,6 +227,59 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       return <Text variant="small">{text}</Text>;
     }
 
+    const eltChildren = this._extractCodeBlocks(text, codeBlocks);
+
+    return <Text variant="small">{eltChildren}</Text>;
+  };
+
+  public renderCellType = (typeTokens: ILinkToken[]) => {
+    return this._parseILinkTokens(false, typeTokens);
+  };
+
+  public createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
+
+  public createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
+    this.renderCell(item[propertyName]);
+
+  public createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
+
+  public createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
+
+  public render(): JSX.Element | null {
+    const { description, extendsTokens } = this.props;
+    const { properties, isEnum, isClass } = this.state;
+
+    return (
+      <Stack gap={MEDIUM_GAP_SIZE}>
+        {description && extendsTokens && extendsTokens.length > 0 ? (
+          <Stack gap={SMALL_GAP_SIZE}>
+            {this._renderTitle()}
+            {(description || (extendsTokens && extendsTokens.length > 0)) && (
+              <Stack gap={XSMALL_GAP_SIZE}>
+                {this._renderDescription()}
+                {this._renderExtends()}
+              </Stack>
+            )}
+          </Stack>
+        ) : (
+          this._renderTitle()
+        )}
+        {isClass
+          ? this._renderClass()
+          : properties.length >= 1 && (
+              <DetailsList
+                selectionMode={SelectionMode.none}
+                layoutMode={DetailsListLayoutMode.justified}
+                items={properties}
+                columns={isEnum ? this._enumColumns : this._defaultColumns}
+                onRenderRow={this._onRenderRow}
+              />
+            )}
+      </Stack>
+    );
+  }
+
+  private _extractCodeBlocks(text: string, codeBlocks: { index: number; text: string }[]): JSX.Element[] {
     const eltChildren: JSX.Element[] = [];
 
     let codeIndex = 0;
@@ -247,59 +300,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       eltChildren.push(<span key={textIndex} dangerouslySetInnerHTML={{ __html: text.substring(textIndex, text.length) }} />);
     }
 
-    return <Text variant="small">{eltChildren}</Text>;
-  };
-
-  public renderCellType = (typeTokens: ILinkToken[]) => {
-    // TODO: fix this.
-    return this._parseILinkTokens(false, typeTokens);
-  };
-
-  public createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
-
-  public createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
-    this.renderCell(item[propertyName]);
-
-  public createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
-
-  public createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
-
-  public render(): JSX.Element | null {
-    const { description, extendsTokens } = this.props;
-    const { properties, isEnum, isClass } = this.state;
-
-    return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        {description && description !== '' && (extendsTokens && extendsTokens.length > 0) ? (
-          <Stack gap={SMALL_GAP_SIZE}>
-            {this._renderTitle()}
-            {(description && description !== '') || (extendsTokens && extendsTokens.length > 0) ? (
-              <Stack gap={XSMALL_GAP_SIZE}>
-                {this._renderDescription()}
-                {this._renderExtends()}
-              </Stack>
-            ) : (
-              undefined
-            )}
-          </Stack>
-        ) : (
-          this._renderTitle()
-        )}
-        {isClass ? (
-          this._renderClass()
-        ) : properties.length >= 1 ? (
-          <DetailsList
-            selectionMode={SelectionMode.none}
-            layoutMode={DetailsListLayoutMode.justified}
-            items={properties}
-            columns={isEnum ? this._enumColumns : this._defaultColumns}
-            onRenderRow={this._onRenderRow}
-          />
-        ) : (
-          undefined
-        )}
-      </Stack>
-    );
+    return eltChildren;
   }
 
   private _renderClass(): JSX.Element | undefined {
@@ -351,7 +352,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   private _renderDescription(): JSX.Element | undefined {
     const { description } = this.props;
 
-    return description && description !== '' ? (
+    return description ? (
       <Text variant={'medium'}>
         <div dangerouslySetInnerHTML={{ __html: description }} />
       </Text>
