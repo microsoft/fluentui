@@ -361,6 +361,9 @@
   "potx": {
     "extensions": ["pot", "potm", "potx"]
   },
+  "powerbi": {
+    "extensions": ["pbix"]
+  },
   "ppsx": {
     "extensions": ["pps", "ppsm", "ppsx"]
   },
