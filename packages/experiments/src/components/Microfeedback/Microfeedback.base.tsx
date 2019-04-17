@@ -70,18 +70,21 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
       theme: this.props.theme
     });
 
+    const likeVote = () => {
+      this._vote('like');
+    };
+    const dislikeVote = () => {
+      this._vote('dislike');
+    };
+
     return (
       <div className={classNames.root}>
         <Stack horizontal styles={microfeedbackStyles}>
           <div ref={this.likeRef}>
-            <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._vote.bind(this, 'like')} />
+            <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={likeVote} />
           </div>
           <div ref={this.dislikeRef}>
-            <IconButton
-              menuIconProps={{ iconName: dislikeIcon }}
-              title={this.props.thumbsDownTitle}
-              onClick={this._vote.bind(this, 'dislike')}
-            />
+            <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={dislikeVote} />
           </div>
         </Stack>
         {this.props.thumbsUpQuestion ? (
@@ -127,18 +130,18 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
   };
 
   private _onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
+    const listOption = (): void => {
+      this._onCalloutDismiss();
+      if (this.props.sendFollowupIndex) {
+        this.props.sendFollowupIndex(index!);
+      }
+    };
+
     return (
-      <DefaultButton data-is-focusable={true} styles={microfeedbackItemStyles} onClick={this._listOptions.bind(this, index)}>
+      <DefaultButton data-is-focusable={true} styles={microfeedbackItemStyles} onClick={listOption}>
         <Text variant="small">{`${item}`}</Text>
       </DefaultButton>
     );
-  };
-
-  private _listOptions = (option: number): void => {
-    this._onCalloutDismiss();
-    if (this.props.sendFollowupIndex) {
-      this.props.sendFollowupIndex(option);
-    }
   };
 
   private _vote(vote: VoteType): void {
