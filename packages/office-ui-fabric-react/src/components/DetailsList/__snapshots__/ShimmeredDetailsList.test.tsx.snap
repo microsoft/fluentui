@@ -343,20 +343,15 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
               className=
                   ms-List
                   {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
                     position: relative;
                   }
                   &:after {
                     background-image: linear-gradient(
-                                                  to bottom,
-                                                  rgba(255, 255, 255, 0) 30%,
-                                                  rgba(255, 255, 255, 0.5) 65%,
-                                                  #ffffff 100%
-                                                );
+                                to bottom,
+                                rgba(255, 255, 255, 0) 30%,
+                                rgba(255, 255, 255, 0.5) 65%,
+                                #ffffff 100%
+                                );
                     bottom: 0px;
                     content: "";
                     left: 0px;
@@ -385,10 +380,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -510,10 +503,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -635,10 +626,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -760,10 +749,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -885,10 +872,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -1010,10 +995,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -1135,10 +1118,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -1260,10 +1241,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -1385,10 +1364,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
@@ -1510,10 +1487,8 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       className=
 
                           {
-                            border-left: 40px solid #ffffff;
-                          }
-                          {
-                            border-bottom: 1px solid #ffffff;
+                            margin-bottom: 1px;
+                            margin-left: 40px;
                           }
                     >
                       <div
