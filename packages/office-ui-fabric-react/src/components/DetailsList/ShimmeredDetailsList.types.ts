@@ -54,6 +54,16 @@ export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsLis
    * @deprecated Replacing with the logic with whether to apply the class or not. Will be removed in Fabric 7.0.
    */
   enableShimmer?: boolean;
+
+  /**
+   * Whether to move the entire placeholder row to a side when Checkbox is present.
+   */
+  showCheckbox?: boolean;
+
+  /**
+   * Wether the placeholder row should be rendered in compact mode.
+   */
+  compact?: boolean;
 };
 
 /**
@@ -63,4 +73,7 @@ export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsLis
 export interface IShimmeredDetailsListStyles {
   /** Represents styles passed to the `List` component for creating a fade-out to the bottom overlay. */
   root: IStyle;
+
+  /** Represent the wrapper element of the placeholder row containing the animation. */
+  rowPlaceholderWrapper: IStyle;
 }

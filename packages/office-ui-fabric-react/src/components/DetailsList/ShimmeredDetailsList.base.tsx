@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, css, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
@@ -8,10 +8,7 @@ import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } fr
 import { IShimmeredDetailsListProps, IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 import { CheckboxVisibility } from './DetailsList.types';
 
-import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
-import { DEFAULT_CELL_STYLE_PROPS, DEFAULT_ROW_HEIGHTS, getStyles as getRowStyles } from './DetailsRow.styles';
-
-const getRowClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
+import { DEFAULT_CELL_STYLE_PROPS, DEFAULT_ROW_HEIGHTS } from './DetailsRow.styles';
 
 const getClassNames = classNamesFunction<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>();
 
@@ -71,20 +68,16 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   }
 
   private _onRenderShimmerPlaceholder = (index: number, rowProps: IDetailsRowProps): React.ReactNode => {
-    const { onRenderCustomPlaceholder, compact } = this.props;
-    const { selectionMode, checkboxVisibility } = rowProps;
+    const { onRenderCustomPlaceholder, styles, theme } = this.props;
 
-    const theme = this.props.theme!;
+    const { selectionMode, checkboxVisibility, compact } = rowProps;
 
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
 
-    const rowStyleProps = {
-      ...rowProps,
-      theme: theme
-    };
-
-    const rowClassNames = getRowClassNames(getRowStyles(rowStyleProps), {
-      theme: theme
+    const rowClassNames = getClassNames(styles, {
+      theme: theme!,
+      compact,
+      showCheckbox
     });
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
@@ -92,7 +85,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
-      <div className={css(showCheckbox && rowClassNames.shimmerLeftBorder, !compact && rowClassNames.shimmerBottomBorder)}>
+      <div className={rowClassNames.rowPlaceholderWrapper}>
         <Shimmer customElementsGroup={placeholderElements} />
       </div>
     );
