@@ -1,4 +1,5 @@
 import { IDetailsListProps } from './DetailsList.types';
+import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
@@ -19,8 +20,11 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
    */
   enableShimmer?: boolean;
 
-  /** Custom placeholder renderer to be used when in need to override the default placeholder of a DetailsRow. */
-  onRenderCustomPlaceholder?: () => React.ReactNode;
+  /**
+   * Custom placeholder renderer to be used when in need to override the default placeholder of a DetailsRow.
+   * Optional argument is passed to leverage the calculated column measurements done by DetailsList.
+   */
+  onRenderCustomPlaceholder?: (rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
    * Custom styles to override the styles specific to the ShimmeredDetailsList placeholders.

@@ -3,7 +3,7 @@ import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
-import { IDetailsRowProps } from './DetailsRow';
+import { IDetailsRowProps } from './DetailsRow.types';
 import { Shimmer, ShimmerElementsGroup, ShimmerElementType, IShimmerElement } from '../../Shimmer';
 import { IShimmeredDetailsListProps, IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 import { CheckboxVisibility } from './DetailsList.types';
@@ -78,7 +78,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
     });
 
     const placeholderElements: React.ReactNode = onRenderCustomPlaceholder
-      ? onRenderCustomPlaceholder()
+      ? onRenderCustomPlaceholder(rowProps)
       : this._renderDefaultShimmerPlaceholder(rowProps);
 
     return (
