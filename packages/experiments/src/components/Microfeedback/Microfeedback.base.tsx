@@ -9,8 +9,13 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
-import { IMicrofeedbackState } from './Microfeedback.state';
+import {
+  IMicrofeedbackProps,
+  IMicrofeedbackViewProps,
+  IMicrofeedbackStyleProps,
+  IMicrofeedbackStyles,
+  VoteType
+} from './Microfeedback.types';
 import { initializeIcons } from '@uifabric/icons';
 
 const getClassNames = classNamesFunction<IMicrofeedbackStyleProps, IMicrofeedbackStyles>();
@@ -32,6 +37,11 @@ const microfeedbackItemStyles: IButtonStyles = {
     }
   ]
 };
+
+export interface IMicrofeedbackState extends IMicrofeedbackViewProps {
+  vote: VoteType;
+  isFollowupVisible: boolean;
+}
 
 export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
   // ref's will be linked to each of the icons for callout placement
@@ -55,7 +65,6 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
     const dislikeIcon = this.state.vote === 'dislike' ? 'DislikeSolid' : 'Dislike';
     const hideThumbsDownCallout = this.state.vote !== 'dislike' || !this.state.isFollowupVisible;
     const hideThumbsUpCallout = this.state.vote !== 'like' || !this.state.isFollowupVisible;
-    const onCalloutDismiss = this._onCalloutDismiss.bind(this);
 
     const classNames = getClassNames(this.props.styles, {
       theme: this.props.theme
@@ -75,39 +84,37 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
             />
           </div>
         </Stack>
-        {this.props.ThumbsUpQuestion ? (
+        {this.props.thumbsUpQuestion ? (
           <Callout
             hidden={hideThumbsUpCallout}
             role="alertdialog"
             gapSpace={0}
             target={this.likeRef.current}
             setInitialFocus={true}
-            onDismiss={onCalloutDismiss}
+            onDismiss={this._onCalloutDismiss}
           >
-            <div>
-              <FocusZone direction={FocusZoneDirection.vertical}>
-                <Stack padding={10}>
-                  <Text variant="small">{this.props.ThumbsUpQuestion.question}</Text>
-                </Stack>
-                <List items={this.props.ThumbsUpQuestion.options} onRenderCell={this._onRenderCalloutItem} />
-              </FocusZone>
-            </div>
+            <FocusZone direction={FocusZoneDirection.vertical}>
+              <Stack padding={10}>
+                <Text variant="small">{this.props.thumbsUpQuestion.question}</Text>
+              </Stack>
+              <List items={this.props.thumbsUpQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+            </FocusZone>
           </Callout>
         ) : null}
-        {this.props.ThumbsDownQuestion ? (
+        {this.props.thumbsDownQuestion ? (
           <Callout
             hidden={hideThumbsDownCallout}
             role="alertdialog"
             gapSpace={0}
             target={this.dislikeRef.current}
             setInitialFocus={true}
-            onDismiss={onCalloutDismiss}
+            onDismiss={this._onCalloutDismiss}
           >
             <FocusZone direction={FocusZoneDirection.vertical}>
               <Stack padding={10}>
-                <Text variant="small">{this.props.ThumbsDownQuestion.question}</Text>
+                <Text variant="small">{this.props.thumbsDownQuestion.question}</Text>
               </Stack>
-              <List items={this.props.ThumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+              <List items={this.props.thumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
             </FocusZone>
           </Callout>
         ) : null}
@@ -115,9 +122,9 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
     );
   }
 
-  private _onCalloutDismiss(): void {
+  private _onCalloutDismiss = (): void => {
     this.setState({ isFollowupVisible: false });
-  }
+  };
 
   private _onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
     return (
@@ -127,12 +134,12 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
     );
   };
 
-  private _listOptions(option: number): void {
+  private _listOptions = (option: number): void => {
     this._onCalloutDismiss();
     if (this.props.sendFollowupIndex) {
       this.props.sendFollowupIndex(option);
     }
-  }
+  };
 
   private _vote(vote: VoteType): void {
     // If the vote that is already selected is picked, then toggle off

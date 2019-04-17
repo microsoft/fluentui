@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Microfeedback } from '../Microfeedback';
-import { IMicrofeedbackQuestion } from '../Microfeedback.types';
+import { IMicrofeedbackQuestion, VoteType } from '../Microfeedback.types';
 
 export class MicrofeedbackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -14,13 +14,23 @@ export class MicrofeedbackBasicExample extends React.Component<{}, {}> {
       question: 'Please help us improve'
     };
 
+    const sendFeedbackCallback = (vote: VoteType) => {
+      console.log('Logged vote type:', vote);
+    };
+
+    const sendFollowupIndexCallback = (index: number) => {
+      console.log('Logged selection index:', index);
+    };
+
     return (
       <div>
         <Microfeedback
-          ThumbsDownQuestion={followUpOnThumbsDown}
-          ThumbsUpQuestion={followUpOnThumbsUp}
+          thumbsDownQuestion={followUpOnThumbsDown}
+          thumbsUpQuestion={followUpOnThumbsUp}
           thumbsUpTitle="Like"
           thumbsDownTitle="Dislike"
+          sendFeedback={sendFeedbackCallback}
+          sendFollowupIndex={sendFollowupIndexCallback}
         />
       </div>
     );
