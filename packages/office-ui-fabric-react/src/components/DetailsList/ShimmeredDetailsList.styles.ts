@@ -1,4 +1,5 @@
-import { cssColor, IRGB } from '../../utilities/color/colors';
+import { cssColor } from '../../utilities/color/cssColor';
+import { IRGB } from '../../utilities/color/interfaces';
 import { IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 
 export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDetailsListStyles => {
