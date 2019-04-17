@@ -12,7 +12,8 @@ import {
   IMethod,
   IApiReferencesTableSetProps,
   IEnumTableRowJson,
-  ITableRowJson
+  ITableRowJson,
+  ITableJson
 } from './ApiReferencesTableSet.types';
 import { PropertyType } from '../../utilities/parser/index';
 
@@ -163,101 +164,23 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       for (let j = 0; j < jsonDocs.tables.length; j++) {
         switch (jsonDocs.tables[j].kind) {
           case 'enum': {
-            const enumMembers: IApiEnumProperty[] = [];
-
-            const members: IEnumTableRowJson[] = jsonDocs.tables[j].members as IEnumTableRowJson[];
-            for (let k = 0; k < members.length; k++) {
-              // each member within the enum
-              enumMembers.push({
-                description: members[k].descriptionHtml,
-                name: members[k].name,
-                value: members[k].value
-              });
-            }
-
-            // the enum
-            preResults.push({
-              propertyName: jsonDocs.tables[j].name,
-              description: jsonDocs.tables[j].descriptionHtml,
-              title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
-              propertyType: PropertyType.enum,
-              property: enumMembers
-            });
-
+            preResults.push(this._generateEnumProperty(jsonDocs.tables[j]));
             break;
           }
           case 'interface': {
-            const interfaceMembers: IApiInterfaceProperty[] = [];
+            const interfaceProperty = this._generateInterfaceProperty(jsonDocs.tables[j]);
 
-            const members: ITableRowJson[] = jsonDocs.tables[j].members as ITableRowJson[];
-            for (let k = 0; k < members.length; k++) {
-              // each member within the interface or class
-              interfaceMembers.push({
-                description: members[k].descriptionHtml,
-                name: members[k].name,
-                typeTokens: members[k].typeTokens,
-                deprecated: members[k].deprecated,
-                defaultValue: members[k].defaultValue || ''
-              });
-            }
-
-            // the interface
+            // to ensure that I{componentName}Props comes first
             if (propsName === jsonDocs.tables[j].name) {
-              iComponentProps.push({
-                propertyName: jsonDocs.tables[j].name,
-                description: jsonDocs.tables[j].descriptionHtml,
-                extendsTokens: jsonDocs.tables[j].extendsTokens,
-                title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
-                propertyType: PropertyType.interface,
-                property: interfaceMembers
-              });
+              iComponentProps.push(interfaceProperty);
             } else {
-              preResults.push({
-                propertyName: jsonDocs.tables[j].name,
-                description: jsonDocs.tables[j].descriptionHtml,
-                extendsTokens: jsonDocs.tables[j].extendsTokens,
-                title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
-                propertyType: PropertyType.interface,
-                property: interfaceMembers
-              });
+              preResults.push(interfaceProperty);
             }
 
             break;
           }
           case 'class': {
-            // class members are a mix of IApiInterfaceProperty and IMethod
-            const classMembers: IApiInterfaceProperty[] = [];
-            const classMethods: IMethod[] = [];
-
-            const members: ITableRowJson[] = jsonDocs.tables[j].members as ITableRowJson[];
-            for (let k = 0; k < members.length; k++) {
-              if (members[k].kind === 'Method') {
-                classMethods.push({
-                  description: members[k].descriptionHtml,
-                  name: members[k].name,
-                  typeTokens: members[k].typeTokens
-                });
-              } else {
-                classMembers.push({
-                  description: members[k].descriptionHtml,
-                  name: members[k].name,
-                  typeTokens: members[k].typeTokens,
-                  deprecated: members[k].deprecated,
-                  defaultValue: members[k].defaultValue || ''
-                });
-              }
-            }
-
-            // the class
-            preResults.push({
-              propertyName: jsonDocs.tables[j].name,
-              description: jsonDocs.tables[j].descriptionHtml,
-              extendsTokens: jsonDocs.tables[j].extendsTokens,
-              title: jsonDocs.tables[j].kind ? jsonDocs.tables[j].name + ' ' + jsonDocs.tables[j].kind : jsonDocs.tables[j].name,
-              propertyType: PropertyType.class,
-              property: classMembers,
-              methods: classMethods
-            });
+            preResults.push(this._generateClassProperty(jsonDocs.tables[j]));
             break;
           }
         }
@@ -270,5 +193,90 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     }
 
     return results;
+  }
+
+  private _generateEnumProperty(table: ITableJson): IApiProperty {
+    const enumMembers: IApiEnumProperty[] = [];
+
+    const members: IEnumTableRowJson[] = table.members as IEnumTableRowJson[];
+    for (let k = 0; k < members.length; k++) {
+      // each member within the enum
+      enumMembers.push({
+        description: members[k].descriptionHtml,
+        name: members[k].name,
+        value: members[k].value
+      });
+    }
+
+    // the enum
+    return {
+      propertyName: table.name,
+      description: table.descriptionHtml,
+      title: table.kind ? table.name + ' ' + table.kind : table.name,
+      propertyType: PropertyType.enum,
+      property: enumMembers
+    };
+  }
+
+  private _generateInterfaceProperty(table: ITableJson): IApiProperty {
+    const interfaceMembers: IApiInterfaceProperty[] = [];
+
+    const members: ITableRowJson[] = table.members as ITableRowJson[];
+    for (let k = 0; k < members.length; k++) {
+      // each member within the interface
+      interfaceMembers.push({
+        description: members[k].descriptionHtml,
+        name: members[k].name,
+        typeTokens: members[k].typeTokens,
+        deprecated: members[k].deprecated,
+        defaultValue: members[k].defaultValue || ''
+      });
+    }
+
+    // the interface
+    return {
+      propertyName: table.name,
+      description: table.descriptionHtml,
+      extendsTokens: table.extendsTokens,
+      title: table.kind ? table.name + ' ' + table.kind : table.name,
+      propertyType: PropertyType.interface,
+      property: interfaceMembers
+    };
+  }
+
+  private _generateClassProperty(table: ITableJson): IApiProperty {
+    // class members are a mix of IApiInterfaceProperty and IMethod
+    const classMembers: IApiInterfaceProperty[] = [];
+    const classMethods: IMethod[] = [];
+
+    const members: ITableRowJson[] = table.members as ITableRowJson[];
+    for (let k = 0; k < members.length; k++) {
+      if (members[k].kind === 'Method') {
+        classMethods.push({
+          description: members[k].descriptionHtml,
+          name: members[k].name,
+          typeTokens: members[k].typeTokens
+        });
+      } else {
+        classMembers.push({
+          description: members[k].descriptionHtml,
+          name: members[k].name,
+          typeTokens: members[k].typeTokens,
+          deprecated: members[k].deprecated,
+          defaultValue: members[k].defaultValue || ''
+        });
+      }
+    }
+
+    // the class
+    return {
+      propertyName: table.name,
+      description: table.descriptionHtml,
+      extendsTokens: table.extendsTokens,
+      title: table.kind ? table.name + ' ' + table.kind : table.name,
+      propertyType: PropertyType.class,
+      property: classMembers,
+      methods: classMethods
+    };
   }
 }
