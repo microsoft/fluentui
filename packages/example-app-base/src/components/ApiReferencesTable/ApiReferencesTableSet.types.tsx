@@ -73,12 +73,6 @@ export interface IApiInterfaceProperty {
   deprecated?: boolean;
 }
 
-// export enum InterfacePropertyType {
-//   required = 0,
-//   optional = 1,
-//   deprecated = 2
-// }
-
 export interface IApiEnumProperty {
   name: string;
   description: string;
@@ -91,9 +85,3 @@ export interface IMethod {
   typeTokens: ILinkToken[];
   description: string;
 }
-
-// export enum PropertyType {
-//   enum = 0,
-//   interface = 1,
-//   class = 2
-// }
