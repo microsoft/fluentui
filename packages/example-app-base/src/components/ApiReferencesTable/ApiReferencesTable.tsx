@@ -45,9 +45,9 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   };
 
   private _baseUrl: string;
-  private defaultColumns: IColumn[];
-  private methodColumns: IColumn[];
-  private enumColumns: IColumn[];
+  private _defaultColumns: IColumn[];
+  private _methodColumns: IColumn[];
+  private _enumColumns: IColumn[];
 
   constructor(props: IApiReferencesTableProps) {
     super(props);
@@ -60,7 +60,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       this.state = {
         properties,
         isEnum: true,
-        isClass: !!props.renderAsClass
+        isClass: false
       };
     } else if (props.renderAsClass) {
       const members = (props.properties as IApiInterfaceProperty[])
@@ -73,7 +73,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
       this.state = {
         properties: members,
-        isEnum: !!props.renderAsEnum,
+        isEnum: false,
         isClass: true,
         methods: methods
       };
@@ -92,7 +92,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     const doc = getDocument();
     this._baseUrl = doc ? document.location.href : '';
 
-    this.defaultColumns = [
+    this._defaultColumns = [
       {
         key: 'name',
         name: 'Name',
@@ -139,7 +139,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       }
     ];
 
-    this.methodColumns = [
+    this._methodColumns = [
       {
         key: 'name',
         name: 'Name',
@@ -175,7 +175,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       }
     ];
 
-    this.enumColumns = [
+    this._enumColumns = [
       {
         key: 'name',
         name: 'Name',
@@ -292,7 +292,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
             selectionMode={SelectionMode.none}
             layoutMode={DetailsListLayoutMode.justified}
             items={properties}
-            columns={isEnum ? this.enumColumns : this.defaultColumns}
+            columns={isEnum ? this._enumColumns : this._defaultColumns}
             onRenderRow={this._onRenderRow}
           />
         ) : (
@@ -313,7 +313,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
             selectionMode={SelectionMode.none}
             layoutMode={DetailsListLayoutMode.justified}
             items={properties}
-            columns={this.defaultColumns}
+            columns={this._defaultColumns}
             onRenderRow={this._onRenderRow}
           />
         </Stack>
@@ -323,7 +323,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
             selectionMode={SelectionMode.none}
             layoutMode={DetailsListLayoutMode.justified}
             items={methods}
-            columns={this.methodColumns}
+            columns={this._methodColumns}
             onRenderRow={this._onRenderRow}
           />
         </Stack>
@@ -335,7 +335,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           selectionMode={SelectionMode.none}
           layoutMode={DetailsListLayoutMode.justified}
           items={properties}
-          columns={this.defaultColumns}
+          columns={this._defaultColumns}
           onRenderRow={this._onRenderRow}
         />
       </Stack>
