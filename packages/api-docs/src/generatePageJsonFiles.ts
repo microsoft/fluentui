@@ -7,17 +7,17 @@ import { PageKind } from './PageJsonGenerator.types';
 generateJson([
   {
     apiJsonPaths: [
-      path.join(__dirname, '../../../packages/styling/dist/styling.api.json'),
-      path.join(__dirname, '../../../packages/utilities/dist/utilities.api.json'),
-      path.join(__dirname, '../../../packages/merge-styles/dist/merge-styles.api.json')
+      path.resolve(__dirname, '../../../packages/styling/dist/styling.api.json'),
+      path.resolve(__dirname, '../../../packages/utilities/dist/utilities.api.json'),
+      path.resolve(__dirname, '../../../packages/merge-styles/dist/merge-styles.api.json')
     ],
     pageJsonFolderPath: path.join(__dirname, '../lib/pages/references'),
     pageNames: [],
     kind: PageKind.References
   },
   {
-    apiJsonPaths: [path.join(__dirname, '../../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
-    pageJsonFolderPath: path.join(__dirname, '../lib/pages/office-ui-fabric-react'),
+    apiJsonPaths: [path.resolve(__dirname, '../../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
+    pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/office-ui-fabric-react'),
     pageNames: [
       'ActivityItem',
       'Autofill',

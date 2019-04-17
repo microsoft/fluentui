@@ -589,13 +589,10 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
           const docCategoryTag: DocInlineTag | undefined = findInlineTagByName('@docCategory', apiItem.tsdocComment);
 
           if (docCategoryTag !== undefined) {
-            console.log('FOUND TAG: ' + JSON.stringify(docCategoryTag.tagContent));
-
             const pageName: string = docCategoryTag.tagContent.trim();
             let pageData: PageData | undefined = collectedData.pageDataByPageName.get(pageName);
 
             if (pageData === undefined) {
-              console.log('Warning: Unrecognized page name: ' + pageName);
               collectedData.pageDataByPageName.set(pageName, new PageData(pageName, PageKind.References));
               pageData = collectedData.pageDataByPageName.get(pageName);
               collectedData.apiToPage.set(apiItem.displayName, { pageName, kind: PageKind.References });
