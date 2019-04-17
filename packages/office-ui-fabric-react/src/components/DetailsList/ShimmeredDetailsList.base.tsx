@@ -26,21 +26,18 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
   }
 
   public render(): JSX.Element {
-    const {
-      items,
-      listProps,
-      styles,
-      theme,
-      shimmerLines,
-      onRenderCustomPlaceholder,
-      enableShimmer,
-      detailsListProps,
-      ...restProps
-    } = this.props;
+    const { listProps, styles, theme, shimmerLines, onRenderCustomPlaceholder, enableShimmer, detailsListProps, ...restProps } = this.props;
 
+    // TODO: cleanup in Fabric 7.0.
     let listClassName = listProps && listProps.className;
     if (detailsListProps && detailsListProps.listProps) {
       listClassName = detailsListProps.listProps.className;
+    }
+
+    // TODO: cleanup in Fabric 7.0.
+    let items = this.props.items;
+    if (detailsListProps) {
+      items = detailsListProps.items;
     }
 
     const classNames = getClassNames(styles, {

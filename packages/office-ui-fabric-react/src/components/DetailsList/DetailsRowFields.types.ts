@@ -39,6 +39,7 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
 
   /**
    * Whether to show shimmer
+   * @deprecated Use `ShimmeredDetailsList` instead: https://developer.microsoft.com/en-us/fabric#/components/detailslist/shimmer
    */
   shimmer?: boolean;
 

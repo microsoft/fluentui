@@ -28,7 +28,7 @@ const INTERVAL_DELAY = 2500;
 let _items: IExampleItem[];
 
 export interface IShimmerApplicationExampleState {
-  items?: IExampleItem[];
+  items: IExampleItem[]; // DetailsList `items` prop is required so it expects at least an empty array.
   columns?: IColumn[];
   isDataLoaded?: boolean;
 }
@@ -62,13 +62,16 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         />
         <div>
           <ShimmeredDetailsList
-            setKey="items"
-            items={items!}
-            columns={columns}
-            selectionMode={SelectionMode.none}
-            onRenderItemColumn={this._onRenderItemColumn}
             enableShimmer={!isDataLoaded}
-            listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
+            items={items} // This will be deprecated in Fabric 7.0. Use the `detailsListProps` like bellow to pass the items.
+            detailsListProps={{
+              items: items,
+              columns: columns,
+              setKey: 'items',
+              selectionMode: SelectionMode.none,
+              onRenderItemColumn: this._onRenderItemColumn,
+              listProps: { renderedWindowsAhead: 0, renderedWindowsBehind: 0 }
+            }}
           />
         </div>
       </div>
