@@ -13,6 +13,7 @@
   "scripts": {
     "build": "node ../../scripts/just.js build --commonjs",
     "clean": "node ../../scripts/just.js clean",
+    "code-style": "node ../../scripts/just.js code-style",
     "just": "node ../../scripts/just.js",
     "start-test": "node ../../scripts/just.js jest-watch",
     "update-snapshots": "node ../../scripts/just.js jest -u"

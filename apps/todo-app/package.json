@@ -27,7 +27,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^6.166.1",
+    "office-ui-fabric-react": "^6.167.1",
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0",
     "typescript": "3.3.3",

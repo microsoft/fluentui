@@ -2,11 +2,6 @@ import * as React from 'react';
 import { IEditSectionProps } from './EditSection.types';
 import { IconButton, TooltipHost } from 'office-ui-fabric-react';
 
-const readableNameMap: { [key: string]: string } = {
-  BestPractices: 'Best Practices',
-  Donts: "Don'ts"
-};
-
 /**
  * Component for displaying an edit button next to a section header.
  */
@@ -19,16 +14,11 @@ export class EditSection extends React.PureComponent<IEditSectionProps> {
       return null;
     }
 
-    const readableSection = this.props.readableSection || readableNameMap[section] || section;
-    const tooltipHostId = `${title}-${section}-editButtonHost`;
+    const sectionId = title.replace(/[^\w-]/g, '');
+    const tooltipHostId = `${title}-${sectionId}-editButtonHost`;
 
     return (
-      <TooltipHost
-        key={`${title}-${section}-editButton`}
-        content={`Edit ${title} ${readableSection}`}
-        id={tooltipHostId}
-        hostClassName={className}
-      >
+      <TooltipHost content={`Edit ${title} ${section}`} id={tooltipHostId} hostClassName={className}>
         <IconButton
           aria-labelledby={tooltipHostId}
           iconProps={{

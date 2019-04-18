@@ -1,7 +1,7 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens } from '../Button.types';
+import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps } from '../Button.types';
 
 export type IMenuButtonComponent = IComponent<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles, IMenuButtonViewProps>;
 
@@ -30,7 +30,12 @@ export interface IMenuButtonSlots extends IButtonSlots {
   menuIcon?: IIconSlot;
 }
 
-export interface IMenuButton {}
+export interface IMenuButton {
+  /**
+   * Sets focus to the MenuButton.
+   */
+  focus: () => void;
+}
 
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
@@ -56,7 +61,7 @@ export interface IMenuButtonProps
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
-export interface IMenuButtonViewProps extends IMenuButtonProps {
+export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
   /**
    * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */

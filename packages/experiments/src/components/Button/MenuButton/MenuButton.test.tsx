@@ -5,33 +5,43 @@ import { Stack, Text } from 'office-ui-fabric-react';
 import { MenuButton } from './MenuButton';
 import { IMenuButtonProps } from './MenuButton.types';
 
-const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IMenuButtonProps['menu'] = {
-  render: (props, DefaultComponent) => <DefaultComponent {...props} items={menuItems} />
+const menuProps: IMenuButtonProps['menu'] = {
+  props: {
+    items: [
+      {
+        key: 'a',
+        name: 'Item a'
+      },
+      {
+        key: 'b',
+        name: 'Item b'
+      }
+    ]
+  }
 };
 
 describe('MenuButton view', () => {
   it('renders a MenuButton correctly', () => {
-    const component = renderer.create(<MenuButton content="Menu button" menu={buttonMenu} />);
+    const component = renderer.create(<MenuButton content="Menu button" menu={menuProps} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
   });
 
   it('renders a primary MenuButton correctly', () => {
-    const component = renderer.create(<MenuButton primary content="Menu primary button" menu={buttonMenu} />);
+    const component = renderer.create(<MenuButton primary content="Menu primary button" menu={menuProps} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
   });
 
   it('renders a disabled MenuButton correctly', () => {
-    const component = renderer.create(<MenuButton disabled content="Menu disabled button" menu={buttonMenu} />);
+    const component = renderer.create(<MenuButton disabled content="Menu disabled button" menu={menuProps} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
   });
 
   it('renders a multiline MenuButton correctly', () => {
     const component = renderer.create(
-      <MenuButton icon="Share" menu={buttonMenu}>
+      <MenuButton icon="Share" menu={menuProps}>
         <Stack padding="8px 0" as="span" horizontalAlign="start">
           <Text>I am a compound multiline button.</Text>
           <Text variant="small">I can have a caption.</Text>

@@ -2,9 +2,19 @@ import * as React from 'react';
 import { SplitButton, ISplitButtonProps } from '@uifabric/experiments';
 import { Stack } from 'office-ui-fabric-react';
 
-const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: ISplitButtonProps['menu'] = {
-  render: (props, DefaultComponent) => <DefaultComponent {...props} items={menuItems} />
+const menuProps: ISplitButtonProps['menu'] = {
+  props: {
+    items: [
+      {
+        key: 'a',
+        name: 'Item a'
+      },
+      {
+        key: 'b',
+        name: 'Item b'
+      }
+    ]
+  }
 };
 
 const tokens = {
@@ -38,17 +48,17 @@ export class SplitButtonExample extends React.Component<{}, {}> {
           <div>
             <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
-                <SplitButton icon="Add" content="Default split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitButton disabled icon="Add" content="Disabled split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitButton primary icon="Add" content="Primary split button" menu={buttonMenu} onClick={alertClicked} />
-                <SplitButton disabled primary icon="Add" content="Disabled primary split button" menu={buttonMenu} onClick={alertClicked} />
+                <SplitButton icon="Add" content="Default split button" menu={menuProps} onClick={alertClicked} />
+                <SplitButton disabled icon="Add" content="Disabled split button" menu={menuProps} onClick={alertClicked} />
+                <SplitButton primary icon="Add" content="Primary split button" menu={menuProps} onClick={alertClicked} />
+                <SplitButton disabled primary icon="Add" content="Disabled primary split button" menu={menuProps} onClick={alertClicked} />
               </ButtonStack>
               <ButtonStack>
                 <SplitButton
                   primaryActionDisabled
                   icon="Add"
                   content="First action disabled split button"
-                  menu={buttonMenu}
+                  menu={menuProps}
                   onClick={alertClicked}
                 />
                 <SplitButton
@@ -56,7 +66,7 @@ export class SplitButtonExample extends React.Component<{}, {}> {
                   primary
                   icon="Add"
                   content="First action disabled primary split button"
-                  menu={buttonMenu}
+                  menu={menuProps}
                   onClick={alertClicked}
                 />
               </ButtonStack>

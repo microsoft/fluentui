@@ -25,9 +25,19 @@ const tokens = {
   }
 };
 
-const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IMenuButtonProps['menu'] = {
-  render: (props, DefaultComponent) => <DefaultComponent {...props} items={menuItems} />
+const menuProps: IMenuButtonProps['menu'] = {
+  props: {
+    items: [
+      {
+        key: 'a',
+        name: 'Item a'
+      },
+      {
+        key: 'b',
+        name: 'Item b'
+      }
+    ]
+  }
 };
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
@@ -151,7 +161,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <MenuButton
                   content="All Classnames"
                   icon="PeopleAdd"
-                  menu={buttonMenu}
+                  menu={menuProps}
                   styles={{
                     root: 'root-classname',
                     stack: 'stack-classname',

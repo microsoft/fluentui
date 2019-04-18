@@ -2,9 +2,14 @@ import * as React from 'react';
 import { BaseState } from '../../../utilities/BaseState';
 import { IMenuButtonProps, IMenuButtonViewProps } from './MenuButton.types';
 
-export type IMenuButtonState = Pick<IMenuButtonViewProps, 'expanded' | 'onClick' | 'onKeyDown' | 'onMenuDismiss' | 'menuTarget'>;
+export type IMenuButtonState = Pick<
+  IMenuButtonViewProps,
+  'expanded' | 'onClick' | 'onKeyDown' | 'buttonRef' | 'onMenuDismiss' | 'menuTarget'
+>;
 
 export class MenuButtonState extends BaseState<IMenuButtonProps, IMenuButtonViewProps, IMenuButtonState> {
+  private _buttonRef = React.createRef<HTMLButtonElement>();
+
   constructor(props: MenuButtonState['props']) {
     super(props, {
       controlledProps: ['expanded']
@@ -14,9 +19,16 @@ export class MenuButtonState extends BaseState<IMenuButtonProps, IMenuButtonView
       expanded: !!props.defaultExpanded,
       onClick: this._onClick,
       onKeyDown: this._onKeyDown,
+      buttonRef: this._buttonRef,
       onMenuDismiss: this._onMenuDismiss,
       menuTarget: undefined
     };
+  }
+
+  public focus(): void {
+    if (this._buttonRef.current) {
+      this._buttonRef.current.focus();
+    }
   }
 
   private _onMenuDismiss = () => {

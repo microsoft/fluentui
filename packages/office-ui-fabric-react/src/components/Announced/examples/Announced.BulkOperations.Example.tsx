@@ -1,14 +1,13 @@
 import * as React from 'react';
-import { Announced } from '../Announced';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
+import { IDragDropEvents } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
 import { mergeStyles, getTheme } from 'office-ui-fabric-react/lib/Styling';
-import './Announced.Example.scss';
 
 const _items: IFileExampleItem[] = [];
 
@@ -17,44 +16,17 @@ const dragEnterClass = mergeStyles({
   backgroundColor: theme.palette.neutralLight
 });
 
-const _columns: IColumn[] = [
-  {
-    key: 'name',
-    name: 'Name',
-    fieldName: 'name',
+const _columns: IColumn[] = ['Name', 'Modified', 'Modified By', 'File Size'].map((name: string) => {
+  const fieldName = name.replace(' ', '').toLowerCase();
+  return {
+    fieldName,
+    name,
+    key: fieldName,
     minWidth: 100,
     maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for name'
-  },
-  {
-    key: 'modified',
-    name: 'Modified',
-    fieldName: 'modified',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for modified'
-  },
-  {
-    key: 'modifiedby',
-    name: 'Modified By',
-    fieldName: 'modifiedby',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for modifiedby'
-  },
-  {
-    key: 'filesize',
-    name: 'File Size',
-    fieldName: 'filesize',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for filesize'
-  }
-];
+    isResizable: true
+  };
+});
 
 const _names: string[] = [
   'Annie Lindqvist',
@@ -78,14 +50,12 @@ export interface IFileExampleItem {
   filesize: string;
 }
 
-export class AnnouncedBulkOperationsExample extends React.Component<
-  {},
-  {
-    items: IFileExampleItem[];
-    columns: IColumn[];
-    numberOfItems: number;
-  }
-> {
+export interface IAnnouncedBulkOperationsExampleState {
+  items: IFileExampleItem[];
+  numberOfItems: number;
+}
+
+export class AnnouncedBulkOperationsExample extends React.Component<{}, IAnnouncedBulkOperationsExampleState> {
   private _selection: Selection;
   private _dragDropEvents: IDragDropEvents;
   private _draggedItem: IFileExampleItem | undefined;
@@ -97,9 +67,6 @@ export class AnnouncedBulkOperationsExample extends React.Component<
     this._selection = new Selection();
     this._dragDropEvents = this._getDragDropEvents();
     this._draggedIndex = -1;
-
-    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-    this._renderAnnounced = this._renderAnnounced.bind(this);
 
     if (_items.length === 0) {
       for (let i = 0; i < 20; i++) {
@@ -115,13 +82,12 @@ export class AnnouncedBulkOperationsExample extends React.Component<
 
     this.state = {
       items: _items,
-      columns: _columns,
       numberOfItems: 0
     };
   }
 
   public render(): JSX.Element {
-    const { items, columns } = this.state;
+    const { items } = this.state;
     const stackTokens: IStackTokens = { childrenGap: 10 };
 
     return (
@@ -134,9 +100,9 @@ export class AnnouncedBulkOperationsExample extends React.Component<
         {this._renderAnnounced()}
         <MarqueeSelection selection={this._selection}>
           <DetailsList
-            setKey={'items'}
+            setKey="items"
             items={items}
-            columns={columns}
+            columns={_columns}
             selection={this._selection}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
@@ -152,55 +118,45 @@ export class AnnouncedBulkOperationsExample extends React.Component<
 
   private _renderAnnounced(): JSX.Element | undefined {
     const { numberOfItems } = this.state;
-
     if (numberOfItems > 0) {
-      return <Announced message={numberOfItems === 1 ? `${numberOfItems} item moved` : `${numberOfItems} items moved`} />;
+      return <Announced message={`${numberOfItems} item${numberOfItems === 1 ? '' : 's'} moved`} />;
     }
-    return;
   }
 
   private _getDragDropEvents(): IDragDropEvents {
     return {
-      canDrop: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => {
-        return true;
-      },
-      canDrag: (item?: any) => {
-        return true;
-      },
-      onDragEnter: (item?: any, event?: DragEvent) => {
-        // return string is the css classes that will be added to the entering element.
-        return dragEnterClass;
-      },
-      onDragLeave: (item?: any, event?: DragEvent) => {
-        return;
-      },
-      onDrop: (item?: any, event?: DragEvent) => {
-        if (this._draggedItem) {
+      canDrop: () => true,
+      canDrag: () => true,
+      // return string is the css class that will be added to the entering element.
+      onDragEnter: () => dragEnterClass,
+      onDragLeave: () => undefined,
+      onDrop: (item?: IFileExampleItem) => {
+        if (this._draggedItem && item) {
           this._insertBeforeItem(item);
         }
       },
-      onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
+      onDragStart: (item?: IFileExampleItem, itemIndex?: number) => {
         this._draggedItem = item;
         this._draggedIndex = itemIndex!;
       },
-      onDragEnd: (item?: any, event?: DragEvent) => {
+      onDragEnd: () => {
         this._draggedItem = undefined;
         this._draggedIndex = -1;
       }
     };
   }
 
-  private _onItemInvoked(item: any): void {
+  private _onItemInvoked = (item: IFileExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  }
+  };
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
+  private _onRenderItemColumn = (item: IFileExampleItem, index: number, column: IColumn): React.ReactNode => {
     if (column.key === 'name') {
       return <Link data-selection-invoke={true}>{item[column.key]}</Link>;
     }
 
-    return item[column.key];
-  }
+    return item[column.key as keyof IFileExampleItem];
+  };
 
   private _insertBeforeItem(item: IFileExampleItem): void {
     const draggedItems = this._selection.isIndexSelected(this._draggedIndex)
