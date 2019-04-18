@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IRectangle, classNamesFunction, IClassNames } from '../../Utilities';
+import { BaseComponent, classNamesFunction, IClassNames } from '../../Utilities';
 import { IGroupedList, IGroupedListProps, IGroup, IGroupedListStyleProps, IGroupedListStyles } from './GroupedList.types';
 import { GroupedListSection } from './GroupedListSection';
 import { List, ScrollToMode, IListProps } from '../../List';

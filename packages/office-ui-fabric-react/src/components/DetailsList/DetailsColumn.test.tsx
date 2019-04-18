@@ -3,7 +3,7 @@ import { DetailsColumn } from 'office-ui-fabric-react/lib/components/DetailsList
 import { IColumn, ColumnActionsMode, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList.types';
 import { mount } from 'enzyme';
 import { DetailsList } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsList';
-import { assign, IRenderFunction } from '@uifabric/utilities';
+import { IRenderFunction } from '@uifabric/utilities';
 import { ITooltipHostProps, TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 
 let mockOnColumnClick: jest.Mock<{}>;
