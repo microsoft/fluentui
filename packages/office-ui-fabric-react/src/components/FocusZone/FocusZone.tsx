@@ -23,6 +23,7 @@ import {
   shouldWrapFocus,
   warnDeprecations
 } from '../../Utilities';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -33,6 +34,25 @@ const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 const LARGE_DISTANCE_FROM_CENTER = 999999999;
 const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 
+let focusZoneStyles: string;
+
+function getRootClass() {
+  if (!focusZoneStyles) {
+    focusZoneStyles = mergeStyles(
+      {
+        selectors: {
+          ':focus': {
+            outline: 'none'
+          }
+        }
+      },
+      focusZoneClass
+    );
+  }
+  return focusZoneStyles;
+}
+
+const focusZoneClass: string = 'ms-FocusZone';
 const _allInstances: {
   [key: string]: FocusZone;
 } = {};
@@ -199,7 +219,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // be any native element so typescript rightly flags this as a problem.
           ...rootProps as any
         }
-        className={css('ms-FocusZone', className)}
+        className={css(getRootClass(), className)}
         ref={this._root}
         data-focuszone-id={this._id}
         aria-labelledby={ariaLabelledBy}
