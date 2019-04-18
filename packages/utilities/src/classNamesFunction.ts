@@ -1,10 +1,14 @@
-import { mergeStyleSets, IStyle, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
+import { mergeStyleSets, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 
 const MAX_CACHE_COUNT = 30;
 
+// Note that because of the caching nature within the classNames memoization,
+// I've disabled this rule to simply be able to work with any types.
 // tslint:disable:no-any
+
 const RetVal = '__retval__';
+
 /**
  * Creates a getClassNames function which calls getStyles given the props, and injects them
  * into mergeStyleSets.
