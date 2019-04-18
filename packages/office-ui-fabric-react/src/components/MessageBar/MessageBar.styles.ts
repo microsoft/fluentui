@@ -72,9 +72,9 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   const dismissalAndExpandIconStyle: IStyle = {
-    fontSize: 12,
-    height: 12,
-    lineHeight: '12px',
+    fontSize: 10,
+    height: 10,
+    lineHeight: '10px',
     color: palette.neutralPrimary,
     selectors: {
       [HighContrastSelector]: {
@@ -86,10 +86,10 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
 
   const dismissalAndExpandStyle: IStyle = {
     flexShrink: 0,
-    margin: '8px 12px 8px 0',
-    width: 16,
-    height: 16,
-    padding: 0,
+    // margin: '8px 12px',
+    width: 32,
+    height: 32,
+    padding: '8px 12px',
     selectors: {
       '& .ms-Button-icon': dismissalAndExpandIconStyle,
       ':hover': {
@@ -236,7 +236,11 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       },
       isMultiline && {
         marginBottom: 8
-      }
+      },
+      onDismiss &&
+        !isMultiline && {
+          marginRight: 0
+        }
     ]
   };
 };
