@@ -35,6 +35,7 @@ export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardPr
 export interface ICardTokens extends IStackTokens {
   boxShadow?: string;
   boxShadowHovered?: string;
+  cursor?: string;
   height?: number | string;
   highContrastBoxShadow?: string;
   highContrastBoxShadowHovered?: string;
