@@ -47,7 +47,7 @@ describe('DetailsColumn', () => {
   });
 
   it('invokes IColumn#onColumnClick when columnActionMode is ColumnActionsMode.clickable', () => {
-    const column: IColumn = { ...baseColumn, ...{ columnActionsMode: ColumnActionsMode.clickable } };
+    const column: IColumn = { ...baseColumn, columnActionsMode: ColumnActionsMode.clickable };
     const columns = [column];
     let component: any;
 
