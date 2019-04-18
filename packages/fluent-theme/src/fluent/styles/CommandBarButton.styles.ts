@@ -74,6 +74,14 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
               color: palette.neutralPrimary
             }
           }
+        },
+        ':active': {
+          backgroundColor: palette.neutralLight,
+          selectors: {
+            '.ms-Button-icon': {
+              color: palette.neutralPrimary
+            }
+          }
         }
       }
     },
