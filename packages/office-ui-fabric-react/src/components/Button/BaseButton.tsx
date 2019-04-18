@@ -684,8 +684,13 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
         return state;
       });
 
-      ev.preventDefault();
-      ev.stopPropagation();
+      // This should be done in the setStateCallback but because preventDefault
+      // needs to be called, we have to evaluate the current state, even though
+      // it might not be 100% accurate;
+      if (this.state.menuProps && !this.state.menuProps.shouldFocusOnMount) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   };
 
