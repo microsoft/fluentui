@@ -26,7 +26,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
     if (newProps.group) {
       const { group, isGroupLoading } = newProps;
       const { isCollapsed = false } = group;
-      const isLoadingVisible = Boolean(!isCollapsed && isGroupLoading && isGroupLoading(group));
+      const isLoadingVisible =!isCollapsed && !!isGroupLoading && isGroupLoading(group);
 
       return {
         isCollapsed,
