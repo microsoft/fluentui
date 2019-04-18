@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Ensure that selectedIndices won't include -1;",
+      "comment": "Dropdown: Add unit test;",
       "type": "patch"
     }
   ],
