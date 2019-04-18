@@ -44,11 +44,27 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
 
+  public static getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState {
+    const { itemIndex, selection } = props;
+
+    return {
+      isSelected: !!selection && selection.isIndexSelected(itemIndex),
+      isSelectionModal: !!selection && !!selection.isModal && selection.isModal()
+    };
+  }
+
+  public static getDerivedStateFromProps(newProps: IDetailsRowBaseProps, state: IDetailsRowState) {
+    return {
+      selectionState: DetailsRowBase.getSelectionState(newProps),
+      groupNestingDepth: newProps.groupNestingDepth
+    };
+  }
+
   constructor(props: IDetailsRowBaseProps) {
     super(props);
 
     this.state = {
-      selectionState: this._getSelectionState(props),
+      selectionState: DetailsRowBase.getSelectionState(props),
       columnMeasureInfo: undefined,
       isDropping: false,
       groupNestingDepth: props.groupNestingDepth
@@ -130,17 +146,10 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     }
   }
 
-  public componentWillReceiveProps(newProps: IDetailsRowBaseProps): void {
-    this.setState({
-      selectionState: this._getSelectionState(newProps),
-      groupNestingDepth: newProps.groupNestingDepth
-    });
-  }
-
   public shouldComponentUpdate(nextProps: IDetailsRowBaseProps, nextState: IDetailsRowState): boolean {
     if (this.props.useReducedRowRenderer) {
       if (this.state.selectionState) {
-        const newSelectionState = this._getSelectionState(nextProps);
+        const newSelectionState = DetailsRowBase.getSelectionState(nextProps);
         if (this.state.selectionState.isSelected !== newSelectionState.isSelected) {
           return true;
         }
@@ -312,17 +321,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     return <DetailsRowCheck {...props} />;
   }
 
-  private _getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState {
-    const { itemIndex, selection } = props;
-
-    return {
-      isSelected: !!selection && selection.isIndexSelected(itemIndex),
-      isSelectionModal: !!selection && !!selection.isModal && selection.isModal()
-    };
-  }
-
   private _onSelectionChanged(): void {
-    const selectionState = this._getSelectionState(this.props);
+    const selectionState = DetailsRowBase.getSelectionState(this.props);
 
     if (!shallowCompare(selectionState, this.state.selectionState)) {
       this.setState({
