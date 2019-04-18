@@ -115,7 +115,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          this._isMenuExpanded(),
+          this._isExpanded,
           this.props.split,
           !!allowDisabledFocus
         )
@@ -128,7 +128,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          this._isMenuExpanded(),
+          this._isExpanded,
           this.props.split
         );
 
@@ -362,11 +362,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
-  private _isMenuExpanded(): boolean {
-    const { menuProps } = this.state;
-    return !!menuProps && !menuProps.hidden;
-  }
-
   private _onRenderChildren = (): JSX.Element | null => {
     const { children } = this.props;
 
@@ -473,8 +468,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
-      ? getSplitButtonClassNames(!!disabled, !!this.state.menuProps, !!checked, !!allowDisabledFocus)
-      : styles && getBaseSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
+      ? getSplitButtonClassNames(!!disabled, this._isExpanded, !!checked, !!allowDisabledFocus)
+      : styles && getBaseSplitButtonClassNames(styles!, !!disabled, this._isExpanded, !!checked);
 
     assign(buttonProps, {
       onClick: undefined,
