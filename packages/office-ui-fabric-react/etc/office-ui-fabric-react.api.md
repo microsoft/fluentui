@@ -8852,9 +8852,9 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     constructor(props: IToggleProps);
     readonly checked: boolean;
     // (undocumented)
-    componentWillReceiveProps(newProps: IToggleProps): void;
-    // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState;
     // (undocumented)
     render(): JSX.Element;
     }
