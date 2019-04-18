@@ -22,6 +22,21 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
 
   private _classNames: IClassNames<IGroupHeaderStyles>;
 
+  public static getDerivedStateFromProps(newProps: IGroupHeaderProps, state: IGroupHeaderState): IGroupHeaderState {
+    if (newProps.group) {
+      const { group, isGroupLoading } = newProps;
+      const { isCollapsed = false } = group;
+      const isLoadingVisible = Boolean(!isCollapsed && isGroupLoading && isGroupLoading(group));
+
+      return {
+        isCollapsed,
+        isLoadingVisible
+      };
+    }
+
+    return state;
+  }
+
   constructor(props: IGroupHeaderProps) {
     super(props);
 
@@ -29,19 +44,6 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       isCollapsed: (this.props.group && this.props.group.isCollapsed) as boolean,
       isLoadingVisible: false
     };
-  }
-
-  public componentWillReceiveProps(newProps: IGroupHeaderProps): void {
-    if (newProps.group) {
-      const newCollapsed = newProps.group.isCollapsed;
-      const isGroupLoading = newProps.isGroupLoading;
-      const newLoadingVisible = !newCollapsed && isGroupLoading && isGroupLoading(newProps.group);
-
-      this.setState({
-        isCollapsed: newCollapsed || false,
-        isLoadingVisible: newLoadingVisible || false
-      });
-    }
   }
 
   public render(): JSX.Element | null {
