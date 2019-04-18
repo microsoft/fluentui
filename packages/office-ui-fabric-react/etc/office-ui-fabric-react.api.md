@@ -893,11 +893,16 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     // (undocumented)
     componentDidUpdate(previousProps: IDetailsRowBaseProps): void;
     // (undocumented)
-    componentWillReceiveProps(newProps: IDetailsRowBaseProps): void;
-    // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     focus(forceIntoFirstElement?: boolean): boolean;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IDetailsRowBaseProps, state: IDetailsRowState): {
+        selectionState: IDetailsRowSelectionState;
+        groupNestingDepth: number | undefined;
+    };
+    // (undocumented)
+    static getSelectionState(props: IDetailsRowBaseProps): IDetailsRowSelectionState;
     measureCell(index: number, onMeasureDone: (width: number) => void): void;
     // (undocumented)
     protected _onRenderCheck(props: IDetailsRowCheckProps): JSX.Element;
