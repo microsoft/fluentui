@@ -16,6 +16,7 @@ import {
   ITableJson
 } from './ApiReferencesTableSet.types';
 import { PropertyType } from '../../utilities/parser/index';
+import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 
 export interface IApiReferencesTableSetState {
   properties: Array<IApiProperty>;
@@ -56,7 +57,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
   public componentDidUpdate(prevProps: IApiReferencesTableSetProps, prevState: IApiReferencesTableSetState): void {
     if (prevState.showSeeMore === false && this.state.showSeeMore === true) {
-      const hash = this._extractAnchorLink(window.location.hash);
+      const hash = extractAnchorLink(window.location.hash);
       const el = document.getElementById(hash);
 
       if (el) {
@@ -118,7 +119,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   private _onHashChange = (): void => {
     const { properties, showSeeMore } = this.state;
 
-    const hash = this._extractAnchorLink(window.location.hash);
+    const hash = extractAnchorLink(window.location.hash);
     const el = document.getElementById(hash);
 
     if (el) {
@@ -134,12 +135,6 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
         });
       }
     }
-  };
-
-  private _extractAnchorLink = (path: string): string => {
-    const split = path.split('#');
-    const cleanedSplit = split.filter(value => !!value);
-    return cleanedSplit[cleanedSplit.length - 1];
   };
 
   private _onRenderText(): JSX.Element {

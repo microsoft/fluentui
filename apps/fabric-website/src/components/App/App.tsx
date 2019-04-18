@@ -8,6 +8,7 @@ import { hasUHF } from '../../utilities/location';
 import { Nav } from '../Nav/Nav';
 import { AppState } from './AppState';
 import './App.scss';
+import { extractAnchorLink } from '@uifabric/example-app-base/lib/utilities/extractAnchorLink';
 
 export interface IAppProps extends React.Props<App> {}
 
@@ -58,7 +59,7 @@ export class App extends React.Component<IAppProps, any> {
 
   public componentWillReceiveProps(nextProps: IAppProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
-      const hash = this._extractAnchorLink(window.location.hash);
+      const hash = extractAnchorLink(window.location.hash);
       if (hash.substring(0, 11) === '/components') {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
       }
@@ -167,12 +168,6 @@ export class App extends React.Component<IAppProps, any> {
       isLeftNavOpen: false
     });
   };
-
-  private _extractAnchorLink(path) {
-    let split = path.split('#');
-    const cleanedSplit = split.filter(value => !!value);
-    return cleanedSplit[cleanedSplit.length - 1];
-  }
 
   private _openLeftNav = () => {
     this.setState({ isLeftNavOpen: true });

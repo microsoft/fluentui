@@ -16,6 +16,7 @@ export * from './utilities/customizations';
 export * from './utilities/data';
 export * from './utilities/debugging';
 export * from './utilities/examplesOf';
+export * from './utilities/extractAnchorLink';
 export * from './utilities/parser/index';
 
 import './version';
