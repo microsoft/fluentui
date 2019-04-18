@@ -519,11 +519,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     readonly checked: boolean;
     // (undocumented)
-    componentWillReceiveProps(newProps: ICheckboxProps): void;
-    // (undocumented)
     static defaultProps: ICheckboxProps;
     // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState;
     render(): JSX.Element;
 }
 
