@@ -108,7 +108,9 @@ function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
       result.push(typeof styles === 'function' ? styles(styleProps) : styles);
     }
   }
-  if (result.length) {
+  if (result.length === 1) {
+    return result[0] as IConcatenatedStyleSet<TStyleSet>;
+  } else if (result.length) {
     // cliffkoh: I cannot figure out how to avoid the cast to any here.
     // It is something to do with the use of Omit in IStyleSet.
     // It might not be necessary once  Omit becomes part of lib.d.ts (when we remove our own Omit and rely on
