@@ -36,6 +36,7 @@ const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 
 let focusZoneStyles: string;
 
+const focusZoneClass: string = 'ms-FocusZone';
 function getRootClass() {
   if (!focusZoneStyles) {
     focusZoneStyles = mergeStyles(
@@ -52,7 +53,6 @@ function getRootClass() {
   return focusZoneStyles;
 }
 
-const focusZoneClass: string = 'ms-FocusZone';
 const _allInstances: {
   [key: string]: FocusZone;
 } = {};
