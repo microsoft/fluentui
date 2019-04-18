@@ -31,7 +31,7 @@
     "@types/react-dom": "16.0.5",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.0",
-    "@uifabric/example-app-base": "^6.14.1",
+    "@uifabric/example-app-base": "^6.14.2",
     "@uifabric/jest-serializer-merge-styles": "^6.0.8",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1",

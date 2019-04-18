@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Apr 2019 12:31:50 GMT and should not be manually modified.
+
+## 0.3.0
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Minor changes
+
+- Card: Adding 'cursor' as a token and giving it the correct default styling.
 
 ## 0.2.4
 Wed, 17 Apr 2019 12:33:35 GMT
