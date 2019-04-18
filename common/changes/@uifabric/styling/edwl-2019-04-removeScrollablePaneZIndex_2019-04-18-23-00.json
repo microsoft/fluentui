@@ -3,7 +3,7 @@
     {
       "packageName": "@uifabric/styling",
       "comment": "Remove ScrollablePane from zIndexes",
-      "type": "patch"
+      "type": "minor"
     }
   ],
   "packageName": "@uifabric/styling",
