@@ -4,7 +4,7 @@ import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
 
-import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
+import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const { icon, content, children, disabled, onClick, ariaLabel, ...rest } = props;
@@ -48,6 +48,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
   );
 };
 
-function _deriveRootType(props: IButtonViewProps): keyof JSX.IntrinsicElements {
+function _deriveRootType(props: IButtonViewProps): IButtonRootElements {
   return !!props.href ? 'a' : 'button';
 }

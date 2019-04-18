@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {
-  CollapsibleSection,
-  ICollapsibleSectionProps,
-  ICollapsibleSectionTitleProps,
-  ICollapsibleSectionTitleStylesReturnType
-} from '@uifabric/experiments';
-import { Label, Spinner } from 'office-ui-fabric-react';
+import { CollapsibleSection, ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStylesReturnType } from '@uifabric/experiments';
+import { ITextProps, Label, Spinner } from 'office-ui-fabric-react';
+import { ISlotRender, IHTMLSlot } from '@uifabric/foundation';
 
 // Mock async data container component
 interface IAsyncDataProps {
@@ -40,32 +36,33 @@ const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (props, theme):
   ]
 });
 
-const titleTextRender: ICollapsibleSectionTitleProps['text'] = render =>
-  render(
-    (ComponentType, props) => (
-      <AsyncData
-        data="done"
-        // tslint:disable-next-line:jsx-no-lambda
-        render={data => (data ? <ComponentType {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />)}
-      />
-    ),
-    'Title loaded'
-  );
+// TODO: is there any way to do lookup types here? like:
+// const titleTextRender: ICollapsibleSectionTitleProps['text']['render'] = {
+// which fails since 'render' may not exist due to union.
+// A helper version of this?
+// const titleTextRender: Exclude<ICollapsibleSectionTitleProps['text'], string | undefined>['render'] = (props, DefaultComponent) => (
 
-const bodyRender: ICollapsibleSectionProps['body'] = render =>
-  render((ComponentType, props) => (
-    <AsyncData
-      data="done"
-      // tslint:disable-next-line:jsx-no-lambda
-      render={data => (
-        <div style={{ border: '1px solid black' }}>
-          <ComponentType {...props}>
-            {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
-          </ComponentType>
-        </div>
-      )}
-    />
-  ));
+const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
+  <AsyncData
+    data="done"
+    // tslint:disable-next-line:jsx-no-lambda
+    render={data => (data ? <DefaultComponent {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />)}
+  />
+);
+
+const bodyRender: ISlotRender<IHTMLSlot['props']> = (props, DefaultComponent) => (
+  <AsyncData
+    data="done"
+    // tslint:disable-next-line:jsx-no-lambda
+    render={data => (
+      <div style={{ border: '1px solid black' }}>
+        <DefaultComponent {...props}>
+          {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
+        </DefaultComponent>
+      </div>
+    )}
+  />
+);
 
 export class SlotsAsyncExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -75,21 +72,15 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
           key={1}
           defaultCollapsed={true}
           title={{
-            styles: titleTextStyles,
-            text: titleTextRender
+            props: {
+              styles: titleTextStyles,
+              text: {
+                props: { children: 'Title Text' },
+                render: titleTextRender
+              }
+            }
           }}
-          body={bodyRender}
-        >
-          Data loaded
-        </CollapsibleSection>
-        <CollapsibleSection
-          key={1}
-          defaultCollapsed={true}
-          title={{
-            styles: titleTextStyles,
-            text: titleTextRender
-          }}
-          body={bodyRender}
+          body={{ render: bodyRender }}
         >
           Data loaded
         </CollapsibleSection>

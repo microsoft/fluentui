@@ -3,7 +3,9 @@ import { SplitButton, ISplitButtonProps } from '@uifabric/experiments';
 import { Stack } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: ISplitButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const buttonMenu: ISplitButtonProps['menu'] = {
+  render: (props, DefaultComponent) => <DefaultComponent {...props} items={menuItems} />
+};
 
 const tokens = {
   sectionStack: {

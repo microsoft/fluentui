@@ -23,7 +23,7 @@ export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'],
 /**
  * {@docCategory Text}
  */
-export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
+export type ITextSlot = ISlotProp<ITextProps, string>;
 
 /**
  * {@docCategory Text}

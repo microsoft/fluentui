@@ -81,8 +81,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             key={2}
             defaultCollapsed={false}
             title={{
-              text: 'Prop Styles',
-              styles: getPropTitleStyles
+              props: {
+                text: 'Prop Styles',
+                styles: getPropTitleStyles
+              }
             }}
             styles={getPropStyles}
           >
@@ -99,8 +101,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               key={3}
               defaultCollapsed={false}
               title={{
-                text: 'Prop Styles + Customizer Styles',
-                styles: getPropTitleStyles
+                props: {
+                  text: 'Prop Styles + Customizer Styles',
+                  styles: getPropTitleStyles
+                }
               }}
               styles={getPropStyles}
             >
@@ -113,8 +117,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               key={4}
               defaultCollapsed={false}
               title={{
-                text: 'Prop Styles + Customizer Theme',
-                styles: getPropTitleStyles
+                props: {
+                  text: 'Prop Styles + Customizer Theme',
+                  styles: getPropTitleStyles
+                }
               }}
               styles={getPropStyles}
             >
@@ -126,8 +132,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             key={5}
             defaultCollapsed={false}
             title={{
-              text: 'Prop Styles + Prop Theme',
-              styles: getPropTitleStyles
+              props: {
+                text: 'Prop Styles + Prop Theme',
+                styles: getPropTitleStyles
+              }
             }}
             styles={getPropStyles}
             theme={csPropTheme}
@@ -140,8 +148,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               key={6}
               defaultCollapsed={false}
               title={{
-                text: 'Prop Styles + Customizer Theme + Prop Theme',
-                styles: getPropTitleStyles
+                props: {
+                  text: 'Prop Styles + Customizer Theme + Prop Theme',
+                  styles: getPropTitleStyles
+                }
               }}
               styles={getPropStyles}
               theme={csPropTheme}
@@ -160,8 +170,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             key={8}
             collapsed={false}
             title={{
-              text: 'Prop Styles',
-              styles: getPropTitleStyles
+              props: {
+                text: 'Prop Styles',
+                styles: getPropTitleStyles
+              }
             }}
             styles={getPropStyles}
           >
@@ -178,8 +190,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               key={9}
               collapsed={false}
               title={{
-                text: 'Prop Styles + Customizer Styles',
-                styles: getPropTitleStyles
+                props: {
+                  text: 'Prop Styles + Customizer Styles',
+                  styles: getPropTitleStyles
+                }
               }}
               styles={getPropStyles}
             >
@@ -192,8 +206,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               key={10}
               collapsed={false}
               title={{
-                text: 'Prop Styles + Customizer Theme',
-                styles: getPropTitleStyles
+                props: {
+                  text: 'Prop Styles + Customizer Theme',
+                  styles: getPropTitleStyles
+                }
               }}
               styles={getPropStyles}
             >
@@ -205,8 +221,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
             key={11}
             collapsed={false}
             title={{
-              text: 'Prop Styles + Prop Theme',
-              styles: getPropTitleStyles
+              props: {
+                text: 'Prop Styles + Prop Theme',
+                styles: getPropTitleStyles
+              }
             }}
             styles={getPropStyles}
             theme={csPropTheme}
@@ -219,8 +237,10 @@ export class CollapsibleSectionStyledExample extends React.Component<{}, {}> {
               key={12}
               collapsed={false}
               title={{
-                text: 'Prop Styles + Customizer Theme + Prop Theme',
-                styles: getPropTitleStyles
+                props: {
+                  text: 'Prop Styles + Customizer Theme + Prop Theme',
+                  styles: getPropTitleStyles
+                }
               }}
               styles={getPropStyles}
               theme={csPropTheme}

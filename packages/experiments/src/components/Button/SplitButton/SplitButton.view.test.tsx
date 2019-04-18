@@ -5,7 +5,9 @@ import { SplitButton } from './SplitButton';
 import { ISplitButtonProps } from './SplitButton.types';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: ISplitButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const buttonMenu: ISplitButtonProps['menu'] = {
+  render: (props, DefaultComponent) => <DefaultComponent {...props} items={menuItems} />
+};
 
 describe('SplitButton view', () => {
   it('renders a SplitButton correctly', () => {

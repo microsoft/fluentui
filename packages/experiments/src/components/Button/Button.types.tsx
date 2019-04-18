@@ -14,11 +14,13 @@ export type IButtonStylesReturnType = ReturnType<Extract<IButtonComponent['style
 
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
+export type IButtonRootElements = 'a' | 'button' | 'div';
+
 export interface IButtonSlots {
   /**
    * Defines the root slot of the component.
    */
-  root?: IHTMLElementSlot<'button'>;
+  root?: IHTMLElementSlot<IButtonRootElements>;
 
   /**
    * Defines the horizontal stack used for specifying the inner layout of the Button.

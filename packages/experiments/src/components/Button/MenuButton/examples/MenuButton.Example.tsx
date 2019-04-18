@@ -3,7 +3,9 @@ import { MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const buttonMenu: IMenuButtonProps['menu'] = {
+  render: (props, DefaultComponent) => <DefaultComponent {...props} items={menuItems} />
+};
 
 const tokens = {
   sectionStack: {

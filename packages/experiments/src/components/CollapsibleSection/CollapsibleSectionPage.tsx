@@ -11,6 +11,11 @@ const CollapsibleSectionBasicExampleCode =
   /* tslint:disable-next-line:max-line-length */
   require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Basic.Example.tsx') as string;
 
+import { CollapsibleSectionCustomizedExample } from './examples/CollapsibleSection.Customized.Example';
+const CollapsibleSectionCustomizedExampleCode =
+  /* tslint:disable-next-line:max-line-length */
+  require('!raw-loader!@uifabric/experiments/src/components/CollapsibleSection/examples/CollapsibleSection.Customized.Example.tsx') as string;
+
 import { CollapsibleSectionControlledExample } from './examples/CollapsibleSection.Controlled.Example';
 const CollapsibleSectionControlledExampleCode =
   /* tslint:disable-next-line:max-line-length */
@@ -36,6 +41,9 @@ export class CollapsibleSectionPage extends React.Component<IComponentDemoPagePr
           <div>
             <ExampleCard title="Basic Collapsible Section" isOptIn={true} code={CollapsibleSectionBasicExampleCode}>
               <CollapsibleSectionBasicExample />
+            </ExampleCard>
+            <ExampleCard title="Customized Collapsible Section (SFC)" isOptIn={true} code={CollapsibleSectionCustomizedExampleCode}>
+              <CollapsibleSectionCustomizedExample />
             </ExampleCard>
             <ExampleCard title="Recursive Collapsible Section" isOptIn={true} code={CollapsibleSectionRecursiveExampleCode}>
               <CollapsibleSectionRecursiveExample />

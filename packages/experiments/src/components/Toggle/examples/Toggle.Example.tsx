@@ -28,7 +28,9 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
           defaultChecked={true}
           label="Custom On/Off render functions"
           onChange={this._onCustomRenderChange}
-          text={render => render((TextType, props) => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>)}
+          text={{
+            render: props => <Label {...props}>{checked ? <Spinner /> : 'Spinner Off'}</Label>
+          }}
         />
       </div>
     );
