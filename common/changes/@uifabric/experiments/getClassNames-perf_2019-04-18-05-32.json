@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Button example updated.",
+      "packageName": "@uifabric/experiments",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "dzearing@microsoft.com"
+}
