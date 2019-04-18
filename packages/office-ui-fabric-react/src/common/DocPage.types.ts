@@ -136,6 +136,9 @@ export interface IDocPageProps {
     section: JSX.Element;
   }[];
 
+  /**
+   * JSON to populate the api reference tables
+   */
   jsonDocs?: IPageJson;
 }
 

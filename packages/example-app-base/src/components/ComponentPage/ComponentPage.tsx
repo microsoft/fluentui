@@ -3,6 +3,7 @@ import { css, getDocument, classNamesFunction, styled } from 'office-ui-fabric-r
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
 import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
 import { getStyles } from './ComponentPage.styles';
@@ -106,11 +107,44 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     );
   }
 
+  private _getNativePropsInfo(): JSX.Element | undefined {
+    const { allowNativeProps, allowNativePropsForComponentName, nativePropsElement = 'div' } = this.props;
+    if (allowNativeProps) {
+      const nativePropsElems = Array.isArray(nativePropsElement) ? nativePropsElement : [nativePropsElement];
+
+      const elementsArr: (JSX.Element | string)[] = [];
+      for (const elem of nativePropsElems) {
+        elementsArr.push(<code key={elem}>{`<${elem}>`}</code>);
+        elementsArr.push(' and ');
+      }
+      elementsArr.pop(); // remove last ' and '
+      elementsArr.push(` tag${nativePropsElems.length > 1 ? 's' : ''}`);
+
+      let componentNameJsx: JSX.Element | undefined;
+      if (allowNativePropsForComponentName) {
+        componentNameJsx = <code>{allowNativePropsForComponentName}</code>;
+      }
+
+      return (
+        <MessageBar>
+          <strong>Native props allowed {componentNameJsx && <>for {componentNameJsx}</>}</strong> - all HTML attributes native to the{' '}
+          {elementsArr}, including all aria and custom data attributes, can be applied as native props on{' '}
+          {componentNameJsx || 'this component'}.
+        </MessageBar>
+      );
+    }
+  }
+
   private _getPropertiesTable(): JSX.Element | undefined {
     if (this.props.propertiesTables) {
       return this._getSection({
         title: 'Implementation',
-        section: this.props.propertiesTables,
+        section: (
+          <>
+            {!this.props.jsonDocs && this._getNativePropsInfo()}
+            {this.props.propertiesTables}
+          </>
+        ),
         wrapperClass: this._styles.implementationSection,
         titleClass: null
       });
