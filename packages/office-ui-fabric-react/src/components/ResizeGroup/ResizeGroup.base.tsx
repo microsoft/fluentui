@@ -396,10 +396,8 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     this._async.requestAnimationFrame(() => {
       let containerDimension = undefined;
       if (this.state.measureContainer && this._root.current) {
-        containerDimension =
-          direction && direction === ResizeGroupDirection.vertical
-            ? this._root.current.getBoundingClientRect().height
-            : this._root.current.getBoundingClientRect().width;
+        const boundingRect = this._root.current.getBoundingClientRect();
+        containerDimension = direction && direction === ResizeGroupDirection.vertical ? boundingRect.height : boundingRect.width;
       }
       const nextState = this._nextResizeGroupStateProvider.getNextState(
         this.props,
