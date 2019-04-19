@@ -21,7 +21,8 @@ import {
   on,
   raiseClick,
   shouldWrapFocus,
-  warnDeprecations
+  warnDeprecations,
+  portalContainsElement
 } from '../../Utilities';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
@@ -298,6 +299,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
+    if (ev.target && portalContainsElement(ev.target, this._root.current ? this._root.current : undefined)) {
+      // If the event target is inside a portal do not process the focus event.
+      return;
+    }
+
     const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | undefined;
@@ -390,6 +396,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._root.current ? this._root.current : undefined)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { disabled } = this.props;
 
     if (disabled) {
@@ -402,11 +413,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     while (target && target !== this._root.current) {
       path.push(target);
       target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
-    }
-
-    if (target !== this._root.current) {
-      // The target is not a physical descendant of the current focus zone.
-      return;
     }
 
     while (path.length) {
@@ -449,6 +455,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    * Handle the keystrokes.
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
+    if (ev.target && portalContainsElement(ev.target as HTMLElement, this._root.current ? this._root.current : undefined)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {
