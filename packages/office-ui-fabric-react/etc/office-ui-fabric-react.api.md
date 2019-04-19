@@ -1203,6 +1203,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     static defaultProps: IFocusZoneProps;
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(element: HTMLElement): boolean;
+    getActiveElement(): HTMLElement | null;
     static getOuterZones(): number;
     // (undocumented)
     render(): JSX.Element;
@@ -4238,6 +4239,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
+    getActiveElement(): HTMLElement | null;
 }
 
 // @public

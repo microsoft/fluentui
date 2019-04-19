@@ -1840,7 +1840,7 @@ describe('FocusZone', () => {
     expect(keyDownHandler).toBeCalled();
   });
 
-  it('should not set an element inside a portal (outside its DOM) as its active element', () => {
+  it('should not set an element outside its DOM as its active element', () => {
     const focusZoneRef = createRef<IFocusZone>();
     const component = ReactTestUtils.renderIntoDocument(
       <div>
@@ -1873,6 +1873,7 @@ describe('FocusZone', () => {
         right: 40
       }
     });
+
     ReactTestUtils.Simulate.focus(buttonA);
     expect(focusZoneRef.current!.getActiveElement()!.id).toBe('a');
     ReactTestUtils.Simulate.focus(externalElement);
