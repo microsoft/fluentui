@@ -7013,7 +7013,7 @@ export interface ISwatchColorPickerProps {
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
-    onColorChanged?: (id?: string, color?: string) => void;
+    onColorChanged?: (id?: string, color?: string) => boolean | void;
     positionInSet?: number;
     selectedId?: string;
     setSize?: number;

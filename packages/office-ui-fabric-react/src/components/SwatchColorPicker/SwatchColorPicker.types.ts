@@ -40,8 +40,11 @@ export interface ISwatchColorPickerProps {
    * Callback issued when the user changes the color.
    * Note, if no id or color is given, there is no selected cell
    * (e.g. the user executed the currently selected cell to unselect it)
+   *
+   * Return true, if the callback function is responsible for handling the state.
+   *
    */
-  onColorChanged?: (id?: string, color?: string) => void;
+  onColorChanged?: (id?: string, color?: string) => boolean | void;
 
   /**
    * Callback issued when the user hovers over a color cell.
