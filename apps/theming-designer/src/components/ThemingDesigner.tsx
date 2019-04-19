@@ -70,7 +70,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   public componentWillUnmount(): void {
     // remove temp styles
     const root = document.querySelector('.samples') as HTMLElement;
-    // const root = document.getElementsByClassName('samples');
     if (root) {
       root.style.backgroundColor = '';
       root.style.color = '';

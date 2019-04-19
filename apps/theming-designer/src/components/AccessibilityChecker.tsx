@@ -20,19 +20,20 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   let accessiblePairs: IContrastRatioPair[] = [];
 
   const calculateContrastRatio = (foreground: FabricSlots, background: FabricSlots) => {
-    const bgc: IColor = props.themeRules![FabricSlots[background]].color!;
-    const fgc: IColor = props.themeRules![FabricSlots[foreground]].color!;
+    if (props.themeRules) {
+      const bgc: IColor = props.themeRules[FabricSlots[background]].color!;
+      const fgc: IColor = props.themeRules[FabricSlots[foreground]].color!;
 
-    const currContrastRatio = getContrastRatio(bgc, fgc);
-    let contrastRatioString = String(currContrastRatio);
-    contrastRatioString = contrastRatioString.substr(0, contrastRatioString.indexOf('.') + 3);
+      const currContrastRatio = getContrastRatio(bgc, fgc);
+      const contrastRatioString = currContrastRatio.toFixed(2);
 
-    const currContrastRatioPair = FabricSlots[foreground] + ' on ' + FabricSlots[background];
+      const currContrastRatioPair = FabricSlots[foreground] + ' on ' + FabricSlots[background];
 
-    if (currContrastRatio < 4.5) {
-      nonAccessiblePairs.push({ contrastRatioValue: contrastRatioString, contrastRatioPair: currContrastRatioPair });
-    } else {
-      accessiblePairs.push({ contrastRatioValue: contrastRatioString, contrastRatioPair: currContrastRatioPair });
+      if (currContrastRatio < 4.5) {
+        nonAccessiblePairs.push({ contrastRatioValue: contrastRatioString, contrastRatioPair: currContrastRatioPair });
+      } else {
+        accessiblePairs.push({ contrastRatioValue: contrastRatioString, contrastRatioPair: currContrastRatioPair });
+      }
     }
   };
 

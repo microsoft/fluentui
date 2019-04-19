@@ -5,7 +5,7 @@ import { Stack } from '../../../../packages/office-ui-fabric-react/lib/index';
 import { mergeStyles } from '@uifabric/merge-styles';
 
 export interface IFabricPaletteProps {
-  themeRules: IThemeRules | undefined;
+  themeRules?: IThemeRules;
 }
 
 const tableClassName = mergeStyles({
@@ -43,14 +43,8 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
     return (
       <div key={slotRule.name} className={slotClassName}>
         <Stack horizontal gap={5}>
-          <div
-            key={slotRule.name}
-            className={fabricPaletteColorBox}
-            style={{ backgroundColor: slotRule.color!.str }}
-            // onClick={} no colorpicker on click for now but in the future, possible.
-          />
+          <div key={slotRule.name} className={fabricPaletteColorBox} style={{ backgroundColor: slotRule.color!.str }} />
           <div>{slotRule.name}</div>
-          {/* {!slotRule.isCustomized ? <div>Inherits from: {slotRule.inherits!.name}</div> : <div>Customized</div>} */}
         </Stack>
       </div>
     );
