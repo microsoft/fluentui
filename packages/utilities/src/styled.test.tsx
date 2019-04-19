@@ -16,6 +16,7 @@ interface ITestProps {
   children?: React.ReactNode;
 }
 
+let _lastStyles: IStyleFunctionOrObject<{}, ITestStyles>;
 let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 
@@ -64,6 +65,12 @@ describe('styled', () => {
   it('renders base styles (background red)', () => {
     safeCreate(<Test />, (component: renderer.ReactTestRenderer) => {
       // Test that defaults are the base styles (red).
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('allows user overrides (background green)', () => {
+    safeCreate(<Test styles={{ root: { background: 'green' } }} />, (component: renderer.ReactTestRenderer) => {
       expect(component.toJSON()).toMatchSnapshot();
     });
   });
