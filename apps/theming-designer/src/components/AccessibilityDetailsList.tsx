@@ -10,7 +10,7 @@ import {
   MessageBarType,
   SelectionMode,
   ITheme
-} from '../../../../packages/office-ui-fabric-react/lib/index';
+} from '../../../../packages/office-ui-fabric-react/';
 import { IContrastRatioPair } from './AccessibilityChecker';
 
 export interface IAccessibilityDetailsListProps {
@@ -35,30 +35,34 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
 
   const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
     // Set each row's background and text color to what's specified by its respective slot rule
-    const currentSlotPair = detailsRowProps!.item.slotPair;
-    const pairSplt = currentSlotPair.split(' on ');
-    const currForegroundColor = pairSplt[0];
-    const currBackgroundColor = pairSplt[1];
+    if (detailsRowProps && newTheme) {
+      const currentSlotPair = detailsRowProps!.item.slotPair;
+      const pairSplt = currentSlotPair.split(' on ');
+      const currForegroundColor = pairSplt[0];
+      const currBackgroundColor = pairSplt[1];
 
-    const rowStyles: Partial<IDetailsRowStyles> = {
-      root: {
-        backgroundColor: (newTheme!.palette as any)[currBackgroundColor],
-        color: (newTheme!.palette as any)[currForegroundColor],
-        selectors: {
-          ':hover': {
-            background: 'transparent'
+      const rowStyles: Partial<IDetailsRowStyles> = {
+        root: {
+          backgroundColor: (newTheme!.palette as any)[currBackgroundColor],
+          color: (newTheme!.palette as any)[currForegroundColor],
+          selectors: {
+            ':hover': {
+              background: 'transparent'
+            }
           }
         }
-      }
-    };
-    return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
+      };
+      return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
+    } else {
+      return <div />;
+    }
   };
 
   const accessiblePairsListCount = props.allContrastRatioPairs.length - props.nonAccessibleStartIndex;
   let messageBar;
   if (props.allContrastRatioPairs.length > 0 && props.nonAccessibleStartIndex > 0) {
     const errorsMessageBarString =
-      'You color palette has ' +
+      'Your color palette has ' +
       props.nonAccessibleStartIndex.toString() +
       ' accessibility errors. Each pair of colors below should produce legible text and have a minimum contrast of 4.5';
     messageBar = (

@@ -12,7 +12,7 @@ import {
   Text,
   TextField,
   Toggle
-} from 'office-ui-fabric-react/lib/index';
+} from '../../../../packages/office-ui-fabric-react/';
 
 export class Samples extends React.Component {
   public render() {

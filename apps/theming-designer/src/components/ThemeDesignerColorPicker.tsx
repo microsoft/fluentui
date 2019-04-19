@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { TextField } from '../../../../packages/office-ui-fabric-react/lib/TextField';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Text, IColor, Callout, ColorPicker, getColorFromString } from '../../../../packages/office-ui-fabric-react/lib/index';
+import { Stack, TextField, Text, IColor, Callout, ColorPicker, getColorFromString } from '../../../../packages/office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles';
 
 const colorLabelClassName = mergeStyles({
@@ -85,7 +83,9 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
   }
 
   private _onTextFieldValueChange(ev: any, newValue: string | undefined) {
-    this.props.onColorChange(getColorFromString(newValue!));
+    if (newValue) {
+      this.props.onColorChange(getColorFromString(newValue!));
+    }
   }
 
   private _onCalloutDismiss() {

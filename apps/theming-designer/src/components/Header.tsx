@@ -1,25 +1,19 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-import {
-  Stack,
-  Label,
-  IconButton,
-  PrimaryButton,
-  Panel,
-  PanelType,
-  Pivot,
-  PivotItem
-} from '../../../../packages/office-ui-fabric-react/lib/index';
+import { Stack, Label, IconButton, PrimaryButton, Panel, PanelType, Pivot, PivotItem } from '../../../../packages/office-ui-fabric-react/';
 import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { CodepenComponent } from '@uifabric/example-app-base';
 
 export interface IHeaderProps {
-  themeRules: IThemeRules | undefined;
+  themeRules?: IThemeRules;
 }
 
 export interface IHeaderState {
   showPanel: boolean;
+  jsonTheme: string;
+  powershellTheme: string;
+  themeAsCode: any;
 }
 
 const outputPanelClassName = mergeStyles({
@@ -43,15 +37,14 @@ const codepenSamples =
   '</div>);\n  }\n}\n' +
   "ReactDOM.render(<Content />,document.getElementById('content'));";
 
-let jsonTheme: string;
-let powershellTheme: string;
-let themeAsCode: any;
-
 export class Header extends React.Component<IHeaderProps, IHeaderState> {
   constructor(props: any) {
     super(props);
     this.state = {
-      showPanel: false
+      showPanel: false,
+      jsonTheme: '',
+      powershellTheme: '',
+      themeAsCode: <div />
     };
   }
 
@@ -97,13 +90,18 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
               <div className={outputPanelClassName}>
                 <Pivot>
                   <PivotItem headerText="Code">
-                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={codeHeader + themeAsCode} />
+                    <textarea
+                      className={textAreaClassName}
+                      readOnly={true}
+                      spellCheck={false}
+                      value={codeHeader + this.state.themeAsCode}
+                    />
                   </PivotItem>
                   <PivotItem headerText="JSON">
-                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={jsonTheme} />
+                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.jsonTheme} />
                   </PivotItem>
                   <PivotItem headerText="PowerShell">
-                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={powershellTheme} />
+                    <textarea className={textAreaClassName} readOnly={true} spellCheck={false} value={this.state.powershellTheme} />
                   </PivotItem>
                 </Pivot>
               </div>
@@ -133,15 +131,17 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
       }
     }
 
-    jsonTheme = JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2);
-    powershellTheme = ThemeGenerator.getThemeForPowerShell(abridgedTheme);
-    themeAsCode = ThemeGenerator.getThemeAsCode(abridgedTheme);
+    this.setState({
+      jsonTheme: JSON.stringify(ThemeGenerator.getThemeAsJson(abridgedTheme), void 0, 2),
+      powershellTheme: ThemeGenerator.getThemeForPowerShell(abridgedTheme),
+      themeAsCode: ThemeGenerator.getThemeAsCode(abridgedTheme)
+    });
   };
 
   private onRenderFooterContent = () => {
     return (
       <div>
-        <CodepenComponent jsContent={codepenHeader + themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
+        <CodepenComponent jsContent={codepenHeader + this.state.themeAsCode + codepenSamples} buttonAs={PrimaryButton} />
       </div>
     );
   };

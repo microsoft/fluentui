@@ -16,7 +16,7 @@ import {
   IconButton,
   ThemeProvider,
   createTheme
-} from '../../../../packages/office-ui-fabric-react/lib/index';
+} from '../../../../packages/office-ui-fabric-react';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
 
 import { ThemeGenerator, themeRulesStandardCreator, BaseSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
@@ -70,7 +70,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   public componentWillUnmount(): void {
     // remove temp styles
     const root = document.querySelector('.samples') as HTMLElement;
-    // const root = document.getElementsByClassName('samples');
     if (root) {
       root.style.backgroundColor = '';
       root.style.color = '';
@@ -173,30 +172,32 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
-    if (colorToChange === this.state.primaryColor) {
-      this.setState({ primaryColor: newColor! });
-    } else if (colorToChange === this.state.textColor) {
-      this.setState({ textColor: newColor! });
-    } else if (colorToChange === this.state.backgroundColor) {
-      // console.log('got to background', colorToChange);
-      this.setState({ backgroundColor: newColor! });
-    } else {
-      return;
-    }
-    this._async.setTimeout(() => {
-      const themeRules = this.state.themeRules;
-      if (themeRules) {
-        const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-        ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor!, currentIsDark, true, true);
-        if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
-          // isInverted got swapped, so need to refresh slots with new shading rules
-          ThemeGenerator.insureSlots(themeRules, !currentIsDark);
-        }
+    if (newColor) {
+      if (colorToChange === this.state.primaryColor) {
+        this.setState({ primaryColor: newColor });
+      } else if (colorToChange === this.state.textColor) {
+        this.setState({ textColor: newColor });
+      } else if (colorToChange === this.state.backgroundColor) {
+        // console.log('got to background', colorToChange);
+        this.setState({ backgroundColor: newColor });
+      } else {
+        return;
       }
-      this.setState({ themeRules: themeRules }, this._makeNewTheme);
-    }, 20);
-    // 20ms is low enough that you can slowly drag to change color and see that theme,
-    // but high enough that quick changes don't get bogged down by a million changes inbetween
-    // console.log(this.state.themeRules);
+      this._async.setTimeout(() => {
+        const themeRules = this.state.themeRules;
+        if (themeRules) {
+          const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
+          ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
+          if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
+            // isInverted got swapped, so need to refresh slots with new shading rules
+            ThemeGenerator.insureSlots(themeRules, currentIsDark);
+          }
+        }
+        this.setState({ themeRules: themeRules }, this._makeNewTheme);
+      }, 20);
+      // 20ms is low enough that you can slowly drag to change color and see that theme,
+      // but high enough that quick changes don't get bogged down by a million changes inbetween
+      // console.log(this.state.themeRules);
+    }
   };
 }

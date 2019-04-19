@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Text, ITextProps } from '../../../../packages/office-ui-fabric-react/lib/Text';
+import { Text, ITextProps } from '../../../../packages/office-ui-fabric-react/';
 import { mergeStyles } from '@uifabric/merge-styles';
 
 export interface ISamplesCardHeaderProps {
