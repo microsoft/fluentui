@@ -8046,8 +8046,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     addSticky: (sticky: Sticky) => void;
     // (undocumented)
-    static childContextTypes: React.ValidationMap<IScrollablePaneContext>;
-    // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState): void;
@@ -8057,8 +8055,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     readonly contentContainer: HTMLDivElement | null;
     // (undocumented)
     forceLayoutUpdate(): void;
-    // (undocumented)
-    getChildContext(): IScrollablePaneContext;
     // (undocumented)
     getScrollPosition: () => number;
     // (undocumented)
@@ -8088,6 +8084,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     updateStickyRefHeights: () => void;
 }
+
+// @public (undocumented)
+export const ScrollablePaneContext: React.Context<IScrollablePaneContext>;
 
 // @public (undocumented)
 export const ScrollbarVisibility: {
@@ -8462,9 +8461,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    context: IScrollablePaneContext;
-    // (undocumented)
-    static contextTypes: IStickyContext;
+    static contextType: React.Context<IScrollablePaneContext>;
     // (undocumented)
     static defaultProps: IStickyProps;
     // (undocumented)
