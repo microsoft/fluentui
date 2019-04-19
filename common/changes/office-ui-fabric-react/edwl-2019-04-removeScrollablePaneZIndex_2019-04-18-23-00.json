@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Pickers: Fix issue where they would have invalid described by",
+      "comment": "ScrollablePane: Remove Z Index since it's no longer necesssary",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "edwl@microsoft.com"
 }
