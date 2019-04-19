@@ -6668,7 +6668,6 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 
 // @public (undocumented)
 export interface IStackTokens {
-    // (undocumented)
     childrenGap?: number | string;
 }
 

@@ -90,48 +90,219 @@ export interface IButtonViewProps extends IButtonProps {
 }
 
 export interface IButtonTokens {
+  /**
+   * Defines how far should the background extend within the Button.
+   */
   backgroundClip?: IRawStyleBase['backgroundClip'];
+
+  /**
+   * Defines the background color of the Button.
+   */
   backgroundColor?: string;
+
+  /**
+   * Defines the background color of the Button when it is in a hovered state.
+   */
   backgroundColorHovered?: string;
+
+  /**
+   * Defines the background color of the Button when it is in an active state.
+   */
   backgroundColorPressed?: string;
+
+  /**
+   * Defines the border color of the Button.
+   */
   borderColor?: string;
+
+  /**
+   * Defines the border color of the Button when the focus is on it.
+   */
   borderColorFocused?: string;
+
+  /**
+   * Defines the border color of the Button when it is in a hovered state.
+   */
   borderColorHovered?: string;
+
+  /**
+   * Defines the border color of the Button when it is in a hovered state.
+   */
   borderColorPressed?: string;
+
+  /**
+   * Defines the border radius of the Button.
+   */
   borderRadius?: number | string;
+
+  /**
+   * Defines the border width of the Button.
+   */
   borderWidth?: number | string;
+
+  /**
+   * Defines the text color of elements inside the Button.
+   */
   color?: string;
+
+  /**
+   * Defines the text color of elements inside the Button when it is in a hovered state.
+   */
   colorHovered?: string;
+
+  /**
+   * Defines the text color of elements inside the Button when it is in an active state.
+   */
   colorPressed?: string;
+
+  /**
+   * Defines the padding of the Button, between the Button border and the Button contents.
+   */
   contentPadding?: number | string;
+
+  /**
+   * Defines the padding of the Button, between the Button border and the Button contents, when the focus is on the Button.
+   */
   contentPaddingFocused?: number | string;
+
+  /**
+   * Defines the mouse cursor to be displayed when pointing over the Button.
+   */
   cursor?: string | undefined;
+
+  /**
+   * Defines a fixed height for the Button.
+   */
   height?: number | string;
+
+  /**
+   * Defines the background color of the Button when in high contrast mode.
+   */
   highContrastBackgroundColor?: string;
+
+  /**
+   * Defines the background color of the Button when it is in a hovered state and in high contrast mode.
+   */
   highContrastBackgroundColorHovered?: string;
+
+  /**
+   * Defines the background color of the Button when it is in an active state and in high contrast mode.
+   */
   highContrastBackgroundColorPressed?: string;
+
+  /**
+   * Defines the border color of the Button when in high contrast mode.
+   */
   highContrastBorderColor?: string;
+
+  /**
+   * Defines the border color of the Button when it is in a hovered state and in high contrast mode.
+   */
   highContrastBorderColorHovered?: string;
+
+  /**
+   * Defines the border color of the Button when it is in an active state and in high contrast mode.
+   */
   highContrastBorderColorPressed?: string;
+
+  /**
+   * Defines the text color of elements inside the Button when in high contrast mode.
+   */
   highContrastColor?: string;
+
+  /**
+   * Defines the text color of elements inside the Button when it is in a hovered state and in high contrast mode.
+   */
   highContrastColorHovered?: string;
+
+  /**
+   * Defines the text color of elements inside the Button when it is in an active state and in high contrast mode.
+   */
   highContrastColorPressed?: string;
+
+  /**
+   * Defines the icon color of the Button when in high contrast mode.
+   */
   highContrastIconColor?: string;
+
+  /**
+   * Defines the icon color of the Button when it is in a hovered state and in high contrast mode.
+   */
   highContrastIconColorHovered?: string;
+
+  /**
+   * Defines the icon color of the Button when it is in an active state and in high contrast mode.
+   */
   highContrastIconColorPressed?: string;
+
+  /**
+   * Defines the icon color of the Button.
+   */
   iconColor?: string;
+
+  /**
+   * Defines the icon color of the Button when it is in a hovered state.
+   */
   iconColorHovered?: string;
+
+  /**
+   * Defines the icon color of the Button when it is in an active state.
+   */
   iconColorPressed?: string;
+
+  /**
+   * Defines the size of the icon inside the Button.
+   */
   iconSize?: number | string;
+
+  /**
+   * Defines the font weight of the icon inside the Button.
+   */
   iconWeight?: number;
+
+  /**
+   * Defines the line height of elements inside the Button.
+   */
   lineHeight?: number | string;
+
+  /**
+   * Defines a minimum height for the Button.
+   */
   minHeight?: number | string;
+
+  /**
+   * Defines a minimum width for the Button.
+   */
   minWidth?: number | string;
+
+  /**
+   * Defines whether or not to override any styling properties that would have been set in high contrast mode.
+   */
   msHighContrastAdjust?: string;
+
+  /**
+   * Defines the outline color of the Button.
+   */
   outlineColor?: string;
+
+  /**
+   * Defines the font to be used for the text inside the Button.
+   */
   textFamily?: string;
+
+  /**
+   * Defines the size of the text inside the Button.
+   */
   textSize?: number | string;
+
+  /**
+   * Defines the font weight of the text inside the Button.
+   */
   textWeight?: IFontWeight;
+
+  /**
+   * Defines a fixed width for the Button.
+   */
   width?: number | string;
 }
 
