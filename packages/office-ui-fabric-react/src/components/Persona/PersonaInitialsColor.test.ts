@@ -12,7 +12,7 @@ describe('PersonaInitialsColor tests', () => {
 
   it('uses provided enum initialsColor if one was specified', () => {
     const colorCode = initialsColorPropToColorCode({ text: 'Kat Larrson', initialsColor: PersonaInitialsColor.red });
-    expect(colorCode).toEqual('#EE1111');
+    expect(colorCode).toEqual('#D13438');
   });
 
   it('uses provided string initialsColor if one was specified', () => {
