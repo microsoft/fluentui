@@ -24,10 +24,11 @@ const CustomizedCollapsibleSectionTitle: React.SFC<ICollapsibleSectionTitleProps
   );
 };
 
-export class CollapsibleSectionCustomizedExample extends React.Component<{}, {}> {
+export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <div>
+        <p>This CollapsibleSection has been customized with a TooltipHost around its entire title and an icon in its title.</p>
         <Stack maxWidth={200} styles={{ root: { border: '1px solid black' } }}>
           <CollapsibleSection
             key={1}
