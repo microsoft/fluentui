@@ -21,7 +21,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
     rootHovered: {
       backgroundColor: palette.neutralLighter,
       selectors: {
-        BUTTON_ICON_CLASSNAME: {
+        [BUTTON_ICON_CLASSNAME]: {
           color: palette.themeDarkAlt
         }
       }
@@ -31,7 +31,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       backgroundColor: palette.neutralLight,
       color: palette.neutralDark,
       selectors: {
-        BUTTON_ICON_CLASSNAME: {
+        [BUTTON_ICON_CLASSNAME]: {
           color: palette.themeDark
         }
       }
@@ -41,7 +41,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       backgroundColor: palette.neutralLight,
       color: palette.neutralDark,
       selectors: {
-        BUTTON_ICON_CLASSNAME: {
+        [BUTTON_ICON_CLASSNAME]: {
           color: palette.themeDark
         }
       }
@@ -50,7 +50,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
     rootExpanded: {
       color: palette.neutralDark,
       selectors: {
-        BUTTON_ICON_CLASSNAME: {
+        [BUTTON_ICON_CLASSNAME]: {
           color: palette.themeDark
         }
       }
@@ -59,7 +59,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
     rootDisabled: {
       backgroundColor: palette.white,
       selectors: {
-        BUTTON_ICON_CLASSNAME: {
+        [BUTTON_ICON_CLASSNAME]: {
           color: semanticColors.disabledBodySubtext
         }
       }
@@ -72,7 +72,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
         ':hover': {
           backgroundColor: palette.neutralLighter,
           selectors: {
-            BUTTON_ICON_CLASSNAME: {
+            [BUTTON_ICON_CLASSNAME]: {
               color: palette.neutralPrimary
             }
           }
@@ -80,7 +80,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
         ':active': {
           backgroundColor: palette.neutralLight,
           selectors: {
-            BUTTON_ICON_CLASSNAME: {
+            [BUTTON_ICON_CLASSNAME]: {
               color: palette.neutralPrimary
             }
           }
