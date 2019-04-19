@@ -7745,37 +7745,81 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
+    // @deprecated
     black = 11,
-    // (undocumented)
+    // @deprecated (undocumented)
     blue = 1,
     // (undocumented)
+    blue20 = 30,
+    // (undocumented)
+    cyan30 = 28,
+    // @deprecated (undocumented)
     darkBlue = 2,
     // (undocumented)
+    darkBlue10 = 31,
+    // @deprecated (undocumented)
     darkGreen = 6,
     // (undocumented)
+    darkGreen20 = 26,
+    // @deprecated (undocumented)
     darkRed = 14,
     // (undocumented)
+    darkRed20 = 39,
+    // (undocumented)
+    gray20 = 45,
+    // (undocumented)
+    gray30 = 43,
+    // (undocumented)
+    gray40 = 44,
+    // @deprecated (undocumented)
     green = 5,
     // (undocumented)
+    green10 = 25,
+    // @deprecated (undocumented)
     lightBlue = 0,
     // (undocumented)
+    lightBlue30 = 29,
+    // @deprecated (undocumented)
     lightGreen = 4,
-    // (undocumented)
+    // @deprecated (undocumented)
     lightPink = 7,
     // (undocumented)
+    lightPink10 = 35,
+    // @deprecated (undocumented)
     magenta = 9,
     // (undocumented)
+    magenta10 = 34,
+    // @deprecated (undocumented)
     orange = 12,
     // (undocumented)
+    orange10 = 40,
+    // (undocumented)
+    orange30 = 41,
+    // (undocumented)
+    orangeYellow20 = 42,
+    // @deprecated (undocumented)
     pink = 8,
     // (undocumented)
+    pink10 = 36,
+    // (undocumented)
+    pinkRed10 = 37,
+    // @deprecated (undocumented)
     purple = 10,
+    // (undocumented)
+    purple10 = 33,
+    // @deprecated
     red = 13,
     // (undocumented)
+    red10 = 38,
+    // @deprecated (undocumented)
     teal = 3,
-    transparent = 15,
     // (undocumented)
-    violet = 16
+    teal10 = 27,
+    transparent = 15,
+    // @deprecated (undocumented)
+    violet = 16,
+    // (undocumented)
+    violet10 = 32
 }
 
 // @public (undocumented)
