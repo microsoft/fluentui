@@ -1,9 +1,9 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { setRTL, KeyCodes } from '../../Utilities';
+import { setRTL, KeyCodes, createRef } from '../../Utilities';
 import { FocusZone } from './FocusZone';
-import { FocusZoneDirection, FocusZoneTabbableElements } from './FocusZone.types';
+import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 
 // tslint:disable:typedef jsx-no-lambda
 
@@ -1838,5 +1838,45 @@ describe('FocusZone', () => {
     ReactTestUtils.Simulate.keyDown(innerFocusZone, { which: KeyCodes.del });
 
     expect(keyDownHandler).toBeCalled();
+  });
+
+  it('should not set an element inside a portal (outside its DOM) as its active element', () => {
+    const focusZoneRef = createRef<IFocusZone>();
+    const component = ReactTestUtils.renderIntoDocument(
+      <div>
+        <FocusZone componentRef={focusZoneRef}>
+          <button id="a">a</button>
+          <button id="b">b</button>
+          {ReactDOM.createPortal(<div id="externalElement" tabIndex={0} />, window.document.body)}
+        </FocusZone>
+      </div>
+    );
+
+    const parent = ReactDOM.findDOMNode(component as React.ReactInstance)! as Element;
+    const externalElement = document.querySelector('#externalElement') as HTMLElement;
+    const buttonA = parent.querySelector('#a') as HTMLElement;
+
+    setupElement(externalElement, {
+      clientRect: {
+        top: 100,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+
+    setupElement(buttonA, {
+      clientRect: {
+        top: 0,
+        bottom: 20,
+        left: 20,
+        right: 40
+      }
+    });
+    ReactTestUtils.Simulate.focus(buttonA);
+    expect(focusZoneRef.current!.getActiveElement()!.id).toBe('a');
+    ReactTestUtils.Simulate.focus(externalElement);
+    expect(focusZoneRef.current!.getActiveElement()!.id).not.toBe('externalElement');
+    expect(focusZoneRef.current!.getActiveElement()!.id).toBe('a');
   });
 });

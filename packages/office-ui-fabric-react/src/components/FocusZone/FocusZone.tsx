@@ -274,6 +274,13 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     return false;
   }
 
+  /**
+   * Gets the current active element of the focus zone.
+   */
+  public getActiveElement(): HTMLElement | null {
+    return this._activeElement;
+  }
+
   private _evaluateFocusBeforeRender(): void {
     const { current: root } = this._root;
     const doc = getDocument(root);
@@ -905,7 +912,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    return this._root.current;
+    if (parentElement === this._root.current) {
+      return this._root.current;
+    }
+
+    // parentElement is body, so the  element is not part of any focus zone.
+    return null;
   }
 
   private _updateTabIndexes(element?: HTMLElement) {

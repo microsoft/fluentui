@@ -8,6 +8,11 @@ import { IRefObject } from '../../Utilities';
  */
 export interface IFocusZone {
   /**
+   * Gets the current active element of the focusZone.
+   */
+  getActiveElement(): HTMLElement | null;
+
+  /**
    * Sets focus to the first tabbable item in the zone.
    * @param forceIntoFirstElement - If true, focus will be forced into the first element, even
    * if focus is already in the focus zone.
