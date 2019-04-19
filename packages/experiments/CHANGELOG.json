@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.74.2",
+      "tag": "@uifabric/experiments_v6.74.2",
+      "date": "Fri, 19 Apr 2019 12:33:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "b2b4e0fb0531eed850f00ce0b4abea2b234d6f32"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.5` to `^6.35.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.1` to `^6.167.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.74.1",
       "tag": "@uifabric/experiments_v6.74.1",
       "date": "Thu, 18 Apr 2019 12:31:50 GMT",
