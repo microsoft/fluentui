@@ -404,6 +404,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       target = getParent(target, ALLOW_VIRTUAL_ELEMENTS) as HTMLElement;
     }
 
+    if (target !== this._root.current) {
+      // The target is not a physical descendant of the current focus zone.
+      return;
+    }
+
     while (path.length) {
       target = path.pop() as HTMLElement;
 
@@ -916,7 +921,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       return this._root.current;
     }
 
-    // parentElement is body, so the  element is not part of any focus zone.
+    // parentElement is body or null, so the element is not part of any focus zone.
     return null;
   }
 
