@@ -30,27 +30,26 @@ const getExampleClassNames = memoizeFunction(
   }
 );
 
-const getVerticalDividerClassNames = memoizeFunction(
-  (theme: ITheme): IVerticalDividerClassNames => {
-    return mergeStyleSets(getDividerClassNames(theme), {
-      divider: {
-        height: 28,
-        backgroundColor: theme.palette.themePrimary
-      }
-    });
-  }
-);
-
 export class VerticalDividerCustomExample extends React.Component<any, any> {
   public render(): JSX.Element {
     const exampleClassNames = getExampleClassNames();
     return (
       <div className={exampleClassNames.wrapper}>
-        <Customizer settings={{ theme: { palette: { themePrimary: 'pink' } } }}>
-          <p className={exampleClassNames.text}> Some text before the divider. </p>
-          <VerticalDivider getClassNames={getVerticalDividerClassNames} />
-          <p className={exampleClassNames.text}>Some text after the divider. </p>
-        </Customizer>
+        <p className={exampleClassNames.text}> Some text before the divider. </p>
+        <VerticalDivider
+          styles={{
+            wrapper: {
+              height: 40,
+              backgroundColor: '#F4F4F4',
+              padding: 0
+            },
+            divider: {
+              height: '28',
+              backgroundColor: 'pink'
+            }
+          }}
+        />
+        <p className={exampleClassNames.text}>Some text after the divider. </p>
       </div>
     );
   }

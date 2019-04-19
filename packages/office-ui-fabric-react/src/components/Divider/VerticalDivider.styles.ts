@@ -4,7 +4,7 @@ import { IStyleFunction } from '../../Utilities';
 export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDividerStyles> = (
   props: IVerticalDividerPropsStyles
 ): IVerticalDividerStyles => {
-  const { theme, getClassNames } = props;
+  const { theme, getClassNames, className } = props;
 
   if (!theme) {
     return {
@@ -22,15 +22,20 @@ export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDiv
   }
 
   return {
-    wrapper: {
-      display: 'inline-flex',
-      height: '100%',
-      alignItems: 'center'
-    },
-    divider: {
-      width: 1,
-      height: '100%',
-      backgroundColor: theme.palette.neutralTertiaryAlt
-    }
+    wrapper: [
+      {
+        display: 'inline-flex',
+        height: '100%',
+        alignItems: 'center'
+      },
+      className
+    ],
+    divider: [
+      {
+        width: 1,
+        height: '100%',
+        backgroundColor: theme.palette.neutralTertiaryAlt
+      }
+    ]
   };
 };
