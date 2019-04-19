@@ -86,7 +86,6 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
 
   const dismissalAndExpandStyle: IStyle = {
     flexShrink: 0,
-    // margin: '8px 12px',
     width: 32,
     height: 32,
     padding: '8px 12px',
