@@ -2,10 +2,10 @@
 
 ##### Azure theme for Office UI Fabric React
 
-The Azure themes require the following import statements for consuming module.
+The Azure themes require the following import statements:
 
 ```js
-import { Customizer } from 'office-ui-fabric-react';
+import { Fabric, Customizer } from 'office-ui-fabric-react';
 import { AzureCustomizationLight, AzureCustomizationDark } from '@uifabric/azure-themes';
 ```
 
@@ -19,5 +19,3 @@ The theme may subsequently be set to either the Azure or Azure-Dark themes
     </Fabric>
   </Customizer>
 ```
-
-The Customizer component is only required once in the React component hierarchy and placed above the Fabric component.
