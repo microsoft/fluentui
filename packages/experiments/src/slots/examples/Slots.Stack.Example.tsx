@@ -33,7 +33,7 @@ export class SlotsStackExample extends React.Component<{}, {}> {
           icon="share"
           content="Stack: Function, VerticalStack"
           // Have to override component's default horizontal prop value
-          stack={{ component: Stack, render: (props, StackType) => <Stack {...props as any} horizontal={false} /> }}
+          stack={{ render: props => <Stack {...props as any} horizontal={false} /> }}
         />
       </Stack>
     );

@@ -85,30 +85,30 @@ describe('typings', () => {
   });
 
   it('do not generate TS compile error on valid ExtractProp assignments', () => {
-    const p10: ExtractProps<ISlotProp<ITestProps>> = { testProp: 42 };
-    const p11: ExtractProps<ISlotProp<ITestProps, string>> = { testProp: 42 };
-    const p12: ExtractProps<ISlotProp<ITestProps, number>> = { testProp: 42 };
-    const p13: ExtractProps<ISlotProp<ITestProps, boolean>> = { testProp: 42 };
-    const p14: ExtractProps<ISlotProp<ITestProps>> = {};
-    const p15: ExtractProps<ISlotProp<ITestProps, string>> = {};
-    const p16: ExtractProps<ISlotProp<ITestProps, number>> = {};
-    const p17: ExtractProps<ISlotProp<ITestProps, boolean>> = {};
+    const p0: ExtractProps<ISlotProp<ITestProps>> = { testProp: 42 };
+    const p1: ExtractProps<ISlotProp<ITestProps, string>> = { testProp: 42 };
+    const p2: ExtractProps<ISlotProp<ITestProps, number>> = { testProp: 42 };
+    const p3: ExtractProps<ISlotProp<ITestProps, boolean>> = { testProp: 42 };
+    const p4: ExtractProps<ISlotProp<ITestProps>> = {};
+    const p5: ExtractProps<ISlotProp<ITestProps, string>> = {};
+    const p6: ExtractProps<ISlotProp<ITestProps, number>> = {};
+    const p7: ExtractProps<ISlotProp<ITestProps, boolean>> = {};
 
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
-    const [] = [p10, p11, p12, p13, p14, p15, p16, p17];
+    const [] = [p0, p1, p2, p3, p4, p5, p6, p7];
   });
 
   it('do not generate TS compile error on valid ExtractShorthand assignments', () => {
-    const p10: ExtractShorthand<ISlotProp<ITestProps, string>> = 'test';
-    const p11: ExtractShorthand<ISlotProp<ITestProps, number>> = 42;
-    const p12: ExtractShorthand<ISlotProp<ITestProps, boolean>> = false;
+    const p0: ExtractShorthand<ISlotProp<ITestProps, string>> = 'test';
+    const p1: ExtractShorthand<ISlotProp<ITestProps, number>> = 42;
+    const p2: ExtractShorthand<ISlotProp<ITestProps, boolean>> = false;
 
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
-    const [] = [p10, p11, p12];
+    const [] = [p0, p1, p2];
   });
 });
 

@@ -3,7 +3,7 @@ import { CollapsibleSectionTitleView as view } from './CollapsibleSectionTitle.v
 import { getStyles as styles } from './CollapsibleSectionTitle.styles';
 import { ICollapsibleSectionTitleProps } from './CollapsibleSectionTitle.types';
 
-export const CollapsibleSectionTitle: React.StatelessComponent<ICollapsibleSectionTitleProps> = createComponent({
+export const CollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSectionTitleProps> = createComponent({
   displayName: 'CollapsibleSectionTitle',
   view,
   styles,

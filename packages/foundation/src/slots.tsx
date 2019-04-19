@@ -132,7 +132,7 @@ export function getSlots<TComponentProps extends TComponentSlots, TComponentSlot
     if (slots.hasOwnProperty(name)) {
       // This closure method requires the use of withSlots to prevent unnecessary rerenders. This is because React detects
       //  each closure as a different component (since it is a new instance) from the previous one and then forces a rerender of the entire
-      //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElemnt.
+      //  slot subtree. For now, the only way to avoid this is to use withSlots, which bypasses the call to React.createElement.
       const slot: ISlots<Required<TComponentSlots>>[keyof TComponentSlots] = (componentProps, ...args: any[]) => {
         if (args.length > 0) {
           // If React.createElement is being incorrectly used with slots, there will be additional arguments.
