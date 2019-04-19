@@ -1,5 +1,8 @@
 import { InterfacePropertyType, PropertyType } from '../../utilities/parser/index';
 
+/**
+ * Props for the ApiReferencesTableSet
+ */
 export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * A json object to populate the table
@@ -7,14 +10,12 @@ export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLEl
   jsonDocs?: IPageJson;
 }
 
-export interface ITokenJson {
-  text: string;
-  hyperlinkedPage?: string;
-}
-
+/**
+ * Generic table row
+ */
 export interface ITableRowJson {
   name: string;
-  typeTokens: ITokenJson[];
+  typeTokens: ILinkToken[];
   defaultValue?: string;
   descriptionHtml: string;
   deprecated: boolean;
@@ -22,25 +23,35 @@ export interface ITableRowJson {
   kind?: 'Method' | 'Property';
 }
 
-export interface IEnumTableRowJson {
-  name: string;
-  descriptionHtml: string;
+/**
+ * Enum table row
+ */
+export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'descriptionHtml'>> & {
   value: string;
-}
+};
 
+/**
+ * Api table
+ */
 export interface ITableJson {
   kind: 'interface' | 'enum' | 'class';
   name: string;
-  extendsTokens: ITokenJson[];
+  extendsTokens: ILinkToken[];
   descriptionHtml: string;
   members: ITableRowJson[] | IEnumTableRowJson[];
 }
 
+/**
+ * Structure of the page.json files
+ */
 export interface IPageJson {
   tables: ITableJson[];
   name: string;
 }
 
+/**
+ * Generic api property
+ */
 export interface IApiProperty {
   propertyName: string;
   extends?: string;
@@ -57,12 +68,18 @@ export interface IApiProperty {
  */
 export type PageKind = 'References' | 'Components';
 
+/**
+ * Excerpt token that is part of a type or extends block and may have a hyperlink
+ */
 export interface ILinkToken {
   text: string;
   hyperlinkedPage?: string;
   pageKind?: PageKind;
 }
 
+/**
+ * Interface property
+ */
 export interface IApiInterfaceProperty {
   name: string;
   typeTokens: ILinkToken[];
@@ -73,12 +90,18 @@ export interface IApiInterfaceProperty {
   deprecated?: boolean;
 }
 
+/**
+ * Enum property
+ */
 export interface IApiEnumProperty {
   name: string;
   description: string;
   value: string;
 }
 
+/**
+ * Class method
+ */
 export interface IMethod {
   name: string;
   // signature
