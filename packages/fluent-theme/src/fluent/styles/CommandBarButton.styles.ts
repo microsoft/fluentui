@@ -8,6 +8,8 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
   }
   const { palette, semanticColors } = theme;
 
+  const BUTTON_ICON_CLASSNAME = '.ms-Button-Icon';
+
   return {
     root: [
       { ...getFocusStyle(theme, 2) },
@@ -19,7 +21,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
     rootHovered: {
       backgroundColor: palette.neutralLighter,
       selectors: {
-        '.ms-Button-icon': {
+        BUTTON_ICON_CLASSNAME: {
           color: palette.themeDarkAlt
         }
       }
@@ -29,7 +31,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       backgroundColor: palette.neutralLight,
       color: palette.neutralDark,
       selectors: {
-        '.ms-Button-icon': {
+        BUTTON_ICON_CLASSNAME: {
           color: palette.themeDark
         }
       }
@@ -39,7 +41,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       backgroundColor: palette.neutralLight,
       color: palette.neutralDark,
       selectors: {
-        '.ms-Button-icon': {
+        BUTTON_ICON_CLASSNAME: {
           color: palette.themeDark
         }
       }
@@ -48,7 +50,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
     rootExpanded: {
       color: palette.neutralDark,
       selectors: {
-        '.ms-Button-icon': {
+        BUTTON_ICON_CLASSNAME: {
           color: palette.themeDark
         }
       }
@@ -57,7 +59,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
     rootDisabled: {
       backgroundColor: palette.white,
       selectors: {
-        '.ms-Button-icon': {
+        BUTTON_ICON_CLASSNAME: {
           color: semanticColors.disabledBodySubtext
         }
       }
@@ -70,7 +72,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
         ':hover': {
           backgroundColor: palette.neutralLighter,
           selectors: {
-            '.ms-Button-icon': {
+            BUTTON_ICON_CLASSNAME: {
               color: palette.neutralPrimary
             }
           }
@@ -78,7 +80,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
         ':active': {
           backgroundColor: palette.neutralLight,
           selectors: {
-            '.ms-Button-icon': {
+            BUTTON_ICON_CLASSNAME: {
               color: palette.neutralPrimary
             }
           }
