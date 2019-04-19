@@ -638,6 +638,8 @@ export function unregisterIcons(iconNames: string[]): void;
 export namespace ZIndexes {
     const // (undocumented)
     Nav: number;
+    const // @deprecated (undocumented)
+    ScrollablePane: number;
     const // (undocumented)
     FocusStyle: number;
     const // (undocumented)
