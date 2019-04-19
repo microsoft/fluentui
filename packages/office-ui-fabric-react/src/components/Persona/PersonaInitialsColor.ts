@@ -84,13 +84,10 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
     case PersonaInitialsColor.purple:
     case PersonaInitialsColor.purple10:
       return '#5C2E91';
-    case PersonaInitialsColor.black:
-      return '1D1D1D';
     case PersonaInitialsColor.orange:
     case PersonaInitialsColor.orange10:
       return '#CA5010';
     case PersonaInitialsColor.red:
-      return '#EE1111';
     case PersonaInitialsColor.red10:
       return '#D13438';
     case PersonaInitialsColor.darkRed:
@@ -113,6 +110,7 @@ function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColo
       return '#8E562E';
     case PersonaInitialsColor.gray20:
       return '#69797E';
+    case PersonaInitialsColor.black:
     case PersonaInitialsColor.gray40:
       return '#393939';
   }
