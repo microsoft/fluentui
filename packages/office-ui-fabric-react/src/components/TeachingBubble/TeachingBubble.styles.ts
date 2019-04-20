@@ -201,7 +201,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.header,
       ...headerStyle(classNames, hasCondensedHeadline, hasSmallHeadline),
       (hasCondensedHeadline || hasSmallHeadline) && [
-        DefaultFontStyles.medium,
+        DefaultFontStyles.small,
         {
           marginRight: 10,
           fontWeight: FontWeights.semibold
@@ -241,7 +241,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
-            DefaultFontStyles.medium,
+            DefaultFontStyles.small,
             {
               color: palette.themePrimary
             }
@@ -271,7 +271,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
-            DefaultFontStyles.medium,
+            DefaultFontStyles.small,
             {
               color: palette.white
             }

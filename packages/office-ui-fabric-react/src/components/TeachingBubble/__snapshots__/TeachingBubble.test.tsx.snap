@@ -391,7 +391,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               -webkit-font-smoothing: antialiased;
               color: #0078d4;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 18px;
+              font-size: 14px;
               font-weight: 400;
             }
         data-is-focusable={true}
@@ -518,7 +518,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               -webkit-font-smoothing: antialiased;
               color: #ffffff;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 18px;
+              font-size: 14px;
               font-weight: 400;
             }
             &:hover, &:focus {
@@ -735,7 +735,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
             margin-right: 10px;
           }
@@ -939,7 +939,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 18px;
+            font-size: 14px;
             font-weight: 600;
             margin-right: 10px;
           }

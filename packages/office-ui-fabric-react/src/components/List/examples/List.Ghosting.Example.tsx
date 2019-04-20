@@ -38,7 +38,7 @@ const classNames = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    DefaultFontStyles.mediumPlus,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',

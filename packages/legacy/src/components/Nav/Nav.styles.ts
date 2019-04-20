@@ -186,7 +186,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           height: `${navHeight}px`,
           borderBottom: `1px solid ${semanticColors.bodyDivider}`
         },
-        DefaultFontStyles.large
+        DefaultFontStyles.medium
       ],
       isLink && [
         {
