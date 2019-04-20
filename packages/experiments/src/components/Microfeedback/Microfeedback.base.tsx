@@ -41,7 +41,8 @@ const microfeedbackItemStyles: IButtonStyles = {
 const microfeedbackTextStyles: ITextStyles = {
   root: [
     {
-      margin: '10px'
+      margin: '10px',
+      fontWeight: 'bold'
     }
   ]
 };
