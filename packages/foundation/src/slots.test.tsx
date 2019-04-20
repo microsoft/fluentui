@@ -9,10 +9,7 @@ describe('typings', () => {
   type ITestProps = { testProp?: number };
   const TestProps = { testProp: 42 };
   const TestOptions = { props: TestProps };
-  // TODO: this should be able to support returning nulls
-  // const TestRender =
-  //   (props: ITestProps, defaultComponent: React.ComponentType<ITestProps>): ReturnType<React.StatelessComponent> => null;
-  const TestRender = (props: ITestProps, defaultComponent: React.ComponentType<ITestProps>) => <div />;
+  const TestRender = (props: ITestProps, defaultComponent: React.ComponentType<ITestProps>) => null;
   const TestComponent: React.FunctionComponent<ITestProps> = () => null;
 
   it('do not generate TS compile errors on getSlots usage', () => {
@@ -180,85 +177,95 @@ describe('createFactory', () => {
   };
 
   it(`passes componentProps without userProps`, () => {
-    const component = mount(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined));
+    const component = mount(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
-    const component = mount(createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined));
+    const component = mount(createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as child`, () => {
-    const component = mount(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined));
+    const component = mount(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, children: 42, ...emptyClassName });
   });
 
   it(`passes userProp string as defaultProp`, () => {
-    const component = mount(createFactory<TComponentProps, string>(TestDiv, factoryOptions)(componentProps, userPropString, undefined));
+    const component = mount(createFactory<TComponentProps, string>(TestDiv, factoryOptions)(
+      componentProps,
+      userPropString,
+      undefined
+    ) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
-    const component = mount(createFactory<TComponentProps, number>(TestDiv, factoryOptions)(componentProps, 42, undefined));
+    const component = mount(createFactory<TComponentProps, number>(TestDiv, factoryOptions)(componentProps, 42, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
   });
 
   it('merges userProps over componentProps', () => {
-    const component = mount(createFactory<TComponentProps>(TestDiv, factoryOptions)(componentProps, userProps, undefined));
+    const component = mount(createFactory<TComponentProps>(TestDiv, factoryOptions)(componentProps, userProps, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, ...userProps.props, ...emptyClassName });
   });
 
   it('renders div and userProp integer as children', () => {
-    const component = renderer.create(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined));
+    const component = renderer.create(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders div and userProp string as children', () => {
-    const component = renderer.create(createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined));
+    const component = renderer.create(createFactory<TComponentProps, string>(TestDiv)(
+      componentProps,
+      userPropString,
+      undefined
+    ) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp span JSX with one prop', () => {
-    const component = renderer.create(
-      createFactory(TestDiv)(componentProps, <span id="I should be the only prop in the output" />, undefined)
-    );
+    const component = renderer.create(createFactory(TestDiv)(
+      componentProps,
+      <span id="I should be the only prop in the output" />,
+      undefined
+    ) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp span function without component props', () => {
-    const component = renderer.create(
-      createFactory(TestDiv)(componentProps, { render: () => <span id="I should be the only prop in the output" /> }, undefined)
-    );
+    const component = renderer.create(createFactory(TestDiv)(
+      componentProps,
+      {
+        render: () => <span id="I should be the only prop in the output" />
+      },
+      undefined
+    ) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp span function with component props', () => {
-    const component = renderer.create(
-      createFactory(TestDiv)(
-        componentProps,
-        {
-          render: props => <span {...props} id="I should be present alongside componentProps" />
-        },
-        undefined
-      )
-    );
+    const component = renderer.create(createFactory(TestDiv)(
+      componentProps,
+      {
+        render: props => <span {...props} id="I should be present alongside componentProps" />
+      },
+      undefined
+    ) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
   it('renders userProp span component with component props', () => {
-    const component = renderer.create(
-      createFactory(TestDiv)(
-        componentProps,
-        { component: 'span', props: { id: 'I should be present alongside componentProps' } },
-        undefined
-      )
-    );
+    const component = renderer.create(createFactory(TestDiv)(
+      componentProps,
+      { component: 'span', props: { id: 'I should be present alongside componentProps' } },
+      undefined
+    ) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -343,7 +350,7 @@ describe('getSlots', () => {
     expect(createdSlots.testSlot2.isSlot).toBeTruthy();
 
     // Mount to trigger slot component render functions
-    mount(createdSlots.testSlot1(testSlot1Props));
-    mount(createdSlots.testSlot2(testSlot2Props));
+    mount(createdSlots.testSlot1(testSlot1Props) as JSX.Element);
+    mount(createdSlots.testSlot2(testSlot2Props) as JSX.Element);
   });
 });

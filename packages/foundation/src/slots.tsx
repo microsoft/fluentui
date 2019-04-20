@@ -36,7 +36,7 @@ export function withSlots<P>(
   props?: React.Attributes & P | null,
   // tslint:disable-next-line:missing-optional-annotation
   ...children: React.ReactNode[]
-): React.ReactElement<P> | JSX.Element | null {
+): ReturnType<React.FunctionComponent<P>> {
   const slotType = type as ISlot<P>;
   if (slotType.isSlot) {
     // TODO: There is something weird going on here with children embedded in props vs. rest args.
@@ -142,7 +142,6 @@ export function getSlots<TComponentProps extends TComponentSlots, TComponentSlot
         // TODO: having TS infer types here seems to cause infinite loop. use explicit types or casting to preserve typing if possible.
         // TODO: this should be a lookup on TProps property instead of being TProps directly, which is probably causing the infinite loop
         return _renderSlot<any, any, any>(
-          // return _renderSlot(
           slots[name],
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
@@ -215,7 +214,7 @@ function _renderSlot<
   componentProps: TSlotProps,
   userProps: ISlotProp<TSlotProps, TSlotShorthand>,
   defaultStyles: IStyle
-): JSX.Element {
+): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps, defaultStyles);
   } else {

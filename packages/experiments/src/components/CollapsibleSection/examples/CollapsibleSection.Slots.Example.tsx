@@ -8,7 +8,6 @@ const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSec
   const titleText: ICollapsibleSectionTitleProps['text'] = {
     render: (renderProps, DefaultComponent) => (
       // Supplement the default title content with an icon. Wrap in a Stack for proper placement.
-      // TODO: make sure type errors occur for invalid props on DefaultComponent before merge
       <Stack grow horizontal horizontalAlign="space-between">
         <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
         <Icon iconName="warning" styles={{ root: { color: 'red' } }} />

@@ -164,7 +164,7 @@ function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TSt
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
-  // TOOD: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
+  // TODO: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
   const DefaultFields = ['theme', 'styles', 'tokens'];
   return Customizations.getSettings(fields || DefaultFields, displayName, context.customizations);
 }

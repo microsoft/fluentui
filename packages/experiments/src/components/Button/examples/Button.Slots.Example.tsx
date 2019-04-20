@@ -89,9 +89,7 @@ const SplitMenuButtonVerticalStyles = {
   }
 };
 
-// TODO: render function types need to support null returns
-// TODO: shouldn't need any cast here
-const SplitMenuButtonVerticalDivider: ISplitRibbonMenuButtonProps['splitDivider'] = { render: () => null as any };
+const SplitMenuButtonVerticalDivider: ISplitRibbonMenuButtonProps['splitDivider'] = { render: () => null };
 
 export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
   const { content, vertical, ...rest } = props;
