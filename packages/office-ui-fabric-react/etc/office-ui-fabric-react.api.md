@@ -436,8 +436,6 @@ export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps>;
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     constructor(props: IBreadcrumbProps);
     // (undocumented)
-    componentWillReceiveProps(nextProps: IBreadcrumbProps): void;
-    // (undocumented)
     static defaultProps: IBreadcrumbProps;
     focus(): void;
     // (undocumented)
