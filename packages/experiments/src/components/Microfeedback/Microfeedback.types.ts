@@ -30,5 +30,15 @@ export interface IMicrofeedbackQuestion {
 }
 
 export interface IMicrofeedbackStyles {
+  //  Base styles for the root element of buttons and followup
   root?: IStyle;
+
+  //  Styles for container elmeent of follow up question and options
+  followUpContainer?: IStyle;
+
+  // Styles for follow up question
+  followUpQuestion?: IStyle;
+
+  // Styles for follow up option
+  followUpOptionText?: IStyle;
 }
