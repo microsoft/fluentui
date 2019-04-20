@@ -7,7 +7,6 @@ import { Overlay } from '../../Overlay';
 import { ILayerProps, Layer } from '../../Layer';
 import { Popup } from '../Popup/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { ContextualMenu } from '../../ContextualMenu';
 import { DirectionalHint } from '../Callout/index';
 import { Icon } from '../Icon/index';
 import { DraggableZone, IDragData } from '../../utilities/DraggableZone/index';
@@ -40,9 +39,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
     isDarkOverlay: true,
     isBlocking: false,
     className: '',
-    containerClassName: '',
-    moveMenuItemText: 'Move',
-    closeMenuItemText: 'Close'
+    containerClassName: ''
   };
 
   private _onModalCloseTimer: number;
@@ -140,11 +137,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       topOffsetFixed,
       onLayerDidMount,
       isModeless,
-      isDraggable,
-      dragHandleSelector,
-      keyboardMoveIconProps,
-      moveMenuItemText,
-      closeMenuItemText
+      dragOptions
     } = this.props;
     const { isOpen, isVisible, hasBeenOpened, modalRectangleTop, x, y, isInKeyboardMoveMode } = this.state;
 
@@ -166,7 +159,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       topOffsetFixed,
       isModeless,
       layerClassName,
-      isDefaultDragHandle: isDraggable && !dragHandleSelector
+      isDefaultDragHandle: dragOptions && !dragOptions.dragHandleSelector
     });
 
     const mergedLayerProps = {
@@ -176,7 +169,6 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       insertFirst: isModeless,
       className: classNames.layer
     };
-
     const modalContent = (
       <FocusTrapZone
         componentRef={this._focusTrapZone}
@@ -187,25 +179,25 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         forceFocusInsideTrap={isModeless ? !isModeless : forceFocusInsideTrap}
         firstFocusableSelector={firstFocusableSelector}
         focusPreviouslyFocusedInnerElement={true}
-        onKeyDown={isDraggable ? this._onDialogKeyDown : undefined}
-        onKeyUp={isDraggable ? this._onDialogKeyUp : undefined}
+        onKeyDown={dragOptions ? this._onDialogKeyDown : undefined}
+        onKeyUp={dragOptions ? this._onDialogKeyUp : undefined}
         onBlur={isInKeyboardMoveMode ? this._onExitKeyboardMoveMode : undefined}
       >
-        {isInKeyboardMoveMode && (
+        {dragOptions && isInKeyboardMoveMode && (
           <div className={classNames.keyboardMoveIconContainer}>
-            {keyboardMoveIconProps ? <Icon {...keyboardMoveIconProps} /> : <Icon iconName="move" className={classNames.keyboardMoveIcon} />}
+            {dragOptions.keyboardMoveIconProps ? (
+              <Icon {...dragOptions.keyboardMoveIconProps} />
+            ) : (
+              <Icon iconName="move" className={classNames.keyboardMoveIcon} />
+            )}
           </div>
         )}
         <div ref={this._allowScrollOnModal} className={classNames.scrollableContent} data-is-scrollable={true}>
-          {isDraggable && this.state.isModalMenuOpen && (
-            <ContextualMenu
+          {dragOptions && this.state.isModalMenuOpen && (
+            <dragOptions.menu
               items={[
-                { key: 'move', text: moveMenuItemText, onClick: this._onEnterKeyboardMoveMode },
-                {
-                  key: 'close',
-                  text: closeMenuItemText,
-                  onClick: this._onModalClose
-                }
+                { key: 'move', text: dragOptions.moveMenuItemText, onClick: this._onEnterKeyboardMoveMode },
+                { key: 'close', text: dragOptions.closeMenuItemText, onClick: this._onModalClose }
               ]}
               onDismiss={this._onModalContextMenuClose}
               alignTargetEdge={true}
@@ -234,9 +226,9 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
           >
             <div className={classNames.root}>
               {!isModeless && <Overlay isDarkThemed={isDarkOverlay} onClick={isBlocking ? undefined : (onDismiss as any)} />}
-              {isDraggable ? (
+              {dragOptions ? (
                 <DraggableZone
-                  handleSelector={dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
+                  handleSelector={dragOptions.dragHandleSelector || `.${classNames.main.split(' ')[0]}`}
                   preventDragSelector="button"
                   onStart={this._onDragStart}
                   onDragChange={this._onDrag}
@@ -339,6 +331,15 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 
     if (this.state.isInKeyboardMoveMode) {
       let handledEvent = true;
+      let delta = 10;
+      if (event.shiftKey) {
+        if (!event.ctrlKey) {
+          delta = 50;
+        }
+      } else if (event.ctrlKey) {
+        delta = 1;
+      }
+
       switch (event.keyCode) {
         case KeyCodes.escape:
           this.setState({ x: this._lastSetX, y: this._lastSetY });
@@ -350,25 +351,25 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
         }
         case KeyCodes.up: {
           this.setState({
-            y: this.state.y - (event.ctrlKey ? 1 : 10)
+            y: this.state.y - delta
           });
           break;
         }
         case KeyCodes.down: {
           this.setState({
-            y: this.state.y + (event.ctrlKey ? 1 : 10)
+            y: this.state.y + delta
           });
           break;
         }
         case KeyCodes.left: {
           this.setState({
-            x: this.state.x - (event.ctrlKey ? 1 : 10)
+            x: this.state.x - delta
           });
           break;
         }
         case KeyCodes.right: {
           this.setState({
-            x: this.state.x + (event.ctrlKey ? 1 : 10)
+            x: this.state.x + delta
           });
           break;
         }

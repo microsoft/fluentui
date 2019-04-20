@@ -4,6 +4,8 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as styles from './Modal.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { IDragOptions } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
+import { ContextualMenu } from '../../ContextualMenu/index';
 
 export interface IModalModelessExampleState {
   showModal: boolean;
@@ -19,6 +21,11 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
   private _titleId: string = getId('title');
   private _subtitleId: string = getId('subText');
+  private _dragOptions: IDragOptions = {
+    moveMenuItemText: 'move',
+    closeMenuItemText: 'close',
+    menu: ContextualMenu
+  };
 
   public render(): JSX.Element {
     const { showModal, isDraggable } = this.state;
@@ -32,8 +39,8 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
           isOpen={showModal}
           onDismiss={this._closeModal}
           isModeless={true}
-          isDraggable={isDraggable}
           containerClassName={styles.stickyContainer}
+          dragOptions={isDraggable ? this._dragOptions : undefined}
         >
           <div className={styles.header}>
             <span id={this._titleId}>Lorem Ipsum</span>

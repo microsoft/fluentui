@@ -54,14 +54,17 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   }
 
   public render() {
-    return React.cloneElement(React.Children.only(this.props.children), {
+    const child = this._getChild();
+    const childProps = child.props;
+
+    return React.cloneElement(child, {
       style: {
-        ...this.props.children.props.style,
+        ...childProps.style,
         transform: `translate(${!this.props.position || this.state.isDragging ? this.state.position.x : this.props.position.x}px, ${
           !this.props.position || this.state.isDragging ? this.state.position.y : this.props.position.y
         }px)`
       },
-      className: getClassNames(this.props.children.props.className, this.state.isDragging).root,
+      className: getClassNames(childProps.className, this.state.isDragging).root,
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onTouchStart: this._onTouchStart,
@@ -70,21 +73,41 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   }
 
   private _onMouseDown = (event: MouseTouchEvent<HTMLElement>) => {
+    const onMouseDown = this._getChildProps().onMouseDown;
+    if (onMouseDown) {
+      onMouseDown(event);
+    }
+
     this._currentEventType = eventMapping.mouse;
     return this._onDragStart(event);
   };
 
   private _onMouseUp = (event: MouseTouchEvent<HTMLElement>) => {
+    const onMouseUp = this._getChildProps().onMouseUp;
+    if (onMouseUp) {
+      onMouseUp(event);
+    }
+
     this._currentEventType = eventMapping.mouse;
     return this._onDragStop(event);
   };
 
   private _onTouchStart = (event: MouseTouchEvent<HTMLElement>) => {
+    const onTouchStart = this._getChildProps().onTouchStart;
+    if (onTouchStart) {
+      onTouchStart(event);
+    }
+
     this._currentEventType = eventMapping.touch;
     return this._onDragStart(event);
   };
 
   private _onTouchEnd = (event: MouseTouchEvent<HTMLElement>) => {
+    const onTouchEnd = this._getChildProps().onTouchEnd;
+    if (onTouchEnd) {
+      onTouchEnd(event);
+    }
+
     this._currentEventType = eventMapping.touch;
     this._onDragStop(event);
   };
@@ -303,4 +326,14 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
       lastPosition: position
     };
   }
+
+  /* tslint:disable-next-line:no-any */
+  private _getChild = (): React.ReactElement<any> => {
+    return React.Children.only(this.props.children);
+  };
+
+  /* tslint:disable-next-line:no-any */
+  private _getChildProps = (): any => {
+    return this._getChild().props;
+  };
 }
