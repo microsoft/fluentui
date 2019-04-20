@@ -38,7 +38,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
   return {
     coin: [
       classNames.coin,
-      theme.fonts.medium,
+      theme.fonts.small,
       size.isSize8 && classNames.size8,
       size.isSize10 && classNames.size10,
       size.isSize16 && classNames.size16,
@@ -111,7 +111,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
       {
         borderRadius: '50%',
         color: props.showUnknownPersonaCoin ? unknownPersonaFontColor : palette.white,
-        fontSize: FontSizes.large,
+        fontSize: FontSizes.medium,
         fontWeight: FontWeights.semibold,
         lineHeight: dimension === 48 ? 46 : dimension, // copying the logic for the dimensions; defaulted to 46 for size48
         height: dimension,
@@ -140,7 +140,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
 
       dimension >= 32 &&
         dimension < 40 && {
-          fontSize: FontSizes.medium
+          fontSize: FontSizes.small
         },
 
       dimension >= 40 &&
@@ -155,7 +155,7 @@ export const getStyles = (props: IPersonaCoinStyleProps): IPersonaCoinStyles => 
 
       dimension >= 72 &&
         dimension < 100 && {
-          fontSize: FontSizes.xxLarge
+          fontSize: FontSizes.xLarge
         },
 
       dimension >= 100 && {

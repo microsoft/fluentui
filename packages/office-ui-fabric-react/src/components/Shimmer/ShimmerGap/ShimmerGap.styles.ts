@@ -16,7 +16,7 @@ export function getStyles(props: IShimmerGapStyleProps): IShimmerGapStyles {
   return {
     root: [
       globalClassNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         backgroundColor: palette.white,
         height: `${height}px`,

@@ -137,7 +137,7 @@ export const getStyles = memoizeFunction(
     const defaultStyles: ISpinButtonStyles = {
       root: {
         outline: 'none',
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         width: '100%',
         minWidth: 86
       },
@@ -164,7 +164,7 @@ export const getStyles = memoizeFunction(
       },
       icon: {
         padding: '0 5px',
-        fontSize: IconFontSizes.large
+        fontSize: IconFontSizes.medium
       },
       iconDisabled: {
         color: SpinButtonIconDisabledColor
@@ -173,7 +173,7 @@ export const getStyles = memoizeFunction(
         pointerEvents: 'none',
         padding: 0,
         // centering the label with the icon by forcing the exact same height as the icon.
-        lineHeight: IconFontSizes.large
+        lineHeight: IconFontSizes.medium
       },
       labelDisabled: {
         cursor: 'default',
@@ -218,7 +218,7 @@ export const getStyles = memoizeFunction(
         borderStyle: 'none',
         flex: 1,
         margin: 0,
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         color: SpinButtonInputTextColor,
         height: '100%',
         padding: '0 8px',

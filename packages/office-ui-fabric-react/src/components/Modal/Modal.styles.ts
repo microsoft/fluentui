@@ -32,7 +32,7 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         backgroundColor: 'transparent',
         position: isModeless ? 'absolute' : 'fixed',

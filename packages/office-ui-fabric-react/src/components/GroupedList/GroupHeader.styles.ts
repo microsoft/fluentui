@@ -53,7 +53,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
     root: [
       classNames.root,
       getFocusStyle(theme),
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.
         cursor: 'default',
@@ -192,7 +192,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       {
         position: 'absolute',
         left: -26,
-        fontSize: IconFontSizes.large,
+        fontSize: IconFontSizes.medium,
         color: palette.neutralSecondary,
         transition: `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, opacity ${AnimationVariables.durationValue4} ${
           beziers.easeOutSine

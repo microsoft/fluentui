@@ -41,7 +41,7 @@ const getDefaultStyles = (props: IPageExampleCardStyleProps): IPageExampleCardSt
   },
 
   showCodeButton: [
-    props.theme.fonts.small,
+    props.theme.fonts.xSmall,
     getFocusStyle(props.theme),
     {
       background: 'transparent',

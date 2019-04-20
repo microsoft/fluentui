@@ -111,7 +111,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
             content="Token Function: Red Icon (via theme), Purple Text"
             theme={testTheme}
             tokens={(props, theme) => ({
-              color: theme.fonts.medium.color
+              color: theme.fonts.small.color
             })}
           />
         </Stack>

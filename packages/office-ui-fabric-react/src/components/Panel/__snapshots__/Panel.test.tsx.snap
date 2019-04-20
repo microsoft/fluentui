@@ -210,7 +210,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       cursor: pointer;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                      font-size: 20px;
+                      font-size: 16px;
                       font-weight: 400;
                       height: auto;
                       outline: transparent;

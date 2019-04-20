@@ -196,12 +196,12 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
       },
 
       size.isSize72 && {
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         lineHeight: personaPresenceSize.size20
       },
 
       size.isSize100 && {
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         lineHeight: personaPresenceSize.size28
       },
 

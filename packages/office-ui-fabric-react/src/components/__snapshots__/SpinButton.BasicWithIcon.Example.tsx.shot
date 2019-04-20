@@ -38,7 +38,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               -webkit-font-smoothing: antialiased;
               display: inline-block;
               font-family: "FabricMDL2Icons-16";
-              font-size: 20px;
+              font-size: 16px;
               font-style: normal;
               font-weight: normal;
               padding-bottom: 0;
@@ -65,7 +65,7 @@ exports[`Component Examples renders SpinButton.BasicWithIcon.Example.tsx correct
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 600;
-              line-height: 20px;
+              line-height: 16px;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;

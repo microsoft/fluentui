@@ -19,7 +19,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       classNames.root,
       classNames.isopen,
       {
@@ -47,7 +47,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
     ],
     header: [
       classNames.header,
-      fonts.small,
+      fonts.xSmall,
       {
         fontWeight: FontWeights.semibold,
         color: semanticColors.menuHeader,

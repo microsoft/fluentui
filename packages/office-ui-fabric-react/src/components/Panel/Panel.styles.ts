@@ -176,7 +176,7 @@ const sharedPaddingStyles = {
 //       height: 'auto',
 //       width: '44px',
 //       color: theme.palette.neutralSecondary,
-//       fontSize: IconFontSizes.large
+//       fontSize: IconFontSizes.medium
 //     },
 //     rootHovered: {
 //       color: theme.palette.neutralPrimary
@@ -207,7 +207,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       isOpen && classNames.isOpen,
       hasCloseButton && classNames.hasCloseButton,
       {
