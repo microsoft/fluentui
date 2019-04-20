@@ -70,20 +70,13 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
       theme: this.props.theme
     });
 
-    const likeVote = () => {
-      this._vote('like');
-    };
-    const dislikeVote = () => {
-      this._vote('dislike');
-    };
-
     return (
       <Stack className={classNames.root} horizontal styles={microfeedbackStyles}>
         <div ref={this.likeRef}>
-          <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={likeVote} />
+          <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._likeVote} />
         </div>
         <div ref={this.dislikeRef}>
-          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={dislikeVote} />
+          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._dislikeVote} />
         </div>
         {this.props.thumbsUpQuestion ? (
           <Callout
@@ -150,4 +143,11 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
       this.props.sendFeedback(vote);
     }
   }
+
+  private _likeVote = () => {
+    this._vote('like');
+  };
+  private _dislikeVote = () => {
+    this._vote('dislike');
+  };
 }
