@@ -53,6 +53,11 @@ export interface ISplitButtonProps
    * @defaultvalue false
    */
   primaryActionDisabled?: boolean;
+
+  /**
+   * Defines the aria label that the screen readers use when focus goes on the second focus stop of the SplitButton.
+   */
+  secondaryAriaLabel?: string;
 }
 
 export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
