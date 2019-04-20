@@ -176,7 +176,7 @@ const sharedPaddingStyles = {
 //       height: 'auto',
 //       width: '44px',
 //       color: theme.palette.neutralSecondary,
-//       fontSize: IconFontSizes.medium
+//       fontSize: IconFontSizes.large
 //     },
 //     rootHovered: {
 //       color: theme.palette.neutralPrimary

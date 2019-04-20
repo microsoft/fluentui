@@ -192,7 +192,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
       {
         position: 'absolute',
         left: -26,
-        fontSize: IconFontSizes.medium,
+        fontSize: IconFontSizes.large,
         color: palette.neutralSecondary,
         transition: `transform ${AnimationVariables.durationValue2} ${beziers.easeInBack}, opacity ${AnimationVariables.durationValue4} ${
           beziers.easeOutSine

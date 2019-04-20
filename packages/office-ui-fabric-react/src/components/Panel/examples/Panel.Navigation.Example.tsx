@@ -60,7 +60,7 @@ export class PanelNavigationExample extends React.Component<
               height: 'auto',
               width: '44px',
               color: theme.palette.neutralSecondary,
-              fontSize: IconFontSizes.medium
+              fontSize: IconFontSizes.large
             },
             menuIcon: {
               display: 'none'

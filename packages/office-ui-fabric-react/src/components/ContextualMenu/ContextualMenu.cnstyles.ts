@@ -160,15 +160,15 @@ export const getMenuItemStyles = memoizeFunction(
         display: 'inline-block',
         minHeight: '1px',
         maxHeight: CONTEXTUAL_MENU_ITEM_HEIGHT,
-        fontSize: IconFontSizes.small,
-        width: IconFontSizes.small,
+        fontSize: IconFontSizes.medium,
+        width: IconFontSizes.medium,
         margin: '0 4px',
         verticalAlign: 'middle',
         flexShrink: '0',
         selectors: {
           [MediumScreenSelector]: {
-            fontSize: IconFontSizes.medium,
-            width: IconFontSizes.medium
+            fontSize: IconFontSizes.large,
+            width: IconFontSizes.large
           }
         }
       },

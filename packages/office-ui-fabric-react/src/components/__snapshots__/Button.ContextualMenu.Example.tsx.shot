@@ -707,7 +707,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       display: inline-block;
                                       flex-shrink: 0;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 12px;
+                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
                                       margin-bottom: 0;
@@ -718,7 +718,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       min-height: 1px;
                                       speak: none;
                                       vertical-align: middle;
-                                      width: 12px;
+                                      width: 16px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
                                       color: inherit;
@@ -730,8 +730,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       color: HighlightText;
                                     }
                                     @media only screen and (min-width: 0px) and (max-width: 639px){& {
-                                      font-size: 16px;
-                                      width: 16px;
+                                      font-size: 20px;
+                                      width: 20px;
                                     }
                                 data-icon-name="Mail"
                                 role="presentation"
@@ -875,7 +875,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       display: inline-block;
                                       flex-shrink: 0;
                                       font-family: "FabricMDL2Icons";
-                                      font-size: 12px;
+                                      font-size: 16px;
                                       font-style: normal;
                                       font-weight: normal;
                                       margin-bottom: 0;
@@ -886,7 +886,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       min-height: 1px;
                                       speak: none;
                                       vertical-align: middle;
-                                      width: 12px;
+                                      width: 16px;
                                     }
                                     @media screen and (-ms-high-contrast: active){& {
                                       color: inherit;
@@ -898,8 +898,8 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                       color: HighlightText;
                                     }
                                     @media only screen and (min-width: 0px) and (max-width: 639px){& {
-                                      font-size: 16px;
-                                      width: 16px;
+                                      font-size: 20px;
+                                      width: 20px;
                                     }
                                 data-icon-name="Calendar"
                                 role="presentation"
