@@ -10,7 +10,6 @@ import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZ
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
 import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
-import { initializeIcons } from '@uifabric/icons';
 
 const getClassNames = classNamesFunction<IMicrofeedbackStyleProps, IMicrofeedbackStyles>();
 
@@ -53,8 +52,6 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
 
   constructor(props: IMicrofeedbackProps) {
     super(props);
-
-    initializeIcons();
 
     this.state = {
       // initial state of icons is neutral and followup is not visible
@@ -133,8 +130,8 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
   private _onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
     const listOption = (): void => {
       this._onCalloutDismiss();
-      if (this.props.sendFollowupIndex) {
-        this.props.sendFollowupIndex(index!);
+      if (this.props.sendFollowupIndex && index !== undefined) {
+        this.props.sendFollowupIndex(index);
       }
     };
 
