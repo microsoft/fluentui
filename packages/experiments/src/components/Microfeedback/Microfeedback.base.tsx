@@ -3,43 +3,15 @@ import * as React from 'react';
 import { withSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
 import { classNamesFunction } from '../../Utilities';
-import { IconButton, IButtonStyles, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { IconButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
-import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 const getClassNames = classNamesFunction<IMicrofeedbackStyleProps, IMicrofeedbackStyles>();
-
-const microfeedbackStyles: IStackStyles = {
-  root: [
-    {
-      margin: 8,
-      float: 'right'
-    }
-  ]
-};
-
-const microfeedbackItemStyles: IButtonStyles = {
-  root: [
-    {
-      border: '0px',
-      width: '100%'
-    }
-  ]
-};
-
-const microfeedbackTextStyles: ITextStyles = {
-  root: [
-    {
-      margin: '10px',
-      fontWeight: 'bold'
-    }
-  ]
-};
 
 export interface IMicrofeedbackState {
   vote: VoteType;
@@ -73,7 +45,7 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
     });
 
     return (
-      <Stack className={this.classNames.root} horizontal styles={microfeedbackStyles}>
+      <Stack className={this.classNames.root} horizontal>
         <div ref={this.likeRef}>
           <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._likeVote} />
         </div>
@@ -91,7 +63,7 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
             onDismiss={this._onCalloutDismiss}
           >
             <FocusZone direction={FocusZoneDirection.vertical}>
-              <Text block={true} className={this.classNames.followUpQuestion} styles={microfeedbackTextStyles} variant="small">
+              <Text block={true} className={this.classNames.followUpQuestion} variant="small">
                 {this.props.thumbsUpQuestion.question}
               </Text>
               <List items={this.props.thumbsUpQuestion.options} onRenderCell={this._onRenderCalloutItem} />
@@ -109,7 +81,7 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
             onDismiss={this._onCalloutDismiss}
           >
             <FocusZone direction={FocusZoneDirection.vertical}>
-              <Text block={true} className={this.classNames.followUpQuestion} styles={microfeedbackTextStyles} variant="small">
+              <Text block={true} className={this.classNames.followUpQuestion} variant="small">
                 {this.props.thumbsDownQuestion.question}
               </Text>
               <List items={this.props.thumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
@@ -133,7 +105,7 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
     };
 
     return (
-      <DefaultButton data-is-focusable={true} styles={microfeedbackItemStyles} onClick={listOption}>
+      <DefaultButton data-is-focusable={true} className={this.classNames.followUpOptionContainer} onClick={listOption}>
         <Text className={this.classNames.followUpOptionText} variant="small">{`${item}`}</Text>
       </DefaultButton>
     );

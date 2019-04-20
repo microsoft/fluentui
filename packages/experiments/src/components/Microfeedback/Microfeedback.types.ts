@@ -39,6 +39,9 @@ export interface IMicrofeedbackStyles {
   // Styles for follow up question
   followUpQuestion?: IStyle;
 
+  // Styles for follow up option container
+  followUpOptionContainer?: IStyle;
+
   // Styles for follow up option
   followUpOptionText?: IStyle;
 }
