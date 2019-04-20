@@ -9,13 +9,7 @@ import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { List } from 'office-ui-fabric-react/lib/List';
 import { Text, ITextStyles } from 'office-ui-fabric-react/lib/Text';
-import {
-  IMicrofeedbackProps,
-  IMicrofeedbackViewProps,
-  IMicrofeedbackStyleProps,
-  IMicrofeedbackStyles,
-  VoteType
-} from './Microfeedback.types';
+import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
 import { initializeIcons } from '@uifabric/icons';
 
 const getClassNames = classNamesFunction<IMicrofeedbackStyleProps, IMicrofeedbackStyles>();
@@ -47,7 +41,7 @@ const microfeedbackTextStyles: ITextStyles = {
   ]
 };
 
-export interface IMicrofeedbackState extends IMicrofeedbackViewProps {
+export interface IMicrofeedbackState {
   vote: VoteType;
   isFollowupVisible: boolean;
 }

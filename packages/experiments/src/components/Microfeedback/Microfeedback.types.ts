@@ -29,8 +29,6 @@ export interface IMicrofeedbackQuestion {
   options: string[]; // List of options to be shown as answers
 }
 
-export interface IMicrofeedbackViewProps extends IMicrofeedbackProps {}
-
 export interface IMicrofeedbackStyles {
   root?: IStyle;
 }
