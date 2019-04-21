@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/utilities",
+      "comment": "Performance: removing another closure from `styled`.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/utilities",
+  "email": "dzearing@hotmail.com"
+}
