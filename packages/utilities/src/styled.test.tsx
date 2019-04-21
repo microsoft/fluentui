@@ -6,6 +6,7 @@ import { IStyle, Stylesheet, InjectionMode, IStyleFunctionOrObject } from '@uifa
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@uifabric/test-utilities';
+import { mount } from 'enzyme';
 
 interface ITestStyles {
   root: IStyle;
@@ -16,7 +17,7 @@ interface ITestProps {
   children?: React.ReactNode;
 }
 
-let _lastStyles: IStyleFunctionOrObject<{}, ITestStyles>;
+let _lastStyles: IStyleFunctionOrObject<{}, ITestStyles> | undefined;
 let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 
@@ -30,6 +31,8 @@ class TestBase extends React.Component<ITestProps> {
 
   public render(): JSX.Element {
     _renderCount++;
+
+    _lastStyles = this.props.styles;
 
     const classNames = getClassNames(this.props.styles, this.props);
 
@@ -75,10 +78,21 @@ describe('styled', () => {
     });
   });
 
-  it('allows user overrides (background green)', () => {
-    safeCreate(<Test styles={{ root: { background: 'green' } }} />, (component: renderer.ReactTestRenderer) => {
-      expect(component.toJSON()).toMatchSnapshot();
-    });
+  it('always passes the same styles function through', () => {
+    let firstStylesFunction;
+
+    const component = mount(<Test />);
+
+    try {
+      firstStylesFunction = _lastStyles;
+
+      component.setProps({ cool: true });
+
+      expect(_renderCount).toEqual(2);
+      expect(firstStylesFunction).toBe(_lastStyles);
+    } finally {
+      component.unmount();
+    }
   });
 
   it('allows for contextual overrides (background yellow)', () => {
