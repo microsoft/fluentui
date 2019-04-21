@@ -78,18 +78,33 @@ describe('styled', () => {
     });
   });
 
-  it('always passes the same styles function through', () => {
-    let firstStylesFunction;
+  it('does not create any new closured functions', () => {
+    let _firstProps: ITestProps | undefined;
 
     const component = mount(<Test />);
 
-    try {
-      firstStylesFunction = _lastStyles;
+    _firstProps = _lastProps;
 
+    try {
       component.setProps({ cool: true });
 
       expect(_renderCount).toEqual(2);
-      expect(firstStylesFunction).toBe(_lastStyles);
+      expect(_firstProps).not.toBe(_lastProps);
+
+      if (_firstProps) {
+        // Validate that all functions and objects are the same instances as before.
+        for (let propName in _firstProps) {
+          if (_firstProps.hasOwnProperty(propName)) {
+            // tslint:disable-next-line:no-any
+            const propValue = (_firstProps as any)[propName];
+
+            if (typeof propValue === 'function' || typeof propValue === 'object') {
+              // tslint:disable-next-line:no-any
+              expect(propValue).toBe((_lastProps as any)[propName]);
+            }
+          }
+        }
+      }
     } finally {
       component.unmount();
     }
