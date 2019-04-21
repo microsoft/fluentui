@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: Add unit test;",
+      "comment": "CommandBar: Add split/disabled buttons example to documentation page",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "i91935058@gmail.com"
+  "email": "edwl@microsoft.com"
 }
