@@ -2,8 +2,24 @@ import { IMicrofeedbackStyleProps, IMicrofeedbackStyles } from './Microfeedback.
 
 export const getStyles = (props: IMicrofeedbackStyleProps): IMicrofeedbackStyles => {
   return {
-    root: { margin: 8, float: 'right' },
-    followUpQuestion: { margin: '10px', fontWeight: 'bold' },
-    followUpOptionContainer: { border: '0px', width: '100%' }
+    root: {
+      margin: 8,
+      float: 'right'
+    },
+    followUpQuestion: {
+      fontFamily: "'Segoe UI Semibold'",
+      margin: '10px',
+      fontSize: '12px'
+    },
+    followUpOptionText: {
+      fontFamily: "'Segoe UI'",
+      margin: '10px',
+      fontSize: '12px'
+    },
+    followUpOptionContainer: {
+      background: 'white',
+      border: '0px',
+      width: '100%'
+    }
   };
 };

@@ -1,13 +1,7 @@
-/** @jsx withSlots */
 import * as React from 'react';
-import { withSlots } from '../../Foundation';
 import { Stack } from '../../Stack';
 import { classNamesFunction } from '../../Utilities';
-import { IconButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Callout } from 'office-ui-fabric-react/lib/Callout';
-import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { List } from 'office-ui-fabric-react/lib/List';
-import { Text } from 'office-ui-fabric-react/lib/Text';
+import { IconButton, DefaultButton, Callout, FocusZone, FocusZoneDirection, List, Text } from 'office-ui-fabric-react';
 import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
@@ -66,7 +60,11 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
               <Text block={true} className={this.classNames.followUpQuestion} variant="small">
                 {this.props.thumbsUpQuestion.question}
               </Text>
-              <List items={this.props.thumbsUpQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+              <List
+                items={this.props.thumbsUpQuestion.options}
+                className={this.classNames.followUpOptionText}
+                onRenderCell={this._onRenderCalloutItem}
+              />
             </FocusZone>
           </Callout>
         ) : null}
@@ -84,7 +82,11 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
               <Text block={true} className={this.classNames.followUpQuestion} variant="small">
                 {this.props.thumbsDownQuestion.question}
               </Text>
-              <List items={this.props.thumbsDownQuestion.options} onRenderCell={this._onRenderCalloutItem} />
+              <List
+                items={this.props.thumbsDownQuestion.options}
+                className={this.classNames.followUpOptionText}
+                onRenderCell={this._onRenderCalloutItem}
+              />
             </FocusZone>
           </Callout>
         ) : null}

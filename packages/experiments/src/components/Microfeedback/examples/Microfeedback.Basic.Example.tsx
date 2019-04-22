@@ -23,11 +23,13 @@ export class MicrofeedbackBasicExample extends React.Component<{}, {}> {
     };
 
     const microfeedbackStyles: IMicrofeedbackStyles = {
-      followUpOptionText: [
-        {
-          color: 'black'
-        }
-      ]
+      root: {
+        margin: 8,
+        float: 'left'
+      },
+      followUpOptionText: {
+        color: 'black'
+      }
     };
     return (
       <div>
