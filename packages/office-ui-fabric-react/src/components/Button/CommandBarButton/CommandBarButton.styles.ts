@@ -100,7 +100,6 @@ export const getStyles = memoizeFunction(
 
       rootCheckedHovered: {
         backgroundColor: p.neutralQuaternaryAlt,
-        color: p.neutralDark,
         selectors: {
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDark
