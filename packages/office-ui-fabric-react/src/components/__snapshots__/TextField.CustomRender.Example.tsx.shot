@@ -473,7 +473,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               color: #107c10;
               display: inline;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
+              font-size: 12px;
               font-weight: 700;
               moz-osx-font-smoothing: grayscale;
               webkit-font-smoothing: antialiased;
