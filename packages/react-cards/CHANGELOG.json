@@ -2,6 +2,59 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.3.1",
+      "tag": "@uifabric/react-cards_v0.3.1",
+      "date": "Mon, 22 Apr 2019 12:32:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Card: Changing import of Stack to import from office-ui-fabric-react/lib/Stack given partner requests.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "ea40fc47d3e9a1a67aefc0bfeab58d7b32c4d8ac"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.4` to `^0.16.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.0` to `^6.46.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.2` to `^6.167.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.3.0",
+      "tag": "@uifabric/react-cards_v0.3.0",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Adding 'cursor' as a token and giving it the correct default styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "ed34421750c629b101d0af3359dbd94901abf29b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.74.0` to `^6.74.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.5` to `^6.4.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.1` to `^6.14.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.2.4",
       "tag": "@uifabric/react-cards_v0.2.4",
       "date": "Wed, 17 Apr 2019 12:33:35 GMT",

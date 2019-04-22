@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+
+## 0.16.5
+Mon, 22 Apr 2019 12:32:06 GMT
+
+### Patches
+
+- Update Fluent styles for CommandBar and CommandBarButton
 
 ## 0.16.4
 Tue, 02 Apr 2019 00:38:14 GMT
