@@ -43,6 +43,8 @@ export interface ICardTokens extends IStackTokens {
    */
   boxShadowHovered?: string;
 
+  cursor?: string;
+
   /**
    * Defines a fixed height for the Card.
    */

@@ -4,7 +4,7 @@ import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
-import { Shimmer } from '../Shimmer/Shimmer';
+import { Shimmer } from 'office-ui-fabric-react/lib/Shimmer';
 
 // tslint:disable-next-line:no-any
 const TilesListStyles: any = TilesListStylesModule;
@@ -14,7 +14,7 @@ const CELLS_PER_PAGE = 100;
 const MIN_ASPECT_RATIO = 0.5;
 const MAX_ASPECT_RATIO = 3;
 
-const ROW_OF_PLACEHOLDER_CELLS = 3;
+const ROWS_OF_PLACEHOLDER_CELLS = 3;
 
 export interface ITilesListState<TItem> {
   cells: ITileCell<TItem>[];
@@ -263,7 +263,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
         if (cell.isPlaceholder && grid.mode !== TilesGridMode.none) {
           const cellsPerRow = Math.floor(width / (grid.spacing + finalSize.width));
-          const totalPlaceholderItems = cellsPerRow * ROW_OF_PLACEHOLDER_CELLS;
+          const totalPlaceholderItems = cellsPerRow * ROWS_OF_PLACEHOLDER_CELLS;
           shimmerWrapperWidth = cellsPerRow * finalSize.width + grid.spacing * (cellsPerRow - 1);
           for (let j = 0; j < totalPlaceholderItems; j++) {
             renderedCells.push(renderedCell(j));
@@ -304,7 +304,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
         </div>
       );
 
-      grids.push(isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} widthInPixel={shimmerWrapperWidth} /> : finalGrid);
+      grids.push(isPlaceholder ? <Shimmer key={i} customElementsGroup={finalGrid} width={shimmerWrapperWidth} /> : finalGrid);
     }
 
     return (

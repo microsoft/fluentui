@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, KeyCodes, assign, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
+import { BaseComponent, KeyCodes, elementContains, getRTLSafeKeyCode, IRenderFunction, classNamesFunction } from '../../Utilities';
 import {
   CheckboxVisibility,
   ColumnActionsMode,
@@ -768,7 +768,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   /** Builds a set of columns based on the given columns mixed with the current overrides. */
   private _getFixedColumns(newColumns: IColumn[]): IColumn[] {
     return newColumns.map(column => {
-      const newColumn: IColumn = assign({}, column, this._columnOverrides[column.key]);
+      const newColumn: IColumn = { ...column, ...this._columnOverrides[column.key] };
 
       if (!newColumn.calculatedWidth) {
         newColumn.calculatedWidth = newColumn.maxWidth || newColumn.minWidth || MIN_COLUMN_WIDTH;

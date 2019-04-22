@@ -1,6 +1,20 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+
+## 0.3.1
+Mon, 22 Apr 2019 12:32:06 GMT
+
+### Patches
+
+- Card: Changing import of Stack to import from office-ui-fabric-react/lib/Stack given partner requests.
+
+## 0.3.0
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Minor changes
+
+- Card: Adding 'cursor' as a token and giving it the correct default styling.
 
 ## 0.2.4
 Wed, 17 Apr 2019 12:33:35 GMT

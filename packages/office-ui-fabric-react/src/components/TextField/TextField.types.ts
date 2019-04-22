@@ -57,13 +57,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   multiline?: boolean;
 
   /**
-   * Whether or not the multiline text field is resizable.
+   * For multiline text fields, whether or not the field is resizable.
    * @defaultvalue true
    */
   resizable?: boolean;
 
   /**
-   * Whether or not to auto adjust text field height. Applies only to multiline text field.
+   * For multiline text fields, whether or not to auto adjust text field height.
    * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
@@ -163,12 +163,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically
-   * change the error message displayed (if any) based on the current value.
+   * change the error message displayed (if any) based on the current value. `errorMessage` and
+   * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
   errorMessage?: string;
 
   /**
    * Callback for when the input value changes.
+   * This is called on both `input` and `change` native events.
    */
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
@@ -194,16 +196,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Function used to determine whether the input value is valid and get an error message if not.
+   * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
    *
-   *   When it returns string:
-   *   - If valid, it returns empty string.
-   *   - If invalid, it returns the error message string and the text field will
-   *     show a red border and show an error message below the text field.
+   * When it returns string:
+   * - If valid, it returns empty string.
+   * - If invalid, it returns the error message string and the text field will
+   *   show a red border and show an error message below the text field.
    *
-   *   When it returns Promise<string>:
-   *   - The resolved value is display as error message.
-   *   - The rejected, the value is thrown away.
-   *
+   * When it returns Promise<string>:
+   * - The resolved value is displayed as the error message.
+   * - If rejected, the value is thrown away.
    */
   onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
 
@@ -229,19 +231,23 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   ariaLabel?: string;
 
   /**
-   * Run validation only on input focus.
+   * Run validation when focus moves into the input, and **do not** validate on change.
+   *
+   * (Unless this prop and/or `validateOnFocusOut` is set to true, validation will run on every change.)
    * @defaultvalue false
    */
   validateOnFocusIn?: boolean;
 
   /**
-   * Run validation only on input focus out.
+   * Run validation when focus moves out of the input, and **do not** validate on change.
+   *
+   * (Unless this prop and/or `validateOnFocusIn` is set to true, validation will run on every change.)
    * @defaultvalue false
    */
   validateOnFocusOut?: boolean;
 
   /**
-   * Disable on-load validation.
+   * Whether validation should run when the input is initially rendered.
    * @defaultvalue true
    */
   validateOnLoad?: boolean;

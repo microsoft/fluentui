@@ -1,5 +1,5 @@
 import { IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
-import { HighContrastSelector, IStyle, ZIndexes, getGlobalClassNames } from '../../Styling';
+import { HighContrastSelector, IStyle, getGlobalClassNames } from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-ScrollablePane',
@@ -13,12 +13,10 @@ export const getStyles = (props: IScrollablePaneStyleProps): IScrollablePaneStyl
 
   const AboveAndBelowStyles: IStyle = {
     position: 'absolute',
-    pointerEvents: 'auto',
-    zIndex: ZIndexes.ScrollablePane
+    pointerEvents: 'auto'
   };
 
   const positioningStyle: IStyle = {
-    zIndex: ZIndexes.ScrollablePane,
     position: 'absolute',
     top: 0,
     right: 0,
