@@ -10,7 +10,8 @@ export const getStyles = memoizeFunction(
     const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
 
     const { palette: p, semanticColors } = theme;
-    const BUTTON_ICON_CLASSNAME = '.ms-Button-Icon';
+    const BUTTON_ICON_CLASSNAME = '.ms-Button-icon';
+    const MENU_ICON_CLASSNAME = 'ms-Button-menuIcon';
 
     const commandButtonHighContrastFocus = {
       left: 4,
@@ -48,6 +49,9 @@ export const getStyles = memoizeFunction(
           },
           [BUTTON_ICON_CLASSNAME]: {
             color: p.themeDarkAlt
+          },
+          [MENU_ICON_CLASSNAME]: {
+            color: p.neutralPrimary
           }
         }
       },
@@ -58,6 +62,9 @@ export const getStyles = memoizeFunction(
         selectors: {
           [BUTTON_ICON_CLASSNAME]: {
             color: p.themeDark
+          },
+          [MENU_ICON_CLASSNAME]: {
+            color: p.neutralPrimary
           }
         }
       },
@@ -68,6 +75,9 @@ export const getStyles = memoizeFunction(
         selectors: {
           [BUTTON_ICON_CLASSNAME]: {
             color: p.themeDark
+          },
+          [MENU_ICON_CLASSNAME]: {
+            color: p.neutralPrimary
           }
         }
       },
@@ -78,6 +88,9 @@ export const getStyles = memoizeFunction(
         selectors: {
           [BUTTON_ICON_CLASSNAME]: {
             color: p.themeDark
+          },
+          [MENU_ICON_CLASSNAME]: {
+            color: p.neutralPrimary
           }
         }
       },
@@ -88,6 +101,9 @@ export const getStyles = memoizeFunction(
         selectors: {
           [BUTTON_ICON_CLASSNAME]: {
             color: p.themeDark
+          },
+          [MENU_ICON_CLASSNAME]: {
+            color: p.neutralPrimary
           }
         }
       },
@@ -147,17 +163,12 @@ export const getStyles = memoizeFunction(
       },
 
       splitButtonMenuButtonDisabled: {
-        backgroundColor: p.white,
-        selectors: {
-          ':hover': {
-            backgroundColor: p.neutralLighter
-          }
-        }
+        backgroundColor: p.white
       },
 
       splitButtonMenuButtonChecked: {
         backgroundColor: p.neutralLight,
-        color: p.black,
+        color: p.neutralDark,
         selectors: {
           ':hover': {
             backgroundColor: p.neutralQuaternaryAlt
@@ -188,7 +199,7 @@ export const getStyles = memoizeFunction(
       },
 
       icon: {
-        color: p.themeDarkAlt
+        color: p.themePrimary
       },
 
       menuIcon: {
