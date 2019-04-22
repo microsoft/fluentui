@@ -341,13 +341,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
         this.props.onCellFocused();
       }
 
-      let handled = false;
       if (this.props.onColorChanged) {
-        handled = !!this.props.onColorChanged(item.id, item.color);
+        this.props.onColorChanged(item.id, item.color);
       }
 
-      // Set state only if the onColorChanged handler return false or void.
-      if (!handled) {
+      // Update internal state only if the component is uncontrolled
+      if (this.props.isControlled !== true) {
         this.setState({
           selectedIndex: index
         });
