@@ -37,8 +37,11 @@ const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
 let focusZoneStyles: string;
 
 const focusZoneClass: string = 'ms-FocusZone';
-function getRootClass() {
-  if (!focusZoneStyles) {
+
+// Helper function that will return a class for when the root is focused
+// when focused is parked there
+function getRootClass(isParked: boolean) {
+  if (isParked && !focusZoneStyles) {
     focusZoneStyles = mergeStyles(
       {
         selectors: {
@@ -50,7 +53,7 @@ function getRootClass() {
       focusZoneClass
     );
   }
-  return focusZoneStyles;
+  return isParked ? focusZoneStyles : undefined;
 }
 
 const _allInstances: {
@@ -219,7 +222,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // be any native element so typescript rightly flags this as a problem.
           ...rootProps as any
         }
-        className={css(getRootClass(), className)}
+        className={css(getRootClass(this._isParked), className)}
         ref={this._root}
         data-focuszone-id={this._id}
         aria-labelledby={ariaLabelledBy}
