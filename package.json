@@ -17,7 +17,7 @@
     "postinstall": "npm run _rushInstall && npm run _rushBuildToExperiments -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
-    "a11ytest": "cd apps && cd a11y-tests && npm run start-test",
+    "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
     "start-exp": "cd packages && cd experiments && npm start",
     "build": "npm run _rushRebuild",

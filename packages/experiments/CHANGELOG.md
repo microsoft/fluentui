@@ -1,6 +1,33 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Apr 2019 12:33:02 GMT and should not be manually modified.
+
+## 6.74.2
+Fri, 19 Apr 2019 12:33:02 GMT
+
+### Patches
+
+- TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.
+
+## 6.74.1
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- Button: Removing 'undefined' from 'cursor' token definition.
+
+## 6.74.0
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Minor changes
+
+- Button: Add focus() call in IButton interface.
+
+### Patches
+
+- Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.
+- Button: Adding overview, dos and don'ts documentation
+- Run prettier on all files
 
 ## 6.73.0
 Tue, 16 Apr 2019 12:32:59 GMT
