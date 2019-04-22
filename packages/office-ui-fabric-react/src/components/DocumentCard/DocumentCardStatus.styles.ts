@@ -14,7 +14,7 @@ export const getStyles = (props: IDocumentCardStatusStyleProps): IDocumentCardSt
   return {
     root: [
       classNames.root,
-      fonts.medium,
+      fonts.small,
       {
         margin: '8px 16px',
         color: palette.neutralPrimary,

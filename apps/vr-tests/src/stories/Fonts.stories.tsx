@@ -26,7 +26,7 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
 );
 
 function getStyle(lang: string) {
-  return createFontStyles(lang).medium as React.CSSProperties;
+  return createFontStyles(lang).small as React.CSSProperties;
 }
 
 storiesOf('Fonts', module)

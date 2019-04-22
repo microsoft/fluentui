@@ -207,7 +207,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       isOpen && classNames.isOpen,
       hasCloseButton && classNames.hasCloseButton,
       {
@@ -346,7 +346,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     headerText: [
       classNames.headerText,
-      DefaultFontStyles.xLarge,
+      DefaultFontStyles.mediumPlus,
       {
         color: palette.neutralPrimary,
         fontSize: 20, // TODO: after the type ramp gets reevaluated this needs to be changed

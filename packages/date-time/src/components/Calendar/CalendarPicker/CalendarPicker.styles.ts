@@ -21,7 +21,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     currentItemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         fontWeight: FontWeights.semibold,
         textAlign: 'left',
         backgroundColor: 'transparent',
@@ -54,7 +54,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         display: 'block',
         textAlign: 'center',
         lineHeight: 28,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         color: palette.neutralPrimary,
         borderRadius: 2,
         position: 'relative',
@@ -82,7 +82,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         minWidth: 40,
         minHeight: 40,
         lineHeight: 40,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         margin: '0 12px 16px 0',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',

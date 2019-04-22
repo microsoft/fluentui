@@ -24,7 +24,7 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px'
   },
   title: [
-    theme.fonts.xLarge,
+    theme.fonts.mediumPlus,
     {
       margin: 0,
       color: theme.palette.neutralPrimary,
@@ -42,7 +42,7 @@ const styles = mergeStyleSets({
     whiteSpace: 'nowrap'
   },
   link: [
-    theme.fonts.medium,
+    theme.fonts.small,
     {
       color: theme.palette.neutralPrimary
     }

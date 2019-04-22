@@ -82,7 +82,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       classNames.name,
       {
         display: 'block',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         lineHeight: '15px',
         height: '15px',
         overflow: 'hidden',
@@ -96,7 +96,7 @@ export const getStyles = (props: IDocumentCardActivityStyleProps): IDocumentCard
       classNames.activity,
       {
         display: 'block',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         lineHeight: '15px',
         height: '15px',
         overflow: 'hidden',

@@ -236,13 +236,13 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         display: 'flex',
         alignItems: 'center',
         boxSizing: 'border-box',
         color: semanticColors.bodyText,
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         fontWeight: FontWeights.regular,
         minHeight: 26,
         border: 'none',
@@ -250,7 +250,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         marginTop: 8,
         selectors: {
           '.ms-ChoiceFieldLabel': {
-            fontSize: FontSizes.medium,
+            fontSize: FontSizes.small,
             display: 'inline-block'
           }
         }
@@ -398,7 +398,7 @@ export const getStyles = (props: IChoiceGroupOptionStyleProps): IChoiceGroupOpti
         overflow: 'hidden',
         whiteSpace: 'pre-wrap',
         textOverflow: 'ellipsis',
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         fontWeight: FontWeights.regular
       }
     ]

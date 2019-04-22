@@ -11,7 +11,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       'ms-VerticalBarChart',
       className,
       {
@@ -29,7 +29,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
     chartLabel: [
       {
         textAlign: 'center',
-        ...theme.fonts.mediumPlus
+        ...theme.fonts.smallPlus
       }
     ],
     xAxis: [
