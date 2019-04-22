@@ -14,35 +14,33 @@ interface IFocusTrapComponentProps {
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
   public render() {
     const { isActive, zoneNumber, children } = this.props;
-    const contents = (
-      <Stack
-        horizontal={zoneNumber === 2}
-        horizontalAlign="start"
-        tokens={{ childrenGap: 10 }}
-        styles={{
-          root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
-        }}
-      >
-        <Toggle
-          defaultChecked={isActive}
-          onChange={this._onFocusTrapZoneToggleChanged}
-          label={'Enable trap zone ' + zoneNumber}
-          onText="On (toggle to exit)"
-          offText="Off"
-          styles={{
-            // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
-            root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 }
-          }}
-        />
-        <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
-        {children}
-      </Stack>
-    );
 
-    if (this.props.isActive) {
-      return <FocusTrapZone forceFocusInsideTrap={false}>{contents}</FocusTrapZone>;
-    }
-    return contents;
+    return (
+      <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
+        <Stack
+          horizontal={zoneNumber === 2}
+          horizontalAlign="start"
+          tokens={{ childrenGap: 10 }}
+          styles={{
+            root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
+          }}
+        >
+          <Toggle
+            defaultChecked={isActive}
+            onChange={this._onFocusTrapZoneToggleChanged}
+            label={'Enable trap zone ' + zoneNumber}
+            onText="On (toggle to exit)"
+            offText="Off"
+            styles={{
+              // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
+              root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 }
+            }}
+          />
+          <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
+          {children}
+        </Stack>
+      </FocusTrapZone>
+    );
   }
 
   private _onStringButtonClicked = (): void => {

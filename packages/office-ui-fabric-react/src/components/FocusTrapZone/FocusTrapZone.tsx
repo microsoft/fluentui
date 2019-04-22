@@ -47,18 +47,22 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   public componentDidUpdate(prevProps: IFocusTrapZoneProps) {
     const prevForceFocusInsideTrap = prevProps.forceFocusInsideTrap !== undefined ? prevProps.forceFocusInsideTrap : true;
     const newForceFocusInsideTrap = this.props.forceFocusInsideTrap !== undefined ? this.props.forceFocusInsideTrap : true;
+    const prevDisabled = prevProps.disabled !== undefined ? prevProps.disabled : false;
+    const newDisabled = this.props.disabled !== undefined ? this.props.disabled : false;
 
-    if (!prevForceFocusInsideTrap && newForceFocusInsideTrap) {
+    if ((!prevForceFocusInsideTrap && newForceFocusInsideTrap) || (prevDisabled && !newDisabled)) {
       // Transition from forceFocusInsideTrap disabled to enabled. Emulate what happens when a FocusTrapZone gets mounted
       this._bringFocusIntoZone();
-    } else if (prevForceFocusInsideTrap && !newForceFocusInsideTrap) {
+    } else if ((prevForceFocusInsideTrap && !newForceFocusInsideTrap) || (!prevDisabled && newDisabled)) {
       // Transition from forceFocusInsideTrap enabled to disabled. Emulate what happens when a FocusTrapZone gets unmounted
       this._returnFocusToInitiator();
     }
   }
 
   public componentWillUnmount(): void {
-    this._returnFocusToInitiator();
+    if (!this.props.disabled) {
+      this._returnFocusToInitiator();
+    }
   }
 
   public render(): JSX.Element {
@@ -168,7 +172,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   };
 
   private _onBumperFocus = (isFirstBumper: boolean) => {
+    if (this.props.disabled) {
+      return;
+    }
+
     const currentBumper = (isFirstBumper === this._hasFocus ? this._lastBumper.current : this._firstBumper.current) as HTMLElement;
+
     if (this._root.current) {
       const nextFocusable =
         isFirstBumper === this._hasFocus
@@ -252,6 +261,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   private _forceFocusInTrap = (ev: FocusEvent): void => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
       const focusedElement = document.activeElement as HTMLElement;
 
@@ -265,6 +278,10 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   };
 
   private _forceClickInTrap = (ev: MouseEvent): void => {
+    if (this.props.disabled) {
+      return;
+    }
+
     if (FocusTrapZone._focusStack.length && this === FocusTrapZone._focusStack[FocusTrapZone._focusStack.length - 1]) {
       const clickedElement = ev.target as HTMLElement;
 
