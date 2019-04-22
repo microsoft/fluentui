@@ -40,7 +40,7 @@ const focusZoneClass: string = 'ms-FocusZone';
 
 // Helper function that will return a class for when the root is focused
 // when focused is parked there
-function getRootClass(isParked: boolean) {
+function getRootClass(isParked: boolean): string {
   if (isParked && !focusZoneStyles) {
     focusZoneStyles = mergeStyles(
       {
@@ -53,7 +53,7 @@ function getRootClass(isParked: boolean) {
       focusZoneClass
     );
   }
-  return isParked ? focusZoneStyles : undefined;
+  return isParked ? focusZoneStyles : focusZoneClass;
 }
 
 const _allInstances: {
