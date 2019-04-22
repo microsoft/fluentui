@@ -228,7 +228,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         role="row"
         aria-label={ariaLabel}
         ariaDescribedBy={ariaDescribedBy}
-        className={css(classNames.root)}
+        className={classNames.root}
         data-is-focusable={true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
@@ -275,7 +275,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
           </span>
         )}
 
-        <span role="checkbox" className={css(classNames.checkCover)} aria-checked={isSelected} data-selection-toggle={true} />
+        <span role="checkbox" className={classNames.checkCover} aria-checked={isSelected} data-selection-toggle={true} />
       </FocusZone>
     );
   }
