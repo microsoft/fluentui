@@ -56,9 +56,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
         // tslint:disable-next-line:jsx-no-lambda
-        onColorChanged={color => {
-          eventFireCounter++;
-        }}
+        onColorChanged={color => eventFireCounter++}
         columnCount={4}
       />
     );
@@ -79,9 +77,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
         // tslint:disable-next-line:jsx-no-lambda
-        onCellHovered={color => {
-          eventFireCounter++;
-        }}
+        onCellHovered={color => eventFireCounter++}
         columnCount={4}
       />
     );
@@ -99,9 +95,7 @@ describe('SwatchColorPicker', () => {
       <SwatchColorPicker
         colorCells={[{ id: 'a', label: 'green', color: '#00ff00' }]}
         // tslint:disable-next-line:jsx-no-lambda
-        onCellFocused={color => {
-          eventFireCounter++;
-        }}
+        onCellFocused={color => eventFireCounter++}
         columnCount={4}
       />
     );
