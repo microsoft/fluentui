@@ -17,7 +17,6 @@ interface ITestProps {
   children?: React.ReactNode;
 }
 
-let _lastStyles: IStyleFunctionOrObject<{}, ITestStyles> | undefined;
 let _lastProps: ITestProps | undefined;
 let _renderCount: number;
 
@@ -26,13 +25,12 @@ const getClassNames = classNamesFunction<{}, ITestStyles>();
 class TestBase extends React.Component<ITestProps> {
   public constructor(props: ITestProps) {
     super(props);
-    _lastProps = props;
   }
 
   public render(): JSX.Element {
     _renderCount++;
 
-    _lastStyles = this.props.styles;
+    _lastProps = this.props;
 
     const classNames = getClassNames(this.props.styles, this.props);
 
@@ -84,6 +82,7 @@ describe('styled', () => {
     const component = mount(<Test />);
 
     _firstProps = _lastProps;
+    expect(_renderCount).toEqual(1);
 
     try {
       component.setProps({ cool: true });
