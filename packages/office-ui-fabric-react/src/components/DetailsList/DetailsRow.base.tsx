@@ -1,6 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { BaseComponent, IDisposable, assign, css, shallowCompare, getNativeProps, divProperties } from '../../Utilities';
+import { BaseComponent, IDisposable, css, shallowCompare, getNativeProps, divProperties } from '../../Utilities';
 import { IColumn, CheckboxVisibility } from './DetailsList.types';
 import { DetailsRowCheck } from './DetailsRowCheck';
 import { GroupSpacer } from '../GroupedList/GroupSpacer';
@@ -288,7 +288,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
    */
   public measureCell(index: number, onMeasureDone: (width: number) => void): void {
     const { columns = NO_COLUMNS } = this.props;
-    const column = assign({}, columns[index]) as IColumn;
+    const column: IColumn = { ...columns[index] };
 
     column.minWidth = 0;
     column.maxWidth = 999999;

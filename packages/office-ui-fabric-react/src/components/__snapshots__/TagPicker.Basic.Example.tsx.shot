@@ -189,7 +189,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__1"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"
@@ -277,7 +276,6 @@ exports[`Component Examples renders TagPicker.Basic.Example.tsx correctly 1`] = 
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__3"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"

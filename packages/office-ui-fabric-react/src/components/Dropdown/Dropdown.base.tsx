@@ -722,12 +722,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       const selectedIndex = this._getSelectedIndex(options, null);
       return selectedIndex !== -1 ? [selectedIndex] : [];
     } else if (!Array.isArray(selectedKey)) {
-      return [this._getSelectedIndex(options, selectedKey)];
+      const selectedIndex = this._getSelectedIndex(options, selectedKey);
+      return selectedIndex !== -1 ? [selectedIndex] : [];
     }
 
     const selectedIndices: number[] = [];
     for (const key of selectedKey) {
-      selectedIndices.push(this._getSelectedIndex(options, key));
+      const selectedIndex = this._getSelectedIndex(options, key);
+      selectedIndex !== -1 && selectedIndices.push(selectedIndex);
     }
     return selectedIndices;
   }

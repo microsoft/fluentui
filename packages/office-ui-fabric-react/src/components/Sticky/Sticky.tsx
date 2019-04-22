@@ -1,8 +1,8 @@
-import * as React from 'react';
 import * as PropTypes from 'prop-types';
+import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
+import { IScrollablePaneContext, ScrollablePaneContext } from '../ScrollablePane/ScrollablePane.types';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
-import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -19,11 +19,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     isScrollSynced: true
   };
 
-  public static contextTypes: IStickyContext = {
-    scrollablePane: PropTypes.object
-  };
-
-  public context: IScrollablePaneContext;
+  public static contextType = ScrollablePaneContext;
 
   public distanceFromTop: number;
 
@@ -81,7 +77,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   };
 
   public componentDidMount(): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (!scrollablePane) {
       return;
@@ -92,7 +88,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public componentWillUnmount(): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (!scrollablePane) {
       return;
@@ -103,7 +99,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public componentDidUpdate(prevProps: IStickyProps, prevState: IStickyState): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (!scrollablePane) {
       return;
@@ -120,7 +116,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   public shouldComponentUpdate(nextProps: IStickyProps, nextState: IStickyState): boolean {
-    if (!this.context.scrollablePane) {
+    if (!this._getContext().scrollablePane) {
       return true;
     }
 
@@ -140,7 +136,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     const { isStickyTop, isStickyBottom } = this.state;
     const { stickyClassName, children } = this.props;
 
-    if (!this.context.scrollablePane) {
+    if (!this._getContext().scrollablePane) {
       return <div>{this.props.children}</div>;
     }
 
@@ -186,7 +182,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _setDistanceFromTop(distance: number): void {
-    const { scrollablePane } = this.context;
+    const { scrollablePane } = this._getContext();
 
     if (this.distanceFromTop !== distance && scrollablePane) {
       this.distanceFromTop = distance;
@@ -210,6 +206,8 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       height: isSticky ? 0 : height
     };
   }
+
+  private _getContext = (): IScrollablePaneContext => this.context;
 
   private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
