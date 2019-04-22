@@ -37,174 +37,123 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           webkit-font-smoothing: antialiased;
         }
   >
-    Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10 seconds, as that is the delay chosen for this example.
+    Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos loaded every 10 seconds, as that is the delay chosen for this example.
   </span>
-  <div
+  <button
     className=
-        ms-Toggle
-        is-enabled
+        ms-Button
+        ms-Button--default
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
+          background-color: #f4f4f4;
+          border-radius: 0px;
+          border: 1px solid transparent;
+          box-sizing: border-box;
+          color: #333333;
+          cursor: pointer;
+          display: inline-block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-bottom: 8px;
+          height: 32px;
+          min-width: 80px;
+          outline: transparent;
+          padding-bottom: 0;
+          padding-left: 16px;
+          padding-right: 16px;
+          padding-top: 0;
+          position: relative;
+          text-align: center;
+          text-decoration: none;
+          user-select: none;
+          vertical-align: top;
+          width: 150px;
         }
+        &::-moz-focus-inner {
+          border: 0;
+        }
+        .ms-Fabric--isFocusVisible &:focus:after {
+          border: 1px solid #ffffff;
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          outline: 1px solid #666666;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+          z-index: 1;
+        }
+        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+          border: none;
+          bottom: -2px;
+          left: -2px;
+          outline-color: ButtonText;
+          right: -2px;
+          top: -2px;
+        }
+        &:active > * {
+          left: 0px;
+          position: relative;
+          top: 0px;
+        }
+        &:hover {
+          background-color: #eaeaea;
+          color: #212121;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          border-color: Highlight;
+          color: Highlight;
+        }
+        &:active {
+          background-color: #c8c8c8;
+          color: #212121;
+        }
+    data-is-focusable={true}
+    onClick={[Function]}
+    onKeyDown={[Function]}
+    onKeyPress={[Function]}
+    onKeyUp={[Function]}
+    onMouseDown={[Function]}
+    onMouseUp={[Function]}
+    type="button"
   >
-    <label
-      className=
-          ms-Label
-          ms-Toggle-label
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            box-shadow: none;
-            box-sizing: border-box;
-            color: #333333;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow-wrap: break-word;
-            padding-bottom: 5px;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 5px;
-            word-wrap: break-word;
-          }
-      htmlFor="Toggle0"
-      id="Toggle0-label"
-    >
-      Check to start loading photos
-    </label>
     <div
       className=
-          ms-Toggle-innerContainer
+          ms-Button-flexContainer
           {
-            display: inline-flex;
-            position: relative;
+            align-items: center;
+            display: flex;
+            flex-wrap: nowrap;
+            height: 100%;
+            justify-content: center;
           }
     >
-      <button
-        aria-checked={false}
-        aria-labelledby="Toggle0-label"
+      <div
         className=
-            ms-Toggle-background
+            ms-Button-textContainer
             {
-              align-items: center;
-              background: #ffffff;
-              border-color: #666666;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
-              box-sizing: border-box;
-              cursor: pointer;
-              display: flex;
-              font-size: 20px;
-              height: 1em;
-              outline: transparent;
-              padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
-              padding-top: 0;
-              position: relative;
-              transition: all 0.1s ease;
-              width: 2.2em;
+              flex-grow: 1;
             }
-            &::-moz-focus-inner {
-              border: 0;
-            }
-            .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: -2px;
-              content: "";
-              left: -2px;
-              outline: 1px solid #666666;
-              position: absolute;
-              right: -2px;
-              top: -2px;
-              z-index: 1;
-            }
-            &:hover {
-              border-color: #333333;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-              border-color: Highlight;
-            }
-            @media screen and (-ms-high-contrast: active){&:hover {
-              border-color: Highlight;
-            }
-        data-is-focusable={true}
-        id="Toggle0"
-        onChange={[Function]}
-        onClick={[Function]}
-        role="switch"
-        type="button"
       >
         <div
           className=
-              ms-Toggle-thumb
+              ms-Button-label
               {
-                background-color: #333333;
-                border-color: transparent;
-                border-radius: .5em;
-                border-style: solid;
-                border-width: .28em;
-                box-sizing: border-box;
-                height: .5em;
-                transition: all 0.1s ease;
-                width: .5em;
+                font-weight: 600;
+                line-height: 100%;
+                margin-bottom: 0;
+                margin-left: 4px;
+                margin-right: 4px;
+                margin-top: 0;
               }
-        />
-      </button>
-      <label
-        className=
-            ms-Label
-            ms-Toggle-stateText
-            {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
-              box-shadow: none;
-              box-sizing: border-box;
-              color: #333333;
-              display: block;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow-wrap: break-word;
-              padding-bottom: 5px;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 5px;
-              word-wrap: break-word;
-            }
-            && {
-              margin-bottom: 0;
-              margin-left: 8px;
-              margin-right: 8px;
-              margin-top: 0;
-              padding-bottom: 0;
-              padding-left: 0;
-              padding-right: 0;
-              padding-top: 0;
-              user-select: none;
-            }
-        htmlFor="Toggle0"
-        id="Toggle0-stateText"
-      >
-        Pause
-      </label>
+          id="id__0"
+        >
+          Load photos
+        </div>
+      </div>
     </div>
-  </div>
+  </button>
   <div
     className=
         ms-ProgressIndicator
@@ -283,284 +232,546 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
       />
     </div>
   </div>
-  <ul
-    className="ms-FocusZone ms-AnnouncedExamples-photoList"
-    data-focuszone-id="FocusZone1"
+  <div
+    className="ms-FocusZone"
+    data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
     role="presentation"
   >
-    <ul
-      aria-label="Photo"
-      aria-posinset={1}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
+    <div
+      className=
+          ms-Stack
+          {
+            border: 1px solid black;
+            display: flex;
+            flex-wrap: wrap;
+            height: auto;
+            overflow-y: auto;
+            overflow: visible;
+            padding-bottom: 10px;
+            padding-left: 10px;
+            padding-right: 10px;
+            padding-top: 10px;
+            width: auto;
+          }
     >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={2}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={3}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={4}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={5}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={6}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={7}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={8}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={9}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={10}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={11}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={12}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={13}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={14}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={15}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={16}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={17}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={18}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={19}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={20}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={21}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={22}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={23}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={24}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={25}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={26}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={27}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={28}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={29}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-    <ul
-      aria-label="Photo"
-      aria-posinset={30}
-      aria-setsize={30}
-      className="ms-AnnouncedExamples-photoCell"
-      data-is-focusable={true}
-    >
-      <div />
-    </ul>
-  </ul>
+      <ul
+        className=
+            ms-Stack-inner
+            {
+              box-sizing: border-box;
+              display: flex;
+              flex-direction: row;
+              flex-wrap: wrap;
+              height: calc(100% + 6px);
+              margin-bottom: -3px;
+              margin-left: -3px;
+              margin-right: -3px;
+              margin-top: -3px;
+              max-width: 100vw;
+              overflow: visible;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              width: calc(100% + 6px);
+            }
+            & > * {
+              margin-bottom: 3px;
+              margin-left: 3px;
+              margin-right: 3px;
+              margin-top: 3px;
+              max-width: calc(100% - 6px);
+              text-overflow: ellipsis;
+            }
+            & > *:not(.ms-StackItem) {
+              flex-shrink: 1;
+            }
+      >
+        <li
+          aria-label="Photo"
+          aria-posinset={1}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={2}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={3}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={4}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={5}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={6}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={7}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={8}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={9}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={10}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={11}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={12}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={13}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={14}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={15}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={16}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={17}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={18}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={19}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={20}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={21}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={22}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={23}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={24}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={25}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={26}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={27}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={28}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={29}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+        <li
+          aria-label="Photo"
+          aria-posinset={30}
+          aria-setsize={30}
+          className=
+
+              {
+                box-sizing: border-box;
+                display: block;
+                height: 100px;
+                width: 100px;
+              }
+          data-is-focusable={true}
+        >
+          <div />
+        </li>
+      </ul>
+    </div>
+  </div>
 </div>
 `;

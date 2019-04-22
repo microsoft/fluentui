@@ -1,9 +1,11 @@
 import { AxePuppeteer } from 'axe-puppeteer';
 import * as puppeteer from 'puppeteer';
-import { SarifLog } from './axe-sarif-converter/sarif/sarifLog';
-import { axeToSarif } from './axe-sarif-converter';
+import { convertAxeToSarif } from 'axe-sarif-converter';
+import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log'; // TODO - merge with prev line when SarifLog is exported from index
 
-const TEST_URL_ROOT = 'http://localhost:4322/';
+const TEST_URL_ROOT = process.env.BUILD_SOURCEBRANCH
+  ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/fabric-website-resources/dist/`
+  : 'http://localhost:4322';
 
 export async function getSarifReport(subUrl: string): Promise<SarifLog> {
   const browser = await puppeteer.launch();
@@ -19,7 +21,7 @@ export async function getSarifReport(subUrl: string): Promise<SarifLog> {
   }
 
   const axeReport = await new AxePuppeteer(page).include(['.ExampleCard-example']).analyze();
-  const sarifReport = axeToSarif(axeReport);
+  const sarifReport = convertAxeToSarif(axeReport);
 
   await page.close();
   await browser.close();

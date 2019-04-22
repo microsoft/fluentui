@@ -6,10 +6,94 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
+  const { palette, semanticColors } = theme;
+
+  const BUTTON_ICON_CLASSNAME = '.ms-Button-Icon';
 
   return {
-    root: {
-      ...getFocusStyle(theme, 2)
+    root: [
+      { ...getFocusStyle(theme, 2) },
+      {
+        backgroundColor: palette.white
+      }
+    ],
+
+    rootHovered: {
+      backgroundColor: palette.neutralLighter,
+      selectors: {
+        [BUTTON_ICON_CLASSNAME]: {
+          color: palette.themeDarkAlt
+        }
+      }
+    },
+
+    rootPressed: {
+      backgroundColor: palette.neutralLight,
+      color: palette.neutralDark,
+      selectors: {
+        [BUTTON_ICON_CLASSNAME]: {
+          color: palette.themeDark
+        }
+      }
+    },
+
+    rootChecked: {
+      backgroundColor: palette.neutralLight,
+      color: palette.neutralDark,
+      selectors: {
+        [BUTTON_ICON_CLASSNAME]: {
+          color: palette.themeDark
+        }
+      }
+    },
+
+    rootExpanded: {
+      color: palette.neutralDark,
+      selectors: {
+        [BUTTON_ICON_CLASSNAME]: {
+          color: palette.themeDark
+        }
+      }
+    },
+
+    rootDisabled: {
+      backgroundColor: palette.white,
+      selectors: {
+        [BUTTON_ICON_CLASSNAME]: {
+          color: semanticColors.disabledBodySubtext
+        }
+      }
+    },
+
+    splitButtonMenuButton: {
+      backgroundColor: palette.white,
+      color: palette.neutralSecondary,
+      selectors: {
+        ':hover': {
+          backgroundColor: palette.neutralLighter,
+          selectors: {
+            [BUTTON_ICON_CLASSNAME]: {
+              color: palette.neutralPrimary
+            }
+          }
+        },
+        ':active': {
+          backgroundColor: palette.neutralLight,
+          selectors: {
+            [BUTTON_ICON_CLASSNAME]: {
+              color: palette.neutralPrimary
+            }
+          }
+        }
+      }
+    },
+
+    splitButtonMenuButtonDisabled: {
+      backgroundColor: palette.white
+    },
+
+    icon: {
+      color: palette.themePrimary
     }
   };
 };

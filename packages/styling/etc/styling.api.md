@@ -6,6 +6,7 @@
 
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { fontFace } from '@uifabric/merge-styles';
+import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
 import { IFontFace } from '@uifabric/merge-styles';
 import { IFontWeight } from '@uifabric/merge-styles';
@@ -255,6 +256,8 @@ export namespace IconFontSizes {
     const // (undocumented)
     large: string;
 }
+
+export { ICSPSettings }
 
 // Warning: (ae-internal-missing-underscore) The name IEffects should be prefixed with an underscore because the declaration is marked as "@internal"
 // 
@@ -635,7 +638,7 @@ export function unregisterIcons(iconNames: string[]): void;
 export namespace ZIndexes {
     const // (undocumented)
     Nav: number;
-    const // (undocumented)
+    const // @deprecated (undocumented)
     ScrollablePane: number;
     const // (undocumented)
     FocusStyle: number;

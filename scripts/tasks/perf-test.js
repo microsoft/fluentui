@@ -1,4 +1,5 @@
 const { execSync } = require('child_process');
+const { logger } = require('just-task');
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
@@ -12,12 +13,12 @@ module.exports = async function getPerfRegressions() {
   // get perf numbers for existing code
   await page.goto(urlForMaster);
   const perfAveragesNow = await runAvailableScenarios(page, 1000, 100);
-  console.log(perfAveragesNow);
+  logger.info(perfAveragesNow);
 
   // get perf numbers for new code
   await page.goto(urlFromDeployJob);
   const perfAveragesNew = await runAvailableScenarios(page, 1000, 100);
-  console.log(perfAveragesNew);
+  logger.info(perfAveragesNew);
 
   // Clean up
   await browser.close();
@@ -28,14 +29,15 @@ module.exports = async function getPerfRegressions() {
   // TODO: determine status according to perf numbers
   const status = 'success';
 
+  logger.info(`Perf evaluation status: ${status}`);
+  logger.info(`Writing comment to file:\n${comment}`);
+
   // Write results to file
   require('fs').writeFileSync(require('path').join('apps/perf-test/dist', 'perfCounts.txt'), comment);
 
-  let cmd = `echo ##vso[task.setvariable variable=PerfComment.FilePath;]apps/perf-test/dist/perfCounts.txt`;
-  execSync(cmd);
+  console.log(`echo ##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
 
-  cmd = `echo ##vso[task.setvariable variable=PerfComment.Status;]${status}`;
-  execSync(cmd);
+  console.log(`echo ##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 };
 
 async function runAvailableScenarios(page, componentCount, iterations) {
@@ -59,7 +61,7 @@ async function runAvailableScenarios(page, componentCount, iterations) {
 
   // Iterate through scenarios available
   const scenarioDropdown = await page.$('.scenario');
-  let scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z]/g, '');
+  let scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   while (!perfNumbers[scenarioName]) {
     // get numbers
     perfNumbers[scenarioName] = await runScenarioNTimes(page, 10);
@@ -67,7 +69,7 @@ async function runAvailableScenarios(page, componentCount, iterations) {
     // go to next scenario
     await scenarioDropdown.focus();
     await page.keyboard.press('ArrowDown');
-    scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z]/g, '');
+    scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   }
 
   return perfNumbers;
@@ -101,15 +103,27 @@ async function runScenarioNTimes(page, times) {
 }
 
 function createBlobFromResults(perfBlob) {
-  return `| Scenario Name | Current Avg Total | New Avg Total | Current Avg Per Item | New Avg Per Item |
-  |----------|-------------------|---------------|----------------------|------------------|\n`.concat(
+  return `Component perf results:
+  <table>
+  <tr>
+    <th>Scenario</th>
+    <th>Target branch avg total (ms)</th>
+    <th>PR avg total (ms)</th>
+    <th>Target branch avg per item (ms)</th>
+    <th>PR avg per item (ms)</th>
+  </tr>`.concat(
     Object.keys(perfBlob.now)
       .map(
         scenario =>
-          `| ${scenario}(ms) | ${perfBlob.now[scenario].total}(ms) | ${perfBlob.new[scenario].total}(ms)| ${
-            perfBlob.new[scenario].peritem
-          }(ms) | ${perfBlob.new[scenario].peritem}(ms)|`
+          `<tr>
+            <td>${scenario}</td>
+            <td>${perfBlob.now[scenario].total}</td>
+            <td>${perfBlob.new[scenario].total}</td>
+            <td>${perfBlob.now[scenario].peritem}</td>
+            <td>${perfBlob.new[scenario].peritem}</td>
+           </tr>  `
       )
       .join('\n')
+      .concat(`</table>`)
   );
 }

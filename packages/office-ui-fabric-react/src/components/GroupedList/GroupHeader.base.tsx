@@ -51,8 +51,8 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
       viewport,
       selectionMode,
       loadingText,
-      isSelected,
-      selected,
+      isSelected = false,
+      selected = false,
       indentWidth,
       onRenderTitle = this._onRenderTitle,
       isCollapsedGroupSelectVisible = true,
@@ -98,7 +98,7 @@ export class GroupHeaderBase extends React.Component<IGroupHeaderProps, IGroupHe
               type="button"
               className={this._classNames.check}
               role="checkbox"
-              aria-checked={!!currentlySelected}
+              aria-checked={currentlySelected}
               data-selection-toggle={true}
               onClick={this._onToggleSelectGroupClick}
               {...selectAllButtonProps}

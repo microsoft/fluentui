@@ -1,3 +1,6 @@
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+
 export interface IComponentPageSection {
   title: string;
   section: JSX.Element;
@@ -20,7 +23,10 @@ export interface IComponentPageProps {
   dos?: JSX.Element;
   donts?: JSX.Element;
   overview?: JSX.Element;
-  /** Related link */
+  /**
+   * Related link
+   * @deprecated No longer shown
+   */
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
@@ -80,4 +86,52 @@ export interface IComponentPageProps {
    * Overrides URL from componentUrl.
    */
   editOverviewUrl?: string;
+
+  /** Theme provided by higher-order component. */
+  theme?: ITheme;
+
+  /** Optional override styles */
+  styles?: IStyleFunctionOrObject<IComponentPageStyleProps, IComponentPageStyles>;
+}
+
+export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme' | 'componentStatus'>;
+
+export interface IComponentPageStyles {
+  root: IStyle;
+  body: IStyle;
+  header: IStyle;
+  headerLink: IStyle;
+  title: IStyle;
+  navigation: IStyle;
+  subHeading: IStyle;
+  /** Styles applied to all sections */
+  section: IStyle;
+  overviewSection: IStyle;
+  overviewText: IStyle;
+  overviewHeading: IStyle;
+  /**
+   * Used on the actual (rarely shown) "Best Practices" part of the best practices/dos/don'ts section.
+   * For the wrapper of both this section and the dos/don'ts, use `bestPracticesSection`.
+   */
+  usageSection: IStyle;
+  /** Used on the actual (rarely shown) "Best Practices" heading. */
+  usageHeading: IStyle;
+  variantsSection: IStyle;
+  variantsTitle: IStyle;
+  variantsList: IStyle;
+  implementationSection: IStyle;
+  implementationExamplesSection: IStyle;
+  feedbackSection: IStyle;
+  /** Wrapper for best practices, dos, and don'ts */
+  bestPracticesSection: IStyle;
+  /** Wrapper for the dos/don'ts sections */
+  doSections: IStyle;
+  /** Used on each of the dos and don'ts sections */
+  dosDontsSection: IStyle;
+  dosDontsHeading: IStyle;
+  dosDontsLine: IStyle;
+  dosLine: IStyle;
+  dontsSection: IStyle;
+  dontsLine: IStyle;
+  statusSection: IStyle;
 }
