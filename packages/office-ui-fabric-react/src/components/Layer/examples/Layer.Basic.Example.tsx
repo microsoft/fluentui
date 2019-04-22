@@ -1,4 +1,3 @@
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import * as styles from './Layer.Example.scss';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
@@ -8,7 +7,7 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 
 interface ILayerBasicExampleContext {
-  message: string | undefined;
+  message?: string;
 }
 
 const LayerBasicExampleContext = React.createContext<ILayerBasicExampleContext>({ message: undefined });

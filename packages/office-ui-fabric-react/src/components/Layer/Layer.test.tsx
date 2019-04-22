@@ -1,10 +1,8 @@
 import * as React from 'react';
-import * as PropTypes from 'prop-types';
 import * as renderer from 'react-test-renderer';
-import { mount } from 'enzyme';
-
 import { Layer } from './Layer';
 import { LayerHost } from './LayerHost';
+import { mount } from 'enzyme';
 
 const ReactDOM = require('react-dom');
 
@@ -15,7 +13,7 @@ const testEvents: string[] = (
 
 describe('Layer', () => {
   interface IFooContext {
-    foo: string | undefined;
+    foo?: string;
   }
   const context = React.createContext<IFooContext>({ foo: undefined });
 
