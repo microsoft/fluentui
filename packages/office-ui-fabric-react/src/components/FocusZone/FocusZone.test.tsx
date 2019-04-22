@@ -1,7 +1,7 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
-import { setRTL, KeyCodes, createRef } from '../../Utilities';
+import { setRTL, KeyCodes } from '../../Utilities';
 import { FocusZone } from './FocusZone';
 import { FocusZoneDirection, FocusZoneTabbableElements, IFocusZone } from './FocusZone.types';
 
@@ -1841,7 +1841,7 @@ describe('FocusZone', () => {
   });
 
   it('should not set an element outside its DOM as its active element', () => {
-    const focusZoneRef = createRef<IFocusZone>();
+    const focusZoneRef = React.createRef<IFocusZone>();
     const component = ReactTestUtils.renderIntoDocument(
       <div>
         <FocusZone componentRef={focusZoneRef}>
