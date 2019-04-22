@@ -14,6 +14,11 @@ const testEvents: string[] = (
 ).split(' ');
 
 describe('Layer', () => {
+  interface IFooContext {
+    foo: string | undefined;
+  }
+  const context = React.createContext<IFooContext>({ foo: undefined });
+
   it('renders Layer correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     const createPortal = ReactDOM.createPortal;
@@ -30,35 +35,21 @@ describe('Layer', () => {
 
   it('can render in a targeted LayerHost and pass context through', () => {
     class Child extends React.Component<{}, {}> {
-      public static contextTypes = {
-        foo: PropTypes.string.isRequired
-      };
-
-      public context: any;
-
       public render(): JSX.Element {
-        return <div id="child">{this.context.foo}</div>;
+        return <context.Consumer>{val => <div id="child">{val.foo}</div>}</context.Consumer>;
       }
     }
 
     class Parent extends React.Component<{}, {}> {
-      public static childContextTypes = {
-        foo: PropTypes.string
-      };
-
-      public getChildContext() {
-        return {
-          foo: 'foo'
-        };
-      }
-
       public render(): JSX.Element {
         return (
-          <div id="parent">
-            <Layer hostId="foo">
-              <Child />
-            </Layer>
-          </div>
+          <context.Provider value={{ foo: 'bar' }}>
+            <div id="parent">
+              <Layer hostId="foo">
+                <Child />
+              </Layer>
+            </div>
+          </context.Provider>
         );
       }
     }
@@ -87,7 +78,7 @@ describe('Layer', () => {
 
       const childElement = appElement.querySelector('#child') as Element;
 
-      expect(childElement.textContent).toEqual('foo');
+      expect(childElement.textContent).toEqual('bar');
     } finally {
       ReactDOM.unmountComponentAtNode(appElement);
       appElement.remove();
