@@ -1,18 +1,14 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
 import { SamplesCardHeader } from './SamplesCardHeader';
-import {
-  ActionButton,
-  Checkbox,
-  DefaultButton,
-  Dropdown,
-  Link,
-  PrimaryButton,
-  Stack,
-  Text,
-  TextField,
-  Toggle
-} from '../../../../packages/office-ui-fabric-react/';
+import { ActionButton, DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { Link } from 'office-ui-fabric-react/lib/Link';
 
 export class Samples extends React.Component {
   public render() {

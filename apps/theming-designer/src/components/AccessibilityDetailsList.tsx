@@ -6,11 +6,10 @@ import {
   IDetailsRowProps,
   IColumn,
   IGroup,
-  MessageBar,
-  MessageBarType,
-  SelectionMode,
-  ITheme
-} from '../../../../packages/office-ui-fabric-react/';
+  SelectionMode
+} from 'office-ui-fabric-react/lib/DetailsList';
+import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IContrastRatioPair } from './AccessibilityChecker';
 
 export interface IAccessibilityDetailsListProps {

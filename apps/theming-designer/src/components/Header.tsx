@@ -1,6 +1,10 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-import { Stack, Label, IconButton, PrimaryButton, Panel, PanelType, Pivot, PivotItem } from '../../../../packages/office-ui-fabric-react/';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
+import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { CodepenComponent } from '@uifabric/example-app-base';

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { ITheme, IThemeRules, FabricSlots, BaseSlots } from '../../../../packages/office-ui-fabric-react';
+import { IThemeRules, FabricSlots, BaseSlots } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 

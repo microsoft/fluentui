@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
 import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { Stack } from '../../../../packages/office-ui-fabric-react';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles } from '@uifabric/merge-styles';
 
 export interface IFabricPaletteProps {

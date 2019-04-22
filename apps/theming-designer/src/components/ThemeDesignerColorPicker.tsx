@@ -1,6 +1,11 @@
 import * as React from 'react';
-import { Stack, TextField, Text, IColor, Callout, ColorPicker, getColorFromString } from '../../../../packages/office-ui-fabric-react';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { ColorPicker } from 'office-ui-fabric-react/lib/ColorPicker';
+import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { mergeStyles } from '@uifabric/merge-styles';
+import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
 
 const colorLabelClassName = mergeStyles({
   fontSize: 16,

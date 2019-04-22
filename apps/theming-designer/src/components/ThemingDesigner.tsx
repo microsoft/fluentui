@@ -5,19 +5,13 @@ import { SemanticSlots } from './SemanticSlots';
 import { Header } from './Header';
 import { Samples } from './Samples';
 import { mergeStyles } from '@uifabric/merge-styles';
-import {
-  Stack,
-  loadTheme,
-  ITheme,
-  getTheme,
-  BaseComponent,
-  IColor,
-  getColorFromString,
-  IconButton,
-  ThemeProvider,
-  createTheme
-} from '../../../../packages/office-ui-fabric-react';
+import { loadTheme, ITheme, getTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
 import { ThemeGenerator, themeRulesStandardCreator, BaseSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
