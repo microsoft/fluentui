@@ -3,6 +3,7 @@ import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '..
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import { ButtonGlobalClassNames } from '../BaseButton.classNames';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, focusInset?: string, focusColor?: string): IButtonStyles => {
@@ -10,8 +11,6 @@ export const getStyles = memoizeFunction(
     const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
 
     const { palette: p, semanticColors } = theme;
-    const BUTTON_ICON_CLASSNAME = '.ms-Button-icon';
-    const MENU_ICON_CLASSNAME = 'ms-Button-menuIcon';
 
     const commandButtonHighContrastFocus = {
       left: 4,
@@ -47,10 +46,10 @@ export const getStyles = memoizeFunction(
           [HighContrastSelector]: {
             color: 'Highlight'
           },
-          [BUTTON_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDarkAlt
           },
-          [MENU_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
             color: p.neutralPrimary
           }
         }
@@ -60,10 +59,10 @@ export const getStyles = memoizeFunction(
         backgroundColor: p.neutralLight,
         color: p.neutralDark,
         selectors: {
-          [BUTTON_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDark
           },
-          [MENU_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
             color: p.neutralPrimary
           }
         }
@@ -73,10 +72,10 @@ export const getStyles = memoizeFunction(
         backgroundColor: p.neutralLight,
         color: p.neutralDark,
         selectors: {
-          [BUTTON_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDark
           },
-          [MENU_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
             color: p.neutralPrimary
           }
         }
@@ -86,10 +85,10 @@ export const getStyles = memoizeFunction(
         backgroundColor: p.neutralQuaternaryAlt,
         color: p.neutralDark,
         selectors: {
-          [BUTTON_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDark
           },
-          [MENU_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
             color: p.neutralPrimary
           }
         }
@@ -99,10 +98,10 @@ export const getStyles = memoizeFunction(
         backgroundColor: p.neutralQuaternaryAlt,
         color: p.neutralDark,
         selectors: {
-          [BUTTON_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDark
           },
-          [MENU_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
             color: p.neutralPrimary
           }
         }
@@ -111,7 +110,7 @@ export const getStyles = memoizeFunction(
       rootDisabled: {
         backgroundColor: p.white,
         selectors: {
-          [BUTTON_ICON_CLASSNAME]: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: semanticColors.disabledBodySubtext
           }
         }
@@ -146,7 +145,7 @@ export const getStyles = memoizeFunction(
               [HighContrastSelector]: {
                 color: 'Highlight'
               },
-              [BUTTON_ICON_CLASSNAME]: {
+              [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
                 color: p.neutralPrimary
               }
             }
@@ -154,7 +153,7 @@ export const getStyles = memoizeFunction(
           ':active': {
             backgroundColor: p.neutralLight,
             selectors: {
-              [BUTTON_ICON_CLASSNAME]: {
+              [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
                 color: p.neutralPrimary
               }
             }
