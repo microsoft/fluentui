@@ -37,6 +37,17 @@ export interface ISwatchColorPickerProps {
   colorCells: IColorCellProps[];
 
   /**
+   * Indicates whether the SwatchColorPicker is fully controlled.
+   * When true, the component will not set its internal state to track the selected color.
+   * Instead, the parent component will be responsible for handling state in the callbacks like
+   * onColorChanged.
+   *
+   * NOTE: This property is a temporary workaround to force the component to be fully controllable
+   * without breaking existing behavior
+   */
+  isControlled?: boolean;
+
+  /**
    * Callback issued when the user changes the color.
    * Note, if no id or color is given, there is no selected cell
    * (e.g. the user executed the currently selected cell to unselect it)

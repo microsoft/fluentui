@@ -85,7 +85,7 @@ const disabledLinks: INavLink[] = [
     disabled: true,
     key: 'key4'
   }
-]
+];
 
 storiesOf('Nav', module)
   .addDecorator(FabricDecorator)

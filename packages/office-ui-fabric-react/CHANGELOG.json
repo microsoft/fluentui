@@ -2,6 +2,129 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.167.3",
+      "tag": "office-ui-fabric-react_v6.167.3",
+      "date": "Mon, 22 Apr 2019 12:32:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Add split/disabled buttons example to documentation page",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "7c03154e750f1f6581fd4ea7bd66686d79e6c373"
+          },
+          {
+            "comment": "ScrollablePane: Remove Z Index since it's no longer necesssary",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "dc8f7bcba448f00378905026f4a74f1187882a1d"
+          },
+          {
+            "comment": "Selection: initialize count",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "710c8ea649a4e05326403c246b7c9e4ca70e09d6"
+          },
+          {
+            "comment": "TextField documentation updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "ef2f31126e814731ccfd762d6753b1f5e24464a8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.0` to `^6.46.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.167.2",
+      "tag": "office-ui-fabric-react_v6.167.2",
+      "date": "Fri, 19 Apr 2019 12:33:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Fix issue where button would eat keydown events",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "348bfe126f99ce50cda8725704a0ff80a91bc2fa"
+          },
+          {
+            "comment": "Remove usage of assign helper in favor of Object.spread across Lists",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "4c90a78d365e575d5bcaa26f20d3b302352c9949"
+          },
+          {
+            "comment": "Dropdown: Add unit test;",
+            "author": "LK <i91935058@163.com>",
+            "commit": "649d91ab7d0d192d28af02d0a9a8a970f715f235"
+          },
+          {
+            "comment": "Split button displays an expanded state always with persistMenu:true - fixing that",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "2ab3ab4ba605e3b8ef9fb71d7331279168e87643"
+          },
+          {
+            "comment": "Pickers: Fix issue where they would have invalid described by",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "ce3215cf329604f624760c5e5bcd3def633c4ac0"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.5` to `^6.35.6`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.167.1",
+      "tag": "office-ui-fabric-react_v6.167.1",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Modal: Ensure that the \"ms-Dialog\" class name is only applied once.",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "7fd3dad18e743eca3bb582b1e24f8287c323e53d"
+          },
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.167.0",
+      "tag": "office-ui-fabric-react_v6.167.0",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DatePicker: Fix props not matching their description. Add new prop to provide old functionality",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "8a6655c49fd93c9a1bef6ddeb3f01cb2efd3a24a"
+          },
+          {
+            "comment": "DetailsList: Expose optional onRenderCheckbox callback option",
+            "author": "Zhicheng Wang <imwosz@hotmail.com>",
+            "commit": "48ef2097fcaf941b71e9f2173751d1f6971f4f02"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update Announced examples",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          },
+          {
+            "comment": "Panel: Fix double dismiss",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "743d8bfb1bc464b090c101ac559d85d941c41cf2"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.166.1",
       "tag": "office-ui-fabric-react_v6.166.1",
       "date": "Mon, 15 Apr 2019 12:33:42 GMT",

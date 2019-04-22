@@ -26,8 +26,6 @@ option('production');
 // Adds an alias for 'npm-install-mode' for backwards compatibility
 option('min', { alias: 'npm-install-mode' });
 
-option('prdeploy');
-
 option('webpackConfig', { alias: 'w' });
 
 // Build only commonjs (not other TS variants) but still run other tasks
@@ -54,7 +52,7 @@ registerTask('check-for-modified-files', checkForModifiedFiles);
 registerTask('generate-version-files', generateVersionFiles);
 registerTask('perf-test', perfTest);
 
-task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min && !argv().prdeploy)));
+task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)));
 
 task(
   'build',
@@ -63,12 +61,12 @@ task(
     'copy',
     'sass',
     parallel(
-      condition('tslint', () => !argv().min && !argv().prdeploy),
-      condition('jest', () => !argv().min && !argv().prdeploy),
+      condition('tslint', () => !argv().min),
+      condition('jest', () => !argv().min),
       series(
         argv().commonjs ? 'ts:commonjs-only' : 'ts',
-        condition('lint-imports', () => !argv().min && !argv().prdeploy),
-        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min && !argv().prdeploy))
+        condition('lint-imports', () => !argv().min),
+        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min))
       )
     )
   )
