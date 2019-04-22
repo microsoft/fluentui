@@ -1254,7 +1254,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     getCachedMeasurement: (data: any) => number | undefined;
     addMeasurementToCache: (data: any, measurement: number) => void;
 }) => {
-    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureWidth: () => number, newContainerWidth?: number | undefined) => IResizeGroupState | undefined;
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
@@ -5993,6 +5993,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
     dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
     onGrowData?: (prevData: any) => any;
     onReduceData: (prevData: any) => any;
     onRenderData: (data: any) => JSX.Element;
@@ -7010,6 +7011,7 @@ export interface ISwatchColorPickerProps {
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
     id?: string;
+    isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
@@ -8151,6 +8153,14 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // (undocumented)
     render(): JSX.Element;
     }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1,
+}
 
 // @public
 export function rgb2hex(r: number, g: number, b: number): string;

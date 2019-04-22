@@ -8,7 +8,7 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
   }
   const { palette, semanticColors } = theme;
 
-  const BUTTON_ICON_CLASSNAME = '.ms-Button-Icon';
+  const BUTTON_ICON_CLASSNAME = '.ms-Button-icon';
 
   return {
     root: [
