@@ -85,9 +85,6 @@ export const getStyles = memoizeFunction(
         backgroundColor: p.neutralLight,
         color: p.neutralDark,
         selectors: {
-          ':hover': {
-            backgroundColor: p.neutralQuaternaryAlt
-          },
           [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
             color: p.themeDark
           },
@@ -95,6 +92,10 @@ export const getStyles = memoizeFunction(
             color: p.neutralPrimary
           }
         }
+      },
+
+      rootExpandedHovered: {
+        backgroundColor: p.neutralQuaternaryAlt
       },
 
       rootCheckedHovered: {
