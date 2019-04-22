@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.167.3",
+      "tag": "office-ui-fabric-react_v6.167.3",
+      "date": "Mon, 22 Apr 2019 12:32:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Add split/disabled buttons example to documentation page",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "7c03154e750f1f6581fd4ea7bd66686d79e6c373"
+          },
+          {
+            "comment": "ScrollablePane: Remove Z Index since it's no longer necesssary",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "dc8f7bcba448f00378905026f4a74f1187882a1d"
+          },
+          {
+            "comment": "Selection: initialize count",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "710c8ea649a4e05326403c246b7c9e4ca70e09d6"
+          },
+          {
+            "comment": "TextField documentation updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "ef2f31126e814731ccfd762d6753b1f5e24464a8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.0` to `^6.46.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.167.2",
       "tag": "office-ui-fabric-react_v6.167.2",
       "date": "Fri, 19 Apr 2019 12:33:03 GMT",

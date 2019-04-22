@@ -2,6 +2,35 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.5",
+      "tag": "@uifabric/fluent-theme_v0.16.5",
+      "date": "Mon, 22 Apr 2019 12:32:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Fluent styles for CommandBar and CommandBarButton",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "7c03154e750f1f6581fd4ea7bd66686d79e6c373"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.0` to `^6.46.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.2` to `^6.167.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.4",
       "tag": "@uifabric/fluent-theme_v0.16.4",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",
