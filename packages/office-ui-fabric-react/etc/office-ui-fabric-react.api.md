@@ -3964,6 +3964,15 @@ export interface IDocumentCardTitleStyles {
 }
 
 // @public (undocumented)
+export interface IDragOptions {
+    closeMenuItemText: string;
+    dragHandleSelector?: string;
+    keyboardMoveIconProps?: IIconProps;
+    menu: React.StatelessComponent<IContextualMenuProps>;
+    moveMenuItemText: string;
+}
+
+// @public (undocumented)
 export interface IDropdown {
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
@@ -5144,8 +5153,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
-    // Warning: (ae-forgotten-export) The symbol "DragOptions" needs to be exported by the entry point index.d.ts
-    dragOptions?: DragOptions;
+    dragOptions?: IDragOptions;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;

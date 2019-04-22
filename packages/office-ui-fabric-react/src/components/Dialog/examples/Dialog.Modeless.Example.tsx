@@ -2,7 +2,6 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IDragOptions } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { ContextualMenu } from '../../ContextualMenu/index';
 
 export interface IDialogModelessExampleState {
@@ -16,9 +15,9 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
     isDraggable: false
   };
 
-  private _dragOptions: IDragOptions = {
-    moveMenuItemText: 'move',
-    closeMenuItemText: 'close',
+  private _dragOptions = {
+    moveMenuItemText: 'Move',
+    closeMenuItemText: 'Close',
     menu: ContextualMenu
   };
 

@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { Modal } from 'office-ui-fabric-react/lib/Modal';
+import { Modal, IDragOptions } from 'office-ui-fabric-react/lib/Modal';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as styles from './Modal.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IDragOptions } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { ContextualMenu } from '../../ContextualMenu/index';
 
 export interface IModalBasicExampleState {
@@ -22,8 +21,8 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
   private _titleId: string = getId('title');
   private _subtitleId: string = getId('subText');
   private _dragOptions: IDragOptions = {
-    moveMenuItemText: 'move',
-    closeMenuItemText: 'close',
+    moveMenuItemText: 'Move',
+    closeMenuItemText: 'Close',
     menu: ContextualMenu
   };
 

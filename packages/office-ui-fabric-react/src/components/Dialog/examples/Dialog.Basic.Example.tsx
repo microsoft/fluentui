@@ -4,7 +4,6 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button'
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { IDragOptions } from 'office-ui-fabric-react/lib/utilities/DraggableZone/index';
 import { ContextualMenu } from '../../ContextualMenu/index';
 
 const screenReaderOnly = mergeStyles(hiddenContentStyle);
@@ -23,9 +22,9 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
   // (It's also okay to use plain strings without getId() and manually ensure uniqueness.)
   private _labelId: string = getId('dialogLabel');
   private _subTextId: string = getId('subTextLabel');
-  private _dragOptions: IDragOptions = {
-    moveMenuItemText: 'move',
-    closeMenuItemText: 'close',
+  private _dragOptions = {
+    moveMenuItemText: 'Move',
+    closeMenuItemText: 'Close',
     menu: ContextualMenu
   };
 
