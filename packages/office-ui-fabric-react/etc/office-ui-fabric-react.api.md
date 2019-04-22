@@ -4239,7 +4239,6 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 export interface IFocusZone {
     focus(forceIntoFirstElement?: boolean): boolean;
     focusElement(childElement?: HTMLElement): boolean;
-    getActiveElement(): HTMLElement | null;
 }
 
 // @public

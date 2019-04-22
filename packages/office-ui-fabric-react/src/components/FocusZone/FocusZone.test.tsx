@@ -1875,9 +1875,10 @@ describe('FocusZone', () => {
     });
 
     ReactTestUtils.Simulate.focus(buttonA);
-    expect(focusZoneRef.current!.getActiveElement()!.id).toBe('a');
+    // No public API to test active element. Therefore, we need to do an explicit cast.
+    expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
     ReactTestUtils.Simulate.focus(externalElement);
-    expect(focusZoneRef.current!.getActiveElement()!.id).not.toBe('externalElement');
-    expect(focusZoneRef.current!.getActiveElement()!.id).toBe('a');
+    expect((focusZoneRef.current! as any)._activeElement.id).not.toBe('externalElement');
+    expect((focusZoneRef.current! as any)._activeElement.id).toBe('a');
   });
 });

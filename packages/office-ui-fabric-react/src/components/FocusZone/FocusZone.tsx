@@ -275,13 +275,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     return false;
   }
 
-  /**
-   * Gets the current active element of the focus zone.
-   */
-  public getActiveElement(): HTMLElement | null {
-    return this._activeElement;
-  }
-
   private _evaluateFocusBeforeRender(): void {
     const { current: root } = this._root;
     const doc = getDocument(root);
