@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack } from 'office-ui-fabric-react';
+import { Stack, Text } from 'office-ui-fabric-react';
 import { IMenuButtonProps, ISplitButtonProps, MenuButton, SplitButton } from '@uifabric/experiments';
 
 export interface IRibbonMenuButtonProps extends IMenuButtonProps {
@@ -120,19 +120,18 @@ export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = pro
 export class ButtonSlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <div>
-        <p>Horizontal Buttons</p>
+      <Stack tokens={{ childrenGap: 8 }}>
+        <Text>Horizontal Buttons</Text>
         <Stack horizontal>
           <RibbonSplitMenuButton icon="Microphone" content="Dictate" menu={menuProps} />
           <RibbonMenuButton icon="MarkAsProtected" content="Sensitivity" menu={menuProps} />
         </Stack>
-        <br />
-        <p>Vertical Buttons</p>
+        <Text>Vertical Buttons</Text>
         <Stack horizontal>
           <RibbonSplitMenuButton vertical icon="Microphone" content="Dictate" menu={menuProps} />
           <RibbonMenuButton vertical icon="MarkAsProtected" content="Sensitivity" menu={menuProps} />
         </Stack>
-      </div>
+      </Stack>
     );
   }
 }
