@@ -23,7 +23,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
 
     return (
       <div>
-        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Sample Initiator" />
+        <DefaultButton onClick={this._onButtonClickHandler} text="Trap Focus Initiator" />
         <FocusTrapZone disabled={!useTrapZone}>
           <Stack
             horizontalAlign="start"
