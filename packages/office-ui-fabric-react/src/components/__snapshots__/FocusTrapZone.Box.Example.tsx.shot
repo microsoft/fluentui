@@ -3,8 +3,6 @@
 exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] = `
 <div>
   <button
-    aria-describedby="id__1"
-    aria-labelledby="id__0"
     className=
         ms-Button
         ms-Button--default
@@ -113,7 +111,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] 
               }
           id="id__0"
         >
-          Sample Initiator
+          Trap Focus Initiator
         </div>
       </div>
     </div>
