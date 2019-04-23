@@ -6,6 +6,7 @@ import { Modal, IModalProps } from '../../Modal';
 import { ILayerProps } from '../../Layer';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { getMergedDialogContentStyles } from './Dialog.styles';
+import { IDragOptions } from '../Modal';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 
@@ -98,25 +99,23 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     }
 
     let dialogDraggableClassName: string | undefined;
-    let dragHandleSelector: string | undefined;
+    let dragOptions: IDragOptions | undefined;
 
-    // if we are draggable, make sure we are using the correct
-    // draggable classname and selectors
-    if (modalProps && modalProps.dragOptions) {
-      const selector: string | undefined = modalProps.dragOptions.dragHandleSelector;
-      if (selector) {
-        dragHandleSelector = selector;
-      } else {
-        dialogDraggableClassName = 'ms-dialog-draggable-header';
-        dragHandleSelector = `.${dialogDraggableClassName}`;
-      }
+    if (modalProps && modalProps.dragOptions && !modalProps.dragOptions.dragHandleSelector) {
+      dialogDraggableClassName = 'ms-dialog-draggable-header';
+      dragOptions = {
+        ...modalProps.dragOptions,
+        dragHandleSelector: `.${dialogDraggableClassName}`
+      };
+    } else {
+      dragOptions = modalProps && modalProps.dragOptions;
     }
 
     const mergedModalProps = {
       ...DefaultModalProps,
       ...modalProps,
       layerProps: mergedLayerProps,
-      dragHandleSelector
+      dragOptions
     };
 
     const dialogContentProps: IDialogContentProps = {
