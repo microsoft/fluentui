@@ -7,10 +7,7 @@ export const getStyles: IStyleFunction<IVerticalDividerPropsStyles, IVerticalDiv
   const { theme, getClassNames, className } = props;
 
   if (!theme) {
-    return {
-      wrapper: {},
-      divider: {}
-    };
+    throw new Error('Theme is undefined or null.');
   }
 
   if (getClassNames) {

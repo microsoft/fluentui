@@ -36,7 +36,13 @@ export type IVerticalDividerPropsStyles = Pick<IVerticalDividerProps, 'theme' | 
  * Style interface that defines the different areas that styles can be customized on the Vertical Divider
  */
 export interface IVerticalDividerStyles {
+  /**
+   * Styling for the div that wraps the actual divider
+   */
   wrapper: IStyle;
+  /**
+   * Styling for the divider.
+   */
   divider: IStyle;
 }
 
@@ -46,6 +52,13 @@ export interface IVerticalDividerStyles {
  * Deprecated class names, used to be used to provider customizations, use IVerticalDividerStyles instead
  */
 export interface IVerticalDividerClassNames {
+  /**
+   * Styling for the div that wraps the actual divider
+   */
   wrapper: string;
+
+  /**
+   * Styling for the divider.
+   */
   divider: string;
 }
