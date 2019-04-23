@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { CardBasicExample } from './examples/Card.Basic.Example';
-const CardBasicExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Basic.Example.tsx') as string;
+import { CardVerticalExample } from './examples/Card.Vertical.Example';
+const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Vertical.Example.tsx') as string;
 
 import { CardCompactExample } from './examples/Card.Compact.Example';
 const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
@@ -15,8 +15,8 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
         componentName="Card"
         exampleCards={
           <div>
-            <ExampleCard title="Basic Card" code={CardBasicExampleCode}>
-              <CardBasicExample />
+            <ExampleCard title="Vertical Card" code={CardVerticalExampleCode}>
+              <CardVerticalExample />
             </ExampleCard>
             <ExampleCard title="Compact Card" code={CardCompactExampleCode}>
               <CardCompactExample />

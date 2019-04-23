@@ -2,16 +2,33 @@ import { IBaseProps } from '@uifabric/utilities';
 import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IStyleableComponentProps } from '@uifabric/foundation';
 
+/**
+ * {@docCategory Card}
+ */
 export type ICardComponent = IComponent<ICardProps, ICardTokens, ICardStyles>;
 
 // These types are redundant with ICardComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety for tokens and styles functions.
+
+/**
+ * {@docCategory Card}
+ */
 export type ICardTokenReturnType = ReturnType<Extract<ICardComponent['tokens'], Function>>;
+
+/**
+ * {@docCategory Card}
+ */
 export type ICardStylesReturnType = ReturnType<Extract<ICardComponent['styles'], Function>>;
 
+/**
+ * {@docCategory Card}
+ */
 export interface ICard {}
 
+/**
+ * {@docCategory Card}
+ */
 export interface ICardSlots {
   /**
    * Defines root slot of the component for managing the layout of the Card.
@@ -19,6 +36,9 @@ export interface ICardSlots {
   root?: IStackSlot;
 }
 
+/**
+ * {@docCategory Card}
+ */
 export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard> {
   /**
    * Defines whether to render a regular or a compact Card.
@@ -32,6 +52,9 @@ export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardPr
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
+/**
+ * {@docCategory Card}
+ */
 export interface ICardTokens extends IStackTokens {
   /**
    * Defines the box shadow of the Card.
@@ -43,6 +66,14 @@ export interface ICardTokens extends IStackTokens {
    */
   boxShadowHovered?: string;
 
+  /**
+   * Defines the margin that is applied to the Card's children.
+   */
+  childrenMargin?: number;
+
+  /**
+   * Defines the mouse cursor to be displayed when pointing over the Card.
+   */
   cursor?: string;
 
   /**
@@ -76,14 +107,12 @@ export interface ICardTokens extends IStackTokens {
   maxWidth?: number | string;
 
   /**
-   * Defines the padding of the Card, between the Card border and the Card contents.
-   */
-  padding?: number | string;
-
-  /**
    * Defines a fixed width for the Card.
    */
   width?: number | string;
 }
 
+/**
+ * {@docCategory Card}
+ */
 export type ICardStyles = IComponentStyles<ICardSlots>;

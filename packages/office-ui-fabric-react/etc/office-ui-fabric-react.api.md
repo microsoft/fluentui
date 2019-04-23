@@ -6625,8 +6625,8 @@ export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['
 
 // @public (undocumented)
 export interface IStackItemTokens {
-    // (undocumented)
     margin?: number | string;
+    padding?: number | string;
 }
 
 // @public (undocumented)
@@ -6667,6 +6667,9 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 // @public (undocumented)
 export interface IStackTokens {
     childrenGap?: number | string;
+    maxHeight?: number | string;
+    maxWidth?: number | string;
+    padding?: number | string;
 }
 
 // @public (undocumented)

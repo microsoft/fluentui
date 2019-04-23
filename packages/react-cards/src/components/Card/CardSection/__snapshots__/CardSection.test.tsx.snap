@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Item renders correctly 1`] = `
+exports[`Card Section renders correctly 1`] = `
 <div
   className=
       ms-Stack
@@ -36,12 +36,15 @@ exports[`Card Item renders correctly 1`] = `
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -56,13 +59,22 @@ exports[`Card Item renders correctly 1`] = `
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when having tokens passed to it 1`] = `
+exports[`Card Section renders correctly when having tokens passed to it 1`] = `
 <div
   className=
       ms-Stack
@@ -98,12 +110,15 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
@@ -117,6 +132,15 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
         }
   >
     <div />

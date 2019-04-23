@@ -141,6 +141,21 @@ export interface IStackTokens {
    * If 'column gap' is omitted, it's set to the same value as 'row gap'.
    */
   childrenGap?: number | string;
+
+  /**
+   * Defines a maximum height for the Stack.
+   */
+  maxHeight?: number | string;
+
+  /**
+   * Defines a maximum width for the Stack.
+   */
+  maxWidth?: number | string;
+
+  /**
+   * Defines the padding to be applied to the Stack contents relative to its border.
+   */
+  padding?: number | string;
 }
 
 /**

@@ -38,7 +38,7 @@ export class CardCompactExample extends React.Component<{}, {}> {
           fontWeight: FontWeights.regular
         }
       },
-      footerStack: {
+      footerCardSection: {
         root: {
           borderLeft: '1px solid #F3F2F1'
         }
@@ -49,40 +49,39 @@ export class CardCompactExample extends React.Component<{}, {}> {
       sectionStack: {
         childrenGap: 20
       },
-      imageCardItem: {
-        margin: '-12px 0 -12px -12px'
+      card: {
+        childrenMargin: 12
       },
-      contentStack: {
-        childrenGap: 12
-      },
-      cardFooterStack: {
-        childrenGap: 16
+      footerCardSection: {
+        padding: '0px 0px 0px 12px'
       }
     };
 
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Card compact={true}>
-          <Text>Basic compact card</Text>
+        <Card compact tokens={tokens.card}>
+          <Card.Item>
+            <Text>Basic compact card</Text>
+          </Card.Item>
         </Card>
 
-        <Card compact={true} onClick={alertClicked}>
-          <Card.Item tokens={tokens.imageCardItem}>
+        <Card compact onClick={alertClicked} tokens={tokens.card}>
+          <Card.Item fill>
             <Image src="https://placehold.it/180x135" alt="Placeholder image." />
           </Card.Item>
-          <Stack tokens={tokens.contentStack}>
+          <Card.Section>
             <Text styles={styles.siteText}>Contoso</Text>
             <Text styles={styles.descriptionText}>Contoso Denver expansion design marketing hero guidelines</Text>
             <Text styles={styles.helpfulText}>Is this recommendation helpful?</Text>
-          </Stack>
-          <Stack tokens={tokens.cardFooterStack} padding="0 0 0 12px" styles={styles.footerStack}>
+          </Card.Section>
+          <Card.Section styles={styles.footerCardSection} tokens={tokens.footerCardSection}>
             <Icon iconName="RedEye" styles={styles.icon} />
             <Icon iconName="SingleBookmark" styles={styles.icon} />
             <Stack.Item grow={1}>
               <span />
             </Stack.Item>
             <Icon iconName="MoreVertical" styles={styles.icon} />
-          </Stack>
+          </Card.Section>
         </Card>
       </Stack>
     );
