@@ -46,7 +46,7 @@ exports[`Card Section renders correctly 1`] = `
           flex-direction: column;
           flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-size: 18px;
           font-weight: 400;
           height: auto;
           margin-bottom: 0px;
@@ -120,7 +120,7 @@ exports[`Card Section renders correctly when having tokens passed to it 1`] = `
           flex-direction: column;
           flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 14px;
+          font-size: 18px;
           font-weight: 400;
           height: auto;
           margin-bottom: 12px;
