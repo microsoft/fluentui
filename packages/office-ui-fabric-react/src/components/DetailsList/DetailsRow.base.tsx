@@ -208,17 +208,23 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       })
     };
 
-    if (!this._rowClassNames) {
-      this._rowClassNames = {
-        isMultiline: this._classNames.isMultiline,
-        isRowHeader: this._classNames.isRowHeader,
-        shimmerIconPlaceholder: this._classNames.shimmerIconPlaceholder,
-        shimmer: this._classNames.shimmer,
-        cell: this._classNames.cell,
-        cellPadded: this._classNames.cellPadded,
-        cellUnpadded: this._classNames.cellUnpadded,
-        fields: this._classNames.fields
-      };
+    const rowClassNames: IDetailsRowFieldsProps['rowClassNames'] = {
+      isMultiline: this._classNames.isMultiline,
+      isRowHeader: this._classNames.isRowHeader,
+      shimmerIconPlaceholder: this._classNames.shimmerIconPlaceholder,
+      shimmer: this._classNames.shimmer,
+      cell: this._classNames.cell,
+      cellPadded: this._classNames.cellPadded,
+      cellUnpadded: this._classNames.cellUnpadded,
+      fields: this._classNames.fields
+    };
+
+    // Only re-assign rowClassNames when classNames have changed.
+    // Otherwise, they will cause DetailsRowFields to unnecessarily
+    // re-render, see https://github.com/OfficeDev/office-ui-fabric-react/pull/8799.
+    // Refactor DetailsRowFields to generate own styles to remove need for this.
+    if (!shallowCompare(this._rowClassNames || {}, rowClassNames)) {
+      this._rowClassNames = rowClassNames;
     }
 
     const rowFields = (
