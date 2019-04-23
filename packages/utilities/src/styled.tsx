@@ -59,6 +59,7 @@ export function styled<
     public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
+    private _customizedStyles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 
     public render(): JSX.Element {
       return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
@@ -81,10 +82,15 @@ export function styled<
 
       const settings = Customizations.getSettings(fields, scope, context.customizations);
       const { styles: customizedStyles, ...rest } = settings;
-      const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
-
       const additionalProps = getProps ? getProps(this.props) : undefined;
-      return <Component {...rest} {...additionalProps} {...this.props} styles={styles} />;
+
+      this._customizedStyles = customizedStyles;
+
+      return <Component {...rest} {...additionalProps} {...this.props} styles={this._resolveClassNames} />;
+    };
+
+    private _resolveClassNames = (styleProps: TStyleProps): IConcatenatedStyleSet<TStyleSet> | undefined => {
+      return _resolve(styleProps, baseStyles, this._customizedStyles, this.props.styles);
     };
 
     private _onSettingsChanged = () => this.forceUpdate();

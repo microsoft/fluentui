@@ -144,29 +144,6 @@ export class GetStartedPage extends React.Component<any, any> {
                   </a>
                 </div>
               </li>
-              <li className={diagramStyles.component}>
-                <div className={diagramStyles.graphics}>
-                  <img
-                    className={diagramStyles.componentImage}
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-components-few.svg'}
-                    width="175"
-                    height="90"
-                    alt="Illustrated Diagram of few components"
-                  />
-                  <img
-                    className={diagramStyles.coreImage}
-                    src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/diagram-core.svg'}
-                    alt="Illustrated representation of Fabric cores styles and libraries."
-                  />
-                </div>
-                <div className={diagramStyles.content}>
-                  <span className={diagramStyles.headline}>AngularJS</span>
-                  <span className={diagramStyles.description}>Community-driven project to build components for Angular-based apps</span>
-                  <a className={styles.getStartedLink} href="#/angular-js">
-                    Learn more
-                  </a>
-                </div>
-              </li>
             </ul>
           </div>
         </div>
@@ -337,10 +314,6 @@ initializeIcons('https://my.cdn.com/path/to/icons/');`}
                 . To use components, see{' '}
                 <a className={styles.getStartedLink} href="#/get-started#react">
                   Fabric React
-                </a>{' '}
-                or{' '}
-                <a className={styles.getStartedLink} href="#/angular-js">
-                  ngOfficeUIFabric
                 </a>
                 .
               </p>

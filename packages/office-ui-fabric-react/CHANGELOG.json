@@ -2,6 +2,79 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.168.0",
+      "tag": "office-ui-fabric-react_v6.168.0",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FocusZone should not set elements inside a portal (outside its DOM) as an active element",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "507a7f01f878459a32020065964c18cb2d8465de"
+          },
+          {
+            "comment": "Lists: Remove unnecessary usages of css concat helper",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "31a01f10e45b044960899e3ba7da1d14f3bb5eb8"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adding a way to make to make the state of the SwatchColorPicker be fully controllable",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "02d58453e95ca57fc5d811af75efb5e6593d2c82"
+          },
+          {
+            "comment": "Introduce vertical option for ResizeGroup",
+            "author": "Kelsey Young <kelseyyoung4@gmail.com>",
+            "commit": "820e03f3a536e0079f5619b01ec3c1cac8e1f41f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.6` to `^6.35.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/codepen-loader\" from `^0.1.0` to `^0.1.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.167.3",
+      "tag": "office-ui-fabric-react_v6.167.3",
+      "date": "Mon, 22 Apr 2019 12:32:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBar: Add split/disabled buttons example to documentation page",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "7c03154e750f1f6581fd4ea7bd66686d79e6c373"
+          },
+          {
+            "comment": "ScrollablePane: Remove Z Index since it's no longer necesssary",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "dc8f7bcba448f00378905026f4a74f1187882a1d"
+          },
+          {
+            "comment": "Selection: initialize count",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "710c8ea649a4e05326403c246b7c9e4ca70e09d6"
+          },
+          {
+            "comment": "TextField documentation updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "ef2f31126e814731ccfd762d6753b1f5e24464a8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.0` to `^6.46.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.167.2",
       "tag": "office-ui-fabric-react_v6.167.2",
       "date": "Fri, 19 Apr 2019 12:33:03 GMT",
