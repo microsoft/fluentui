@@ -154,7 +154,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                 role="button"
                 type="button"
               >
-                <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} />
+                <Icon iconName={getRTL() ? rightNavigationIcon : leftNavigationIcon} aria-hidden={false} />
               </button>
               <button
                 className={css('ms-DatePicker-nextYear js-nextYear', styles.nextYear, {
@@ -171,7 +171,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                 role="button"
                 type="button"
               >
-                <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} />
+                <Icon iconName={getRTL() ? leftNavigationIcon : rightNavigationIcon} aria-hidden={false} />
               </button>
             </div>
           </div>
