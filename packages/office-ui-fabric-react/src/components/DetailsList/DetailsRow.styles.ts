@@ -154,16 +154,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             // Selected State hover meta cell
             $cell: {
               color: colors.focusMetaTextColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'HighlightText',
-                  selectors: {
-                    '> a': {
-                      color: 'HighlightText'
-                    }
-                  }
-                }
-              },
 
               // Row header cell
               '&.$isRowHeader': {
@@ -174,6 +164,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   }
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default focus background
+            [HighContrastSelector]: {
+              background: 'Highlight'
             }
           }
         },
