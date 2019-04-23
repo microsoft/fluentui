@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps, IExample } from '../../common/DocPage.types';
-import { DetailsListStatus } from './DetailsList.checklist';
 
 import { DetailsListBasicExample } from './examples/DetailsList.Basic.Example';
 const DetailsListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.Basic.Example.tsx') as string;
@@ -60,7 +59,6 @@ export const DetailsListPageProps: IDocPageProps = {
   componentName: 'DetailsList',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DetailsList',
-  componentStatus: DetailsListStatus,
   examples: [
     {
       title: 'DetailsList with 500 documents, sorting, filtering, marquee selection, justified columns',
