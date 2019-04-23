@@ -60,7 +60,8 @@ export class App extends React.Component<IAppProps, any> {
   public componentWillReceiveProps(nextProps: IAppProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
       const hash = extractAnchorLink(window.location.hash);
-      if (hash.substring(0, 11) === '/components') {
+      // when loading a new component page, we want to scroll to the top
+      if (hash.indexOf('/components') !== -1) {
         document.body.scrollTop = document.documentElement.scrollTop = 0;
       }
     }
