@@ -292,7 +292,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this._isDescendantThroughPortal(ev.target as HTMLElement)) {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
     }
@@ -389,7 +389,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
-    if (this._isDescendantThroughPortal(ev.target as HTMLElement)) {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
     }
@@ -448,7 +448,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    * Handle the keystrokes.
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
-    if (this._isDescendantThroughPortal(ev.target as HTMLElement)) {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
       // If the event target is inside a portal do not process the event.
       return;
     }
@@ -921,12 +921,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    if (parentElement === this._root.current) {
-      return this._root.current;
-    }
-
-    // parentElement is body or null, so the element is not part of any focus zone.
-    return null;
+    return parentElement;
   }
 
   private _updateTabIndexes(element?: HTMLElement) {
@@ -1027,7 +1022,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   /**
    * Returns true if the element is a descendant of the FocusZone through a React portal.
    */
-  private _isDescendantThroughPortal(element: HTMLElement): boolean {
-    return element && portalContainsElement(element, this._root.current ? this._root.current : undefined);
+  private _portalContainsElement(element: HTMLElement): boolean {
+    return element && !!this._root.current && portalContainsElement(element, this._root.current);
   }
 }
