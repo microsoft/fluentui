@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "ShimmeredDetailsList: Fix Safari issue with linear gradients using transparent color. Add new prop 'detailsListProps' to allow passing 'styles' prop to DetailsList. Add some logic in passing to 'listProps' a className.",
+      "comment": "Add new prop 'detailsListStyles' to allow passing 'styles' prop to DetailsList. Deprecate all shimmer related props in DetailsList and DetailsListRow. Adds documentation",
       "type": "minor"
     }
   ],
