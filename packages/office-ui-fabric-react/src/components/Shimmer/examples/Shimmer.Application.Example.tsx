@@ -63,7 +63,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         <div>
           <ShimmeredDetailsList
             setKey="items"
-            items={items!}
+            items={items}
             columns={columns}
             selectionMode={SelectionMode.none}
             onRenderItemColumn={this._onRenderItemColumn}
