@@ -1,8 +1,7 @@
 import { IColumn } from './DetailsList.types';
-import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
+import { ICellStyleProps } from './DetailsRow.types';
 import { IDetailsListProps } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
-import { isRowHeader, shimmerIconPlaceholder } from './DetailsRow.scss';
 
 /**
  * {@docCategory DetailsList}
