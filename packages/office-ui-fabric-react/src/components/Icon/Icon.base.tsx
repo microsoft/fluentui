@@ -53,7 +53,7 @@ export class IconBase extends React.PureComponent<IIconProps, IIconState> {
         };
 
     return (
-      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root} data-test="stuff22">
+      <RootType data-icon-name={iconName} {...containerProps} {...nativeProps} className={classNames.root}>
         {isImage ? <ImageType {...imageProps} /> : children}
       </RootType>
     );
