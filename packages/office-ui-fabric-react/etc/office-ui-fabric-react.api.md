@@ -7448,7 +7448,7 @@ export interface ITooltipStyles {
     subText: IStyle;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface IVerticalDividerClassNames {
     // (undocumented)
     divider: string;
@@ -7456,9 +7456,24 @@ export interface IVerticalDividerClassNames {
     wrapper: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalDividerProps {
+    className?: string;
+    // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+    styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export type IVerticalDividerPropsStyles = Pick<IVerticalDividerProps, 'theme' | 'getClassNames' | 'className'>;
+
+// @public
+export interface IVerticalDividerStyles {
+    // (undocumented)
+    divider: IStyle;
+    // (undocumented)
+    wrapper: IStyle;
 }
 
 // @public (undocumented)
@@ -9053,7 +9068,7 @@ export enum ValuePosition {
 }
 
 // @public (undocumented)
-export const VerticalDivider: (props: IVerticalDividerProps) => JSX.Element;
+export const VerticalDivider: React_2.StatelessComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {
