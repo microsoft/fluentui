@@ -176,6 +176,17 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
               }
             }
           }
+        },
+
+        [HighContrastSelector]: {
+          background: 'Highlight',
+          color: 'HighlightText',
+          MsHighContrastAdjust: 'none',
+          selectors: {
+            a: {
+              color: 'HighlightText'
+            }
+          }
         }
       }
     }
@@ -252,26 +263,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
           borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`,
           borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`
-        },
-
-        '.is-selected > &.$isRowHeader': {
-          color: colors.selectedTextColor,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          },
-
-          [HighContrastSelector]: {
-            background: 'Highlight',
-            color: 'HighlightText',
-            MsHighContrastAdjust: 'none',
-            selectors: {
-              a: {
-                color: 'HighlightText'
-              }
-            }
-          }
         }
       }
     },
