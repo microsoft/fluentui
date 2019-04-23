@@ -81,6 +81,18 @@ export const getStyles = memoizeFunction(
         }
       },
 
+      rootCheckedHovered: {
+        backgroundColor: p.neutralQuaternaryAlt,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary
+          }
+        }
+      },
+
       rootExpanded: {
         backgroundColor: p.neutralLight,
         color: p.neutralDark,
@@ -96,18 +108,6 @@ export const getStyles = memoizeFunction(
 
       rootExpandedHovered: {
         backgroundColor: p.neutralQuaternaryAlt
-      },
-
-      rootCheckedHovered: {
-        backgroundColor: p.neutralQuaternaryAlt,
-        selectors: {
-          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
-            color: p.themeDark
-          },
-          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
-            color: p.neutralPrimary
-          }
-        }
       },
 
       rootDisabled: {
