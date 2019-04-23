@@ -69,8 +69,6 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
         }
   >
     <button
-      aria-describedby="id__1"
-      aria-labelledby="id__0"
       className=
           ms-Button
           ms-Button--default
