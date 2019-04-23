@@ -11,7 +11,8 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
   /**
    * DetailsList `styles` to pass through.
    * Due to ShimmeredDetailsList overriding the extended `styles` prop with its own one
-   * we reserve this one slot to allow `DetailsList` styles customization.
+   * we temporary introduce this one slot to allow `DetailsList` styles customization.
+   * @deprecated Will be removed in Fabric 7.0 in favor of `styles` prop that will have its typing adjusted
    */
   detailsListStyles?: IDetailsListProps['styles'];
 
@@ -22,14 +23,21 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
   enableShimmer?: boolean;
 
   /**
+   * Determines whether to remove a fading out to bottom overlay over the shimmering items
+   * used to further emphasize the unknown number of items that will be fetched.
+   */
+  removeFadingOverlay?: boolean;
+
+  /**
    * Custom placeholder renderer to be used when in need to override the default placeholder of a DetailsRow.
    * Optional argument is passed to leverage the calculated column measurements done by DetailsList.
    */
   onRenderCustomPlaceholder?: (rowProps?: IDetailsRowProps) => React.ReactNode;
 
   /**
-   * Custom styles to override the styles specific to the ShimmeredDetailsList placeholders.
-   * To override DetailsList styles use `detailsListProps` instead.
+   * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
+   * To override DetailsList styles, temporary use `detailsListStyles` prop instead.
+   * @deprecated Types will be adjusted in Fabric 7.0 to allow direct pass through of `DetailsList` styles.
    */
   styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 
@@ -42,25 +50,29 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
 /**
  * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
- * {@docCategory ShimmeredDetailsList}
+ * @internal
  */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
   /**
    * Class name passed to `List` component.
+   * @deprecated In Fabric 7.0 a different logic will be applied to pass the className to `List`.
    */
   className?: string;
 
   /**
    * Whether the shimmer placeholder is enabled. Used to render a fade-out to bottom overlay over the shimmer placeholders.
+   * @deprecated In Fabric 7.0 a different logic will be applied to control the application of the overlay.
    */
   enableShimmer?: boolean;
 };
 
 /**
  * Represents the stylable areas of the control.
- * {@docCategory ShimmeredDetailsList}
+ * @internal
  */
 export interface IShimmeredDetailsListStyles {
-  /** Represents styles passed to the `List` component for creating a fade-out to the bottom overlay. */
+  /**
+   * Represents styles passed to the `List` component for creating a fade-out to the bottom overlay.
+   */
   root: IStyle;
 }

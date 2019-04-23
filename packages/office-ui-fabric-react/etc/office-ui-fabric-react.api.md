@@ -6392,22 +6392,17 @@ export interface IShimmerColors {
 
 // @public
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
+    // @deprecated
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
     onRenderCustomPlaceholder?: (rowProps?: IDetailsRowProps) => React_2.ReactNode;
+    removeFadingOverlay?: boolean;
     shimmerLines?: number;
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
+    // 
+    // @deprecated
     styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
-}
-
-// @public
-export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
-    className?: string;
-    enableShimmer?: boolean;
-};
-
-// @public
-export interface IShimmeredDetailsListStyles {
-    root: IStyle;
 }
 
 // @public
