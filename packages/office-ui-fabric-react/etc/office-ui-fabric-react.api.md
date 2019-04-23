@@ -7450,9 +7450,7 @@ export interface ITooltipStyles {
 
 // @public @deprecated (undocumented)
 export interface IVerticalDividerClassNames {
-    // (undocumented)
     divider: string;
-    // (undocumented)
     wrapper: string;
 }
 
@@ -7470,9 +7468,7 @@ export type IVerticalDividerPropsStyles = Pick<IVerticalDividerProps, 'theme' | 
 
 // @public
 export interface IVerticalDividerStyles {
-    // (undocumented)
     divider: IStyle;
-    // (undocumented)
     wrapper: IStyle;
 }
 
