@@ -12,6 +12,8 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
     bestPractices,
     dos,
     donts,
+    // This is unused but has to be pulled out because ComponentPage has a prop with the same name and different type
+    componentStatus,
     // Passing the extra props to ComponentPage like this helps to keep the prop names in sync
     ...componentPageProps
   } = demoPageProps;
