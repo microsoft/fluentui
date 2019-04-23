@@ -2,6 +2,58 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.14.2",
+      "tag": "@uifabric/example-app-base_v6.14.2",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reduce the re-export wild card to fix website",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "ef7ccb8a9f91fe0829a7cf7e1fb7a2e4c58f62b0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.1",
+      "tag": "@uifabric/example-app-base_v6.14.1",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.0` to `^6.167.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.0",
+      "tag": "@uifabric/example-app-base_v6.14.0",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Convert components to css-in-js",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.2",
       "tag": "@uifabric/example-app-base_v6.13.2",
       "date": "Tue, 02 Apr 2019 12:36:20 GMT",

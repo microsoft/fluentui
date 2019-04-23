@@ -168,7 +168,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
-      theme
+      theme,
+      onRenderDetailsCheckbox
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed, columnReorderProps } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -228,7 +229,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               >
                 {onRenderColumnHeaderTooltip(
                   {
-                    hostClassName: css(classNames.checkTooltip),
+                    hostClassName: classNames.checkTooltip,
                     id: `${this._id}-checkTooltip`,
                     setAriaDescribedBy: false,
                     content: ariaLabelForSelectAllCheckbox,
@@ -251,6 +252,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                         anySelected={false}
                         canSelect={!isCheckboxHidden}
                         className={classNames.check}
+                        onRenderDetailsCheckbox={onRenderDetailsCheckbox}
                       />
                     )
                   },

@@ -2,8 +2,18 @@ import * as React from 'react';
 import { Button, IButtonProps, MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { createTheme, Spinner, Stack } from 'office-ui-fabric-react';
 
-const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const menuProps: IMenuButtonProps['menu'] = {
+  items: [
+    {
+      key: 'a',
+      name: 'Item a'
+    },
+    {
+      key: 'b',
+      name: 'Item b'
+    }
+  ]
+};
 
 const tokens = {
   sectionStack: {
@@ -78,7 +88,7 @@ export class ButtonTokensExample extends React.Component<{}, {}> {
         <MenuButtonSet
           icon={render => render((IconType, iconProps) => <IconType {...iconProps} iconName="upload" />)}
           content="Menu button with icon"
-          menu={buttonMenu}
+          menu={menuProps}
         />
         <Stack horizontal disableShrink verticalAlign="center" tokens={tokens.buttonStack}>
           <Button

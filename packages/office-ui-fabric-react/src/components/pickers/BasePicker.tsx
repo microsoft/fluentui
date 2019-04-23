@@ -251,7 +251,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
                   aria-activedescendant={this.getActiveDescendant()}
                   aria-expanded={!!this.state.suggestionsVisible}
                   aria-haspopup="true"
-                  aria-describedby={this._ariaMap.selectedItems}
+                  aria-describedby={items.length > 0 ? this._ariaMap.selectedItems : undefined}
                   autoCapitalize="off"
                   autoComplete="off"
                   role={'combobox'}

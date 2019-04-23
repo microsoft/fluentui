@@ -48,7 +48,6 @@ exports[`PeoplePicker renders correctly 1`] = `
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"
@@ -362,6 +361,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -389,6 +389,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -416,6 +417,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=
@@ -443,6 +445,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           text-overflow: ellipsis;
                           white-space: nowrap;
                         }
+                    dir="auto"
                   >
                     <div
                       className=

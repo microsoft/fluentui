@@ -1,4 +1,4 @@
-import { getFocusStyle } from '../../../Styling';
+import { getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
@@ -6,7 +6,8 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
   return {
     backgroundColor: semanticColors.buttonBackground,
     color: semanticColors.buttonText,
-    contentPadding: '8px 10px'
+    contentPadding: '0px 10px',
+    minWidth: 0
   };
 };
 
@@ -14,7 +15,8 @@ const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBut
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
-    color: semanticColors.primaryButtonText
+    color: semanticColors.primaryButtonText,
+    highContrastColor: 'Window'
   };
 };
 
@@ -22,7 +24,8 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundDisabled,
-    color: semanticColors.disabledText
+    color: semanticColors.disabledText,
+    highContrastColor: 'GrayText'
   };
 };
 
@@ -41,6 +44,8 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     ],
     button: {
+      minWidth: tokens.minWidth,
+
       selectors: {
         '> *': {
           padding: tokens.contentPadding
@@ -48,12 +53,17 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     },
     splitDivider: {
-      borderRight: '1px solid',
-      borderColor: tokens.color,
+      backgroundColor: tokens.color,
       boxSizing: 'border-box',
-      height: 'calc(100% - 16px)',
-      margin: '8px 0px',
-      width: 1
+      height: 'calc(100% - 14px)',
+      margin: '7px 0px',
+      width: 1,
+
+      selectors: {
+        [HighContrastSelector]: {
+          borderColor: tokens.highContrastColor
+        }
+      }
     }
   };
 };

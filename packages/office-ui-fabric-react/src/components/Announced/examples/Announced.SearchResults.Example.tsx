@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { Announced } from '../Announced';
-import { TagPicker } from 'office-ui-fabric-react/lib/Pickers';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import { TagPicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Async } from 'office-ui-fabric-react/lib/Utilities';
 
-const _testTags = [
+const _testTags: ITag[] = [
   'black',
   'blue',
   'brown',
@@ -29,13 +29,7 @@ export interface IAnnouncedSearchResultsExampleState {
   emptyInput: boolean;
 }
 
-export interface IAnnouncedSearchResultsExampleProps {}
-
-export class AnnouncedSearchResultsExample extends React.Component<
-  IAnnouncedSearchResultsExampleProps,
-  IAnnouncedSearchResultsExampleState
-> {
-  private timer: number;
+export class AnnouncedSearchResultsExample extends React.Component<{}, IAnnouncedSearchResultsExampleState> {
   private _async: Async;
 
   constructor(props: {}) {
@@ -48,10 +42,6 @@ export class AnnouncedSearchResultsExample extends React.Component<
       numberOfSuggestions: 0,
       emptyInput: true
     };
-
-    this.timer = this._async.setInterval(() => {
-      this.setState({ seconds: this.state.seconds + 1 });
-    }, 1000);
   }
 
   public render(): JSX.Element {
@@ -78,8 +68,14 @@ export class AnnouncedSearchResultsExample extends React.Component<
     );
   }
 
+  public componentDidMount() {
+    this._async.setInterval(() => {
+      this.setState({ seconds: this.state.seconds + 1 });
+    }, 1000);
+  }
+
   public componentWillUnmount() {
-    clearTimeout(this.timer);
+    this._async.dispose();
   }
 
   private _renderAnnounced(): JSX.Element | undefined {
@@ -94,12 +90,11 @@ export class AnnouncedSearchResultsExample extends React.Component<
     }
   }
 
-  // tslint:disable-next-line:no-any
-  private _getTextFromItem(item: any): any {
+  private _getTextFromItem = (item: ITag): string => {
     return item.name;
-  }
+  };
 
-  private _onFilterChanged = (filterText: string, tagList: { key: string; name: string }[]): { key: string; name: string }[] => {
+  private _onFilterChanged = (filterText: string, tagList: ITag[]): ITag[] => {
     if (filterText && this.state.emptyInput) {
       this.setState({ emptyInput: false });
     } else if (!filterText && !this.state.emptyInput) {
@@ -119,7 +114,7 @@ export class AnnouncedSearchResultsExample extends React.Component<
     return filteredTags;
   };
 
-  private _listContainsDocument(tag: { key: string; name: string }, tagList: { key: string; name: string }[]) {
+  private _listContainsDocument(tag: ITag, tagList: ITag[]) {
     if (!tagList || !tagList.length || tagList.length === 0) {
       return false;
     }

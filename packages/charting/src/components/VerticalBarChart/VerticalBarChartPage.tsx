@@ -56,7 +56,6 @@ export class VerticalBarChartPage extends React.Component<IComponentDemoPageProp
             </ul>
           </div>
         }
-        related={<a href="https://dev.office.com/fabric-js/Components/VerticalBarChart/VerticalBarChart.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

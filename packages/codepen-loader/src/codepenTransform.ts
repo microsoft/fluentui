@@ -11,7 +11,43 @@ const jscodeshift: {
   withParser: (parser: string) => JSCodeShift;
 } = require('jscodeshift');
 
-const exampleData = fs.readFileSync(path.resolve(__dirname, '../lib/exampleData.ts')).toString();
+// These files are copied to lib in the pre-copy step (see config/pre-copy.json)
+const exampleDataFiles = {
+  exampleData: { name: 'exampleData', contents: '' },
+  testImages: { name: 'TestImages', contents: '' },
+  peopleExampleData: { name: 'PeopleExampleData', contents: '' }
+};
+// Regex to match example data file imports
+const exampleDataRegex = new RegExp(
+  Object.values(exampleDataFiles)
+    // tslint:disable-next-line:typedef
+    .map(fileInfo => `\\b${fileInfo.name}\\b`)
+    .join('|') + '$'
+);
+
+for (const fileInfo of Object.values(exampleDataFiles)) {
+  // Read each file and remove all export statements (to avoid confusing the logic later that
+  // determines which exported thing is the actual example component)
+  let contents = fs
+    .readFileSync(path.resolve(__dirname, '../lib', fileInfo.name + '.ts'))
+    .toString();
+
+  // Strip the first few lines of comments from the files--they all have notes at the top which
+  // don't need to be in the resulting codepen
+  while (contents.startsWith('//')) {
+    contents = contents.replace(/^.*?\r?\n/, '');
+  }
+  // Hack to quickly get rid of exports
+  contents = contents.replace(/^export /gm, '');
+  fileInfo.contents = contents;
+}
+
+// PeopleExampleData imports TestImages and uses it in a constant.
+// Replace the import with the TestImages file contents to avoid a runtime error.
+exampleDataFiles.peopleExampleData.contents = exampleDataFiles.peopleExampleData.contents.replace(
+  /import .*?\bTestImages\b.*?\r?\n/,
+  exampleDataFiles.testImages.contents
+);
 
 const j = jscodeshift.withParser('babylon');
 
@@ -41,9 +77,11 @@ const parse = (source: string) =>
  */
 export function transform(file: string): string {
   let sourceStr = file;
-  // If the exampleData file was imported, append the file contents
-  if (sourceStr.indexOf('/utilities/exampleData') !== -1) {
-    sourceStr += `\n${exampleData}\n`;
+  // If example data files were imported, append the file contents
+  for (const fileInfo of Object.values(exampleDataFiles)) {
+    if (file.includes(`/${fileInfo.name}'`)) {
+      sourceStr += `\n${fileInfo.contents}\n`;
+    }
   }
 
   const source = j(recast.parse(sourceStr, { parser: { parse } }));
@@ -52,9 +90,15 @@ export function transform(file: string): string {
   const identifiers: string[] = [];
   source.find(j.ImportDeclaration).forEach((p: IASTPath) => {
     const importPath = p.node.source.value;
-    // Ignore identifiers from the React import (which will be a global) and from exampleData
-    // (since that whole file is appended to the example if needed)
-    if (importPath !== 'react' && !/(exampleData|\.scss|\.css)$/.test(importPath)) {
+    // Ignore identifiers from:
+    // - the React import (which will be a global)
+    // - css/scss
+    // - example data files which will be appended if needed
+    if (
+      importPath !== 'react' &&
+      !/\.s?css$/.test(importPath) &&
+      !exampleDataRegex.test(importPath)
+    ) {
       p.node.specifiers.forEach((spec: IASTSpecifier) => {
         identifiers.push(spec.local.loc.identifierName);
       });
@@ -101,16 +145,16 @@ export function transform(file: string): string {
   }
   attachedWindowString += 'Fabric} = window.Fabric;\n';
 
-  // add imports and React render footer
+  // add imports and React render footer (with the component wrapped in a <Fabric> for styling)
   const sourceWithFooter = [
     attachedWindowString,
     source.toSource(),
-    `ReactDOM.render(<${exampleName}/>, document.getElementById("content"));`
+    `ReactDOM.render(<Fabric><${exampleName}/></Fabric>, document.getElementById("content"));`
   ].join('\n');
 
   return prettier.format(sourceWithFooter, {
     parser: 'typescript',
-    printWidth: 120,
+    printWidth: 100,
     tabWidth: 2,
     singleQuote: true
   });

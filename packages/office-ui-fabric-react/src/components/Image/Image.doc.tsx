@@ -7,7 +7,6 @@ import { ImageCoverExample } from './examples/Image.Cover.Example';
 import { ImageDefaultExample } from './examples/Image.Default.Example';
 import { ImageMaximizeFrameExample } from './examples/Image.MaximizeFrame.Example';
 import { ImageNoneExample } from './examples/Image.None.Example';
-import { ImageStatus } from './Image.checklist';
 import './ImagePage.global.scss';
 
 const ImageDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Image/examples/Image.Default.Example.tsx') as string;
@@ -22,7 +21,6 @@ export const ImagePageProps: IDocPageProps = {
   title: 'Image',
   componentName: 'Image',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Image',
-  componentStatus: ImageStatus,
   examples: [
     {
       title: 'ImageFit: Not specified',

@@ -1,8 +1,9 @@
 import { IMenuButtonComponent, IMenuButtonStylesReturnType, IMenuButtonTokenReturnType } from './MenuButton.types';
+import { HighContrastSelector } from '../../../Styling';
 
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
-    contentPadding: '8px 10px',
+    contentPadding: '0px 10px',
     minWidth: 0
   };
 };
@@ -16,7 +17,15 @@ const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButt
 
     color: semanticColors.buttonTextPressed,
     colorHovered: semanticColors.buttonTextPressed,
-    colorPressed: semanticColors.buttonTextPressed
+    colorPressed: semanticColors.buttonTextPressed,
+
+    highContrastColor: 'Highlight',
+    highContrastColorHovered: 'Highlight',
+    highContrastColorPressed: 'Highlight',
+
+    highContrastBorderColor: 'Highlight',
+    highContrastBorderColorHovered: 'Highlight',
+    highContrastBorderColorPressed: 'Highlight'
   };
 };
 
@@ -27,9 +36,17 @@ const primaryExpandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IM
     backgroundColorHovered: semanticColors.primaryButtonBackgroundPressed,
     backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
 
+    highContrastBackgroundColor: 'Highlight',
+    highContrastBackgroundColorHovered: 'Highlight',
+    highContrastBackgroundColorPressed: 'Highlight',
+
     color: semanticColors.primaryButtonTextPressed,
     colorHovered: semanticColors.primaryButtonTextPressed,
-    colorPressed: semanticColors.primaryButtonTextPressed
+    colorPressed: semanticColors.primaryButtonTextPressed,
+
+    highContrastColor: 'Window',
+    highContrastColorHovered: 'Window',
+    highContrastColorPressed: 'Window'
   };
 };
 
@@ -50,13 +67,34 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
         minWidth: tokens.minWidth,
 
         selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: tokens.highContrastBackgroundColor,
+            color: tokens.highContrastColor,
+            borderColor: tokens.highContrastBorderColor
+          },
           ':hover': {
             backgroundColor: tokens.backgroundColorHovered,
-            color: tokens.colorHovered
+            color: tokens.colorHovered,
+
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: tokens.highContrastBackgroundColorHovered,
+                color: tokens.highContrastColorHovered,
+                borderColor: tokens.highContrastBorderColorHovered
+              }
+            }
           },
           ':hover:active': {
             backgroundColor: tokens.backgroundColorPressed,
-            color: tokens.colorPressed
+            color: tokens.colorPressed,
+
+            selectors: {
+              [HighContrastSelector]: {
+                backgroundColor: tokens.highContrastBackgroundColorPressed,
+                color: tokens.highContrastColorPressed,
+                borderColor: tokens.highContrastBorderColorPressed
+              }
+            }
           },
           '> *': {
             padding: tokens.contentPadding

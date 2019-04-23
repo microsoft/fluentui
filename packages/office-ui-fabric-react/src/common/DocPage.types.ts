@@ -1,3 +1,4 @@
+/** @deprecated No longer used */
 export interface IComponentStatusProps {
   /**
    * Components should be fully usable with the keyboard. For this badge to pass, all of the functionalities of
@@ -70,7 +71,10 @@ export interface IDocPageProps {
   /** URL of the checked in component, should be somewhere on github.com */
   componentUrl: string;
 
-  /** Status of the component; e.g. keyboard accessible */
+  /**
+   * Status of the component; e.g. keyboard accessible
+   * @deprecated No longer used
+   */
   componentStatus?: IComponentStatusProps;
 
   /** Knobs that applies to all the examples */
@@ -124,7 +128,10 @@ export interface IDocPageProps {
    */
   nativePropsElement?: string | string[];
 
-  /** Related link */
+  /**
+   * Related link
+   * @deprecated No longer shown on ComponentPage
+   */
   related?: JSX.Element;
 
   /** Pass through other sections for ComponentPage */

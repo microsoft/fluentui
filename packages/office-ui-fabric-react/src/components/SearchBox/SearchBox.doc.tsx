@@ -6,7 +6,6 @@ import { SearchBoxUnderlinedExample } from './examples/SearchBox.Underlined.Exam
 import { SearchBoxDisabledExample } from './examples/SearchBox.Disabled.Example';
 import { SearchBoxCustomIconExample } from './examples/SearchBox.CustomIcon.Example';
 import { SearchBoxSmallExample } from './examples/SearchBox.Small.Example';
-import { SearchBoxStatus } from './SearchBox.checklist';
 
 const SearchBoxFullSizeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
 const SearchBoxFullSizeExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/SearchBox/examples/SearchBox.FullSize.Example.tsx') as string;
@@ -20,7 +19,6 @@ export const SearchBoxPageProps: IDocPageProps = {
   title: 'SearchBox',
   componentName: 'SearchBox',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/SearchBox',
-  componentStatus: SearchBoxStatus,
   examples: [
     {
       title: 'Default SearchBox',

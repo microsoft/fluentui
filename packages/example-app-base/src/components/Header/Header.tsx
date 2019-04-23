@@ -1,15 +1,12 @@
-import './Header.scss';
-
 import * as React from 'react';
 
 import { ContextualMenu, DirectionalHint, IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
-import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { getRTL, setRTL } from 'office-ui-fabric-react/lib/Utilities';
-
-import { FontClassNames } from 'office-ui-fabric-react/lib/Styling';
+import { getRTL, setRTL, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { IHeaderProps } from './Header.types';
+
+import { IHeaderProps, IHeaderStyleProps, IHeaderStyles } from './Header.types';
+import { getStyles } from './Header.styles';
 
 export interface IHeaderState {
   contextMenu?: {
@@ -18,8 +15,9 @@ export interface IHeaderState {
   };
 }
 
-@withResponsiveMode
-export class Header extends React.Component<IHeaderProps, IHeaderState> {
+const getClassNames = classNamesFunction<IHeaderStyleProps, IHeaderStyles>();
+
+export class HeaderBase extends React.Component<IHeaderProps, IHeaderState> {
   private _isRTLEnabled: boolean;
 
   constructor(props: IHeaderProps) {
@@ -32,39 +30,41 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
   }
 
   public render(): JSX.Element {
-    const { title, responsiveMode = ResponsiveMode.xLarge } = this.props;
+    const { title, styles, isLargeDown = false, theme } = this.props;
     const { contextMenu } = this.state;
-    const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
     // For screen sizes large down, hide the side links.
     const sideLinks = isLargeDown ? [] : this.props.sideLinks;
 
+    const classNames = getClassNames(styles, { theme });
+    const { subComponentStyles } = classNames;
+
     return (
       <div>
-        <div className="Header">
+        <div className={classNames.root}>
           {isLargeDown && (
-            <button className="Header-button" onClick={this._onMenuClick}>
-              <Icon iconName="GlobalNavButton" />
+            <button className={classNames.button} onClick={this._onMenuClick}>
+              <Icon iconName="GlobalNavButton" styles={subComponentStyles.icons} />
             </button>
           )}
-          <div className={'Header-title ' + FontClassNames.large}>{title}</div>
-          <div className="Header-buttons">
+          <div className={classNames.title}>{title}</div>
+          <div className={classNames.buttons}>
             <FocusZone direction={FocusZoneDirection.horizontal}>
               {sideLinks
                 .map(link => (
-                  <a key={link.url} className="Header-button" href={link.url}>
+                  <a key={link.url} className={classNames.button} href={link.url}>
                     {link.name}
                   </a>
                 ))
                 .concat([
-                  <button key="headerButton" className="Header-button" onClick={this._onGearClick}>
-                    <Icon iconName="Settings" />
+                  <button key="headerButton" className={classNames.button} onClick={this._onGearClick}>
+                    <Icon iconName="Settings" styles={subComponentStyles.icons} />
                   </button>
                 ])}
             </FocusZone>
           </div>
         </div>
-        {contextMenu ? (
+        {contextMenu && (
           <ContextualMenu
             items={contextMenu.items}
             isBeakVisible={true}
@@ -73,7 +73,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
             gapSpace={5}
             onDismiss={this._onDismiss}
           />
-        ) : null}
+        )}
       </div>
     );
   }
@@ -121,3 +121,12 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     });
   };
 }
+
+export const Header: React.StatelessComponent<IHeaderProps> = styled<IHeaderProps, IHeaderStyleProps, IHeaderStyles>(
+  HeaderBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'Header'
+  }
+);

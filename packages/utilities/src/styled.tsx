@@ -59,22 +59,10 @@ export function styled<
     public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
+    private _customizedStyles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 
     public render(): JSX.Element {
-      return (
-        <CustomizerContext.Consumer>
-          {(context: ICustomizerContext) => {
-            this._inCustomizerContext = !!context.customizations.inCustomizerContext;
-
-            const settings = Customizations.getSettings(fields, scope, context.customizations);
-            const { styles: customizedStyles, ...rest } = settings;
-            const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
-
-            const additionalProps = getProps ? getProps(this.props) : undefined;
-            return <Component {...rest} {...additionalProps} {...this.props} styles={styles} />;
-          }}
-        </CustomizerContext.Consumer>
-      );
+      return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
     }
 
     public componentDidMount(): void {
@@ -88,6 +76,22 @@ export function styled<
         Customizations.unobserve(this._onSettingsChanged);
       }
     }
+
+    private _renderContent = (context: ICustomizerContext): JSX.Element => {
+      this._inCustomizerContext = !!context.customizations.inCustomizerContext;
+
+      const settings = Customizations.getSettings(fields, scope, context.customizations);
+      const { styles: customizedStyles, ...rest } = settings;
+      const additionalProps = getProps ? getProps(this.props) : undefined;
+
+      this._customizedStyles = customizedStyles;
+
+      return <Component {...rest} {...additionalProps} {...this.props} styles={this._resolveClassNames} />;
+    };
+
+    private _resolveClassNames = (styleProps: TStyleProps): IConcatenatedStyleSet<TStyleSet> | undefined => {
+      return _resolve(styleProps, baseStyles, this._customizedStyles, this.props.styles);
+    };
 
     private _onSettingsChanged = () => this.forceUpdate();
   }
@@ -108,7 +112,9 @@ function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
       result.push(typeof styles === 'function' ? styles(styleProps) : styles);
     }
   }
-  if (result.length) {
+  if (result.length === 1) {
+    return result[0] as IConcatenatedStyleSet<TStyleSet>;
+  } else if (result.length) {
     // cliffkoh: I cannot figure out how to avoid the cast to any here.
     // It is something to do with the use of Omit in IStyleSet.
     // It might not be necessary once  Omit becomes part of lib.d.ts (when we remove our own Omit and rely on

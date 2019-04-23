@@ -18,6 +18,7 @@ let _counter = 0;
  * Change description used for change callbacks in GlobalSettings.
  *
  * @public
+ * {@docCategory IChangeDescription}
  */
 export interface IChangeDescription {
   key: string;
@@ -31,6 +32,7 @@ export interface IChangeDescription {
  * Change event callback.
  *
  * @public
+ * {@docCategory IChangeEventCallback}
  */
 export interface IChangeEventCallback {
   __id__?: string;
@@ -43,6 +45,7 @@ export interface IChangeEventCallback {
  * way to observe changes as well when their values change.
  *
  * @public
+ * {@docCategory GlobalSettings}
  */
 export class GlobalSettings {
   public static getValue<T>(key: string, defaultValue?: T | (() => T)): T {
