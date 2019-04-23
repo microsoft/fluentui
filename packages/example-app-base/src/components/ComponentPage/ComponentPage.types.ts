@@ -32,7 +32,10 @@ export interface IComponentPageProps {
   areBadgesVisible?: boolean;
   /** className of the component being documented */
   className?: string;
-  /** Status of the component; e.g. keyboard accessible */
+  /**
+   * Status of the component; e.g. keyboard accessible
+   * @deprecated Still rendered for now but will be removed in >= 7
+   */
   componentStatus?: JSX.Element;
   /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];

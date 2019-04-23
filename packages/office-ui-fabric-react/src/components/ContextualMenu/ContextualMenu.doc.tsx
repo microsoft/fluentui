@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { ContextualMenuStatus } from './ContextualMenu.checklist';
 
 import { ContextualMenuBasicExample } from './examples/ContextualMenu.Basic.Example';
 import { ContextualMenuIconExample } from './examples/ContextualMenu.Icon.Example';
@@ -39,7 +38,6 @@ export const ContextualMenuPageProps: IDocPageProps = {
   componentName: 'ContextualMenu',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ContextualMenu',
-  componentStatus: ContextualMenuStatus,
   examples: [
     {
       title: 'Default ContextualMenu',
