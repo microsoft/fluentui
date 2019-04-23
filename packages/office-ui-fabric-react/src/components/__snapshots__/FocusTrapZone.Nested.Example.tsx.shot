@@ -132,7 +132,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           "position": "fixed",
         }
       }
-      tabIndex={0}
+      tabIndex={-1}
     />
     <div
       className=
@@ -215,6 +215,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           <button
             aria-checked={false}
             aria-labelledby="Toggle3-label"
+            checked={false}
             className=
                 ms-Toggle-background
                 {
@@ -456,19 +457,19 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               "position": "fixed",
             }
           }
-          tabIndex={0}
+          tabIndex={-1}
         />
         <div
           className=
               ms-Stack
               {
+                align-items: flex-start;
                 border: 2px solid transparent;
                 box-sizing: border-box;
                 display: flex;
-                flex-direction: row;
+                flex-direction: column;
                 flex-wrap: nowrap;
                 height: auto;
-                justify-content: flex-start;
                 padding-bottom: 10px;
                 padding-left: 10px;
                 padding-right: 10px;
@@ -479,7 +480,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                 text-overflow: ellipsis;
               }
               & > *:not(:first-child) {
-                margin-left: 10px;
+                margin-top: 10px;
               }
               & > *:not(.ms-StackItem) {
                 flex-shrink: 1;
@@ -540,6 +541,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               <button
                 aria-checked={false}
                 aria-labelledby="Toggle7-label"
+                checked={false}
                 className=
                     ms-Toggle-background
                     {
@@ -781,7 +783,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   "position": "fixed",
                 }
               }
-              tabIndex={0}
+              tabIndex={-1}
             />
             <div
               className=
@@ -865,6 +867,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   <button
                     aria-checked={false}
                     aria-labelledby="Toggle11-label"
+                    checked={false}
                     className=
                         ms-Toggle-background
                         {
@@ -1102,7 +1105,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   "position": "fixed",
                 }
               }
-              tabIndex={0}
+              tabIndex={-1}
             />
           </div>
           <div
@@ -1120,7 +1123,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   "position": "fixed",
                 }
               }
-              tabIndex={0}
+              tabIndex={-1}
             />
             <div
               className=
@@ -1204,6 +1207,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   <button
                     aria-checked={false}
                     aria-labelledby="Toggle15-label"
+                    checked={false}
                     className=
                         ms-Toggle-background
                         {
@@ -1441,7 +1445,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
                   "position": "fixed",
                 }
               }
-              tabIndex={0}
+              tabIndex={-1}
             />
           </div>
         </div>
@@ -1455,7 +1459,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               "position": "fixed",
             }
           }
-          tabIndex={0}
+          tabIndex={-1}
         />
       </div>
       <div
@@ -1473,7 +1477,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               "position": "fixed",
             }
           }
-          tabIndex={0}
+          tabIndex={-1}
         />
         <div
           className=
@@ -1556,6 +1560,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               <button
                 aria-checked={false}
                 aria-labelledby="Toggle19-label"
+                checked={false}
                 className=
                     ms-Toggle-background
                     {
@@ -1793,7 +1798,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
               "position": "fixed",
             }
           }
-          tabIndex={0}
+          tabIndex={-1}
         />
       </div>
     </div>
@@ -1807,7 +1812,7 @@ exports[`Component Examples renders FocusTrapZone.Nested.Example.tsx correctly 1
           "position": "fixed",
         }
       }
-      tabIndex={0}
+      tabIndex={-1}
     />
   </div>
 </div>

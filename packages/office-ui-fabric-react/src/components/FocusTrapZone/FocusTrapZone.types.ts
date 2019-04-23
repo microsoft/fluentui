@@ -24,6 +24,7 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
 
   /**
    * If set, the FocusTrapZone's focus trapping behavior will be disabled.
+   * @defaultvalue false
    */
   disabled?: boolean;
 

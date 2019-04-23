@@ -51,10 +51,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const newDisabled = this.props.disabled !== undefined ? this.props.disabled : false;
 
     if ((!prevForceFocusInsideTrap && newForceFocusInsideTrap) || (prevDisabled && !newDisabled)) {
-      // Transition from forceFocusInsideTrap disabled to enabled. Emulate what happens when a FocusTrapZone gets mounted
+      // Transition from forceFocusInsideTrap / FTZ disabled to enabled.
+      // Emulate what happens when a FocusTrapZone gets mounted.
       this._bringFocusIntoZone();
     } else if ((prevForceFocusInsideTrap && !newForceFocusInsideTrap) || (!prevDisabled && newDisabled)) {
-      // Transition from forceFocusInsideTrap enabled to disabled. Emulate what happens when a FocusTrapZone gets unmounted
+      // Transition from forceFocusInsideTrap / FTZ enabled to disabled.
+      // Emulate what happens when a FocusTrapZone gets unmounted.
       this._returnFocusToInitiator();
     }
   }
@@ -66,7 +68,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public render(): JSX.Element {
-    const { className, ariaLabelledBy } = this.props;
+    const { className, disabled = false, ariaLabelledBy } = this.props;
     const divProps = getNativeProps(this.props, divProperties);
 
     const bumperProps = {
@@ -74,7 +76,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
         pointerEvents: 'none',
         position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
-      tabIndex: 0,
+      tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
       'aria-hidden': true,
       'data-is-visible': true
     } as React.HTMLAttributes<HTMLDivElement>;
@@ -196,7 +198,11 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   };
 
   private _bringFocusIntoZone(): void {
-    const { elementToFocusOnDismiss, disableFirstFocus = false } = this.props;
+    const { elementToFocusOnDismiss, disabled = false, disableFirstFocus = false } = this.props;
+
+    if (disabled) {
+      return;
+    }
 
     FocusTrapZone._focusStack.push(this);
 
