@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.13.5",
+      "tag": "@uifabric/fabric-website_v6.13.5",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove very old things from the website\t",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "91c1b001e5d4695a2aa0626310d5950651b52a43"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.3` to `^6.168.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.4",
       "tag": "@uifabric/fabric-website_v6.13.4",
       "date": "Wed, 17 Apr 2019 12:33:35 GMT",

@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+
+## 6.168.0
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Minor changes
+
+- Adding a way to make to make the state of the SwatchColorPicker be fully controllable
+- Introduce vertical option for ResizeGroup
+
+### Patches
+
+- FocusZone should not set elements inside a portal (outside its DOM) as an active element
+- Lists: Remove unnecessary usages of css concat helper
 
 ## 6.167.3
 Mon, 22 Apr 2019 12:32:06 GMT

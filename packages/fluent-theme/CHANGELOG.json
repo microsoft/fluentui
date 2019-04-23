@@ -2,6 +2,30 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.6",
+      "tag": "@uifabric/fluent-theme_v0.16.6",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBarButton: Update expanded and expanded hover color",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "65a16420e0b71c7cf47f2bb3f7ec774795650a9d"
+          },
+          {
+            "comment": "Fix selector for ms-Button-icon in CommandBarButton",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "ceb458fbe637d9684a0464362f317a62587259e3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.3` to `^6.168.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.5",
       "tag": "@uifabric/fluent-theme_v0.16.5",
       "date": "Mon, 22 Apr 2019 12:32:06 GMT",
