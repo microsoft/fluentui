@@ -222,6 +222,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // be any native element so typescript rightly flags this as a problem.
           ...rootProps as any
         }
+        // Once the getClassName correctly memoizes inputs this should
+        // be replaced so that className is passed to getRootClass and is included there so
+        // the class names will always be in the same order.
         className={css(getRootClass(this._isParked), className)}
         ref={this._root}
         data-focuszone-id={this._id}
