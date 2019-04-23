@@ -62,16 +62,13 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         />
         <div>
           <ShimmeredDetailsList
+            setKey="items"
+            items={items!}
+            columns={columns}
+            selectionMode={SelectionMode.none}
+            onRenderItemColumn={this._onRenderItemColumn}
             enableShimmer={!isDataLoaded}
-            items={items} // This will be deprecated in Fabric 7.0. Use the `detailsListProps` like bellow to pass the items.
-            detailsListProps={{
-              items: items,
-              columns: columns,
-              setKey: 'items',
-              selectionMode: SelectionMode.none,
-              onRenderItemColumn: this._onRenderItemColumn,
-              listProps: { renderedWindowsAhead: 0, renderedWindowsBehind: 0 }
-            }}
+            listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
         </div>
       </div>

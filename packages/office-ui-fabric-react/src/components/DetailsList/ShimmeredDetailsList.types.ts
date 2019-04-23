@@ -1,18 +1,19 @@
 import { IDetailsListProps } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
-import { IStyle, ITheme } from '../../Styling';
+import { IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * ShimmeredDetailsList props interface
  * {@docCategory ShimmeredDetailsList}
- * @deprecated The inheritance from `IDetailsListProps` will be dropped in favor of `detailsListProps` in Fabric 7.0.
  */
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
   /**
-   * DetailsList props to pass through.
+   * DetailsList `styles` to pass through.
+   * Due to ShimmeredDetailsList overriding the extended `styles` prop with its own one
+   * we reserve this one slot to allow `DetailsList` styles customization.
    */
-  detailsListProps?: IDetailsListProps;
+  detailsListStyles?: IDetailsListProps['styles'];
 
   /**
    * Boolean flag to control when to render placeholders vs real items.
@@ -37,9 +38,6 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
    * @defaultvalue 10
    */
   shimmerLines?: number;
-
-  /** Theme provided by the Higher Order Component */
-  theme?: ITheme;
 }
 
 /**
@@ -48,26 +46,14 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
  */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
   /**
-   * Class name passed to the root area which then is passed to `List` component.
-   * @deprecated Use `IShimmeredDetailsListProps.detailsListProp.listProps` instead. Will be removed in Fabric 7.0.
+   * Class name passed to `List` component.
    */
   className?: string;
 
   /**
    * Whether the shimmer placeholder is enabled. Used to render a fade-out to bottom overlay over the shimmer placeholders.
-   * @deprecated Replacing with the logic with whether to apply the class or not. Will be removed in Fabric 7.0.
    */
   enableShimmer?: boolean;
-
-  /**
-   * Whether to move the entire placeholder row to a side when Checkbox is present.
-   */
-  showCheckbox?: boolean;
-
-  /**
-   * Wether the placeholder row should be rendered in compact mode.
-   */
-  compact?: boolean;
 };
 
 /**
@@ -77,7 +63,4 @@ export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsLis
 export interface IShimmeredDetailsListStyles {
   /** Represents styles passed to the `List` component for creating a fade-out to the bottom overlay. */
   root: IStyle;
-
-  /** Represent the wrapper element of the placeholder row containing the animation. */
-  rowPlaceholderWrapper: IStyle;
 }
