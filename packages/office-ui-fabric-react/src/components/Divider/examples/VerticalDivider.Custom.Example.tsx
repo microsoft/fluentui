@@ -1,8 +1,7 @@
 import * as React from 'react';
-import { VerticalDivider, IVerticalDividerClassNames } from 'office-ui-fabric-react/lib/Divider';
-import { getDividerClassNames } from 'office-ui-fabric-react/lib/components/Divider/VerticalDivider.classNames';
-import { mergeStyleSets, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { memoizeFunction, Customizer } from 'office-ui-fabric-react/lib/Utilities';
+import { VerticalDivider } from 'office-ui-fabric-react/lib/Divider';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
+import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
 
 interface ICustomDividerExampleClassNames {
   wrapper: string;
@@ -44,7 +43,7 @@ export class VerticalDividerCustomExample extends React.Component<any, any> {
               padding: 0
             },
             divider: {
-              height: '28',
+              height: 28,
               backgroundColor: 'pink'
             }
           }}
