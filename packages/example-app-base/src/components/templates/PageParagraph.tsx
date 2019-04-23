@@ -17,7 +17,7 @@ export interface IPageParagraphStyleProps {
 
 const getDefaultStyles = (props: IPageParagraphStyleProps): IPageParagraphStyles => ({
   root: [
-    props.theme.fonts.medium,
+    props.theme.fonts.small,
     {
       marginBottom: 4
     },

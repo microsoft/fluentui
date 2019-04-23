@@ -15,7 +15,7 @@ export const getStyles = (props: IChoiceGroupStyleProps): IChoiceGroupStyles => 
     applicationRole: className,
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         display: 'block'
       }

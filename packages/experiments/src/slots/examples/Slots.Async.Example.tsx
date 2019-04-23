@@ -29,7 +29,7 @@ class AsyncData extends React.Component<IAsyncDataProps, { loading: boolean }> {
 
 const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({
   text: [
-    theme.fonts.large,
+    theme.fonts.medium,
     {
       fontWeight: 800
     }

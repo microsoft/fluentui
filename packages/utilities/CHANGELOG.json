@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.35.6",
+      "tag": "@uifabric/utilities_v6.35.6",
+      "date": "Fri, 19 Apr 2019 12:33:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing closure from `styled` helper to improve performance.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "67f3b4289dfc67f85b12037692a57c16ed28a330"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.5",
       "tag": "@uifabric/utilities_v6.35.5",
       "date": "Thu, 11 Apr 2019 12:37:10 GMT",

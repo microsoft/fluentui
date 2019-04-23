@@ -6,7 +6,7 @@ export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDet
 
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.xSmall,
       enableShimmer && {
         selectors: {
           ':after': {

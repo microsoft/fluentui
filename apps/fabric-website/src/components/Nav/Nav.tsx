@@ -60,7 +60,7 @@ const getTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, them
         }
       }
     ],
-    text: theme.fonts.medium
+    text: theme.fonts.small
   };
 };
 

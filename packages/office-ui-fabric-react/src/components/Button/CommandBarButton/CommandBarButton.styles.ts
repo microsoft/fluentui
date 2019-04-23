@@ -3,13 +3,14 @@ import { ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '..
 import { memoizeFunction } from '../../../Utilities';
 import { getStyles as getBaseButtonStyles } from '../BaseButton.styles';
 import { getStyles as getSplitButtonStyles } from '../SplitButton/SplitButton.styles';
+import { ButtonGlobalClassNames } from '../BaseButton.classNames';
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: IButtonStyles, focusInset?: string, focusColor?: string): IButtonStyles => {
     const baseButtonStyles: IButtonStyles = getBaseButtonStyles(theme);
     const baseSplitButtonStyles: IButtonStyles = getSplitButtonStyles(theme);
 
-    const { palette: p } = theme;
+    const { palette: p, semanticColors } = theme;
 
     const commandButtonHighContrastFocus = {
       left: 4,
@@ -22,10 +23,10 @@ export const getStyles = memoizeFunction(
     const commandButtonStyles: IButtonStyles = {
       root: [
         getFocusStyle(theme, { inset: 2, highContrastStyle: commandButtonHighContrastFocus, borderColor: 'transparent' }),
-        theme.fonts.medium,
+        theme.fonts.small,
         {
           minWidth: '40px',
-          backgroundColor: 'transparent',
+          backgroundColor: p.white,
           color: p.neutralPrimary,
           padding: '0 4px',
           border: 'none',
@@ -44,28 +45,78 @@ export const getStyles = memoizeFunction(
         selectors: {
           [HighContrastSelector]: {
             color: 'Highlight'
+          },
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDarkAlt
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary
           }
         }
       },
 
       rootPressed: {
         backgroundColor: p.neutralLight,
-        color: p.black
+        color: p.neutralDark,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary
+          }
+        }
       },
 
       rootChecked: {
         backgroundColor: p.neutralLight,
-        color: p.black
-      },
-
-      rootExpanded: {
-        backgroundColor: p.neutralLight,
-        color: p.black
+        color: p.neutralDark,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary
+          }
+        }
       },
 
       rootCheckedHovered: {
         backgroundColor: p.neutralQuaternaryAlt,
-        color: p.black
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary
+          }
+        }
+      },
+
+      rootExpanded: {
+        backgroundColor: p.neutralLight,
+        color: p.neutralDark,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: p.themeDark
+          },
+          [`.${ButtonGlobalClassNames.msButtonMenuIcon}`]: {
+            color: p.neutralPrimary
+          }
+        }
+      },
+
+      rootExpandedHovered: {
+        backgroundColor: p.neutralQuaternaryAlt
+      },
+
+      rootDisabled: {
+        backgroundColor: p.white,
+        selectors: {
+          [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+            color: semanticColors.disabledBodySubtext
+          }
+        }
       },
 
       // Split button styles
@@ -84,11 +135,11 @@ export const getStyles = memoizeFunction(
       },
 
       splitButtonMenuButton: {
-        backgroundColor: 'transparent',
+        backgroundColor: p.white,
         border: 'none',
         borderTopRightRadius: '0',
         borderBottomRightRadius: '0',
-        color: p.neutralPrimary,
+        color: p.neutralSecondary,
         selectors: {
           ':hover': {
             backgroundColor: p.neutralLighter,
@@ -96,6 +147,17 @@ export const getStyles = memoizeFunction(
             selectors: {
               [HighContrastSelector]: {
                 color: 'Highlight'
+              },
+              [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+                color: p.neutralPrimary
+              }
+            }
+          },
+          ':active': {
+            backgroundColor: p.neutralLight,
+            selectors: {
+              [`.${ButtonGlobalClassNames.msButtonIcon}`]: {
+                color: p.neutralPrimary
               }
             }
           }
@@ -103,17 +165,12 @@ export const getStyles = memoizeFunction(
       },
 
       splitButtonMenuButtonDisabled: {
-        backgroundColor: p.neutralLighter,
-        selectors: {
-          ':hover': {
-            backgroundColor: p.neutralLighter
-          }
-        }
+        backgroundColor: p.white
       },
 
       splitButtonMenuButtonChecked: {
         backgroundColor: p.neutralLight,
-        color: p.black,
+        color: p.neutralDark,
         selectors: {
           ':hover': {
             backgroundColor: p.neutralQuaternaryAlt
@@ -144,7 +201,7 @@ export const getStyles = memoizeFunction(
       },
 
       icon: {
-        color: p.themeDarkAlt
+        color: p.themePrimary
       },
 
       menuIcon: {

@@ -111,7 +111,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       globalClassNames.header
     ],
     title: [
-      theme.fonts.large,
+      theme.fonts.medium,
       {
         marginBottom: 10,
         display: 'inline-block'
@@ -119,7 +119,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       globalClassNames.title
     ],
     toggleButtons: [
-      theme.fonts.large,
+      theme.fonts.medium,
       {
         display: 'flex',
         float: 'right'
@@ -179,7 +179,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-block',
         marginRight: 50,
         selectors: {
-          h4: [theme.fonts.large, { color: '#177d3e' }]
+          h4: [theme.fonts.medium, { color: '#177d3e' }]
         }
       },
       globalClassNames.dos
@@ -189,7 +189,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         width: 'calc(50%)',
         display: 'inline-block',
         selectors: {
-          h4: [theme.fonts.large, { color: '#a61e22' }]
+          h4: [theme.fonts.medium, { color: '#a61e22' }]
         }
       },
       globalClassNames.donts

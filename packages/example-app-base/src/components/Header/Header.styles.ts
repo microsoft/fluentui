@@ -38,7 +38,7 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
     ],
     title: [
       commonStyles,
-      theme.fonts.large,
+      theme.fonts.medium,
       {
         lineHeight: 48
       },

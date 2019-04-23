@@ -40,7 +40,7 @@ export function getStyles(props: IShimmerStyleProps): IShimmerStyles {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
         height: 'auto'

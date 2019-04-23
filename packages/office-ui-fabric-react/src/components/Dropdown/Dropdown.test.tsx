@@ -243,6 +243,24 @@ describe('Dropdown', () => {
       expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
     });
 
+    it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
+      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      let selectedKey = 0;
+      const dropdown = React.createRef<IDropdown>();
+
+      const wrapper = mount(<Dropdown componentRef={dropdown} options={options} selectedKey={selectedKey} />);
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
+
+      selectedKey = -1;
+      const newProps = { options, selectedKey };
+
+      wrapper.setProps(newProps);
+      wrapper.update();
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
+    });
+
     it('does not issue the onChange callback when the selected item is not different', () => {
       const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
@@ -416,6 +434,24 @@ describe('Dropdown', () => {
       wrapper.update();
       state = (dropdown.current as DropdownBase).state.selectedIndices;
       expect(state).toEqual(selectedKeys);
+    });
+
+    it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
+      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      let selectedKeys = [0];
+      const dropdown = React.createRef<IDropdown>();
+
+      const wrapper = mount(<Dropdown componentRef={dropdown} options={options} selectedKeys={selectedKeys} multiSelect />);
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual(selectedKeys);
+
+      selectedKeys = [-1];
+      const newProps = { options, selectedKeys };
+
+      wrapper.setProps(newProps);
+      wrapper.update();
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {

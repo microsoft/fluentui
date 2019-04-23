@@ -436,8 +436,6 @@ export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps>;
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     constructor(props: IBreadcrumbProps);
     // (undocumented)
-    componentWillReceiveProps(nextProps: IBreadcrumbProps): void;
-    // (undocumented)
     static defaultProps: IBreadcrumbProps;
     focus(): void;
     // (undocumented)
@@ -519,11 +517,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     readonly checked: boolean;
     // (undocumented)
-    componentWillReceiveProps(newProps: ICheckboxProps): void;
-    // (undocumented)
     static defaultProps: ICheckboxProps;
     // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState;
     render(): JSX.Element;
 }
 
@@ -6668,7 +6666,6 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 
 // @public (undocumented)
 export interface IStackTokens {
-    // (undocumented)
     childrenGap?: number | string;
 }
 
@@ -7745,37 +7742,81 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
+    // @deprecated
     black = 11,
-    // (undocumented)
+    // @deprecated (undocumented)
     blue = 1,
     // (undocumented)
+    blue20 = 30,
+    // (undocumented)
+    cyan30 = 28,
+    // @deprecated (undocumented)
     darkBlue = 2,
     // (undocumented)
+    darkBlue10 = 31,
+    // @deprecated (undocumented)
     darkGreen = 6,
     // (undocumented)
+    darkGreen20 = 26,
+    // @deprecated (undocumented)
     darkRed = 14,
     // (undocumented)
+    darkRed20 = 39,
+    // (undocumented)
+    gray20 = 45,
+    // (undocumented)
+    gray30 = 43,
+    // (undocumented)
+    gray40 = 44,
+    // @deprecated (undocumented)
     green = 5,
     // (undocumented)
+    green10 = 25,
+    // @deprecated (undocumented)
     lightBlue = 0,
     // (undocumented)
+    lightBlue30 = 29,
+    // @deprecated (undocumented)
     lightGreen = 4,
-    // (undocumented)
+    // @deprecated (undocumented)
     lightPink = 7,
     // (undocumented)
+    lightPink10 = 35,
+    // @deprecated (undocumented)
     magenta = 9,
     // (undocumented)
+    magenta10 = 34,
+    // @deprecated (undocumented)
     orange = 12,
     // (undocumented)
+    orange10 = 40,
+    // (undocumented)
+    orange30 = 41,
+    // (undocumented)
+    orangeYellow20 = 42,
+    // @deprecated (undocumented)
     pink = 8,
     // (undocumented)
+    pink10 = 36,
+    // (undocumented)
+    pinkRed10 = 37,
+    // @deprecated (undocumented)
     purple = 10,
+    // (undocumented)
+    purple10 = 33,
+    // @deprecated
     red = 13,
     // (undocumented)
+    red10 = 38,
+    // @deprecated (undocumented)
     teal = 3,
-    transparent = 15,
     // (undocumented)
-    violet = 16
+    teal10 = 27,
+    transparent = 15,
+    // @deprecated (undocumented)
+    violet = 16,
+    // (undocumented)
+    violet10 = 32
 }
 
 // @public (undocumented)
@@ -8046,8 +8087,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     addSticky: (sticky: Sticky) => void;
     // (undocumented)
-    static childContextTypes: React.ValidationMap<IScrollablePaneContext>;
-    // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState): void;
@@ -8057,8 +8096,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     readonly contentContainer: HTMLDivElement | null;
     // (undocumented)
     forceLayoutUpdate(): void;
-    // (undocumented)
-    getChildContext(): IScrollablePaneContext;
     // (undocumented)
     getScrollPosition: () => number;
     // (undocumented)
@@ -8088,6 +8125,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     updateStickyRefHeights: () => void;
 }
+
+// @public (undocumented)
+export const ScrollablePaneContext: React.Context<IScrollablePaneContext>;
 
 // @public (undocumented)
 export const ScrollbarVisibility: {
@@ -8462,9 +8502,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    context: IScrollablePaneContext;
-    // (undocumented)
-    static contextTypes: IStickyContext;
+    static contextType: React.Context<IScrollablePaneContext>;
     // (undocumented)
     static defaultProps: IStickyProps;
     // (undocumented)
@@ -8852,9 +8890,9 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     constructor(props: IToggleProps);
     readonly checked: boolean;
     // (undocumented)
-    componentWillReceiveProps(newProps: IToggleProps): void;
-    // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState;
     // (undocumented)
     render(): JSX.Element;
     }
