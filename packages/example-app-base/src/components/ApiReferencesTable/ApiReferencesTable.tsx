@@ -288,7 +288,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       const codeBlock = codeBlocks[codeIndex];
       if (textIndex < codeBlock.index) {
         const str = text.substring(textIndex, codeBlock.index);
-        eltChildren.push(<span key={textIndex} dangerouslySetInnerHTML={{ __html: str }} />);
+        eltChildren.push(<span key={textIndex}>{str}</span>);
         textIndex += str.length;
       } else {
         eltChildren.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
@@ -297,7 +297,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       }
     }
     if (textIndex < text.length) {
-      eltChildren.push(<span key={textIndex} dangerouslySetInnerHTML={{ __html: text.substring(textIndex, text.length) }} />);
+      eltChildren.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
     }
 
     return eltChildren;
@@ -352,21 +352,15 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   private _renderDescription(): JSX.Element | undefined {
     const { description } = this.props;
 
-    return description ? (
-      <Text variant={'medium'}>
-        <div dangerouslySetInnerHTML={{ __html: description }} />
-      </Text>
-    ) : (
-      undefined
-    );
+    return description ? <Text variant={'medium'}>{description}</Text> : undefined;
   }
 
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant={'xLarge'}>
-        <div dangerouslySetInnerHTML={{ __html: title }} id={name} />
+      <Text variant={'xLarge'} id={name}>
+        {title}
       </Text>
     ) : (
       undefined

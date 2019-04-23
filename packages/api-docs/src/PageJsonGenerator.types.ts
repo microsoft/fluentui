@@ -33,21 +33,21 @@ export interface ITableRowJson {
   kind?: 'Method' | 'Property';
   typeTokens: ITokenJson[];
   defaultValue?: string;
-  descriptionHtml: string;
+  description: string;
   deprecated: boolean;
   deprecatedMessage?: string;
 }
 
 export interface IEnumTableRowJson {
   name: string;
-  descriptionHtml: string;
+  description: string;
   value: string;
 }
 
 export interface ITableJson {
   kind: 'interface' | 'enum' | 'class';
   name: string;
-  descriptionHtml: string;
+  description: string;
   extendsTokens: ITokenJson[];
   members: ITableRowJson[] | IEnumTableRowJson[];
 }

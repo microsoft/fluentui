@@ -203,12 +203,12 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
     kind: 'interface',
     name: interfaceItem.displayName,
     extendsTokens: [],
-    descriptionHtml: '',
+    description: '',
     members: interfaceTableRowJson
   };
 
   if (interfaceItem.tsdocComment) {
-    tableJson.descriptionHtml += renderDocNodeWithoutInlineTag(interfaceItem.tsdocComment.summarySection);
+    tableJson.description += renderDocNodeWithoutInlineTag(interfaceItem.tsdocComment.summarySection);
   }
 
   let numOfExtendsType = 0;
@@ -242,7 +242,7 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
         const tableRowJson: ITableRowJson = {
           name: apiPropertySignature.name,
           typeTokens: [],
-          descriptionHtml: '',
+          description: '',
           deprecated: false
         };
 
@@ -284,7 +284,7 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
             tableRowJson.deprecated = true;
           }
 
-          tableRowJson.descriptionHtml += renderDocNodeWithoutInlineTag(apiPropertySignature.tsdocComment.summarySection);
+          tableRowJson.description += renderDocNodeWithoutInlineTag(apiPropertySignature.tsdocComment.summarySection);
         }
         interfaceTableRowJson.push(tableRowJson);
         break;
@@ -294,7 +294,7 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
         const tableRowJson: ITableRowJson = {
           name: apiMethodSignature.name,
           typeTokens: [],
-          descriptionHtml: '',
+          description: '',
           deprecated: false
         };
 
@@ -318,7 +318,7 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
             tableRowJson.deprecated = true;
           }
 
-          tableRowJson.descriptionHtml += renderDocNodeWithoutInlineTag(apiMethodSignature.tsdocComment.summarySection);
+          tableRowJson.description += renderDocNodeWithoutInlineTag(apiMethodSignature.tsdocComment.summarySection);
         }
         interfaceTableRowJson.push(tableRowJson);
         break;
@@ -349,12 +349,12 @@ function createEnumPageJson(enumItem: ApiEnum): ITableJson {
     kind: 'enum',
     name: enumItem.displayName,
     extendsTokens: [],
-    descriptionHtml: '',
+    description: '',
     members: enumTableRowJson
   };
 
   if (enumItem.tsdocComment) {
-    tableJson.descriptionHtml += renderDocNodeWithoutInlineTag(enumItem.tsdocComment.summarySection);
+    tableJson.description += renderDocNodeWithoutInlineTag(enumItem.tsdocComment.summarySection);
   }
 
   for (const member of enumItem.members) {
@@ -363,7 +363,7 @@ function createEnumPageJson(enumItem: ApiEnum): ITableJson {
         const apiEnumMember: ApiEnumMember = member as ApiEnumMember;
         const tableRowJson: IEnumTableRowJson = {
           name: apiEnumMember.name,
-          descriptionHtml: '',
+          description: '',
           value: '0'
         };
 
@@ -373,7 +373,7 @@ function createEnumPageJson(enumItem: ApiEnum): ITableJson {
           tableRowJson.value = token.text;
         }
         if (apiEnumMember.tsdocComment) {
-          tableRowJson.descriptionHtml += renderDocNodeWithoutInlineTag(apiEnumMember.tsdocComment.summarySection);
+          tableRowJson.description += renderDocNodeWithoutInlineTag(apiEnumMember.tsdocComment.summarySection);
         }
         enumTableRowJson.push(tableRowJson);
         break;
@@ -399,12 +399,12 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
     kind: 'class',
     name: classItem.displayName,
     extendsTokens: [],
-    descriptionHtml: '',
+    description: '',
     members: classTableRowJson
   };
 
   if (classItem.tsdocComment) {
-    tableJson.descriptionHtml += renderDocNodeWithoutInlineTag(classItem.tsdocComment.summarySection);
+    tableJson.description += renderDocNodeWithoutInlineTag(classItem.tsdocComment.summarySection);
   }
 
   if (classItem.extendsType) {
@@ -422,7 +422,7 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
         const tableRowJson: ITableRowJson = {
           name: apiProperty.name,
           typeTokens: [],
-          descriptionHtml: '',
+          description: '',
           deprecated: false,
           kind: 'Property'
         };
@@ -465,7 +465,7 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
             tableRowJson.deprecated = true;
           }
 
-          tableRowJson.descriptionHtml += renderDocNodeWithoutInlineTag(apiProperty.tsdocComment.summarySection);
+          tableRowJson.description += renderDocNodeWithoutInlineTag(apiProperty.tsdocComment.summarySection);
         }
         classTableRowJson.push(tableRowJson);
         break;
@@ -475,7 +475,7 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
         const tableRowJson: ITableRowJson = {
           name: apiMethod.name,
           typeTokens: [],
-          descriptionHtml: '',
+          description: '',
           deprecated: false,
           kind: 'Method'
         };
@@ -500,7 +500,7 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
             tableRowJson.deprecated = true;
           }
 
-          tableRowJson.descriptionHtml += renderDocNodeWithoutInlineTag(apiMethod.tsdocComment.summarySection);
+          tableRowJson.description += renderDocNodeWithoutInlineTag(apiMethod.tsdocComment.summarySection);
         }
         classTableRowJson.push(tableRowJson);
         break;

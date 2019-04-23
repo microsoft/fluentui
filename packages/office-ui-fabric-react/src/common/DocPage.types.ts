@@ -151,14 +151,14 @@ export interface ITableRowJson {
   name: string;
   typeTokens: ITokenJson[];
   defaultValue?: string;
-  descriptionHtml: string;
+  description: string;
   deprecated: boolean;
   deprecatedMessage?: string;
 }
 
 export interface IEnumTableRowJson {
   name: string;
-  descriptionHtml: string;
+  description: string;
   value: string;
 }
 
@@ -166,7 +166,7 @@ export interface ITableJson {
   kind: 'interface' | 'enum' | 'class';
   name: string;
   extendsTokens: ITokenJson[];
-  descriptionHtml: string;
+  description: string;
   members: ITableRowJson[] | IEnumTableRowJson[];
 }
 

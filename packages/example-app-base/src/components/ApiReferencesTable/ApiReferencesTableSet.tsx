@@ -191,7 +191,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     for (let k = 0; k < members.length; k++) {
       // each member within the enum
       enumMembers.push({
-        description: members[k].descriptionHtml,
+        description: members[k].description,
         name: members[k].name,
         value: members[k].value
       });
@@ -200,7 +200,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     // the enum
     return {
       propertyName: table.name,
-      description: table.descriptionHtml,
+      description: table.description,
       title: table.kind ? table.name + ' ' + table.kind : table.name,
       propertyType: PropertyType.enum,
       property: enumMembers
@@ -214,7 +214,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     for (let k = 0; k < members.length; k++) {
       // each member within the interface
       interfaceMembers.push({
-        description: members[k].descriptionHtml,
+        description: members[k].description,
         name: members[k].name,
         typeTokens: members[k].typeTokens,
         deprecated: members[k].deprecated,
@@ -225,7 +225,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     // the interface
     return {
       propertyName: table.name,
-      description: table.descriptionHtml,
+      description: table.description,
       extendsTokens: table.extendsTokens,
       title: table.kind ? table.name + ' ' + table.kind : table.name,
       propertyType: PropertyType.interface,
@@ -242,13 +242,13 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     for (let k = 0; k < members.length; k++) {
       if (members[k].kind === 'Method') {
         classMethods.push({
-          description: members[k].descriptionHtml,
+          description: members[k].description,
           name: members[k].name,
           typeTokens: members[k].typeTokens
         });
       } else {
         classMembers.push({
-          description: members[k].descriptionHtml,
+          description: members[k].description,
           name: members[k].name,
           typeTokens: members[k].typeTokens,
           deprecated: members[k].deprecated,
@@ -260,7 +260,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     // the class
     return {
       propertyName: table.name,
-      description: table.descriptionHtml,
+      description: table.description,
       extendsTokens: table.extendsTokens,
       title: table.kind ? table.name + ' ' + table.kind : table.name,
       propertyType: PropertyType.class,

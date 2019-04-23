@@ -17,7 +17,7 @@ export interface ITableRowJson {
   name: string;
   typeTokens: ILinkToken[];
   defaultValue?: string;
-  descriptionHtml: string;
+  description: string;
   deprecated: boolean;
   deprecatedMessage?: string;
   kind?: 'Method' | 'Property';
@@ -26,7 +26,7 @@ export interface ITableRowJson {
 /**
  * Enum table row
  */
-export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'descriptionHtml'>> & {
+export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'description'>> & {
   value: string;
 };
 
@@ -37,7 +37,7 @@ export interface ITableJson {
   kind: 'interface' | 'enum' | 'class';
   name: string;
   extendsTokens: ILinkToken[];
-  descriptionHtml: string;
+  description: string;
   members: ITableRowJson[] | IEnumTableRowJson[];
 }
 
