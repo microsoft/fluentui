@@ -31,7 +31,7 @@ export interface ICard {}
  */
 export interface ICardSlots {
   /**
-   * Defines root slot of the component for managing the layout of the Card.
+   * Defines the root slot of the component for managing the layout of the Card.
    */
   root?: IStackSlot;
 }

@@ -42,7 +42,7 @@ export class CardVerticalExample extends React.Component<{}, {}> {
     };
     const backgroundImageCardSectionStyles: ICardSectionStyles = {
       root: {
-        backgroundImage: 'url(http://wallpoper.com/images/00/37/51/21/landscapes-night_00375121.jpg)',
+        backgroundImage: 'url(https://placehold.it/256x144)',
         backgroundPosition: 'center center',
         backgroundSize: 'cover',
         height: 144
@@ -50,7 +50,7 @@ export class CardVerticalExample extends React.Component<{}, {}> {
     };
     const dateTextStyles: ITextStyles = {
       root: {
-        color: 'white',
+        color: '#505050',
         fontWeight: 600 as 600
       }
     };
