@@ -3,9 +3,10 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface IFocusTrapZoneBoxCustomElementExampleState {
   useTrapZone: boolean;
@@ -24,8 +25,13 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
     const { useTrapZone } = this.state;
 
     return (
-      <div>
-        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Focus Custom Element" />
+      <Stack tokens={{ childrenGap: 8 }}>
+        <Stack.Item>
+          <Text>If this button is used to enable FocusTrapZone, the hyperlink should be focused.</Text>
+        </Stack.Item>
+        <Stack.Item>
+          <DefaultButton onClick={this._onButtonClickHandler} text="Focus Custom Element" />
+        </Stack.Item>
         <FocusTrapZone disabled={!useTrapZone} firstFocusableSelector={_focusClassName}>
           <Stack
             horizontalAlign="start"
@@ -48,7 +54,7 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
             </Link>
           </Stack>
         </FocusTrapZone>
-      </div>
+      </Stack>
     );
   }
 

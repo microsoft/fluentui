@@ -1,121 +1,188 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders FocusTrapZone.Box.Example.tsx correctly 1`] = `
-<div>
-  <button
+<div
+  className=
+      ms-Stack
+      {
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        width: auto;
+      }
+      & > * {
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-top: 8px;
+      }
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
+      }
+>
+  <div
     className=
-        ms-Button
-        ms-Button--default
+        ms-StackItem
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          background-color: #f4f4f4;
-          border-radius: 0px;
-          border: 1px solid transparent;
-          box-sizing: border-box;
-          color: #333333;
-          cursor: pointer;
-          display: inline-block;
+          flex-shrink: 1;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 32px;
-          min-width: 80px;
-          outline: transparent;
-          padding-bottom: 0;
-          padding-left: 16px;
-          padding-right: 16px;
-          padding-top: 0;
-          position: relative;
-          text-align: center;
-          text-decoration: none;
-          user-select: none;
-          vertical-align: top;
+          height: auto;
+          width: auto;
         }
-        &::-moz-focus-inner {
-          border: 0;
-        }
-        .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
-          content: "";
-          left: 0px;
-          outline: 1px solid #666666;
-          position: absolute;
-          right: 0px;
-          top: 0px;
-          z-index: 1;
-        }
-        @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
-          border: none;
-          bottom: -2px;
-          left: -2px;
-          outline-color: ButtonText;
-          right: -2px;
-          top: -2px;
-        }
-        &:active > * {
-          left: 0px;
-          position: relative;
-          top: 0px;
-        }
-        &:hover {
-          background-color: #eaeaea;
-          color: #212121;
-        }
-        @media screen and (-ms-high-contrast: active){&:hover {
-          border-color: Highlight;
-          color: Highlight;
-        }
-        &:active {
-          background-color: #c8c8c8;
-          color: #212121;
-        }
-    data-is-focusable={true}
-    onClick={[Function]}
-    onKeyDown={[Function]}
-    onKeyPress={[Function]}
-    onKeyUp={[Function]}
-    onMouseDown={[Function]}
-    onMouseUp={[Function]}
-    type="button"
   >
-    <div
+    <span
       className=
-          ms-Button-flexContainer
+
           {
-            align-items: center;
-            display: flex;
-            flex-wrap: nowrap;
-            height: 100%;
-            justify-content: center;
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: inherit;
+            display: inline;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            moz-osx-font-smoothing: grayscale;
+            webkit-font-smoothing: antialiased;
           }
+    >
+      If this button is used to enable FocusTrapZone, focus should return to this button after the FocusTrapZone is disabled.
+    </span>
+  </div>
+  <div
+    className=
+        ms-StackItem
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          flex-shrink: 1;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          height: auto;
+          width: auto;
+        }
+  >
+    <button
+      className=
+          ms-Button
+          ms-Button--default
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            background-color: #f4f4f4;
+            border-radius: 0px;
+            border: 1px solid transparent;
+            box-sizing: border-box;
+            color: #333333;
+            cursor: pointer;
+            display: inline-block;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            height: 32px;
+            min-width: 80px;
+            outline: transparent;
+            padding-bottom: 0;
+            padding-left: 16px;
+            padding-right: 16px;
+            padding-top: 0;
+            position: relative;
+            text-align: center;
+            text-decoration: none;
+            user-select: none;
+            vertical-align: top;
+          }
+          &::-moz-focus-inner {
+            border: 0;
+          }
+          .ms-Fabric--isFocusVisible &:focus:after {
+            border: 1px solid #ffffff;
+            bottom: 0px;
+            content: "";
+            left: 0px;
+            outline: 1px solid #666666;
+            position: absolute;
+            right: 0px;
+            top: 0px;
+            z-index: 1;
+          }
+          @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+            border: none;
+            bottom: -2px;
+            left: -2px;
+            outline-color: ButtonText;
+            right: -2px;
+            top: -2px;
+          }
+          &:active > * {
+            left: 0px;
+            position: relative;
+            top: 0px;
+          }
+          &:hover {
+            background-color: #eaeaea;
+            color: #212121;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+            color: Highlight;
+          }
+          &:active {
+            background-color: #c8c8c8;
+            color: #212121;
+          }
+      data-is-focusable={true}
+      onClick={[Function]}
+      onKeyDown={[Function]}
+      onKeyPress={[Function]}
+      onKeyUp={[Function]}
+      onMouseDown={[Function]}
+      onMouseUp={[Function]}
+      type="button"
     >
       <div
         className=
-            ms-Button-textContainer
+            ms-Button-flexContainer
             {
-              flex-grow: 1;
+              align-items: center;
+              display: flex;
+              flex-wrap: nowrap;
+              height: 100%;
+              justify-content: center;
             }
       >
         <div
           className=
-              ms-Button-label
+              ms-Button-textContainer
               {
-                font-weight: 600;
-                line-height: 100%;
-                margin-bottom: 0;
-                margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
+                flex-grow: 1;
               }
-          id="id__0"
         >
-          Trap Focus Initiator
+          <div
+            className=
+                ms-Button-label
+                {
+                  font-weight: 600;
+                  line-height: 100%;
+                  margin-bottom: 0;
+                  margin-left: 4px;
+                  margin-right: 4px;
+                  margin-top: 0;
+                }
+            id="id__0"
+          >
+            Trap Focus
+          </div>
         </div>
       </div>
-    </div>
-  </button>
+    </button>
+  </div>
   <div
     onBlur={[Function]}
     onFocus={[Function]}

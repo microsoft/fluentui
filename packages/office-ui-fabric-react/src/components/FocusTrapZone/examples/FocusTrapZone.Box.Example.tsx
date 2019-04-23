@@ -3,9 +3,10 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface IFocusTrapZoneBoxExampleState {
   useTrapZone: boolean;
@@ -22,8 +23,15 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
     const { useTrapZone } = this.state;
 
     return (
-      <div>
-        <DefaultButton onClick={this._onButtonClickHandler} text="Trap Focus Initiator" />
+      <Stack tokens={{ childrenGap: 8 }}>
+        <Stack.Item>
+          <Text>
+            If this button is used to enable FocusTrapZone, focus should return to this button after the FocusTrapZone is disabled.
+          </Text>
+        </Stack.Item>
+        <Stack.Item>
+          <DefaultButton onClick={this._onButtonClickHandler} text="Trap Focus" />
+        </Stack.Item>
         <FocusTrapZone disabled={!useTrapZone}>
           <Stack
             horizontalAlign="start"
@@ -44,7 +52,7 @@ export class FocusTrapZoneBoxExample extends React.Component<{}, IFocusTrapZoneB
             <Link href="https://bing.com">Hyperlink inside trap zone</Link>
           </Stack>
         </FocusTrapZone>
-      </div>
+      </Stack>
     );
   }
 
