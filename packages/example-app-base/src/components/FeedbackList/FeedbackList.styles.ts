@@ -50,7 +50,7 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
       }
     ],
     itemName: [
-      theme.fonts.xLarge,
+      theme.fonts.mediumPlus,
       {
         whiteSpace: 'nowrap',
         overflow: 'hidden',
@@ -59,12 +59,12 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
     ],
     itemLabel: [
       {
-        fontSize: theme.fonts.medium.fontSize,
+        fontSize: theme.fonts.small.fontSize,
         fontWeight: FontWeights.bold
       },
       globalClassNames.listElement
     ],
-    timeStamp: [{ fontSize: theme.fonts.medium.fontSize }, globalClassNames.timeStamp],
+    timeStamp: [{ fontSize: theme.fonts.small.fontSize }, globalClassNames.timeStamp],
     subComponentStyles: {
       pivot: pivotStyles
     }

@@ -24,7 +24,7 @@ const classNames = mergeStyleSets({
     zIndex: 100
   },
   headerTitle: [
-    theme.fonts.xLarge,
+    theme.fonts.mediumPlus,
     {
       padding: '4px 0'
     }

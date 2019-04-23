@@ -8,7 +8,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   return {
     root: [
       'ms-SearchBox',
-      fonts.medium,
+      fonts.small,
       normalize,
       {
         color: palette.neutralPrimary,

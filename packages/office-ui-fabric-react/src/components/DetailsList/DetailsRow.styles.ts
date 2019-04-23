@@ -297,7 +297,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.root,
       AnimationClassNames.fadeIn400,
       droppingClassName,
-      theme.fonts.small,
+      theme.fonts.xSmall,
       isCheckVisible && classNames.isCheckVisible,
       getFocusStyle(theme, { borderColor: focusBorder, outlineColor: white }),
       {
@@ -405,7 +405,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.isRowHeader,
       {
         color: colors.defaultHeaderText,
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.small
       },
       isSelected && {
         color: colors.selectedHeaderText,

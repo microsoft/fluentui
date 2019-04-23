@@ -60,7 +60,7 @@ export const getOptionStyles = memoizeFunction(
 
     const optionStyles: IComboBoxOptionStyles = {
       root: [
-        theme.fonts.medium,
+        theme.fonts.small,
         {
           backgroundColor: isPending ? ComboBoxOptionBackgroundHovered : 'transparent',
           boxSizing: 'border-box',
@@ -160,7 +160,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
     const styles: IButtonStyles = {
       root: {
         color: caretButtonTextColor,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         position: 'absolute',
         // The negative positioning accounts for the 1px root border now that box-sizing is border-box
         top: '-1px',
@@ -180,7 +180,7 @@ export const getCaretDownButtonStyles = memoizeFunction(
         }
       },
       icon: {
-        fontSize: FontSizes.small
+        fontSize: FontSizes.xSmall
       },
       rootHovered: {
         backgroundColor: caretButtonBackgroundHovered,
@@ -240,7 +240,7 @@ export const getStyles = memoizeFunction(
       label: {},
       labelDisabled: {},
       root: [
-        theme.fonts.medium,
+        theme.fonts.small,
         {
           boxShadow: 'none',
           marginLeft: '0',
@@ -381,7 +381,7 @@ export const getStyles = memoizeFunction(
       },
 
       header: [
-        fonts.medium,
+        fonts.small,
         {
           fontWeight: FontWeights.semibold,
           color: ComboBoxOptionHeaderTextColor,

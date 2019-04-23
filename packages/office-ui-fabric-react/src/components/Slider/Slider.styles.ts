@@ -67,7 +67,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         userSelect: 'none'
       },

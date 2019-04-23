@@ -10,7 +10,7 @@ export const collapsibleSectionStyles: ICollapsibleSectionComponent['styles'] = 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    root: [classNames.root, theme.fonts.medium],
+    root: [classNames.root, theme.fonts.small],
     body: [classNames.body]
   };
 };

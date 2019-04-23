@@ -24,7 +24,7 @@ export const getStyles = (props: IKeytipStyleProps): IKeytipStyles => {
       }
     ],
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         textAlign: 'center',
         paddingLeft: '3px',

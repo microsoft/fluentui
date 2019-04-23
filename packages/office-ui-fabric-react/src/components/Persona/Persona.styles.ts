@@ -44,17 +44,17 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
   const sharedTextStyles: IStyle = {
     color: palette.neutralSecondary,
     fontWeight: FontWeights.regular,
-    fontSize: FontSizes.small
+    fontSize: FontSizes.xSmall
   };
 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       normalize,
       {
         color: palette.neutralPrimary,
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         fontWeight: FontWeights.regular,
         position: 'relative',
         height: personaSize.size48,
@@ -215,7 +215,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       {
         color: palette.neutralPrimary,
         fontWeight: FontWeights.regular,
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.small
       },
 
       showSecondaryText && {
@@ -225,7 +225,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       },
 
       (size.isSize8 || size.isSize10) && {
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         lineHeight: personaSize.size8
       },
 
@@ -270,7 +270,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
         },
 
       (size.isSize56 || size.isSize72 || size.isSize100) && {
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.small
       },
 
       (size.isSize56 || size.isSize72 || size.isSize100) &&
@@ -285,7 +285,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
       {
         display: 'none',
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.small
       },
 
       (size.isSize72 || size.isSize100) && {
@@ -299,7 +299,7 @@ export const getStyles = (props: IPersonaStyleProps): IPersonaStyles => {
       sharedTextStyles,
       {
         display: 'none',
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.small
       },
 
       size.isSize100 && {

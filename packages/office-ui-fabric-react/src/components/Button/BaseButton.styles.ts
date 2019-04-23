@@ -40,7 +40,7 @@ export const getStyles = memoizeFunction(
     return {
       root: [
         getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
-        theme.fonts.medium,
+        theme.fonts.small,
         {
           boxSizing: 'border-box',
           border: '1px solid ' + border,
@@ -108,7 +108,7 @@ export const getStyles = memoizeFunction(
       menuIcon: [
         iconStyle,
         {
-          fontSize: FontSizes.small
+          fontSize: FontSizes.xSmall
         }
       ],
 

@@ -6,7 +6,7 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
   return {
     root: [
       'ms-ColorPicker',
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
         maxWidth: 300
@@ -33,7 +33,7 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
     ],
     tableHeader: [
       {
-        ...theme.fonts.small,
+        ...theme.fonts.xSmall,
         selectors: {
           td: {
             paddingBottom: 4

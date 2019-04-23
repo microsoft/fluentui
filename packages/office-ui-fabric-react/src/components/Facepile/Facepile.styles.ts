@@ -39,7 +39,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         width: 'auto'
       },
@@ -51,7 +51,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
-        fontSize: fonts.medium.fontSize,
+        fontSize: fonts.small.fontSize,
         color: palette.white,
         backgroundColor: palette.themePrimary,
         marginRight: spacingAroundItemButton * 2 + 'px',
@@ -77,7 +77,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
-        fontSize: fonts.small.fontSize,
+        fontSize: fonts.xSmall.fontSize,
         color: palette.neutralSecondary,
         backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
@@ -118,7 +118,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
-        fontSize: fonts.medium.fontSize,
+        fontSize: fonts.small.fontSize,
         color: palette.neutralSecondary,
         backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
