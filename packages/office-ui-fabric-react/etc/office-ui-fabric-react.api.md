@@ -6391,6 +6391,26 @@ export interface IShimmerColors {
 }
 
 // @public
+export interface IShimmeredDetailsListProps extends IDetailsListProps {
+    detailsListStyles?: IDetailsListProps['styles'];
+    enableShimmer?: boolean;
+    onRenderCustomPlaceholder?: (rowProps?: IDetailsRowProps) => React_2.ReactNode;
+    shimmerLines?: number;
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
+
+// @public
+export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
+    className?: string;
+    enableShimmer?: boolean;
+};
+
+// @public
+export interface IShimmeredDetailsListStyles {
+    root: IStyle;
+}
+
+// @public
 export interface IShimmerElement {
     height?: number;
     type: ShimmerElementType;
@@ -8434,8 +8454,6 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
     render(): JSX.Element;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export const ShimmeredDetailsList: React_2.StatelessComponent<IShimmeredDetailsListProps>;
 
