@@ -84,10 +84,11 @@ export class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZo
   };
 
   // This randomize example is exposing a quirk in focus stack behavior.
-  // Since for the example components render from the bottom up, the most recently active item in the focusStack
-  // ends up being the highest parent, which is the reverse order focus trap zones would normally be put on the
-  // focusStack. That means children aren't capturing focus as one would normally expect when toggling the FTZ's
-  // individually. This would also be an issue if anyone ever rendered multiple FocusTrapZones simultaneously.
+  // For the randomize example, components render from the bottom up with all of the new "activeStates" simultaneously set.
+  // The most recently active item in the focusStack ends up being the highest parent, which is the reverse order focus
+  // trap zones would normally be put on the focusStack. That means children aren't capturing focus as one would normally
+  // expect when toggling the FTZ's individually. This would also be an issue if anyone ever rendered multiple nested and enabled
+  //  FocusTrapZones simultaneously.
   private _randomize = (): void => {
     const activeStates: IFocusTrapZoneNestedExampleState['activeStates'] = {};
     [1, 2, 3, 4, 5].forEach(zoneNumber => {

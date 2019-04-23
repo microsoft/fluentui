@@ -579,7 +579,7 @@ describe('FocusTrapZone', () => {
       expect(document.activeElement).toBe(activeElement);
     });
 
-    it('Does not focus first on mount with disabled', async () => {
+    it('Does not focus first on mount while disabled', async () => {
       expect.assertions(1);
 
       const activeElement = document.activeElement;
@@ -600,7 +600,7 @@ describe('FocusTrapZone', () => {
       expect(document.activeElement).toBe(buttonC);
     });
 
-    it('Does not focus on firstFocusableSelector on mount with disabled', async () => {
+    it('Does not focus on firstFocusableSelector on mount while disabled', async () => {
       expect.assertions(1);
 
       const activeElement = document.activeElement;
