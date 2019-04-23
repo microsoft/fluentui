@@ -148,7 +148,6 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   };
 
   private _generatePropertyArray(): Array<IApiProperty> {
-    let results: Array<IApiProperty> = [];
     const iComponentProps: Array<IApiProperty> = [];
     const preResults: Array<IApiProperty> = [];
 
@@ -182,12 +181,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       }
     }
 
-    results = iComponentProps;
-    for (const result of preResults) {
-      results.push(result);
-    }
-
-    return results;
+    return [...iComponentProps, ...preResults];
   }
 
   private _generateEnumProperty(table: ITableJson): IApiProperty {
