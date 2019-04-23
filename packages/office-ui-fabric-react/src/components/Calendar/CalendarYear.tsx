@@ -203,7 +203,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
         aria-label={prevAriaLabel}
         disabled={disabled}
       >
-        <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
+        <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} aria-hidden={false} />
       </button>
     );
   }
@@ -250,7 +250,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
         aria-label={nextAriaLabel}
         disabled={this.isDisabled}
       >
-        <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
+        <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} aria-hidden={false} />
       </button>
     );
   }
