@@ -5,7 +5,7 @@ import { IIconProps } from '../Icon/Icon.types';
 import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
