@@ -9,27 +9,27 @@ export class SlotsContentExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack {...stackProps}>
-        <Button content={1}>
+        <Button content={{ props: { children: 1 } }}>
           <p>Content: Integer</p>
         </Button>
         <Button content="Content: String" />
-        <Button content={{ weight: 'bold', children: 'Content: Props, weight: bold' }} />
-        <Button content={() => <Spinner />}>
+        <Button content={{ props: { weight: 'bold', children: 'Content: Props, weight: bold' } }} />
+        <Button content={{ render: () => <Spinner /> }}>
           <p>Content: Function, Spinner</p>
         </Button>
         <Button
-          content={render =>
-            render((ContentType, contentProps) => (
+          content={{
+            render: (contentProps, DefaultComponent) => (
               <b>
-                Content: <ContentType {...contentProps}>TextType</ContentType>
+                Wrapper Content Text: <DefaultComponent {...contentProps}>TextType</DefaultComponent>
               </b>
-            ))
-          }
+            )
+          }}
         >
           <p>Content: Function, Text + ContentType</p>
         </Button>
-        <Button content={{ children: 'Content: Child String' }} />
-        <Button content={{ children: ['Content: Child 1,', ' Child 2'] }} />
+        <Button content={{ props: { children: 'Content: Child String' } }} />
+        <Button content={{ props: { children: ['Content: Child 1,', ' Child 2'] } }} />
         <Button content={<Text>Content: JSX Element</Text>} />
         <Button content="Content: With Children">
           <p>Button Child 1</p>

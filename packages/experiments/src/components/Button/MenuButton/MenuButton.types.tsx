@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
 import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps } from '../Button.types';
@@ -14,11 +14,6 @@ export type IMenuButtonStylesReturnType = ReturnType<Extract<IMenuButtonComponen
 export type IMenuButtonSlot = ISlotProp<IMenuButtonProps>;
 
 export interface IMenuButtonSlots extends IButtonSlots {
-  /**
-   * Defines the root slot of the component.
-   */
-  root?: IHTMLElementSlot<'div'>;
-
   /**
    * Defines the button that is going to be rendered.
    */

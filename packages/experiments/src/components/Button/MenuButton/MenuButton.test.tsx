@@ -6,16 +6,18 @@ import { MenuButton } from './MenuButton';
 import { IMenuButtonProps } from './MenuButton.types';
 
 const menuProps: IMenuButtonProps['menu'] = {
-  items: [
-    {
-      key: 'a',
-      name: 'Item a'
-    },
-    {
-      key: 'b',
-      name: 'Item b'
-    }
-  ]
+  props: {
+    items: [
+      {
+        key: 'a',
+        name: 'Item a'
+      },
+      {
+        key: 'b',
+        name: 'Item b'
+      }
+    ]
+  }
 };
 
 describe('MenuButton view', () => {

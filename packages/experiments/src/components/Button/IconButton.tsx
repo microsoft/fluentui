@@ -42,5 +42,5 @@ export const IconButtonTokens: IButtonComponent['tokens'] = (props, theme): IBut
 export const IconButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return <Button circular icon={iconProps} tokens={IconButtonTokens} {...rest} />;
+  return <Button circular icon={{ props: iconProps }} tokens={IconButtonTokens} {...rest} />;
 };
