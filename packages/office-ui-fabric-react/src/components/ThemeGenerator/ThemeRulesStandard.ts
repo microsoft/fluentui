@@ -58,6 +58,8 @@ export enum SemanticColorSlots {
   bodySubtext,
   bodyDivider,
 
+  actionLink,
+  actionLinkHovered,
   link,
   linkHovered,
 
@@ -255,6 +257,9 @@ export function themeRulesStandardCreator(): IThemeRules {
   // Neutral
   // Soft
   // Strong
+
+  // manually set initial colors for the primary-based Semantic Color slots to match the default theme
+  slotRules[SemanticColorSlots[SemanticColorSlots.bodyBackground]].color = getColorFromString('#ffffff'); // p.white
 
   return slotRules;
 }

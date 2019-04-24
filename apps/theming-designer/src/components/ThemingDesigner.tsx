@@ -52,7 +52,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
     this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
 
-    hideSemanticSlots = true;
+    hideSemanticSlots = false;
     if (!hideSemanticSlots) {
       semanticSlotsCard = <SemanticSlots />;
     } else {
