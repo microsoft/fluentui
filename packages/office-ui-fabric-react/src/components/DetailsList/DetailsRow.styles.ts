@@ -142,6 +142,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   }
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default hover background
+            [HighContrastSelector]: {
+              background: 'Highlight'
             }
           }
         },
