@@ -7,7 +7,7 @@ import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
-import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
+import { ISuggestionItemProps } from './SuggestionsItem.types';
 
 import * as stylesImport from './Suggestions.scss';
 const legacyStyles: any = stylesImport;
@@ -18,11 +18,12 @@ export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
+const StyledSuggestionsItem = styled(SuggestionsItem, suggestionsItemStyles, undefined, { scope: 'SuggestionItem' });
+
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = React.createRef<IButton>();
   protected _searchForMoreButton = React.createRef<IButton>();
   protected _selectedElement = React.createRef<HTMLDivElement>();
-  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
@@ -46,6 +47,10 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
       this.scrollSelected();
       this.activeSelectedElement = this._selectedElement.current;
     }
+  }
+
+  public componentWillUnmount(): void {
+    console.log('Suggestions.willUnmount');
   }
 
   public render(): JSX.Element {
@@ -307,19 +312,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     let { suggestions } = this.props;
 
-    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
-
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestionsItem = styled<ISuggestionItemProps<T>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
-      TypedSuggestionsItem,
-      suggestionsItemStyles,
-      undefined,
-      {
-        scope: 'SuggestionItem'
-      }
-    );
+    const StyledTypedSuggestionsItem: React.ComponentClass<ISuggestionItemProps<T>> = StyledSuggestionsItem as any;
 
     let selectedIndex = -1;
     suggestions.some((element, index) => {

@@ -5,7 +5,7 @@ import { IFocusZone, FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Callout, DirectionalHint } from '../../Callout';
 import { Selection, SelectionZone, SelectionMode } from '../../utilities/selection/index';
 import { Suggestions } from './Suggestions/Suggestions';
-import { ISuggestions, ISuggestionsProps, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions/Suggestions.types';
+import { ISuggestions, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { getStyles as suggestionsStyles } from './Suggestions/Suggestions.styles';
 import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
@@ -48,6 +48,8 @@ export type IPickerAriaIds = {
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
+const StyledSuggestions = styled(Suggestions, suggestionsStyles, undefined, { scope: 'Suggestions' });
+
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
@@ -57,7 +59,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected selection: Selection;
   protected suggestionStore: SuggestionsController<T>;
-  protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
   private _id: string;
@@ -277,17 +278,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestions = this.SuggestionOfProperType;
-
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
-      TypedSuggestions,
-      suggestionsStyles,
-      undefined,
-      { scope: 'Suggestions' }
-    );
+    const StyledTypedSuggestions: React.ComponentClass<ISuggestionsProps<T>> = StyledSuggestions as any;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
