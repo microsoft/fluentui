@@ -38,6 +38,8 @@ export const SMALL_GAP_SIZE = 8;
 export const MEDIUM_GAP_SIZE = 16;
 export const LARGE_GAP_SIZE = 48;
 
+const DEPRECATED_ROW_COLOR = '#FFF1CC';
+
 export class ApiReferencesTable extends React.Component<IApiReferencesTableProps, IApiReferencesTableState> {
   public static defaultProps: Partial<IApiReferencesTableProps> = {
     title: 'Properties'
@@ -416,10 +418,10 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     if (item.deprecated === true) {
       const deprecatedStyles: Partial<IDetailsRowStyles> = {
         root: {
-          background: '#FFF1CC',
+          background: DEPRECATED_ROW_COLOR,
           selectors: {
             ':hover': {
-              background: '#FFF1CC'
+              background: DEPRECATED_ROW_COLOR
             }
           }
         }
@@ -452,7 +454,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return undefined;
   }
 
-  private _parseILinkTokensHelper(linkTokens: ILinkToken[], extend: boolean): JSX.Element | undefined {
+  private _parseILinkTokensHelper = (linkTokens: ILinkToken[], extend: boolean): JSX.Element | undefined => {
     return (
       <>
         {linkTokens.map((token: ILinkToken, index: number) => {
@@ -485,5 +487,5 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         })}
       </>
     );
-  }
+  };
 }
