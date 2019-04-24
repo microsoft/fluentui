@@ -13,8 +13,8 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IContrastRatioPair } from './AccessibilityChecker';
 
 export interface IAccessibilityDetailsListProps {
-  allContrastRatioPairs: IContrastRatioPair[];
-  nonAccessibleStartIndex: number;
+  accessiblePairs: IContrastRatioPair[];
+  nonAccessiblePairs: IContrastRatioPair[];
   theme: ITheme | undefined;
 }
 
@@ -27,6 +27,9 @@ interface IAccessibilityDetailsList {
 export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDetailsListProps> = (
   props: IAccessibilityDetailsListProps
 ) => {
+  let allContrastRatioPairs = props.nonAccessiblePairs.concat(props.accessiblePairs);
+  let nonAccessibleStartIndex = props.nonAccessiblePairs.length;
+
   let items: IAccessibilityDetailsList[] = [];
   let groups: IGroup[] = [];
   let columns: IColumn[] = [];
@@ -36,9 +39,9 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
     // Set each row's background and text color to what's specified by its respective slot rule
     if (detailsRowProps && newTheme) {
       const currentSlotPair = detailsRowProps!.item.slotPair;
-      const pairSplt = currentSlotPair.split(' on ');
-      const currForegroundColor = pairSplt[0];
-      const currBackgroundColor = pairSplt[1];
+      const pairSplit = currentSlotPair.split(' on ');
+      const currForegroundColor = pairSplit[0];
+      const currBackgroundColor = pairSplit[1];
 
       const rowStyles: Partial<IDetailsRowStyles> = {
         root: {
@@ -57,12 +60,12 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
     }
   };
 
-  const accessiblePairsListCount = props.allContrastRatioPairs.length - props.nonAccessibleStartIndex;
+  const accessiblePairsListCount = allContrastRatioPairs.length - nonAccessibleStartIndex;
   let messageBar;
-  if (props.allContrastRatioPairs.length > 0 && props.nonAccessibleStartIndex > 0) {
+  if (allContrastRatioPairs.length > 0 && nonAccessibleStartIndex > 0) {
     const errorsMessageBarString =
       'Your color palette has ' +
-      props.nonAccessibleStartIndex.toString() +
+      nonAccessibleStartIndex.toString() +
       ' accessibility errors. Each pair of colors below should produce legible text and have a minimum contrast of 4.5';
     messageBar = (
       <MessageBar messageBarType={MessageBarType.error} isMultiline={false}>
@@ -77,20 +80,20 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
     );
   }
 
-  for (let i = 0; i < props.allContrastRatioPairs.length; i++) {
+  for (let i = 0; i < allContrastRatioPairs.length; i++) {
     items.push({
       key: i.toString(),
-      contrastRatio: props.allContrastRatioPairs[i].contrastRatioValue,
-      slotPair: props.allContrastRatioPairs[i].contrastRatioPair
+      contrastRatio: allContrastRatioPairs[i].contrastRatioValue,
+      slotPair: allContrastRatioPairs[i].contrastRatioPair
     });
   }
 
   groups = [
-    { key: 'nonaccessiblepairs', name: 'Non accessible pairs', startIndex: 0, count: props.nonAccessibleStartIndex },
+    { key: 'nonaccessiblepairs', name: 'Non accessible pairs', startIndex: 0, count: nonAccessibleStartIndex },
     {
       key: 'accessiblepairs',
       name: 'Accessible pairs',
-      startIndex: props.nonAccessibleStartIndex,
+      startIndex: nonAccessibleStartIndex,
       count: accessiblePairsListCount
     }
   ];

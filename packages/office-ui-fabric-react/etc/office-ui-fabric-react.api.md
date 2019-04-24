@@ -8968,6 +8968,8 @@ export const TextView: ITextComponent['view'];
 // @public (undocumented)
 export class ThemeGenerator {
     // (undocumented)
+    static ensureSlots(slotRules: IThemeRules, isInverted: boolean): void;
+    // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
@@ -8975,8 +8977,6 @@ export class ThemeGenerator {
     static getThemeAsSass(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeForPowerShell(slotRules: IThemeRules): any;
-    // (undocumented)
-    static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
     // (undocumented)
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }

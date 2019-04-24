@@ -49,7 +49,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
     super(props);
 
     const themeRules = themeRulesStandardCreator();
-    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
+    ThemeGenerator.ensureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
     this.state = {
       themeRules: themeRules,
@@ -449,7 +449,7 @@ export class ColorsPage extends BaseComponent<{}, IColorsPageState> {
         ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor.str, currentIsDark, true, true);
         if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
           // isInverted got swapped, so need to refresh slots with new shading rules
-          ThemeGenerator.insureSlots(themeRules, !currentIsDark);
+          ThemeGenerator.ensureSlots(themeRules, !currentIsDark);
         }
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
       }, 20);

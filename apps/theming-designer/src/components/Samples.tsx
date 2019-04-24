@@ -13,7 +13,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 export class Samples extends React.Component {
   public render() {
     return (
-      <Card styles={{ root: { width: '800px', height: 'auto' } }}>
+      <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto' } }}>
         <h1>Samples</h1>
         <Stack horizontal gap={50}>
           <Stack gap={10}>

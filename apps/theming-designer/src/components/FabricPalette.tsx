@@ -51,7 +51,7 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
   };
 
   return (
-    <Card styles={{ root: { width: '800px', height: 'auto', display: 'flex' } }}>
+    <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto', display: 'flex' } }}>
       <h1>Fabric Palette</h1>
       <table className={tableClassName}>
         <thead>
@@ -66,11 +66,11 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
         </thead>
         <tbody>
           <tr>
-            <td>{fabricSlotWidget(FabricSlots.themeDarker)}</td> {/*_fabricSlotWidget(fabricThemeSlots)*/}
-            <td>{props.themeRules![FabricSlots[FabricSlots.themeDarker]].color!.str}</td> {/* slotRule.color!.str */}
-            <td>{fabricSlotWidget(FabricSlots.black)}</td> {/*_fabricSlotWidget(fabricNeutralForegroundSlots)*/}
+            <td>{fabricSlotWidget(FabricSlots.themeDarker)}</td> {/*fabricThemeSlots*/}
+            <td>{props.themeRules![FabricSlots[FabricSlots.themeDarker]].color!.str}</td>
+            <td>{fabricSlotWidget(FabricSlots.black)}</td> {/*fabricNeutralForegroundSlots*/}
             <td>{props.themeRules![FabricSlots[FabricSlots.black]].color!.str}</td>
-            <td>{fabricSlotWidget(FabricSlots.neutralTertiaryAlt)}</td> {/*_fabricSlotWidget(fabricNeutralBackgroundSlots)*/}
+            <td>{fabricSlotWidget(FabricSlots.neutralTertiaryAlt)}</td> {/*fabricNeutralBackgroundSlots*/}
             <td>{props.themeRules![FabricSlots[FabricSlots.neutralTertiaryAlt]].color!.str}</td>
           </tr>
           <tr>

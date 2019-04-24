@@ -54,8 +54,8 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render(): JSX.Element {
     return (
-      <Card styles={{ root: { width: '1200px', height: '25px' } }}>
-        <Stack horizontal gap={800}>
+      <Card styles={{ root: { minWidth: '1200px', height: '25px' } }}>
+        <Stack horizontal tokens={{ childrenGap: 800 }}>
           <Stack horizontal>
             <IconButton
               disabled={false}

@@ -59,13 +59,9 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
 
   loadAllContrastRatioPairsList();
   return (
-    <Card styles={{ root: { width: '800px', height: 'auto' } }}>
+    <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto' } }}>
       <h1>Accessibility Checker</h1>
-      <AccessibilityDetailsList
-        theme={props.theme!}
-        allContrastRatioPairs={nonAccessiblePairs.concat(accessiblePairs)}
-        nonAccessibleStartIndex={nonAccessiblePairs.length}
-      />
+      <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
     </Card>
   );
 };

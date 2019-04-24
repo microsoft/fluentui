@@ -10,7 +10,7 @@ import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
 import { ThemeGenerator, themeRulesStandardCreator, BaseSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
@@ -34,19 +34,20 @@ const sideBarClassName = mergeStyles({
 });
 
 const mainCardsClassName = mergeStyles({
-  flexDirection: 'column',
-  background: '#fff',
-  flex: 1,
-  margin: 0,
-  padding: 0
+  background: '#fff'
 });
+
+let colorChangeTimeout: number;
+
+let hideSemanticSlots: boolean;
+let semanticSlotsCard: JSX.Element;
 
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   constructor(props: any) {
     super(props);
 
     const themeRules = themeRulesStandardCreator();
-    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
+    ThemeGenerator.ensureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
 
     this.state = {
       theme: getTheme(true),
@@ -59,20 +60,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
     this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
     this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
-  }
 
-  public componentWillUnmount(): void {
-    // remove temp styles
-    const root = document.querySelector('.samples') as HTMLElement;
-    if (root) {
-      root.style.backgroundColor = '';
-      root.style.color = '';
+    hideSemanticSlots = true;
+    if (!hideSemanticSlots) {
+      semanticSlotsCard = <SemanticSlots />;
+    } else {
+      <div />;
     }
-    document.body.style.backgroundColor = '';
-    document.body.style.color = '';
-
-    // and apply the default theme to overwrite any existing custom theme
-    loadTheme({});
   }
 
   public render() {
@@ -93,14 +87,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
                 Color
               </h1>
               <Stack gap={20}>
-                {/* This Dropdown will allow the user to switch from light to dark theme on the whole app. */}
-                {/* <Dropdown
-                placeholder="Select an Option"
-                label="Theme dropdown"
-                ariaLabel="Theme dropdown"
-                options={[{ key: 'light', text: 'Light theme' }, { key:  'dark', text: 'Dark theme' }]}
-                /> */}
-
                 {/* the three base slots, prominently displayed at the top of the page */}
                 <ThemeDesignerColorPicker
                   color={this.state.primaryColor}
@@ -117,6 +103,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
                   onColorChange={this._onBkgColorPickerChange}
                   label={'Body background color'}
                 />
+                {/* This Dropdown will allow the user to switch from light to dark theme on the whole app. */}
+                {/* <Dropdown
+                placeholder="Select an Option"
+                label="Theme dropdown"
+                ariaLabel="Theme dropdown"
+                options={[{ key: 'light', text: 'Light theme' }, { key:  'dark', text: 'Dark theme' }]}
+                /> */}
               </Stack>
             </div>
             <Stack className={mainCardsClassName}>
@@ -125,7 +118,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               </ThemeProvider>
               <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
-              <SemanticSlots />
+              {semanticSlotsCard}
             </Stack>
           </Stack>
         </Stack>
@@ -151,47 +144,39 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
       const finalTheme = createTheme({
         ...{ palette: themeAsJson }
-        // isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
       });
       this.setState({ theme: finalTheme });
-      // const root = document.querySelector('.app') as HTMLElement;
-      // if (root) {
-      //   root.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
-      //   root.style.color = finalTheme.semanticColors.bodyText;
-      // }
-
-      // document.body.style.backgroundColor = finalTheme.semanticColors.bodyBackground;
-      // document.body.style.color = finalTheme.semanticColors.bodyText;
     }
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
+    if (colorChangeTimeout) {
+      clearTimeout(colorChangeTimeout);
+    }
     if (newColor) {
       if (colorToChange === this.state.primaryColor) {
         this.setState({ primaryColor: newColor });
       } else if (colorToChange === this.state.textColor) {
         this.setState({ textColor: newColor });
       } else if (colorToChange === this.state.backgroundColor) {
-        // console.log('got to background', colorToChange);
         this.setState({ backgroundColor: newColor });
       } else {
         return;
       }
-      this._async.setTimeout(() => {
+      colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
           ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
           if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
             // isInverted got swapped, so need to refresh slots with new shading rules
-            ThemeGenerator.insureSlots(themeRules, currentIsDark);
+            ThemeGenerator.ensureSlots(themeRules, currentIsDark);
           }
         }
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
       }, 20);
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes inbetween
-      // console.log(this.state.themeRules);
     }
   };
 }
