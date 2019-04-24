@@ -4665,7 +4665,6 @@ export interface IImage {
 // @public (undocumented)
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
-    componentRef?: IRefObject<IImage>;
     coverStyle?: ImageCoverStyle;
     // @deprecated
     errorSrc?: string;
