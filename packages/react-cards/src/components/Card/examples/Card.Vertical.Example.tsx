@@ -51,7 +51,7 @@ export class CardVerticalExample extends React.Component<{}, {}> {
     const dateTextStyles: ITextStyles = {
       root: {
         color: '#505050',
-        fontWeight: 600 as 600
+        fontWeight: 600
       }
     };
     const subduedTextStyles: ITextStyles = {

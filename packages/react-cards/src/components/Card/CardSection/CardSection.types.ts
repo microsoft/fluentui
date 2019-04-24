@@ -29,7 +29,7 @@ export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
 /**
  * {@docCategory CardSection}
  */
-export interface ICardSectionSlots extends IStackSlots {}
+export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {}
 
 /**
  * {@docCategory CardSection}
