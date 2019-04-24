@@ -260,7 +260,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['eml', 'msg', 'ost', 'pst']
   },
   exe: {
-    extensions: ['application', 'appref - ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap']
+    extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap']
   },
   folder: {},
   font: {
@@ -316,7 +316,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     extensions: ['one'] // this is a format for exported single - file notebook pages
   },
   onetoc: {
-    extensions: ['ms - one - stub', 'onetoc', 'onetoc2', 'onepkg'] // this icon represents a complete, logical notebook.
+    extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'] // this icon represents a complete, logical notebook.
   },
   pdf: {
     extensions: ['pdf']
