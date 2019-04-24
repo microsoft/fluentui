@@ -108,7 +108,7 @@ export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMic
 
     return (
       <DefaultButton data-is-focusable={true} className={this.classNames.followUpOptionContainer} onClick={listOption}>
-        <Text className={this.classNames.followUpOptionText} variant="small">{`${item}`}</Text>
+        <Text className={this.classNames.followUpOptionText}>{`${item}`}</Text>
       </DefaultButton>
     );
   };
