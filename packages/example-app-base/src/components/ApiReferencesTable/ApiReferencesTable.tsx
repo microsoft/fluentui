@@ -12,7 +12,6 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { IApiInterfaceProperty, IApiEnumProperty, ILinkToken, IMethod } from './ApiReferencesTableSet.types';
 
 export interface IApiReferencesTableProps {
@@ -210,7 +209,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     ];
   }
 
-  public renderCell = (text: string) => {
+  public renderCell = (text: string, deprecated: boolean = false) => {
     // When the text is passed to this function, it has had newline characters removed,
     // so this regex will match backtick sequences that span multiple lines.
     const regex = new RegExp('`[^`]*`', 'g');
@@ -224,12 +223,44 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     }
 
     if (codeBlocks.length === 0) {
-      return <Text variant="small">{text}</Text>;
+      return (
+        <>
+          {deprecated ? (
+            <>
+              <Text block variant="small">
+                Warning: this API is now obsolete.
+              </Text>
+              <br />
+            </>
+          ) : (
+            undefined
+          )}
+          <Text block variant="small">
+            {text}
+          </Text>
+        </>
+      );
     }
 
     const eltChildren = this._extractCodeBlocks(text, codeBlocks);
 
-    return <Text variant="small">{eltChildren}</Text>;
+    return (
+      <>
+        {deprecated ? (
+          <>
+            <Text block variant="small">
+              Warning: this API is now obsolete.
+            </Text>
+            <br />
+          </>
+        ) : (
+          undefined
+        )}
+        <Text block variant="small">
+          {eltChildren}
+        </Text>
+      </>
+    );
   };
 
   public renderCellType = (typeTokens: ILinkToken[]) => {
@@ -239,7 +270,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   public createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
 
   public createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
-    this.renderCell(item[propertyName]);
+    this.renderCell(item[propertyName], propertyName === 'description' && item.deprecated);
 
   public createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
 
@@ -367,7 +398,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     );
   }
 
-  private _onRenderRow(props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element {
+  private _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
     const { item } = props;
     const rowStyles: Partial<IDetailsRowStyles> = {
       root: {
@@ -382,37 +413,23 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       }
     };
 
-    const deprecatedRowStyles = mergeStyles([
-      {
-        background: '#ffffcc'
-      }
-    ]);
-
     if (item.deprecated === true) {
       const deprecatedStyles: Partial<IDetailsRowStyles> = {
         root: {
-          background: '#FFFFCC',
+          background: '#FFF1CC',
           selectors: {
             ':hover': {
-              background: '#FFFFCC'
+              background: '#FFF1CC'
             }
           }
         }
       };
 
-      return (
-        <div className={deprecatedRowStyles}>
-          Warning. This API is now obsolete.
-          {defaultRender!({
-            ...props,
-            styles: rowStyles && deprecatedStyles
-          })}
-        </div>
-      );
+      return <DetailsRow {...props} styles={rowStyles && deprecatedStyles} />;
     }
 
     return <DetailsRow {...props} styles={rowStyles} />;
-  }
+  };
 
   private _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Element | undefined {
     if (linkTokens && linkTokens.length > 0) {
