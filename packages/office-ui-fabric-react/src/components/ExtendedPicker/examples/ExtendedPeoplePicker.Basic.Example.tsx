@@ -276,15 +276,6 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     return new Promise<IPersonaProps[]>(resolve => setTimeout(() => resolve(results), 150));
   }
 
-  private _onItemAdded = (selectedSuggestion: IExtendedPersonaProps) => {
-    this.setState({ currentlySelectedItems: this.state.currentlySelectedItems.concat(selectedSuggestion) });
-  };
-
-  private _onItemsRemoved = (items: IExtendedPersonaProps[]): void => {
-    const newItems = this.state.currentlySelectedItems.filter(value => items.indexOf(value) === -1);
-    this.setState({ currentlySelectedItems: newItems });
-  };
-
   private _isQueryForceResolveable = (input: string): boolean => {
     // Good enough of an 'is an email address' check for a UI demo
     return input.indexOf('@') !== -1;
