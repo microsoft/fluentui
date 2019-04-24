@@ -6,6 +6,9 @@ import { IStyle } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { OverflowSetBase } from './OverflowSet.base';
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSet {
   /**
    * Sets focus to the first tabbable item in the zone.
@@ -25,6 +28,9 @@ export interface IOverflowSet {
   focusElement(childElement?: HTMLElement): boolean;
 }
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase> {
   /**
    * Gets the component ref.
@@ -102,6 +108,9 @@ export interface IOverflowSetProps extends React.ClassAttributes<OverflowSetBase
   styles?: IStyleFunctionOrObject<IOverflowSetProps, IOverflowSetStyles>;
 }
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSetStyles {
   /** The style that is layered onto the root element of OverflowSet. */
   root?: IStyle;
@@ -113,9 +122,13 @@ export interface IOverflowSetStyles {
 
 /**
  * The props needed to construct styles. This represents the simplified set of immutable things which control the class names.
+ * {@docCategory OverflowSet}
  */
 export type IOverflowSetStyleProps = Pick<IOverflowSetProps, 'vertical' | 'className'>;
 
+/**
+ * {@docCategory OverflowSet}
+ */
 export interface IOverflowSetItemProps {
   /**
    * Unique id to identify the item.

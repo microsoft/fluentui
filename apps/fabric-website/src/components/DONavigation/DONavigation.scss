@@ -91,7 +91,7 @@ $od-Navigation-columnPadding: 30px;
 
   .od-Navigation-subMenuItem {
     font-size: $ms-font-size-l - 1;
-    line-height:  32px;
+    line-height: 32px;
     width: 100%;
     display: block;
     color: $ms-color-white;
@@ -104,7 +104,7 @@ $od-Navigation-columnPadding: 30px;
         box-shadow: inset 0px 0px 0px 1px WindowText;
       }
 
-      @include high-contrast-black-on-white  {
+      @include high-contrast-black-on-white {
         box-shadow: inset 0px 0px 0px 1px Highlight;
       }
     }

@@ -11,8 +11,8 @@ export class ComponentUtilitiesPage extends React.Component<IComponentPageProps,
           <PageHeader pageTitle="Utilities" backgroundColor="#038387" />
           <h2 className="ComponentPage-subHeading">Overview</h2>
           <p>
-            Fabric React includes utilities that allow you to control keyboard navigation behaviors, manage object
-            selection and interaction, and apply custom themes.
+            Fabric React includes utilities that allow you to control keyboard navigation behaviors, manage object selection and
+            interaction, and apply custom themes.
           </p>
         </ComponentPage>
       </div>

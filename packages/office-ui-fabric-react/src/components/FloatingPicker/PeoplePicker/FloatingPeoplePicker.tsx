@@ -6,8 +6,14 @@ import { IPersonaProps } from '../../../Persona';
 import './PeoplePicker.scss';
 import { IBasePickerSuggestionsProps, ISuggestionModel } from '../../../Pickers';
 
+/**
+ * {@docCategory FloatingPeoplePicker}
+ */
 export interface IPeopleFloatingPickerProps extends IBaseFloatingPickerProps<IPersonaProps> {}
 
+/**
+ * {@docCategory FloatingPeoplePicker}
+ */
 export class BaseFloatingPeoplePicker<T extends IPersonaProps = IPersonaProps> extends BaseFloatingPicker<T> {}
 
 export class FloatingPeoplePicker<T extends IPersonaProps = IPersonaProps> extends BaseFloatingPeoplePicker<T> {

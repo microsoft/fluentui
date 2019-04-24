@@ -2,6 +2,229 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.74.2",
+      "tag": "@uifabric/experiments_v6.74.2",
+      "date": "Fri, 19 Apr 2019 12:33:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "b2b4e0fb0531eed850f00ce0b4abea2b234d6f32"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.5` to `^6.35.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.1` to `^6.167.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.1",
+      "tag": "@uifabric/experiments_v6.74.1",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Removing 'undefined' from 'cursor' token definition.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "ed34421750c629b101d0af3359dbd94901abf29b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.5` to `^6.4.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.1` to `^6.14.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.74.0",
+      "tag": "@uifabric/experiments_v6.74.0",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Add focus() call in IButton interface.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "1aad16a747e5336325705595771a6ed412370c2e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "cbbfff4910b5918b93b11ed6e3472c8287751607"
+          },
+          {
+            "comment": "Button: Adding overview, dos and don'ts documentation",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "b1057174b0291b4c1ee26a6abd6a081315c45893"
+          },
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.0` to `^6.167.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.0` to `^6.14.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.73.0",
+      "tag": "@uifabric/experiments_v6.73.0",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Sidebar: update example card styling approach",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Button: Creating CommandBarButton, IconButton and MessageBarButton variants.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "c0d4864da09c312bd137a50f7b0ae06464952529"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.28.12` to `^0.28.13`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.72.0",
+      "tag": "@uifabric/experiments_v6.72.0",
+      "date": "Fri, 12 Apr 2019 12:34:16 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Styling fixes to issues found while working on Multiline Ribbon buttons.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f0b1b882a7cd1f25957b8550d5c557e0a2e94f1f"
+          }
+        ],
+        "minor": [
+          {
+            "comment": " Button: Creating CompoundButton and BaseButton variants.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "7ab1d90394574f6723920c229641a30f49b0d1bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.165.1` to `^6.166.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.71.0",
+      "tag": "@uifabric/experiments_v6.71.0",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Creating ActionButton variant and cleaning styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "98347544dc0eabb461beea23bc50a1fec10be873"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.4` to `^6.4.5`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.8` to `^6.165.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.70.0",
+      "tag": "@uifabric/experiments_v6.70.0",
+      "date": "Tue, 09 Apr 2019 12:35:20 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding DefaultButton and PrimaryButton variants.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "63cf8144e33150d05c45fdce3e57f34c7bfb78f9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.7` to `^6.164.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.69.0",
+      "tag": "@uifabric/experiments_v6.69.0",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Supporting high contrast in Button, MenuButton and SplitButton.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "1f3afa6704bc39758d4055a74b23f6d2150b3bf3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.3` to `^6.35.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.6` to `^6.164.7`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.68.0",
+      "tag": "@uifabric/experiments_v6.68.0",
+      "date": "Fri, 05 Apr 2019 22:09:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding ariaLabel prop and updating examples to fix accessibility issues.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "0fe9a28b970f4d9b5a7a575e9b679ff92b9d8004"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.5` to `^6.164.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.67.1",
       "tag": "@uifabric/experiments_v6.67.1",
       "date": "Fri, 05 Apr 2019 12:36:12 GMT",

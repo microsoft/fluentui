@@ -27,7 +27,7 @@ exports[`CommandBar renders commands correctly 1`] = `
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: transparent;
+              background-color: #ffffff;
               display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -73,7 +73,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -133,9 +133,21 @@ exports[`CommandBar renders commands correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               name="asdf"
@@ -202,7 +214,7 @@ exports[`CommandBar renders commands correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -262,9 +274,21 @@ exports[`CommandBar renders commands correctly 1`] = `
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               name="asdf"

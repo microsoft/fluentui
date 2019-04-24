@@ -4,6 +4,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { PivotItem } from './PivotItem';
 
+/**
+ * {@docCategory Pivot}
+ */
 export interface IPivot {
   /**
    * Sets focus to the first pivot tab.
@@ -11,6 +14,9 @@ export interface IPivot {
   focus(): void;
 }
 
+/**
+ * {@docCategory Pivot}
+ */
 export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IPivot interface. Use this instead of ref for accessing
@@ -71,7 +77,7 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
    * Only provide this if the pivot is a controlled component where you are maintaining the
    * current state; otherwise, use `defaultSelectedKey`.
    */
-  selectedKey?: string;
+  selectedKey?: string | null;
 
   /**
    * Callback for when the selected pivot item is changed.
@@ -102,6 +108,9 @@ export interface IPivotProps extends React.ClassAttributes<PivotBase>, React.HTM
   getTabId?: (itemKey: string, index: number) => string;
 }
 
+/**
+ * {@docCategory Pivot}
+ */
 export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
   Pick<IPivotProps, 'className'> & {
     /** Indicates whether Pivot has large format. */
@@ -115,6 +124,9 @@ export type IPivotStyleProps = Required<Pick<IPivotProps, 'theme'>> &
     linkIsSelected?: boolean;
   };
 
+/**
+ * {@docCategory Pivot}
+ */
 export interface IPivotStyles {
   /**
    * Style for the root element.
@@ -129,6 +141,9 @@ export interface IPivotStyles {
   itemContainer?: IStyle;
 }
 
+/**
+ * {@docCategory Pivot}
+ */
 export enum PivotLinkFormat {
   /**
    * Display Pivot Links as links
@@ -141,6 +156,9 @@ export enum PivotLinkFormat {
   tabs = 1
 }
 
+/**
+ * {@docCategory Pivot}
+ */
 export enum PivotLinkSize {
   /**
    * Display Link using normal font size

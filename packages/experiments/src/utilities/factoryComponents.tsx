@@ -4,7 +4,7 @@ import { Icon as FabricIcon, Label as FabricLabel, IIconProps, ILabelProps, IPer
 import { PersonaPresence as FabricPersonaPresence } from 'office-ui-fabric-react/lib/PersonaPresence';
 import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundation';
 
-// TODO: All contents of this file should eventually be removed.
+// TODO: All contents of this file should be moved to each respective component as they are converted to use slots.
 // TODO: createFactory should no longer have to be explicitly called with component options containing defaultProp.
 //       (Consider adding a defaultProp option to styled so that createFactory can be internalized similar to createComponent)
 // TODO: displayName will also be covered by createComponent argument.
@@ -18,21 +18,21 @@ import { createFactory, ISlottableComponentType, ISlotFactory } from '../Foundat
 
 // These wrappers will temporarily add a layer to the hierarchy (identified with displayName) until their functionality
 // can be absorbed into their respective OUFR components.
-export const Icon: ISlottableComponentType<IIconProps> = props => (props.iconName ? <FabricIcon {...props} /> : null);
+export const Icon: ISlottableComponentType<IIconProps, string> = props => (props.iconName ? <FabricIcon {...props} /> : null);
 Icon.displayName = 'Icon';
-const iconFactory: ISlotFactory<IIconProps> = createFactory(Icon, { defaultProp: 'iconName' });
+const iconFactory: ISlotFactory<IIconProps, string> = createFactory(Icon, { defaultProp: 'iconName' });
 Icon.create = iconFactory;
 
-export const Label: ISlottableComponentType<ILabelProps> = props =>
+export const Label: ISlottableComponentType<ILabelProps, string> = props =>
   React.Children.count(props.children) > 0 ? <FabricLabel {...props} /> : null;
 Label.displayName = 'Label';
-const labelFactory = createFactory(Label) as ISlotFactory<ILabelProps>;
+const labelFactory = createFactory(Label) as ISlotFactory<ILabelProps, string>;
 Label.create = labelFactory;
 
-export const PersonaPresence: ISlottableComponentType<IPersonaPresenceProps> =
+export const PersonaPresence: ISlottableComponentType<IPersonaPresenceProps, number> =
   // TODO: This is a bug in PersonaPresence that needs to be fixed. 'presence' prop comment mentions that it won't render
   //        if presence is undefined, but it does render. Check for undefined here for now.
   props => (props.presence !== undefined ? <FabricPersonaPresence {...props} /> : null);
 PersonaPresence.displayName = 'PersonaPresence';
-const personaPresenceFactory: ISlotFactory<IPersonaPresenceProps> = createFactory(PersonaPresence, { defaultProp: 'presence' });
+const personaPresenceFactory: ISlotFactory<IPersonaPresenceProps, number> = createFactory(PersonaPresence, { defaultProp: 'presence' });
 PersonaPresence.create = personaPresenceFactory;

@@ -11,6 +11,9 @@ import { IContextualMenuItem } from '../../../ContextualMenu';
 import { IBaseFloatingPickerProps } from '../../../FloatingPicker';
 import { EditingItem, EditingItemFloatingPickerProps } from './Items/EditingItem';
 
+/**
+ * {@docCategory SelectedPeopleList}
+ */
 export interface IExtendedPersonaProps extends IPersonaProps {
   key?: React.Key;
   isValid?: boolean;
@@ -20,6 +23,9 @@ export interface IExtendedPersonaProps extends IPersonaProps {
   isEditing?: boolean;
 }
 
+/**
+ * {@docCategory SelectedPeopleList}
+ */
 export interface ISelectedPeopleItemProps<TPersona extends IExtendedPersonaProps = IExtendedPersonaProps>
   extends ISelectedItemProps<TPersona> {
   onExpandItem?: () => void;
@@ -27,6 +33,9 @@ export interface ISelectedPeopleItemProps<TPersona extends IExtendedPersonaProps
   renderPrimaryText?: IRenderFunction<IPersonaProps>;
 }
 
+/**
+ * {@docCategory SelectedPeopleList}
+ */
 export interface ISelectedPeopleProps<TPersona extends IExtendedPersonaProps = IExtendedPersonaProps>
   extends IBaseSelectedItemsListProps<TPersona> {
   onExpandGroup?: (item: TPersona) => void;
@@ -38,6 +47,9 @@ export interface ISelectedPeopleProps<TPersona extends IExtendedPersonaProps = I
   floatingPickerProps?: IBaseFloatingPickerProps<TPersona>;
 }
 
+/**
+ * {@docCategory SelectedPeopleList}
+ */
 export class BasePeopleSelectedItemsList<TPersona extends IExtendedPersonaProps = IExtendedPersonaProps> extends BaseSelectedItemsList<
   TPersona,
   ISelectedPeopleProps<TPersona>

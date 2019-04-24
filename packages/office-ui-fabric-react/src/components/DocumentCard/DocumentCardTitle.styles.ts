@@ -14,7 +14,7 @@ export const getStyles = (props: IDocumentCardTitleStyleProps): IDocumentCardTit
   return {
     root: [
       classNames.root,
-      showAsSecondaryTitle ? fonts.medium : fonts.large,
+      showAsSecondaryTitle ? fonts.small : fonts.medium,
       {
         padding: '8px 16px',
         display: 'block',

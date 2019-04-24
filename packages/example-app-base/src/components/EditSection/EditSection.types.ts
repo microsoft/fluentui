@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { EditSection } from './EditSection';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
+/** @deprecated Not used */
 export interface IEditSection {}
 
-export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
+export interface IEditSectionProps {
   /** @deprecated Not used */
   componentRef?: IRefObject<IEditSection>;
 
@@ -17,16 +17,14 @@ export interface IEditSectionProps extends React.HTMLAttributes<EditSection> {
   title: string;
 
   /**
-   * The section ID this button is used to edit.
+   * The section name this button is used to edit.
    */
   section: string;
 
   /** @deprecated Not used */
   sectionContent?: React.ReactNode;
 
-  /**
-   * Override for section ID. Use this if the section ID is not pronounceable.
-   */
+  /** @deprecated Not used */
   readableSection?: string;
 
   /**

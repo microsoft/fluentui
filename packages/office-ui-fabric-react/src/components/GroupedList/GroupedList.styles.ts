@@ -21,10 +21,10 @@ export const getStyles = (props: IGroupedListStyleProps): IGroupedListStyles => 
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         selectors: {
           [`.${classNames.listCell}`]: {
             minHeight: 38 // be consistent with DetailsList styles

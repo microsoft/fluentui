@@ -36,11 +36,16 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   splitDivider?: IHTMLSlot;
 }
 
-export interface ISplitButton {}
+export interface ISplitButton {
+  /**
+   * Sets focus to the first focus stop of the SplitButton.
+   */
+  focus: () => void;
+}
 
 export interface ISplitButtonProps
   extends ISplitButtonSlots,
-    Pick<IMenuButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'defaultExpanded' | 'expanded' | 'onKeyDown'>,
+    Pick<IMenuButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel' | 'defaultExpanded' | 'expanded' | 'onKeyDown'>,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
     IBaseProps<ISplitButton> {
   /**
@@ -48,9 +53,14 @@ export interface ISplitButtonProps
    * @defaultvalue false
    */
   primaryActionDisabled?: boolean;
+
+  /**
+   * Defines the aria label that the screen readers use when focus goes on the second focus stop of the SplitButton.
+   */
+  secondaryAriaLabel?: string;
 }
 
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
+export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
   /**
    * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
    */

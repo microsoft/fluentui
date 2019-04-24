@@ -7,7 +7,7 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { IExampleGroup, IExampleItem, createGroup, createDocumentItems, getTileCells, createShimmerGroups } from './ExampleHelpers';
 import { ISize } from '@uifabric/experiments/lib/Utilities';
-import { ShimmerElementType as ElemType, ShimmerElementsGroup } from '@uifabric/experiments/lib/Shimmer';
+import { ShimmerElementType, ShimmerElementsGroup } from 'office-ui-fabric-react/lib/Shimmer';
 
 const HEADER_VERTICAL_PADDING = 13;
 const HEADER_FONT_SIZE = 18;
@@ -226,8 +226,8 @@ export class TilesListDocumentExample extends React.Component<ITilesListDocument
     return (
       <ShimmerElementsGroup
         shimmerElements={[
-          { type: ElemType.line, height: HEADER_FONT_SIZE, widthInPercentage: 100 }, // gap is given to maintain height
-          { type: ElemType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, widthInPixel: 0 }
+          { type: ShimmerElementType.line, height: HEADER_FONT_SIZE, width: '100%' }, // gap is given to maintain height
+          { type: ShimmerElementType.gap, height: HEADER_VERTICAL_PADDING * 2 + HEADER_FONT_SIZE, width: 0 }
         ]}
       />
     );

@@ -15,7 +15,7 @@ export const getStyles = (props: ILayerStyleProps): ILayerStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       isNotHost && [
         classNames.rootNoHost,
         {
