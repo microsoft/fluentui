@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Apr 2019 12:35:55 GMT and should not be manually modified.
+
+## 6.169.0
+Wed, 24 Apr 2019 12:35:55 GMT
+
+### Minor changes
+
+- Delete outdated component status info
+- FocusTrapZone: Add disabled prop.
+- VerticalDivider: Make into a styled component
 
 ## 6.168.0
 Tue, 23 Apr 2019 12:32:00 GMT
