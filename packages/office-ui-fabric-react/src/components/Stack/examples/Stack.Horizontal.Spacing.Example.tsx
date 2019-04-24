@@ -33,35 +33,45 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
     });
 
     const tokens = {
-      numericalSpacing: {
+      sectionStack: {
         childrenGap: 10
       },
+      numericalSpacing: {
+        childrenGap: 10,
+        padding: 10
+      },
       customSpacing: {
-        childrenGap: '10%'
+        childrenGap: '10%',
+        padding: 's1 15%'
       },
       themedExtraSmall: {
-        childrenGap: 's2'
+        childrenGap: 's2',
+        padding: 's2'
       },
       themedSmall: {
-        childrenGap: 's1'
+        childrenGap: 's1',
+        padding: 's1'
       },
       themedMedium: {
-        childrenGap: 'm'
+        childrenGap: 'm',
+        padding: 'm'
       },
       themedLarge: {
-        childrenGap: 'l1'
+        childrenGap: 'l1',
+        padding: 'l1'
       },
       themedExtraLarge: {
-        childrenGap: 'l2'
+        childrenGap: 'l2',
+        padding: 'l2'
       }
     };
 
     return (
-      <Stack tokens={tokens.numericalSpacing}>
+      <Stack tokens={tokens.sectionStack}>
         <Stack horizontal disableShrink horizontalAlign="space-between">
           <Stack>
             <span>Numerical spacing</span>
-            <Stack horizontal className={styles.root} tokens={tokens.numericalSpacing} padding={10}>
+            <Stack horizontal className={styles.root} tokens={tokens.numericalSpacing}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -69,7 +79,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Custom spacing</span>
-            <Stack horizontal className={styles.root} tokens={tokens.customSpacing} padding="s1 15%">
+            <Stack horizontal className={styles.root} tokens={tokens.customSpacing}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -80,7 +90,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
         <Stack horizontal disableShrink horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (extra small)</span>
-            <Stack horizontal className={styles.root} tokens={tokens.themedExtraSmall} padding="s2">
+            <Stack horizontal className={styles.root} tokens={tokens.themedExtraSmall}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -88,7 +98,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Themed spacing (small)</span>
-            <Stack horizontal className={styles.root} tokens={tokens.themedSmall} padding="s1">
+            <Stack horizontal className={styles.root} tokens={tokens.themedSmall}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -96,7 +106,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Themed spacing (medium)</span>
-            <Stack horizontal className={styles.root} tokens={tokens.themedMedium} padding="m">
+            <Stack horizontal className={styles.root} tokens={tokens.themedMedium}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -107,7 +117,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
         <Stack horizontal horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (large)</span>
-            <Stack horizontal className={styles.root} tokens={tokens.themedLarge} padding="l1">
+            <Stack horizontal className={styles.root} tokens={tokens.themedLarge}>
               <span>1</span>
               <span>2</span>
               <span>3</span>
@@ -115,7 +125,7 @@ export class HorizontalStackSpacingExample extends React.Component<{}, {}> {
           </Stack>
           <Stack>
             <span>Themed spacing (extra large)</span>
-            <Stack horizontal className={styles.root} tokens={tokens.themedExtraLarge} padding="l2">
+            <Stack horizontal className={styles.root} tokens={tokens.themedExtraLarge}>
               <span>1</span>
               <span>2</span>
               <span>3</span>

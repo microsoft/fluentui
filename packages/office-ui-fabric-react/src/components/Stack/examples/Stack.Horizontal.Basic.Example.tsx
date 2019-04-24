@@ -22,6 +22,9 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
       },
       tenGapStack: {
         childrenGap: 10
+      },
+      tenPaddingStack: {
+        padding: 10
       }
     };
 
@@ -48,7 +51,7 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Horizontal gap between items</span>
-        <Stack horizontal disableShrink tokens={tokens.tenGapStack} padding={10} className={styles.root}>
+        <Stack horizontal disableShrink className={styles.root} tokens={{ ...tokens.tenGapStack, ...tokens.tenPaddingStack }}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
@@ -58,8 +61,7 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         <Stack
           horizontal
           disableShrink
-          tokens={tokens.fiveGapStack}
-          padding={10}
+          tokens={{ ...tokens.fiveGapStack, ...tokens.tenPaddingStack }}
           className={styles.root}
           styles={{ root: { height: 100 } }}
         >
@@ -84,7 +86,7 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Clickable stack</span>
-        <Stack horizontal disableShrink onClick={this._onClick} padding={10} className={styles.root}>
+        <Stack horizontal disableShrink onClick={this._onClick} className={styles.root} tokens={tokens.tenPaddingStack}>
           <span>Click inside this box</span>
         </Stack>
       </Stack>

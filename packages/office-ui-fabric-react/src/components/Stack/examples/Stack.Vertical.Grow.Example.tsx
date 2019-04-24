@@ -21,10 +21,11 @@ export class VerticalStackGrowExample extends React.Component<{}, {}> {
     });
 
     const stackTokens: IStackTokens = { childrenGap: 5 };
+    const tenPaddingTokens: IStackTokens = { padding: 10 };
 
     return (
       <Stack tokens={stackTokens}>
-        <Stack tokens={stackTokens} padding={10} className={styles.root}>
+        <Stack className={styles.root} tokens={{ ...stackTokens, ...tenPaddingTokens }}>
           <Stack.Item grow={3} className={styles.item}>
             Grow is 3
           </Stack.Item>

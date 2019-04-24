@@ -240,8 +240,10 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
         <Stack
           disableShrink={disableShrink}
           wrap={wrap}
-          tokens={{ childrenGap: childrenGap + ' ' + 0 }}
-          padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
+          tokens={{
+            childrenGap: childrenGap + ' ' + 0,
+            padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+          }}
           verticalAlign={verticalAlignment}
           horizontalAlign={horizontalAlignment}
           className={styles.root}

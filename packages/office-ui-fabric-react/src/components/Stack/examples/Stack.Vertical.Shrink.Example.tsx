@@ -39,6 +39,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
     });
 
     const stackTokens: IStackTokens = { childrenGap: 5 };
+    const tenPaddingTokens: IStackTokens = { padding: 10 };
 
     return (
       <Stack tokens={stackTokens}>
@@ -52,7 +53,7 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
           onChange={this._onHeightChange}
         />
         <div className={styles.container}>
-          <Stack tokens={stackTokens} padding={10} className={styles.root}>
+          <Stack className={styles.root} tokens={{ ...stackTokens, ...tenPaddingTokens }}>
             <Stack.Item grow className={styles.item}>
               I shrink
             </Stack.Item>

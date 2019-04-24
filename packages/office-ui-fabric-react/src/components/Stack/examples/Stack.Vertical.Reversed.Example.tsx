@@ -22,6 +22,9 @@ export class VerticalStackReversedExample extends React.Component<{}, {}> {
       },
       tenGapStack: {
         childrenGap: 10
+      },
+      tenPaddingStack: {
+        padding: 10
       }
     };
 
@@ -35,14 +38,14 @@ export class VerticalStackReversedExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Vertical gap between items</span>
-        <Stack reversed tokens={tokens.tenGapStack} padding={10} className={styles.root}>
+        <Stack reversed className={styles.root} tokens={{ ...tokens.tenGapStack, ...tokens.tenPaddingStack }}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack reversed tokens={tokens.fiveGapStack} padding={10} className={styles.root}>
+        <Stack reversed className={styles.root} tokens={{ ...tokens.fiveGapStack, ...tokens.tenPaddingStack }}>
           <Stack.Item align="auto" className={styles.item}>
             <span>Auto-aligned item</span>
           </Stack.Item>
@@ -64,7 +67,7 @@ export class VerticalStackReversedExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Clickable vertical stack</span>
-        <Stack onClick={this._onClick} padding={10} className={styles.root}>
+        <Stack onClick={this._onClick} className={styles.root} tokens={tokens.tenPaddingStack}>
           <span>Click inside this box</span>
         </Stack>
       </Stack>

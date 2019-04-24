@@ -260,8 +260,10 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           horizontal
           wrap={wrap}
           disableShrink={disableShrink}
-          tokens={{ childrenGap: rowGap + ' ' + columnGap }}
-          padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
+          tokens={{
+            childrenGap: rowGap + ' ' + columnGap,
+            padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`
+          }}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}
           className={styles.root}

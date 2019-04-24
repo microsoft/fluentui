@@ -36,6 +36,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
     });
 
     const stackTokens: IStackTokens = { childrenGap: 5 };
+    const tenPaddingTokens: IStackTokens = { padding: 10 };
 
     return (
       <Stack tokens={stackTokens}>
@@ -48,7 +49,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
           showValue={true}
           onChange={this._onWidthChange}
         />
-        <Stack horizontal tokens={stackTokens} padding={10} className={styles.root}>
+        <Stack horizontal tokens={{ ...stackTokens, ...tenPaddingTokens }} className={styles.root}>
           <Stack.Item grow className={styles.item}>
             I shrink
           </Stack.Item>

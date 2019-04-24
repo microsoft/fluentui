@@ -22,37 +22,47 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
     const tokens = {
       sectionStack: {
+        childrenGap: 10
+      },
+      headingStack: {
         childrenGap: 50
       },
       numericalSpacing: {
-        childrenGap: 10
+        childrenGap: 10,
+        padding: 10
       },
       customSpacing: {
-        childrenGap: '20%'
+        childrenGap: '20%',
+        padding: 'm 40px'
       },
       themedExtraSmall: {
-        childrenGap: 's2'
+        childrenGap: 's2',
+        padding: 's2'
       },
       themedSmall: {
-        childrenGap: 's1'
+        childrenGap: 's1',
+        padding: 's2'
       },
       themedMedium: {
-        childrenGap: 'm'
+        childrenGap: 'm',
+        padding: 'm'
       },
       themedLarge: {
-        childrenGap: 'l1'
+        childrenGap: 'l1',
+        padding: 'l1'
       },
       themedExtraLarge: {
-        childrenGap: 'l2'
+        childrenGap: 'l2',
+        padding: 'l2'
       }
     };
 
     return (
-      <Stack tokens={tokens.numericalSpacing}>
-        <Stack horizontal disableShrink tokens={tokens.sectionStack}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack horizontal disableShrink tokens={tokens.headingStack}>
           <Stack>
             <span>Numerical spacing</span>
-            <Stack className={styles.root} tokens={tokens.numericalSpacing} padding={10}>
+            <Stack className={styles.root} tokens={tokens.numericalSpacing}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -61,7 +71,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Custom spacing</span>
-            <Stack className={styles.root} tokens={tokens.customSpacing} padding="m 40px">
+            <Stack className={styles.root} tokens={tokens.customSpacing}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -72,7 +82,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
         <Stack horizontal disableShrink horizontalAlign="space-between">
           <Stack>
             <span>Themed spacing (extra small)</span>
-            <Stack className={styles.root} tokens={tokens.themedExtraSmall} padding="s2">
+            <Stack className={styles.root} tokens={tokens.themedExtraSmall}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -81,7 +91,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (small)</span>
-            <Stack className={styles.root} tokens={tokens.themedSmall} padding="s2">
+            <Stack className={styles.root} tokens={tokens.themedSmall}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -90,7 +100,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (medium)</span>
-            <Stack className={styles.root} tokens={tokens.themedMedium} padding="m">
+            <Stack className={styles.root} tokens={tokens.themedMedium}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -99,7 +109,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (large)</span>
-            <Stack className={styles.root} tokens={tokens.themedLarge} padding="l1">
+            <Stack className={styles.root} tokens={tokens.themedLarge}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
@@ -108,7 +118,7 @@ export class VerticalStackSpacingExample extends React.Component<{}, {}> {
 
           <Stack>
             <span>Themed spacing (extra large)</span>
-            <Stack className={styles.root} tokens={tokens.themedExtraLarge} padding="l2">
+            <Stack className={styles.root} tokens={tokens.themedExtraLarge}>
               <span className={styles.item}>1</span>
               <span className={styles.item}>2</span>
               <span className={styles.item}>3</span>
