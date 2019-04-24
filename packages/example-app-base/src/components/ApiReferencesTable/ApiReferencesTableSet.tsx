@@ -27,6 +27,8 @@ const apiReferencesTableTopMargin = mergeStyles({
   marginTop: '40px'
 });
 
+const TITLE_LINE_HEIGHT = 31.5;
+
 export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSetProps, IApiReferencesTableSetState> {
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
@@ -62,7 +64,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
       if (el) {
         // update scroll position
-        window.scrollTo({ top: el.offsetTop - 31.5 /* title */, behavior: 'smooth' });
+        window.scrollTo({ top: el.offsetTop - TITLE_LINE_HEIGHT /* title */, behavior: 'smooth' });
       }
     }
   }
@@ -124,7 +126,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     if (el) {
       // update scroll position
-      window.scrollTo({ top: el.offsetTop - 31.5 /* title */, behavior: 'smooth' });
+      window.scrollTo({ top: el.offsetTop - TITLE_LINE_HEIGHT /* title */, behavior: 'smooth' });
     }
 
     if (!showSeeMore) {
