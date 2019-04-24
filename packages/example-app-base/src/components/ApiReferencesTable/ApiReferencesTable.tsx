@@ -469,13 +469,32 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           }
           if (token.pageKind && token.hyperlinkedPage) {
             let href;
+            const split = this._baseUrl.split('#');
+            const cleanedSplit = split.filter(value => !!value);
+
+            // whether the link should be opened in a new tab, defaults to true
+            let newTab = true;
+
             if (token.pageKind === 'References') {
-              href = '#' + hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
+              const referencePage = hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase();
+              href = '#' + referencePage + '#' + token.text;
+              if (cleanedSplit.length > 1) {
+                if (cleanedSplit[1] === referencePage) {
+                  newTab = false;
+                }
+              }
             } else {
-              href = '#' + hash + token.hyperlinkedPage.toLowerCase() + '#' + token.text;
+              const componentPage = hash + token.hyperlinkedPage.toLowerCase();
+              href = '#' + componentPage + '#' + token.text;
+              if (cleanedSplit.length > 1) {
+                if (cleanedSplit[1] === componentPage) {
+                  newTab = false;
+                }
+              }
             }
+
             return (
-              <Link href={href} key={token.text + index}>
+              <Link href={href} key={token.text + index} target={newTab ? '_blank' : undefined}>
                 {extend ? token.text : <code>{token.text}</code>}
               </Link>
             );
