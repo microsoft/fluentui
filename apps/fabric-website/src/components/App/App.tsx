@@ -1,12 +1,14 @@
 import * as React from 'react';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { ActionButton } from 'office-ui-fabric-react/lib/Button';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import AttachedScrollUtility from '../../utilities/AttachedScrollUtility';
-import { UHFBreakPoints } from '../../utilities/WindowWidthUtility';
+import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { AppCustomizations } from './customizations';
+import { AppCustomizationsContext } from '@uifabric/example-app-base';
+import { AppState } from './AppState';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { hasUHF } from '../../utilities/location';
 import { Nav } from '../Nav/Nav';
-import { AppState } from './AppState';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { UHFBreakPoints } from '../../utilities/WindowWidthUtility';
 import './App.scss';
 
 export interface IAppProps extends React.Props<App> {}
@@ -66,11 +68,13 @@ export class App extends React.Component<IAppProps, any> {
     return (
       <Fabric className="App">
         {this._renderLeftNav()}
-        <div className="App-wrapper">
-          <div className="App-content" data-is-scrollable="true" ref={el => (this._appContent = el)} data-app-content-div="true">
-            {this.props.children}
+        <AppCustomizationsContext.Provider value={AppCustomizations}>
+          <div className="App-wrapper">
+            <div className="App-content" data-is-scrollable="true" ref={el => (this._appContent = el)} data-app-content-div="true">
+              {this.props.children}
+            </div>
           </div>
-        </div>
+        </AppCustomizationsContext.Provider>
       </Fabric>
     );
   }
