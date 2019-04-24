@@ -17,6 +17,7 @@
     "postinstall": "npm run _rushInstall && npm run _rushBuildToExperiments -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
+    "a11ytest": "cd apps && cd a11y-tests && npm run test",
     "start": "cd apps && cd fabric-website-resources && npm start",
     "start-exp": "cd packages && cd experiments && npm start",
     "build": "npm run _rushRebuild",
@@ -37,7 +38,8 @@
     "prettier": "node scripts/prettier.js",
     "generate-version-files": "node scripts/just.js generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
-    "precommit": "node scripts/node_modules/lint-staged/index.js"
+    "precommit": "node scripts/node_modules/lint-staged/index.js",
+    "perf-test": "node scripts/just.js perf-test"
   },
   "license": "MIT",
   "lint-staged": {
@@ -47,14 +49,17 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.js": [
+      "*.{js,jsx,json,scss,html,yml,md}": [
         "node ./scripts/lint-staged/prettier",
         "git add"
       ]
     },
     "ignore": [
       "common/scripts/*.js",
-      "apps/vr-tests/**/*.{ts,tsx}"
+      "packages/tslint-rules/tslint.json",
+      "**/CHANGELOG.*",
+      "**/*.api.md",
+      "**/_*.scss"
     ]
   }
 }

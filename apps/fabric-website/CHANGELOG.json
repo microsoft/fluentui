@@ -2,6 +2,59 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.13.4",
+      "tag": "@uifabric/fabric-website_v6.13.4",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.0` to `^6.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.73.0` to `^6.74.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.0` to `^6.167.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.3",
+      "tag": "@uifabric/fabric-website_v6.13.3",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update example-app-base styling overrides to use css-in-js",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.72.0` to `^6.73.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.2",
       "tag": "@uifabric/fabric-website_v6.13.2",
       "date": "Thu, 04 Apr 2019 12:34:57 GMT",

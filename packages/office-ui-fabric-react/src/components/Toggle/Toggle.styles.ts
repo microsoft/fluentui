@@ -31,7 +31,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       checked && 'is-checked',
       !disabled && 'is-enabled',
       disabled && 'is-disabled',
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         marginBottom: '8px'
       },
@@ -73,7 +73,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
 
     pill: [
       'ms-Toggle-background',
-      getFocusStyle(theme, -3),
+      getFocusStyle(theme, { inset: -3 }),
       {
         fontSize: '20px',
         boxSizing: 'border-box',

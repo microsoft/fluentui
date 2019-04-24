@@ -4,6 +4,7 @@ import {
   AnimationVariables,
   DefaultFontStyles,
   getGlobalClassNames,
+  HighContrastSelector,
   ScreenWidthMinMedium,
   ScreenWidthMinLarge,
   ScreenWidthMinXLarge,
@@ -206,7 +207,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       isOpen && classNames.isOpen,
       hasCloseButton && classNames.hasCloseButton,
       {
@@ -258,6 +259,10 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         selectors: {
           ['@supports (-webkit-overflow-scrolling: touch)']: {
             maxHeight: windowHeight
+          },
+          [HighContrastSelector]: {
+            borderLeft: `3px solid ${palette.neutralLight}`,
+            borderRight: `3px solid ${palette.neutralLight}`
           },
           ...getPanelBreakpoints(type)
         }
@@ -341,7 +346,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
     ],
     headerText: [
       classNames.headerText,
-      DefaultFontStyles.xLarge,
+      DefaultFontStyles.mediumPlus,
       {
         color: palette.neutralPrimary,
         fontSize: 20, // TODO: after the type ramp gets reevaluated this needs to be changed

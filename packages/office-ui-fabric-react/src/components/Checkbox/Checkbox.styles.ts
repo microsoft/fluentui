@@ -133,7 +133,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
     ],
     label: [
       classNames.label,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         display: 'flex',
         alignItems: isUsingCustomLabelRender ? 'center' : 'flex-start',
@@ -232,7 +232,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       classNames.text,
       {
         color: disabled ? checkboxTextColorDisabled : checkboxTextColor,
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         lineHeight: '20px'
       },
       !reversed

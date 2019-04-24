@@ -6,12 +6,18 @@ import { ISelection, SelectionMode } from '../../utilities/selection/interfaces'
 import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRow {}
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsItemProps {
   /**
    * Column metadata
@@ -54,6 +60,9 @@ export interface IDetailsItemProps {
   cellStyleProps?: ICellStyleProps;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderItemColumn'>, IBaseProps<IDetailsRow>, IDetailsItemProps {
   /**
    * Theme provided by styled() function
@@ -104,6 +113,11 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
    * Callback for rendering a checkbox
    */
   onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
 
   /**
    * Handling drag and drop events
@@ -168,6 +182,9 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
   };
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowProps extends IDetailsRowBaseProps {
   /**
    * Column metadata
@@ -185,6 +202,9 @@ export interface IDetailsRowProps extends IDetailsRowBaseProps {
   selectionMode: SelectionMode;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & {
   /** Whether the row is selected  */
   isSelected?: boolean;
@@ -216,12 +236,18 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   cellStyleProps?: ICellStyleProps;
 };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface ICellStyleProps {
   cellLeftPadding: number;
   cellRightPadding: number;
   cellExtraRightPadding: number;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowStyles {
   root: IStyle;
   cell: IStyle;

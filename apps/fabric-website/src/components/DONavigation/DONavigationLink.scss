@@ -25,7 +25,7 @@
         box-shadow: inset 0px 0px 0px 1px WindowText;
       }
 
-      @include high-contrast-black-on-white  {
+      @include high-contrast-black-on-white {
         box-shadow: inset 0px 0px 0px 1px Highlight;
       }
     }
@@ -49,14 +49,14 @@
       vertical-align: bottom;
 
       @include high-contrast {
-      transition: none;
+        transition: none;
       }
     }
 
     // Responsive changes
     @media (min-width: $od-Header-bannerWidth) {
-    display: inline-block;
-    width: auto;
+      display: inline-block;
+      width: auto;
 
       &:hover {
         &:before {

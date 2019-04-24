@@ -14,6 +14,17 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
   private _id: string;
   private _toggleButton = React.createRef<HTMLButtonElement>();
 
+  public static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState {
+    if (props.checked === undefined) {
+      return state;
+    }
+
+    return {
+      ...state,
+      checked: !!props.checked
+    };
+  }
+
   constructor(props: IToggleProps) {
     super(props);
 
@@ -38,14 +49,6 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
    */
   public get checked(): boolean {
     return this.state.checked;
-  }
-
-  public componentWillReceiveProps(newProps: IToggleProps): void {
-    if (newProps.checked !== undefined) {
-      this.setState({
-        checked: !!newProps.checked // convert null to false
-      });
-    }
   }
 
   public render(): JSX.Element {

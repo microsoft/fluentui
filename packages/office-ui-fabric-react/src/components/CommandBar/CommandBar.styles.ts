@@ -4,14 +4,15 @@ const COMMAND_BAR_HEIGHT = 44;
 
 export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
   const { className, theme } = props;
+  const { palette } = theme;
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       'ms-CommandBar',
       {
         display: 'flex',
-        backgroundColor: 'transparent',
+        backgroundColor: palette.white,
         padding: '0 14px 0 24px',
         height: COMMAND_BAR_HEIGHT
       },

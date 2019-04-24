@@ -2,6 +2,46 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.4.6",
+      "tag": "@uifabric/file-type-icons_v6.4.6",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "1da3c07739e6247db245c35122e65d85786ee503"
+          },
+          {
+            "comment": "updating getFileTypeIconProps to make reference to correct sharepoint… ",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "1da3c07739e6247db245c35122e65d85786ee503"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.5",
+      "tag": "@uifabric/file-type-icons_v6.4.5",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "decoupled the icon mapping from ts in file-type-icons so that it can be use in an upcoming cocoapod for fabric-cdn icons",
+            "author": "Kosta Tachtevrenidis <tachtevrenidis@hotmail.com>",
+            "commit": "d400a6b56242c5a3d4f72c71f33b5909e4be7367"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.4",
       "tag": "@uifabric/file-type-icons_v6.4.4",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",

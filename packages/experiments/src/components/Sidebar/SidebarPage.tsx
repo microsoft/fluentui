@@ -1,28 +1,33 @@
 import * as React from 'react';
-import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, IComponentDemoPageProps, PropertiesTableSet, IExampleCardStyles } from '@uifabric/example-app-base';
 import { SidebarBasicExample } from './examples/Sidebar.Basic.Example';
 import { SidebarCollapsibleExample } from './examples/Sidebar.Collapsed.Example';
 
-// tslint:disable-next-line:no-var-requires
 const SidebarBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Sidebar/examples/Sidebar.Basic.Example.tsx') as string;
-// tslint:disable-next-line:no-var-requires
 const SidebarCollpasibleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Sidebar/examples/Sidebar.Collapsed.Example.tsx') as string;
 
-export class SidebarPage extends React.Component<IComponentDemoPageProps, {}> {
+const exampleStyles: Partial<IExampleCardStyles> = {
+  example: {
+    height: 500,
+    paddingBottom: 0
+  }
+};
+
+export class SidebarPage extends React.PureComponent<IComponentDemoPageProps> {
   public render(): JSX.Element {
     return (
       <ComponentPage
-        title={'Sidebar'}
+        title="Sidebar"
         componentName="SidebarExample"
         exampleCards={
           <div>
             <div className="sidebar-basic-example">
-              <ExampleCard title="Sidebar Basic, not Collapsible" code={SidebarBasicExampleCode}>
+              <ExampleCard title="Sidebar Basic, not Collapsible" code={SidebarBasicExampleCode} styles={exampleStyles}>
                 <SidebarBasicExample />
               </ExampleCard>
             </div>
             <div className="sidebar-collapsed-example">
-              <ExampleCard title="Sidebar Collapsible" code={SidebarCollpasibleExampleCode}>
+              <ExampleCard title="Sidebar Collapsible" code={SidebarCollpasibleExampleCode} styles={exampleStyles}>
                 <SidebarCollapsibleExample />
               </ExampleCard>
             </div>

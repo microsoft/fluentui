@@ -43,7 +43,7 @@ export const getStyles = memoizeFunction(
         fontWeight: FontWeights.semibold
       },
       description: [
-        theme.fonts.small,
+        theme.fonts.xSmall,
         {
           lineHeight: '100%'
         }

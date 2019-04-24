@@ -1,6 +1,9 @@
+declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): number;
+
 import * as React from 'react';
 import {
-  BaseComponent,
+  IStyleFunctionOrObject,
+  KeyCodes,
   classNamesFunction,
   divProperties,
   findIndex,
@@ -9,17 +12,19 @@ import {
   getId,
   getLastFocusable,
   getNativeProps,
+  initializeComponentRef,
   isIOS,
   isMac,
-  IStyleFunctionOrObject,
-  KeyCodes,
-  mergeAriaAttributeValues
+  mergeAriaAttributeValues,
+  safeRequestAnimationFrame,
+  warnDeprecations,
+  warnMutuallyExclusive
 } from '../../Utilities';
 import { Callout } from '../../Callout';
 import { Checkbox } from '../../Checkbox';
 import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
+import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
 import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
@@ -46,7 +51,7 @@ export interface IDropdownState {
 }
 
 @withResponsiveMode
-export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdownState> {
+export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
     options: [] as any[]
   };
@@ -62,6 +67,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
+  private _requestAnimationFrame = safeRequestAnimationFrame(this);
 
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
@@ -69,20 +75,24 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   constructor(props: IDropdownProps) {
     super(props);
 
-    this._warnDeprecations({
-      isDisabled: 'disabled',
-      onChanged: 'onChange',
-      placeHolder: 'placeholder',
-      onRenderPlaceHolder: 'onRenderPlaceholder'
-    });
+    initializeComponentRef(this);
 
-    this._warnMutuallyExclusive({
-      defaultSelectedKey: 'selectedKey',
-      defaultSelectedKeys: 'selectedKeys',
-      selectedKeys: 'selectedKey',
-      multiSelect: 'defaultSelectedKey',
-      selectedKey: 'multiSelect'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Dropdown', props, {
+        isDisabled: 'disabled',
+        onChanged: 'onChange',
+        placeHolder: 'placeholder',
+        onRenderPlaceHolder: 'onRenderPlaceholder'
+      });
+
+      warnMutuallyExclusive('Dropdown', props, {
+        defaultSelectedKey: 'selectedKey',
+        defaultSelectedKeys: 'selectedKeys',
+        selectedKeys: 'selectedKey',
+        multiSelect: 'defaultSelectedKey',
+        selectedKey: 'multiSelect'
+      });
+    }
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
@@ -104,6 +114,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       hasFocus: false,
       calloutRenderEdge: undefined
     };
+  }
+
+  public componentWillUnmount() {
+    clearTimeout(this._scrollIdleTimeoutId);
   }
 
   public componentWillReceiveProps(newProps: IDropdownProps): void {
@@ -595,7 +609,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     if (this._focusZone.current) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
-      this._async.requestAnimationFrame(() => {
+      this._requestAnimationFrame(() => {
         const selectedIndices = this.state.selectedIndices;
         if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
           const element: HTMLElement = getDocument()!.querySelector(`#${this._id}-list${selectedIndices[0]}`) as HTMLElement;
@@ -633,13 +647,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
    */
   private _onScroll = (): void => {
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
-      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => {
+    this._scrollIdleTimeoutId = setTimeout(() => {
       this._isScrollIdle = true;
     }, this._scrollIdleDelay);
   };
@@ -708,12 +722,14 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       const selectedIndex = this._getSelectedIndex(options, null);
       return selectedIndex !== -1 ? [selectedIndex] : [];
     } else if (!Array.isArray(selectedKey)) {
-      return [this._getSelectedIndex(options, selectedKey)];
+      const selectedIndex = this._getSelectedIndex(options, selectedKey);
+      return selectedIndex !== -1 ? [selectedIndex] : [];
     }
 
     const selectedIndices: number[] = [];
     for (const key of selectedKey) {
-      selectedIndices.push(this._getSelectedIndex(options, key));
+      const selectedIndex = this._getSelectedIndex(options, key);
+      selectedIndex !== -1 && selectedIndices.push(selectedIndex);
     }
     return selectedIndices;
   }

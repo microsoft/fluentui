@@ -37,9 +37,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
           -webkit-font-smoothing: antialiased;
           color: #323130;
           display: block;
-          font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-          font-size: 17px;
-          font-weight: 300;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 18px;
+          font-weight: 400;
           height: 38px;
           line-height: 21px;
           overflow: hidden;
@@ -124,11 +124,11 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
               className=
                   ms-Persona-initials
                   {
-                    background-color: #2D89EF;
+                    background-color: #0078D4;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 14px;
-                    font-weight: 400;
+                    font-weight: 600;
                     height: 32px;
                     line-height: 32px;
                   }
@@ -138,6 +138,9 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <i

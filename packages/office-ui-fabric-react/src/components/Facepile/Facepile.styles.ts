@@ -39,7 +39,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         width: 'auto'
       },
@@ -48,10 +48,10 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     addButton: [
       classNames.addButton,
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
-        fontSize: fonts.medium.fontSize,
+        fontSize: fonts.small.fontSize,
         color: palette.white,
         backgroundColor: palette.themePrimary,
         marginRight: spacingAroundItemButton * 2 + 'px',
@@ -74,10 +74,10 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     descriptiveOverflowButton: [
       classNames.descriptiveOverflowButton,
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
-        fontSize: fonts.small.fontSize,
+        fontSize: fonts.xSmall.fontSize,
         color: palette.neutralSecondary,
         backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
@@ -115,10 +115,10 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
 
     overflowButton: [
       classNames.overflowButton,
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       ItemButtonStyles,
       {
-        fontSize: fonts.medium.fontSize,
+        fontSize: fonts.small.fontSize,
         color: palette.neutralSecondary,
         backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`

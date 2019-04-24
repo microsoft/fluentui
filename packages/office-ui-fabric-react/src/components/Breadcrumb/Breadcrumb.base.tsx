@@ -48,6 +48,8 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   }
 
   public render(): JSX.Element {
+    this._validateProps(this.props);
+
     const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
@@ -63,10 +65,6 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     });
 
     return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadCrumbData} />;
-  }
-
-  public componentWillReceiveProps(nextProps: IBreadcrumbProps): void {
-    this._validateProps(nextProps);
   }
 
   private _onReduceData = (data: IBreadCrumbData): IBreadCrumbData | undefined => {

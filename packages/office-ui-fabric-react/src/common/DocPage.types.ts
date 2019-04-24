@@ -124,7 +124,10 @@ export interface IDocPageProps {
    */
   nativePropsElement?: string | string[];
 
-  /** Related link */
+  /**
+   * Related link
+   * @deprecated No longer shown on ComponentPage
+   */
   related?: JSX.Element;
 
   /** Pass through other sections for ComponentPage */

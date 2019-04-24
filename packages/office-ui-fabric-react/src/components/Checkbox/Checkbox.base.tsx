@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, getId, classNamesFunction, mergeAriaAttributeValues } from '../../Utilities';
+import { getId, classNamesFunction, mergeAriaAttributeValues, initializeComponentRef, warnMutuallyExclusive } from '../../Utilities';
 import { Icon } from '../../Icon';
 import { ICheckbox, ICheckboxProps, ICheckboxStyleProps, ICheckboxStyles } from './Checkbox.types';
 import { KeytipData } from '../../KeytipData';
@@ -11,7 +11,7 @@ export interface ICheckboxState {
 
 const getClassNames = classNamesFunction<ICheckboxStyleProps, ICheckboxStyles>();
 
-export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> implements ICheckbox {
+export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState> implements ICheckbox {
   public static defaultProps: ICheckboxProps = {
     boxSide: 'start'
   };
@@ -19,6 +19,16 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
   private _checkBox = React.createRef<HTMLInputElement>();
   private _id: string;
   private _classNames: { [key in keyof ICheckboxStyles]: string };
+
+  public static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState {
+    if (props.checked !== undefined) {
+      return {
+        ...state,
+        isChecked: !!props.checked
+      };
+    }
+    return state;
+  }
 
   /**
    * Initialize a new instance of the Checkbox
@@ -28,22 +38,18 @@ export class CheckboxBase extends BaseComponent<ICheckboxProps, ICheckboxState> 
   constructor(props: ICheckboxProps, context?: any) {
     super(props, context);
 
-    this._warnMutuallyExclusive({
-      checked: 'defaultChecked'
-    });
+    initializeComponentRef(this);
+
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnMutuallyExclusive('Checkbox', props, {
+        checked: 'defaultChecked'
+      });
+    }
 
     this._id = this.props.id || getId('checkbox-');
     this.state = {
       isChecked: !!(props.checked !== undefined ? props.checked : props.defaultChecked)
     };
-  }
-
-  public componentWillReceiveProps(newProps: ICheckboxProps): void {
-    if (newProps.checked !== undefined) {
-      this.setState({
-        isChecked: !!newProps.checked // convert null to false
-      });
-    }
   }
 
   /**

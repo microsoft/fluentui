@@ -1,10 +1,16 @@
 import * as React from 'react';
 import { IRefObject } from '../../Utilities';
 
-/** PickerItem component. */
+/**
+ * PickerItem component.
+ * {@docCategory Pickers}
+ */
 export interface IPickerItem {}
 
-/** PickerItem props common for any type of items. */
+/**
+ * PickerItem props common for any type of items.
+ * {@docCategory Pickers}
+ */
 export interface IPickerItemProps<T> extends React.AllHTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IPickerItem interface. Use this instead of ref for accessing

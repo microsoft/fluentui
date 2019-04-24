@@ -1,7 +1,7 @@
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens } from '../Button.types';
+import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps } from '../Button.types';
 
 export type IMenuButtonComponent = IComponent<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles, IMenuButtonViewProps>;
 
@@ -14,11 +14,6 @@ export type IMenuButtonStylesReturnType = ReturnType<Extract<IMenuButtonComponen
 export type IMenuButtonSlot = ISlotProp<IMenuButtonProps>;
 
 export interface IMenuButtonSlots extends IButtonSlots {
-  /**
-   * Defines the root slot of the component.
-   */
-  root?: IHTMLElementSlot<'div'>;
-
   /**
    * Defines the button that is going to be rendered.
    */
@@ -35,11 +30,16 @@ export interface IMenuButtonSlots extends IButtonSlots {
   menuIcon?: IIconSlot;
 }
 
-export interface IMenuButton {}
+export interface IMenuButton {
+  /**
+   * Sets focus to the MenuButton.
+   */
+  focus: () => void;
+}
 
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick'>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton> {
   /**
@@ -61,7 +61,7 @@ export interface IMenuButtonProps
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
-export interface IMenuButtonViewProps extends IMenuButtonProps {
+export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
   /**
    * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getId } from '../../Utilities';
+import { warnDeprecations, classNamesFunction, getId } from '../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps } from '../../Modal';
@@ -25,7 +25,7 @@ const DefaultDialogContentProps: IDialogContentProps = {
 };
 
 @withResponsiveMode
-export class DialogBase extends BaseComponent<IDialogProps, {}> {
+export class DialogBase extends React.Component<IDialogProps, {}> {
   public static defaultProps: IDialogProps = {
     hidden: true
   };
@@ -41,21 +41,23 @@ export class DialogBase extends BaseComponent<IDialogProps, {}> {
     this._defaultTitleTextId = this._id + '-title';
     this._defaultSubTextId = this._id + '-subText';
 
-    this._warnDeprecations({
-      isOpen: 'hidden',
-      type: 'dialogContentProps.type',
-      subText: 'dialogContentProps.subText',
-      contentClassName: 'dialogContentProps.className',
-      topButtonsProps: 'dialogContentProps.topButtonsProps',
-      className: 'modalProps.className',
-      isDarkOverlay: 'modalProps.isDarkOverlay',
-      isBlocking: 'modalProps.isBlocking',
-      containerClassName: 'modalProps.containerClassName',
-      onDismissed: 'modalProps.onDismissed',
-      onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
-      ariaDescribedById: 'modalProps.subtitleAriaId',
-      ariaLabelledById: 'modalProps.titleAriaId'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Dialog', props, {
+        isOpen: 'hidden',
+        type: 'dialogContentProps.type',
+        subText: 'dialogContentProps.subText',
+        contentClassName: 'dialogContentProps.className',
+        topButtonsProps: 'dialogContentProps.topButtonsProps',
+        className: 'modalProps.className',
+        isDarkOverlay: 'modalProps.isDarkOverlay',
+        isBlocking: 'modalProps.isBlocking',
+        containerClassName: 'modalProps.containerClassName',
+        onDismissed: 'modalProps.onDismissed',
+        onLayerDidMount: 'modalProps.layerProps.onLayerDidMount',
+        ariaDescribedById: 'modalProps.subtitleAriaId',
+        ariaLabelledById: 'modalProps.titleAriaId'
+      });
+    }
   }
 
   public render(): JSX.Element {

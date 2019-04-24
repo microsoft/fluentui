@@ -43,10 +43,10 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: '100%'
     },
     monthAndYear: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         alignItems: 'center',
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         color: palette.neutralPrimary,
         display: 'inline-flex',
         flexGrow: 1,
@@ -85,14 +85,14 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       alignSelf: 'flex-end'
     },
     headerIconButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         width: 28,
         height: 28,
         display: 'block',
         textAlign: 'center',
         lineHeight: 28,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         color: palette.neutralPrimary,
         borderRadius: 2,
         position: 'relative',
@@ -115,7 +115,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: 28,
       height: 28,
       lineHeight: 28,
-      fontSize: FontSizes.small,
+      fontSize: FontSizes.xSmall,
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
       boxSizing: 'border-box',
@@ -160,7 +160,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       fontWeight: FontWeights.regular
     },
     dayButton: [
-      getFocusStyle(theme, -2, 'relative'),
+      getFocusStyle(theme, { inset: -2 }),
       {
         width: 24,
         height: 24,

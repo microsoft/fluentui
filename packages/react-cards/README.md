@@ -17,7 +17,7 @@ A `Card` is a surface to display content and actions about a single topic. It ac
 
 This package is intended to contain different variants of `Card` components to be leveraged when building applications using UI Fabric.
 
-Please take note that, at the moment, these are not production ready components and **should never be used in product**. This ReactCards space is useful for testing new components whose APIs might change before final release.
+Please take note that, at the moment, these are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 To import ReactCards components:
 

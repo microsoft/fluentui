@@ -29,7 +29,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       fontSize: '12px'
     },
     hoverCardTextStyles: {
-      ...theme.fonts.medium,
+      ...theme.fonts.small,
       lineHeight: '14px'
     },
     hoverCardDataStyles: {
