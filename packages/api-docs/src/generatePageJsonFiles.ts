@@ -71,6 +71,7 @@ generateJson([
       'Rating',
       'ResizeGroup',
       'SelectedPeopleList',
+      'Separator',
       'ScrollablePane',
       'SearchBox',
       'SelectableOption',
