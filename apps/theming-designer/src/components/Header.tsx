@@ -54,8 +54,8 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render(): JSX.Element {
     return (
-      <Card styles={{ root: { minWidth: '1200px', height: '25px' } }}>
-        <Stack horizontal tokens={{ childrenGap: 800 }}>
+      <Card styles={{ root: { minWidth: '99%', height: '25px' } }}>
+        <Stack horizontal tokens={{ childrenGap: 1200 }}>
           <Stack horizontal>
             <IconButton
               disabled={false}
@@ -63,9 +63,9 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
               iconProps={{ iconName: 'WindowsLogo', styles: { root: { fontSize: '20px' } } }}
               ariaLabel="Microsoft UI Fabric | Theming Designer"
             />
-            <Label>Microsoft UI Fabric | Theming Designer</Label>
+            <Label styles={{ root: { fontWeight: 'bold' } }}>Microsoft UI Fabric | Theming Designer</Label>
           </Stack>
-          <Stack horizontal>
+          <Stack horizontal styles={{ root: { position: 'absolute', right: '20px' } }}>
             <IconButton
               data-automation-id="test"
               disabled={false}
@@ -75,7 +75,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
               onClick={this.showPanel}
               allowDisabledFocus={true}
             />
-            <Label>Export theme</Label>
+            <Label styles={{ root: { fontWeight: 'bold' } }}>Export theme</Label>
             <Panel
               isOpen={this.state.showPanel}
               type={PanelType.smallFixedFar}

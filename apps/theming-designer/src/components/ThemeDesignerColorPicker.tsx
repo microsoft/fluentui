@@ -59,7 +59,7 @@ export class ThemeDesignerColorPicker extends React.Component<IThemeDesignerColo
   public render() {
     return (
       <div>
-        <Stack horizontal horizontalAlign={'space-between'} gap={10}>
+        <Stack horizontal horizontalAlign={'space-between'} gap={20}>
           <Text className={colorLabelClassName}>{this.props.label}</Text>
           <Stack horizontal className={colorPanelClassName} gap={35}>
             <div

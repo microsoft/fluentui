@@ -10,7 +10,7 @@ import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { BaseComponent, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, autobind, merge } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
 import { ThemeGenerator, themeRulesStandardCreator, BaseSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
@@ -24,17 +24,8 @@ export interface IThemingDesignerState {
   themeRules?: IThemeRules;
 }
 
-const appClassName = mergeStyles({
-  display: 'flex'
-});
-
-const sideBarClassName = mergeStyles({
-  flex: '0 0 400px',
-  background: '#fff'
-});
-
-const mainCardsClassName = mergeStyles({
-  background: '#fff'
+const outerMostStack = mergeStyles({
+  width: '100%'
 });
 
 let colorChangeTimeout: number;
@@ -71,48 +62,42 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
   public render() {
     return (
-      <div className={appClassName}>
-        <Stack gap={10}>
-          <Header themeRules={this.state.themeRules} />
-          <Stack horizontal gap={20}>
-            <div className={sideBarClassName}>
-              <h1>
-                <IconButton
-                  disabled={false}
-                  checked={false}
-                  iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
-                  title="Colors"
-                  ariaLabel="Colors"
-                />
-                Color
-              </h1>
-              <Stack gap={20}>
-                {/* the three base slots, prominently displayed at the top of the page */}
-                <ThemeDesignerColorPicker
-                  color={this.state.primaryColor}
-                  onColorChange={this._onPrimaryColorPickerChange}
-                  label={'Primary theme color'}
-                />
-                <ThemeDesignerColorPicker
-                  color={this.state.textColor}
-                  onColorChange={this._onTextColorPickerChange}
-                  label={'Body text color'}
-                />
-                <ThemeDesignerColorPicker
-                  color={this.state.backgroundColor}
-                  onColorChange={this._onBkgColorPickerChange}
-                  label={'Body background color'}
-                />
-                {/* This Dropdown will allow the user to switch from light to dark theme on the whole app. */}
-                {/* <Dropdown
+      <Stack gap={10} className={outerMostStack}>
+        <Header themeRules={this.state.themeRules} />
+        <Stack horizontal gap={10}>
+          <Stack gap={20}>
+            <h1>
+              <IconButton
+                disabled={false}
+                checked={false}
+                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
+                title="Colors"
+                ariaLabel="Colors"
+              />
+              Color
+            </h1>
+            {/* the three base slots, prominently displayed at the top of the page */}
+            <ThemeDesignerColorPicker
+              color={this.state.primaryColor}
+              onColorChange={this._onPrimaryColorPickerChange}
+              label={'Primary color'}
+            />
+            <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
+            <ThemeDesignerColorPicker
+              color={this.state.backgroundColor}
+              onColorChange={this._onBkgColorPickerChange}
+              label={'Background color'}
+            />
+            {/* This Dropdown will allow the user to switch from light to dark theme on the whole app. */}
+            {/* <Dropdown
                 placeholder="Select an Option"
                 label="Theme dropdown"
                 ariaLabel="Theme dropdown"
                 options={[{ key: 'light', text: 'Light theme' }, { key:  'dark', text: 'Dark theme' }]}
                 /> */}
-              </Stack>
-            </div>
-            <Stack className={mainCardsClassName}>
+          </Stack>
+          <Stack.Item grow={1}>
+            <Stack horizontalAlign={'center'}>
               <ThemeProvider theme={this.state.theme}>
                 <Samples />
               </ThemeProvider>
@@ -120,9 +105,9 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <FabricPalette themeRules={this.state.themeRules} />
               {semanticSlotsCard}
             </Stack>
-          </Stack>
+          </Stack.Item>
         </Stack>
-      </div>
+      </Stack>
     );
   }
 
