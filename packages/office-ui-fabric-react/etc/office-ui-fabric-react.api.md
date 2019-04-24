@@ -6395,7 +6395,7 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
     // @deprecated
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
-    onRenderCustomPlaceholder?: (rowProps?: IDetailsRowProps) => React_2.ReactNode;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React_2.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
     // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
