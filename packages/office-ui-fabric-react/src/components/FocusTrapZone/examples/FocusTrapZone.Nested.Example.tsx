@@ -14,35 +14,32 @@ interface IFocusTrapComponentProps {
 class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
   public render() {
     const { isActive, zoneNumber, children } = this.props;
-    const contents = (
-      <Stack
-        horizontal={zoneNumber === 2}
-        horizontalAlign="start"
-        tokens={{ childrenGap: 10 }}
-        styles={{
-          root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
-        }}
-      >
-        <Toggle
-          defaultChecked={isActive}
-          onChange={this._onFocusTrapZoneToggleChanged}
-          label={'Enable trap zone ' + zoneNumber}
-          onText="On (toggle to exit)"
-          offText="Off"
-          styles={{
-            // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
-            root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 }
-          }}
-        />
-        <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
-        {children}
-      </Stack>
-    );
 
-    if (this.props.isActive) {
-      return <FocusTrapZone forceFocusInsideTrap={false}>{contents}</FocusTrapZone>;
-    }
-    return contents;
+    return (
+      <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
+        <Stack
+          horizontalAlign="start"
+          tokens={{ childrenGap: 10 }}
+          styles={{
+            root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
+          }}
+        >
+          <Toggle
+            checked={isActive}
+            onChange={this._onFocusTrapZoneToggleChanged}
+            label={'Enable trap zone ' + zoneNumber}
+            onText="On (toggle to exit)"
+            offText="Off"
+            styles={{
+              // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
+              root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 }
+            }}
+          />
+          <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
+          {children}
+        </Stack>
+      </FocusTrapZone>
+    );
   }
 
   private _onStringButtonClicked = (): void => {
@@ -86,6 +83,12 @@ export class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZo
     this.setState({ activeStates: { ...activeStates, [zoneNumber]: isActive } });
   };
 
+  // This randomize example is exposing a quirk in focus stack behavior.
+  // For the randomize example, components render from the bottom up with all of the new "activeStates" simultaneously set.
+  // The most recently active item in the focusStack ends up being the highest parent, which is the reverse order focus
+  // trap zones would normally be put on the focusStack. That means children aren't capturing focus as one would normally
+  // expect when toggling the FTZ's individually. This would also be an issue if anyone ever rendered multiple nested and enabled
+  //  FocusTrapZones simultaneously.
   private _randomize = (): void => {
     const activeStates: IFocusTrapZoneNestedExampleState['activeStates'] = {};
     [1, 2, 3, 4, 5].forEach(zoneNumber => {

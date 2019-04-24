@@ -4225,6 +4225,7 @@ export interface IFocusTrapZone {
 export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
