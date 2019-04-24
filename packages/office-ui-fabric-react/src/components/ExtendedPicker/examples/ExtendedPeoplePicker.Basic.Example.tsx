@@ -249,17 +249,10 @@ export class ExtendedPeoplePickerBasicExample extends React.Component<{}, IPeopl
     return items.map(item => item.text).join(', ');
   }
 
-  private _shouldShowForceResolve = (): boolean => {
-    const picker = this._picker.current;
-    const floatingPicker = picker && picker.floatingPicker.current;
-    return !!floatingPicker && this._validateInput(floatingPicker.inputText) && floatingPicker.suggestions.length === 0;
-  };
-
   private _shouldShowSuggestedContacts = (): boolean => {
     const picker = this._picker.current;
     return !!(picker && picker.inputElement) && picker.inputElement.value === '';
   };
-
   private _listContainsPersona(persona: IPersonaProps, personas?: IPersonaProps[]): boolean {
     return !!personas && personas.some((item: IPersonaProps) => item.text === persona.text);
   }

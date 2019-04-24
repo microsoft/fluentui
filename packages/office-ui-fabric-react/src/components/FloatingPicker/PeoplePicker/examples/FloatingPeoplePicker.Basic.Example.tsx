@@ -83,6 +83,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     if (inputElements && inputElements.length > 0) {
       this._inputElement = inputElements[0] as HTMLInputElement;
     }
+  };
 
   private _onSearchChange = (newValue: string): void => {
     if (newValue !== this.state.searchValue && this._picker.current) {

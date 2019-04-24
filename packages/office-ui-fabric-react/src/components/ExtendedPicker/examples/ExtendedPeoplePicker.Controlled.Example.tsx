@@ -119,7 +119,6 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
       onRemoveSuggestion: this._onRemoveSuggestion,
       isQueryForceResolveable: this._isQueryForceResolveable,
       onZeroQuerySuggestion: this._returnMostRecentlyUsed,
-      showForceResolve: this._shouldShowForceResolve,
       onInputChanged: this._onInputChanged,
       onSuggestionsHidden: () => {
         console.log('FLOATINGPICKER: hidden');
@@ -258,12 +257,6 @@ export class ExtendedPeoplePickerControlledExample extends React.Component<{}, I
   private _onCopyItems(items: IExtendedPersonaProps[]): string {
     return items.map(item => item.text).join(', ');
   }
-
-  private _shouldShowForceResolve = (): boolean => {
-    const picker = this._picker.current;
-    const floatingPicker = picker && picker.floatingPicker.current;
-    return !!floatingPicker && this._isQueryForceResolveable(floatingPicker.inputText) && floatingPicker.suggestions.length === 0;
-  };
 
   private _shouldShowSuggestedContacts = (): boolean => {
     const picker = this._picker.current;
