@@ -5,5 +5,5 @@ import { ButtonVariantsType } from './ButtonVariants.types';
 export const PrimaryButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return <Button primary content={text} icon={iconProps} {...rest} />;
+  return <Button primary content={text} icon={{ props: iconProps }} {...rest} />;
 };

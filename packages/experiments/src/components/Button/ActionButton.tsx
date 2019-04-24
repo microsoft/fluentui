@@ -45,5 +45,13 @@ export const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IB
 export const ActionButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return <Button stack={{ horizontalAlign: 'start' }} content={text} icon={iconProps} tokens={ActionButtonTokens} {...rest} />;
+  return (
+    <Button
+      stack={{ props: { horizontalAlign: 'start' } }}
+      content={text}
+      icon={{ props: iconProps }}
+      tokens={ActionButtonTokens}
+      {...rest}
+    />
+  );
 };

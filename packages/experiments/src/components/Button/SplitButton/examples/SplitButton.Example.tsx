@@ -3,16 +3,18 @@ import { SplitButton, ISplitButtonProps } from '@uifabric/experiments';
 import { Stack } from 'office-ui-fabric-react';
 
 const menuProps: ISplitButtonProps['menu'] = {
-  items: [
-    {
-      key: 'a',
-      name: 'Item a'
-    },
-    {
-      key: 'b',
-      name: 'Item b'
-    }
-  ]
+  props: {
+    items: [
+      {
+        key: 'a',
+        name: 'Item a'
+      },
+      {
+        key: 'b',
+        name: 'Item b'
+      }
+    ]
+  }
 };
 
 const tokens = {

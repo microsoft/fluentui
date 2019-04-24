@@ -7159,7 +7159,7 @@ export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextPr
 }
 
 // @public (undocumented)
-export type ITextSlot = ISlotProp<ITextProps, React_2.ReactNode>;
+export type ITextSlot = ISlotProp<ITextProps, string>;
 
 // @public (undocumented)
 export interface ITextSlots {

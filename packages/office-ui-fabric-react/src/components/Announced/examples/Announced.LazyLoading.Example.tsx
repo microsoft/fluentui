@@ -45,7 +45,7 @@ export interface IAnnouncedLazyLoadingExampleState {
   timeSinceLastAnnounce: number;
 }
 
-export interface IAnnouncedLazyLoadingExampleProps {}
+export interface IAnnouncedLazyLoadingExampleProps { }
 
 export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyLoadingExampleProps, IAnnouncedLazyLoadingExampleState> {
   private _photos: IPhoto[];
@@ -119,7 +119,7 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
             wrap
             // Render the inner content as a ul (there's not currently a less-verbose way to do this)
             // tslint:disable-next-line:jsx-no-lambda
-            inner={render => render((_, props) => <ul className={props.className}>{props.children}</ul>)}
+            inner={{ component: 'ul' }}
             tokens={photoStackTokens}
             styles={photoStackStyles}
           >

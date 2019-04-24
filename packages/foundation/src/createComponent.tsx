@@ -10,10 +10,10 @@ import {
   IStyleableComponentProps,
   IStylesFunctionOrObject,
   IToken,
-  IViewRenderer,
-  ITokenFunction
+  ITokenFunction,
+  IViewRenderer
 } from './IComponent';
-import { IDefaultSlotProps, ISlotCreator } from './ISlots';
+import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -31,7 +31,7 @@ import { IDefaultSlotProps, ISlotCreator } from './ISlots';
  * @param component - component Component options. See IComponent for more detail.
  */
 export function createComponent<
-  TComponentProps,
+  TComponentProps extends ValidProps,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
@@ -98,7 +98,7 @@ export function createComponent<
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
   //       Need to weigh creating default factories on component creation vs. memozing them on use in slots.tsx.
   if (defaultProp) {
-    (result as ISlotCreator<TComponentProps>).create = createFactory(result, { defaultProp });
+    (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
   }
 
   assign(result, component.statics);
@@ -135,6 +135,7 @@ function _resolveTokens<TViewProps, TTokens>(
 
   for (let currentTokens of allTokens) {
     if (currentTokens) {
+      // TODO: why is this cast needed? TS seems to think there is a (TToken | Function) union from somewhere.
       currentTokens =
         typeof currentTokens === 'function' ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme) : currentTokens;
 
@@ -163,7 +164,7 @@ function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TSt
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
-  // TOOD: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
+  // TODO: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
   const DefaultFields = ['theme', 'styles', 'tokens'];
   return Customizations.getSettings(fields || DefaultFields, displayName, context.customizations);
 }

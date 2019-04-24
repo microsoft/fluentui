@@ -3,16 +3,18 @@ import { MenuButton, IMenuButtonProps } from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const menuProps: IMenuButtonProps['menu'] = {
-  items: [
-    {
-      key: 'a',
-      name: 'Item a'
-    },
-    {
-      key: 'b',
-      name: 'Item b'
-    }
-  ]
+  props: {
+    items: [
+      {
+        key: 'a',
+        name: 'Item a'
+      },
+      {
+        key: 'b',
+        name: 'Item b'
+      }
+    ]
+  }
 };
 
 const tokens = {
