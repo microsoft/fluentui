@@ -229,7 +229,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               >
                 {onRenderColumnHeaderTooltip(
                   {
-                    hostClassName: css(classNames.checkTooltip),
+                    hostClassName: classNames.checkTooltip,
                     id: `${this._id}-checkTooltip`,
                     setAriaDescribedBy: false,
                     content: ariaLabelForSelectAllCheckbox,
