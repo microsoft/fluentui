@@ -42,7 +42,7 @@ describe('MenuButton view', () => {
   it('renders a multiline MenuButton correctly', () => {
     const component = renderer.create(
       <MenuButton icon="Share" menu={menuProps}>
-        <Stack padding="8px 0" as="span" horizontalAlign="start">
+        <Stack as="span" horizontalAlign="start" tokens={{ padding: '8px 0' }}>
           <Text>I am a compound multiline button.</Text>
           <Text variant="small">I can have a caption.</Text>
         </Stack>
