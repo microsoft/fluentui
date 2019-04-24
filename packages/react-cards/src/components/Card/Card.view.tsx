@@ -13,7 +13,7 @@ export const CardView: ICardComponent['view'] = props => {
   const { styles, tokens, compact, ...rest } = props;
 
   const nativeProps = getNativeProps(rest, htmlElementProperties);
-  console.log('TOKENS: ', tokens);
+
   return (
     <Slots.root
       {...nativeProps}
