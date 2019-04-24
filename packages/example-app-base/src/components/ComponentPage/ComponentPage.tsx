@@ -54,7 +54,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     return (
       <div className={css(classNames.root, className)}>
         <div className={componentName}>
-          {this._pageHeader()}
+          {this._getPageHeader()}
           <div className={classNames.body}>
             {this._getComponentStatusBadges()}
             {this._getOverview()}
@@ -70,7 +70,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     );
   }
 
-  private _pageHeader(): JSX.Element | undefined {
+  private _getPageHeader(): JSX.Element | undefined {
     const classNames = this._styles;
     if (this.props.isHeaderVisible) {
       return (
