@@ -66,11 +66,11 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     } else if (props.renderAsClass) {
       const members = (props.properties as IApiInterfaceProperty[])
         .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IApiInterfaceProperty, index: number) => assign({}, prop, { key: index }));
+        .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
 
       const methods = (props.methods as IMethod[])
         .sort((a: IMethod, b: IMethod) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IMethod, index: number) => assign({}, prop, { key: index }));
+        .map((prop: IMethod) => ({ ...prop, key: prop.name }));
 
       this.state = {
         properties: members,
@@ -81,7 +81,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     } else {
       const properties = (props.properties as IApiInterfaceProperty[])
         .sort((a: IApiInterfaceProperty, b: IApiInterfaceProperty) => (a.name < b.name ? -1 : a.name > b.name ? 1 : 0))
-        .map((prop: IApiInterfaceProperty, index: number) => assign({}, prop, { key: index }));
+        .map((prop: IApiInterfaceProperty) => ({ ...prop, key: prop.name }));
 
       this.state = {
         properties,
