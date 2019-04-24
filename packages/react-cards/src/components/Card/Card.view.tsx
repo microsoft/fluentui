@@ -22,10 +22,13 @@ export const CardView: ICardComponent['view'] = props => {
   const CardItemType = (<CardItem /> as React.ReactElement<ICardItemProps>).type;
   const CardSectionType = (<CardSection /> as React.ReactElement<ICardSectionProps>).type;
 
+  // Get childrenGap and childrenMargin token values.
   const childrenGap = tokens && (tokens as ICardTokens).childrenGap;
   const childrenMargin = tokens && (tokens as ICardTokens).childrenMargin;
   const childrenCount = React.Children.count(children);
 
+  /* The map function below takes the Card children and applies the correct margin and gap tokens to them, ensuring at the same time that
+   * they are of type CardItem or CardSection. */
   const cardChildren: (React.ReactChild | null)[] = React.Children.map(
     children,
     (child: React.ReactElement<ICardItemProps | ICardSectionProps>, index: number) => {
@@ -33,34 +36,44 @@ export const CardView: ICardComponent['view'] = props => {
         return null;
       }
 
-      let margin: number | string;
-      if (childrenMargin) {
-        const firstMargin: number = index === 0 ? childrenMargin : 0;
-        const lastMargin: number = index === childrenCount - 1 ? childrenMargin : 0;
-
-        const verticalMargin: string = `${firstMargin}px ${childrenMargin}px ${lastMargin}px`;
-        const horizontalMargin: string = `${childrenMargin}px ${lastMargin}px ${childrenMargin}px ${firstMargin}px`;
-
-        margin = compact ? horizontalMargin : verticalMargin;
-      } else {
-        margin = 0;
-      }
-
+      // Ensure that we're dealing with CardItems and CardSections and throw a warning otherwise.
       if (child.type === CardItemType || child.type === CardSectionType) {
-        const { fill, tokens: childTokens, ...childRest } = child.props;
-
-        let marginTokens = fill ? { margin: 0 } : { margin };
-
-        if (child.type === CardSectionType) {
-          marginTokens = { ...marginTokens, ...{ childrenGap } };
+        // Only compute and clone if childrenGap and/or childrenMargin were provided.
+        if (!childrenGap && !childrenMargin) {
+          return child;
         }
 
-        const marginItemProps: ICardItemProps | ICardSectionProps = {
-          tokens: { ...marginTokens, ...childTokens }
+        const { fill, tokens: childTokens, ...childRest } = child.props;
+
+        let margin: number | string = 0;
+
+        /* If childrenMargin has been specified and the fill property is not present, make the appropriate calculations to get the resolved
+         * margin for this specific child depending on the type of Card (vertical vs compact) and the child position in the card (first
+         * child, in-between child or last child). */
+        if (childrenMargin && !fill) {
+          const firstMargin: number = index === 0 ? childrenMargin : 0;
+          const lastMargin: number = index === childrenCount - 1 ? childrenMargin : 0;
+
+          const verticalMargin: string = `${firstMargin}px ${childrenMargin}px ${lastMargin}px`;
+          const horizontalMargin: string = `${childrenMargin}px ${lastMargin}px ${childrenMargin}px ${firstMargin}px`;
+
+          margin = compact ? horizontalMargin : verticalMargin;
+        }
+
+        /* Resolve tokens, sending childrenGap only if the child type is CardSection as CardItem doesn't have a childrenGap token in its
+         * type specification. We're sending childrenGap to CardSection so that elements inside a CardSection maintain the overall gap
+         * provided to the Card. */
+        let resolvedTokens = {
+          margin,
+          childrenGap: child.type === CardSectionType ? childrenGap : undefined
         };
 
+        // Overwrite any resolved default tokens with the user provided ones.
+        resolvedTokens = { ...resolvedTokens, ...childTokens };
+
+        // Clone the child with the c
         return React.cloneElement(child, {
-          ...marginItemProps,
+          tokens: resolvedTokens,
           ...childRest
         });
       }
