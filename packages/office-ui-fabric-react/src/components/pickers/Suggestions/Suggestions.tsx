@@ -49,10 +49,6 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
     }
   }
 
-  public componentWillUnmount(): void {
-    console.log('Suggestions.willUnmount');
-  }
-
   public render(): JSX.Element {
     const {
       forceResolveText,
