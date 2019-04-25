@@ -12,7 +12,8 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IApiInterfaceProperty, IApiEnumProperty, ILinkToken, IMethod } from './ApiReferencesTableSet.types';
+import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
 
 export interface IApiReferencesTableProps {
   title?: string;

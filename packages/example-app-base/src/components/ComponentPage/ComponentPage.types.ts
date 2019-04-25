@@ -1,6 +1,6 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { IPageJson } from '../ApiReferencesTable/ApiReferencesTableSet.types';
+import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 export interface IComponentPageSection {
   title: string;

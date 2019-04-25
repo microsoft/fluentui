@@ -5,16 +5,8 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ApiReferencesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './ApiReferencesTable';
-import {
-  IApiProperty,
-  IApiInterfaceProperty,
-  IApiEnumProperty,
-  IMethod,
-  IApiReferencesTableSetProps,
-  IEnumTableRowJson,
-  ITableRowJson,
-  ITableJson
-} from './ApiReferencesTableSet.types';
+import { IApiProperty, IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
+import { IEnumTableRowJson, ITableRowJson, ITableJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { PropertyType } from '../../utilities/parser/index';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
 

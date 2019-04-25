@@ -1,4 +1,5 @@
 import { InterfacePropertyType, PropertyType } from '../../utilities/parser/index';
+import { IPageJson, ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 /**
  * Props for the ApiReferencesTableSet
@@ -8,45 +9,6 @@ export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLEl
    * A json object to populate the table
    */
   jsonDocs?: IPageJson;
-}
-
-/**
- * Generic table row
- */
-export interface ITableRowJson {
-  name: string;
-  typeTokens: ILinkToken[];
-  defaultValue?: string;
-  description: string;
-  deprecated: boolean;
-  deprecatedMessage?: string;
-  kind?: 'Method' | 'Property';
-}
-
-/**
- * Enum table row
- */
-export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'description'>> & {
-  value: string;
-};
-
-/**
- * Api table
- */
-export interface ITableJson {
-  kind: 'interface' | 'enum' | 'class';
-  name: string;
-  extendsTokens: ILinkToken[];
-  description: string;
-  members: ITableRowJson[] | IEnumTableRowJson[];
-}
-
-/**
- * Structure of the page.json files
- */
-export interface IPageJson {
-  tables: ITableJson[];
-  name: string;
 }
 
 /**
@@ -61,20 +23,6 @@ export interface IApiProperty {
   propertyType: PropertyType;
   property: IApiInterfaceProperty[] | IApiEnumProperty[];
   methods?: IMethod[];
-}
-
-/**
- * Used to keep track of where the page will live on the site
- */
-export type PageKind = 'References' | 'Components';
-
-/**
- * Excerpt token that is part of a type or extends block and may have a hyperlink
- */
-export interface ILinkToken {
-  text: string;
-  hyperlinkedPage?: string;
-  pageKind?: PageKind;
 }
 
 /**
