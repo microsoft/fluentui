@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 24 Apr 2019 12:35:55 GMT and should not be manually modified.
+This log was last generated on Thu, 25 Apr 2019 12:33:20 GMT and should not be manually modified.
+
+## 6.170.0
+Thu, 25 Apr 2019 12:33:20 GMT
+
+### Minor changes
+
+- Concentrate onhover style ui changes to label element for Checkbox
+
+### Patches
+
+- Remove componentRef property for Image component at Image.types.ts.
+- DetailsRowFields: Refactor styles to remove unnecessary re-render
+- fixing header keyboarding in CalendarMonth in OUFR
 
 ## 6.169.0
 Wed, 24 Apr 2019 12:35:55 GMT
