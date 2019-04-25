@@ -1724,6 +1724,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
     dividerAs?: IComponentAs<IDividerAsProps>;
+    focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
     onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
