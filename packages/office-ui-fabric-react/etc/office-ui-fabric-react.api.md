@@ -2017,7 +2017,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement> {
     setInitialFocus?: boolean;
     style?: React_2.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Element | string | MouseEvent | IPoint | null;
+    target?: Target;
     theme?: ITheme;
 }
 
@@ -2901,7 +2901,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     shouldFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
     subMenuHoverDelay?: number;
-    target?: Element | string | MouseEvent | IPoint | null;
+    target?: Target;
     theme?: ITheme;
     title?: string;
     useTargetAsMinWidth?: boolean;
@@ -7106,6 +7106,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     primaryButtonProps?: IButtonProps;
     secondaryButtonProps?: IButtonProps;
     styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+    target?: Target;
+    // @deprecated (undocumented)
     targetElement?: HTMLElement;
     theme?: ITheme;
 }
@@ -8874,6 +8876,9 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
         onRenderSuggestionsItem: (props: ITag) => JSX.Element;
     };
 }
+
+// @public (undocumented)
+export type Target = Element | string | MouseEvent | IPoint | null;
 
 // @public (undocumented)
 export const TeachingBubble: React_2.StatelessComponent<ITeachingBubbleProps>;
