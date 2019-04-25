@@ -3,6 +3,7 @@ import { BaseComponent, customizable } from 'office-ui-fabric-react/lib/Utilitie
 import { IPageHeaderProps, IPageHeaderStylesProps } from './PageHeader.types';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
+/** @deprecated Use `MarkdownHeader` */
 @customizable('PageHeader', ['theme', 'styles'])
 export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
   public render(): JSX.Element {
