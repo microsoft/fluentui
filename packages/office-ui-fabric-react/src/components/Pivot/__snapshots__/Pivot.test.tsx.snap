@@ -3,7 +3,11 @@
 exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -367,7 +371,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
   className="specialClassName"
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -718,7 +726,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
 exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1255,7 +1267,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 exports[`Pivot renders large link Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1605,7 +1621,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
 exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1979,7 +1999,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 exports[`Pivot renders link Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2328,7 +2352,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
 exports[`Pivot renders tabbed Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2701,7 +2729,11 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
 exports[`Pivot supports JSX expressions 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}

@@ -39,9 +39,8 @@ let focusZoneStyles: string;
 const focusZoneClass: string = 'ms-FocusZone';
 
 // Helper function that will return a class for when the root is focused
-// when focused is parked there
-function getRootClass(isParked: boolean): string {
-  if (isParked && !focusZoneStyles) {
+function getRootClass(): string {
+  if (!focusZoneStyles) {
     focusZoneStyles = mergeStyles(
       {
         selectors: {
@@ -53,7 +52,7 @@ function getRootClass(isParked: boolean): string {
       focusZoneClass
     );
   }
-  return isParked ? focusZoneStyles : focusZoneClass;
+  return focusZoneStyles;
 }
 
 const _allInstances: {
@@ -225,7 +224,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         // Once the getClassName correctly memoizes inputs this should
         // be replaced so that className is passed to getRootClass and is included there so
         // the class names will always be in the same order.
-        className={css(getRootClass(this._isParked), className)}
+        className={css(getRootClass(), className)}
         ref={this._root}
         data-focuszone-id={this._id}
         aria-labelledby={ariaLabelledBy}

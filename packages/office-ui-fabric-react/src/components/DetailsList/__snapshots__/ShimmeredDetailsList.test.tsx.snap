@@ -51,6 +51,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -315,6 +318,9 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
