@@ -25,5 +25,5 @@ export const MarkdownTHead = styled<IMarkdownTableProps, IMarkdownTableStyleProp
   MarkdownTHeadBase,
   getStyles,
   undefined,
-  { scope: 'MarkdownTHead' }
+  { scope: 'MarkdownTable' }
 );

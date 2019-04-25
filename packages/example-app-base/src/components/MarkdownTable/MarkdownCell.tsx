@@ -28,5 +28,5 @@ export const MarkdownCell = styled<IMarkdownTableCellProps, IMarkdownTableStyleP
   MarkdownCellBase,
   getStyles,
   undefined,
-  { scope: 'MardownCell' }
+  { scope: 'MarkdownTable' }
 );

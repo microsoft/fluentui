@@ -25,5 +25,5 @@ export const MarkdownTBody = styled<IMarkdownTableProps, IMarkdownTableStyleProp
   MarkdownTBodyBase,
   getStyles,
   undefined,
-  { scope: 'MarkdownTBody' }
+  { scope: 'MarkdownTable' }
 );

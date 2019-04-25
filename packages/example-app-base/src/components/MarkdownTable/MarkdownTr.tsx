@@ -25,5 +25,5 @@ export const MarkdownTr = styled<IMarkdownTableProps, IMarkdownTableStyleProps, 
   MarkdownTrBase,
   getStyles,
   undefined,
-  { scope: 'MarkdownTr' }
+  { scope: 'MarkdownTable' }
 );
