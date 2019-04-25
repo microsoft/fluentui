@@ -7,7 +7,7 @@ import { Spinner, ISpinnerStyleProps, ISpinnerStyles } from '../../../Spinner';
 import { ISuggestionsProps, SuggestionActionType, ISuggestionsStyleProps, ISuggestionsStyles } from './Suggestions.types';
 import { SuggestionsItem } from './SuggestionsItem';
 import { getStyles as suggestionsItemStyles } from './SuggestionsItem.styles';
-import { ISuggestionItemProps } from './SuggestionsItem.types';
+import { ISuggestionItemProps, ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
 import * as stylesImport from './Suggestions.scss';
 const legacyStyles: any = stylesImport;
@@ -18,7 +18,12 @@ export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
-const StyledSuggestionsItem = styled(SuggestionsItem, suggestionsItemStyles, undefined, { scope: 'SuggestionItem' });
+const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
+  SuggestionsItem,
+  suggestionsItemStyles,
+  undefined,
+  { scope: 'SuggestionItem' }
+);
 
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = React.createRef<IButton>();
@@ -308,7 +313,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     let { suggestions } = this.props;
 
-    const StyledTypedSuggestionsItem: React.ComponentClass<ISuggestionItemProps<T>> = StyledSuggestionsItem as any;
+    const StyledTypedSuggestionsItem: React.StatelessComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
 
     let selectedIndex = -1;
     suggestions.some((element, index) => {
