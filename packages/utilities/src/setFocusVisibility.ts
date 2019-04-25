@@ -12,7 +12,7 @@ export const IsFocusVisibleClassName = 'ms-Fabric--isFocusVisible';
  * @param target - optional target
  */
 export function setFocusVisibility(enabled: boolean, target?: Element): void {
-  let win = target ? getWindow(target) : getWindow();
+  const win = target ? getWindow(target) : getWindow();
 
   if (win) {
     const { classList } = win.document.body;
