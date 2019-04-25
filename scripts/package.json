@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
-    "code-style": "node -v",
+    "code-style": "node ./just.js code-style",
     "bundlesize": "bundlesize --debug",
     "test": "jest"
   },
@@ -20,7 +20,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
     "@uifabric/api-docs": "^1.0.0",
-    "@uifabric/codepen-loader": "^0.1.0",
+    "@uifabric/codepen-loader": "^0.1.1",
     "@uifabric/merge-styles": "^6.17.0",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",

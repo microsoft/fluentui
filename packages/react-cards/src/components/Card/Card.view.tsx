@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import { withSlots, getSlots } from '@uifabric/foundation';
 import { getNativeProps, htmlElementProperties } from '@uifabric/utilities';
-import { Stack } from 'office-ui-fabric-react';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 import { ICardComponent, ICardProps, ICardSlots } from './Card.types';
 

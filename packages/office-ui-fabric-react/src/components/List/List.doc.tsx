@@ -4,7 +4,6 @@ import { ListBasicExample } from './examples/List.Basic.Example';
 import { ListGridExample } from './examples/List.Grid.Example';
 import { ListScrollingExample } from './examples/List.Scrolling.Example';
 import { ListGhostingExample } from './examples/List.Ghosting.Example';
-import { ListStatus } from './List.checklist';
 import { createListItems } from '../../utilities/exampleData';
 
 const ListBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/List/examples/List.Basic.Example.tsx') as string;
@@ -46,6 +45,5 @@ export const ListPageProps: IDocPageProps = {
   allowNativeProps: true,
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/List/docs/ListOverview.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true,
-  componentStatus: ListStatus
+  isFeedbackVisible: true
 };

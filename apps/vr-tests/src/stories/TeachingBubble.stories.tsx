@@ -10,7 +10,11 @@ import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHi
 storiesOf('TeachingBubble', module)
   .addDecorator(FabricDecoratorTall)
   .addDecorator(story => (
-    <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}>{story()}</Screener>
+    <Screener
+      steps={new Screener.Steps().snapshot('default', { cropTo: '.ms-TeachingBubble' }).end()}
+    >
+      {story()}
+    </Screener>
   ))
   .addStory(
     'WideIllustration',
@@ -25,8 +29,8 @@ storiesOf('TeachingBubble', module)
           primaryButtonProps={{ children: 'Got it' }}
           headline="Discover what’s trending around you"
         >
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non? Modal
-          content
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae
+          quis aliquam magni harum non? Modal content
         </TeachingBubble>
       );
     },
@@ -42,7 +46,8 @@ storiesOf('TeachingBubble', module)
         }}
         headline="Discover what’s trending around you"
       >
-        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?
+        Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae
+        quis aliquam magni harum non?
       </TeachingBubble>
     );
   });

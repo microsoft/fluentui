@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { SpinnerStatus } from './Spinner.checklist';
 import { SpinnerBasicExample } from './examples/Spinner.Basic.Example';
 import { SpinnerLabeledExample } from './examples/Spinner.Labeled.Example';
 
@@ -14,7 +13,6 @@ export const SpinnerPageProps: IDocPageProps = {
   title: 'Spinner',
   componentName: 'Spinner',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Spinner',
-  componentStatus: SpinnerStatus,
   examples: [
     {
       title: 'Spinner sizes',

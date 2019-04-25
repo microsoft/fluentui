@@ -18,10 +18,6 @@ import { FocusTrapZoneNestedExample } from './examples/FocusTrapZone.Nested.Exam
 const FocusTrapZoneNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 const FocusTrapZoneNestedExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.Nested.Example.tsx') as string;
 
-import { FocusTrapZoneNoTabbableExample } from './examples/FocusTrapZone.NoTabbable.Example';
-const FocusTrapZoneNoTabbableExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.NoTabbable.Example.tsx') as string;
-const FocusTrapZoneNoTabbableExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.NoTabbable.Example.tsx') as string;
-
 import { FocusTrapZoneFocusZoneExample } from './examples/FocusTrapZone.FocusZone.Example';
 const FocusTrapZoneFocusZoneExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.FocusZone.Example.tsx') as string;
 const FocusTrapZoneFocusZoneExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FocusTrapZone/examples/FocusTrapZone.FocusZone.Example.tsx') as string;
@@ -65,12 +61,6 @@ export const FocusTrapZonePageProps: IDocPageProps = {
       code: FocusTrapZoneFocusZoneExampleCode,
       codepenJS: FocusTrapZoneFocusZoneExampleCodepen,
       view: <FocusTrapZoneFocusZoneExample />
-    },
-    {
-      title: 'FocusTrapZone with no tabbable elements',
-      code: FocusTrapZoneNoTabbableExampleCode,
-      codepenJS: FocusTrapZoneNoTabbableExampleCodepen,
-      view: <FocusTrapZoneNoTabbableExample />
     },
     {
       title: 'A Dialog nested in a Panel',

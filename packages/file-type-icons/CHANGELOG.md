@@ -1,6 +1,14 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 10 Apr 2019 12:33:17 GMT and should not be manually modified.
+This log was last generated on Thu, 18 Apr 2019 12:31:50 GMT and should not be manually modified.
+
+## 6.4.6
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
 
 ## 6.4.5
 Wed, 10 Apr 2019 12:33:17 GMT

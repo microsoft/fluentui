@@ -49,7 +49,7 @@
 // Common styles between themes
 :global {
   .hljs {
-    -webkit-overflow-scrolling: touch;  // Improves scrolling performance
+    -webkit-overflow-scrolling: touch; // Improves scrolling performance
     display: block;
     font-family: monospace;
     line-height: 1.4;
@@ -64,16 +64,39 @@
     background: $ms-color-neutralDark;
     color: $ms-color-white;
   }
-  .hljs-comment, .hljs-quote {
+  .hljs-comment,
+  .hljs-quote {
     color: #777;
   }
-  .hljs-variable, .hljs-template-variable, .hljs-tag, .hljs-regexp, .hljs-meta, .hljs-number, .hljs-built_in, .hljs-builtin-name, .hljs-literal, .hljs-params, .hljs-symbol, .hljs-bullet, .hljs-link, .hljs-deletion {
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-tag,
+  .hljs-regexp,
+  .hljs-meta,
+  .hljs-number,
+  .hljs-built_in,
+  .hljs-builtin-name,
+  .hljs-literal,
+  .hljs-params,
+  .hljs-symbol,
+  .hljs-bullet,
+  .hljs-link,
+  .hljs-deletion {
     color: #ab875d;
   }
-  .hljs-section, .hljs-title, .hljs-name, .hljs-selector-id, .hljs-selector-class, .hljs-type, .hljs-attribute {
+  .hljs-section,
+  .hljs-title,
+  .hljs-name,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-type,
+  .hljs-attribute {
     color: #9b869b;
   }
-  .hljs-string, .hljs-keyword, .hljs-selector-tag, .hljs-addition {
+  .hljs-string,
+  .hljs-keyword,
+  .hljs-selector-tag,
+  .hljs-addition {
     color: #8f9c6c;
   }
   .hljs-emphasis {
@@ -89,22 +112,44 @@
   .hljs {
     background: $ms-color-white;
   }
-  .hljs, .hljs-subst {
+  .hljs,
+  .hljs-subst {
     color: #434f54;
   }
-  .hljs-keyword, .hljs-attribute, .hljs-selector-tag, .hljs-doctag, .hljs-name {
-    color: #00979D;
+  .hljs-keyword,
+  .hljs-attribute,
+  .hljs-selector-tag,
+  .hljs-doctag,
+  .hljs-name {
+    color: #00979d;
   }
-  .hljs-built_in, .hljs-literal, .hljs-bullet, .hljs-code, .hljs-addition {
-    color: #D35400;
+  .hljs-built_in,
+  .hljs-literal,
+  .hljs-bullet,
+  .hljs-code,
+  .hljs-addition {
+    color: #d35400;
   }
-  .hljs-regexp, .hljs-symbol, .hljs-variable, .hljs-template-variable, .hljs-link, .hljs-selector-attr, .hljs-selector-pseudo {
-    color: #00979D;
+  .hljs-regexp,
+  .hljs-symbol,
+  .hljs-variable,
+  .hljs-template-variable,
+  .hljs-link,
+  .hljs-selector-attr,
+  .hljs-selector-pseudo {
+    color: #00979d;
   }
-  .hljs-type, .hljs-string, .hljs-selector-id, .hljs-selector-class, .hljs-quote, .hljs-template-tag, .hljs-deletion {
-    color: #005C5F;
+  .hljs-type,
+  .hljs-string,
+  .hljs-selector-id,
+  .hljs-selector-class,
+  .hljs-quote,
+  .hljs-template-tag,
+  .hljs-deletion {
+    color: #005c5f;
   }
-  .hljs-title, .hljs-section {
+  .hljs-title,
+  .hljs-section {
     color: #880000;
     font-weight: bold;
   }
@@ -112,10 +157,10 @@
     color: rgba(149, 165, 166, 0.8);
   }
   .hljs-meta-keyword {
-    color: #728E00;
+    color: #728e00;
   }
   .hljs-meta {
-    color: #728E00;
+    color: #728e00;
     color: #434f54;
   }
   .hljs-emphasis {
@@ -125,9 +170,9 @@
     font-weight: bold;
   }
   .hljs-function {
-    color: #728E00;
+    color: #728e00;
   }
   .hljs-number {
-    color: #8A7B52;
+    color: #8a7b52;
   }
 }

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { Dropdown, IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './HomePage.module.scss';
 import { getParameterByName, updateUrlParameter } from '../../utilities/location';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
@@ -10,8 +9,6 @@ const styles: any = stylesImport;
 
 const corePackageData = require('office-ui-fabric-core/package.json');
 const reactPackageData = require('office-ui-fabric-react/package.json');
-
-const versionLinkId = getId('versionLink');
 
 // Update as new Fabric versions are released
 const fabricVersionOptions: IContextualMenuItem[] = [
@@ -95,20 +92,6 @@ export class HomePage extends React.Component<any, IHomepageState> {
             <span className={styles.flavorDescription}>Fabric&rsquo;s robust, up-to-date components are built with React</span>
             <a href="#/components" className={styles.button}>
               See components
-            </a>
-          </div>
-          <div className={styles.flavor}>
-            <span className={styles.flavorTitle}>AngularJS</span>
-            <span className={styles.flavorDescription}>Community-driven project for Angular apps</span>
-            <a className={styles.homePageLink} href="#/angular-js">
-              Learn more
-            </a>
-          </div>
-          <div className={styles.flavor}>
-            <span className={styles.flavorTitle}>Fabric iOS</span>
-            <span className={styles.flavorDescription}>Native iOS styling and components written in Swift</span>
-            <a className={styles.homePageLink} href="#/fabric-ios">
-              Learn more
             </a>
           </div>
         </div>

@@ -509,12 +509,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Colors',
           name: 'Colors',
           url: '#examples/themegenerator'
-        },
-        {
-          component: require<any>('./ComponentStatus/ComponentStatusPage').ComponentStatusPage,
-          key: 'Components Status',
-          name: 'Components Checklist',
-          url: '#/components-status'
         }
       ],
       name: 'Utilities'

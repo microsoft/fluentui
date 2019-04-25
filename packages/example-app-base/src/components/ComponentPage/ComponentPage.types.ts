@@ -16,7 +16,7 @@ export interface IComponentPageProps {
   componentName: string;
   /** Component examples **/
   exampleCards?: JSX.Element;
-  /** Array of implementation examples, displayed in the order defined */
+  /** @deprecated Use `exampleCards` */
   implementationExampleCards?: JSX.Element;
   /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
@@ -33,7 +33,10 @@ export interface IComponentPageProps {
   areBadgesVisible?: boolean;
   /** className of the component being documented */
   className?: string;
-  /** Status of the component; e.g. keyboard accessible */
+  /**
+   * Status of the component; e.g. keyboard accessible
+   * @deprecated Still rendered for now but will be removed in >= 7
+   */
   componentStatus?: JSX.Element;
   /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];
@@ -126,6 +129,7 @@ export interface IComponentPageStyles {
   variantsTitle: IStyle;
   variantsList: IStyle;
   implementationSection: IStyle;
+  /** @deprecated */
   implementationExamplesSection: IStyle;
   feedbackSection: IStyle;
   /** Wrapper for best practices, dos, and don'ts */

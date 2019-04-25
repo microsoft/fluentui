@@ -354,28 +354,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   margin-right: 10px;
                   position: relative;
                 }
-                &:hover .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                  border-color: Highlight;
-                }
-                &:focus .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                &:hover .ms-Checkbox-checkmark {
-                  color: #a6a6a6;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                  color: Highlight;
-                }
-                &:hover .ms-Checkbox-text {
-                  color: #333333;
-                }
-                &:focus .ms-Checkbox-text {
-                  color: #333333;
-                }
           >
             <input
               className=
@@ -414,14 +392,27 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &::before {
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    pointer-events: none;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
+                  &:hover .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                    border-color: Highlight;
+                  }
+                  &:focus .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  &:hover .ms-Checkbox-checkmark {
+                    color: #a6a6a6;
+                    opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                    color: Highlight;
+                  }
+                  &:hover .ms-Checkbox-text {
+                    color: #333333;
+                  }
+                  &:focus .ms-Checkbox-text {
+                    color: #333333;
                   }
               htmlFor="checkbox-1"
             >
@@ -493,28 +484,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   margin-right: 10px;
                   position: relative;
                 }
-                &:hover .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                  border-color: Highlight;
-                }
-                &:focus .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                &:hover .ms-Checkbox-checkmark {
-                  color: #a6a6a6;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                  color: Highlight;
-                }
-                &:hover .ms-Checkbox-text {
-                  color: #333333;
-                }
-                &:focus .ms-Checkbox-text {
-                  color: #333333;
-                }
           >
             <input
               className=
@@ -553,14 +522,27 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &::before {
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    pointer-events: none;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
+                  &:hover .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                    border-color: Highlight;
+                  }
+                  &:focus .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  &:hover .ms-Checkbox-checkmark {
+                    color: #a6a6a6;
+                    opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                    color: Highlight;
+                  }
+                  &:hover .ms-Checkbox-text {
+                    color: #333333;
+                  }
+                  &:focus .ms-Checkbox-text {
+                    color: #333333;
                   }
               htmlFor="checkbox-2"
             >
@@ -632,28 +614,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   margin-right: 10px;
                   position: relative;
                 }
-                &:hover .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                  border-color: Highlight;
-                }
-                &:focus .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                &:hover .ms-Checkbox-checkmark {
-                  color: #a6a6a6;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                  color: Highlight;
-                }
-                &:hover .ms-Checkbox-text {
-                  color: #333333;
-                }
-                &:focus .ms-Checkbox-text {
-                  color: #333333;
-                }
           >
             <input
               className=
@@ -692,14 +652,27 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &::before {
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    pointer-events: none;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
+                  &:hover .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                    border-color: Highlight;
+                  }
+                  &:focus .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  &:hover .ms-Checkbox-checkmark {
+                    color: #a6a6a6;
+                    opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                    color: Highlight;
+                  }
+                  &:hover .ms-Checkbox-text {
+                    color: #333333;
+                  }
+                  &:focus .ms-Checkbox-text {
+                    color: #333333;
                   }
               htmlFor="checkbox-3"
             >
@@ -770,28 +743,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   display: flex;
                   position: relative;
                 }
-                &:hover .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                  border-color: Highlight;
-                }
-                &:focus .ms-Checkbox-checkbox {
-                  border-color: #333333;
-                }
-                &:hover .ms-Checkbox-checkmark {
-                  color: #a6a6a6;
-                  opacity: 1;
-                }
-                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                  color: Highlight;
-                }
-                &:hover .ms-Checkbox-text {
-                  color: #333333;
-                }
-                &:focus .ms-Checkbox-text {
-                  color: #333333;
-                }
           >
             <input
               className=
@@ -830,14 +781,27 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     text-align: left;
                     user-select: none;
                   }
-                  &::before {
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    pointer-events: none;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
+                  &:hover .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                    border-color: Highlight;
+                  }
+                  &:focus .ms-Checkbox-checkbox {
+                    border-color: #333333;
+                  }
+                  &:hover .ms-Checkbox-checkmark {
+                    color: #a6a6a6;
+                    opacity: 1;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                    color: Highlight;
+                  }
+                  &:hover .ms-Checkbox-text {
+                    color: #333333;
+                  }
+                  &:focus .ms-Checkbox-text {
+                    color: #333333;
                   }
               htmlFor="checkbox-4"
             >
@@ -1159,36 +1123,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 display: flex;
                 position: relative;
               }
-              &:hover .ms-Checkbox-checkbox {
-                background: #106ebe;
-                border-color: #106ebe;
-              }
-              &:focus .ms-Checkbox-checkbox {
-                background: #106ebe;
-                border-color: #106ebe;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                background: Window;
-                border-color: Highlight;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-                background: Highlight;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-                background: Highlight;
-              }
-              @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-                color: Window;
-              }
-              @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                color: Highlight;
-              }
-              &:hover .ms-Checkbox-text {
-                color: #333333;
-              }
-              &:focus .ms-Checkbox-text {
-                color: #333333;
-              }
         >
           <input
             className=
@@ -1228,14 +1162,35 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   text-align: left;
                   user-select: none;
                 }
-                &::before {
-                  bottom: 0px;
-                  content: "";
-                  left: 0px;
-                  pointer-events: none;
-                  position: absolute;
-                  right: 0px;
-                  top: 0px;
+                &:hover .ms-Checkbox-checkbox {
+                  background: #106ebe;
+                  border-color: #106ebe;
+                }
+                &:focus .ms-Checkbox-checkbox {
+                  background: #106ebe;
+                  border-color: #106ebe;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                  background: Window;
+                  border-color: Highlight;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+                  background: Highlight;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+                  background: Highlight;
+                }
+                @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+                  color: Window;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                  color: Highlight;
+                }
+                &:hover .ms-Checkbox-text {
+                  color: #333333;
+                }
+                &:focus .ms-Checkbox-text {
+                  color: #333333;
                 }
             htmlFor="checkbox-6"
           >
@@ -2106,28 +2061,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     display: flex;
                     position: relative;
                   }
-                  &:hover .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-                    border-color: Highlight;
-                  }
-                  &:focus .ms-Checkbox-checkbox {
-                    border-color: #333333;
-                  }
-                  &:hover .ms-Checkbox-checkmark {
-                    color: #a6a6a6;
-                    opacity: 1;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-                    color: Highlight;
-                  }
-                  &:hover .ms-Checkbox-text {
-                    color: #333333;
-                  }
-                  &:focus .ms-Checkbox-text {
-                    color: #333333;
-                  }
             >
               <input
                 className=
@@ -2166,14 +2099,27 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       text-align: left;
                       user-select: none;
                     }
-                    &::before {
-                      bottom: 0px;
-                      content: "";
-                      left: 0px;
-                      pointer-events: none;
-                      position: absolute;
-                      right: 0px;
-                      top: 0px;
+                    &:hover .ms-Checkbox-checkbox {
+                      border-color: #333333;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+                      border-color: Highlight;
+                    }
+                    &:focus .ms-Checkbox-checkbox {
+                      border-color: #333333;
+                    }
+                    &:hover .ms-Checkbox-checkmark {
+                      color: #a6a6a6;
+                      opacity: 1;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+                      color: Highlight;
+                    }
+                    &:hover .ms-Checkbox-text {
+                      color: #333333;
+                    }
+                    &:focus .ms-Checkbox-text {
+                      color: #333333;
                     }
                 htmlFor="checkbox-10"
               >

@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 11 Apr 2019 12:37:10 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+
+## 6.35.7
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- Removing closure from `styled` helper to improve performance.
+
+## 6.35.6
+Fri, 19 Apr 2019 12:33:02 GMT
+
+### Patches
+
+- Removing closure from `styled` helper to improve performance.
 
 ## 6.35.5
 Thu, 11 Apr 2019 12:37:10 GMT

@@ -8,7 +8,6 @@ import {
   FeedbackList
 } from '@uifabric/example-app-base';
 import * as React from 'react';
-import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
 export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps => {
   const {
@@ -20,6 +19,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
     bestPractices,
     dos,
     donts,
+    // This is unused but has to be pulled out because ComponentPage has a prop with the same name and different type
     componentStatus,
     // Passing the extra props to ComponentPage like this helps to keep the prop names in sync
     ...componentPageProps
@@ -62,7 +62,6 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
       bestPractices={bestPractices ? <PageMarkdown>{bestPractices}</PageMarkdown> : undefined}
       dos={dos ? <PageMarkdown>{dos}</PageMarkdown> : undefined}
       donts={donts ? <PageMarkdown>{donts}</PageMarkdown> : undefined}
-      componentStatus={componentStatus ? <ComponentStatus {...componentStatus} /> : undefined}
       feedback={componentPageProps.isFeedbackVisible ? <FeedbackList title={componentPageProps.title} /> : undefined}
     />
   );

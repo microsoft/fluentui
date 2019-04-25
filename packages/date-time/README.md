@@ -2,7 +2,7 @@
 
 ##### DateTime components for Office UI Fabric React
 
-These are not production ready components and __should never be used in product__. This DateTime space is useful for testing new components whose APIs might change before final release.
+These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 
 To import DateTime components:
 
@@ -19,6 +19,7 @@ import { ComponentName } from 'office-ui-fabric-react';
 #### Development Notes
 
 Initial refactor in progress, still TODO:
+
 - Move the DatePicker control in to the date-time package
 - Refactoring the Calendar control:
   - Unit tests all need to be copied over and updated to work with the refactor
