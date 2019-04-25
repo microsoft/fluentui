@@ -72,7 +72,7 @@ export class TeachingBubbleBase extends BaseComponent<ITeachingBubbleProps, ITea
 
     return (
       <Callout
-        target={targetElement || target}
+        target={target || targetElement}
         onDismiss={onDismiss}
         {...calloutProps}
         className={classNames.root}
