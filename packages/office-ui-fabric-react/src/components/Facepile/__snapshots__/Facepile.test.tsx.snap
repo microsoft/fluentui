@@ -413,7 +413,7 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #E3008C;
+                        background-color: #7A7574;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
