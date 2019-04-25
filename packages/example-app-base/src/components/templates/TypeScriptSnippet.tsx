@@ -29,6 +29,7 @@ export const lineNumberStyle = {
   lineHeight: 'inherit'
 };
 
+/** @deprecated Use `CodeSnippet` */
 export class TypeScriptSnippet extends React.Component {
   public render(): JSX.Element {
     return (
