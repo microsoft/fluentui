@@ -33,8 +33,144 @@ describe('Card Section', () => {
   it('renders correctly when having tokens passed to it', () => {
     const tree = renderer
       .create(
-        <Card>
+        <Card tokens={{ childrenMargin: 12 }}>
           <Card.Section tokens={{ margin: '12px 8px' }}>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the only section in a Vertical Card', () => {
+    const tree = renderer
+      .create(
+        <Card tokens={{ childrenMargin: 12 }}>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the first section in a Vertical Card', () => {
+    const tree = renderer
+      .create(
+        <Card tokens={{ childrenMargin: 12 }}>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+          <Card.Section>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the middle section in a Vertical Card', () => {
+    const tree = renderer
+      .create(
+        <Card tokens={{ childrenMargin: 12 }}>
+          <Card.Section>
+            <div />
+          </Card.Section>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+          <Card.Section>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the last section in a Vertical Card', () => {
+    const tree = renderer
+      .create(
+        <Card tokens={{ childrenMargin: 12 }}>
+          <Card.Section>
+            <div />
+          </Card.Section>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the only section in a Compact Card', () => {
+    const tree = renderer
+      .create(
+        <Card compact tokens={{ childrenMargin: 12 }}>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the first section in a Compact Card', () => {
+    const tree = renderer
+      .create(
+        <Card compact tokens={{ childrenMargin: 12 }}>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+          <Card.Section>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the middle section in a Compact Card', () => {
+    const tree = renderer
+      .create(
+        <Card compact tokens={{ childrenMargin: 12 }}>
+          <Card.Section>
+            <div />
+          </Card.Section>
+          <Card.Section fill>
+            <div />
+          </Card.Section>
+          <Card.Section>
+            <div />
+          </Card.Section>
+        </Card>
+      )
+      .toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders correctly when filling up the margins while being the last section in a Compact Card', () => {
+    const tree = renderer
+      .create(
+        <Card compact tokens={{ childrenMargin: 12 }}>
+          <Card.Section>
+            <div />
+          </Card.Section>
+          <Card.Section fill>
             <div />
           </Card.Section>
         </Card>
