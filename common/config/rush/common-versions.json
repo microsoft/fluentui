@@ -43,6 +43,7 @@
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
     "react": ["~16.8.0"],
-    "react-dom": ["~16.8.0"]
+    "react-dom": ["~16.8.0"],
+    "office-ui-fabric-core": ["^9.0.0", "9.6.1-fluent2"]
   }
 }
