@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
 import { getClassNames } from './DraggableZone.styles';
-import { EventGroup } from '../../Utilities';
+import { on } from '../../Utilities';
 
 export interface IDraggableZoneState {
   isDragging: boolean;
@@ -24,12 +24,12 @@ const eventMapping = {
 
 // These are needed so that we can generalize the events
 // and so we have access to clientX and clientY in the touch events
-type MouseTouchEvent<T> = React.MouseEvent<T> & React.TouchEvent<T>;
+type MouseTouchEvent<T> = React.MouseEvent<T> & React.TouchEvent<T> & Event;
 
 export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDraggableZoneState> {
   private _touchId?: number;
   private _currentEventType = eventMapping.mouse;
-  private _events: EventGroup;
+  private _events: (() => void)[];
 
   constructor(props: IDraggableZoneProps) {
     super(props);
@@ -39,8 +39,6 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
       position: this.props.position || { x: 0, y: 0 },
       lastPosition: undefined
     };
-
-    this._events = new EventGroup(this);
   }
 
   public componentDidUpdate(prevProps: IDraggableZoneProps) {
@@ -50,11 +48,7 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
   }
 
   public componentWillUnmount() {
-    this._events.off(document, eventMapping.mouse.move, this._onDrag);
-    this._events.off(document, eventMapping.touch.move, this._onDrag);
-    this._events.off(document, eventMapping.mouse.stop, this._onDragStop);
-    this._events.off(document, eventMapping.touch.stop, this._onDragStop);
-    this._events.dispose();
+    this._events.forEach(dispose => dispose());
   }
 
   public render() {
@@ -158,8 +152,10 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
 
     // hook up the appropriate mouse/touch events to the body to ensure
     // smooth dragging
-    this._events.on(document, this._currentEventType.move, this._onDrag);
-    this._events.on(document, this._currentEventType.stop, this._onDragStop);
+    this._events = [
+      on(document.body, this._currentEventType.move, this._onDrag),
+      on(document.body, this._currentEventType.stop, this._onDragStop)
+    ];
   };
 
   private _onDrag = (event: MouseTouchEvent<HTMLElement>) => {
@@ -212,8 +208,7 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
     }
 
     // Remove event handlers
-    this._events.off(document, this._currentEventType.move, this._onDrag);
-    this._events.off(document, this._currentEventType.stop, this._onDragStop);
+    this._events.forEach(dispose => dispose());
   };
 
   /**
@@ -230,8 +225,8 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
 
     const eventToGetOffset = touchObj || event;
     return {
-      x: eventToGetOffset.clientX + document.body.scrollLeft,
-      y: eventToGetOffset.clientY + document.body.scrollTop
+      x: eventToGetOffset.clientX,
+      y: eventToGetOffset.clientY
     };
   }
 
