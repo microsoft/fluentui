@@ -83,7 +83,7 @@ export interface IDocPageProps {
   /** Array of examples, displayed in the order defined */
   examples?: IExample[];
 
-  /** Array of implementation examples, displayed in the order defined */
+  /** @deprecated */
   implementationExamples?: {
     /** Title of the example */
     title: string;

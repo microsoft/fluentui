@@ -78,12 +78,9 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Command Button',
       code: ButtonCommandExampleCode,
       view: <ButtonCommandExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
-    }
-  ],
-
-  implementationExamples: [
+    },
     {
-      title: 'Button Like Anchor',
+      title: 'Button-like Anchor',
       code: ButtonAnchorExampleCode,
       view: <ButtonAnchorExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },

@@ -15,7 +15,7 @@ export interface IComponentPageProps {
   componentName: string;
   /** Component examples **/
   exampleCards?: JSX.Element;
-  /** Array of implementation examples, displayed in the order defined */
+  /** @deprecated Use `exampleCards` */
   implementationExampleCards?: JSX.Element;
   /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
@@ -123,6 +123,7 @@ export interface IComponentPageStyles {
   variantsTitle: IStyle;
   variantsList: IStyle;
   implementationSection: IStyle;
+  /** @deprecated */
   implementationExamplesSection: IStyle;
   feedbackSection: IStyle;
   /** Wrapper for best practices, dos, and don'ts */
