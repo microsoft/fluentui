@@ -16,7 +16,6 @@ export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLEl
  */
 export interface IApiProperty {
   propertyName: string;
-  extends?: string;
   extendsTokens?: ILinkToken[];
   description?: string;
   title: string;
