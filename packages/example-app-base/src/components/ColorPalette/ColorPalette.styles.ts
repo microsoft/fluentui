@@ -141,7 +141,8 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
     detailContentWrapper: {
       padding: '10%',
       overflow: 'hidden',
-      textOverflow: 'ellipsis'
+      textOverflow: 'ellipsis',
+      width: '100%'
     },
     detailName: {
       fontSize: '28px',
