@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Microfeedback renders correctly with no props 1`] = `
+exports[`MicroFeedback renders correctly with no props 1`] = `
 <div
   className=
       ms-Stack

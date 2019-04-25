@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
 
-import { Microfeedback } from './Microfeedback';
+import { MicroFeedback } from './MicroFeedback';
 
-describe('Microfeedback', () => {
+describe('MicroFeedback', () => {
   it('renders correctly with no props', () => {
-    const tree = renderer.create(<Microfeedback />).toJSON();
+    const tree = renderer.create(<MicroFeedback />).toJSON();
     expect(tree).toMatchSnapshot();
   });
 });

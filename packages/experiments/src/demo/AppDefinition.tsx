@@ -47,9 +47,9 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
-          component: require<any>('../components/Microfeedback/MicrofeedbackPage').MicrofeedbackPage,
-          key: 'Microfeedback',
-          name: 'Microfeedback',
+          component: require<any>('../components/MicroFeedback/MicroFeedbackPage').MicroFeedbackPage,
+          key: 'MicroFeedback',
+          name: 'MicroFeedback',
           url: '#/examples/microfeedback'
         },
         {

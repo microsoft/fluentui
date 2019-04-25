@@ -1,15 +1,15 @@
 import * as React from 'react';
-import { Microfeedback } from '../Microfeedback';
-import { IMicrofeedbackQuestion, VoteType, IMicrofeedbackStyles } from '../Microfeedback.types';
+import { MicroFeedback } from '../MicroFeedback';
+import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
 
-export class MicrofeedbackBasicExample extends React.Component<{}, {}> {
+export class MicroFeedbackBasicExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const followUpOnThumbsDown: IMicrofeedbackQuestion = {
+    const followUpOnThumbsDown: IMicroFeedbackQuestion = {
       options: ['Translation is incorrect', 'Context is incorrect', 'Language can be better'],
       question: 'Please help us improve'
     };
 
-    const followUpOnThumbsUp: IMicrofeedbackQuestion = {
+    const followUpOnThumbsUp: IMicroFeedbackQuestion = {
       options: ['Translation is great', 'Context is great'],
       question: 'Please help us improve'
     };
@@ -22,14 +22,14 @@ export class MicrofeedbackBasicExample extends React.Component<{}, {}> {
       console.log('Logged selection index:', index);
     };
 
-    const microfeedbackStyles: IMicrofeedbackStyles = {
+    const microfeedbackStyles: IMicroFeedbackStyles = {
       root: {
         float: 'left'
       }
     };
     return (
       <div>
-        <Microfeedback
+        <MicroFeedback
           styles={microfeedbackStyles}
           thumbsDownQuestion={followUpOnThumbsDown}
           thumbsUpQuestion={followUpOnThumbsUp}

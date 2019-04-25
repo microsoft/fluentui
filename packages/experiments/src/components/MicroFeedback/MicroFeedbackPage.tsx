@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { MicrofeedbackBasicExample } from './examples/Microfeedback.Basic.Example';
-const MicroFeedbackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/Microfeedback.Basic.Example.tsx') as string;
+import { MicroFeedbackBasicExample } from './examples/MicroFeedback.Basic.Example';
+const MicroFeedbackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedback.Basic.Example.tsx') as string;
 
-export class MicrofeedbackPage extends React.Component<IComponentDemoPageProps, {}> {
+export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
       <ComponentPage
@@ -13,7 +13,7 @@ export class MicrofeedbackPage extends React.Component<IComponentDemoPageProps, 
         exampleCards={
           <div>
             <ExampleCard title="Default with Callout" isOptIn={true} code={MicroFeedbackBasicExampleCode}>
-              <MicrofeedbackBasicExample />
+              <MicroFeedbackBasicExample />
             </ExampleCard>
           </div>
         }

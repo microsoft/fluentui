@@ -2,23 +2,23 @@ import * as React from 'react';
 import { Stack } from '../../Stack';
 import { classNamesFunction } from '../../Utilities';
 import { IconButton, DefaultButton, Callout, FocusZone, FocusZoneDirection, List, Text } from 'office-ui-fabric-react';
-import { IMicrofeedbackProps, IMicrofeedbackStyleProps, IMicrofeedbackStyles, VoteType } from './Microfeedback.types';
+import { IMicroFeedbackProps, IMicroFeedbackStyleProps, IMicroFeedbackStyles, VoteType } from './MicroFeedback.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
-const getClassNames = classNamesFunction<IMicrofeedbackStyleProps, IMicrofeedbackStyles>();
+const getClassNames = classNamesFunction<IMicroFeedbackStyleProps, IMicroFeedbackStyles>();
 
-export interface IMicrofeedbackState {
+export interface IMicroFeedbackState {
   vote: VoteType;
   isFollowupVisible: boolean;
 }
 
-export class MicrofeedbackBase extends React.Component<IMicrofeedbackProps, IMicrofeedbackState> {
+export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMicroFeedbackState> {
   // ref's will be linked to each of the icons for callout placement
   private dislikeRef = React.createRef<HTMLDivElement>();
   private likeRef = React.createRef<HTMLDivElement>();
-  private classNames: IProcessedStyleSet<IMicrofeedbackStyles>;
+  private classNames: IProcessedStyleSet<IMicroFeedbackStyles>;
 
-  constructor(props: IMicrofeedbackProps) {
+  constructor(props: IMicroFeedbackProps) {
     super(props);
 
     this.state = {

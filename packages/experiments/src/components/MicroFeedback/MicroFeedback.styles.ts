@@ -1,6 +1,6 @@
-import { IMicrofeedbackStyleProps, IMicrofeedbackStyles } from './Microfeedback.types';
+import { IMicroFeedbackStyleProps, IMicroFeedbackStyles } from './MicroFeedback.types';
 
-export const getStyles = (props: IMicrofeedbackStyleProps): IMicrofeedbackStyles => {
+export const getStyles = (props: IMicroFeedbackStyleProps): IMicroFeedbackStyles => {
   return {
     root: {
       margin: '4px 8px 4px 8px',
