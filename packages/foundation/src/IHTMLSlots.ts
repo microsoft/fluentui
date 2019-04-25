@@ -10,6 +10,6 @@ export type IHTMLSlot = ISlotProp<React.DetailedHTMLProps<React.HTMLAttributes<a
 /**
  * Optional HTML element typing to confine or expand HTML attribute usage for an intrinsic slot.
  * Useful for slots that need to allow access to specialized HTML attributes, such as for buttons and inputs.
- * Example usage: root?: IHTMLElementSlot<'button'>;
+ * Example usage: root?: IHTMLElementSlot\<'button'\>;
  */
 export type IHTMLElementSlot<TElement extends keyof JSX.IntrinsicElements> = ISlotProp<JSX.IntrinsicElements[TElement]>;
