@@ -8,22 +8,51 @@ import {
   ICardSectionStyles,
   ICardSectionTokens
 } from '@uifabric/react-cards';
-import { Checkbox, Icon, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Checkbox, Icon, Slider, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
 
 export interface IExampleState {
+  cardChildrenGap: number;
+  cardChildrenMargin: number;
+  cardChildrenPadding: number;
+  cardItemHeight: number;
   debugMode: boolean;
+  firstCardSectionHeight: number;
+  secondCardSectionHeight: number;
+  specificChildrenGap: number;
+  specificChildrenGapAllowed: boolean;
+  width: number;
 }
 
 export class CardConfigureExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
     super(props);
     this.state = {
-      debugMode: false
+      cardChildrenGap: 20,
+      cardChildrenMargin: 6,
+      cardChildrenPadding: 6,
+      cardItemHeight: 30,
+      debugMode: true,
+      firstCardSectionHeight: 115,
+      secondCardSectionHeight: 115,
+      specificChildrenGap: 12,
+      specificChildrenGapAllowed: false,
+      width: 212
     };
   }
 
   public render(): JSX.Element {
-    const { debugMode } = this.state;
+    const {
+      cardChildrenGap,
+      cardChildrenMargin,
+      cardChildrenPadding,
+      cardItemHeight,
+      debugMode,
+      firstCardSectionHeight,
+      secondCardSectionHeight,
+      specificChildrenGap,
+      specificChildrenGapAllowed,
+      width
+    } = this.state;
 
     // Style definitions
     const cardStyles: ICardStyles = {
@@ -37,49 +66,56 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
         borderWidth: '2px'
       }
     };
-    const firstCardSectionOrItemStyles: ICardSectionStyles = {
+    const firstCardSectionStyles: ICardSectionStyles = {
       root: {
         backgroundColor: debugMode ? '#B0DEFF' : 'transparent',
         borderColor: debugMode ? '#2566CA' : 'transparent',
-        height: 115,
+        minHeight: firstCardSectionHeight,
         ...(cardSectionOrItemStyles.root as object)
       }
     };
-    const secondCardSectionOrItemStyles: ICardSectionStyles = {
+    const cardItemStyles: ICardSectionStyles = {
       root: {
         backgroundColor: debugMode ? '#ABFFEF' : 'transparent',
         borderColor: debugMode ? '#0F7A67' : 'transparent',
-        height: 30,
+        minHeight: cardItemHeight,
         ...(cardSectionOrItemStyles.root as object)
       }
     };
-    const thirdCardSectionOrItemStyles: ICardSectionStyles = {
+    const secondCardSectionStyles: ICardSectionStyles = {
       root: {
         backgroundColor: debugMode ? '#E8D4FF' : 'transparent',
         borderColor: debugMode ? '#7742B3' : 'transparent',
+        minHeight: secondCardSectionHeight,
         ...(cardSectionOrItemStyles.root as object)
       }
     };
+
+    const resolvedGap = specificChildrenGapAllowed ? specificChildrenGap : cardChildrenGap;
 
     // Token definitions
     const containerStackTokens: IStackTokens = { childrenGap: 30 };
     const cardTokens: ICardTokens = {
-      childrenGap: 20,
-      childrenMargin: 6
+      childrenGap: cardChildrenGap,
+      childrenMargin: cardChildrenMargin,
+      maxWidth: 400,
+      minWidth: 212,
+      width
     };
-    const cardSectionTokens: ICardSectionTokens = { padding: 6 };
-    const cardItemTokens: ICardItemTokens = { padding: 6 };
+    const cardSectionTokens: ICardSectionTokens = {
+      childrenGap: resolvedGap,
+      padding: cardChildrenPadding
+    };
+    const cardItemTokens: ICardItemTokens = { padding: cardChildrenPadding };
     const debugCardTokens: ICardTokens = {
       boxShadow: 'none',
       childrenGap: 0,
-      childrenMargin: 6,
       minWidth: 0
     };
 
     // Debug card esction definition
-    const DebugCardSection = (props: { type: 'section' | 'item' | 'gap'; text: string }): JSX.Element => {
-      const { type, text } = props;
-      const height = type === 'section' ? 115 : type === 'item' ? 46 : 20;
+    const DebugCardSection = (props: { height: number; text: string }): JSX.Element => {
+      const { height, text } = props;
 
       const debugCardSectionStyles: ICardSectionStyles = {
         root: {
@@ -96,7 +132,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
       const debugCardSectionTokens: ICardSectionTokens = {
         childrenGap: 2,
-        margin: '0px 6px'
+        margin: `0px 6px`
       };
 
       return (
@@ -118,19 +154,113 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
     return (
       <Stack tokens={containerStackTokens}>
-        <Checkbox label="Toggle debug mode" onChange={this._onCheckboxChange} />
+        <Stack horizontal>
+          <Stack.Item grow>
+            <Stack>
+              <Slider
+                label="First card section height:"
+                min={75}
+                max={230}
+                step={1}
+                defaultValue={115}
+                showValue={true}
+                onChange={this._onFirstCardSectionHeightChange}
+              />
+              <Slider
+                label="Card item height:"
+                min={30}
+                max={60}
+                step={1}
+                defaultValue={30}
+                showValue={true}
+                onChange={this._onCardItemHeightChange}
+              />
+              <Slider
+                label="Second card section height:"
+                min={75}
+                max={230}
+                step={1}
+                defaultValue={115}
+                showValue={true}
+                onChange={this._onSecondCardSectionHeightChange}
+              />
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack>
+              <Slider
+                label="Card width:"
+                min={212}
+                max={400}
+                step={1}
+                defaultValue={212}
+                showValue={true}
+                onChange={this._onCardWidthChange}
+              />
+              <Slider
+                label="Card children gap:"
+                min={0}
+                max={40}
+                step={1}
+                defaultValue={20}
+                showValue={true}
+                onChange={this._onCardChildrenGapChange}
+              />
+              <Slider
+                label="Card children margin:"
+                min={0}
+                max={15}
+                step={1}
+                defaultValue={6}
+                showValue={true}
+                onChange={this._onCardChildrenMarginChange}
+              />
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow>
+            <Stack verticalAlign="space-between" verticalFill>
+              <Slider
+                label="Card children padding:"
+                min={0}
+                max={15}
+                step={1}
+                defaultValue={6}
+                showValue={true}
+                onChange={this._onCardChildrenPaddingChange}
+              />
+              <Slider
+                label="Specific children gap in card sections:"
+                min={0}
+                max={40}
+                step={1}
+                defaultValue={20}
+                showValue={true}
+                onChange={this._onSpecificChildrenGapChange}
+                disabled={!specificChildrenGapAllowed}
+              />
+              <Stack horizontal horizontalAlign="space-evenly">
+                <Checkbox
+                  label="Allow specific children gap in card sections"
+                  defaultChecked={false}
+                  onChange={this._onSpecificChildrenGapAllowedChange}
+                />
+                <Checkbox label="Toggle debug mode" defaultChecked={true} onChange={this._onDebugModeChange} />
+              </Stack>
+            </Stack>
+          </Stack.Item>
+        </Stack>
 
         <Stack horizontal>
           <Card styles={cardStyles} tokens={cardTokens}>
-            <Card.Section styles={firstCardSectionOrItemStyles} tokens={cardSectionTokens}>
+            <Card.Section styles={firstCardSectionStyles} tokens={cardSectionTokens}>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
             </Card.Section>
-            <Card.Item styles={secondCardSectionOrItemStyles} tokens={cardItemTokens}>
+            <Card.Item styles={cardItemStyles} tokens={cardItemTokens}>
               <Text>This is a Card Item</Text>
             </Card.Item>
-            <Card.Section styles={thirdCardSectionOrItemStyles} tokens={cardSectionTokens}>
+            <Card.Section styles={secondCardSectionStyles} tokens={cardSectionTokens}>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
@@ -139,11 +269,17 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
           {debugMode && (
             <Card root={{ props: { verticalAlign: 'center' } }} tokens={debugCardTokens}>
-              <DebugCardSection type="section" text="Card Section" />
-              <DebugCardSection type="gap" text="Gap" />
-              <DebugCardSection type="item" text="Card Item" />
-              <DebugCardSection type="gap" text="Gap" />
-              <DebugCardSection type="section" text="Card Section" />
+              <DebugCardSection
+                height={firstCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : firstCardSectionHeight}
+                text="Card Section"
+              />
+              <DebugCardSection height={cardChildrenGap} text="Gap" />
+              <DebugCardSection height={cardItemHeight + 2 * cardChildrenPadding + 4} text="Card Item" />
+              <DebugCardSection height={cardChildrenGap} text="Gap" />
+              <DebugCardSection
+                height={secondCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : secondCardSectionHeight}
+                text="Card Section"
+              />
             </Card>
           )}
         </Stack>
@@ -151,7 +287,42 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
     );
   }
 
-  private _onCheckboxChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+  private _onCardChildrenGapChange = (value: number): void => {
+    this.setState({ cardChildrenGap: value });
+  };
+
+  private _onCardChildrenMarginChange = (value: number): void => {
+    this.setState({ cardChildrenMargin: value });
+  };
+  private _onCardChildrenPaddingChange = (value: number): void => {
+    this.setState({ cardChildrenPadding: value });
+  };
+
+  private _onCardItemHeightChange = (value: number): void => {
+    this.setState({ cardItemHeight: value });
+  };
+
+  private _onCardWidthChange = (value: number): void => {
+    this.setState({ width: value });
+  };
+
+  private _onDebugModeChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     this.setState({ debugMode: isChecked });
+  };
+
+  private _onFirstCardSectionHeightChange = (value: number): void => {
+    this.setState({ firstCardSectionHeight: value });
+  };
+
+  private _onSecondCardSectionHeightChange = (value: number): void => {
+    this.setState({ secondCardSectionHeight: value });
+  };
+
+  private _onSpecificChildrenGapChange = (value: number): void => {
+    this.setState({ specificChildrenGap: value });
+  };
+
+  private _onSpecificChildrenGapAllowedChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
+    this.setState({ specificChildrenGapAllowed: isChecked });
   };
 }
