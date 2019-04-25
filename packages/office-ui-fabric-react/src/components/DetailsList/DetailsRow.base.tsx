@@ -13,6 +13,8 @@ import { IDetailsRowBaseProps } from './DetailsRow.types';
 import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
 import { IDetailsRowStyleProps, IDetailsRowStyles } from './DetailsRow.types';
 import { classNamesFunction } from '../../Utilities';
+import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
+import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDetailsRowStyleProps, IDetailsRowStyles>();
 
@@ -43,6 +45,9 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
   private _droppingClassNames: string;
   private _hasMounted: boolean;
   private _dragDropSubscription: IDisposable;
+
+  private _classNames: IProcessedStyleSet<IDetailsRowStyles>;
+  private _rowClassNames: IDetailsRowFieldsProps['rowClassNames'];
 
   constructor(props: IDetailsRowBaseProps) {
     super(props);
@@ -189,20 +194,42 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const showCheckbox = selectionMode !== SelectionMode.none && checkboxVisibility !== CheckboxVisibility.hidden;
     const ariaSelected = selectionMode === SelectionMode.none ? undefined : isSelected;
 
-    const classNames = getClassNames(styles, {
-      theme: theme!,
-      isSelected,
-      canSelect: !isContentUnselectable,
-      anySelected: isSelectionModal,
-      checkboxCellClassName,
-      droppingClassName,
-      className,
-      compact
-    });
+    this._classNames = {
+      ...this._classNames,
+      ...getClassNames(styles, {
+        theme: theme!,
+        isSelected,
+        canSelect: !isContentUnselectable,
+        anySelected: isSelectionModal,
+        checkboxCellClassName,
+        droppingClassName,
+        className,
+        compact
+      })
+    };
+
+    const rowClassNames: IDetailsRowFieldsProps['rowClassNames'] = {
+      isMultiline: this._classNames.isMultiline,
+      isRowHeader: this._classNames.isRowHeader,
+      shimmerIconPlaceholder: this._classNames.shimmerIconPlaceholder,
+      shimmer: this._classNames.shimmer,
+      cell: this._classNames.cell,
+      cellPadded: this._classNames.cellPadded,
+      cellUnpadded: this._classNames.cellUnpadded,
+      fields: this._classNames.fields
+    };
+
+    // Only re-assign rowClassNames when classNames have changed.
+    // Otherwise, they will cause DetailsRowFields to unnecessarily
+    // re-render, see https://github.com/OfficeDev/office-ui-fabric-react/pull/8799.
+    // Refactor DetailsRowFields to generate own styles to remove need for this.
+    if (!shallowCompare(this._rowClassNames || {}, rowClassNames)) {
+      this._rowClassNames = rowClassNames;
+    }
 
     const rowFields = (
       <RowFields
-        rowClassNames={classNames}
+        rowClassNames={this._rowClassNames}
         cellsByColumn={cellsByColumn}
         columns={columns}
         item={item}
@@ -212,10 +239,13 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         shimmer={shimmer}
       />
     );
+
     // Rendering Shimmer Animation outside the focus zone
     if (shimmer) {
       return (
-        <div className={css(showCheckbox && classNames.shimmerLeftBorder, !compact && classNames.shimmerBottomBorder)}>{rowFields}</div>
+        <div className={css(showCheckbox && this._classNames.shimmerLeftBorder, !compact && this._classNames.shimmerBottomBorder)}>
+          {rowFields}
+        </div>
       );
     }
 
@@ -228,7 +258,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         role="row"
         aria-label={ariaLabel}
         ariaDescribedBy={ariaDescribedBy}
-        className={classNames.root}
+        className={this._classNames.root}
         data-is-focusable={true}
         data-selection-index={itemIndex}
         data-item-index={itemIndex}
@@ -241,14 +271,14 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         allowFocusRoot={true}
       >
         {showCheckbox && (
-          <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={classNames.checkCell}>
+          <div role="gridcell" aria-colindex={1} data-selection-toggle={true} className={this._classNames.checkCell}>
             {onRenderCheck({
               selected: isSelected,
               anySelected: isSelectionModal,
               title: checkButtonAriaLabel,
               canSelect,
               compact,
-              className: classNames.check,
+              className: this._classNames.check,
               theme,
               isVisible: checkboxVisibility === CheckboxVisibility.always,
               onRenderDetailsCheckbox: onRenderDetailsCheckbox
@@ -263,9 +293,9 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
 
         {item && rowFields}
         {columnMeasureInfo && (
-          <span role="presentation" className={css(classNames.cellMeasurer, classNames.cell)} ref={this._cellMeasurer}>
+          <span role="presentation" className={css(this._classNames.cellMeasurer, this._classNames.cell)} ref={this._cellMeasurer}>
             <RowFields
-              rowClassNames={classNames}
+              rowClassNames={this._rowClassNames}
               columns={[columnMeasureInfo.column]}
               item={item}
               itemIndex={itemIndex}
@@ -275,7 +305,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
           </span>
         )}
 
-        <span role="checkbox" className={classNames.checkCover} aria-checked={isSelected} data-selection-toggle={true} />
+        <span role="checkbox" className={this._classNames.checkCover} aria-checked={isSelected} data-selection-toggle={true} />
       </FocusZone>
     );
   }
