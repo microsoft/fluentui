@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { assign, IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import {
   DetailsList,
   DetailsRow,
@@ -56,7 +56,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     if (props.renderAsEnum) {
       const properties = (props.properties as IApiEnumProperty[])
         .sort((a: IApiEnumProperty, b: IApiEnumProperty) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
-        .map((prop: IApiEnumProperty, index: number) => assign({}, prop, { key: index }));
+        .map((prop: IApiEnumProperty, index: number) => ({ ...prop, key: prop.name }));
 
       this.state = {
         properties,
