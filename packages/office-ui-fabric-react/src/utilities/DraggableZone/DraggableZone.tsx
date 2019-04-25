@@ -39,11 +39,13 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
       position: this.props.position || { x: 0, y: 0 },
       lastPosition: undefined
     };
+
+    this._events = new EventGroup(this);
   }
 
-  public getDerivedStateFromProps(nextProps: IDraggableZoneProps) {
-    if (nextProps.position && (!this.props.position || nextProps.position !== this.props.position)) {
-      this.setState({ position: nextProps.position });
+  public componentDidUpdate(prevProps: IDraggableZoneProps) {
+    if (this.props.position && (!prevProps.position || this.props.position !== prevProps.position)) {
+      this.setState({ position: this.props.position });
     }
   }
 
@@ -52,6 +54,7 @@ export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDra
     this._events.off(document, eventMapping.touch.move, this._onDrag);
     this._events.off(document, eventMapping.mouse.stop, this._onDragStop);
     this._events.off(document, eventMapping.touch.stop, this._onDragStop);
+    this._events.dispose();
   }
 
   public render() {
