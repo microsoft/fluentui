@@ -78,7 +78,7 @@ export const CardView: ICardComponent['view'] = props => {
         });
       }
 
-      warn('The children of a Card component must be of type CardItem or CardSection to be rendered.');
+      warn('The children of a Card component should be of type CardItem or CardSection.');
 
       return child;
     }
