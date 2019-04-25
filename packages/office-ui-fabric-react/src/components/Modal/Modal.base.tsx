@@ -331,14 +331,7 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
 
     if (this.state.isInKeyboardMoveMode) {
       let handledEvent = true;
-      let delta = 10;
-      if (event.shiftKey) {
-        if (!event.ctrlKey) {
-          delta = 50;
-        }
-      } else if (event.ctrlKey) {
-        delta = 1;
-      }
+      const delta = this._getDragDelta(event);
 
       switch (event.keyCode) {
         case KeyCodes.escape:
@@ -384,6 +377,19 @@ export class ModalBase extends BaseComponent<IModalProps, IDialogState> implemen
       }
     }
   };
+
+  private _getDragDelta(event: React.KeyboardEvent<HTMLDivElement>): number {
+    let delta = 10;
+    if (event.shiftKey) {
+      if (!event.ctrlKey) {
+        delta = 50;
+      }
+    } else if (event.ctrlKey) {
+      delta = 1;
+    }
+
+    return delta;
+  }
 
   private _onEnterKeyboardMoveMode = () => {
     this._lastSetX = this.state.x;
