@@ -23,8 +23,22 @@ export class ContextualMenuPersistedExample extends React.Component {
             items: [
               {
                 key: 'newItem',
-                text: 'New',
-                onClick: () => console.log('New clicked')
+                subMenuProps: {
+                  items: [
+                    {
+                      key: 'emailMessage',
+                      text: 'Email message',
+                      title: 'Create an email'
+                    },
+                    {
+                      key: 'calendarEvent',
+                      text: 'Calendar event',
+                      title: 'Create a calendar event'
+                    }
+                  ]
+                },
+                href: 'https://bing.com',
+                text: 'New'
               },
               {
                 key: 'divider_1',

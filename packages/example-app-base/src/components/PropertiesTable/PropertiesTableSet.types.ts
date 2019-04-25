@@ -1,3 +1,7 @@
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IDetailsListStyleProps } from 'office-ui-fabric-react/lib/DetailsList';
+
 export interface IPropertiesTableSetProps {
   /**
    * Component name. Assumes component resides in `components/[name]` folder
@@ -20,4 +24,26 @@ export interface IPropertiesTableSetProps {
    * A set of pre-resolved source code.
    */
   sources?: string[];
+
+  /** Theme provided by higher-order component. */
+  theme?: ITheme;
+
+  /** Optional override styles */
+  styles?: IStyleFunctionOrObject<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles>;
+}
+
+export type IPropertiesTableSetStyleProps = Pick<IPropertiesTableSetProps, 'theme'>;
+
+export interface IPropertiesTableSetStyles {
+  /** Styles for the root of each properties table */
+  tableRoot: IStyle;
+  /** Styles for each table header */
+  tableHeader: IStyle;
+  subComponentStyles: IPropertiesTableSetSubComponentStyles;
+}
+
+export interface IPropertiesTableSetSubComponentStyles {
+  // TODO: remove anys after TS 3 upgrade
+  // tslint:disable:no-any
+  list: IStyleFunctionOrObject<IDetailsListStyleProps, any>;
 }

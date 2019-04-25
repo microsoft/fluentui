@@ -15,11 +15,20 @@ import { PeoplePickerItemSuggestion } from './PeoplePickerItems/PeoplePickerItem
 import { IPeoplePickerItemSelectedProps } from './PeoplePickerItems/PeoplePickerItem.types';
 import { getStyles } from '../BasePicker.styles';
 
-/** PeoplePicker props interface which renders Personas as items. */
+/**
+ * PeoplePicker props interface which renders Personas as items.
+ * {@docCategory PeoplePicker}
+ * */
 export interface IPeoplePickerProps extends IBasePickerProps<IPersonaProps> {}
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export class BasePeoplePicker extends BasePicker<IPersonaProps, IPeoplePickerProps> {}
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {}
 
 /**

@@ -7,7 +7,8 @@
   @include headerAngles($ms-color-neutralLighter);
   color: $ms-color-white;
 
-  a, a:visited {
+  a,
+  a:visited {
     color: $ms-color-white;
     transition: color $ms-animation-duration-2 $ms-animation-ease-1;
   }
@@ -20,11 +21,13 @@
 .headerStyles {
   background-color: $color-styles-darker;
 
-  a, a:visited {
+  a,
+  a:visited {
     border-bottom: 1px solid $color-styles-light;
   }
 
-  a:hover, a:active {
+  a:hover,
+  a:active {
     color: $color-styles-lighter;
   }
 }
@@ -32,11 +35,13 @@
 .headerComponents {
   background-color: $color-components-darker;
 
-  a, a:visited {
+  a,
+  a:visited {
     border-bottom: 1px solid $color-components-light;
   }
 
-  a:hover, a:active {
+  a:hover,
+  a:active {
     color: $color-components-lighter;
   }
 }

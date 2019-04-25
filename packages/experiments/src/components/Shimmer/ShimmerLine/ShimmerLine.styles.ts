@@ -26,7 +26,7 @@ export function getStyles(props: IShimmerLineStyleProps): IShimmerLineStyles {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       styles,
       {
         width: ACTUAL_WIDTH,

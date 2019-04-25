@@ -8,6 +8,10 @@ let div: HTMLElement;
 const ReactDOM = require('react-dom');
 
 describe('Panel', () => {
+  afterEach(() => {
+    jest.useRealTimers();
+  });
+
   it('renders Panel correctly', () => {
     // Mock createPortal to capture its component hierarchy in snapshot output.
     ReactDOM.createPortal = jest.fn(element => {
@@ -25,7 +29,7 @@ describe('Panel', () => {
     ReactDOM.createPortal.mockClear();
   });
 
-  describe('onClose', () => {
+  describe('open', () => {
     beforeEach(() => {
       div = document.createElement('div');
     });
@@ -34,34 +38,66 @@ describe('Panel', () => {
       ReactDOM.unmountComponentAtNode(div);
     });
 
-    it('fires the correct events when closing', done => {
+    it('fires the correct events', () => {
+      let openedCalled = false;
+      let openCalled = false;
       let dismissedCalled = false;
       let dismissCalled = false;
+      let dismissCount = 0;
+
+      const setOpenTrue = (): void => {
+        openCalled = true;
+      };
+      const setOpenedTrue = (): void => {
+        openedCalled = true;
+      };
       const setDismissTrue = (): void => {
         dismissCalled = true;
+        dismissCount++;
       };
       const setDismissedTrue = (): void => {
         dismissedCalled = true;
       };
+      jest.useFakeTimers();
 
       const panel: PanelBase = ReactDOM.render(
-        <PanelBase isOpen={true} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
+        <PanelBase onOpen={setOpenTrue} onOpened={setOpenedTrue} onDismiss={setDismissTrue} onDismissed={setDismissedTrue} />,
         div
       ) as any;
+
+      panel.open();
+
+      expect(openCalled).toEqual(true);
+      expect(openedCalled).toEqual(false);
+
+      jest.runOnlyPendingTimers();
+
+      expect(openedCalled).toEqual(true);
+
+      expect(dismissCalled).toEqual(false);
+      expect(dismissedCalled).toEqual(false);
 
       panel.dismiss();
 
       expect(dismissCalled).toEqual(true);
       expect(dismissedCalled).toEqual(false);
 
-      setTimeout(() => {
-        try {
-          expect(dismissedCalled).toEqual(true);
-          done();
-        } catch (e) {
-          done(e);
-        }
-      }, 250);
+      // Dismiss should only be called once per dismiss.
+      expect(dismissCount).toEqual(1);
+
+      jest.runOnlyPendingTimers();
+
+      expect(dismissedCalled).toEqual(true);
+    });
+  });
+
+  describe('onClose', () => {
+    beforeEach(() => {
+      div = document.createElement('div');
+    });
+
+    afterEach(() => {
+      ReactDOM.unmountComponentAtNode(div);
     });
   });
 });

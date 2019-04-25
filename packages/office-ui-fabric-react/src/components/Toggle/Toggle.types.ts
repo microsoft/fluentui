@@ -3,12 +3,16 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory Toggle}
+ */
 export interface IToggle {
   focus: () => void;
 }
 
 /**
  * Toggle component props.
+ * {@docCategory Toggle}
  */
 export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   /**
@@ -104,6 +108,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
 
 /**
  * Properties required to build the styles for the Toggle component.
+ * {@docCategory Toggle}
  */
 export interface IToggleStyleProps {
   /**
@@ -139,6 +144,7 @@ export interface IToggleStyleProps {
 
 /**
  * Styles for the Toggle component.
+ * {@docCategory Toggle}
  */
 export interface IToggleStyles {
   /** Root element. */

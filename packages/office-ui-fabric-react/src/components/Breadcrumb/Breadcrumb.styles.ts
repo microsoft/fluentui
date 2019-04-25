@@ -94,7 +94,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         margin: '11px 0 1px'
       },
@@ -132,7 +132,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       classNames.chevron,
       {
         color: chevronButtonColor,
-        fontSize: theme.fonts.small.fontSize,
+        fontSize: theme.fonts.xSmall.fontSize,
         selectors: {
           [HighContrastSelector]: {
             color: 'WindowText',
@@ -172,7 +172,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
             padding: '4px 6px'
           },
           [MediumScreenSelector]: {
-            fontSize: theme.fonts.mediumPlus.fontSize
+            fontSize: theme.fonts.smallPlus.fontSize
           }
         }
       }

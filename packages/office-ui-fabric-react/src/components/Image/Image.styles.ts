@@ -53,7 +53,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         overflow: 'hidden'
       },

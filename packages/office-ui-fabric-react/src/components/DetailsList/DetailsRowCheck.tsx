@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDetailsRowCheckProps } from './DetailsRowCheck.types';
+import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { css, styled } from '../../Utilities';
 import { Check } from '../../Check';
 import { ICheckStyleProps, ICheckStyles } from '../Check/Check.types';
@@ -15,7 +15,6 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const {
     isVisible = false,
     canSelect = false,
-    isSelected = false,
     anySelected = false,
     selected = false,
     isHeader = false,
@@ -24,10 +23,9 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     styles,
     theme,
     compact,
+    onRenderDetailsCheckbox,
     ...buttonProps
   } = props;
-
-  const isPressed = props.isSelected || props.selected;
 
   const checkStyles = getCheckStyles({ theme: theme! });
 
@@ -38,7 +36,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const classNames = getClassNames(styles, {
     theme: theme!,
     canSelect,
-    selected: isPressed,
+    selected,
     anySelected,
     className,
     isHeader,
@@ -46,16 +44,26 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
     compact
   });
 
+  const defaultCheckboxRender = (checkboxProps: IDetailsCheckboxProps) => {
+    return <Check checked={checkboxProps.checked} />;
+  };
+
+  const detailsCheckboxProps: IDetailsCheckboxProps = {
+    checked: selected
+  };
+
   return canSelect ? (
     <div
       {...buttonProps}
       role="checkbox"
       className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
-      aria-checked={isPressed}
+      aria-checked={selected}
       data-selection-toggle={true}
       data-automationid="DetailsRowCheck"
     >
-      <Check checked={isPressed} />
+      {onRenderDetailsCheckbox
+        ? onRenderDetailsCheckbox(detailsCheckboxProps, defaultCheckboxRender)
+        : defaultCheckboxRender(detailsCheckboxProps)}
     </div>
   ) : (
     <div {...buttonProps} className={css(classNames.root, classNames.check)} />

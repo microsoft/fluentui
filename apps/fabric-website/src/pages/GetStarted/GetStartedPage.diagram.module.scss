@@ -16,7 +16,7 @@
   a,
   a:visited {
     color: $ms-color-white;
-    border-bottom: 1px solid rgba(255,255,255,0.5);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.5);
     transition: border-color $ms-animation-duration-2 $ms-animation-ease-1;
   }
 
@@ -24,7 +24,6 @@
     border-color: $ms-color-white;
   }
 }
-
 
 //== Core section
 
@@ -55,7 +54,6 @@
   }
 }
 
-
 //== Or text
 .or {
   background-color: $ms-color-neutralSecondary;
@@ -76,7 +74,6 @@
   }
 }
 
-
 //== Components section
 
 .components {
@@ -90,7 +87,6 @@
     margin-top: 40px;
   }
 }
-
 
 // Individual component and its content wrapper
 .component {
@@ -132,7 +128,6 @@
     }
   }
 }
-
 
 // Graphics within a component
 .graphics {

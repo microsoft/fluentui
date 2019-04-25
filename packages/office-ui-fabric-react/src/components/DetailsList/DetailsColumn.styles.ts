@@ -70,7 +70,7 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
   return {
     root: [
       getCellStyles(props),
-      theme.fonts.small,
+      theme.fonts.xSmall,
       isActionable && [
         classNames.isActionable,
         {

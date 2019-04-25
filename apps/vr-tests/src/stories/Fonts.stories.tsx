@@ -2,7 +2,7 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator } from '../utilities/FluentDecorator';
+import { FabricDecorator } from '../utilities';
 import { createFontStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const RepresentativeText = (props: { style: React.CSSProperties }) => (
@@ -26,7 +26,7 @@ const RepresentativeText = (props: { style: React.CSSProperties }) => (
 );
 
 function getStyle(lang: string) {
-  return createFontStyles(lang).medium as React.CSSProperties;
+  return createFontStyles(lang).small as React.CSSProperties;
 }
 
 storiesOf('Fonts', module)

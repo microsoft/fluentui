@@ -9,7 +9,7 @@ export const getStyles = (props: IPieChartStyleProps): IPieChartStyles => {
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       'ms-PieChart',
       className,
       {
@@ -27,7 +27,7 @@ export const getStyles = (props: IPieChartStyleProps): IPieChartStyles => {
     chartTitle: [
       {
         textAlign: 'center',
-        ...theme.fonts.mediumPlus
+        ...theme.fonts.smallPlus
       }
     ]
   };

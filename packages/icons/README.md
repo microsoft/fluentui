@@ -4,7 +4,6 @@
 
 Fabric Icons includes a collection of 1100+ icons which you can use in your application.
 
-
 # Getting started
 
 If you are using Fabric React components, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package:
@@ -30,7 +29,7 @@ If you are using Fabric React, you can use the `Icon` component and pass in the 
 ```tsx
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 
-<Icon iconName='Snow' />
+<Icon iconName="Snow" />;
 ```
 
 The styling package includes a `getIconClassName` api which can provide a css class to use for rendering the icon manually using the `:before` pseudoselector:

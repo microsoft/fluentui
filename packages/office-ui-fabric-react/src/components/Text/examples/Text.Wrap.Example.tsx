@@ -14,7 +14,7 @@ const tokens = {
 export const TextWrapExample = () => (
   <Stack tokens={tokens.sectionStack}>
     <Stack tokens={tokens.headingStack}>
-      <Text variant={'large'} block>
+      <Text variant={'medium'} block>
         Wrap (Default)
       </Text>
       <Text>
@@ -25,7 +25,7 @@ export const TextWrapExample = () => (
       </Text>
     </Stack>
     <Stack tokens={tokens.headingStack}>
-      <Text variant={'large'} block>
+      <Text variant={'medium'} block>
         No Wrap
       </Text>
       <Text nowrap>

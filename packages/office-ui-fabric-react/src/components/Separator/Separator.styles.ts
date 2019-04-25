@@ -9,7 +9,7 @@ export const getStyles = (props: ISeparatorStyleProps): ISeparatorStyles => {
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         position: 'relative'
       },

@@ -1,6 +1,114 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 05 Apr 2019 12:36:12 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+
+## 6.167.3
+Mon, 22 Apr 2019 12:32:06 GMT
+
+### Patches
+
+- CommandBar: Add split/disabled buttons example to documentation page
+- ScrollablePane: Remove Z Index since it's no longer necesssary
+- Selection: initialize count
+- TextField documentation updates
+
+## 6.167.2
+Fri, 19 Apr 2019 12:33:03 GMT
+
+### Patches
+
+- Button: Fix issue where button would eat keydown events
+- Remove usage of assign helper in favor of Object.spread across Lists
+- Dropdown: Add unit test;
+- Split button displays an expanded state always with persistMenu:true - fixing that
+- Pickers: Fix issue where they would have invalid described by
+
+## 6.167.1
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Modal: Ensure that the "ms-Dialog" class name is only applied once.
+- Run prettier on all files
+
+## 6.167.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- DatePicker: Fix props not matching their description. Add new prop to provide old functionality
+- DetailsList: Expose optional onRenderCheckbox callback option
+
+### Patches
+
+- Update Announced examples
+- Panel: Fix double dismiss
+
+## 6.166.1
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Patches
+
+- DetailsList: Fix high contrast focus color
+- MessageBar: fixes the transparency of the background issue when rendered on top of themed backgrounds.
+- Adding data parameter to the ComboBoxOptionWrapper. This will allow ShallowCompare to compare against this extra parameter
+
+## 6.166.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+- These changes allow for a controlled Pivot to have no selected PivotItem by specifying null as the selectedKey prop.
+
+### Patches
+
+- ThemeGeneratorPage: fix it so it looks right
+- Updating CalloutContentBase's shouldComponentUpdate to do shallow comparision
+
+## 6.165.1
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
+- css-in-js conversions for DocumentCard, ExtendedPeoplePicker, FloatingPeoplePicker, SelectedPeopleList
+
+## 6.165.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Panel: add onOpen and onOpened properties
+
+### Patches
+
+- ComboBox: call onPendingValuedChanged with an empty value string when the user clears the input
+
+## 6.164.8
+Tue, 09 Apr 2019 12:35:21 GMT
+
+### Patches
+
+- Panel: set forceFocusInsideTrap to false for non-blocking Panels
+- Spinner: only render an aria-live polite message when ariaLabel is provided.
+
+## 6.164.7
+Mon, 08 Apr 2019 12:37:15 GMT
+
+### Patches
+
+- A number of components have been updated to reduce the dependencies, lowering bundle size impact for a variety of scenarios.
+- TextField: clarify onBeforeChange documentation
+
+## 6.164.6
+Fri, 05 Apr 2019 22:09:49 GMT
+
+### Patches
+
+- Persona: now sets dir=auto for text fields rendered in persona.
+- Fix layer and modal codepen links
+- Fixing submenu dismissal when parent menu has a hidden prop
+- Panel: add border to main div in high contrast
 
 ## 6.164.5
 Fri, 05 Apr 2019 12:36:12 GMT

@@ -7,12 +7,19 @@ import { DetailsHeaderBase } from './DetailsHeader.base';
 import { IColumn, DetailsListLayoutMode, IColumnReorderOptions, ColumnDragEndLocation } from './DetailsList.types';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/index';
+import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsHeader {
   /** sets focus into the header */
   focus: () => boolean;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
   /** Theme from the Higher Order Component */
   theme?: ITheme;
@@ -79,8 +86,14 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
 
   /** Overriding class name */
   className?: string;
+
+  /** If provided, can be used to render a custom checkbox */
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
   /**
    * Column metadata
@@ -98,12 +111,18 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
   selectionMode: SelectionMode;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum SelectAllVisibility {
   none = 0,
   hidden = 1,
   visible = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsHeaderState {
   columnReorderProps?: IColumnReorderHeaderProps;
   columnResizeDetails?: IColumnResizeDetails;
@@ -113,12 +132,18 @@ export interface IDetailsHeaderState {
   isAllCollapsed?: boolean;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnResizeDetails {
   columnIndex: number;
   originX?: number;
   columnMinWidth: number;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
   /** Callback to notify the column dragEnd event to List
    * Need this to check whether the dragEnd has happened on
@@ -127,6 +152,9 @@ export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
   onColumnDragEnd?: (props: { dropLocation?: ColumnDragEndLocation }, event: MouseEvent) => void;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDropHintDetails {
   originX: number; // X index of dropHint Element relative to header
   startX: number; // start index of the range for the current drophint
@@ -134,6 +162,9 @@ export interface IDropHintDetails {
   dropHintElementRef: HTMLElement; // Reference for drophint to change the style when needed
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme'>> &
   Pick<IDetailsHeaderProps, 'className'> & {
     /** Whether to hide select all checkbox */
@@ -157,6 +188,9 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
     cellStyleProps?: ICellStyleProps;
   };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsHeaderStyles {
   root: IStyle;
   check: IStyle;

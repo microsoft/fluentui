@@ -110,7 +110,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
 
   // Selected row styles
   const selectedStyles: IStyle = [
-    getFocusStyle(theme, -1, undefined, undefined, focusBorder, white),
+    getFocusStyle(theme, { inset: -1, borderColor: focusBorder, outlineColor: white }),
     classNames.isSelected,
     {
       color: colors.selectedMetaText,
@@ -237,7 +237,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   };
 
   const defaultCellStyles: IStyle = [
-    getFocusStyle(theme, -1),
+    getFocusStyle(theme, { inset: -1 }),
     classNames.cell,
     {
       display: 'inline-block',
@@ -256,7 +256,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           maxWidth: '100%'
         },
 
-        [classNames.isFocusable!]: getFocusStyle(theme, -1, undefined, undefined, neutralSecondary, white),
+        [classNames.isFocusable!]: getFocusStyle(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white }),
 
         '&$shimmer': {
           padding: 0,
@@ -297,9 +297,9 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.root,
       AnimationClassNames.fadeIn400,
       droppingClassName,
-      theme.fonts.small,
+      theme.fonts.xSmall,
       isCheckVisible && classNames.isCheckVisible,
-      getFocusStyle(theme, 0, undefined, undefined, focusBorder, white),
+      getFocusStyle(theme, { borderColor: focusBorder, outlineColor: white }),
       {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackground,
@@ -405,7 +405,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       classNames.isRowHeader,
       {
         color: colors.defaultHeaderText,
-        fontSize: FontSizes.medium
+        fontSize: FontSizes.small
       },
       isSelected && {
         color: colors.selectedHeaderText,

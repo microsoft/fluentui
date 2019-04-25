@@ -56,8 +56,11 @@ export const MeasurerTimings = () => {
 
   return (
     <Stack gap={20}>
-      <Text>
-        <b>Total time:</b> {timings.totalTime}ms ({timings.individualTime}ms per item)
+      <Text className="total">
+        <b>Total time:</b> {timings.totalTime}ms
+      </Text>
+      <Text className="peritem">
+        <b>Per Item:</b> {timings.individualTime}ms
       </Text>
     </Stack>
   );

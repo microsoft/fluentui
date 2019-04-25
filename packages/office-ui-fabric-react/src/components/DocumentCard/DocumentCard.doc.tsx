@@ -2,13 +2,22 @@ import * as React from 'react';
 import { DocumentCardBasicExample } from './examples/DocumentCard.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Example';
+import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
+import { DocumentCardImageExample } from './examples/DocumentCard.Image.Example';
+import { DocumentCardConversationExample } from './examples/DocumentCard.Conversation.Example';
 import { DocumentCardStatus } from './DocumentCard.checklist';
 
 const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
-const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
 const DocumentCardCompactExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardCompactExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Compact.Example.tsx') as string;
+const DocumentCardCompleteExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardCompleteExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Complete.Example.tsx') as string;
+const DocumentCardImageExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
+const DocumentCardImageExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Image.Example.tsx') as string;
+const DocumentCardConversationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
+const DocumentCardConversationExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Conversation.Example.tsx') as string;
 
 export const DocumentCardPageProps: IDocPageProps = {
   title: 'DocumentCard',
@@ -20,6 +29,7 @@ export const DocumentCardPageProps: IDocPageProps = {
     {
       title: 'Default DocumentCard',
       code: DocumentCardBasicExampleCode,
+      codepenJS: DocumentCardBasicExampleCodepen,
       view: (
         <>
           <p>
@@ -31,29 +41,56 @@ export const DocumentCardPageProps: IDocPageProps = {
       )
     },
     {
-      title: 'DocumentCard with multiple items, commands, and views',
-      code: DocumentCardCompleteExampleCode,
+      title: 'DocumentCard with compact layout ',
+      code: DocumentCardCompactExampleCode,
+      codepenJS: DocumentCardCompactExampleCodepen,
       view: (
         <>
           <p>
-            This example shows a couple of optional abilities, including being able to have a card represent multiple items, being able to
-            expose up to three relevant commands, and showing the number of views in the bottom right corner.
+            When showing a card on a mobile device or in a narrow layout, you may choose this compact card, which helps the filename remain
+            scannable while giving space for a preview thumbnail.
           </p>
-          <p>Also show a card with Logo, text preview and status that is used for Conversation card.</p>
+          <p>
+            This example also shows some features which are usable with either compact or regular cards, such as showing an icon instead of
+            a document preview image.
+          </p>
+          <DocumentCardCompactExample />
+        </>
+      )
+    },
+    {
+      title: 'DocumentCard with multiple items, commands, and views',
+      code: DocumentCardCompleteExampleCode,
+      codepenJS: DocumentCardCompleteExampleCodepen,
+      view: (
+        <>
+          <p>
+            This example shows a couple of optional capabilities, including having a card represent multiple items, exposing up to three
+            relevant commands, and showing the number of views in the bottom right corner.
+          </p>
           <DocumentCardCompleteExample />
         </>
       )
     },
     {
-      title: 'DocumentCard with compact layout ',
-      code: DocumentCardCompactExampleCode,
+      title: 'DocumentCard with image or icon',
+      code: DocumentCardImageExampleCode,
+      codepenJS: DocumentCardImageExampleCodepen,
       view: (
         <>
-          <p>
-            When showing a card on a mobile device or a similarly narrow layout, you may choose this Compact layout which helps the filename
-            remain scannable while giving roomy space for a preview thumbnail.
-          </p>
-          <DocumentCardCompactExample />
+          <p>This example shows a simplified method of displaying an image or icon on the DocumentCard.</p>
+          <DocumentCardImageExample />
+        </>
+      )
+    },
+    {
+      title: 'Conversation cards with logo, text preview, and status',
+      code: DocumentCardConversationExampleCode,
+      codepenJS: DocumentCardConversationExampleCodepen,
+      view: (
+        <>
+          <p>This example shows the logo, text preview, and status used for conversation cards.</p>
+          <DocumentCardConversationExample />
         </>
       )
     }

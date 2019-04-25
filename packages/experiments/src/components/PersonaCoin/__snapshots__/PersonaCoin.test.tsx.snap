@@ -6,7 +6,7 @@ exports[`PersonaCoin renders a coin with a contact icon 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #2D89EF;
+        background-color: #0078D4;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -43,7 +43,7 @@ exports[`PersonaCoin renders a coin with a contact icon for a Chinese name 1`] =
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #C239B3;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -80,7 +80,7 @@ exports[`PersonaCoin renders a coin with the initials JB 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #2D89EF;
+        background-color: #0078D4;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -116,7 +116,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #5E4B8B;
+        background-color: #0B6A0B;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -188,7 +188,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #C239B3;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -222,7 +222,7 @@ exports[`PersonaCoin renders presence correctly when a very large coin is render
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
-          background-color: #E81123;
+          background-color: #C50F1F;
           border-radius: 50%;
           border: 2px solid #ffffff;
           bottom: -2px;
@@ -285,7 +285,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #C239B3;
         border-radius: 50%;
         color: white;
         display: flex;
@@ -319,7 +319,7 @@ exports[`PersonaCoin renders presence when it is passed 1`] = `
         {
           -ms-high-contrast-adjust: none;
           background-clip: content-box;
-          background-color: #E81123;
+          background-color: #C50F1F;
           border-radius: 50%;
           border: 2px solid #ffffff;
           bottom: -2px;
@@ -382,7 +382,7 @@ exports[`PersonaCoin renders the coin with the provided image 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #00A300;
+        background-color: #986F0B;
         border-radius: 50%;
         color: white;
         display: flex;
