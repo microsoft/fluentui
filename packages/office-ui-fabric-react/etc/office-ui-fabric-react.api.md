@@ -501,7 +501,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React_2.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
-export class CheckBase extends React.PureComponent<ICheckProps, {}> {
+export class CheckBase extends React.Component<ICheckProps, {}> {
     // (undocumented)
     static defaultProps: ICheckProps;
     // (undocumented)
@@ -2733,7 +2733,7 @@ export interface ICommandBarStyles {
 export const Icon: React_2.StatelessComponent<IIconProps>;
 
 // @public (undocumented)
-export class IconBase extends React.PureComponent<IIconProps, IIconState> {
+export class IconBase extends React.Component<IIconProps, IIconState> {
     constructor(props: IIconProps);
     // (undocumented)
     render(): JSX.Element;
