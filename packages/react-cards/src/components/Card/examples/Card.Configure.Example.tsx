@@ -38,7 +38,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
       filledSection: '0',
       firstCardSectionHeight: 115,
       secondCardSectionHeight: 115,
-      specificChildrenGap: 12,
+      specificChildrenGap: 20,
       specificChildrenGapAllowed: false,
       width: 212
     };
