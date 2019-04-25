@@ -3196,6 +3196,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     disableSelectionZone?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IDragDropEvents" needs to be exported by the entry point index.d.ts
     dragDropEvents?: IDragDropEvents;
+    // @deprecated
     enableShimmer?: boolean;
     enterModalSelectionOnTouch?: boolean;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
@@ -3315,6 +3316,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onWillUnmount?: (row?: DetailsRowBase) => void;
     // Warning: (ae-forgotten-export) The symbol "IDetailsRowFieldsProps" needs to be exported by the entry point index.d.ts
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    // @deprecated
     shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
@@ -3422,13 +3424,13 @@ export interface IDetailsRowStyles {
     isRowHeader: IStyle;
     // (undocumented)
     root: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmer: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerBottomBorder: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerIconPlaceholder: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerLeftBorder: IStyle;
 }
 
@@ -6387,6 +6389,21 @@ export interface IShimmerColors {
 }
 
 // @public
+export interface IShimmeredDetailsListProps extends IDetailsListProps {
+    // @deprecated
+    detailsListStyles?: IDetailsListProps['styles'];
+    enableShimmer?: boolean;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React_2.ReactNode;
+    removeFadingOverlay?: boolean;
+    shimmerLines?: number;
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
+    // 
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
+
+// @public
 export interface IShimmerElement {
     height?: number;
     type: ShimmerElementType;
@@ -8443,8 +8460,6 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
     render(): JSX.Element;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export const ShimmeredDetailsList: React_2.StatelessComponent<IShimmeredDetailsListProps>;
 
