@@ -51,10 +51,10 @@ export const getMergedDialogContentStyles = (
     if (typeof dialogContentProps.styles === 'function') {
       const styles = dialogContentProps.styles;
       return (props: IDialogContentStyleProps) => {
-        return mergeStyleSets(styles(props), headerStyle);
+        return mergeStyleSets(headerStyle, styles(props));
       };
     } else {
-      return mergeStyleSets(dialogContentProps.styles, headerStyle);
+      return mergeStyleSets(headerStyle, dialogContentProps.styles);
     }
   }
 

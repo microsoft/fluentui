@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IDraggableZoneProps, ICoordinates, IDragData } from './DraggableZone.types';
 import { getClassNames } from './DraggableZone.styles';
-import { BaseComponent } from '../../Utilities';
+import { EventGroup } from '../../Utilities';
 
 export interface IDraggableZoneState {
   isDragging: boolean;
@@ -26,9 +26,10 @@ const eventMapping = {
 // and so we have access to clientX and clientY in the touch events
 type MouseTouchEvent<T> = React.MouseEvent<T> & React.TouchEvent<T>;
 
-export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggableZoneState> {
+export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDraggableZoneState> {
   private _touchId?: number;
   private _currentEventType = eventMapping.mouse;
+  private _events: EventGroup;
 
   constructor(props: IDraggableZoneProps) {
     super(props);
@@ -40,7 +41,7 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
     };
   }
 
-  public componentWillReceiveProps(nextProps: IDraggableZoneProps) {
+  public getDerivedStateFromProps(nextProps: IDraggableZoneProps) {
     if (nextProps.position && (!this.props.position || nextProps.position !== this.props.position)) {
       this.setState({ position: nextProps.position });
     }
@@ -54,17 +55,24 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   }
 
   public render() {
-    const child = this._getChild();
-    const childProps = child.props;
+    const child = React.Children.only(this.props.children);
+    const { props } = child;
+    const { position } = this.props;
+    const { position: statePosition, isDragging } = this.state;
+    let x = statePosition.x;
+    let y = statePosition.y;
+
+    if (position && !isDragging) {
+      x = position.x;
+      y = position.y;
+    }
 
     return React.cloneElement(child, {
       style: {
-        ...childProps.style,
-        transform: `translate(${!this.props.position || this.state.isDragging ? this.state.position.x : this.props.position.x}px, ${
-          !this.props.position || this.state.isDragging ? this.state.position.y : this.props.position.y
-        }px)`
+        ...props.style,
+        transform: `translate(${x}px, ${y}px)`
       },
-      className: getClassNames(childProps.className, this.state.isDragging).root,
+      className: getClassNames(props.className, this.state.isDragging).root,
       onMouseDown: this._onMouseDown,
       onMouseUp: this._onMouseUp,
       onTouchStart: this._onTouchStart,
@@ -73,7 +81,7 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   }
 
   private _onMouseDown = (event: MouseTouchEvent<HTMLElement>) => {
-    const onMouseDown = this._getChildProps().onMouseDown;
+    const onMouseDown = React.Children.only(this.props.children).props.onMouseDown;
     if (onMouseDown) {
       onMouseDown(event);
     }
@@ -83,7 +91,7 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   };
 
   private _onMouseUp = (event: MouseTouchEvent<HTMLElement>) => {
-    const onMouseUp = this._getChildProps().onMouseUp;
+    const onMouseUp = React.Children.only(this.props.children).props.onMouseUp;
     if (onMouseUp) {
       onMouseUp(event);
     }
@@ -93,7 +101,7 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   };
 
   private _onTouchStart = (event: MouseTouchEvent<HTMLElement>) => {
-    const onTouchStart = this._getChildProps().onTouchStart;
+    const onTouchStart = React.Children.only(this.props.children).props.onTouchStart;
     if (onTouchStart) {
       onTouchStart(event);
     }
@@ -103,7 +111,7 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
   };
 
   private _onTouchEnd = (event: MouseTouchEvent<HTMLElement>) => {
-    const onTouchEnd = this._getChildProps().onTouchEnd;
+    const onTouchEnd = React.Children.only(this.props.children).props.onTouchEnd;
     if (onTouchEnd) {
       onTouchEnd(event);
     }
@@ -326,14 +334,4 @@ export class DraggableZone extends BaseComponent<IDraggableZoneProps, IDraggable
       lastPosition: position
     };
   }
-
-  /* tslint:disable-next-line:no-any */
-  private _getChild = (): React.ReactElement<any> => {
-    return React.Children.only(this.props.children);
-  };
-
-  /* tslint:disable-next-line:no-any */
-  private _getChildProps = (): any => {
-    return this._getChild().props;
-  };
 }

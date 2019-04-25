@@ -4,7 +4,7 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import * as styles from './Modal.Example.scss';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu } from '../../ContextualMenu/index';
+import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export interface IModalModelessExampleState {
   showModal: boolean;

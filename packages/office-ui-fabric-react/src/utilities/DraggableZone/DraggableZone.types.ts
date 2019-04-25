@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { IRefObject } from '../../Utilities';
 
 export interface IDragData {
   position: ICoordinates;
@@ -12,22 +11,17 @@ export interface ICoordinates {
   y: number;
 }
 
-export interface IDraggableZone {}
-
 export interface IDraggableZoneProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Optional callback to access the IDraggableZone interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<IDraggableZone>;
-
   /**
    * Specifies a selector to be used as the handle that initiates drag
    */
   handleSelector?: string;
 
   /**
-   * Specifies a selector to be used to prevent drag initialization
+   * Specifies a selector to be used to prevent drag initialization.
+   * For example, if you do not want buttons inside of your handleSelector
+   * to have the cursor change to move or to allow users to select from buttons,
+   * you could pass button here (the close button in the header of a dialog is a concrete example)
    */
   preventDragSelector?: string;
 

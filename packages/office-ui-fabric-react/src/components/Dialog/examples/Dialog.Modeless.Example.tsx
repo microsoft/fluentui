@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu } from '../../ContextualMenu/index';
+import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 export interface IDialogModelessExampleState {
   hideDialog: boolean;

@@ -4,7 +4,7 @@ import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button'
 import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import { hiddenContentStyle, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { ContextualMenu } from '../../ContextualMenu/index';
+import { ContextualMenu } from 'office-ui-fabric-react/lib/ContextualMenu';
 
 const screenReaderOnly = mergeStyles(hiddenContentStyle);
 
