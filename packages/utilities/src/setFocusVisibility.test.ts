@@ -4,6 +4,7 @@ import * as getWindow from './dom/getWindow';
 
 describe('setFocusVisibility', () => {
   let classNames: string[] = [];
+
   // tslint:disable-next-line:no-any
   const mockWindow: { [key: string]: any } = {
     addEventListener: (name: string, callback: Function) => {
