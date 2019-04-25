@@ -1,4 +1,4 @@
-import { InterfacePropertyType, PropertyType } from '../../utilities/parser/index';
+import { PropertyType } from '../../utilities/parser/index';
 import { IPageJson, ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 /**
@@ -32,7 +32,6 @@ export interface IApiInterfaceProperty {
   typeTokens: ILinkToken[];
   defaultValue: string;
   description: string;
-  interfacePropertyType?: InterfacePropertyType;
   deprecatedMessage?: string;
   deprecated?: boolean;
 }
