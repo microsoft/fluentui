@@ -142,6 +142,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   }
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default hover background
+            [HighContrastSelector]: {
+              background: 'Highlight'
             }
           }
         },
@@ -154,16 +159,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             // Selected State hover meta cell
             $cell: {
               color: colors.focusMetaTextColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'HighlightText',
-                  selectors: {
-                    '> a': {
-                      color: 'HighlightText'
-                    }
-                  }
-                }
-              },
 
               // Row header cell
               '&.$isRowHeader': {
@@ -174,6 +169,22 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   }
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default focus background
+            [HighContrastSelector]: {
+              background: 'Highlight'
+            }
+          }
+        },
+
+        [HighContrastSelector]: {
+          background: 'Highlight',
+          color: 'HighlightText',
+          MsHighContrastAdjust: 'none',
+          selectors: {
+            a: {
+              color: 'HighlightText'
             }
           }
         }
@@ -252,30 +263,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackgroundColor}`,
           borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`,
           borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackgroundColor}`
-        }
-      }
-    },
-
-    isSelected && {
-      selectors: {
-        '&.$isRowHeader': {
-          color: colors.selectedTextColor,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          }
-        },
-
-        [HighContrastSelector]: {
-          background: 'Highlight',
-          color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
-          selectors: {
-            a: {
-              color: 'HighlightText'
-            }
-          }
         }
       }
     },

@@ -1,5 +1,5 @@
 import { IColumn } from './DetailsList.types';
-import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
+import { ICellStyleProps } from './DetailsRow.types';
 import { IDetailsListProps } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 
@@ -43,9 +43,18 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   shimmer?: boolean;
 
   /**
-   * Required prop to be passed in from the parent DetailsRow a map of classNames and its mergestyle-created classNames
+   * Subset of classnames currently generated in DetailsRow that are used within DetailsRowFields.
    */
-  rowClassNames: { [className in keyof IDetailsRowStyles]: string };
+  rowClassNames: {
+    isMultiline: string;
+    isRowHeader: string;
+    shimmerIconPlaceholder: string;
+    shimmer: string;
+    cell: string;
+    cellPadded: string;
+    cellUnpadded: string;
+    fields: string;
+  };
 
   cellStyleProps?: ICellStyleProps;
 }

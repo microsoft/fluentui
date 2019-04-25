@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "VerticalDivider: Make into a styled component",
+      "comment": "Concentrate onhover style ui changes to label element for Checkbox",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "anpablo@microsoft.com"
 }

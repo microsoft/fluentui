@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.169.0",
+      "tag": "office-ui-fabric-react_v6.169.0",
+      "date": "Wed, 24 Apr 2019 12:35:55 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Delete outdated component status info",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "963bedb18604d38792d7ac57d280877f52a597ae"
+          },
+          {
+            "comment": "FocusTrapZone: Add disabled prop.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "97eaa2d0347b8ab1a6ee47a241693610b3029d18"
+          },
+          {
+            "comment": "VerticalDivider: Make into a styled component",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "a1cc83dd2ba2ec49a25ef0f73a36d97c77c7075e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.168.0",
       "tag": "office-ui-fabric-react_v6.168.0",
       "date": "Tue, 23 Apr 2019 12:32:00 GMT",
