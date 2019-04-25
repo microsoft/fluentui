@@ -80,7 +80,7 @@ $checkBoxHeight: 18px;
 .check {
   color: $ms-color-neutralSecondary;
   font-size: 16px;
-  left: .5px;
+  left: 0.5px;
 
   @include high-contrast {
     -ms-high-contrast-adjust: none;

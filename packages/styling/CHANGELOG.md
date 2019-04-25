@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 15 Apr 2019 12:33:42 GMT and should not be manually modified.
+This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+
+## 6.46.1
+Mon, 22 Apr 2019 12:32:06 GMT
+
+### Patches
+
+- Deprecate ScrollablePane from zIndexes
 
 ## 6.46.0
 Mon, 15 Apr 2019 12:33:42 GMT

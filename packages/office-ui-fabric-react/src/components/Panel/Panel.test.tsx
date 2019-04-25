@@ -75,8 +75,10 @@ describe('Panel', () => {
     it('fires the correct events when closing', () => {
       let dismissedCalled = false;
       let dismissCalled = false;
+      let dismissCount = 0;
       const setDismissTrue = (): void => {
         dismissCalled = true;
+        dismissCount++;
       };
       const setDismissedTrue = (): void => {
         dismissedCalled = true;
@@ -93,6 +95,9 @@ describe('Panel', () => {
 
       expect(dismissCalled).toEqual(true);
       expect(dismissedCalled).toEqual(false);
+
+      // Dismiss should only be called once per dismiss.
+      expect(dismissCount).toEqual(1);
 
       jest.runOnlyPendingTimers();
 

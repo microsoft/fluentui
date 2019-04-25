@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { PeoplePickerTypesExample } from './examples/PeoplePicker.Types.Example';
 import { IDocPageProps } from '../../../common/DocPage.types';
-import { PeoplePickerStatus } from './PeoplePicker.checklist';
 
 const PeoplePickerTypesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/pickers/PeoplePicker/examples/PeoplePicker.Types.Example.tsx') as string;
 
@@ -10,7 +9,6 @@ export const PeoplePickerPageProps: IDocPageProps = {
   componentName: 'PeoplePicker',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/PeoplePicker',
-  componentStatus: PeoplePickerStatus,
   examples: [
     {
       title: 'People Pickers',

@@ -345,9 +345,12 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
         this.props.onColorChanged(item.id, item.color);
       }
 
-      this.setState({
-        selectedIndex: index
-      });
+      // Update internal state only if the component is uncontrolled
+      if (this.props.isControlled !== true) {
+        this.setState({
+          selectedIndex: index
+        });
+      }
     }
   };
 }

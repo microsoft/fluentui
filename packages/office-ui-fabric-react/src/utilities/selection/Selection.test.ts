@@ -1,60 +1,68 @@
 import { Selection } from './Selection';
-import { IObjectWithKey } from './interfaces';
 
 const setA = [{ key: 'a' }, { key: 'b' }, { key: 'c' }];
 const setB = [{ key: 'a' }, { key: 'd' }, { key: 'b' }];
 
 describe('Selection', () => {
+  const onSelectionChanged = jest.fn();
+
+  afterEach(() => {
+    onSelectionChanged.mockClear();
+  });
+
+  it('initializes selected count', () => {
+    const selection = new Selection();
+    expect(selection.count).toBe(0);
+  });
+
   it('fires change events only when selection changes occur', () => {
-    let changeCount = 0;
-    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+    const selection = new Selection({ onSelectionChanged });
 
     selection.setItems(setA, false);
-    expect(changeCount).toEqual(0);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(0);
 
     selection.setKeySelected('a', true, true);
     selection.setKeySelected('a', true, true);
     selection.setIndexSelected(0, true, true);
-    expect(changeCount).toEqual(1);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
 
     // Switch to set b, which also contains item a, in the same position. No change event should occur.
     selection.setItems(setB, false);
-    expect(changeCount).toEqual(1);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
 
     // Select b
     selection.setKeySelected('b', true, true);
-    expect(changeCount).toEqual(2);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(2);
 
     // Change back to set a, which has item b in a different index.
     selection.setItems(setA, false);
-    expect(changeCount).toEqual(3);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(3);
 
     // Change to set b, but clear it.
     selection.setItems(setB, true);
-    expect(changeCount).toEqual(4);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(4);
 
     // Select an item in set b that doesn't exist in set a, then switch to set a.
     selection.setKeySelected('d', true, true);
     selection.setItems(setA, false);
-    expect(changeCount).toEqual(6);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(6);
 
     // Select an item, clear, clear again.
     selection.setAllSelected(true);
     selection.setAllSelected(true);
     selection.setAllSelected(false);
     selection.setAllSelected(false);
-    expect(changeCount).toEqual(8);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(8);
 
     selection.setIndexSelected(0, true, true);
     selection.selectToIndex(2, true);
-    expect(changeCount).toEqual(10);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(10);
   });
 
   it('returns false on isAllSelected when no items are selectable', () => {
-    let changeEvents = 0;
     const selection = new Selection({
-      canSelectItem: (item: IObjectWithKey) => false,
-      onSelectionChanged: () => changeEvents++
+      canSelectItem: () => false,
+      onSelectionChanged
     });
 
     selection.setItems(setA);
@@ -65,13 +73,13 @@ describe('Selection', () => {
 
     expect(selection.isAllSelected()).toEqual(false);
 
-    expect(changeEvents).toEqual(0);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(0);
   });
 
   it('resets unselectable count on setting new items', () => {
     let canSelect = false;
     const selection = new Selection({
-      canSelectItem: (item: IObjectWithKey) => canSelect
+      canSelectItem: () => canSelect
     });
 
     selection.setItems(setA);
@@ -86,41 +94,39 @@ describe('Selection', () => {
   });
 
   it('notifies consumers when all items are selected and some are removed', () => {
-    let changeCount = 0;
-    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+    const selection = new Selection({ onSelectionChanged });
 
     selection.setItems(setA);
 
     selection.setAllSelected(true);
 
-    expect(changeCount).toEqual(1);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
     expect(selection.getSelectedCount()).toEqual(3);
 
     selection.setItems([{ key: 'a' }, { key: 'b' }], false);
 
-    expect(changeCount).toEqual(2);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(2);
     expect(selection.getSelectedCount()).toEqual(2);
 
     selection.setItems([], false);
 
-    expect(changeCount).toEqual(3);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(3);
     expect(selection.getSelectedCount()).toEqual(0);
   });
 
   it('notifies consumers when some items are selected and some are removed', () => {
-    let changeCount = 0;
-    const selection = new Selection({ onSelectionChanged: () => changeCount++ });
+    const selection = new Selection({ onSelectionChanged });
 
     selection.setItems(setA);
 
     selection.setIndexSelected(2, true, false);
 
-    expect(changeCount).toEqual(1);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(1);
     expect(selection.count).toEqual(1);
 
     selection.setItems([{ key: 'a' }, { key: 'b' }], false);
 
-    expect(changeCount).toEqual(2);
+    expect(onSelectionChanged).toHaveBeenCalledTimes(2);
     expect(selection.count).toEqual(0);
   });
 });

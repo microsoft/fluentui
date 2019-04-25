@@ -350,8 +350,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // (undocumented)
-    protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
-    // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
     // (undocumented)
     protected updateSuggestions(suggestions: any[]): void;
@@ -1254,7 +1252,7 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     getCachedMeasurement: (data: any) => number | undefined;
     addMeasurementToCache: (data: any, measurement: number) => void;
 }) => {
-    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureWidth: () => number, newContainerWidth?: number | undefined) => IResizeGroupState | undefined;
+    getNextState: (props: IResizeGroupProps, currentState: IResizeGroupState, getElementToMeasureDimension: () => number, newContainerDimension?: number | undefined) => IResizeGroupState | undefined;
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
@@ -4225,6 +4223,7 @@ export interface IFocusTrapZone {
 export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
@@ -4664,7 +4663,6 @@ export interface IImage {
 // @public (undocumented)
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
-    componentRef?: IRefObject<IImage>;
     coverStyle?: ImageCoverStyle;
     // @deprecated
     errorSrc?: string;
@@ -5159,6 +5157,7 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     isVisible?: boolean;
     hasBeenOpened?: boolean;
     modalRectangleTop?: number;
+    layerClassName?: string;
 };
 
 // @public (undocumented)
@@ -5992,6 +5991,7 @@ export interface IResizeGroupProps extends React.HTMLAttributes<ResizeGroupBase 
     componentRef?: IRefObject<IResizeGroup>;
     data: any;
     dataDidRender?: (renderedData: any) => void;
+    direction?: ResizeGroupDirection;
     onGrowData?: (prevData: any) => any;
     onReduceData: (prevData: any) => any;
     onRenderData: (data: any) => JSX.Element;
@@ -7009,6 +7009,7 @@ export interface ISwatchColorPickerProps {
     focusOnHover?: boolean;
     getColorGridCellStyles?: IStyleFunctionOrObject<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>;
     id?: string;
+    isControlled?: boolean;
     mouseLeaveParentSelector?: string | undefined;
     onCellFocused?: (id?: string, color?: string) => void;
     onCellHovered?: (id?: string, color?: string) => void;
@@ -7448,17 +7449,28 @@ export interface ITooltipStyles {
     subText: IStyle;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface IVerticalDividerClassNames {
-    // (undocumented)
     divider: string;
-    // (undocumented)
     wrapper: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalDividerProps {
+    className?: string;
+    // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+    styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export type IVerticalDividerPropsStyles = Pick<IVerticalDividerProps, 'theme' | 'getClassNames' | 'className'>;
+
+// @public
+export interface IVerticalDividerStyles {
+    divider: IStyle;
+    wrapper: IStyle;
 }
 
 // @public (undocumented)
@@ -8150,6 +8162,14 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
     // (undocumented)
     render(): JSX.Element;
     }
+
+// @public (undocumented)
+export enum ResizeGroupDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1,
+}
 
 // @public
 export function rgb2hex(r: number, g: number, b: number): string;
@@ -9053,7 +9073,7 @@ export enum ValuePosition {
 }
 
 // @public (undocumented)
-export const VerticalDivider: (props: IVerticalDividerProps) => JSX.Element;
+export const VerticalDivider: React_2.StatelessComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {

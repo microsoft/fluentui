@@ -16,11 +16,7 @@ const horizontalStyles = mergeStyles({
 storiesOf('Separator', module)
   .addDecorator(FabricDecorator)
   .addDecorator(story => (
-    <Screener
-      steps={new Steps()
-        .snapshot('default', { cropTo: '.testWrapper' })
-        .end()}
-    >
+    <Screener steps={new Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>
       {story()}
     </Screener>
   ))
@@ -64,7 +60,9 @@ storiesOf('Separator', module)
     'Vertical Start Aligned',
     () => (
       <div className={verticalStyles}>
-        <Separator vertical alignContent="start">Today</Separator>
+        <Separator vertical alignContent="start">
+          Today
+        </Separator>
       </div>
     ),
     { rtl: true }
@@ -73,7 +71,9 @@ storiesOf('Separator', module)
     'Vertical End Aligned',
     () => (
       <div className={verticalStyles}>
-        <Separator vertical alignContent="end">Today</Separator>
+        <Separator vertical alignContent="end">
+          Today
+        </Separator>
       </div>
     ),
     { rtl: true }

@@ -64,7 +64,9 @@ storiesOf('ComboBox', module)
         options={testOptions}
       />
     ),
-    { rtl: true }
+    {
+      rtl: true
+    }
   )
   .addStory('Styled', () => (
     <ComboBox
@@ -81,12 +83,14 @@ storiesOf('ComboBox', module)
       defaultSelectedKey="A"
       label="Disabled"
       options={testOptions}
-      disabled />
+      disabled
+    />
   )
   .addStory('Placeholder', () =>
     // prettier-ignore
     <ComboBox
       placeholder="Select an option"
       label="With a placeholder"
-      options={testOptions} />
+      options={testOptions}
+    />
   );

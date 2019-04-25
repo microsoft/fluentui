@@ -21,7 +21,8 @@ import {
   on,
   raiseClick,
   shouldWrapFocus,
-  warnDeprecations
+  warnDeprecations,
+  portalContainsElement
 } from '../../Utilities';
 import { mergeStyles } from '@uifabric/merge-styles';
 
@@ -316,6 +317,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | undefined;
@@ -408,6 +414,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { disabled } = this.props;
 
     if (disabled) {
@@ -462,6 +473,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    * Handle the keystrokes.
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {
@@ -930,7 +946,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    return this._root.current;
+    return parentElement;
   }
 
   private _updateTabIndexes(element?: HTMLElement) {
@@ -1026,5 +1042,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   private _shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
     return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+  }
+
+  /**
+   * Returns true if the element is a descendant of the FocusZone through a React portal.
+   */
+  private _portalContainsElement(element: HTMLElement): boolean {
+    return element && !!this._root.current && portalContainsElement(element, this._root.current);
   }
 }
