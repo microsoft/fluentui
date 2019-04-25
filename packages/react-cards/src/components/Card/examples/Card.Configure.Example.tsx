@@ -8,7 +8,9 @@ import {
   ICardSectionStyles,
   ICardSectionTokens
 } from '@uifabric/react-cards';
-import { Checkbox, Icon, Slider, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+import { Checkbox, Dropdown, IDropdownOption, Icon, Slider, Stack, IStackTokens, Text, ITextStyles } from 'office-ui-fabric-react';
+
+export type FilledSectionKey = '0' | '1' | '2' | '3';
 
 export interface IExampleState {
   cardChildrenGap: number;
@@ -16,6 +18,7 @@ export interface IExampleState {
   cardChildrenPadding: number;
   cardItemHeight: number;
   debugMode: boolean;
+  filledSection: FilledSectionKey;
   firstCardSectionHeight: number;
   secondCardSectionHeight: number;
   specificChildrenGap: number;
@@ -32,6 +35,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
       cardChildrenPadding: 6,
       cardItemHeight: 30,
       debugMode: true,
+      filledSection: '0',
       firstCardSectionHeight: 115,
       secondCardSectionHeight: 115,
       specificChildrenGap: 12,
@@ -47,6 +51,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
       cardChildrenPadding,
       cardItemHeight,
       debugMode,
+      filledSection,
       firstCardSectionHeight,
       secondCardSectionHeight,
       specificChildrenGap,
@@ -95,6 +100,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
     // Token definitions
     const containerStackTokens: IStackTokens = { childrenGap: 30 };
+    const lastConfigOptionsStackTokens: IStackTokens = { childrenGap: 8 };
     const cardTokens: ICardTokens = {
       childrenGap: cardChildrenGap,
       childrenMargin: cardChildrenMargin,
@@ -154,7 +160,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
     return (
       <Stack tokens={containerStackTokens}>
-        <Stack horizontal>
+        <Stack horizontal verticalAlign="center">
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -218,7 +224,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
             </Stack>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack verticalAlign="space-between" verticalFill>
+            <Stack tokens={lastConfigOptionsStackTokens}>
               <Slider
                 label="Card children padding:"
                 min={0}
@@ -238,29 +244,45 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
                 onChange={this._onSpecificChildrenGapChange}
                 disabled={!specificChildrenGapAllowed}
               />
-              <Stack horizontal horizontalAlign="space-evenly">
+              <Stack.Item align="center">
                 <Checkbox
                   label="Allow specific children gap in card sections"
                   defaultChecked={false}
                   onChange={this._onSpecificChildrenGapAllowedChange}
                 />
-                <Checkbox label="Toggle debug mode" defaultChecked={true} onChange={this._onDebugModeChange} />
-              </Stack>
+              </Stack.Item>
+            </Stack>
+          </Stack.Item>
+          <Stack.Item>
+            <Stack horizontalAlign="space-evenly" verticalAlign="space-evenly" tokens={lastConfigOptionsStackTokens}>
+              <Checkbox label="Toggle debug mode" defaultChecked={true} onChange={this._onDebugModeChange} />
+              <Dropdown
+                selectedKey={filledSection}
+                placeholder="Select section that fills margins:"
+                label="Section that fills margins:"
+                options={[
+                  { key: '0', text: 'None' },
+                  { key: '1', text: 'First card section' },
+                  { key: '2', text: 'Card item' },
+                  { key: '3', text: 'Second card section' }
+                ]}
+                onChange={this._onFilledSectionChange}
+              />
             </Stack>
           </Stack.Item>
         </Stack>
 
         <Stack horizontal>
           <Card styles={cardStyles} tokens={cardTokens}>
-            <Card.Section styles={firstCardSectionStyles} tokens={cardSectionTokens}>
+            <Card.Section fill={filledSection === '1'} styles={firstCardSectionStyles} tokens={cardSectionTokens}>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
             </Card.Section>
-            <Card.Item styles={cardItemStyles} tokens={cardItemTokens}>
+            <Card.Item fill={filledSection === '2'} styles={cardItemStyles} tokens={cardItemTokens}>
               <Text>This is a Card Item</Text>
             </Card.Item>
-            <Card.Section styles={secondCardSectionStyles} tokens={cardSectionTokens}>
+            <Card.Section fill={filledSection === '3'} styles={secondCardSectionStyles} tokens={cardSectionTokens}>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
               <Text>This is a Card Section</Text>
@@ -270,14 +292,20 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
           {debugMode && (
             <Card root={{ props: { verticalAlign: 'center' } }} tokens={debugCardTokens}>
               <DebugCardSection
-                height={firstCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : firstCardSectionHeight}
+                height={
+                  (firstCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : firstCardSectionHeight) -
+                  (filledSection === '1' ? cardChildrenMargin : 0)
+                }
                 text="Card Section"
               />
               <DebugCardSection height={cardChildrenGap} text="Gap" />
               <DebugCardSection height={cardItemHeight + 2 * cardChildrenPadding + 4} text="Card Item" />
               <DebugCardSection height={cardChildrenGap} text="Gap" />
               <DebugCardSection
-                height={secondCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : secondCardSectionHeight}
+                height={
+                  (secondCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : secondCardSectionHeight) -
+                  (filledSection === '3' ? cardChildrenMargin : 0)
+                }
                 text="Card Section"
               />
             </Card>
@@ -308,6 +336,10 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
 
   private _onDebugModeChange = (ev: React.FormEvent<HTMLElement>, isChecked: boolean): void => {
     this.setState({ debugMode: isChecked });
+  };
+
+  private _onFilledSectionChange = (ev: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
+    this.setState({ filledSection: option.key as FilledSectionKey });
   };
 
   private _onFirstCardSectionHeightChange = (value: number): void => {
