@@ -1,6 +1,56 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+
+## 6.171.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Breadcrumb: Add in focuszone props to give more control
+- Teachingbubble: Improve target that's passed to callout
+- Add new prop 'detailsListStyles' to allow passing 'styles' prop to DetailsList. Deprecate all shimmer related props in DetailsList and DetailsListRow. Adds documentation
+
+### Patches
+
+- Deprecate implementation examples
+- Fix the picker suggestion items flashing issue.
+- Setting initial scrollbar height and width equal to 0 to prevent rendering when it's width/height changes from undefined to 0. Cascading updates caused due to notifySubscribers for sticky componentDidMount lifecycle hook. Reducing computations for sticky component by combining updates for change in sticky state (top/bottom/non-sticky) & distanceFromTop. Setting placeHolder width equal to scrollWidth of nonStickyContent.firstElementChild
+
+## 6.170.0
+Thu, 25 Apr 2019 12:33:20 GMT
+
+### Minor changes
+
+- Concentrate onhover style ui changes to label element for Checkbox
+
+### Patches
+
+- Remove componentRef property for Image component at Image.types.ts.
+- DetailsRowFields: Refactor styles to remove unnecessary re-render
+- fixing header keyboarding in CalendarMonth in OUFR
+
+## 6.169.0
+Wed, 24 Apr 2019 12:35:55 GMT
+
+### Minor changes
+
+- Delete outdated component status info
+- FocusTrapZone: Add disabled prop.
+- VerticalDivider: Make into a styled component
+
+## 6.168.0
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Minor changes
+
+- Adding a way to make to make the state of the SwatchColorPicker be fully controllable
+- Introduce vertical option for ResizeGroup
+
+### Patches
+
+- FocusZone should not set elements inside a portal (outside its DOM) as an active element
+- Lists: Remove unnecessary usages of css concat helper
 
 ## 6.167.3
 Mon, 22 Apr 2019 12:32:06 GMT

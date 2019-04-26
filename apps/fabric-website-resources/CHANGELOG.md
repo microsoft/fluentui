@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+This log was last generated on Wed, 24 Apr 2019 12:35:54 GMT and should not be manually modified.
+
+## 6.14.4
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Delete outdated component status info
 
 ## 6.14.3
 Tue, 16 Apr 2019 12:32:59 GMT

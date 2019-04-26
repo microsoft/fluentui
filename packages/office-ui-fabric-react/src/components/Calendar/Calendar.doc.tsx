@@ -3,7 +3,6 @@ import { DateRangeType, DayOfWeek } from 'office-ui-fabric-react/lib/Calendar';
 import { IDocPageProps } from '../../common/DocPage.types';
 import { CalendarButtonExample } from './examples/Calendar.Button.Example';
 import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
-import { CalendarStatus } from './Calendar.checklist';
 import { addMonths, addYears, addWeeks, addDays } from '../../utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
@@ -17,7 +16,6 @@ export const CalendarPageProps: IDocPageProps = {
   title: 'Calendar',
   componentName: 'Calendar',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Calendar',
-  componentStatus: CalendarStatus,
   examples: [
     {
       title: 'Inline Calendar',

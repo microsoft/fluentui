@@ -5,7 +5,7 @@ import { TeachingBubbleContentBase } from './TeachingBubbleContent.base';
 import { IImageProps } from '../../Image';
 import { IButtonProps } from '../../Button';
 import { IAccessiblePopupProps } from '../../common/IAccessiblePopupProps';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps, Target } from '../../Callout';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
@@ -74,9 +74,16 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   secondaryButtonProps?: IButtonProps;
 
   /**
+   * @deprecated use target instead
    * Element to anchor the TeachingBubble to.
    */
   targetElement?: HTMLElement;
+
+  /**
+   * Element, MouseEvent, Point, or querySelector string that the TeachingBubble
+   * should anchor to.
+   */
+  target?: Target;
 
   /**
    * Callback when the TeachingBubble tries to close.

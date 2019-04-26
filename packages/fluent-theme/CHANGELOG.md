@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+
+## 0.16.6
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- CommandBarButton: Update expanded and expanded hover color
+- Fix selector for ms-Button-icon in CommandBarButton
 
 ## 0.16.5
 Mon, 22 Apr 2019 12:32:06 GMT

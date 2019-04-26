@@ -14,7 +14,7 @@ const getCellText = (item: any, column: IColumn): string => {
   return value;
 };
 
-export class DetailsRowFields extends React.Component<IDetailsRowFieldsProps> {
+export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps> {
   public render(): JSX.Element {
     const {
       columns,

@@ -1,5 +1,7 @@
-const { execSync } = require('child_process');
 const { logger } = require('just-task');
+
+const componentCount = 1000;
+const iterations = 100;
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
@@ -12,12 +14,12 @@ module.exports = async function getPerfRegressions() {
 
   // get perf numbers for existing code
   await page.goto(urlForMaster);
-  const perfAveragesNow = await runAvailableScenarios(page, 1000, 100);
+  const perfAveragesNow = await runAvailableScenarios(page, componentCount, iterations);
   logger.info(perfAveragesNow);
 
   // get perf numbers for new code
   await page.goto(urlFromDeployJob);
-  const perfAveragesNew = await runAvailableScenarios(page, 1000, 100);
+  const perfAveragesNew = await runAvailableScenarios(page, componentCount, iterations);
   logger.info(perfAveragesNew);
 
   // Clean up
@@ -103,6 +105,8 @@ async function runScenarioNTimes(page, times) {
 }
 
 function createBlobFromResults(perfBlob) {
+  const scenariosFromMaster = Object.keys(perfBlob.now);
+  const scenariosFromPr = Object.keys(perfBlob.new);
   return `Component perf results:
   <table>
   <tr>
@@ -112,15 +116,16 @@ function createBlobFromResults(perfBlob) {
     <th>Target branch avg per item (ms)</th>
     <th>PR avg per item (ms)</th>
   </tr>`.concat(
-    Object.keys(perfBlob.now)
+    scenariosFromMaster
+      .concat(scenariosFromPr.filter(scn => !scenariosFromMaster.includes(scn)))
       .map(
         scenario =>
           `<tr>
             <td>${scenario}</td>
-            <td>${perfBlob.now[scenario].total}</td>
-            <td>${perfBlob.new[scenario].total}</td>
-            <td>${perfBlob.now[scenario].peritem}</td>
-            <td>${perfBlob.new[scenario].peritem}</td>
+            <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].total : '...'}</td>
+            <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].total : '...'}</td>
+            <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].peritem : '...'}</td>
+            <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].peritem : '...'}</td>
            </tr>  `
       )
       .join('\n')
