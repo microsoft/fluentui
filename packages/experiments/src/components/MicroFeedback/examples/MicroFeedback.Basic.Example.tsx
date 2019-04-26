@@ -18,8 +18,8 @@ export class MicroFeedbackBasicExample extends React.Component<{}, {}> {
       console.log('Logged vote type:', vote);
     };
 
-    const sendFollowupIndexCallback = (index: number) => {
-      console.log('Logged selection index:', index);
+    const sendFollowupIndexCallback = (vote: VoteType, index: number) => {
+      console.log('Logged selection index:', index, 'with vote:', vote);
     };
 
     const microfeedbackStyles: IMicroFeedbackStyles = {
