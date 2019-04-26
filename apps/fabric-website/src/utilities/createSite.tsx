@@ -62,20 +62,20 @@ export function createSite<TPlatforms extends string>(
   }
 
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {
-    const allPages: INavPage<TPlatforms>[] = [...pages];
-
+    let routes: JSX.Element[] = [];
     pages.forEach((page: INavPage<TPlatforms>) => {
+      routes.push(<Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />);
       if (page.platforms) {
         Object.keys(page.platforms).forEach((plat: TPlatforms) => {
-          allPages.push(...(((page.platforms && page.platforms[plat]) || []) as INavPage<TPlatforms>[]));
+          const platformPages: INavPage<TPlatforms>[] = page.platforms && page.platforms[plat];
+          routes = routes.concat(_createRoutes(platformPages || []));
         });
       }
       if (page.pages) {
-        allPages.push(...page.pages);
+        routes = routes.concat(_createRoutes(page.pages));
       }
     });
-
-    return allPages.map(page => <Route key={page.url} path={page.url} component={page.component} getComponent={page.getComponent} />);
+    return routes;
   }
 
   function _getSiteRoutes() {
