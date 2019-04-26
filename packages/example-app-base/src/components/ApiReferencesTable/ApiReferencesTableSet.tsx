@@ -43,6 +43,17 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
   public componentDidMount(): void {
     window.addEventListener('hashchange', this._onHashChange);
+
+    const hash = extractAnchorLink(window.location.hash);
+
+    if (!this.state.showSeeMore) {
+      const section = this.state.properties.filter(x => x.propertyName === hash)[0];
+      if (section) {
+        this.setState({
+          showSeeMore: true
+        });
+      }
+    }
   }
 
   public componentWillUnmount(): void {
