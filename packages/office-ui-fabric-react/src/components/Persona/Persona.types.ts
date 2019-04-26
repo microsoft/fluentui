@@ -568,6 +568,9 @@ export enum PersonaInitialsColor {
   orange30 = 41,
   orangeYellow20 = 42,
   gray30 = 43,
+  /**
+   * gray40 is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   */
   gray40 = 44,
   gray20 = 45
 }

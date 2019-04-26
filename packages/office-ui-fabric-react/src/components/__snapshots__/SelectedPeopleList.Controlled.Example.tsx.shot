@@ -380,7 +380,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       className=
                           ms-Persona-initials
                           {
-                            background-color: #A4262C;
+                            background-color: #8764B8;
                             border-radius: 50%;
                             color: #ffffff;
                             font-size: 14px;

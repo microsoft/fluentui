@@ -2,8 +2,8 @@ import { PersonaInitialsColor, IPersonaProps } from './Persona.types';
 
 /**
  * These colors are considered reserved colors and can only be set with overrides:
- * - Red is a color that often has a special meaning.
- * - Transparent is not intended to be used with typical initials due to accessibility issues,
+ * - `gray40` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+ * - `Transparent` is not intended to be used with typical initials due to accessibility issues,
  *   its primary use is for Facepile overflow buttons.
  */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
@@ -26,7 +26,6 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.orange30,
   PersonaInitialsColor.orangeYellow20,
   PersonaInitialsColor.gray30,
-  PersonaInitialsColor.gray40,
   PersonaInitialsColor.gray20
 ];
 

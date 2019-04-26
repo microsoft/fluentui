@@ -7799,7 +7799,6 @@ export enum PersonaInitialsColor {
     gray20 = 45,
     // (undocumented)
     gray30 = 43,
-    // (undocumented)
     gray40 = 44,
     // @deprecated (undocumented)
     green = 5,
