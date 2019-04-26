@@ -129,6 +129,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
       const finalTheme = createTheme({
         ...{ palette: themeAsJson }
+        // isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
       });
       this.setState({ theme: finalTheme });
     }
