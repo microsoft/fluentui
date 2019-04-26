@@ -407,7 +407,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       root: {
         selectors: {
           ':hover': {
-            background: 'transparent'
+            background: 'none'
           }
         }
       },
