@@ -31,6 +31,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     scrollablePane: PropTypes.object
   };
 
+  private _scrollLeft: number;
+  private _scrollTop: number;
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -51,7 +53,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       scrollbarWidth: 0,
       scrollbarHeight: 0
     };
-
+    this._scrollLeft = 0;
+    this._scrollTop = 0;
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
@@ -393,6 +396,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _onWindowResize = (): void => {
     const scrollbarWidth = this._getScrollbarWidth();
     const scrollbarHeight = this._getScrollbarHeight();
+    const { contentContainer } = this;
+
+    if (contentContainer) {
+      this._scrollLeft = contentContainer.scrollLeft;
+      this._scrollTop = contentContainer.scrollTop;
+    }
 
     this.setState({
       scrollbarWidth,
@@ -438,11 +447,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     const { contentContainer } = this;
 
     if (contentContainer) {
-      this._stickies.forEach((sticky: Sticky) => {
-        sticky.syncScroll(contentContainer);
-      });
-    }
+      // sync Sticky scroll if contentContainer has scrolled horizontally and Sticky component is in sticky state
+      if (this._scrollLeft !== contentContainer.scrollLeft) {
+        this._stickies.forEach((sticky: Sticky) => {
+          const { isStickyBottom, isStickyTop } = sticky.state;
+          if (isStickyBottom || isStickyTop) {
+            sticky.syncScroll(contentContainer!);
+          }
+        });
+      }
 
-    this._notifyThrottled();
+      if (this._scrollTop !== contentContainer.scrollTop) {
+        this._scrollTop = contentContainer.scrollTop;
+        this._notifyThrottled();
+      }
+    }
   };
 }
