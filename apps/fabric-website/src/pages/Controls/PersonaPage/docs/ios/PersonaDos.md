@@ -1,0 +1,1 @@
+- Choose the metadata in a PersonaListView that makes the most sense for the task at hand. In business settings, the person's role or title is most commonly seen.

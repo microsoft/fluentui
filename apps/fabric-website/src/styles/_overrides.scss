@@ -1,6 +1,5 @@
-@import '~office-ui-fabric-react/dist/sass/References';
+@import '../../node_modules/office-ui-fabric-core/dist/sass/References';
 @import './variables';
-@import './mixins';
 
 //== Fabric overrides and additions
 
@@ -39,26 +38,38 @@
     }
   }
 
-  @include high-contrast {
-    // Temporary workaround for unnecessarily-specific selector from MWF, which
-    // causes colors in Breadcrumb and other components to get stomped on.
-    // These should be removed if/when MWF pushes a change to make these
-    // selectors less specific.
-    // See https://github.com/OfficeDev/office-ui-fabric-react/issues/6468 for more details.
-    [class*='m-'] button:not(.c-select-button):not(:disabled):not(.c-sequence-indicator):hover,
-    [class*='m-'] button:not(.c-select-button):not(:disabled):not(.c-sequence-indicator):active,
-    [class*='c-'] button:not(.c-select-button):not(:disabled):not(.c-sequence-indicator):hover,
-    [class*='c-'] button:not(.c-select-button):not(:disabled):not(.c-sequence-indicator):active {
-      &.ms-Breadcrumb-itemLink {
-        color: Highlight !important;
-        background-color: $ms-color-neutralLighter !important;
-      }
-    }
-  }
-
   // @TODO: Fix this in fabric ui core, or add prop to Panel to have user specify z-index
   // Set to 600 to place over header
   .ms-Panel {
     z-index: 600;
+  }
+
+  .ExampleCard.is-codeVisible .ExampleCard-code {
+    background-color: $ms-color-gray20;
+
+    pre {
+      border: 1px solid $ms-color-gray90;
+      border-top: 0;
+    }
+  }
+
+  .ExampleCard-toggleButtons .ms-Button.ExampleCard-codeButton.is-active,
+  .ExampleCard-toggleButtons .ms-Button.ExampleCard-codeButton:hover {
+    background-color: $ms-color-gray20;
+    border-color: $ms-color-gray90;
+  }
+
+  .ExampleCard.is-codeVisible .ExampleCard-header {
+    border-color: $ms-color-gray90;
+  }
+
+  .ExampleCard-toggleButtons .ms-Button.ExampleCard-codeButton.is-active .ms-Button-label,
+  .ExampleCard-toggleButtons .ms-Button.ExampleCard-codeButton:hover .ms-Button-label {
+    color: $ms-color-gray160;
+  }
+
+  .ExampleCard-toggleButtons .ms-Button.ExampleCard-codeButton.is-active .ms-Button-icon,
+  .ExampleCard-toggleButtons .ms-Button.ExampleCard-codeButton:hover .ms-Button-icon {
+    color: $ms-color-communicationPrimary;
   }
 }

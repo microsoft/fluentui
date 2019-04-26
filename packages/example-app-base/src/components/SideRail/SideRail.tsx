@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
 import { isPageActive, jumpToAnchor, getPathMinusLastHash } from '../../utilities/index2';
-import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
-import { getStyles, sideRailClassNames } from './SideRail.styles';
+import { ISideRailProps, ISideRailLink, ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
+import { sideRailClassNames } from './SideRail.styles';
+import { getStyles } from './SideRail.styles';
 
 export interface ISideRailState {
   activeLink?: string;

@@ -1,13 +1,14 @@
 import * as React from 'react';
 
 // Props
-import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
 
+export interface ILegacyNavPage {}
+
 export interface IAppState {
   appTitle: string;
-  pages: INavPage[];
+  pages: ILegacyNavPage[];
 }
 
 // Giving the loading component a height so that the left nav loads in full screen and there is less flashing as the component page loads.

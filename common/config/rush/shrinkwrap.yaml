@@ -66,7 +66,6 @@ dependencies:
   '@types/puppeteer': 1.12.3
   '@types/react-addons-test-utils': 0.14.18
   '@types/react-custom-scrollbars': 4.0.5
-  '@types/react-syntax-highlighter': 10.1.0
   '@types/react-test-renderer': 16.0.3
   '@types/resemblejs': 1.3.28
   '@types/semver': 5.5.0
@@ -74,7 +73,6 @@ dependencies:
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
   '@types/webpack-env': 1.13.0
-  '@uifabric/fluent-theme': 0.14.2
   async: 2.6.1
   autoprefixer: 7.2.6
   awesome-typescript-loader: 3.5.0
@@ -88,7 +86,6 @@ dependencies:
   chalk: 2.4.1
   codecov: 3.1.0
   color-check: 0.0.2
-  color-functions: 1.1.0
   command-line-args: 4.0.7
   compression: 1.7.3
   concurrently: 4.1.0
@@ -107,7 +104,6 @@ dependencies:
   es6-map: 0.1.5
   es6-promise: 4.2.5
   es6-weak-map: 2.0.2
-  express: 4.16.4
   file-loader: 0.11.2
   find-free-port: 2.0.0
   fork-ts-checker-webpack-plugin: 0.4.15
@@ -134,7 +130,6 @@ dependencies:
   mustache: 2.3.2
   ngrok: 3.1.0
   node-sass: 4.10.0
-  office-ui-fabric-core: 9.6.1
   open: 0.0.5
   postcss: 6.0.23
   postcss-loader: 2.1.6
@@ -9985,6 +9980,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-o2fRSjmGC8lTwFr2bKp2h6+fFqQ+ggtDIk/St3JWF/UYud70wnos081AkGeIRdKt0EpnxlHsDJZ0ab/3+Tndrw==
+  /office-ui-fabric-core/9.6.1-fluent2:
+    dev: false
+    resolution:
+      integrity: sha512-gcBs5HHr7tjkvk/+Ls10ttb3jEllRn7SvJitX/kx/gQq8BiFMSMKr1w+oNqXlh4EgkBHWUlJVPrYUu1KW/jVaQ==
   /office-ui-fabric-react/6.165.1:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.83
@@ -15034,7 +15033,7 @@ packages:
     dev: false
     name: '@rush-temp/a11y-tests'
     resolution:
-      integrity: sha512-SkfUSYIz9Ry4Cc+4MgugXlSEzDkUwtrTGha++TJ8sHlRns1IqzHdc4nUlqmUYs2H9oojyANYdJer3jZp6jdt+w==
+      integrity: sha512-p6GnM1zhtghK1RjG76OqFFaGyMwFEkrRagld3TyIcxshZHq2FBwx4iw+rZNkio9AcuPyobnZOCni9pbJA9cG7Q==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -15044,7 +15043,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-EdOAQYiB8k1J8t+p3/ubWxTpcS8hq+LbdAZ4kvBymEvPjwEyiieZanGib2VncW/KnsRB0asW+yFFmD9hkC1kNQ==
+      integrity: sha512-JZ3DboUcY1arU0Wq1MERQwf/2/n5WSXt7/5niSrFtwgZxaJ6Y9nyifmhGZyiV+O96WuKBbCz4iA8C0dckz3gAA==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -15155,7 +15154,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-6cvvjM/vSETeivxnOyx42Z43uUlBRU44H2yNzPJDb00EG7RzG2XhdxqskP7b2IzuVIcocLU+eazNXlEfZyP/Eg==
+      integrity: sha512-7sAUc+fEIKHkBDTBf3qlBg1Dl1wBKrLOogi91pNV0D0SdWzvEIfpvL4jwf0MXh2rlLmBI22utkqmiJ/IrUsiNQ==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -15201,7 +15200,7 @@ packages:
     dev: false
     name: '@rush-temp/date-time'
     resolution:
-      integrity: sha512-aGSET+VS9YA6LWhcdD0dxxX1lpPgeYm0roxJWYvLv9t8M5nhpSvvk+lvsCi+UredTQ+8oGSSqT7zlM7DOzOCjA==
+      integrity: sha512-sBReCv/rewx2DHrozB0C+jH6v1ELKKojk1nxyRaLrWl3h1k8wsOgMPQXsV1wobUHGtVOgVEKM6eT1ug4csWh/A==
       tarball: 'file:projects/date-time.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
@@ -15224,6 +15223,7 @@ packages:
       es6-weak-map: 2.0.2
       highlight.js: 9.13.1
       markdown-to-jsx: /markdown-to-jsx/6.6.1/react@16.6.3
+      office-ui-fabric-core: 9.6.1-fluent2
       react: 16.6.3
       react-custom-scrollbars: /react-custom-scrollbars/4.2.1/react-dom@16.6.3+react@16.6.3
       react-dom: /react-dom/16.6.3/react@16.6.3
@@ -15233,7 +15233,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-jKvs2Fi/7m4X4zQQegLf1/nWCDl86QKTFrmw1v04oAXXH0KagPh5mcMoP20JLbt7heybc9KjPih26x1TaIg6bw==
+      integrity: sha512-yZ+kz8MVz3LMKXEzhPbxbmOH4EQ6/RD6t3QvjDhlXOMlXPPrL0Op89vq1/8npFgf2un2DZ7CXQA7fuccxfkTTA==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -15266,7 +15266,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-xv/1gQwI5R7IgD2T3wQHwvF/ROkYfXO7EZNtZBmc5xOkZtrYa2LkKZeE0RGB/mkwZs3VuNlENUpuAcO/NvWZ1A==
+      integrity: sha512-NEDeZnr7rIGON/B5cw9Yr+Kazed4dMTZB3Bpeag+fz/qbtpiBU9+t4sRlRWUPdKqSBYQh1tW2OyOuyYV8EMZ9Q==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -15302,7 +15302,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-EbMrhVr6hri1TBLQjUgdVRTOQ585z2MDKzgo6l6X4SXmWBzuO333Yz8dQ9spUkdTCs/1H+gSKpUKdX3oQMYFUg==
+      integrity: sha512-iyj3WoTYb6OvtAPrPmcXejn9kVDN4aTeLVToPWWdTCKojQ5ocELwnJgazVDCfFgL+ewjf/YWs0B+mGe1j/AK1A==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15314,12 +15314,14 @@ packages:
       '@types/react-dom': 16.0.5
       '@types/resemblejs': 1.3.28
       '@types/webpack-env': 1.13.0
+      color-check: 0.0.2
       color-functions: 1.1.0
       es6-promise: 4.2.5
       es6-weak-map: 2.0.2
+      express: 4.16.4
       highlight.js: 9.13.1
       json-loader: 0.5.7
-      office-ui-fabric-core: 9.6.1
+      office-ui-fabric-core: 9.6.1-fluent2
       react: 16.6.3
       react-dom: /react-dom/16.6.3/react@16.6.3
       react-highlight: 0.10.0
@@ -15329,7 +15331,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-tEjJeCZ3kqOf6wvBbHiK6VUIELF5PuEk36a015PLJSe6gmyf58VegnVqPGmKtap5wA3zEElooLqmXyD9pVblOw==
+      integrity: sha512-wfYRkSXibc0926zkk/O2+23HhoSZqfVU5H36a5H/5/Gp+mbc8orEH9V/78dO5J7e28+yGrkLoOFkg/k3/LVXOw==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15353,7 +15355,7 @@ packages:
     dev: false
     name: '@rush-temp/fluent-theme'
     resolution:
-      integrity: sha512-L3cJ0VXy5w6hhdDeaq4aykVhcxojEYLYjDl8XLnbnvFB9xzt7UhLxj6Bfb7x4HvNk7Hm5bx3YN1mTfSzXupdlw==
+      integrity: sha512-Z8Vl7aCWTczIwtKWB+YDH1U25JYpOevI6EHl7ZwGs1/PaUbC/OhppuVQVi5dj9yuR8tAzSBZRsAE99sYEobO/g==
       tarball: 'file:projects/fluent-theme.tgz'
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
@@ -15377,7 +15379,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation-scenarios'
     resolution:
-      integrity: sha512-GZaqnGPexY8jlxEor4B6W6BSZ3VoGP0TtayhQ4a0EKNKxitKbhf/iwRXeS6su7CN5c4Q9ZaH+tM9NX8BgHV/aQ==
+      integrity: sha512-RzVt695bh/CBXh8jQWgASSy06oGBZB18Jchjm22zm8GzOGGAbYH+gqK6AadnSg1hO6HL4Q3w8p5tE6VIwsUe0g==
       tarball: 'file:projects/foundation-scenarios.tgz'
     version: 0.0.0
   'file:projects/foundation.tgz':
@@ -15524,7 +15526,7 @@ packages:
     dev: false
     name: '@rush-temp/perf-test'
     resolution:
-      integrity: sha512-F4LR+JiD46wL43qAxuAhVZm8H5vUtip8KNkPY0g2gCrDQCA1Yf2Kh/MJz8vrFMUA4hHiLcfGdREDfl23RZErlA==
+      integrity: sha512-rt459USWcwJS+jzNB8sS6vYWHnCci7qLFTvTNB+99NnjpN3D+wqfW1R3odhJ6aJ82rwBMOHuRKQe/BBnXUz+lg==
       tarball: 'file:projects/perf-test.tgz'
     version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
@@ -15565,7 +15567,7 @@ packages:
     dev: false
     name: '@rush-temp/react-cards'
     resolution:
-      integrity: sha512-1ERUQDQ3HG/VzI3PtK7Ohx1o2F16FLVcIJmpY/hBh+qfPZHNeEfbdmhDoclgkmz6s5SAVLMsWgvCyJ8XYzHN3A==
+      integrity: sha512-MPmcVs7bCC4RQvhNgFHp3hm92UjoYsNaZW93mXtPDbXIJjx6i/XnNJc7RyG8W/VfIzpcM/CN92Lc3lnr6995Eg==
       tarball: 'file:projects/react-cards.tgz'
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
@@ -15585,7 +15587,7 @@ packages:
     dev: false
     name: '@rush-temp/server-rendered-app'
     resolution:
-      integrity: sha512-5Dg/KAnxBkr/g6dgUMg2qNzB9RNicF4ctoD/UFiDv3nwnvec+Danzrv471o9Hf+qj/gTuex+qPT/Zyoigrs3Mw==
+      integrity: sha512-Ju0GsJ5AdTr3OwYqxZUlvlFSzwFjTPi0f7GpFsgDZx30xAnIHuP3YmX9TjDmzEzbXw3XDu/oJbUG9UHAl+FUyw==
       tarball: 'file:projects/server-rendered-app.tgz'
     version: 0.0.0
   'file:projects/set-version.tgz':
@@ -15614,7 +15616,7 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-MP5hj8KgOcuQULSEN48erFtGEFu8ZoseOn2hTBA7T4DHyif8DyDXO7RK6x+5p8wvaLtnvdA28Nr9QaWb4DAx7Q==
+      integrity: sha512-f+d7yBkfEwDGXNP0Ut0UfbmwS38GVuuWy/HLKzW+oc3oyeN6V/QbM8jwS0+T+LT4Fln+eocE8UYaM6nlo6C2IA==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -15645,7 +15647,7 @@ packages:
     dev: false
     name: '@rush-temp/test-bundles'
     resolution:
-      integrity: sha512-jEnKOsIXDH6zx1vk9yejl0pktEymy+b4dIK3OmbYvbnWCYlkvim3/rTa3F2nU4lPIpfGAnnm/lS5zynVsV9B8w==
+      integrity: sha512-ZPToyrQd8JE0u+zyqIULaFQC3GxEJVWRQGRf455kMjgMssop8vpEHGNNArJPGl3J5H4XO7Dmar53BvGlpt0VHQ==
       tarball: 'file:projects/test-bundles.tgz'
     version: 0.0.0
   'file:projects/test-utilities.tgz':
@@ -15677,7 +15679,7 @@ packages:
     dev: false
     name: '@rush-temp/theme-samples'
     resolution:
-      integrity: sha512-F6Pivm1ED7g0DtxAN/QwKNjcTU5k5pEv4lQRNTHcw/S2Et5rv7a37JLISKwXW/XKc7vGPzcsAvfxu3J06P+1+g==
+      integrity: sha512-VCjRzOu6Mcp7nYb8azLF9aGb2JYP2g63UULYGr29b8bmkYDou3iG5lnaZZZiXVvZdOuWbCbIzCnkca8uTy/F0A==
       tarball: 'file:projects/theme-samples.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -15696,7 +15698,7 @@ packages:
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-k+vKi25irFQSdEIA/s0Zo+iYLXDCijyIxlbeXtibytJ24kcyAVkdD08fwX1rIR6Rz6Xqtzjkyi3x+hZtLolEsA==
+      integrity: sha512-tPBscLwvrhiJjV+bDxm8Bd6B8TjiSx8wSCARuBco0N7tl9DRyiSZ/5bQwJwwRqpqs0S3e+ugzjovkKVQ+8qKVg==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/tslint-rules.tgz':
@@ -15739,7 +15741,7 @@ packages:
     dev: false
     name: '@rush-temp/variants'
     resolution:
-      integrity: sha512-lcHLLw/6a2dxI6sY/9ZBZBGR++UxAAoCjIqmYXSqlBNeA4B8Mp6o9IEoYZn16sle8IH6+TBszpTIF48/9MqHMQ==
+      integrity: sha512-sTJU4kjrDDKIyzHn5QlrJRiRJ1S63TqS5iPM0VXpfEF7zK6BhY+mydfSmYAS+iV7CQoNxgFN3YDY0bXaY1kbyg==
       tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
@@ -15770,7 +15772,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-VNXv1Hi2LrmrbY0Snsz5E3ffCfPYWpwh9+pybiZhYFTtUS9yFhecj/poEft77cu8h1Y6eBudKQGZ+dW1EtPMdw==
+      integrity: sha512-GpZsNooBkNj7bc2eblM1XkCFvV6hqmndZT8RpLOnjqoTsnLPFrWFByNIJLBfJrJtrzoJfh9IaM2yJEWYN/5YYg==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -15859,7 +15861,6 @@ specifiers:
   '@types/puppeteer': 1.12.3
   '@types/react-addons-test-utils': 0.14.18
   '@types/react-custom-scrollbars': ^4.0.5
-  '@types/react-syntax-highlighter': ^10.1.0
   '@types/react-test-renderer': ^16.0.0
   '@types/resemblejs': ~1.3.28
   '@types/semver': ^5.5.0
@@ -15867,7 +15868,6 @@ specifiers:
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
   '@types/webpack-env': 1.13.0
-  '@uifabric/fluent-theme': ^0.14.0
   async: ^2.6.1
   autoprefixer: ^7.1.5
   awesome-typescript-loader: ^3.2.3
@@ -15881,7 +15881,6 @@ specifiers:
   chalk: ^2.1.0
   codecov: ^3.1.0
   color-check: 0.0.2
-  color-functions: 1.1.0
   command-line-args: ^4.0.7
   compression: ^1.7.2
   concurrently: ^4.1.0
@@ -15900,7 +15899,6 @@ specifiers:
   es6-map: ^0.1.5
   es6-promise: ^4.1.0
   es6-weak-map: ^2.0.2
-  express: ^4.16.3
   file-loader: ^0.11.1
   find-free-port: ~2.0.0
   fork-ts-checker-webpack-plugin: ^0.4.1
@@ -15927,7 +15925,6 @@ specifiers:
   mustache: ^2.3.0
   ngrok: ^3.0.1
   node-sass: ^4.5.3
-  office-ui-fabric-core: ^9.0.0
   open: ^0.0.5
   postcss: ^6.0.9
   postcss-loader: ^2.0.9

@@ -1,0 +1,1 @@
+- Alter the colors or the way a person's initials are displayed inside an avatar, otherwise they wont be consistent across platforms or apps.
