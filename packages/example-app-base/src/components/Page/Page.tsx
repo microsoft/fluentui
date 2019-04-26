@@ -197,14 +197,15 @@ export class Page extends React.Component<IPageProps, IPageState> {
     if (showSideRail) {
       let processedRelated: JSX.Element | ISideRailLink[] | undefined;
       if (typeof related === 'string') {
-        processedRelated = <Markdown>{related}</Markdown>;
+        // don't show section if the content is empty
+        processedRelated = related.trim() ? <Markdown>{related}</Markdown> : undefined;
       } else {
         processedRelated = related;
       }
 
       let processedContacts: JSX.Element | ISideRailLink[] | undefined;
       if (typeof contact === 'string') {
-        processedContacts = <Markdown>{contact}</Markdown>;
+        processedContacts = contact.trim() ? <Markdown>{contact}</Markdown> : undefined;
       } else {
         processedContacts = contact;
       }
