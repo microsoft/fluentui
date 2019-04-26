@@ -43,23 +43,3 @@ export interface IGetFocusStylesOptions {
    */
   isFocusedOnly?: boolean;
 }
-
-export interface IGetFocusOutlineOptions {
-  /**
-   * The number of pixels to inset the border.
-   * @defaultvalue 0
-   */
-  inset?: number;
-
-  /**
-   * The border width.
-   * @defaultvalue 1
-   */
-  width?: number;
-
-  /**
-   * Color of the outline.
-   * @defaultvalue theme.palette.neutralSecondary
-   */
-  color?: string;
-}

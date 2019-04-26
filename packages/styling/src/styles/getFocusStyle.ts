@@ -117,7 +117,9 @@ export function focusClear(): IRawStyle {
  * Generates a style which can be used to set a border on focus.
  *
  * @param theme - The theme object to use.
- * @param options - Options to customize the focus border.
+ * @param inset - The number of pixels to inset the border (default 0)
+ * @param width - The border width in pixels (default 1)
+ * @param color - Color of the outline (default `theme.palette.neutralSecondary`)
  * @returns The style object.
  */
 export function getFocusOutlineStyle(theme: ITheme, inset: number = 0, width: number = 1, color?: string): IRawStyle {
