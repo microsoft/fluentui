@@ -162,14 +162,14 @@ module.exports = function() {
 
   function reportFilePathErrors(pathInvalid) {
     if (pathInvalid.count) {
-      console.log(
+      console.error(
         `${chalk.red('ERROR')}: ${
           pathInvalid.count
         } import path(s) do not reference physical files. This can break AMD imports. Please ensure the following imports reference physical files:`
       );
-      console.log('-------------------------------------');
+      console.error('-------------------------------------');
       for (const filePath in pathInvalid.matches) {
-        console.log(`  ${filePath}: ${chalk.inverse(pathInvalid.matches[filePath])}`);
+        console.error(`  ${filePath}: ${chalk.inverse(pathInvalid.matches[filePath])}`);
       }
 
       return true;

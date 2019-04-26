@@ -2,10 +2,10 @@ import * as React from 'react';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IFocusZoneProps } from '../../FocusZone';
 import { IIconProps } from '../Icon/Icon.types';
-import { ICalloutProps, ICalloutContentStyleProps } from '../../Callout';
+import { ICalloutProps, ICalloutContentStyleProps, Target } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 import { IButtonStyles } from '../../Button';
-import { IRefObject, IBaseProps, IPoint, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IBaseProps, IRectangle, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
 import { IContextualMenuClassNames, IMenuItemClassNames } from './ContextualMenu.classNames';
 export { DirectionalHint } from '../../common/DirectionalHint';
@@ -13,6 +13,9 @@ import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { IContextualMenuItemProps, IContextualMenuRenderItem, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
 import { IKeytipProps } from '../../Keytip';
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export enum ContextualMenuItemType {
   Normal = 0,
   Divider = 1,
@@ -20,10 +23,14 @@ export enum ContextualMenuItemType {
   Section = 3
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenu {}
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
   /**
@@ -53,7 +60,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
    * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: Element | string | MouseEvent | IPoint | null;
+  target?: Target;
 
   /**
    * How the element should be positioned
@@ -255,6 +262,9 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   delayUpdateFocusOnHover?: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuListProps {
   items: IContextualMenuItem[];
   totalItemCount: number;
@@ -262,6 +272,9 @@ export interface IContextualMenuListProps {
   hasIcons: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuItem {
   /**
    * Optional callback to access the IContextualMenuRenderItem interface. This will get passed down to ContextualMenuItem.
@@ -489,6 +502,7 @@ export interface IContextualMenuItem {
 
 /**
  * React.Props is deprecated and we're removing it in 6.0. Usage of 'any' should go away with it.
+ * {@docCategory ContextualMenu}
  */
 export interface IContextualMenuSection extends React.ClassAttributes<any> {
   /**
@@ -512,6 +526,9 @@ export interface IContextualMenuSection extends React.ClassAttributes<any> {
   bottomDivider?: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IMenuItemStyles extends IButtonStyles {
   /**
    * Styles for a menu item that is an anchor link.
@@ -549,6 +566,9 @@ export interface IMenuItemStyles extends IButtonStyles {
   divider: IStyle;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -563,6 +583,9 @@ export interface IContextualMenuStyleProps {
   // Insert ContextualMenu style props below
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuStyles {
   /**
    * Style override for the contextual menu title.
@@ -595,6 +618,9 @@ export interface IContextualMenuStyles {
   subComponentStyles: IContextualMenuSubComponentStyles;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuSubComponentStyles {
   /** Refers to the callout that hosts the ContextualMenu options */
   callout: IStyleFunctionOrObject<ICalloutContentStyleProps, any>;

@@ -10,7 +10,7 @@ import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
 import * as PropTypes from 'prop-types';
-import * as React_2 from 'react';
+import * as React from 'react';
 
 // @public
 export function addDirectionalKeyCode(which: number): void;
@@ -31,8 +31,8 @@ export function appendFunction(parent: any, ...functions: (any)[]): () => void;
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React_2.ComponentType<TProps & {
-    asyncPlaceholder?: React_2.ReactType;
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+    asyncPlaceholder?: React.ReactType;
 }>;
 
 // @public
@@ -83,7 +83,7 @@ export class AutoScroll {
     }
 
 // @public
-export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React_2.Component<TProps, TState> {
+export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends React.Component<TProps, TState> {
     constructor(props: TProps, context?: any);
     protected readonly _async: Async;
     readonly className: string;
@@ -95,7 +95,7 @@ export class BaseComponent<TProps extends IBaseProps = {}, TState = {}> extends 
     // @deprecated (undocumented)
     static onError: (errorMessage?: string, ex?: any) => void;
     // @deprecated
-    protected _resolveRef(refName: string): (ref: React_2.ReactNode) => React_2.ReactNode;
+    protected _resolveRef(refName: string): (ref: React.ReactNode) => React.ReactNode;
     protected _skipComponentRefResolution: boolean;
     protected _updateComponentRef(currentProps: IBaseProps, newProps?: IBaseProps): void;
     protected _warnConditionallyRequiredProps(requiredProps: string[], conditionalPropName: string, condition: boolean): void;
@@ -125,12 +125,12 @@ export function createArray<T>(size: number, getItem: (index: number) => T): T[]
 export function createRef<T>(): RefObject<T>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
-// 
+//
 // @public
 export function css(...args: ICssInput[]): string;
 
 // @public (undocumented)
-export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React_2.ComponentType<P>) => any;
+export function customizable(scope: string, fields: string[], concatStyles?: boolean): <P>(ComposedComponent: React.ComponentType<P>) => any;
 
 // @public (undocumented)
 export class Customizations {
@@ -149,17 +149,17 @@ export class Customizations {
 }
 
 // @public
-export class Customizer extends React_2.Component<ICustomizerProps> {
+export class Customizer extends React.Component<ICustomizerProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    render(): React_2.ReactElement<{}>;
+    render(): React.ReactElement<{}>;
 }
 
 // @public (undocumented)
-export const CustomizerContext: React_2.Context<ICustomizerContext>;
+export const CustomizerContext: React.Context<ICustomizerContext>;
 
 // @public
 export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
@@ -168,9 +168,9 @@ export const DATA_IS_SCROLLABLE_ATTRIBUTE = "data-is-scrollable";
 export const DATA_PORTAL_ATTRIBUTE = "data-portal-element";
 
 // Warning: (ae-incompatible-release-tags) The symbol "DelayedRender" is marked as @public, but its signature references "IDelayedRenderState" which is marked as @internal
-// 
+//
 // @public
-export class DelayedRender extends React_2.Component<IDelayedRenderProps, IDelayedRenderState> {
+export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayedRenderState> {
     constructor(props: IDelayedRenderProps);
     // (undocumented)
     componentDidMount(): void;
@@ -181,7 +181,7 @@ export class DelayedRender extends React_2.Component<IDelayedRenderProps, IDelay
         delay: number;
     };
     // (undocumented)
-    render(): React_2.ReactElement<{}> | null;
+    render(): React.ReactElement<{}> | null;
     }
 
 // @public
@@ -224,9 +224,9 @@ export class EventGroup {
     }
 
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public
-export function extendComponent<T extends React.Component>(parent: T, methods: {
+export function extendComponent<T extends React_2.Component>(parent: T, methods: {
     [key in keyof T]?: T[key];
 }): void;
 
@@ -238,7 +238,7 @@ export class FabricPerformance {
     // (undocumented)
     static setPeriodicReset(): void;
     // Warning: (ae-incompatible-release-tags) The symbol "summary" is marked as @public, but its signature references "IPerfSummary" which is marked as @internal
-    // 
+    //
     // (undocumented)
     static summary: IPerfSummary;
     }
@@ -379,7 +379,7 @@ export const htmlElementProperties: string[];
 
 // @public (undocumented)
 export interface IAsAsyncOptions<TProps> {
-    load: () => Promise<React_2.ReactType<TProps>>;
+    load: () => Promise<React.ReactType<TProps>>;
     onError?: (error: Error) => void;
     onLoad?: () => void;
 }
@@ -421,15 +421,15 @@ export type IClassNames<T> = {
 };
 
 // @public
-export type IComponentAs<T> = React.ComponentType<IComponentAsProps<T>>;
+export type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
 
 // @public
 export type IComponentAsProps<T> = T & {
-    defaultRender?: React.ComponentType<T>;
+    defaultRender?: React_2.ComponentType<T>;
 };
 
 // Warning: (ae-internal-missing-underscore) The name ICssInput should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export type ICssInput = string | ISerializableObject | IDictionary | null | undefined | boolean;
 
@@ -466,7 +466,7 @@ export type ICustomizerProps = IBaseProps & Partial<{
 };
 
 // Warning: (ae-internal-missing-underscore) The name IDeclaredEventsByName should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IDeclaredEventsByName {
     // (undocumented)
@@ -474,19 +474,19 @@ export interface IDeclaredEventsByName {
 }
 
 // @public
-export interface IDelayedRenderProps extends React_2.Props<{}> {
+export interface IDelayedRenderProps extends React.Props<{}> {
     delay?: number;
 }
 
 // Warning: (ae-internal-missing-underscore) The name IDelayedRenderState should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IDelayedRenderState {
     isRendered: boolean;
 }
 
 // Warning: (ae-internal-missing-underscore) The name IDictionary should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IDictionary {
     // (undocumented)
@@ -500,7 +500,7 @@ export interface IDisposable {
 }
 
 // Warning: (ae-internal-missing-underscore) The name IEventRecord should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IEventRecord {
     // (undocumented)
@@ -520,7 +520,7 @@ export interface IEventRecord {
 }
 
 // Warning: (ae-internal-missing-underscore) The name IEventRecordList should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IEventRecordList {
     // (undocumented)
@@ -530,7 +530,7 @@ export interface IEventRecordList {
 }
 
 // Warning: (ae-internal-missing-underscore) The name IEventRecordsByName should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IEventRecordsByName {
     // (undocumented)
@@ -549,7 +549,7 @@ export interface IFitContentToBoundsOptions {
 export const imageProperties: string[];
 
 // @public
-export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React_2.Component<TProps, TState>): void;
 
 // @public
 export function initializeFocusRects(window?: Window): void;
@@ -558,7 +558,7 @@ export function initializeFocusRects(window?: Window): void;
 export const inputProperties: string[];
 
 // Warning: (ae-internal-missing-underscore) The name IPerfData should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IPerfData {
     // (undocumented)
@@ -568,7 +568,7 @@ export interface IPerfData {
 }
 
 // Warning: (ae-internal-missing-underscore) The name IPerfMeasurement should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IPerfMeasurement {
     // (undocumented)
@@ -580,7 +580,7 @@ export interface IPerfMeasurement {
 }
 
 // Warning: (ae-internal-missing-underscore) The name IPerfSummary should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface IPerfSummary {
     // (undocumented)
@@ -647,7 +647,7 @@ export function isElementTabbable(element: HTMLElement, checkTabIndex?: boolean)
 export function isElementVisible(element: HTMLElement | undefined | null): boolean;
 
 // Warning: (ae-internal-missing-underscore) The name ISerializableObject should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export interface ISerializableObject {
     // (undocumented)
@@ -846,7 +846,7 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
 export function precisionRound(value: number, precision: number, base?: number): number;
 
 // @public @deprecated (undocumented)
-export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React_2.ComponentType<TProps>;
+export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
 
 // @public
 export function raiseClick(target: Element): void;
@@ -887,19 +887,22 @@ export function resetIds(counter?: number): void;
 export function resetMemoizations(): void;
 
 // @public
-export const safeRequestAnimationFrame: (component: React_2.Component<{}, {}, any>) => (cb: Function) => void;
+export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>) => (cb: Function) => void;
 
 // @public
-export const safeSetTimeout: (component: React_2.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
+export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
 
 // @public
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
+export function setFocusVisibility(enabled: boolean, target?: Element): void;
+
+// @public
 export function setLanguage(language: string, avoidPersisting?: boolean): void;
 
 // Warning: (ae-internal-missing-underscore) The name setMemoizeWeakMap should be prefixed with an underscore because the declaration is marked as "@internal"
-// 
+//
 // @internal
 export function setMemoizeWeakMap(weakMap: any): void;
 
@@ -931,7 +934,7 @@ export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React_2.ComponentClass<TComponentProps> | React_2.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React_2.StatelessComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
 
 // @public
 export const textAreaProperties: string[];

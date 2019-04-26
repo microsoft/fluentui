@@ -1,6 +1,20 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+This log was last generated on Mon, 15 Apr 2019 12:33:42 GMT and should not be manually modified.
+
+## 6.17.0
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Minor changes
+
+- Inject nonce to style tag if specified in csp settings in FabricConfig.
+
+## 6.16.5
+Thu, 11 Apr 2019 12:37:10 GMT
+
+### Patches
+
+- Documentation: add @docCategory inline tags
 
 ## 6.16.4
 Tue, 02 Apr 2019 00:38:15 GMT

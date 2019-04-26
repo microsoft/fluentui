@@ -1,12 +1,22 @@
 package.json
-packages/*/package.json
+package-deps.json
+shrinkwrap.yml
+CHANGELOG.*
+fabric-icons-*
+version.ts
+dndSim.js
+packages/tslint-rules/tslint.json
 
-**/*.d.ts
-**/*.api.md
+*.d.ts
+*.api.md
+*.scss.ts
+_*.scss
 
-**/lib/**/*.js
-**/lib-commonjs/**/*.js
-**/dist/*.js
-**/common/changes/**/*.*
-
-**/CHANGELOG.json
+lib
+lib-amd
+lib-esm
+lib-commonjs
+dist
+node_modules
+common/changes
+common/scripts

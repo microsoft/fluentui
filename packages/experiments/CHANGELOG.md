@@ -1,6 +1,76 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 05 Apr 2019 22:09:48 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Apr 2019 12:33:02 GMT and should not be manually modified.
+
+## 6.74.2
+Fri, 19 Apr 2019 12:33:02 GMT
+
+### Patches
+
+- TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.
+
+## 6.74.1
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- Button: Removing 'undefined' from 'cursor' token definition.
+
+## 6.74.0
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Minor changes
+
+- Button: Add focus() call in IButton interface.
+
+### Patches
+
+- Button: Renaming test files because they were testing the component and not only the view and changing menu in examples and tests from render functions to menuProps.
+- Button: Adding overview, dos and don'ts documentation
+- Run prettier on all files
+
+## 6.73.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- Button: Creating CommandBarButton, IconButton and MessageBarButton variants.
+
+### Patches
+
+- Sidebar: update example card styling approach
+
+## 6.72.0
+Fri, 12 Apr 2019 12:34:16 GMT
+
+### Minor changes
+
+-  Button: Creating CompoundButton and BaseButton variants.
+
+### Patches
+
+- Button: Styling fixes to issues found while working on Multiline Ribbon buttons.
+
+## 6.71.0
+Wed, 10 Apr 2019 12:33:17 GMT
+
+### Minor changes
+
+- Button: Creating ActionButton variant and cleaning styling.
+
+## 6.70.0
+Tue, 09 Apr 2019 12:35:20 GMT
+
+### Minor changes
+
+- Button: Adding DefaultButton and PrimaryButton variants.
+
+## 6.69.0
+Mon, 08 Apr 2019 12:37:15 GMT
+
+### Minor changes
+
+- Button: Supporting high contrast in Button, MenuButton and SplitButton.
 
 ## 6.68.0
 Fri, 05 Apr 2019 22:09:48 GMT

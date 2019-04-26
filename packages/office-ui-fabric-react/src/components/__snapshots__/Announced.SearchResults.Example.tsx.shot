@@ -86,7 +86,6 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__0"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"

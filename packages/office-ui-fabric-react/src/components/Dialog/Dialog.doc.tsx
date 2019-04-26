@@ -5,7 +5,6 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { DialogLargeHeaderExample } from './examples/Dialog.LargeHeader.Example';
 import { DialogBlockingExample } from './examples/Dialog.Blocking.Example';
 import { DialogTopOffsetFixedExample } from './examples/Dialog.TopOffsetFixed.Example';
-import { DialogStatus } from './Dialog.checklist';
 import { DialogModelessExample } from './examples/Dialog.Modeless.Example';
 
 const DialogBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Dialog/examples/Dialog.Basic.Example.tsx') as string;
@@ -23,7 +22,6 @@ export const DialogPageProps: IDocPageProps = {
   title: 'Dialog',
   componentName: 'Dialog',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Dialog',
-  componentStatus: DialogStatus,
   examples: [
     {
       title: 'Default Dialog',

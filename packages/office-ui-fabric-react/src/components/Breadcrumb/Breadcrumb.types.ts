@@ -3,7 +3,11 @@ import { IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
+import { IFocusZoneProps } from '../../FocusZone';
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumb {
   /**
    * Sets focus to the first breadcrumb link.
@@ -11,6 +15,9 @@ export interface IBreadcrumb {
   focus(): void;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the IBreadcrumb interface. Use this instead of ref for accessing
@@ -66,8 +73,16 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 
   styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
   theme?: ITheme;
+
+  /**
+   * Focuszone props that will get passed through to the root focus zone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbItem {
   /**
    * Text to display to the user for the breadcrumb
@@ -96,6 +111,9 @@ export interface IBreadcrumbItem {
   isCurrentItem?: boolean;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IDividerAsProps extends IIconProps {
   /**
    * Optional breadcrumb item corresponds to left of the divider to be passed for custom rendering.
@@ -104,10 +122,17 @@ export interface IDividerAsProps extends IIconProps {
   item?: IBreadcrumbItem;
 }
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbStyleProps {
   className?: string;
   theme: ITheme;
 }
+
+/**
+ * {@docCategory Breadcrumb}
+ */
 export interface IBreadcrumbStyles {
   root: IStyle;
   list: IStyle;

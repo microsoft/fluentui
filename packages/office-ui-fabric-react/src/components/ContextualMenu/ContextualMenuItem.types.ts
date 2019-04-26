@@ -4,6 +4,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonStyles } from '../../Button';
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuRenderItem {
   /**
    * Function to open this item's subMenu, if present.
@@ -21,6 +24,9 @@ export interface IContextualMenuRenderItem {
   dismissMenu: (dismissAll?: boolean) => void;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextualMenuItemProps> {
   /**
    * Optional callback to access the IContextualMenuRenderItem interface. Use this instead of ref for accessing
@@ -92,6 +98,9 @@ export interface IContextualMenuItemProps extends React.HTMLAttributes<IContextu
   getSubmenuTarget?: () => HTMLElement | undefined;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuItemStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -154,6 +163,9 @@ export interface IContextualMenuItemStyleProps {
   primaryDisabled?: boolean;
 }
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export interface IContextualMenuItemStyles extends IButtonStyles {
   /**
    * Style for the root element.

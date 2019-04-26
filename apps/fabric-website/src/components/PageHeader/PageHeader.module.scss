@@ -44,7 +44,7 @@
 
     &.isAttached {
       .content {
-        box-shadow: 0 10px 30px -10px rgba(0,0,0,.2);
+        box-shadow: 0 10px 30px -10px rgba(0, 0, 0, 0.2);
         max-width: $App-maximumWidth - $Nav-width;
         position: fixed;
         width: calc(100% - #{$Nav-width} - #{$App-padding-left-lg} - #{$App-padding-right-lg});

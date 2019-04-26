@@ -2,6 +2,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IColorCellProps, IColorPickerGridCellStyleProps, IColorPickerGridCellStyles } from './ColorPickerGridCell.types';
 
+/**
+ * {@docCategory SwatchColorPicker}
+ */
 export interface ISwatchColorPickerProps {
   /**
    * the number of columns for the swatch color picker
@@ -32,6 +35,17 @@ export interface ISwatchColorPickerProps {
    * The color cells that will be made available to the user
    */
   colorCells: IColorCellProps[];
+
+  /**
+   * Indicates whether the SwatchColorPicker is fully controlled.
+   * When true, the component will not set its internal state to track the selected color.
+   * Instead, the parent component will be responsible for handling state in the callbacks like
+   * onColorChanged.
+   *
+   * NOTE: This property is a temporary workaround to force the component to be fully controllable
+   * without breaking existing behavior
+   */
+  isControlled?: boolean;
 
   /**
    * Callback issued when the user changes the color.
@@ -135,6 +149,7 @@ export interface ISwatchColorPickerProps {
 
 /**
  * Properties required to build the styles for the color picker component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerStyleProps {
   /**
@@ -155,6 +170,7 @@ export interface ISwatchColorPickerStyleProps {
 
 /**
  * Styles for the Color Picker Component.
+ * {@docCategory SwatchColorPicker}
  */
 export interface ISwatchColorPickerStyles {
   /**

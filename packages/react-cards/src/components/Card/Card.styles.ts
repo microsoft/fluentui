@@ -10,6 +10,7 @@ const GlobalClassNames = {
 const baseTokens: ICardComponent['tokens'] = {
   boxShadow: Depths.depth4,
   childrenGap: 12,
+  cursor: 'default',
   height: 'inherit',
   highContrastBoxShadow: '0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight',
   minHeight: '348px',
@@ -26,6 +27,7 @@ const compactTokens: ICardComponent['tokens'] = {
 
 const clickableTokens: ICardComponent['tokens'] = {
   boxShadowHovered: Depths.depth8,
+  cursor: 'pointer',
   highContrastBoxShadowHovered: '0 3.2px 7.2px 0 Highlight, 0 0.6px 1.8px 0 Highlight'
 };
 
@@ -44,6 +46,7 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
       {
         borderRadius: '2px',
         boxShadow: tokens.boxShadow,
+        cursor: tokens.cursor,
         height: tokens.height,
         padding: tokens.padding,
         width: tokens.width,

@@ -6,6 +6,7 @@
 
 import { concatStyleSets } from '@uifabric/merge-styles';
 import { fontFace } from '@uifabric/merge-styles';
+import { ICSPSettings } from '@uifabric/merge-styles';
 import { ICustomizerContext } from '@uifabric/utilities';
 import { IFontFace } from '@uifabric/merge-styles';
 import { IFontWeight } from '@uifabric/merge-styles';
@@ -255,6 +256,8 @@ export namespace IconFontSizes {
     const // (undocumented)
     large: string;
 }
+
+export { ICSPSettings }
 
 // Warning: (ae-internal-missing-underscore) The name IEffects should be prefixed with an underscore because the declaration is marked as "@internal"
 // 
@@ -635,7 +638,7 @@ export function unregisterIcons(iconNames: string[]): void;
 export namespace ZIndexes {
     const // (undocumented)
     Nav: number;
-    const // (undocumented)
+    const // @deprecated (undocumented)
     ScrollablePane: number;
     const // (undocumented)
     FocusStyle: number;
@@ -650,9 +653,9 @@ export namespace ZIndexes {
 
 // Warnings were encountered during analysis:
 // 
-// lib/interfaces/ITheme.d.ts:58:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:59:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
-// lib/interfaces/ITheme.d.ts:60:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:69:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
+// lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal
 
 // (No @packageDocumentation comment for this package)
 

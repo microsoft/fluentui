@@ -1,6 +1,9 @@
 import * as React from 'react';
 import { IRefObject } from '../../Utilities';
 
+/**
+ * {@docCategory FocusTrapZone}
+ */
 export interface IFocusTrapZone {
   /**
    * Sets focus to a descendant in the Trap Zone.
@@ -9,6 +12,9 @@ export interface IFocusTrapZone {
   focus: () => void;
 }
 
+/**
+ * {@docCategory FocusTrapZone}
+ */
 export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * Optional callback to access the IFocusTrapZone interface. Use this instead of ref for accessing
@@ -17,8 +23,14 @@ export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement
   componentRef?: IRefObject<IFocusTrapZone>;
 
   /**
+   * Disables the FocusTrapZone's focus trapping behavior when set.
+   * @defaultvalue false
+   */
+  disabled?: boolean;
+
+  /**
    * Sets the HTMLElement to focus on when exiting the FocusTrapZone.
-   * @defaultvalue The element.target that triggered the FTZ.
+   * @defaultvalue element.target The element.target that triggered the FTZ.
    */
   elementToFocusOnDismiss?: HTMLElement;
 

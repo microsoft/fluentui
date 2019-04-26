@@ -36,7 +36,12 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   splitDivider?: IHTMLSlot;
 }
 
-export interface ISplitButton {}
+export interface ISplitButton {
+  /**
+   * Sets focus to the first focus stop of the SplitButton.
+   */
+  focus: () => void;
+}
 
 export interface ISplitButtonProps
   extends ISplitButtonSlots,
@@ -50,7 +55,7 @@ export interface ISplitButtonProps
   primaryActionDisabled?: boolean;
 }
 
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
+export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
   /**
    * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
    */

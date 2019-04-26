@@ -172,7 +172,7 @@ export class ThemeGeneratorPage extends BaseComponent<{}, IThemeGeneratorPageSta
         <br />
 
         <h2 id="Samples">Samples</h2>
-        <div style={{ display: 'flex', flexDirection: 'row' }}>
+        <div style={{ display: 'flex', flexDirection: 'row', flexWrap: 'wrap' }}>
           <div className="ms-themer-example">
             <TextFieldBasicExample />
           </div>

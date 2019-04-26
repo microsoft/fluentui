@@ -3,7 +3,7 @@ import { HighContrastSelector } from '../../../Styling';
 
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
-    contentPadding: '8px 10px',
+    contentPadding: '0px 10px',
     minWidth: 0
   };
 };

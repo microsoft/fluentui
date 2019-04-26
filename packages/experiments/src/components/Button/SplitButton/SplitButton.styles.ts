@@ -6,7 +6,8 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
   return {
     backgroundColor: semanticColors.buttonBackground,
     color: semanticColors.buttonText,
-    contentPadding: '8px 10px'
+    contentPadding: '0px 10px',
+    minWidth: 0
   };
 };
 
@@ -43,6 +44,8 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     ],
     button: {
+      minWidth: tokens.minWidth,
+
       selectors: {
         '> *': {
           padding: tokens.contentPadding
@@ -50,11 +53,10 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     },
     splitDivider: {
-      borderRight: '1px solid',
-      borderColor: tokens.color,
+      backgroundColor: tokens.color,
       boxSizing: 'border-box',
-      height: 'calc(100% - 16px)',
-      margin: '8px 0px',
+      height: 'calc(100% - 14px)',
+      margin: '7px 0px',
       width: 1,
 
       selectors: {
