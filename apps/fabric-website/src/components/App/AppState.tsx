@@ -178,7 +178,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'ComboBox',
-              url: '#/components/ComboBox',
+              url: '#/components/combobox',
               isFilterable: true,
               component: () => <LoadingComponent title="ComboBox" />,
               getComponent: cb =>
@@ -350,7 +350,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'Calendar',
-              url: '#/components/Calendar',
+              url: '#/components/calendar',
               isFilterable: true,
               component: () => <LoadingComponent title="Calendar" />,
               getComponent: cb =>
