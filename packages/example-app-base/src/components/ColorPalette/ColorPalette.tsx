@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { css, Icon, TooltipHost, FocusZone, IProcessedStyleSet, classNamesFunction } from 'office-ui-fabric-react';
+import { css, Icon, TooltipHost, FocusZone, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
 import * as colorCheck from 'color-check';
-import { IColorPaletteProps, IColor, IColorCode } from './ColorPalette.types';
-import { IColorPaletteStyles, getStyles, IColorPaletteStyleProps } from './ColorPalette.styles';
+import { IColorPaletteProps, IColor, IColorCode, IColorPaletteStyleProps, IColorPaletteStyles } from './ColorPalette.types';
+import { getStyles } from './ColorPalette.styles';
 
 const getClassNames = classNamesFunction<IColorPaletteStyleProps, IColorPaletteStyles>();
 
@@ -10,7 +10,7 @@ export interface IColorPaletteState {
   selectedColor?: IColor;
 }
 
-export class ColorPalette extends React.Component<IColorPaletteProps, IColorPaletteState> {
+class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPaletteState> {
   public readonly state = {
     selectedColor: this.props.colors[0]
   };
@@ -21,17 +21,17 @@ export class ColorPalette extends React.Component<IColorPaletteProps, IColorPale
     this._selectColor(this.props.colors[0]);
   }
 
-  public componentWillReceiveProps(nextProps: IColorPaletteProps): void {
-    if (JSON.stringify(this.props.colors) !== JSON.stringify(nextProps.colors)) {
-      this._selectColor(nextProps.colors[0]);
+  public componentDidUpdate(prevProps: IColorPaletteProps): void {
+    if (this.props !== prevProps && JSON.stringify(this.props.colors) !== JSON.stringify(prevProps.colors)) {
+      this._selectColor(this.props.colors[0]);
     }
   }
 
   public render(): JSX.Element {
-    const { colors, isCondensed, theme } = this.props;
+    const { colors, isCondensed, styles, theme } = this.props;
     const { selectedColor } = this.state;
 
-    this._classNames = getClassNames(getStyles, { isCondensed, theme: theme! });
+    this._classNames = getClassNames(styles, { isCondensed, theme: theme! });
 
     return (
       <div className={this._classNames.root}>
@@ -145,3 +145,9 @@ export class ColorPalette extends React.Component<IColorPaletteProps, IColorPale
     this.props.onColorSelected && this.props.onColorSelected(color);
   };
 }
+
+export const ColorPalette: React.StatelessComponent<IColorPaletteProps> = styled<
+  IColorPaletteProps,
+  IColorPaletteStyleProps,
+  IColorPaletteStyles
+>(ColorPaletteBase, getStyles, undefined, { scope: 'ColorPalette' });

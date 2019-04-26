@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { mergeStyles } from 'office-ui-fabric-react';
+import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, IRawStyle, styled, classNamesFunction } from 'office-ui-fabric-react';
 import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
 
 // tslint:disable no-any
@@ -36,21 +36,39 @@ style.hljs = {
   overflowX: 'auto'
 };
 
-export const rootClass = mergeStyles({
-  overflowY: 'auto',
-  maxHeight: '400px',
-  display: 'flex',
-  margin: '12px 0',
+export interface ICodeSnippetProps {
+  className?: string;
+  language?: string;
+  styles?: IStyleFunctionOrObject<ICodeSnippetStyleProps, ICodeSnippetStyles>;
+  theme?: ITheme;
+}
 
-  selectors: {
-    code: {
-      fontFamily: 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace',
-      lineHeight: '1.6'
+export type ICodeSnippetStyleProps = {};
+
+export interface ICodeSnippetStyles {
+  root: IStyle;
+}
+
+const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = props => {
+  return {
+    root: {
+      overflowY: 'auto',
+      maxHeight: '400px',
+      display: 'flex',
+      margin: '12px 0',
+
+      selectors: {
+        code: {
+          fontFamily: 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace',
+          lineHeight: '1.6'
+        }
+      }
     }
-  }
-});
+  };
+};
 
-export const lineNumberStyle = {
+// SyntaxHighlighter needs a separate style object rather than a class name for line numbers
+const lineNumberStyle: IRawStyle = {
   textAlign: 'right',
   color: NeutralColors.gray120,
   width: '3em',
@@ -60,17 +78,21 @@ export const lineNumberStyle = {
   lineHeight: 'inherit'
 };
 
-export interface ICodeSnippetProps {
-  className?: string;
-  language?: string;
-}
+const getClassNames = classNamesFunction<ICodeSnippetStyleProps, ICodeSnippetStyles>();
 
-export class CodeSnippet extends React.Component<ICodeSnippetProps> {
-  public render(): JSX.Element {
-    return (
-      <SyntaxHighlighter lineNumberStyle={lineNumberStyle} language={this.props.language} className={rootClass} style={style}>
-        {this.props.children}
-      </SyntaxHighlighter>
-    );
-  }
-}
+const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
+  const classNames = getClassNames(props.styles, {});
+  return (
+    <SyntaxHighlighter lineNumberStyle={lineNumberStyle} language={props.language} className={classNames.root} style={style}>
+      {props.children}
+    </SyntaxHighlighter>
+  );
+};
+
+export const CodeSnippet: React.StatelessComponent<ICodeSnippetProps> = styled<
+  ICodeSnippetProps,
+  ICodeSnippetStyleProps,
+  ICodeSnippetStyles
+>(CodeSnippetBase, getStyles, undefined, {
+  scope: 'CodeSnippet'
+});
