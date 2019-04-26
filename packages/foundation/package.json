@@ -20,6 +20,7 @@
     "code-style": "node ../../scripts/just.js code-style",
     "start": "node ../../scripts/just.js dev",
     "start-test": "node ../../scripts/just.js jest-watch",
+    "update-api": "node ../../scripts/update-api.js",
     "update-snapshots": "node ../../scripts/just.js jest -u"
   },
   "devDependencies": {
@@ -46,9 +47,6 @@
     "@uifabric/utilities": "^6.36.0",
     "tslib": "^1.7.1"
   },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ],
   "peerDependencies": {
     "react": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0",
     "react-dom": "^0.14.9 || ^15.0.1-0 || ^16.0.0-0"

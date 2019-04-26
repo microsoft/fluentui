@@ -9020,7 +9020,6 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 }
 
 
-export * from "@uifabric/foundation";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
