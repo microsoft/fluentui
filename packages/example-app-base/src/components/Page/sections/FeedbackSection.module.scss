@@ -1,0 +1,16 @@
+@import '../Page.module';
+
+.feedbackSection {
+  .feedbackList ul {
+    margin-bottom: 10px;
+    @include ms-padding-left(0);
+
+    > *:first-child {
+      @include ms-padding-left(0);
+
+      &:before {
+        @include ms-left(0);
+      }
+    }
+  }
+}

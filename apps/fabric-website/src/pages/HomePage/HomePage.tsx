@@ -1,218 +1,215 @@
 import * as React from 'react';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
-import * as stylesImport from './HomePage.module.scss';
-import { getParameterByName, updateUrlParameter } from '../../utilities/location';
-import { ActionButton } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
-const styles: any = stylesImport;
+import { Async, css, registerIcons, Icon, Image, Link, PrimaryButton, TooltipHost } from 'office-ui-fabric-react';
+import { trackEvent, EventNames, getSiteArea, Badge } from '@uifabric/example-app-base/lib/index2';
+import { AndroidLogo, AppleLogo } from '../../utilities/index';
 
-const corePackageData = require('office-ui-fabric-core/package.json');
-const reactPackageData = require('office-ui-fabric-react/package.json');
+import * as styles from './HomePage.module.scss';
 
-// Update as new Fabric versions are released
-const fabricVersionOptions: IContextualMenuItem[] = [
-  {
-    key: 'A',
-    text: 'Fabric 6',
-    data: '6'
-  },
-  {
-    key: 'B',
-    text: 'Fabric 5',
-    data: '5'
+registerIcons({
+  icons: {
+    'AndroidLogo-home': AndroidLogo({ iconSize: 22 }),
+    'AppleLogo-home': AppleLogo({ iconSize: 22 })
   }
+});
+
+const iconStyles = {
+  root: {
+    color: '#979593',
+    fontSize: '20px',
+    height: '20px'
+  }
+};
+
+/**
+ * List of App/Brand icon names that use UI Fabric.
+ */
+const fabricUseIcons = [
+  { icon: 'OutlookLogoInverse', title: 'Outlook' },
+  { icon: 'OneDriveLogo', title: 'OneDrive' },
+  { icon: 'WordLogoInverse', title: 'Word' },
+  { icon: 'ExcelLogoInverse', title: 'Excel' },
+  { icon: 'PowerPointLogoInverse', title: 'PowerPoint' },
+  { icon: 'OneNoteLogoInverse', title: 'OneNote' },
+  { icon: 'SharePointLogoInverse', title: 'SharePoint' },
+  { icon: 'TeamsLogoInverse', title: 'Teams' },
+  { icon: 'YammerLogo', title: 'Yammer' },
+  { icon: 'DelveLogoInverse', title: 'Delve' },
+  { icon: 'ProjectLogoInverse', title: 'Project' },
+  { icon: 'PlannerLogo', title: 'Planner' },
+  { icon: 'MicrosoftFlowLogo', title: 'Flow' },
+  { icon: 'PowerAppsLogo', title: 'PowerApps' },
+  { icon: 'AzureLogo', title: 'Azure' }
 ];
 
-export interface IHomepageState {
-  fabricVer: string;
+export interface IHomePageProps {}
+
+export interface IHomePageState {
+  isMounted: boolean;
+  isMountedOffset: boolean;
 }
 
-export class HomePage extends React.Component<any, IHomepageState> {
-  constructor(props: {}) {
-    super(props);
-    const version: string = getParameterByName('fabricVer') || window.sessionStorage.getItem('fabricVer') || fabricVersionOptions[0].data;
+export class HomePage extends React.Component<IHomePageProps, IHomePageState> {
+  public readonly state: IHomePageState = {
+    isMounted: false,
+    isMountedOffset: false
+  };
 
-    this.state = {
-      fabricVer: version
-    };
+  private _async = new Async();
+
+  public componentDidMount() {
+    this._async.setTimeout(() => {
+      this.setState({ isMounted: true }, () => {
+        this._async.setTimeout(() => {
+          this.setState({ isMountedOffset: true });
+        }, 10);
+      });
+    }, 10);
   }
 
-  public componentDidUpdate(prevProps: any, prevState: IHomepageState): void {
-    if (prevState.fabricVer !== this.state.fabricVer) {
-      window.location.href = updateUrlParameter('fabricVer', this.state.fabricVer);
-    }
+  public componentWillUnmount() {
+    this._async.dispose();
   }
 
-  public render(): JSX.Element {
+  // tslint:disable jsx-no-lambda
+  public render() {
+    const { isMountedOffset } = this.state;
+
     return (
-      <div>
-        <div className={styles.hero}>
-          <h1 className={styles.title}>Office UI Fabric</h1>
-          <span className={styles.tagline}>
-            The official front-end framework for building experiences that fit seamlessly into Office and Office 365.
-          </span>
-          <a href="#/get-started" className={css(styles.button, styles.primaryButton)}>
-            Get started
-          </a>
-          <span className={styles.version}>
-            Fabric Core {corePackageData.version} and&nbsp;
-            <ActionButton
-              className={styles.versionLink}
-              allowDisabledFocus={true}
-              menuProps={{
-                gapSpace: 3,
-                beakWidth: 8,
-                isBeakVisible: true,
-                shouldFocusOnMount: true,
-                items: fabricVersionOptions,
-                directionalHint: DirectionalHint.bottomAutoEdge,
-                onItemClick: this._onVersionMenuClick,
-                styles: {
-                  root: {
-                    minWidth: '100px'
-                  }
-                }
-              }}
-            >
-              <span className={styles.versionText}>Fabric React {reactPackageData.version}</span>
-            </ActionButton>
-          </span>
-        </div>
-
-        <div className={styles.flavors}>
-          <div className={styles.flavor}>
-            <img
-              src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/logo-react.svg'}
-              width="72"
-              height="64"
-              alt="React logo"
-            />
-            <span className={styles.flavorTitle}>Built with React</span>
-            <span className={styles.flavorDescription}>Fabric&rsquo;s robust, up-to-date components are built with React</span>
-            <a href="#/components" className={styles.button}>
-              See components
-            </a>
-          </div>
-        </div>
-
-        <div className={css(styles.product, styles.productSharepoint)}>
-          <div>
-            <span className={styles.productTitle}>SharePoint</span>
-            <span className={styles.productDescription}>
-              New SharePoint experiences are built with Fabric and the SharePoint Framework comes with it baked in to make things simple.{' '}
-              <a
-                className={styles.homePageLink}
-                href="https://dev.office.com/sharepoint/docs/spfx/web-parts/get-started/use-fabric-react-components"
+      <div className={css('homePage-wrapper', isMountedOffset && styles.isMountedOffset)}>
+        <section className={css(styles.homePageSection, styles.heroSection)}>
+          <div className={css(styles.sectionContent)}>
+            <div className={css(styles.col, styles.oneHalf)}>
+              <h2 className={css(styles.sectionTitle)}>Create amazing experiences</h2>
+              <p>
+                Together, we’ve created Microsoft UI Fabric, a collection of UX frameworks you can use to build experiences that fit
+                seamlessly into a broad range of Microsoft products.
+              </p>
+              <p>Connect with the cross-platform principles, experiences, styles and controls you need to do amazing things. </p>
+              <PrimaryButton
+                href="#/about"
+                title="Learn more"
+                className={styles.getStarted}
+                onClick={ev => this._onInternalLinkClick(ev, '#/about')}
               >
                 Learn more
-              </a>
-            </span>
+              </PrimaryButton>
+            </div>
+            <div className={css(styles.col, styles.oneHalf, styles.illustrationWrapper)}>
+              <Image
+                src="https://uifabric.azurewebsites.net/media/images/home/fabric-home-v2.svg"
+                className={styles.illustration}
+                alt="UI Fabric illustrated"
+              />
+            </div>
           </div>
-          <img
-            className={styles.productImage}
-            src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-sharepoint.svg'}
-            width="496"
-            height="300"
-            alt="Illustrated representation of the sharepoint page."
-          />
-        </div>
-
-        <div className={css(styles.product, styles.productAddins)}>
-          <div>
-            <span className={styles.productTitle}>Office Add-ins</span>
-            <span className={styles.productDescription}>
-              Fabric is the official UX design framework for Office Add-ins. With Fabric, add-ins blend seamlessly with Word, Excel,
-              PowerPoint, and Outlook.{' '}
-              <a className={styles.homePageLink} href="http://dev.office.com/docs/add-ins/design/add-in-design">
-                Learn more
-              </a>
-            </span>
+        </section>
+        <section className={css(styles.homePageSection, styles.platformsSection)}>
+          <div className={css(styles.sectionContent)}>
+            <div className={css(styles.col, styles.oneHalf)}>
+              <div className={styles.invertedContent}>
+                <h2 className={css(styles.sectionTitle)}>Build across platforms</h2>
+                <p>
+                  We're broadening our guidance to include more platforms and create an open source system, making it possible for us all to
+                  evolve together.
+                </p>
+              </div>
+            </div>
+            <div className={css(styles.col, styles.oneHalf, styles.cardWrapper)}>
+              <div className={styles.card}>
+                <header className={styles.cardHeader}>
+                  <h3>Web</h3>
+                  <Icon iconName="TVMonitor" styles={iconStyles} className={styles.cardIcon} title="Web icon" />
+                </header>
+                <ul className={styles.cardList}>
+                  <li>
+                    <Link href="#/styles/web" onClick={ev => this._onInternalLinkClick(ev, '#/styles/web')}>
+                      Styles
+                    </Link>
+                  </li>
+                  <li>
+                    <Link href="#/controls/web" onClick={ev => this._onInternalLinkClick(ev, '#/controls/web')}>
+                      Controls
+                    </Link>
+                  </li>
+                </ul>
+              </div>
+              <div className={styles.card}>
+                <header className={styles.cardHeader}>
+                  <ul className={styles.iconList}>
+                    <li className={styles.iconListIcon}>
+                      <Icon iconName="AppleLogo-home" className={styles.customIcon} ariaLabel="Apple logo" />
+                    </li>
+                    <li className={styles.iconListIcon}>
+                      <Icon iconName="AndroidLogo-home" className={styles.customIcon} ariaLabel="Android logo" />
+                    </li>
+                  </ul>
+                  <Badge className={styles.comingSoon}>Coming soon</Badge>
+                </header>
+                <p>iOS and Android are in development.</p>
+              </div>
+            </div>
           </div>
-          <img
-            className={styles.productImage}
-            src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-addins.svg'}
-            width="496"
-            height="300"
-            alt="Illustrated representation of an office add-in."
-          />
-        </div>
-
-        <div className={styles.featured}>
-          <span className={styles.featuredTitle}>Highlights</span>
-          <span className={styles.featuredDescription}>
-            Fabric offers a variety of UI elements to help you create an experience that delights users and complements Office 365.
-          </span>
-          <ul className={styles.featureList} aria-label="List of highlighted features">
-            <li>
-              <a href="#/styles/icons">
-                <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-icons.svg'}
-                  width="240"
-                  height="112"
-                  alt='Illustrations of <icons className=""></icons>'
-                />
-                <span>Icons</span>
-              </a>
-            </li>
-            <li>
-              <a href="#/styles/typography">
-                <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-typography.svg'}
-                  width="240"
-                  height="112"
-                  alt="Illustration of different font weights."
-                />
-                <span>Typography</span>
-              </a>
-            </li>
-            <li>
-              <a href="#/styles/brand-icons">
-                <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-brand.svg'}
-                  width="240"
-                  height="112"
-                  alt="Word, Excel, OneNote, PowerPoint icons."
-                />
-                <span>Brand icons</span>
-              </a>
-            </li>
-            <li>
-              <a href="#/components/button">
-                <img
-                  src={'https://static2.sharepointonline.com/files/fabric/fabric-website/images/home-highlights-buttons.svg'}
-                  width="240"
-                  height="112"
-                  alt="Illustrated representation of buttons."
-                />
-                <span>Buttons</span>
-              </a>
-            </li>
-          </ul>
-          <span className={styles.trademark}>
-            All trademarks are the property of their respective owners. Usage of Fabric assets, such as fonts and icons, is subject to the{' '}
-            <a
-              className={styles.homePageLink}
-              href="https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf"
-            >
-              assets license agreement
-            </a>
-            .
-          </span>
-          <span className={styles.featuredTitle}>Design Toolkit</span>
-          <span className={styles.featuredDescription} id={styles.toolkitDescription}>
-            The Fabric design toolkit is built with Adobe XD and provides controls and layout templates that enable you to create seamless,
-            beautiful Office experiences.{' '}
-            <a className={styles.homePageLink} href="#/resources">
-              Learn more
-            </a>
-          </span>
-        </div>
+        </section>
+        <section className={css(styles.homePageSection, styles.resourcesSection)}>
+          <div className={css(styles.sectionContent)}>
+            <div className={css(styles.col, styles.oneHalf)}>
+              <h2 className={css(styles.sectionTitle)}>Discover resources</h2>
+              <p>Find design, inclusive and developer onboarding resources, and learn about how to become a contributor.</p>
+              <PrimaryButton href="#/resources" title="UI Fabric resources" className={styles.getStarted} onClick={this._onCTAClick}>
+                Get started
+              </PrimaryButton>
+            </div>
+            <div className={css(styles.col, styles.oneHalf, styles.illustrationWrapper)}>
+              <Image
+                src="https://uifabric.azurewebsites.net/media/images/home/resources.svg"
+                className={styles.illustration}
+                alt="UI Fabric resources illustration"
+              />
+            </div>
+          </div>
+        </section>
+        <section className={css(styles.homePageSection, styles.usageSection)}>
+          <div className={css(styles.sectionContent)}>
+            <div className={css(styles.col, styles.oneHalf)}>
+              <div className={css(styles.invertedContent)}>
+                <h2 className={css(styles.sectionTitle)}>Who in Microsoft uses Fabric?</h2>
+                <p>From Word, PowerPoint and Excel to PowerBI, many teams in Microsoft utilize the functionality of Fabric.</p>
+              </div>
+            </div>
+            <div className={css(styles.col, styles.oneHalf, styles.useIconListWrapper)}>
+              <div className={css(styles.invertedContent)}>
+                <ul className={css(styles.useIconList)}>
+                  {fabricUseIcons.map((icon, iconIndex) => (
+                    <li key={iconIndex} className={css(styles.useIconListItem)}>
+                      <TooltipHost content={icon.title} id={icon.icon + iconIndex} styles={{ root: { display: 'inline-block' } }}>
+                        <Icon iconName={icon.icon} className={css(styles.useIcon)} aria-describedby={icon.icon + iconIndex} />
+                      </TooltipHost>
+                    </li>
+                  ))}
+                </ul>
+                <p>
+                  <strong>+45 additional Microsoft sites and products</strong>
+                </p>
+              </div>
+            </div>
+          </div>
+        </section>
       </div>
     );
   }
+  // tslint:disable jsx-no-lambda
 
-  private _onVersionMenuClick = (event, item: IContextualMenuItem): void => {
-    this.setState({ fabricVer: item.data });
+  private _onCTAClick = (ev: React.MouseEvent<{}> | React.KeyboardEvent<{}>): void => {
+    trackEvent(EventNames.ClickedGetStartedLink);
+  };
+
+  private _onInternalLinkClick = (ev: React.MouseEvent<{}> | React.KeyboardEvent<{}>, url: string): void => {
+    trackEvent(EventNames.ClickedInternalLink, {
+      topic: url, // @TODO: Remove topic when data is stale.
+      currentArea: getSiteArea(),
+      nextArea: getSiteArea(url),
+      nextPage: url,
+      currentPage: window.location.hash
+    });
   };
 }

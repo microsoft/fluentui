@@ -1,0 +1,26 @@
+@import '../Page.module';
+
+.contentWithoutHeader {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    &:first-child {
+      padding-right: 40px;
+    }
+  }
+}
+
+.editSection {
+  position: absolute;
+  top: $App-padding-sm;
+  right: $App-padding-sm;
+
+  &:hover {
+    .edit {
+      opacity: 1;
+    }
+  }
+}

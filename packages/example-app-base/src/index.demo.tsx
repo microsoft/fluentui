@@ -10,6 +10,11 @@ createApp(
       .add('Example 3', () => <div>Some content for Example 3</div>)
       .add('Example 4', () => <div>Some content for Example 4</div>)
   ],
-  () => <div>Example App Home</div>,
+  () => <h1 style={{ padding: '40px' }}>Example App Home</h1>,
   'Example App'
 );
+
+// import { createSite, baseDefinition } from './utilities/index2';
+// import { HomePage } from './pages/HomePage/HomePage';
+
+// createSite(baseDefinition, HomePage);
