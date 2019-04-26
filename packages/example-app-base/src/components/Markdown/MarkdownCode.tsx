@@ -49,15 +49,15 @@ const languageClassNames: { [key: string]: string } = {
 };
 
 const MarkdownCodeBase: React.StatelessComponent<IMarkdownCodeProps> = props => {
-  const { children, theme, className, styles } = props;
+  const { theme, className, styles, ...rest } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 
   const language = languageClassNames[className!];
   if (language) {
-    return <CodeSnippet {...props} language={language} className={className} />;
+    return <CodeSnippet {...rest} language={language} className={className} />;
   }
 
-  return <code className={classNames.root}>{children}</code>;
+  return <code className={classNames.root}>{props.children}</code>;
 };
 
 export const MarkdownCode: React.StatelessComponent<IMarkdownCodeProps> = styled<

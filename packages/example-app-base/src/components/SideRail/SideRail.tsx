@@ -37,11 +37,11 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   }
 
   public render(): JSX.Element | null {
+    this._classNames = getClassNames(this.props.styles, { theme: this.props.theme });
+
     const jumpLinkList = this._renderJumpLinkList();
     const relatedLinkList = this._renderRelatedLinkList();
     const contactLinkList = this._renderContactList();
-
-    this._classNames = getClassNames(this.props.styles, { theme: this.props.theme });
 
     return jumpLinkList || relatedLinkList || contactLinkList ? (
       <FocusZone direction={FocusZoneDirection.vertical} className={this._classNames.root}>
