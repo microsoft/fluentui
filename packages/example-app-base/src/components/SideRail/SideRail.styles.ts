@@ -1,27 +1,14 @@
-import { ITheme, IStyle, IProcessedStyleSet, mergeStyleSets, FontWeights, getFocusOutlineStyle } from 'office-ui-fabric-react/lib/index';
+import { FontWeights, getFocusOutlineStyle, IStyleFunction } from 'office-ui-fabric-react/lib/index';
 import { appPaddingSm, uhfScreenMaxLg } from '../../styles/constants';
+import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
 
 export const sideRailClassNames = {
   isActive: 'SideRail-isActive'
 };
 
-export interface ISideRailStyles {
-  root: IStyle;
-  section: IStyle;
-  sectionTitle: IStyle;
-  link: IStyle;
-  markdownList: IStyle;
-  jumpLink: IStyle;
-  jumpLinkSection: IStyle;
-}
-
-export interface ISideRailStyleProps {
-  theme: ITheme;
-}
-
-export function getClassNames(props: ISideRailStyleProps): IProcessedStyleSet<ISideRailStyles> {
-  const { theme } = props;
-  return mergeStyleSets({
+export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = props => {
+  const theme = props.theme!;
+  return {
     root: {},
     section: {
       marginBottom: appPaddingSm,
@@ -94,5 +81,5 @@ export function getClassNames(props: ISideRailStyleProps): IProcessedStyleSet<IS
         }
       }
     }
-  });
-}
+  };
+};

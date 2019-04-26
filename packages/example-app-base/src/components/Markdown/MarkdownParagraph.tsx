@@ -36,11 +36,10 @@ const getClassNames = classNamesFunction<IMarkdownParagraphStyleProps, IMarkdown
 
 const MarkdownParagraphBase: React.StatelessComponent<IMarkdownParagraphProps> = props => {
   const { children, theme } = props;
-  const styleProps: IMarkdownParagraphStyleProps = {
+  const classNames: IClassNames<IMarkdownParagraphStyles> = getClassNames(props.styles, {
     theme: theme!,
     isTodo: typeof children === 'string' && children.indexOf('TODO') === 0
-  };
-  const classNames: IClassNames<IMarkdownParagraphStyles> = getClassNames(getStyles, styleProps);
+  });
 
   return <p className={classNames.root}>{children}</p>;
 };

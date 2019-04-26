@@ -1,28 +1,6 @@
-import { IStyle, IRawStyle, IStyleFunction, FontWeights, ITheme, getFocusStyle } from 'office-ui-fabric-react';
+import { IRawStyle, IStyleFunction, FontWeights, getFocusStyle } from 'office-ui-fabric-react';
 import { NeutralColors, MotionDurations, MotionTimings } from '@uifabric/fluent-theme';
-
-export interface IColorPaletteStyles {
-  root: IStyle;
-  grid: IStyle;
-  swatch: IStyle;
-  swatchSelected: IStyle; // TODO: better way to handle selected state?
-  swatchContent: IStyle;
-  swatchContentSelected: IStyle; // TODO: better way to handle selected state?
-  swatchIcon: IStyle;
-  swatchName: IStyle;
-  detail: IStyle;
-  detailContentWrapper: IStyle;
-  detailName: IStyle;
-  detailValues: IStyle;
-  detailHex: IStyle;
-  detailCode: IStyle;
-  detailCodeInfoIcon: IStyle;
-}
-
-export interface IColorPaletteStyleProps {
-  theme: ITheme;
-  isCondensed?: boolean;
-}
+import { IColorPaletteStyleProps, IColorPaletteStyles } from './ColorPalette.types';
 
 const swatchGap = '4px';
 const swatchesPerRow = 4;
@@ -71,7 +49,7 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
         minWidth: isCondensed ? 'unset' : 112,
         width: `calc(100% / ${isCondensed ? swatchesPerRowCondensed : swatchesPerRow} - ${swatchGap})`
       },
-      getFocusStyle(theme, {
+      getFocusStyle(theme!, {
         inset: -1,
         width: 2
       })
@@ -93,7 +71,7 @@ export const getStyles: IStyleFunction<IColorPaletteStyleProps, IColorPaletteSty
     swatchContent: {
       alignItems: 'center',
       backgroundColor: 'rgba(0, 0, 0, 0.3)',
-      color: theme.palette.white,
+      color: theme!.palette.white,
       display: 'flex',
       fontSize: isCondensed ? '12px' : '14px',
       lineHeight: '1.2', // must be a string to prevent interpretation as px

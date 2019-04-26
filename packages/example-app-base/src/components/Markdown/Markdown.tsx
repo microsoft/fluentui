@@ -29,7 +29,7 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props =>
 const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>();
 
 const MarkdownBase: React.StatelessComponent<IMarkdownProps> & { displayName?: string } = props => {
-  const classNames = getClassNames(getStyles, { theme: props.theme! });
+  const classNames = getClassNames(props.styles, { theme: props.theme! });
   return (
     <div className={classNames.root}>
       <MarkdownToJsx {...getMarkdownProps(props, classNames.subComponentStyles)}>{props.children}</MarkdownToJsx>

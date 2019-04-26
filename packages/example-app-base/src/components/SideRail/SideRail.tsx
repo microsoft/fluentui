@@ -1,14 +1,16 @@
 import * as React from 'react';
-import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet } from 'office-ui-fabric-react';
-import { isPageActive, jumpToAnchor, getPathMinusLastHash } from '../../utilities/index';
-import { ISideRailProps, ISideRailLink } from './SideRail.types';
-import { ISideRailStyles, getClassNames, sideRailClassNames } from './SideRail.styles';
+import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
+import { isPageActive, jumpToAnchor, getPathMinusLastHash } from '../../utilities/index2';
+import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
+import { getStyles, sideRailClassNames } from './SideRail.styles';
 
 export interface ISideRailState {
   activeLink?: string;
 }
 
-export class SideRail extends React.Component<ISideRailProps, ISideRailState> {
+const getClassNames = classNamesFunction<ISideRailStyleProps, ISideRailStyles>();
+
+class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   public readonly state: ISideRailState = {};
   private _classNames: IProcessedStyleSet<ISideRailStyles>;
 
@@ -39,7 +41,7 @@ export class SideRail extends React.Component<ISideRailProps, ISideRailState> {
     const relatedLinkList = this._renderRelatedLinkList();
     const contactLinkList = this._renderContactList();
 
-    this._classNames = getClassNames({ theme: this.props.theme! });
+    this._classNames = getClassNames(this.props.styles, { theme: this.props.theme });
 
     return jumpLinkList || relatedLinkList || contactLinkList ? (
       <FocusZone direction={FocusZoneDirection.vertical} className={this._classNames.root}>
@@ -67,25 +69,25 @@ export class SideRail extends React.Component<ISideRailProps, ISideRailState> {
     const { jumpLinks } = this.props;
     const classNames = this._classNames;
 
-    if (jumpLinks && jumpLinks.length > 0) {
-      const links = jumpLinks.map((jumpLink: ISideRailLink) => (
-        <li
-          key={jumpLink.url}
-          className={css(classNames.link, classNames.jumpLink, jumpLink.url === activeLink && sideRailClassNames.isActive)}
-        >
-          <Link href={this._getPagePath(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
-            {jumpLink.text}
-          </Link>
-        </li>
-      ));
-      return (
-        <div className={css(classNames.section, classNames.jumpLinkSection)}>
-          <h3 className={classNames.sectionTitle}>On this page</h3>
-          <ul>{links}</ul>
-        </div>
-      );
+    if (!jumpLinks || !jumpLinks.length) {
+      return null;
     }
-    return null;
+    const links = jumpLinks.map((jumpLink: ISideRailLink) => (
+      <li
+        key={jumpLink.url}
+        className={css(classNames.link, classNames.jumpLink, jumpLink.url === activeLink && sideRailClassNames.isActive)}
+      >
+        <Link href={this._getPagePath(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
+          {jumpLink.text}
+        </Link>
+      </li>
+    ));
+    return (
+      <div className={css(classNames.section, classNames.jumpLinkSection)}>
+        <h3 className={classNames.sectionTitle}>On this page</h3>
+        <ul>{links}</ul>
+      </div>
+    );
   };
 
   private _renderRelatedLinkList = (): JSX.Element | null => {
@@ -175,3 +177,10 @@ export class SideRail extends React.Component<ISideRailProps, ISideRailState> {
 function _isElement(x: any): x is JSX.Element {
   return !!(x && (x as JSX.Element).props && (x as JSX.Element).type);
 }
+
+export const SideRail: React.StatelessComponent<ISideRailProps> = styled<ISideRailProps, ISideRailStyleProps, ISideRailStyles>(
+  SideRailBase,
+  getStyles,
+  undefined,
+  { scope: 'SideRail' }
+);

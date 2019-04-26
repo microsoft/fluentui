@@ -1,11 +1,31 @@
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyleFunctionOrObject, IStyle } from 'office-ui-fabric-react';
 
 export interface IColorPaletteProps {
   colors: IColor[];
   isCondensed?: boolean;
   onColorSelected?: (color: IColor) => void;
-  /** Theme provided by higher-order component. */
+  styles?: IStyleFunctionOrObject<IColorPaletteStyleProps, IColorPaletteStyles>;
   theme?: ITheme;
+}
+
+export type IColorPaletteStyleProps = Pick<IColorPaletteProps, 'theme' | 'isCondensed'>;
+
+export interface IColorPaletteStyles {
+  root: IStyle;
+  grid: IStyle;
+  swatch: IStyle;
+  swatchSelected: IStyle;
+  swatchContent: IStyle;
+  swatchContentSelected: IStyle;
+  swatchIcon: IStyle;
+  swatchName: IStyle;
+  detail: IStyle;
+  detailContentWrapper: IStyle;
+  detailName: IStyle;
+  detailValues: IStyle;
+  detailHex: IStyle;
+  detailCode: IStyle;
+  detailCodeInfoIcon: IStyle;
 }
 
 export interface IColor {

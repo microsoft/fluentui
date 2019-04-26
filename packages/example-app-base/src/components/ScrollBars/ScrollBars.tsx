@@ -63,8 +63,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     this.setState({ scrollViewHovered: false });
   };
 
-  // tslint:disable-next-line:no-any
-  private _renderView = (props: any): JSX.Element => {
+  private _renderView = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     return (
       <div {...props} className={this.props.viewClassName}>
         {this.props.children}
@@ -72,16 +71,14 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     );
   };
 
-  // tslint:disable-next-line:no-any
-  private _renderScrollThumb = (props: any): JSX.Element => {
+  private _renderScrollThumb = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const thumbStyle = {
       borderRadius: this.props.size
     };
     return <div {...props} style={{ ...(props.style || {}), ...thumbStyle }} className={styles.thumb} />;
   };
 
-  // tslint:disable-next-line:no-any
-  private _renderScrollTrackVertical = (props: any): JSX.Element => {
+  private _renderScrollTrackVertical = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const trackStyle = {
       width: this.props.size
     };
@@ -94,8 +91,7 @@ export class ScrollBars extends React.Component<IScrollBarsProps, IScrollBarsSta
     );
   };
 
-  // tslint:disable-next-line:no-any
-  private _renderScrollTrackHorizontal = (props: any): JSX.Element => {
+  private _renderScrollTrackHorizontal = (props: React.HTMLAttributes<HTMLDivElement>): JSX.Element => {
     const trackStyle = {
       height: this.props.size
     };

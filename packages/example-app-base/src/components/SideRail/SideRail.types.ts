@@ -1,4 +1,4 @@
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IStyleFunctionOrObject, IStyle } from 'office-ui-fabric-react';
 
 export interface ISideRailProps {
   /**
@@ -22,6 +22,11 @@ export interface ISideRailProps {
   observe?: boolean;
 
   /**
+   * Override styles.
+   */
+  styles?: IStyleFunctionOrObject<ISideRailStyleProps, ISideRailStyles>;
+
+  /**
    * Theme provided by higher-order component.
    */
   theme?: ITheme;
@@ -30,4 +35,16 @@ export interface ISideRailProps {
 export interface ISideRailLink {
   text: string;
   url: string;
+}
+
+export type ISideRailStyleProps = Pick<ISideRailProps, 'theme'>;
+
+export interface ISideRailStyles {
+  root: IStyle;
+  section: IStyle;
+  sectionTitle: IStyle;
+  link: IStyle;
+  markdownList: IStyle;
+  jumpLink: IStyle;
+  jumpLinkSection: IStyle;
 }
