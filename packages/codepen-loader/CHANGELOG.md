@@ -1,3 +1,11 @@
 # Change Log - @uifabric/codepen-loader
 
-This log was last generated on Fri, 08 Mar 2019 09:54:55 GMT and should not be manually modified.
+This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+
+## 0.1.1
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- Add codepen webpack loader
+

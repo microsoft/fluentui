@@ -184,6 +184,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
    * @defaultvalue false
+   * @deprecated Use `ShimmeredDetailsList` pass-through component instead which supports this prop. Will be removed in Fabric 7.0
    */
   enableShimmer?: boolean;
 

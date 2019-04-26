@@ -350,8 +350,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // (undocumented)
-    protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
-    // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
     // (undocumented)
     protected updateSuggestions(suggestions: any[]): void;
@@ -1726,6 +1724,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
     dividerAs?: IComponentAs<IDividerAsProps>;
+    focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
     onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
@@ -2019,7 +2018,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement> {
     setInitialFocus?: boolean;
     style?: React_2.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Element | string | MouseEvent | IPoint | null;
+    target?: Target;
     theme?: ITheme;
 }
 
@@ -2903,7 +2902,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     shouldFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
     subMenuHoverDelay?: number;
-    target?: Element | string | MouseEvent | IPoint | null;
+    target?: Target;
     theme?: ITheme;
     title?: string;
     useTargetAsMinWidth?: boolean;
@@ -3198,6 +3197,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     disableSelectionZone?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IDragDropEvents" needs to be exported by the entry point index.d.ts
     dragDropEvents?: IDragDropEvents;
+    // @deprecated
     enableShimmer?: boolean;
     enterModalSelectionOnTouch?: boolean;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
@@ -3317,6 +3317,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onWillUnmount?: (row?: DetailsRowBase) => void;
     // Warning: (ae-forgotten-export) The symbol "IDetailsRowFieldsProps" needs to be exported by the entry point index.d.ts
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    // @deprecated
     shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
@@ -3424,13 +3425,13 @@ export interface IDetailsRowStyles {
     isRowHeader: IStyle;
     // (undocumented)
     root: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmer: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerBottomBorder: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerIconPlaceholder: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerLeftBorder: IStyle;
 }
 
@@ -4225,6 +4226,7 @@ export interface IFocusTrapZone {
 export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
@@ -4664,7 +4666,6 @@ export interface IImage {
 // @public (undocumented)
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
-    componentRef?: IRefObject<IImage>;
     coverStyle?: ImageCoverStyle;
     // @deprecated
     errorSrc?: string;
@@ -6389,6 +6390,21 @@ export interface IShimmerColors {
 }
 
 // @public
+export interface IShimmeredDetailsListProps extends IDetailsListProps {
+    // @deprecated
+    detailsListStyles?: IDetailsListProps['styles'];
+    enableShimmer?: boolean;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React_2.ReactNode;
+    removeFadingOverlay?: boolean;
+    shimmerLines?: number;
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
+    //
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
+
+// @public
 export interface IShimmerElement {
     height?: number;
     type: ShimmerElementType;
@@ -7110,6 +7126,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     primaryButtonProps?: IButtonProps;
     secondaryButtonProps?: IButtonProps;
     styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+    target?: Target;
+    // @deprecated (undocumented)
     targetElement?: HTMLElement;
     theme?: ITheme;
 }
@@ -7453,17 +7471,28 @@ export interface ITooltipStyles {
     subText: IStyle;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface IVerticalDividerClassNames {
-    // (undocumented)
     divider: string;
-    // (undocumented)
     wrapper: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalDividerProps {
+    className?: string;
+    // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+    styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export type IVerticalDividerPropsStyles = Pick<IVerticalDividerProps, 'theme' | 'getClassNames' | 'className'>;
+
+// @public
+export interface IVerticalDividerStyles {
+    divider: IStyle;
+    wrapper: IStyle;
 }
 
 // @public (undocumented)
@@ -8434,8 +8463,6 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
     render(): JSX.Element;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListProps" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const ShimmeredDetailsList: React_2.StatelessComponent<IShimmeredDetailsListProps>;
 
@@ -8867,6 +8894,9 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
+export type Target = Element | string | MouseEvent | IPoint | null;
+
+// @public (undocumented)
 export const TeachingBubble: React_2.StatelessComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
@@ -9064,7 +9094,7 @@ export enum ValuePosition {
 }
 
 // @public (undocumented)
-export const VerticalDivider: (props: IVerticalDividerProps) => JSX.Element;
+export const VerticalDivider: React_2.StatelessComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {

@@ -3,6 +3,7 @@ import { IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
+import { IFocusZoneProps } from '../../FocusZone';
 
 /**
  * {@docCategory Breadcrumb}
@@ -72,6 +73,11 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
 
   styles?: IStyleFunctionOrObject<IBreadcrumbStyleProps, IBreadcrumbStyles>;
   theme?: ITheme;
+
+  /**
+   * Focuszone props that will get passed through to the root focus zone.
+   */
+  focusZoneProps?: IFocusZoneProps;
 }
 
 /**
