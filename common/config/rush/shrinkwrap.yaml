@@ -72,7 +72,7 @@ dependencies:
   '@types/sinon': 2.2.2
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
-  '@types/webpack-env': 1.13.0
+  '@types/webpack-env': 1.13.9
   async: 2.6.1
   autoprefixer: 7.2.6
   awesome-typescript-loader: 3.5.0
@@ -1054,6 +1054,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-MEQ4FkfhHulzxa8uklMjkw9pHYA=
+  /@types/webpack-env/1.13.9:
+    dev: false
+    resolution:
+      integrity: sha512-p8zp5xqkly3g4cCmo2mKOHI9+Z/kObmDj0BmjbDDJQlgDTiEGTbm17MEwTAusV6XceCy+bNw9q/ZHXHyKo3zkg==
   /@types/webpack/4.4.0:
     dependencies:
       '@types/node': 8.10.38
@@ -15134,7 +15138,7 @@ packages:
       '@types/react-test-renderer': 16.0.3
       '@types/resemblejs': 1.3.28
       '@types/sinon': 2.2.2
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       d3-array: 1.2.1
       d3-axis: 1.0.8
       d3-scale: 2.0.0
@@ -15154,7 +15158,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-7sAUc+fEIKHkBDTBf3qlBg1Dl1wBKrLOogi91pNV0D0SdWzvEIfpvL4jwf0MXh2rlLmBI22utkqmiJ/IrUsiNQ==
+      integrity: sha512-HtwXBn4NojXSnFE7uhyssM96wquDLSCWytnOKe5e5aYmklxZnegaIpexq8pSfyUcFA1urLvZi7o+8WcBJRMYfA==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -15189,7 +15193,7 @@ packages:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
       '@types/react-test-renderer': 16.0.3
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       enzyme: 3.7.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.7.0/e8f8bfbb711e8fd801435f0085a093dd
       es6-weak-map: 2.0.2
@@ -15200,7 +15204,7 @@ packages:
     dev: false
     name: '@rush-temp/date-time'
     resolution:
-      integrity: sha512-sBReCv/rewx2DHrozB0C+jH6v1ELKKojk1nxyRaLrWl3h1k8wsOgMPQXsV1wobUHGtVOgVEKM6eT1ug4csWh/A==
+      integrity: sha512-s57dQ2e0x30xwxPDfpxbPTj7yxnZmkmohHa7fqZ8hFSdqDeC83MPIZFxHq6KvfpcWWYn2/dXXGPGR1FAS6oHiQ==
       tarball: 'file:projects/date-time.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
@@ -15215,7 +15219,7 @@ packages:
       '@types/react-custom-scrollbars': 4.0.5
       '@types/react-dom': 16.0.5
       '@types/react-syntax-highlighter': 10.1.0
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       '@uifabric/fluent-theme': 0.14.2
       color-check: 0.0.2
       es6-map: 0.1.5
@@ -15233,7 +15237,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-yZ+kz8MVz3LMKXEzhPbxbmOH4EQ6/RD6t3QvjDhlXOMlXPPrL0Op89vq1/8npFgf2un2DZ7CXQA7fuccxfkTTA==
+      integrity: sha512-dYE1NF6hfnprED3cx/itdsuVee4/YyCEhgop8aJRBqWG8Kosa/AjHUW6ynE8DqH70JWEHmCWXGxr25KdyopNUw==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -15251,7 +15255,7 @@ packages:
       '@types/react-test-renderer': 16.0.3
       '@types/resemblejs': 1.3.28
       '@types/sinon': 2.2.2
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       deep-assign: 2.0.0
       enzyme: 3.7.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.7.0/e8f8bfbb711e8fd801435f0085a093dd
@@ -15266,7 +15270,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-NEDeZnr7rIGON/B5cw9Yr+Kazed4dMTZB3Bpeag+fz/qbtpiBU9+t4sRlRWUPdKqSBYQh1tW2OyOuyYV8EMZ9Q==
+      integrity: sha512-G3FfoaV0G1o87SJjur/H7JpeQU4MNw2nOQ0Rix/q+Ffm9iQxYAvOzTj9ExZbxBXg/wfmBAS96kWwuFyAuqrGgA==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -15282,7 +15286,7 @@ packages:
       '@types/react-test-renderer': 16.0.3
       '@types/resemblejs': 1.3.28
       '@types/sinon': 2.2.2
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       enzyme: 3.7.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.7.0/e8f8bfbb711e8fd801435f0085a093dd
       enzyme-to-json: /enzyme-to-json/3.3.4/enzyme@3.7.0
@@ -15302,7 +15306,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-iyj3WoTYb6OvtAPrPmcXejn9kVDN4aTeLVToPWWdTCKojQ5ocELwnJgazVDCfFgL+ewjf/YWs0B+mGe1j/AK1A==
+      integrity: sha512-zcIjr+x8E7Vol/7XUaD8FrfTSG/6WuBkvxbrrGu3rqyV1XBkfQrRzE/BTZUD/mo3WjlNgYSjZtoGlTLCX97Y0g==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15313,7 +15317,7 @@ packages:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
       '@types/resemblejs': 1.3.28
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       color-check: 0.0.2
       color-functions: 1.1.0
       es6-promise: 4.2.5
@@ -15331,21 +15335,21 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-wfYRkSXibc0926zkk/O2+23HhoSZqfVU5H36a5H/5/Gp+mbc8orEH9V/78dO5J7e28+yGrkLoOFkg/k3/LVXOw==
+      integrity: sha512-2eNyXLR+/gFsoOEN6srWphFGa14Dw3WYQ46wf0liVTGAppxtS7+Mni988+X8CLBPKBzCTBDEU4AtFaaxHESj7A==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
     dependencies:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       react: 16.6.3
       react-dom: /react-dom/16.6.3/react@16.6.3
       tslib: 1.9.3
     dev: false
     name: '@rush-temp/file-type-icons'
     resolution:
-      integrity: sha512-smmBbS5orTukrRqfl/u9JWXRkOiNQodehWqEQ9cNy3/0F/5Y0aoN+uD/UbJ0Y3GUV+yeJ2vK+nZqXYOrI2ckOg==
+      integrity: sha512-MfhKv7PZcv4/FTN/XHbKUO66CcxX1vlt48GzkhSgTfeNap++BVeRpzpuTcLD5HDBoCwjqDNbr9D2Gi9H4RTXEg==
       tarball: 'file:projects/file-type-icons.tgz'
     version: 0.0.0
   'file:projects/fluent-theme.tgz':
@@ -15368,7 +15372,7 @@ packages:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
       '@types/react-test-renderer': 16.0.3
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       enzyme: 3.7.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.7.0/e8f8bfbb711e8fd801435f0085a093dd
       es6-weak-map: 2.0.2
@@ -15379,7 +15383,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation-scenarios'
     resolution:
-      integrity: sha512-RzVt695bh/CBXh8jQWgASSy06oGBZB18Jchjm22zm8GzOGGAbYH+gqK6AadnSg1hO6HL4Q3w8p5tE6VIwsUe0g==
+      integrity: sha512-u3M6o6ooPcDj9aVfoaFMNUdHUwf25CYcyFjKbpp0sZmqNuiwUymrZyWIenwaxEBo4JDENK1jjRiNUEJnTIvvyQ==
       tarball: 'file:projects/foundation-scenarios.tgz'
     version: 0.0.0
   'file:projects/foundation.tgz':
@@ -15485,7 +15489,7 @@ packages:
       '@types/react-test-renderer': 16.0.3
       '@types/resemblejs': 1.3.28
       '@types/sinon': 2.2.2
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       enzyme: 3.7.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.7.0/e8f8bfbb711e8fd801435f0085a093dd
       enzyme-to-json: /enzyme-to-json/3.3.4/enzyme@3.7.0
@@ -15507,7 +15511,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-bOBEfYWncHzSPeSHPKC59UfTC+b0Capca2T9+rSAOsv0d9AO8j9BEkC2DyYhDrjI7Yk+WfUdpB4aWXrNK1xYeQ==
+      integrity: sha512-wU1sv5I0f8/I3kMdFp7oqI7KiGImZb+9/JmX6Pj7wDVstrhFTXXPUNJE3YAPKQvveHB29yNqIoRcbE6cB6iZxg==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/perf-test.tgz':
@@ -15516,7 +15520,7 @@ packages:
       '@types/es6-promise': 0.0.32
       '@types/react': 16.8.12
       '@types/react-dom': 16.8.3
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       es6-promise: 4.2.6
       immutability-helper: 2.8.1
       react: 16.8.6
@@ -15526,7 +15530,7 @@ packages:
     dev: false
     name: '@rush-temp/perf-test'
     resolution:
-      integrity: sha512-rt459USWcwJS+jzNB8sS6vYWHnCci7qLFTvTNB+99NnjpN3D+wqfW1R3odhJ6aJ82rwBMOHuRKQe/BBnXUz+lg==
+      integrity: sha512-DT7OyrDkwi2BSkTCnW3CuJac74+cPiHHixdIH/CAebpj0jfP2a9lpQz4jOM8Kd1LgCpUWOO/BQqIqeUSwK+VnA==
       tarball: 'file:projects/perf-test.tgz'
     version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
@@ -15556,7 +15560,7 @@ packages:
       '@types/react-dom': 16.0.5
       '@types/react-test-renderer': 16.0.3
       '@types/resemblejs': 1.3.28
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.10.0/bee7085a969f5266f6e838ec30192afe
       es6-weak-map: 2.0.2
@@ -15567,7 +15571,7 @@ packages:
     dev: false
     name: '@rush-temp/react-cards'
     resolution:
-      integrity: sha512-MPmcVs7bCC4RQvhNgFHp3hm92UjoYsNaZW93mXtPDbXIJjx6i/XnNJc7RyG8W/VfIzpcM/CN92Lc3lnr6995Eg==
+      integrity: sha512-iFCt2REd3H9hRol1pSX3EriBaQvjTZ9rzdRL7e4fyE9k3ehIswyvnzmR4/UoXvMmNLpNDzHXVz0v4q9cSE40ow==
       tarball: 'file:projects/react-cards.tgz'
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
@@ -15576,7 +15580,7 @@ packages:
       '@types/es6-promise': 0.0.32
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       compression: 1.7.3
       es6-promise: 4.2.5
       express: 4.16.4
@@ -15587,7 +15591,7 @@ packages:
     dev: false
     name: '@rush-temp/server-rendered-app'
     resolution:
-      integrity: sha512-Ju0GsJ5AdTr3OwYqxZUlvlFSzwFjTPi0f7GpFsgDZx30xAnIHuP3YmX9TjDmzEzbXw3XDu/oJbUG9UHAl+FUyw==
+      integrity: sha512-lsyJc1tmGNfiIw3x2K/L/BYU6xDbK/jJorqMGT5c35S8XexCw9Oo5eDyBj1a81MnQxYh7FlCwohnhox41Y3clQ==
       tarball: 'file:projects/server-rendered-app.tgz'
     version: 0.0.0
   'file:projects/set-version.tgz':
@@ -15605,7 +15609,7 @@ packages:
       '@microsoft/load-themed-styles': 1.8.39
       '@types/es6-promise': 0.0.32
       '@types/mocha': 2.2.39
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       es6-promise: 4.2.5
       mocha: 3.5.3
       raw-loader: 0.5.1
@@ -15616,7 +15620,7 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-f+d7yBkfEwDGXNP0Ut0UfbmwS38GVuuWy/HLKzW+oc3oyeN6V/QbM8jwS0+T+LT4Fln+eocE8UYaM6nlo6C2IA==
+      integrity: sha512-aRtODP9UUP1MOwe3xxEp46anQW7ylnVPIN5+96ZF/Sp7Pbna2VSsN9m1oyvlg9IbdTu+GTdM3jbZd0tzY+gutw==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -15624,7 +15628,7 @@ packages:
       '@microsoft/load-themed-styles': 1.8.39
       '@types/jest': 23.0.0
       '@types/react': 16.3.16
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       es6-map: 0.1.5
       es6-weak-map: 2.0.2
       react: 16.6.3
@@ -15633,21 +15637,21 @@ packages:
     dev: false
     name: '@rush-temp/styling'
     resolution:
-      integrity: sha512-hd/HhN65/QPEwbKO0Besi8zgIF963j/nyhGxd9jVjltwx9eBSzF2vmQiKa6Bz6f5uCWpb05WB3BL+bGlKQP9GA==
+      integrity: sha512-pcK8oWu6KlSA/uSJMynQvSONoi6KHjZG8WGO6tjMXIZE7J9zadI6WtAZlZWfwfszloyeX9T4uHLgatVyy27/Cg==
       tarball: 'file:projects/styling.tgz'
     version: 0.0.0
   'file:projects/test-bundles.tgz':
     dependencies:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       react: 16.6.3
       react-dom: /react-dom/16.6.3/react@16.6.3
       tslib: 1.9.3
     dev: false
     name: '@rush-temp/test-bundles'
     resolution:
-      integrity: sha512-ZPToyrQd8JE0u+zyqIULaFQC3GxEJVWRQGRf455kMjgMssop8vpEHGNNArJPGl3J5H4XO7Dmar53BvGlpt0VHQ==
+      integrity: sha512-V7ruAqkpZ7OWJlPb8n4VaJ+YE5wGzCdN9c2VakO3+5MepdAxWDlZi8+KZMlcU5CKzprODV+HJXJYaNG78SAvwA==
       tarball: 'file:projects/test-bundles.tgz'
     version: 0.0.0
   'file:projects/test-utilities.tgz':
@@ -15659,7 +15663,7 @@ packages:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
       '@types/react-test-renderer': 16.0.3
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       enzyme: 3.7.0
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.7.0/e8f8bfbb711e8fd801435f0085a093dd
       es6-weak-map: 2.0.2
@@ -15669,7 +15673,7 @@ packages:
     dev: false
     name: '@rush-temp/test-utilities'
     resolution:
-      integrity: sha512-VG6V6nYWGVLBT08oIW+y5cH6IH2mRnV+4nUgFn2EV3w7Eswpn8Jd+O3/LGouiu413ObOs03dtzW/prpAs2+GUQ==
+      integrity: sha512-kgNOQXN1McMFqCaHfNRY9kXqcYl9C2Vgdiw+RUtW34Y439YJ956RunMOdL2XB6KULEwO3yvW/k6W2iBC/I9N/Q==
       tarball: 'file:projects/test-utilities.tgz'
     version: 0.0.0
   'file:projects/theme-samples.tgz':
@@ -15688,7 +15692,7 @@ packages:
       '@types/es6-promise': 0.0.32
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       es6-promise: 4.2.5
       immutability-helper: 2.8.1
       react: 16.6.3
@@ -15698,7 +15702,7 @@ packages:
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-tPBscLwvrhiJjV+bDxm8Bd6B8TjiSx8wSCARuBco0N7tl9DRyiSZ/5bQwJwwRqpqs0S3e+ugzjovkKVQ+8qKVg==
+      integrity: sha512-mBTSgF9/DJbjygvurRUwE4Mej736mN2/e4AGDwugC9Jpj5J7R7r5FsKJSqw2MYHTABOxFF77x9VLmhR+itsy0g==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/tslint-rules.tgz':
@@ -15753,7 +15757,7 @@ packages:
       '@types/react': 16.3.16
       '@types/react-dom': 16.0.5
       '@types/storybook__react': 3.0.5
-      '@types/webpack-env': 1.13.0
+      '@types/webpack-env': 1.13.9
       awesome-typescript-loader: /awesome-typescript-loader/3.5.0/typescript@2.8.4
       babel-core: 6.26.3
       babel-loader: /babel-loader/7.1.5/babel-core@6.26.3
@@ -15772,7 +15776,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-GpZsNooBkNj7bc2eblM1XkCFvV6hqmndZT8RpLOnjqoTsnLPFrWFByNIJLBfJrJtrzoJfh9IaM2yJEWYN/5YYg==
+      integrity: sha512-NbAjR9LW/+tLjqkXJkWW9xLC2rFTxw8AiejHYChQpd9HWxznaLjc3yelfRA1jklXMiSFt29H4FUS9X2wsYKknA==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -15867,7 +15871,7 @@ specifiers:
   '@types/sinon': 2.2.2
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
-  '@types/webpack-env': 1.13.0
+  '@types/webpack-env': 1.13.9
   async: ^2.6.1
   autoprefixer: ^7.1.5
   awesome-typescript-loader: ^3.2.3
