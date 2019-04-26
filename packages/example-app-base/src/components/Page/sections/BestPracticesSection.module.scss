@@ -1,0 +1,67 @@
+@import '../Page.module';
+
+$usageListPadding: 24px;
+
+.doSection,
+.dontSection {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+
+.doList,
+.dontList {
+  ul {
+    @include ms-padding-left($usageListPadding);
+
+    > li {
+      font-size: 14px;
+      list-style: none !important;
+      margin-bottom: 20px;
+      position: relative;
+
+      &:before {
+        content: '';
+        font-family: FabricMDL2Icons;
+        display: block;
+        position: absolute;
+        top: 1px;
+        @include ms-left(-$usageListPadding);
+      }
+
+      ul li {
+        font-size: 14px;
+        list-style: circle;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.doList {
+  ul > li:before {
+    content: '\E8FB'; // 'Accept' fabric icon
+    color: $ms-color-green;
+  }
+}
+
+.dontList {
+  ul > li:before {
+    content: '\E711'; // 'Cancel' fabric icon
+    color: $ms-color-red;
+  }
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .doSection,
+  .dontSection {
+    margin-bottom: -10px; // Trim last list item
+    width: calc(50% - (#{$App-padding-sm} / 2));
+
+    &:first-child {
+      @include ms-margin-right($App-padding-sm);
+    }
+  }
+}
