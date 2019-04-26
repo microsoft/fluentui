@@ -11,18 +11,20 @@ import {
   IColumn,
   ConstrainMode,
   IDetailsFooterProps,
-  DetailsRow
+  DetailsRow,
+  IDetailsRowCheckProps,
+  DetailsRowCheck
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { TooltipHost, ITooltipHostProps } from 'office-ui-fabric-react/lib/Tooltip';
 import { ScrollablePane, ScrollbarVisibility } from 'office-ui-fabric-react/lib/ScrollablePane';
 import { Sticky, StickyPositionType } from 'office-ui-fabric-react/lib/Sticky';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { SelectionMode } from 'office-ui-fabric-react/lib/utilities/selection/index';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { createGroups } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 
 const columnMidWidth = 200;
 const columnMaxWidth = 300;
@@ -94,6 +96,21 @@ interface IItem {
 }
 const _groups = createGroups(100, 0, 0, 1, 0, '', true);
 
+const classNames = mergeStyleSets({
+  wrapper: {
+    height: '80vh',
+    position: 'relative',
+    maxHeight: 'inherit',
+    width: '800px'
+  },
+  footerDetailsRow: {
+    display: 'inline-block'
+  },
+  detailsListContent: {
+    padding: '0 64px'
+  }
+});
+
 class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
   private _selection: Selection;
   private readonly _items: IItem[];
@@ -102,15 +119,17 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
     super(props);
 
     this._items = [];
+    let rowData = '';
     for (let i = 0; i < 100; i++) {
+      rowData = 'row ' + (i + 1).toString() + ', column ';
       this._items.push({
         key: i,
-        test1: i === 0 ? lorem(7) : lorem(2),
-        test2: lorem(2),
-        test3: lorem(2),
-        test4: lorem(2),
-        test5: lorem(2),
-        test6: lorem(2)
+        test1: rowData + '1',
+        test2: rowData + '2',
+        test3: rowData + '3',
+        test4: rowData + '4',
+        test5: rowData + '5',
+        test6: rowData + '6'
       });
     }
 
@@ -119,14 +138,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div
-        style={{
-          height: '80vh',
-          position: 'relative',
-          maxHeight: 'inherit',
-          width: '800px'
-        }}
-      >
+      <div className={classNames.wrapper} >
         <Fabric>
           <ScrollablePane
             scrollbarVisibility={ScrollbarVisibility.auto}
@@ -141,6 +153,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
             </Sticky>
             <MarqueeSelection selection={this._selection}>
               <DetailsList
+                className={classNames.detailsListContent}
                 items={this._items}
                 groups={_groups}
                 columns={_columns}
@@ -165,7 +178,7 @@ function onRenderDetailsHeader(
   defaultRender?: IRenderFunction<IDetailsHeaderProps>
 ): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true}>
+    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
       {defaultRender!({
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
@@ -178,8 +191,8 @@ function onRenderDetailsHeader(
 
 function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true}>
-      <div style={{ display: 'inline-block' }}>
+    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
+      <div className={classNames.footerDetailsRow}>
         <DetailsRow
           columns={props.columns}
           item={{
@@ -193,11 +206,26 @@ function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
           }}
           itemIndex={-1}
           selection={props.selection}
-          selectionMode={(props.selection && props.selection.mode) || SelectionMode.none}
+          selectionMode={SelectionMode.single}
           viewport={props.viewport}
+          groupNestingDepth={props.groupNestingDepth}
+          onRenderCheck={_onRenderCheckForFooterRow}
         />
       </div>
     </Sticky>
+  );
+}
+
+function _onRenderCheckForFooterRow(
+  props: IDetailsRowCheckProps,
+  DefaultRender: React.ComponentType<IDetailsRowCheckProps> = DetailsRowCheck
+): JSX.Element {
+  return (
+    <DefaultRender
+      {...props}
+      style={{ visibility: 'hidden' }}
+      selected={true}
+    />
   );
 }
 
@@ -228,6 +256,24 @@ storiesOf('ScrollablePane Grouped Details List', module)
         .executeScript(`${getElement}.scrollTop = 0`)
         .snapshot(
           'Scrollbars visibility after scrolling up to the top with non-zero scrollLeft',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollLeft = 0`)
+        .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[0].click()`)
+        .snapshot(
+          'On expanding a group, horizontal scrollbar should be visible',
+          cropTo
+        )
+        .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[1].click()`)
+        .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[2].click()`)
+        .executeScript(`${getElement}.scrollTop = 50`)
+        .snapshot(
+          'If groups are expanded, when header becomes sticky, horizontal scrollbar should be visible',
+          cropTo
+        )
+        .executeScript(`${getElement}.scrollLeft = 99999`)
+        .snapshot(
+          'If groups are expanded, on horizontal scroll, over scroll should not happen for content container',
           cropTo
         )
         .end()}

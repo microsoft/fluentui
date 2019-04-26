@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 18 Apr 2019 12:31:50 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+
+## 6.4.7
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- reverting the json payload back inside the ts file due to downstream issues
 
 ## 6.4.6
 Thu, 18 Apr 2019 12:31:50 GMT

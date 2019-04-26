@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 25 Apr 2019 12:33:20 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+
+## 6.171.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Breadcrumb: Add in focuszone props to give more control
+- Teachingbubble: Improve target that's passed to callout
+- Add new prop 'detailsListStyles' to allow passing 'styles' prop to DetailsList. Deprecate all shimmer related props in DetailsList and DetailsListRow. Adds documentation
+
+### Patches
+
+- Deprecate implementation examples
+- Fix the picker suggestion items flashing issue.
+- Setting initial scrollbar height and width equal to 0 to prevent rendering when it's width/height changes from undefined to 0. Cascading updates caused due to notifySubscribers for sticky componentDidMount lifecycle hook. Reducing computations for sticky component by combining updates for change in sticky state (top/bottom/non-sticky) & distanceFromTop. Setting placeHolder width equal to scrollWidth of nonStickyContent.firstElementChild
 
 ## 6.170.0
 Thu, 25 Apr 2019 12:33:20 GMT
