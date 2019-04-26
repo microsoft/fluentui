@@ -212,7 +212,41 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     ];
   }
 
-  public renderCell = (text: string, deprecated: boolean = false) => {
+  public render(): JSX.Element | null {
+    const { description, extendsTokens } = this.props;
+    const { properties, isEnum, isClass } = this.state;
+
+    return (
+      <Stack gap={MEDIUM_GAP_SIZE}>
+        {description && extendsTokens && extendsTokens.length > 0 ? (
+          <Stack gap={SMALL_GAP_SIZE}>
+            {this._renderTitle()}
+            {(description || (extendsTokens && extendsTokens.length > 0)) && (
+              <Stack gap={XSMALL_GAP_SIZE}>
+                {this._renderDescription()}
+                {this._renderExtends()}
+              </Stack>
+            )}
+          </Stack>
+        ) : (
+          this._renderTitle()
+        )}
+        {isClass
+          ? this._renderClass()
+          : properties.length >= 1 && (
+              <DetailsList
+                selectionMode={SelectionMode.none}
+                layoutMode={DetailsListLayoutMode.justified}
+                items={properties}
+                columns={isEnum ? this._enumColumns : this._defaultColumns}
+                onRenderRow={this._onRenderRow}
+              />
+            )}
+      </Stack>
+    );
+  }
+
+  private renderCell = (text: string, deprecated: boolean = false) => {
     // When the text is passed to this function, it has had newline characters removed,
     // so this regex will match backtick sequences that span multiple lines.
     const regex = new RegExp('`[^`]*`', 'g');
@@ -266,52 +300,18 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     );
   };
 
-  public renderCellType = (typeTokens: ILinkToken[]) => {
+  private renderCellType = (typeTokens: ILinkToken[]) => {
     return this._parseILinkTokens(false, typeTokens);
   };
 
-  public createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
+  private createRenderCellEnum = (propertyName: keyof IApiEnumProperty) => (item: IApiEnumProperty) => this.renderCell(item[propertyName]);
 
-  public createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
+  private createRenderCellInterface = (propertyName: 'name' | 'description' | 'defaultValue') => (item: IApiInterfaceProperty) =>
     this.renderCell(item[propertyName], propertyName === 'description' && item.deprecated);
 
-  public createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
+  private createRenderCellType = (propertyName: 'typeTokens') => (item: IApiInterfaceProperty) => this.renderCellType(item[propertyName]);
 
-  public createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
-
-  public render(): JSX.Element | null {
-    const { description, extendsTokens } = this.props;
-    const { properties, isEnum, isClass } = this.state;
-
-    return (
-      <Stack gap={MEDIUM_GAP_SIZE}>
-        {description && extendsTokens && extendsTokens.length > 0 ? (
-          <Stack gap={SMALL_GAP_SIZE}>
-            {this._renderTitle()}
-            {(description || (extendsTokens && extendsTokens.length > 0)) && (
-              <Stack gap={XSMALL_GAP_SIZE}>
-                {this._renderDescription()}
-                {this._renderExtends()}
-              </Stack>
-            )}
-          </Stack>
-        ) : (
-          this._renderTitle()
-        )}
-        {isClass
-          ? this._renderClass()
-          : properties.length >= 1 && (
-              <DetailsList
-                selectionMode={SelectionMode.none}
-                layoutMode={DetailsListLayoutMode.justified}
-                items={properties}
-                columns={isEnum ? this._enumColumns : this._defaultColumns}
-                onRenderRow={this._onRenderRow}
-              />
-            )}
-      </Stack>
-    );
-  }
+  private createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
 
   private _extractCodeBlocks(text: string, codeBlocks: { index: number; text: string }[]): JSX.Element[] {
     const eltChildren: JSX.Element[] = [];
