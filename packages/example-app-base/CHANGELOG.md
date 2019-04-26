@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 24 Apr 2019 12:35:54 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+
+## 6.14.4
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Deprecate implementation examples
 
 ## 6.14.3
 Wed, 24 Apr 2019 12:35:54 GMT
