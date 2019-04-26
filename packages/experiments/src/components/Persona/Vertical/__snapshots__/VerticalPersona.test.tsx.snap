@@ -22,7 +22,7 @@ exports[`VerticalPersona renders correctly with a text and secondary text 1`] = 
 
         {
           align-items: center;
-          background-color: #0B6A0B;
+          background-color: #750B1C;
           border-radius: 50%;
           color: white;
           display: flex;
@@ -122,7 +122,7 @@ exports[`VerticalPersona renders correctly with only a text 1`] = `
 
         {
           align-items: center;
-          background-color: #0B6A0B;
+          background-color: #750B1C;
           border-radius: 50%;
           color: white;
           display: flex;
