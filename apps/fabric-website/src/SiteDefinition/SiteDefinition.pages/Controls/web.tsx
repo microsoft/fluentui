@@ -1,11 +1,341 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
 
-// Note that this file is essentially the subset of Fabric web controls that
-// have had Fluent styles created for them. Non-Fluent versions will not be
-// shown here; those can be found on the existing public Fabric website.
-// As Fluent versions of components become available in @uifabric/fluent-theme,
-// they will be un-commented here.
+// Old list
+// const categories: { [name: string]: string[] } = {
+//   'Basic Inputs': [
+//     // prettier-ignore
+//     'Button',
+//     'Checkbox',
+//     'ChoiceGroup',
+//     'ComboBox',
+//     'ContextualMenu',
+//     'Dropdown',
+//     'Label',
+//     'Link',
+//     'Rating',
+//     'Slider',
+//     'SpinButton',
+//     'TextField',
+//     'Toggle'
+//   ],
+//   Navigation: [
+//     // prettier-ignore
+//     'Breadcrumb',
+//     'CommandBar',
+//     'Nav',
+//     'OverflowSet',
+//     'Pivot',
+//     'SearchBox'
+//   ],
+//   Layout: [
+//     // prettier-ignore
+//     'Stack'
+//   ],
+//   Content: [
+//     // prettier-ignore
+//     'ActivityItem',
+//     'Calendar',
+//     'DetailsList',
+//     'Facepile',
+//     'GroupedList',
+//     'Icon',
+//     'Image',
+//     'List',
+//     'Persona',
+//     'Separator'
+//   ],
+//   Pickers: [
+//     // prettier-ignore
+//     'Pickers',
+//     'ColorPicker',
+//     'DatePicker',
+//     'PeoplePicker',
+//     'SwatchColorPicker'
+//   ],
+//   'Progress & Validation': [
+//     // prettier-ignore
+//     'MessageBar',
+//     'ProgressIndicator',
+//     'Shimmer',
+//     'Spinner'
+//   ],
+//   Surfaces: [
+//     // prettier-ignore
+//     'Callout',
+//     'Dialog',
+//     'DocumentCard',
+//     'HoverCard',
+//     'Layer',
+//     'Modal',
+//     'Overlay',
+//     'Panel',
+//     'ScrollablePane',
+//     'TeachingBubble',
+//     'Tooltip',
+//     'Coachmark'
+//   ],
+//   Utilities: [
+//     // prettier-ignore
+//     'FocusTrapZone',
+//     'FocusZone',
+//     'MarqueeSelection',
+//     'ResizeGroup',
+//     'Selection',
+//     'Text',
+//     'Themes'
+//   ]
+// };
+
+type Omit<U, K extends keyof U> = Pick<U, Exclude<keyof U, K>>;
+type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
+
+interface ICategory {
+  [component: string]: CategoryPage;
+}
+
+const categories: { Other?: ICategory; [name: string]: ICategory } = {
+  'Basic Inputs': {
+    Button: {},
+    Checkbox: {},
+    ChoiceGroup: {},
+    ComboBox: {},
+    Dropdown: {},
+    Label: {},
+    Link: {},
+    Rating: {},
+    SearchBox: {},
+    Slider: {},
+    SpinButton: {},
+    TextField: {},
+    Toggle: {}
+  },
+  'Galleries and Pickers': {
+    Pickers: {},
+    Calendar: {},
+    ColorPicker: {},
+    DatePicker: {},
+    PeoplePicker: {},
+    SwatchColorPicker: {}
+  },
+  'Items and Lists': {
+    List: { title: 'Basic List' },
+    DetailsList: {
+      subPages: {
+        // Names, titles, and URLs here are partial.
+        // A simple entry like this:
+        //   Basic: {}
+        // will produce an actual page like this:
+        //   component: DetailsListBasicPage
+        //   title:     DetailsList - Basic
+        //   url:       #/controls/web/detailslist/basic
+        // An entry like this:
+        //   CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' }
+        // will produce an actual page like this:
+        //   component: DetailsListCustomColumnsPage
+        //   title:     DetailsList - Custom Item Columns
+        //   url:       #/controls/web/detailslist/customitemcolumns
+        Basic: {},
+        Compact: {},
+        Grouped: {},
+        LargeGrouped: {},
+        CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
+        CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
+        CustomFooter: { title: 'Custom Footer' },
+        CustomGroupHeaders: { title: 'Custom Group Headers' },
+        Advanced: { title: 'Variable Row Heights', url: 'variablerowheights' },
+        DragDrop: { title: 'Drag & Drop', url: 'draganddrop' },
+        NavigatingFocus: { title: 'Inner Navigation', url: 'innernavigation' },
+        Shimmer: {}
+      }
+    },
+    GroupedList: {},
+    ActivityItem: {},
+    DocumentCard: {},
+    Facepile: {},
+    HoverCard: {},
+    Persona: {}
+  },
+  'Commands, Menus & Navs': {
+    Breadcrumb: {},
+    CommandBar: {},
+    ContextualMenu: {},
+    Nav: {},
+    OverflowSet: {},
+    Pivot: {}
+  },
+  'Notification & Engagement': {
+    Coachmark: {},
+    MessageBar: {},
+    TeachingBubble: {}
+  },
+  Progress: {
+    ProgressIndicator: {},
+    Shimmer: {},
+    Spinner: {}
+  },
+  Surfaces: {
+    Callout: {},
+    Dialog: {},
+    Modal: {},
+    Panel: {},
+    ScrollablePane: {},
+    Tooltip: {}
+  },
+  Utilities: {
+    Announced: {
+      subPages: {
+        QuickActions: { title: 'Quick Actions' },
+        SearchResults: { title: 'Search Results' },
+        LazyLoading: { title: 'Lazy Loading' },
+        BulkOperations: { title: 'Bulk Operations' }
+      }
+    },
+    FocusTrapZone: {},
+    FocusZone: {},
+    Icon: {},
+    Image: {},
+    Layer: {},
+    MarqueeSelection: {},
+    Overlay: {},
+    ResizeGroup: {},
+    Selection: {},
+    Separator: {},
+    Stack: {},
+    Text: {},
+    Themes: {}
+  },
+  'Fluent Theme': {
+    FluentTheme: { title: 'Fluent Theme', url: 'fluent-theme' }
+  },
+  Other: {}
+};
+
+function generateCategories() {
+  const categoryNames = Object.keys(categories);
+  const pagesByCategory: { [category: string]: INavPage[] } = {};
+  for (const category of categoryNames) {
+    pagesByCategory[category] = [];
+  }
+
+  // Relative to this file, each page is located at a path like:
+  // ../../../pages/Controls/DetailsListPage/DetailsListPage
+  // or for sub-pages:
+  // ../../../pages/Controls/DetailsListPage/DetailsListBasicPage
+
+  // Use require.context to get a list of all the pages
+  // https://webpack.js.org/api/module-methods/#requirecontext
+  const requireContext = require.context('../../../pages/Controls', true, /^\.\/\w+Page\/\w+Page$/, 'lazy');
+
+  /** Sub-page paths found while iterating through the list of actual pages */
+  const componentSubPages: { [componentName: string]: string[] } = {};
+  /** Generated page objects which will have sub-pages */
+  const subPageCategories: { [componentName: string]: INavPage & CategoryPage } = {};
+
+  // Make an INavPage object in the appropriate category for each page
+  for (const pagePath of requireContext.keys()) {
+    // pagePath will be like this:  ./DetailsListPage/DetailsListPage
+    // or like this for a sub-page: ./DetailsListPage/DetailsListBasicPage
+    const pathParts = pagePath.split('/');
+    const componentName = pathParts[1].replace(/Page$/, ''); // DetailsList
+    const isSubPage = pathParts[1] !== pathParts[2];
+    if (isSubPage) {
+      componentSubPages[componentName] = componentSubPages[componentName] || [];
+      componentSubPages[componentName].push(pagePath);
+      continue;
+    }
+
+    let foundCategory = false;
+    for (const categoryName of categoryNames) {
+      // Check each category to see if it contains the component
+      const componentPageInfo = categories[categoryName][componentName];
+      if (componentPageInfo) {
+        // Add a page for the component to the appropriate category
+        const page = generatePage(requireContext, componentName, pagePath, componentPageInfo);
+        pagesByCategory[categoryName].push(page);
+        if (page.subPages) {
+          // If this page has sub-pages, save the generated page and its sub-page info for later
+          subPageCategories[componentName] = page;
+        }
+        foundCategory = true;
+        break;
+      }
+    }
+
+    // Stray pages go under "Other"
+    if (!foundCategory && pagesByCategory.Other) {
+      pagesByCategory.Other.push(generatePage(requireContext, componentName, pagePath, {}));
+    }
+  }
+
+  // Handle the sub-pages
+  for (const parentComponentName of Object.keys(subPageCategories)) {
+    const parentCategory = subPageCategories[parentComponentName];
+    const subPages = parentCategory.subPages!;
+    // clean up the parent page: remove the subPages prop, which isn't used in the real nav
+    delete parentCategory.subPages;
+
+    const childPagePaths = componentSubPages[parentComponentName];
+    if (!childPagePaths.length) {
+      continue; // no pages in this category
+    }
+
+    const parentPage = parentCategory as INavPage;
+    // First page in the category is a non-category version of the parent page
+    parentPage.pages = [{ ...parentPage }];
+    parentPage.isCategory = true;
+
+    for (const pagePath of childPagePaths) {
+      // pagePath will be like ./DetailsList/DetailsListBasicPage
+      const pathParts = pagePath.split('/');
+      // DetailsListBasic
+      const pageComponentName = pathParts[2].replace(/Page$/, '');
+      // Basic
+      const pageName = pageComponentName.replace(parentComponentName, '');
+
+      const subPageOverrides = subPages[pageName];
+      if (subPageOverrides) {
+        parentPage.pages.push(
+          generatePage(requireContext, pageComponentName, pagePath, {
+            ...subPageOverrides,
+            title: `${parentComponentName} - ${subPageOverrides.title || pageName}`,
+            url: `${parentComponentName}/${subPageOverrides.url || pageName}`.toLowerCase()
+          })
+        );
+      }
+    }
+  }
+
+  // Convert the categories to an array (filter out empty categories)
+  return categoryNames
+    .filter(category => !!pagesByCategory[category].length)
+    .map(category => {
+      const pages = pagesByCategory[category];
+      return {
+        title: category,
+        url: pages[0].url,
+        isCategory: true,
+        pages
+      };
+    });
+}
+
+function generatePage(
+  requireContext: __WebpackModuleApi.RequireContext,
+  componentName: string,
+  pagePath: string,
+  overrides: CategoryPage
+): CategoryPage & INavPage {
+  const { url, ...nonUrlOverrides } = overrides;
+  return {
+    title: componentName,
+    url: '#/controls/web/' + (url || componentName.toLowerCase()),
+    component: () => <LoadingComponent title={overrides.title || componentName} />,
+    getComponent: cb => requireContext(pagePath).then((mod: any) => cb(mod[componentName + 'Page'])),
+    ...nonUrlOverrides
+  };
+}
+
 export const controlsPagesWeb: INavPage[] = [
   {
     title: 'Controls',
@@ -14,567 +344,5 @@ export const controlsPagesWeb: INavPage[] = [
     component: () => <LoadingComponent title="Controls" />,
     getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage))
   },
-  {
-    title: 'Basic Inputs',
-    url: '#/controls/web/button',
-    isCategory: true,
-    pages: [
-      {
-        title: 'Button',
-        url: '#/controls/web/button',
-        component: () => <LoadingComponent title="Button" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage))
-      },
-      {
-        title: 'Checkbox',
-        url: '#/controls/web/checkbox',
-        component: () => <LoadingComponent title="Checkbox" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/CheckboxPage/CheckboxPage').CheckboxPage))
-      },
-      {
-        title: 'ChoiceGroup',
-        url: '#/controls/web/choicegroup',
-        component: () => <LoadingComponent title="ChoiceGroup" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/ChoiceGroupPage/ChoiceGroupPage').ChoiceGroupPage))
-      },
-      {
-        title: 'ComboBox',
-        url: '#/controls/web/combobox',
-        component: () => <LoadingComponent title="ComboBox" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/ComboBoxPage/ComboBoxPage').ComboBoxPage))
-      },
-      {
-        title: 'Dropdown',
-        url: '#/controls/web/dropdown',
-        component: () => <LoadingComponent title="Dropdown" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/DropdownPage/DropdownPage').DropdownPage))
-      },
-      {
-        title: 'Label',
-        url: '#/controls/web/label',
-        component: () => <LoadingComponent title="Label" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/LabelPage/LabelPage').LabelPage))
-      },
-      {
-        title: 'Link',
-        url: '#/controls/web/link',
-        component: () => <LoadingComponent title="Link" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/LinkPage/LinkPage').LinkPage))
-      },
-      {
-        title: 'Rating',
-        url: '#/controls/web/rating',
-        component: () => <LoadingComponent title="Rating" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/RatingPage/RatingPage').RatingPage))
-      },
-      // {
-      //   title: 'SearchBox',
-      //   url: '#/controls/web/searchbox',
-      //   component: () => <LoadingComponent title="SearchBox" />,
-      //   getComponent: cb =>
-      //     require.ensure([], require => cb(require<any>('../../../pages/Controls/SearchBoxPage/SearchBoxPage').SearchBoxPage))
-      // },
-      {
-        title: 'Slider',
-        url: '#/controls/web/slider',
-        component: () => <LoadingComponent title="Slider" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SliderPage/SliderPage').SliderPage))
-      },
-      {
-        title: 'SpinButton',
-        url: '#/controls/web/spinbutton',
-        component: () => <LoadingComponent title="SpinButton" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinButtonPage/SpinButtonPage').SpinButtonPage))
-      },
-      {
-        title: 'TextField',
-        url: '#/controls/web/textfield',
-        component: () => <LoadingComponent title="TextField" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/TextFieldPage/TextFieldPage').TextFieldPage))
-      },
-      {
-        title: 'Toggle',
-        url: '#/controls/web/toggle',
-        component: () => <LoadingComponent title="Toggle" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TogglePage/TogglePage').TogglePage))
-      }
-    ]
-  },
-  {
-    title: 'Galleries and Pickers',
-    url: '#/controls/web/pickers',
-    isCategory: true,
-    pages: [
-      {
-        title: 'Pickers',
-        url: '#/controls/web/pickers',
-        component: () => <LoadingComponent title="Pickers" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PickersPage/PickersPage').PickersPage))
-      },
-      // {
-      //   title: 'Calendar',
-      //   url: '#/controls/web/Calendar',
-      //   component: () => <LoadingComponent title="Calendar" />,
-      //   getComponent: cb =>
-      //     require.ensure([], require => cb(require<any>('../../../pages/Controls/CalendarPage/CalendarPage').CalendarPage))
-      // },
-      {
-        title: 'ColorPicker',
-        url: '#/controls/web/colorpicker',
-        component: () => <LoadingComponent title="ColorPicker" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/ColorPickerPage/ColorPickerPage').ColorPickerPage))
-      },
-      {
-        title: 'DatePicker',
-        url: '#/controls/web/datepicker',
-        component: () => <LoadingComponent title="DatePicker" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage))
-      },
-      // {
-      //   title: 'PeoplePicker',
-      //   url: '#/controls/web/peoplepicker',
-      //   component: () => <LoadingComponent title="PeoplePicker" />,
-      //   getComponent: cb =>
-      //     require.ensure([], require =>
-      //       cb(require<any>('../../../pages/Controls/PeoplePickerPage/PeoplePickerPage').PeoplePickerPage)
-      //     )
-      // },
-      {
-        title: 'SwatchColorPicker',
-        url: '#/controls/web/swatchcolorpicker',
-        component: () => <LoadingComponent title="SwatchColorPicker" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/SwatchColorPickerPage/SwatchColorPickerPage').SwatchColorPickerPage)
-          )
-      }
-    ]
-  },
-  {
-    title: 'Items and Lists',
-    url: '#/controls/web/activityitem',
-    isCategory: true,
-    pages: [
-      // {
-      //   title: 'ActivityItem',
-      //   url: '#/controls/web/activityitem',
-      //   component: () => <LoadingComponent title="ActivityItem" />,
-      //   getComponent: cb =>
-      //     require.ensure([], require =>
-      //       cb(require<any>('../../../pages/Controls/ActivityItemPage/ActivityItemPage').ActivityItemPage)
-      //     )
-      // },
-      // {
-      //   title: 'Basic List',
-      //   url: '#/controls/web/list',
-      //   component: () => <LoadingComponent title="List" />,
-      //   getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ListPage/ListPage').ListPage))
-      // },
-      {
-        title: 'DetailsList',
-        url: '#/controls/web/detailslist',
-        isCategory: true,
-        pages: [
-          {
-            title: 'DetailsList',
-            url: '#/controls/web/detailslist',
-            component: () => <LoadingComponent title="DetailsList" />,
-            getComponent: cb =>
-              require.ensure([], require => cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListPage').DetailsListPage))
-          },
-          {
-            title: 'DetailsList - Basic',
-            url: '#/controls/web/detailslist/basic',
-            component: () => <LoadingComponent title="DetailsList - Basic" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListBasicPage').DetailsListBasicPage)
-              )
-          },
-          {
-            title: 'DetailsList - Compact',
-            url: '#/controls/web/detailslist/compact',
-            component: () => <LoadingComponent title="DetailsList - Compact" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListCompactPage').DetailsListCompactPage)
-              )
-          },
-          {
-            title: 'DetailsList - Grouped',
-            url: '#/controls/web/detailslist/grouped',
-            component: () => <LoadingComponent title="DetailsList - Grouped" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListGroupedPage').DetailsListGroupedPage)
-              )
-          },
-          {
-            title: 'DetailsList - Custom Item Columns',
-            url: '#/controls/web/detailslist/customitemcolumns',
-            component: () => <LoadingComponent title="DetailsList - Custom Item Columns" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListCustomColumnsPage').DetailsListCustomColumnsPage)
-              )
-          },
-          {
-            title: 'DetailsList - Custom Item Rows',
-            url: '#/controls/web/detailslist/customitemrows',
-            component: () => <LoadingComponent title="DetailsList - Custom Item Rows" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListCustomRowsPage').DetailsListCustomRowsPage)
-              )
-          },
-          {
-            title: 'DetailsList - Custom Footer',
-            url: '#/controls/web/detailslist/customfooter',
-            component: () => <LoadingComponent title="DetailsList - Custom Footer" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListCustomFooterPage').DetailsListCustomFooterPage)
-              )
-          },
-          {
-            title: 'DetailsList - Custom Group Headers',
-            url: '#/controls/web/detailslist/customgroupheaders',
-            component: () => <LoadingComponent title="DetailsList - Custom Group Headers" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(
-                  require<any>('../../../pages/Controls/DetailsListPage/DetailsListCustomGroupHeadersPage')
-                    .DetailsListCustomGroupHeadersPage
-                )
-              )
-          },
-          {
-            title: 'DetailsList - Variable Row Heights',
-            url: '#/controls/web/detailslist/variablerowheights',
-            component: () => <LoadingComponent title="DetailsList - Variable Row Heights" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListAdvancedPage').DetailsListAdvancedPage)
-              )
-          },
-          {
-            title: 'DetailsList - Drag & Drop',
-            url: '#/controls/web/detailslist/draganddrop',
-            component: () => <LoadingComponent title="DetailsList - Drag &amp; Drop" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListDragDropPage').DetailsListDragDropPage)
-              )
-          },
-          {
-            title: 'DetailsList - Inner Navigation',
-            url: '#/controls/web/detailslist/innernavigation',
-            component: () => <LoadingComponent title="DetailsList - Inner Navigation" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListNavigatingFocusPage').DetailsListNavigatingFocusPage)
-              )
-          },
-          {
-            title: 'DetailsList - Shimmer',
-            url: '#/controls/web/detailslist/shimmer',
-            component: () => <LoadingComponent title="DetailsList - Shimmer" />,
-            getComponent: cb =>
-              require.ensure([], require =>
-                cb(require<any>('../../../pages/Controls/DetailsListPage/DetailsListShimmerPage').DetailsListShimmerPage)
-              )
-          }
-        ]
-      },
-      // {
-      //   title: 'GroupedList',
-      //   url: '#/controls/web/groupedlist',
-      //   component: () => <LoadingComponent title="GroupedList" />,
-      //   getComponent: cb =>
-      //     require.ensure([], require => cb(require<any>('../../../pages/Controls/GroupedListPage/GroupedListPage').GroupedListPage))
-      // },
-      {
-        title: 'DocumentCard',
-        url: '#/controls/web/documentcard',
-        component: () => <LoadingComponent title="DocumentCard" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/DocumentCardPage/DocumentCardPage').DocumentCardPage))
-      },
-      {
-        title: 'Facepile',
-        url: '#/controls/web/facepile',
-        component: () => <LoadingComponent title="Facepile" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/FacepilePage/FacepilePage').FacepilePage))
-      },
-      {
-        title: 'HoverCard',
-        url: '#/controls/web/hovercard',
-        component: () => <LoadingComponent title="HoverCard" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/HoverCardPage/HoverCardPage').HoverCardPage))
-      },
-      {
-        title: 'Persona',
-        url: '#/controls/web/persona',
-        component: () => <LoadingComponent title="Persona" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage))
-      }
-    ]
-  },
-  {
-    title: 'Commands, Menus & Nav',
-    url: '#/controls/web/breadcrumb',
-    isCategory: true,
-    pages: [
-      {
-        title: 'Breadcrumb',
-        url: '#/controls/web/breadcrumb',
-        component: () => <LoadingComponent title="Breadcrumb" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/BreadcrumbPage/BreadcrumbPage').BreadcrumbPage))
-      },
-      {
-        title: 'CommandBar',
-        url: '#/controls/web/commandbar',
-        component: () => <LoadingComponent title="CommandBar" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/CommandBarPage/CommandBarPage').CommandBarPage))
-      },
-      {
-        title: 'ContextualMenu',
-        url: '#/controls/web/contextualmenu',
-        component: () => <LoadingComponent title="ContextualMenu" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/ContextualMenuPage/ContextualMenuPage').ContextualMenuPage)
-          )
-      },
-      // {
-      //   title: 'Side Nav',
-      //   url: '#/controls/web/nav',
-      //   component: () => <LoadingComponent title="Nav" />,
-      //   getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/NavPage/NavPage').NavPage))
-      // },
-      // {
-      //   title: 'OverflowSet',
-      //   url: '#/controls/web/overflowset',
-      //   component: () => <LoadingComponent title="OverflowSet" />,
-      //   getComponent: cb =>
-      //     require.ensure([], require => cb(require<any>('../../../pages/Controls/OverflowSetPage/OverflowSetPage').OverflowSetPage))
-      // },
-      {
-        title: 'Pivot',
-        url: '#/controls/web/pivot',
-        component: () => <LoadingComponent title="Pivot" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
-      }
-    ]
-  },
-  {
-    title: 'Notification & Engagement',
-    url: '#/controls/web/coachmark',
-    isCategory: true,
-    pages: [
-      //     {
-      //       title: 'Coachmark',
-      //       url: '#/controls/web/coachmark',
-      //       component: () => <LoadingComponent title="Coachmark" />,
-      //       getComponent: cb =>
-      //         require.ensure([], require => cb(require<any>('../../../pages/Controls/CoachmarkPage/CoachmarkPage').CoachmarkPage))
-      //     },
-      //     {
-      //       title: 'MessageBar',
-      //       url: '#/controls/web/messagebar',
-      //       component: () => <LoadingComponent title="MessageBar" />,
-      //       getComponent: cb =>
-      //         require.ensure([], require => cb(require<any>('../../../pages/Controls/MessageBarPage/MessageBarPage').MessageBarPage))
-      //     },
-      {
-        title: 'TeachingBubble',
-        url: '#/controls/web/teachingbubble',
-        component: () => <LoadingComponent title="TeachingBubble" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/TeachingBubblePage/TeachingBubblePage').TeachingBubblePage)
-          )
-      }
-    ]
-  },
-  {
-    title: 'Progress',
-    url: '#/controls/web/progressindicator',
-    isCategory: true,
-    pages: [
-      {
-        title: 'ProgressIndicator',
-        url: '#/controls/web/progressindicator',
-        component: () => <LoadingComponent title="ProgressIndicator" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/ProgressIndicatorPage/ProgressIndicatorPage').ProgressIndicatorPage)
-          )
-      },
-      {
-        title: 'Shimmer',
-        url: '#/controls/web/shimmer',
-        component: () => <LoadingComponent title="Shimmer" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ShimmerPage/ShimmerPage').ShimmerPage))
-      },
-      {
-        title: 'Spinner',
-        url: '#/controls/web/spinner',
-        component: () => <LoadingComponent title="Spinner" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage))
-      }
-    ]
-  },
-  {
-    title: 'Surfaces',
-    url: '#/controls/web/callout',
-    isCategory: true,
-    pages: [
-      {
-        title: 'Callout',
-        url: '#/controls/web/callout',
-        component: () => <LoadingComponent title="Callout" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/CalloutPage/CalloutPage').CalloutPage))
-      },
-      {
-        title: 'Dialog',
-        url: '#/controls/web/dialog',
-        component: () => <LoadingComponent title="Dialog" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DialogPage/DialogPage').DialogPage))
-      },
-      {
-        title: 'Modal',
-        url: '#/controls/web/modal',
-        component: () => <LoadingComponent title="Modal" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ModalPage/ModalPage').ModalPage))
-      },
-      // {
-      //   title: 'Panel',
-      //   url: '#/controls/web/panel',
-      //   component: () => <LoadingComponent title="Panel" />,
-      //   getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PanelPage/PanelPage').PanelPage))
-      // },
-      {
-        title: 'Tooltip',
-        url: '#/controls/web/tooltip',
-        component: () => <LoadingComponent title="Tooltip" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage))
-      },
-      {
-        title: 'ScrollablePane',
-        url: '#/controls/web/scrollablepane',
-        component: () => <LoadingComponent title="ScrollablePane" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/ScrollablePanePage/ScrollablePanePage').ScrollablePanePage)
-          )
-      }
-    ]
-  },
-  {
-    title: 'Fluent Theme',
-    url: '#/controls/web/fluent-theme',
-    component: () => <LoadingComponent title="Fluent Theme" />,
-    getComponent: cb =>
-      require.ensure([], require => cb(require<any>('../../../pages/Controls/FluentThemePage/FluentThemePage').FluentThemePage))
-  }
-  // {
-  //   title: 'Utilities',
-  //   url: '#/controls/web/icon',
-  //   isCategory: true,
-  //   pages: [
-  //     {
-  //       title: 'Icon',
-  //       url: '#/controls/web/icon',
-  //       component: () => <LoadingComponent title="Icon" />,
-  //       getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/IconPage/IconPage').IconPage))
-  //     },
-  //     {
-  //       title: 'Image',
-  //       url: '#/controls/web/image',
-  //       component: () => <LoadingComponent title="Image" />,
-  //       getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ImagePage/ImagePage').ImagePage))
-  //     },
-  //     {
-  //       title: 'Layer',
-  //       url: '#/controls/web/layer',
-  //       component: () => <LoadingComponent title="Layer" />,
-  //       getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/LayerPage/LayerPage').LayerPage))
-  //     },
-  //     {
-  //       title: 'Overlay',
-  //       url: '#/controls/web/overlay',
-  //       component: () => <LoadingComponent title="Overlay" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require => cb(require<any>('../../../pages/Controls/OverlayPage/OverlayPage').OverlayPage))
-  //     },
-  //     {
-  //       title: 'ResizeGroup',
-  //       url: '#/controls/web/resizegroup',
-  //       component: () => <LoadingComponent title="ResizeGroup" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require => cb(require<any>('../../../pages/Controls/ResizeGroupPage/ResizeGroupPage').ResizeGroupPage))
-  //     },
-  //     {
-  //       title: 'FocusTrapZone',
-  //       url: '#/controls/web/focustrapzone',
-  //       component: () => <LoadingComponent title="FocusTrapZone" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require =>
-  //           cb(require<any>('../../../pages/Controls/FocusTrapZoneUtilityPage/FocusTrapZoneUtilityPage').FocusTrapZoneUtilityPage)
-  //         )
-  //     },
-  //     {
-  //       title: 'FocusZone',
-  //       url: '#/controls/web/focuszone',
-  //       component: () => <LoadingComponent title="FocusZone" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require =>
-  //           cb(require<any>('../../../pages/Controls/FocusZoneUtilityPage/FocusZoneUtilityPage').FocusZoneUtilityPage)
-  //         )
-  //     },
-  //     {
-  //       title: 'MarqueeSelection',
-  //       url: '#/controls/web/marqueeselection',
-  //       component: () => <LoadingComponent title="MarqueeSelection" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require =>
-  //           cb(
-  //             require<any>('../../../pages/Controls/MarqueeSelectionUtilityPage/MarqueeSelectionUtilityPage')
-  //               .MarqueeSelectionUtilityPage
-  //           )
-  //         )
-  //     },
-  //     {
-  //       title: 'Selection',
-  //       url: '#/controls/web/selection',
-  //       component: () => <LoadingComponent title="Selection" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require =>
-  //           cb(require<any>('../../../pages/Controls/SelectionUtilityPage/SelectionUtilityPage').SelectionUtilityPage)
-  //         )
-  //     },
-  //     {
-  //       title: 'Themes',
-  //       url: '#/controls/web/themes',
-  //       component: () => <LoadingComponent title="Themes" />,
-  //       getComponent: cb =>
-  //         require.ensure([], require =>
-  //           cb(require<any>('../../../pages/Controls/ThemesUtilityPage/ThemesUtilityPage').ThemesUtilityPage)
-  //         )
-  //     }
-  //   ]
-  // }
+  ...generateCategories()
 ];
