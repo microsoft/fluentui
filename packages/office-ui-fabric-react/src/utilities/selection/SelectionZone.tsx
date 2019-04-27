@@ -147,7 +147,7 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps> {
   private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
     let target = ev.target as HTMLElement;
 
-    if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, target)) {
+    if (document.activeElement !== target && !elementContains(document.activeElement as HTMLElement, target)) {
       this.ignoreNextFocus();
       return;
     }
