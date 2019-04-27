@@ -426,7 +426,7 @@ function _finalizeReturnEdge(elementRectangle: Rectangle, returnEdge: RectangleE
   if (
     bounds &&
     Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge)) >
-    Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
+      Math.abs(_getRelativeEdgeDifference(elementRectangle, bounds, returnEdge * -1))
   ) {
     return returnEdge * -1;
   }
