@@ -33,6 +33,9 @@ const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
+/**
+ * Component API for {@link SelectionZone}.
+ */
 export interface ISelectionZone {
   /**
    * Method to ignore subsequent focus.
@@ -40,50 +43,55 @@ export interface ISelectionZone {
   ignoreNextFocus: () => void;
 }
 
+/**
+ * Props API for {@link SelectionZone}.
+ */
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   /**
    * Reference to the component interface.
    */
   componentRef?: () => void;
   /**
-   * Selection instance backing the SelectionZone.
+   * Required {@link ISelection} instance bound to the {@link SelectionZone}.
    */
   selection: ISelection;
   /**
-   * @deprecated No longer in use, focus is now managed by FocusZone.
+   * @deprecated No longer in use, focus is now managed by {@link FocusZone}.
    */
   layout?: {};
   /**
-   * The mode of Selection, one of 'none', 'single', or 'multiple'.
+   * The mode of Selection, where the value is one of
+   * 'none', 'single', or 'multiple'.
    *
    * @defaultvalue {@link SelectionMode.multiple}
    */
   selectionMode?: SelectionMode;
   /**
-   * Whether or not selection should be preserved on outer click.
-   *
+   * If true, selection is preserved on outer click.
    */
   selectionPreservedOnEmptyClick?: boolean;
   /**
-   * Disables auto-selection on input elements.
+   * If true, disables automatic selection on input elements.
    */
   disableAutoSelectOnInputElements?: boolean;
   /**
-   * Whether or not modal selection should be enabled on touch event.
+   * If true, modal selection is enabled on touch event.
    */
   enterModalOnTouch?: boolean;
   /**
-   * Whether or not to select an item when it receives focus.
+   * Determines if an item is selected on focus.
    *
    * @defaultvalue true
    */
   isSelectedOnFocus?: boolean;
   /**
-   * Optional on item invoked via ENTER or double-click callback.
+   * Optional callback for when an item is
+   * invoked via ENTER or double-click.
    */
   onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
   /**
-   * Optional item contextual menu callback.
+   * Optional callback for when an
+   * item's contextual menu action occurs.
    */
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
