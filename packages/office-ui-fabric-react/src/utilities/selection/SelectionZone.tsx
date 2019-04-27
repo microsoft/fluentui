@@ -88,7 +88,7 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps> {
   public static defaultProps = {
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
@@ -146,17 +146,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._handleNextFocus(false);
   };
 
-  private _onMouseDownCapture = (ev: any): void => {
-    if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
+  private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
+    let target = ev.target as HTMLElement;
+
+    if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, target)) {
       this.ignoreNextFocus();
       return;
     }
 
-    if (!elementContains(ev.target, this._root.current)) {
+    if (!elementContains(target, this._root.current)) {
       return;
     }
-
-    let target = ev.target as HTMLElement;
 
     while (target !== this._root.current) {
       if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {
