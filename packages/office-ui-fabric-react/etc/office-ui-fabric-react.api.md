@@ -6300,12 +6300,12 @@ export interface ISelectionOptions {
     selectionMode?: SelectionMode;
 }
 
-// @public (undocumented)
+// @public
 export interface ISelectionZone {
     ignoreNextFocus: () => void;
 }
 
-// @public (undocumented)
+// @public
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
     componentRef?: () => void;
     disableAutoSelectOnInputElements?: boolean;
@@ -8373,7 +8373,7 @@ export enum SelectionMode {
 }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
