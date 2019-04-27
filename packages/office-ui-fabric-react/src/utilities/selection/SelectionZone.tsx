@@ -34,28 +34,62 @@ const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
 export interface ISelectionZone {
+  /**
+   * Method to ignore subsequent focus.
+   */
   ignoreNextFocus: () => void;
 }
 
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+  /**
+   * Reference to the component interface.
+   */
   componentRef?: () => void;
+  /**
+   * Selection instance backing the SelectionZone.
+   */
   selection: ISelection;
   /**
-   * @deprecated No longer in use, focus is now managed by FocusZone
+   * @deprecated No longer in use, focus is now managed by FocusZone.
    */
   layout?: {};
+  /**
+   * The mode of Selection, one of 'none', 'single', or 'multiple'.
+   *
+   * @defaultvalue {@link SelectionMode.multiple}
+   */
   selectionMode?: SelectionMode;
+  /**
+   * Whether or not selection should be preserved on outer click.
+   *
+   */
   selectionPreservedOnEmptyClick?: boolean;
+  /**
+   * Disables auto-selection on input elements.
+   */
   disableAutoSelectOnInputElements?: boolean;
+  /**
+   * Whether or not modal selection should be enabled on touch event.
+   */
   enterModalOnTouch?: boolean;
+  /**
+   * Whether or not to select an item when it receives focus.
+   *
+   * @defaultvalue true
+   */
   isSelectedOnFocus?: boolean;
+  /**
+   * Optional on item invoked via ENTER or double-click callback.
+   */
   onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
+  /**
+   * Optional item contextual menu callback.
+   */
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
-    isMultiSelectEnabled: true,
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
   };
