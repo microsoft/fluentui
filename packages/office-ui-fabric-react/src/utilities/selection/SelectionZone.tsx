@@ -126,10 +126,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps> {
         role="presentation"
         onDoubleClick={this._onDoubleClick}
         onContextMenu={this._onContextMenu}
-        {...{
-          onMouseDownCapture: this._onMouseDownCapture,
-          onFocusCapture: this._onFocus
-        }}
+        onMouseDownCapture={this._onMouseDownCapture}
+        onFocusCapture={this._onFocus}
       >
         {this.props.children}
       </div>
