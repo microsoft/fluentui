@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+This log was last generated on Sat, 27 Apr 2019 00:04:47 GMT and should not be manually modified.
+
+## 6.37.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.
 
 ## 6.36.0
 Fri, 26 Apr 2019 12:35:24 GMT

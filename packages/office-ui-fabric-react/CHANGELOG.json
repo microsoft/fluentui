@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.172.0",
+      "tag": "office-ui-fabric-react_v6.172.0",
+      "date": "Sat, 27 Apr 2019 00:04:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating Icon, Checkbox, and Image to be pure components (correctly.)",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "108330f1118fafab4a13a8a2d18a0cd6bdf8639d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.36.0` to `^6.37.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.171.0",
       "tag": "office-ui-fabric-react_v6.171.0",
       "date": "Fri, 26 Apr 2019 12:35:24 GMT",
