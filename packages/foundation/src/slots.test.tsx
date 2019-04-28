@@ -3,13 +3,22 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 import { withSlots, createFactory, getSlots } from './slots';
 import { IHTMLElementSlot, IHTMLSlot } from './IHTMLSlots';
-import { ExtractProps, ExtractShorthand, IProcessedSlotProps, ISlot, ISlotDefinition, ISlotProp } from './ISlots';
+import {
+  ExtractProps,
+  ExtractShorthand,
+  IProcessedSlotProps,
+  ISlot,
+  ISlotDefinition,
+  ISlotOptions,
+  ISlotProp,
+  ISlottableProps,
+  ISlotRender
+} from './ISlots';
 
 describe('typings', () => {
   type ITestProps = { testProp?: number };
   const TestProps = { testProp: 42 };
-  const TestOptions = { props: TestProps };
-  const TestRender = (props: ITestProps, defaultComponent: React.ComponentType<ITestProps>) => null;
+  const TestRender: ISlotRender<ITestProps> = (props: ITestProps, defaultComponent: React.ComponentType<ITestProps>) => null;
   const TestComponent: React.FunctionComponent<ITestProps> = () => null;
 
   it('do not generate TS compile errors on getSlots usage', () => {
@@ -20,7 +29,7 @@ describe('typings', () => {
       testSlotNoShorthand?: ISlotProp<ITestProps>;
     }
 
-    interface IComponentProps extends IComponentSlots {
+    interface IComponentProps extends ISlottableProps<IComponentSlots> {
       someProp?: number;
     }
 
@@ -36,50 +45,64 @@ describe('typings', () => {
   });
 
   it('do not generate TS compile error on valid ISlotProp assignments', () => {
-    const p00: ISlotProp<ITestProps> = TestOptions;
-    const p01: ISlotProp<ITestProps, string> = TestOptions;
-    const p02: ISlotProp<ITestProps, number> = TestOptions;
-    const p03: ISlotProp<ITestProps, boolean> = TestOptions;
+    const p00: ISlotProp<ITestProps> = TestProps;
+    const p01: ISlotProp<ITestProps, string> = TestProps;
+    const p02: ISlotProp<ITestProps, number> = TestProps;
+    const p03: ISlotProp<ITestProps, boolean> = TestProps;
     const p10: ISlotProp<ITestProps> = {};
     const p11: ISlotProp<ITestProps, string> = {};
     const p12: ISlotProp<ITestProps, number> = {};
     const p13: ISlotProp<ITestProps, boolean> = {};
-    const p20: ISlotProp<ITestProps> = { component: TestComponent };
-    const p21: ISlotProp<ITestProps, string> = { component: TestComponent };
-    const p22: ISlotProp<ITestProps, number> = { component: TestComponent };
-    const p23: ISlotProp<ITestProps, boolean> = { component: TestComponent };
-    const p30: ISlotProp<ITestProps> = { render: TestRender };
-    const p31: ISlotProp<ITestProps, string> = { render: TestRender };
-    const p32: ISlotProp<ITestProps, number> = { render: TestRender };
-    const p33: ISlotProp<ITestProps, boolean> = { render: TestRender };
-    const p40: ISlotProp<ITestProps, string> = 'test';
-    const p41: ISlotProp<ITestProps, number> = 42;
-    const p42: ISlotProp<ITestProps, boolean> = false;
+    const p20: ISlotProp<ITestProps, string> = 'test';
+    const p21: ISlotProp<ITestProps, number> = 42;
+    const p22: ISlotProp<ITestProps, boolean> = false;
 
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
-    const [] = [p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22, p23, p30, p31, p32, p33, p40, p41, p42];
+    const [] = [p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22];
   });
 
-  it('do not generate TS compile error on valid IHTMLSlot assignments', () => {
-    // IHTMLSlot should accept both generic and specialized elements.
-    let tHtml: IHTMLSlot = { component: 'b' };
-    tHtml = { component: 'div' };
-    tHtml = { component: 'button' };
-
-    // IHTMLElementSlot should accept its specified element and elements sharing the same shared subset of its attributes.
-    let tDiv: IHTMLElementSlot<'div'> = { component: 'div' };
-    tDiv = { component: 'b' };
-
-    let tButton: IHTMLElementSlot<'button'> = { component: 'button' };
-    tButton = { component: 'b' };
+  it('do not generate TS compile error on valid ISlotOption assignments', () => {
+    // TODO: assigning TestRender to component and TestComponent to render does not cause errors. why? because context is any?
+    const p00: ISlotOptions<ITestProps> = {};
+    const p01: ISlotOptions<ITestProps> = {};
+    const p02: ISlotOptions<ITestProps> = {};
+    const p03: ISlotOptions<ITestProps> = {};
+    const p10: ISlotOptions<ITestProps> = { component: TestComponent };
+    const p11: ISlotOptions<ITestProps> = { component: TestComponent };
+    const p12: ISlotOptions<ITestProps> = { component: TestComponent };
+    const p13: ISlotOptions<ITestProps> = { component: TestComponent };
+    const p20: ISlotOptions<ITestProps> = { render: TestRender };
+    const p21: ISlotOptions<ITestProps> = { render: TestRender };
+    const p22: ISlotOptions<ITestProps> = { render: TestRender };
+    const p23: ISlotOptions<ITestProps> = { render: TestRender };
 
     // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
     // https://github.com/Microsoft/TypeScript/issues/19139
     // Until then, pretend they're used:
-    const [] = [tHtml, tDiv, tButton];
+    const [] = [p00, p01, p02, p03, p10, p11, p12, p13, p20, p21, p22, p23];
   });
+
+  // TODO: what will happen with HTML slots?
+  // it('do not generate TS compile error on valid IHTMLSlot assignments', () => {
+  //   // IHTMLSlot should accept both generic and specialized elements.
+  //   let tHtml: IHTMLSlot = { component: 'b' };
+  //   tHtml = { component: 'div' };
+  //   tHtml = { component: 'button' };
+
+  //   // IHTMLElementSlot should accept its specified element and elements sharing the same shared subset of its attributes.
+  //   let tDiv: IHTMLElementSlot<'div'> = { component: 'div' };
+  //   tDiv = { component: 'b' };
+
+  //   let tButton: IHTMLElementSlot<'button'> = { component: 'button' };
+  //   tButton = { component: 'b' };
+
+  //   // TODO: it'd be great to use ts-ignore to only ignore unused variables, but that's not currently possible:
+  //   // https://github.com/Microsoft/TypeScript/issues/19139
+  //   // Until then, pretend they're used:
+  //   const [] = [tHtml, tDiv, tButton];
+  // });
 
   it('do not generate TS compile error on valid ExtractProp assignments', () => {
     const p0: ExtractProps<ISlotProp<ITestProps>> = { testProp: 42 };
@@ -161,7 +184,9 @@ describe('withSlots', () => {
 describe('createFactory', () => {
   const componentProps = { component: 'componentValue', id: 'componentIdValue', children: ['Component Child 1', 'Component Child 2'] };
   const userProps: ISlotProp<any, any> = {
-    props: { user: 'userValue', id: 'userIdValue', children: ['User Child 1', 'User Child 2'] }
+    user: 'userValue',
+    id: 'userIdValue',
+    children: ['User Child 1', 'User Child 2']
   };
   const renderProps = { render: 'renderValue', id: 'renderIdValue', children: ['Render Child 1', 'Render Child 2'] };
   const userPropString = 'userPropString';
@@ -177,17 +202,22 @@ describe('createFactory', () => {
   };
 
   it(`passes componentProps without userProps`, () => {
-    const component = mount(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined) as JSX.Element);
+    const component = mount(createFactory<TComponentProps, any>(TestDiv)(componentProps, undefined, undefined, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, ...emptyClassName });
   });
 
   it(`passes userProp string as child`, () => {
-    const component = mount(createFactory<TComponentProps, string>(TestDiv)(componentProps, userPropString, undefined) as JSX.Element);
+    const component = mount(createFactory<TComponentProps, string>(TestDiv)(
+      componentProps,
+      userPropString,
+      undefined,
+      undefined
+    ) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, children: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as child`, () => {
-    const component = mount(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined) as JSX.Element);
+    const component = mount(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined, undefined) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, children: 42, ...emptyClassName });
   });
 
@@ -195,23 +225,39 @@ describe('createFactory', () => {
     const component = mount(createFactory<TComponentProps, string>(TestDiv, factoryOptions)(
       componentProps,
       userPropString,
+      undefined,
       undefined
     ) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: userPropString, ...emptyClassName });
   });
 
   it(`passes userProp integer as defaultProp`, () => {
-    const component = mount(createFactory<TComponentProps, number>(TestDiv, factoryOptions)(componentProps, 42, undefined) as JSX.Element);
+    const component = mount(createFactory<TComponentProps, number>(TestDiv, factoryOptions)(
+      componentProps,
+      42,
+      undefined,
+      undefined
+    ) as JSX.Element);
     expect(component.props()).toEqual({ ...componentProps, [defaultProp]: 42, ...emptyClassName });
   });
 
   it('merges userProps over componentProps', () => {
-    const component = mount(createFactory<TComponentProps>(TestDiv, factoryOptions)(componentProps, userProps, undefined) as JSX.Element);
-    expect(component.props()).toEqual({ ...componentProps, ...userProps.props, ...emptyClassName });
+    const component = mount(createFactory<TComponentProps>(TestDiv, factoryOptions)(
+      componentProps,
+      userProps,
+      undefined,
+      undefined
+    ) as JSX.Element);
+    expect(component.props()).toEqual({ ...componentProps, ...userProps, ...emptyClassName });
   });
 
   it('renders div and userProp integer as children', () => {
-    const component = renderer.create(createFactory<TComponentProps, number>(TestDiv)(componentProps, 42, undefined) as JSX.Element);
+    const component = renderer.create(createFactory<TComponentProps, number>(TestDiv)(
+      componentProps,
+      42,
+      undefined,
+      undefined
+    ) as JSX.Element);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
@@ -220,6 +266,7 @@ describe('createFactory', () => {
     const component = renderer.create(createFactory<TComponentProps, string>(TestDiv)(
       componentProps,
       userPropString,
+      undefined,
       undefined
     ) as JSX.Element);
     const tree = component.toJSON();
@@ -230,6 +277,7 @@ describe('createFactory', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
       <span id="I should be the only prop in the output" />,
+      undefined,
       undefined
     ) as JSX.Element);
     const tree = component.toJSON();
@@ -239,6 +287,7 @@ describe('createFactory', () => {
   it('renders userProp span function without component props', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
+      undefined,
       {
         render: () => <span id="I should be the only prop in the output" />
       },
@@ -251,6 +300,7 @@ describe('createFactory', () => {
   it('renders userProp span function with component props', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
+      undefined,
       {
         render: props => <span {...props} id="I should be present alongside componentProps" />
       },
@@ -263,7 +313,8 @@ describe('createFactory', () => {
   it('renders userProp span component with component props', () => {
     const component = renderer.create(createFactory(TestDiv)(
       componentProps,
-      { component: 'span', props: { id: 'I should be present alongside componentProps' } },
+      { id: 'I should be present alongside componentProps' },
+      { component: 'span' },
       undefined
     ) as JSX.Element);
     const tree = component.toJSON();
@@ -271,8 +322,7 @@ describe('createFactory', () => {
   });
 
   it(`passes props and type arguments to userProp function`, done => {
-    const slotProp: ISlotProp<typeof userProps.props | typeof renderProps> = {
-      props: renderProps,
+    const slotOptions: ISlotOptions<typeof userProps.props | typeof renderProps> = {
       render: (props, DefaultComponent) => {
         expect(props).toEqual({ ...componentProps, ...renderProps, ...emptyClassName });
         expect(DefaultComponent).toEqual(TestDiv);
@@ -281,7 +331,7 @@ describe('createFactory', () => {
       }
     };
 
-    createFactory(TestDiv, factoryOptions)(componentProps, slotProp, undefined);
+    createFactory(TestDiv, factoryOptions)(componentProps, renderProps, slotOptions, undefined);
   });
 });
 
@@ -302,15 +352,11 @@ describe('getSlots', () => {
   it(`creates slots and passes merged props to them`, done => {
     const testUserProps = {
       testSlot1: {
-        props: {
-          className: 'testSlot1Classname',
-          testSlot1Prop: 'userProp1'
-        }
+        className: 'testSlot1Classname',
+        testSlot1Prop: 'userProp1'
       },
       testSlot2: {
-        props: {
-          className: 'testSlot2Classname'
-        }
+        className: 'testSlot2Classname'
       }
     };
 
@@ -325,8 +371,8 @@ describe('getSlots', () => {
       testSlot1: props => {
         // User props should override slot props
         expect(props).toEqual({
-          ...testUserProps.testSlot1.props,
-          className: testUserProps.testSlot1.props.className
+          ...testUserProps.testSlot1,
+          className: testUserProps.testSlot1.className
         });
         return null;
       },
@@ -334,7 +380,7 @@ describe('getSlots', () => {
         // No user prop for slot in this case, so slot props should be present
         expect(props).toEqual({
           ...testSlot2Props,
-          className: testUserProps.testSlot2.props.className
+          className: testUserProps.testSlot2.className
         });
         done();
         return null;

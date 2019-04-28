@@ -8,19 +8,21 @@ export class SlotsIconExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack {...stackProps}>
-        <Button icon="share" content="Icon: String" />
-        <Button icon={{ props: { iconName: 'share' } }} content="Icon: Props, iconName: 'share'" />
+        <Button icon={{ iconName: 'share' }} content="Icon: Props, iconName: 'share'" />
         <Button
-          icon={{
-            render: (iconProps, DefaultComponent) => (
-              <b>
-                Icon: <DefaultComponent {...iconProps} iconName="upload" />
-              </b>
-            )
+          icon="upload"
+          slots={{
+            icon: {
+              render: (iconProps, DefaultComponent) => (
+                <b>
+                  Icon: <DefaultComponent {...iconProps} />
+                </b>
+              )
+            }
           }}
           content="Icon: Function, Text + Icon"
         />
-        <Button icon={{ render: () => <Spinner /> }} content="Icon: Function, Spinner" />
+        <Button slots={{ icon: { render: () => <Spinner /> } }} content="Icon: Function, Spinner" />
       </Stack>
     );
   }

@@ -32,7 +32,7 @@ export class ButtonExample extends React.Component<{}, {}> {
         <Stack tokens={tokens.headingStack} padding={8}>
           <Stack tokens={tokens.buttonStack}>
             <ButtonStack>
-              <Button content="Default button" onClick={alertClicked} />
+              <Button content="Default button" onClick={alertClicked} slots={{ content: { render: () => <div>I'm new</div> } }} />
               <Button disabled content="Disabled default button" onClick={alertClicked} />
               <Button primary content="Primary button" onClick={alertClicked} />
               <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
@@ -45,8 +45,8 @@ export class ButtonExample extends React.Component<{}, {}> {
             </ButtonStack>
             <ButtonStack>
               <Button icon="Upload" content="Button with string icon" />
-              <Button icon={{ props: { iconName: 'Share' } }} content="Button with iconProps" />
-              <Button icon={{ render: () => <Icon iconName="Download" /> }} content="Button with icon render function" />
+              <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
+              <Button content="Button with icon render function" slots={{ icon: { render: () => <Icon iconName="Download" /> } }} />
             </ButtonStack>
             <ButtonStack>
               <Button>

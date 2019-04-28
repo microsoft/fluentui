@@ -2,23 +2,27 @@ import * as React from 'react';
 import { Icon, Stack, TooltipHost } from 'office-ui-fabric-react';
 import { CollapsibleSection, CollapsibleSectionTitle, ICollapsibleSectionTitleProps } from '@uifabric/experiments/lib/CollapsibleSection';
 
+// TODO: convert this example to use extendComponent
+
 // This is our customized component making use of default CollapsibleSectionTitle while using slots
 // to add the tooltip and icon. This would also have to be modified to add a prop for tooltip content (not done here)
 const CustomizedCollapsibleSectionTitle: React.FunctionComponent<ICollapsibleSectionTitleProps> = props => {
-  const titleText: ICollapsibleSectionTitleProps['text'] = {
-    render: (renderProps, DefaultComponent) => (
-      // Supplement the default title content with an icon. Wrap in a Stack for proper placement.
-      <Stack grow horizontal horizontalAlign="space-between">
-        <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
-        <Icon iconName="warning" styles={{ root: { color: 'red' } }} />
-      </Stack>
-    )
+  const titleText: ICollapsibleSectionTitleProps['slots'] = {
+    text: {
+      render: (renderProps, DefaultComponent) => (
+        // Supplement the default title text with an icon. Wrap in a Stack for proper placement.
+        <Stack grow horizontal horizontalAlign="space-between">
+          <DefaultComponent {...renderProps}>{props.text}</DefaultComponent>
+          <Icon iconName="warning" styles={{ root: { color: 'red' } }} />
+        </Stack>
+      )
+    }
   };
 
   // Wrap the entire title in a Tooltip
   return (
     <TooltipHost content="This is the tooltip">
-      <CollapsibleSectionTitle {...props} text={titleText} />
+      <CollapsibleSectionTitle {...props} slots={titleText} />
     </TooltipHost>
   );
 };
@@ -32,7 +36,12 @@ export class CollapsibleSectionSlotsExample extends React.Component<{}, {}> {
           <CollapsibleSection
             key={1}
             defaultCollapsed={true}
-            title={{ props: { text: 'Shorthand Title Text' }, component: CustomizedCollapsibleSectionTitle }}
+            title="Shorthand Title Text"
+            slots={{
+              title: {
+                component: CustomizedCollapsibleSectionTitle
+              }
+            }}
           >
             Content 1
           </CollapsibleSection>

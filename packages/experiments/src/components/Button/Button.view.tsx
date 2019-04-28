@@ -41,8 +41,8 @@ export const ButtonView: IButtonComponent['view'] = props => {
       ref={buttonRef}
     >
       <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
-        {icon && <Slots.icon />}
-        {content && <Slots.content />}
+        <Slots.icon />
+        <Slots.content />
         {children}
       </Slots.stack>
     </Slots.root>

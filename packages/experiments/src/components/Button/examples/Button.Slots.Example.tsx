@@ -1,6 +1,8 @@
 import * as React from 'react';
-import { Stack, Text } from 'office-ui-fabric-react';
-import { IMenuButtonProps, ISplitButtonProps, MenuButton, SplitButton } from '@uifabric/experiments';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Text } from 'office-ui-fabric-react/lib/Text';
+import { IMenuButtonProps, MenuButton } from '@uifabric/experiments/lib/MenuButton';
+import { ISplitButtonProps, SplitButton } from '@uifabric/experiments/lib/SplitButton';
 
 export interface IRibbonMenuButtonProps extends IMenuButtonProps {
   vertical?: boolean;
@@ -11,18 +13,16 @@ export interface ISplitRibbonMenuButtonProps extends ISplitButtonProps {
 }
 
 const menuProps: ISplitButtonProps['menu'] = {
-  props: {
-    items: [
-      {
-        key: 'a',
-        name: 'Item a'
-      },
-      {
-        key: 'b',
-        name: 'Item b'
-      }
-    ]
-  }
+  items: [
+    {
+      key: 'a',
+      name: 'Item a'
+    },
+    {
+      key: 'b',
+      name: 'Item b'
+    }
+  ]
 };
 
 const RibbonMenuButtonTokens = { backgroundColorHovered: '#C8C6C4', backgroundColorPressed: '#C8C6C4' };
@@ -54,7 +54,7 @@ export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
   const mergedProps: IMenuButtonProps = props.vertical
     ? {
         ...props,
-        stack: { props: { horizontal: false, tokens: { childrenGap: 0 }, verticalFill: true } },
+        stack: { horizontal: false, tokens: { childrenGap: 0 }, verticalFill: true },
         menuIcon: 'ChevronDownSmall',
         styles: RibbonMenuButtonVerticalStyles,
         tokens: RibbonMenuButtonVerticalTokens
@@ -89,7 +89,12 @@ const SplitMenuButtonVerticalStyles = {
   }
 };
 
-const SplitMenuButtonVerticalDivider: ISplitRibbonMenuButtonProps['splitDivider'] = { render: () => null };
+const SplitMenuButtonVerticalSlots: ISplitRibbonMenuButtonProps['slots'] = {
+  menuButton: {
+    component: RibbonMenuButton
+  },
+  splitDivider: { render: () => null }
+};
 
 export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
   const { content, vertical, ...rest } = props;
@@ -103,14 +108,11 @@ export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = pro
   const mergedProps: ISplitRibbonMenuButtonProps = vertical
     ? {
         ...rest,
-        root: { props: { horizontal: false, horizontalAlign: 'center' } },
-        menuButton: {
-          component: RibbonMenuButton,
-          props: verticalMenuButtonProps
-        },
-        splitDivider: SplitMenuButtonVerticalDivider,
+        root: { horizontal: false, horizontalAlign: 'center' },
+        menuButton: verticalMenuButtonProps,
         styles: SplitMenuButtonVerticalStyles,
-        tokens: SplitMenuButtonVerticalTokens
+        tokens: SplitMenuButtonVerticalTokens,
+        slots: SplitMenuButtonVerticalSlots
       }
     : { ...rest, content, tokens: RibbonMenuButtonTokens };
 

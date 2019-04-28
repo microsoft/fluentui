@@ -103,9 +103,9 @@ export const CompoundButton: CompoundButtonType = props => {
 
   return (
     <Button
-      stack={{ props: { as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens } }}
+      stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }}
       content={text}
-      icon={{ props: iconProps }}
+      icon={iconProps}
       styles={CompoundButtonStyles}
       tokens={CompoundButtonTokens}
       {...rest}

@@ -49,5 +49,5 @@ export const CommandBarButtonTokens: IButtonComponent['tokens'] = (props, theme)
 export const CommandBarButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return <Button content={text} icon={{ props: iconProps }} tokens={CommandBarButtonTokens} {...rest} />;
+  return <Button content={text} icon={iconProps} tokens={CommandBarButtonTokens} {...rest} />;
 };
