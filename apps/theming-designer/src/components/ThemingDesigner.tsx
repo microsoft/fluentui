@@ -54,7 +54,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
     hideSemanticSlots = false;
     if (!hideSemanticSlots) {
-      semanticSlotsCard = <SemanticSlots />;
+      semanticSlotsCard = <SemanticSlots theme={this.state.theme} themeRules={this.state.themeRules} />;
     } else {
       <div />;
     }

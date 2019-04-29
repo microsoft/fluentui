@@ -10,12 +10,11 @@ import {
   SelectionMode
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IThemeRules } from '../../../../packages/office-ui-fabric-react/lib';
-import { SemanticColorSlots } from '../../../../packages/office-ui-fabric-react/lib';
+import { SemanticColorSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 
 export interface ISemanticSlotsDetailsListProps {
   slotNames: string[];
-  noneSlots: SemanticColorSlots[];
+  noneSlots: JSX.Element[];
   neutralSlots: SemanticColorSlots[];
   softSlots: SemanticColorSlots[];
   strongSlots: SemanticColorSlots[];
@@ -26,7 +25,7 @@ export interface ISemanticSlotsDetailsListProps {
 interface ISemanticSlotsDetailsList {
   key: string;
   slotName: string;
-  noneSlot: SemanticColorSlots;
+  noneSlot: JSX.Element;
   neutralSlot: SemanticColorSlots;
   softSlot: SemanticColorSlots;
   strongSlot: SemanticColorSlots;

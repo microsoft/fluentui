@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
 import { SemanticColorSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, ISemanticColors } from 'office-ui-fabric-react/lib/Styling';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
-import { getVariant } from '@uifabric/variants';
+import { getVariant, VariantThemeType } from '@uifabric/variants';
 
 export interface ISemanticSlotsProps {
   theme?: ITheme;
@@ -14,7 +14,7 @@ export interface ISemanticSlotsProps {
 
 export interface ISemanticSlotsState {
   slotNames: string[];
-  noneSlots: SemanticColorSlots[]; // array of JSX.Element from semanticColorSlotWidget instead of SemanticColorSlots[]??
+  noneSlots: JSX.Element[]; // array of JSX.Element from semanticColorSlotWidget instead of SemanticColorSlots[]??
   neutralSlots: SemanticColorSlots[];
   softSlots: SemanticColorSlots[];
   strongSlots: SemanticColorSlots[];
@@ -126,44 +126,9 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
       softSlots: [],
       strongSlots: []
     };
+    this.fillNoneVariantSlots();
+    this.fillNeutralVariantSlots();
   }
-
-  // semanticSlotRuleChanged method? I don't think I need it bc when themeRules change SemanticSlots card will get
-  // new theme and re-render with the new slotRules[SemanticColorSlots]?
-
-  // so I think all I need to do is populate each of the slots lists with the right semantic color slot
-  // so the first value in noneSlots[] will be bodyBackground on none = white
-  // second value will be bodyStandoutBackground on none = neutralLighterAlt
-
-  // will need semanticSlotWidget to make the colorbox and slot rule label for each cell though.
-
-  private semanticSlotWidget = (semanticColorSlot: SemanticColorSlots): JSX.Element => {
-    const slotRule = this.props.themeRules![SemanticColorSlots[semanticColorSlot]];
-    return (
-      <div key={slotRule.name} className={slotClassName}>
-        <Stack horizontal gap={5}>
-          <div key={slotRule.name} className={semanticPaletteColorBox} style={{ backgroundColor: slotRule.color!.str }} />
-          <div>{slotRule.name}</div>
-        </Stack>
-      </div>
-    );
-  };
-
-  // fill noneSlots
-  private _fillNoneVariantSlots() {
-    // call getVariant to get the default
-  }
-
-  // fill neutralSlots
-  private _fillNeutralVariantSlots() {
-    // call getVariant with VariantThemeType.Neutral & access the returned theme object's semanticColors to get the list
-    getVariant();
-    // call setState for neturalSlots and fill the list: each value is the JSX for that slot's colorbox and label
-  }
-
-  // fill softSlots
-
-  // fill strongSlots
 
   public render(): JSX.Element {
     return (
@@ -181,4 +146,62 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
       </Card>
     );
   }
+
+  // semanticSlotRuleChanged method? I don't think I need it bc when themeRules change SemanticSlots card will get
+  // new theme and re-render with the new slotRules[SemanticColorSlots]?
+
+  // so I think all I need to do is populate each of the slots lists with the right semantic color slot
+  // so the first value in noneSlots[] will be bodyBackground on none = white
+  // second value will be bodyStandoutBackground on none = neutralLighterAlt
+
+  // will need semanticSlotWidget to make the colorbox and slot rule label for each cell though.
+
+  private semanticSlotWidget = (colorString: string, name: string): JSX.Element => {
+    //const slotRule = this.props.themeRules![SemanticColorSlots[semanticColorSlot]];
+    return (
+      <div key={name} className={slotClassName}>
+        <Stack horizontal gap={5}>
+          <div key={name} className={semanticPaletteColorBox} style={{ backgroundColor: colorString }} />
+          <div>{name}</div>
+        </Stack>
+      </div>
+    );
+  };
+
+  // fill noneSlots
+  private fillNoneVariantSlots() {
+    // call getVariant to get the default
+    let noneThemeVariant: ITheme;
+    if (this.props.theme) {
+      noneThemeVariant = getVariant(this.props.theme!, VariantThemeType.None);
+      let noneSemanticColors = noneThemeVariant.semanticColors;
+      console.log('hello none semantic colors: ', noneSemanticColors);
+
+      let tempJSXList: JSX.Element[];
+      tempJSXList = [];
+      for (let slot in noneSemanticColors) {
+        if (noneSemanticColors.hasOwnProperty(slot)) {
+          let currSlotJSX = this.semanticSlotWidget((noneSemanticColors as any)[slot], slot);
+          // console.log('currSlotJSX', currSlotJSX);
+          tempJSXList.push(currSlotJSX);
+        }
+      }
+      console.log('temp jsx list: ', tempJSXList);
+      this.setState({
+        noneSlots: tempJSXList
+      });
+      console.log('state none slots: ', this.state.noneSlots);
+    }
+  }
+
+  // fill neutralSlots
+  private fillNeutralVariantSlots() {
+    // call getVariant with VariantThemeType.Neutral & access the returned theme object's semanticColors to get the list
+    // getVariant(this.props.theme);
+    // call setState for neturalSlots and fill the list: each value is the JSX for that slot's colorbox and label
+  }
+
+  // fill softSlots
+
+  // fill strongSlots
 }
