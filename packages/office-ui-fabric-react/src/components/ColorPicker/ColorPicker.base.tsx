@@ -162,6 +162,9 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     let newColor: IColor | undefined;
     if (isHex) {
       newColor = getColorFromString('#' + newValue);
+      if (newColor && newValue && newValue.length === 3) {
+        newColor.hex = newValue;
+      }
     } else {
       newColor = getColorFromRGBA({
         r: color.r,

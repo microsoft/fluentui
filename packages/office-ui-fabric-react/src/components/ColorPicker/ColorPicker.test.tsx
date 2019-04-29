@@ -180,6 +180,21 @@ describe('ColorPicker', () => {
     expect(colorPicker!.color.str).toBe('rgba(0, 255, 0, 0.5)');
   });
 
+  it('does not convert 3 digit hex to 6 digit', () => {
+    let updatedColor: IColor | undefined;
+    const onChange = jest.fn((ev: any, color: IColor) => {
+      updatedColor = color;
+    });
+
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input')!;
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('aaa'));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(updatedColor!.str).toBe('#aaa');
+    expect(updatedColor!.hex).toBe('aaa');
+  });
+
   it('allows updating text fields when alpha slider is hidden', () => {
     let updatedColor: string | undefined;
     const onChange = jest.fn((ev: any, color: IColor) => {
