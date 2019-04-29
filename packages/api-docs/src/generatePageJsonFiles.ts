@@ -49,7 +49,7 @@ generateJson([
       'HoverCard',
       'Icon',
       'Image',
-      'Keytip',
+      'Keytips',
       'Label',
       'Layer',
       'Link',
