@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ActionButton } from 'office-ui-fabric-react/lib/Button';
+import { ActionButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -81,6 +81,11 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _renderEach(): JSX.Element | undefined {
+    const seeMoreButtonStyles: Partial<IButtonStyles> = {
+      root: { paddingLeft: '0px' },
+      textContainer: { paddingLeft: '4px' }
+    };
+
     if (this.state.properties.length > 1) {
       return (
         <Stack gap={MEDIUM_GAP_SIZE}>
@@ -88,7 +93,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             iconProps={{ iconName: this.state.showSeeMore ? 'SkypeCircleMinus' : 'CirclePlus' }}
             onClick={this._onClickSeeMore}
             onRenderText={this._onRenderText}
-            styles={{ root: { paddingLeft: '0px' }, textContainer: { paddingLeft: '4px' } }}
+            styles={seeMoreButtonStyles}
           >
             See More
           </ActionButton>

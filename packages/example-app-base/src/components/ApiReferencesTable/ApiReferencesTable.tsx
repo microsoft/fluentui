@@ -6,7 +6,8 @@ import {
   IDetailsRowProps,
   IDetailsRowStyles,
   DetailsListLayoutMode,
-  IColumn
+  IColumn,
+  ColumnActionsMode
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
@@ -107,7 +108,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isRowHeader: true,
         isResizable: true,
-        onRender: this.createRenderCellInterface('name')
+        onRender: this.createRenderCellInterface('name'),
+        columnActionsMode: ColumnActionsMode.disabled
       },
       {
         key: 'type',
@@ -118,7 +120,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isResizable: true,
         isMultiline: true,
-        onRender: this.createRenderCellType('typeTokens')
+        onRender: this.createRenderCellType('typeTokens'),
+        columnActionsMode: ColumnActionsMode.disabled
       },
       {
         key: 'defaultValue',
@@ -129,7 +132,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isResizable: true,
         isMultiline: true,
-        onRender: this.createRenderCellInterface('defaultValue')
+        onRender: this.createRenderCellInterface('defaultValue'),
+        columnActionsMode: ColumnActionsMode.disabled
       },
       {
         key: 'description',
@@ -140,7 +144,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isResizable: true,
         isMultiline: true,
-        onRender: this.createRenderCellInterface('description')
+        onRender: this.createRenderCellInterface('description'),
+        columnActionsMode: ColumnActionsMode.disabled
       }
     ];
 
@@ -154,7 +159,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isRowHeader: true,
         isResizable: true,
-        onRender: this.createRenderCellInterface('name')
+        onRender: this.createRenderCellInterface('name'),
+        columnActionsMode: ColumnActionsMode.disabled
       },
       {
         key: 'signature',
@@ -165,7 +171,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isResizable: true,
         isMultiline: true,
-        onRender: this.createRenderCellSignature('typeTokens')
+        onRender: this.createRenderCellSignature('typeTokens'),
+        columnActionsMode: ColumnActionsMode.disabled
       },
       {
         key: 'description',
@@ -176,7 +183,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         isCollapsible: false,
         isResizable: true,
         isMultiline: true,
-        onRender: this.createRenderCellInterface('description')
+        onRender: this.createRenderCellInterface('description'),
+        columnActionsMode: ColumnActionsMode.disabled
       }
     ];
 
