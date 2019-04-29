@@ -187,9 +187,8 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
         const workingSet = workingSubcomponentStyles[subCompProp];
         mergedSubStyles[subCompProp] = (styleProps: any) => {
           return concatStyleSets(
-            ...workingSet.map(
-              (styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
-                typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
+            ...workingSet.map((styleFunctionOrObject: IStyleFunctionOrObject<any, any>) =>
+              typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
             )
           );
         };

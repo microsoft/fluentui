@@ -2,6 +2,512 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.14.4",
+      "tag": "@uifabric/example-app-base_v6.14.4",
+      "date": "Fri, 26 Apr 2019 12:35:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecate implementation examples",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4bd19808850a6a27e49a77cba869f278785e2a7a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.170.0` to `^6.171.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.3",
+      "tag": "@uifabric/example-app-base_v6.14.3",
+      "date": "Wed, 24 Apr 2019 12:35:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Deprecate component status",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "963bedb18604d38792d7ac57d280877f52a597ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.168.0` to `^6.169.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.2",
+      "tag": "@uifabric/example-app-base_v6.14.2",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reduce the re-export wild card to fix website",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "ef7ccb8a9f91fe0829a7cf7e1fb7a2e4c58f62b0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.1",
+      "tag": "@uifabric/example-app-base_v6.14.1",
+      "date": "Wed, 17 Apr 2019 12:33:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.0` to `^6.167.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.0",
+      "tag": "@uifabric/example-app-base_v6.14.0",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Convert components to css-in-js",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.2",
+      "tag": "@uifabric/example-app-base_v6.13.2",
+      "date": "Tue, 02 Apr 2019 12:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "handle TSDoc default value tag",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "00ac1fea4ae3afd066683b919ebeca20244cda4c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.1` to `^6.164.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.1",
+      "tag": "@uifabric/example-app-base_v6.13.1",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.0",
+      "tag": "@uifabric/example-app-base_v6.13.0",
+      "date": "Fri, 29 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Code and documentation cleanup",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "35df0a3a86868a4dd6069e6e7dbd29ea7f12ad64"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Make CodepenComponent specify SCSS preprocessor",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "2921eadc749c31276fac1a81c4ad1744f35d3308"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.162.1 <7.0.0` to `>=6.163.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.4",
+      "tag": "@uifabric/example-app-base_v6.12.4",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Enable stricter lint and compiler options",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "33e51e9f992bb7d2c98cef484c66020c98e45563"
+          },
+          {
+            "comment": "ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "bbb924c6ca7e0379cfce4dba835fe4ee3e9326ea"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.3",
+      "tag": "@uifabric/example-app-base_v6.12.3",
+      "date": "Fri, 22 Mar 2019 12:34:41 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove ExampleCardComponent now that Stack has been promoted.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "69bd6070595f933a0a3c9278eff74fd13f5b8edd"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.159.0 <7.0.0` to `>=6.159.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.2",
+      "tag": "@uifabric/example-app-base_v6.12.2",
+      "date": "Wed, 13 Mar 2019 00:42:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "FeedbackList: Iterate Github issues collection directly to avoid total_count disparity",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "71fc9e64e058d23db7716aa9fb80bbb7a24e5c69"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.155.0 <7.0.0` to `>=6.156.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.1",
+      "tag": "@uifabric/example-app-base_v6.12.1",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Improve autodoc to deal with line breaks in extends clause.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "699e46023b7ff583d8c50bb0a82f8bee66896fdf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.151.0 <7.0.0` to `>=6.152.0 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.12.0",
+      "tag": "@uifabric/example-app-base_v6.12.0",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "remove not null assertion for optional prop",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "ce2154375e321a95b86d0e7bb9be491ad933e7fc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.149.0 <7.0.0` to `>=6.150.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.8",
+      "tag": "@uifabric/example-app-base_v6.11.8",
+      "date": "Tue, 26 Feb 2019 22:45:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Feedback button: Increase styles specificity to override MWF conflicts.",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "ab29c5f3b3a0e01c2c660dcd581b8a1978ab47c8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.144.0 <7.0.0` to `>=6.145.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.7",
+      "tag": "@uifabric/example-app-base_v6.11.7",
+      "date": "Mon, 25 Feb 2019 13:31:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Tweaking the package json to remove uneeded side effects, which helps with bundling.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9e04bf432ee5962ba9a7e6eeed5b598eed1661be"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.143.0 <7.0.0` to `>=6.143.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.6",
+      "tag": "@uifabric/example-app-base_v6.11.6",
+      "date": "Thu, 14 Feb 2019 13:34:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fluent folder cover; updated metadata font color; added yellowDark color variable",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "7c1a7f9f8d5157f6cd59a568a89019d816c75e9b"
+          },
+          {
+            "comment": "Switch PivotItems to use headerText not linkText",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "43e45d90f0c5cad56cf1b35c8a41361176a30b40"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.138.1 <7.0.0` to `>=6.139.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.5",
+      "tag": "@uifabric/example-app-base_v6.11.5",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Changes to support Slots Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.6.0 <1.0.0` to `>=0.7.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.131.1 <7.0.0` to `>=6.132.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.4",
+      "tag": "@uifabric/example-app-base_v6.11.4",
+      "date": "Mon, 28 Jan 2019 13:35:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use fabric dev build in export to codepen",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "cb4c10bf66aa74f02ce1b19adf3274846337ef85"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.129.4 <7.0.0` to `>=6.130.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.3",
+      "tag": "@uifabric/example-app-base_v6.11.3",
+      "date": "Fri, 18 Jan 2019 13:38:05 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix bug where customizations apply to theme and scheme dropdowns.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6913e7757d8a500e483845f787be0fb5e4543c0d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.127.0 <7.0.0` to `>=6.128.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.2",
+      "tag": "@uifabric/example-app-base_v6.11.2",
+      "date": "Thu, 17 Jan 2019 13:34:42 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ComponentPage: add id to dos and donts section to fix linking on site",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a8c8aa23347ac6c3a0d8a64ce66cffa36489547e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.126.0 <7.0.0` to `>=6.127.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.1",
+      "tag": "@uifabric/example-app-base_v6.11.1",
+      "date": "Wed, 16 Jan 2019 13:38:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: removing aria-hidden attribute.",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "3ecf40f194fee594edfd461a6a38045f183d4086"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.125.0 <7.0.0` to `>=6.126.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.11.0",
+      "tag": "@uifabric/example-app-base_v6.11.0",
+      "date": "Mon, 14 Jan 2019 13:39:22 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "**New:** MarkdownTable components for use in PageMarkdown.\\n**EditSection:** Allow content to be more flexible in order to render.\\n**PageMarkdown:** Override table elements with new MarkdownTable components, add global classNames, add static displayName.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "326ec7786c33863ad822f40a93bd4b752fe31220"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.124.1 <7.0.0` to `>=6.124.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.10.0",
+      "tag": "@uifabric/example-app-base_v6.10.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "replace references to isCollapsable with isCollapsible",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "faf1cb2cda7bb8aa5b165b3e9fdb7664ee809830"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove types and modules no longer needed due to Foundation changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "893b91690c3421410e9ba4bb7ae03c3f74f1e953"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `>=0.5.7 <1.0.0` to `>=0.6.0 <1.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.113.0 <7.0.0` to `>=6.114.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.4",
+      "tag": "@uifabric/example-app-base_v6.9.4",
+      "date": "Tue, 11 Dec 2018 13:36:20 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix Example dropdown regression caused by #7326.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "228d92dff41d167d367eb86eaba693df0a66846b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.111.2 <7.0.0` to `>=6.112.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.9.3",
+      "tag": "@uifabric/example-app-base_v6.9.3",
+      "date": "Thu, 06 Dec 2018 13:34:21 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix for issue#7258:Documentation is missing for button",
+            "author": "Aftab Hassan <aftabh@uw.edu>",
+            "commit": "09f1011e7355358023bb8ec712defbe62f786475"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.110.2 <7.0.0` to `>=6.111.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.9.2",
       "tag": "@uifabric/example-app-base_v6.9.2",
       "date": "Tue, 06 Nov 2018 13:31:09 GMT",

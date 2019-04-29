@@ -2,6 +2,111 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.7.4",
+      "tag": "@uifabric/foundation_v0.7.4",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.2` to `^6.35.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.3",
+      "tag": "@uifabric/foundation_v0.7.3",
+      "date": "Mon, 01 Apr 2019 12:37:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Passing styling and tokens to view.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "df359770c046490ac1d7cb17a783cbb7e0cbcdcf"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.2",
+      "tag": "@uifabric/foundation_v0.7.2",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TSDoc fixes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "480f82474e77ccaa31960c0fb34ae8600d48e14f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.35.0 <7.0.0` to `>=6.35.1 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.1",
+      "tag": "@uifabric/foundation_v0.7.1",
+      "date": "Mon, 04 Feb 2019 13:36:12 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Optimize React hierarchy by naming Unknowns and removing view layers.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "7b2858f9f648cefff97df078011f306a7aed9f53"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.7.0",
+      "tag": "@uifabric/foundation_v0.7.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Promote Slots and Tokens implementation of Foundation.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "15fdd1982b01e3e5e9a4d7b9f10d7f1d40a45372"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `>=6.28.1 <7.0.0` to `>=6.29.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.6.0",
+      "tag": "@uifabric/foundation_v0.6.0",
+      "date": "Fri, 14 Dec 2018 13:35:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add styling and utilities packages as dependencies and remove corresponding type injection.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "893b91690c3421410e9ba4bb7ae03c3f74f1e953"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.5.7",
       "tag": "@uifabric/foundation_v0.5.7",
       "date": "Wed, 31 Oct 2018 12:32:41 GMT",

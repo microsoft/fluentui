@@ -39,12 +39,19 @@ export class BaseState<TComponentProps extends IBaseProps, TViewProps, TState> e
   }
 
   public render(): JSX.Element | null {
+    const controlledProps = this._getControlledProps();
+
     let newProps = {
       ...(this.state as {}),
-      ...(this._getControlledProps() as {})
+      ...(controlledProps as {})
     } as TViewProps;
 
-    newProps = this._transformViewProps(newProps);
+    // Need to spread controlledProps again to make sure transformViewProps does not overwrite any controlled props.
+    // TODO: better way to do this than two spreads? filtered write? pass "setState" helper to transformViewProps?
+    newProps = {
+      ...(this._transformViewProps(newProps) as {}),
+      ...(controlledProps as {})
+    } as TViewProps;
 
     return this.props.renderView(newProps);
   }

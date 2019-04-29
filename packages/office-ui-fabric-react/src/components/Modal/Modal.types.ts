@@ -6,6 +6,9 @@ import { IStyle, ITheme } from '../../Styling';
 import { ILayerProps } from '../../Layer';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModal {
   /**
    * Sets focus on the first focusable, or configured, child in focus trap zone
@@ -13,7 +16,10 @@ export interface IModal {
   focus: () => void;
 }
 
-export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+/**
+ * {@docCategory Modal}
+ */
+export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -64,6 +70,13 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   isBlocking?: boolean;
 
   /**
+   * Whether the dialog should be modeless (e.g. not dismiss when focusing/clicking outside of the dialog).
+   * if true: isBlocking is ignored, there will be no overlay (isDarkOverlay is ignored),
+   * isClickableOutsideFocusTrap is true, and forceFocusInsideTrap is false
+   */
+  isModeless?: boolean;
+
+  /**
    * Optional class name to be added to the root class
    */
   className?: string;
@@ -101,8 +114,11 @@ export interface IModalProps extends React.Props<ModalBase>, IWithResponsiveMode
   topOffsetFixed?: boolean;
 }
 
+/**
+ * {@docCategory Modal}
+ */
 export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
-  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed'> & {
+  Pick<IModalProps, 'className' | 'containerClassName' | 'scrollableContentClassName' | 'topOffsetFixed' | 'isModeless'> & {
     /** Modal open state. */
     isOpen?: boolean;
     /** Modal visible state. */
@@ -111,10 +127,16 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
+    /** Classname for layer element */
+    layerClassName?: string;
   };
 
+/**
+ * {@docCategory Modal}
+ */
 export interface IModalStyles {
   root: IStyle;
   main: IStyle;
   scrollableContent: IStyle;
+  layer: IStyle;
 }

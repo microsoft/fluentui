@@ -6,9 +6,15 @@ import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 import { IKeytipProps } from '../../Keytip';
 
-export interface IFacepile { }
+/**
+ * {@docCategory Facepile}
+ */
+export interface IFacepile {}
 
-export interface IFacepileProps extends React.Props<FacepileBase> {
+/**
+ * {@docCategory Facepile}
+ */
+export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /**
    * Optional callback to access the IFacepile interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -72,6 +78,9 @@ export interface IFacepileProps extends React.Props<FacepileBase> {
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
 }
 
+/**
+ * {@docCategory Facepile}
+ */
 export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonElement | HTMLDivElement> {
   /**
    * Name of the person.
@@ -130,6 +139,9 @@ export interface IFacepilePersona extends React.ButtonHTMLAttributes<HTMLButtonE
   keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory Facepile}
+ */
 export enum OverflowButtonType {
   /** No overflow */
   none = 0,
@@ -141,6 +153,9 @@ export enum OverflowButtonType {
   downArrow = 3
 }
 
+/**
+ * {@docCategory Facepile}
+ */
 export interface IFacepileStyleProps {
   /**
    * Theme provided by High-Order Component.
@@ -158,6 +173,9 @@ export interface IFacepileStyleProps {
   spacingAroundItemButton?: number;
 }
 
+/**
+ * {@docCategory Facepile}
+ */
 export interface IFacepileStyles {
   /**
    * Style for the root element.

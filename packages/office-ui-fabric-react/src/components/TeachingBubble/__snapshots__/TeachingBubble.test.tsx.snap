@@ -65,6 +65,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       style={
         Object {
           "maxHeight": 750,
+          "outline": "none",
           "overflowY": "hidden",
         }
       }
@@ -672,7 +673,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           }
     >
       <i
-        aria-hidden={true}
         className=
             ms-Button-icon
             {

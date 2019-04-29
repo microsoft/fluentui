@@ -2,11 +2,11 @@ require('es6-promise/auto');
 
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
-import { App, AppDefinition } from './AppDefinition';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
-import { GettingStartedPage } from './GettingStartedPage';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
-import { ComponentPage, IAppLink, IAppLinkGroup } from '@uifabric/example-app-base';
+import { IAppLink, IAppLinkGroup } from '@uifabric/example-app-base';
+import { GettingStartedPage } from './GettingStartedPage';
+import { App, AppDefinition } from './AppDefinition';
 
 import './index.scss';
 import './ColorStyles.scss';
@@ -18,7 +18,6 @@ import './version';
 initializeIcons();
 
 setBaseUrl('./dist/');
-ComponentPage.defaultProps.areBadgesVisible = true;
 
 let rootElement: HTMLElement | null;
 

@@ -1,0 +1,422 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`] = `
+<div
+  className="docs-DatePickerExample"
+>
+  <div
+    className=
+        ms-DatePicker
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+        }
+    placeholder="Select a date..."
+  >
+    <div
+      aria-expanded={false}
+      aria-haspopup="true"
+      role="combobox"
+    >
+      <div
+        className=
+            ms-TextField
+            is-disabled
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            & input[readonly] {
+              cursor: default;
+            }
+            & input::-ms-clear {
+              display: none;
+            }
+      >
+        <div
+          className=
+              ms-TextField-wrapper
+
+        >
+          <div
+            className=
+                ms-TextField-fieldGroup
+                {
+                  align-items: stretch;
+                  background-color: #f4f4f4;
+                  background: #ffffff;
+                  border-color: #f4f4f4;
+                  border: 1px solid #a6a6a6;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  cursor: default;
+                  display: flex;
+                  flex-direction: row;
+                  height: 32px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
+          >
+            <input
+              aria-invalid={false}
+              aria-label="Select a date"
+              className=
+                  ms-TextField-field
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    background: none;
+                    border-color: transparent;
+                    border-radius: 0px;
+                    border: none;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-width: 0px;
+                    outline: 0px;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 24px;
+                    padding-top: 0;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                  }
+                  &:active, &:focus, &:hover {
+                    outline: 0px;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+                  &::placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a6a6a6;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &:-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a6a6a6;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+              disabled={true}
+              id="DatePicker0-label"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select a date..."
+              readOnly={true}
+              required={false}
+              type="text"
+              value=""
+            />
+            <i
+              className=
+                  ms-DatePicker-event--without-label
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 18px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 9px;
+                    speak: none;
+                    top: 7px;
+                  }
+              data-icon-name="Calendar"
+              onClick={[Function]}
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div
+    className=
+        ms-DatePicker
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          padding-bottom: 0px;
+          padding-left: 0px;
+          padding-right: 0px;
+          padding-top: 0px;
+        }
+    placeholder="Select a date..."
+  >
+    <div
+      aria-expanded={false}
+      aria-haspopup="true"
+      role="combobox"
+    >
+      <div
+        className=
+            ms-TextField
+            is-disabled
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              box-shadow: none;
+              box-sizing: border-box;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: relative;
+            }
+            & input[readonly] {
+              cursor: default;
+            }
+            & input::-ms-clear {
+              display: none;
+            }
+      >
+        <div
+          className=
+              ms-TextField-wrapper
+
+        >
+          <label
+            className=
+                ms-Label
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  color: #a6a6a6;
+                  display: block;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  overflow-wrap: break-word;
+                  padding-bottom: 5px;
+                  padding-left: 0;
+                  padding-right: 0;
+                  padding-top: 5px;
+                  word-wrap: break-word;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: GrayText;
+                }
+            htmlFor="DatePicker3-label"
+            required={false}
+          >
+            Disabled (with label)
+          </label>
+          <div
+            className=
+                ms-TextField-fieldGroup
+                {
+                  align-items: stretch;
+                  background-color: #f4f4f4;
+                  background: #ffffff;
+                  border-color: #f4f4f4;
+                  border: 1px solid #a6a6a6;
+                  box-shadow: none;
+                  box-sizing: border-box;
+                  cursor: default;
+                  display: flex;
+                  flex-direction: row;
+                  height: 32px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
+                  padding-bottom: 0px;
+                  padding-left: 0px;
+                  padding-right: 0px;
+                  padding-top: 0px;
+                  position: relative;
+                }
+                @media screen and (-ms-high-contrast: active){&:hover {
+                  border-color: Highlight;
+                }
+          >
+            <input
+              aria-invalid={false}
+              aria-label="Select a date"
+              className=
+                  ms-TextField-field
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    background-color: transparent;
+                    background: none;
+                    border-color: transparent;
+                    border-radius: 0px;
+                    border: none;
+                    box-shadow: none;
+                    box-sizing: border-box;
+                    color: #a6a6a6;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
+                    min-width: 0px;
+                    outline: 0px;
+                    padding-bottom: 0;
+                    padding-left: 12px;
+                    padding-right: 24px;
+                    padding-top: 0;
+                    text-overflow: ellipsis;
+                    width: 100%;
+                  }
+                  &:active, &:focus, &:hover {
+                    outline: 0px;
+                  }
+                  &::-ms-clear {
+                    display: none;
+                  }
+                  &::placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a6a6a6;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+                  &:-ms-input-placeholder {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a6a6a6;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
+                    opacity: 1;
+                  }
+              disabled={true}
+              id="DatePicker3-label"
+              onBlur={[Function]}
+              onChange={[Function]}
+              onClick={[Function]}
+              onFocus={[Function]}
+              onInput={[Function]}
+              onKeyDown={[Function]}
+              placeholder="Select a date..."
+              readOnly={true}
+              required={false}
+              type="text"
+              value=""
+            />
+            <i
+              className=
+                  ms-DatePicker-event--with-label
+                  {
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    bottom: 5px;
+                    color: #a6a6a6;
+                    cursor: default;
+                    display: inline-block;
+                    font-family: "FabricMDL2Icons";
+                    font-size: 16px;
+                    font-style: normal;
+                    font-weight: normal;
+                    line-height: 18px;
+                    pointer-events: none;
+                    position: absolute;
+                    right: 9px;
+                    speak: none;
+                  }
+              data-icon-name="Calendar"
+              onClick={[Function]}
+              role="presentation"
+            >
+              
+            </i>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+`;

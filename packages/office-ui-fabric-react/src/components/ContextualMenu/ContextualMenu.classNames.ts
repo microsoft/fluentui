@@ -1,6 +1,6 @@
 import { getDividerClassNames } from '../Divider/VerticalDivider.classNames';
 import { getMenuItemStyles } from './ContextualMenu.cnstyles';
-import { ITheme, mergeStyleSets, getGlobalClassNames } from '../../Styling';
+import { ITheme, mergeStyleSets, getGlobalClassNames, getScreenSelector, ScreenWidthMaxMedium } from '../../Styling';
 import { IVerticalDividerClassNames } from '../Divider/VerticalDivider.types';
 import { memoizeFunction, IsFocusVisibleClassName } from '../../Utilities';
 import { IContextualMenuItemStyles, IContextualMenuItemStyleProps } from './ContextualMenuItem.types';
@@ -37,9 +37,20 @@ export interface IMenuItemClassNames {
   linkContentMenu: string;
 }
 
+const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
+
 export const getSplitButtonVerticalDividerClassNames = memoizeFunction(
   (theme: ITheme): IVerticalDividerClassNames => {
     return mergeStyleSets(getDividerClassNames(theme), {
+      wrapper: {
+        position: 'absolute',
+        right: 28, // width of the splitMenu based on the padding plus icon fontSize
+        selectors: {
+          [MediumScreenSelector]: {
+            right: 32 // fontSize of the icon increased from 12px to 16px
+          }
+        }
+      },
       divider: {
         height: 16,
         width: 1
@@ -125,6 +136,7 @@ export const getItemClassNames = memoizeFunction(
             {
               selectors: {
                 ':hover': styles.rootHovered,
+                ':hover ~ $splitMenu': styles.rootHovered, // when hovering over the splitPrimary also affect the splitMenu
                 ':active': styles.rootPressed,
                 [`.${IsFocusVisibleClassName} &:focus, .${IsFocusVisibleClassName} &:focus:hover`]: styles.rootFocused,
                 [`.${IsFocusVisibleClassName} &:hover`]: { background: 'inherit;' }
@@ -135,7 +147,9 @@ export const getItemClassNames = memoizeFunction(
       splitMenu: [
         styles.root,
         {
-          width: 32
+          flexBasis: '0',
+          padding: '0 8px',
+          minWidth: 28
         },
         expanded && ['is-expanded', styles.rootExpanded],
         disabled && ['is-disabled', styles.rootDisabled],
@@ -174,6 +188,9 @@ export const getItemClassNames = memoizeFunction(
       secondaryText: [classNames.secondaryText, styles.secondaryText],
       splitContainer: [
         styles.splitButtonFlexContainer,
+        {
+          alignItems: 'flex-start'
+        },
         !disabled &&
           !checked && [
             {

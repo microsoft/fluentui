@@ -46,8 +46,6 @@ lib-commonjs
 lib-es2015
 coverage
 dist
-npm-debug.log
-npminstall-log.txt
 test-dependencies
 screenshots
 
@@ -64,15 +62,10 @@ drop/
 
 # Visual Studio Temp Project
 .vs/
-bin/
-*.suo
-*.csproj.user
-*.userosscache
 *.sublime-project
 *.sublime-workspace
 .idea
 /.settings/
-OneDrive.sln.ide/*
 
 # NPM Install Temp
 __temp/
@@ -96,8 +89,12 @@ ftpconfig.json
 # Package output folder
 package
 
-# Log files from building
+# Logs
 *.log
+npminstall-log.txt
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
 
 # Dependency change files generated from npmx aka rush
 package-deps.json
@@ -115,3 +112,11 @@ gulp-cache
 npm-debug.log.*
 
 package-lock.json
+yarn.lock
+
+*.swp
+
+# Temporary files
+*~
+*swp
+*swo

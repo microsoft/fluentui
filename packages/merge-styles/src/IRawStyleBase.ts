@@ -134,6 +134,7 @@ export type IMixBlendModes =
 
 /**
  * The base font style.
+ * {@docCategory IRawFontStyle}
  */
 export interface IRawFontStyle {
   /**
@@ -242,6 +243,7 @@ export interface IRawFontStyle {
  * Font face definition.
  *
  * @public
+ * {@docCategory IFontFace}
  */
 export interface IFontFace extends IRawFontStyle {
   /**
@@ -266,6 +268,7 @@ export interface IFontFace extends IRawFontStyle {
  * All raw style properties.
  *
  * @public
+ * {@docCategory IRawStyleBase}
  */
 export interface IRawStyleBase extends IRawFontStyle {
   /**
@@ -429,7 +432,7 @@ export interface IRawStyleBase extends IRawFontStyle {
 
   /**
    * The background-clip CSS property specifies if an element's background, whether a
-   * <color> or an <image>, extends underneath its border.
+   * `<color>` or an `<image>`, extends underneath its border.
    *
    * \* Does not work in IE
    *
@@ -1311,6 +1314,13 @@ export interface IRawStyleBase extends IRawFontStyle {
   mixBlendMode?: ICSSRule | IMixBlendModes;
 
   /**
+   * The ‘object-fit’ property specifies how the contents of a replaced element should
+   * be fitted to the box established by its used height and width.
+   * See CSS 3 object-fit property https://www.w3.org/TR/css3-images/#the-object-fit
+   */
+  objectFit?: ICSSRule | 'cover' | 'contain' | 'fill' | 'none';
+
+  /**
    * Specifies the transparency of an element.
    * See CSS 3 opacity property https://drafts.csswg.org/css-color-3/#opacity
    */
@@ -1601,8 +1611,8 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * A future level of CSS Shapes will define a shape-inside property, which will define
    * a shape to wrap content within the element. See Editor's Draft
-   * <http://dev.w3.org/csswg/css-shapes/> and CSSWG wiki page on next-level plans
-   * <http://wiki.csswg.org/spec/css-shapes>
+   * http://dev.w3.org/csswg/css-shapes and CSSWG wiki page on next-level plans
+   * http://wiki.csswg.org/spec/css-shapes
    */
   shapeInside?: ICSSRule | string;
 
@@ -1794,7 +1804,7 @@ export interface IRawStyleBase extends IRawFontStyle {
 
   /**
    * The CSS text-shadow property applies one or more drop shadows to the text and
-   * <text-decorations> of an element. Each shadow is specified as an offset from the
+   * `<text-decorations>` of an element. Each shadow is specified as an offset from the
    * text, along with optional color and blur radius values.
    */
   textShadow?: ICSSRule | string;
@@ -2050,7 +2060,7 @@ export interface IRawStyleBase extends IRawFontStyle {
   zIndex?: ICSSRule | 'auto' | number;
 
   /**
-   * Sets the initial zoom factor of a document defined by @viewport.
+   * Sets the initial zoom factor of a document defined by `@viewport`.
    * See CSS zoom descriptor https://drafts.csswg.org/css-device-adapt/#zoom-desc
    */
   zoom?: ICSSRule | 'auto' | number | ICSSPercentageRule;

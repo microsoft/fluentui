@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css, createRef } from '../../../../Utilities';
+import { BaseComponent, KeyCodes, getId, getNativeProps, inputProperties, css } from '../../../../Utilities';
 import { FloatingPeoplePicker, IBaseFloatingPickerProps } from '../../../../FloatingPicker';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IExtendedPersonaProps } from '../SelectedPeopleList';
@@ -16,29 +16,24 @@ const styles: any = stylesImport;
 export interface IEditingSelectedPeopleItemProps extends ISelectedPeopleItemProps {
   // tslint:disable-next-line:no-any
   onEditingComplete: (oldItem: any, newItem: any) => void;
-  onRenderFloatingPicker?: (props: IBaseFloatingPickerProps<IPersonaProps>) => JSX.Element;
+  onRenderFloatingPicker?: React.ComponentType<IBaseFloatingPickerProps<IPersonaProps>>;
   floatingPickerProps?: IBaseFloatingPickerProps<IPersonaProps>;
   getEditingItemText?: (item: IExtendedPersonaProps) => string;
 }
 
 export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, IPeoplePickerItemState> {
   private _editingInput: HTMLInputElement;
-  private _editingFloatingPicker = createRef<FloatingPeoplePicker>();
-  private _onRenderFloatingPicker: (props: IBaseFloatingPickerProps<IExtendedPersonaProps>) => JSX.Element;
-  private _floatingPickerProps: IBaseFloatingPickerProps<IExtendedPersonaProps>;
+  private _editingFloatingPicker = React.createRef<FloatingPeoplePicker>();
 
   constructor(props: IEditingSelectedPeopleItemProps) {
     super(props);
     this.state = { contextualMenuVisible: false };
-    this._onRenderFloatingPicker = this.props.onRenderFloatingPicker as (
-      props: IBaseFloatingPickerProps<IExtendedPersonaProps>
-    ) => JSX.Element;
-    this._floatingPickerProps = this.props.floatingPickerProps as IBaseFloatingPickerProps<IExtendedPersonaProps>;
   }
 
   public componentDidMount(): void {
     const getEditingItemText = this.props.getEditingItemText as (item: IExtendedPersonaProps) => string;
     const itemText = getEditingItemText(this.props.item);
+
     this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
     this._editingInput.value = itemText;
     this._editingInput.focus();
@@ -68,14 +63,20 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
   }
 
   private _renderEditingSuggestions = (): JSX.Element => {
-    const onRenderFloatingPicker = this._onRenderFloatingPicker;
-    return onRenderFloatingPicker({
-      componentRef: this._editingFloatingPicker,
-      onChange: this._onSuggestionSelected,
-      inputElement: this._editingInput,
-      selectedItems: [],
-      ...this._floatingPickerProps
-    });
+    const FloatingPicker = this.props.onRenderFloatingPicker;
+    const floatingPickerProps = this.props.floatingPickerProps;
+    if (!FloatingPicker || !floatingPickerProps) {
+      return <></>;
+    }
+    return (
+      <FloatingPicker
+        componentRef={this._editingFloatingPicker}
+        onChange={this._onSuggestionSelected}
+        inputElement={this._editingInput}
+        selectedItems={[]}
+        {...floatingPickerProps}
+      />
+    );
   };
 
   private _resolveInputRef = (ref: HTMLInputElement): void => {

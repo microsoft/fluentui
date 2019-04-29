@@ -1,8 +1,7 @@
 import * as React from 'react';
 
-import { CommandBar, Customizer, Toggle } from 'office-ui-fabric-react';
+import { CommandBar, Customizer, IStackTokens, Stack, Toggle, Text } from 'office-ui-fabric-react';
 import { farItems, items, overflowItems } from 'office-ui-fabric-react/lib/components/CommandBar/examples/data';
-import { HorizontalStack, Text, VerticalStack } from '@uifabric/experiments';
 
 // tslint:disable:max-line-length
 import { CollapsibleSectionRecursiveExample } from '@uifabric/experiments/lib/components/CollapsibleSection/examples/CollapsibleSection.Recursive.Example';
@@ -39,57 +38,59 @@ export class ThemingExample extends React.Component<{}, IThemingExampleState> {
     const sideCaption = 'Scheme: ' + sideScheme;
     const topCaption = 'Scheme: ' + topScheme;
 
+    const stackTokens: IStackTokens = { childrenGap: 10 };
+
     // TODO: Even though this styles function is the same for all regions, it has to be provided whenever the scheme
     //        is changed to apply the new semanticColors. Is this the best way we can do this?
     return (
-      <HorizontalStack gap={10}>
-        <HorizontalStack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
+      <Stack horizontal tokens={stackTokens}>
+        <Stack.Item grow={true} styles={{ root: { width: '33%', maxWidth: '33%' } }}>
           <ThemeProvider scheme={sideScheme}>
-            <VerticalStack styles={regionStyles} gap={10} padding={5}>
-              <Text weight="bold">{sideCaption}</Text>
+            <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+              <Text>{sideCaption}</Text>
               <Toggle offText={sideCaption} onText={sideCaption} onChange={this.toggleSide} />
               <CollapsibleSectionRecursiveExample />
-            </VerticalStack>
+            </Stack>
           </ThemeProvider>
-        </HorizontalStack.Item>
-        <HorizontalStack.Item grow={true} styles={{ root: { height: 'auto' } }}>
-          <VerticalStack grow={true} fillVertical={true}>
+        </Stack.Item>
+        <Stack.Item grow={true} styles={{ root: { height: 'auto' } }}>
+          <Stack grow={true} verticalFill={true}>
             <ThemeProvider scheme={topScheme}>
-              <VerticalStack styles={regionStyles} gap={10} padding={5}>
-                <HorizontalStack horizontalAlign="space-between">
-                  <Text weight="bold">{topCaption}</Text>
+              <Stack styles={regionStyles} tokens={stackTokens} padding={5}>
+                <Stack horizontal horizontalAlign="space-between">
+                  <Text>{topCaption}</Text>
                   <Toggle offText={topCaption} onText={topCaption} onChange={this.toggleTop} />
-                </HorizontalStack>
+                </Stack>
                 <CommandBar items={items} overflowItems={overflowItems} farItems={farItems} />
-              </VerticalStack>
+              </Stack>
             </ThemeProvider>
             <ThemeProvider scheme={bodyScheme}>
-              <VerticalStack styles={regionStyles} fillVertical={true} padding={5}>
-                <HorizontalStack horizontalAlign="space-between">
-                  <Text weight="bold">{bodyCaption}</Text>
+              <Stack styles={regionStyles} verticalFill={true} padding={5}>
+                <Stack horizontal horizontalAlign="space-between">
+                  <Text>{bodyCaption}</Text>
                   <Toggle offText={bodyCaption} onText={bodyCaption} onChange={this.toggleBody} />
-                </HorizontalStack>
+                </Stack>
                 <ThemeProvider scheme="default">
-                  <VerticalStack.Item>
+                  <Stack.Item>
                     <DialogExample buttonText="Default Theme" />
-                  </VerticalStack.Item>
+                  </Stack.Item>
                 </ThemeProvider>
                 <ThemeProvider scheme="strong">
-                  <VerticalStack.Item>
+                  <Stack.Item>
                     <DialogExample buttonText="Strong Scheme" />
-                  </VerticalStack.Item>
+                  </Stack.Item>
                 </ThemeProvider>
                 <ThemeProvider scheme="soft">
-                  <VerticalStack.Item>
+                  <Stack.Item>
                     <DialogExample buttonText="Soft Scheme" />
-                  </VerticalStack.Item>
+                  </Stack.Item>
                 </ThemeProvider>
                 <DialogExample buttonText="Inherited Scheme" />
-              </VerticalStack>
+              </Stack>
             </ThemeProvider>
-          </VerticalStack>
-        </HorizontalStack.Item>
-      </HorizontalStack>
+          </Stack>
+        </Stack.Item>
+      </Stack>
     );
   }
 

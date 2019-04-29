@@ -9,7 +9,7 @@ Object.defineProperty(exports, "__esModule", { value: true });
 // version of the specified tool (if not already installed), and then pass a command-line to it.
 // An example usage would be:
 //
-//    node common/scripts/install-run.js rimraf@2.6.2 rimraf -f project1/lib
+//    node common/scripts/install-run.js qrcode@1.2.2 qrcode https://rushjs.io
 //
 // For more information, see: https://rushjs.io/pages/maintainer/setup_new_repo/
 const childProcess = require("child_process");
@@ -369,8 +369,10 @@ function runWithErrorAndStatusCode(fn) {
 }
 exports.runWithErrorAndStatusCode = runWithErrorAndStatusCode;
 function run() {
-    const [nodePath, /* Ex: /bin/node */ // tslint:disable-line:no-unused-variable
-    scriptPath, /* /repo/common/scripts/install-run-rush.js */ rawPackageSpecifier, /* rimraf@^2.0.0 */ packageBinName, /* rimraf */ ...packageBinArgs /* [-f, myproject/lib] */] = process.argv;
+    const [nodePath, /* Ex: /bin/node */ scriptPath, /* /repo/common/scripts/install-run-rush.js */ rawPackageSpecifier, /* qrcode@^1.2.0 */ packageBinName, /* qrcode */ ...packageBinArgs /* [-f, myproject/lib] */] = process.argv;
+    if (!nodePath) {
+        throw new Error('Unexpected exception: could not detect node path');
+    }
     if (path.basename(scriptPath).toLowerCase() !== 'install-run.js') {
         // If install-run.js wasn't directly invoked, don't execute the rest of this function. Return control
         // to the script that (presumably) imported this file
@@ -378,7 +380,7 @@ function run() {
     }
     if (process.argv.length < 4) {
         console.log('Usage: install-run.js <package>@<version> <command> [args...]');
-        console.log('Example: install-run.js rimraf@2.6.2 rimraf -f project1/lib');
+        console.log('Example: install-run.js qrcode@1.2.2 qrcode https://rushjs.io');
         process.exit(1);
     }
     runWithErrorAndStatusCode(() => {

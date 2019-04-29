@@ -1,10 +1,16 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
-import { IColumn, DetailsListLayoutMode, ColumnActionsMode, Selection, SelectionMode, IClassNames, classNamesFunction } from 'office-ui-fabric-react';
-import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader'
+import {
+  IColumn,
+  DetailsListLayoutMode,
+  ColumnActionsMode,
+  Selection,
+  SelectionMode
+} from 'office-ui-fabric-react';
+import { DetailsHeader } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsHeader';
 
 const _items: {}[] = [];
 const _selection = new Selection();
@@ -12,7 +18,15 @@ const _selection = new Selection();
 const dndScript = require('!raw-loader!../../dndSim.js') as string;
 
 const columns: IColumn[] = [
-  { key: 'a', name: 'a', fieldName: 'a', minWidth: 100, maxWidth: 200, calculatedWidth: 100, isResizable: true },
+  {
+    key: 'a',
+    name: 'a',
+    fieldName: 'a',
+    minWidth: 100,
+    maxWidth: 200,
+    calculatedWidth: 100,
+    isResizable: true
+  },
   {
     key: 'b',
     name: 'b',
@@ -116,12 +130,12 @@ storiesOf('DetailsHeader', module)
         .executeScript(dndScript)
         // simulate a drag on column 'b' to render the border
         .cssAnimations(false)
-        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', false)')
+        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[aria-colindex="5"]', false)`)
         .snapshot('borderWhileDragging')
         // do a dragover on 'd' to render the drop hint
         .hover('[aria-colindex=5]')
         .cssAnimations(true)
-        .executeScript('DndSimulator.simulate(\'[draggable="true"]\', \'[aria-colindex="5"]\', true)')
+        .executeScript(`DndSimulator.simulate('[draggable="true"]', '[aria-colindex="5"]', true)`)
         .snapshot('dropHint')
         .end()}
     >
@@ -137,4 +151,4 @@ storiesOf('DetailsHeader', module)
       columns={columns}
       columnReorderProps={_columnReorderProps}
     />
-  ))
+  ));

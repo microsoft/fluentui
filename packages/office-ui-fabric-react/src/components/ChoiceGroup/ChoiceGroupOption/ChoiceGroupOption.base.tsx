@@ -2,18 +2,14 @@ import * as React from 'react';
 import { Image } from '../../../Image';
 import { Icon } from '../../../Icon';
 import { IChoiceGroupOptionProps, IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from './ChoiceGroupOption.types';
-import { BaseComponent, classNamesFunction, getNativeProps, inputProperties, css } from '../../../Utilities';
+import { classNamesFunction, getNativeProps, inputProperties, css } from '../../../Utilities';
 import { IProcessedStyleSet } from '../../../Styling';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
-export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps, any> {
+export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, any> {
   private _inputElement = React.createRef<HTMLInputElement>();
   private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;
-
-  constructor(props: IChoiceGroupOptionProps) {
-    super(props);
-  }
 
   public render(): JSX.Element {
     const {
@@ -29,7 +25,8 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       id,
       styles,
       name,
-      onRenderField = this._onRenderField
+      onRenderField = this._onRenderField,
+      ...rest
     } = this.props;
 
     this._classNames = getClassNames(styles!, {
@@ -42,7 +39,7 @@ export class ChoiceGroupOptionBase extends BaseComponent<IChoiceGroupOptionProps
       focused
     });
 
-    const { className, ...nativeProps } = getNativeProps<{ className: string }>(this.props, inputProperties);
+    const { className, ...nativeProps } = getNativeProps<{ className: string }>(rest, inputProperties);
 
     return (
       <div className={this._classNames.root}>

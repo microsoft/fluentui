@@ -3,18 +3,12 @@ import { Dialog, DialogType, DialogFooter } from 'office-ui-fabric-react/lib/Dia
 import { PrimaryButton, DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ChoiceGroup } from 'office-ui-fabric-react/lib/ChoiceGroup';
 
-export class DialogLargeHeaderExample extends React.Component<
-  {},
-  {
-    hideDialog: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      hideDialog: true
-    };
-  }
+export interface IDialogLargeHeaderExampleState {
+  hideDialog: boolean;
+}
+
+export class DialogLargeHeaderExample extends React.Component<{}, IDialogLargeHeaderExampleState> {
+  public state: IDialogLargeHeaderExampleState = { hideDialog: true };
 
   public render() {
     return (
@@ -30,7 +24,7 @@ export class DialogLargeHeaderExample extends React.Component<
           }}
           modalProps={{
             isBlocking: false,
-            containerClassName: 'ms-dialogMainOverride'
+            styles: { main: { maxWidth: 450 } }
           }}
         >
           <ChoiceGroup
@@ -50,7 +44,6 @@ export class DialogLargeHeaderExample extends React.Component<
                 disabled: true
               }
             ]}
-            onChange={this._onChoiceChanged}
           />
           <DialogFooter>
             <PrimaryButton onClick={this._closeDialog} text="Save" />
@@ -68,8 +61,4 @@ export class DialogLargeHeaderExample extends React.Component<
   private _closeDialog = (): void => {
     this.setState({ hideDialog: true });
   };
-
-  private _onChoiceChanged() {
-    console.log('Choice option change');
-  }
 }

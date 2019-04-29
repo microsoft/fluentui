@@ -66,6 +66,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -142,6 +143,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -236,7 +238,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -266,7 +267,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -312,7 +312,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -385,7 +384,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-key-name "
+                aria-labelledby="header0-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -445,7 +444,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -518,7 +516,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-name-name "
+                aria-labelledby="header0-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -578,7 +576,6 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -651,7 +648,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header0-value-name "
+                aria-labelledby="header0-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -878,6 +875,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -954,6 +952,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -1048,7 +1047,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -1078,7 +1076,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1124,7 +1121,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1197,7 +1193,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name "
+                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1257,7 +1253,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1330,7 +1325,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name "
+                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1390,7 +1385,6 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -1463,7 +1457,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name "
+                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1662,7 +1656,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
         border: 0;
       }
       .ms-Fabric--isFocusVisible &:focus:after {
-        border: 1px solid #0078d4;
+        border: 1px solid #666666;
         bottom: 1px;
         content: "";
         left: 1px;
@@ -1780,7 +1774,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 12px;
             font-weight: 400;
-            height: 40px;
+            height: 42px;
             justify-content: center;
             margin-bottom: 0px;
             margin-left: 0px;
@@ -1850,7 +1844,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             }
       >
         <i
-          aria-hidden={true}
           className=
               ms-Check-circle
               {
@@ -1880,7 +1873,6 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           
         </i>
         <i
-          aria-hidden={true}
           className=
               ms-Check-check
               {
@@ -2224,6 +2216,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2300,6 +2293,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -2394,7 +2388,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2424,7 +2417,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -2470,7 +2462,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2543,7 +2534,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-key-name "
+                aria-labelledby="header3-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2603,7 +2594,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2676,7 +2666,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-name-name "
+                aria-labelledby="header3-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2736,7 +2726,6 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -2809,7 +2798,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header3-value-name "
+                aria-labelledby="header3-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3036,6 +3025,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3112,6 +3102,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
 
             >
               <div
+                aria-checked={false}
                 className=
                     ms-DetailsRow-check
                     ms-DetailsRow-check--isHeader
@@ -3206,7 +3197,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -3236,7 +3226,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     
                   </i>
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -3282,7 +3271,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3355,7 +3343,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-key-name "
+                aria-labelledby="header6-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3415,7 +3403,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3488,7 +3475,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-name-name "
+                aria-labelledby="header6-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3548,7 +3535,6 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  border: none;
                   box-sizing: border-box;
                   color: #333333;
                   display: inline-block;
@@ -3621,7 +3607,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
             >
               <span
                 aria-haspopup={false}
-                aria-labelledby="header6-value-name "
+                aria-labelledby="header6-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {

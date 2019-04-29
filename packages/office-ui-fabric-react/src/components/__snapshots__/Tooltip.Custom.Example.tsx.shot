@@ -13,8 +13,7 @@ exports[`Component Examples renders Tooltip.Custom.Example.tsx correctly 1`] = `
   onMouseLeave={[Function]}
 >
   <button
-    aria-describedby="customID"
-    aria-labelledby="id__0"
+    aria-labelledby="tooltipHost0"
     className=
         ms-Button
         ms-Button--default
@@ -121,7 +120,7 @@ exports[`Component Examples renders Tooltip.Custom.Example.tsx correctly 1`] = `
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__0"
+          id="id__1"
         >
           Hover Over Me
         </div>

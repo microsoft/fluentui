@@ -110,14 +110,13 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
         )}
         {// isBaseStyle prop is deprecated and needs to be removed in the future
         !isBaseStyle && children && <div className={this._classNames.dataWrapper}>{children}</div>}
-        {ariaLabel &&
-          !isDataLoaded && (
-            <div role="status" aria-live="polite">
-              <DelayedRender>
-                <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
-              </DelayedRender>
-            </div>
-          )}
+        {ariaLabel && !isDataLoaded && (
+          <div role="status" aria-live="polite">
+            <DelayedRender>
+              <div className={this._classNames.screenReaderText}>{ariaLabel}</div>
+            </DelayedRender>
+          </div>
+        )}
       </div>
     );
   }

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, DelayedRender, getId, classNamesFunction } from '../../Utilities';
+import { BaseComponent, DelayedRender, getId, classNamesFunction, getNativeProps, htmlElementProperties } from '../../Utilities';
 import { IconButton } from '../../Button';
 import { Icon } from '../../Icon';
 import { IMessageBarProps, IMessageBarStyleProps, IMessageBarStyles, MessageBarType } from './MessageBar.types';
@@ -88,6 +88,8 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
             onClick={this._onClick}
             iconProps={{ iconName: this.state.expandSingleLine ? 'DoubleChevronUp' : 'DoubleChevronDown' }}
             ariaLabel={this.props.overflowButtonAriaLabel}
+            aria-expanded={this.state.expandSingleLine}
+            aria-controls={this.state.labelId}
           />
         </div>
       );
@@ -104,39 +106,44 @@ export class MessageBarBase extends BaseComponent<IMessageBarProps, IMessageBarS
   }
 
   private _renderMultiLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
+    const { theme } = this.props;
     return (
-      <div className={this._classNames.root} aria-live={this._getAnnouncementPriority()}>
-        <div className={this._classNames.content}>
-          {this._getIconSpan()}
-          {this._renderInnerText()}
-          {this._getDismissDiv()}
+      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+        <div className={this._classNames.root}>
+          <div className={this._classNames.content}>
+            {this._getIconSpan()}
+            {this._renderInnerText()}
+            {this._getDismissDiv()}
+          </div>
+          {this._getActionsDiv()}
         </div>
-        {this._getActionsDiv()}
       </div>
     );
   }
 
   private _renderSingleLine(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
+    const { theme } = this.props;
     return (
-      <div
-        className={this._classNames.root}
-        aria-expanded={!this.props.actions && this.props.truncated ? this.state.expandSingleLine : undefined}
-      >
-        <div className={this._classNames.content}>
-          {this._getIconSpan()}
-          {this._renderInnerText()}
-          {this._getExpandSingleLine()}
-          {this._getActionsDiv()}
-          {this._getDismissSingleLine()}
+      <div style={{ background: theme!.semanticColors.bodyBackground }}>
+        <div className={this._classNames.root}>
+          <div className={this._classNames.content}>
+            {this._getIconSpan()}
+            {this._renderInnerText()}
+            {this._getExpandSingleLine()}
+            {this._getActionsDiv()}
+            {this._getDismissSingleLine()}
+          </div>
         </div>
       </div>
     );
   }
 
   private _renderInnerText(): JSX.Element {
+    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+
     return (
       <div className={this._classNames.text} id={this.state.labelId}>
-        <span className={this._classNames.innerText} role="status" aria-live={this._getAnnouncementPriority()}>
+        <span className={this._classNames.innerText} role="status" aria-live={this._getAnnouncementPriority()} {...nativeProps}>
           <DelayedRender>
             <span>{this.props.children}</span>
           </DelayedRender>

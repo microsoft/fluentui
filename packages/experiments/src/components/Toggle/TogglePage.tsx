@@ -4,6 +4,12 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, Prop
 import { ToggleExample } from './examples/Toggle.Example';
 const ToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Example.tsx') as string;
 
+import { ToggleTokensObjectExample } from './examples/Toggle.Tokens.Object.Example';
+const ToggleTokensObjectExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Object.Example.tsx') as string;
+
+import { ToggleTokensFunctionExample } from './examples/Toggle.Tokens.Function.Example';
+const ToggleTokensFunctionExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Tokens.Function.Example.tsx') as string;
+
 export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -12,8 +18,14 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         componentName=" Toggle"
         exampleCards={
           <div>
-            <ExampleCard title=" Default Toggles" code={ToggleExampleCode}>
+            <ExampleCard title="Default Toggles" code={ToggleExampleCode}>
               <ToggleExample />
+            </ExampleCard>
+            <ExampleCard title="Toggle components with token objects" code={ToggleTokensObjectExampleCode}>
+              <ToggleTokensObjectExample />
+            </ExampleCard>
+            <ExampleCard title="Toggle components with token functions" code={ToggleTokensFunctionExampleCode}>
+              <ToggleTokensFunctionExample />
             </ExampleCard>
           </div>
         }

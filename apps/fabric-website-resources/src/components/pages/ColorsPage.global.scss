@@ -6,7 +6,9 @@
 
   .ms-themer {
     padding: 12px;
-    h2, h3, h4 {
+    h2,
+    h3,
+    h4 {
       color: $ms-color-black;
     }
   }
@@ -39,7 +41,6 @@
 
   .ms-themer-example {
     padding: 20px;
-    max-width: 40%;
   }
 
   .ms-themer-fabricPalette-root {

@@ -1,7 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] = `
-<div>
+<div
+  className=
+
+      {
+        padding-bottom: 2px;
+        padding-left: 2px;
+        padding-right: 2px;
+        padding-top: 2px;
+      }
+      & > * {
+        margin-bottom: 10px;
+        margin-left: 0;
+        margin-right: 0;
+        margin-top: 10px;
+      }
+>
   <div
     className=
         ms-Toggle
@@ -25,6 +40,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle0-stateText"
         checked={false}
         className=
             ms-Toggle-background
@@ -64,7 +80,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               z-index: 1;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -83,7 +99,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           className=
               ms-Toggle-thumb
               {
-                background-color: #212121;
+                background-color: #333333;
                 border-color: transparent;
                 border-radius: .5em;
                 border-style: solid;
@@ -122,8 +138,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             }
             && {
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -131,6 +147,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               padding-top: 0;
               user-select: none;
             }
+        htmlFor="Toggle0"
+        id="Toggle0-stateText"
       >
         Toggle to load content
       </label>
@@ -360,6 +378,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
     >
       <button
         aria-checked={false}
+        aria-labelledby="Toggle1-stateText"
         checked={false}
         className=
             ms-Toggle-background
@@ -399,7 +418,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               z-index: 1;
             }
             &:hover {
-              border-color: #212121;
+              border-color: #333333;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -418,7 +437,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           className=
               ms-Toggle-thumb
               {
-                background-color: #212121;
+                background-color: #333333;
                 border-color: transparent;
                 border-radius: .5em;
                 border-style: solid;
@@ -457,8 +476,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             }
             && {
               margin-bottom: 0;
-              margin-left: 10px;
-              margin-right: 10px;
+              margin-left: 8px;
+              margin-right: 8px;
               margin-top: 0;
               padding-bottom: 0;
               padding-left: 0;
@@ -466,6 +485,8 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
               padding-top: 0;
               user-select: none;
             }
+        htmlFor="Toggle1"
+        id="Toggle1-stateText"
       >
         Toggle to load content
       </label>
@@ -959,7 +980,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   }
             >
               <i
-                aria-hidden={true}
                 className=
 
                     {
@@ -1001,7 +1021,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   }
             >
               <i
-                aria-hidden={true}
                 className=
                     ms-Persona-presenceIcon
                     {
@@ -1057,6 +1076,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
           <div
             className=
@@ -1069,6 +1089,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
           <div
             className=
@@ -1082,6 +1103,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
           <div
             className=
@@ -1095,6 +1117,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   text-overflow: ellipsis;
                   white-space: nowrap;
                 }
+            dir="auto"
           />
         </div>
       </div>

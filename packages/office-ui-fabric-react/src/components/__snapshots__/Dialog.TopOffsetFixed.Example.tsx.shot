@@ -118,17 +118,5 @@ exports[`Component Examples renders Dialog.TopOffsetFixed.Example.tsx correctly 
       </div>
     </div>
   </button>
-  <label
-    className="screenReaderOnly"
-    id="myLabelId"
-  >
-    My sample Label
-  </label>
-  <label
-    className="screenReaderOnly"
-    id="mySubTextId"
-  >
-    My Sample description
-  </label>
 </div>
 `;

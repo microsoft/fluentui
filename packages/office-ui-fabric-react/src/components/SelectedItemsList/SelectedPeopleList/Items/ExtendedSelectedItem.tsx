@@ -1,7 +1,7 @@
 /* tslint:disable */
 import * as React from 'react';
 /* tslint:enable */
-import { BaseComponent, css, getId, createRef } from '../../../../Utilities';
+import { BaseComponent, css, getId } from '../../../../Utilities';
 import { Persona, PersonaSize } from '../../../../Persona';
 import { ISelectedPeopleItemProps } from '../SelectedPeopleList';
 import { IconButton } from '../../../../Button';
@@ -14,7 +14,7 @@ export interface IPeoplePickerItemState {
 }
 
 export class ExtendedSelectedItem extends BaseComponent<ISelectedPeopleItemProps, IPeoplePickerItemState> {
-  protected persona = createRef<HTMLDivElement>();
+  protected persona = React.createRef<HTMLDivElement>();
 
   constructor(props: ISelectedPeopleItemProps) {
     super(props);

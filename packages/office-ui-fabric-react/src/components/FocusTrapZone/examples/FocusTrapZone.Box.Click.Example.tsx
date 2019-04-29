@@ -1,101 +1,48 @@
 import * as React from 'react';
 
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 import { Link } from 'office-ui-fabric-react/lib/Link';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle, IToggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-export interface IBoxNoClickExampleExampleState {
-  isToggled: boolean;
+export interface IFocusTrapZoneBoxClickExampleState {
+  useTrapZone: boolean;
 }
 
-export default class BoxNoClickExample extends React.Component<React.HTMLAttributes<HTMLDivElement>, IBoxNoClickExampleExampleState> {
-  private _toggle: IToggle;
+export class FocusTrapZoneBoxClickExample extends React.Component<{}, IFocusTrapZoneBoxClickExampleState> {
+  public state: IFocusTrapZoneBoxClickExampleState = { useTrapZone: false };
 
-  constructor(props: React.HTMLAttributes<HTMLDivElement>) {
-    super(props);
-
-    this.state = {
-      isToggled: false
-    };
-  }
+  private _toggle = React.createRef<IToggle>();
 
   public render() {
-    const { isToggled } = this.state;
+    const { useTrapZone } = this.state;
 
     return (
-      <div>
-        <DefaultButton secondaryText="Focuses inside the FocusTrapZone" onClick={this._onButtonClickHandler} text="Go to Trap Zone" />
-
-        {(() => {
-          if (isToggled) {
-            return (
-              <FocusTrapZone isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
-                {this._internalContents()}
-              </FocusTrapZone>
-            );
-          } else {
-            return <div>{this._internalContents()}</div>;
-          }
-        })()}
-      </div>
+      <FocusTrapZone disabled={!useTrapZone} isClickableOutsideFocusTrap={true} forceFocusInsideTrap={false}>
+        <Stack
+          horizontalAlign="start"
+          tokens={{ childrenGap: 15 }}
+          styles={{
+            root: { border: `2px dashed ${useTrapZone ? '#ababab' : 'transparent'}`, padding: 10 }
+          }}
+        >
+          <Toggle
+            label="Use trap zone"
+            componentRef={this._toggle}
+            checked={useTrapZone}
+            onChange={this._onFocusTrapZoneToggleChanged}
+            onText="On (toggle to exit)"
+            offText="Off"
+          />
+          <TextField label="Input inside trap zone" styles={{ root: { width: 300 } }} />
+          <Link href="https://bing.com">Hyperlink inside trap zone</Link>
+        </Stack>
+      </FocusTrapZone>
     );
   }
 
-  private _internalContents() {
-    const { isToggled } = this.state;
-
-    return (
-      <div className="ms-FocusTrapZoneBoxExample">
-        <TextField label="Default TextField" placeholder="Input inside Focus Trap Zone" className="" />
-        <Link href="" className="">
-          Hyperlink inside FocusTrapZone
-        </Link>
-        <br />
-        <br />
-        <Toggle
-          componentRef={this._setRef}
-          checked={isToggled}
-          onChange={this._onFocusTrapZoneToggleChanged}
-          label="Focus Trap Zone"
-          onText="On"
-          offText="Off"
-        />
-        {(() => {
-          if (isToggled) {
-            return (
-              <DefaultButton secondaryText="Exit Focus Trap Zone" onClick={this._onExitButtonClickHandler} text="Exit Focus Trap Zone" />
-            );
-          }
-        })()}
-      </div>
-    );
-  }
-
-  private _onButtonClickHandler = (): void => {
-    this.setState({
-      isToggled: true
-    });
-  };
-
-  private _onExitButtonClickHandler = (): void => {
-    this.setState({
-      isToggled: false
-    });
-  };
-
-  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isToggled: boolean): void => {
-    this.setState(
-      {
-        isToggled: isToggled
-      },
-      () => this._toggle.focus()
-    );
-  };
-
-  private _setRef = (toggle: IToggle): void => {
-    this._toggle = toggle;
+  private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, checked?: boolean): void => {
+    this.setState({ useTrapZone: !!checked });
   };
 }

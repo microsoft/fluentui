@@ -1,7 +1,10 @@
 import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement> {
   /**
    * Theme provided by High-Order Component.
@@ -58,16 +61,31 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
    * Whether or not this checkbox is visible
    */
   isVisible?: boolean;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsRowCheckStyleProps = Required<Pick<IDetailsRowCheckProps, 'theme'>> &
   Pick<IDetailsRowCheckProps, 'compact' | 'isHeader' | 'selected' | 'anySelected' | 'canSelect' | 'className'> & {
     /** Is checkbox visible */
     isVisible?: boolean;
   };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsRowCheckStyles {
   root: IStyle;
   check: IStyle;
   isDisabled: IStyle;
+}
+
+export interface IDetailsCheckboxProps {
+  checked: boolean;
 }

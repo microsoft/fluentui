@@ -6,6 +6,11 @@ import { styles } from './Calendar.styles';
 /**
  * Calendar description
  */
-export const Calendar = styled<ICalendarProps, ICalendarStyleProps, ICalendarStyles>(CalendarBase, styles, undefined, {
-  scope: 'Calendar'
-});
+export const Calendar: React.StatelessComponent<ICalendarProps> = styled<ICalendarProps, ICalendarStyleProps, ICalendarStyles>(
+  CalendarBase,
+  styles,
+  undefined,
+  {
+    scope: 'Calendar'
+  }
+);

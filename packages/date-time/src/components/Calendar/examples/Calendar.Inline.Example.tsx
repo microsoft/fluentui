@@ -1,23 +1,21 @@
-// @codepen
 import * as React from 'react';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton } from 'office-ui-fabric-react';
 import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
-import { Calendar } from '../Calendar';
-import { DateRangeType, DayOfWeek } from '../Calendar.types';
+import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
 
 const DayPickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
   goToToday: 'Go to today',
-  weekNumberFormatString: 'Week number {0}'
+  weekNumberFormatString: 'Week number {0}',
+  prevMonthAriaLabel: 'Previous month',
+  nextMonthAriaLabel: 'Next month',
+  nextYearAriaLabel: 'Next year',
+  prevYearAriaLabel: 'Previous year'
 };
 
 export interface ICalendarInlineExampleState {
@@ -38,6 +36,7 @@ export interface ICalendarInlineExampleProps {
   showWeekNumbers?: boolean;
   minDate?: Date;
   maxDate?: Date;
+  restrictedDates?: Date[];
   showSixWeeksByDefault?: boolean;
   workWeekDays?: DayOfWeek[];
   firstDayOfWeek?: DayOfWeek;
@@ -87,6 +86,17 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
             </span>
           </div>
         )}
+        {this.props.restrictedDates && (
+          <div>
+            Disabled date(s):
+            <span>
+              {' '}
+              {this.props.restrictedDates.length > 0
+                ? this.props.restrictedDates.map((d: Date) => d.toLocaleDateString()).join(', ')
+                : 'Not set'}
+            </span>
+          </div>
+        )}
         <Calendar
           onSelectDate={this._onSelectDate}
           onDismiss={this._onDismiss}
@@ -103,6 +113,7 @@ export class CalendarInlineExample extends React.Component<ICalendarInlineExampl
           showWeekNumbers={this.props.showWeekNumbers}
           minDate={this.props.minDate}
           maxDate={this.props.maxDate}
+          restrictedDates={this.props.restrictedDates}
           showSixWeeksByDefault={this.props.showSixWeeksByDefault}
           workWeekDays={this.props.workWeekDays}
         />

@@ -4,11 +4,11 @@ import { TooltipHost, TooltipOverflowMode, DirectionalHint } from '../../Tooltip
 import { PersonaCoin } from './PersonaCoin/PersonaCoin';
 import {
   IPersonaProps,
-  IPersonaSharedProps,
   IPersonaStyleProps,
   IPersonaStyles,
   PersonaPresence as PersonaPresenceEnum,
-  PersonaSize
+  PersonaSize,
+  IPersonaCoinProps
 } from './Persona.types';
 
 const getClassNames = classNamesFunction<IPersonaStyleProps, IPersonaStyles>();
@@ -69,9 +69,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       theme
     } = this.props;
 
-    const personaCoinProps: IPersonaSharedProps = {
+    const personaCoinProps: IPersonaCoinProps = {
       allowPhoneInitials,
-      coinProps,
       showUnknownPersonaCoin,
       coinSize,
       imageAlt,
@@ -86,7 +85,8 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       presence,
       showInitialsUntilImageLoads,
       size,
-      text: this._getText()
+      text: this._getText(),
+      ...coinProps
     };
 
     const classNames = getClassNames(styles, {
@@ -119,16 +119,20 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   /**
    * Renders various types of Text (primaryText, secondaryText, etc)
    * based on the classNames passed
-   * @param classNames
-   * @param renderFunction
-   * @param defaultRenderFunction
+   * @param classNames - element className
+   * @param renderFunction - render function
+   * @param defaultRenderFunction - default render function
    */
   private _renderElement(
     classNames: string,
     renderFunction: IRenderFunction<IPersonaProps> | undefined,
     defaultRenderFunction: IRenderFunction<IPersonaProps> | undefined
   ): JSX.Element {
-    return <div className={classNames}>{renderFunction && renderFunction(this.props, defaultRenderFunction)}</div>;
+    return (
+      <div dir="auto" className={classNames}>
+        {renderFunction && renderFunction(this.props, defaultRenderFunction)}
+      </div>
+    );
   }
 
   /**
@@ -141,7 +145,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
   /**
    * using closure to wrap the default render behavior
    * to make it independent of the type of text passed
-   * @param text
+   * @param text - text to render
    */
   private _onRenderText(text: string | undefined): IRenderFunction<IPersonaProps> | undefined {
     // return default render behaviour for valid text or undefined

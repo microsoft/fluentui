@@ -1,15 +1,17 @@
 import { IColumn } from './DetailsList.types';
-import { IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import { IBaseProps, IRefObject } from '../../Utilities';
+import { ICellStyleProps } from './DetailsRow.types';
+import { IDetailsListProps } from './DetailsList';
+import { IDetailsRowProps } from './DetailsRow';
 
-export interface IDetailsRowFields {}
+/**
+ * {@docCategory DetailsList}
+ */
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
-export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
-  /**
-   * Ref of component
-   */
-  componentRef?: IRefObject<IDetailsRowFields>;
-
+/**
+ * {@docCategory DetailsList}
+ */
+export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
   /**
    * Data source for this component
    */
@@ -36,19 +38,24 @@ export interface IDetailsRowFieldsProps extends IBaseProps<IDetailsRowFields> {
   compact?: boolean;
 
   /**
-   * Callback for rendering an item column
-   */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
-
-  /**
    * Whether to show shimmer
+   * @deprecated Use `ShimmeredDetailsList` instead: https://developer.microsoft.com/en-us/fabric#/components/detailslist/shimmer
    */
   shimmer?: boolean;
 
   /**
-   * Required prop to be passed in from the parent DetailsRow a map of classNames and its mergestyle-created classNames
+   * Subset of classnames currently generated in DetailsRow that are used within DetailsRowFields.
    */
-  rowClassNames: { [className in keyof IDetailsRowStyles]: string };
+  rowClassNames: {
+    isMultiline: string;
+    isRowHeader: string;
+    shimmerIconPlaceholder: string;
+    shimmer: string;
+    cell: string;
+    cellPadded: string;
+    cellUnpadded: string;
+    fields: string;
+  };
 
   cellStyleProps?: ICellStyleProps;
 }

@@ -117,8 +117,8 @@ export class MultiStackedBarChartBase extends React.Component<IMultiStackedBarCh
       const color: string = point.color
         ? point.color
         : point.placeHolder
-          ? palette.neutralTertiaryAlt
-          : defaultPalette[Math.floor(Math.random() * 4 + 1)];
+        ? palette.neutralTertiaryAlt
+        : defaultPalette[Math.floor(Math.random() * 4 + 1)];
       const pointData = point.data ? point.data : 0;
       if (index > 0) {
         prevPosition += value;

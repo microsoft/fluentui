@@ -1,38 +1,41 @@
-import * as React from 'react';
+declare function setTimeout(callback: (...args: any[]) => void, ms: number, ...args: any[]): number;
 
-import { CommandButton } from '../../Button';
-import { Callout } from '../../Callout';
-import { Checkbox } from '../../Checkbox';
-import { FocusZone, FocusZoneDirection, IFocusZone } from '../../FocusZone';
-import { Icon } from '../../Icon';
-import { KeytipData } from '../../KeytipData';
-import { Label, ILabelStyleProps, ILabelStyles } from '../../Label';
-import { Panel } from '../../Panel';
-import { IProcessedStyleSet } from '../../Styling';
+import * as React from 'react';
 import {
-  BaseComponent,
+  IStyleFunctionOrObject,
   KeyCodes,
-  createRef,
+  classNamesFunction,
   divProperties,
   findIndex,
+  getDocument,
   getFirstFocusable,
   getId,
   getLastFocusable,
   getNativeProps,
-  mergeAriaAttributeValues,
-  classNamesFunction,
-  IStyleFunctionOrObject,
-  getDocument,
+  initializeComponentRef,
+  isIOS,
   isMac,
-  isIOS
+  mergeAriaAttributeValues,
+  safeRequestAnimationFrame,
+  warnDeprecations,
+  warnMutuallyExclusive
 } from '../../Utilities';
+import { Callout } from '../../Callout';
+import { Checkbox } from '../../Checkbox';
+import { CommandButton } from '../../Button';
 import { DirectionalHint } from '../../common/DirectionalHint';
+import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles, IDropdown } from './Dropdown.types';
+import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
+import { FocusZone, FocusZoneDirection } from '../../FocusZone';
+import { ICalloutPositionedInfo, RectangleEdge } from '../../utilities/positioning';
+import { Icon } from '../../Icon';
+import { ILabelStyleProps, ILabelStyles, Label } from '../../Label';
+import { IProcessedStyleSet } from '../../Styling';
 import { IWithResponsiveModeState } from '../../utilities/decorators/withResponsiveMode';
+import { KeytipData } from '../../KeytipData';
+import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { DropdownMenuItemType, IDropdownOption, IDropdownProps, IDropdownStyleProps, IDropdownStyles } from './Dropdown.types';
-import { DropdownSizePosCache } from './utilities/DropdownSizePosCache';
-import { RectangleEdge, ICalloutPositionedInfo } from '../../utilities/positioning';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -48,14 +51,14 @@ export interface IDropdownState {
 }
 
 @withResponsiveMode
-export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdownState> {
+export class DropdownBase extends React.Component<IDropdownInternalProps, IDropdownState> implements IDropdown {
   public static defaultProps = {
     options: [] as any[]
   };
 
-  private _host = createRef<HTMLDivElement>();
-  private _focusZone = createRef<IFocusZone>();
-  private _dropDown = createRef<HTMLDivElement>();
+  private _host = React.createRef<HTMLDivElement>();
+  private _focusZone = React.createRef<FocusZone>();
+  private _dropDown = React.createRef<HTMLDivElement>();
   private _id: string;
   private _isScrollIdle: boolean;
   private readonly _scrollIdleDelay: number = 250 /* ms */;
@@ -64,6 +67,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   private _lastKeyDownWasAltOrMeta: boolean | undefined;
   private _sizePosCache: DropdownSizePosCache = new DropdownSizePosCache();
   private _classNames: IProcessedStyleSet<IDropdownStyles>;
+  private _requestAnimationFrame = safeRequestAnimationFrame(this);
 
   /** Flag for when we get the first mouseMove */
   private _gotMouseMove: boolean;
@@ -71,19 +75,24 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   constructor(props: IDropdownProps) {
     super(props);
 
-    this._warnDeprecations({
-      isDisabled: 'disabled',
-      onChanged: 'onChange',
-      placeHolder: 'placeholder'
-    });
+    initializeComponentRef(this);
 
-    this._warnMutuallyExclusive({
-      defaultSelectedKey: 'selectedKey',
-      defaultSelectedKeys: 'selectedKeys',
-      selectedKeys: 'selectedKey',
-      multiSelect: 'defaultSelectedKey',
-      selectedKey: 'multiSelect'
-    });
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('Dropdown', props, {
+        isDisabled: 'disabled',
+        onChanged: 'onChange',
+        placeHolder: 'placeholder',
+        onRenderPlaceHolder: 'onRenderPlaceholder'
+      });
+
+      warnMutuallyExclusive('Dropdown', props, {
+        defaultSelectedKey: 'selectedKey',
+        defaultSelectedKeys: 'selectedKeys',
+        selectedKeys: 'selectedKey',
+        multiSelect: 'defaultSelectedKey',
+        selectedKey: 'multiSelect'
+      });
+    }
 
     this._id = props.id || getId('Dropdown');
     this._isScrollIdle = true;
@@ -107,14 +116,34 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     };
   }
 
+  public componentWillUnmount() {
+    clearTimeout(this._scrollIdleTimeoutId);
+  }
+
   public componentWillReceiveProps(newProps: IDropdownProps): void {
     // In controlled component usage where selectedKey is provided, update the selectedIndex
     // state if the key or options change.
-    const selectedKeyProp: keyof IDropdownProps = this.props.multiSelect ? 'selectedKeys' : 'selectedKey';
-    if (
-      newProps[selectedKeyProp] !== undefined &&
-      (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || newProps.options !== this.props.options)
-    ) {
+    let selectedKeyProp: 'defaultSelectedKeys' | 'selectedKeys' | 'defaultSelectedKey' | 'selectedKey';
+
+    // this does a shallow compare (assumes options are pure), for the purposes of determining whether
+    // defaultSelectedKey/defaultSelectedKeys are respected.
+    const didOptionsChange = newProps.options !== this.props.options;
+
+    if (newProps.multiSelect) {
+      if (didOptionsChange && newProps.defaultSelectedKeys !== undefined) {
+        selectedKeyProp = 'defaultSelectedKeys';
+      } else {
+        selectedKeyProp = 'selectedKeys';
+      }
+    } else {
+      if (didOptionsChange && newProps.defaultSelectedKey !== undefined) {
+        selectedKeyProp = 'defaultSelectedKey';
+      } else {
+        selectedKeyProp = 'selectedKey';
+      }
+    }
+
+    if (newProps[selectedKeyProp] !== undefined && (newProps[selectedKeyProp] !== this.props[selectedKeyProp] || didOptionsChange)) {
       this.setState({
         selectedIndices: this._getSelectedIndexes(newProps.options, newProps[selectedKeyProp])
       });
@@ -145,6 +174,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   public render(): JSX.Element {
     const id = this._id;
 
+    const props = this.props;
     const {
       className,
       label,
@@ -160,13 +190,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       calloutProps,
       onRenderTitle = this._onRenderTitle,
       onRenderContainer = this._onRenderContainer,
-      onRenderPlaceHolder = this._onRenderPlaceholder,
       onRenderCaretDown = this._onRenderCaretDown
-    } = this.props;
+    } = props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
+    const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
     const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
 
@@ -195,7 +225,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     this._classNames = getClassNames(propStyles, {
       theme,
       className,
-      hasError: Boolean(errorMessage && errorMessage.length > 0),
+      hasError: !!(errorMessage && errorMessage.length > 0),
       isOpen,
       required,
       disabled,
@@ -227,9 +257,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
               aria-expanded={isOpen ? 'true' : 'false'}
               role={ariaAttrs.role}
               aria-label={ariaLabel}
-              aria-labelledby={label ? id + '-label' : undefined}
+              aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
               aria-describedby={mergeAriaAttributeValues(optionId, keytipAttributes['aria-describedby'])}
-              aria-activedescendant={ariaAttrs.ariaActiveDescendant}
+              aria-activedescendant={isOpen ? ariaAttrs.ariaActiveDescendant : undefined}
+              aria-required={required}
               aria-disabled={disabled}
               aria-owns={isOpen ? id + '-list' : undefined}
               {...divProps}
@@ -254,13 +285,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
                 {// If option is selected render title, otherwise render the placeholder text
                 selectedOptions.length
                   ? onRenderTitle(selectedOptions, this._onRenderTitle)
-                  : onRenderPlaceHolder(this.props, this._onRenderPlaceholder)}
+                  : onRenderPlaceholder(props, this._onRenderPlaceholder)}
               </span>
-              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(this.props, this._onRenderCaretDown)}</span>
+              <span className={this._classNames.caretDownWrapper}>{onRenderCaretDown(props, this._onRenderCaretDown)}</span>
             </div>
           )}
         </KeytipData>
-        {isOpen && onRenderContainer(this.props, this._onRenderContainer)}
+        {isOpen && onRenderContainer(props, this._onRenderContainer)}
         {errorMessage && errorMessage.length > 0 && <div className={this._classNames.errorMessage}>{errorMessage}</div>}
       </div>
     );
@@ -313,7 +344,8 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChange(event, changedOpt, index);
+
+      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
     }
 
     if (onChanged) {
@@ -339,9 +371,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /**
    * Finds the next valid Dropdown option and sets the selected index to it.
-   * @param stepValue Value of how many items the function should traverse.  Should be -1 or 1.
-   * @param index Index of where the search should start
-   * @param selectedIndex The selectedIndex Dropdown's state
+   * @param stepValue - Value of how many items the function should traverse.  Should be -1 or 1.
+   * @param index - Index of where the search should start
+   * @param selectedIndex - The selectedIndex Dropdown's state
    * @returns The next valid dropdown option's index
    */
   private _moveIndex(event: React.FormEvent<HTMLDivElement>, stepValue: number, index: number, selectedIndex: number): number {
@@ -386,10 +418,10 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   }
 
   /** Render text in dropdown input */
-  private _onRenderTitle = (item: IDropdownOption[]): JSX.Element => {
+  private _onRenderTitle = (items: IDropdownOption[]): JSX.Element => {
     const { multiSelectDelimiter = ', ' } = this.props;
 
-    const displayTxt = item.map(i => i.text).join(multiSelectDelimiter);
+    const displayTxt = items.map(i => i.text).join(multiSelectDelimiter);
     return <span>{displayTxt}</span>;
   };
 
@@ -403,20 +435,17 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
 
   /** Render Callout or Panel container and pass in list */
   private _onRenderContainer = (props: IDropdownProps): JSX.Element => {
-    const { onRenderList = this._onRenderList, responsiveMode, calloutProps, panelProps, dropdownWidth } = this.props;
+    const { responsiveMode, calloutProps, panelProps, dropdownWidth } = this.props;
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
+    const panelStyles = this._classNames.subComponentStyles
+      ? (this._classNames.subComponentStyles.panel as IStyleFunctionOrObject<IPanelStyleProps, IPanelStyles>)
+      : undefined;
+
     return isSmall ? (
-      <Panel
-        className={this._classNames.panel}
-        isOpen={true}
-        isLightDismiss={true}
-        onDismissed={this._onDismiss}
-        hasCloseButton={false}
-        {...panelProps}
-      >
-        {onRenderList(props, this._onRenderList)}
+      <Panel isOpen={true} isLightDismiss={true} onDismissed={this._onDismiss} hasCloseButton={false} styles={panelStyles} {...panelProps}>
+        {this._renderFocusableList(props)}
       </Panel>
     ) : (
       <Callout
@@ -433,7 +462,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         onPositioned={this._onPositioned}
         calloutWidth={dropdownWidth || (this._dropDown.current ? this._dropDown.current.clientWidth : 0)}
       >
-        {onRenderList(props, this._onRenderList)}
+        {this._renderFocusableList(props)}
       </Callout>
     );
   };
@@ -443,10 +472,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     return <Icon className={this._classNames.caretDown} iconName="ChevronDown" />;
   };
 
-  /** Render List of items */
-  private _onRenderList = (props: IDropdownProps): JSX.Element => {
-    const { onRenderItem = this._onRenderItem } = this.props;
-
+  /** Wrap item list in a FocusZone */
+  private _renderFocusableList(props: IDropdownProps): JSX.Element {
+    const { onRenderList = this._onRenderList, label } = props;
     const id = this._id;
 
     return (
@@ -462,13 +490,20 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
           direction={FocusZoneDirection.vertical}
           id={id + '-list'}
           className={this._classNames.dropdownItems}
-          aria-labelledby={id + '-label'}
+          aria-labelledby={label ? id + '-label' : undefined}
           role="listbox"
         >
-          {this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}
+          {onRenderList(props, this._onRenderList)}
         </FocusZone>
       </div>
     );
+  }
+
+  /** Render List of items */
+  private _onRenderList = (props: IDropdownProps): JSX.Element => {
+    const { onRenderItem = this._onRenderItem } = this.props;
+
+    return <>{this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
@@ -506,15 +541,15 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const id = this._id;
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
-    // select the right classname based on the combination of selected/disabled
+    // select the right className based on the combination of selected/disabled
     const itemClassName =
-      isItemSelected && item.disabled === true // preciate: both selected and disabled
+      isItemSelected && item.disabled === true // predicate: both selected and disabled
         ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected // preciate: selected only
-          ? this._classNames.dropdownItemSelected
-          : item.disabled === true // predicate: disabled only
-            ? this._classNames.dropdownItemDisabled
-            : this._classNames.dropdownItem;
+        : isItemSelected // predicate: selected only
+        ? this._classNames.dropdownItemSelected
+        : item.disabled === true // predicate: disabled only
+        ? this._classNames.dropdownItemDisabled
+        : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton
@@ -530,7 +565,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         onMouseMove={this._onItemMouseMove.bind(this, item)}
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
-        ariaLabel={item.ariaLabel || item.text}
+        ariaLabel={item.ariaLabel}
         title={item.title ? item.title : item.text}
       >
         {onRenderOption(item, this._onRenderOption)}
@@ -574,7 +609,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     if (this._focusZone.current) {
       // Focusing an element can trigger a reflow. Making this wait until there is an animation
       // frame can improve perf significantly.
-      this._async.requestAnimationFrame(() => {
+      this._requestAnimationFrame(() => {
         const selectedIndices = this.state.selectedIndices;
         if (selectedIndices && selectedIndices[0] && !this.props.options[selectedIndices[0]].disabled) {
           const element: HTMLElement = getDocument()!.querySelector(`#${this._id}-list${selectedIndices[0]}`) as HTMLElement;
@@ -612,13 +647,13 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
    */
   private _onScroll = (): void => {
     if (!this._isScrollIdle && this._scrollIdleTimeoutId !== undefined) {
-      this._async.clearTimeout(this._scrollIdleTimeoutId);
+      clearTimeout(this._scrollIdleTimeoutId);
       this._scrollIdleTimeoutId = undefined;
     } else {
       this._isScrollIdle = false;
     }
 
-    this._scrollIdleTimeoutId = this._async.setTimeout(() => {
+    this._scrollIdleTimeoutId = setTimeout(() => {
       this._isScrollIdle = true;
     }, this._scrollIdleDelay);
   };
@@ -679,7 +714,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
   };
 
   /** Get all selected indexes for multi-select mode */
-  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | undefined): number[] {
+  private _getSelectedIndexes(options: IDropdownOption[], selectedKey: string | number | string[] | number[] | null | undefined): number[] {
     if (selectedKey === undefined) {
       if (this.props.multiSelect) {
         return this._getAllSelectedIndices(options);
@@ -687,12 +722,14 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       const selectedIndex = this._getSelectedIndex(options, null);
       return selectedIndex !== -1 ? [selectedIndex] : [];
     } else if (!Array.isArray(selectedKey)) {
-      return [this._getSelectedIndex(options, selectedKey)];
+      const selectedIndex = this._getSelectedIndex(options, selectedKey);
+      return selectedIndex !== -1 ? [selectedIndex] : [];
     }
 
     const selectedIndices: number[] = [];
     for (const key of selectedKey) {
-      selectedIndices.push(this._getSelectedIndex(options, key));
+      const selectedIndex = this._getSelectedIndex(options, key);
+      selectedIndex !== -1 && selectedIndices.push(selectedIndex);
     }
     return selectedIndices;
   }

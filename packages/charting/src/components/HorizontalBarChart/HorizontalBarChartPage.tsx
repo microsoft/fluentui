@@ -44,7 +44,6 @@ export class HorizontalBarChartPage extends React.Component<IComponentDemoPagePr
             </ul>
           </div>
         }
-        related={<a href="https://dev.office.com/fabric-js/Components/HorizontalBarChart/HorizontalBarChart.html">Fabric JS</a>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

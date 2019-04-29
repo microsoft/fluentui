@@ -1,52 +1,34 @@
 import * as React from 'react';
 import { IEditSectionProps } from './EditSection.types';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
+import { IconButton, TooltipHost } from 'office-ui-fabric-react';
 
-export class EditSection extends React.Component<IEditSectionProps, {}> {
-  public render(): JSX.Element | null {
-    const { sectionContent } = this.props;
-    const isMarkdown = sectionContent ? typeof sectionContent.type === 'function' : false;
-    if (isMarkdown === false) {
+/**
+ * Component for displaying an edit button next to a section header.
+ */
+export class EditSection extends React.PureComponent<IEditSectionProps> {
+  public render() {
+    const { className, section, title, url } = this.props;
+
+    // Check if url is falsey.
+    if (!url) {
       return null;
     }
 
-    const { section, title, url } = this.props;
-    const readableSection = this._getReadableSection();
+    const sectionId = title.replace(/[^\w-]/g, '');
+    const tooltipHostId = `${title}-${sectionId}-editButtonHost`;
 
     return (
-      <TooltipHost
-        key={`${title}-${section}-editButton`}
-        content={`Edit ${title} ${readableSection}`}
-        id={`${title}-${section}-editButtonHost`}
-      >
+      <TooltipHost content={`Edit ${title} ${section}`} id={tooltipHostId} hostClassName={className}>
         <IconButton
-          aria-labelledby={`${title}-${section}-editButtonHost`}
-          iconProps={{ iconName: 'Edit' }}
+          aria-labelledby={tooltipHostId}
+          iconProps={{
+            iconName: 'Edit'
+          }}
           href={url}
           target="_blank"
           rel="noopener noreferrer"
         />
       </TooltipHost>
     );
-  }
-
-  private _getReadableSection(): string {
-    if (this.props.readableSection) {
-      return this.props.readableSection;
-    }
-    const { section } = this.props;
-    let readableSection = section;
-    switch (section) {
-      case 'BestPractices':
-        readableSection = 'Best Practices';
-        break;
-      case 'Donts':
-        readableSection = "Don'ts";
-        break;
-      default:
-        readableSection = section;
-    }
-    return readableSection;
   }
 }

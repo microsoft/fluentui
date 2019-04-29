@@ -1,4 +1,4 @@
-let { createConfig } = require('../../scripts/tasks/jest-resources');
+let { createConfig } = require('../../scripts/jest/jest-resources');
 let path = require('path');
 
 const config = createConfig({

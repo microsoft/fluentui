@@ -185,60 +185,57 @@ export class App extends React.Component<IAppProps, any> {
 
     return (
       <>
-        {isSmallScreen &&
-          !hasUHF &&
-          hasLeftNav && (
-            <>
-              <div className="App-mobileNavMenu">
-                <ActionButton
-                  iconProps={{
-                    iconName: 'ChevronRightSmall',
-                    styles: {
-                      root: {
-                        float: 'right',
-                        fontSize: 12,
-                        color: '#333'
-                      }
-                    }
-                  }}
-                  onClick={this._openLeftNav}
-                  styles={{
-                    root: { height: 34 },
-                    label: { fontWeight: 600 }
-                  }}
-                >
-                  {this._getSectionTitle()}
-                </ActionButton>
-              </div>
-
-              <Panel
-                className="ms-App-navPanel"
-                isOpen={isLeftNavOpen}
-                isLightDismiss={true}
-                type={PanelType.smallFixedNear}
-                onDismiss={this._closeLeftNav}
-                styles={{
-                  closeButton: {
-                    color: '#fff',
-                    selectors: {
-                      ':hover': {
-                        color: '#c8c8c8'
-                      }
+        {isSmallScreen && !hasUHF && hasLeftNav && (
+          <>
+            <div className="App-mobileNavMenu">
+              <ActionButton
+                iconProps={{
+                  iconName: 'ChevronRightSmall',
+                  styles: {
+                    root: {
+                      float: 'right',
+                      fontSize: 12,
+                      color: '#333'
                     }
                   }
                 }}
+                onClick={this._openLeftNav}
+                styles={{
+                  root: { height: 34 },
+                  label: { fontWeight: 600 }
+                }}
               >
-                {navPanel}
-              </Panel>
-            </>
-          )}
-
-        {!isSmallScreen &&
-          hasLeftNav && (
-            <div className="App-nav" style={navStyle}>
-              {navPanel}
+                {this._getSectionTitle()}
+              </ActionButton>
             </div>
-          )}
+
+            <Panel
+              className="ms-App-navPanel"
+              isOpen={isLeftNavOpen}
+              isLightDismiss={true}
+              type={PanelType.smallFixedNear}
+              onDismiss={this._closeLeftNav}
+              styles={{
+                closeButton: {
+                  color: '#fff',
+                  selectors: {
+                    ':hover': {
+                      color: '#c8c8c8'
+                    }
+                  }
+                }
+              }}
+            >
+              {navPanel}
+            </Panel>
+          </>
+        )}
+
+        {!isSmallScreen && hasLeftNav && (
+          <div className="App-nav" style={navStyle}>
+            {navPanel}
+          </div>
+        )}
       </>
     );
   };

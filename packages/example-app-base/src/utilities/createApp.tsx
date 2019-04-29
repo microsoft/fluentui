@@ -1,10 +1,6 @@
-/* tslint:disable:jsx-no-lambda */
-
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
-import { App, IAppDefinition, IAppLink } from '../components/App/App';
+import { App, IAppDefinition, IAppLink } from '../components/App/index';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
@@ -25,7 +21,7 @@ export function createApp(
   headerLinks?: IAppLink[]
 ): void {
   let rootElement: HTMLElement | null;
-  let groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
+  const groups: ExampleGroup[] = !Array.isArray(examples) ? [examples] : examples;
 
   function _onLoad(): void {
     rootElement = document.createElement('div');
@@ -33,16 +29,16 @@ export function createApp(
 
     setBaseUrl('./dist/');
 
-    let routes: (JSX.Element | JSX.Element[])[] = groups.map((group: ExampleGroup, groupIndex: number) =>
-      group.examples.map((example: IExample, index: number) => (
-        <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />
-      ))
+    const routes: (JSX.Element | JSX.Element[])[] = groups.map(group =>
+      group.examples.map(example => {
+        return <Route key={example.key} path={'#component=' + example.key} component={example.onRender} />;
+      })
     );
 
     // Add the default route
     routes.push(<Route key="default" component={defaultRouteComponent} />);
 
-    let appDefinition = _getDefinition(groups);
+    const appDefinition = _getDefinition(groups);
 
     if (appTitle) {
       appDefinition.appTitle = appTitle;
@@ -52,13 +48,15 @@ export function createApp(
       appDefinition.headerLinks = headerLinks;
     }
 
+    const renderApp = (props: {}) => <App appDefinition={appDefinition} {...props} />;
+
     ReactDOM.render(
       <Fabric>
         <Router>
           <Route key="minimal" path="?minimal" component={_getComponent}>
             {routes}
           </Route>
-          <Route key={'app'} component={(props: {}) => <App appDefinition={appDefinition} {...props} />}>
+          <Route key="app" component={renderApp}>
             {routes}
           </Route>
         </Router>
@@ -74,7 +72,7 @@ export function createApp(
     }
   }
 
-  let isReady = document.readyState === 'interactive' || document.readyState === 'complete';
+  const isReady = document.readyState === 'interactive' || document.readyState === 'complete';
 
   if (isReady) {
     _onLoad();

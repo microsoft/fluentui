@@ -1,91 +1,97 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, Selection } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, Selection, IColumn, buildColumns, IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
-import { IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { IDragDropEvents, IDragDropContext } from 'office-ui-fabric-react/lib/utilities/dragdrop/interfaces';
-import './DetailsList.DragDrop.Example.scss';
-import { IColumnReorderOptions } from 'office-ui-fabric-react/lib/DetailsList';
-import { createListItems } from 'office-ui-fabric-react/lib/utilities/exampleData';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
+import { TextField, ITextFieldStyles } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { getTheme, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-let _draggedItem: any = null;
-let _draggedIndex = -1;
-let _items: any[];
-let _columns: IColumn[];
-export class DetailsListDragDropExample extends React.Component<
-  {},
-  {
-    items: {}[];
-    selectionDetails?: string;
-    columns: IColumn[];
-    isColumnReorderEnabled: boolean;
-    frozenColumnCountFromStart: string;
-    frozenColumnCountFromEnd: string;
-  }
-> {
+const theme = getTheme();
+const margin = '0 30px 20px 0';
+const dragEnterClass = mergeStyles({
+  backgroundColor: theme.palette.neutralLight
+});
+const controlWrapperClass = mergeStyles({
+  display: 'flex',
+  flexWrap: 'wrap'
+});
+const textFieldStyles: Partial<ITextFieldStyles> = {
+  root: { margin: margin },
+  fieldGroup: { maxWidth: '100px' }
+};
+
+export interface IDetailsListDragDropExampleState {
+  items: IExampleItem[];
+  columns: IColumn[];
+  isColumnReorderEnabled: boolean;
+  frozenColumnCountFromStart: string;
+  frozenColumnCountFromEnd: string;
+}
+
+export class DetailsListDragDropExample extends React.Component<{}, IDetailsListDragDropExampleState> {
   private _selection: Selection;
+  private _dragDropEvents: IDragDropEvents;
+  private _draggedItem: IExampleItem | undefined;
+  private _draggedIndex: number;
 
   constructor(props: {}) {
     super(props);
 
-    this._onRenderItemColumn = this._onRenderItemColumn.bind(this);
-    this._handleColumnReorder = this._handleColumnReorder.bind(this);
-    this._getColumnReorderOptions = this._getColumnReorderOptions.bind(this);
-    this._onChangeColumnReorderEnabled = this._onChangeColumnReorderEnabled.bind(this);
-    this._onChangeStartCountText = this._onChangeStartCountText.bind(this);
-    this._onChangeEndCountText = this._onChangeEndCountText.bind(this);
-
     this._selection = new Selection();
-
-    _items = _items || createListItems(10, 0);
-    _columns = buildColumns(_items, true);
+    this._dragDropEvents = this._getDragDropEvents();
+    this._draggedIndex = -1;
+    const items = createListItems(10, 0);
 
     this.state = {
-      items: createListItems(10),
-      columns: _columns,
-      isColumnReorderEnabled: false,
+      items: items,
+      columns: buildColumns(items, true),
+      isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
       frozenColumnCountFromEnd: '0'
     };
   }
 
   public render(): JSX.Element {
-    const { items, selectionDetails, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
+    const { items, columns, isColumnReorderEnabled, frozenColumnCountFromStart, frozenColumnCountFromEnd } = this.state;
 
     return (
-      <div className={'detailsListDragDropExample'}>
-        <Toggle
-          label={'Enable Column Reorder'}
-          checked={isColumnReorderEnabled}
-          onChange={this._onChangeColumnReorderEnabled}
-          onText={'Enabled'}
-          offText={'Disabled'}
-        />
-        <TextField
-          label={'Number of Left frozen columns:'}
-          onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCountFromStart}
-          onChange={this._onChangeStartCountText}
-        />
-        <TextField
-          label={'Number of Right frozen columns:'}
-          onGetErrorMessage={this._validateNumber}
-          value={frozenColumnCountFromEnd}
-          onChange={this._onChangeEndCountText}
-        />
-        <div>{selectionDetails}</div>
+      <div>
+        <div className={controlWrapperClass}>
+          <Toggle
+            label="Enable column reorder"
+            checked={isColumnReorderEnabled}
+            onChange={this._onChangeColumnReorderEnabled}
+            onText="Enabled"
+            offText="Disabled"
+            styles={{ root: { margin: margin } }}
+          />
+          <TextField
+            label="Number of left frozen columns"
+            onGetErrorMessage={this._validateNumber}
+            value={frozenColumnCountFromStart}
+            onChange={this._onChangeStartCountText}
+            styles={textFieldStyles}
+          />
+          <TextField
+            label="Number of right frozen columns"
+            onGetErrorMessage={this._validateNumber}
+            value={frozenColumnCountFromEnd}
+            onChange={this._onChangeEndCountText}
+            styles={textFieldStyles}
+          />
+        </div>
         <MarqueeSelection selection={this._selection}>
           <DetailsList
-            setKey={'items'}
+            setKey="items"
             items={items}
             columns={columns}
             selection={this._selection}
             selectionPreservedOnEmptyClick={true}
             onItemInvoked={this._onItemInvoked}
             onRenderItemColumn={this._onRenderItemColumn}
-            dragDropEvents={this._getDragDropEvents()}
+            dragDropEvents={this._dragDropEvents}
             columnReorderOptions={this.state.isColumnReorderEnabled ? this._getColumnReorderOptions() : undefined}
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
@@ -138,43 +144,47 @@ export class DetailsListDragDropExample extends React.Component<
         return true;
       },
       onDragEnter: (item?: any, event?: DragEvent) => {
-        return 'dragEnter';
-      }, // return string is the css classes that will be added to the entering element.
+        // return string is the css classes that will be added to the entering element.
+        return dragEnterClass;
+      },
       onDragLeave: (item?: any, event?: DragEvent) => {
         return;
       },
       onDrop: (item?: any, event?: DragEvent) => {
-        if (_draggedItem) {
+        if (this._draggedItem) {
           this._insertBeforeItem(item);
         }
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-        _draggedItem = item;
-        _draggedIndex = itemIndex!;
+        this._draggedItem = item;
+        this._draggedIndex = itemIndex!;
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
-        _draggedItem = null;
-        _draggedIndex = -1;
+        this._draggedItem = undefined;
+        this._draggedIndex = -1;
       }
     };
   }
 
-  private _onItemInvoked(item: any): void {
+  private _onItemInvoked = (item: IExampleItem): void => {
     alert(`Item invoked: ${item.name}`);
-  }
+  };
 
-  private _onRenderItemColumn(item: any, index: number, column: IColumn): JSX.Element {
-    if (column.key === 'name') {
-      return <Link data-selection-invoke={true}>{item[column.key]}</Link>;
+  private _onRenderItemColumn = (item: IExampleItem, index: number, column: IColumn): JSX.Element | string => {
+    const key = column.key as keyof IExampleItem;
+    if (key === 'name') {
+      return <Link data-selection-invoke={true}>{item[key]}</Link>;
     }
 
-    return item[column.key];
-  }
+    return String(item[key]);
+  };
 
-  private _insertBeforeItem(item: any): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex) ? this._selection.getSelection() : [_draggedItem];
+  private _insertBeforeItem(item: IExampleItem): void {
+    const draggedItems = this._selection.isIndexSelected(this._draggedIndex)
+      ? (this._selection.getSelection() as IExampleItem[])
+      : [this._draggedItem!];
 
-    const items: any[] = this.state.items.filter((i: number) => draggedItems.indexOf(i) === -1);
+    const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
     let insertIndex = items.indexOf(item);
 
     // if dragging/dropping on itself, index will be 0.

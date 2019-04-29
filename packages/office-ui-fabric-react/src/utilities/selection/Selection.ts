@@ -48,6 +48,8 @@ export class Selection implements ISelection {
     this._isModal = false;
 
     this.setItems([], true);
+
+    this.count = this.getSelectedCount();
   }
 
   public canSelectItem(item: IObjectWithKey, index?: number): boolean {

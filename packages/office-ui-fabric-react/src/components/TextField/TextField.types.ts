@@ -2,6 +2,9 @@ import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextField {
   /** Gets the current value of the input. */
   value: string | undefined;
@@ -38,6 +41,7 @@ export interface ITextField {
 
 /**
  * TextField component props.
+ * {@docCategory TextField}
  */
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
   /**
@@ -53,13 +57,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   multiline?: boolean;
 
   /**
-   * Whether or not the multiline text field is resizable.
+   * For multiline text fields, whether or not the field is resizable.
    * @defaultvalue true
    */
   resizable?: boolean;
 
   /**
-   * Whether or not to auto adjust text field height. Applies only to multiline text field.
+   * For multiline text fields, whether or not to auto adjust text field height.
    * @defaultvalue false
    */
   autoAdjustHeight?: boolean;
@@ -103,11 +107,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Prefix displayed before the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the prefix.
    */
   prefix?: string;
 
   /**
    * Suffix displayed after the text field contents. This is not included in the value.
+   * Ensure a descriptive label is present to assist screen readers, as the value does not include the suffix.
    */
   suffix?: string;
 
@@ -157,12 +163,14 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Static error message displayed below the text field. Use `onGetErrorMessage` to dynamically
-   * change the error message displayed (if any) based on the current value.
+   * change the error message displayed (if any) based on the current value. `errorMessage` and
+   * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
   errorMessage?: string;
 
   /**
    * Callback for when the input value changes.
+   * This is called on both `input` and `change` native events.
    */
   onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
 
@@ -173,9 +181,13 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Called after the input's value updates but before re-rendering.
+   * Unlike `onChange`, this is also called when the value is updated via props.
+   *
+   * NOTE: This should be used *very* rarely. `onChange` is more appropriate for most situations.
+   *
    * @param newValue - The new value. Type should be string.
    */
-  onBeforeChange?: (newValue: any) => void;
+  onBeforeChange?: (newValue?: string) => void;
 
   /**
    * Function called after validation completes.
@@ -184,16 +196,16 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
 
   /**
    * Function used to determine whether the input value is valid and get an error message if not.
+   * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
    *
-   *   When it returns string:
-   *   - If valid, it returns empty string.
-   *   - If invalid, it returns the error message string and the text field will
-   *     show a red border and show an error message below the text field.
+   * When it returns string:
+   * - If valid, it returns empty string.
+   * - If invalid, it returns the error message string and the text field will
+   *   show a red border and show an error message below the text field.
    *
-   *   When it returns Promise<string>:
-   *   - The resolved value is display as error message.
-   *   - The rejected, the value is thrown away.
-   *
+   * When it returns Promise<string>:
+   * - The resolved value is displayed as the error message.
+   * - If rejected, the value is thrown away.
    */
   onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
 
@@ -219,19 +231,23 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   ariaLabel?: string;
 
   /**
-   * Run validation only on input focus.
+   * Run validation when focus moves into the input, and **do not** validate on change.
+   *
+   * (Unless this prop and/or `validateOnFocusOut` is set to true, validation will run on every change.)
    * @defaultvalue false
    */
   validateOnFocusIn?: boolean;
 
   /**
-   * Run validation only on input focus out.
+   * Run validation when focus moves out of the input, and **do not** validate on change.
+   *
+   * (Unless this prop and/or `validateOnFocusIn` is set to true, validation will run on every change.)
    * @defaultvalue false
    */
   validateOnFocusOut?: boolean;
 
   /**
-   * Disable on-load validation.
+   * Whether validation should run when the input is initially rendered.
    * @defaultvalue true
    */
   validateOnLoad?: boolean;
@@ -254,8 +270,11 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Whether the input field should have autocomplete enabled.
    * This tells the browser to display options based on earlier typed values.
+   * Common values are 'on' and 'off' but for all possible values see the following links:
+   * https://developer.mozilla.org/en-US/docs/Web/HTML/Attributes/autocomplete#Values
+   * https://html.spec.whatwg.org/multipage/form-control-infrastructure.html#autofill
    */
-  autoComplete?: 'on' | 'off';
+  autoComplete?: string;
 
   /**
    * The masking string that defines the mask's behavior.
@@ -291,6 +310,9 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   componentId?: string;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
   Pick<
     ITextFieldProps,
@@ -315,6 +337,9 @@ export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> &
     focused?: boolean;
   };
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldSubComponentStyles {
   /**
    * Styling for Label child component.
@@ -324,6 +349,9 @@ export interface ITextFieldSubComponentStyles {
   label: IStyleFunctionOrObject<any, any>;
 }
 
+/**
+ * {@docCategory TextField}
+ */
 export interface ITextFieldStyles extends IStyleSet<ITextFieldStyles> {
   /**
    * Style for root element.

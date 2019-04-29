@@ -1,20 +1,23 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { ContextualMenuItemType } from 'office-ui-fabric-react/lib/ContextualMenu';
 import './ContextualMenuExample.scss';
 
 export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <DefaultButton
-        id="ContextualMenuHeaderExample"
         text="Click for ContextualMenu"
         menuProps={{
           shouldFocusOnMount: true,
           items: [
             {
               key: 'Actions',
-              itemType: 2,
-              text: 'Actions'
+              itemType: ContextualMenuItemType.Header,
+              text: 'Actions',
+              itemProps: {
+                lang: 'en-us'
+              }
             },
             {
               key: 'upload',
@@ -62,7 +65,7 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
             },
             {
               key: 'navigation',
-              itemType: 2,
+              itemType: ContextualMenuItemType.Header,
               text: 'Navigation'
             },
             {

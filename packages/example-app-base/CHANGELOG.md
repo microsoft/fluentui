@@ -1,6 +1,191 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 06 Nov 2018 13:31:09 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+
+## 6.14.4
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Deprecate implementation examples
+
+## 6.14.3
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Deprecate component status
+
+## 6.14.2
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- reduce the re-export wild card to fix website
+
+## 6.14.1
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Run prettier on all files
+
+## 6.14.0
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Minor changes
+
+- Convert components to css-in-js
+
+## 6.13.2
+Tue, 02 Apr 2019 12:36:20 GMT
+
+### Patches
+
+- handle TSDoc default value tag
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.13.0
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Minor changes
+
+- Code and documentation cleanup
+
+### Patches
+
+- Make CodepenComponent specify SCSS preprocessor
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Enable stricter lint and compiler options
+- ExampleCard: Remove dependency on styles from random example, and remove utility CSS classes
+
+## 6.12.3
+Fri, 22 Mar 2019 12:34:41 GMT
+
+### Patches
+
+- Remove ExampleCardComponent now that Stack has been promoted.
+
+## 6.12.2
+Wed, 13 Mar 2019 00:42:29 GMT
+
+### Patches
+
+- FeedbackList: Iterate Github issues collection directly to avoid total_count disparity
+
+## 6.12.1
+Wed, 06 Mar 2019 13:27:18 GMT
+
+### Patches
+
+- Improve autodoc to deal with line breaks in extends clause.
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- remove not null assertion for optional prop
+
+## 6.11.8
+Tue, 26 Feb 2019 22:45:29 GMT
+
+### Patches
+
+- Feedback button: Increase styles specificity to override MWF conflicts.
+
+## 6.11.7
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.11.6
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- fluent folder cover; updated metadata font color; added yellowDark color variable
+- Switch PivotItems to use headerText not linkText
+
+## 6.11.5
+Thu, 31 Jan 2019 20:10:48 GMT
+
+### Patches
+
+- Changes to support Slots Foundation.
+
+## 6.11.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Use fabric dev build in export to codepen
+
+## 6.11.3
+Fri, 18 Jan 2019 13:38:05 GMT
+
+### Patches
+
+- Fix bug where customizations apply to theme and scheme dropdowns.
+
+## 6.11.2
+Thu, 17 Jan 2019 13:34:42 GMT
+
+### Patches
+
+- ComponentPage: add id to dos and donts section to fix linking on site
+
+## 6.11.1
+Wed, 16 Jan 2019 13:38:44 GMT
+
+### Patches
+
+- Icon: removing aria-hidden attribute.
+
+## 6.11.0
+Mon, 14 Jan 2019 13:39:22 GMT
+
+### Minor changes
+
+- **New:** MarkdownTable components for use in PageMarkdown.\n**EditSection:** Allow content to be more flexible in order to render.\n**PageMarkdown:** Override table elements with new MarkdownTable components, add global classNames, add static displayName.
+
+## 6.10.0
+Fri, 14 Dec 2018 13:35:30 GMT
+
+### Minor changes
+
+- replace references to isCollapsable with isCollapsible
+
+### Patches
+
+- Remove types and modules no longer needed due to Foundation changes.
+
+## 6.9.4
+Tue, 11 Dec 2018 13:36:20 GMT
+
+### Patches
+
+- Fix Example dropdown regression caused by #7326.
+
+## 6.9.3
+Thu, 06 Dec 2018 13:34:21 GMT
+
+### Patches
+
+- Fix for issue#7258:Documentation is missing for button
 
 ## 6.9.2
 Tue, 06 Nov 2018 13:31:09 GMT

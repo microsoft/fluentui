@@ -10,6 +10,202 @@
   },
   "glyphs": [
     {
+      "name": "IssueTracking",
+      "unicode": "EEC0"
+    },
+    {
+      "name": "IssueTrackingMirrored",
+      "unicode": "EEC1"
+    },
+    {
+      "name": "PictureLibrary",
+      "unicode": "EEC2"
+    },
+    {
+      "name": "OfficeAddinsLogo",
+      "unicode": "EEC7"
+    },
+    {
+      "name": "OfflineOneDriveParachute",
+      "unicode": "EEC8"
+    },
+    {
+      "name": "OfflineOneDriveParachuteDisabled",
+      "unicode": "EEC9"
+    },
+    {
+      "name": "TriangleSolidUp12",
+      "unicode": "EECC"
+    },
+    {
+      "name": "TriangleSolidDown12",
+      "unicode": "EECD"
+    },
+    {
+      "name": "TriangleSolidLeft12",
+      "unicode": "EECE"
+    },
+    {
+      "name": "TriangleSolidRight12",
+      "unicode": "EECF"
+    },
+    {
+      "name": "TriangleUp12",
+      "unicode": "EED0"
+    },
+    {
+      "name": "TriangleDown12",
+      "unicode": "EED1"
+    },
+    {
+      "name": "TriangleLeft12",
+      "unicode": "EED2"
+    },
+    {
+      "name": "TriangleRight12",
+      "unicode": "EED3"
+    },
+    {
+      "name": "ArrowUpRight8",
+      "unicode": "EED4"
+    },
+    {
+      "name": "ArrowDownRight8",
+      "unicode": "EED5"
+    },
+    {
+      "name": "DocumentSet",
+      "unicode": "EED6"
+    },
+    {
+      "name": "DelveAnalytics",
+      "unicode": "EEEE"
+    },
+    {
+      "name": "ArrowUpRightMirrored8",
+      "unicode": "EEEF"
+    },
+    {
+      "name": "ArrowDownRightMirrored8",
+      "unicode": "EEF0"
+    },
+    {
+      "name": "CompanyDirectory",
+      "unicode": "EF0D"
+    },
+    {
+      "name": "OpenEnrollment",
+      "unicode": "EF1C"
+    },
+    {
+      "name": "CompanyDirectoryMirrored",
+      "unicode": "EF2B"
+    },
+    {
+      "name": "OneDriveAdd",
+      "unicode": "EF32"
+    },
+    {
+      "name": "ProfileSearch",
+      "unicode": "EF35"
+    },
+    {
+      "name": "Header2",
+      "unicode": "EF36"
+    },
+    {
+      "name": "Header3",
+      "unicode": "EF37"
+    },
+    {
+      "name": "Header4",
+      "unicode": "EF38"
+    },
+    {
+      "name": "Eyedropper",
+      "unicode": "EF3C"
+    },
+    {
+      "name": "MarketDown",
+      "unicode": "EF42"
+    },
+    {
+      "name": "CalendarWorkWeek",
+      "unicode": "EF51"
+    },
+    {
+      "name": "SidePanel",
+      "unicode": "EF52"
+    },
+    {
+      "name": "GlobeFavorite",
+      "unicode": "EF53"
+    },
+    {
+      "name": "CaretTopLeftSolid8",
+      "unicode": "EF54"
+    },
+    {
+      "name": "CaretTopRightSolid8",
+      "unicode": "EF55"
+    },
+    {
+      "name": "ViewAll2",
+      "unicode": "EF56"
+    },
+    {
+      "name": "DocumentReply",
+      "unicode": "EF57"
+    },
+    {
+      "name": "PlayerSettings",
+      "unicode": "EF58"
+    },
+    {
+      "name": "ReceiptForward",
+      "unicode": "EF59"
+    },
+    {
+      "name": "ReceiptReply",
+      "unicode": "EF5A"
+    },
+    {
+      "name": "ReceiptCheck",
+      "unicode": "EF5B"
+    },
+    {
+      "name": "Fax",
+      "unicode": "EF5C"
+    },
+    {
+      "name": "RecurringEvent",
+      "unicode": "EF5D"
+    },
+    {
+      "name": "ReplyAlt",
+      "unicode": "EF5E"
+    },
+    {
+      "name": "ReplyAllAlt",
+      "unicode": "EF5F"
+    },
+    {
+      "name": "EditStyle",
+      "unicode": "EF60"
+    },
+    {
+      "name": "EditMail",
+      "unicode": "EF61"
+    },
+    {
+      "name": "Lifesaver",
+      "unicode": "EF62"
+    },
+    {
+      "name": "LifesaverLock",
+      "unicode": "EF63"
+    },
+    {
       "name": "InboxCheck",
       "unicode": "EF64"
     },
@@ -162,8 +358,16 @@
       "unicode": "EF95"
     },
     {
+      "name": "CRMProcesses",
+      "unicode": "EFB1"
+    },
+    {
       "name": "PageEdit",
       "unicode": "EFB6"
+    },
+    {
+      "name": "PageArrowRight",
+      "unicode": "EFB8"
     },
     {
       "name": "PageRemove",
@@ -174,12 +378,24 @@
       "unicode": "EFC7"
     },
     {
+      "name": "CRMServices",
+      "unicode": "EFD2"
+    },
+    {
       "name": "EditContact",
       "unicode": "EFD3"
     },
     {
       "name": "ConnectContacts",
       "unicode": "EFD4"
+    },
+    {
+      "name": "AppIconDefaultAdd",
+      "unicode": "EFDA"
+    },
+    {
+      "name": "AppIconDefaultList",
+      "unicode": "EFDE"
     },
     {
       "name": "ActivateOrders",
@@ -192,222 +408,6 @@
     {
       "name": "DocumentManagement",
       "unicode": "EFFC"
-    },
-    {
-      "name": "CRMReport",
-      "unicode": "EFFE"
-    },
-    {
-      "name": "ZipFolder",
-      "unicode": "F012"
-    },
-    {
-      "name": "SurveyQuestions",
-      "unicode": "F01B"
-    },
-    {
-      "name": "TextDocument",
-      "unicode": "F029"
-    },
-    {
-      "name": "TextDocumentShared",
-      "unicode": "F02B"
-    },
-    {
-      "name": "PageCheckedOut",
-      "unicode": "F02C"
-    },
-    {
-      "name": "SaveAndClose",
-      "unicode": "F038"
-    },
-    {
-      "name": "Script",
-      "unicode": "F03A"
-    },
-    {
-      "name": "Archive",
-      "unicode": "F03F"
-    },
-    {
-      "name": "ActivityFeed",
-      "unicode": "F056"
-    },
-    {
-      "name": "EventDate",
-      "unicode": "F059"
-    },
-    {
-      "name": "ArrowUpRight",
-      "unicode": "F069"
-    },
-    {
-      "name": "CaretRight",
-      "unicode": "F06B"
-    },
-    {
-      "name": "SetAction",
-      "unicode": "F071"
-    },
-    {
-      "name": "CaretSolidLeft",
-      "unicode": "F08D"
-    },
-    {
-      "name": "CaretSolidDown",
-      "unicode": "F08E"
-    },
-    {
-      "name": "CaretSolidRight",
-      "unicode": "F08F"
-    },
-    {
-      "name": "CaretSolidUp",
-      "unicode": "F090"
-    },
-    {
-      "name": "PowerAppsLogo",
-      "unicode": "F091"
-    },
-    {
-      "name": "PowerApps2Logo",
-      "unicode": "F092"
-    },
-    {
-      "name": "SearchIssue",
-      "unicode": "F09A"
-    },
-    {
-      "name": "SearchIssueMirrored",
-      "unicode": "F09B"
-    },
-    {
-      "name": "FabricAssetLibrary",
-      "unicode": "F09C"
-    },
-    {
-      "name": "FabricDataConnectionLibrary",
-      "unicode": "F09D"
-    },
-    {
-      "name": "FabricDocLibrary",
-      "unicode": "F09E"
-    },
-    {
-      "name": "FabricFormLibrary",
-      "unicode": "F09F"
-    },
-    {
-      "name": "FabricFormLibraryMirrored",
-      "unicode": "F0A0"
-    },
-    {
-      "name": "FabricReportLibrary",
-      "unicode": "F0A1"
-    },
-    {
-      "name": "FabricReportLibraryMirrored",
-      "unicode": "F0A2"
-    },
-    {
-      "name": "FabricPublicFolder",
-      "unicode": "F0A3"
-    },
-    {
-      "name": "FabricFolderSearch",
-      "unicode": "F0A4"
-    },
-    {
-      "name": "FabricMovetoFolder",
-      "unicode": "F0A5"
-    },
-    {
-      "name": "FabricUnsyncFolder",
-      "unicode": "F0A6"
-    },
-    {
-      "name": "FabricSyncFolder",
-      "unicode": "F0A7"
-    },
-    {
-      "name": "FabricOpenFolderHorizontal",
-      "unicode": "F0A8"
-    },
-    {
-      "name": "FabricFolder",
-      "unicode": "F0A9"
-    },
-    {
-      "name": "FabricFolderFill",
-      "unicode": "F0AA"
-    },
-    {
-      "name": "FabricNewFolder",
-      "unicode": "F0AB"
-    },
-    {
-      "name": "FabricPictureLibrary",
-      "unicode": "F0AC"
-    },
-    {
-      "name": "AddFavorite",
-      "unicode": "F0C8"
-    },
-    {
-      "name": "AddFavoriteFill",
-      "unicode": "F0C9"
-    },
-    {
-      "name": "BufferTimeBefore",
-      "unicode": "F0CF"
-    },
-    {
-      "name": "BufferTimeAfter",
-      "unicode": "F0D0"
-    },
-    {
-      "name": "BufferTimeBoth",
-      "unicode": "F0D1"
-    },
-    {
-      "name": "CannedChat",
-      "unicode": "F0F2"
-    },
-    {
-      "name": "SkypeForBusinessLogo",
-      "unicode": "F0FC"
-    },
-    {
-      "name": "PageCheckedin",
-      "unicode": "F104"
-    },
-    {
-      "name": "ReadOutLoud",
-      "unicode": "F112"
-    },
-    {
-      "name": "CaretBottomLeftSolid8",
-      "unicode": "F121"
-    },
-    {
-      "name": "CaretBottomRightSolid8",
-      "unicode": "F122"
-    },
-    {
-      "name": "FolderHorizontal",
-      "unicode": "F12B"
-    },
-    {
-      "name": "MicrosoftStaffhubLogo",
-      "unicode": "F130"
-    },
-    {
-      "name": "GiftboxOpen",
-      "unicode": "F133"
-    },
-    {
-      "name": "StatusCircleOuter",
-      "unicode": "F136"
     }
   ]
 }

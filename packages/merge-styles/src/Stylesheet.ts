@@ -1,6 +1,3 @@
-// tslint:disable-next-line:no-any
-declare const process: { [key: string]: any };
-
 import { IStyle } from './IStyle';
 
 export const InjectionMode = {
@@ -23,6 +20,16 @@ export const InjectionMode = {
 export type InjectionMode = typeof InjectionMode[keyof typeof InjectionMode];
 
 /**
+ * CSP settings for the stylesheet
+ */
+export interface ICSPSettings {
+  /**
+   * Nonce to inject into script tag
+   */
+  nonce?: string;
+}
+
+/**
  * Stylesheet config.
  *
  * @public
@@ -43,6 +50,11 @@ export interface IStyleSheetConfig {
    * Default 'namespace' to attach before the className.
    */
   namespace?: string;
+
+  /**
+   * CSP settings
+   */
+  cspSettings?: ICSPSettings;
 
   /**
    * Callback executed when a rule is inserted.
@@ -82,7 +94,7 @@ export class Stylesheet {
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any = typeof window !== 'undefined' ? window : typeof process !== 'undefined' ? process : _fileScopedGlobal;
+    const global: any = typeof window !== 'undefined' ? window : _fileScopedGlobal;
     _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
@@ -100,6 +112,7 @@ export class Stylesheet {
       injectionMode: InjectionMode.insertNode,
       defaultPrefix: 'css',
       namespace: undefined,
+      cspSettings: undefined,
       ...config
     };
   }
@@ -259,6 +272,12 @@ export class Stylesheet {
     styleElement.setAttribute('data-merge-styles', 'true');
     styleElement.type = 'text/css';
 
+    const { cspSettings } = this._config;
+    if (cspSettings) {
+      if (cspSettings.nonce) {
+        styleElement.setAttribute('nonce', cspSettings.nonce);
+      }
+    }
     if (this._lastStyleElement && this._lastStyleElement.nextElementSibling) {
       document.head!.insertBefore(styleElement, this._lastStyleElement.nextElementSibling);
     } else {

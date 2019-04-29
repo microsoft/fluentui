@@ -1,13 +1,14 @@
 {
-  // Controls the rendering size of tabs in characters. Accepted values: "auto", 2, 4, 6, etc. If set to "auto", the value will be guessed when a file is opened.
+  // Controls the rendering size of tabs in characters.
   "editor.tabSize": 2,
-  // When opening a file, `editor.tabSize` and `editor.insertSpaces` will be detected based on the file contents.
+  // When opening a file, `editor.tabSize` and `editor.insertSpaces` will NOT be detected based on the file contents.
   "editor.detectIndentation": false,
   // When enabled, will trim trailing whitespace when you save a file.
   "files.trimTrailingWhitespace": true,
+  "files.insertFinalNewline": true,
   // Controls whether the editor should render whitespace characters
   "editor.renderWhitespace": "all",
-  // Controls if the editor will insert spaces for tabs. Accepted values:  "auto", true, false. If set to "auto", the value will be guessed when a file is opened.
+  // Controls if the editor will insert spaces for tabs.
   "editor.insertSpaces": true,
   "files.exclude": {
     "**/.git": true,
@@ -28,7 +29,7 @@
   },
   // Configure glob patterns for excluding files and folders in searches. Inherits all glob patterns from the file.exclude setting.
   "search.exclude": {
-    "common": true,
+    "common/temp": true,
     "**/node_modules": true,
     "**/lib": true,
     "**/lib-amd": true,
@@ -46,5 +47,9 @@
   "typescript.format.insertSpaceAfterOpeningAndBeforeClosingJsxExpressionBraces": false,
   "editor.formatOnSave": true,
   "typescript.tsdk": "./common/temp/node_modules/typescript/lib",
-  "tslint.autoFixOnSave": false
+  "tslint.autoFixOnSave": false,
+  "files.associations": {
+    "rush.json": "jsonc",
+    "**/common/config/rush/*.json": "jsonc"
+  }
 }

@@ -77,7 +77,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
               name="Home"
             >
               <button
-                aria-describedby="id__3"
                 className=
                     ms-Button
                     ms-Button--action
@@ -88,7 +87,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -182,7 +181,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -204,28 +202,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                     data-icon-name=""
                     role="presentation"
                   />
-                  <span
-                    className=
-                        ms-Button-screenReaderText
-                        {
-                          border: 0px;
-                          height: 1px;
-                          margin-bottom: -1px;
-                          margin-left: -1px;
-                          margin-right: -1px;
-                          margin-top: -1px;
-                          overflow: hidden;
-                          padding-bottom: 0px;
-                          padding-left: 0px;
-                          padding-right: 0px;
-                          padding-top: 0px;
-                          position: absolute;
-                          width: 1px;
-                        }
-                    id="id__3"
-                  >
-                    Home
-                  </span>
                   <div
                     className=
                         ms-Nav-linkText
@@ -235,6 +211,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -268,7 +245,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
               name="Activity"
             >
               <button
-                aria-describedby="id__6"
                 className=
                     ms-Button
                     ms-Button--action
@@ -279,7 +255,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -373,7 +349,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -395,28 +370,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                     data-icon-name=""
                     role="presentation"
                   />
-                  <span
-                    className=
-                        ms-Button-screenReaderText
-                        {
-                          border: 0px;
-                          height: 1px;
-                          margin-bottom: -1px;
-                          margin-left: -1px;
-                          margin-right: -1px;
-                          margin-top: -1px;
-                          overflow: hidden;
-                          padding-bottom: 0px;
-                          padding-left: 0px;
-                          padding-right: 0px;
-                          padding-top: 0px;
-                          position: absolute;
-                          width: 1px;
-                        }
-                    id="id__6"
-                  >
-                    Activity
-                  </span>
                   <div
                     className=
                         ms-Nav-linkText
@@ -426,6 +379,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -459,7 +413,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
               name="News"
             >
               <button
-                aria-describedby="id__9"
                 className=
                     ms-Button
                     ms-Button--action
@@ -470,7 +423,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -564,7 +517,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -586,28 +538,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                     data-icon-name=""
                     role="presentation"
                   />
-                  <span
-                    className=
-                        ms-Button-screenReaderText
-                        {
-                          border: 0px;
-                          height: 1px;
-                          margin-bottom: -1px;
-                          margin-left: -1px;
-                          margin-right: -1px;
-                          margin-top: -1px;
-                          overflow: hidden;
-                          padding-bottom: 0px;
-                          padding-left: 0px;
-                          padding-right: 0px;
-                          padding-top: 0px;
-                          position: absolute;
-                          width: 1px;
-                        }
-                    id="id__9"
-                  >
-                    News
-                  </span>
                   <div
                     className=
                         ms-Nav-linkText
@@ -617,6 +547,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -650,7 +581,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
               name="Documents"
             >
               <button
-                aria-describedby="id__12"
                 className=
                     ms-Button
                     ms-Button--action
@@ -661,7 +591,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       -webkit-font-smoothing: antialiased;
                       background-color: transparent;
                       border-radius: 0px;
-                      border: none;
+                      border: 1px solid transparent;
                       box-sizing: border-box;
                       color: #333333;
                       cursor: pointer;
@@ -755,7 +685,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
-                    aria-hidden={true}
                     className=
                         ms-Icon-placeHolder
                         ms-Button-icon
@@ -777,28 +706,6 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                     data-icon-name=""
                     role="presentation"
                   />
-                  <span
-                    className=
-                        ms-Button-screenReaderText
-                        {
-                          border: 0px;
-                          height: 1px;
-                          margin-bottom: -1px;
-                          margin-left: -1px;
-                          margin-right: -1px;
-                          margin-top: -1px;
-                          overflow: hidden;
-                          padding-bottom: 0px;
-                          padding-left: 0px;
-                          padding-right: 0px;
-                          padding-top: 0px;
-                          position: absolute;
-                          width: 1px;
-                        }
-                    id="id__12"
-                  >
-                    Documents
-                  </span>
                   <div
                     className=
                         ms-Nav-linkText
@@ -808,6 +715,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }

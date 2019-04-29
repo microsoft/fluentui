@@ -6,6 +6,11 @@ import { getStyles } from './Panel.styles';
 /**
  * Panel description
  */
-export const Panel = styled<IPanelProps, IPanelStyleProps, IPanelStyles>(PanelBase, getStyles, undefined, {
-  scope: 'Panel'
-});
+export const Panel: React.StatelessComponent<IPanelProps> = styled<IPanelProps, IPanelStyleProps, IPanelStyles>(
+  PanelBase,
+  getStyles,
+  undefined,
+  {
+    scope: 'Panel'
+  }
+);

@@ -9,9 +9,15 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ICSSRule, ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialog {}
 
-export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
+/**
+ * {@docCategory Dialog}
+ */
+export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
   /**
    * Optional callback to access the IDialog interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -113,7 +119,7 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
    * The title text to display at the top of the dialog.
    * @deprecated Pass through via `dialogContentProps` instead.
    */
-  title?: string;
+  title?: string | JSX.Element;
 
   /**
    * The subtext to display in the dialog.
@@ -158,6 +164,9 @@ export interface IDialogProps extends React.Props<DialogBase>, IWithResponsiveMo
   maxWidth?: ICSSRule | ICSSPixelUnitRule;
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogStyleProps {
   /**
    * Accept theme prop.
@@ -200,6 +209,9 @@ export interface IDialogStyleProps {
   dialogDefaultMaxWidth?: string | ICSSRule | ICSSPixelUnitRule;
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogStyles {
   /**
    * Style for the root element.

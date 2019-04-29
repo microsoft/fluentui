@@ -3,7 +3,11 @@
 exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`] = `
 <div>
   <div
-    className="ms-BasePicker ms-PeoplePicker"
+    className=
+        ms-BasePicker
+        ms-PeoplePicker
+
+    onBlur={[Function]}
     onKeyDown={[Function]}
   >
     <div
@@ -27,23 +31,45 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
         role="presentation"
       >
         <div
-          className="ms-BasePicker-text"
+          className=
+              ms-BasePicker-text
+              {
+                align-items: center;
+                border: 1px solid #a6a6a6;
+                box-sizing: border-box;
+                display: flex;
+                flex-wrap: wrap;
+                min-height: 30px;
+                min-width: 180px;
+                position: relative;
+              }
+              &:hover {
+                border-color: #333333;
+              }
         >
-          <span
-            id="selected-items-id__0"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__0"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="People Picker"
             autoCapitalize="off"
             autoComplete="off"
-            className="ms-BasePicker-input"
+            className=
+                ms-BasePicker-input
+                {
+                  align-self: flex-end;
+                  border: none;
+                  flex-grow: 1;
+                  height: 30px;
+                  outline: none;
+                  padding-bottom: 0;
+                  padding-left: 6px;
+                  padding-right: 6px;
+                  padding-top: 0;
+                }
             data-lpignore={true}
+            disabled={false}
             onBlur={[Function]}
             onChange={[Function]}
             onClick={[Function]}
@@ -53,6 +79,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             onInput={[Function]}
             onKeyDown={[Function]}
             role="combobox"
+            spellCheck={false}
             value=""
           />
         </div>
@@ -60,7 +87,11 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
     </div>
   </div>
   <div
-    className="dropdown-div"
+    style={
+      Object {
+        "width": 200,
+      }
+    }
   >
     <div
       className=
@@ -98,7 +129,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
         Select People Picker Type
       </label>
       <div
-        aria-activedescendant="Dropdown2-option"
         aria-describedby="Dropdown2-option"
         aria-expanded="false"
         aria-labelledby="Dropdown2-label"
@@ -242,6 +272,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           className=
               ms-Dropdown-caretDownWrapper
               {
+                cursor: pointer;
                 height: 32px;
                 line-height: 30px;
                 position: absolute;
@@ -250,7 +281,6 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Dropdown-caretDown
                 {
@@ -272,6 +302,137 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
           </i>
         </span>
       </div>
+    </div>
+    <div
+      className=
+          ms-Checkbox
+          is-enabled
+          {
+            display: flex;
+            margin-top: 10px;
+            position: relative;
+          }
+    >
+      <input
+        checked={false}
+        className=
+
+            {
+              background: none;
+              opacity: 0;
+              position: absolute;
+            }
+            .ms-Fabric--isFocusVisible &:focus + label::before {
+              outline-offset: 2px;
+              outline: 1px solid #666666;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid ActiveBorder;
+            }
+        id="checkbox-3"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="checkbox"
+      />
+      <label
+        className=
+            ms-Checkbox-label
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              align-items: flex-start;
+              cursor: pointer;
+              display: flex;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              position: relative;
+              text-align: left;
+              user-select: none;
+            }
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
+            }
+        htmlFor="checkbox-3"
+      >
+        <div
+          className=
+              ms-Checkbox-checkbox
+              {
+                align-items: center;
+                border-color: #666666;
+                border-style: solid;
+                border-width: 1px;
+                box-sizing: border-box;
+                display: flex;
+                flex-shrink: 0;
+                height: 20px;
+                justify-content: center;
+                margin-right: 4px;
+                overflow: hidden;
+                transition-duration: 200ms;
+                transition-property: background, border, border-color;
+                transition-timing-function: cubic-bezier(.4, 0, .23, 1);
+                width: 20px;
+              }
+        >
+          <i
+            className=
+                ms-Checkbox-checkmark
+                {
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #ffffff;
+                  display: inline-block;
+                  font-family: "FabricMDL2Icons";
+                  font-style: normal;
+                  font-weight: normal;
+                  opacity: 0;
+                  speak: none;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  -ms-high-contrast-adjust: none;
+                  color: Window;
+                }
+            data-icon-name="CheckMark"
+            role="presentation"
+          >
+            
+          </i>
+        </div>
+        <span
+          className=
+              ms-Checkbox-text
+              {
+                color: #333333;
+                font-size: 14px;
+                line-height: 20px;
+                margin-left: 4px;
+              }
+        >
+          Disable People Picker
+        </span>
+      </label>
     </div>
     <div
       className=
@@ -311,7 +472,8 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Toggle3"
+        htmlFor="Toggle4"
+        id="Toggle4-label"
       >
         Delay Suggestion Results
       </label>
@@ -325,6 +487,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle4-label"
           className=
               ms-Toggle-background
               {
@@ -363,7 +526,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 z-index: 1;
               }
               &:hover {
-                border-color: #212121;
+                border-color: #333333;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
                 border-color: Highlight;
@@ -372,7 +535,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          id="Toggle3"
+          id="Toggle4"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"
@@ -382,7 +545,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
             className=
                 ms-Toggle-thumb
                 {
-                  background-color: #212121;
+                  background-color: #333333;
                   border-color: transparent;
                   border-radius: .5em;
                   border-style: solid;
@@ -514,7 +677,7 @@ exports[`Component Examples renders PeoplePicker.Types.Example.tsx correctly 1`]
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__4"
+          id="id__5"
         >
           Set focus
         </div>

@@ -1,5 +1,5 @@
 let path = require('path');
-const resources = require('../../scripts/tasks/webpack-resources');
+const resources = require('../../scripts/webpack/webpack-resources');
 const ManifestServicePlugin = require('@uifabric/webpack-utils/lib/ManifestServicePlugin');
 
 const BUNDLE_NAME = 'office-ui-fabric-react';
@@ -41,7 +41,7 @@ function createConfig(config, onlyProduction) {
 }
 
 module.exports = [
-  createConfig(
+  ...createConfig(
     {
       output: {
         libraryTarget: 'var',
@@ -50,7 +50,7 @@ module.exports = [
     },
     false
   ),
-  createConfig(
+  ...createConfig(
     {
       plugins: [new ManifestServicePlugin()],
       output: {

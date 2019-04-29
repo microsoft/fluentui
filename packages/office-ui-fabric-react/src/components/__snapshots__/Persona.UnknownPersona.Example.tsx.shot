@@ -68,9 +68,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           className=
               ms-Persona-initials
               {
-                background-color: #eaeaea;
+                background-color: rgb(234, 234, 234);
                 border-radius: 50%;
-                color: #a80000;
+                color: rgb(168, 0, 0);
                 font-size: 14px;
                 font-weight: 400;
                 height: 40px;
@@ -85,7 +85,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
-            aria-hidden={true}
             className=
 
                 {
@@ -132,6 +131,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -158,6 +158,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -185,6 +186,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
       <div
         className=
@@ -198,6 +200,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
     </div>
   </div>
@@ -265,9 +268,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           className=
               ms-Persona-initials
               {
-                background-color: #eaeaea;
+                background-color: rgb(234, 234, 234);
                 border-radius: 50%;
-                color: #a80000;
+                color: rgb(168, 0, 0);
                 font-size: 28px;
                 font-weight: 400;
                 height: 72px;
@@ -282,7 +285,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               }
         >
           <i
-            aria-hidden={true}
             className=
 
                 {
@@ -329,6 +331,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -355,6 +358,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -382,6 +386,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -409,6 +414,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       />
     </div>
   </div>

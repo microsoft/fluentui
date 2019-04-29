@@ -1,18 +1,16 @@
 import { Customizations, merge } from '@uifabric/utilities';
-import { IPalette, ISemanticColors, ITheme, IPartialTheme, ISemanticTextColors } from '../interfaces/index';
-import { ITypography, IPartialTypography, IFontVariant } from '../interfaces/ITypography';
+import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
 import { DefaultSpacing } from './DefaultSpacing';
-import { DefaultTypography } from './DefaultTypography';
 import { loadTheme as legacyLoadTheme } from '@microsoft/load-themed-styles';
+import { DefaultEffects } from './DefaultEffects';
 
 let _theme: ITheme = createTheme({
   palette: DefaultPalette,
   semanticColors: _makeSemanticColorsFromPalette(DefaultPalette, false, false),
   fonts: DefaultFontStyles,
   isInverted: false,
-  typography: DefaultTypography,
   disableGlobalClassNames: false
 });
 let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
@@ -76,7 +74,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
-  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors });
+  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._loadFonts(_theme) });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 
@@ -89,6 +87,23 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   });
 
   return _theme;
+}
+
+/**
+ * Loads font variables into a JSON object.
+ * @param theme - The theme object
+ */
+function _loadFonts(theme: ITheme): { [name: string]: string } {
+  const lines = {};
+
+  for (const fontName of Object.keys(theme.fonts)) {
+    const font = theme.fonts[fontName];
+    for (const propName of Object.keys(font)) {
+      const name = 'ms-font-' + fontName + '-' + propName;
+      lines[name] = `"[theme:${name}, default: ${font[propName]}]"`;
+    }
+  }
+  return lines;
 }
 
 /**
@@ -109,40 +124,35 @@ export function createTheme(theme: IPartialTheme, depComments: boolean = false):
     ...theme.semanticColors
   };
 
-  const typography = merge<ITypography>({}, DefaultTypography, theme.typography as ITypography);
-  const { variants } = typography;
+  let defaultFontStyles: IFontStyles = { ...DefaultFontStyles };
 
-  for (const variantName in variants) {
-    if (variants.hasOwnProperty(variantName)) {
-      const variant: IFontVariant = {
-        ...variants.default,
-        ...variants[variantName]
-      };
+  if (theme.defaultFontStyle) {
+    for (const fontStyle of Object.keys(defaultFontStyles)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.defaultFontStyle);
+    }
+  }
 
-      variant.family = _expandFrom(variant.family, typography.families);
-      variant.size = _expandFrom(variant.size, typography.sizes);
-      variant.weight = _expandFrom(variant.weight, typography.weights);
-      variant.color = _expandFrom(variant.color, newSemanticColors);
-      variant.hoverColor = _expandFrom(variant.hoverColor, newSemanticColors);
-      variant.disabledColor = _expandFrom(variant.disabledColor, newSemanticColors);
-
-      variants[variantName] = variant;
+  if (theme.fonts) {
+    for (const fontStyle of Object.keys(theme.fonts)) {
+      defaultFontStyles[fontStyle] = merge({}, defaultFontStyles[fontStyle], theme.fonts[fontStyle]);
     }
   }
 
   return {
     palette: newPalette,
     fonts: {
-      ...DefaultFontStyles,
-      ...theme.fonts
+      ...defaultFontStyles
     },
     semanticColors: newSemanticColors,
     isInverted: !!theme.isInverted,
     disableGlobalClassNames: !!theme.disableGlobalClassNames,
-    typography: typography as ITypography,
     spacing: {
       ...DefaultSpacing,
       ...theme.spacing
+    },
+    effects: {
+      ...DefaultEffects,
+      ...theme.effects
     }
   };
 }
@@ -177,13 +187,14 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
 
     disabledBackground: p.neutralLighter,
     disabledText: p.neutralTertiary,
-    disabledBodyText: p.neutralTertiaryAlt,
+    disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
+    disabledBodySubtext: p.neutralTertiaryAlt,
 
     focusBorder: p.neutralSecondary,
     variantBorder: p.neutralLight,
     variantBorderHovered: p.neutralTertiary,
-    defaultStateBackground: p.neutralLight,
+    defaultStateBackground: p.neutralLighterAlt,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
     warningText: !isInverted ? '#333333' : '#ffffff',
@@ -194,13 +205,15 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     successBackground: !isInverted ? 'rgba(186, 216, 10, .2)' : 'rgba(186, 216, 10, .4)',
 
     inputBorder: p.neutralTertiary,
-    inputBorderHovered: p.neutralDark,
+    inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
+    inputText: p.neutralPrimary,
+    inputTextHovered: p.neutralDark,
     inputPlaceholderText: p.neutralSecondary,
 
     buttonBackground: p.neutralLighter,
@@ -223,11 +236,13 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     primaryButtonBackgroundPressed: p.themeDark,
     primaryButtonBackgroundDisabled: p.neutralLighter,
     primaryButtonBorder: 'transparent',
-
     primaryButtonText: p.white,
     primaryButtonTextHovered: p.white,
     primaryButtonTextPressed: p.white,
     primaryButtonTextDisabled: p.neutralQuaternary,
+
+    accentButtonBackground: p.accent,
+    accentButtonText: p.white,
 
     menuBackground: p.white,
     menuDivider: p.neutralTertiaryAlt,

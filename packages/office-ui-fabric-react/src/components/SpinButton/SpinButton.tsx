@@ -2,7 +2,15 @@ import * as React from 'react';
 import { IconButton } from '../../Button';
 import { Label } from '../../Label';
 import { Icon } from '../../Icon';
-import { BaseComponent, getId, KeyCodes, customizable, calculatePrecision, precisionRound, createRef } from '../../Utilities';
+import {
+  BaseComponent,
+  getId,
+  KeyCodes,
+  customizable,
+  calculatePrecision,
+  precisionRound,
+  mergeAriaAttributeValues
+} from '../../Utilities';
 import { ISpinButton, ISpinButtonProps } from './SpinButton.types';
 import { Position } from '../../utilities/positioning';
 import { getStyles, getArrowButtonStyles } from './SpinButton.styles';
@@ -31,16 +39,18 @@ export interface ISpinButtonState {
    * as active when up/down arrow is pressed
    */
   keyboardSpinDirection: KeyboardSpinDirection;
-
-  /**
-   * The calculated precision for the value.
-   */
-  precision: number;
 }
+
+export type DefaultProps = Required<
+  Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>
+>;
+
+/** Internal only props */
+type ISpinButtonInternalProps = ISpinButtonProps & DefaultProps;
 
 @customizable('SpinButton', ['theme', 'styles'], true)
 export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState> implements ISpinButton {
-  public static defaultProps: ISpinButtonProps = {
+  public static defaultProps: DefaultProps = {
     step: 1,
     min: 0,
     max: 100,
@@ -51,12 +61,13 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     decrementButtonIcon: { iconName: 'ChevronDownSmall' }
   };
 
-  private _input = createRef<HTMLInputElement>();
+  private _input = React.createRef<HTMLInputElement>();
   private _inputId: string;
   private _labelId: string;
   private _lastValidValue: string;
   private _spinningByMouse: boolean;
   private _valueToValidate: string | undefined; // To avoid duplicate validations/submissions
+  private _precision: number;
 
   private _currentStepFunctionHandle: number;
   private _initialStepDelay = 400;
@@ -73,13 +84,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     this._lastValidValue = value;
 
     // Ensure that the autocalculated precision is not negative.
-    const precision = props.precision || Math.max(calculatePrecision(props.step!), 0);
+    this._precision = this._calculatePrecision(this.props as ISpinButtonInternalProps);
 
     this.state = {
       isFocused: false,
       value: value,
-      keyboardSpinDirection: KeyboardSpinDirection.notSpinning,
-      precision
+      keyboardSpinDirection: KeyboardSpinDirection.notSpinning
     };
 
     this._currentStepFunctionHandle = -1;
@@ -99,10 +109,12 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       value = String(Math.max(newProps.min as number, Math.min(newProps.max as number, Number(newProps.defaultValue))));
     }
 
-    this.setState({
-      value: value,
-      precision: newProps.precision || this.state.precision
-    });
+    if (newProps.value !== undefined) {
+      this.setState({
+        value: value
+      });
+    }
+    this._precision = this._calculatePrecision(newProps as ISpinButtonProps & DefaultProps);
   }
 
   public render(): JSX.Element {
@@ -119,6 +131,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       decrementButtonAriaLabel,
       title,
       ariaLabel,
+      ariaDescribedBy,
       styles: customStyles,
       upArrowButtonStyles: customUpArrowButtonStyles,
       downArrowButtonStyles: customDownArrowButtonStyles,
@@ -129,7 +142,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
       ariaValueText,
       keytipProps,
       className
-    } = this.props;
+    } = this.props as ISpinButtonInternalProps;
 
     const { isFocused, value, keyboardSpinDirection } = this.state;
 
@@ -173,7 +186,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
                 aria-valuetext={ariaValueText ? ariaValueText : isNaN(Number(value)) ? value : undefined}
                 aria-valuemin={min}
                 aria-valuemax={max}
-                aria-describedby={keytipAttributes['aria-describedby']}
+                aria-describedby={mergeAriaAttributeValues(ariaDescribedBy, keytipAttributes['aria-describedby'])}
                 onBlur={this._onBlur}
                 ref={this._input}
                 onFocus={this._onFocus}
@@ -277,6 +290,11 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
     }
   };
 
+  private _calculatePrecision = (props: ISpinButtonProps & DefaultProps) => {
+    const { precision = Math.max(calculatePrecision(props.step), 0) } = props;
+    return precision;
+  };
+
   /**
    * Validate function to use if one is not passed in
    */
@@ -300,8 +318,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnIncrement = (value: string): string | void => {
-    let newValue: number = Math.min(Number(value) + Number(this.props.step)!, this.props.max!);
-    newValue = precisionRound(newValue, this.state.precision);
+    const { max, step } = this.props as ISpinButtonInternalProps;
+    let newValue: number = Math.min(Number(value) + Number(step), max);
+    newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
 
@@ -317,8 +336,9 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
    * Increment function to use if one is not passed in
    */
   private _defaultOnDecrement = (value: string): string | void => {
-    let newValue: number = Math.max(Number(value) - Number(this.props.step)!, this.props.min!);
-    newValue = precisionRound(newValue, this.state.precision);
+    const { min, step } = this.props as ISpinButtonInternalProps;
+    let newValue: number = Math.max(Number(value) - Number(step), min);
+    newValue = precisionRound(newValue, this._precision);
     return String(newValue);
   };
 
@@ -453,7 +473,7 @@ export class SpinButton extends BaseComponent<ISpinButtonProps, ISpinButtonState
   /**
    * Make sure that we have stopped spinning on keyUp
    * if the up or down arrow fired this event
-   * @param event stop spinning if we
+   * @param event - keyboard event
    */
   private _handleKeyUp = (event: React.KeyboardEvent<HTMLElement>): void => {
     if (this.props.disabled || event.which === KeyCodes.up || event.which === KeyCodes.down) {

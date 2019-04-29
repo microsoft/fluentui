@@ -67,6 +67,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
     return (
       <CommandBar
         overflowButtonProps={{
+          ariaLabel: 'More commands',
           menuProps: {
             items: [], // Items must be passed for typesafety, but commandBar will determine items rendered in overflow
             isBeakVisible: true,
@@ -98,7 +99,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
         iconProps: {
           iconName: 'Add'
         },
-        ariaLabel: 'New. Use left and right arrow keys to navigate',
+        ariaLabel: 'New',
         subMenuProps: {
           items: [
             {
@@ -182,6 +183,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'sort',
         name: 'Sort',
+        ariaLabel: 'Sort',
         iconProps: {
           iconName: 'SortLines'
         },
@@ -190,6 +192,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'tile',
         name: 'Grid view',
+        ariaLabel: 'Grid view',
         iconProps: {
           iconName: 'Tiles'
         },
@@ -199,6 +202,7 @@ export class IndividualCommandBarButtonAsExample extends React.Component<IIndivi
       {
         key: 'info',
         name: 'Info',
+        ariaLabel: 'Info',
         iconProps: {
           iconName: 'Info'
         },

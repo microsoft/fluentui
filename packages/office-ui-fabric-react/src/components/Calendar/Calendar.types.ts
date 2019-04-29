@@ -2,11 +2,17 @@ import { DayOfWeek, FirstWeekOfYear, DateRangeType } from '../../utilities/dateV
 import { IRefObject, IBaseProps } from '../../Utilities';
 export { DayOfWeek, DateRangeType, FirstWeekOfYear };
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendar {
   /** Sets focus to the selected date. */
   focus: () => void;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
   /**
    * Optional callback to access the ICalendar interface. Use this instead of ref for accessing
@@ -143,6 +149,11 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   maxDate?: Date;
 
   /**
+   * If set the Calendar will not allow selection of dates in this array.
+   */
+  restrictedDates?: Date[];
+
+  /**
    * Whether the calendar should show 6 weeks by default.
    * @defaultvalue false
    */
@@ -179,6 +190,9 @@ export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttribu
   yearPickerHidden?: boolean;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarStrings {
   /**
    * An array of strings for the full names of months.
@@ -240,6 +254,9 @@ export interface ICalendarStrings {
   weekNumberFormatString?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarIconStrings {
   /**
    * FabricMDL2Icons name for the left navigation icon.  Previous default: ChevronLeft.
@@ -260,6 +277,9 @@ export interface ICalendarIconStrings {
   closeIcon?: string;
 }
 
+/**
+ * {@docCategory Calendar}
+ */
 export interface ICalendarFormatDateCallbacks {
   /**
    * Callback to apply formatting to mmmm d, yyyy formated dates

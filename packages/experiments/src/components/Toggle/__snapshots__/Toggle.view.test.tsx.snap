@@ -52,6 +52,7 @@ exports[`ToggleView renders toggle correctly 1`] = `
   >
     <button
       aria-checked={false}
+      checked={false}
       className=
           ms-Toggle-background
           {
@@ -90,12 +91,12 @@ exports[`ToggleView renders toggle correctly 1`] = `
             z-index: 1;
           }
           &:hover {
-            border-color: #212121;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
-            border-color: Highlight;
+            border-color: #333333;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
+            border-color: Highlight;
+          }
+          @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
             border-color: Highlight;
           }
       data-is-focusable={true}
@@ -108,7 +109,7 @@ exports[`ToggleView renders toggle correctly 1`] = `
         className=
             ms-Toggle-thumb
             {
-              background-color: #212121;
+              background-color: #333333;
               border-color: transparent;
               border-radius: .5em;
               border-style: solid;

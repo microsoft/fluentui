@@ -6,9 +6,8 @@ import { getStyles } from './ProgressIndicator.styles';
 /**
  * ProgressIndicator description
  */
-export const ProgressIndicator = styled<IProgressIndicatorProps, IProgressIndicatorStyleProps, IProgressIndicatorStyles>(
-  ProgressIndicatorBase,
-  getStyles,
-  undefined,
-  { scope: 'ProgressIndicator' }
-);
+export const ProgressIndicator: React.StatelessComponent<IProgressIndicatorProps> = styled<
+  IProgressIndicatorProps,
+  IProgressIndicatorStyleProps,
+  IProgressIndicatorStyles
+>(ProgressIndicatorBase, getStyles, undefined, { scope: 'ProgressIndicator' });

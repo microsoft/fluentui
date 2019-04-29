@@ -3,99 +3,83 @@
 exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
 <div>
   <div>
-    <button
-      aria-checked={true}
-      checked={true}
+    <div
       className=
           ms-Checkbox
           is-checked
           is-enabled
           {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            background: none;
-            border: none;
-            cursor: pointer;
-            display: block;
-            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-            font-size: 14px;
-            font-weight: 400;
-            margin-bottom: 0;
-            margin-left: 0;
-            margin-right: 0;
-            margin-top: 0;
-            outline: none;
-            padding-bottom: 0;
-            padding-left: 0;
-            padding-right: 0;
-            padding-top: 0;
+            display: flex;
             position: relative;
           }
-          &::-moz-focus-inner {
-            border: 0;
-          }
-          .ms-Fabric--isFocusVisible &:focus:after {
-            border: 1px solid #ffffff;
-            bottom: -2px;
-            content: "";
-            left: -2px;
-            outline: 1px solid #666666;
-            position: absolute;
-            right: -2px;
-            top: -2px;
-            z-index: 1;
-          }
-          &:hover .ms-Checkbox-checkbox {
-            background: #106ebe;
-            border-color: #106ebe;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            background: #106ebe;
-            border-color: #106ebe;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            background: Window;
-            border-color: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
-            background: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
-            background: Highlight;
-          }
-          @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
-            color: Window;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
-      id="checkbox-0"
-      onBlur={[Function]}
-      onClick={[Function]}
-      onFocus={[Function]}
-      role="checkbox"
-      type="button"
     >
+      <input
+        checked={true}
+        className=
+
+            {
+              background: none;
+              opacity: 0;
+              position: absolute;
+            }
+            .ms-Fabric--isFocusVisible &:focus + label::before {
+              outline-offset: 2px;
+              outline: 1px solid #666666;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+              outline: 1px solid ActiveBorder;
+            }
+        id="checkbox-0"
+        onBlur={[Function]}
+        onChange={[Function]}
+        onFocus={[Function]}
+        type="checkbox"
+      />
       <label
         className=
             ms-Checkbox-label
             {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
               align-items: flex-start;
               cursor: pointer;
               display: flex;
-              margin-bottom: 0;
-              margin-left: -4px;
-              margin-right: -4px;
-              margin-top: 0;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
               position: relative;
               text-align: left;
               user-select: none;
+            }
+            &:hover .ms-Checkbox-checkbox {
+              background: #106ebe;
+              border-color: #106ebe;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              background: #106ebe;
+              border-color: #106ebe;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              background: Window;
+              border-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus .ms-Checkbox-checkbox {
+              background: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkbox {
+              background: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){&:focus:hover .ms-Checkbox-checkmark {
+              color: Window;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-0"
       >
@@ -113,10 +97,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 flex-shrink: 0;
                 height: 20px;
                 justify-content: center;
-                margin-bottom: 0;
-                margin-left: 4px;
                 margin-right: 4px;
-                margin-top: 0;
                 overflow: hidden;
                 transition-duration: 200ms;
                 transition-property: background, border, border-color;
@@ -129,7 +110,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {
@@ -160,16 +140,13 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 color: #333333;
                 font-size: 14px;
                 line-height: 20px;
-                margin-bottom: 0;
                 margin-left: 4px;
-                margin-right: 4px;
-                margin-top: 0;
               }
         >
           Include persona details
         </span>
       </label>
-    </button>
+    </div>
   </div>
   <label
     className=
@@ -247,7 +224,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
       size={9}
     >
       <i
-        aria-hidden={true}
         className=
 
             {
@@ -298,6 +274,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -325,6 +302,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -352,6 +330,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -379,6 +358,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -527,6 +507,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -554,6 +535,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -581,6 +563,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -608,6 +591,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -750,8 +734,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -815,6 +800,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -842,6 +828,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -869,6 +856,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -896,6 +884,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1038,8 +1027,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1103,6 +1093,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1130,6 +1121,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1157,6 +1149,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1184,6 +1177,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1326,8 +1320,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1391,6 +1386,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1418,6 +1414,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1445,6 +1442,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1472,6 +1470,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1614,8 +1613,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1651,7 +1651,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -1707,6 +1706,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1733,6 +1733,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1760,6 +1761,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1787,6 +1789,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -1929,8 +1932,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -1966,7 +1970,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -2014,6 +2017,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2040,6 +2044,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2067,6 +2072,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2094,6 +2100,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2236,8 +2243,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -2273,7 +2281,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -2327,6 +2334,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2353,6 +2361,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2380,6 +2389,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2407,6 +2417,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2549,8 +2560,9 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
                 is-fadeIn
                 {
                   display: block;
-                  height: auto;
+                  height: 100%;
                   left: 50% /* @noflip */;
+                  object-fit: cover;
                   opacity: 0;
                   position: absolute;
                   top: 50%;
@@ -2619,7 +2631,6 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
-            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -2667,6 +2678,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2693,6 +2705,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2720,6 +2733,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=
@@ -2747,6 +2761,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               text-overflow: ellipsis;
               white-space: nowrap;
             }
+        dir="auto"
       >
         <div
           className=

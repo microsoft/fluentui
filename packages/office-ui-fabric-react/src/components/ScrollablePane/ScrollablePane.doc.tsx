@@ -3,28 +3,30 @@ import { ScrollablePaneDefaultExample } from './examples/ScrollablePane.Default.
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ScrollablePaneDetailsListExample } from './examples/ScrollablePane.DetailsList.Example';
-import { ScrollablePaneStatus } from './ScrollablePane.checklist';
 
 const ScrollablePaneDefaultExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
-
 const ScrollablePaneDetailsListExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
+
+const ScrollablePaneDefaultExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.Default.Example.tsx') as string;
+const ScrollablePaneDetailsListExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ScrollablePane/examples/ScrollablePane.DetailsList.Example.tsx') as string;
 
 export const ScrollablePanePageProps: IDocPageProps = {
   title: 'ScrollablePane',
   componentName: 'ScrollablePane',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ScrollablePane',
-  componentStatus: ScrollablePaneStatus,
   examples: [
     {
       title: 'Default',
       code: ScrollablePaneDefaultExampleCode,
+      codepenJS: ScrollablePaneDefaultExampleCodepen,
       view: <ScrollablePaneDefaultExample />,
       isScrollable: false
     },
     {
       title: 'DetailsList Locked Header',
       code: ScrollablePaneDetailsListExampleCode,
+      codepenJS: ScrollablePaneDetailsListExampleCodepen,
       view: <ScrollablePaneDetailsListExample />,
       isScrollable: false
     }

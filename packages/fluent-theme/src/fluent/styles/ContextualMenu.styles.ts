@@ -1,12 +1,16 @@
-import { IContextualMenuStyleProps, IContextualMenuItemStyleProps } from 'office-ui-fabric-react/lib/ContextualMenu';
+import {
+  IContextualMenuStyleProps,
+  IContextualMenuStyles,
+  IContextualMenuItemStyleProps,
+  IContextualMenuItemStyles
+} from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
-import { fluentBorderRadius, MinimumScreenSelector } from './styleConstants';
-import { Depths } from '../FluentDepths';
+import { MinimumScreenSelector } from './styleConstants';
 import { FontSizes } from '../FluentType';
 
-export const ContextualMenuStyles = (props: IContextualMenuStyleProps) => {
+export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
   const CONTEXTUAL_MENU_ITEM_HEIGHT = 36;
 
   const iconStyles = {
@@ -26,15 +30,15 @@ export const ContextualMenuStyles = (props: IContextualMenuStyleProps) => {
       callout: {
         root: {
           border: 'none',
-          borderRadius: fluentBorderRadius,
-          boxShadow: Depths.depth8,
+          borderRadius: effects.roundedCorner2,
+          boxShadow: effects.elevation8,
           selectors: {
-            ['.ms-Callout-main']: { borderRadius: fluentBorderRadius }
+            ['.ms-Callout-main']: { borderRadius: effects.roundedCorner2 }
           }
         },
-        beakCurtain: { borderRadius: fluentBorderRadius }
+        beakCurtain: { borderRadius: effects.roundedCorner2 }
       },
-      menuItem: (itemStyleProps: IContextualMenuItemStyleProps) => {
+      menuItem: (itemStyleProps: IContextualMenuItemStyleProps): Partial<IContextualMenuItemStyles> => {
         const { disabled, expanded, primaryDisabled, checked } = itemStyleProps;
 
         return {

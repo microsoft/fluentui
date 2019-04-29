@@ -5,7 +5,7 @@ import { IKeytipTransitionKey } from '../../utilities/keytips/IKeytipTransitionK
 
 export interface IKeytipLayer {}
 
-export interface IKeytipLayerProps extends React.Props<IKeytipLayer> {
+export interface IKeytipLayerProps extends React.ClassAttributes<IKeytipLayer> {
   /**
    * Optional callback to access the KeytipLayer component. Use this instead of ref for accessing
    * the public methods and properties of the component.

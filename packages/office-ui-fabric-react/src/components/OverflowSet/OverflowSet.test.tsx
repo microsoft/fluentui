@@ -7,7 +7,7 @@ import * as sinon from 'sinon';
 import { CommandBarButton } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipLayer, KeytipLayerBase } from '../../KeytipLayer';
-import { arraysEqual, createRef, find } from '../../Utilities';
+import { arraysEqual, find } from '../../Utilities';
 import { IUniqueKeytip, KeytipManager, ktpTargetFromId } from '../../utilities/keytips/index';
 import { OverflowSet } from './OverflowSet';
 import { IOverflowSetItemProps } from './OverflowSet.types';
@@ -82,7 +82,7 @@ describe('OverflowSet', () => {
     let overflowKeytips: any;
     let items: IOverflowSetItemProps[];
     let overflowItems: IOverflowSetItemProps[];
-    const layerRef = createRef<KeytipLayerBase>();
+    const layerRef = React.createRef<KeytipLayerBase>();
 
     const onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
       return (
@@ -257,21 +257,25 @@ describe('OverflowSet', () => {
         );
 
         // Set current keytip at root, like we've entered keytip mode
-        const keytipTree = layerRef.value!.getKeytipTree();
+        const keytipTree = layerRef.current!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
-        layerRef.value!.processInput('x');
+        layerRef.current!.processInput('x');
 
-        delay(750).then(() => {
+        return delay(750).then(() => {
           // Opening the submenu should register the two keytips for those items
-          const modifiedKeytip3Sequence = ['x', 'c'];
-          const modifiedKeytip4Sequence = ['x', 'd'];
-          expect(getKeytip(keytipManager, modifiedKeytip3Sequence)).toBeDefined();
-          expect(getKeytip(keytipManager, modifiedKeytip4Sequence)).toBeDefined();
+          const keytip3 = getKeytip(keytipManager, ['c']);
+          expect(keytip3).toBeDefined();
+          expect(keytip3!.overflowSetSequence).toBeDefined();
+          expect(keytip3!.overflowSetSequence![0]).toEqual('x');
+          const keytip4 = getKeytip(keytipManager, ['d']);
+          expect(keytip4).toBeDefined();
+          expect(keytip4!.overflowSetSequence).toBeDefined();
+          expect(keytip4!.overflowSetSequence![0]).toEqual('x');
 
           // Those two keytips should now be visible in the Layer
-          layerRef.value!.state.keytips;
-          const visibleKeytips = layerRef.value!.state.visibleKeytips;
+          layerRef.current!.state.keytips;
+          const visibleKeytips = layerRef.current!.state.visibleKeytips;
           expect(visibleKeytips).toHaveLength(2);
         });
       });
@@ -292,12 +296,12 @@ describe('OverflowSet', () => {
         );
 
         // Set current keytip at root, like we've entered keytip mode
-        const keytipTree = layerRef.value!.getKeytipTree();
+        const keytipTree = layerRef.current!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
-        layerRef.value!.processInput('x');
+        layerRef.current!.processInput('x');
 
-        delay(750).then(() => {
+        return delay(750).then(() => {
           // item3
           const item3Keytip = getKeytip(keytipManager, overflowKeytips.overflowItemKeytip3.keySequences);
           expect(arraysEqual(item3Keytip!.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
@@ -335,10 +339,10 @@ describe('OverflowSet', () => {
         );
 
         // Set current keytip at root, like we've entered keytip mode
-        const keytipTree = layerRef.value!.getKeytipTree();
+        const keytipTree = layerRef.current!.getKeytipTree();
         keytipTree.currentKeytip = keytipTree.root;
         // Open the overflow menu
-        layerRef.value!.processInput('c');
+        layerRef.current!.processInput('c');
         // Nothing should happen, the current keytip should still be the root
         expect(keytipTree.currentKeytip).toEqual(keytipTree.root);
         expect(overflowKeytips.overflowItemKeytip3.onExecute).not.toBeCalled();
@@ -394,10 +398,10 @@ describe('OverflowSet', () => {
           );
 
           // Set current keytip at root, like we've entered keytip mode
-          const keytipTree = layerRef.value!.getKeytipTree();
+          const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
           // Open d's submenu
-          layerRef.value!.processInput('d');
+          layerRef.current!.processInput('d');
 
           expect(keytipTree.currentKeytip).toBeDefined();
         });
@@ -459,9 +463,9 @@ describe('OverflowSet', () => {
           );
 
           // Set current keytip at root, like we've entered keytip mode
-          const keytipTree = layerRef.value!.getKeytipTree();
+          const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
-          layerRef.value!.processInput('d');
+          layerRef.current!.processInput('d');
 
           // The two submenu keytips should be registered with their modified sequence in the manager
           const modifiedKeytip5Sequence = ['d', 'e'];
@@ -473,9 +477,101 @@ describe('OverflowSet', () => {
           expect(subMenu6Keytip).toBeDefined();
           expect(subMenu6Keytip!.overflowSetSequence![0]).toEqual('x');
 
-          delay(750).then(() => {
+          return delay(750).then(() => {
             // Those two keytips should now be visible in the Layer and have overflowSetSequence set
-            const submenuKeytips = layerRef.value!.state.visibleKeytips;
+            const submenuKeytips = layerRef.current!.state.visibleKeytips;
+            submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
+              expect(submenuKeytip.visible).toEqual(true);
+              expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
+            });
+          });
+        });
+
+        it('should behave correctly when the persisted keytip execute is delayed', () => {
+          const overflowItemsWithSubMenuAndKeytips = [
+            item3,
+            {
+              key: 'item4',
+              name: 'Item 4',
+              keytipProps: {
+                ...overflowKeytips.overflowItemKeytip4,
+                onExecute: (el: HTMLElement) => {
+                  el.click();
+                },
+                hasMenu: true
+              },
+              subMenuProps: {
+                items: [
+                  {
+                    key: 'item5',
+                    name: 'Item 5',
+                    keytipProps: overflowKeytips.overflowItemKeytip5
+                  },
+                  {
+                    key: 'item6',
+                    name: 'Item 6',
+                    keytipProps: overflowKeytips.overflowItemKeytip6,
+                    subMenuProps: {
+                      items: [
+                        {
+                          key: 'item7',
+                          name: 'Item 7',
+                          keytipProps: {
+                            content: 'X',
+                            keySequences: ['d', 'f', 'x']
+                          }
+                        }
+                      ]
+                    }
+                  }
+                ]
+              }
+            }
+          ];
+
+          const delayedOverflowButton = (overflowElements: any[] | undefined): JSX.Element => {
+            // Overflow button which delays 2s before opening the menu
+            // This simulates latency when opening the menu
+            return (
+              <CommandBarButton
+                menuIconProps={{ iconName: 'More' }}
+                menuProps={{ items: overflowElements! }}
+                keytipProps={{
+                  content: 'X',
+                  keySequences: ['x'],
+                  onExecute: (el: HTMLElement) => {
+                    delay(2000).then(() => {
+                      // Find the overflow button and manually click it to open the overflow menu
+                      overflowSet.find(ktpTargetFromId('ktp-x')).simulate('click');
+                    });
+                  }
+                }}
+              />
+            );
+          };
+
+          overflowSet = mount(
+            <div>
+              <OverflowSet
+                onRenderItem={onRenderItem}
+                onRenderOverflowButton={delayedOverflowButton}
+                items={items}
+                overflowItems={overflowItemsWithSubMenuAndKeytips}
+                keytipSequences={overflowKeytips.overflowButtonKeytip.keySequences}
+              />
+              <KeytipLayer content={'Alt Windows'} componentRef={layerRef} />
+            </div>
+          );
+
+          // Set current keytip at root, like we've entered keytip mode
+          const keytipTree = layerRef.current!.getKeytipTree();
+          keytipTree.currentKeytip = keytipTree.root;
+          layerRef.current!.processInput('d');
+
+          // Delay to wait for the menu to open
+          return delay(3000).then(() => {
+            // Those two keytips should now be visible in the Layer and have overflowSetSequence set
+            const submenuKeytips = layerRef.current!.state.visibleKeytips;
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
               expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);
@@ -548,14 +644,14 @@ describe('OverflowSet', () => {
           );
 
           // Set current keytip at root, like we've entered keytip mode
-          const keytipTree = layerRef.value!.getKeytipTree();
+          const keytipTree = layerRef.current!.getKeytipTree();
           keytipTree.currentKeytip = keytipTree.root;
 
-          layerRef.value!.processInput('d');
+          layerRef.current!.processInput('d');
 
-          delay(750).then(() => {
+          return delay(750).then(() => {
             // Those two keytips should now be visible in the Layer and have overflowSetSequence set
-            const submenuKeytips = layerRef.value!.state.visibleKeytips;
+            const submenuKeytips = layerRef.current!.state.visibleKeytips;
             submenuKeytips.forEach((submenuKeytip: IKeytipProps) => {
               expect(submenuKeytip.visible).toEqual(true);
               expect(arraysEqual(submenuKeytip.overflowSetSequence!, overflowKeytips.overflowButtonKeytip.keySequences)).toEqual(true);

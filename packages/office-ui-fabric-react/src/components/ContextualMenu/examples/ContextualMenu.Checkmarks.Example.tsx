@@ -41,7 +41,6 @@ export class ContextualMenuCheckmarksExample extends React.Component<{}, IContex
 
     return (
       <DefaultButton
-        id="ContextualMenuButton2"
         text="Click for ContextualMenu"
         menuProps={{
           shouldFocusOnMount: true,
