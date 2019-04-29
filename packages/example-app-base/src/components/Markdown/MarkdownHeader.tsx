@@ -4,21 +4,6 @@ import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import { FontSizes } from '@uifabric/fluent-theme';
 
 /**
- * The getStyles props contract.
- */
-export interface IMarkdownHeaderStyleProps {
-  theme: ITheme;
-  as: string;
-}
-
-/**
- * The styles produced by getStyles.
- */
-export interface IMarkdownHeaderStyles {
-  root: IStyle;
-}
-
-/**
  * The component props.
  */
 export interface IMarkdownHeaderProps {
@@ -28,6 +13,20 @@ export interface IMarkdownHeaderProps {
 
   theme?: ITheme;
   styles?: IStyleFunctionOrObject<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles>;
+}
+
+/**
+ * The getStyles props contract.
+ */
+export type IMarkdownHeaderStyleProps = {
+  as: string;
+};
+
+/**
+ * The styles produced by getStyles.
+ */
+export interface IMarkdownHeaderStyles {
+  root: IStyle;
 }
 
 const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles> = props => {
@@ -75,9 +74,9 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
 const getClassNames = classNamesFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles>();
 
 const MarkdownHeaderBase: React.StatelessComponent<IMarkdownHeaderProps> = props => {
-  const { as: RootType = 'h1', theme, children, id, styles } = props;
+  const { as: RootType = 'h1', children, id, styles } = props;
 
-  const classNames = getClassNames(styles, { theme: theme!, as: RootType });
+  const classNames = getClassNames(styles, { as: RootType });
   return (
     <RootType className={classNames.root} id={id}>
       {children}

@@ -1,5 +1,5 @@
 import { INavPage } from '../components/Nav/index';
-import { getPathMinusLastHash } from './getPathMinusLastHash';
+import { getUrlMinusLastHash } from './getUrlMinusLastHash';
 
 const _urlResolver = document.createElement('a');
 
@@ -19,7 +19,7 @@ export function isPageActive(componentUrl: string): boolean {
 
   const hashCount = path.split('#').length - 1;
   if (hashCount > 1) {
-    path = getPathMinusLastHash(path);
+    path = getUrlMinusLastHash(path);
   }
 
   if (path === target) {

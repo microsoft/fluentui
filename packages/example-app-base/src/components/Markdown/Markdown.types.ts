@@ -1,18 +1,10 @@
 import { IImageProps, ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from 'office-ui-fabric-react';
 import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
-import { IMarkdownImageSetStyleProps } from './MarkdownImageSet';
 import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
 import { IMarkdownCodeStyleProps } from './MarkdownCode';
 import { IMarkdownTableStyleProps } from '../MarkdownTable/index';
 
-export interface IMarkdownResources {
-  images?: {
-    [key: string]: IImageProps;
-  };
-}
-
 export interface IMarkdownProps {
-  resources?: IMarkdownResources;
   className?: string;
   children?: React.ReactNode;
 
@@ -23,7 +15,7 @@ export interface IMarkdownProps {
   styles?: IStyleFunctionOrObject<IMarkdownStyleProps, IMarkdownStyles>;
 }
 
-export type IMarkdownStyleProps = Required<Pick<IMarkdownProps, 'theme'>>;
+export type IMarkdownStyleProps = {};
 
 export interface IMarkdownStyles {
   root: IStyle;
@@ -34,7 +26,6 @@ export interface IMarkdownSubComponentStyles {
   // TODO: remove anys
   // tslint:disable:no-any
   header: IStyleFunctionOrObject<IMarkdownHeaderStyleProps, any>;
-  imageSet: IStyleFunctionOrObject<IMarkdownImageSetStyleProps, any>;
   paragraph: IStyleFunctionOrObject<IMarkdownParagraphStyleProps, any>;
   code: IStyleFunctionOrObject<IMarkdownCodeStyleProps, any>;
   link: IStyleFunctionOrObject<ILinkStyleProps, any>;

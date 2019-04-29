@@ -33,7 +33,9 @@ export interface ISideRailProps {
 }
 
 export interface ISideRailLink {
+  /** Link text to display */
   text: string;
+  /** Complete URL for the link */
   url: string;
 }
 

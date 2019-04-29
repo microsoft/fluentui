@@ -22,8 +22,10 @@ export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DI
   }
 }
 
-function _extractAnchorLink(path: string): string {
-  const split = path.split('#');
+function _extractAnchorLink(url: string): string | undefined {
+  const split = url.split('#');
   const cleanedSplit = split.filter((value: string) => !!value);
-  return cleanedSplit[cleanedSplit.length - 1];
+  if (cleanedSplit.length > 1) {
+    return cleanedSplit[cleanedSplit.length - 1];
+  }
 }

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
-import { isPageActive, jumpToAnchor, getPathMinusLastHash } from '../../utilities/index2';
+import { isPageActive, jumpToAnchor, getUrlMinusLastHash } from '../../utilities/index2';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
 import { getStyles, sideRailClassNames } from './SideRail.styles';
 
@@ -167,7 +167,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   private _getPagePath(url: string): string {
     let path = location.hash;
     // This makes sure that location hash changes don't append
-    path = getPathMinusLastHash(path);
+    path = getUrlMinusLastHash(path);
 
     return path + '#' + url;
   }

@@ -1,14 +1,11 @@
 import * as React from 'react';
 import MarkdownToJsx, { MarkdownProps } from 'markdown-to-jsx';
-import { DefaultButton, Image, IImageProps, Link, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
+import { DefaultButton, Image, Link, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
 import * as MDTable from '../MarkdownTable/index';
 import { MarkdownCode } from './MarkdownCode';
 import { MarkdownHeader } from './MarkdownHeader';
 import { MarkdownParagraph } from './MarkdownParagraph';
-import { MarkdownImageSet, IMarkdownImageSetProps } from './MarkdownImageSet';
 import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMarkdownStyles } from './Markdown.types';
-
-type PropsWithChildren = { children?: React.ReactNode };
 
 const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
   const subComponentStyles: Partial<IMarkdownSubComponentStyles> = {
@@ -29,42 +26,15 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props =>
 const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>();
 
 const MarkdownBase: React.StatelessComponent<IMarkdownProps> & { displayName?: string } = props => {
-  const classNames = getClassNames(props.styles, { theme: props.theme! });
+  const { styles, theme, children } = props;
+  const classNames = getClassNames(styles, { theme });
   return (
     <div className={classNames.root}>
-      <MarkdownToJsx {...getMarkdownProps(props, classNames.subComponentStyles)}>{props.children}</MarkdownToJsx>
+      <MarkdownToJsx {...getMarkdownProps(props, classNames.subComponentStyles)}>{children}</MarkdownToJsx>
     </div>
   );
 };
 MarkdownBase.displayName = 'Markdown';
-
-function _getImageSetProps(props: React.Props<PropsWithChildren>, markdownProps: IMarkdownProps): IMarkdownImageSetProps | undefined {
-  const images: IImageProps[] = [];
-  const { resources } = markdownProps;
-  if (props && props.children && resources && resources.images) {
-    React.Children.forEach(props.children, (child: React.ReactChild) => {
-      if (isReactElement(child) && child.type === 'li') {
-        const textContent = child.props.children;
-
-        if (typeof textContent === 'string' && textContent.indexOf('image:') === 0) {
-          const imageProps = resources.images![textContent.substr(6).trim()];
-
-          if (imageProps) {
-            images.push(imageProps);
-          }
-        }
-      }
-    });
-  }
-
-  if (images.length) {
-    return { images };
-  }
-}
-
-function isReactElement(child: React.ReactChild): child is React.ReactElement<PropsWithChildren> {
-  return !!(child && (child as React.ReactElement<{}>).type);
-}
 
 function getMarkdownProps(markdownProps: IMarkdownProps, subComponentStyles: IMarkdownSubComponentStyles): MarkdownProps {
   return {
@@ -99,33 +69,12 @@ function getMarkdownProps(markdownProps: IMarkdownProps, subComponentStyles: IMa
           props: { styles: subComponentStyles.code }
         },
         p: {
-          component: (props: React.HTMLAttributes<HTMLElement>) => {
-            const { resources } = markdownProps;
-            const textContent = props.children;
-
-            if (typeof textContent === 'string' && resources && textContent.indexOf('image:') === 0 && resources.images) {
-              const imageProps = resources.images[textContent.substr(6).trim()];
-
-              if (imageProps) {
-                return <Image styles={subComponentStyles.image} {...imageProps} />;
-              }
-            }
-            return <MarkdownParagraph {...props} styles={subComponentStyles.paragraph} />;
-          }
+          component: MarkdownParagraph,
+          props: { styles: subComponentStyles.paragraph }
         },
         a: {
           component: Link,
           props: { className: 'ms-mdLink', styles: subComponentStyles.link }
-        },
-        ul: {
-          component: (props: React.HTMLAttributes<HTMLElement>) => {
-            const imageSetProps = _getImageSetProps(props, markdownProps);
-
-            if (imageSetProps) {
-              return <MarkdownImageSet {...imageSetProps} styles={subComponentStyles.imageSet} />;
-            }
-            return <ul {...props} />;
-          }
         },
         img: {
           component: Image,

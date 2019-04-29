@@ -1,4 +1,3 @@
-export * from './MarkdownImageSet';
 export * from './MarkdownParagraph';
 export * from './MarkdownCode';
 export * from './Markdown';
