@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix the picker suggestion items flashing issue.",
+      "comment": "Fixed typo in position utility",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "lijunle@gmail.com"
+  "email": "xia_tony@hotmail.com"
 }

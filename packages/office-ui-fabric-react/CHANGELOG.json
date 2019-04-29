@@ -2,6 +2,78 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.172.0",
+      "tag": "office-ui-fabric-react_v6.172.0",
+      "date": "Sat, 27 Apr 2019 00:04:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating Icon, Checkbox, and Image to be pure components (correctly.)",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "108330f1118fafab4a13a8a2d18a0cd6bdf8639d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.36.0` to `^6.37.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.171.0",
+      "tag": "office-ui-fabric-react_v6.171.0",
+      "date": "Fri, 26 Apr 2019 12:35:24 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Separator: fix empty example",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "01d0876e767fcfea218388a0d075831684f321ac"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Breadcrumb: Add in focuszone props to give more control",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "31c446042b7cba7debfd84cf0d344892632832db"
+          },
+          {
+            "comment": "Teachingbubble: Improve target that's passed to callout",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "059f8ef1f53c9c654405b96aa9530c523e4bff9c"
+          },
+          {
+            "comment": "Add new prop 'detailsListStyles' to allow passing 'styles' prop to DetailsList. Deprecate all shimmer related props in DetailsList and DetailsListRow. Adds documentation",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "3db2c17ab3c8c717eb568f5bb6e5eacea6f25606"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Deprecate implementation examples",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4bd19808850a6a27e49a77cba869f278785e2a7a"
+          },
+          {
+            "comment": "Fix the picker suggestion items flashing issue.",
+            "author": "Junle Li <lijunle@gmail.com>",
+            "commit": "5a0d2d2eb4f79b5091b80efb3451539b36e00cea"
+          },
+          {
+            "comment": "Setting initial scrollbar height and width equal to 0 to prevent rendering when it's width/height changes from undefined to 0. Cascading updates caused due to notifySubscribers for sticky componentDidMount lifecycle hook. Reducing computations for sticky component by combining updates for change in sticky state (top/bottom/non-sticky) & distanceFromTop. Setting placeHolder width equal to scrollWidth of nonStickyContent.firstElementChild",
+            "author": "ht <41147089+tharshada@users.noreply.github.com>",
+            "commit": "e8b41e29af9bb82198a7eb2a48948f272d631de9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.35.7` to `^6.36.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.170.0",
       "tag": "office-ui-fabric-react_v6.170.0",
       "date": "Thu, 25 Apr 2019 12:33:20 GMT",
