@@ -1,4 +1,4 @@
-import { IImageProps, ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from 'office-ui-fabric-react';
+import { ITheme, IStyleFunctionOrObject, IStyle, ILinkStyleProps, IImageStyleProps } from 'office-ui-fabric-react';
 import { IMarkdownHeaderStyleProps } from './MarkdownHeader';
 import { IMarkdownParagraphStyleProps } from './MarkdownParagraph';
 import { IMarkdownCodeStyleProps } from './MarkdownCode';

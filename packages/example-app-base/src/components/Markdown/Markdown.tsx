@@ -1,25 +1,23 @@
 import * as React from 'react';
 import MarkdownToJsx, { MarkdownProps } from 'markdown-to-jsx';
-import { DefaultButton, Image, Link, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
+import { DefaultButton, Image, IImageStyles, Link, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
 import * as MDTable from '../MarkdownTable/index';
 import { MarkdownCode } from './MarkdownCode';
 import { MarkdownHeader } from './MarkdownHeader';
 import { MarkdownParagraph } from './MarkdownParagraph';
 import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMarkdownStyles } from './Markdown.types';
 
-const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
-  const subComponentStyles: Partial<IMarkdownSubComponentStyles> = {
-    image: {
-      root: {
-        maxWidth: '100%',
-        margin: '8px 0'
-      }
+const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = () => {
+  const imageStyles: Partial<IImageStyles> = {
+    root: {
+      maxWidth: '100%',
+      margin: '8px 0'
     }
   };
 
   return {
     root: 'ms-Markdown',
-    subComponentStyles: subComponentStyles as IMarkdownSubComponentStyles
+    subComponentStyles: { image: imageStyles } as IMarkdownSubComponentStyles
   };
 };
 
@@ -30,13 +28,13 @@ const MarkdownBase: React.StatelessComponent<IMarkdownProps> & { displayName?: s
   const classNames = getClassNames(styles, { theme });
   return (
     <div className={classNames.root}>
-      <MarkdownToJsx {...getMarkdownProps(props, classNames.subComponentStyles)}>{children}</MarkdownToJsx>
+      <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles)}>{children}</MarkdownToJsx>
     </div>
   );
 };
 MarkdownBase.displayName = 'Markdown';
 
-function getMarkdownProps(markdownProps: IMarkdownProps, subComponentStyles: IMarkdownSubComponentStyles): MarkdownProps {
+function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): MarkdownProps {
   return {
     options: {
       overrides: {
