@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { Animate } from '../../utilities/animation/Animate';
 import WindowWidthUtility from '../../utilities/WindowWidthUtility';
+import { extractAnchorLink } from '@uifabric/example-app-base/lib/utilities/extractAnchorLink';
 
 export interface IPageHeaderLink {
   text: string;
@@ -53,7 +54,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     event.preventDefault();
     history.pushState({}, '', this._els.link.getAttribute('href'));
     let navigatorUserAgent = navigator.userAgent.toLowerCase();
-    let hash = this._extractAnchorLink(window.location.hash);
+    let hash = extractAnchorLink(window.location.hash);
     if (navigatorUserAgent.indexOf('firefox') > -1) {
       hash = decodeURI(hash);
     }
@@ -79,17 +80,5 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
       duration: 0.3,
       top: currentScrollPosition - this.scrollDistance
     });
-  }
-
-  private _extractAnchorLink(path) {
-    let split = path.split('#');
-    let cleanedSplit = split.filter(value => {
-      if (value === '') {
-        return false;
-      } else {
-        return true;
-      }
-    });
-    return cleanedSplit[cleanedSplit.length - 1];
   }
 }
