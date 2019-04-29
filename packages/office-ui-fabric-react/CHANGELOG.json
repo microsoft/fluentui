@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.173.0",
+      "tag": "office-ui-fabric-react_v6.173.0",
+      "date": "Mon, 29 Apr 2019 12:34:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList: export DetailsHeader",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a95f727ada3c082ede6c9942392e115d1c454290"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Fixed typo in position utility",
+            "author": "Tony Xia <xia_tony@hotmail.com>",
+            "commit": "5579f9cc2374d39aef4f60a9206100000bf6b523"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.172.0",
       "tag": "office-ui-fabric-react_v6.172.0",
       "date": "Sat, 27 Apr 2019 00:04:47 GMT",
