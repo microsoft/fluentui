@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.37.0",
+      "tag": "@uifabric/utilities_v6.37.0",
+      "date": "Sat, 27 Apr 2019 00:04:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "108330f1118fafab4a13a8a2d18a0cd6bdf8639d"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.36.0",
       "tag": "@uifabric/utilities_v6.36.0",
       "date": "Fri, 26 Apr 2019 12:35:24 GMT",

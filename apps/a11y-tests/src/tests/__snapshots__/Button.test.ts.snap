@@ -4,6 +4,7 @@ exports[`runs Axe on Button 1`] = `
 Array [
   Object {
     "level": "error",
+<<<<<<< HEAD
     "locations": Array [
       Object {
         "annotations": Array [
@@ -16,15 +17,20 @@ Array [
         "fullyQualifiedLogicalName": "div:nth-child(1) > .css-260[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       },
     ],
+=======
+>>>>>>> upstream/master
     "message": Object {
       "richText": "Fix all of the following:
 - ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
+<<<<<<< HEAD
     "partialFingerprints": Object {
       "fullyQualifiedLogicalName": "div:nth-child(1) > .css-260[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       "ruleId": "aria-allowed-attr",
     },
+=======
+>>>>>>> upstream/master
     "properties": Object {
       "tags": Array [
         "Accessibility",
@@ -34,6 +40,7 @@ Array [
   },
   Object {
     "level": "error",
+<<<<<<< HEAD
     "locations": Array [
       Object {
         "annotations": Array [
@@ -46,15 +53,20 @@ Array [
         "fullyQualifiedLogicalName": "div:nth-child(2) > .css-260[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       },
     ],
+=======
+>>>>>>> upstream/master
     "message": Object {
       "richText": "Fix all of the following:
 - ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
+<<<<<<< HEAD
     "partialFingerprints": Object {
       "fullyQualifiedLogicalName": "div:nth-child(2) > .css-260[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       "ruleId": "aria-allowed-attr",
     },
+=======
+>>>>>>> upstream/master
     "properties": Object {
       "tags": Array [
         "Accessibility",
@@ -64,6 +76,7 @@ Array [
   },
   Object {
     "level": "error",
+<<<<<<< HEAD
     "locations": Array [
       Object {
         "annotations": Array [
@@ -76,15 +89,20 @@ Array [
         "fullyQualifiedLogicalName": "div:nth-child(3) > .css-260[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       },
     ],
+=======
+>>>>>>> upstream/master
     "message": Object {
       "richText": "Fix all of the following:
 - ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
+<<<<<<< HEAD
     "partialFingerprints": Object {
       "fullyQualifiedLogicalName": "div:nth-child(3) > .css-260[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       "ruleId": "aria-allowed-attr",
     },
+=======
+>>>>>>> upstream/master
     "properties": Object {
       "tags": Array [
         "Accessibility",
@@ -94,27 +112,11 @@ Array [
   },
   Object {
     "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-275\\" tabindex=\\"0\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".css-275",
-      },
-    ],
     "message": Object {
       "richText": "Fix all of the following:
 - ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".css-275",
-      "ruleId": "aria-allowed-attr",
-    },
     "properties": Object {
       "tags": Array [
         "Accessibility",
@@ -124,6 +126,7 @@ Array [
   },
   Object {
     "level": "error",
+<<<<<<< HEAD
     "locations": Array [
       Object {
         "annotations": Array [
@@ -136,15 +139,20 @@ Array [
         "fullyQualifiedLogicalName": ".css-250[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       },
     ],
+=======
+>>>>>>> upstream/master
     "message": Object {
       "richText": "Fix all of the following:
 - ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
+<<<<<<< HEAD
     "partialFingerprints": Object {
       "fullyQualifiedLogicalName": ".css-250[aria-roledescription=\\"split\\\\ button\\"][aria-haspopup=\\"true\\"]",
       "ruleId": "aria-allowed-attr",
     },
+=======
+>>>>>>> upstream/master
     "properties": Object {
       "tags": Array [
         "Accessibility",

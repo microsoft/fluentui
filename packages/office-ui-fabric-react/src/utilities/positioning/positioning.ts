@@ -615,23 +615,23 @@ function _positionBeak(beakWidth: number, elementPosition: IElementPositionInfo)
     elementPosition.elementRectangle.height - beakWidth / 2
   );
 
-  let beakPositon: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
+  let beakPosition: Rectangle = new Rectangle(0, beakWidth, 0, beakWidth);
 
-  beakPositon = _moveEdge(beakPositon, elementPosition.targetEdge * -1, -beakWidth / 2);
+  beakPosition = _moveEdge(beakPosition, elementPosition.targetEdge * -1, -beakWidth / 2);
 
-  beakPositon = _centerEdgeToPoint(
-    beakPositon,
+  beakPosition = _centerEdgeToPoint(
+    beakPosition,
     elementPosition.targetEdge * -1,
     beakTargetPoint - _getRelativeRectEdgeValue(positiveEdge, elementPosition.elementRectangle)
   );
 
-  if (!_isEdgeInBounds(beakPositon, elementBounds, positiveEdge)) {
-    beakPositon = _alignEdges(beakPositon, elementBounds, positiveEdge);
-  } else if (!_isEdgeInBounds(beakPositon, elementBounds, negativeEdge)) {
-    beakPositon = _alignEdges(beakPositon, elementBounds, negativeEdge);
+  if (!_isEdgeInBounds(beakPosition, elementBounds, positiveEdge)) {
+    beakPosition = _alignEdges(beakPosition, elementBounds, positiveEdge);
+  } else if (!_isEdgeInBounds(beakPosition, elementBounds, negativeEdge)) {
+    beakPosition = _alignEdges(beakPosition, elementBounds, negativeEdge);
   }
 
-  return beakPositon;
+  return beakPosition;
 }
 
 function _getRectangleFromElement(element: Element): Rectangle {

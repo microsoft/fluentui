@@ -51,7 +51,7 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export const Announced: React_2.StatelessComponent<IAnnouncedProps>;
 
@@ -486,7 +486,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export class Callout extends React.Component<ICalloutProps, ICalloutState> {
     // (undocumented)
@@ -500,7 +500,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React_2.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
-export class CheckBase extends React.PureComponent<ICheckProps, {}> {
+export class CheckBase extends React.Component<ICheckProps, {}> {
     // (undocumented)
     static defaultProps: ICheckProps;
     // (undocumented)
@@ -649,7 +649,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     static defaultProps: IComboBoxProps;
     dismissMenu: () => void;
     // Warning: (ae-unresolved-inheritdoc-base) The `@inheritDoc` tag needs a TSDoc declaration reference; signature matching is not supported yet
-    //
+    // 
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
@@ -834,6 +834,30 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
+
+// @public (undocumented)
+export const DetailsHeader: React_2.StatelessComponent<IDetailsHeaderBaseProps>;
+
+// @public (undocumented)
+export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+    constructor(props: IDetailsHeaderBaseProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        selectAllVisibility: SelectAllVisibility;
+        collapseAllVisibility: CollapseAllVisibility;
+    };
+    focus(): boolean;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState;
+    // (undocumented)
+    render(): JSX.Element;
+    }
 
 // @public (undocumented)
 export const DetailsList: React_2.StatelessComponent<IDetailsListProps>;
@@ -2567,6 +2591,13 @@ export interface IColumnDragDropDetails {
 }
 
 // @public (undocumented)
+export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
+    onColumnDragEnd?: (props: {
+        dropLocation?: ColumnDragEndLocation;
+    }, event: MouseEvent) => void;
+}
+
+// @public (undocumented)
 export interface IColumnReorderOptions {
     frozenColumnCountFromEnd?: number;
     frozenColumnCountFromStart?: number;
@@ -2575,6 +2606,16 @@ export interface IColumnReorderOptions {
     onColumnDragStart?: (dragStarted: boolean) => void;
     onColumnDrop?: (dragDropDetails: IColumnDragDropDetails) => void;
     onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
+}
+
+// @public (undocumented)
+export interface IColumnResizeDetails {
+    // (undocumented)
+    columnIndex: number;
+    // (undocumented)
+    columnMinWidth: number;
+    // (undocumented)
+    originX?: number;
 }
 
 // @public (undocumented)
@@ -2734,7 +2775,7 @@ export interface ICommandBarStyles {
 export const Icon: React_2.StatelessComponent<IIconProps>;
 
 // @public (undocumented)
-export class IconBase extends React.PureComponent<IIconProps, IIconState> {
+export class IconBase extends React.Component<IIconProps, IIconState> {
     constructor(props: IIconProps);
     // (undocumented)
     render(): JSX.Element;
@@ -2763,7 +2804,7 @@ export interface IContextualMenuItem {
     data?: any;
     disabled?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IMenuItemClassNames" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     getItemClassNames?: (theme: ITheme, disabled: boolean, expanded: boolean, checked: boolean, isAnchorLink: boolean, knownIcon: boolean, itemClassName?: string, dividerClassName?: string, iconClassName?: string, subMenuClassName?: string, primaryDisabled?: boolean) => IMenuItemClassNames;
     getSplitButtonVerticalDividerClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
@@ -2863,7 +2904,7 @@ export interface IContextualMenuListProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithResponsiveModeState" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWithResponsiveModeState {
     alignTargetEdge?: boolean;
@@ -2883,7 +2924,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     focusZoneProps?: IFocusZoneProps;
     gapSpace?: number;
     // Warning: (ae-forgotten-export) The symbol "IContextualMenuClassNames" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     getMenuClassNames?: (theme: ITheme, className?: string) => IContextualMenuClassNames;
     hidden?: boolean;
@@ -3110,8 +3151,11 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DetailsHeaderBase" needs to be exported by the entry point index.d.ts
-//
+// @public (undocumented)
+export interface IDetailsHeader {
+    focus: () => boolean;
+}
+
 // @public (undocumented)
 export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
     ariaLabel?: string;
@@ -3121,10 +3165,8 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     className?: string;
     collapseAllVisibility?: CollapseAllVisibility;
     columnReorderOptions?: IColumnReorderOptions;
-    // Warning: (ae-forgotten-export) The symbol "IColumnReorderHeaderProps" needs to be exported by the entry point index.d.ts
     columnReorderProps?: IColumnReorderHeaderProps;
-    // Warning: (ae-forgotten-export) The symbol "IDetailsHeader" needs to be exported by the entry point index.d.ts
-    componentRef?: IRefObject<IDetailsHeader_2>;
+    componentRef?: IRefObject<IDetailsHeader>;
     isAllCollapsed?: boolean;
     layoutMode: DetailsListLayoutMode;
     minimumPixelsForDrag?: number;
@@ -3136,10 +3178,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-    // Warning: (ae-forgotten-export) The symbol "SelectAllVisibility" needs to be exported by the entry point index.d.ts
     selectAllVisibility?: SelectAllVisibility;
-    // Warning: (ae-forgotten-export) The symbol "IDetailsHeaderStyleProps" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "IDetailsHeaderStyles" needs to be exported by the entry point index.d.ts
     styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
     theme?: ITheme;
 }
@@ -3149,6 +3188,75 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
     columns: IColumn[];
     selection: ISelection;
     selectionMode: SelectionMode;
+}
+
+// @public (undocumented)
+export interface IDetailsHeaderState {
+    // (undocumented)
+    columnReorderProps?: IColumnReorderHeaderProps;
+    // (undocumented)
+    columnResizeDetails?: IColumnResizeDetails;
+    // (undocumented)
+    groupNestingDepth?: number;
+    // (undocumented)
+    isAllCollapsed?: boolean;
+    // (undocumented)
+    isAllSelected?: boolean;
+    // (undocumented)
+    isSizing?: boolean;
+}
+
+// @public (undocumented)
+export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme'>> & Pick<IDetailsHeaderProps, 'className'> & {
+    isSelectAllHidden?: boolean;
+    isAllSelected?: boolean;
+    isResizingColumn?: boolean;
+    isAllCollapsed?: boolean;
+    isSizing?: boolean;
+    isCheckboxHidden?: boolean;
+    cellStyleProps?: ICellStyleProps;
+};
+
+// @public (undocumented)
+export interface IDetailsHeaderStyles {
+    // (undocumented)
+    accessibleLabel: IStyle;
+    // (undocumented)
+    cellIsActionable: IStyle;
+    // (undocumented)
+    cellIsCheck: IStyle;
+    // (undocumented)
+    cellIsEmpty: IStyle;
+    // (undocumented)
+    cellIsGroupExpander: IStyle;
+    // (undocumented)
+    cellIsResizing: IStyle;
+    // (undocumented)
+    cellSizer: IStyle;
+    // (undocumented)
+    cellSizerEnd: IStyle;
+    // (undocumented)
+    cellSizerStart: IStyle;
+    // (undocumented)
+    cellWrapperPadded: IStyle;
+    // (undocumented)
+    check: IStyle;
+    // (undocumented)
+    checkTooltip: IStyle;
+    // (undocumented)
+    collapseButton: IStyle;
+    // (undocumented)
+    dropHintCaretStyle: IStyle;
+    // (undocumented)
+    dropHintCircleStyle: IStyle;
+    // (undocumented)
+    dropHintLineStyle: IStyle;
+    // (undocumented)
+    dropHintStyle: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    sizingOverlay: IStyle;
 }
 
 // @public (undocumented)
@@ -3176,7 +3284,7 @@ export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IWithViewportProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
     ariaLabel?: string;
@@ -3521,7 +3629,7 @@ export interface IDialogFooterStyles {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IAccessiblePopupProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDialogProps extends React.ClassAttributes<DialogBase>, IWithResponsiveModeState, IAccessiblePopupProps {
     // @deprecated
@@ -3616,7 +3724,7 @@ export interface IDocumentCardActions {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActionsBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardActionsProps extends React_2.ClassAttributes<DocumentCardActionsBase> {
     actions: IButtonProps[];
@@ -3659,7 +3767,7 @@ export interface IDocumentCardActivityPerson {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardActivityBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardActivityProps extends React_2.ClassAttributes<DocumentCardActivityBase> {
     activity: string;
@@ -3698,7 +3806,7 @@ export interface IDocumentCardDetails {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardDetailsBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardDetailsProps extends React_2.Props<DocumentCardDetailsBase> {
     className?: string;
@@ -3757,7 +3865,7 @@ export interface IDocumentCardLocation {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLocationBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardLocationProps extends React_2.ClassAttributes<DocumentCardLocationBase> {
     ariaLabel?: string;
@@ -3787,7 +3895,7 @@ export interface IDocumentCardLogo {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardLogoBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardLogoProps extends React_2.ClassAttributes<DocumentCardLogoBase> {
     className?: string;
@@ -3887,7 +3995,7 @@ export interface IDocumentCardStatus {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardStatusBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardStatusProps extends React_2.Props<DocumentCardStatusBase> {
     className?: string;
@@ -3929,7 +4037,7 @@ export interface IDocumentCardTitle {
 }
 
 // Warning: (ae-forgotten-export) The symbol "DocumentCardTitleBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IDocumentCardTitleProps extends React_2.ClassAttributes<DocumentCardTitleBase> {
     className?: string;
@@ -4048,6 +4156,18 @@ export interface IDropdownSubComponentStyles {
     panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }
 
+// @public (undocumented)
+export interface IDropHintDetails {
+    // (undocumented)
+    dropHintElementRef: HTMLElement;
+    // (undocumented)
+    endX: number;
+    // (undocumented)
+    originX: number;
+    // (undocumented)
+    startX: number;
+}
+
 // @public
 export interface IEntityRect {
     // (undocumented)
@@ -4061,7 +4181,7 @@ export interface IExpandingCard {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export interface IExpandingCardProps extends IBaseCardProps<IExpandingCard, IExpandingCardStyles, IExpandingCardStyleProps> {
     compactCardHeight?: number;
@@ -4080,7 +4200,7 @@ export interface IExpandingCardState {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyleProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
     compactCardHeight?: number;
@@ -4090,7 +4210,7 @@ export interface IExpandingCardStyleProps extends IBaseCardStyleProps {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IBaseCardStyles" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IExpandingCardStyles extends IBaseCardStyles {
     compactCard?: IStyle;
@@ -5296,7 +5416,7 @@ export interface IPanelHeaderRenderer extends IRenderFunction<IPanelProps> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "PanelBase" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export interface IPanelProps extends React.HTMLAttributes<PanelBase> {
     className?: string;
@@ -6288,7 +6408,7 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
     shimmerLines?: number;
     // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
     // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // @deprecated
     styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 }
@@ -6524,7 +6644,7 @@ export interface ISpinButtonProps {
     keytipProps?: IKeytipProps;
     label?: string;
     // Warning: (ae-forgotten-export) The symbol "Position" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     labelPosition?: Position;
     max?: number;
@@ -7398,7 +7518,7 @@ export class Keytip extends React.Component<IKeytipProps, {}> {
 }
 
 // Warning: (ae-forgotten-export) The symbol "IKeytipDataProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public
 export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
     // (undocumented)
@@ -7426,7 +7546,7 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // (undocumented)
     getCurrentSequence(): string;
     // Warning: (ae-forgotten-export) The symbol "KeytipTree" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     getKeytipTree(): KeytipTree;
     processInput(key: string, ev?: React.KeyboardEvent<HTMLElement>): void;
@@ -7468,7 +7588,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
     }
 
 // Warning: (ae-forgotten-export) The symbol "ILayerHostProps" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export class LayerHost extends React.Component<ILayerHostProps> {
     // (undocumented)
@@ -8219,6 +8339,16 @@ enum SelectableOptionMenuItemType {
 export { SelectableOptionMenuItemType as DropdownMenuItemType }
 
 export { SelectableOptionMenuItemType }
+
+// @public (undocumented)
+export enum SelectAllVisibility {
+    // (undocumented)
+    hidden = 1,
+    // (undocumented)
+    none = 0,
+    // (undocumented)
+    visible = 2
+}
 
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
@@ -9026,7 +9156,7 @@ export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
 
 // Warnings were encountered during analysis:
-//
+// 
 // lib/components/DetailsList/DetailsList.types.d.ts:110:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)

@@ -37,7 +37,7 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
       globalClassNames.button
     ],
     itemCell: [
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       {
         minHeight: 54,
         padding: 10,

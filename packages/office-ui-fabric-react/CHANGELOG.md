@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Apr 2019 12:34:34 GMT and should not be manually modified.
+
+## 6.173.0
+Mon, 29 Apr 2019 12:34:34 GMT
+
+### Minor changes
+
+- DetailsList: export DetailsHeader
+
+### Patches
+
+- Fixed typo in position utility
+
+## 6.172.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- Updating Icon, Checkbox, and Image to be pure components (correctly.)
 
 ## 6.171.0
 Fri, 26 Apr 2019 12:35:24 GMT

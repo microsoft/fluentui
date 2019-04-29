@@ -27,6 +27,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
