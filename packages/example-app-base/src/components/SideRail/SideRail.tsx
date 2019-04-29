@@ -40,8 +40,8 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     this._classNames = getClassNames(this.props.styles, { theme: this.props.theme });
 
     const jumpLinkList = this._renderJumpLinkList();
-    const relatedLinkList = this._renderRelatedLinkList();
-    const contactLinkList = this._renderContactList();
+    const relatedLinkList = this._renderLinkList(this.props.relatedLinks, 'Related pages');
+    const contactLinkList = this._renderLinkList(this.props.contactLinks, 'Contacts');
 
     return jumpLinkList || relatedLinkList || contactLinkList ? (
       <FocusZone direction={FocusZoneDirection.vertical} className={this._classNames.root}>
@@ -77,7 +77,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
         key={jumpLink.url}
         className={css(classNames.link, classNames.jumpLink, jumpLink.url === activeLink && sideRailClassNames.isActive)}
       >
-        <Link href={this._getPagePath(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
+        <Link href={this._getPageUrl(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
           {jumpLink.text}
         </Link>
       </li>
@@ -90,69 +90,37 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     );
   };
 
-  private _renderRelatedLinkList = (): JSX.Element | null => {
-    const { relatedLinks } = this.props;
+  private _renderLinkList(linksFromProps: ISideRailLink[] | JSX.Element | undefined, title: string): JSX.Element | null {
     const classNames = this._classNames;
 
     let links: JSX.Element | undefined;
-    if (_isElement(relatedLinks)) {
-      links = <div className={classNames.markdownList}>{relatedLinks}</div>;
-    } else if (Array.isArray(relatedLinks) && relatedLinks.length) {
-      links = (
-        <ul>
-          {relatedLinks.map(
-            (relatedLink: ISideRailLink) =>
-              !isPageActive(relatedLink.url) && (
-                <li key={relatedLink.url} className={classNames.link}>
-                  <Link href={relatedLink.url}>{relatedLink.text}</Link>
-                </li>
-              )
-          )}
-        </ul>
-      );
+    if (_isElement(linksFromProps)) {
+      links = <div className={classNames.markdownList}>{linksFromProps}</div>;
+    } else if (Array.isArray(linksFromProps)) {
+      const linksToRender = linksFromProps.filter(link => !isPageActive(link.url));
+      if (linksToRender.length) {
+        links = (
+          <ul>
+            {linksToRender.map(link => (
+              <li key={link.url} className={classNames.link}>
+                <Link href={link.url}>{link.text}</Link>
+              </li>
+            ))}
+          </ul>
+        );
+      }
     }
 
     if (links) {
       return (
         <div className={css(classNames.section)}>
-          <h3 className={classNames.sectionTitle}>Related pages</h3>
+          <h3 className={classNames.sectionTitle}>{title}</h3>
           {links}
         </div>
       );
     }
     return null;
-  };
-
-  private _renderContactList = (): JSX.Element | null => {
-    const { contactLinks } = this.props;
-    const classNames = this._classNames;
-
-    let links: JSX.Element | undefined;
-    if (_isElement(contactLinks)) {
-      links = <div className={classNames.markdownList}>{contactLinks}</div>;
-    } else if (Array.isArray(contactLinks) && contactLinks.length) {
-      links = (
-        <ul>
-          {contactLinks.map((contactLink: ISideRailLink) => (
-            <li key={contactLink.url} className={classNames.link}>
-              <Link href={contactLink.url}>{contactLink.text}</Link>
-            </li>
-          ))}
-        </ul>
-      );
-    }
-
-    if (links) {
-      return (
-        <div className={css(classNames.section)}>
-          <h3 className={classNames.sectionTitle}>Contacts</h3>
-          {links}
-        </div>
-      );
-    }
-
-    return null;
-  };
+  }
 
   // tslint:disable-next-line:no-any
   private _onJumpLinkClick = (ev?: React.MouseEvent<any>): void => {
@@ -164,12 +132,9 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     return jumpToAnchor(url);
   };
 
-  private _getPagePath(url: string): string {
-    let path = location.hash;
+  private _getPageUrl(url: string): string {
     // This makes sure that location hash changes don't append
-    path = getUrlMinusLastHash(path);
-
-    return path + '#' + url;
+    return `${url}#${getUrlMinusLastHash(location.hash)}`;
   }
 }
 
