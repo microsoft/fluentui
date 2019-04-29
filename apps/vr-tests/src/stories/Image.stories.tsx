@@ -192,24 +192,6 @@ storiesOf('Image', module)
       <Image {...imagePropsFitCenterContain} width={500} height={300} />
     </div>
   ))
-  .addStory('Fit: cover, image wider', () => (
-    <div>
-      <Label>
-        The image has a wider aspect ratio (more landscape) than the frame, so the image is scaled
-        to fit the height and the sides are cropped evenly.
-      </Label>
-      <Image {...imagePropsFitCover} width={150} height={250} />
-    </div>
-  ))
-  .addStory('Fit: cover, image taller', () => (
-    <div>
-      <Label>
-        The image has a taller aspect ratio (more portrait) than the frame, so the image is scaled
-        to fit the width and the top and bottom are cropped evenly.
-      </Label>
-      <Image {...imagePropsFitCover} width={250} height={150} />
-    </div>
-  ))
   .addStory('Fit: centerCover, image smaller', () => (
     <div>
       <Label>
