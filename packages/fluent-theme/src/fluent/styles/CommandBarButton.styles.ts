@@ -47,13 +47,23 @@ export const CommandBarButtonStyles = (props: IButtonProps): Partial<IButtonStyl
       }
     },
 
+    rootCheckedHovered: {
+      backgroundColor: palette.neutralQuaternaryAlt,
+      color: palette.neutralDark
+    },
+
     rootExpanded: {
       color: palette.neutralDark,
+      backgroundColor: palette.neutralLight,
       selectors: {
         [BUTTON_ICON_CLASSNAME]: {
           color: palette.themeDark
         }
       }
+    },
+
+    rootExpandedHovered: {
+      background: palette.neutralQuaternaryAlt
     },
 
     rootDisabled: {

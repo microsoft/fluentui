@@ -35,6 +35,42 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
       checked && 'is-checked',
       !disabled && 'is-enabled',
       disabled && 'is-disabled',
+      className
+    ],
+    input: [
+      {
+        position: 'absolute',
+        background: 'none',
+
+        opacity: 0,
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+            outline: '1px solid ' + theme.palette.neutralSecondary,
+            outlineOffset: '2px',
+            selectors: {
+              [HighContrastSelector]: {
+                outline: '1px solid ActiveBorder'
+              }
+            }
+          }
+        }
+      }
+    ],
+    label: [
+      'ms-Checkbox-label',
+      theme.fonts.medium,
+      {
+        display: 'flex',
+        alignItems: isUsingCustomLabelRender ? 'center' : 'flex-start',
+        cursor: disabled ? 'default' : 'pointer',
+        position: 'relative',
+        userSelect: 'none',
+        textAlign: 'left'
+      },
+      reversed && {
+        flexDirection: 'row-reverse',
+        justifyContent: 'flex-end'
+      },
       !disabled && [
         !checked && {
           selectors: {
@@ -96,56 +132,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
             ':focus .ms-Checkbox-text': { color: checkboxHoveredTextColor }
           }
         }
-      ],
-      className
-    ],
-    input: [
-      {
-        position: 'absolute',
-        background: 'none',
-
-        opacity: 0,
-        selectors: {
-          [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
-            outline: '1px solid ' + theme.palette.neutralSecondary,
-            outlineOffset: '2px',
-            selectors: {
-              [HighContrastSelector]: {
-                outline: '1px solid ActiveBorder'
-              }
-            }
-          }
-        }
-      }
-    ],
-    label: [
-      'ms-Checkbox-label',
-      theme.fonts.medium,
-      {
-        display: 'flex',
-        alignItems: isUsingCustomLabelRender ? 'center' : 'flex-start',
-        cursor: disabled ? 'default' : 'pointer',
-        position: 'relative',
-        userSelect: 'none',
-        textAlign: 'left'
-      },
-      reversed && {
-        flexDirection: 'row-reverse',
-        justifyContent: 'flex-end'
-      },
-      {
-        selectors: {
-          '&::before': {
-            position: 'absolute',
-            left: 0,
-            right: 0,
-            top: 0,
-            bottom: 0,
-            content: '""',
-            pointerEvents: 'none'
-          }
-        }
-      }
+      ]
     ],
     checkbox: [
       'ms-Checkbox-checkbox',

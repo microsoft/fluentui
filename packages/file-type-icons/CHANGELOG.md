@@ -1,6 +1,20 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 18 Apr 2019 12:31:50 GMT and should not be manually modified.
+This log was last generated on Sat, 27 Apr 2019 00:04:47 GMT and should not be manually modified.
+
+## 6.4.8
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Patches
+
+- removing duplicate entries in FileTypeIconMap.ts
+
+## 6.4.7
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- reverting the json payload back inside the ts file due to downstream issues
 
 ## 6.4.6
 Thu, 18 Apr 2019 12:31:50 GMT

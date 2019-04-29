@@ -442,7 +442,7 @@
     {
       "packageName": "@uifabric/codepen-loader",
       "projectFolder": "packages/codepen-loader",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/migration",

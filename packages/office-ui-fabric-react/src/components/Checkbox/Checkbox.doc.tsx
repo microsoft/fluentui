@@ -2,18 +2,17 @@ import * as React from 'react';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { CheckboxImplementationExamples } from './examples/Checkbox.Other.Example';
-import { CheckboxStatus } from './Checkbox.checklist';
+import { CheckboxOtherExamples } from './examples/Checkbox.Other.Example';
 
 const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 const CheckboxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
-const CheckboxImplementationExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
+const CheckboxOtherExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
+const CheckboxOtherExamplesCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
 
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
   componentName: 'Checkbox',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Checkbox',
-  componentStatus: CheckboxStatus,
   examples: [
     {
       title: 'Default Checkbox',
@@ -23,8 +22,9 @@ export const CheckboxPageProps: IDocPageProps = {
     },
     {
       title: 'Implementation Examples',
-      code: CheckboxImplementationExamplesCode,
-      view: <CheckboxImplementationExamples />
+      code: CheckboxOtherExamplesCode,
+      view: <CheckboxOtherExamples />,
+      codepenJS: CheckboxOtherExamplesCodepen
     }
   ],
   propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')],
