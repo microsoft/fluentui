@@ -1,7 +1,9 @@
+import { extractAnchorLink } from './extractAnchorLink';
+
 const SCROLL_DISTANCE = 52;
 
 export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DISTANCE): void {
-  const hash = anchor || _extractAnchorLink(window.location.hash);
+  const hash = anchor || extractAnchorLink(window.location.hash);
   const el = hash && document.getElementById(hash);
   if (hash && el) {
     const elRect = el.getBoundingClientRect();
@@ -19,13 +21,5 @@ export function jumpToAnchor(anchor?: string, scrollDistance: number = SCROLL_DI
         });
       }
     }
-  }
-}
-
-function _extractAnchorLink(url: string): string | undefined {
-  const split = url.split('#');
-  const cleanedSplit = split.filter((value: string) => !!value);
-  if (cleanedSplit.length > 1) {
-    return cleanedSplit[cleanedSplit.length - 1];
   }
 }
