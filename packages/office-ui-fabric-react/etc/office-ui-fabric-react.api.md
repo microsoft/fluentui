@@ -8371,23 +8371,149 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 // @public (undocumented)
 export enum SemanticColorSlots {
     // (undocumented)
+    accentButtonBackground = 51,
+    // (undocumented)
+    accentButtonText = 52,
+    // (undocumented)
+    actionLink = 68,
+    // (undocumented)
+    actionLinkHovered = 69,
+    // (undocumented)
     bodyBackground = 0,
     // (undocumented)
-    bodyDivider = 4,
+    bodyDivider = 7,
+    // (undocumented)
+    bodyFrameBackground = 2,
+    // (undocumented)
+    bodyFrameDivider = 3,
     // (undocumented)
     bodyStandoutBackground = 1,
     // (undocumented)
-    bodySubtext = 3,
+    bodySubtext = 6,
     // (undocumented)
-    bodyText = 2,
+    bodyText = 4,
     // (undocumented)
-    buttonBackground = 7,
+    bodyTextChecked = 5,
     // (undocumented)
-    buttonBackgroundHovered = 8,
+    buttonBackground = 28,
     // (undocumented)
-    link = 5,
+    buttonBackgroundChecked = 29,
     // (undocumented)
-    linkHovered = 6,
+    buttonBackgroundCheckedHovered = 31,
+    // (undocumented)
+    buttonBackgroundDisabled = 33,
+    // (undocumented)
+    buttonBackgroundHovered = 30,
+    // (undocumented)
+    buttonBackgroundPressed = 32,
+    // (undocumented)
+    buttonBorder = 34,
+    // (undocumented)
+    buttonBorderDisabled = 41,
+    // (undocumented)
+    buttonText = 35,
+    // (undocumented)
+    buttonTextChecked = 37,
+    // (undocumented)
+    buttonTextCheckedHovered = 38,
+    // (undocumented)
+    buttonTextDisabled = 40,
+    // (undocumented)
+    buttonTextHovered = 36,
+    // (undocumented)
+    buttonTextPressed = 39,
+    // (undocumented)
+    defaultStateBackground = 16,
+    // (undocumented)
+    disabledBackground = 8,
+    // (undocumented)
+    disabledBodySubtext = 12,
+    // (undocumented)
+    disabledBodyText = 10,
+    // (undocumented)
+    disabledSubText = 11,
+    // (undocumented)
+    disabledText = 9,
+    // (undocumented)
+    focusBorder = 13,
+    // (undocumented)
+    inputBackground = 19,
+    // (undocumented)
+    inputBackgroundChecked = 20,
+    // (undocumented)
+    inputBackgroundCheckedHovered = 21,
+    // (undocumented)
+    inputBorder = 17,
+    // (undocumented)
+    inputBorderHovered = 18,
+    // (undocumented)
+    inputFocusBorderAlt = 23,
+    // (undocumented)
+    inputForegroundChecked = 22,
+    // (undocumented)
+    inputPlaceholderText = 27,
+    // (undocumented)
+    inputText = 25,
+    // (undocumented)
+    inputTextHovered = 26,
+    // (undocumented)
+    link = 70,
+    // (undocumented)
+    linkHovered = 71,
+    // (undocumented)
+    listBackground = 61,
+    // (undocumented)
+    listHeaderBackgroundHovered = 66,
+    // (undocumented)
+    listHeaderBackgroundPressed = 67,
+    // (undocumented)
+    listItemBackgroundChecked = 64,
+    // (undocumented)
+    listItemBackgroundCheckedHovered = 65,
+    // (undocumented)
+    listItemBackgroundHovered = 63,
+    // (undocumented)
+    listText = 62,
+    // (undocumented)
+    menuBackground = 53,
+    // (undocumented)
+    menuDivider = 54,
+    // (undocumented)
+    menuHeader = 56,
+    // (undocumented)
+    menuIcon = 55,
+    // (undocumented)
+    menuItemBackgroundHovered = 57,
+    // (undocumented)
+    menuItemBackgroundPressed = 58,
+    // (undocumented)
+    menuItemText = 59,
+    // (undocumented)
+    menuItemTextHovered = 60,
+    // (undocumented)
+    primaryButtonBackground = 42,
+    // (undocumented)
+    primaryButtonBackgroundDisabled = 45,
+    // (undocumented)
+    primaryButtonBackgroundHovered = 43,
+    // (undocumented)
+    primaryButtonBackgroundPressed = 44,
+    // (undocumented)
+    primaryButtonBorder = 46,
+    // (undocumented)
+    primaryButtonText = 47,
+    // (undocumented)
+    primaryButtonTextDisabled = 50,
+    // (undocumented)
+    primaryButtonTextHovered = 48,
+    // (undocumented)
+    primaryButtonTextPressed = 49,
+    // (undocumented)
+    smallInputBorder = 24,
+    // (undocumented)
+    variantBorder = 14,
+    // (undocumented)
+    variantBorderHovered = 15,
 }
 
 // @public (undocumented)
