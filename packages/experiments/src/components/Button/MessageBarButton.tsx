@@ -43,5 +43,5 @@ export const MessageBarButtonTokens: IButtonComponent['tokens'] = (props, theme)
 export const MessageBarButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return <Button content={text} icon={{ props: iconProps }} tokens={MessageBarButtonTokens} {...rest} />;
+  return <Button content={text} icon={iconProps} tokens={MessageBarButtonTokens} {...rest} />;
 };

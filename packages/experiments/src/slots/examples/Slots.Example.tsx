@@ -10,19 +10,24 @@ export class SlotsExample extends React.Component<{}, {}> {
       <Stack {...stackProps} maxWidth={400}>
         <Button
           // Render function usage, wrapping default content
-          root={{
-            render: (rootProps, DefaultComponent) => (
-              <TooltipHost content="This is the tooltip">
-                <DefaultComponent {...rootProps} />
-              </TooltipHost>
-            )
+          slots={{
+            root: {
+              render: (rootProps, DefaultComponent) => (
+                <TooltipHost content="This is the tooltip">
+                  <DefaultComponent {...rootProps} />
+                </TooltipHost>
+              )
+            },
+            content: {
+              // TODO: add 'element' option with JSX?
+              // element: <Spinner />
+              component: Spinner as any
+            }
           }}
           // Subcomponent props usage
-          stack={{ props: { styles: { root: { background: 'lightblue' } } } }}
+          stack={{ styles: { root: { background: 'lightblue' } } }}
           // Shorthand prop usage
           icon="share"
-          // JSX usage
-          content={<Spinner />}
         >
           Just a button with a spinner as its content.
         </Button>

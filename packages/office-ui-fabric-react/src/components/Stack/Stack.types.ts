@@ -1,4 +1,4 @@
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 
 /**
  * Defines a type made by the union of the different values that the align-items and justify-content flexbox
@@ -51,7 +51,7 @@ export interface IStackSlots {
  * {@docCategory Stack}
  */
 export interface IStackProps
-  extends IStackSlots,
+  extends ISlottableProps<IStackSlots>,
     IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**

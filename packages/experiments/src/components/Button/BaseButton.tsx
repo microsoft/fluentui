@@ -57,5 +57,5 @@ const BaseButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IBu
 export const BaseButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return <Button content={text} icon={{ props: iconProps }} tokens={BaseButtonTokens} styles={BaseButtonStyles} {...rest} />;
+  return <Button content={text} icon={iconProps} tokens={BaseButtonTokens} styles={BaseButtonStyles} {...rest} />;
 };

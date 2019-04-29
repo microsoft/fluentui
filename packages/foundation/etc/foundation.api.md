@@ -26,7 +26,7 @@ export type ExtractProps<TUnion> = TUnion extends ISlotProp<infer TProps> ? TPro
 export type ExtractShorthand<TUnion> = TUnion extends boolean ? boolean : TUnion extends number ? number : TUnion extends string ? string : never;
 
 // @public
-export function getSlots<TComponentProps extends TComponentSlots, TComponentSlots extends ISlotProps<TComponentSlots>>(userProps: TComponentProps, slots: ISlotDefinition<Required<TComponentSlots>>): ISlots<Required<TComponentSlots>>;
+export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(userProps: TComponentProps, slots: ISlotDefinition<Required<TComponentSlots>>): ISlots<Required<TComponentSlots>>;
 
 // @public
 export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
@@ -98,25 +98,18 @@ export type ISlotDefinition<TSlots> = {
 };
 
 // @public
-export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, defaultStyles: IStyle) => ReturnType<React.FunctionComponent<TProps>>;
+export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (componentProps: TProps & IProcessedSlotProps, userProps: ISlotProp<TProps, TShorthandProp>, slotOptions: ISlotOptions<TProps> | undefined, defaultStyles: IStyle) => ReturnType<React.FunctionComponent<TProps>>;
 
 // @public
 export interface ISlotOptions<TProps> {
     // (undocumented)
     component?: React.ReactType<TProps>;
     // (undocumented)
-    props?: TProps;
-    // (undocumented)
     render?: ISlotRender<TProps>;
 }
 
 // @public
-export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | ISlotOptions<TProps>;
-
-// @public
-export type ISlotProps<TSlots> = {
-    [key in keyof TSlots]: ISlotProp<ExtractProps<TSlots[key]>, ExtractShorthand<TSlots[key]>>;
-};
+export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
 
 // @public
 export type ISlotRender<TProps> = (props: IPropsWithChildren<TProps>, defaultComponent: React.ComponentType<TProps>) => ReturnType<React.FunctionComponent<TProps>>;
@@ -128,6 +121,13 @@ export type ISlots<TSlots> = {
 
 // @public
 export type ISlottableComponentType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ComponentType<TProps> & ISlotCreator<TProps, TShorthandProp>;
+
+// @public
+export type ISlottableProps<TSlots> = TSlots & {
+    slots?: {
+        [key in keyof TSlots]+?: ISlotOptions<ExtractProps<TSlots[key]>>;
+    };
+};
 
 // @public
 export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ReactType<TProps> & ISlotCreator<TProps, TShorthandProp>;

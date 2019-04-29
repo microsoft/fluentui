@@ -40,11 +40,9 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
           <CollapsibleSection
             collapsed={this.state.collapsed}
             title={{
-              props: {
-                text: `Title 1`,
-                onClick: () => {
-                  this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
-                }
+              text: `Title 1`,
+              onClick: () => {
+                this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
               }
             }}
           >
@@ -53,11 +51,9 @@ export class CollapsibleSectionControlledExample extends React.Component<{}, ICo
           <CollapsibleSection
             collapsed={this.state.collapsed}
             title={{
-              props: {
-                text: `Title 2`,
-                onClick: () => {
-                  this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
-                }
+              text: `Title 2`,
+              onClick: () => {
+                this.setState((state: ICollapsibleSectionControlledExampleState) => ({ clicks: state.clicks + 1 }));
               }
             }}
           >
