@@ -196,6 +196,10 @@ export interface IDetailsHeaderStyles {
   check: IStyle;
   cellWrapperPadded: IStyle;
   cellIsCheck: IStyle;
+
+  /**
+   * @deprecated Not used
+   */
   cellIsActionable: IStyle;
   cellIsEmpty: IStyle;
   cellSizer: IStyle;

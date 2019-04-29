@@ -3221,7 +3221,7 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 export interface IDetailsHeaderStyles {
     // (undocumented)
     accessibleLabel: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellIsActionable: IStyle;
     // (undocumented)
     cellIsCheck: IStyle;
