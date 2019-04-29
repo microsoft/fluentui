@@ -7,7 +7,13 @@ const MAX_CACHE_COUNT = 30;
 // I've disabled this rule to simply be able to work with any types.
 // tslint:disable:no-any
 
+// This represents a prop we attach to each Map to indicate the cached return value
+// associated with the graph node.
 const RetVal = '__retval__';
+
+interface IRecursiveMemoNode extends Map<any, IRecursiveMemoNode> {
+  [RetVal]?: string;
+}
 
 /**
  * Creates a getClassNames function which calls getStyles given the props, and injects them
@@ -21,7 +27,14 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
   styleProps?: TStyleProps
 ) => IProcessedStyleSet<TStyleSet> {
-  let map: Map<any, any> = new Map<any, any>();
+  // We build a trie where each node is a Map. The map entry key represents an argument
+  // value, and the entry value is another node (Map). Each node has a `__retval__`
+  // property which is used to hold the cached response.
+
+  // To derive the response, we can simply ensure the arguments are added or already
+  // exist in the trie. At the last node, if there is a `__retval__` we return that. Otherwise
+  // we call the `getStyles` api to evaluate, cache on the property, and return that.
+  let map: IRecursiveMemoNode = new Map();
 
   const getClassNames = (
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
@@ -32,14 +45,8 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
 
     for (const propName in styleProps) {
       if (styleProps.hasOwnProperty(propName)) {
-        let propValue: any = styleProps[propName];
+        let propValue: any = _normalizeValue(styleProps[propName]);
 
-        if (propValue === undefined) {
-          propValue = '__undefined__';
-        }
-        if (propValue === null) {
-          propValue = '__null__';
-        }
         if (!current.has(propValue)) {
           current = current.set(propValue, new Map<any, any>());
         }
@@ -61,8 +68,8 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     }
 
     if (resultCount > MAX_CACHE_COUNT) {
-      if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV === 'production') {
-        throw new Error('Styles are being recalculated far too frequently.');
+      if (typeof process !== 'undefined' && process.env && process.env.NODE_ENV !== 'production') {
+        throw new Error('Styles are being recalculated far too frequently. Something is mutating the class over and over.');
       }
       map.clear();
     }
@@ -71,4 +78,15 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   };
 
   return getClassNames;
+}
+
+function _normalizeValue(value: any): string {
+  switch (value) {
+    case undefined:
+      return '__undefined__';
+    case null:
+      return '__null__';
+    default:
+      return value;
+  }
 }

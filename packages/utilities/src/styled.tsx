@@ -46,7 +46,8 @@ export function styled<
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
-  customizable?: ICustomizableProps
+  customizable?: ICustomizableProps,
+  pure?: boolean
 ): React.StatelessComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
@@ -61,20 +62,7 @@ export function styled<
     private _inCustomizerContext = false;
 
     public render(): JSX.Element {
-      return (
-        <CustomizerContext.Consumer>
-          {(context: ICustomizerContext) => {
-            this._inCustomizerContext = !!context.customizations.inCustomizerContext;
-
-            const settings = Customizations.getSettings(fields, scope, context.customizations);
-            const { styles: customizedStyles, ...rest } = settings;
-            const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
-
-            const additionalProps = getProps ? getProps(this.props) : undefined;
-            return <Component {...rest} {...additionalProps} {...this.props} styles={styles} />;
-          }}
-        </CustomizerContext.Consumer>
-      );
+      return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
     }
 
     public componentDidMount(): void {
@@ -88,6 +76,17 @@ export function styled<
         Customizations.unobserve(this._onSettingsChanged);
       }
     }
+
+    private _renderContent = (context: ICustomizerContext): JSX.Element => {
+      this._inCustomizerContext = !!context.customizations.inCustomizerContext;
+
+      const settings = Customizations.getSettings(fields, scope, context.customizations);
+      const { styles: customizedStyles, ...rest } = settings;
+      const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
+
+      const additionalProps = getProps ? getProps(this.props) : undefined;
+      return <Component {...rest} {...additionalProps} {...this.props} styles={styles} />;
+    };
 
     private _onSettingsChanged = () => this.forceUpdate();
   }
