@@ -579,12 +579,35 @@ describe('FocusTrapZone', () => {
       expect(document.activeElement).toBe(activeElement);
     });
 
+    it('Does not focus first on mount while disabled', async () => {
+      expect.assertions(1);
+
+      const activeElement = document.activeElement;
+
+      setupTest({ disabled: true });
+
+      // document.activeElement can be used to detect activeElement after component mount, but it does not
+      // update based on focus events due to limitations of ReactDOM.
+      // Make sure activeElement didn't change.
+      expect(document.activeElement).toBe(activeElement);
+    });
+
     it('Focuses on firstFocusableSelector on mount', async () => {
       expect.assertions(1);
 
       const { buttonC } = setupTest({ firstFocusableSelector: 'c' });
 
       expect(document.activeElement).toBe(buttonC);
+    });
+
+    it('Does not focus on firstFocusableSelector on mount while disabled', async () => {
+      expect.assertions(1);
+
+      const activeElement = document.activeElement;
+
+      setupTest({ firstFocusableSelector: 'c', disabled: true });
+
+      expect(document.activeElement).toBe(activeElement);
     });
 
     it('Falls back to first focusable element with invalid firstFocusableSelector', async () => {

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+
+## 6.14.4
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Deprecate implementation examples
+
+## 6.14.3
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Deprecate component status
+
+## 6.14.2
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- reduce the re-export wild card to fix website
 
 ## 6.14.1
 Wed, 17 Apr 2019 12:33:35 GMT

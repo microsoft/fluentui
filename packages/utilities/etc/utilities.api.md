@@ -896,6 +896,9 @@ export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: F
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
+export function setFocusVisibility(enabled: boolean, target?: Element): void;
+
+// @public
 export function setLanguage(language: string, avoidPersisting?: boolean): void;
 
 // Warning: (ae-internal-missing-underscore) The name setMemoizeWeakMap should be prefixed with an underscore because the declaration is marked as "@internal"
@@ -931,7 +934,7 @@ export function shallowCompare<TA, TB>(a: TA, b: TB): boolean;
 export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean;
 
 // @public
-export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps): React.StatelessComponent<TComponentProps>;
+export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.StatelessComponent<TComponentProps>;
 
 // @public
 export const textAreaProperties: string[];

@@ -1,6 +1,5 @@
 import * as React from 'react';
 
-import { BreadcrumbStatus } from './Breadcrumb.checklist';
 import { BreadcrumbBasicExample } from './examples/Breadcrumb.Basic.Example';
 import { BreadcrumbStaticExample } from './examples/Breadcrumb.Static.Example';
 import { IDocPageProps } from '../../common/DocPage.types';
@@ -12,7 +11,6 @@ export const BreadcrumbPageProps: IDocPageProps = {
   title: 'Breadcrumb',
   componentName: 'Breadcrumb',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Breadcrumb',
-  componentStatus: BreadcrumbStatus,
   examples: [
     {
       title: 'Default Breadcrumb',

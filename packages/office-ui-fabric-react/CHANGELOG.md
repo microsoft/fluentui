@@ -1,6 +1,95 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+This log was last generated on Mon, 29 Apr 2019 12:34:34 GMT and should not be manually modified.
+
+## 6.173.0
+Mon, 29 Apr 2019 12:34:34 GMT
+
+### Minor changes
+
+- DetailsList: export DetailsHeader
+
+### Patches
+
+- Fixed typo in position utility
+
+## 6.172.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- Updating Icon, Checkbox, and Image to be pure components (correctly.)
+
+## 6.171.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Breadcrumb: Add in focuszone props to give more control
+- Teachingbubble: Improve target that's passed to callout
+- Add new prop 'detailsListStyles' to allow passing 'styles' prop to DetailsList. Deprecate all shimmer related props in DetailsList and DetailsListRow. Adds documentation
+
+### Patches
+
+- Deprecate implementation examples
+- Fix the picker suggestion items flashing issue.
+- Setting initial scrollbar height and width equal to 0 to prevent rendering when it's width/height changes from undefined to 0. Cascading updates caused due to notifySubscribers for sticky componentDidMount lifecycle hook. Reducing computations for sticky component by combining updates for change in sticky state (top/bottom/non-sticky) & distanceFromTop. Setting placeHolder width equal to scrollWidth of nonStickyContent.firstElementChild
+
+## 6.170.0
+Thu, 25 Apr 2019 12:33:20 GMT
+
+### Minor changes
+
+- Concentrate onhover style ui changes to label element for Checkbox
+
+### Patches
+
+- Remove componentRef property for Image component at Image.types.ts.
+- DetailsRowFields: Refactor styles to remove unnecessary re-render
+- fixing header keyboarding in CalendarMonth in OUFR
+
+## 6.169.0
+Wed, 24 Apr 2019 12:35:55 GMT
+
+### Minor changes
+
+- Delete outdated component status info
+- FocusTrapZone: Add disabled prop.
+- VerticalDivider: Make into a styled component
+
+## 6.168.0
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Minor changes
+
+- Adding a way to make to make the state of the SwatchColorPicker be fully controllable
+- Introduce vertical option for ResizeGroup
+
+### Patches
+
+- FocusZone should not set elements inside a portal (outside its DOM) as an active element
+- Lists: Remove unnecessary usages of css concat helper
+
+## 6.167.3
+Mon, 22 Apr 2019 12:32:06 GMT
+
+### Patches
+
+- CommandBar: Add split/disabled buttons example to documentation page
+- ScrollablePane: Remove Z Index since it's no longer necesssary
+- Selection: initialize count
+- TextField documentation updates
+
+## 6.167.2
+Fri, 19 Apr 2019 12:33:03 GMT
+
+### Patches
+
+- Button: Fix issue where button would eat keydown events
+- Remove usage of assign helper in favor of Object.spread across Lists
+- Dropdown: Add unit test;
+- Split button displays an expanded state always with persistMenu:true - fixing that
+- Pickers: Fix issue where they would have invalid described by
 
 ## 6.167.1
 Wed, 17 Apr 2019 12:33:35 GMT

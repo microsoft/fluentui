@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Wed, 17 Apr 2019 12:33:35 GMT and should not be manually modified.
+This log was last generated on Fri, 19 Apr 2019 12:33:02 GMT and should not be manually modified.
+
+## 6.74.2
+Fri, 19 Apr 2019 12:33:02 GMT
+
+### Patches
+
+- TilesList: replaces the imports of Shimmer from experiments package with the one from OUFR.
+
+## 6.74.1
+Thu, 18 Apr 2019 12:31:50 GMT
+
+### Patches
+
+- Button: Removing 'undefined' from 'cursor' token definition.
 
 ## 6.74.0
 Wed, 17 Apr 2019 12:33:35 GMT

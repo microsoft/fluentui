@@ -105,7 +105,7 @@ export interface IButtonTokens {
   colorPressed?: string;
   contentPadding?: number | string;
   contentPaddingFocused?: number | string;
-  cursor?: string | undefined;
+  cursor?: string;
   height?: number | string;
   highContrastBackgroundColor?: string;
   highContrastBackgroundColorHovered?: string;
