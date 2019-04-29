@@ -43,7 +43,7 @@ export const LARGE_GAP_SIZE = 48;
 const DEPRECATED_ROW_COLOR = '#FFF1CC';
 
 const backticksRegex = new RegExp('`[^`]*`', 'g');
-const hashRegex = new RegExp(/\/\w+\//);
+const hashRegex = new RegExp(/\#\/\w+\//);
 
 const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
   return (
@@ -466,7 +466,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           if (this._baseUrl !== '') {
             match = this._baseUrl.match(hashRegex);
             if (match !== null) {
-              hash = match[0];
+              hash = match[0].substring(1);
             }
           }
           if (token.pageKind && token.hyperlinkedPage) {
