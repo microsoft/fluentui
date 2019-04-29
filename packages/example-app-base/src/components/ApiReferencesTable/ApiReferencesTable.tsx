@@ -45,6 +45,26 @@ const DEPRECATED_ROW_COLOR = '#FFF1CC';
 const backticksRegex = new RegExp('`[^`]*`', 'g');
 const hashRegex = new RegExp(/\/\w+\//);
 
+const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
+  return (
+    <>
+      {deprecated ? (
+        <>
+          <Text block variant="small">
+            Warning: this API is now obsolete.
+          </Text>
+          <br />
+        </>
+      ) : (
+        undefined
+      )}
+      <Text block variant="small">
+        {text}
+      </Text>
+    </>
+  );
+};
+
 export class ApiReferencesTable extends React.Component<IApiReferencesTableProps, IApiReferencesTableState> {
   public static defaultProps: Partial<IApiReferencesTableProps> = {
     title: 'Properties'
@@ -270,44 +290,12 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     }
 
     if (codeBlocks.length === 0) {
-      return (
-        <>
-          {deprecated ? (
-            <>
-              <Text block variant="small">
-                Warning: this API is now obsolete.
-              </Text>
-              <br />
-            </>
-          ) : (
-            undefined
-          )}
-          <Text block variant="small">
-            {text}
-          </Text>
-        </>
-      );
+      return referencesTableCell(text, deprecated);
     }
 
     const textElements = this._extractCodeBlocks(text, codeBlocks);
 
-    return (
-      <>
-        {deprecated ? (
-          <>
-            <Text block variant="small">
-              Warning: this API is now obsolete.
-            </Text>
-            <br />
-          </>
-        ) : (
-          undefined
-        )}
-        <Text block variant="small">
-          {textElements}
-        </Text>
-      </>
-    );
+    return referencesTableCell(textElements, deprecated);
   };
 
   private renderCellType = (typeTokens: ILinkToken[]) => {
