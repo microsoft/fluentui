@@ -281,7 +281,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       );
     }
 
-    const eltChildren = this._extractCodeBlocks(text, codeBlocks);
+    const textElements = this._extractCodeBlocks(text, codeBlocks);
 
     return (
       <>
@@ -296,7 +296,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           undefined
         )}
         <Text block variant="small">
-          {eltChildren}
+          {textElements}
         </Text>
       </>
     );
@@ -315,8 +315,11 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
   private createRenderCellSignature = (propertyName: 'typeTokens') => (item: IMethod) => this.renderCellType(item[propertyName]);
 
+  /**
+   * Loops through text and places code blocks in code elements
+   */
   private _extractCodeBlocks(text: string, codeBlocks: { index: number; text: string }[]): JSX.Element[] {
-    const eltChildren: JSX.Element[] = [];
+    const textElements: JSX.Element[] = [];
 
     let codeIndex = 0;
     let textIndex = 0;
@@ -324,19 +327,19 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       const codeBlock = codeBlocks[codeIndex];
       if (textIndex < codeBlock.index) {
         const str = text.substring(textIndex, codeBlock.index);
-        eltChildren.push(<span key={textIndex}>{str}</span>);
+        textElements.push(<span key={textIndex}>{str}</span>);
         textIndex += str.length;
       } else {
-        eltChildren.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
+        textElements.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
         codeIndex++;
         textIndex += codeBlock.text.length;
       }
     }
     if (textIndex < text.length) {
-      eltChildren.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
+      textElements.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
     }
 
-    return eltChildren;
+    return textElements;
   }
 
   private _renderClass(): JSX.Element | undefined {
