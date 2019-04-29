@@ -79,5 +79,9 @@ steps:
       SCREENER_API_KEY: $(screener.key)
 
   - script: |
+      npm run a11ytest
+    displayName: run a11y tests
+
+  - script: |
       npm run check-for-changed-files
     displayName: check for change file
