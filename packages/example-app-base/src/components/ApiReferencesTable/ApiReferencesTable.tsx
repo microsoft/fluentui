@@ -41,6 +41,9 @@ export const LARGE_GAP_SIZE = 48;
 
 const DEPRECATED_ROW_COLOR = '#FFF1CC';
 
+const backticksRegex = new RegExp('`[^`]*`', 'g');
+const hashRegex = new RegExp(/\/\w+\//);
+
 export class ApiReferencesTable extends React.Component<IApiReferencesTableProps, IApiReferencesTableState> {
   public static defaultProps: Partial<IApiReferencesTableProps> = {
     title: 'Properties'
@@ -248,11 +251,10 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
   private renderCell = (text: string, deprecated: boolean = false) => {
     // When the text is passed to this function, it has had newline characters removed,
-    // so this regex will match backtick sequences that span multiple lines.
-    const regex = new RegExp('`[^`]*`', 'g');
+    // so the regex will match backtick sequences that span multiple lines.
     let regexResult: RegExpExecArray | null;
     const codeBlocks: { index: number; text: string }[] = [];
-    while ((regexResult = regex.exec(text)) !== null) {
+    while ((regexResult = backticksRegex.exec(text)) !== null) {
       codeBlocks.push({
         index: regexResult.index,
         text: regexResult[0]
@@ -463,7 +465,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
           let hash: string = '/components/';
           // get hash to set correct href value on the links for the local site vs. the Fabric site
           if (this._baseUrl !== '') {
-            match = this._baseUrl.match(/\/\w+\//);
+            match = this._baseUrl.match(hashRegex);
             if (match !== null) {
               hash = match[0];
             }
