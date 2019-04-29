@@ -102,7 +102,8 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
     const listOption = (): void => {
       this._onCalloutDismiss();
       if (this.props.sendFollowupIndex && index !== undefined) {
-        this.props.sendFollowupIndex(this.state.vote, index);
+        const id: string = this.state.vote === 'dislike' ? this.props.thumbsDownQuestion!.id : this.props.thumbsUpQuestion!.id;
+        this.props.sendFollowupIndex(id, index);
       }
     };
 

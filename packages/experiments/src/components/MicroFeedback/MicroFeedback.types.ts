@@ -9,7 +9,7 @@ export type VoteType = 'dislike' | 'no_vote' | 'like';
 // If you don't want these props to be included in your component, just remove this extension.
 export interface IMicroFeedbackProps {
   sendFeedback?: (vote: VoteType) => void; // Callback for sending feedback to a backend
-  sendFollowupIndex?: (vote: VoteType, index?: number) => void; // Callback for sending followup index to a backend
+  sendFollowupIndex?: (id: string, index: number) => void; // Callback for sending followup index to a backend
   thumbsUpTitle?: string; // Localized string for the thumbsUp icon
   thumbsDownTitle?: string; // Localized string for the thumbsDown icon
   thumbsUpQuestion?: IMicroFeedbackQuestion; // Optional question to be asked if user selected thumbsUp
@@ -27,13 +27,14 @@ export interface IMicroFeedbackStyleProps {
 export interface IMicroFeedbackQuestion {
   question: string; // Question to be asked after a vote
   options: string[]; // List of options to be shown as answers
+  id: string; // An identifier that correlates with the thumbsUp or thumbsDown
 }
 
 export interface IMicroFeedbackStyles {
   //  Base styles for the root element of buttons and followup
   root?: IStyle;
 
-  //  Styles for container elmeent of follow up question and options
+  //  Styles for container element of follow up question and options
   followUpContainer?: IStyle;
 
   // Styles for follow up question
