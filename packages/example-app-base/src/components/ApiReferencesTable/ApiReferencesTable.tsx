@@ -428,7 +428,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         }
       };
 
-      return <DetailsRow {...props} styles={rowStyles && deprecatedStyles} />;
+      return <DetailsRow {...props} styles={{ ...rowStyles, ...deprecatedStyles }} />;
     }
 
     return <DetailsRow {...props} styles={rowStyles} />;
