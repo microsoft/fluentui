@@ -1,8 +1,8 @@
 pr:
-  - master
+  - fabric-7
 
 trigger:
-  - master
+  - fabric-7
 
 variables:
   - group: fabric-variables
@@ -19,10 +19,6 @@ steps:
   - script: |
       node common/scripts/install-run-rush.js install --bypass-policy
     displayName: rush install
-
-  - script: |
-      npm run checkchange
-    displayName: check change
 
   - script: |
       npm run buildci
@@ -77,6 +73,10 @@ steps:
     displayName: run VR Test
     env:
       SCREENER_API_KEY: $(screener.key)
+
+  - script: |
+      npm run a11ytest
+    displayName: run a11y tests
 
   - script: |
       npm run check-for-changed-files

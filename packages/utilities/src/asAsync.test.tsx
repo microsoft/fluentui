@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 describe('asAsync', () => {
   it('can async load exports', (done: () => undefined) => {
-    let _resolve: ((result: React.ReactType<{}>) => void) = () => undefined;
+    let _resolve: (result: React.ReactType<{}>) => void = () => undefined;
     let _loadCalled = false;
     // tslint:disable-next-line:no-any
     const loadThingPromise = new Promise<any>((resolve: any) => {
@@ -38,7 +38,7 @@ describe('asAsync', () => {
   });
 
   it('can async load with placeholder', (done: () => undefined) => {
-    let _resolve: ((result: React.ReactType<{}>) => void) = () => undefined;
+    let _resolve: (result: React.ReactType<{}>) => void = () => undefined;
     let _loadCalled = false;
     // tslint:disable-next-line:no-any
     const loadThingPromise = new Promise<any>((resolve: any) => {

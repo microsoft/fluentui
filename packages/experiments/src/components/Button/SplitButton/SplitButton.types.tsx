@@ -1,5 +1,5 @@
 import { IStackSlot } from 'office-ui-fabric-react';
-import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import {
   IMenuButtonProps,
@@ -44,7 +44,7 @@ export interface ISplitButton {
 }
 
 export interface ISplitButtonProps
-  extends ISplitButtonSlots,
+  extends ISlottableProps<ISplitButtonSlots>,
     Pick<IMenuButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel' | 'defaultExpanded' | 'expanded' | 'onKeyDown'>,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
     IBaseProps<ISplitButton> {
@@ -53,6 +53,11 @@ export interface ISplitButtonProps
    * @defaultvalue false
    */
   primaryActionDisabled?: boolean;
+
+  /**
+   * Defines the aria label that the screen readers use when focus goes on the second focus stop of the SplitButton.
+   */
+  secondaryAriaLabel?: string;
 }
 
 export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {

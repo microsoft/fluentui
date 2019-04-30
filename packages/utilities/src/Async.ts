@@ -162,7 +162,7 @@ export class Async {
         }
       };
 
-      immediateId = window.setImmediate ? window.setImmediate(setImmediateCallback) : window.setTimeout(setImmediateCallback, 0);
+      immediateId = window.setTimeout(setImmediateCallback, 0);
       /* tslint:enable:ban-native-functions */
 
       this._immediateIds[immediateId] = true;
@@ -178,7 +178,7 @@ export class Async {
   public clearImmediate(id: number): void {
     if (this._immediateIds && this._immediateIds[id]) {
       /* tslint:disable:ban-native-functions */
-      window.clearImmediate ? window.clearImmediate(id) : window.clearTimeout(id);
+      window.clearTimeout(id);
       delete this._immediateIds[id];
       /* tslint:enable:ban-native-functions */
     }

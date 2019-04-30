@@ -25,12 +25,13 @@
     "@types/webpack-env": "1.13.0",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/fabric-website-resources": "^6.14.4",
+    "@uifabric/legacy": "^6.164.5",
     "@uifabric/prettier-rules": "^1.0.1",
     "mocha": "^3.3.0",
-    "office-ui-fabric-react": "^6.170.0",
+    "office-ui-fabric-react": "^6.173.0",
     "raw-loader": "^0.5.1",
-    "react": "~16.6.3",
-    "react-dom": "~16.6.3",
+    "react": ">=16.8.0 <17.0.0",
+    "react-dom": ">=16.8.0 <17.0.0",
     "webpack": "4.29.5"
   },
   "dependencies": {

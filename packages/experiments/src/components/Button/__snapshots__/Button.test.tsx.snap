@@ -7,13 +7,13 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
+        background-color: #f3f2f1;
+        border-color: #8a8886;
         border-radius: 0px;
         border-style: solid;
         border-width: 1px;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -46,38 +46,38 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         bottom: 1px;
         content: "";
         left: 1px;
-        outline: 1px solid #666666;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 1px;
         top: 1px;
         z-index: 1;
       }
       &:hover {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+        background-color: #edebe9;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
       &:active {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+        background-color: #edebe9;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
       &:hover .ms-Icon-47 {
-        color: #212121;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-47 {
         color: Highlight;
       }
       &:active .ms-Icon-47 {
-        color: #212121;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-47 {
         color: Highlight;
@@ -143,13 +143,13 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
         border-radius: 0px;
         border-style: solid;
         border-width: 1px;
         box-sizing: border-box;
-        color: #a6a6a6;
+        color: #a19f9d;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -182,7 +182,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         bottom: 1px;
         content: "";
         left: 1px;
-        outline: 1px solid #666666;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 1px;
         top: 1px;
@@ -195,9 +195,9 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         color: GrayText;
       }
       &:hover {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         background-color: Window;
@@ -205,25 +205,25 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         color: GrayText;
       }
       &:active {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Icon-57 {
-        color: #a6a6a6;
+      &:hover .ms-Icon-60 {
+        color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-60 {
         color: GrayText;
       }
-      &:active .ms-Icon-57 {
-        color: #a6a6a6;
+      &:active .ms-Icon-60 {
+        color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-60 {
         color: GrayText;
       }
   disabled={true}
@@ -326,7 +326,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         bottom: 1px;
         content: "";
         left: 1px;
-        outline: 1px solid #666666;
+        outline: 1px solid #605e5c;
         position: absolute;
         right: 1px;
         top: 1px;
@@ -339,7 +339,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       &:hover {
         background-color: #106ebe;
-        border-color: transparent;
+        border-color: #8a8886;
         color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
@@ -349,7 +349,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       &:active {
         background-color: #005a9e;
-        border-color: transparent;
+        border-color: #8a8886;
         color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active {
@@ -357,16 +357,16 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Icon-55 {
+      &:hover .ms-Icon-57 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-55 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
         color: Window;
       }
-      &:active .ms-Icon-55 {
+      &:active .ms-Icon-57 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-55 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
         color: Window;
       }
   onClick={[Function]}

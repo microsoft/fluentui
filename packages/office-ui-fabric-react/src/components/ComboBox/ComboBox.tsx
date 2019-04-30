@@ -885,11 +885,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (onChanged) {
         onChanged(option, index, undefined, submitPendingValueEvent);
       }
-
-      // if we have a new selected index,
-      // clear all of the pending info
-      this._clearPendingInfo();
     }
+
+    // clear all of the pending info
+    this._clearPendingInfo();
   }
 
   /**

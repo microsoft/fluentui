@@ -17,7 +17,7 @@ const classNames = mergeStyleSets({
     maxHeight: 500
   },
   itemCell: [
-    getFocusStyle(theme, -1),
+    getFocusStyle(theme, { inset: -1 }),
     {
       minHeight: 54,
       padding: 10,
@@ -38,7 +38,7 @@ const classNames = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.xLarge,
+    DefaultFontStyles.mediumPlus,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -46,7 +46,7 @@ const classNames = mergeStyleSets({
     }
   ],
   itemIndex: {
-    fontSize: FontSizes.small,
+    fontSize: FontSizes.xSmall,
     color: theme.palette.neutralTertiary,
     marginBottom: 10
   },
@@ -54,7 +54,7 @@ const classNames = mergeStyleSets({
     alignSelf: 'center',
     marginLeft: 10,
     color: theme.palette.neutralTertiary,
-    fontSize: FontSizes.large,
+    fontSize: FontSizes.medium,
     flexShrink: 0
   }
 });

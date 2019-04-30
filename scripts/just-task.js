@@ -6,11 +6,11 @@ const fs = require('fs');
 
 const { clean } = require('./tasks/clean');
 const { copy } = require('./tasks/copy');
-const { jest, jestWatch } = require('./tasks/jest');
+const { jest, jestWatch, jestDom } = require('./tasks/jest');
 const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
-const { webpack, webpackDevServer } = require('./tasks/webpack');
+const { webpack, webpackDevServer, webpackDevServerWithCompileResolution } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
@@ -35,6 +35,7 @@ registerTask('clean', clean);
 registerTask('copy', copy);
 registerTask('jest', jest);
 registerTask('jest-watch', jestWatch);
+registerTask('jest-dom', jestDom);
 registerTask('sass', sass);
 registerTask('ts:commonjs', ts.commonjs);
 registerTask('ts:esm', ts.esm);
@@ -79,7 +80,7 @@ task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
 task('code-style', series('prettier', 'tslint'));
 task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
 task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
-
+task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom'));
 // Utility functions
 
 function getPackage() {

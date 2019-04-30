@@ -7,24 +7,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size24
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 24px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 24px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -35,14 +35,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={10}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size24
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -50,17 +50,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={10}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 24px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 24px;
             }
       >
         <div
@@ -68,13 +68,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #5E4B8B;
+                background-color: #4F6BED;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 10px;
+                font-weight: 600;
+                height: 24px;
+                line-height: 24px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -82,6 +82,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -99,8 +102,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -110,8 +113,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -137,7 +140,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
+              display: none;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -164,9 +168,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -192,9 +196,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -221,24 +225,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size24
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 24px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 24px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -249,14 +253,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={10}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size24
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -264,17 +268,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={10}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 24px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 24px;
             }
       >
         <div
@@ -282,13 +286,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00A300;
+                background-color: #0B6A0B;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 10px;
+                font-weight: 600;
+                height: 24px;
+                line-height: 24px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -296,6 +300,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -313,8 +320,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -324,8 +331,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -351,7 +358,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
+              display: none;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -378,9 +386,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -406,9 +414,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -435,24 +443,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size32
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 32px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 32px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -463,14 +471,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={11}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size32
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -478,17 +486,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={11}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 32px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 32px;
             }
       >
         <div
@@ -496,13 +504,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00A300;
+                background-color: #4F6BED;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 14px;
+                font-weight: 600;
+                height: 32px;
+                line-height: 32px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -510,6 +518,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -527,8 +538,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -538,8 +549,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -558,14 +569,15 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          Annie Lindqvist
+          Annie Lind
         </div>
       </div>
       <div
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
+              display: none;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -592,9 +604,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -620,9 +632,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -649,24 +661,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size32
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 32px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 32px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -677,14 +689,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={11}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size32
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -692,17 +704,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={11}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 32px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 32px;
             }
       >
         <div
@@ -710,13 +722,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00A300;
+                background-color: #8764B8;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 14px;
+                font-weight: 600;
+                height: 32px;
+                line-height: 32px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -724,6 +736,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -741,8 +756,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 8px;
+            padding-right: 8px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -752,8 +767,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -772,14 +787,15 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          Annie Boyl Lindqvist
+          Annie Boyl Lind
         </div>
       </div>
       <div
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
+              display: none;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -806,9 +822,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -834,9 +850,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -863,24 +879,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size40
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 40px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 40px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -891,14 +907,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={12}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size40
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -906,17 +922,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={12}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 40px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 40px;
             }
       >
         <div
@@ -924,13 +940,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #B91D47;
+                background-color: #0B6A0B;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 16px;
+                font-weight: 600;
+                height: 40px;
+                line-height: 40px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -938,6 +954,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -955,8 +974,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -966,8 +985,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -993,7 +1012,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -1020,9 +1039,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1048,9 +1067,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1077,24 +1096,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size40
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 40px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 40px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -1105,14 +1124,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={12}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size40
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1120,17 +1139,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={12}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 40px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 40px;
             }
       >
         <div
@@ -1138,13 +1157,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #E773BD;
+                background-color: #8764B8;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 16px;
+                font-weight: 600;
+                height: 40px;
+                line-height: 40px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -1152,6 +1171,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <i
@@ -1183,8 +1205,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -1194,8 +1216,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1214,14 +1236,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           onMouseEnter={[Function]}
           onMouseLeave={[Function]}
         >
-          +1 (555) 123-4567 X4567
+          +1 (111) 123-4567 X4567
         </div>
       </div>
       <div
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -1248,9 +1270,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1276,9 +1298,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1312,7 +1334,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1333,7 +1355,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={13}
   >
@@ -1366,11 +1388,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #E773BD;
+                background-color: #004E8C;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
+                font-size: 16px;
+                font-weight: 600;
                 height: 48px;
                 line-height: 46px;
               }
@@ -1380,6 +1402,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -1397,8 +1422,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -1408,8 +1433,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1435,7 +1460,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -1462,9 +1487,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1490,9 +1515,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1526,7 +1551,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -1547,7 +1572,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={13}
   >
@@ -1580,11 +1605,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #1E7145;
+                background-color: #A4262C;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
+                font-size: 16px;
+                font-weight: 600;
                 height: 48px;
                 line-height: 46px;
               }
@@ -1594,6 +1619,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <i
@@ -1625,8 +1653,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -1636,8 +1664,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1663,7 +1691,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -1690,9 +1718,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1718,9 +1746,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1747,24 +1775,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size56
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 56px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 56px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -1775,14 +1803,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={16}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size56
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -1790,17 +1818,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={16}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 56px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 56px;
             }
       >
         <div
@@ -1808,13 +1836,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #DA532C;
+                background-color: #5C2E91;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 20px;
+                font-weight: 600;
+                height: 56px;
+                line-height: 56px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -1822,6 +1850,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <i
@@ -1864,8 +1895,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1891,8 +1922,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
-              font-size: 12px;
+              color: #605e5c;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1918,9 +1949,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1946,9 +1977,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -1975,24 +2006,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size56
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 56px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 56px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -2003,14 +2034,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={16}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size56
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2018,17 +2049,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={16}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 56px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 56px;
             }
       >
         <div
@@ -2036,13 +2067,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #2B5797;
+                background-color: #E3008C;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 20px;
+                font-weight: 600;
+                height: 56px;
+                line-height: 56px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -2050,6 +2081,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <i
@@ -2092,8 +2126,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2119,8 +2153,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
-              font-size: 12px;
+              color: #605e5c;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2146,9 +2180,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2174,9 +2208,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2203,24 +2237,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size72
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 72px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 72px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -2231,14 +2265,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={14}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size72
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2246,17 +2280,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={14}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 72px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 72px;
             }
       >
         <div
@@ -2264,13 +2298,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #6BA5E7;
+                background-color: #4F6BED;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 28px;
+                font-weight: 600;
+                height: 72px;
+                line-height: 72px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -2278,6 +2312,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -2306,8 +2343,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2333,8 +2370,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
-              font-size: 12px;
+              color: #605e5c;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2360,9 +2397,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
-              display: none;
-              font-size: 12px;
+              color: #605e5c;
+              display: block;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2388,9 +2425,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2417,24 +2454,24 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
   <div
     className=
         ms-Persona
-        ms-Persona--size48
+        ms-Persona--size100
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          height: 48px;
+          height: 100px;
           margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          min-width: 48px;
+          min-width: 100px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -2445,14 +2482,14 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
-    size={13}
+    size={15}
   >
     <div
       className=
           ms-Persona-coin
-          ms-Persona--size48
+          ms-Persona--size100
           {
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
@@ -2460,17 +2497,17 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
+      size={15}
     >
       <div
         className=
             ms-Persona-imageArea
             {
               flex: 0 0 auto;
-              height: 48px;
+              height: 100px;
               position: relative;
               text-align: center;
-              width: 48px;
+              width: 100px;
             }
       >
         <div
@@ -2478,13 +2515,13 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00ABA9;
+                background-color: #881798;
                 border-radius: 50%;
                 color: #ffffff;
-                font-size: 17px;
-                font-weight: 400;
-                height: 48px;
-                line-height: 46px;
+                font-size: 42px;
+                font-weight: 600;
+                height: 100px;
+                line-height: 100px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 -ms-high-contrast-adjust: none;
@@ -2492,6 +2529,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <span>
@@ -2520,8 +2560,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2547,8 +2587,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
-              font-size: 12px;
+              color: #605e5c;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2574,9 +2614,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
-              display: none;
-              font-size: 12px;
+              color: #605e5c;
+              display: block;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2602,9 +2642,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
-              display: none;
-              font-size: 12px;
+              color: #605e5c;
+              display: block;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2638,7 +2678,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -2659,7 +2699,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
     size={13}
     style={
@@ -2704,11 +2744,11 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00ABA9;
+                background-color: #038387;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 42px;
-                font-weight: 400;
+                font-weight: 600;
                 height: 150px;
                 line-height: 150px;
               }
@@ -2718,6 +2758,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
           style={
             Object {
@@ -2741,8 +2784,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -2752,8 +2795,8 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 17px;
+              color: #323130;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2779,7 +2822,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -2806,9 +2849,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -2834,9 +2877,9 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;

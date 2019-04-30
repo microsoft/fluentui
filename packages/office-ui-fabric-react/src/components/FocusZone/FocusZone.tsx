@@ -24,6 +24,7 @@ import {
   warnDeprecations,
   portalContainsElement
 } from '../../Utilities';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -33,6 +34,27 @@ const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
 const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 const LARGE_DISTANCE_FROM_CENTER = 999999999;
 const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
+
+let focusZoneStyles: string;
+
+const focusZoneClass: string = 'ms-FocusZone';
+
+// Helper function that will return a class for when the root is focused
+function getRootClass(): string {
+  if (!focusZoneStyles) {
+    focusZoneStyles = mergeStyles(
+      {
+        selectors: {
+          ':focus': {
+            outline: 'none'
+          }
+        }
+      },
+      focusZoneClass
+    );
+  }
+  return focusZoneStyles;
+}
 
 const _allInstances: {
   [key: string]: FocusZone;
@@ -115,7 +137,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     _allInstances[this._id] = this;
 
     if (root) {
-      const windowElement = root.ownerDocument!.defaultView;
+      const windowElement = root.ownerDocument!.defaultView!;
 
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 
@@ -200,7 +222,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // be any native element so typescript rightly flags this as a problem.
           ...rootProps as any
         }
-        className={css('ms-FocusZone', className)}
+        // Once the getClassName correctly memoizes inputs this should
+        // be replaced so that className is passed to getRootClass and is included there so
+        // the class names will always be in the same order.
+        className={css(getRootClass(), className)}
         ref={this._root}
         data-focuszone-id={this._id}
         aria-labelledby={ariaLabelledBy}

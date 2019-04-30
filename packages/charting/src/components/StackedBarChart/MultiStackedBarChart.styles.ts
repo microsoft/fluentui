@@ -5,7 +5,7 @@ export const getMultiStackedBarChartStyles = (props: IMultiStackedBarChartStyleP
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       'ms-StackedBarChart',
       {
         display: 'flex',

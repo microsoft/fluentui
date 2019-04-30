@@ -336,14 +336,14 @@ exports[`Facepile renders Facepile correctly 1`] = `
                 padding-top: 0px;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -413,11 +413,11 @@ exports[`Facepile renders Facepile correctly 1`] = `
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #1E7145;
+                        background-color: #7A7574;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         height: 32px;
                         line-height: 32px;
                       }
@@ -427,6 +427,9 @@ exports[`Facepile renders Facepile correctly 1`] = `
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
                       }
                 >
                   <span>

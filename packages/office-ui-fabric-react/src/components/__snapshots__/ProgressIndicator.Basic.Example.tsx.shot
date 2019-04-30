@@ -16,7 +16,7 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
     className=
         ms-ProgressIndicator-itemName
         {
-          color: #333333;
+          color: #323130;
           font-size: 14px;
           line-height: 20px;
           overflow: hidden;
@@ -44,7 +44,7 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
       className=
           ms-ProgressIndicator-progressTrack
           {
-            background-color: #eaeaea;
+            background-color: #edebe9;
             height: 2px;
             position: absolute;
             width: 100%;
@@ -82,8 +82,8 @@ exports[`Component Examples renders ProgressIndicator.Basic.Example.tsx correctl
     className=
         ms-ProgressIndicator-itemDescription
         {
-          color: #666666;
-          font-size: 11px;
+          color: #605e5c;
+          font-size: 10px;
           line-height: 18px;
         }
   >

@@ -36,7 +36,7 @@ const GlobalClassNames = {
   gripperBarVertical: 'ms-DetailsColumn-gripperBarVertical'
 };
 
-export const HEADER_HEIGHT = 32;
+export const HEADER_HEIGHT = 42;
 
 export const getCellStyles = (props: { theme: ITheme; cellStyleProps?: ICellStyleProps }): IStyle => {
   const { theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = props;
@@ -96,7 +96,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.xSmall,
       {
         display: 'inline-block',
         background: colors.headerBackgroundColor,
@@ -174,7 +174,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         padding: 0,
         border: 'none',
         width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.

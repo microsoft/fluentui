@@ -19,7 +19,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
         }
         &:hover .ms-RatingStar-back {
-          color: #000000;
+          color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
           color: Highlight;
@@ -34,6 +34,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--large
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -76,7 +79,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -89,13 +92,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -156,7 +159,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -175,7 +178,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -232,7 +235,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -245,13 +248,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -311,7 +314,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -330,7 +333,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -387,7 +390,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -400,13 +403,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -466,7 +469,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -485,7 +488,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -542,7 +545,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -555,13 +558,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -621,7 +624,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -640,7 +643,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -697,7 +700,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -710,13 +713,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -776,7 +779,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -795,7 +798,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -841,7 +844,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
         }
         &:hover .ms-RatingStar-back {
-          color: #000000;
+          color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
           color: Highlight;
@@ -856,6 +859,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -898,7 +904,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -911,13 +917,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -977,7 +983,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -996,7 +1002,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1053,7 +1059,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1066,13 +1072,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -1132,7 +1138,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1151,7 +1157,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1208,7 +1214,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1221,13 +1227,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -1288,7 +1294,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1307,7 +1313,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1364,7 +1370,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1377,13 +1383,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -1443,7 +1449,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1462,7 +1468,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1519,7 +1525,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1532,13 +1538,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -1598,7 +1604,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1617,7 +1623,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1663,7 +1669,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
         }
         &:hover .ms-RatingStar-back {
-          color: #000000;
+          color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
           color: Highlight;
@@ -1678,6 +1684,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -1720,7 +1729,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1733,13 +1742,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -1800,7 +1809,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1819,7 +1828,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1876,7 +1885,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -1889,13 +1898,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -1955,7 +1964,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -1974,7 +1983,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2031,7 +2040,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2044,13 +2053,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -2110,7 +2119,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2129,7 +2138,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2186,7 +2195,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2199,13 +2208,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -2265,7 +2274,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2284,7 +2293,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2341,7 +2350,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2354,13 +2363,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -2420,7 +2429,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2439,7 +2448,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2496,7 +2505,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2509,13 +2518,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -2575,7 +2584,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2594,7 +2603,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2651,7 +2660,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2664,13 +2673,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -2730,7 +2739,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2749,7 +2758,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2806,7 +2815,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2819,13 +2828,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -2885,7 +2894,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2904,7 +2913,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -2961,7 +2970,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -2974,13 +2983,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -3040,7 +3049,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3059,7 +3068,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3116,7 +3125,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3129,13 +3138,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -3195,7 +3204,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3214,7 +3223,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3269,6 +3278,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -3311,7 +3323,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3373,7 +3385,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
+                  color: #c8c6c4;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3419,7 +3431,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3480,7 +3492,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
+                  color: #c8c6c4;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3526,7 +3538,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3587,7 +3599,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
+                  color: #c8c6c4;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3633,7 +3645,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3694,7 +3706,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
+                  color: #c8c6c4;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3740,7 +3752,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3801,7 +3813,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #c8c8c8;
+                  color: #c8c6c4;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3845,6 +3857,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -3887,7 +3902,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -3948,7 +3963,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -3967,7 +3982,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4024,7 +4039,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4085,7 +4100,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4104,7 +4119,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4161,7 +4176,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4223,7 +4238,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4242,7 +4257,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4299,7 +4314,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4360,7 +4375,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4379,7 +4394,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4436,7 +4451,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4497,7 +4512,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4516,7 +4531,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -4571,6 +4586,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -4613,7 +4631,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4674,7 +4692,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-11";
                   font-style: normal;
@@ -4693,7 +4711,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-11";
                   font-style: normal;
@@ -4750,7 +4768,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4811,7 +4829,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-11";
                   font-style: normal;
@@ -4830,7 +4848,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-11";
                   font-style: normal;
@@ -4887,7 +4905,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -4949,7 +4967,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-11";
                   font-style: normal;
@@ -4968,7 +4986,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-11";
                   font-style: normal;
@@ -5025,7 +5043,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5086,7 +5104,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-7";
                   font-style: normal;
@@ -5105,7 +5123,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-7";
                   font-style: normal;
@@ -5162,7 +5180,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5223,7 +5241,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-7";
                   font-style: normal;
@@ -5242,7 +5260,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons-7";
                   font-style: normal;
@@ -5288,7 +5306,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           font-weight: 400;
         }
         &:hover .ms-RatingStar-back {
-          color: #1E9FE8;
+          color: #323130;
         }
         @media screen and (-ms-high-contrast: active){&:hover .ms-RatingStar-back {
           color: Highlight;
@@ -5303,6 +5321,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -5345,7 +5366,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5358,13 +5379,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -5425,7 +5446,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5444,7 +5465,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #1E9FE8;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5501,7 +5522,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5514,13 +5535,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -5580,7 +5601,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5599,7 +5620,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #1E9FE8;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5656,7 +5677,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5669,13 +5690,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -5735,7 +5756,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5754,7 +5775,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #1E9FE8;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5811,7 +5832,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5824,13 +5845,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -5890,7 +5911,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5909,7 +5930,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #1E9FE8;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -5966,7 +5987,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -5979,13 +6000,13 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               cursor: default;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-back {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-back {
               color: WindowText;
             }
             &:hover ~ .ms-Rating-button .ms-RatingStar-front {
-              color: #a6a6a6;
+              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){&:hover ~ .ms-Rating-button .ms-RatingStar-front {
               color: WindowText;
@@ -6045,7 +6066,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -6064,7 +6085,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #1E9FE8;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;

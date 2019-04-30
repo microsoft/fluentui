@@ -91,12 +91,12 @@ export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentTy
 /**
  * Defines a view component.
  */
-export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => JSX.Element | null;
+export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
 
 /**
  * Handles rendering view component.
  */
-export type IViewRenderer<TViewProps> = (props?: TViewProps) => JSX.Element | null;
+export type IViewRenderer<TViewProps> = (props?: TViewProps) => ReturnType<React.FunctionComponent>;
 
 /**
  * Component used by foundation to tie elements together.

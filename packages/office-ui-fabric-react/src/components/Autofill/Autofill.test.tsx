@@ -16,7 +16,7 @@ describe('Autofill', () => {
       <Autofill ref={(c: Autofill | null) => c && (autoFill = c)} suggestedDisplayValue="hello" />,
       baseNode
     );
-    autoFillInput = ReactDOM.findDOMNode(component as React.ReactInstance) as HTMLInputElement;
+    autoFillInput = ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as HTMLInputElement;
   });
 
   it('correctly autofills', (done: (error?: Error) => void) => {

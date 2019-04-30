@@ -24,6 +24,8 @@ module.exports = [
 
     resolve: {
       alias: {
+        '@uifabric/legacy/src': path.join(__dirname, '../../packages/legacy/src'),
+        '@uifabric/legacy/lib': path.join(__dirname, '../../packageslegacy/lib'),
         'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
         'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
         'Props.ts.js': 'Props',

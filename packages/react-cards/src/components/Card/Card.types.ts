@@ -33,16 +33,56 @@ export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardPr
 }
 
 export interface ICardTokens extends IStackTokens {
+  /**
+   * Defines the box shadow of the Card.
+   */
   boxShadow?: string;
+
+  /**
+   * Defines the box shadow of the Card when it is in a hovered state.
+   */
   boxShadowHovered?: string;
+
   cursor?: string;
+
+  /**
+   * Defines a fixed height for the Card.
+   */
   height?: number | string;
+
+  /**
+   * Defines the box shadow of the Card when in high contrast mode.
+   */
   highContrastBoxShadow?: string;
+
+  /**
+   * Defines the box shadow of the Card when it is in a hovered state and in high contrast mode.
+   */
   highContrastBoxShadowHovered?: string;
+
+  /**
+   * Defines a minimum height the Card has regardless of the contents within it.
+   */
   minHeight?: number | string;
+
+  /**
+   * Defines the minimum width of the Card.
+   */
   minWidth?: number | string;
+
+  /**
+   * Defines the maximum width of the Card.
+   */
   maxWidth?: number | string;
+
+  /**
+   * Defines the padding of the Card, between the Card border and the Card contents.
+   */
   padding?: number | string;
+
+  /**
+   * Defines a fixed width for the Card.
+   */
   width?: number | string;
 }
 

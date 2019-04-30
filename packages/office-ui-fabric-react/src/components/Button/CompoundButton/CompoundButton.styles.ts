@@ -14,7 +14,7 @@ export const getStyles = memoizeFunction(
         maxWidth: '280px',
         minHeight: '72px',
         height: 'auto',
-        padding: '20px'
+        padding: '16px 12px'
       },
 
       flexContainer: {
@@ -43,7 +43,7 @@ export const getStyles = memoizeFunction(
         fontWeight: FontWeights.semibold
       },
       description: [
-        theme.fonts.small,
+        theme.fonts.xSmall,
         {
           lineHeight: '100%'
         }

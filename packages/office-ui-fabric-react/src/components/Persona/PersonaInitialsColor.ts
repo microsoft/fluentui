@@ -2,25 +2,31 @@ import { PersonaInitialsColor, IPersonaProps } from './Persona.types';
 
 /**
  * These colors are considered reserved colors and can only be set with overrides:
- * - Red is a color that often has a special meaning.
- * - Transparent is not intended to be used with typical initials due to accessibility issues,
+ * - `gray40` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+ * - `Transparent` is not intended to be used with typical initials due to accessibility issues,
  *   its primary use is for Facepile overflow buttons.
  */
 const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
-  PersonaInitialsColor.lightGreen,
-  PersonaInitialsColor.lightBlue,
-  PersonaInitialsColor.lightPink,
-  PersonaInitialsColor.green,
-  PersonaInitialsColor.darkGreen,
-  PersonaInitialsColor.pink,
-  PersonaInitialsColor.magenta,
-  PersonaInitialsColor.purple,
-  PersonaInitialsColor.violet,
-  PersonaInitialsColor.teal,
-  PersonaInitialsColor.blue,
-  PersonaInitialsColor.darkBlue,
-  PersonaInitialsColor.orange,
-  PersonaInitialsColor.darkRed
+  PersonaInitialsColor.green10,
+  PersonaInitialsColor.darkGreen20,
+  PersonaInitialsColor.teal10,
+  PersonaInitialsColor.cyan30,
+  PersonaInitialsColor.lightBlue30,
+  PersonaInitialsColor.blue20,
+  PersonaInitialsColor.darkBlue10,
+  PersonaInitialsColor.violet10,
+  PersonaInitialsColor.purple10,
+  PersonaInitialsColor.magenta10,
+  PersonaInitialsColor.lightPink10,
+  PersonaInitialsColor.pink10,
+  PersonaInitialsColor.pinkRed10,
+  PersonaInitialsColor.red10,
+  PersonaInitialsColor.darkRed20,
+  PersonaInitialsColor.orange10,
+  PersonaInitialsColor.orange30,
+  PersonaInitialsColor.orangeYellow20,
+  PersonaInitialsColor.gray30,
+  PersonaInitialsColor.gray20
 ];
 
 const COLOR_SWATCHES_NUM_ENTRIES = COLOR_SWATCHES_LOOKUP.length;
@@ -47,39 +53,65 @@ function getInitialsColorFromName(displayName: string | undefined): PersonaIniti
 function personaInitialsColorToHexCode(personaInitialsColor: PersonaInitialsColor): string {
   switch (personaInitialsColor) {
     case PersonaInitialsColor.lightBlue:
-      return '#6BA5E7';
+    case PersonaInitialsColor.lightBlue30:
+      return '#4F6BED';
     case PersonaInitialsColor.blue:
-      return '#2D89EF';
+    case PersonaInitialsColor.blue20:
+      return '#0078D4';
     case PersonaInitialsColor.darkBlue:
-      return '#2B5797';
+    case PersonaInitialsColor.darkBlue10:
+      return '#004E8C';
     case PersonaInitialsColor.teal:
-      return '#00ABA9';
+    case PersonaInitialsColor.teal10:
+      return '#038387';
     case PersonaInitialsColor.lightGreen:
-      return '#99B433';
     case PersonaInitialsColor.green:
-      return '#00A300';
+    case PersonaInitialsColor.green10:
+      return '#498205';
     case PersonaInitialsColor.darkGreen:
-      return '#1E7145';
+    case PersonaInitialsColor.darkGreen20:
+      return '#0B6A0B';
     case PersonaInitialsColor.lightPink:
-      return '#E773BD';
+    case PersonaInitialsColor.lightPink10:
+      return '#C239B3';
     case PersonaInitialsColor.pink:
-      return '#FF0097';
+    case PersonaInitialsColor.pink10:
+      return '#E3008C';
     case PersonaInitialsColor.magenta:
-      return '#7E3878';
+    case PersonaInitialsColor.magenta10:
+      return '#881798';
     case PersonaInitialsColor.purple:
-      return '#603CBA';
-    case PersonaInitialsColor.black:
-      return '#1D1D1D';
+    case PersonaInitialsColor.purple10:
+      return '#5C2E91';
     case PersonaInitialsColor.orange:
-      return '#DA532C';
+    case PersonaInitialsColor.orange10:
+      return '#CA5010';
     case PersonaInitialsColor.red:
-      return '#EE1111';
+    case PersonaInitialsColor.red10:
+      return '#D13438';
     case PersonaInitialsColor.darkRed:
-      return '#B91D47';
+    case PersonaInitialsColor.darkRed20:
+      return '#A4262C';
     case PersonaInitialsColor.transparent:
       return 'transparent';
     case PersonaInitialsColor.violet:
-      return '#5E4B8B';
+    case PersonaInitialsColor.violet10:
+      return '#8764B8';
+    case PersonaInitialsColor.orangeYellow20:
+      return '#986F0B';
+    case PersonaInitialsColor.pinkRed10:
+      return '#750B1C';
+    case PersonaInitialsColor.gray30:
+      return '#7A7574';
+    case PersonaInitialsColor.cyan30:
+      return '#005B70';
+    case PersonaInitialsColor.orange30:
+      return '#8E562E';
+    case PersonaInitialsColor.gray20:
+      return '#69797E';
+    case PersonaInitialsColor.black:
+    case PersonaInitialsColor.gray40:
+      return '#393939';
   }
 }
 

@@ -4,6 +4,7 @@ import { IPersonaProps } from '../../Persona';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
+import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 export interface IBaseFloatingPicker {
   /** Whether the suggestions are shown */
@@ -53,8 +54,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  // tslint:disable-next-line:no-any
-  onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
   /**
    * A callback for what should happen when a person types text into the input.
    * Returns the already selected items so the resolver can filter them out.

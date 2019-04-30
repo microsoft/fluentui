@@ -32,7 +32,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
     height: 40,
     textAlign: 'left',
     width: '100%',
-    fontSize: FontSizes.small,
+    fontSize: FontSizes.xSmall,
     selectors: {
       ':hover': {
         backgroundColor: palette.neutralLight,
@@ -68,8 +68,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       {
         overflowY: 'auto',
         overflowX: 'hidden',
-        maxHeight: 300,
-        borderBottom: `1px solid ${palette.neutralLight}`
+        maxHeight: 300
       },
       suggestionsClassName
     ],
@@ -77,7 +76,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       classNames.title,
       {
         padding: '0 12px',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         color: palette.themePrimary,
         lineHeight: 40,
         borderBottom: `1px solid ${palette.neutralLight}`
@@ -98,7 +97,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       {
         textAlign: 'center',
         color: palette.neutralSecondary,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         lineHeight: 30
       }
     ],
@@ -113,7 +112,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
             textAlign: 'left',
             whiteSpace: 'nowrap',
             lineHeight: 20,
-            fontSize: FontSizes.small
+            fontSize: FontSizes.xSmall
           }
         ],
         circle: {

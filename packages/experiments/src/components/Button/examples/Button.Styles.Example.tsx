@@ -80,7 +80,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon="PeopleAdd"
                   content="Button Styles Function: Purple Icon via Button Theme"
-                  styles={(props, theme) => ({ icon: { color: theme.fonts.medium.color } })}
+                  styles={(props, theme) => ({ icon: { color: theme.fonts.small.color } })}
                   theme={testTheme}
                 />
               </ButtonStack>
@@ -107,7 +107,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => ({ root: { color: '#8F6800' } })
+                    styles: () => ({ root: { color: '#8F6800' } })
                   }}
                   content="Icon Styles Function: Golden Brown Icon"
                 />

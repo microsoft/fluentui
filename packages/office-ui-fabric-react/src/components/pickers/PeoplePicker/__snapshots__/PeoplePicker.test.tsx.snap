@@ -9,7 +9,11 @@ exports[`PeoplePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -33,7 +37,8 @@ exports[`PeoplePicker renders correctly 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -42,7 +47,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
       >
         <input
@@ -56,6 +61,7 @@ exports[`PeoplePicker renders correctly 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                border-radius: 2px;
                 border: none;
                 flex-grow: 1;
                 height: 30px;
@@ -93,7 +99,11 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -117,7 +127,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
             ms-BasePicker-text
             {
               align-items: center;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #a19f9d;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;
@@ -126,7 +137,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
       >
         <span
@@ -146,7 +157,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                 ms-PickerPersona-container
                 {
                   align-items: center;
-                  background: #f4f4f4;
+                  background: #f3f2f1;
                   border-radius: 15px;
                   cursor: default;
                   display: inline-flex;
@@ -169,14 +180,14 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                   bottom: -1px;
                   content: "";
                   left: -1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: -1px;
                   top: -1px;
                   z-index: 1;
                 }
                 &:hover {
-                  background: #eaeaea;
+                  background: #edebe9;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border: 1px solid WindowText;
@@ -208,7 +219,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       align-items: center;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
@@ -229,7 +240,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                       display: none;
                     }
                     &:hover $primaryText {
-                      color: #212121;
+                      color: #201f1e;
                     }
                 size={10}
               >
@@ -315,7 +326,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                           {
                             -ms-high-contrast-adjust: none;
                             background-clip: content-box;
-                            background-color: #7FBA00;
+                            background-color: #6BB700;
                             border-radius: 50%;
                             border: 2px solid #ffffff;
                             bottom: -2px;
@@ -343,8 +354,8 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                         justify-content: space-around;
                         min-width: 0px;
                         padding-bottom: 0;
-                        padding-left: 12px;
-                        padding-right: 12px;
+                        padding-left: 8px;
+                        padding-right: 8px;
                         padding-top: 0;
                         text-align: left;
                         width: 100%;
@@ -354,7 +365,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     className=
                         ms-Persona-primaryText
                         {
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
@@ -381,7 +392,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     className=
                         ms-Persona-secondaryText
                         {
-                          color: #666666;
+                          color: #605e5c;
                           display: none;
                           font-size: 12px;
                           font-weight: 400;
@@ -409,9 +420,9 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     className=
                         ms-Persona-tertiaryText
                         {
-                          color: #666666;
+                          color: #605e5c;
                           display: none;
-                          font-size: 12px;
+                          font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
                           text-overflow: ellipsis;
@@ -437,9 +448,9 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     className=
                         ms-Persona-optionalText
                         {
-                          color: #666666;
+                          color: #605e5c;
                           display: none;
-                          font-size: 12px;
+                          font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
                           text-overflow: ellipsis;
@@ -476,7 +487,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     border-radius: 15px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     flex-basis: 24;
@@ -501,14 +512,14 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -525,15 +536,17 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     top: 0px;
                   }
                   &:hover {
-                    background: #c8c8c8;
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    background: #c8c6c4;
+                    color: #201f1e;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: #edebe9;
+                    color: #005a9e;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -598,6 +611,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
               ms-BasePicker-input
               {
                 align-self: flex-end;
+                border-radius: 2px;
                 border: none;
                 flex-grow: 1;
                 height: 30px;

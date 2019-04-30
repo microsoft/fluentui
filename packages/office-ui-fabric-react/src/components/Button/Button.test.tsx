@@ -931,7 +931,7 @@ describe('Button', () => {
         const menuId = renderedDOM.getAttribute('aria-owns');
         expect(menuId).toBeDefined();
 
-        const menuDOM = renderedDOM.ownerDocument.getElementById(menuId as string);
+        const menuDOM = renderedDOM.ownerDocument!.getElementById(menuId as string);
         expect(menuDOM).toBeDefined();
 
         return menuDOM as HTMLElement;

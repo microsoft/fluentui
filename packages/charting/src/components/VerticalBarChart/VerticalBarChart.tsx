@@ -4,7 +4,7 @@ import { VerticalBarChartBase } from './VerticalBarChart.base';
 import { getStyles } from './VerticalBarChart.styles';
 
 // Create a VerticalBarChart variant which uses these default styles and this styled subcomponent.
-export const VerticalBarChart: React.StatelessComponent<IVerticalBarChartProps> = styled<
+export const VerticalBarChart: React.FunctionComponent<IVerticalBarChartProps> = styled<
   IVerticalBarChartProps,
   IVerticalBarChartStyleProps,
   IVerticalBarChartStyles

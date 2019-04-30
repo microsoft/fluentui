@@ -9,8 +9,8 @@ const CardStatics = {
   Item: CardItem
 };
 
-export const Card: React.StatelessComponent<ICardProps> & {
-  Item: React.StatelessComponent<IStackItemProps>;
+export const Card: React.FunctionComponent<ICardProps> & {
+  Item: React.FunctionComponent<IStackItemProps>;
 } = createComponent({
   displayName: 'Card',
   view,

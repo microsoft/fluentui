@@ -4,26 +4,10 @@ exports[`runs Axe on TextField 1`] = `
 Array [
   Object {
     "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<span style=\\"padding-bottom: 1px;\\">https://</span>",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".prefix-240 > span",
-      },
-    ],
     "message": Object {
       "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".prefix-240 > span",
-      "ruleId": "color-contrast",
+- Element has insufficient color contrast of 2.35 (foreground color: #a19f9d, background color: #f3f2f1, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.35 (foreground color: #a19f9d, background color: #f3f2f1, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
     },
     "properties": Object {
       "tags": Array [
@@ -34,26 +18,10 @@ Array [
   },
   Object {
     "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField111\\" class=\\"ms-TextField-field field-230\\" aria-describedby=\\"TextFieldDescription112\\" aria-invalid=\\"false\\" value=\\"\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "#TextField111",
-      },
-    ],
     "message": Object {
       "richText": "Fix all of the following:
 - Only title used to generate label for form element",
       "text": "Fix all of the following: Only title used to generate label for form element.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField111",
-      "ruleId": "label-title-only",
     },
     "properties": Object {
       "tags": Array [
@@ -64,18 +32,6 @@ Array [
   },
   Object {
     "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField111\\" class=\\"ms-TextField-field field-230\\" aria-describedby=\\"TextFieldDescription112\\" aria-invalid=\\"false\\" value=\\"\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "#TextField111",
-      },
-    ],
     "message": Object {
       "richText": "Fix any of the following:
 - aria-label attribute does not exist or is empty
@@ -84,10 +40,6 @@ Array [
 - Form element does not have an explicit &lt;label>
 - Element has no title attribute or the title attribute is empty",
       "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField111",
-      "ruleId": "label",
     },
     "properties": Object {
       "tags": Array [

@@ -31,7 +31,8 @@ module.exports = {
   storybookConfigDir: '.storybook',
   apiKey: process.env.SCREENER_API_KEY,
   resolution: '1024x768',
-  baseBranch,
+  baseBranch:
+    (process.env.TRAVIS_PULL_REQUEST !== 'false' && process.env.TRAVIS_BRANCH) || 'fabric-7',
   failureExitCode: 0,
   alwaysAcceptBaseBranch: true,
   ...(process.env.BUILD_SOURCEBRANCH.indexOf('refs/pull') > -1

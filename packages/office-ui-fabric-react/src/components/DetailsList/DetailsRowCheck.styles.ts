@@ -9,6 +9,8 @@ const GlobalClassNames = {
   isHeader: 'ms-DetailsRow-check--isHeader'
 };
 
+export const CHECK_CELL_WIDTH = 48;
+
 export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckStyles => {
   const { theme, className, isHeader, selected, anySelected, canSelect, compact, isVisible } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -25,7 +27,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
       !canSelect && classNames.isDisabled,
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
-      theme.fonts.small,
+      theme.fonts.xSmall,
       {
         display: 'flex',
         alignItems: 'center',
@@ -38,7 +40,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
         border: 'none',
         opacity: 0,
         height: height,
-        width: 40,
+        width: CHECK_CELL_WIDTH,
         padding: 0,
         margin: 0,
         selectors: {

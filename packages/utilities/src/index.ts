@@ -2,7 +2,6 @@ export * from './Async';
 export * from './AutoScroll';
 export * from './BaseComponent';
 export * from './BaseComponent.types';
-export * from './Context';
 export * from './DelayedRender';
 export * from './EventGroup';
 export * from './FabricPerformance';

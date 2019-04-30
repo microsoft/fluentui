@@ -30,7 +30,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.medium,
+      theme.fonts.small,
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',
@@ -87,7 +87,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
       sharedCircleCheck,
 
       {
-        color: palette.neutralTertiaryAlt,
+        color: palette.neutralSecondary,
 
         selectors: {
           [HighContrastSelector]: {
@@ -107,7 +107,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
 
       {
         opacity: 0,
-        color: palette.neutralTertiaryAlt,
+        color: palette.neutralSecondary,
         fontSize: '16px',
         left: isRTL ? '-0.5px' : '.5px', // for centering the check icon inside the circle.
 

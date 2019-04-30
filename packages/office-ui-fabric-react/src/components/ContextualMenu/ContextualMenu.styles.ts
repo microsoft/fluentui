@@ -15,11 +15,11 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { palette, fonts, semanticColors } = theme;
+  const { palette, fonts, semanticColors, effects } = theme;
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.small,
       classNames.root,
       classNames.isopen,
       {
@@ -47,7 +47,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
     ],
     header: [
       classNames.header,
-      fonts.small,
+      fonts.xSmall,
       {
         fontWeight: FontWeights.semibold,
         color: semanticColors.menuHeader,
@@ -73,6 +73,13 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         backgroundColor: palette.neutralLight
       }
     ],
-    subComponentStyles: { callout: {}, menuItem: {} }
+    subComponentStyles: {
+      callout: {
+        root: {
+          boxShadow: effects.elevation8
+        }
+      },
+      menuItem: {}
+    }
   };
 };

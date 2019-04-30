@@ -13,11 +13,12 @@ import { IStyle } from '@uifabric/styling';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme } from '@uifabric/styling';
+import * as PropTypes from 'prop-types';
 
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
 // 
 // @public
-export const Calendar: React.StatelessComponent<ICalendarProps>;
+export const Calendar: React.FunctionComponent<ICalendarProps>;
 
 // @public
 export enum DateRangeType {
@@ -28,7 +29,7 @@ export enum DateRangeType {
     // (undocumented)
     Week = 1,
     // (undocumented)
-    WorkWeek = 3,
+    WorkWeek = 3
 }
 
 // @public
@@ -46,7 +47,7 @@ export enum DayOfWeek {
     // (undocumented)
     Tuesday = 2,
     // (undocumented)
-    Wednesday = 3,
+    Wednesday = 3
 }
 
 // @public
@@ -56,7 +57,7 @@ export enum FirstWeekOfYear {
     // (undocumented)
     FirstFourDayWeek = 2,
     // (undocumented)
-    FirstFullWeek = 1,
+    FirstFullWeek = 1
 }
 
 // @public (undocumented)

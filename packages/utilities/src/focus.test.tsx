@@ -161,13 +161,13 @@ describe('focusAsync', () => {
     // Focus the first button.
     focusAsync(buttonA);
     window.requestAnimationFrame(() => {
-      expect(container.ownerDocument.activeElement).toBe(buttonA);
+      expect(container.ownerDocument!.activeElement).toBe(buttonA);
 
       // Focus the second button, then the third before the next frame
       focusAsync(buttonB);
       focusAsync(buttonC);
       window.requestAnimationFrame(() => {
-        expect(container.ownerDocument.activeElement).toBe(buttonC);
+        expect(container.ownerDocument!.activeElement).toBe(buttonC);
       });
     });
 

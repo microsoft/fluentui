@@ -38,7 +38,7 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
     ],
     title: [
       commonStyles,
-      theme.fonts.large,
+      theme.fonts.medium,
       {
         lineHeight: 48
       },
@@ -46,7 +46,7 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
     ],
     button: [
       commonStyles,
-      getFocusStyle(theme, 1, 'relative', undefined, theme.palette.themeLight, 'transparent'),
+      getFocusStyle(theme, { inset: 1, borderColor: theme.palette.themeLight, outlineColor: 'transparent' }),
       {
         position: 'relative',
         textDecoration: 'none',

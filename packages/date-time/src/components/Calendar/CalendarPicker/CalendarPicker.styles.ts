@@ -19,9 +19,9 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       display: 'flex'
     },
     currentItemButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
-        fontSize: FontSizes.medium,
+        fontSize: FontSizes.small,
         fontWeight: FontWeights.semibold,
         textAlign: 'left',
         backgroundColor: 'transparent',
@@ -45,7 +45,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       alignItems: 'center'
     },
     navigationButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         width: 28,
         minWidth: 28,
@@ -54,7 +54,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         display: 'block',
         textAlign: 'center',
         lineHeight: 28,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         color: palette.neutralPrimary,
         borderRadius: 2,
         position: 'relative',
@@ -75,14 +75,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
       marginTop: 4
     },
     itemButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         width: 40,
         height: 40,
         minWidth: 40,
         minHeight: 40,
         lineHeight: 40,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.xSmall,
         margin: '0 12px 16px 0',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',

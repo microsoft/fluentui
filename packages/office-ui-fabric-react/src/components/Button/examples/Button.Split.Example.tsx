@@ -1,9 +1,8 @@
 import * as React from 'react';
 import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
-import { DefaultButton, IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { getCustomSplitButtonStyles } from './Button.Split.Example.styles';
 
 const alertClicked = (): void => {
   alert('Clicked');
@@ -137,44 +136,6 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             }}
           />
         </div>
-      </div>
-    );
-  }
-}
-
-export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
-  public render(): JSX.Element {
-    const { disabled, checked } = this.props;
-    const customSplitButtonStyles = getCustomSplitButtonStyles();
-
-    return (
-      <div>
-        <Label>Split button with icon and custom styles</Label>
-        <IconButton
-          data-automation-id="test"
-          disabled={disabled}
-          checked={checked}
-          iconProps={{ iconName: 'Upload' }}
-          text="Create account"
-          onClick={alertClicked}
-          split={true}
-          aria-roledescription={'split button'}
-          styles={customSplitButtonStyles}
-          menuProps={{
-            items: [
-              {
-                key: 'emailMessage',
-                text: 'Email message',
-                iconProps: { iconName: 'Mail' }
-              },
-              {
-                key: 'calendarEvent',
-                text: 'Calendar event',
-                iconProps: { iconName: 'Calendar' }
-              }
-            ]
-          }}
-        />
       </div>
     );
   }

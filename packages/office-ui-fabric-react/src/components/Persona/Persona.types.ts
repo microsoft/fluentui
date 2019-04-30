@@ -357,49 +357,104 @@ export interface IPersonaPresenceStyles {
  */
 export enum PersonaSize {
   /**
-   * tiny size has been deprecated in favor of standardized numeric sizing. Use `size10` instead.
-   * @deprecated Use `size10` instead.
+   * `tiny` size has been deprecated in favor of standardized numeric sizing. Use `size8` instead.
+   * @deprecated Use `size8` instead.
    */
   tiny = 0,
+
   /**
    *
-   * extraExtraSmall size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
+   * `extraExtraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size24` instead.
    * @deprecated Use `size24` instead.
    */
   extraExtraSmall = 1,
+
   /**
-   * extraSmall size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
+   * `extraSmall` size has been deprecated in favor of standardized numeric sizing. Use `size32` instead.
    * @deprecated Use `size32` instead.
    */
   extraSmall = 2,
+
   /**
-   * small size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
+   * `small` size has been deprecated in favor of standardized numeric sizing. Use `size40` instead.
    * @deprecated Use `size40` instead.
    */
   small = 3,
+
   /**
-   * regular size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
+   * `regular` size has been deprecated in favor of standardized numeric sizing. Use `size48` instead.
    * @deprecated Use `size48` instead.
    */
   regular = 4,
+
   /**
-   * large size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
+   * `large` size has been deprecated in favor of standardized numeric sizing. Use `size72` instead.
    * @deprecated Use `size72` instead.
    */
   large = 5,
+
   /**
-   * extraLarge size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
+   * `extraLarge` size has been deprecated in favor of standardized numeric sizing. Use `size100` instead.
    * @deprecated Use `size100` instead.
    */
   extraLarge = 6,
-  size28 = 7,
-  size16 = 8,
+
+  /**
+   * No `PersonaCoin` is rendered.
+   */
+  size8 = 17,
+
+  /**
+   * No `PersonaCoin` is rendered. Deprecated in favor of `size8` to align with design specifications.
+   * @deprecated Use `size8` instead. Will be removed in a future major release.
+   */
   size10 = 9,
+
+  /**
+   * Renders a 16px `PersonaCoin`. Deprecated due to not being in the design specification.
+   * @deprecated Will be removed in a future major release.
+   */
+  size16 = 8,
+
+  /**
+   * Renders a 24px `PersonaCoin`.
+   */
   size24 = 10,
+
+  /**
+   * Renders a 28px `PersonaCoin`. Deprecated due to not being in the design specification.
+   * @deprecated Will be removed in a future major release.
+   */
+  size28 = 7,
+
+  /**
+   * Renders a 32px `PersonaCoin`.
+   */
   size32 = 11,
+
+  /**
+   * Renders a 40px `PersonaCoin`.
+   */
   size40 = 12,
+
+  /**
+   * Renders a 48px `PersonaCoin`.
+   */
   size48 = 13,
+
+  /**
+   * Renders a 56px `PersonaCoin`.
+   */
+  size56 = 16,
+
+  /**
+   * Renders a 72px `PersonaCoin`.
+   */
   size72 = 14,
+
+  /**
+   * Renders a 100px `PersonaCoin`.
+   */
   size100 = 15
 }
 
@@ -420,31 +475,102 @@ export enum PersonaPresence {
  * {@docCategory Persona}
  */
 export enum PersonaInitialsColor {
+  // Old color names
+  /**
+   * @deprecated Use lightBlue30 instead
+   */
   lightBlue = 0,
+  /**
+   * @deprecated Use blue20 instead
+   */
   blue = 1,
+  /**
+   * @deprecated Use darkBlue10 instead
+   */
   darkBlue = 2,
+  /**
+   * @deprecated Use teal10 instead
+   */
   teal = 3,
+  /**
+   * @deprecated Use green10 instead
+   */
   lightGreen = 4,
+  /**
+   * @deprecated Use green10 instead
+   */
   green = 5,
+  /**
+   * @deprecated Use darkGreen20 instead
+   */
   darkGreen = 6,
+  /**
+   * @deprecated Use lightPink10 instead
+   */
   lightPink = 7,
+  /**
+   * @deprecated Use pink10 instead
+   */
   pink = 8,
+  /**
+   * @deprecated Use magenta10 instead
+   */
   magenta = 9,
+  /**
+   * @deprecated Use purple10 instead
+   */
   purple = 10,
   /**
    * Black is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   * @deprecated Use gray40 instead
    */
   black = 11,
+  /**
+   * @deprecated Use orange10 instead
+   */
   orange = 12,
   /**
    * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * @deprecated Use red10 instead
    */
   red = 13,
+  /**
+   * @deprecated Use darkRed20 instead
+   */
   darkRed = 14,
   /**
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
   transparent = 15,
-  violet = 16
+  /**
+   * @deprecated Use violet10 instead
+   */
+  violet = 16,
+
+  // New color names
+  green10 = 25,
+  darkGreen20 = 26,
+  teal10 = 27,
+  cyan30 = 28,
+  lightBlue30 = 29,
+  blue20 = 30,
+  darkBlue10 = 31,
+  violet10 = 32,
+  purple10 = 33,
+  magenta10 = 34,
+  lightPink10 = 35,
+  pink10 = 36,
+  pinkRed10 = 37,
+  red10 = 38,
+  darkRed20 = 39,
+  orange10 = 40,
+  orange30 = 41,
+  orangeYellow20 = 42,
+  gray30 = 43,
+  /**
+   * gray40 is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   */
+  gray40 = 44,
+  gray20 = 45
 }

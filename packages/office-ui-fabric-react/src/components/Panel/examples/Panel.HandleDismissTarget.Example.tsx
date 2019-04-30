@@ -58,5 +58,6 @@ export class PanelHandleDismissTargetExample extends React.Component<{}, IPanelH
     if (ev.nativeEvent.srcElement && ev.nativeEvent.srcElement.className.indexOf('ms-Overlay') !== -1) {
       console.log('Light dismissed.');
     }
+    this._hidePanel();
   };
 }

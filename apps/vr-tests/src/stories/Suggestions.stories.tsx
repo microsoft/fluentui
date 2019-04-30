@@ -2,7 +2,8 @@
 import * as React from 'react';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { FabricDecorator, DevOnlyStoryHeader } from '../utilities';
+import { FabricDecorator } from '../utilities';
+import { DevOnlyStoryHeader } from '../utilities';
 import { Suggestions, ISuggestionsProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 

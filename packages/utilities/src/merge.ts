@@ -23,13 +23,10 @@ function _merge<T>(target: T, source: T, circularReferences: any[] = []): T {
 
   for (let name in source) {
     if (source.hasOwnProperty(name)) {
-      const value = source[name];
-
+      const value: T[Extract<keyof T, string>] = source[name];
       if (typeof value === 'object') {
         const isCircularReference = circularReferences.indexOf(value) > -1;
-
-        // tslint:disable-next-line:no-any
-        (target as any)[name] = isCircularReference ? value : _merge(target[name] || {}, value, circularReferences);
+        target[name] = (isCircularReference ? value : _merge(target[name] || {}, value, circularReferences)) as T[Extract<keyof T, string>];
       } else {
         target[name] = value;
       }

@@ -294,6 +294,11 @@ export interface IButtonProps
    * @deprecated Use `secondaryText` instead.
    */
   description?: IStyle;
+
+  /**
+   * yet unknown docs
+   */
+  defaultRender?: any;
 }
 
 /**

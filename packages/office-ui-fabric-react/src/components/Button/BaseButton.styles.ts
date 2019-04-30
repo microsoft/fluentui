@@ -23,7 +23,7 @@ const iconStyle = {
  */
 export const getStyles = memoizeFunction(
   (theme: ITheme): IButtonStyles => {
-    const { semanticColors } = theme;
+    const { semanticColors, effects } = theme;
 
     const border = semanticColors.buttonBorder;
     const disabledBackground = semanticColors.disabledBackground;
@@ -39,8 +39,8 @@ export const getStyles = memoizeFunction(
 
     return {
       root: [
-        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
-        theme.fonts.medium,
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
+        theme.fonts.small,
         {
           boxSizing: 'border-box',
           border: '1px solid ' + border,
@@ -51,7 +51,7 @@ export const getStyles = memoizeFunction(
           cursor: 'pointer',
           verticalAlign: 'top',
           padding: '0 16px',
-          borderRadius: 0,
+          borderRadius: effects.roundedCorner2,
 
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.
@@ -65,9 +65,10 @@ export const getStyles = memoizeFunction(
       ],
 
       rootDisabled: [
-        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         {
           backgroundColor: disabledBackground,
+          borderColor: disabledBackground,
           color: disabledText,
           cursor: 'default',
           pointerEvents: 'none',
@@ -76,7 +77,7 @@ export const getStyles = memoizeFunction(
             ':focus': noOutline,
             [HighContrastSelector]: {
               color: 'grayText',
-              bordercolor: 'grayText'
+              borderColor: 'grayText'
             }
           }
         }
@@ -107,7 +108,7 @@ export const getStyles = memoizeFunction(
       menuIcon: [
         iconStyle,
         {
-          fontSize: FontSizes.small
+          fontSize: FontSizes.xSmall
         }
       ],
 

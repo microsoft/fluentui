@@ -47,7 +47,11 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
     onKeyDown={[Function]}
   >
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -71,7 +75,8 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
               ms-BasePicker-text
               {
                 align-items: center;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #a19f9d;
                 box-sizing: border-box;
                 display: flex;
                 flex-wrap: wrap;
@@ -80,7 +85,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
         >
           <input
@@ -95,6 +100,7 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 ms-BasePicker-input
                 {
                   align-self: flex-end;
+                  border-radius: 2px;
                   border: none;
                   flex-grow: 1;
                   height: 30px;
