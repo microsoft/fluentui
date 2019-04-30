@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.0.3
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Use new getFocusStyle helper
 
 ## 6.0.2
 Tue, 16 Apr 2019 12:32:59 GMT
