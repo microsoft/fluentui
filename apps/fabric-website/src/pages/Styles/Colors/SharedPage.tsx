@@ -50,14 +50,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     }
                   },
                   {
-                    name: 'RedOrange20',
-                    hex: '#603d30',
-                    code: {
-                      core: '$ms-color-sharedRedOrange20',
-                      react: 'SharedColors.redOrange20'
-                    }
-                  },
-                  {
                     name: 'RedOrange10',
                     hex: '#da3b01',
                     code: {
@@ -146,14 +138,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     }
                   },
                   {
-                    name: 'Cyan40',
-                    hex: '#005e50',
-                    code: {
-                      core: '$ms-color-sharedCyan40',
-                      react: 'SharedColors.cyan40'
-                    }
-                  },
-                  {
                     name: 'Cyan30',
                     hex: '#005b70',
                     code: {
@@ -199,14 +183,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     code: {
                       core: '$ms-color-sharedBlue10',
                       react: 'SharedColors.blue10'
-                    }
-                  },
-                  {
-                    name: 'BlueMagenta40',
-                    hex: '#373277',
-                    code: {
-                      core: '$ms-color-sharedBlueMagenta40',
-                      react: 'SharedColors.blueMagenta40'
                     }
                   },
                   {
