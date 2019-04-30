@@ -57,7 +57,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
           whiteSpace: 'nowrap'
         },
         a: {
-          fontSize: FontSizes.small,
+          fontSize: FontSizes.xSmall,
           textDecoration: 'none',
           color: palette.neutralDark,
           selectors: {
@@ -76,7 +76,7 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
     fileListOverflowText: {
       padding: '0px 16px 8px 16px',
       display: 'block',
-      fontSize: FontSizes.small
+      fontSize: FontSizes.xSmall
     }
   };
 };

@@ -1,9 +1,10 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { ButtonExample } from './examples/Button.Example';
 import { MenuButtonExample } from './MenuButton/examples/MenuButton.Example';
 import { SplitButtonExample } from './SplitButton/examples/SplitButton.Example';
+import { ButtonSlotsExample } from './examples/Button.Slots.Example';
 import { ButtonStylesExample } from './examples/Button.Styles.Example';
 import { ButtonTokensExample } from './examples/Button.Tokens.Example';
 import { ButtonVariantsExample } from './examples/Button.Variants.Example';
@@ -11,6 +12,7 @@ import { ButtonVariantsExample } from './examples/Button.Variants.Example';
 const ButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Example.tsx') as string;
 const MenuButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/MenuButton/examples/MenuButton.Example.tsx') as string;
 const SplitButtonExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/SplitButton/examples/SplitButton.Example.tsx') as string;
+const ButtonSlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Slots.Example.tsx') as string;
 const ButtonStylesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
 const ButtonTokensExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
 const ButtonVariantsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
@@ -35,6 +37,9 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Button Variants Examples" code={ButtonVariantsExampleCode}>
               <ButtonVariantsExample />
             </ExampleCard>
+            <ExampleCard title="Button Slots Customization" code={ButtonSlotsExampleCode}>
+              <ButtonSlotsExample />
+            </ExampleCard>
             <ExampleCard title="Button Styles" code={ButtonStylesExampleCode}>
               <ButtonStylesExample />
             </ExampleCard>
@@ -53,21 +58,13 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             ]}
           />
         }
-        overview={<div />}
-        bestPractices={<div />}
-        dos={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
+        overview={
+          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonOverview.md')}</PageMarkdown>
         }
+        bestPractices={<div />}
+        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDos.md')}</PageMarkdown>}
         donts={
-          <div>
-            <ul>
-              <li />
-            </ul>
-          </div>
+          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDonts.md')}</PageMarkdown>
         }
         isHeaderVisible={this.props.isHeaderVisible}
       />

@@ -38,14 +38,14 @@ export class ResourcesPage extends React.Component<any, any> {
               </div>
               <div className={css('ms-Grid-col ms-sm12 ms-lg8', styles.description)}>
                 <p>
-                  Use the resources on this page to ensure a consistent look and feel for your project. This section
-                  includes design and UI-related downloads for apps designed and built with Fabric.
+                  Use the resources on this page to ensure a consistent look and feel for your project. This section includes design and
+                  UI-related downloads for apps designed and built with Fabric.
                 </p>
 
                 <h3>Fabric Design Toolkit</h3>
                 <p>
-                  The Fabric design toolkit is built with Adobe XD and Sketch and provides controls and layout templates
-                  that enable you to create seamless, beautiful Office experiences.
+                  The Fabric design toolkit is built with Adobe XD and Sketch and provides controls and layout templates that enable you to
+                  create seamless, beautiful Office experiences.
                 </p>
                 <ul>
                   <li>
@@ -75,9 +75,9 @@ export class ResourcesPage extends React.Component<any, any> {
 
                 <h3>SharePoint Design Toolkit</h3>
                 <p>
-                  The SharePoint design toolkit provides everything you need to design your web parts. The toolkit
-                  contains page grids for Team and Communication sites, outlines for columns on the grid to help you
-                  make your design responsive, and a sample web part.
+                  The SharePoint design toolkit provides everything you need to design your web parts. The toolkit contains page grids for
+                  Team and Communication sites, outlines for columns on the grid to help you make your design responsive, and a sample web
+                  part.
                 </p>
                 <ul>
                   <li>
@@ -89,9 +89,8 @@ export class ResourcesPage extends React.Component<any, any> {
 
                 <h3>Office Add-ins Design Toolkit</h3>
                 <p>
-                  The Add-ins design toolkit provides layouts for interface elements and commonly used UX patterns in
-                  Word, Excel, and PowerPoint. Use it together with the Fabric design toolkit to create an add-in that
-                  fits seamlessly with Office.
+                  The Add-ins design toolkit provides layouts for interface elements and commonly used UX patterns in Word, Excel, and
+                  PowerPoint. Use it together with the Fabric design toolkit to create an add-in that fits seamlessly with Office.
                 </p>
                 <ul>
                   <li>
@@ -147,18 +146,12 @@ export class ResourcesPage extends React.Component<any, any> {
                 <h2>Learn more with tutorials and resources</h2>
               </div>
               <div className={css('ms-Grid-col ms-sm12 ms-lg8', styles.description)}>
-                <p>
-                  Use the tutorials and additional resources on this page to learn how to get Fabric running in your
-                  projects.
-                </p>
+                <p>Use the tutorials and additional resources on this page to learn how to get Fabric running in your projects.</p>
 
                 <h3>Tutorials</h3>
                 <p>
                   Check out{' '}
-                  <a
-                    className={styles.relatedLink}
-                    href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App"
-                  >
+                  <a className={styles.relatedLink} href="https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App">
                     Fabric&rsquo;s DocumentCard tutorial
                   </a>{' '}
                   to learn how to make a simple React app using Fabric components.
@@ -166,8 +159,8 @@ export class ResourcesPage extends React.Component<any, any> {
 
                 <h3>Add-ins</h3>
                 <p>
-                  Fabric is the official UI toolkit for building a coherent user experience in your Office Add-ins.
-                  Check out some of these resources to learn more about how to use Fabric in your next Add-in.
+                  Fabric is the official UI toolkit for building a coherent user experience in your Office Add-ins. Check out some of these
+                  resources to learn more about how to use Fabric in your next Add-in.
                 </p>
                 <ul>
                   <li>
@@ -181,10 +174,7 @@ export class ResourcesPage extends React.Component<any, any> {
                     </a>
                   </li>
                   <li>
-                    <a
-                      className={styles.relatedLink}
-                      href="http://dev.office.com/docs/add-ins/design/ux-design-patterns"
-                    >
+                    <a className={styles.relatedLink} href="http://dev.office.com/docs/add-ins/design/ux-design-patterns">
                       UX design pattern templates for Office Add-ins
                     </a>
                   </li>
@@ -192,8 +182,8 @@ export class ResourcesPage extends React.Component<any, any> {
 
                 <h3>SharePoint</h3>
                 <p>
-                  SharePoint uses Fabric, so if you&rsquo;re building on top of or within a SharePoint experience, you
-                  can be sure that your UI will blend in. Check out these resources to learn more.
+                  SharePoint uses Fabric, so if you&rsquo;re building on top of or within a SharePoint experience, you can be sure that your
+                  UI will blend in. Check out these resources to learn more.
                 </p>
                 <ul>
                   <li>
@@ -240,9 +230,7 @@ export class ResourcesPage extends React.Component<any, any> {
                   />
                 </div>
                 <span className={styles.title}>GitHub</span>
-                <span className={styles.description}>
-                  We&rsquo;re on GitHub, so you can file issues and contribute to the projects.
-                </span>
+                <span className={styles.description}>We&rsquo;re on GitHub, so you can file issues and contribute to the projects.</span>
                 <a className={styles.reachOutLink} href="https://github.com/OfficeDev?query=office-ui-fabric">
                   See projects
                 </a>
@@ -257,9 +245,7 @@ export class ResourcesPage extends React.Component<any, any> {
                   />
                 </div>
                 <span className={styles.title}>Twitter</span>
-                <span className={styles.description}>
-                  Follow us for the latest news, and tweet us with your questions and suggestions.
-                </span>
+                <span className={styles.description}>Follow us for the latest news, and tweet us with your questions and suggestions.</span>
                 <a className={styles.reachOutLink} href="https://twitter.com/officeuifabric">
                   Join the conversation
                 </a>

@@ -149,15 +149,15 @@ storiesOf('Button Split', module)
         .snapshot('hover main', { cropTo: '.testWrapper' })
         .hover('.ms-Button:nth-child(2)')
         .snapshot('hover split', { cropTo: '.testWrapper' })
-        .mouseDown('.ms-Button:nth-child(1)')
-        .snapshot('pressed main', { cropTo: '.testWrapper' })
-        .hover('.ms-Button') // reset mouseDown
-        .mouseUp('.ms-Button:nth-child(2)')
-        .mouseDown('.ms-Button:nth-child(2)')
-        .snapshot('pressed split', { cropTo: '.testWrapper' })
-        .click('.ms-Button:nth-child(2)')
-        .hover('.ms-Button') // move mouse to make click work
-        .snapshot('open', { cropTo: '.testWrapper' })
+        // .mouseDown('.ms-Button:nth-child(1)')
+        // .snapshot('pressed main', { cropTo: '.testWrapper' })
+        // .hover('.ms-Button') // reset mouseDown
+        // .mouseUp('.ms-Button:nth-child(2)')
+        // .mouseDown('.ms-Button:nth-child(2)')
+        // .snapshot('pressed split', { cropTo: '.testWrapper' })
+        // .click('.ms-Button:nth-child(2)')
+        // .hover('.ms-Button') // move mouse to make click work
+        // .snapshot('open', { cropTo: '.testWrapper' })
         .end()}
     >
       {story()}

@@ -295,7 +295,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #00A300;
+                    background-color: #881798;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 10px;
@@ -453,7 +453,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #603CBA;
+                    background-color: #0078D4;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 10px;

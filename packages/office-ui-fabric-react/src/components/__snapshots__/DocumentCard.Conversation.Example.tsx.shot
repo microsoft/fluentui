@@ -88,9 +88,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -245,7 +245,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #00ABA9;
+                      background-color: #0078D4;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
@@ -510,9 +510,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -772,7 +772,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #7E3878;
+                      background-color: #750B1C;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
@@ -932,9 +932,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -1153,7 +1153,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #6BA5E7;
+                      background-color: #986F0B;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;

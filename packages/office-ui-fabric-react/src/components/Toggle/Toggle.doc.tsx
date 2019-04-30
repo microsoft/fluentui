@@ -2,7 +2,6 @@ import * as React from 'react';
 import { ToggleBasicExample } from './examples/Toggle.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { ToggleStatus } from './Toggle.checklist';
 
 const ToggleBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
 const ToggleBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Toggle/examples/Toggle.Basic.Example.tsx') as string;
@@ -11,7 +10,6 @@ export const TogglePageProps: IDocPageProps = {
   title: 'Toggle',
   componentName: 'Toggle',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Toggle',
-  componentStatus: ToggleStatus,
   examples: [
     {
       title: 'Default Toggles',

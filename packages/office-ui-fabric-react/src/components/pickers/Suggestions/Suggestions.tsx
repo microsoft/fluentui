@@ -18,11 +18,17 @@ export interface ISuggestionsState {
   selectedActionType: SuggestionActionType;
 }
 
+const StyledSuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
+  SuggestionsItem,
+  suggestionsItemStyles,
+  undefined,
+  { scope: 'SuggestionItem' }
+);
+
 export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggestionsState> {
   protected _forceResolveButton = React.createRef<IButton>();
   protected _searchForMoreButton = React.createRef<IButton>();
   protected _selectedElement = React.createRef<HTMLDivElement>();
-  private SuggestionsItemOfProperType = SuggestionsItem as new (props: ISuggestionItemProps<T>) => SuggestionsItem<T>;
   private activeSelectedElement: HTMLDivElement | null;
   private _classNames: Partial<IProcessedStyleSet<ISuggestionsStyles>>;
 
@@ -307,19 +313,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
 
     let { suggestions } = this.props;
 
-    const TypedSuggestionsItem = this.SuggestionsItemOfProperType;
-
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestionsItem = styled<ISuggestionItemProps<T>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
-      TypedSuggestionsItem,
-      suggestionsItemStyles,
-      undefined,
-      {
-        scope: 'SuggestionItem'
-      }
-    );
+    const StyledTypedSuggestionsItem: React.StatelessComponent<ISuggestionItemProps<T>> = StyledSuggestionsItem;
 
     let selectedIndex = -1;
     suggestions.some((element, index) => {
@@ -360,7 +354,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           >
             <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
-              RenderSuggestion={onRenderSuggestion as any}
+              RenderSuggestion={onRenderSuggestion}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
               className={suggestionsItemClassName}
               showRemoveButton={showRemoveButtons}

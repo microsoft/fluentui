@@ -1,11 +1,15 @@
 import { getSarifReport } from '../getSarifReport';
-import { SarifLog } from 'src/axe-sarif-converter/sarif/sarifLog';
-import { Result } from 'src/axe-sarif-converter/sarif/sarifv2';
+import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log';
+import { Result } from 'axe-sarif-converter/dist/sarif/sarif-2.0.0';
 
 // Extract interesting info to reduce snapshot size
 function dehydrateSarifReport(report: SarifLog): Result[] {
-  const results = report.runs[0]!.results!;
-  return results.filter(item => item.level === 'error');
+  const results = report.runs[0]!.results!.filter(item => item.level === 'error');
+  results.forEach(item => {
+    delete item.locations;
+    delete item.partialFingerprints;
+  });
+  return results;
 }
 
 export async function testComponent(component: { name: string; url: string }) {

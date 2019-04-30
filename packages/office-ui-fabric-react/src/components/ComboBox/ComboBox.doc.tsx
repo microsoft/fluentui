@@ -6,7 +6,6 @@ import { ComboBoxVirtualizedExample } from './examples/ComboBox.Virtualized.Exam
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { ComboBoxCustomStyledExample } from './examples/ComboBox.CustomStyled.Example';
-import { ComboBoxStatus } from './ComboBox.checklist';
 
 const ComboBoxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
 const ComboBoxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ComboBox/examples/ComboBox.Basic.Example.tsx') as string;
@@ -27,7 +26,6 @@ export const ComboBoxPageProps: IDocPageProps = {
   title: 'ComboBox',
   componentName: 'ComboBox',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ComboBox',
-  componentStatus: ComboBoxStatus,
   examples: [
     {
       title: 'Basic uncontrolled ComboBox',

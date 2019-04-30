@@ -1,7 +1,7 @@
-import { styled } from '../../Utilities';
+import { getStyles } from './ScrollablePane.styles';
 import { IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 import { ScrollablePaneBase } from './ScrollablePane.base';
-import { getStyles } from './ScrollablePane.styles';
+import { styled } from '../../Utilities';
 
 export const ScrollablePane: React.StatelessComponent<IScrollablePaneProps> = styled<
   IScrollablePaneProps,

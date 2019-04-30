@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
@@ -25,7 +25,7 @@ export interface ICollapsibleSectionSlots {
 export interface ICollapsibleSection {}
 
 export interface ICollapsibleSectionProps
-  extends ICollapsibleSectionSlots,
+  extends ISlottableProps<ICollapsibleSectionSlots>,
     IStyleableComponentProps<ICollapsibleSectionViewProps, ICollapsibleSectionStyles, ICollapsibleSectionTokens>,
     IBaseProps<ICollapsibleSection> {
   /**

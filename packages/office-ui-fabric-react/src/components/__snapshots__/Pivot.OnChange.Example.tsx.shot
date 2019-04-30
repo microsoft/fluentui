@@ -4,7 +4,11 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -57,7 +61,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 17px;
+                font-size: 18px;
                 font-weight: 400;
                 height: 44px;
                 line-height: 44px;
@@ -77,14 +81,14 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
+                border: 0px;
+                bottom: 2px;
+                content: attr(data-content);
+                left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
+                position: relative;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -136,7 +140,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -164,6 +168,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 color: HighlightText;
                 font-weight: 600;
               }
+          data-content="Foo"
           data-is-focusable={true}
           id="Pivot0-Tab0"
           name="Foo"
@@ -224,7 +229,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 17px;
+                font-size: 18px;
                 font-weight: 400;
                 height: 44px;
                 line-height: 44px;
@@ -244,14 +249,14 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
+                border: 0px;
+                bottom: 2px;
+                content: attr(data-content);
+                left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
+                position: relative;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -303,7 +308,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -325,6 +330,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 background-color: #0078d4;
                 color: #ffffff;
               }
+          data-content="Bar"
           data-is-focusable={true}
           id="Pivot0-Tab1"
           name="Bar"
@@ -385,7 +391,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 17px;
+                font-size: 18px;
                 font-weight: 400;
                 height: 44px;
                 line-height: 44px;
@@ -405,14 +411,14 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
+                border: 0px;
+                bottom: 2px;
+                content: attr(data-content);
+                left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
+                position: relative;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -464,7 +470,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -486,6 +492,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 background-color: #0078d4;
                 color: #ffffff;
               }
+          data-content="Bas"
           data-is-focusable={true}
           id="Pivot0-Tab2"
           name="Bas"
@@ -546,7 +553,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 17px;
+                font-size: 18px;
                 font-weight: 400;
                 height: 44px;
                 line-height: 44px;
@@ -566,14 +573,14 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 1px;
-                content: "";
-                left: 1px;
+                border: 0px;
+                bottom: 2px;
+                content: attr(data-content);
+                left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
-                right: 1px;
-                top: 1px;
+                position: relative;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -625,7 +632,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -647,6 +654,7 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 background-color: #0078d4;
                 color: #ffffff;
               }
+          data-content="Biz"
           data-is-focusable={true}
           id="Pivot0-Tab3"
           name="Biz"

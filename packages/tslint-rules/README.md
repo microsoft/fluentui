@@ -5,6 +5,7 @@ This project contains the baseline standard tslint rules for UI Fabric projects.
 ## Using tslint-rules
 
 ### Install Dependencies
+
 This project extends the [tslint-microsoft-contrib](https://github.com/Microsoft/tslint-microsoft-contrib) rules and therefore `tslint-microsoft-contrib` needs to be installed along with its dependencies.
 
 ```
@@ -18,6 +19,7 @@ yarn add -D tslint tslint-react tslint-microsoft-contrib
 ```
 
 ### NPM Setup
+
 For manual lint, add the following under scripts within `package.json`, and just run `npm run lint` or `yarn lint` to get a quick console lint report.
 
 ```json
@@ -29,6 +31,7 @@ For manual lint, add the following under scripts within `package.json`, and just
 ```
 
 ### VSCode Setup
+
 Using Visual Studio Code, make sure the [TSLint](https://marketplace.visualstudio.com/items?itemName=eg2.tslint) Extension is installed from VSCode, and update the projects workspace settings, located at `.vscode/settings.json`
 
 ```json
@@ -68,17 +71,18 @@ Using Visual Studio Code, make sure the [TSLint](https://marketplace.visualstudi
 ```
 
 ### Project Setup
+
 The project should have a valid `tslint.json` which looks like the following. Rules could be overridden if included in the `rules` section.
+
 ```json
 {
-  "extends": [
-    "@uifabric/tslint-rules"
-  ],
+  "extends": ["@uifabric/tslint-rules"],
   "rules": {}
 }
 ```
 
 ### Webpack Setup
+
 Adding this plugin/rule will add more time to your build since it will spawn tslint in addition to the one in vscode, if you are not using VS Code then this will be great in your workflow.
 
 You can use [tslint-webpack-plugin](https://github.com/jrparish/tslint-webpack-plugin)
@@ -95,7 +99,7 @@ var webpackConfig = {
       rulesDirectory: './node_modules/tslint-microsoft-contrib'
     })
   ]
-}
+};
 ```
 
 Or you can use [tslint-loader](https://github.com/wbuchwalter/tslint-loader)
@@ -121,5 +125,5 @@ var webpackConfig = {
       }
     ]
   }
-}
+};
 ```

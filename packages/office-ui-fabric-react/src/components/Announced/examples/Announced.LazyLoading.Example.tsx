@@ -1,122 +1,152 @@
 import * as React from 'react';
-import { Announced } from '../Announced';
-import { createArray, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { Announced } from 'office-ui-fabric-react/lib/Announced';
+import { createArray, Async } from 'office-ui-fabric-react/lib/Utilities';
 import { Image } from 'office-ui-fabric-react/lib/Image';
 import { FocusZone } from 'office-ui-fabric-react/lib/FocusZone';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { IStackTokens, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Stack, IStackTokens, IStackStyles } from 'office-ui-fabric-react/lib/Stack';
+import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { ProgressIndicator } from 'office-ui-fabric-react/lib/ProgressIndicator';
-import { Async } from 'office-ui-fabric-react/lib/Utilities';
-import './Announced.Example.scss';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+const photoStackTokens: IStackTokens = { childrenGap: '6 6' };
+const photoStackStyles: Partial<IStackStyles> = {
+  root: {
+    border: '1px solid black',
+    padding: 10,
+    overflowY: 'auto'
+  },
+  inner: {
+    padding: 0
+  }
+};
+
+const photoCellClass = mergeStyles({
+  display: 'block',
+  boxSizing: 'border-box',
+  width: 100,
+  height: 100
+});
 
 const DELAY = 10;
+const PHOTO_COUNT = 30;
+
+interface IPhoto {
+  url: string;
+  width: number;
+  height: number;
+}
 
 export interface IAnnouncedLazyLoadingExampleState {
-  photos: { url: string; width: number; height: number }[];
+  /** Number of photos loaded so far */
   total: number;
   announced?: JSX.Element;
-  percentComplete: number;
   loading: boolean;
-  complete: boolean;
   timeSinceLastAnnounce: number;
 }
 
 export interface IAnnouncedLazyLoadingExampleProps {}
 
 export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyLoadingExampleProps, IAnnouncedLazyLoadingExampleState> {
-  private _root = createRef<HTMLElement>();
-  private timer: number;
-  private increaseTotal: number;
+  private _photos: IPhoto[];
   private _async: Async;
 
   constructor(props: {}) {
     super(props);
 
     this._async = new Async(this);
+    this._photos = this._createPhotos();
 
     this.state = {
-      photos: this._createPhotos(),
       total: 0,
       announced: undefined,
-      percentComplete: 0,
       loading: false,
-      complete: false,
       timeSinceLastAnnounce: 0
     };
+  }
 
-    this._renderPhotos = this._renderPhotos.bind(this);
-    this._renderAnnounced = this._renderAnnounced.bind(this);
-    this._onToggleChange = this._onToggleChange.bind(this);
-
-    this.increaseTotal = this._async.setInterval(() => {
-      if (this.state.loading && this.state.total < this.state.photos.length) {
-        this.setState({ total: this.state.total + 1 });
-      } else if (this.state.total === this.state.photos.length && this.state.complete !== true) {
-        this.setState({ complete: true, announced: undefined });
+  public componentDidMount() {
+    const interval1 = this._async.setInterval(() => {
+      const { loading, total } = this.state;
+      if (loading && total < PHOTO_COUNT) {
+        this.setState({ total: total + 1 });
+      } else if (total === PHOTO_COUNT) {
+        this.setState({ announced: undefined });
+        this._async.clearInterval(interval1);
       }
     }, 2000);
 
-    this.timer = this._async.setInterval(() => {
-      if (this.state.loading && !this.state.complete) {
-        this.setState({ timeSinceLastAnnounce: this.state.timeSinceLastAnnounce + 1 });
+    const interval2 = this._async.setInterval(() => {
+      const { loading, total, timeSinceLastAnnounce } = this.state;
+      if (loading) {
+        this.setState({ timeSinceLastAnnounce: timeSinceLastAnnounce + 1 });
 
-        if (this.state.timeSinceLastAnnounce === DELAY || this.state.percentComplete === 1) {
+        if (timeSinceLastAnnounce === DELAY || total === PHOTO_COUNT) {
           this.setState({
-            announced: <Announced message={`${this.state.total} of ${this.state.photos.length} photos loaded`} />,
+            announced: <Announced message={`${total} of ${PHOTO_COUNT} photos loaded`} />,
             timeSinceLastAnnounce: 0
           });
+
+          if (total === PHOTO_COUNT) {
+            this._async.clearInterval(interval2);
+          }
         }
       }
     }, 1000);
   }
 
   public render(): JSX.Element {
-    const { percentComplete } = this.state;
+    const { announced, total, loading } = this.state;
     const stackTokens: IStackTokens = { childrenGap: 10 };
+    const percentComplete = total / PHOTO_COUNT;
 
     return (
       <Stack tokens={stackTokens}>
         <Text>
-          Turn on Narrator and check the toggle to start loading photos. Announced should announce the number of photos loaded every 10
+          Turn on Narrator and press the button to start loading photos. Announced should announce the number of photos loaded every 10
           seconds, as that is the delay chosen for this example.
         </Text>
-        <Toggle label="Check to start loading photos" onText="Start/Resume" offText="Pause" onChange={this._onToggleChange} />
+        <DefaultButton
+          text={loading ? 'Pause loading' : 'Load photos'}
+          onClick={loading ? this._pauseLoading : this._startLoading}
+          styles={{ root: { width: 150 } }}
+        />
         <ProgressIndicator label={percentComplete < 1 ? 'Loading photos' : 'Finished loading photos'} percentComplete={percentComplete} />
-        {this._renderAnnounced()}
-        <FocusZone as="ul" className="ms-AnnouncedExamples-photoList">
-          {this._renderPhotos()}
+        {announced}
+        <FocusZone>
+          <Stack
+            horizontal
+            wrap
+            // Render the inner content as a ul (there's not currently a less-verbose way to do this)
+            // tslint:disable-next-line:jsx-no-lambda
+            tokens={photoStackTokens}
+            styles={photoStackStyles}
+            slots={{ inner: { component: 'ul' } }}
+          >
+            {this._renderPhotos()}
+          </Stack>
         </FocusZone>
       </Stack>
     );
   }
 
   public componentWillUnmount(): void {
-    clearTimeout(this.timer);
-    clearTimeout(this.increaseTotal);
+    this._async.dispose();
   }
 
-  public componentDidUpdate(): void {
-    const percentComplete = this.state.total / this.state.photos.length;
-    if (percentComplete !== this.state.percentComplete && this.state.percentComplete < 1) {
-      this.setState({ percentComplete: percentComplete });
-    }
-  }
+  private _startLoading = () => {
+    this.setState({ loading: true });
+  };
 
-  private _onToggleChange(): void {
-    this.setState({ loading: !this.state.loading });
-  }
+  private _pauseLoading = () => {
+    this.setState({ loading: false });
+  };
 
-  private _renderAnnounced(): JSX.Element | undefined {
-    const { announced } = this.state;
-    return announced;
-  }
-
-  private _createPhotos(): { url: string; width: number; height: number }[] {
+  private _createPhotos(): IPhoto[] {
     const width = 100;
     const height = 100;
 
-    const result = createArray(30, () => {
+    const result = createArray(PHOTO_COUNT, () => {
       return {
         url: `http://placehold.it/${width}x${height}`,
         width: width,
@@ -127,18 +157,17 @@ export class AnnouncedLazyLoadingExample extends React.Component<IAnnouncedLazyL
   }
 
   private _renderPhotos(): JSX.Element[] {
-    const result = this.state.photos.map((photo: { url: string; width: number; height: number }, index: number) => (
-      <ul
+    const result = this._photos.map((photo: IPhoto, index: number) => (
+      <li
         key={index}
-        className="ms-AnnouncedExamples-photoCell"
+        className={photoCellClass}
         aria-posinset={index + 1}
-        aria-setsize={this.state.photos.length}
+        aria-setsize={PHOTO_COUNT}
         aria-label="Photo"
         data-is-focusable={true}
-        ref={this._root}
       >
         {this.state.total > index ? <Image src={photo.url} width={photo.width} height={photo.height} /> : <div />}
-      </ul>
+      </li>
     ));
 
     return result;

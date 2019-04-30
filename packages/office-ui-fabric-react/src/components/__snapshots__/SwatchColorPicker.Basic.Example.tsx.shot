@@ -9,6 +9,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -870,6 +873,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -1676,6 +1682,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -2492,6 +2501,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -4502,6 +4514,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;

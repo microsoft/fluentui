@@ -1,6 +1,20 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 6.0.2
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Add Calendar to top level export
+
+## 6.0.1
+Mon, 15 Apr 2019 12:33:42 GMT
+
+### Patches
+
+- Bump to create first major release
 
 ## 0.3.5
 Tue, 02 Apr 2019 00:38:14 GMT

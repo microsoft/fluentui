@@ -1,5 +1,4 @@
 import * as React from 'react';
-import { ButtonStatus } from './Button.checklist';
 import { ButtonDefaultExample } from './examples/Button.Default.Example';
 import { ButtonContextualMenuExample } from './examples/Button.ContextualMenu.Example';
 import { ButtonCompoundExample } from './examples/Button.Compound.Example';
@@ -81,11 +80,9 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Command Button',
       code: ButtonCommandExampleCode,
       view: <ButtonCommandExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
-    }
-  ],
-  implementationExamples: [
+    },
     {
-      title: 'Button Like Anchor',
+      title: 'Button-like Anchor',
       code: ButtonAnchorExampleCode,
       view: <ButtonAnchorExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
@@ -113,6 +110,5 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true,
-  componentStatus: ButtonStatus
+  isFeedbackVisible: true
 });

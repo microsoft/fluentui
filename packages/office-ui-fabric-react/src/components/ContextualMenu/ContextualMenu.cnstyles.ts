@@ -41,7 +41,7 @@ export const getMenuItemStyles = memoizeFunction(
 
     const menuItemStyles: IMenuItemStyles = {
       item: [
-        fonts.medium,
+        fonts.small,
         {
           color: semanticColors.bodyText,
           position: 'relative',
@@ -56,7 +56,7 @@ export const getMenuItemStyles = memoizeFunction(
       },
       root: [
         getFocusStyle(theme),
-        fonts.medium,
+        fonts.small,
         {
           color: semanticColors.bodyText,
           backgroundColor: 'transparent',
@@ -213,7 +213,7 @@ export const getMenuItemStyles = memoizeFunction(
         display: 'inline-block',
         verticalAlign: 'middle',
         flexShrink: '0',
-        fontSize: FontSizes.small, // 12px
+        fontSize: FontSizes.xSmall, // 12px
         selectors: {
           ':hover': {
             color: palette.neutralPrimary

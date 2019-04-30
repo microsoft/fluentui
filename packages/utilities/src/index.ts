@@ -60,5 +60,6 @@ export * from './string';
 export * from './styled';
 export * from './warn';
 export { IStyleFunctionOrObject } from '@uifabric/merge-styles';
+export { setFocusVisibility } from './setFocusVisibility';
 export { setSSR } from './dom/setSSR';
 import './version';

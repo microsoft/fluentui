@@ -37,7 +37,7 @@ export class TeachingBubbleSmallHeadlineExample extends React.Component<{}, ITea
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={this._menuButtonElement}
+              target={this._menuButtonElement}
               hasSmallHeadline={true}
               onDismiss={this._onDismiss}
               hasCloseIcon={true}

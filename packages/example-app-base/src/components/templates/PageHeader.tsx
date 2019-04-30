@@ -55,20 +55,20 @@ export const PageHeader = styled(
   PageHeaderBase as React.ComponentClass<IPageHeaderProps>,
   (props: IPageHeaderStyleProps): Partial<IPageHeaderStyles> => ({
     root: [
-      props.theme.fonts.large,
+      props.theme.fonts.medium,
       {
         margin: 0,
         padding: '8px 0 4px'
       },
       props.as === 'h1' && [
-        props.theme.fonts.xxLarge,
+        props.theme.fonts.xLarge,
         {
           margin: 0,
           padding: '16px 0 4px'
         }
       ],
       props.as === 'h2' && [
-        props.theme.fonts.xLarge,
+        props.theme.fonts.mediumPlus,
         {
           margin: 0,
           padding: '12px 0 4px'

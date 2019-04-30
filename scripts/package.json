@@ -5,7 +5,7 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
-    "code-style": "node -v",
+    "code-style": "node ./just.js code-style",
     "bundlesize": "bundlesize --debug",
     "test": "jest"
   },
@@ -16,11 +16,11 @@
     }
   ],
   "devDependencies": {
-    "@microsoft/api-extractor": "~7.0.23",
+    "@microsoft/api-extractor": "7.0.34",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/codepen-loader": "^0.1.0",
-    "@uifabric/merge-styles": "^6.16.4",
+    "@uifabric/codepen-loader": "^0.1.1",
+    "@uifabric/merge-styles": "^6.17.0",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",
@@ -42,8 +42,8 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.10.1",
-    "just-task": "~0.8.0",
+    "just-scripts": "~0.14.4",
+    "just-task": "~0.9.3",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",

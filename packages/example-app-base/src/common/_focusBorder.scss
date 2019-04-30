@@ -1,3 +1,5 @@
+// @deprecated Will be removed in version 7
+
 @import './semanticColorVariables';
 
 @mixin focus-border($padding: 0, $color: $focusedBorderColor) {

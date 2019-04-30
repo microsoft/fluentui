@@ -10,8 +10,8 @@ import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots } from './S
 export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const {
     styles,
-    tokens,
     children,
+    content,
     primary,
     disabled,
     onClick,
@@ -19,6 +19,8 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     expanded,
     menu: Menu,
     primaryActionDisabled,
+    secondaryAriaLabel,
+    buttonRef,
     onMenuDismiss,
     menuTarget,
     onSecondaryActionClick,
@@ -37,14 +39,17 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     splitDivider: 'span'
   });
 
+  const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
+
   return (
     <Slots.root horizontal as="span" verticalAlign="stretch">
       <Slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
-        aria-disabled={primaryActionDisabled || disabled}
-        aria-label={ariaLabel}
+        ariaLabel={ariaLabel}
         onClick={onClick}
+        componentRef={buttonRef}
+        content={content}
         {...rest}
       >
         {children}
@@ -56,8 +61,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         primary={primary}
         disabled={disabled}
         expanded={expanded}
-        aria-disabled={disabled}
-        aria-label={ariaLabel}
+        ariaLabel={menuButtonAriaLabel}
         onClick={onSecondaryActionClick}
         menu={Menu}
       />

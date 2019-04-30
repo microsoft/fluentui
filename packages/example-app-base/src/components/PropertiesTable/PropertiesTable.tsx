@@ -1,15 +1,24 @@
 import * as React from 'react';
 import { DetailsList, DetailsListLayoutMode, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
 import { SelectionMode } from 'office-ui-fabric-react/lib/Selection';
-import { FontClassNames, mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { styled, classNamesFunction, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IInterfaceProperty, IEnumProperty, InterfacePropertyType } from '../../utilities/parser/index';
+import { IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
+import { getStyles } from './PropertiesTableSet.styles';
 
 export interface IPropertiesTableProps {
   title?: string;
   properties: IInterfaceProperty[] | IEnumProperty[];
   renderAsEnum?: boolean;
   key?: string;
+  /** Theme provided by higher-order component. */
+  theme?: ITheme;
+  /** Optional override styles */
+  styles?: IStyleFunctionOrObject<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles>;
 }
+
+const getClassNames = classNamesFunction<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles>();
 
 const renderCell = (text: string) => {
   // When the text is passed to this function, it has had newline characters removed,
@@ -83,7 +92,7 @@ const ENUM_COLUMNS: IColumn[] = getColumns([
   { key: 'description', name: 'Description', minWidth: 300, maxWidth: 400 }
 ]);
 
-export class PropertiesTable extends React.PureComponent<IPropertiesTableProps> {
+class PropertiesTableBase extends React.PureComponent<IPropertiesTableProps> {
   public static defaultProps: Partial<IPropertiesTableProps> = {
     title: 'Properties'
   };
@@ -112,30 +121,24 @@ export class PropertiesTable extends React.PureComponent<IPropertiesTableProps> 
   }
 
   public render(): JSX.Element | null {
-    const { title, renderAsEnum } = this.props;
+    const { title, renderAsEnum, styles, theme } = this.props;
 
     if (this._properties.length === 0) {
       return null;
     }
 
-    const rootClass = mergeStyles([
-      {
-        marginBottom: 20,
-        overflowX: 'auto',
-        overflowY: 'inherit'
-      },
-      'PropertiesTable'
-    ]);
+    const classNames = getClassNames(styles, { theme });
 
     return (
-      <div className={rootClass}>
-        <h2 className={FontClassNames.xLarge}>{title}</h2>
+      <div className={classNames.tableRoot}>
+        <h2 className={classNames.tableHeader}>{title}</h2>
         <DetailsList
           selectionMode={SelectionMode.none}
           layoutMode={DetailsListLayoutMode.justified}
           items={this._properties}
           groups={this._groups}
           columns={renderAsEnum ? ENUM_COLUMNS : DEFAULT_COLUMNS}
+          styles={classNames.subComponentStyles.list}
         />
       </div>
     );
@@ -179,3 +182,11 @@ export class PropertiesTable extends React.PureComponent<IPropertiesTableProps> 
     return index;
   }
 }
+
+export const PropertiesTable: React.StatelessComponent<IPropertiesTableProps> = styled<
+  IPropertiesTableProps,
+  IPropertiesTableSetStyleProps,
+  IPropertiesTableSetStyles
+>(PropertiesTableBase, getStyles, undefined, {
+  scope: 'PropertiesTable'
+});

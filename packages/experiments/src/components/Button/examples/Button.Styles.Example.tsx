@@ -25,8 +25,18 @@ const tokens = {
   }
 };
 
-const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu: IMenuButtonProps['menu'] = render => render((MenuType, props) => <MenuType {...props} items={menuItems} />);
+const menuProps: IMenuButtonProps['menu'] = {
+  items: [
+    {
+      key: 'a',
+      name: 'Item a'
+    },
+    {
+      key: 'b',
+      name: 'Item b'
+    }
+  ]
+};
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   <Stack horizontal disableShrink tokens={tokens.buttonStack}>
@@ -70,7 +80,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon="PeopleAdd"
                   content="Button Styles Function: Purple Icon via Button Theme"
-                  styles={(props, theme) => ({ icon: { color: theme.fonts.medium.color } })}
+                  styles={(props, theme) => ({ icon: { color: theme.fonts.small.color } })}
                   theme={testTheme}
                 />
               </ButtonStack>
@@ -97,7 +107,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => ({ root: { color: '#8F6800' } })
+                    styles: () => ({ root: { color: '#8F6800' } })
                   }}
                   content="Icon Styles Function: Golden Brown Icon"
                 />
@@ -130,7 +140,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <MenuButton
                   content="All Classnames"
                   icon="PeopleAdd"
-                  menu={buttonMenu}
+                  menu={menuProps}
                   styles={{
                     root: 'root-classname',
                     stack: 'stack-classname',

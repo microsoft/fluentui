@@ -153,8 +153,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       this._id = newProps.id || this._id;
       this._setValue(newProps.value);
 
-      const { validateOnFocusIn, validateOnFocusOut } = newProps;
-      if (!(validateOnFocusIn || validateOnFocusOut)) {
+      if (_shouldValidateAllChanges(newProps)) {
         this._delayedValidate(newProps.value);
       }
     }
@@ -505,8 +504,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       }
     });
 
-    const { validateOnFocusIn, validateOnFocusOut } = this.props;
-    if (!(validateOnFocusIn || validateOnFocusOut)) {
+    if (_shouldValidateAllChanges(this.props)) {
       this._delayedValidate(value);
     }
 
@@ -516,10 +514,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   };
 
   private _validate(value: string | undefined): void {
-    const { validateOnFocusIn, validateOnFocusOut } = this.props;
-
     // In case of _validate called multi-times during executing validate logic with promise return.
-    if (this._latestValidateValue === value && !(validateOnFocusIn || validateOnFocusOut)) {
+    if (this._latestValidateValue === value && _shouldValidateAllChanges(this.props)) {
       return;
     }
 
@@ -559,4 +555,12 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       textField.style.height = textField.scrollHeight + 'px';
     }
   }
+}
+
+/**
+ * If `validateOnFocusIn` or `validateOnFocusOut` is true, validation should run **only** on that event.
+ * Otherwise, validation should run on every change.
+ */
+function _shouldValidateAllChanges(props: ITextFieldProps): boolean {
+  return !(props.validateOnFocusIn || props.validateOnFocusOut);
 }

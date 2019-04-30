@@ -4,7 +4,7 @@ import { getFocusStyle } from 'office-ui-fabric-react';
 export const getStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({
   root: [
     getFocusStyle(theme),
-    theme.fonts.medium,
+    theme.fonts.small,
     {
       width: '100%',
       display: 'flex',
@@ -34,5 +34,5 @@ export const getStyles: ICollapsibleSectionTitleComponent['styles'] = (props, th
       transform: 'rotate(-90deg)'
     }
   ],
-  text: theme.fonts.small
+  text: theme.fonts.xSmall
 });

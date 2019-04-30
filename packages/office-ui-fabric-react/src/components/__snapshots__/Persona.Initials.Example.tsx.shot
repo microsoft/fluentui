@@ -68,7 +68,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #5E4B8B;
+                background-color: #4F6BED;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 10px;
@@ -286,7 +286,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00A300;
+                background-color: #0B6A0B;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 10px;
@@ -504,7 +504,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #7E3878;
+                background-color: #4F6BED;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 14px;
@@ -722,7 +722,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00ABA9;
+                background-color: #8764B8;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 14px;
@@ -940,7 +940,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #B91D47;
+                background-color: #0B6A0B;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 16px;
@@ -1157,7 +1157,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #6BA5E7;
+                background-color: #8764B8;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 16px;
@@ -1388,7 +1388,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #E773BD;
+                background-color: #004E8C;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 16px;
@@ -1605,7 +1605,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #1E7145;
+                background-color: #A4262C;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 16px;
@@ -1836,7 +1836,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #DA532C;
+                background-color: #5C2E91;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 20px;
@@ -2067,7 +2067,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #2B5797;
+                background-color: #E3008C;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 20px;
@@ -2298,7 +2298,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #6BA5E7;
+                background-color: #4F6BED;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 28px;
@@ -2515,7 +2515,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #7E3878;
+                background-color: #881798;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 42px;
@@ -2744,7 +2744,7 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
           className=
               ms-Persona-initials
               {
-                background-color: #00ABA9;
+                background-color: #038387;
                 border-radius: 50%;
                 color: #ffffff;
                 font-size: 42px;

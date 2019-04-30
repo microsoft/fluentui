@@ -1,0 +1,22 @@
+{
+  "compiler": {
+    "configType": "tsconfig",
+    "rootFolder": "./"
+  },
+  "policies": {
+    "namespaceSupport": "conservative"
+  },
+  "project": {
+    "entryPointSourceFile": "lib/index.d.ts"
+  },
+  "validationRules": {
+    "missingReleaseTags": "allow"
+  },
+  "messages": {
+    "tsdocMessageReporting": {
+      "tsdoc-undefined-tag": {
+        "logLevel": "none"
+      }
+    }
+  }
+}
