@@ -66,7 +66,8 @@ task(
       series(
         argv().commonjs ? 'ts:commonjs-only' : 'ts',
         condition('lint-imports', () => !argv().min),
-        parallel(condition('webpack', () => !argv().min), condition('verify-api-extractor', () => !argv().min))
+        // verify-api-extractor must always be run now because the api-docs package depends on its output
+        parallel(condition('webpack', () => !argv().min), 'verify-api-extractor')
       )
     )
   )
