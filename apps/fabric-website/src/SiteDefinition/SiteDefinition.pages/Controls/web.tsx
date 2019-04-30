@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { INavPage, LoadingComponent, Page } from '@uifabric/example-app-base/lib/index2';
+import { Omit } from 'office-ui-fabric-react/lib/Utilities';
 
-type Omit<U, K extends keyof U> = Pick<U, Exclude<keyof U, K>>;
 type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
 interface ICategory {
