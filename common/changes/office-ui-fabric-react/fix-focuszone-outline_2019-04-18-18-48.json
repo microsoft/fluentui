@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Lists: Remove unnecessary usages of css concat helper",
+      "comment": "FocusZone: remove outline on focus",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "KevinTCoughlin@users.noreply.github.com"
+  "email": "joschect@microsoft.com"
 }

@@ -7,8 +7,6 @@ export interface ITeachingBubbleCondensedExampleState {
 }
 
 export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachingBubbleCondensedExampleState> {
-  private _menuButtonElement: HTMLElement;
-
   public constructor(props: {}) {
     super(props);
 
@@ -25,16 +23,17 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
+        <span className="ms-TeachingBubbleBasicExample-buttonArea">
           <DefaultButton
             onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
             text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+            id={'buttonId'}
           />
         </span>
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={this._menuButtonElement}
+              target={'#buttonId'}
               hasCondensedHeadline={true}
               onDismiss={this._onDismiss}
               hasCloseIcon={true}

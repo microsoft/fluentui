@@ -15,9 +15,9 @@ export interface ISemanticSlotsProps {
 export interface ISemanticSlotsState {
   slotNames: string[];
   noneSlots: JSX.Element[]; // array of JSX.Element from semanticColorSlotWidget instead of SemanticColorSlots[]??
-  neutralSlots: SemanticColorSlots[];
-  softSlots: SemanticColorSlots[];
-  strongSlots: SemanticColorSlots[];
+  neutralSlots: JSX.Element[];
+  softSlots: JSX.Element[];
+  strongSlots: JSX.Element[];
 }
 
 const slotClassName = mergeStyles({
@@ -121,18 +121,17 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
         'menuItemText', // neutralPrimary
         'menuItemTextHovered' // neutralDark
       ],
-      noneSlots: [],
-      neutralSlots: [],
-      softSlots: [],
-      strongSlots: []
+      noneSlots: this.fillVariantSlotsList(VariantThemeType.None),
+      neutralSlots: this.fillVariantSlotsList(VariantThemeType.Neutral),
+      softSlots: this.fillVariantSlotsList(VariantThemeType.Soft),
+      strongSlots: this.fillVariantSlotsList(VariantThemeType.Strong)
     };
-    this.fillNoneVariantSlots();
-    this.fillNeutralVariantSlots();
   }
 
   public render(): JSX.Element {
     return (
       <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto' } }}>
+        {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
         <h1>Semantic Slots</h1>
         <SemanticSlotsDetailsList
           theme={this.props.theme}
@@ -156,12 +155,11 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
 
   // will need semanticSlotWidget to make the colorbox and slot rule label for each cell though.
 
-  private semanticSlotWidget = (colorString: string, name: string): JSX.Element => {
-    //const slotRule = this.props.themeRules![SemanticColorSlots[semanticColorSlot]];
+  private semanticSlotWidget = (color: string, name: string): JSX.Element => {
     return (
       <div key={name} className={slotClassName}>
         <Stack horizontal gap={5}>
-          <div key={name} className={semanticPaletteColorBox} style={{ backgroundColor: colorString }} />
+          <div key={name} className={semanticPaletteColorBox} style={{ backgroundColor: color }} />
           <div>{name}</div>
         </Stack>
       </div>
@@ -169,39 +167,24 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
   };
 
   // fill noneSlots
-  private fillNoneVariantSlots() {
+  private fillVariantSlotsList(variantType: VariantThemeType): JSX.Element[] {
     // call getVariant to get the default
     let noneThemeVariant: ITheme;
     if (this.props.theme) {
-      noneThemeVariant = getVariant(this.props.theme!, VariantThemeType.None);
+      noneThemeVariant = getVariant(this.props.theme!, variantType);
       let noneSemanticColors = noneThemeVariant.semanticColors;
-      console.log('hello none semantic colors: ', noneSemanticColors);
 
       let tempJSXList: JSX.Element[];
       tempJSXList = [];
       for (let slot in noneSemanticColors) {
         if (noneSemanticColors.hasOwnProperty(slot)) {
           let currSlotJSX = this.semanticSlotWidget((noneSemanticColors as any)[slot], slot);
-          // console.log('currSlotJSX', currSlotJSX);
           tempJSXList.push(currSlotJSX);
         }
       }
-      console.log('temp jsx list: ', tempJSXList);
-      this.setState({
-        noneSlots: tempJSXList
-      });
-      console.log('state none slots: ', this.state.noneSlots);
+      return tempJSXList;
+    } else {
+      return [];
     }
   }
-
-  // fill neutralSlots
-  private fillNeutralVariantSlots() {
-    // call getVariant with VariantThemeType.Neutral & access the returned theme object's semanticColors to get the list
-    // getVariant(this.props.theme);
-    // call setState for neturalSlots and fill the list: each value is the JSX for that slot's colorbox and label
-  }
-
-  // fill softSlots
-
-  // fill strongSlots
 }

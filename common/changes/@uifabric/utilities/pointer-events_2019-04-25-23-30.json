@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Removing closure from `styled` helper to improve performance.",
+      "comment": "Adds pointer events to baseElementProperties",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com"
+  "email": "lotacket@microsoft.com"
 }

@@ -8,7 +8,6 @@ import { CalloutNestedExample } from './examples/Callout.Nested.Example';
 import { CalloutFocusTrapExample } from './examples/Callout.FocusTrap.Example';
 import { CalloutDirectionalExample } from './examples/Callout.Directional.Example';
 import { CalloutCoverExample } from './examples/Callout.Cover.Example';
-import { CalloutStatus } from './Callout.checklist';
 
 const CalloutBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Basic.Example.tsx') as string;
 const CalloutNestedExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Callout/examples/Callout.Nested.Example.tsx') as string;
@@ -22,7 +21,6 @@ export const CalloutPageProps: IDocPageProps = {
   title: 'Callout',
   componentName: 'Callout',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Callout',
-  componentStatus: CalloutStatus,
   examples: [
     {
       title: 'Default Callout',

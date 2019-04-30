@@ -15,9 +15,9 @@ import { SemanticColorSlots, IThemeRules } from 'office-ui-fabric-react/lib/Them
 export interface ISemanticSlotsDetailsListProps {
   slotNames: string[];
   noneSlots: JSX.Element[];
-  neutralSlots: SemanticColorSlots[];
-  softSlots: SemanticColorSlots[];
-  strongSlots: SemanticColorSlots[];
+  neutralSlots: JSX.Element[];
+  softSlots: JSX.Element[];
+  strongSlots: JSX.Element[];
   theme: ITheme | undefined;
   themeRules?: IThemeRules;
 }
@@ -26,9 +26,9 @@ interface ISemanticSlotsDetailsList {
   key: string;
   slotName: string;
   noneSlot: JSX.Element;
-  neutralSlot: SemanticColorSlots;
-  softSlot: SemanticColorSlots;
-  strongSlot: SemanticColorSlots;
+  neutralSlot: JSX.Element;
+  softSlot: JSX.Element;
+  strongSlot: JSX.Element;
 }
 
 export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
@@ -59,6 +59,8 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
       strongSlot: props.strongSlots[i]
     });
   }
+
+  console.log(items);
 
   // CONFUSED: can I parse through FOUR DIFFERENT lists, one for each column?
   groups = [
@@ -106,11 +108,11 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
   ];
 
   columns = [
-    { key: 'slotname', name: 'Slot name', fieldName: 'slot name', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'none', name: 'None', fieldName: 'none', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'neutral', name: 'Netural', fieldName: 'neutral', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'soft', name: 'Soft', fieldName: 'soft', minWidth: 100, maxWidth: 200, isResizable: true },
-    { key: 'strong', name: 'Strong', fieldName: 'strong', minWidth: 100, maxWidth: 200, isResizable: true }
+    { key: 'slotName', name: 'Slot name', fieldName: 'slotName', minWidth: 100, maxWidth: 200, isResizable: true },
+    { key: 'noneSlot', name: 'None', fieldName: 'noneSlot', minWidth: 100, maxWidth: 200, isResizable: true },
+    { key: 'neutralSlot', name: 'Netural', fieldName: 'neutralSlot', minWidth: 100, maxWidth: 200, isResizable: true },
+    { key: 'softSlot', name: 'Soft', fieldName: 'softSlot', minWidth: 100, maxWidth: 200, isResizable: true },
+    { key: 'strongSlot', name: 'Strong', fieldName: 'strongSlot', minWidth: 100, maxWidth: 200, isResizable: true }
     // TODO: INVERSES
   ];
 

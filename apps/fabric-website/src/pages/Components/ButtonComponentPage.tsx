@@ -26,10 +26,6 @@ export class ButtonComponentPage extends React.Component<any, any> {
                 location: 'Variants'
               },
               {
-                text: 'Implementation Examples',
-                location: 'ImplementationExamples'
-              },
-              {
                 text: 'Implementation',
                 location: 'Implementation'
               }

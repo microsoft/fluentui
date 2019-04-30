@@ -4,7 +4,11 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}

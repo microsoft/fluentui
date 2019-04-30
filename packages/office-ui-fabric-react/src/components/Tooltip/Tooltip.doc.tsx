@@ -8,7 +8,6 @@ import { TooltipInteractiveExample } from './examples/Tooltip.Interactive.Exampl
 import { TooltipOverflowExample } from './examples/Tooltip.Overflow.Example';
 import { TooltipNoScrollExample } from './examples/Tooltip.NoScroll.Example';
 import { TooltipAbsolutePositionExample } from './examples/Tooltip.Absolute.Position.Example';
-import { TooltipStatus } from './Tooltip.checklist';
 
 const TooltipBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Basic.Example.tsx') as string;
 const TooltipDisplayExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Tooltip/examples/Tooltip.Display.Example.tsx') as string;
@@ -23,7 +22,6 @@ export const TooltipPageProps: IDocPageProps = {
   title: 'Tooltip',
   componentName: 'Tooltip',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Tooltip',
-  componentStatus: TooltipStatus,
   examples: [
     {
       title: 'Default Tooltip',

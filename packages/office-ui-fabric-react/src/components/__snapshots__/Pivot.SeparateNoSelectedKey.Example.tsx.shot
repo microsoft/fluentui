@@ -27,7 +27,11 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
       }
     >
       <div
-        className="ms-FocusZone"
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
         data-focuszone-id="FocusZone1"
         onFocus={[Function]}
         onKeyDown={[Function]}

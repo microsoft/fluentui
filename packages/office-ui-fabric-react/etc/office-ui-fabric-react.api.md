@@ -350,8 +350,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
     // (undocumented)
-    protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
-    // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
     // (undocumented)
     protected updateSuggestions(suggestions: any[]): void;
@@ -503,7 +501,7 @@ export function canAnyMenuItemsCheck(items: IContextualMenuItem[]): boolean;
 export const Check: React_2.StatelessComponent<ICheckProps>;
 
 // @public (undocumented)
-export class CheckBase extends React.PureComponent<ICheckProps, {}> {
+export class CheckBase extends React.Component<ICheckProps, {}> {
     // (undocumented)
     static defaultProps: ICheckProps;
     // (undocumented)
@@ -837,6 +835,30 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
+
+// @public (undocumented)
+export const DetailsHeader: React_2.StatelessComponent<IDetailsHeaderBaseProps>;
+
+// @public (undocumented)
+export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
+    constructor(props: IDetailsHeaderBaseProps);
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(prevProps: IDetailsHeaderBaseProps): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    static defaultProps: {
+        selectAllVisibility: SelectAllVisibility;
+        collapseAllVisibility: CollapseAllVisibility;
+    };
+    focus(): boolean;
+    // (undocumented)
+    static getDerivedStateFromProps(newProps: IDetailsHeaderBaseProps, prevState: IDetailsHeaderState): IDetailsHeaderState;
+    // (undocumented)
+    render(): JSX.Element;
+    }
 
 // @public (undocumented)
 export const DetailsList: React_2.StatelessComponent<IDetailsListProps>;
@@ -1726,6 +1748,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     className?: string;
     componentRef?: IRefObject<IBreadcrumb>;
     dividerAs?: IComponentAs<IDividerAsProps>;
+    focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
     onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
@@ -2019,7 +2042,7 @@ export interface ICalloutProps extends React_2.HTMLAttributes<HTMLDivElement> {
     setInitialFocus?: boolean;
     style?: React_2.CSSProperties;
     styles?: IStyleFunctionOrObject<ICalloutContentStyleProps, ICalloutContentStyles>;
-    target?: Element | string | MouseEvent | IPoint | null;
+    target?: Target;
     theme?: ITheme;
 }
 
@@ -2568,6 +2591,13 @@ export interface IColumnDragDropDetails {
 }
 
 // @public (undocumented)
+export interface IColumnReorderHeaderProps extends IColumnReorderOptions {
+    onColumnDragEnd?: (props: {
+        dropLocation?: ColumnDragEndLocation;
+    }, event: MouseEvent) => void;
+}
+
+// @public (undocumented)
 export interface IColumnReorderOptions {
     frozenColumnCountFromEnd?: number;
     frozenColumnCountFromStart?: number;
@@ -2576,6 +2606,16 @@ export interface IColumnReorderOptions {
     onColumnDragStart?: (dragStarted: boolean) => void;
     onColumnDrop?: (dragDropDetails: IColumnDragDropDetails) => void;
     onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
+}
+
+// @public (undocumented)
+export interface IColumnResizeDetails {
+    // (undocumented)
+    columnIndex: number;
+    // (undocumented)
+    columnMinWidth: number;
+    // (undocumented)
+    originX?: number;
 }
 
 // @public (undocumented)
@@ -2735,7 +2775,7 @@ export interface ICommandBarStyles {
 export const Icon: React_2.StatelessComponent<IIconProps>;
 
 // @public (undocumented)
-export class IconBase extends React.PureComponent<IIconProps, IIconState> {
+export class IconBase extends React.Component<IIconProps, IIconState> {
     constructor(props: IIconProps);
     // (undocumented)
     render(): JSX.Element;
@@ -2903,7 +2943,7 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     shouldFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
     subMenuHoverDelay?: number;
-    target?: Element | string | MouseEvent | IPoint | null;
+    target?: Target;
     theme?: ITheme;
     title?: string;
     useTargetAsMinWidth?: boolean;
@@ -3111,8 +3151,11 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
     onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
-// Warning: (ae-forgotten-export) The symbol "DetailsHeaderBase" needs to be exported by the entry point index.d.ts
-// 
+// @public (undocumented)
+export interface IDetailsHeader {
+    focus: () => boolean;
+}
+
 // @public (undocumented)
 export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHeaderBase>, IDetailsItemProps {
     ariaLabel?: string;
@@ -3122,10 +3165,8 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     className?: string;
     collapseAllVisibility?: CollapseAllVisibility;
     columnReorderOptions?: IColumnReorderOptions;
-    // Warning: (ae-forgotten-export) The symbol "IColumnReorderHeaderProps" needs to be exported by the entry point index.d.ts
     columnReorderProps?: IColumnReorderHeaderProps;
-    // Warning: (ae-forgotten-export) The symbol "IDetailsHeader" needs to be exported by the entry point index.d.ts
-    componentRef?: IRefObject<IDetailsHeader_2>;
+    componentRef?: IRefObject<IDetailsHeader>;
     isAllCollapsed?: boolean;
     layoutMode: DetailsListLayoutMode;
     minimumPixelsForDrag?: number;
@@ -3137,10 +3178,7 @@ export interface IDetailsHeaderBaseProps extends React.ClassAttributes<DetailsHe
     onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onToggleCollapseAll?: (isAllCollapsed: boolean) => void;
-    // Warning: (ae-forgotten-export) The symbol "SelectAllVisibility" needs to be exported by the entry point index.d.ts
     selectAllVisibility?: SelectAllVisibility;
-    // Warning: (ae-forgotten-export) The symbol "IDetailsHeaderStyleProps" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "IDetailsHeaderStyles" needs to be exported by the entry point index.d.ts
     styles?: IStyleFunctionOrObject<IDetailsHeaderStyleProps, IDetailsHeaderStyles>;
     theme?: ITheme;
 }
@@ -3150,6 +3188,75 @@ export interface IDetailsHeaderProps extends IDetailsHeaderBaseProps {
     columns: IColumn[];
     selection: ISelection;
     selectionMode: SelectionMode;
+}
+
+// @public (undocumented)
+export interface IDetailsHeaderState {
+    // (undocumented)
+    columnReorderProps?: IColumnReorderHeaderProps;
+    // (undocumented)
+    columnResizeDetails?: IColumnResizeDetails;
+    // (undocumented)
+    groupNestingDepth?: number;
+    // (undocumented)
+    isAllCollapsed?: boolean;
+    // (undocumented)
+    isAllSelected?: boolean;
+    // (undocumented)
+    isSizing?: boolean;
+}
+
+// @public (undocumented)
+export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme'>> & Pick<IDetailsHeaderProps, 'className'> & {
+    isSelectAllHidden?: boolean;
+    isAllSelected?: boolean;
+    isResizingColumn?: boolean;
+    isAllCollapsed?: boolean;
+    isSizing?: boolean;
+    isCheckboxHidden?: boolean;
+    cellStyleProps?: ICellStyleProps;
+};
+
+// @public (undocumented)
+export interface IDetailsHeaderStyles {
+    // (undocumented)
+    accessibleLabel: IStyle;
+    // (undocumented)
+    cellIsActionable: IStyle;
+    // (undocumented)
+    cellIsCheck: IStyle;
+    // (undocumented)
+    cellIsEmpty: IStyle;
+    // (undocumented)
+    cellIsGroupExpander: IStyle;
+    // (undocumented)
+    cellIsResizing: IStyle;
+    // (undocumented)
+    cellSizer: IStyle;
+    // (undocumented)
+    cellSizerEnd: IStyle;
+    // (undocumented)
+    cellSizerStart: IStyle;
+    // (undocumented)
+    cellWrapperPadded: IStyle;
+    // (undocumented)
+    check: IStyle;
+    // (undocumented)
+    checkTooltip: IStyle;
+    // (undocumented)
+    collapseButton: IStyle;
+    // (undocumented)
+    dropHintCaretStyle: IStyle;
+    // (undocumented)
+    dropHintCircleStyle: IStyle;
+    // (undocumented)
+    dropHintLineStyle: IStyle;
+    // (undocumented)
+    dropHintStyle: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    sizingOverlay: IStyle;
 }
 
 // @public (undocumented)
@@ -3198,6 +3305,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     disableSelectionZone?: boolean;
     // Warning: (ae-forgotten-export) The symbol "IDragDropEvents" needs to be exported by the entry point index.d.ts
     dragDropEvents?: IDragDropEvents;
+    // @deprecated
     enableShimmer?: boolean;
     enterModalSelectionOnTouch?: boolean;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
@@ -3317,6 +3425,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onWillUnmount?: (row?: DetailsRowBase) => void;
     // Warning: (ae-forgotten-export) The symbol "IDetailsRowFieldsProps" needs to be exported by the entry point index.d.ts
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
+    // @deprecated
     shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
@@ -3424,13 +3533,13 @@ export interface IDetailsRowStyles {
     isRowHeader: IStyle;
     // (undocumented)
     root: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmer: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerBottomBorder: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerIconPlaceholder: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     shimmerLeftBorder: IStyle;
 }
 
@@ -4049,6 +4158,18 @@ export interface IDropdownSubComponentStyles {
     panel: IStyleFunctionOrObject<IPanelStyleProps, any>;
 }
 
+// @public (undocumented)
+export interface IDropHintDetails {
+    // (undocumented)
+    dropHintElementRef: HTMLElement;
+    // (undocumented)
+    endX: number;
+    // (undocumented)
+    originX: number;
+    // (undocumented)
+    startX: number;
+}
+
 // @public
 export interface IEntityRect {
     // (undocumented)
@@ -4225,6 +4346,7 @@ export interface IFocusTrapZone {
 export interface IFocusTrapZoneProps extends React.HTMLAttributes<HTMLDivElement> {
     ariaLabelledBy?: string;
     componentRef?: IRefObject<IFocusTrapZone>;
+    disabled?: boolean;
     disableFirstFocus?: boolean;
     elementToFocusOnDismiss?: HTMLElement;
     firstFocusableSelector?: string | (() => string);
@@ -4664,7 +4786,6 @@ export interface IImage {
 // @public (undocumented)
 export interface IImageProps extends React.ImgHTMLAttributes<HTMLImageElement> {
     className?: string;
-    componentRef?: IRefObject<IImage>;
     coverStyle?: ImageCoverStyle;
     // @deprecated
     errorSrc?: string;
@@ -6064,9 +6185,9 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
 // @public (undocumented)
 export interface IScrollablePaneState {
     // (undocumented)
-    scrollbarHeight: number | undefined;
+    scrollbarHeight: number;
     // (undocumented)
-    scrollbarWidth: number | undefined;
+    scrollbarWidth: number;
     // (undocumented)
     stickyBottomHeight: number;
     // (undocumented)
@@ -6386,6 +6507,21 @@ export interface IShimmerColors {
     background?: string;
     shimmer?: string;
     shimmerWave?: string;
+}
+
+// @public
+export interface IShimmeredDetailsListProps extends IDetailsListProps {
+    // @deprecated
+    detailsListStyles?: IDetailsListProps['styles'];
+    enableShimmer?: boolean;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React_2.ReactNode;
+    removeFadingOverlay?: boolean;
+    shimmerLines?: number;
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
+    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
+    // 
+    // @deprecated
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 }
 
 // @public
@@ -6803,6 +6939,8 @@ export interface IStickyProps extends React.Props<Sticky> {
 // @public (undocumented)
 export interface IStickyState {
     // (undocumented)
+    distanceFromTop?: number;
+    // (undocumented)
     isStickyBottom: boolean;
     // (undocumented)
     isStickyTop: boolean;
@@ -7108,6 +7246,8 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     primaryButtonProps?: IButtonProps;
     secondaryButtonProps?: IButtonProps;
     styles?: IStyleFunctionOrObject<ITeachingBubbleStyleProps, ITeachingBubbleStyles>;
+    target?: Target;
+    // @deprecated (undocumented)
     targetElement?: HTMLElement;
     theme?: ITheme;
 }
@@ -7451,17 +7591,28 @@ export interface ITooltipStyles {
     subText: IStyle;
 }
 
-// @public (undocumented)
+// @public @deprecated (undocumented)
 export interface IVerticalDividerClassNames {
-    // (undocumented)
     divider: string;
-    // (undocumented)
     wrapper: string;
 }
 
-// @public (undocumented)
+// @public
 export interface IVerticalDividerProps {
+    className?: string;
+    // @deprecated (undocumented)
     getClassNames?: (theme: ITheme) => IVerticalDividerClassNames;
+    styles?: IStyleFunctionOrObject<IVerticalDividerPropsStyles, IVerticalDividerStyles>;
+    theme?: ITheme;
+}
+
+// @public
+export type IVerticalDividerPropsStyles = Pick<IVerticalDividerProps, 'theme' | 'getClassNames' | 'className'>;
+
+// @public
+export interface IVerticalDividerStyles {
+    divider: IStyle;
+    wrapper: IStyle;
 }
 
 // @public (undocumented)
@@ -8270,6 +8421,16 @@ export { SelectableOptionMenuItemType as DropdownMenuItemType }
 
 export { SelectableOptionMenuItemType }
 
+// @public (undocumented)
+export enum SelectAllVisibility {
+    // (undocumented)
+    hidden = 1,
+    // (undocumented)
+    none = 0,
+    // (undocumented)
+    visible = 2,
+}
+
 // @public
 export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     // (undocumented)
@@ -8371,23 +8532,149 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
 // @public (undocumented)
 export enum SemanticColorSlots {
     // (undocumented)
+    accentButtonBackground = 51,
+    // (undocumented)
+    accentButtonText = 52,
+    // (undocumented)
+    actionLink = 68,
+    // (undocumented)
+    actionLinkHovered = 69,
+    // (undocumented)
     bodyBackground = 0,
     // (undocumented)
-    bodyDivider = 4,
+    bodyDivider = 7,
+    // (undocumented)
+    bodyFrameBackground = 2,
+    // (undocumented)
+    bodyFrameDivider = 3,
     // (undocumented)
     bodyStandoutBackground = 1,
     // (undocumented)
-    bodySubtext = 3,
+    bodySubtext = 6,
     // (undocumented)
-    bodyText = 2,
+    bodyText = 4,
     // (undocumented)
-    buttonBackground = 7,
+    bodyTextChecked = 5,
     // (undocumented)
-    buttonBackgroundHovered = 8,
+    buttonBackground = 28,
     // (undocumented)
-    link = 5,
+    buttonBackgroundChecked = 29,
     // (undocumented)
-    linkHovered = 6,
+    buttonBackgroundCheckedHovered = 31,
+    // (undocumented)
+    buttonBackgroundDisabled = 33,
+    // (undocumented)
+    buttonBackgroundHovered = 30,
+    // (undocumented)
+    buttonBackgroundPressed = 32,
+    // (undocumented)
+    buttonBorder = 34,
+    // (undocumented)
+    buttonBorderDisabled = 41,
+    // (undocumented)
+    buttonText = 35,
+    // (undocumented)
+    buttonTextChecked = 37,
+    // (undocumented)
+    buttonTextCheckedHovered = 38,
+    // (undocumented)
+    buttonTextDisabled = 40,
+    // (undocumented)
+    buttonTextHovered = 36,
+    // (undocumented)
+    buttonTextPressed = 39,
+    // (undocumented)
+    defaultStateBackground = 16,
+    // (undocumented)
+    disabledBackground = 8,
+    // (undocumented)
+    disabledBodySubtext = 12,
+    // (undocumented)
+    disabledBodyText = 10,
+    // (undocumented)
+    disabledSubText = 11,
+    // (undocumented)
+    disabledText = 9,
+    // (undocumented)
+    focusBorder = 13,
+    // (undocumented)
+    inputBackground = 19,
+    // (undocumented)
+    inputBackgroundChecked = 20,
+    // (undocumented)
+    inputBackgroundCheckedHovered = 21,
+    // (undocumented)
+    inputBorder = 17,
+    // (undocumented)
+    inputBorderHovered = 18,
+    // (undocumented)
+    inputFocusBorderAlt = 23,
+    // (undocumented)
+    inputForegroundChecked = 22,
+    // (undocumented)
+    inputPlaceholderText = 27,
+    // (undocumented)
+    inputText = 25,
+    // (undocumented)
+    inputTextHovered = 26,
+    // (undocumented)
+    link = 70,
+    // (undocumented)
+    linkHovered = 71,
+    // (undocumented)
+    listBackground = 61,
+    // (undocumented)
+    listHeaderBackgroundHovered = 66,
+    // (undocumented)
+    listHeaderBackgroundPressed = 67,
+    // (undocumented)
+    listItemBackgroundChecked = 64,
+    // (undocumented)
+    listItemBackgroundCheckedHovered = 65,
+    // (undocumented)
+    listItemBackgroundHovered = 63,
+    // (undocumented)
+    listText = 62,
+    // (undocumented)
+    menuBackground = 53,
+    // (undocumented)
+    menuDivider = 54,
+    // (undocumented)
+    menuHeader = 56,
+    // (undocumented)
+    menuIcon = 55,
+    // (undocumented)
+    menuItemBackgroundHovered = 57,
+    // (undocumented)
+    menuItemBackgroundPressed = 58,
+    // (undocumented)
+    menuItemText = 59,
+    // (undocumented)
+    menuItemTextHovered = 60,
+    // (undocumented)
+    primaryButtonBackground = 42,
+    // (undocumented)
+    primaryButtonBackgroundDisabled = 45,
+    // (undocumented)
+    primaryButtonBackgroundHovered = 43,
+    // (undocumented)
+    primaryButtonBackgroundPressed = 44,
+    // (undocumented)
+    primaryButtonBorder = 46,
+    // (undocumented)
+    primaryButtonText = 47,
+    // (undocumented)
+    primaryButtonTextDisabled = 50,
+    // (undocumented)
+    primaryButtonTextHovered = 48,
+    // (undocumented)
+    primaryButtonTextPressed = 49,
+    // (undocumented)
+    smallInputBorder = 24,
+    // (undocumented)
+    variantBorder = 14,
+    // (undocumented)
+    variantBorderHovered = 15,
 }
 
 // @public (undocumented)
@@ -8442,8 +8729,6 @@ export class ShimmerCircleBase extends BaseComponent<IShimmerCircleProps, {}> {
     render(): JSX.Element;
 }
 
-// Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export const ShimmeredDetailsList: React_2.StatelessComponent<IShimmeredDetailsListProps>;
 
@@ -8607,8 +8892,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     static contextTypes: IStickyContext;
     // (undocumented)
     static defaultProps: IStickyProps;
-    // (undocumented)
-    distanceFromTop: number;
     // (undocumented)
     readonly nonStickyContent: HTMLDivElement | null;
     // (undocumented)
@@ -8877,6 +9160,9 @@ export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
 }
 
 // @public (undocumented)
+export type Target = Element | string | MouseEvent | IPoint | null;
+
+// @public (undocumented)
 export const TeachingBubble: React_2.StatelessComponent<ITeachingBubbleProps>;
 
 // @public (undocumented)
@@ -9074,7 +9360,7 @@ export enum ValuePosition {
 }
 
 // @public (undocumented)
-export const VerticalDivider: (props: IVerticalDividerProps) => JSX.Element;
+export const VerticalDivider: React_2.StatelessComponent<IVerticalDividerProps>;
 
 // @public (undocumented)
 export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> implements IComboBox {

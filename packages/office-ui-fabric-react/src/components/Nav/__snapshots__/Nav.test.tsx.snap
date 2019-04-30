@@ -2,7 +2,11 @@
 
 exports[`Nav renders Nav correctly 1`] = `
 <div
-  className="ms-FocusZone"
+  className=
+      ms-FocusZone
+      &:focus {
+        outline: none;
+      }
   data-focuszone-id="FocusZone0"
   onFocus={[Function]}
   onKeyDown={[Function]}

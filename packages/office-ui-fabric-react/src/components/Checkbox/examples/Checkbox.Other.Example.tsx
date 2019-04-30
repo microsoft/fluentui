@@ -1,12 +1,12 @@
 import * as React from 'react';
-import { Checkbox, ICheckboxProps } from 'office-ui-fabric-react/lib/Checkbox';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 
-export interface ICheckboxBasicExampleState {
+export interface ICheckboxOtherExamplesState {
   isChecked: boolean;
 }
 
-export class CheckboxImplementationExamples extends React.Component<{}, ICheckboxBasicExampleState> {
-  public state: ICheckboxBasicExampleState = {
+export class CheckboxOtherExamples extends React.Component<{}, ICheckboxOtherExamplesState> {
+  public state: ICheckboxOtherExamplesState = {
     isChecked: false
   };
 
@@ -71,7 +71,7 @@ export class CheckboxImplementationExamples extends React.Component<{}, ICheckbo
     this.setState({ isChecked: checked! });
   };
 
-  private _renderLabelWithLink = (props: ICheckboxProps) => {
+  private _renderLabelWithLink = () => {
     return (
       <span>
         This is a <a href="https://www.microsoft.com">link</a> inside a label.

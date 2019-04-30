@@ -3,7 +3,6 @@ import { RatingBasicExample } from './examples/Rating.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { RatingButtonControlledExample } from './examples/Rating.ButtonControlled.Example';
-import { RatingStatus } from './Rating.checklist';
 
 const RatingBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
 const RatingBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Rating/examples/Rating.Basic.Example.tsx') as string;
@@ -13,7 +12,6 @@ export const RatingPageProps: IDocPageProps = {
   title: 'Rating',
   componentName: 'Rating',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Rating',
-  componentStatus: RatingStatus,
   examples: [
     {
       title: 'Rating',
