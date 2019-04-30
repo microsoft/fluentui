@@ -8373,7 +8373,7 @@ export enum SelectionMode {
 }
 
 // @public (undocumented)
-export class SelectionZone extends BaseComponent<ISelectionZoneProps> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
