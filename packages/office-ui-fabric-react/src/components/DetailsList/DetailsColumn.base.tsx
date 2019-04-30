@@ -135,21 +135,23 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       this._events.on(this._root.current, 'mousedown', this._onRootMouseDown);
     }
 
+    const classNames = this._classNames;
+
     if (this.props.isDropped) {
       if (this._root.current) {
-        this._root.current.classList.add(this._classNames.borderAfterDropping);
+        this._root.current.classList.add(classNames.borderAfterDropping);
 
         this._async.setTimeout(() => {
           if (this._root.current) {
-            this._root.current.classList.add(this._classNames.noBorderAfterDropping);
+            this._root.current.classList.add(classNames.noBorderAfterDropping);
           }
         }, CLASSNAME_ADD_INTERVAL);
       }
 
       this._async.setTimeout(() => {
         if (this._root.current) {
-          this._root.current.classList.remove(this._classNames.borderAfterDropping);
-          this._root.current.classList.remove(this._classNames.noBorderAfterDropping);
+          this._root.current.classList.remove(classNames.borderAfterDropping);
+          this._root.current.classList.remove(classNames.noBorderAfterDropping);
         }
       }, TRANSITION_DURATION_DROP + CLASSNAME_ADD_INTERVAL);
     }
