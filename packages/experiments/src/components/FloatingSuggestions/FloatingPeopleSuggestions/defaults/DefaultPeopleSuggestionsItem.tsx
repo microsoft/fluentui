@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import * as stylesImport from './DefaultPeopleSuggestionItem.scss';
+import * as stylesImport from './DefaultPeopleSuggestionsItem.scss';
 
 export const DefaultPeopleSuggestionsItem = (props: ISuggestionModel<IPersonaProps>): JSX.Element => {
   const item = props.item;

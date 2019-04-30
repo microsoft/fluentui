@@ -12,7 +12,7 @@ export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
   /**
    * How the suggestion should look in the suggestion list.
    */
-  onRenderSuggestion?: ISuggestionItemProps<T>['onRenderSuggestion'];
+  onRenderSuggestion: ISuggestionItemProps<T>['onRenderSuggestion'];
   /**
    * What should occur when a suggestion is clicked
    */
