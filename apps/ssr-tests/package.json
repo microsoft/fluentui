@@ -22,7 +22,7 @@
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "2.2.39",
-    "@types/webpack-env": "1.13.0",
+    "@types/webpack-env": "1.13.9",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/fabric-website-resources": "^6.15.0",
     "@uifabric/prettier-rules": "^1.0.1",

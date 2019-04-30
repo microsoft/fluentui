@@ -34,7 +34,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/resemblejs": "~1.3.28",
     "@types/sinon": "2.2.2",
-    "@types/webpack-env": "1.13.0",
+    "@types/webpack-env": "1.13.9",
     "@uifabric/example-app-base": "^6.15.0",
     "@uifabric/jest-serializer-merge-styles": "^6.0.8",
     "@uifabric/prettier-rules": "^1.0.1",

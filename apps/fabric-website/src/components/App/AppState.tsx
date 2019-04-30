@@ -33,7 +33,7 @@ const StylesLoadingComponent = (props: any): JSX.Element => {
   );
 };
 
-function loadReferences(): INavPage[] {
+function loadReferences(): ILegacyNavPage[] {
   const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
 
   return pageList.pages.map(pageName => ({

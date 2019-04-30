@@ -1,3 +1,5 @@
+import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
+
 export interface IEditUrlOptions {
   name: string;
   section: string;
@@ -5,7 +7,8 @@ export interface IEditUrlOptions {
   platform?: string;
 }
 
-const _urlResolver = document.createElement('a');
+const doc = getDocument();
+const _urlResolver = doc && doc.createElement('a');
 
 export const getEditUrl = (options: IEditUrlOptions): string | null => {
   const { name, section } = options;
@@ -17,6 +20,10 @@ export const getEditUrl = (options: IEditUrlOptions): string | null => {
 
   if (baseUrl.match(/\.md$/)) {
     return baseUrl;
+  }
+
+  if (!_urlResolver) {
+    return null;
   }
 
   // Temporary workaround until github pages are in platform folders.
