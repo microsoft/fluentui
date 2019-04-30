@@ -8534,21 +8534,11 @@ export enum SemanticColorSlots {
     // (undocumented)
     bodyBackground = 0,
     // (undocumented)
-    bodyDivider = 4,
+    bodyText = 1,
     // (undocumented)
-    bodyStandoutBackground = 1,
+    disabledBackground = 2,
     // (undocumented)
-    bodySubtext = 3,
-    // (undocumented)
-    bodyText = 2,
-    // (undocumented)
-    buttonBackground = 7,
-    // (undocumented)
-    buttonBackgroundHovered = 8,
-    // (undocumented)
-    link = 5,
-    // (undocumented)
-    linkHovered = 6,
+    disabledText = 3,
 }
 
 // @public (undocumented)
@@ -9128,8 +9118,6 @@ export const TextView: ITextComponent['view'];
 // @public (undocumented)
 export class ThemeGenerator {
     // (undocumented)
-    static ensureSlots(slotRules: IThemeRules, isInverted: boolean): void;
-    // (undocumented)
     static getThemeAsCode(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeAsJson(slotRules: IThemeRules): any;
@@ -9137,6 +9125,8 @@ export class ThemeGenerator {
     static getThemeAsSass(slotRules: IThemeRules): any;
     // (undocumented)
     static getThemeForPowerShell(slotRules: IThemeRules): any;
+    // (undocumented)
+    static insureSlots(slotRules: IThemeRules, isInverted: boolean): void;
     // (undocumented)
     static setSlot(rule: IThemeSlotRule, color: string | IColor, isInverted?: boolean, isCustomization?: boolean, overwriteCustomColor?: boolean): void;
     }

@@ -53,16 +53,9 @@ export enum FabricSlots {
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety. */
 export enum SemanticColorSlots {
   bodyBackground,
-  bodyStandoutBackground,
   bodyText,
-  bodySubtext,
-  bodyDivider,
-
-  link,
-  linkHovered,
-
-  buttonBackground,
-  buttonBackgroundHovered
+  disabledBackground,
+  disabledText
 }
 
 export function themeRulesStandardCreator(): IThemeRules {
@@ -200,32 +193,18 @@ export function themeRulesStandardCreator(): IThemeRules {
   // BODY
   // None
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.neutralPrimaryAlt);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.neutralSecondary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.neutralPrimary);
 
   // Neutral
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.neutralLighter);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.neutralLight);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.neutralSecondary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.neutralQuaternaryAlt);
 
   // Soft
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themeLighterAlt);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.themeLighter);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.neutralSecondary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.themeLighter);
-
   // Strong
   _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themePrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyStandoutBackground, FabricSlots.themeDarkAlt);
   _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodySubtext, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyDivider, FabricSlots.themeDarkAlt);
-
   // LINKS
   // None
   // Neutral

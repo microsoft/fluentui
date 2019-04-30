@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { AccessibilityChecker } from './AccessibilityChecker';
-import { autobind, BaseComponent, merge } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { createTheme, getTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { FabricPalette } from './FabricPalette';
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
 import { Header } from './Header';
@@ -147,7 +147,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
           ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
           if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
             // isInverted got swapped, so need to refresh slots with new shading rules
-            ThemeGenerator.ensureSlots(themeRules, currentIsDark);
+            ThemeGenerator.insureSlots(themeRules, currentIsDark);
           }
         }
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
@@ -164,7 +164,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       textColor: getColorFromString('#0078d4')!,
       backgroundColor: getColorFromString('#323130')!
     };
-    ThemeGenerator.ensureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
+    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
