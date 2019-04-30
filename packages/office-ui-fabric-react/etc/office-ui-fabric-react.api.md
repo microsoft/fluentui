@@ -4810,6 +4810,8 @@ export interface IImageStyleProps {
     height?: number | string;
     isCenter?: boolean;
     // (undocumented)
+    isCenterContain?: boolean;
+    // (undocumented)
     isCenterCover?: boolean;
     // (undocumented)
     isContain?: boolean;
@@ -5120,6 +5122,7 @@ export enum ImageCoverStyle {
 // @public
 export enum ImageFit {
     center = 0,
+    centerContain = 5,
     centerCover = 4,
     contain = 1,
     cover = 2,

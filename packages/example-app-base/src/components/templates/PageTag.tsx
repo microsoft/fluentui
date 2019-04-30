@@ -28,6 +28,7 @@ const getDefaultStyles = (props: IPageTagStyleProps): IPageTagStyles => ({
   }
 });
 
+/** @deprecated Use `MarkdownCode` */
 @customizable('PageTag', ['theme', 'styles'])
 export class PageTag extends BaseComponent<IPageTagProps, {}> {
   public render(): JSX.Element {
