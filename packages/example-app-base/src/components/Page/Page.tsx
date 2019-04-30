@@ -112,6 +112,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
       componentUrl,
       platform,
       propertiesTablesSources,
+      jsonDocs,
       title,
       usage
     } = this.props;
@@ -157,14 +158,15 @@ export class Page extends React.Component<IPageProps, IPageState> {
       sections.push(examplesProps);
     }
 
-    if (propertiesTablesSources) {
+    if (propertiesTablesSources || jsonDocs) {
       const propertiesTablesProps: IImplementationSectionProps = {
         renderAs: ImplementationSection,
         ...sectionProps,
         allowNativeProps,
         nativePropsElement,
         allowNativePropsForComponentName,
-        propertiesTablesSources
+        propertiesTablesSources,
+        jsonDocs
       };
       sections.push(propertiesTablesProps);
     }

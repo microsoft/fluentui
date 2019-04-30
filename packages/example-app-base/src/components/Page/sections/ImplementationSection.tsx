@@ -4,16 +4,19 @@ import { MessageBar, css } from 'office-ui-fabric-react';
 import { camelize, pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
 import * as styles from './ImplementationSection.module.scss';
+import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ApiReferencesTableSet } from '../../ApiReferencesTable/index';
 
 export interface IImplementationSectionProps extends IPageSectionProps {
-  propertiesTablesSources: string[];
+  jsonDocs?: IPageJson;
+  propertiesTablesSources?: string[];
   allowNativeProps?: boolean;
   nativePropsElement?: string | string[];
   allowNativePropsForComponentName?: string;
 }
 
 export const ImplementationSection: React.StatelessComponent<IImplementationSectionProps> = props => {
-  const { className, sectionName = 'Implementation', style, propertiesTablesSources } = props;
+  const { className, sectionName = 'Implementation', style, propertiesTablesSources, jsonDocs } = props;
   const { readableSectionName = sectionName } = props;
   const sectionClassName = camelize(sectionName);
   const sectionId = pascalize(sectionName);
@@ -24,8 +27,9 @@ export const ImplementationSection: React.StatelessComponent<IImplementationSect
           {readableSectionName}
         </h2>
       </div>
-      {_getNativePropsInfo(props)}
-      <PropertiesTableSet sources={propertiesTablesSources} />
+      {jsonDocs && <ApiReferencesTableSet jsonDocs={jsonDocs} />}
+      {!jsonDocs && _getNativePropsInfo(props)}
+      {!jsonDocs && <PropertiesTableSet sources={propertiesTablesSources} />}
     </div>
   );
 };
