@@ -30,7 +30,7 @@ export class ModalModelessExample extends React.Component<{}, IModalModelessExam
     const { showModal, isDraggable } = this.state;
     return (
       <div>
-        <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={isDraggable} disabled={showModal} />
+        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} disabled={showModal} />
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
         <Modal
           titleAriaId={this._titleId}

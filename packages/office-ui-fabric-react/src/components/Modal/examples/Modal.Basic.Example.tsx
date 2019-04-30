@@ -29,7 +29,7 @@ export class ModalBasicExample extends React.Component<{}, IModalBasicExampleSta
   public render(): JSX.Element {
     return (
       <div>
-        <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={this.state.isDraggable} />
+        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={this.state.isDraggable} />
         <DefaultButton secondaryText="Opens the Sample Modal" onClick={this._showModal} text="Open Modal" />
         <Modal
           titleAriaId={this._titleId}

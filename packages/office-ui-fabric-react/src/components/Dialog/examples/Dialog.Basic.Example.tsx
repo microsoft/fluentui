@@ -32,7 +32,7 @@ export class DialogBasicExample extends React.Component<{}, IDialogBasicExampleS
     const { hideDialog, isDraggable } = this.state;
     return (
       <div>
-        <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={isDraggable} />
+        <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} />
         <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
         <label id={this._labelId} className={screenReaderOnly}>
           My sample Label

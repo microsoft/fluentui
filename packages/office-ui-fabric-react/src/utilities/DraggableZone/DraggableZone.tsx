@@ -26,7 +26,7 @@ const eventMapping = {
 // and so we have access to clientX and clientY in the touch events
 type MouseTouchEvent<T> = React.MouseEvent<T> & React.TouchEvent<T> & Event;
 
-export class DraggableZone extends React.PureComponent<IDraggableZoneProps, IDraggableZoneState> {
+export class DraggableZone extends React.Component<IDraggableZoneProps, IDraggableZoneState> {
   private _touchId?: number;
   private _currentEventType = eventMapping.mouse;
   private _events: (() => void)[] = [];

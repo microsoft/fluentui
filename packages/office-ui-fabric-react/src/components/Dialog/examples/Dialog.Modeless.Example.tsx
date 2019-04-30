@@ -27,7 +27,7 @@ export class DialogModelessExample extends React.Component<{}, IDialogModelessEx
       <div>
         <input type="text" placeholder="Focus Me While Open" />
         <div>
-          <Checkbox label="Is Draggable" onChange={this._toggleDraggable} checked={isDraggable} disabled={!hideDialog} />
+          <Checkbox label="Is draggable" onChange={this._toggleDraggable} checked={isDraggable} disabled={!hideDialog} />
           <DefaultButton secondaryText="Opens the Sample Dialog" onClick={this._showDialog} text="Open Dialog" />
           <DefaultButton secondaryText="Closes the Sample Dialog" onClick={this._closeDialog} text="Close Dialog" />
         </div>
