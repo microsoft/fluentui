@@ -1,8 +1,9 @@
-/**
- * Checks if appInsights exists on the window.
- */
+import { getWindow } from 'office-ui-fabric-react/lib/Utilities';
+
+// Checks if appInsights exists on the window.
+const win = getWindow();
 // tslint:disable-next-line:no-string-literal no-any
-const appInsights = (window as any)['appInsights'];
+const appInsights = win && (win as any)['appInsights'];
 
 /**
  * Fires a custom event for Application Insights. Wrapper around window['appInsights'].trackEvent().
