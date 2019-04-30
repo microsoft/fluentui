@@ -1,5 +1,6 @@
 import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 export interface IComponentPageSection {
   title: string;
@@ -15,7 +16,7 @@ export interface IComponentPageProps {
   componentName: string;
   /** Component examples **/
   exampleCards?: JSX.Element;
-  /** Array of implementation examples, displayed in the order defined */
+  /** @deprecated Use `exampleCards` */
   implementationExampleCards?: JSX.Element;
   /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
@@ -95,6 +96,11 @@ export interface IComponentPageProps {
 
   /** Optional override styles */
   styles?: IStyleFunctionOrObject<IComponentPageStyleProps, IComponentPageStyles>;
+
+  /**
+   * JSON to populate the api reference tables
+   */
+  jsonDocs?: IPageJson;
 }
 
 export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme' | 'componentStatus'>;
@@ -123,6 +129,7 @@ export interface IComponentPageStyles {
   variantsTitle: IStyle;
   variantsList: IStyle;
   implementationSection: IStyle;
+  /** @deprecated */
   implementationExamplesSection: IStyle;
   feedbackSection: IStyle;
   /** Wrapper for best practices, dos, and don'ts */

@@ -1,6 +1,25 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 24 Apr 2019 12:35:54 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.15.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add ApiReferencesTable and ApiReferencesTableSet
+
+### Patches
+
+- fix links for fabric demo/pr deploy site
+-  Use new getFocusStyle signature
+
+## 6.14.4
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Deprecate implementation examples
 
 ## 6.14.3
 Wed, 24 Apr 2019 12:35:54 GMT

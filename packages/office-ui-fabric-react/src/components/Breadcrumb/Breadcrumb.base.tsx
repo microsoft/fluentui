@@ -147,7 +147,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>
-        <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal}>
+        <FocusZone componentRef={this._focusZone} direction={FocusZoneDirection.horizontal} {...this.props.focusZoneProps}>
           <ol className={this._classNames.list}>{itemElements}</ol>
         </FocusZone>
       </div>

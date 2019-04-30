@@ -95,7 +95,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackgroundColor}`;
   const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackgroundColor}`;
   const selectedStyles: IStyle = [
-    getFocusStyle(theme, -1, undefined, undefined, focusBorder, white),
+    getFocusStyle(theme, { inset: -1, borderColor: focusBorder, outlineColor: white }),
     classNames.isSelected,
     {
       color: colors.selectedMetaTextColor,
@@ -142,6 +142,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   }
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default hover background
+            [HighContrastSelector]: {
+              background: 'Highlight'
             }
           }
         },
@@ -154,16 +159,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
             // Selected State hover meta cell
             $cell: {
               color: colors.focusMetaTextColor,
-              selectors: {
-                [HighContrastSelector]: {
-                  color: 'HighlightText',
-                  selectors: {
-                    '> a': {
-                      color: 'HighlightText'
-                    }
-                  }
-                }
-              },
 
               // Row header cell
               '&.$isRowHeader': {
@@ -174,6 +169,22 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   }
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default focus background
+            [HighContrastSelector]: {
+              background: 'Highlight'
+            }
+          }
+        },
+
+        [HighContrastSelector]: {
+          background: 'Highlight',
+          color: 'HighlightText',
+          MsHighContrastAdjust: 'none',
+          selectors: {
+            a: {
+              color: 'HighlightText'
             }
           }
         }
@@ -219,7 +230,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
   };
 
   const defaultCellStyles: IStyle = [
-    getFocusStyle(theme, -1),
+    getFocusStyle(theme, { inset: -1 }),
     classNames.cell,
     {
       display: 'inline-block',
@@ -238,7 +249,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           maxWidth: '100%'
         },
 
-        [classNames.isFocusable!]: getFocusStyle(theme, -1, undefined, undefined, neutralSecondary, white),
+        [classNames.isFocusable!]: getFocusStyle(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white }),
 
         '&$shimmer': {
           padding: 0,
@@ -256,30 +267,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     },
 
-    isSelected && {
-      selectors: {
-        '&.$isRowHeader': {
-          color: colors.selectedTextColor,
-          selectors: {
-            [HighContrastSelector]: {
-              color: 'HighlightText'
-            }
-          }
-        },
-
-        [HighContrastSelector]: {
-          background: 'Highlight',
-          color: 'HighlightText',
-          MsHighContrastAdjust: 'none',
-          selectors: {
-            a: {
-              color: 'HighlightText'
-            }
-          }
-        }
-      }
-    },
-
     compact && cellCompactStyles
   ];
 
@@ -290,7 +277,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       droppingClassName,
       theme.fonts.small,
       isCheckVisible && classNames.isCheckVisible,
-      getFocusStyle(theme, 0, undefined, undefined, focusBorder, white),
+      getFocusStyle(theme, { borderColor: focusBorder, outlineColor: white }),
       {
         borderBottom: `1px solid ${neutralLighter}`,
         background: colors.defaultBackgroundColor,

@@ -28,9 +28,6 @@ export const ExtendedPeoplePickerPageProps: IDocPageProps = {
       view: <ExtendedPeoplePickerControlledExample />
     }
   ],
-  propertiesTablesSources: [
-    require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/BaseExtendedPicker.types.ts') as string
-  ],
   overview: require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerOverview.md') as string,
   bestPractices: require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerBestPractices.md') as string,
   dos: require('!raw-loader!office-ui-fabric-react/src/components/ExtendedPicker/docs/ExtendedPeoplePickerDos.md') as string,

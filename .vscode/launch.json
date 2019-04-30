@@ -150,6 +150,20 @@
         "NODE_ENV": "development"
       },
       "sourceMaps": true
+    },
+    {
+      "name": "Debug page json generator",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/packages/api-docs/lib-commonjs/generatePageJsonFiles.js",
+      "cwd": "${workspaceRoot}/packages/api-docs",
+      "stopOnEntry": false,
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
     }
   ]
 }

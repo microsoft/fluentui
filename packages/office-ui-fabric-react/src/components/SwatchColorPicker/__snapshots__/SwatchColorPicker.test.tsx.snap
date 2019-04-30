@@ -5,6 +5,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   className=
       ms-FocusZone
       ms-swatchColorPickerBodyContainer
+      &:focus {
+        outline: none;
+      }
       {
         clear: both;
         display: block;

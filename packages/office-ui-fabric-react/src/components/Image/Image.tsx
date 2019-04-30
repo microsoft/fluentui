@@ -9,5 +9,6 @@ export const Image: React.StatelessComponent<IImageProps> = styled<IImageProps, 
   undefined,
   {
     scope: 'Image'
-  }
+  },
+  true
 );

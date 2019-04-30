@@ -48,6 +48,13 @@ export type IPickerAriaIds = {
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
+const StyledSuggestions = styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(
+  Suggestions,
+  suggestionsStyles,
+  undefined,
+  { scope: 'Suggestions' }
+);
+
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
@@ -57,7 +64,6 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected selection: Selection;
   protected suggestionStore: SuggestionsController<T>;
-  protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
   private _id: string;
@@ -277,17 +283,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestions = this.SuggestionOfProperType;
-
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
-      TypedSuggestions,
-      suggestionsStyles,
-      undefined,
-      { scope: 'Suggestions' }
-    );
+    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = StyledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
