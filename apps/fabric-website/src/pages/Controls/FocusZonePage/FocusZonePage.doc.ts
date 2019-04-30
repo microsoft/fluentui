@@ -1,9 +1,9 @@
 import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 import { FocusZonePageProps as ExternalProps } from 'office-ui-fabric-react/lib/components/FocusZone/FocusZone.doc';
 
-const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/FocusZoneUtilityPage/docs/FocusZoneUtilityRelated.md') as string;
+const related = require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/FocusZonePage/docs/FocusZoneRelated.md') as string;
 
-export const FocusZoneUtilityPageProps: TFabricPlatformPageProps = {
+export const FocusZonePageProps: TFabricPlatformPageProps = {
   web: {
     ...(ExternalProps as any),
     related
