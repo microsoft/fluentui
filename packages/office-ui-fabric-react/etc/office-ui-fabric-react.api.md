@@ -3225,7 +3225,7 @@ export interface IDetailsHeaderStyles {
     cellIsActionable: IStyle;
     // (undocumented)
     cellIsCheck: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellIsEmpty: IStyle;
     // (undocumented)
     cellIsGroupExpander: IStyle;
@@ -3237,7 +3237,7 @@ export interface IDetailsHeaderStyles {
     cellSizerEnd: IStyle;
     // (undocumented)
     cellSizerStart: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellWrapperPadded: IStyle;
     // (undocumented)
     check: IStyle;

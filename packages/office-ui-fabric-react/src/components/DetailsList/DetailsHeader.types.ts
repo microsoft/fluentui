@@ -194,6 +194,10 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 export interface IDetailsHeaderStyles {
   root: IStyle;
   check: IStyle;
+
+  /**
+   * @deprecated Not used
+   */
   cellWrapperPadded: IStyle;
   cellIsCheck: IStyle;
 
@@ -201,6 +205,10 @@ export interface IDetailsHeaderStyles {
    * @deprecated Not used
    */
   cellIsActionable: IStyle;
+
+  /**
+   * @deprecated Not used
+   */
   cellIsEmpty: IStyle;
   cellSizer: IStyle;
   cellSizerStart: IStyle;
