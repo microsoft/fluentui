@@ -34,21 +34,24 @@ const StylesLoadingComponent = (props: any): JSX.Element => {
 };
 
 function loadReferences(): ILegacyNavPage[] {
-  const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
+  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
 
-  return pageList.pages.map(pageName => ({
-    title: pageName,
-    url: '#/components/references/' + pageName.toLowerCase(),
-    isFilterable: true,
-    component: () => (
-      <div className={pageStyles.basePage}>
-        <ComponentPage>
-          <PageHeader pageTitle={pageName} backgroundColor="#038387" />
-          <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
-        </ComponentPage>
-      </div>
-    )
-  }));
+  return requireContext.keys().map(pagePath => {
+    const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
+    return {
+      title: pageName,
+      url: '#/components/references/' + pageName.toLowerCase(),
+      isFilterable: true,
+      component: () => (
+        <div className={pageStyles.basePage}>
+          <ComponentPage>
+            <PageHeader pageTitle={pageName} backgroundColor="#038387" />
+            <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
+          </ComponentPage>
+        </div>
+      )
+    };
+  });
 }
 
 export const AppState: IAppState = {
