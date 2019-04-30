@@ -1,26 +1,19 @@
 {
   "compilerOptions": {
-    "baseUrl": ".",
-    "outDir": "dist",
     "target": "es5",
+    "outDir": "lib",
     "module": "commonjs",
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
     "experimentalDecorators": true,
-    "importHelpers": true,
-    "noUnusedLocals": true,
     "forceConsistentCasingInFileNames": true,
-    "strictNullChecks": true,
-    "noImplicitAny": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
-    "lib": ["es2017"],
-    "types": [],
-    "paths": {
-      "@uifabric/test-utilities/lib/*": ["./src/*"],
-      "@uifabric/test-utilities": ["./src"]
-    }
+    "strict": true,
+    "lib": ["es6", "dom"],
+    "types": ["webpack-env"],
+    "noImplicitAny": true
   },
   "include": ["src"]
 }
