@@ -446,8 +446,15 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
       selection.toggleIndexSelected(index);
     } else if (selectionMode === SelectionMode.single) {
       const isSelected = selection.isIndexSelected(index);
+      const isModal = selection.isModal && selection.isModal();
       selection.setAllSelected(false);
       selection.setIndexSelected(index, !isSelected, true);
+      if (isModal && selection.setModal) {
+        // Since the above call to setAllSelected(false) clears modal state,
+        // restore it. This occurs because the SelectionMode of the Selection
+        // may differ from the SelectionZone.
+        selection.setModal(true);
+      }
     } else {
       selection.setChangeEvents(true);
       return;
