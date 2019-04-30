@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Apr 2019 12:34:34 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:37 GMT and should not be manually modified.
+
+## 6.174.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- DocPage: add types
+- Always reset pending info on option click.
+
+### Patches
+
+- FocusZone: remove outline on focus
+- Bugfix to set the correct width of the Pivot item's :after element, so Pivot items don't move on (un)selection
+- Use new getFocusStyle signature
+- DetailsColumn: Cleanup className vars, use lambdas for this binding, add type-safety to root ref
 
 ## 6.173.0
 Mon, 29 Apr 2019 12:34:34 GMT

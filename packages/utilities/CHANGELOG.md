@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Sat, 27 Apr 2019 00:04:47 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.37.1
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Adds pointer events to baseElementProperties
 
 ## 6.37.0
 Sat, 27 Apr 2019 00:04:47 GMT

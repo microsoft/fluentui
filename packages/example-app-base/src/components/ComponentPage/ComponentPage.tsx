@@ -141,7 +141,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         title: 'Implementation',
         section: (
           <>
-            {this._getNativePropsInfo()}
+            {!this.props.jsonDocs && this._getNativePropsInfo()}
             {this.props.propertiesTables}
           </>
         ),

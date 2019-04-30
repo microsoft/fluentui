@@ -34,7 +34,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
       }
     ],
     goTodayButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         bottom: 0,
         color: palette.neutralPrimary,

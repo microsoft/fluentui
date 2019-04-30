@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.47.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- Add more focus style helpers
 
 ## 6.46.1
 Mon, 22 Apr 2019 12:32:06 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.37.1",
+      "tag": "@uifabric/utilities_v6.37.1",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds pointer events to baseElementProperties",
+            "author": "Lorin Tackett <lorin.tackett@gmail.com>",
+            "commit": "df594f0141c680d84e48ef2fdd06247c2d9edf7b"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.0",
       "tag": "@uifabric/utilities_v6.37.0",
       "date": "Sat, 27 Apr 2019 00:04:47 GMT",

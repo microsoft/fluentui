@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.47.0",
+      "tag": "@uifabric/styling_v6.47.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add more focus style helpers",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.0` to `^6.37.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.46.1",
       "tag": "@uifabric/styling_v6.46.1",
       "date": "Mon, 22 Apr 2019 12:32:06 GMT",

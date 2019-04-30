@@ -2,6 +2,34 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.14.0",
+      "tag": "@uifabric/fabric-website_v6.14.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add references section to nav",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "382ec4fe6678eef91be9bc7e66091b11ff92e0a2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.74.2` to `^6.75.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.6",
       "tag": "@uifabric/fabric-website_v6.13.6",
       "date": "Fri, 26 Apr 2019 12:35:24 GMT",

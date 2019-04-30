@@ -79,12 +79,12 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -136,7 +136,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -152,6 +152,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
+          data-content="My Files (42) xx"
           data-is-focusable={true}
           id="Pivot0-Tab0"
           name="My Files"
@@ -270,12 +271,12 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -325,7 +326,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -339,6 +340,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content=" (23) xx"
           data-is-focusable={true}
           id="Pivot0-Tab1"
           onClick={[Function]}
@@ -445,12 +447,12 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -500,7 +502,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -514,6 +516,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content=" xx"
           data-is-focusable={true}
           id="Pivot0-Tab2"
           onClick={[Function]}
@@ -607,12 +610,12 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -662,7 +665,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -676,6 +679,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content="Shared with me (1) xx"
           data-is-focusable={true}
           id="Pivot0-Tab3"
           name="Shared with me"
@@ -794,12 +798,12 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -849,7 +853,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -863,6 +867,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content="Customized Rendering (10) xx"
           data-is-focusable={true}
           id="Pivot0-Tab4"
           name="Customized Rendering"

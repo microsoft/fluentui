@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 26 Apr 2019 12:35:24 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.14.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add references section to nav
 
 ## 6.13.6
 Fri, 26 Apr 2019 12:35:24 GMT
