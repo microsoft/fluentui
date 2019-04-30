@@ -96,7 +96,7 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
-export class SelectionZone extends BaseComponent<ISelectionZoneProps> {
+export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
