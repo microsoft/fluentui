@@ -1,91 +1,5 @@
 import * as React from 'react';
-import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
-
-// Old list
-// const categories: { [name: string]: string[] } = {
-//   'Basic Inputs': [
-//     // prettier-ignore
-//     'Button',
-//     'Checkbox',
-//     'ChoiceGroup',
-//     'ComboBox',
-//     'ContextualMenu',
-//     'Dropdown',
-//     'Label',
-//     'Link',
-//     'Rating',
-//     'Slider',
-//     'SpinButton',
-//     'TextField',
-//     'Toggle'
-//   ],
-//   Navigation: [
-//     // prettier-ignore
-//     'Breadcrumb',
-//     'CommandBar',
-//     'Nav',
-//     'OverflowSet',
-//     'Pivot',
-//     'SearchBox'
-//   ],
-//   Layout: [
-//     // prettier-ignore
-//     'Stack'
-//   ],
-//   Content: [
-//     // prettier-ignore
-//     'ActivityItem',
-//     'Calendar',
-//     'DetailsList',
-//     'Facepile',
-//     'GroupedList',
-//     'Icon',
-//     'Image',
-//     'List',
-//     'Persona',
-//     'Separator'
-//   ],
-//   Pickers: [
-//     // prettier-ignore
-//     'Pickers',
-//     'ColorPicker',
-//     'DatePicker',
-//     'PeoplePicker',
-//     'SwatchColorPicker'
-//   ],
-//   'Progress & Validation': [
-//     // prettier-ignore
-//     'MessageBar',
-//     'ProgressIndicator',
-//     'Shimmer',
-//     'Spinner'
-//   ],
-//   Surfaces: [
-//     // prettier-ignore
-//     'Callout',
-//     'Dialog',
-//     'DocumentCard',
-//     'HoverCard',
-//     'Layer',
-//     'Modal',
-//     'Overlay',
-//     'Panel',
-//     'ScrollablePane',
-//     'TeachingBubble',
-//     'Tooltip',
-//     'Coachmark'
-//   ],
-//   Utilities: [
-//     // prettier-ignore
-//     'FocusTrapZone',
-//     'FocusZone',
-//     'MarqueeSelection',
-//     'ResizeGroup',
-//     'Selection',
-//     'Text',
-//     'Themes'
-//   ]
-// };
+import { INavPage, LoadingComponent, Page } from '@uifabric/example-app-base/lib/index2';
 
 type Omit<U, K extends keyof U> = Pick<U, Exclude<keyof U, K>>;
 type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
@@ -251,7 +165,7 @@ function generateCategories() {
       const componentPageInfo = categories[categoryName][componentName];
       if (componentPageInfo) {
         // Add a page for the component to the appropriate category
-        const page = generatePage(requireContext, componentName, pagePath, componentPageInfo);
+        const page = _generatePage(requireContext, componentName, pagePath, componentPageInfo);
         pagesByCategory[categoryName].push(page);
         if (page.subPages) {
           // If this page has sub-pages, save the generated page and its sub-page info for later
@@ -264,7 +178,7 @@ function generateCategories() {
 
     // Stray pages go under "Other"
     if (!foundCategory && pagesByCategory.Other) {
-      pagesByCategory.Other.push(generatePage(requireContext, componentName, pagePath, {}));
+      pagesByCategory.Other.push(_generatePage(requireContext, componentName, pagePath, {}));
     }
   }
 
@@ -296,7 +210,7 @@ function generateCategories() {
       const subPageOverrides = subPages[pageName];
       if (subPageOverrides) {
         parentPage.pages.push(
-          generatePage(requireContext, pageComponentName, pagePath, {
+          _generatePage(requireContext, pageComponentName, pagePath, {
             ...subPageOverrides,
             title: `${parentComponentName} - ${subPageOverrides.title || pageName}`,
             url: `${parentComponentName}/${subPageOverrides.url || pageName}`.toLowerCase()
@@ -320,7 +234,7 @@ function generateCategories() {
     });
 }
 
-function generatePage(
+function _generatePage(
   requireContext: __WebpackModuleApi.RequireContext,
   componentName: string,
   pagePath: string,
@@ -346,3 +260,81 @@ export const controlsPagesWeb: INavPage[] = [
   },
   ...generateCategories()
 ];
+
+// Old list
+// const categories: { [name: string]: string[] } = {
+//   'Basic Inputs': [
+//     'Button',
+//     'Checkbox',
+//     'ChoiceGroup',
+//     'ComboBox',
+//     'ContextualMenu',
+//     'Dropdown',
+//     'Label',
+//     'Link',
+//     'Rating',
+//     'Slider',
+//     'SpinButton',
+//     'TextField',
+//     'Toggle'
+//   ],
+//   Navigation: [
+//     'Breadcrumb',
+//     'CommandBar',
+//     'Nav',
+//     'OverflowSet',
+//     'Pivot',
+//     'SearchBox'
+//   ],
+//   Layout: [
+//     'Stack'
+//   ],
+//   Content: [
+//     'ActivityItem',
+//     'Calendar',
+//     'DetailsList',
+//     'Facepile',
+//     'GroupedList',
+//     'Icon',
+//     'Image',
+//     'List',
+//     'Persona',
+//     'Separator'
+//   ],
+//   Pickers: [
+//     'Pickers',
+//     'ColorPicker',
+//     'DatePicker',
+//     'PeoplePicker',
+//     'SwatchColorPicker'
+//   ],
+//   'Progress & Validation': [
+//     'MessageBar',
+//     'ProgressIndicator',
+//     'Shimmer',
+//     'Spinner'
+//   ],
+//   Surfaces: [
+//     'Callout',
+//     'Dialog',
+//     'DocumentCard',
+//     'HoverCard',
+//     'Layer',
+//     'Modal',
+//     'Overlay',
+//     'Panel',
+//     'ScrollablePane',
+//     'TeachingBubble',
+//     'Tooltip',
+//     'Coachmark'
+//   ],
+//   Utilities: [
+//     'FocusTrapZone',
+//     'FocusZone',
+//     'MarqueeSelection',
+//     'ResizeGroup',
+//     'Selection',
+//     'Text',
+//     'Themes'
+//   ]
+// };
