@@ -10,10 +10,14 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
-export class Samples extends React.Component {
+export interface ISamplesProps {
+  backgroundColor: string;
+}
+
+export class Samples extends React.Component<ISamplesProps, {}> {
   public render() {
     return (
-      <div className={itemWrapper}>
+      <div className={itemWrapper} style={{ backgroundColor: this.props.backgroundColor }}>
         <h1>Samples</h1>
         <Stack horizontal gap={50}>
           <Stack gap={10}>

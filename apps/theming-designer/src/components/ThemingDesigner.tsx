@@ -91,7 +91,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
           <Stack.Item grow={1}>
             <Stack horizontalAlign={'center'}>
               <ThemeProvider theme={this.state.theme}>
-                <Samples />
+                <Samples backgroundColor={this.state.backgroundColor.str} />
               </ThemeProvider>
               <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
@@ -160,9 +160,9 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   private _buildInitialState = (): IThemingDesignerState => {
     const themeRules = themeRulesStandardCreator();
     const colors = {
-      primaryColor: getColorFromString('#ffa500')!,
-      textColor: getColorFromString('#0078d4')!,
-      backgroundColor: getColorFromString('#323130')!
+      primaryColor: getColorFromString('#0078d4')!,
+      textColor: getColorFromString('#323130')!,
+      backgroundColor: getColorFromString('#ffffff')!
     };
     ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor);
