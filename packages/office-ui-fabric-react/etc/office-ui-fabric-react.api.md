@@ -3223,11 +3223,11 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 export interface IDetailsHeaderStyles {
     // (undocumented)
     accessibleLabel: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellIsActionable: IStyle;
     // (undocumented)
     cellIsCheck: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellIsEmpty: IStyle;
     // (undocumented)
     cellIsGroupExpander: IStyle;
@@ -3239,7 +3239,7 @@ export interface IDetailsHeaderStyles {
     cellSizerEnd: IStyle;
     // (undocumented)
     cellSizerStart: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellWrapperPadded: IStyle;
     // (undocumented)
     check: IStyle;
