@@ -1,20 +1,19 @@
 import * as React from 'react';
-import { FabricPalette } from './FabricPalette';
 import { AccessibilityChecker } from './AccessibilityChecker';
-import { SemanticSlots } from './SemanticSlots';
+import { autobind, BaseComponent, merge } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { createTheme, getTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { FabricPalette } from './FabricPalette';
+import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
 import { Header } from './Header';
-import { Samples } from './Samples';
-import { mergeStyles } from '@uifabric/merge-styles';
-import { loadTheme, ITheme, getTheme, createTheme } from 'office-ui-fabric-react/lib/Styling';
-import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IColor, getColorFromString } from 'office-ui-fabric-react/lib/Color';
-import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { BaseComponent, autobind, merge } from 'office-ui-fabric-react/lib/Utilities';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-
-import { ThemeGenerator, themeRulesStandardCreator, BaseSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
+import { mergeStyles } from '@uifabric/merge-styles';
+import { Samples } from './Samples';
+import { SemanticSlots } from './SemanticSlots';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 
 export interface IThemingDesignerState {
   primaryColor: IColor;
@@ -46,16 +45,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   constructor(props: any) {
     super(props);
 
-    const themeRules = themeRulesStandardCreator();
-    ThemeGenerator.ensureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
-
-    this.state = {
-      theme: getTheme(true),
-      themeRules: themeRules,
-      primaryColor: getColorFromString('#ffa500')!,
-      textColor: getColorFromString('#0078d4')!,
-      backgroundColor: getColorFromString('#323130')!
-    };
+    this.state = this._buildInitialState();
 
     this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
     this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
@@ -97,13 +87,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               onColorChange={this._onBkgColorPickerChange}
               label={'Background color'}
             />
-            {/* This Dropdown will allow the user to switch from light to dark theme on the whole app. */}
-            {/* <Dropdown
-                placeholder="Select an Option"
-                label="Theme dropdown"
-                ariaLabel="Theme dropdown"
-                options={[{ key: 'light', text: 'Light theme' }, { key:  'dark', text: 'Dark theme' }]}
-                /> */}
           </Stack>
           <Stack.Item grow={1}>
             <Stack horizontalAlign={'center'}>
@@ -172,5 +155,32 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       // 20ms is low enough that you can slowly drag to change color and see that theme,
       // but high enough that quick changes don't get bogged down by a million changes inbetween
     }
+  };
+
+  private _buildInitialState = (): IThemingDesignerState => {
+    const themeRules = themeRulesStandardCreator();
+    const colors = {
+      primaryColor: getColorFromString('#ffa500')!,
+      textColor: getColorFromString('#0078d4')!,
+      backgroundColor: getColorFromString('#323130')!
+    };
+    ThemeGenerator.ensureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
+    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor);
+    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
+    ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
+
+    const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(themeRules);
+
+    const finalTheme = createTheme({
+      ...{ palette: themeAsJson }
+    });
+
+    const state = {
+      ...colors,
+      theme: finalTheme,
+      themeRules: themeRules
+    };
+
+    return state;
   };
 }
