@@ -1725,8 +1725,11 @@ export interface IBreadcrumb {
     focus(): void;
 }
 
+// @public @deprecated (undocumented)
+export type IBreadCrumbData = IBreadcrumbData;
+
 // @public (undocumented)
-export interface IBreadCrumbData {
+export interface IBreadcrumbData {
     // (undocumented)
     props: IBreadcrumbProps;
     // (undocumented)
@@ -1753,7 +1756,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
-    onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
+    onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     overflowAriaLabel?: string;
     overflowIndex?: number;
