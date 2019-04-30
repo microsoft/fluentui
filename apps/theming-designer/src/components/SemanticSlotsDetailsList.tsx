@@ -57,9 +57,6 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     });
   }
 
-  console.log(items);
-
-  // CONFUSED: can I parse through FOUR DIFFERENT lists, one for each column?
   groups = [
     { key: 'defaults', name: 'Defaults', startIndex: 0, count: bodyIndex, isCollapsed: false },
 

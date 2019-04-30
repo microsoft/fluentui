@@ -51,16 +51,15 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
     this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
     this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
-
-    hideSemanticSlots = false;
-    if (!hideSemanticSlots) {
-      semanticSlotsCard = <SemanticSlots theme={this.state.theme} themeRules={this.state.themeRules} />;
-    } else {
-      <div />;
-    }
   }
 
   public render() {
+    hideSemanticSlots = false;
+    if (!hideSemanticSlots) {
+      semanticSlotsCard = <SemanticSlots theme={this.state.theme} />;
+    } else {
+      <div />;
+    }
     return (
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
