@@ -47,13 +47,14 @@ export type IPickerAriaIds = {
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
-const StyledSuggestions = styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(
-  Suggestions,
-  suggestionsStyles,
-  undefined,
-  { scope: 'Suggestions' }
-);
-
+/**
+ * Should be removed once new picker without inheritance is created
+ */
+function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<T>) => Suggestions<T>) {
+  return styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(suggestionsType, suggestionsStyles, undefined, {
+    scope: 'Suggestions'
+  });
+}
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
@@ -63,8 +64,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected selection: Selection;
   protected suggestionStore: SuggestionsController<T>;
+  /**
+   * @deprecated this is no longer necessary as typescript now supports generic elements
+   */
+  protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
+  private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
 
   constructor(basePickerProps: P) {
@@ -282,7 +288,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = StyledSuggestions;
+    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout

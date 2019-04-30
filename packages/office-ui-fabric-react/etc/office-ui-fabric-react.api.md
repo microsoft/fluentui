@@ -349,6 +349,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     protected selection: Selection;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
+    // @deprecated (undocumented)
+    protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
     // (undocumented)
