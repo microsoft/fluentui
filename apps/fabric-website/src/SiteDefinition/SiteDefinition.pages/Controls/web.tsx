@@ -109,6 +109,7 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
     FocusZone: {},
     Icon: {},
     Image: {},
+    Keytips: {},
     Layer: {},
     MarqueeSelection: {},
     Overlay: {},
