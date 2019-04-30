@@ -47,6 +47,7 @@ dependencies:
   '@storybook/channels': 3.4.11
   '@storybook/react': 3.4.11
   '@types/babylon': 6.16.5
+  '@types/color-check': 0.0.0
   '@types/d3-array': 1.2.1
   '@types/d3-axis': 1.0.10
   '@types/d3-scale': 2.0.0
@@ -68,6 +69,7 @@ dependencies:
   '@types/prop-types': 15.5.3
   '@types/puppeteer': 1.12.3
   '@types/react-addons-test-utils': 0.14.18
+  '@types/react-custom-scrollbars': 4.0.5
   '@types/react-test-renderer': 16.0.3
   '@types/resemblejs': 1.3.28
   '@types/semver': 5.5.0
@@ -87,6 +89,7 @@ dependencies:
   bundlesize: 0.15.3
   chalk: 2.4.1
   codecov: 3.1.0
+  color-check: 0.0.2
   color-functions: 1.1.0
   command-line-args: 4.0.7
   compression: 1.7.3
@@ -144,10 +147,11 @@ dependencies:
   raf: 3.4.1
   raw-loader: 0.5.1
   react: 16.6.3
+  react-custom-scrollbars: 4.2.1
   react-dom: 16.6.3
   react-highlight: 0.10.0
   react-loadable: 5.5.0
-  react-syntax-highlighter: 7.0.4
+  react-syntax-highlighter: 10.2.1
   react-test-renderer: 16.6.3
   recast: 0.15.5
   resemblejs: 2.2.6
@@ -206,6 +210,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-xKnPpXG/pvK1B90JkwwxSGii90rQGKtzcMt2gI5G6+M0REXaq6rOHsGC2ay6/d0Uje7zzvSzjEzfR3ENhFlrfA==
+  /@babel/runtime/7.4.4:
+    dependencies:
+      regenerator-runtime: 0.13.2
+    dev: false
+    resolution:
+      integrity: sha512-w0+uT71b6Yi7i5SE0co4NioIpSYS6lLiXvCzWzGSKvpK5vdQtCbICHMj+gbAKAOtxiV6HsVh/MBdaF9EQ6faSg==
   /@microsoft/api-extractor-model/7.0.27:
     dependencies:
       '@microsoft/node-core-library': 3.12.1
@@ -824,6 +834,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-q6LuBI0t5u04f0Q4/R+cGBqIbZMtJkVvCSF+nTfFBBdQqQvJR/mNHeWjRkszyLl7oyf2rDoKUYMEjTw5AV0hiw==
+  /@types/color-check/0.0.0:
+    dev: false
+    resolution:
+      integrity: sha512-ZAm8KesT3hIm6I1vb5EbwD2C4f5XYawZjpE1UGlpfbMFOmLtBpYcZP0duGnsZY/6wzvw1y8MTofRqFzpzU2uOg==
   /@types/d3-array/1.2.1:
     dev: false
     resolution:
@@ -978,6 +992,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-g+EK8dvl7CU1vC3FNz17w7gv3uE=
+  /@types/react-custom-scrollbars/4.0.5:
+    dependencies:
+      '@types/react': 16.8.15
+    dev: false
+    resolution:
+      integrity: sha512-Qdotjy9wbf9nrNRzGj0bFDlhYIvjMxwrxHR0V1zUSc2cqb74a8ujLWTfIQ6JBSUx+3hY74+tHgEOthRJLEMyKw==
   /@types/react-dom/16.0.5:
     dependencies:
       '@types/node': 8.10.38
@@ -1023,6 +1043,13 @@ packages:
     dev: false
     resolution:
       integrity: sha512-otJ4ntMuHGrvm67CdDJMAls4WqotmAmW0g3HmWi9LCjSWXrxoXY/nHXrtmMfvPEEmGFNm6NdgMsJmnfH820Qaw==
+  /@types/react/16.8.15:
+    dependencies:
+      '@types/prop-types': 15.5.3
+      csstype: 2.6.4
+    dev: false
+    resolution:
+      integrity: sha512-dMhzw1rWK+wwJWvPp5Pk12ksSrm/z/C/+lOQbMZ7YfDQYnJ02bc0wtg4EJD9qrFhuxFrf/ywNgwTboucobJqQg==
   /@types/resemblejs/1.3.28:
     dev: false
     resolution:
@@ -1365,6 +1392,10 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-MW/FjM+IvU9CgBzjO3UIPCE2pyEwUsoFl+VGdczOPEdxfGFjuKny/gN54mOuX7Qxmb9Rg9MCn2oKiSUeW+pjrw==
+  /add-px-to-style/1.0.0:
+    dev: false
+    resolution:
+      integrity: sha1-0ME1RB+oAUqBN5BFMQlvZ/KPJjo=
   /address/1.0.3:
     dev: false
     engines:
@@ -3879,6 +3910,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-S8A3PBZLwykbTTaMgpzxqApZ3KA=
+  /color-check/0.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-L07qW3QykYGtzAd+DOhF2UEbR8Q=
   /color-convert/1.9.3:
     dependencies:
       color-name: 1.1.3
@@ -3957,12 +3992,10 @@ packages:
       node: '>= 0.8'
     resolution:
       integrity: sha512-brWl9y6vOB1xYPZcpZde3N9zDByXTosAeMDo4p1wzo6UMOX4vumB+TP1RZ76sfE6Md68Q0NJSrE/gbezd4Ul+w==
-  /comma-separated-tokens/1.0.5:
-    dependencies:
-      trim: 0.0.1
+  /comma-separated-tokens/1.0.6:
     dev: false
     resolution:
-      integrity: sha512-Cg90/fcK93n0ecgYTAz1jaA3zvnQ0ExlmKY1rdbyHqAx6BHxwoJc+J7HDu0iuQ7ixEs1qaa+WyQ6oeuBpYP1iA==
+      integrity: sha512-f20oA7jsrrmERTS70r3tmRSxR8IJV2MTN7qe6hzgX+3ARfXrdMJFvGWvWQK0xpcBurg9j9eO2MiqzZ8Y+/UPCA==
   /command-line-args/4.0.7:
     dependencies:
       array-back: 2.0.0
@@ -4415,6 +4448,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-rINUZXOkcBmoHWEyu7JdHu5JMzkGRoMX4ov9830WNgxf5UYxcBUO0QTKAqeJ5EZfSdlrcJYkC8WwfVW7JYi4yg==
+  /csstype/2.6.4:
+    dev: false
+    resolution:
+      integrity: sha512-lAJUJP3M6HxFXbqtGRc0iZrdyeN+WzOWeY0q/VnFzI+kqVrYIzC7bWlKqCW7oCIdzoPkvfp82EVvrTlQ8zsWQg==
   /currently-unhandled/0.4.1:
     dependencies:
       array-find-index: 1.0.2
@@ -4805,6 +4842,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-gd3ypIPfOMr9h5jIKq8E3sHOTCjeirnl0WK5ZdS1AW0Odt0b1PaWaHdJ4Qk4klv+YB9aJBS7mESXjFoDQPu6DA==
+  /dom-css/2.1.0:
+    dependencies:
+      add-px-to-style: 1.0.0
+      prefix-style: 2.0.1
+      to-camel-case: 1.0.0
+    dev: false
+    resolution:
+      integrity: sha1-/bwtWgFdCj4YcuEUcrvQ57nmogI=
   /dom-helpers/3.4.0:
     dependencies:
       '@babel/runtime': 7.1.5
@@ -6689,10 +6734,10 @@ packages:
       integrity: sha512-Xyh0v+nHmQvrOqop2Jqd8gOdyQtE8sIP9IQf7mlVDqp924W4w/8Liuguk2L2qei9hARnQSG2m+wAOCxM7npJVw==
   /hastscript/5.0.0:
     dependencies:
-      comma-separated-tokens: 1.0.5
+      comma-separated-tokens: 1.0.6
       hast-util-parse-selector: 2.2.1
       property-information: 5.0.1
-      space-separated-tokens: 1.1.2
+      space-separated-tokens: 1.1.3
     dev: false
     resolution:
       integrity: sha512-xJtuJ8D42Xtq5yJrnDg/KAIxl2cXBXKoiIJwmWX9XMf8113qHTGl/Bf7jEsxmENJ4w6q4Tfl8s/Y6mEZo8x8qw==
@@ -6706,10 +6751,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-F/1DnUGPopORZi0ni+CvrCgHQ5FyEAHRLSApuYWMmrbSwoN2Mn/7k+Gl38gJnR7yyDZk6WLXwiGod1JOWNDKGw==
-  /highlight.js/9.12.0:
-    dev: false
-    resolution:
-      integrity: sha1-5tnb5Xy+/mB1HwKvM2GVhwyQwB4=
   /highlight.js/9.13.1:
     dev: false
     resolution:
@@ -8940,13 +8981,13 @@ packages:
     dev: false
     resolution:
       integrity: sha1-miyr0bno4K6ZOkv31YdcOcQujqw=
-  /lowlight/1.9.2:
+  /lowlight/1.11.0:
     dependencies:
       fault: 1.0.2
-      highlight.js: 9.12.0
+      highlight.js: 9.13.1
     dev: false
     resolution:
-      integrity: sha512-Ek18ElVCf/wF/jEm1b92gTnigh94CtBNWiZ2ad+vTgW7cTmQxUY3I98BjHK68gZAJEWmybGBZgx9qv3QxLQB/Q==
+      integrity: sha512-xrGGN6XLL7MbTMdPD6NfWPwY43SNkjf/d0mecSx/CW36fUZTjRHEq0/Cdug3TWKtRXLWi7iMl1eP0olYxj/a4A==
   /lru-cache/4.1.4:
     dependencies:
       pseudomap: 1.0.2
@@ -10344,7 +10385,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Qs5duJcuvNExRfFZ99HDD3z4mAi3r9Wl/FOjEOijlxwCZs7E7mW2vjTpgQ4J8LpTF8x5v+1Vn5UQFejmWT11aw==
-  /parse-entities/1.2.0:
+  /parse-entities/1.2.1:
     dependencies:
       character-entities: 1.2.2
       character-entities-legacy: 1.1.2
@@ -10354,7 +10395,7 @@ packages:
       is-hexadecimal: 1.0.2
     dev: false
     resolution:
-      integrity: sha512-XXtDdOPLSB0sHecbEapQi6/58U/ODj/KWfIXmmMCJF/eRn8laX6LZbOyioMoETOOJoWRW8/qTSl5VQkUIfKM5g==
+      integrity: sha512-NBWYLQm1KSoDKk7GAHyioLTvCZ5QjdH/ASBBQTD3iLiAWJXS5bg1jEWI8nIJ+vgVvsceBVBcDGRWSo0KVQBvvg==
   /parse-glob/3.0.4:
     dependencies:
       glob-base: 0.3.0
@@ -10879,6 +10920,10 @@ packages:
       node: '>=4.0.0'
     resolution:
       integrity: sha512-soOk1h6J3VMTZtVeVpv15/Hpdl2cBLX3CAw4TAbkpTJiNPk9YP/zWcD1ND+xEtvyuuvKzbxliTOIyvkSeSJ6ag==
+  /prefix-style/2.0.1:
+    dev: false
+    resolution:
+      integrity: sha1-ZrupqHDP2jCKXcIOhekSCTLJWgY=
   /prelude-ls/1.1.2:
     dev: false
     engines:
@@ -10944,6 +10989,12 @@ packages:
       clipboard: 2.0.4
     resolution:
       integrity: sha512-Lf2JrFYx8FanHrjoV5oL8YHCclLQgbJcVZR+gikGGMqz6ub5QVWDTM6YIwm3BuPxM/LOV+rKns3LssXNLIf+DA==
+  /prismjs/1.16.0:
+    dev: false
+    optionalDependencies:
+      clipboard: 2.0.4
+    resolution:
+      integrity: sha512-OA4MKxjFZHSvZcisLGe14THYsug/nF6O1f0pAJc0KN0wTyAcLqmsbE+lTGKSpyh+9pEW57+k6pg2AfYR+coyHA==
   /private/0.1.8:
     dev: false
     engines:
@@ -11261,6 +11312,31 @@ packages:
     dev: false
     resolution:
       integrity: sha1-DD0L6u2KAclm2Xh793goElKpeao=
+  /react-custom-scrollbars/4.2.1:
+    dependencies:
+      dom-css: 2.1.0
+      prop-types: 15.7.2
+      raf: 3.4.1
+    dev: false
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.0 || ^16.0.0
+      react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
+    resolution:
+      integrity: sha1-gw/ZUCkn6X6KeMIIaBOJmyqLZts=
+  /react-custom-scrollbars/4.2.1/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      dom-css: 2.1.0
+      prop-types: 15.7.2
+      raf: 3.4.1
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+    dev: false
+    id: registry.npmjs.org/react-custom-scrollbars/4.2.1
+    peerDependencies:
+      react: ^0.14.0 || ^15.0.0 || ^16.0.0
+      react-dom: ^0.14.0 || ^15.0.0 || ^16.0.0
+    resolution:
+      integrity: sha1-gw/ZUCkn6X6KeMIIaBOJmyqLZts=
   /react-dev-utils/5.0.3:
     dependencies:
       address: 1.0.3
@@ -11551,32 +11627,32 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ywYLSjNkxKHiZOqNlso9PZByNEY+FTyh3C+7uuziK0xFXu9xzdyfHwg4S9iyiRRoPCR4k2LqaBBsWVmSBwCWYQ==
-  /react-syntax-highlighter/7.0.4:
+  /react-syntax-highlighter/10.2.1:
     dependencies:
-      babel-runtime: 6.26.0
-      highlight.js: 9.12.0
-      lowlight: 1.9.2
-      prismjs: 1.15.0
-      refractor: 2.6.2
+      '@babel/runtime': 7.4.4
+      highlight.js: 9.13.1
+      lowlight: 1.11.0
+      prismjs: 1.16.0
+      refractor: 2.9.0
     dev: false
     peerDependencies:
       react: '>= 0.14.0'
     resolution:
-      integrity: sha512-WtaHAlI5++csZ5uTnJc5+ozqqIzUkO/rnkv1GJ3CeRtjhTzbo12r9F0BICzhibr7gBWECd1Xgj1FKJEWZxcP4w==
-  /react-syntax-highlighter/7.0.4/react@16.6.3:
+      integrity: sha512-oiCu5H0cv8FoBx1RfKWFJJEWARIyvl8FbOpzLtTextkN2D6mPAFjRooSyP0sU7/BqZnt7C6vF1CqrjdnEKREYw==
+  /react-syntax-highlighter/10.2.1/react@16.6.3:
     dependencies:
-      babel-runtime: 6.26.0
-      highlight.js: 9.12.0
-      lowlight: 1.9.2
-      prismjs: 1.15.0
+      '@babel/runtime': 7.4.4
+      highlight.js: 9.13.1
+      lowlight: 1.11.0
+      prismjs: 1.16.0
       react: 16.6.3
-      refractor: 2.6.2
+      refractor: 2.9.0
     dev: false
-    id: registry.npmjs.org/react-syntax-highlighter/7.0.4
+    id: registry.npmjs.org/react-syntax-highlighter/10.2.1
     peerDependencies:
       react: '>= 0.14.0'
     resolution:
-      integrity: sha512-WtaHAlI5++csZ5uTnJc5+ozqqIzUkO/rnkv1GJ3CeRtjhTzbo12r9F0BICzhibr7gBWECd1Xgj1FKJEWZxcP4w==
+      integrity: sha512-oiCu5H0cv8FoBx1RfKWFJJEWARIyvl8FbOpzLtTextkN2D6mPAFjRooSyP0sU7/BqZnt7C6vF1CqrjdnEKREYw==
   /react-test-renderer/16.6.3:
     dependencies:
       object-assign: 4.1.1
@@ -11944,14 +12020,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-pNqnf9q1hI5HHZRBkj3bAngGZW/JMCmexDlOxw4XagXY2o1327nHH54LoTjiPJ0gizoqPDRqWyX/00g0hD6w+A==
-  /refractor/2.6.2:
+  /refractor/2.9.0:
     dependencies:
       hastscript: 5.0.0
-      parse-entities: 1.2.0
-      prismjs: 1.15.0
+      parse-entities: 1.2.1
+      prismjs: 1.16.0
     dev: false
     resolution:
-      integrity: sha512-AMNEGkhaXfhoa0/0mW0bHdfizDJnuHDK29/D5oQaKICf6DALQ+kDEHW/36oDHCdfva4XrZ+cdMhRvPsTI4OIjA==
+      integrity: sha512-lCnCYvXpqd8hC7ksuvo516rz5q4NwzBbq0X5qjH5pxRfcQKiQxKZ8JctrSQmrR/7pcV2TRrs9TT+Whmq/wtluQ==
   /regenerate/1.4.0:
     dev: false
     resolution:
@@ -11968,6 +12044,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-odxIc1/vDlo4iZcfXqRYFj0vpXFNoGdKMAUieAlFYO6m/nl5e9KR/beGf41z4a1FI+aQgtjhuaSlDxQ0hmkrHg==
+  /regenerator-runtime/0.13.2:
+    dev: false
+    resolution:
+      integrity: sha512-S/TQAZJO+D3m9xeN1WTI8dLKBBiRgXBlTJvbWjCThHWZj9EvHK70Ff50/tYj2J/fvBY6JtFVwRuazHN2E7M9BA==
   /regenerator-transform/0.10.1:
     dependencies:
       babel-runtime: 6.26.0
@@ -13021,12 +13101,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-UjgapumWlbMhkBgzT7Ykc5YXUT46F0iKu8SGXq0bcwP5dz/h0Plj6enJqjz1Zbq2l5WaqYnrVbwWOWMyF3F47g==
-  /space-separated-tokens/1.1.2:
-    dependencies:
-      trim: 0.0.1
+  /space-separated-tokens/1.1.3:
     dev: false
     resolution:
-      integrity: sha512-G3jprCEw+xFEs0ORweLmblJ3XLymGGr6hxZYTYZjIlvDti9vOBUjRQa1Rzjt012aRrocKstHwdNi+F7HguPsEA==
+      integrity: sha512-/M5RAdBuQlSDPNfA5ube+fkHbHyY08pMuADLmsAQURzo56w90r681oiOoz3o3ZQyWdSeNucpTFjL+Ggd5qui3w==
   /spawn-command/0.0.2-1:
     dev: false
     resolution:
@@ -13671,12 +13749,22 @@ packages:
     dev: false
     resolution:
       integrity: sha1-fSKbH8xjfkZsoIEYCDanqr/4P0M=
+  /to-camel-case/1.0.0:
+    dependencies:
+      to-space-case: 1.0.0
+    dev: false
+    resolution:
+      integrity: sha1-GlYFSy+daWKYzmamCJcyK29CPkY=
   /to-fast-properties/1.0.3:
     dev: false
     engines:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-uDVx+k2MJbguIxsG46MFXeTKGkc=
+  /to-no-case/1.0.2:
+    dev: false
+    resolution:
+      integrity: sha1-xyKQcWTvaxeBMsjmmTAhLRtKoWo=
   /to-object-path/0.3.0:
     dependencies:
       kind-of: 3.2.2
@@ -13705,6 +13793,12 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-FWtleNAtZ/Ki2qtqej2CXTOayOH9bHDQF+Q48VpWyDXjbYxA4Yz8iDB31zXOBUlOHHKidDbqGVrTUvQMPmBGBw==
+  /to-space-case/1.0.0:
+    dependencies:
+      to-no-case: 1.0.2
+    dev: false
+    resolution:
+      integrity: sha1-sFLar7Gysp3HcM6gFj5ewOvJ/Bc=
   /topo/2.0.2:
     dependencies:
       hoek: 4.2.1
@@ -13784,10 +13878,6 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-yy4SAwZ+DI3h9hQJS5/kVwTqYAM=
-  /trim/0.0.1:
-    dev: false
-    resolution:
-      integrity: sha1-WFhUf2spB1fulczMZm+1AITEYN0=
   /true-case-path/1.0.3:
     dependencies:
       glob: 7.1.3
@@ -15123,7 +15213,7 @@ packages:
     dev: false
     name: '@rush-temp/a11y-tests'
     resolution:
-      integrity: sha512-rj5h3SLUeU+L0geKsEOIO3jepVwEwh74oJ0++QaD8hyfVVyt6BJEskMiSC4wbjGSR5fieJLGXPsj3N9Eqn0Ijw==
+      integrity: sha512-IHtd6XLkN6EbWTquEc9gOaPwc0dtLxReUfGfe9A4qtWFV3yGvM0sJNNqd4SwJlM2JI3HvUwEzlNvUSNtYlLXpw==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
   'file:projects/api-docs.tgz':
@@ -15135,7 +15225,7 @@ packages:
     dev: false
     name: '@rush-temp/api-docs'
     resolution:
-      integrity: sha512-Sz1bf+ZiBv7XeC8Ks1MHjKhsasgkrV0cG6n8jLgybLucPVBAkMquwqBLVWbDuw+Ir+t05bp34TN1OnQsFRWo+g==
+      integrity: sha512-u50EmqFvRIDB6Fdn1VRRLK/6dBFDmYPzj99G0ZPjOPbNdO1Zpk6ksX8Upy+4ocWYN0er8HFniD1/nX+pl3sCCw==
       tarball: 'file:projects/api-docs.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -15145,7 +15235,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-cV+0bge7cdqfa2dD3J2MxogkOKk7qWac6LN7Xi0iREGkE8qjPRGfPKQuTpiMZxb/gaMQD0LtETJOPqKkAzJKjA==
+      integrity: sha512-CNMzKIRexyg/DjPG2xgJQNNScZDcsepj1HkJmktY3FrW2+NsnK2TZrE4Q6tL0gU+tdrVK2HMI1upfcS/iFcRoQ==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -15256,7 +15346,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-aAU5xCOgRBS2NY5v/BFskrKxPBoePECf9DskZruEpuiYJH5pkv+cijjpAYiX66gUDodR//6//6XxiCseDA9z8A==
+      integrity: sha512-1JNfIX1nnA3JYqqdERVv1YEo8XwnvkBr+h4Tp8UUX5h8fmhogZu0aszuFZxo1RgIwqogkztkaL0WHxfpt26rOw==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -15302,33 +15392,37 @@ packages:
     dev: false
     name: '@rush-temp/date-time'
     resolution:
-      integrity: sha512-xAH/TdLSTRrgQZ7MCXUOJvPG4rW+PmuMWewCxsZCbsFtfdRPJnsp3k/fOmcv3Lbh+4aVSFJQwGROYnE9ldVcnw==
+      integrity: sha512-2VremlEW61VArAe3yO/DfAQnR6ZdoqbA3O0InpN0UW5xSlA9Qw4qgf2DNjXC9B+GozpqVrCoaR5TlLPaxdZKpQ==
       tarball: 'file:projects/date-time.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
     dependencies:
       '@microsoft/load-themed-styles': 1.8.39
+      '@types/color-check': 0.0.0
       '@types/es6-promise': 0.0.32
       '@types/highlight.js': 9.12.2
       '@types/jest': 23.0.0
       '@types/markdown-to-jsx': 6.9.0
       '@types/react': 16.3.16
+      '@types/react-custom-scrollbars': 4.0.5
       '@types/react-dom': 16.0.5
       '@types/webpack-env': 1.13.0
+      color-check: 0.0.2
       es6-map: 0.1.5
       es6-promise: 4.2.5
       es6-weak-map: 2.0.2
       highlight.js: 9.13.1
       markdown-to-jsx: /markdown-to-jsx/6.6.1/react@16.6.3
       react: 16.6.3
+      react-custom-scrollbars: /react-custom-scrollbars/4.2.1/react-dom@16.6.3+react@16.6.3
       react-dom: /react-dom/16.6.3/react@16.6.3
-      react-syntax-highlighter: /react-syntax-highlighter/7.0.4/react@16.6.3
+      react-syntax-highlighter: /react-syntax-highlighter/10.2.1/react@16.6.3
       tslib: 1.9.3
       whatwg-fetch: 2.0.4
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-StyZTQZVbPKTT5jlThvtNzlFAVXiegv5Vw9fAyemH2XGj+Wp3D0NyS6w9vJ9DI4QFWnOExw1xCskv6Sx16UEgA==
+      integrity: sha512-QByuJonPnvqMS9rnvaF21dyqXETnP5zsAnsmNsPICKzzVAsfHMosEb/My7xAUl4MIhcLoioIBYB5R4De6nPvow==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -15361,7 +15455,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-qWzf8kGQGF3Xm2h5qMRVjMND13gpRiGL03chxUF4ck8s4BbxHSjuwuJF4CQqUnQmUmWi56e8T9NGt3SmrltdUw==
+      integrity: sha512-guwZ6n3ivhGTRt3ht7PP8x2g5LS71WWOR4WBtwq9knp7c9j5Yo+QkhDK3zAnx4FLudwOZeDLSlVR98V8KhPOwA==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -15397,7 +15491,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-QC0djzYCVdbLHyQ7nDNflpt5F1BIKbwawirP5+fVkbHETaYdN7CgJC0EGpZ4vFTBpT6eUAWD41nwUL05axl2Bg==
+      integrity: sha512-TNvZ/540UTFKeOsalvPGAbZmiS9g6lVg6HBOqsIL3DwOyLd4WEdsInNLsQ+EWShk4PD6SiSjCNI5xa+3K8A3JA==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15424,7 +15518,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-NBR8wu/3OXnMsf7AekNTEse9q/PTAylHuqriim3+lQ1ZDWzTy3XoW+bxWlc1mEPZGOMD4PHXmkVRKbHB5da2ZA==
+      integrity: sha512-BfTnnJiGoEPT1Ty/5BS9rpaRmivpwTClsIo2ErEEKsxNm5VPeqnZZavFM/6jjyt0IEcCMG3ghDAryIctsoeWtA==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15438,7 +15532,7 @@ packages:
     dev: false
     name: '@rush-temp/file-type-icons'
     resolution:
-      integrity: sha512-smmBbS5orTukrRqfl/u9JWXRkOiNQodehWqEQ9cNy3/0F/5Y0aoN+uD/UbJ0Y3GUV+yeJ2vK+nZqXYOrI2ckOg==
+      integrity: sha512-iUiqJGrI2AVYV7Kuc3vbajW+XORnLnhpIVHVnmf2/ySfJvMxFabNueY+oyx/i75j58kH1bbvyHyCOU6eJ8Xe7g==
       tarball: 'file:projects/file-type-icons.tgz'
     version: 0.0.0
   'file:projects/fluent-theme.tgz':
@@ -15448,7 +15542,7 @@ packages:
     dev: false
     name: '@rush-temp/fluent-theme'
     resolution:
-      integrity: sha512-/Us8Rls5XLBi+FBlXFzcKm5DXkKpllgV05Zfumj/Zs6xHsM9Gpeuws+PYXQ89m4bLV+u9exyIqKCoxSZJlpfOA==
+      integrity: sha512-3lRSAXOkSeyDTYTKS5FoNvcB2n0+FjoS+4h6ytgJxxmBZQ8/7GVbvXMQl9rtOyLoNXZLWb3WqrkJaqDyoDpPQQ==
       tarball: 'file:projects/fluent-theme.tgz'
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
@@ -15472,7 +15566,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation-scenarios'
     resolution:
-      integrity: sha512-mdKX66LJfbxjbFvkYTr1uPixPD/qenmdDZqdeCqVTlaLjqn1Yu/HXp1jgoHyuTXMy/cFxJcpWlBR4QMXWvQ/3A==
+      integrity: sha512-1DPlVkJrXrRFJm16V3eBAiA/T1bpNZEMsBzRnfEFgVjZ/XOaOwCj41JRvzdHFi6gEN1+vVprnlywvwV2pSeG3Q==
       tarball: 'file:projects/foundation-scenarios.tgz'
     version: 0.0.0
   'file:projects/foundation.tgz':
@@ -15494,7 +15588,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation'
     resolution:
-      integrity: sha512-AZsa16t4kBRACyO9SBTPj+q/YFNwsW1I1nPZPSN+Au09UiQd4x8MWGMmjMD3YOdaoRfQMjRnDYJrlBhnNw1KtQ==
+      integrity: sha512-9V0EagYcEY38tGY0wk3yPIcVMQ242nhVpDxi9qXibkyZDTSGLl8sGOg0PKO5wV19fddM/Zpnb+Ypku5JSn8nTA==
       tarball: 'file:projects/foundation.tgz'
     version: 0.0.0
   'file:projects/icons.tgz':
@@ -15503,7 +15597,7 @@ packages:
     dev: false
     name: '@rush-temp/icons'
     resolution:
-      integrity: sha512-zEaNFaBvN0nOhKhHw5CMPLSPuSScm8kwwEJgmiU5+qUrOSfe2MRaVfTZShjxQbt0mg1pzu8zT7gi70sG3DdUcA==
+      integrity: sha512-FYyTFMdDXfIqVzo9HiIA3jjtjqER/FT+vtjHQZMK5wRw377C7IlwtQz9lPy+gH0m+XvZRNpGtedd5jjlvD2F4w==
       tarball: 'file:projects/icons.tgz'
     version: 0.0.0
   'file:projects/jest-serializer-merge-styles.tgz':
@@ -15600,7 +15694,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-Ujqp2vztrqWosYY2ickfeFwUTci5yhqpMiqjs2XDXlG/ALI5G98jER1zY+D/NKmcWHVdCvn+sNFGawAX6hJA+A==
+      integrity: sha512-jYp7OBR/GXe38ia59u3aBQ+V0qYe2PhTvHSDs2KOgNCKE5LgvTMLp5ENuOIxJiftxZplX1/3tggldenmQ12L9A==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/perf-test.tgz':
@@ -15619,7 +15713,7 @@ packages:
     dev: false
     name: '@rush-temp/perf-test'
     resolution:
-      integrity: sha512-8Y0HznC3pMT4CkUdBXIPp3yCCEN1/C5WmJRRGTHG+Fi112vEa+zABROotLVLVa26dlKiBNgHFguXun9UwbHC/g==
+      integrity: sha512-eD2ZzcqgujhapwnV3KEpmwfwlakNcI5DRoDi5E2fWQQrzeFYJj/SHKSR9RLbdbgv7LTLWtreWVzaa/WuYLgmrg==
       tarball: 'file:projects/perf-test.tgz'
     version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
@@ -15628,7 +15722,7 @@ packages:
     dev: false
     name: '@rush-temp/pr-deploy-site'
     resolution:
-      integrity: sha512-MXesGLcT445UrA+yXy8P36Px0wEhAPIU1jb9W2NQiphLhCu11YhOZQLFTgex+R5G52HKEocZqkMYMKaNAUN5jQ==
+      integrity: sha512-utSyUZ4bhQNRD4ZItM2gTI3Fo6LQW1ZAMPmDRrDDWelx2cQeKqvGaJsKbcAkuI/feYkEwoGkhlAzZhw+e2E34A==
       tarball: 'file:projects/pr-deploy-site.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -15660,7 +15754,7 @@ packages:
     dev: false
     name: '@rush-temp/react-cards'
     resolution:
-      integrity: sha512-T6UNkzarX/gytA2Vle/TcZQO9W6NST/vGEfSYZ6MbZuSKEblZRSNChJanHWpzAPAcmIyXKY60mqTov1J2KBGsQ==
+      integrity: sha512-8WyaX5Df7aYEWwGMBx5ULE43RcLDoWpzW8R03UYibOLq3hDjl84lEUi7fjc22H5Cdoh6alUW2kByF0SX1zogqg==
       tarball: 'file:projects/react-cards.tgz'
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
@@ -15680,7 +15774,7 @@ packages:
     dev: false
     name: '@rush-temp/server-rendered-app'
     resolution:
-      integrity: sha512-k0gpNudgbFXIRS8eKSCF0pz4u6usua45WCA4Uw20v7KxYLwqGst/+1pP6XkptM/Uu+x4t75NcO0s8QUeNA8iAg==
+      integrity: sha512-mrWtRPeDik2mOgayzXeP4NDC8PbsRxxg+LhQvf+GVfLAsVa+NgTDP+k5GGZ+2WgoiqIcCWgkYE8yU/SpIqH3bg==
       tarball: 'file:projects/server-rendered-app.tgz'
     version: 0.0.0
   'file:projects/set-version.tgz':
@@ -15709,7 +15803,7 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-dXmkkBioq1xStJMBC0VDfxegeBTW1DixbNHXoVYkbUzXqN8aZX+QkjrOnouxOzoJiTdzk+L/hsFB5wDh3CXAOA==
+      integrity: sha512-cyiSXKRz1SNIuq1bZM0NDuEzBZMq0mJz65xRMqUEhXV10BbkMZtDni26TtR/pOlMJZhcpMRKVpyD9Hd9lk95mg==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -15726,7 +15820,7 @@ packages:
     dev: false
     name: '@rush-temp/styling'
     resolution:
-      integrity: sha512-Eod/RJQyPVMTG2r4KKWf5tkN0t5FxhR111A3K07mRAQRHMF9hzbtv5EXRkdn+/NBFCzlD6cpkWOcYWwj6VqZZw==
+      integrity: sha512-UZLCZciaM/ORuU21CJpeg2zmeywOHPg72Yn2XZtBGiQ2FYti1x/tCW5KZkiZXEh3V/XYi1MFuOiFoBYRqCe8Eg==
       tarball: 'file:projects/styling.tgz'
     version: 0.0.0
   'file:projects/test-bundles.tgz':
@@ -15740,7 +15834,7 @@ packages:
     dev: false
     name: '@rush-temp/test-bundles'
     resolution:
-      integrity: sha512-Xe7vWBMspwIPWxqWtzxMspwrS6vuTChb7X3sYMosnIKj3xJk3VvebH9SDiYauJWyf05Elw34Xv9rz1QPntcSgw==
+      integrity: sha512-79tyccDtXi79Y/8q9qrxbc68ug+BKHG2YQniqW6wemi0YTG5Rhjinxwq9C7L90M5WJv6oPHozXyepzVIgLFBFQ==
       tarball: 'file:projects/test-bundles.tgz'
     version: 0.0.0
   'file:projects/test-utilities.tgz':
@@ -15772,7 +15866,7 @@ packages:
     dev: false
     name: '@rush-temp/theme-samples'
     resolution:
-      integrity: sha512-J2B+zQAnHU/3VC+Qp/qE7rn+aX5NpO+/eo3Zdkb3MVyq5a1BLpFP9CnwXtU0qRFFv67a8+uvbLxvnD5xuZduBw==
+      integrity: sha512-GgroRkPbRW6IQBbCD3nQe7pVJ6ZbRxtLN4JCdOpL57lyEp5dSxy2cOFouf8wAgxFJPqPn5oqbZh5CIXziMS3nQ==
       tarball: 'file:projects/theme-samples.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -15791,7 +15885,7 @@ packages:
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-+zPdd5Tr6+9fM5WFSlN6DUPnd0j+QtYbPe7kIF0q75mJ7a9c0dAirvlTkR7C9nmoXLHnjxTbJWetXi5NGh1baA==
+      integrity: sha512-fcn2T1jbEofwGz8jtCIoRC+FgQRb73aQkIpb0vBlDYL+aqEh0n2vp1NgmkOnxbM3v0SVb1rav1UeIVbICC4Yfw==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/tslint-rules.tgz':
@@ -15834,7 +15928,7 @@ packages:
     dev: false
     name: '@rush-temp/variants'
     resolution:
-      integrity: sha512-A7tSSJq6nU9rw2Dv+seHDVsuAObzZx9eGsKKHODzZr63zaXRHHrvA4Q5kBlqswsRaYgPCbeCqqYCs9iAk19WFw==
+      integrity: sha512-7jDIA31z8STivRn+bovQqHWKqo5LFvpeBWFYe8Ed4LfE87v7GZSuqei7bMio+CmBC1gJQALomV4F5YGmSux8xg==
       tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
@@ -15865,7 +15959,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-hEVV+o1hvrxhyLQC6lmbKvumLqBBOyx0EjTztzoi4St1/H4Dn6/vlHnfqd3HXxFD67UagB8yUMzhm9vBhRhH6A==
+      integrity: sha512-N7HjAocjQlFohpo9md39S/i5fXHfrOvYSjXa3p9pxLGGnIAK0UAKlNgAfBHSKIWVXG4mJu3bsfl1ElKZTMlLLA==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -15935,6 +16029,7 @@ specifiers:
   '@storybook/channels': ^3.4.11
   '@storybook/react': ^3.2.3
   '@types/babylon': ^6.16.5
+  '@types/color-check': 0.0.0
   '@types/d3-array': 1.2.1
   '@types/d3-axis': 1.0.10
   '@types/d3-scale': 2.0.0
@@ -15956,6 +16051,7 @@ specifiers:
   '@types/prop-types': 15.5.3
   '@types/puppeteer': 1.12.3
   '@types/react-addons-test-utils': 0.14.18
+  '@types/react-custom-scrollbars': ^4.0.5
   '@types/react-test-renderer': ^16.0.0
   '@types/resemblejs': ~1.3.28
   '@types/semver': ^5.5.0
@@ -15975,6 +16071,7 @@ specifiers:
   bundlesize: ^0.15.2
   chalk: ^2.1.0
   codecov: ^3.1.0
+  color-check: 0.0.2
   color-functions: 1.1.0
   command-line-args: ^4.0.7
   compression: ^1.7.2
@@ -16032,10 +16129,11 @@ specifiers:
   raf: ^3.4.0
   raw-loader: ^0.5.1
   react: ~16.6.3
+  react-custom-scrollbars: ^4.2.1
   react-dom: ~16.6.3
   react-highlight: 0.10.0
   react-loadable: '>=5.0.0'
-  react-syntax-highlighter: ^7.0.2
+  react-syntax-highlighter: ^10.1.3
   react-test-renderer: ^16.3.0
   recast: ~0.15.0
   resemblejs: ~2.2.3

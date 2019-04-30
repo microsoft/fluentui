@@ -7,6 +7,7 @@ const MIN_DURATION_BETWEEN_BEEPS = 100;
 
 let _beepsLeft = 0;
 
+/** @deprecated */
 export function beep(): void {
   _beepsLeft++;
   if (_beepsLeft === 1) {

@@ -85,7 +85,9 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               <div className={classNames.header}>
                 <span className={classNames.title}>{title}</span>
                 <div className={classNames.toggleButtons}>
-                  {codepenJS && <CodepenComponent jsContent={codepenJS} buttonStyles={subComponentStyles.codeButtons} />}
+                  {codepenJS && (
+                    <CodepenComponent jsContent={codepenJS} styles={{ subComponentStyles: { button: subComponentStyles.codeButtons } }} />
+                  )}
 
                   {exampleCardCustomizations && (
                     <Dropdown
