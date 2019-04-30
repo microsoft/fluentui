@@ -1,10 +1,12 @@
 import { INavPage } from '../components/Nav/index';
 import { getUrlMinusLastHash } from './getUrlMinusLastHash';
+import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
 
-const _urlResolver = document.createElement('a');
+const doc = getDocument();
+const _urlResolver = doc && doc.createElement('a');
 
 export function isPageActive(componentUrl: string): boolean {
-  if (!componentUrl) {
+  if (!componentUrl || !_urlResolver) {
     return false;
   }
 

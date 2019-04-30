@@ -9,6 +9,7 @@ import { IApiProperty, IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiRef
 import { IEnumTableRowJson, ITableRowJson, ITableJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { PropertyType } from '../../utilities/parser/index';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
+import { jumpToAnchor } from '../../utilities/index2';
 
 export interface IApiReferencesTableSetState {
   properties: Array<IApiProperty>;
@@ -62,13 +63,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
   public componentDidUpdate(prevProps: IApiReferencesTableSetProps, prevState: IApiReferencesTableSetState): void {
     if (prevState.showSeeMore === false && this.state.showSeeMore === true) {
-      const hash = extractAnchorLink(window.location.hash);
-      const el = document.getElementById(hash);
-
-      if (el) {
-        // update scroll position
-        window.scrollTo({ top: el.offsetTop - TITLE_LINE_HEIGHT /* title */, behavior: 'smooth' });
-      }
+      jumpToAnchor(undefined, TITLE_LINE_HEIGHT);
     }
   }
 
@@ -130,19 +125,16 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const { properties, showSeeMore } = this.state;
 
     const hash = extractAnchorLink(window.location.hash);
-    const el = document.getElementById(hash);
+    if (hash) {
+      jumpToAnchor(hash, TITLE_LINE_HEIGHT);
 
-    if (el) {
-      // update scroll position
-      window.scrollTo({ top: el.offsetTop - TITLE_LINE_HEIGHT /* title */, behavior: 'smooth' });
-    }
-
-    if (!showSeeMore) {
-      const section = properties.filter(x => x.propertyName === hash)[0];
-      if (section) {
-        this.setState({
-          showSeeMore: true
-        });
+      if (!showSeeMore) {
+        const section = properties.filter(x => x.propertyName === hash)[0];
+        if (section) {
+          this.setState({
+            showSeeMore: true
+          });
+        }
       }
     }
   };

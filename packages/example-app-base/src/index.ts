@@ -11,5 +11,6 @@ export * from './components/PropertiesTable/index';
 export * from './components/ApiReferencesTable/index';
 export * from './components/templates/index';
 export * from './utilities/parser/index';
+export * from './utilities/index';
 
 import './version';
