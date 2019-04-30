@@ -39,6 +39,8 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
       transitionDurationDrop: TRANSITION_DURATION_DROP
     });
 
+    const classNames = this._classNames;
+
     return (
       <>
         <div
@@ -47,7 +49,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
           role={'columnheader'}
           aria-sort={column.isSorted ? (column.isSortedDescending ? 'descending' : 'ascending') : 'none'}
           aria-colindex={columnIndex}
-          className={this._classNames.root}
+          className={classNames.root}
           data-is-draggable={isDraggable}
           draggable={isDraggable}
           style={{
@@ -60,10 +62,10 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
           data-automationid={'ColumnsHeaderColumn'}
           data-item-key={column.key}
         >
-          {isDraggable && <Icon iconName="GripperBarVertical" className={this._classNames.gripperBarVerticalStyle} />}
+          {isDraggable && <Icon iconName="GripperBarVertical" className={classNames.gripperBarVerticalStyle} />}
           {onRenderColumnHeaderTooltip(
             {
-              hostClassName: this._classNames.cellTooltip,
+              hostClassName: classNames.cellTooltip,
               id: `${parentId}-${column.key}-tooltip`,
               setAriaDescribedBy: false,
               content: column.columnActionsMode !== ColumnActionsMode.disabled ? column.ariaLabel : '',
@@ -72,7 +74,7 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                   id={`${parentId}-${column.key}`}
                   aria-label={column.isIconOnly ? column.name : undefined}
                   aria-labelledby={column.isIconOnly ? undefined : `${parentId}-${column.key}-name`}
-                  className={this._classNames.cellTitle}
+                  className={classNames.cellTitle}
                   data-is-focusable={column.columnActionsMode !== ColumnActionsMode.disabled}
                   role={
                     column.columnActionsMode !== ColumnActionsMode.disabled &&
@@ -90,24 +92,20 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
                     column.columnActionsMode === ColumnActionsMode.hasDropdown ? (column.isMenuOpen ? true : false) : undefined
                   }
                 >
-                  <span id={`${parentId}-${column.key}-name`} className={this._classNames.cellName}>
-                    {(column.iconName || column.iconClassName) && (
-                      <Icon className={this._classNames.iconClassName} iconName={column.iconName} />
-                    )}
+                  <span id={`${parentId}-${column.key}-name`} className={classNames.cellName}>
+                    {(column.iconName || column.iconClassName) && <Icon className={classNames.iconClassName} iconName={column.iconName} />}
 
-                    {column.isIconOnly ? <span className={this._classNames.accessibleLabel}>{column.name}</span> : column.name}
+                    {column.isIconOnly ? <span className={classNames.accessibleLabel}>{column.name}</span> : column.name}
                   </span>
 
-                  {column.isFiltered && <Icon className={this._classNames.nearIcon} iconName={'Filter'} />}
+                  {column.isFiltered && <Icon className={classNames.nearIcon} iconName={'Filter'} />}
 
-                  {column.isSorted && (
-                    <Icon className={this._classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />
-                  )}
+                  {column.isSorted && <Icon className={classNames.sortIcon} iconName={column.isSortedDescending ? 'SortDown' : 'SortUp'} />}
 
-                  {column.isGrouped && <Icon className={this._classNames.nearIcon} iconName={'GroupedDescending'} />}
+                  {column.isGrouped && <Icon className={classNames.nearIcon} iconName={'GroupedDescending'} />}
 
                   {column.columnActionsMode === ColumnActionsMode.hasDropdown && !column.isIconOnly && (
-                    <Icon aria-hidden={true} className={this._classNames.filterChevron} iconName={'ChevronDown'} />
+                    <Icon aria-hidden={true} className={classNames.filterChevron} iconName={'ChevronDown'} />
                   )}
                 </span>
               )
