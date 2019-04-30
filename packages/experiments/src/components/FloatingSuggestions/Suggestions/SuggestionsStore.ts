@@ -1,4 +1,3 @@
-import { autobind } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 
 export class SuggestionsStore<T> {
@@ -32,13 +31,11 @@ export class SuggestionsStore<T> {
     return Array.isArray(suggestions) ? suggestions.map(this._ensureSuggestionModel) : [];
   }
 
-  @autobind
-  private _isSuggestionModel(value: ISuggestionModel<T> | T): value is ISuggestionModel<T> {
+  private _isSuggestionModel = (value: ISuggestionModel<T> | T): value is ISuggestionModel<T> => {
     return (<ISuggestionModel<T>>value).item !== undefined;
-  }
+  };
 
-  @autobind
-  private _ensureSuggestionModel(suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> {
+  private _ensureSuggestionModel = (suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> => {
     if (this._isSuggestionModel(suggestion)) {
       return suggestion as ISuggestionModel<T>;
     } else {
@@ -49,5 +46,5 @@ export class SuggestionsStore<T> {
         ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
       } as ISuggestionModel<T>;
     }
-  }
+  };
 }

@@ -1,13 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, css, KeyCodes } from 'office-ui-fabric-react/lib/Utilities';
-import { IButton } from 'office-ui-fabric-react/lib/Button';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
-import {
-  ISuggestionsHeaderFooterItemProps,
-  ISuggestionsControlProps,
-  ISuggestionsCoreProps,
-  ISuggestionsHeaderFooterProps
-} from './Suggestions.types';
+import { ISuggestionsHeaderFooterItemProps, ISuggestionsControlProps, ISuggestionsHeaderFooterProps } from './Suggestions.types';
 import { SuggestionsCore } from './SuggestionsCore';
 import * as stylesImport from './SuggestionsControl.scss';
 
@@ -51,13 +45,8 @@ export class SuggestionsHeaderFooterItem extends BaseComponent<ISuggestionsHeade
  * Class when used with SuggestionsStore, renders a suggestions control with customizable headers and footers
  */
 export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProps<T>, ISuggestionsControlState<T>> {
-  protected _forceResolveButton: IButton;
-  protected _searchForMoreButton: IButton;
-  protected _selectedElement: HTMLDivElement;
-  protected _suggestions: SuggestionsCore<T>;
-  private SuggestionsOfProperType: new (props: ISuggestionsCoreProps<T>) => SuggestionsCore<T> = SuggestionsCore as new (
-    props: ISuggestionsCoreProps<T>
-  ) => SuggestionsCore<T>;
+  private _selectedElement: HTMLDivElement;
+  private _suggestions: SuggestionsCore<T>;
 
   constructor(suggestionsProps: ISuggestionsControlProps<T>) {
     super(suggestionsProps);
@@ -70,7 +59,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   }
 
   public componentDidMount(): void {
-    this.resetSelectedItem();
+    this._resetSelectedItem();
   }
 
   public componentDidUpdate(): void {
@@ -80,7 +69,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   public componentWillReceiveProps(newProps: ISuggestionsControlProps<T>): void {
     if (newProps.suggestions) {
       this.setState({ suggestions: newProps.suggestions }, () => {
-        this.resetSelectedItem();
+        this._resetSelectedItem();
       });
     }
   }
@@ -94,9 +83,9 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     return (
       <div className={css('ms-Suggestions', className ? className : '', styles.root)}>
-        {headerItemsProps && this.renderHeaderItems()}
+        {headerItemsProps && this._renderHeaderItems()}
         {this._renderSuggestions()}
-        {footerItemsProps && this.renderFooterItems()}
+        {footerItemsProps && this._renderFooterItems()}
       </div>
     );
   }
@@ -154,28 +143,28 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     let isKeyDownHandled = false;
     if (keyCode === KeyCodes.down) {
       if (selectedHeaderIndex === -1 && !this._suggestions.hasSuggestionSelected() && selectedFooterIndex === -1) {
-        this.selectFirstItem();
+        this._selectFirstItem();
       } else if (selectedHeaderIndex !== -1) {
-        this.selectNextItem(SuggestionItemType.header);
+        this._selectNextItem(SuggestionItemType.header);
         isKeyDownHandled = true;
       } else if (this._suggestions.hasSuggestionSelected()) {
-        this.selectNextItem(SuggestionItemType.suggestion);
+        this._selectNextItem(SuggestionItemType.suggestion);
         isKeyDownHandled = true;
       } else if (selectedFooterIndex !== -1) {
-        this.selectNextItem(SuggestionItemType.footer);
+        this._selectNextItem(SuggestionItemType.footer);
         isKeyDownHandled = true;
       }
     } else if (keyCode === KeyCodes.up) {
       if (selectedHeaderIndex === -1 && !this._suggestions.hasSuggestionSelected() && selectedFooterIndex === -1) {
-        this.selectLastItem();
+        this._selectLastItem();
       } else if (selectedHeaderIndex !== -1) {
-        this.selectPreviousItem(SuggestionItemType.header);
+        this._selectPreviousItem(SuggestionItemType.header);
         isKeyDownHandled = true;
       } else if (this._suggestions.hasSuggestionSelected()) {
-        this.selectPreviousItem(SuggestionItemType.suggestion);
+        this._selectPreviousItem(SuggestionItemType.suggestion);
         isKeyDownHandled = true;
       } else if (selectedFooterIndex !== -1) {
-        this.selectPreviousItem(SuggestionItemType.footer);
+        this._selectPreviousItem(SuggestionItemType.footer);
         isKeyDownHandled = true;
       }
     } else if (keyCode === KeyCodes.enter || keyCode === KeyCodes.tab) {
@@ -195,7 +184,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     }
   }
 
-  protected renderHeaderItems(): JSX.Element | null {
+  private _renderHeaderItems(): JSX.Element | null {
     const { headerItemsProps, suggestionsHeaderContainerAriaLabel } = this.props;
     const { selectedHeaderIndex } = this.state;
 
@@ -230,7 +219,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     ) : null;
   }
 
-  protected renderFooterItems(): JSX.Element | null {
+  private _renderFooterItems(): JSX.Element | null {
     const { footerItemsProps, suggestionsFooterContainerAriaLabel } = this.props;
     const { selectedFooterIndex } = this.state;
     return footerItemsProps ? (
@@ -264,16 +253,14 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
     ) : null;
   }
 
-  protected _renderSuggestions(): JSX.Element {
-    const TypedSuggestions = this.SuggestionsOfProperType;
-
-    return <TypedSuggestions ref={this._resolveRef('_suggestions')} {...this.props} suggestions={this.state.suggestions} />;
+  private _renderSuggestions(): JSX.Element {
+    return <SuggestionsCore<T> ref={this._resolveRef('_suggestions')} {...this.props} suggestions={this.state.suggestions} />;
   }
 
   /**
    * Selects the next selectable item
    */
-  protected selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void {
+  private _selectNextItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void {
     // If the recursive calling has not found a selectable item in the other suggestion item type groups
     // And the method is being called again with the original item type,
     // Select the first selectable item of this suggestion item type group (could be the currently selected item)
@@ -293,14 +280,14 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     // If the selection did not change, try to select from the next suggestion type group
     if (!selectionChanged) {
-      this.selectNextItem(this._getNextItemSectionType(itemType), startedItemType);
+      this._selectNextItem(this._getNextItemSectionType(itemType), startedItemType);
     }
   }
 
   /**
    * Selects the previous selectable item
    */
-  protected selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void {
+  private _selectPreviousItem(itemType: SuggestionItemType, originalItemType?: SuggestionItemType): void {
     // If the recursive calling has not found a selectable item in the other suggestion item type groups
     // And the method is being called again with the original item type,
     // Select the last selectable item of this suggestion item type group (could be the currently selected item)
@@ -319,27 +306,27 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
 
     // If the selection did not change, try to select from the previous suggestion type group
     if (!selectionChanged) {
-      this.selectPreviousItem(this._getPreviousItemSectionType(itemType), startedItemType);
+      this._selectPreviousItem(this._getPreviousItemSectionType(itemType), startedItemType);
     }
   }
 
   /**
    * Resets the selected state and selects the first selectable item
    */
-  protected resetSelectedItem(): void {
+  private _resetSelectedItem(): void {
     this.setState({ selectedHeaderIndex: -1, selectedFooterIndex: -1 });
     this._suggestions.deselectAllSuggestions();
 
     // Select the first item if the shouldSelectFirstItem prop is not set or it is set and it returns true
     if (this.props.shouldSelectFirstItem === undefined || this.props.shouldSelectFirstItem()) {
-      this.selectFirstItem();
+      this._selectFirstItem();
     }
   }
 
   /**
    * Selects the first item
    */
-  protected selectFirstItem(): void {
+  private _selectFirstItem(): void {
     if (this._selectNextItemOfItemType(SuggestionItemType.header)) {
       return;
     }
@@ -354,7 +341,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
   /**
    * Selects the last item
    */
-  protected selectLastItem(): void {
+  private _selectLastItem(): void {
     if (this._selectPreviousItemOfItemType(SuggestionItemType.footer)) {
       return;
     }
