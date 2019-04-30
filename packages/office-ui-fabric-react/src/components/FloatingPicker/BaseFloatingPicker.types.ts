@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { ISuggestionModel } from '../../Pickers';
-import { IPersonaProps } from '../../Persona';
 import { ISuggestionsControlProps } from './Suggestions/Suggestions.types';
 import { SuggestionsStore } from './Suggestions/SuggestionsStore';
 import { IRefObject } from '../../Utilities';
@@ -89,9 +88,9 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
    */
   pickerSuggestionsProps?: IBaseFloatingPickerSuggestionProps;
   /**
-   * A callback for when a persona is removed from the suggestion list
+   * A callback for when an item is removed from the suggestion list
    */
-  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  onRemoveSuggestion?: (item: T) => void;
   /**
    * A function used to validate if raw text entered into the well can be added
    */
