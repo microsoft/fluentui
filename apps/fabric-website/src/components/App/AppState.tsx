@@ -4,6 +4,9 @@ import * as React from 'react';
 import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
+import { ApiReferencesTableSet } from '@uifabric/example-app-base';
+import { IReferencesList } from '@uifabric/fabric-website-resources/lib/AppDefinition';
+const pageStyles: any = require('../../pages/PageStyles.module.scss');
 
 export interface IAppState {
   appTitle: string;
@@ -28,6 +31,24 @@ const StylesLoadingComponent = (props: any): JSX.Element => {
     </div>
   );
 };
+
+function loadReferences(): INavPage[] {
+  const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
+
+  return pageList.pages.map(pageName => ({
+    title: pageName,
+    url: '#/components/references/' + pageName.toLowerCase(),
+    isFilterable: true,
+    component: () => (
+      <div className={pageStyles.basePage}>
+        <ComponentPage>
+          <PageHeader pageTitle={pageName} backgroundColor="#038387" />
+          <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
+        </ComponentPage>
+      </div>
+    )
+  }));
+}
 
 export const AppState: IAppState = {
   appTitle: 'Office UI Fabric',
@@ -157,7 +178,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'ComboBox',
-              url: '#/components/ComboBox',
+              url: '#/components/combobox',
               isFilterable: true,
               component: () => <LoadingComponent title="ComboBox" />,
               getComponent: cb =>
@@ -329,7 +350,7 @@ export const AppState: IAppState = {
             },
             {
               title: 'Calendar',
-              url: '#/components/Calendar',
+              url: '#/components/calendar',
               isFilterable: true,
               component: () => <LoadingComponent title="Calendar" />,
               getComponent: cb =>
@@ -930,6 +951,13 @@ export const AppState: IAppState = {
                 require.ensure([], require => cb(require<any>('../../pages/Components/KeytipsComponentPage').KeytipsComponentPage))
             }
           ]
+        },
+        {
+          title: 'References',
+          url: '#/components/references',
+          className: 'componentsPage',
+          isCategory: true,
+          pages: loadReferences()
         }
       ]
     },

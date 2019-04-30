@@ -38,7 +38,6 @@ export const TextPageProps: IDocPageProps = {
       codepenJS: TextBlockExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/Text.types.tsx')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Text/docs/TextDos.md'),

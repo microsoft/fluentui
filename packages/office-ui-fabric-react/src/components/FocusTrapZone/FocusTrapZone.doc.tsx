@@ -69,7 +69,6 @@ export const FocusTrapZonePageProps: IDocPageProps = {
       view: <FocusTrapZoneDialogInPanelExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/FocusTrapZone.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusTrapZone/docs/FocusTrapZoneOverview.md'),
   bestPractices: '',
   dos: '',

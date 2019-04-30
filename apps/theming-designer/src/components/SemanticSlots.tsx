@@ -134,8 +134,6 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
         {/* <pre>{JSON.stringify(this.state, null, 2)}</pre> */}
         <h1>Semantic Slots</h1>
         <SemanticSlotsDetailsList
-          theme={this.props.theme}
-          themeRules={this.props.themeRules}
           slotNames={this.state.slotNames}
           noneSlots={this.state.noneSlots}
           neutralSlots={this.state.neutralSlots}
@@ -167,7 +165,7 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
   };
 
   // fill noneSlots
-  private fillVariantSlotsList(variantType: VariantThemeType): JSX.Element[] {
+  private fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
     // call getVariant to get the default
     let noneThemeVariant: ITheme;
     if (this.props.theme) {
@@ -186,5 +184,5 @@ export class SemanticSlots extends React.Component<ISemanticSlotsProps, ISemanti
     } else {
       return [];
     }
-  }
+  };
 }

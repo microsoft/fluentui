@@ -1,8 +1,8 @@
 {
   "changes": [
     {
+      "comment": "",
       "packageName": "@uifabric/date-time",
-      "comment": "Run prettier on all files",
       "type": "none"
     }
   ],

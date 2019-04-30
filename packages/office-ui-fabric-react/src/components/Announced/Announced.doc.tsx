@@ -21,7 +21,6 @@ export const AnnouncedPageProps: IDocPageProps = {
   title: 'Use Cases',
   componentName: 'Announced',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/experiments/src/components/Announced',
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Announced/Announced.types.ts')],
   overview: require('!raw-loader!office-ui-fabric-react/src/components/Announced/docs/AnnouncedOverview.md'),
   isHeaderVisible: false
 };

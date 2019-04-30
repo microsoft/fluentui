@@ -17,7 +17,7 @@ const classNames = mergeStyleSets({
     maxHeight: 500
   },
   itemCell: [
-    getFocusStyle(theme, -1),
+    getFocusStyle(theme, { inset: -1 }),
     {
       minHeight: 54,
       padding: 10,

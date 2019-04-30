@@ -2,6 +2,62 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.174.0",
+      "tag": "office-ui-fabric-react_v6.174.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DocPage: add types",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "382ec4fe6678eef91be9bc7e66091b11ff92e0a2"
+          },
+          {
+            "comment": "Always reset pending info on option click.",
+            "author": "apneer <sasha050909@gmail.com>",
+            "commit": "93d13a59e5b814610eba70586b204f9ceabc08bb"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "FocusZone: remove outline on focus",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "1f8090786921ba2c5a420972fdb8bc4392226347"
+          },
+          {
+            "comment": "Bugfix to set the correct width of the Pivot item's :after element, so Pivot items don't move on (un)selection",
+            "author": "Ute Schiehlen <ute.schiehlen@outlook.com>",
+            "commit": "c02a915e1a7b96874fe0d60b60483cc210c4a045"
+          },
+          {
+            "comment": "Use new getFocusStyle signature",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          },
+          {
+            "comment": "DetailsColumn: Cleanup className vars, use lambdas for this binding, add type-safety to root ref",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "c74e840ac33da204cf9dbf3c9d4f5552440402e5"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Fix master by updating snapshots.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "33ec6353e28599368b9739baaba7954f26fcd5a3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.0` to `^6.37.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.173.0",
       "tag": "office-ui-fabric-react_v6.173.0",
       "date": "Mon, 29 Apr 2019 12:34:34 GMT",

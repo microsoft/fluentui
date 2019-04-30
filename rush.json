@@ -435,6 +435,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "@uifabric/api-docs",
+      "projectFolder": "packages/api-docs",
+      "shouldPublish": false
+    },
+    {
       "packageName": "@uifabric/react-cards",
       "projectFolder": "packages/react-cards",
       "versionPolicyName": "lockedMajor"

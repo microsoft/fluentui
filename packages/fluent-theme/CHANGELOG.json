@@ -2,6 +2,28 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.7",
+      "tag": "@uifabric/fluent-theme_v0.16.7",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Use new getFocusStyle signature",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.6",
       "tag": "@uifabric/fluent-theme_v0.16.6",
       "date": "Tue, 23 Apr 2019 12:32:00 GMT",

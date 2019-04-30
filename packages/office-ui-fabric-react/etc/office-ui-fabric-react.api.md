@@ -324,7 +324,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: any, index: number) => void;
     // (undocumented)
-    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number) => void;
+    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
     // (undocumented)
     protected onSuggestionSelect(): void;
     // (undocumented)
@@ -349,6 +349,8 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     protected selection: Selection;
     // (undocumented)
     protected suggestionElement: React.RefObject<ISuggestions<T>>;
+    // @deprecated (undocumented)
+    protected SuggestionOfProperType: new (props: ISuggestionsProps<T>) => Suggestions<T>;
     // (undocumented)
     protected suggestionStore: SuggestionsController<T>;
     // (undocumented)
@@ -1569,7 +1571,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     inputElement?: HTMLInputElement | null;
     onChange?: (item: T) => void;
     onInputChanged?: (filter: string) => void;
-    onRemoveSuggestion?: (item: IPersonaProps) => void;
+    onRemoveSuggestion?: (item: T) => void;
     onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
     onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
     onSuggestionsHidden?: () => void;
@@ -1626,7 +1628,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     onGetMoreResults?: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onInputChange?: (input: string) => string;
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
-    onRemoveSuggestion?: (item: IPersonaProps) => void;
+    onRemoveSuggestion?: (item: T) => void;
     onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
     onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
     onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
@@ -4810,6 +4812,8 @@ export interface IImageStyleProps {
     height?: number | string;
     isCenter?: boolean;
     // (undocumented)
+    isCenterContain?: boolean;
+    // (undocumented)
     isCenterCover?: boolean;
     // (undocumented)
     isContain?: boolean;
@@ -5120,6 +5124,7 @@ export enum ImageCoverStyle {
 // @public
 export enum ImageFit {
     center = 0,
+    centerContain = 5,
     centerCover = 4,
     contain = 1,
     cover = 2,

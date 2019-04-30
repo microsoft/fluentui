@@ -18,8 +18,6 @@ export interface ISemanticSlotsDetailsListProps {
   neutralSlots: JSX.Element[];
   softSlots: JSX.Element[];
   strongSlots: JSX.Element[];
-  theme: ITheme | undefined;
-  themeRules?: IThemeRules;
 }
 
 interface ISemanticSlotsDetailsList {
@@ -44,7 +42,6 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
   let items: ISemanticSlotsDetailsList[] = [];
   let groups: IGroup[] = [];
   let columns: IColumn[] = [];
-  const newTheme = props.theme;
 
   // const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
   // };
