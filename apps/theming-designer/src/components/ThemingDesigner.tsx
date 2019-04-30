@@ -28,6 +28,15 @@ const outerMostStack = mergeStyles({
   width: '100%'
 });
 
+const sidebarStyles = mergeStyles({
+  borderRight: '1px solid #ddd',
+  minHeight: '100%',
+  paddingRight: '1rem',
+  position: 'fixed',
+  top: '60px',
+  left: '10px'
+});
+
 let colorChangeTimeout: number;
 
 let hideSemanticSlots: boolean;
@@ -65,7 +74,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
         <Stack horizontal gap={10}>
-          <Stack gap={20}>
+          <Stack gap={20} className={sidebarStyles}>
             <h1>
               <IconButton
                 disabled={false}

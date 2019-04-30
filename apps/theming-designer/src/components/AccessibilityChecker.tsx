@@ -1,10 +1,10 @@
 import * as React from 'react';
-import { Card } from '@uifabric/react-cards';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { IThemeRules, FabricSlots, BaseSlots } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
+import { BaseSlots, FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
+import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
+import { itemWrapper } from '../shared/style';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IAccessibilityCheckerProps {
   theme?: ITheme;
@@ -59,9 +59,9 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
 
   loadAllContrastRatioPairsList();
   return (
-    <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto' } }}>
+    <div className={itemWrapper}>
       <h1>Accessibility Checker</h1>
       <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
-    </Card>
+    </div>
   );
 };

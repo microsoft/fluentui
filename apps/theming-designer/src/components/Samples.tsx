@@ -1,19 +1,19 @@
 import * as React from 'react';
-import { Card } from '@uifabric/react-cards';
-import { SamplesCardHeader } from './SamplesCardHeader';
 import { ActionButton, DefaultButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
+import { itemWrapper } from '../shared/style';
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { SamplesCardHeader } from './SamplesCardHeader';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown } from 'office-ui-fabric-react/lib/Dropdown';
-import { Link } from 'office-ui-fabric-react/lib/Link';
 
 export class Samples extends React.Component {
   public render() {
     return (
-      <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto' } }}>
+      <div className={itemWrapper}>
         <h1>Samples</h1>
         <Stack horizontal gap={50}>
           <Stack gap={10}>
@@ -116,7 +116,7 @@ export class Samples extends React.Component {
             <SamplesCardHeader label="RADIO BUTTON" />
           </Stack>
         </Stack>
-      </Card>
+      </div>
     );
   }
   private _onToggleChange(ev: React.MouseEvent<HTMLElement>, checked: boolean | undefined) {

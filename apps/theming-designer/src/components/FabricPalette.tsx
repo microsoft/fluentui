@@ -1,8 +1,8 @@
 import * as React from 'react';
-import { Card } from '@uifabric/react-cards';
 import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { itemWrapper } from '../shared/style';
 import { mergeStyles } from '@uifabric/merge-styles';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 export interface IFabricPaletteProps {
   themeRules?: IThemeRules;
@@ -51,7 +51,7 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
   };
 
   return (
-    <Card styles={{ root: { minWidth: '800px', maxWidth: '1200px', height: 'auto', display: 'flex' } }}>
+    <div className={itemWrapper}>
       <h1>Fabric Palette</h1>
       <table className={tableClassName}>
         <thead>
@@ -131,6 +131,6 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
           </tr>
         </tbody>
       </table>
-    </Card>
+    </div>
   );
 };
