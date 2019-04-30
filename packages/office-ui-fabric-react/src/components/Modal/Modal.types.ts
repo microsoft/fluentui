@@ -127,6 +127,8 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> &
     hasBeenOpened?: boolean;
     /** Positioning of modal on first render */
     modalRectangleTop?: number;
+    /** Classname for layer element */
+    layerClassName?: string;
   };
 
 /**

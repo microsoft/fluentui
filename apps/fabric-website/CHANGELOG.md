@@ -1,6 +1,41 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 04 Apr 2019 12:34:57 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.14.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add references section to nav
+
+## 6.13.6
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Remove implementation examples sections
+
+## 6.13.5
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- Remove very old things from the website	
+
+## 6.13.4
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Run prettier on all files
+
+## 6.13.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Update example-app-base styling overrides to use css-in-js
 
 ## 6.13.2
 Thu, 04 Apr 2019 12:34:57 GMT

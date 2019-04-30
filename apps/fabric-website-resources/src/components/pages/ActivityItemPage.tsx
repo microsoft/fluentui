@@ -3,5 +3,8 @@ import { ActivityItemPageProps } from 'office-ui-fabric-react/lib/components/Act
 import { DemoPage } from '../DemoPage';
 
 export const ActivityItemPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage {...{ ...ActivityItemPageProps, ...props }} />
+  <DemoPage
+    jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/ActivityItem.page.json')}
+    {...{ ...ActivityItemPageProps, ...props }}
+  />
 );

@@ -20,7 +20,7 @@ import { ISelection, SelectionMode, SELECTION_CHANGE } from '../../utilities/sel
 import { IDragDropOptions, DragDropHelper } from '../../utilities/dragdrop/index';
 import { DetailsColumn, IDetailsColumnProps } from '../../components/DetailsList/DetailsColumn';
 import { SelectAllVisibility, IDropHintDetails, IColumnReorderHeaderProps, IDetailsHeaderState } from './DetailsHeader.types';
-import { IDetailsHeaderStyleProps, IDetailsHeaderStyles } from './DetailsHeader.types';
+import { IDetailsHeaderStyleProps, IDetailsHeaderStyles, IDetailsHeader } from './DetailsHeader.types';
 import { classNamesFunction } from '../../Utilities';
 
 const getClassNames = classNamesFunction<IDetailsHeaderStyleProps, IDetailsHeaderStyles>();
@@ -29,10 +29,6 @@ const MOUSEDOWN_PRIMARY_BUTTON = 0; // for mouse down event we are using ev.butt
 const MOUSEMOVE_PRIMARY_BUTTON = 1; // for mouse move event we are using ev.buttons property, 1 means left button
 
 const NO_COLUMNS: IColumn[] = [];
-
-export interface IDetailsHeader {
-  focus: () => boolean;
-}
 
 export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, IDetailsHeaderState> implements IDetailsHeader {
   public static defaultProps = {
@@ -168,7 +164,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
       onColumnContextMenu,
       onRenderColumnHeaderTooltip = this._onRenderColumnHeaderTooltip,
       styles,
-      theme
+      theme,
+      onRenderDetailsCheckbox
     } = this.props;
     const { isAllSelected, columnResizeDetails, isSizing, groupNestingDepth, isAllCollapsed, columnReorderProps } = this.state;
     const showCheckbox = selectAllVisibility !== SelectAllVisibility.none;
@@ -228,7 +225,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               >
                 {onRenderColumnHeaderTooltip(
                   {
-                    hostClassName: css(classNames.checkTooltip),
+                    hostClassName: classNames.checkTooltip,
                     id: `${this._id}-checkTooltip`,
                     setAriaDescribedBy: false,
                     content: ariaLabelForSelectAllCheckbox,
@@ -251,6 +248,7 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
                         anySelected={false}
                         canSelect={!isCheckboxHidden}
                         className={classNames.check}
+                        onRenderDetailsCheckbox={onRenderDetailsCheckbox}
                       />
                     )
                   },
@@ -648,8 +646,8 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
    * double click on the column sizer will auto ajust column width
    * to fit the longest content among current rendered rows.
    *
-   * @param {number} columnIndex (index of the column user double clicked)
-   * @param {React.MouseEvent} ev (mouse double click event)
+   * @param columnIndex - index of the column user double clicked
+   * @param ev - mouse double click event
    */
   private _onSizerDoubleClick(columnIndex: number, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnAutoResized, columns = NO_COLUMNS } = this.props;

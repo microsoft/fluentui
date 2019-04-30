@@ -1,6 +1,20 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 02 Apr 2019 00:38:14 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 0.1.8
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Use new getFocusStyle helper
+
+## 0.1.7
+Mon, 22 Apr 2019 12:32:05 GMT
+
+### Patches
+
+- update readme
 
 ## 0.1.6
 Tue, 02 Apr 2019 00:38:14 GMT

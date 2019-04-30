@@ -9,5 +9,6 @@ export const Check: React.StatelessComponent<ICheckProps> = styled<ICheckProps, 
   undefined,
   {
     scope: 'Check'
-  }
+  },
+  true
 );

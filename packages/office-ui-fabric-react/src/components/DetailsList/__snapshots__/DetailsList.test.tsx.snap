@@ -51,6 +51,9 @@ exports[`DetailsList renders List correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -503,6 +506,9 @@ exports[`DetailsList renders List correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -632,6 +638,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1671,6 +1680,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -1801,6 +1813,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2253,6 +2268,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -2383,6 +2401,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3211,6 +3232,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -3340,6 +3364,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4394,6 +4421,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -4523,6 +4553,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4837,6 +4870,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -4961,6 +4997,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           <div
                             className=
                                 ms-FocusZone
+                                &:focus {
+                                  outline: none;
+                                }
                                 {
                                   align-items: center;
                                   display: flex;
@@ -5136,6 +5175,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5326,6 +5368,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5583,6 +5628,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           <div
                             className=
                                 ms-FocusZone
+                                &:focus {
+                                  outline: none;
+                                }
                                 {
                                   align-items: center;
                                   display: flex;
@@ -5758,6 +5806,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5948,6 +5999,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -6138,6 +6192,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;

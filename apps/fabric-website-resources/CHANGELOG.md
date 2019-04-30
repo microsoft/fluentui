@@ -1,6 +1,27 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 12 Apr 2019 12:34:16 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 6.15.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- change component pages to use page json files
+
+## 6.14.4
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Delete outdated component status info
+
+## 6.14.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Hide status badges, import updates
 
 ## 6.14.2
 Fri, 12 Apr 2019 12:34:16 GMT

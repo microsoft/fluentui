@@ -2,6 +2,51 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "0.1.8",
+      "tag": "@uifabric/azure-themes_v0.1.8",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use new getFocusStyle helper",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.7",
+      "tag": "@uifabric/azure-themes_v0.1.7",
+      "date": "Mon, 22 Apr 2019 12:32:05 GMT",
+      "comments": {
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "update readme",
+            "author": "chieftn <rick.kessler@outlook.com>",
+            "commit": "e480a90c06a931d9516a7a5b3167336cb145f0ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.2` to `^6.167.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.6",
       "tag": "@uifabric/azure-themes_v0.1.6",
       "date": "Tue, 02 Apr 2019 00:38:14 GMT",

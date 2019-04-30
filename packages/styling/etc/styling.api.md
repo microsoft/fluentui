@@ -38,7 +38,7 @@ export function buildClassMap<T>(styles: T): {
 };
 
 // Warning: (ae-forgotten-export) The symbol "IColorClassNames" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export const ColorClassNames: IColorClassNames;
 
@@ -112,6 +112,12 @@ export namespace FontWeights {
 export function getFadedOverflowStyle(theme: ITheme, color?: keyof ISemanticColors | keyof IPalette, direction?: 'horizontal' | 'vertical', width?: string | number, height?: string | number): IRawStyle;
 
 // @public
+export function getFocusOutlineStyle(theme: ITheme, inset?: number, width?: number, color?: string): IRawStyle;
+
+// @public
+export function getFocusStyle(theme: ITheme, options?: IGetFocusStylesOptions): IRawStyle;
+
+// @public @deprecated
 export function getFocusStyle(theme: ITheme, inset?: number, position?: 'relative' | 'absolute', highContrastStyle?: IRawStyle | undefined, borderColor?: string, outlineColor?: string, isFocusedOnly?: boolean): IRawStyle;
 
 // @public
@@ -130,7 +136,7 @@ export function getScreenSelector(min: number, max: number): string;
 export function getTheme(depComments?: boolean): ITheme;
 
 // Warning: (ae-internal-missing-underscore) The name getThemedContext should be prefixed with an underscore because the declaration is marked as "@internal"
-//
+// 
 // @internal
 export function getThemedContext(context: ICustomizerContext, scheme?: ISchemeNames, theme?: ITheme): ICustomizerContext;
 
@@ -260,7 +266,7 @@ export namespace IconFontSizes {
 export { ICSPSettings }
 
 // Warning: (ae-internal-missing-underscore) The name IEffects should be prefixed with an underscore because the declaration is marked as "@internal"
-//
+// 
 // @internal
 export interface IEffects {
     elevation16: string;
@@ -301,6 +307,17 @@ export interface IFontStyles {
 export { IFontWeight }
 
 // @public (undocumented)
+export interface IGetFocusStylesOptions {
+    borderColor?: string;
+    highContrastStyle?: IRawStyle;
+    inset?: number;
+    isFocusedOnly?: boolean;
+    outlineColor?: string;
+    position?: 'relative' | 'absolute';
+    width?: number;
+}
+
+// @public (undocumented)
 export interface IIconOptions {
     disableWarnings: boolean;
     // @deprecated (undocumented)
@@ -312,7 +329,7 @@ export interface IIconRecord {
     // (undocumented)
     code: string | undefined;
     // Warning: (ae-forgotten-export) The symbol "IIconSubsetRecord" needs to be exported by the entry point index.d.ts
-    //
+    // 
     // (undocumented)
     subset: IIconSubsetRecord;
 }
@@ -408,7 +425,7 @@ export { IRawStyle }
 export interface IScheme {
     disableGlobalClassNames: boolean;
     // Warning: (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
-    //
+    // 
     // (undocumented)
     effects: IEffects;
     // (undocumented)
@@ -424,7 +441,7 @@ export interface IScheme {
 }
 
 // Warning: (ae-internal-missing-underscore) The name ISchemeNames should be prefixed with an underscore because the declaration is marked as "@internal"
-//
+// 
 // @internal
 export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 
@@ -521,7 +538,7 @@ export interface ISemanticTextColors {
 }
 
 // Warning: (ae-internal-missing-underscore) The name ISpacing should be prefixed with an underscore because the declaration is marked as "@internal"
-//
+// 
 // @internal
 export interface ISpacing {
     // (undocumented)
@@ -638,7 +655,7 @@ export function unregisterIcons(iconNames: string[]): void;
 export namespace ZIndexes {
     const // (undocumented)
     Nav: number;
-    const // (undocumented)
+    const // @deprecated (undocumented)
     ScrollablePane: number;
     const // (undocumented)
     FocusStyle: number;
@@ -652,7 +669,7 @@ export namespace ZIndexes {
 
 
 // Warnings were encountered during analysis:
-//
+// 
 // lib/interfaces/ITheme.d.ts:68:5 - (ae-incompatible-release-tags) The symbol "spacing" is marked as @public, but its signature references "ISpacing" which is marked as @internal
 // lib/interfaces/ITheme.d.ts:69:5 - (ae-incompatible-release-tags) The symbol "effects" is marked as @public, but its signature references "IEffects" which is marked as @internal
 // lib/interfaces/ITheme.d.ts:70:5 - (ae-incompatible-release-tags) The symbol "schemes" is marked as @public, but its signature references "ISchemeNames" which is marked as @internal

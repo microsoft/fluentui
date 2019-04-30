@@ -2,6 +2,84 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.15.0",
+      "tag": "@uifabric/fabric-website-resources_v6.15.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "change component pages to use page json files",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "382ec4fe6678eef91be9bc7e66091b11ff92e0a2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.7` to `^0.1.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.0` to `^6.37.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.4",
+      "tag": "@uifabric/fabric-website-resources_v6.14.4",
+      "date": "Wed, 24 Apr 2019 12:35:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Delete outdated component status info",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "963bedb18604d38792d7ac57d280877f52a597ae"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.168.0` to `^6.169.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.3",
+      "tag": "@uifabric/fabric-website-resources_v6.14.3",
+      "date": "Tue, 16 Apr 2019 12:32:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Hide status badges, import updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "acefdefb12eec6c495d5ffe25625b7da9d17cf78"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.13.2` to `^6.14.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.166.1` to `^6.167.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.2",
       "tag": "@uifabric/fabric-website-resources_v6.14.2",
       "date": "Fri, 12 Apr 2019 12:34:16 GMT",

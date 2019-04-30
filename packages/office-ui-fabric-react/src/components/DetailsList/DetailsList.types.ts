@@ -12,6 +12,7 @@ import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
+import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
@@ -183,6 +184,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
    * @defaultvalue false
+   * @deprecated Use `ShimmeredDetailsList` pass-through component instead which supports this prop. Will be removed in Fabric 7.0
    */
   enableShimmer?: boolean;
 
@@ -195,6 +197,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * An override to render the details footer.
    */
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -673,3 +680,5 @@ export interface IDetailsGroupRenderProps extends IGroupRenderProps {
  * {@docCategory DetailsList}
  */
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}

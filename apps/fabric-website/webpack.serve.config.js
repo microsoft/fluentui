@@ -25,6 +25,7 @@ module.exports = resources.createServeConfig({
     alias: {
       'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+      '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

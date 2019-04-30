@@ -6,7 +6,6 @@ import { DocumentCardCompactExample } from './examples/DocumentCard.Compact.Exam
 import { DocumentCardCompleteExample } from './examples/DocumentCard.Complete.Example';
 import { DocumentCardImageExample } from './examples/DocumentCard.Image.Example';
 import { DocumentCardConversationExample } from './examples/DocumentCard.Conversation.Example';
-import { DocumentCardStatus } from './DocumentCard.checklist';
 
 const DocumentCardBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
 const DocumentCardBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/DocumentCard/examples/DocumentCard.Basic.Example.tsx') as string;
@@ -24,7 +23,6 @@ export const DocumentCardPageProps: IDocPageProps = {
   componentName: 'DocumentCard',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/DocumentCard',
-  componentStatus: DocumentCardStatus,
   examples: [
     {
       title: 'Default DocumentCard',
@@ -95,7 +93,6 @@ export const DocumentCardPageProps: IDocPageProps = {
       )
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/DocumentCard.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/DocumentCard/docs/DocumentCardDos.md'),

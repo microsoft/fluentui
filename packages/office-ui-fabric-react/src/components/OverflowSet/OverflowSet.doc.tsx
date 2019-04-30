@@ -4,7 +4,6 @@ import { OverflowSetCustomExample } from './examples/OverflowSet.Custom.Example'
 import { IDocPageProps } from '../../common/DocPage.types';
 import { OverflowSetBasicExample } from './examples/OverflowSet.Basic.Example';
 import { OverflowSetVerticalExample } from './examples/OverflowSet.Vertical.Example';
-import { OverflowSetStatus } from './OverflowSet.checklist';
 
 const OverflowSetCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
 const OverflowSetCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/OverflowSet/examples/OverflowSet.Custom.Example.tsx') as string;
@@ -18,7 +17,6 @@ export const OverflowSetPageProps: IDocPageProps = {
   componentName: 'OverflowSet',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/OverflowSet',
-  componentStatus: OverflowSetStatus,
   examples: [
     {
       title: 'OverflowSet Basic Example',
@@ -39,7 +37,6 @@ export const OverflowSetPageProps: IDocPageProps = {
       view: <OverflowSetCustomExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/OverflowSet.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/OverflowSet/docs/OverflowSetOverview.md'),
   bestPractices: '',
   dos: '',

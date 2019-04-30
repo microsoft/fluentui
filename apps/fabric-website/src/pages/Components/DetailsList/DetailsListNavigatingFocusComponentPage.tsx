@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ComponentPage, ExampleCard, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ComponentPage, ExampleCard } from '@uifabric/example-app-base';
 import { DetailsListNavigatingFocusExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.NavigatingFocus.Example';
 const DetailsListNavigatingFocusExampleCode = require('raw-loader!office-ui-fabric-react/src/components/DetailsList/examples/DetailsList.NavigatingFocus.Example.tsx') as string;
 
