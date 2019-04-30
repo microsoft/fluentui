@@ -11,7 +11,6 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
-import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
 const legacyStyles: any = stylesImport;
 
@@ -462,9 +461,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ suggestionsVisible: false });
   };
 
-  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number): void => {
+  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as any)(item);
+      this.props.onRemoveSuggestion(item);
     }
     this.suggestionStore.removeSuggestion(index);
   };
@@ -567,7 +566,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             this.suggestionStore.currentIndex !== -1
           ) {
             if (this.props.onRemoveSuggestion) {
-              (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
+              this.props.onRemoveSuggestion(this.suggestionStore.currentSuggestion!.item);
             }
             this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
             this.forceUpdate();
