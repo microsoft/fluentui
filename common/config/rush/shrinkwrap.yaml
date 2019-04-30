@@ -1,8 +1,12 @@
 dependencies:
   '@microsoft/api-extractor': 7.0.34
+  '@microsoft/api-extractor-model': 7.0.27
   '@microsoft/load-themed-styles': 1.8.39
   '@microsoft/loader-load-themed-styles': 1.7.107
+  '@microsoft/node-core-library': 3.9.0
+  '@microsoft/tsdoc': 0.12.8
   '@rush-temp/a11y-tests': 'file:projects/a11y-tests.tgz'
+  '@rush-temp/api-docs': 'file:projects/api-docs.tgz'
   '@rush-temp/azure-themes': 'file:projects/azure-themes.tgz'
   '@rush-temp/build': 'file:projects/build.tgz'
   '@rush-temp/charting': 'file:projects/charting.tgz'
@@ -202,6 +206,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-xKnPpXG/pvK1B90JkwwxSGii90rQGKtzcMt2gI5G6+M0REXaq6rOHsGC2ay6/d0Uje7zzvSzjEzfR3ENhFlrfA==
+  /@microsoft/api-extractor-model/7.0.27:
+    dependencies:
+      '@microsoft/node-core-library': 3.12.1
+      '@microsoft/tsdoc': 0.12.8
+      '@types/node': 8.5.8
+    dev: false
+    resolution:
+      integrity: sha512-Em3G7SahN8ilClhj3+iQ71ykS/jUtfdcqunbjVXLfXcfdWMpv3paMp55MuVi0OmCI6ZnJydOgU4pcTIkCVLD9w==
   /@microsoft/api-extractor-model/7.0.28:
     dependencies:
       '@microsoft/node-core-library': 3.13.0
@@ -252,6 +264,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-hUCX7hPQLBIf7b3U6JB9SFRiSBTIwt2Mjh4VNiC+0t6nXekbkbaI0qHKrrC44XCCWbuQb4QRiD32X7e2GeFNSA==
+  /@microsoft/node-core-library/3.12.1:
+    dependencies:
+      '@types/fs-extra': 5.0.4
+      '@types/jju': 1.4.1
+      '@types/node': 8.5.8
+      '@types/z-schema': 3.16.31
+      colors: 1.2.5
+      fs-extra: 7.0.1
+      jju: 1.4.0
+      z-schema: 3.18.4
+    dev: false
+    resolution:
+      integrity: sha512-aOrkt3/vDrBKy99ZfkzrKkwNkwa0D05j65NH+aqxEFVMRyuVC1w9WEIYO2K9EoUwwarVklnd74MxXmQ6aPdqCA==
   /@microsoft/node-core-library/3.13.0:
     dependencies:
       '@types/fs-extra': 5.0.4
@@ -265,6 +290,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-mnsL/1ikVWHl8sPNssavaAgtUaIM3hkQ8zeySuApU5dNmsMPzovJPfx9m5JGiMvs1v5QNAIVeiS9jnWwe/7anw==
+  /@microsoft/node-core-library/3.9.0:
+    dependencies:
+      '@types/fs-extra': 5.0.4
+      '@types/jju': 1.4.1
+      '@types/node': 8.5.8
+      '@types/z-schema': 3.16.31
+      colors: 1.2.5
+      fs-extra: 7.0.1
+      jju: 1.4.0
+      z-schema: 3.18.4
+    dev: false
+    resolution:
+      integrity: sha512-zmP6zNddcIrRXbg8NX9oHX2iCBLU9hZF/+7GeUi3hLbp13xMDHfdT4KepoT+8ZMOMZzRF1lcqiTiVy24VYvCEg==
   /@microsoft/ts-command-line/4.2.3:
     dependencies:
       '@types/argparse': 1.0.33
@@ -896,10 +934,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-9o1j24tpw46VWLQHNSXPlsT3qCk=
-  /@types/node/10.14.5:
+  /@types/node/10.14.6:
     dev: false
     resolution:
-      integrity: sha512-Ja7d4s0qyGFxjGeDq5S7Si25OFibSAHUi6i17UWnwNnpitADN7hah9q0Tl25gxuV5R1u2Bx+np6w4LHXfHyj/g==
+      integrity: sha512-Fvm24+u85lGmV4hT5G++aht2C5I4Z4dYlWZIh62FAfFO/TfzXtPpoLI6I7AuBWkIFqZCnhFOoTT7RjjaIL5Fjg==
   /@types/node/8.10.38:
     dev: false
     resolution:
@@ -3110,10 +3148,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-/qKPUQlaW1OyR51WeCPBvRnAlnZFUJkCSG5HzGnuIqhgyJtF+T94lFnn33eiazjRm2LAHVy2guNnaq48X9SJuw==
-  /bluebird/3.5.4:
-    dev: false
-    resolution:
-      integrity: sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
   /bn.js/4.11.8:
     dev: false
     resolution:
@@ -6521,7 +6555,7 @@ packages:
       node: '>=0.4.7'
     hasBin: true
     optionalDependencies:
-      uglify-js: 3.5.8
+      uglify-js: 3.5.9
     resolution:
       integrity: sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
   /har-schema/2.0.0:
@@ -8404,7 +8438,7 @@ packages:
       integrity: sha512-SLOPEfOKY4JrMaPEkKbl65UYTIvThgJb7UeQHVAUUc5jFK897BTTLb5wqG1lD0lZPC7OhcOEFXFp2L260kzxOQ==
   /just-scripts/0.14.4:
     dependencies:
-      '@types/node': 10.14.5
+      '@types/node': 10.14.6
       chalk: 2.4.2
       diff-match-patch: 1.0.4
       fs-extra: 7.0.1
@@ -9775,7 +9809,7 @@ packages:
     dependencies:
       hosted-git-info: 2.7.1
       osenv: 0.1.5
-      semver: 5.7.0
+      semver: 5.6.0
       validate-npm-package-name: 3.0.0
     dev: false
     resolution:
@@ -9792,7 +9826,7 @@ packages:
   /npm-registry-fetch/3.9.0:
     dependencies:
       JSONStream: 1.3.5
-      bluebird: 3.5.4
+      bluebird: 3.5.3
       figgy-pudding: 3.5.1
       lru-cache: 4.1.5
       make-fetch-happen: 4.0.1
@@ -14028,7 +14062,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-8CJsbKOtEbnJsTyv6LE6m6ZKniqMiFWmm9sRbopbkGs3gMPPfd3Fh8iIA4Ykv5MgaTbqHr4BaoGLJLZNhsrW1Q==
-  /uglify-js/3.5.8:
+  /uglify-js/3.5.9:
     dependencies:
       commander: 2.20.0
       source-map: 0.6.1
@@ -14038,7 +14072,7 @@ packages:
     hasBin: true
     optional: true
     resolution:
-      integrity: sha512-GFSjB1nZIzoIq70qvDRtWRORHX3vFkAnyK/rDExc0BN7r9+/S+Voz3t/fwJuVfjppAMz+ceR2poE7tkhvnVwQQ==
+      integrity: sha512-WpT0RqsDtAWPNJK955DEnb6xjymR8Fn0OlK4TT4pS0ASYsVPqr5ELhgwOwLCP5J5vHeJ4xmMmz3DEgdqC10JeQ==
   /uglify-to-browserify/1.0.2:
     dev: false
     optional: true
@@ -15092,6 +15126,18 @@ packages:
       integrity: sha512-rj5h3SLUeU+L0geKsEOIO3jepVwEwh74oJ0++QaD8hyfVVyt6BJEskMiSC4wbjGSR5fieJLGXPsj3N9Eqn0Ijw==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
+  'file:projects/api-docs.tgz':
+    dependencies:
+      '@microsoft/api-extractor-model': 7.0.27
+      '@microsoft/node-core-library': 3.9.0
+      '@microsoft/tsdoc': 0.12.8
+      '@types/node': 8.10.45
+    dev: false
+    name: '@rush-temp/api-docs'
+    resolution:
+      integrity: sha512-Sz1bf+ZiBv7XeC8Ks1MHjKhsasgkrV0cG6n8jLgybLucPVBAkMquwqBLVWbDuw+Ir+t05bp34TN1OnQsFRWo+g==
+      tarball: 'file:projects/api-docs.tgz'
+    version: 0.0.0
   'file:projects/azure-themes.tgz':
     dependencies:
       '@types/jest': 23.0.0
@@ -15167,7 +15213,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-vdB5ShzNZgtWdyj2hW+ZFjogSribYv64MgbW3UeBzDIC2/P+zMpr1uyJ0AHHl0H1QwmgtB+f8tyhUoO8Bk5bTA==
+      integrity: sha512-1gEnxZdugtQRle+4vfX3snpezHMr45dMBCYH7+VAGUSh0Xv4s+Bc8iWy+rM31NL1UW3YmQynUPQYVxyJMAHEYg==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15351,7 +15397,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-KUqCZOeZsFD1h2asnzBEb8ctPEDLnuhy5UkNKi7QtJf6Cd5xP1N6DzfsJuaIepchebZfM01jIA7Rv05B2aRwhg==
+      integrity: sha512-QC0djzYCVdbLHyQ7nDNflpt5F1BIKbwawirP5+fVkbHETaYdN7CgJC0EGpZ4vFTBpT6eUAWD41nwUL05axl2Bg==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15378,7 +15424,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-na2rZTfxjL5fB4xlrp98451wqAVl5RaqSQaQJflcrIh/Q8Ij8bIQFz9zHi2MrphqweODSneqpK13rNekyAB5FA==
+      integrity: sha512-NBR8wu/3OXnMsf7AekNTEse9q/PTAylHuqriim3+lQ1ZDWzTy3XoW+bxWlc1mEPZGOMD4PHXmkVRKbHB5da2ZA==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15842,9 +15888,13 @@ shrinkwrapMinorVersion: 9
 shrinkwrapVersion: 3
 specifiers:
   '@microsoft/api-extractor': 7.0.34
+  '@microsoft/api-extractor-model': 7.0.27
   '@microsoft/load-themed-styles': ^1.7.13
   '@microsoft/loader-load-themed-styles': ^1.6.0
+  '@microsoft/node-core-library': ~3.9.0
+  '@microsoft/tsdoc': 0.12.8
   '@rush-temp/a11y-tests': 'file:./projects/a11y-tests.tgz'
+  '@rush-temp/api-docs': 'file:./projects/api-docs.tgz'
   '@rush-temp/azure-themes': 'file:./projects/azure-themes.tgz'
   '@rush-temp/build': 'file:./projects/build.tgz'
   '@rush-temp/charting': 'file:./projects/charting.tgz'

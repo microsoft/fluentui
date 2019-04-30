@@ -58,7 +58,6 @@ export const ImagePageProps: IDocPageProps = {
       view: <ImageMaximizeFrameExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/Image.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Image/docs/ImageDos.md'),

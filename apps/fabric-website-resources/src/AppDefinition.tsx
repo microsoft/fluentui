@@ -1,7 +1,33 @@
 import * as React from 'react';
-import { App as AppBase, IAppDefinition, IAppProps } from '@uifabric/example-app-base';
+import { App as AppBase, IAppDefinition, IAppProps, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
+
+export interface IReferencesList {
+  pages: string[];
+}
+
+const propertiesTableMargins = mergeStyles({
+  marginLeft: '40px',
+  marginRight: '40px'
+});
+
+function loadReferences(): IAppLink[] {
+  const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
+
+  return pageList.pages.map(pageName => ({
+    component: () => (
+      <ApiReferencesTableSet
+        className={propertiesTableMargins}
+        jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')}
+      />
+    ),
+    key: pageName,
+    name: pageName,
+    url: '#/examples/references/' + pageName.toLowerCase()
+  }));
+}
 
 export const AppDefinition: IAppDefinition = {
   appTitle: 'Fabric - React',
@@ -521,6 +547,10 @@ export const AppDefinition: IAppDefinition = {
         }
       ],
       name: 'Accessibility'
+    },
+    {
+      name: 'References',
+      links: loadReferences()
     }
   ],
 
