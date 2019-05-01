@@ -86,13 +86,22 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <ul className={styles.exampleIcons}>
                       <li>
-                        <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'svg' })} />
+                        <Icon
+                          className={styles.productIcon}
+                          {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'svg' })}
+                        />
                       </li>
                       <li>
-                        <Icon {...getFileTypeIconProps({ extension: 'xlsx', size: 96, imageFileType: 'svg' })} />
+                        <Icon
+                          className={styles.productIcon}
+                          {...getFileTypeIconProps({ extension: 'xlsx', size: 96, imageFileType: 'svg' })}
+                        />
                       </li>
                       <li>
-                        <Icon {...getFileTypeIconProps({ extension: 'pptx', size: 96, imageFileType: 'svg' })} />
+                        <Icon
+                          className={styles.productIcon}
+                          {...getFileTypeIconProps({ extension: 'pptx', size: 96, imageFileType: 'svg' })}
+                        />
                       </li>
                     </ul>
                   </div>

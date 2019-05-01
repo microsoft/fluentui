@@ -28,8 +28,10 @@
 }
 
 .productIcon {
-  width: 96px;
+  width: 100%;
+  max-width: 96px;
   height: 96px;
+  @include ms-padding-right(8px);
 }
 
 .iconList {
