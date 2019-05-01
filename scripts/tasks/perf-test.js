@@ -2,7 +2,7 @@ const { logger } = require('just-task');
 const ttest = require('ttest');
 
 const componentCount = 1000;
-const iterations = 150;
+const iterations = 500;
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
