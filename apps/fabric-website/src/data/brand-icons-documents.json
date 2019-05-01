@@ -16,8 +16,5 @@
   { "name": "vstx" },
   { "name": "xlsx" },
   { "name": "xltx" },
-  { "name": "xsn" },
-  { "name": "form" },
-  { "name": "powerbi" },
-  { "name": "sponews" }
+  { "name": "xsn" }
 ]
