@@ -2,7 +2,8 @@ const { logger } = require('just-task');
 const ttest = require('ttest');
 
 const componentCount = 1000;
-const iterations = 500;
+const iterations = 100;
+const sampleSize = 100;
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
@@ -15,12 +16,12 @@ module.exports = async function getPerfRegressions() {
 
   // get perf numbers for existing code
   await page.goto(urlForMaster);
-  const samplesNow = await runAvailableScenarios(page, componentCount, iterations);
+  const samplesNow = await runAvailableScenarios(page, componentCount, iterations, sampleSize);
   logger.info(samplesNow);
 
   // get perf numbers for new code
   await page.goto(urlFromDeployJob);
-  const samplesNew = await runAvailableScenarios(page, componentCount, iterations);
+  const samplesNew = await runAvailableScenarios(page, componentCount, iterations, sampleSize);
   logger.info(samplesNew);
 
   // Clean up
@@ -52,7 +53,7 @@ module.exports = async function getPerfRegressions() {
   console.log(`echo ##vso[task.setvariable variable=PerfCommentStatus;]${status}`);
 };
 
-async function runAvailableScenarios(page, componentCount, iterations) {
+async function runAvailableScenarios(page, componentCount, iterations, sampleSize) {
   // set up
   await page.$eval(
     '.iterations input',
@@ -76,7 +77,7 @@ async function runAvailableScenarios(page, componentCount, iterations) {
   let scenarioName = (await page.$eval('.scenario', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   while (!perfNumbers[scenarioName]) {
     // get numbers
-    perfNumbers[scenarioName] = await runScenarioNTimes(page, 10);
+    perfNumbers[scenarioName] = await runScenarioNTimes(page, sampleSize);
 
     // go to next scenario
     await scenarioDropdown.focus();
