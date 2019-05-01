@@ -14,6 +14,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'Calendar',
           name: 'Calendar',
           url: '#/examples/calendar'
+        },
+        {
+          component: require<any>('../components/pages/DatePickerPage').DatePickerPage,
+          key: 'DatePicker',
+          name: 'DatePicker',
+          url: '#/examples/datepicker'
         }
       ]
     }
