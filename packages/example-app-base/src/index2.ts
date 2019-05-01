@@ -12,6 +12,7 @@ export * from './components/MarkdownTable/index';
 export * from './components/Nav/index';
 export * from './components/Page/index';
 export * from './components/PageHeader/index';
+export * from './components/PlatformBar/index';
 export * from './components/PlatformPicker/index';
 export * from './components/PropertiesTable/index';
 export * from './components/ScrollBars/index';

@@ -3,6 +3,8 @@ import { Markdown, withPlatform, Page, IPageProps, IPageSectionProps } from '@ui
 import { ResourcesPageProps } from './ResourcesPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 
+const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/';
+
 export interface IResourcesPageProps extends IPageProps<Platforms> {}
 
 const ResourcesPageBase: React.StatelessComponent<IResourcesPageProps> = props => {
@@ -13,8 +15,7 @@ function _otherSections(): IPageSectionProps[] {
   return [
     {
       sectionName: 'Design resources',
-      editUrl:
-        'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDesignResources.md',
+      editUrl: baseUrl + 'docs/default/ResourcesDesignResources.md',
       content: (
         <Markdown>
           {
@@ -25,8 +26,7 @@ function _otherSections(): IPageSectionProps[] {
     },
     {
       sectionName: 'Developer resources',
-      editUrl:
-        'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesDeveloperResources.md',
+      editUrl: baseUrl + 'docs/default/ResourcesDeveloperResources.md',
       content: (
         <Markdown>
           {
@@ -37,8 +37,7 @@ function _otherSections(): IPageSectionProps[] {
     },
     {
       sectionName: 'Contribution process',
-      editUrl:
-        'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesContributionProcess.md',
+      editUrl: baseUrl + 'docs/default/ResourcesContributionProcess.md',
       content: (
         <Markdown>
           {
@@ -49,8 +48,7 @@ function _otherSections(): IPageSectionProps[] {
     },
     {
       sectionName: 'Join the community',
-      editUrl:
-        'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesJoinTheCommunity.md',
+      editUrl: baseUrl + 'docs/default/ResourcesJoinTheCommunity.md',
       content: (
         <Markdown>
           {

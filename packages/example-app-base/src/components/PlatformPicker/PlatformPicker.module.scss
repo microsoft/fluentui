@@ -16,7 +16,6 @@ $icon-size: 16px;
 }
 
 .platformItem {
-  // flex: 1 0 auto;
   margin: $platform-button-margin;
   width: calc(#{percentage(1/3)} - #{$platform-button-margin * 2});
 }
@@ -30,15 +29,18 @@ $icon-size: 16px;
   @include focus-border(-1px);
 
   &:not([disabled]) {
-    background: transparent;
     color: $ms-color-neutralSecondary;
   }
 
   .icon {
-    color: $ms-color-neutralQuaternary;
+    color: $ms-color-neutralSecondary;
     width: $icon-size;
     height: $icon-size;
     margin: 0;
+
+    path {
+      stroke: $ms-color-neutralSecondary;
+    }
   }
 
   .webIcon {
@@ -52,36 +54,19 @@ $icon-size: 16px;
     font-size: $icon-size - 2px;
   }
 
-  .androidLogo,
-  .appleLogo {
-    fill: $ms-color-neutralQuaternary;
-    width: $icon-size;
-    height: $icon-size;
-  }
-
   &:hover:not([disabled]) {
     color: $ms-color-neutralSecondary;
-    background: transparent;
-    border-color: $ms-color-themePrimary;
-
-    &.activePlatform:not([disabled]) {
-      background: $ms-color-themePrimary;
-      color: $ms-color-white;
-    }
   }
 
   &.activePlatform:not([disabled]) {
-    background: $ms-color-themePrimary;
-    border-color: $ms-color-themePrimary;
-    color: $ms-color-white;
+    color: $ms-color-black;
 
     .icon {
-      color: $ms-color-white;
-    }
+      color: $ms-color-black;
 
-    .androidLogo,
-    .appleLogo {
-      fill: $ms-color-white;
+      path {
+        stroke: $ms-color-black;
+      }
     }
   }
 }

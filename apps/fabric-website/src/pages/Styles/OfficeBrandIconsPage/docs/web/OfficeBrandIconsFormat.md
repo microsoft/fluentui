@@ -1,4 +1,4 @@
-Multicolor product and document icons look best at 16x16, 48x48, and 96x96 px sizes in the UI of Microsoft products. Fabric provides these icons in both SVG and PNG formats. SVGs are more versatile but are not supported by all browsers. PNGs are supported by most browsers, but require many sizes to remain visually crisp.
+Multicolor product and file type icons look best at 16x16, 48x48, and 96x96 px sizes in the UI of Microsoft products. Fabric provides these icons in both SVG and PNG formats. SVGs are more versatile but are not supported by all browsers. PNGs are supported by most browsers, but require many sizes to remain visually crisp.
 
 PNGs come in 16x16, 32x32, 48x48, and 96x96 pixel sizes. Where possible, use the default sizes to prevent artifacts and split pixels. Otherwise, use a size that is close to one of the default sizes.
 

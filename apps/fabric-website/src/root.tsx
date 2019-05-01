@@ -3,17 +3,21 @@ import { createSite } from './utilities/createSite';
 import * as platformPickerStyles from '@uifabric/example-app-base/lib/components/PlatformPicker/PlatformPicker.module.scss';
 import { SiteDefinition } from './SiteDefinition/index';
 import { HomePage } from './pages/HomePage/HomePage';
-import { AndroidLogo, AppleLogo } from './utilities/index';
+import { AndroidLogo, AppleLogo, WebLogo } from './utilities/index';
 
 // TODO: handle redirects
 
 registerIcons({
   icons: {
     'AndroidLogo-platformPicker': AndroidLogo({
-      className: platformPickerStyles.icon,
-      iconGroupClassName: platformPickerStyles.androidLogo
+      className: platformPickerStyles.icon
     }),
-    'AppleLogo-platformPicker': AppleLogo({ className: platformPickerStyles.icon, iconGroupClassName: platformPickerStyles.appleLogo })
+    'AppleLogo-platformPicker': AppleLogo({
+      className: platformPickerStyles.icon
+    }),
+    'WebLogo-platformPicker': WebLogo({
+      className: platformPickerStyles.icon
+    })
   }
 });
 

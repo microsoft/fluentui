@@ -1,17 +1,20 @@
 import * as React from 'react';
 import { IconGrid } from '../../../components/IconGrid/IconGrid';
+import { Image, Icon } from 'office-ui-fabric-react';
+import { getFileTypeIconProps } from '@uifabric/file-type-icons';
 import { Markdown, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { OfficeBrandIconsPageProps } from './OfficeBrandIconsPage.doc';
-import * as styles from './OfficeBrandIconsPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
+import * as styles from './OfficeBrandIconsPage.module.scss';
 
 const baseUrl =
   'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs';
+const fabricCDN = 'https://static2.sharepointonline.com/files/fabric/assets';
 
-const productIcons = require('../../../data/brand-icons-products.json');
-const documentIcons = require('../../../data/brand-icons-documents.json');
-const monochromeIcons = require('../../../data/brand-icons-monochrome.json');
+const productIcons = require('@uifabric/fabric-website/lib/data/brand-icons-products.json');
+const documentIcons = require('@uifabric/fabric-website/lib/data/brand-icons-documents.json');
+const monochromeIcons = require('@uifabric/fabric-website/lib/data/brand-icons-monochrome.json');
 
 export const OfficeBrandIconsPage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
@@ -37,34 +40,31 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use product icons to help your users transition between Microsoft products. Product icons represent an app or brand.
-                      Do not use a product icon to create a new document of that type. For example, do not create a Word document from a
-                      Word product icon.
+                      Use product icons to help your users transition between Microsoft products. Product icons should only be used when the
+                      behavior of the command (app icon) is to launch the application. Do not use a product icon to create a new file of
+                      that type. For example, do not create a Word file from a Word product icon.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <ul className={styles.exampleIcons}>
                       <li>
-                        <img
-                          src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/word_48x1.svg"
-                          width="100"
-                          height="100"
+                        <Image
+                          src={`${fabricCDN}/brand-icons/product-fluent/svg/word_48x1.svg`}
+                          className={styles.productIcon}
                           alt="Word logo"
                         />
                       </li>
                       <li>
-                        <img
-                          src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/excel_48x1.svg"
-                          width="100"
-                          height="100"
+                        <Image
+                          src={`${fabricCDN}/brand-icons/product-fluent/svg/excel_48x1.svg`}
+                          className={styles.productIcon}
                           alt="Excel logo"
                         />
                       </li>
                       <li>
-                        <img
-                          src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/powerpoint_48x1.svg"
-                          width="100"
-                          height="100"
+                        <Image
+                          src={`${fabricCDN}/brand-icons/product-fluent/svg/powerpoint_48x1.svg`}
+                          className={styles.productIcon}
                           alt="PowerPoint logo"
                         />
                       </li>
@@ -73,41 +73,26 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
 
-              <h3>Document icons</h3>
+              <h3>File type icons</h3>
               <div className="ms-Grid">
                 <div className="ms-Grid-row">
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <p>
-                      Use document icons to indicate to users that they are creating a new document of that type. Make sure that a document
-                      of the type that the icon represents loads when the user selects the icon. Document icons should always represent
-                      Microsoft Office documents. For example, do not use a Word .docx icon to open a .txt file.
+                      Use file type icons to indicate to users that they are creating a new file of that type. Make sure that a file of the
+                      type that the icon represents loads when the user selects the icon. File type icons should always represent Microsoft
+                      Office files. For example, do not use a Word .docx icon to open a .txt file.
                     </p>
                   </div>
                   <div className="ms-Grid-col ms-sm12 ms-lg6">
                     <ul className={styles.exampleIcons}>
                       <li>
-                        <img
-                          src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/docx_48x1.svg"
-                          width="100"
-                          height="100"
-                          alt="Docx documents SVG"
-                        />
+                        <Icon {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'svg' })} />
                       </li>
                       <li>
-                        <img
-                          src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/xlsx_48x1.svg"
-                          width="100"
-                          height="100"
-                          alt="Xlsx documents logo"
-                        />
+                        <Icon {...getFileTypeIconProps({ extension: 'xlsx', size: 96, imageFileType: 'svg' })} />
                       </li>
                       <li>
-                        <img
-                          src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/pptx_48x1.svg"
-                          width="100"
-                          height="100"
-                          alt="PPTX documents logo"
-                        />
+                        <Icon {...getFileTypeIconProps({ extension: 'pptx', size: 96, imageFileType: 'svg' })} />
                       </li>
                     </ul>
                   </div>
@@ -132,40 +117,56 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 <div className="ms-Grid-col ms-sm12 ms-lg6">
                   <ul className={styles.exampleIcons}>
                     <li>
-                      <img
-                        src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/png/outlook_16x1.png"
+                      <Image
+                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_16x1.png`}
                         width="16"
                         height="16"
                         alt="Outlook 16x1 PNG product icon"
                       />
-                      <span>16px (SVG, PNG)</span>
+                      <span>
+                        16px
+                        <br />
+                        (SVG, PNG)
+                      </span>
                     </li>
                     <li>
-                      <img
-                        src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/png/outlook_32x1.png"
+                      <Image
+                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_32x1.png`}
                         width="32"
                         height="32"
                         alt="Outlook 32x1 PNG product icon"
                       />
-                      <span>32px (PNG)</span>
+                      <span>
+                        32px
+                        <br />
+                        (PNG)
+                      </span>
                     </li>
                     <li>
-                      <img
-                        src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/png/outlook_48x1.png"
+                      <Image
+                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_48x1.png`}
                         width="48"
                         height="48"
                         alt="Outlook 48x1 PNG product icon"
                       />
-                      <span>48px (SVG, PNG)</span>
+                      <span>
+                        48px
+                        <br />
+                        (SVG, PNG)
+                      </span>
                     </li>
                     <li>
-                      <img
-                        src="https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/png/outlook_96x1.png"
+                      <Image
+                        src={`${fabricCDN}/brand-icons/product-fluent/png/outlook_96x1.png`}
                         width="96"
                         height="96"
                         alt="Outlook 96x1 PNG product icon"
                       />
-                      <span>96px (PNG)</span>
+                      <span>
+                        96px
+                        <br />
+                        (PNG)
+                      </span>
                     </li>
                   </ul>
                   <ul className={styles.exampleIcons}>
@@ -210,25 +211,30 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <ul className={styles.iconList}>
                 {productIcons.map((icon, iconIndex) => (
                   <li key={iconIndex}>
-                    <img
-                      src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product/svg/${icon.name}_48x1.svg`}
-                      alt={icon.name + 'Brand icon'}
+                    <Image
+                      src={`${fabricCDN}/brand-icons/product-fluent/svg/${icon.icon}_48x1.svg`}
+                      width="48"
+                      height="48"
+                      alt={icon.name + ' product icon'}
+                      className={styles.icon}
                     />
-                    <span>{icon.name}</span>
+                    <span className={styles.iconName}>{icon.name}</span>
                   </li>
                 ))}
               </ul>
 
-              <h3>Document icons</h3>
+              <h3>File type icons</h3>
               <ul className={styles.iconList}>
                 {documentIcons.map((icon, iconIndex) => (
                   <li key={iconIndex}>
-                    {/* @todo: Change this back to using SVGs once the CDN has been updated to include the "xsn" icons (issue 252058) */}
-                    <img
-                      src={`https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${icon.name}_48x1.svg`}
-                      alt={icon.name + ' Document Icon'}
-                    />
-                    <span>{icon.name}</span>
+                    {/* <Image
+                      src={`${fabricCDN}/item-types-fluent/48/${icon.name}.svg`}
+                      width="48"
+                      height="48"
+                      alt={icon.name + ' file type icon'}
+                    /> */}
+                    <Icon {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })} className={styles.icon} />
+                    <span className={styles.iconName}>{icon.name}</span>
                   </li>
                 ))}
               </ul>
@@ -246,11 +252,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
       ];
 
     default:
-      return [
-        {
-          sectionName: 'Coming Soon',
-          content: 'Coming Soon'
-        }
-      ];
+      return [];
   }
 }

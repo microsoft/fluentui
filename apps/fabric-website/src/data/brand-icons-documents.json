@@ -5,11 +5,7 @@
   { "name": "dotx" },
   { "name": "mpp" },
   { "name": "mpt" },
-  { "name": "odp" },
-  { "name": "ods" },
-  { "name": "odt" },
   { "name": "one" },
-  { "name": "onepkg" },
   { "name": "onetoc" },
   { "name": "potx" },
   { "name": "ppsx" },
@@ -18,8 +14,10 @@
   { "name": "vsdx" },
   { "name": "vssx" },
   { "name": "vstx" },
-  { "name": "xls" },
   { "name": "xlsx" },
   { "name": "xltx" },
-  { "name": "xsn" }
+  { "name": "xsn" },
+  { "name": "form" },
+  { "name": "powerbi" },
+  { "name": "sponews" }
 ]
