@@ -58,8 +58,7 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     if (navigatorUserAgent.indexOf('firefox') > -1) {
       anchor = decodeURI(anchor);
     }
-    // If the "anchor" contains / that means it's the route path not an actual anchor
-    if (!anchor || anchor.indexOf('/') !== -1) {
+    if (!anchor) {
       return;
     }
     let el = document.getElementById(anchor);

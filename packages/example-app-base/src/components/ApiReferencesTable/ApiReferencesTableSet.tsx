@@ -126,8 +126,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const { properties, showSeeMore } = this.state;
 
     const anchor = extractAnchorLink(window.location.hash);
-    // If the "anchor" contains / that means it's the route path not an actual anchor
-    if (anchor && anchor.indexOf('/') === -1) {
+    if (anchor) {
       jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
       if (!showSeeMore) {
