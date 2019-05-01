@@ -5,29 +5,32 @@ import { IPlatform } from '../PlatformPicker/index';
 
 const getClassNames = classNamesFunction<IPlatformBarStyleProps, IPlatformBarStyles>();
 
-export class PlatformBarBase extends React.Component<IPlatformBarProps> {
+export class PlatformBarBase extends React.PureComponent<IPlatformBarProps> {
   private _classNames: { [key in keyof IPlatformBarStyles]: string };
 
   public render(): JSX.Element {
-    const { styles, theme, platforms } = this.props;
+    const { styles, theme, platforms, innerWidth } = this.props;
 
     this._classNames = getClassNames(styles, {
-      theme: theme!
+      theme: theme!,
+      innerWidth
     });
 
     return (
       <div className={this._classNames.root}>
-        <FocusZone as="ul" className={this._classNames.platformGrid}>
-          {this._renderPlatformGrid(platforms)}
-        </FocusZone>
+        <div className={this._classNames.inner}>
+          <FocusZone as="ul" className={this._classNames.platformGrid}>
+            {this._renderPlatformGrid(platforms)}
+          </FocusZone>
+        </div>
       </div>
     );
   }
 
   private _renderPlatformGrid = (platforms: { [key: string]: IPlatform | undefined }): JSX.Element[] => {
-    return Object.keys(platforms).map((platformKey, platformIndex) => {
+    return Object.keys(platforms).map(platformKey => {
       const platform = platforms[platformKey];
-      return <li key={platformIndex}>{this._renderPlatformSquare(platform!, platformKey)}</li>;
+      return <li key={platform!.name}>{this._renderPlatformSquare(platform!, platformKey)}</li>;
     });
   };
 

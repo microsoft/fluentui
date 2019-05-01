@@ -22,6 +22,7 @@ import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
+import { appMaximumWidthLg } from '../../styles/constants';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -271,6 +272,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
           onPlatformClick={this._onPlatformChanged}
           pagePlatforms={pagePlatforms}
           platforms={siteDefinition.platforms}
+          innerWidth={appMaximumWidthLg}
         />
       )
     );

@@ -1,28 +1,40 @@
-import { getGlobalClassNames } from 'office-ui-fabric-react';
+import { getGlobalClassNames, getColorFromString, getShade, Shade } from 'office-ui-fabric-react';
 import { IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
 import { MotionDurations, MotionTimings } from '@uifabric/fluent-theme';
 
 const GlobalClassNames: { [key in keyof IPlatformBarStyles]: string } = {
   root: 'ms-PlatformBar',
+  inner: 'ms-PlatformBarInner',
   platformGrid: 'ms-PlatformBarGrid',
   platformButton: 'ms-PlatformBarButton',
   platformIcon: 'ms-PlatformBarIcon'
 };
 
 export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => {
-  const { theme, className, platformColor } = props;
+  const { theme, className, platformColor, innerWidth } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const platformColorObj = platformColor && getColorFromString(platformColor);
+  const platformShade = platformColorObj && getShade(platformColorObj, Shade.Shade7);
 
   return {
     root: [
       classNames.root,
       {
-        background: '#50E3C2',
-        display: 'flex',
-        justifyContent: 'flex-end'
+        background: '#50E3C2'
       },
       className
+    ],
+
+    inner: [
+      classNames.inner,
+      {
+        display: 'flex',
+        justifyContent: 'flex-end',
+        margin: '0 auto',
+        maxWidth: innerWidth
+      }
     ],
 
     platformGrid: [
@@ -46,11 +58,11 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
         justifyContent: 'center',
         border: 0,
         borderRadius: 0,
-        transition: `background ${MotionDurations.duration1} ${MotionTimings.decelerate}`,
+        transition: `background ${MotionDurations.duration2} ${MotionTimings.decelerate}`,
 
         selectors: {
           '&:hover': {
-            background: palette.themeLight
+            background: platformShade ? platformShade.str : palette.themeLight
           }
         }
       }
