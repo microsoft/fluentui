@@ -7913,7 +7913,6 @@ export enum PersonaInitialsColor {
     darkRed = 14,
     // (undocumented)
     gold = 18,
-    // (undocumented)
     gray = 22,
     // (undocumented)
     green = 5,

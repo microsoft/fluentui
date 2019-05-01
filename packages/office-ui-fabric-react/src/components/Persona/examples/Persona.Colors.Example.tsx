@@ -35,7 +35,6 @@ export class PersonaColorsExample extends React.Component<any, any> {
         <Persona initialsColor={PersonaInitialsColor.rust} {...sharedPersonaProps} text="orange30" />
         <Persona initialsColor={PersonaInitialsColor.gold} {...sharedPersonaProps} text="orangeYellow20" />
         <Persona initialsColor={PersonaInitialsColor.warmGray} {...sharedPersonaProps} text="gray30" />
-        <Persona initialsColor={PersonaInitialsColor.gray} {...sharedPersonaProps} text="gray40" />
         <Persona initialsColor={PersonaInitialsColor.coolGray} {...sharedPersonaProps} text="gray20" />
       </Stack>
     );

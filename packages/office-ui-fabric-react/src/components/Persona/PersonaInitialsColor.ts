@@ -22,7 +22,6 @@ const COLOR_SWATCHES_LOOKUP: PersonaInitialsColor[] = [
   PersonaInitialsColor.orange,
   PersonaInitialsColor.lightRed,
   PersonaInitialsColor.darkRed,
-  PersonaInitialsColor.transparent,
   PersonaInitialsColor.violet,
   PersonaInitialsColor.gold,
   PersonaInitialsColor.burgundy,
