@@ -1,10 +1,10 @@
-import * as React from "react";
-import { TooltipBase } from "./Tooltip.base";
-import { ICalloutProps } from "../../Callout";
-import { IRenderFunction } from "../../Utilities";
-import { DirectionalHint } from "../../common/DirectionalHint";
-import { IStyle, ITheme } from "../../Styling";
-import { IRefObject, IStyleFunctionOrObject } from "../../Utilities";
+import * as React from 'react';
+import { TooltipBase } from './Tooltip.base';
+import { ICalloutProps } from '../../Callout';
+import { IRenderFunction } from '../../Utilities';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { IStyle, ITheme } from '../../Styling';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * {@docCategory Tooltip}
@@ -15,8 +15,7 @@ export interface ITooltip {}
  * Tooltip component props.
  * {@docCategory Tooltip}
  */
-export interface ITooltipProps
-  extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
+export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
   /**
    * Optional callback to access the ITooltip interface. Use this instead of ref for accessing
    * the public methods and properties of the component.

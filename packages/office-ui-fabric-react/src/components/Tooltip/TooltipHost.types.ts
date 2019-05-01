@@ -1,10 +1,10 @@
-import * as React from "react";
-import { TooltipHostBase } from "./TooltipHost.base";
-import { TooltipDelay, ITooltipProps } from "./Tooltip.types";
-import { ICalloutProps } from "../../Callout";
-import { DirectionalHint } from "../../common/DirectionalHint";
-import { IRefObject, IStyleFunctionOrObject } from "../../Utilities";
-import { IStyle, ITheme } from "../../Styling";
+import * as React from 'react';
+import { TooltipHostBase } from './TooltipHost.base';
+import { TooltipDelay, ITooltipProps } from './Tooltip.types';
+import { ICalloutProps } from '../../Callout';
+import { DirectionalHint } from '../../common/DirectionalHint';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IStyle, ITheme } from '../../Styling';
 
 export interface ITooltipHost {
   /**
@@ -29,8 +29,7 @@ export enum TooltipOverflowMode {
 /**
  * Tooltip component props.
  */
-export interface ITooltipHostProps
-  extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
+export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
   /**
    * Optional callback to access the ITooltipHost interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -51,7 +50,7 @@ export interface ITooltipHostProps
   closeDelay?: number;
 
   /**
-   * Content to be passed to the tooltip
+   *  Content to be passed to the tooltip
    */
   content?: string | JSX.Element | JSX.Element[];
 
