@@ -6,14 +6,15 @@ const fs = require('fs');
 const path = require('path');
 const { argv, logger } = require('@uifabric/build/just-task').just;
 
-module.exports = function createFlightConfigTask() {
+module.exports = function createFlightConfigTaskFactory() {
   return function createFlightConfigTask() {
     let date = new Date();
+
+    // Produces date string of the form yyyyMMdd, e.g. 20180701
     let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
 
     let configsToGenerate = ['fabric-website-internal-prod-config', 'fabric-website-internal-df-config'];
 
-    // Produces date string of the form yyyMMdd, e.g. 20180701
     let configData = {
       version: process.env.BUILD_BUILDNUMBER || '0',
       baseCDNUrl: argv().baseCDNUrl,
@@ -38,7 +39,7 @@ function generateConfig(fileName, outDir, configData) {
 
     let configInitializationCode = `var Flight=${JSON.stringify(configData, null)};`;
 
-    fs.writeFile(`${outDir}/${fileName}.js`, configInitializationCode, err => {
+    fs.writeFile(path.join(outDir, `${fileName}.js`), configInitializationCode, err => {
       if (err) {
         logger.error(`Error writing ${outDir}/${fileName}.js: `, err);
         return;

@@ -110,8 +110,8 @@
             handler();
           };
 
-          script.onerror = script.onreadystatechange = function() {
-            script.onreadystatechange = script.onerror = null;
+          script.onerror = function() {
+            script.onerror = null;
             if (failHandler) {
               failHandler();
             }

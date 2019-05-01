@@ -10,11 +10,20 @@ function just(cmd) {
     startIndex = 2;
   }
 
-  const config = fs.existsSync(path.resolve(process.cwd(), 'just-task.js'))
-    ? path.resolve(process.cwd(), 'just-task.js')
+  const cwd = process.cwd();
+
+  const config = fs.existsSync(path.resolve(cwd, 'just-task.js'))
+    ? path.resolve(cwd, 'just-task.js')
     : path.resolve(__dirname, 'just-task.js');
 
-  process.argv = [...process.argv.slice(0, startIndex), ...(cmd ? [cmd] : []), '--config', config, ...process.argv.slice(startIndex)];
+  // prettier-ignore
+  process.argv = [
+    ...process.argv.slice(0, startIndex),
+    ...(cmd ? [cmd] : []),
+    '--config',
+    config,
+    ...process.argv.slice(startIndex)
+  ];
 
   require('just-task/lib/cli.js');
 }
