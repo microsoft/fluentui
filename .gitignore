@@ -120,3 +120,6 @@ yarn.lock
 *~
 *swp
 *swo
+
+# Fabric website
+apps/fabric-website/flights/
