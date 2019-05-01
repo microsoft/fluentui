@@ -29,7 +29,7 @@ describe('Pickers', () => {
               shouldShow: () => true
             }
           ]}
-          completeSuggestion={doNothing}
+          onCurrentlySelectedSuggestionChosen={doNothing}
           suggestions={[]}
           shouldLoopSelection={true}
           onSuggestionClick={doNothing}

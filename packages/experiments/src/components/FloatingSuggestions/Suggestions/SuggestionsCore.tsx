@@ -8,6 +8,18 @@ import * as stylesImport from './SuggestionsCore.scss';
 const styles: any = stylesImport;
 
 /**
+ * true if the input is an object with a 'key' property that is a number or a string
+ * (e.g. is a valid react key).
+ */
+function hasKey<T>(i: T): i is T & { key: string | number } {
+  if (!(i instanceof Object) || !i.hasOwnProperty('key')) {
+    return false;
+  }
+  const keyType = typeof (i as T & { key: any }).key;
+  return keyType === 'string' || keyType === 'number';
+}
+
+/**
  * Class when used with SuggestionsStore, renders a basic suggestions control
  */
 export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, {}> {
@@ -140,9 +152,7 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
         {suggestions.map((suggestion: ISuggestionModel<T>, index: number) => (
           <div
             ref={this._resolveRef(suggestion.selected || index === this.currentIndex ? '_selectedElement' : '')}
-            // tslint:disable
-            key={(suggestion.item as any)['key'] ? (suggestion.item as any)['key'] : index}
-            // tslint:enable
+            key={hasKey(suggestion.item) ? suggestion.item.key : index}
             id={'sug-' + index}
             role="listitem"
             aria-label={suggestion.ariaLabel}

@@ -121,7 +121,7 @@ export class SuggestionsControl<T> extends BaseComponent<ISuggestionsControlProp
         selectedHeaderItem.onExecute();
       }
     } else if (this._suggestions.hasSuggestionSelected()) {
-      this.props.completeSuggestion();
+      this.props.onCurrentlySelectedSuggestionChosen();
     } else if (footerItemsProps && selectedFooterIndex !== -1 && selectedFooterIndex < footerItemsProps.length) {
       const selectedFooterItem = footerItemsProps[selectedFooterIndex];
       if (selectedFooterItem.onExecute) {

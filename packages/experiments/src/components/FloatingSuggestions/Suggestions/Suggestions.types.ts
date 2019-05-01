@@ -78,9 +78,12 @@ export interface ISuggestionsControlProps<T> extends React.ClassAttributes<any>,
    */
   className?: string;
   /**
-   * Completes the suggestion
+   * Called when the current highlighted suggestion has been completed
+   * by the control.
+   *
+   * Not called for header/footer items. Instead the item's onExecute is called.
    */
-  completeSuggestion: () => void;
+  onCurrentlySelectedSuggestionChosen: () => void;
 }
 
 export interface ISuggestionsHeaderFooterProps {

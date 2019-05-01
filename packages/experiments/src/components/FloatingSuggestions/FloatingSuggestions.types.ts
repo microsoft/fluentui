@@ -148,7 +148,7 @@ export type IFloatingSuggestionsInnerSuggestionProps<T> = Pick<
   | 'onSuggestionRemove'
   | 'suggestions'
   | 'componentRef'
-  | 'completeSuggestion'
+  | 'onCurrentlySelectedSuggestionChosen'
   | 'shouldLoopSelection'
   | 'onRenderSuggestion'
 >;
