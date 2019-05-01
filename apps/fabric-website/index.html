@@ -111,7 +111,6 @@
 
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
-        devhost = devhost || './dist/';
         appPath += devhost;
         Flight.baseCDNUrl = devhost;
         loadAppScripts(appPath);
