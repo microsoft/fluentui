@@ -1,7 +1,8 @@
 const { logger } = require('just-task');
+const ttest = require('ttest');
 
 const componentCount = 1000;
-const iterations = 100;
+const iterations = 150;
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
@@ -14,19 +15,28 @@ module.exports = async function getPerfRegressions() {
 
   // get perf numbers for existing code
   await page.goto(urlForMaster);
-  const perfAveragesNow = await runAvailableScenarios(page, componentCount, iterations);
-  logger.info(perfAveragesNow);
+  const samplesNow = await runAvailableScenarios(page, componentCount, iterations);
+  logger.info(samplesNow);
 
   // get perf numbers for new code
   await page.goto(urlFromDeployJob);
-  const perfAveragesNew = await runAvailableScenarios(page, componentCount, iterations);
-  logger.info(perfAveragesNew);
+  const samplesNew = await runAvailableScenarios(page, componentCount, iterations);
+  logger.info(samplesNew);
 
   // Clean up
   await browser.close();
 
+  // t-test
+  // comparing totals, ignoring peritem
+  const scenariostats = getStats(samplesNow, samplesNew);
+  console.log(scenariostats);
+
   // Output comment blob and status as task variables
-  const comment = createBlobFromResults({ now: perfAveragesNow, new: perfAveragesNew });
+  const comment = createBlobFromResults({
+    stats: scenariostats,
+    now: samplesNow,
+    new: samplesNew
+  });
 
   // TODO: determine status according to perf numbers
   const status = 'success';
@@ -78,8 +88,8 @@ async function runAvailableScenarios(page, componentCount, iterations) {
 }
 
 async function runScenarioNTimes(page, times) {
-  let totalsum = 0;
-  let peritemsum = 0;
+  let totalsamples = [];
+  let peritemsamples = [];
   const runTestButton = await page.$('.runTest');
 
   for (let i = 0; i < times; i++) {
@@ -90,18 +100,33 @@ async function runScenarioNTimes(page, times) {
     let peritem = await page.$eval('.peritem', result => result.innerText);
 
     // add perf numbers
-    totalsum += parseFloat(total.replace(/[a-zA-Z:]/g, ''));
-    peritemsum += parseFloat(peritem.replace(/[a-zA-Z:]/g, ''));
+    totalsamples.push(parseFloat(total.replace(/[a-zA-Z:]/g, '')));
+    peritemsamples.push(parseFloat(peritem.replace(/[a-zA-Z:]/g, '')));
 
     // reset
     await runTestButton.click();
   }
 
-  // average
   return {
-    total: (totalsum / times).toFixed(3),
-    peritem: (peritemsum / times).toFixed(3)
+    totals: totalsamples,
+    peritem: peritemsamples,
+    totalavg: (totalsamples.reduce((prev, curr) => prev + curr) / times).toFixed(3),
+    peritemavg: (peritemsamples.reduce((prev, curr) => prev + curr) / times).toFixed(3)
   };
+}
+
+function getStats(before, after) {
+  const scenariostats = {};
+
+  Object.keys(before).forEach(scenario => {
+    if (after[scenario]) {
+      scenariostats[scenario] = ttest(before[scenario].totals, after[scenario].totals, {});
+      scenariostats[scenario].pvalue = scenariostats[scenario].pValue();
+      scenariostats[scenario].valid = scenariostats[scenario].valid();
+    }
+  });
+
+  return scenariostats;
 }
 
 function createBlobFromResults(perfBlob) {
@@ -115,6 +140,7 @@ function createBlobFromResults(perfBlob) {
     <th>PR avg total (ms)</th>
     <th>Target branch avg per item (ms)</th>
     <th>PR avg per item (ms)</th>
+    <th>p-value for totals >= 0.05</th>
   </tr>`.concat(
     scenariosFromMaster
       .concat(scenariosFromPr.filter(scn => !scenariosFromMaster.includes(scn)))
@@ -122,10 +148,11 @@ function createBlobFromResults(perfBlob) {
         scenario =>
           `<tr>
             <td>${scenario}</td>
-            <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].total : '...'}</td>
-            <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].total : '...'}</td>
-            <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].peritem : '...'}</td>
-            <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].peritem : '...'}</td>
+            <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].totalavg : '...'}</td>
+            <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].totalavg : '...'}</td>
+            <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].peritemavg : '...'}</td>
+            <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].peritemavg : '...'}</td>
+            <td>${perfBlob.stats[scenario] ? perfBlob.stats[scenario].valid : '...'}</td>
            </tr>  `
       )
       .join('\n')
