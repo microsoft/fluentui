@@ -31,7 +31,7 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   link: 'ms-HomePage-link',
   linkIcon: 'ms-HomePage-linkIcon',
   linkText: 'ms-HomePage-linkText',
-  placeholder: 'ms-HomePage-placeholder'
+  illustration: 'ms-HomePage-illustration'
 };
 
 export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
@@ -314,6 +314,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         selectors: {
           'a, a:hover, a:active, p': {
             color: palette.black
+          },
+
+          [mediaQuery.maxLarge]: {
+            flex: '1 0 25%'
           }
         }
       }
@@ -403,17 +407,12 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       }
     ],
 
-    placeholder: [
-      classNames.placeholder,
+    illustration: [
+      classNames.illustration,
       {
-        width: '100%',
-        border: '1px solid white',
-
         selectors: {
-          ':after': {
-            content: '""',
-            display: 'block',
-            paddingBottom: '100%'
+          img: {
+            maxWidth: '100%'
           }
         }
       }

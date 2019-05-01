@@ -180,7 +180,11 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       <section className={this._classNames.resourcesSection}>
         <div className={this._classNames.sectionContent}>
           <div className={this._classNames.oneHalf}>
-            <div className={this._classNames.placeholder} />
+            <Image
+              src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png"
+              alt="Resources illustration"
+              className={this._classNames.illustration}
+            />
           </div>
           <div className={this._classNames.oneFourth}>
             <h2 className={this._classNames.resourcesTitle}>Discover resources</h2>

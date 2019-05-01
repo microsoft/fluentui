@@ -41,5 +41,5 @@ export interface IHomePageStyles {
   link: IStyle;
   linkIcon: IStyle;
   linkText: IStyle;
-  placeholder: IStyle;
+  illustration: IStyle;
 }
