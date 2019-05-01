@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+
 function just(cmd) {
   const path = require('path');
 
@@ -6,13 +10,11 @@ function just(cmd) {
     startIndex = 2;
   }
 
-  process.argv = [
-    ...process.argv.slice(0, startIndex),
-    ...(cmd ? [cmd] : []),
-    '--config',
-    path.resolve(__dirname, 'just-task.js'),
-    ...process.argv.slice(startIndex)
-  ];
+  const config = fs.existsSync(path.resolve(process.cwd(), 'just-task.js'))
+    ? path.resolve(process.cwd(), 'just-task.js')
+    : path.resolve(__dirname, 'just-task.js');
+
+  process.argv = [...process.argv.slice(0, startIndex), ...(cmd ? [cmd] : []), '--config', config, ...process.argv.slice(startIndex)];
 
   require('just-task/lib/cli.js');
 }

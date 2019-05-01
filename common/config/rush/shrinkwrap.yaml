@@ -126,7 +126,7 @@ dependencies:
   jscodeshift: 0.5.1
   json-loader: 0.5.7
   just-scripts: 0.14.4
-  just-task: 0.9.4
+  just-task: 0.9.5
   lint-staged: 7.3.0
   loader-utils: 1.1.0
   markdown-to-jsx: 6.6.1
@@ -6387,7 +6387,7 @@ packages:
       https-proxy-agent: 1.0.0
       mime: 1.6.0
       netrc: 0.1.4
-    deprecated: '''github'' has been renamed to ''@octokit/rest'' (https://git.io/vNB11)'
+    deprecated: "'github' has been renamed to '@octokit/rest' (https://git.io/vNB11)"
     dev: false
     resolution:
       integrity: sha1-/hDN5pZDUsXZHhGnYW0m1f+2+Hs=
@@ -8488,7 +8488,7 @@ packages:
       fs-extra: 7.0.1
       glob: 7.1.3
       just-scripts-utils: 0.7.2
-      just-task: 0.9.3
+      just-task: 0.9.5
       npm-registry-fetch: 3.9.0
       prompts: 2.0.4
       run-parallel-limit: 1.0.5
@@ -8515,7 +8515,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-tABOQTjqERGGxEpR5db33QNv9ZEwPDdgHeSx5uhhjKDf4yGVBXMi46ePMNt6IObxzr1E14RWU5h2fFgluZ91cw==
-  /just-task/0.9.4:
+  /just-task/0.9.5:
     dependencies:
       chalk: 2.4.2
       just-task-logger: 0.2.0
@@ -8526,7 +8526,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-XQcGuaeUrVP4EWOBYJIuaOY1SIv/0A1ixX8S8Kxevwtc2QU7ZlheUTFzCvEDtJV9Z/yBHCIbR2NDRSbnPDZFXw==
+      integrity: sha512-ftZgvvDrxg5PzcSus17nsOHNZ0OW/ulSjlgRuTR9rMlW8w1WZno2iE9YAi4326zllsfdCjROaAOPQeENdIXeiQ==
   /keycode/2.2.0:
     dev: false
     resolution:
@@ -15274,7 +15274,7 @@ packages:
       json-loader: 0.5.7
       jsonc-parser: 2.0.2
       just-scripts: 0.14.4
-      just-task: 0.9.4
+      just-task: 0.9.5
       lint-staged: 7.3.0
       mkdirp: 0.5.1
       mustache: 2.3.2
@@ -15310,7 +15310,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-1gEnxZdugtQRle+4vfX3snpezHMr45dMBCYH7+VAGUSh0Xv4s+Bc8iWy+rM31NL1UW3YmQynUPQYVxyJMAHEYg==
+      integrity: sha512-oWP6AWkjuiPdlQX7g1VfB0C3V6JkmP2wgUkGIEUA5g52WVqz7yWY4oNQ2ZFITgiY6pdreSwbyglIDwauWxTvUg==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15516,6 +15516,8 @@ packages:
       es6-weak-map: 2.0.2
       highlight.js: 9.13.1
       json-loader: 0.5.7
+      just-scripts: 0.14.4
+      just-task: 0.9.5
       office-ui-fabric-core: 10.0.0
       react: 16.6.3
       react-dom: /react-dom/16.6.3/react@16.6.3
@@ -15526,7 +15528,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-U+XNy1CnbS3eS26j5VQYhA1iEByOmmG4+DKpKJy75FZuWoezVwsP0I02rcRGh6php8uIEk697r59hiq1Uy9ErA==
+      integrity: sha512-m8tjeL+bXeYuKA94SNLlgGUec2Cs51fqWqxxGQZU7VSl2plMhFQUahdaNZqGZOdzK4LhNPgYwOINxi06IWzejg==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15727,10 +15729,12 @@ packages:
   'file:projects/pr-deploy-site.tgz':
     dependencies:
       '@uifabric/date-time': 0.3.5
+      just-scripts: 0.14.4
+      just-task: 0.9.5
     dev: false
     name: '@rush-temp/pr-deploy-site'
     resolution:
-      integrity: sha512-utSyUZ4bhQNRD4ZItM2gTI3Fo6LQW1ZAMPmDRrDDWelx2cQeKqvGaJsKbcAkuI/feYkEwoGkhlAzZhw+e2E34A==
+      integrity: sha512-V04FoKT48sT7XUzNWAUf02UdQ0TARwme/xnny0H0bYIOUxPAtuydpN798+nxWAFTiyjIDIJiiiUqW93kYCTq9Q==
       tarball: 'file:projects/pr-deploy-site.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -16116,7 +16120,7 @@ specifiers:
   jscodeshift: ^0.5.0
   json-loader: ^0.5.7
   just-scripts: ~0.14.4
-  just-task: ~0.9.4
+  just-task: ~0.9.5
   lint-staged: ^7.0.5
   loader-utils: ^1.1.0
   markdown-to-jsx: 6.6.1
