@@ -4,7 +4,6 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { ShimmerBasicExample } from './examples/Shimmer.Basic.Example';
 import { ShimmerCustomElementsExample } from './examples/Shimmer.CustomElements.Example';
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
-import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
 
 const ShimmerBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
@@ -14,8 +13,6 @@ const ShimmerCustomExampleCode = require('!raw-loader!@uifabric/experiments/src/
 const ShimmerStylingExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Styling.Example.tsx') as string;
 
 const ShimmerLoadDataExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.LoadData.Example.tsx') as string;
-
-const ShimmerApplicationExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Shimmer/examples/Shimmer.Application.Example.tsx') as string;
 
 export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -33,12 +30,6 @@ export class ShimmerPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Shimmer swapping with the content it replaces" code={ShimmerLoadDataExampleCode}>
               <ShimmerLoadDataExample />
-            </ExampleCard>
-            <ExampleCard
-              title="Details List with 500 items simulating loading data in async manner and having Shimmer enabled."
-              code={ShimmerApplicationExampleCode}
-            >
-              <ShimmerApplicationExample />
             </ExampleCard>
             <ExampleCard title='Style override of shimmering wave using "styles" prop' code={ShimmerStylingExampleCode}>
               <ShimmerStylingExample />
