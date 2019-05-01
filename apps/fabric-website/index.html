@@ -111,7 +111,11 @@
 
       // If the site is hosted, load the flight config script for production or dogfood
       if (devhost !== null) {
-        appPath += devhost;
+        if (devhost === '') {
+          var loc = window.location;
+          devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('index.html', '');
+        }
+        appPath = devhost;
         Flight.baseCDNUrl = devhost;
         loadAppScripts(appPath);
       } else if (!isLocal) {
@@ -186,9 +190,7 @@
         reactPath = reactPath + '.production.min.js';
         reactDomPath = reactDomPath + '.production.min.js';
 
-        appPath += entryPointFilename + '.min.js';
-
-        var scripts = [reactPath, reactDomPath, appPath];
+        var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.min.js'];
 
         // Load React and app scripts
         loadScripts(scripts);
