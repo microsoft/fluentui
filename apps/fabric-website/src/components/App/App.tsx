@@ -8,7 +8,6 @@ import { hasUHF } from '../../utilities/location';
 import { Nav } from '../Nav/Nav';
 import { AppState } from './AppState';
 import './App.scss';
-import { extractAnchorLink } from '@uifabric/example-app-base/lib/utilities/extractAnchorLink';
 
 export interface IAppProps extends React.Props<App> {}
 
@@ -59,9 +58,8 @@ export class App extends React.Component<IAppProps, any> {
 
   public componentWillReceiveProps(nextProps: IAppProps): void {
     if (nextProps && nextProps.children !== this.props.children) {
-      const hash = extractAnchorLink(window.location.hash);
       // when loading a new component page, we want to scroll to the top
-      if (hash.indexOf('/components') !== -1) {
+      if (window.location.hash.indexOf('/components') !== -1) {
         window.scrollTo(0, 0);
       }
     }

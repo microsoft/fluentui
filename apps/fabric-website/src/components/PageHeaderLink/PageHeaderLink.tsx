@@ -54,14 +54,15 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     event.preventDefault();
     history.pushState({}, '', this._els.link.getAttribute('href'));
     let navigatorUserAgent = navigator.userAgent.toLowerCase();
-    let hash = extractAnchorLink(window.location.hash);
+    let anchor = extractAnchorLink(window.location.hash);
     if (navigatorUserAgent.indexOf('firefox') > -1) {
-      hash = decodeURI(hash);
+      anchor = decodeURI(anchor);
     }
-    if (!hash) {
+    // If the "anchor" contains / that means it's the route path not an actual anchor
+    if (!anchor || anchor.indexOf('/') !== -1) {
       return;
     }
-    let el = document.getElementById(hash);
+    let el = document.getElementById(anchor);
     let elRect = el.getBoundingClientRect();
     let bodySTop = document.body.scrollTop;
     let currentScrollPosition = bodySTop + elRect.top;
