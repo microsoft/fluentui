@@ -6,7 +6,7 @@ const fs = require('fs');
 const path = require('path');
 const { argv, logger } = require('@uifabric/build/just-task').just;
 
-module.exports = function createFlightConfigTask(buildNumber, baseCDNUrl, buildName) {
+module.exports = function createFlightConfigTask() {
   return function createFlightConfigTask() {
     let date = new Date();
     let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
@@ -15,9 +15,9 @@ module.exports = function createFlightConfigTask(buildNumber, baseCDNUrl, buildN
 
     // Produces date string of the form yyyMMdd, e.g. 20180701
     let configData = {
-      version: buildNumber || argv().buildNumber,
-      baseCDNUrl: baseCDNUrl || argv().baseCDNUrl,
-      buildName: buildName || argv().buildName,
+      version: process.env.BUILD_BUILDNUMBER || '0',
+      baseCDNUrl: argv().baseCDNUrl,
+      buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
       createdDate: today
     };
 
