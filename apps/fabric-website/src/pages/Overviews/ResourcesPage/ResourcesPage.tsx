@@ -45,17 +45,6 @@ function _otherSections(): IPageSectionProps[] {
           }
         </Markdown>
       )
-    },
-    {
-      sectionName: 'Join the community',
-      editUrl: baseUrl + 'docs/default/ResourcesJoinTheCommunity.md',
-      content: (
-        <Markdown>
-          {
-            require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ResourcesPage/docs/default/ResourcesJoinTheCommunity.md') as string
-          }
-        </Markdown>
-      )
     }
   ];
 }

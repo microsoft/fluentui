@@ -3,10 +3,12 @@
 These design toolkits provide styles, controls and layout templates that enable you to create beautiful and coherent Microsoft experiences.
 
 <ul class="md-list--flex">
-  <li class="mdut--half">[Web Fluent (Sketch)](https://share.goabstract.com/0d53a59a-a0c9-465a-a7b4-2e40ef040d8a)</li>
+  <li class="mdut--half">[Web Fluent (Sketch)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EU75cB2smYVBrJRYdm1B02YBCfn-UR27avtbe4SWZDyrhg?e=kspHRE)</li>
   <li class="mdut--half">[Web Fluent (Figma)](https://www.figma.com/file/BAfsTrZ9ehIYZ0oYuyskUN2R/Web-Fluent)</li>
-  <li class="mdut--half">[iOS Fluent (Sketch)](https://share.goabstract.com/dc0d6058-898c-4969-b0a7-9bbd8227c9fe)</li>
-  <li class="mdut--half">[Android Fluent (Sketch)](https://share.goabstract.com/62c3cc9a-bc6b-41a2-8741-25ffb244f802)</li>
+  <li class="mdut--half">[iOS Fluent (Sketch)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EQ6MYK3pi7JLrXd9Z4rhZLQBU8Iw49VV4ASatz5-UuPhOQ?e=JBZziy)</li>
+  <li class="mdut--half">[iOS Fluent (Figma)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EVFZno9IWANOn-00XrP-v3YBCsMZ1bcJJCQe2Al9Dx4UIQ?e=lwkR7d)</li>
+  <li class="mdut--half">[Android Fluent (Sketch)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EVAotQvsRdZIvPouwtr16pUBUW4Kkz8lh5nGlm0ef6xL7A?e=gVAFJe)</li>
+  <li class="mdut--half">[Android Fluent (Figma)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/ESiNcYH1qI9Mk77xxjQe-g0Bl8iFZsfECLE16q9EDsuTaQ?e=jG7gmk)</li>
 </ul>
 
 ### SharePoint Framework
