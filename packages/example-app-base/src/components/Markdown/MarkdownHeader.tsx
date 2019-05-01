@@ -41,7 +41,7 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
         marginBottom: '12px',
 
         selectors: {
-          '&:first-of-type': {
+          '&:first-child': {
             marginTop: 0
           }
         }
