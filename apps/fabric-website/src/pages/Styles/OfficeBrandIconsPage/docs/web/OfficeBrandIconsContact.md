@@ -1,4 +1,0 @@
-- Burns Montgomery
-- Carlos Perez
-- Edgar Banguero
-- Katherine Thayer
