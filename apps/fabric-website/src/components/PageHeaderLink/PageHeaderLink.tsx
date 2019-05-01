@@ -58,6 +58,9 @@ export class PageHeaderLink extends React.Component<IPageHeaderLink, {}> {
     if (navigatorUserAgent.indexOf('firefox') > -1) {
       hash = decodeURI(hash);
     }
+    if (!hash) {
+      return;
+    }
     let el = document.getElementById(hash);
     let elRect = el.getBoundingClientRect();
     let bodySTop = document.body.scrollTop;

@@ -47,7 +47,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     const hash = extractAnchorLink(window.location.hash);
 
-    if (!this.state.showSeeMore) {
+    if (hash && !this.state.showSeeMore) {
       const section = this.state.properties.filter(x => x.propertyName === hash)[0];
       if (section) {
         this.setState({
