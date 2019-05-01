@@ -7536,7 +7536,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
     calloutProps?: ICalloutProps;
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
-    content?: string;
+    content?: string | JSX.Element | JSX.Element[];
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
@@ -7570,7 +7570,7 @@ export interface ITooltipHostStyles {
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
-    content?: string;
+    content?: string | JSX.Element | JSX.Element[];
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
