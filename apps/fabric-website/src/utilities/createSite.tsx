@@ -24,7 +24,7 @@ initializeIcons();
 
 // @TODO: This doesn't appear to do anything right now. Investigate removing.
 // @ts-ignore
-const isProduction = process.argv.indexOf('--production') > -1;
+const isProduction = process.argv.NODE_ENV === 'production';
 
 // tslint:disable-next-line no-any
 declare let Flight: any; // Flight & CDN configuration

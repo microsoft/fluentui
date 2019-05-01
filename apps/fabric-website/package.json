@@ -11,14 +11,15 @@
     "url": "https://github.com/OfficeDev/office-ui-fabric-react"
   },
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "start": "node ../../scripts/just.js dev",
-    "production": "node --max_old_space_size=8192 ../../scripts/just.js build --production",
-    "dogfood": "node --max_old_space_size=8192 ../../scripts/just.js build --dogfood",
-    "startuhf": "node ../../scripts/just.js dev --webpackConfig webpack.uhf.serve.config.js"
+    "build": "node node_modules/@uifabric/build/just.js build",
+    "create-flight-config": "node node_modules/@uifabric/build/just.js create-flight-config",
+    "just": "node node_modules/@uifabric/build/just.js",
+    "clean": "node node_modules/@uifabric/build/just.js clean",
+    "code-style": "node node_modules/@uifabric/build/just.js code-style",
+    "start": "node node_modules/@uifabric/build/just.js dev",
+    "production": "node --max_old_space_size=8192 node_modules/@uifabric/build/just.js build --production",
+    "dogfood": "node --max_old_space_size=8192 node_modules/@uifabric/build/just.js build --dogfood",
+    "startuhf": "node node_modules/@uifabric/build/just.js dev --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
   "disabledTasks": [
@@ -41,7 +42,8 @@
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
     "react-highlight": "0.10.0",
-    "write-file-webpack-plugin": "^4.1.0"
+    "write-file-webpack-plugin": "^4.1.0",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
