@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.38.0",
+      "tag": "@uifabric/utilities_v6.38.0",
+      "date": "Wed, 01 May 2019 12:34:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export Omit from utilities",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4d72d00867790618c3062374d5f38160aa2d7c4e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.1",
       "tag": "@uifabric/utilities_v6.37.1",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

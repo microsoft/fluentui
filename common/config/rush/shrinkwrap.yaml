@@ -36,6 +36,7 @@ dependencies:
   '@rush-temp/test-bundles': 'file:projects/test-bundles.tgz'
   '@rush-temp/test-utilities': 'file:projects/test-utilities.tgz'
   '@rush-temp/theme-samples': 'file:projects/theme-samples.tgz'
+  '@rush-temp/theming-designer': 'file:projects/theming-designer.tgz'
   '@rush-temp/todo-app': 'file:projects/todo-app.tgz'
   '@rush-temp/tslint-rules': 'file:projects/tslint-rules.tgz'
   '@rush-temp/utilities': 'file:projects/utilities.tgz'
@@ -77,6 +78,7 @@ dependencies:
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
   '@types/webpack-env': 1.13.9
+  '@uifabric/react-cards': 0.1.0
   async: 2.6.1
   autoprefixer: 7.2.6
   awesome-typescript-loader: 3.5.0
@@ -266,6 +268,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ocE95XMd7YGTkzEZpTE9uKcnRE6iEYoo89H9xbnn/xEWeTvLPdg0Ix1L2D1jRNsDZYyvNiSDu+PBG4wMEawyUg==
+  /@microsoft/load-themed-styles/1.8.85:
+    dev: false
+    resolution:
+      integrity: sha512-U4X7d5uxfaFPNnn7sazISnGz0563echOO1EA3/DRc9fEQJqGecS7cJaFRpiq574vRgsCreZjvaGfJo6n1FzDUw==
   /@microsoft/loader-load-themed-styles/1.7.107:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.39
@@ -851,6 +857,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-U8dFRG+8WhkLJr2sxZ9Cw/5WeRgBnNqMxGdA1+Z0+ZG6tK0s75OQ4OXnxeyfKuh6E4wQPY8OAKr1+iNDx01BEQ==
+  /@types/d3-path/1.0.8:
+    dev: false
+    resolution:
+      integrity: sha512-AZGHWslq/oApTAHu9+yH/Bnk63y9oFOMROtqPAtxl5uB6qm1x2lueWdVEjsjjV3Qc2+QfuzKIwIR5MvVBakfzA==
   /@types/d3-scale/2.0.0:
     dependencies:
       '@types/d3-time': 1.0.9
@@ -867,10 +877,20 @@ packages:
     dev: false
     resolution:
       integrity: sha512-BdewMqqinhNNV8rrnjr6tIdm6WCl/eVaePDs1dl52Le/c0m1ML/LaZc2S/Sht3VjPbAqeDFXhTgRgeDkrvzt/w==
+  /@types/d3-shape/1.3.1:
+    dependencies:
+      '@types/d3-path': 1.0.8
+    dev: false
+    resolution:
+      integrity: sha512-usqdvUvPJ7AJNwpd2drOzRKs1ELie53p2m2GnPKr076/ADM579jVTJ5dPsoZ5E/CMNWk8lvPWYQSvilpp6jjwg==
   /@types/d3-time-format/2.1.0:
     dev: false
     resolution:
       integrity: sha512-/myT3I7EwlukNOX2xVdMzb8FRgNzRMpsZddwst9Ld/VFe6LyJyRp0s32l/V9XoUzk+Gqu56F/oGk6507+8BxrA==
+  /@types/d3-time-format/2.1.1:
+    dev: false
+    resolution:
+      integrity: sha512-tJSyXta8ZyJ52wDDHA96JEsvkbL6jl7wowGmuf45+fAkj5Y+SQOnz0N7/H68OWmPshPsAaWMQh+GAws44IzH3g==
   /@types/d3-time/1.0.9:
     dev: false
     resolution:
@@ -1105,6 +1125,70 @@ packages:
     dev: false
     resolution:
       integrity: sha1-LrHQCl5Ow/pYx2r94S4YK2bcXBw=
+  /@uifabric/azure-themes/0.1.8:
+    dependencies:
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      office-ui-fabric-react: 6.174.0
+      tslib: 1.9.3
+    dev: false
+    resolution:
+      integrity: sha512-sTuyzO2jJuDZwOM7mv7NXqIkcr/32qM45gDTUDHGaWMQQBIsr3etgJwUgwpzL1lhqttd/4W8SHu74N/GMLLalw==
+  /@uifabric/charting/0.28.13:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@types/d3-array': 1.2.1
+      '@types/d3-axis': 1.0.10
+      '@types/d3-scale': 2.0.0
+      '@types/d3-selection': 1.3.0
+      '@types/d3-shape': 1.3.1
+      '@types/d3-time-format': 2.1.1
+      '@uifabric/icons': 6.5.1
+      '@uifabric/set-version': 1.1.3
+      d3-array: 1.2.1
+      d3-axis: 1.0.8
+      d3-scale: 2.0.0
+      d3-selection: 1.3.0
+      d3-shape: 1.3.5
+      d3-time-format: 2.1.3
+      office-ui-fabric-react: 6.174.0
+      prop-types: 15.7.2
+      tslib: 1.9.3
+    dev: false
+    peerDependencies:
+      react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
+      react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
+    resolution:
+      integrity: sha512-IQgJhJUq3ZY84N+aWfPxQsQwcZSvmp0hubTUavLDMp7rFyohhbNiwJta7hYwv9eppwXtgaFBbOXKOC5ieG/YMQ==
+  /@uifabric/charting/0.28.13/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@types/d3-array': 1.2.1
+      '@types/d3-axis': 1.0.10
+      '@types/d3-scale': 2.0.0
+      '@types/d3-selection': 1.3.0
+      '@types/d3-shape': 1.3.1
+      '@types/d3-time-format': 2.1.1
+      '@uifabric/icons': 6.5.1
+      '@uifabric/set-version': 1.1.3
+      d3-array: 1.2.1
+      d3-axis: 1.0.8
+      d3-scale: 2.0.0
+      d3-selection: 1.3.0
+      d3-shape: 1.3.5
+      d3-time-format: 2.1.3
+      office-ui-fabric-react: /office-ui-fabric-react/6.174.0/react-dom@16.6.3+react@16.6.3
+      prop-types: 15.7.2
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/charting/0.28.13
+    peerDependencies:
+      react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
+      react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
+    resolution:
+      integrity: sha512-IQgJhJUq3ZY84N+aWfPxQsQwcZSvmp0hubTUavLDMp7rFyohhbNiwJta7hYwv9eppwXtgaFBbOXKOC5ieG/YMQ==
   /@uifabric/date-time/0.3.5:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.83
@@ -1119,13 +1203,117 @@ packages:
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
     resolution:
       integrity: sha512-Izvn9xUjS6rZlkvHuLht20wmTGi0tQVUTzQtPtZ/fkts/JLq89cBoHm7xu4z7CfB2r9K1bsKd0Am28NFuRfjqw==
+  /@uifabric/experiments/6.75.0:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/azure-themes': 0.1.8
+      '@uifabric/charting': 0.28.13
+      '@uifabric/file-type-icons': 6.4.8
+      '@uifabric/fluent-theme': 0.16.7
+      '@uifabric/foundation': 0.7.4
+      '@uifabric/icons': 6.5.1
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/theme-samples': 0.1.5
+      '@uifabric/utilities': 6.37.1
+      '@uifabric/variants': 6.14.1
+      deep-assign: 2.0.0
+      office-ui-fabric-react: 6.174.0
+      prop-types: 15.7.2
+      tslib: 1.9.3
+    dev: false
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-CMh9/5hN/u3JgIjSSavxTdcVuamoZtY6FICReNND/oShqBl1FLLlXxJ+OaudMYqYPzbRqq9rzPJWnTULUlX4xw==
+  /@uifabric/experiments/6.75.0/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/azure-themes': 0.1.8
+      '@uifabric/charting': /@uifabric/charting/0.28.13/react-dom@16.6.3+react@16.6.3
+      '@uifabric/file-type-icons': /@uifabric/file-type-icons/6.4.8/react-dom@16.6.3+react@16.6.3
+      '@uifabric/fluent-theme': 0.16.7
+      '@uifabric/foundation': /@uifabric/foundation/0.7.4/react-dom@16.6.3+react@16.6.3
+      '@uifabric/icons': 6.5.1
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/theme-samples': 0.1.5
+      '@uifabric/utilities': /@uifabric/utilities/6.37.1/react-dom@16.6.3+react@16.6.3
+      '@uifabric/variants': 6.14.1
+      deep-assign: 2.0.0
+      office-ui-fabric-react: /office-ui-fabric-react/6.174.0/react-dom@16.6.3+react@16.6.3
+      prop-types: 15.7.2
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/experiments/6.75.0
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-CMh9/5hN/u3JgIjSSavxTdcVuamoZtY6FICReNND/oShqBl1FLLlXxJ+OaudMYqYPzbRqq9rzPJWnTULUlX4xw==
+  /@uifabric/file-type-icons/6.4.8:
+    dependencies:
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      tslib: 1.9.3
+    dev: false
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-JQF3Ok7bvR/yGquMe0u0A+kroSA6B2ngkUIjiFEgdBmqqlyiN60PP20Mon9PG9KD6aNNVOE9QV4W6CLJiVoByQ==
+  /@uifabric/file-type-icons/6.4.8/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/file-type-icons/6.4.8
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-JQF3Ok7bvR/yGquMe0u0A+kroSA6B2ngkUIjiFEgdBmqqlyiN60PP20Mon9PG9KD6aNNVOE9QV4W6CLJiVoByQ==
+  /@uifabric/fluent-theme/0.16.7:
+    dependencies:
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/variants': 6.14.1
+      office-ui-fabric-react: 6.174.0
+      tslib: 1.9.3
+    dev: false
+    resolution:
+      integrity: sha512-b38g0xl/+a6pjQx5lVOQRsAT6OlBXXel3a95mQ2Xa8dac77tiZv/x6QDLzNqN36L5O0HdQPRrqyPZ2o94xRvYQ==
   /@uifabric/foundation/0.7.4:
     dependencies:
       '@uifabric/set-version': 1.1.3
-      '@uifabric/styling': 6.45.3
-      '@uifabric/utilities': 6.35.5
+      '@uifabric/styling': 6.47.0
+      '@uifabric/utilities': 6.37.1
       tslib: 1.9.3
     dev: false
+    peerDependencies:
+      react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
+      react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
+    resolution:
+      integrity: sha512-hE7JiCvZuG0O7HOmeC3lIX9+KAXxnt9JTgQJw/MD/unnzSm0l/WqXb6bpCuYRVZuSvgEp9DcP/yn3iphJlRh5w==
+  /@uifabric/foundation/0.7.4/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/utilities': /@uifabric/utilities/6.37.1/react-dom@16.6.3+react@16.6.3
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/foundation/0.7.4
     peerDependencies:
       react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
@@ -1134,7 +1322,7 @@ packages:
   /@uifabric/icons/6.5.1:
     dependencies:
       '@uifabric/set-version': 1.1.3
-      '@uifabric/styling': 6.45.3
+      '@uifabric/styling': 6.47.0
       tslib: 1.9.3
     dev: false
     resolution:
@@ -1146,6 +1334,56 @@ packages:
     dev: false
     resolution:
       integrity: sha512-zUzVxabq6E2AAY6h+WU6W4L4de9J+mIjZg3q/4bzna1hEQgccCZkVyHg7OesJAylPzp4lYP3KWKP9hRaOZlnhg==
+  /@uifabric/merge-styles/6.17.0:
+    dependencies:
+      '@uifabric/set-version': 1.1.3
+      tslib: 1.9.3
+    dev: false
+    resolution:
+      integrity: sha512-yTIjOhskNzhstiqpMhM/HI5yUBCNbWOF/8+WDfGLIe4rusxxjVyC6lpBV+B2Iw20ridDFdIhs/YjKy19/ifTgQ==
+  /@uifabric/react-cards/0.1.0:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/azure-themes': 0.1.8
+      '@uifabric/experiments': 6.75.0
+      '@uifabric/file-type-icons': 6.4.8
+      '@uifabric/fluent-theme': 0.16.7
+      '@uifabric/foundation': 0.7.4
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/theme-samples': 0.1.5
+      '@uifabric/utilities': 6.37.1
+      office-ui-fabric-react: 6.174.0
+      tslib: 1.9.3
+    dev: false
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-jUeKghRAbVaui7DHFf4Xd7xvWHfAuzfzj38SeYUGpHWi6f2gLzVvdUSy7n+mQO+japOUoP5A4MsDzO0XIz6khg==
+  /@uifabric/react-cards/0.1.0/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/azure-themes': 0.1.8
+      '@uifabric/experiments': /@uifabric/experiments/6.75.0/react-dom@16.6.3+react@16.6.3
+      '@uifabric/file-type-icons': /@uifabric/file-type-icons/6.4.8/react-dom@16.6.3+react@16.6.3
+      '@uifabric/fluent-theme': 0.16.7
+      '@uifabric/foundation': /@uifabric/foundation/0.7.4/react-dom@16.6.3+react@16.6.3
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/theme-samples': 0.1.5
+      '@uifabric/utilities': /@uifabric/utilities/6.37.1/react-dom@16.6.3+react@16.6.3
+      office-ui-fabric-react: /office-ui-fabric-react/6.174.0/react-dom@16.6.3+react@16.6.3
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/react-cards/0.1.0
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-jUeKghRAbVaui7DHFf4Xd7xvWHfAuzfzj38SeYUGpHWi6f2gLzVvdUSy7n+mQO+japOUoP5A4MsDzO0XIz6khg==
   /@uifabric/set-version/1.1.3:
     dependencies:
       tslib: 1.9.3
@@ -1162,6 +1400,25 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Ru/KL36YqZF6Tfb7uprKnIQlN19M3P1aBHW+afrrvjhJVi/RwYUR2aZGyydjAmVmwPw01/35NC2CMWGxAqaN1A==
+  /@uifabric/styling/6.47.0:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/utilities': 6.37.1
+      tslib: 1.9.3
+    dev: false
+    resolution:
+      integrity: sha512-iI0rqq1pfjjwHTjNRO3CFOQjYDuUixsJjZTWK1uyuWUMP4RGs227p9Bj6V6rwwjVtKWNFEM35IomXH6IZkm2rw==
+  /@uifabric/theme-samples/0.1.5:
+    dependencies:
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/variants': 6.14.1
+      office-ui-fabric-react: 6.174.0
+      tslib: 1.9.3
+    dev: false
+    resolution:
+      integrity: sha512-zXsSuZf0uGFtcytLqg/T4urBjACm48y9kJLgqXJoYCYLFnz/JXvYLOCd/jvL91UVjNtMht2Gop53++5bhwIv0g==
   /@uifabric/utilities/6.35.5:
     dependencies:
       '@uifabric/merge-styles': 6.16.5
@@ -1174,6 +1431,41 @@ packages:
       react-dom: '>=16.3.2-0 <17.0.0'
     resolution:
       integrity: sha512-L+xd+Zkjr4YIMWs3kEwzibZG/DgXU4KpfQwynEq3p4P4hudei/0DzgGejRQ2jScwFvB0zVJQGa0sKR/Wc3ICZQ==
+  /@uifabric/utilities/6.37.1:
+    dependencies:
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      prop-types: 15.7.2
+      tslib: 1.9.3
+    dev: false
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-geYwxc1bNbfPP1SaO4ICLLPBY6mXao8WvsGHMGFiJQNYF+bao09d4TrOeUVq5Dte+ejM2P9zgRw6FREQkAjkjw==
+  /@uifabric/utilities/6.37.1/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      prop-types: 15.7.2
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/@uifabric/utilities/6.37.1
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-geYwxc1bNbfPP1SaO4ICLLPBY6mXao8WvsGHMGFiJQNYF+bao09d4TrOeUVq5Dte+ejM2P9zgRw6FREQkAjkjw==
+  /@uifabric/variants/6.14.1:
+    dependencies:
+      '@uifabric/set-version': 1.1.3
+      office-ui-fabric-react: 6.174.0
+      tslib: 1.9.3
+    dev: false
+    resolution:
+      integrity: sha512-BrqVwd7FWdCFlGqN/2CpACkRU1aet6Vw+4zSXqDVoYUOGyDfZNU2kcP+hE/NJwWBn2S6V0fYauMp+S72E/OgwA==
   /@webassemblyjs/ast/1.8.3:
     dependencies:
       '@webassemblyjs/helper-module-context': 1.8.3
@@ -4524,6 +4816,12 @@ packages:
     dev: false
     resolution:
       integrity: sha512-hUGEozlKecFZ2bOSNt7ENex+4Tk9uc/m0TtTEHBvitCBxUNjhzm5hS2GrrVRD/ae4IylSmxGeqX5tWC2rASMlQ==
+  /d3-shape/1.3.5:
+    dependencies:
+      d3-path: 1.0.7
+    dev: false
+    resolution:
+      integrity: sha512-VKazVR3phgD+MUCldapHD7P9kcrvPcexeX/PkMJmkUov4JM8IxsSg1DvbYoYich9AtdTsa5nNk2++ImPiDiSxg==
   /d3-time-format/2.1.3:
     dependencies:
       d3-time: 1.0.10
@@ -10136,6 +10434,43 @@ packages:
       react-dom: '>=16.3.2-0 <17.0.0'
     resolution:
       integrity: sha512-ytARTuZwDql08+JLnt0/VWbzlXuLTPA2O2NAEKpv6I6Avm/7G6TS/VT+XO0odHS6+O31rkdwh6xK6p9zuxwa7w==
+  /office-ui-fabric-react/6.174.0:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/foundation': 0.7.4
+      '@uifabric/icons': 6.5.1
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/utilities': 6.37.1
+      prop-types: 15.7.2
+      tslib: 1.9.3
+    dev: false
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-AsdICm7y26OyZNnzGEtq6gCOG4c1hBeP9PlpaG6L7i3ovN09C+ZQsKPSwWdiFD5JryWbeG+FhnlcMtNVSveBmQ==
+  /office-ui-fabric-react/6.174.0/react-dom@16.6.3+react@16.6.3:
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@uifabric/foundation': /@uifabric/foundation/0.7.4/react-dom@16.6.3+react@16.6.3
+      '@uifabric/icons': 6.5.1
+      '@uifabric/merge-styles': 6.17.0
+      '@uifabric/set-version': 1.1.3
+      '@uifabric/styling': 6.47.0
+      '@uifabric/utilities': /@uifabric/utilities/6.37.1/react-dom@16.6.3+react@16.6.3
+      prop-types: 15.7.2
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+    dev: false
+    id: registry.npmjs.org/office-ui-fabric-react/6.174.0
+    peerDependencies:
+      react: '>=16.3.2-0 <17.0.0'
+      react-dom: '>=16.3.2-0 <17.0.0'
+    resolution:
+      integrity: sha512-AsdICm7y26OyZNnzGEtq6gCOG4c1hBeP9PlpaG6L7i3ovN09C+ZQsKPSwWdiFD5JryWbeG+FhnlcMtNVSveBmQ==
   /on-finished/2.3.0:
     dependencies:
       ee-first: 1.1.1
@@ -15220,7 +15555,7 @@ packages:
     dev: false
     name: '@rush-temp/a11y-tests'
     resolution:
-      integrity: sha512-IHtd6XLkN6EbWTquEc9gOaPwc0dtLxReUfGfe9A4qtWFV3yGvM0sJNNqd4SwJlM2JI3HvUwEzlNvUSNtYlLXpw==
+      integrity: sha512-E2dWg5hU0Vj0pF1pnySnf8dTsGnWrtr3dwL6PJaUdKRkVDQOuS8wfSnRj1QpP1N+589CQePlIbPspwHhqC3Ccg==
       tarball: 'file:projects/a11y-tests.tgz'
     version: 0.0.0
   'file:projects/api-docs.tgz':
@@ -15232,7 +15567,7 @@ packages:
     dev: false
     name: '@rush-temp/api-docs'
     resolution:
-      integrity: sha512-u50EmqFvRIDB6Fdn1VRRLK/6dBFDmYPzj99G0ZPjOPbNdO1Zpk6ksX8Upy+4ocWYN0er8HFniD1/nX+pl3sCCw==
+      integrity: sha512-p5TFYBSWiQNAQtZ10o07qpyOVtGgLX6pln12abTXjdMv2PLFgEXKZ5y3T3qJ+p6iB+/mZG3O0jsxlWaPYJOZ/Q==
       tarball: 'file:projects/api-docs.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -15242,7 +15577,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-CNMzKIRexyg/DjPG2xgJQNNScZDcsepj1HkJmktY3FrW2+NsnK2TZrE4Q6tL0gU+tdrVK2HMI1upfcS/iFcRoQ==
+      integrity: sha512-xl0R40VBMznqduZrpH+6G2UWtNQsZKrr3Tdu91thgQk1V/nozga++1qkviY4xETsmaXQZY2MuPzFq3VoOcfzAQ==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -15353,7 +15688,7 @@ packages:
     dev: false
     name: '@rush-temp/charting'
     resolution:
-      integrity: sha512-g0BIfQyNjJ+Gc8Rhg1IqorE4MOHdfPkbWvhjdaSMcjyixTQRy8dnzCTdNA5RXHebIkSd5xeEpayUlnBbqmSA4A==
+      integrity: sha512-1EExgTUq/ZW3Tgstu1fIC0W199UStHrk/vQtWuHeDSTVH1Bne69Rre7EHvSgJ0wuQxN9p5CaOgM1rLhiHTHfdg==
       tarball: 'file:projects/charting.tgz'
     version: 0.0.0
   'file:projects/codepen-loader.tgz':
@@ -15399,7 +15734,7 @@ packages:
     dev: false
     name: '@rush-temp/date-time'
     resolution:
-      integrity: sha512-0tOTxHjL0/Mlzyhd4R+Neykoe55+vPuVDXrwsAez/CYzxxKUxpzlSkBe+9bm07Qh203k6Ldfy1IFlAlBwTG+zg==
+      integrity: sha512-sHtM+NRSOvlAsv9F39Lw1l37XbwRlam2i+RqAa0S4UhxrZ2Gb87G1iXtbje/bDhZFk7f9pD4JzAU91Ule15b/Q==
       tarball: 'file:projects/date-time.tgz'
     version: 0.0.0
   'file:projects/example-app-base.tgz':
@@ -15430,7 +15765,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-/ePOQuPya9a7ugAH9vHIbgsO8KEVKq+i4mxiXecUjhdsB4XKe+PXeXLadzmC9GxyED8BWmx+5YQhqnN/rjBfUw==
+      integrity: sha512-hNwFSFVhuMNpGJpVe5qVAqRXTnsCs++VPTunrYyWNByadksUl3aQMsqWSYjvgeIxhCf82p8t3C7jhLxSrsNYaA==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -15463,7 +15798,7 @@ packages:
     dev: false
     name: '@rush-temp/experiments'
     resolution:
-      integrity: sha512-5GtXLY2GLkt4109gmSiPdIBTiaCPfL+zZe2lUFVNyKxP+pmvR1XQor16DJfbo1loEBHLlnw0XY3dVNd0L/4gfQ==
+      integrity: sha512-o0tSsoP6qxxM9oMdUt+Z620bAD+bk0F/0W1ZY4xmvM3k1zM3ywDTl9mJEVv5hcwCSnMx54Rj0s1Yhc+Kkt1Gjw==
       tarball: 'file:projects/experiments.tgz'
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
@@ -15499,7 +15834,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-boagVqJ3/eVZs4hK7u9+/dgESjF4gXQXn4I+43XObGZPS0l3krgx+CFVhC6WZngkkYv4vAltsoJXOsIH6IP6LQ==
+      integrity: sha512-8hoTen1Bvhrfla/w+NHok+CxRvVtSE9/B9u2dBfSoaM7xzulsoFY0Nt2j1CMrp2pnVkT2B2mclKWL5Ypv6WudQ==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -15526,7 +15861,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-U+XNy1CnbS3eS26j5VQYhA1iEByOmmG4+DKpKJy75FZuWoezVwsP0I02rcRGh6php8uIEk697r59hiq1Uy9ErA==
+      integrity: sha512-BJlfcmaR7QYNIURQNlijForV+yYuspngRY52YFY+PbixT+0OvTqZG591u87Hef7Dxurkjm6ngL4yJ6odFNniig==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -15550,7 +15885,7 @@ packages:
     dev: false
     name: '@rush-temp/fluent-theme'
     resolution:
-      integrity: sha512-3lRSAXOkSeyDTYTKS5FoNvcB2n0+FjoS+4h6ytgJxxmBZQ8/7GVbvXMQl9rtOyLoNXZLWb3WqrkJaqDyoDpPQQ==
+      integrity: sha512-a7UeY0ccMFf6JRiuRV0C5fjXsQWwQQn3oS8oOxFojv62k2DWbXTux4EOIl79Xzeg80dzsfQNLp9lRcUAPTNH7Q==
       tarball: 'file:projects/fluent-theme.tgz'
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
@@ -15574,7 +15909,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation-scenarios'
     resolution:
-      integrity: sha512-VQQAKgABDvftWvqeFF49JMcVPped8mfhQOADtkecq2T7eL+KlpFWRHlMTaBmO26mhOT4GEAbmPZASnVTjuALCQ==
+      integrity: sha512-d5/WEiIdpvOzc45LICMtwupjQjNetUL6uA75zT0DWFUlsPEH/o1CxT9hwx4WMTt4rL5Yh1mApcNOawvwWJVrvA==
       tarball: 'file:projects/foundation-scenarios.tgz'
     version: 0.0.0
   'file:projects/foundation.tgz':
@@ -15596,7 +15931,7 @@ packages:
     dev: false
     name: '@rush-temp/foundation'
     resolution:
-      integrity: sha512-9V0EagYcEY38tGY0wk3yPIcVMQ242nhVpDxi9qXibkyZDTSGLl8sGOg0PKO5wV19fddM/Zpnb+Ypku5JSn8nTA==
+      integrity: sha512-rzkg1CN+g85Ed3QHz0iph5WyUt/9ANPzu6ZwX1Sv62mltTCxHIW5G2W28VM12G0NkM80QdDIo1bQotfRX+acCQ==
       tarball: 'file:projects/foundation.tgz'
     version: 0.0.0
   'file:projects/icons.tgz':
@@ -15702,7 +16037,7 @@ packages:
     dev: false
     name: '@rush-temp/office-ui-fabric-react'
     resolution:
-      integrity: sha512-XY2YKaI2q4CoMpTi74y4cGVF1Qo6Yv5tY/hoizVOx7RFIivW/o9sYIqhfeBkoRVH5UbAKtTzKzv3AZrW+NQkdA==
+      integrity: sha512-GIk64TqvXRGQXyG0S3Ym94W6e1bRNHD2oUczM4Lgziw8qU/zdM16pcAzJbLs0LeWfQCvw+rxhCLj4xATNLqdQA==
       tarball: 'file:projects/office-ui-fabric-react.tgz'
     version: 0.0.0
   'file:projects/perf-test.tgz':
@@ -15721,7 +16056,7 @@ packages:
     dev: false
     name: '@rush-temp/perf-test'
     resolution:
-      integrity: sha512-enT7emjvT2w9EhJpZS27UliMNtedlHo0tdGfrz27uWCoh+42jRmouPyspAs/dpFukNlpP3LJ+pXsc7mk/BTl8Q==
+      integrity: sha512-MPj3DBOuLCIJ7xmPU55iTCCbBzRVsxUQjo6sunqVIw6Teu82motDhY0AcFAwb3FRR8a8dwEEyyeoC3FCH159mg==
       tarball: 'file:projects/perf-test.tgz'
     version: 0.0.0
   'file:projects/pr-deploy-site.tgz':
@@ -15730,7 +16065,7 @@ packages:
     dev: false
     name: '@rush-temp/pr-deploy-site'
     resolution:
-      integrity: sha512-utSyUZ4bhQNRD4ZItM2gTI3Fo6LQW1ZAMPmDRrDDWelx2cQeKqvGaJsKbcAkuI/feYkEwoGkhlAzZhw+e2E34A==
+      integrity: sha512-UCQxH8Je2a6/p5JmRXD9EeLOpIWARjGmXBpliD7Q+iHF+Lw/wz4C9X7Kqtc0MK7z/2DiQxHSSTIn1BYqPO8oeQ==
       tarball: 'file:projects/pr-deploy-site.tgz'
     version: 0.0.0
   'file:projects/prettier-rules.tgz':
@@ -15762,7 +16097,7 @@ packages:
     dev: false
     name: '@rush-temp/react-cards'
     resolution:
-      integrity: sha512-6DZcyUmjPrU6FMxZFOn0e7NcYUaP8oNmLZwrV6PWyPuegOrPEPTotPingqLcIS7gYmhP/3qzV/TOdnMQ7kBo5g==
+      integrity: sha512-qZmULYK3kA9DNNTy9AqqJckRV3heiXvT2iV2gPF4/0uDx4igaT3zEnmI7eDGSG9GJod9+sIy4ewRb2NqQ6oGBA==
       tarball: 'file:projects/react-cards.tgz'
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
@@ -15782,7 +16117,7 @@ packages:
     dev: false
     name: '@rush-temp/server-rendered-app'
     resolution:
-      integrity: sha512-yFOaNzOzEinf5rQiQRBi7PxdqRP38EYgjNI4YeBoIRFNg4TH0lHysZVNPXqbWDkf1+QRjYKOldU7zPS/OfIfkg==
+      integrity: sha512-fs1pWcf9/oTsjtLPslPavHQAFTekEvdM/s40mjcuUk0BC4XsPN3ct5FLaY8evTxQpSkeq//kHKVTdd0aY1dTtQ==
       tarball: 'file:projects/server-rendered-app.tgz'
     version: 0.0.0
   'file:projects/set-version.tgz':
@@ -15811,7 +16146,7 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-FXK76aGaRPMi5C8qhMjMiI9EvBMUsLknegkM+SvdTjTaao9clcZ0OiiaBdLKaHmEZ06LGMnbTiKTj+oYE3oJDw==
+      integrity: sha512-EyPUQGs98Yyj3KMUpOghHDVlukm7hfktMtPuBkhRWneEvsrS00N+E4CzDUGRh+3RfFqwZRsDbmV00+1IRUaIMg==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -15828,7 +16163,7 @@ packages:
     dev: false
     name: '@rush-temp/styling'
     resolution:
-      integrity: sha512-vPjJZNtfJri2quErRuqUKP8AQf25il4NUUH5OwWLHnfK0xFpyBB5S1pIiubaqsqZZftSpaL41HQzS2sztzRMNA==
+      integrity: sha512-tBwms873NRy5tEJc33/NUf/JPHf14/aj56ijvSDGp47Qg/xV2kVoQyYI01MycBtEMsFNQ/zl2HR63s8QyUgNyQ==
       tarball: 'file:projects/styling.tgz'
     version: 0.0.0
   'file:projects/test-bundles.tgz':
@@ -15842,7 +16177,7 @@ packages:
     dev: false
     name: '@rush-temp/test-bundles'
     resolution:
-      integrity: sha512-MsOBW8svTB/HjWfZ016kErEmgOsLsOm9FW3gX4QzGiQwdBxrUGRMYf0auG/eS8q5EM+0GsZK9EjrNWP760c3QA==
+      integrity: sha512-Q4cywowCk7pgDsHJXozpbAZYVV3SObduhfJPFI6oct8ItIK10/a+OOxtq7kstX8D3zEigQqr1Cc9HwXMMjmw6g==
       tarball: 'file:projects/test-bundles.tgz'
     version: 0.0.0
   'file:projects/test-utilities.tgz':
@@ -15874,8 +16209,28 @@ packages:
     dev: false
     name: '@rush-temp/theme-samples'
     resolution:
-      integrity: sha512-GgroRkPbRW6IQBbCD3nQe7pVJ6ZbRxtLN4JCdOpL57lyEp5dSxy2cOFouf8wAgxFJPqPn5oqbZh5CIXziMS3nQ==
+      integrity: sha512-OjWu6gT3ZN+VM7OsN2hDM8COKjYRyDBc4mUf20HH7V32L3oUKPKgGdWYUpYk+ln4ejbmX7Dl1p72g7+Zxt2IYw==
       tarball: 'file:projects/theme-samples.tgz'
+    version: 0.0.0
+  'file:projects/theming-designer.tgz':
+    dependencies:
+      '@microsoft/load-themed-styles': 1.8.85
+      '@types/es6-promise': 0.0.32
+      '@types/react': 16.3.16
+      '@types/react-dom': 16.0.5
+      '@types/webpack-env': 1.13.0
+      '@uifabric/react-cards': /@uifabric/react-cards/0.1.0/react-dom@16.6.3+react@16.6.3
+      es6-promise: 4.2.6
+      immutability-helper: 2.8.1
+      react: 16.6.3
+      react-dom: /react-dom/16.6.3/react@16.6.3
+      tslib: 1.9.3
+      typescript: 2.8.4
+    dev: false
+    name: '@rush-temp/theming-designer'
+    resolution:
+      integrity: sha512-BflM6vqLuvtQhmBNlQU60uJNkgV18HKD9tKPinX7HtnB7aRuEHQbTyqlj24fCUFAtP7Uuqd6p/5gcv2DeS/zHw==
+      tarball: 'file:projects/theming-designer.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
     dependencies:
@@ -15893,7 +16248,7 @@ packages:
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-6NvGPbBdrzSgIwhP5wM9NgTp/7YrmvBr3kZMXwtMj3EhNuiEmpCWP5vKWEBtS/bipBSsFiCD/IVgIl6Nazpjrw==
+      integrity: sha512-agBz2X47di+1aRA5kFplFYWVXvIw4pbJr86SJHCm0qYgvB+BIOs7NPPIU9F5/Q/4Nx+mxoEWzzD0FgPfJVQ+Bw==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/tslint-rules.tgz':
@@ -15936,7 +16291,7 @@ packages:
     dev: false
     name: '@rush-temp/variants'
     resolution:
-      integrity: sha512-7jDIA31z8STivRn+bovQqHWKqo5LFvpeBWFYe8Ed4LfE87v7GZSuqei7bMio+CmBC1gJQALomV4F5YGmSux8xg==
+      integrity: sha512-VP6bpR/sWGYEKX3py3RBlL3cSZZeLT16eu48J0ZNZ7UjmM2G5ByrqHrYbPOf9jqxZ1kVO9Ai4H8cRviATst1yQ==
       tarball: 'file:projects/variants.tgz'
     version: 0.0.0
   'file:projects/vr-tests.tgz':
@@ -15967,7 +16322,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-VGdDUOP9jB52ML3LenOnXj5Cakzd9vl8BKoKAtPD95kUvF+X5mfqS+JoV3ohLXQ+Bbu3loOBBvgjYQYmS8HPXA==
+      integrity: sha512-oiKjg6Sn8aUtq39qYaJ+uAffXCwQe7RAioggVSlaqPzAXpB8/eKc/0TWdl/tovJ97Aqiho1eQPgo0rNazoFyew==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -16026,6 +16381,7 @@ specifiers:
   '@rush-temp/test-bundles': 'file:./projects/test-bundles.tgz'
   '@rush-temp/test-utilities': 'file:./projects/test-utilities.tgz'
   '@rush-temp/theme-samples': 'file:./projects/theme-samples.tgz'
+  '@rush-temp/theming-designer': 'file:./projects/theming-designer.tgz'
   '@rush-temp/todo-app': 'file:./projects/todo-app.tgz'
   '@rush-temp/tslint-rules': 'file:./projects/tslint-rules.tgz'
   '@rush-temp/utilities': 'file:./projects/utilities.tgz'
@@ -16067,6 +16423,7 @@ specifiers:
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
   '@types/webpack-env': 1.13.9
+  '@uifabric/react-cards': 0.1.0
   async: ^2.6.1
   autoprefixer: ^7.1.5
   awesome-typescript-loader: ^3.2.3

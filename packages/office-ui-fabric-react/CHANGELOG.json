@@ -2,6 +2,50 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.175.0",
+      "tag": "office-ui-fabric-react_v6.175.0",
+      "date": "Wed, 01 May 2019 12:34:25 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "BasePicker: re-add removed property to fix api break",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "46bb2d675e18c254fc5518eb76b45113dd2169fc"
+          },
+          {
+            "comment": "Fix type in BasePicker onRemoveSuggestion api",
+            "author": "apneer <sasha050909@gmail.com>",
+            "commit": "e31a1a2e58a27fdba6f83b7d354767db58690050"
+          },
+          {
+            "comment": "DetailsHeader: mark cellIsActionable, cellIsEmpty, and cellWrapperPadded as deprecated",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "726837b65394b14f2e92c6a216711023d57c5fce"
+          },
+          {
+            "comment": "Introduces ImageFit.centerContain",
+            "author": "P.J. Swesey <pjsw@microsoft.com>",
+            "commit": "9ba03d8ea1eb14a461d617bf36ac3d5f7b98c3de"
+          },
+          {
+            "comment": "Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme\"",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "634914a899a098a97441d33c58b6cbe3896c210c"
+          },
+          {
+            "comment": "Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "634914a899a098a97441d33c58b6cbe3896c210c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.1` to `^6.38.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.174.0",
       "tag": "office-ui-fabric-react_v6.174.0",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",
