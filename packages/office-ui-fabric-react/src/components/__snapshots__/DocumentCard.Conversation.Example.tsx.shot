@@ -245,7 +245,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #0078D4;
+                      background-color: #004E8C;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
@@ -772,7 +772,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #750B1C;
+                      background-color: transparent;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
@@ -1153,7 +1153,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #986F0B;
+                      background-color: #881798;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;

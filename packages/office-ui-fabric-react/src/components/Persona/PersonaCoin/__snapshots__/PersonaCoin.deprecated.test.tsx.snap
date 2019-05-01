@@ -239,7 +239,7 @@ exports[`PersonaCoin renders correctly with text 1`] = `
       className=
           ms-Persona-initials
           {
-            background-color: #4F6BED;
+            background-color: #881798;
             border-radius: 50%;
             color: #ffffff;
             font-size: 16px;

@@ -306,7 +306,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #8764B8;
+                    background-color: transparent;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 10px;
@@ -696,7 +696,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #881798;
+                    background-color: #CA5010;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 10px;
@@ -1242,7 +1242,7 @@ exports[`Component Examples renders ActivityItem.Persona.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #005B70;
+                    background-color: #CA5010;
                     border-radius: 50%;
                     color: #ffffff;
                     font-size: 10px;
