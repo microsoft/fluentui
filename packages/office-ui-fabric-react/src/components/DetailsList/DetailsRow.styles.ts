@@ -8,7 +8,6 @@ import {
   getGlobalClassNames,
   FontWeights
 } from '../../Styling';
-import { CHECK_CELL_WIDTH } from './DetailsRowCheck.styles';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const GlobalClassNames = {
@@ -39,23 +38,10 @@ export const DEFAULT_ROW_HEIGHTS = {
 };
 
 // Constant values
-let values = {
+const values = {
   ...DEFAULT_ROW_HEIGHTS,
   rowVerticalPadding: 11,
-  compactRowVerticalPadding: 6,
-  rowShimmerLineHeight: 7,
-  rowShimmerIconPlaceholderHeight: 16,
-  rowShimmerVerticalBorder: 0,
-  compactRowShimmerVerticalBorder: 0
-};
-
-// Computed Values
-values = {
-  ...values,
-  ...{
-    rowShimmerVerticalBorder: (values.rowHeight - values.rowShimmerLineHeight) / 2,
-    compactRowShimmerVerticalBorder: (values.compactRowHeight - values.rowShimmerLineHeight) / 2
-  }
+  compactRowVerticalPadding: 6
 };
 
 export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
@@ -104,9 +90,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     focusBackground: neutralLight,
     focusHoverBackground: neutralQuaternaryAlt
   };
-
-  const shimmerRightBorderStyle = `${cellStyleProps.cellRightPadding * 4}px solid ${colors.defaultBackground}`;
-  const shimmerLeftBorderStyle = `${cellStyleProps.cellLeftPadding}px solid ${colors.defaultBackground}`;
 
   // Selected row styles
   const selectedStyles: IStyle = [
@@ -237,24 +220,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     minHeight: values.compactRowHeight,
     paddingTop: values.compactRowVerticalPadding,
     paddingBottom: values.compactRowVerticalPadding,
-    paddingLeft: `${cellStyleProps.cellLeftPadding}px`,
-    selectors: {
-      // Masking the running shimmer background with borders
-      [`&$shimmer`]: {
-        padding: 0,
-        borderLeft: shimmerLeftBorderStyle,
-        borderRight: shimmerRightBorderStyle,
-        borderTop: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackground}`,
-        borderBottom: `${values.compactRowShimmerVerticalBorder}px solid ${colors.defaultBackground}`
-      },
-
-      // Masking the running shimmer background with borders when it's an Icon placeholder
-      [`&$shimmerIconPlaceholder`]: {
-        borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackground}`,
-        borderBottom: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`,
-        borderTop: `${(values.compactRowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`
-      }
-    }
+    paddingLeft: `${cellStyleProps.cellLeftPadding}px`
   };
 
   const defaultCellStyles: IStyle = [
@@ -277,21 +243,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
           maxWidth: '100%'
         },
 
-        [classNames.isFocusable!]: getFocusStyle(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white }),
-
-        '&$shimmer': {
-          padding: 0,
-          borderLeft: shimmerLeftBorderStyle,
-          borderRight: shimmerRightBorderStyle,
-          borderTop: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackground}`,
-          borderBottom: `${values.rowShimmerVerticalBorder}px solid ${colors.defaultBackground}`
-        },
-
-        '&$shimmerIconPlaceholder': {
-          borderRight: `${cellStyleProps.cellRightPadding}px solid ${colors.defaultBackground}`,
-          borderBottom: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`,
-          borderTop: `${(values.rowHeight - values.rowShimmerIconPlaceholderHeight) / 2}px solid ${colors.defaultBackground}`
-        }
+        [classNames.isFocusable!]: getFocusStyle(theme, { inset: -1, borderColor: neutralSecondary, outlineColor: white })
       }
     },
 
@@ -444,20 +396,6 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
         whiteSpace: 'normal',
         wordBreak: 'break-word',
         textOverflow: 'clip'
-      }
-    ],
-    shimmer: [],
-    shimmerIconPlaceholder: [],
-    shimmerLeftBorder: [
-      {
-        // 48px to take into account the checkbox of items if present.
-        borderLeft: `${CHECK_CELL_WIDTH}px solid ${colors.defaultBackground}`
-      }
-    ],
-    shimmerBottomBorder: [
-      {
-        // 1px to take into account the border-bottom when items replace shimmer lines and in default state.
-        borderBottom: `1px solid ${colors.defaultBackground}`
       }
     ],
     check: []
