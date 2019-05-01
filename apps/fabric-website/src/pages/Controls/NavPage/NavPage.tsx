@@ -2,8 +2,6 @@ import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { NavPageProps } from './NavPage.doc';
 
-export class NavPage extends React.Component<IControlsPageProps, {}> {
-  public render() {
-    return <ControlsAreaPage {...this.props} {...NavPageProps[this.props.platform]} />;
-  }
-}
+export const NavPage: React.StatelessComponent<IControlsPageProps> = props => {
+  return <ControlsAreaPage {...props} {...NavPageProps[props.platform]} />;
+};
