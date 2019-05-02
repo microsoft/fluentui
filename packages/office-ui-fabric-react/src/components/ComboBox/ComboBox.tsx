@@ -901,6 +901,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     if (!this.state.focused) {
+      if (this.props.openOnFocus && !this.state.isOpen && !this.props.disabled) {
+        this.setState({ isOpen: true });
+      }
       this.setState({ focused: true });
     }
   };
