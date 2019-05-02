@@ -3,8 +3,8 @@
 Get started with React and learn how to build your first projects.
 
 <ul class="md-list--flex">
-  <li class="mdut--full">[Get started with Fabric React](https://developer.microsoft.com/en-us/fabric#/get-started)</li>
-  <li class="mdut--full">[Fabric React tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Sample-App)</li>
+  <li class="mdut--full">[Get started with Fabric React](#/get-started)</li>
+  <li class="mdut--full">[Fabric React tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric)</li>
 </ul>
 
 ### SharePoint Framework
