@@ -8,7 +8,6 @@ const componentUrl =
 export const OfficeBrandIconsPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/OfficeBrandIconsPage/docs/web/OfficeBrandIconsContact.md') as string,
     related,
     componentUrl
   }
