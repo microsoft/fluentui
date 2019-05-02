@@ -7,8 +7,11 @@ export interface ISiteMessageBarProps {
   /** Text for the message bar */
   text: string;
 
-  /** If provided, a "Learn more" link will be shown after the text */
-  learnMoreUrl?: string;
+  /** Text for a link shown after the main text */
+  linkText?: string;
+
+  /** URL for a link shown after the main text */
+  linkUrl?: string;
 
   /**
    * Prefix for local storage key for storing if the message bar has been closed.
@@ -45,13 +48,17 @@ export default class SiteMessageBar extends React.Component<ISiteMessageBarProps
   }
 
   public render() {
-    const { text, learnMoreUrl, styles } = this.props;
+    const { text, linkUrl, linkText, styles } = this.props;
     const { isVisible } = this.state;
 
     return isVisible ? (
       <MessageBar onDismiss={this._onClose} isMultiline dismissButtonAriaLabel="Close" styles={styles}>
         {text + ' '}
-        {learnMoreUrl && <Link href={learnMoreUrl}>Learn more</Link>}
+        {!!(linkUrl && linkText) && (
+          <Link href={linkUrl} target={linkUrl.indexOf('http') === 0 ? '_blank' : ''}>
+            {linkText}
+          </Link>
+        )}
       </MessageBar>
     ) : null;
   }
