@@ -29,12 +29,12 @@ module.exports = async function getPerfRegressions() {
 
   // t-test
   // comparing item averages, ignoring full totals
-  const scenariostats = getStats(samplesNow, samplesNew);
-  console.log(scenariostats);
+  const scenarioStats = getStats(samplesNow, samplesNew);
+  console.log(scenarioStats);
 
   // Output comment blob and status as task variables
   const comment = createBlobFromResults({
-    stats: scenariostats,
+    stats: scenarioStats,
     now: samplesNow,
     new: samplesNew
   });
@@ -89,8 +89,8 @@ async function runAvailableScenarios(page, componentCount, iterations, sampleSiz
 }
 
 async function runScenarioNTimes(page, times) {
-  let totalsamples = [];
-  let peritemsamples = [];
+  let totalSamples = [];
+  let peritemSamples = [];
   const runTestButton = await page.$('.runTest');
 
   for (let i = 0; i < times; i++) {
@@ -101,33 +101,33 @@ async function runScenarioNTimes(page, times) {
     let peritem = await page.$eval('.peritem', result => result.innerText);
 
     // add perf numbers
-    totalsamples.push(parseFloat(total.replace(/[a-zA-Z:]/g, '')));
-    peritemsamples.push(parseFloat(peritem.replace(/[a-zA-Z:]/g, '')));
+    totalSamples.push(parseFloat(total.replace(/[a-zA-Z:]/g, '')));
+    peritemSamples.push(parseFloat(peritem.replace(/[a-zA-Z:]/g, '')));
 
     // reset
     await runTestButton.click();
   }
 
   return {
-    totals: totalsamples,
-    peritem: peritemsamples,
-    totalavg: (totalsamples.reduce((prev, curr) => prev + curr) / times).toFixed(3),
-    peritemavg: (peritemsamples.reduce((prev, curr) => prev + curr) / times).toFixed(3)
+    totals: totalSamples,
+    peritem: peritemSamples,
+    totalavg: (totalSamples.reduce((prev, curr) => prev + curr) / times).toFixed(3),
+    peritemavg: (peritemSamples.reduce((prev, curr) => prev + curr) / times).toFixed(3)
   };
 }
 
 function getStats(before, after) {
-  const scenariostats = {};
+  const scenarioStats = {};
 
   Object.keys(before).forEach(scenario => {
     if (after[scenario]) {
-      scenariostats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, { alpha: 0.01 });
-      scenariostats[scenario].pvalue = scenariostats[scenario].pValue();
-      scenariostats[scenario].valid = scenariostats[scenario].valid();
+      scenarioStats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, { alpha: 0.01 });
+      scenarioStats[scenario].pvalue = scenarioStats[scenario].pValue();
+      scenarioStats[scenario].valid = scenarioStats[scenario].valid();
     }
   });
 
-  return scenariostats;
+  return scenarioStats;
 }
 
 function createBlobFromResults(perfBlob) {
