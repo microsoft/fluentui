@@ -1,10 +1,12 @@
-# Getting Started with UI Fabric
-
 The UI Fabric library is really easy to use! To get started, make sure you have the latest LTS node.js installed:
 
 - https://nodejs.org
 
-After you have downloaded and installed this, simply run this command in a folder in which you want to have the project created:
+After you have downloaded and installed this, you can pick one of the following ways to quickly start exploring UI Fabric.
+
+## Easy Mode
+
+Simply run this command in a folder in which you want to have the project created:
 
 ```
 npm init uifabric
@@ -41,6 +43,10 @@ gatsby new gatsby-site kenotron/gatsby-starter-uifabric
 cd gatsby-site
 gatsby develop
 ```
+
+You can even read about how to deploy this to the cloud in one click here:
+
+https://github.com/kenotron/gatsby-starter-uifabric#-deploy
 
 ## Next Steps
 
