@@ -3,7 +3,7 @@ const ttest = require('ttest');
 
 const componentCount = 1000;
 const iterations = 100;
-const sampleSize = 100;
+const sampleSize = 50;
 
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
@@ -28,7 +28,7 @@ module.exports = async function getPerfRegressions() {
   await browser.close();
 
   // t-test
-  // comparing totals, ignoring peritem
+  // comparing item averages, ignoring full totals
   const scenariostats = getStats(samplesNow, samplesNew);
   console.log(scenariostats);
 
@@ -121,7 +121,7 @@ function getStats(before, after) {
 
   Object.keys(before).forEach(scenario => {
     if (after[scenario]) {
-      scenariostats[scenario] = ttest(before[scenario].totals, after[scenario].totals, {});
+      scenariostats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, {});
       scenariostats[scenario].pvalue = scenariostats[scenario].pValue();
       scenariostats[scenario].valid = scenariostats[scenario].valid();
     }
