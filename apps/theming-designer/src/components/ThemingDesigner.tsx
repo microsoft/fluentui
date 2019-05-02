@@ -130,7 +130,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this.setState({ textColor: getColorFromString('#e1dfdd')! });
     this.setState({ backgroundColor: getColorFromString('#1b1a19')! });
 
-    // colorChangeTimeout = this._async.setTimeout(() => {
     const themeRules = this.state.themeRules;
     if (themeRules) {
       const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
@@ -142,7 +141,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       }
     }
     this.setState({ themeRules: themeRules }, this._makeNewTheme);
-    // }, 20);
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
