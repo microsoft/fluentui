@@ -567,6 +567,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
         title={item.title ? item.title : item.text}
+        hidden={item.hidden}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -590,6 +591,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
+        hidden={item.hidden}
       />
     );
   };

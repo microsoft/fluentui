@@ -39,6 +39,12 @@ export interface ISelectableOption {
   disabled?: boolean;
 
   /**
+   * Wheter the option is hidden
+   * @defaultvalue false
+   */
+  hidden?: boolean;
+
+  /**
    * Data available to custom onRender functions.
    */
   data?: any;

@@ -1208,6 +1208,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
           title={title}
+          hidden={item.hidden}
         >
           {' '}
           {
@@ -1231,6 +1232,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           checked={isSelected}
           title={title}
+          hidden={item.hidden}
         >
           {onRenderOption(item, this._onRenderOptionContent)}
         </Checkbox>
