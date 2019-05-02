@@ -111,6 +111,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
+                      checked={isCodeVisible}
                       // TODO: fix once button has full styling support
                       styles={typeof codeButtonStyles === 'function' ? codeButtonStyles({}) : codeButtonStyles}
                     >
