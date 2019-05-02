@@ -413,7 +413,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    ev.stopPropagation();
+    if (this.state.isDatePickerShown) {
+      ev.stopPropagation();
+    }
     this._calendarDismissed();
   };
 
