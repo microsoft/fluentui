@@ -43,6 +43,28 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
       });
     }
 
+    // DEMO CODE TODO: REMOVE BEFORE CHECKIN
+    const LOREM_IPSUM = (
+      'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut ' +
+      'labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut ' +
+      'aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+      'eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt '
+    ).split(' ');
+    let loremIndex = 0;
+    function _lorem(wordCount: number): string {
+      const startIndex = loremIndex + wordCount > LOREM_IPSUM.length ? 0 : loremIndex;
+      loremIndex = startIndex + wordCount;
+      return LOREM_IPSUM.slice(startIndex, loremIndex).join(' ');
+    }
+    setInterval(() => {
+      const newItems = this.state.items.slice();
+      const i = Math.floor(Math.random() * 10);
+      newItems[i] = { ...newItems[i], ...{ value: (_lorem(2) as unknown) as number, name: _lorem(1) } };
+      this.setState({ items: newItems });
+      this.forceUpdate();
+    }, 2000);
+    // END DEMO CODE
+
     this._columns = [
       { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
       { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
