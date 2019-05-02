@@ -5,44 +5,105 @@ import * as styles from './svgIcons.module.scss';
 export interface ISVGIconProps {
   className?: string;
   iconGroupClassName?: string;
-  iconHeight?: number;
-  iconWidth?: number;
-  iconSize?: number;
+  iconHeight?: number | string;
+  iconWidth?: number | string;
+  iconSize?: number | string;
   iconColor?: string;
 }
 
 export const AndroidLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const { className = styles.icon, iconGroupClassName = styles.androidLogo, iconColor, iconWidth, iconHeight, iconSize = 16 } = props;
+  const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
       className={css(className)}
-      style={{ color: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      style={{ stroke: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      viewBox="0 0 66 65"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 14.34 16"
     >
-      <g className={css(iconGroupClassName)} style={{ fill: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}>
-        {/* tslint:disable-next-line max-line-length */}
-        <path d="M2.51 5.72v6.22a1 1 0 0 0 1 1h.9v2.17a1 1 0 0 0 1 .94 1 1 0 0 0 1-.94v-2.22h1.4v2.17a1 1 0 0 0 1 .94 1 1 0 0 0 1-.94v-2.17h.87a1 1 0 0 0 1.05-1V5.72zm2.07-2.47a.45.45 0 0 0 .89 0 .45.45 0 0 0-.89 0zm4.29 0a.45.45 0 0 0 .89 0 .45.45 0 0 0-.89 0zm-6.4 2.11v-.15a4 4 0 0 1 .11-.92 4.29 4.29 0 0 1 2.23-2.71L4.09.25A.18.18 0 0 1 4.16 0a.18.18 0 0 1 .23.07l.73 1.35A5.16 5.16 0 0 1 7.18 1a5.32 5.32 0 0 1 2.05.41L10 .09a.18.18 0 0 1 .18-.09.16.16 0 0 1 .07.23l-.72 1.35a4.25 4.25 0 0 1 2.28 2.85c0 .14 0 .28.07.43v.5zm11.87 1.22a1 1 0 0 0-2.09 0V11a1 1 0 0 0 2.09 0zm-12.26 0V11A1 1 0 0 1 0 11V6.58a1 1 0 0 1 2.08 0" />
-      </g>
+      <path d="M1 65V41C1 23.3267 15.3267 9 33 9C50.6733 9 65 23.3267 65 41V65" strokeWidth="2" />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M21 25C21 27.2093 19.2093 29 17 29C14.7907 29 13 27.2093 13 25C13 22.7907 14.7907 21 17 21C19.2093 21 21 22.7907 21 25Z"
+        strokeWidth="2"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M53 25C53 27.2093 51.2093 29 49 29C46.7907 29 45 27.2093 45 25C45 22.7907 46.7907 21 49 21C51.2093 21 53 22.7907 53 25Z"
+        strokeWidth="2"
+      />
+      <path d="M17 13L9 1" strokeWidth="2" />
+      <path d="M49 13L57 1" strokeWidth="2" />
+      <path d="M1 41H65" strokeWidth="2" />
     </svg>
   );
 };
 
 export const AppleLogo = (props?: ISVGIconProps) => {
   props = props || {};
-  const { className = styles.icon, iconGroupClassName = styles.appleLogo, iconColor, iconWidth, iconHeight, iconSize = 16 } = props;
+  const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
   return (
     <svg
       className={css(className)}
-      style={{ color: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      style={{ stroke: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      viewBox="0 0 66 66"
+      fill="none"
       xmlns="http://www.w3.org/2000/svg"
-      viewBox="0 0 13.48 16"
     >
-      <g className={css(iconGroupClassName)} style={{ fill: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}>
-        {/* tslint:disable-next-line max-line-length */}
-        <path d="M13.19 12.47a8.32 8.32 0 0 1-.86 1.53 7.77 7.77 0 0 1-1.1 1.33A2.15 2.15 0 0 1 9.8 16a3.55 3.55 0 0 1-1.31-.31 3.83 3.83 0 0 0-1.42-.32 3.94 3.94 0 0 0-1.46.32 3.86 3.86 0 0 1-1.25.31 2 2 0 0 1-1.46-.65A7.77 7.77 0 0 1 1.74 14a9.46 9.46 0 0 1-1.23-2.47A8.91 8.91 0 0 1 0 8.63a5.26 5.26 0 0 1 .7-2.77 4.09 4.09 0 0 1 1.45-1.47 3.94 3.94 0 0 1 2-.56 4.75 4.75 0 0 1 1.53.35 4.79 4.79 0 0 0 1.21.36 7.25 7.25 0 0 0 1.31-.42A4.39 4.39 0 0 1 10 3.8a3.91 3.91 0 0 1 3 1.59 3.37 3.37 0 0 0-1.79 3.07A3.35 3.35 0 0 0 12.37 11a3.69 3.69 0 0 0 1.11.73c-.09.25-.19.5-.29.74zM10.11.32a3.38 3.38 0 0 1-.88 2.24 3 3 0 0 1-2.47 1.22 1.46 1.46 0 0 1 0-.3 3.46 3.46 0 0 1 .93-2.26A3.4 3.4 0 0 1 8.8.37 3.17 3.17 0 0 1 10.09 0v.32z" />
-      </g>
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M49.0022 65H16.9978C8.16222 65 1 57.8373 1 49.0022V16.9978C1 8.16267 8.16222 1 16.9978 1H49.0022C57.8378 1 65 8.16267 65 16.9978V49.0022C65 57.8373 57.8378 65 49.0022 65Z"
+        strokeWidth="2"
+      />
+      <path d="M57 25C57 20.5782 53.4218 17 49 17" strokeWidth="2" />
+      <path d="M41 25C41 20.5782 44.5782 17 49 17" strokeWidth="2" />
+      <path d="M41 25C41 29.4218 44.5782 33 49 33" strokeWidth="2" />
+      <path d="M57 41C57 36.5782 53.4218 33 49 33" strokeWidth="2" />
+      <path d="M57 41C57 45.4218 53.4218 49 49 49" strokeWidth="2" />
+      <path d="M41 41C41 45.4218 44.5782 49 49 49" strokeWidth="2" />
+      <path d="M33 25C33 20.5782 29.4218 17 25 17" strokeWidth="2" />
+      <path d="M17 25C17 20.5782 20.5782 17 25 17" strokeWidth="2" />
+      <path d="M33 41C33 45.4218 29.4218 49 25 49" strokeWidth="2" />
+      <path d="M17 41C17 45.4218 20.5782 49 25 49" strokeWidth="2" />
+      <path d="M17.0001 25V41" strokeWidth="2" />
+      <path d="M33.0001 25V41" strokeWidth="2" />
+      <path d="M9.00005 29V49" strokeWidth="2" />
+      <path d="M9.00005 17V21" strokeWidth="2" />
+    </svg>
+  );
+};
+
+export const WebLogo = (props?: ISVGIconProps) => {
+  props = props || {};
+  const { className = styles.icon, iconColor, iconWidth, iconHeight, iconSize } = props;
+  return (
+    <svg
+      className={css(className)}
+      style={{ stroke: iconColor, width: iconWidth || iconSize, height: iconHeight || iconSize }}
+      viewBox="0 0 66 66"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M65 33C65 50.6733 50.6733 65 33 65C15.3267 65 1 50.6733 1 33C1 15.3267 15.3267 1 33 1C50.6733 1 65 15.3267 65 33Z"
+        strokeWidth="2"
+        strokeLinecap="square"
+      />
+      <path
+        fillRule="evenodd"
+        clipRule="evenodd"
+        d="M49 33C49 50.6733 41.8364 65 33 65C24.1636 65 17 50.6733 17 33C17 15.3267 24.1636 1 33 1C41.8364 1 49 15.3267 49 33Z"
+        strokeWidth="2"
+        strokeLinecap="square"
+      />
+      <path d="M5 16.9998H61" strokeWidth="2" />
+      <path d="M5 48.9998H61" strokeWidth="2" />
     </svg>
   );
 };

@@ -1,9 +1,18 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
+.siteRoot {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: stretch;
+}
+
 // Element that wraps everything except for the header
 .siteWrapper {
+  flex-grow: 1;
   margin: 0 auto;
+  width: 100%;
   max-width: $App-maximumWidth-sm;
   position: relative;
   display: flex;
@@ -24,8 +33,6 @@
 
 @supports (position: sticky) {
   .siteNavScrollWrapper {
-    max-height: 100vh;
-    height: calc(100vh - #{$TopNav-height});
     position: sticky;
     top: 0;
   }
@@ -41,7 +48,6 @@
 
 .siteContent {
   position: relative;
-  min-height: calc(100vh - #{$TopNav-height});
 
   @include high-contrast {
     border-right: 1px solid WindowText;

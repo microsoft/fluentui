@@ -5,7 +5,6 @@ $PageSubHeadMargin: 20px;
 
 .Page {
   position: relative;
-  min-height: 100vh;
 }
 
 .sectionWrapper {
@@ -76,7 +75,7 @@ $PageSubHeadMargin: 20px;
   p,
   ol,
   ul {
-    font-size: 16px; // @TODO replace with fluent variable
+    @include ms-fontSize-16;
   }
 
   p {
@@ -149,22 +148,18 @@ $PageSubHeadMargin: 20px;
 
 .subHeading,
 .smallSubHeading {
-  // color: $ms-color-neutralPrimary;
   @include ms-fontColor-gray160;
   @include ms-fontWeight-semibold;
-  // font-weight: $ms-fontWeight-semibold;
   line-height: 1;
   margin-top: 0;
   margin-bottom: 0;
 }
 
 .subHeading {
-  // font-size: 24px; // @TODO replace with fluent variable
   @include ms-fontSize-24;
 }
 
 .smallSubHeading {
-  // font-size: 20px; // @TODO replace with fluent variable
   @include ms-fontSize-20;
 }
 
@@ -176,15 +171,15 @@ $PageSubHeadMargin: 20px;
 
 .sideRailWrapper {
   margin-top: $App-padding-md;
+  margin-bottom: $App-padding-md;
 }
 
 // Disable scrollable area at smaller screen sizes.
 .sideRailScrollbarsView {
   position: relative !important; // scrollbars sets position via style prop.
-  overflow: auto !important; // scrollbars sets overflow via style prop.
 }
 
-@media only screen and (min-width: $uhf-screen-min-lg) {
+@media only screen and (min-width: 1360px) {
   .main {
     display: flex;
     flex-direction: row;
@@ -202,6 +197,7 @@ $PageSubHeadMargin: 20px;
 
   .sideRailWrapper {
     margin-top: 0;
+    margin-bottom: 0;
     @include ms-padding-left($SideRail-padding-left);
     width: $SideRail-width;
   }
@@ -214,7 +210,6 @@ $PageSubHeadMargin: 20px;
   @supports (position: sticky) {
     .sideRailWrapper {
       position: sticky;
-      height: calc(100vh - #{$App-padding-lg});
       top: $App-padding-lg;
     }
   }
