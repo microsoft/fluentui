@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, getShade, Shade, getColorFromString } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -39,14 +39,18 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
+  const altBefore = getColorFromString(beforeColor);
+  const beforeShade = getShade(altBefore, Shade.Shade7);
+  const altAfter = getColorFromString(afterColor);
+  const afterShade = getShade(altAfter, Shade.Shade7);
+
   const sectionAnimation: IStyle = [
     {
       opacity: 0,
       transform: 'translate3d(0, 48px, 0)',
-      transition: `
-        transform ${MotionDurations.duration3} ${MotionTimings.decelerate},
-        opacity ${MotionDurations.duration3} ${MotionTimings.decelerate} .05s
-      `
+      transition:
+        `transform ${MotionDurations.duration3} ${MotionTimings.decelerate},` +
+        `opacity ${MotionDurations.duration3} ${MotionTimings.decelerate} .05s`
     },
     isMountedOffset && {
       opacity: 1,
@@ -172,12 +176,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
           '&:before': {
             left: 0,
-            background: beforeColor // Adjust saturation
+            // background: beforeColor // Adjust saturation
+            background: beforeShade && beforeShade.str
           },
 
           '&:after': {
             right: 0,
-            background: afterColor // Adjust saturation
+            // background: afterColor // Adjust saturation
+            background: afterShade && afterShade.str
           }
         }
       },

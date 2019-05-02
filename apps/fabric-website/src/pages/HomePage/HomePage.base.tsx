@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Async, Icon, Image, Link, TooltipHost, classNamesFunction, registerIcons } from 'office-ui-fabric-react';
+import { Async, Icon, Image, Link, TooltipHost, classNamesFunction, registerIcons, IProcessedStyleSet } from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
 import { AndroidLogo, AppleLogo, WebLogo } from '../../utilities/index';
@@ -15,10 +15,11 @@ registerIcons({
   }
 });
 
+const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
+
 /**
  * List of App/Brand icon names that use UI Fabric.
  */
-const fabricUsageIconBaseUrl = 'https://static2.sharepointonline.com/files/fabric/assets/brand-icons/product-fluent/svg/';
 const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'outlook_48x1.svg', title: 'Outlook' },
   { src: fabricUsageIconBaseUrl + 'onedrive_48x1.svg', title: 'OneDrive' },
@@ -42,7 +43,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   private _async = new Async();
-  private _classNames: { [key in keyof IHomePageStyles]: string };
+  private _classNames: IProcessedStyleSet<IHomePageStyles>;
 
   public componentDidMount(): void {
     // Delay adding section transition styles after page is mounted.
@@ -88,10 +89,10 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={this._classNames.oneFourth}>
             <p>
-              Together, we’ve created Microsoft UI Fabric, a collection of UX frameworks you can use to build experiences that fit
+              Together, we’ve created Microsoft UI Fabric, a collection of UX frameworks you can use to build Fluent experiences that fit
               seamlessly into a broad range of Microsoft products.
             </p>
-            <p>Connect with the cross-platform principles, experiences, styles and controls you need to do amazing things. </p>
+            <p>Connect with the cross-platform styles, controls and resources you need to do amazing things.</p>
             <p>{this._renderLink('#/get-started', 'Get started', false, true)}</p>
           </div>
         </div>
@@ -182,6 +183,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <div className={this._classNames.oneHalf}>
             <Image
               src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png"
+              srcSet="https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-1x.png 1x, https://static2.sharepointonline.com/files/fabric/fabric-website/images/discover-resources-2x.png 2x"
               alt="Resources illustration"
               className={this._classNames.illustration}
             />
@@ -235,7 +237,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   /** Renders list of app/brand icons that use Fabric. */
   private _renderUsageIconList = (): JSX.Element[] => {
     return fabricUsageIcons.map((icon, iconIndex) => (
-      <li key={iconIndex} className={this._classNames.usageIconListItem}>
+      <li key={icon.title + iconIndex} className={this._classNames.usageIconListItem}>
         <TooltipHost content={icon.title} id={icon.title + iconIndex} styles={{ root: { display: 'inline-block' } }}>
           <Image
             src={icon.src}
