@@ -5,7 +5,7 @@ These design toolkits provide styles, controls and layout templates that enable 
 <ul class="md-list--flex">
   <li class="mdut--half">[Web Fluent (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
   <li class="mdut--half">[iOS Fluent (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
-  <li class="mdut--half">[iOS Fluent (Figma)](https://aka.ms/FluentToolkits/iOS//Figma)</li>
+  <li class="mdut--half">[iOS Fluent (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
   <li class="mdut--half">[Android Fluent (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
   <li class="mdut--half">[Android Fluent (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
 </ul>
