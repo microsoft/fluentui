@@ -103,7 +103,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
   public render(): JSX.Element {
     const { platform, isContentFullBleed } = this.state;
-    const { children, siteDefinition, hasUHF } = this.props;
+    const { children, siteDefinition } = this.props;
     const { customizations } = siteDefinition;
     const childrenWithPlatform = React.Children.map(children, (child: React.ReactElement<IWithPlatformProps>) =>
       React.cloneElement(child, { platform })
@@ -111,7 +111,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
     const SiteContent = () => (
       <div key="site" className={styles.siteRoot}>
-        {!hasUHF && this._renderTopNav()}
+        {this._renderTopNav()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
           <main className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
@@ -231,17 +231,20 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
   private _renderTopNav = (): JSX.Element | undefined => {
     const { platform } = this.state;
-    const { siteDefinition } = this.props;
-    return (
-      <TopNav
-        siteLogoSource={siteDefinition.siteLogoSource}
-        platform={platform}
-        pages={siteDefinition.pages}
-        onRenderNavFooter={this._renderPlatformPicker}
-        onLinkClick={this._onTopNavLinkClick}
-        badgeText={siteDefinition.badgeText}
-      />
-    );
+    const { siteDefinition, hasUHF } = this.props;
+
+    if (!hasUHF) {
+      return (
+        <TopNav
+          siteLogoSource={siteDefinition.siteLogoSource}
+          platform={platform}
+          pages={siteDefinition.pages}
+          onRenderNavFooter={this._renderPlatformPicker}
+          onLinkClick={this._onTopNavLinkClick}
+          badgeText={siteDefinition.badgeText}
+        />
+      );
+    }
   };
 
   private _renderPlatformPicker = (): JSX.Element | null => {
