@@ -8,7 +8,6 @@ export const MotionPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/web/MotionOverview.md') as string,
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/web/MotionContact.md') as string,
     related,
     componentUrl
   }

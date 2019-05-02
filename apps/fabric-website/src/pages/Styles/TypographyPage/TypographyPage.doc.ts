@@ -7,7 +7,6 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const TypographyPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/TypographyPage/docs/web/TypographyContact.md') as string,
     related,
     componentUrl
   }
