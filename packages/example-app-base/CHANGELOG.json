@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.16.0",
+      "tag": "@uifabric/example-app-base_v6.16.0",
+      "date": "Wed, 01 May 2019 12:34:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Start copying new components and deprecating old things",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "40487942eabddbb5a7daee45acd7f90a909ad07a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.174.0` to `^6.175.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.0",
       "tag": "@uifabric/example-app-base_v6.15.0",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

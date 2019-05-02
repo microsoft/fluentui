@@ -9,6 +9,9 @@
     "bundlesize": "bundlesize --debug",
     "test": "jest"
   },
+  "bin": {
+    "just": "./just.js"
+  },
   "bundlesize": [
     {
       "path": "../apps/test-bundles/dist/office-ui-fabric-react-Button.min.js",
@@ -44,7 +47,7 @@
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
     "just-scripts": "~0.14.4",
-    "just-task": "~0.9.4",
+    "just-task": "~0.9.5",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",

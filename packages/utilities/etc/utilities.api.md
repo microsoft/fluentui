@@ -9,6 +9,7 @@ import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
+import { Omit } from '@uifabric/merge-styles';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
@@ -835,6 +836,8 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 
 // @public
 export function nullRender(): JSX.Element | null;
+
+export { Omit }
 
 // @public (undocumented)
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;

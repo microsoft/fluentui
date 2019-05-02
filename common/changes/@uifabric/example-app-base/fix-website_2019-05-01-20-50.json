@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "Start copying new components and deprecating old things",
-      "type": "minor"
+      "comment": "extractAnchorLink shouldn't return undefined",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/example-app-base",

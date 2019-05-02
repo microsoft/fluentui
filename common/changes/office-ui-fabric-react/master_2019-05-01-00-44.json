@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Introduces ImageFit.centerContain",
+      "comment": "Tooltip/TooltipHost: content now can take JSX content.",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "pjsw@microsoft.com"
+  "email": "dzearing@microsoft.com"
 }
