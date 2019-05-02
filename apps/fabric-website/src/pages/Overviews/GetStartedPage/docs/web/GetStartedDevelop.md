@@ -1,184 +1,50 @@
-### Prerequisites
+# Getting Started with UI Fabric
 
-All you need to get started with Fabric is [Node.js](https://nodejs.org/en/) and npm.
+The UI Fabric library is really easy to use! To get started, make sure you have the latest LTS node.js installed:
 
-#### Node.js and npm
+- https://nodejs.org
 
-- Install **Node.js** (supported versions are 8.x through 10.x) from the [Node.js website](https://nodejs.org/en/).
-- Install [Git](https://git-scm.com/).
-- For code editing we like [Visual Studio Code](https://code.visualstudio.com/).
+After you have downloaded and installed this, simply run this command in a folder in which you want to have the project created:
 
-_You can check your node and npm version by running `node -v` and `npm -v` respectively._
-
-#### create-react-app package
-
-We will use [Create React App](https://facebook.github.io/react/blog/2016/07/22/create-apps-with-no-configuration.html) to quickly create a React app.
-
-Once node and npm are installed, type the following command in a console to install the `create-react-app` npm package.
-
-```bash
-npm install -g create-react-app
+```
+npm init uifabric
 ```
 
-#### Visual Studio Code
+It'll prompt you for a project name. For example, if you chose to create a project called `my-app`, you can start working on the project like this:
 
-Download and install [Visual Studio Code](https://code.visualstudio.com/).
-
-We will use Visual Studio Code as our code editor for this tutorial. Feel free to use your favorite code editor of choice if you do not want to use Visual Studio Code.
-
-### Step 1: Create React app
-
-In a console, type the following command to create a simple React app.
-
-_Optionally, we recommend using TypeScript by using the `--typescript` flag._
-
-```bash
-create-react-app button-demo --typescript
 ```
-
-This will install the required dependencies and scaffold a simple React app.
-
-![](https://github.com/OfficeDev/office-ui-fabric-react/wiki/images/create-react-app-created.png)
-
-Once it's complete, navigate to the `button-demo` folder.
-
-```bash
-cd button-demo
-```
-
-Type the following command to launch the React app in your browser.
-
-```bash
 npm start
 ```
 
-![](https://github.com/OfficeDev/office-ui-fabric-react/wiki/images/create-react-app-preview.png)
+This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow for customization on its configurations.
 
-### Step 2: Install office-ui-fabric-react package
+## Create React App
 
-To use Fabric React in your project, you will need to first install the office-ui-fabric-react npm package. Type the following in the console to install the package:
+UI Fabric also provides a precanned `create-react-app` version of the above application due to its popularity and community support.
 
-```bash
-npm install office-ui-fabric-react
+Clone or fork this repo: https://github.com/kenotron/create-react-app-uifabric
+
+```
+git clone https://github.com/kenotron/create-react-app-uifabric.git my-app
+cd my-app
+yarn
+yarn start
 ```
 
-If you have npm start command still running, terminate the command by pressing Ctrl+C.
+## Gatsby.js
 
-### Step 3: Install all dependencies
+To create blazing fast React websites and apps using UI Fabric and Gatsby.js, use the following starter kit:
 
-All dependencies of the sample project need to be installed before the project can be launched. To install all dependencies, type the following:
-
-```bash
-npm install
+```
+npm install -g gatsby-cli
+gatsby new gatsby-site kenotron/gatsby-starter-uifabric
+cd gatsby-site
+gatsby develop
 ```
 
-### Step 4: Add PrimaryButton component
+## Next Steps
 
-Open the `button-demo` project folder in Visual Studio Code.
+If you are interested in learning more about how to use UI Fabric, here are few resources:
 
-Open the file `src\App.tsx` and replace the existing code inside `return` to only return the `PrimaryButton` component:
-
-```tsx
-import * as React from 'react';
-import './App.css'
-
-export App: React.FC = () => {
-  return (
-    <PrimaryButton onClick={() => alert("You clicked the button!")}>
-      Hello World
-    </PrimaryButton>
-  );
-}
-```
-
-Since `office-ui-fabric-react` is a npm module, we will need to import the button component in the `App` component.
-
-The following import statement at the top of the `src\App.tsx` file just below `import './App.css'`:
-
-```tsx
-import { PrimaryButton } from 'office-ui-fabric-react';
-```
-
-Save the `src\App.tsx` file.
-
-Below is an example of how you can similarly import other components:
-
-```tsx
-import { DefaultButton, DocumentCard, DocumentCardPreview, DocumentCardTitle, DocumentCardActivity } from 'office-ui-fabric-react';
-```
-
-Open `index.html` file.
-
-Fabric React components provide support for Left-to-Right (LTR) and Right-to-Left (RTL) rendering out of the box.
-
-You can specify the default direction in your `index.html`. Add the `dir` attribute with the value ltr to the `<html>` element:
-
-```html
-<html lang="en" dir="ltr"></html>
-```
-
-Load Office UI Fabric styles by linking to the Office UI Fabric CDN. Add the following to the `<head>` element:
-
-```html
-<link rel="stylesheet" href="https://static2.sharepointonline.com/files/fabric/office-ui-fabric-core/9.6.1/css/fabric.min.css" />
-```
-
-Save the file.
-
-### Step 5: Preview button
-
-Switch to the console and type the following to preview your app in the browser:
-
-```bash
-npm start
-```
-
-You should see the `PrimaryButton` component in your app.
-
-### Step 6: Using UI Fabric Icons
-
-If you are using Fabric React components that have icons, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package.
-
-1. Install the `@uifabric/icons` npm package.
-
-   ```bash
-   npm install @uifabric/icons
-   ```
-
-2. Import `initializeIcons` function and then call it within your App.
-
-   ```tsx
-   import { initializeIcons } from '@uifabric/icons';
-
-   // Register icons and pull the fonts from the default SharePoint CDN:
-   initializeIcons();
-
-   // ...or, register icons and pull the fonts from your own CDN:
-   initializeIcons('https://my.cdn.com/path/to/icons/');
-   ```
-
-This will make ALL icons in the collection available, but will download them on demand when referenced using the `Icon` component.
-
-### Next steps
-
-If you are using Fabric React components that have icons, you can make all icons available by calling the `initializeIcons` function from the `@uifabric/icons` package.
-
-1. Install the `@uifabric/icons` npm package.
-
-   ```bash
-   npm install @uifabric/icons
-   ```
-
-2. Import `initializeIcons` function and then call it within your App.
-
-   ```tsx
-   import { initializeIcons } from '@uifabric/icons';
-
-   // Register icons and pull the fonts from the default SharePoint CDN:
-   initializeIcons();
-
-   // ...or, register icons and pull the fonts from your own CDN:
-   initializeIcons('https://my.cdn.com/path/to/icons/');
-   ```
-
-This will make ALL icons in the collection available, but will download them on demand when referenced using the `Icon` component.
+1. [Frontend Bootcamp](https://microsoft.github.io/frontend-bootcamp/)'s day 2 materials
+2. [UI Fabric Documentation](https://developer.microsoft.com/en-us/fabric/#/components)
