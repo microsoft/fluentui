@@ -1,0 +1,1 @@
+UI Fabric for the web is the official [open-source](https://github.com/OfficeDev/office-ui-fabric-react) React front-end framework designed to build experiences that fit seamlessly into a broad range of Microsoft products.

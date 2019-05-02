@@ -15,17 +15,20 @@ import {
   ScrollBars,
   INavPage,
   PlatformPicker,
+  PlatformBar,
   TPlatformPages
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
-import * as styles from './Site.module.scss';
 import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext } from '@uifabric/example-app-base/lib/index';
+import * as styles from './Site.module.scss';
+import { appMaximumWidthLg } from '../../styles/constants';
 import SiteMessageBar from './SiteMessageBar';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
   siteDefinition: ISiteDefinition<TPlatforms>;
+  hasUHF?: boolean;
 }
 
 export interface ISiteState<TPlatforms extends string = string> {
@@ -109,15 +112,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     );
 
     const SiteContent = () => (
-      <div key="site" className="Site">
-        <TopNav
-          siteLogoSource={siteDefinition.siteLogoSource}
-          platform={platform}
-          pages={siteDefinition.pages}
-          onRenderNavFooter={this._renderPlatformPicker}
-          onLinkClick={this._onTopNavLinkClick}
-          badgeText={siteDefinition.badgeText}
-        />
+      <div key="site" className={styles.siteRoot}>
+        {this._renderTopNav()}
         {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
@@ -125,6 +121,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
             {childrenWithPlatform}
           </main>
         </div>
+        {this._renderPlatformBar()}
       </div>
     );
 
@@ -250,6 +247,24 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     return 'default' as TPlatforms;
   };
 
+  private _renderTopNav = (): JSX.Element | undefined => {
+    const { platform } = this.state;
+    const { siteDefinition, hasUHF } = this.props;
+
+    if (!hasUHF) {
+      return (
+        <TopNav
+          siteLogoSource={siteDefinition.siteLogoSource}
+          platform={platform}
+          pages={siteDefinition.pages}
+          onRenderNavFooter={this._renderPlatformPicker}
+          onLinkClick={this._onTopNavLinkClick}
+          badgeText={siteDefinition.badgeText}
+        />
+      );
+    }
+  };
+
   private _renderPlatformPicker = (): JSX.Element | null => {
     const { siteDefinition } = this.props;
     const { hasPlatformPicker, platform, pagePlatforms } = this.state;
@@ -265,6 +280,24 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       );
     }
     return null;
+  };
+
+  private _renderPlatformBar = (): JSX.Element | undefined => {
+    const { siteDefinition } = this.props;
+    const { platform, pagePlatforms, hasPlatformPicker } = this.state;
+
+    return (
+      hasPlatformPicker &&
+      Object.keys(pagePlatforms).length > 0 && (
+        <PlatformBar
+          activePlatform={platform}
+          onPlatformClick={this._onPlatformChanged}
+          pagePlatforms={pagePlatforms}
+          platforms={siteDefinition.platforms}
+          innerWidth={appMaximumWidthLg}
+        />
+      )
+    );
   };
 
   /**

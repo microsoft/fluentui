@@ -8,6 +8,7 @@ import { Route, Router } from 'office-ui-fabric-react/lib/utilities/router/index
 import { initializeIcons } from '@uifabric/icons/lib/index';
 import { Site } from '../components/Site/index';
 import { INavPage, ISiteDefinition, currentFabricBreakpoint, jumpToAnchor, handleRedirects } from '@uifabric/example-app-base/lib/index2';
+import { hasUHF, isLocal } from './location';
 
 // Polyfill needed by FeedbackList
 import 'whatwg-fetch';
@@ -29,8 +30,6 @@ const isProduction = process.argv.indexOf('--production') > -1;
 // tslint:disable-next-line no-any
 declare let Flight: any; // Flight & CDN configuration
 declare let __webpack_public_path__: string;
-
-const isLocal = window.location.hostname === 'localhost' || window.location.hostname.indexOf('ngrok.io') > -1;
 
 if (!isLocal && Flight.baseCDNUrl) {
   __webpack_public_path__ = Flight.baseCDNUrl;
@@ -106,7 +105,7 @@ export function createSite<TPlatforms extends string>(
     rootElement = rootElement || document.getElementById('main');
     _getBreakpoint();
 
-    const renderSite = (props: {}) => <Site siteDefinition={siteDefinition} {...props} />;
+    const renderSite = (props: {}) => <Site siteDefinition={siteDefinition} hasUHF={hasUHF} {...props} />;
 
     const routerDidMount = () => jumpToAnchor(undefined, scrollDistance);
 

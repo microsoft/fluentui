@@ -118,5 +118,10 @@ export const stylesPagesWeb: INavPage[] = [
     component: () => <LoadingComponent title="Localization" />,
     getComponent: cb =>
       require.ensure([], require => cb(require<any>('../../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
+  },
+  {
+    title: 'Theme Designer',
+    url: 'https://aka.ms/themedesigner',
+    isExternal: true
   }
 ];

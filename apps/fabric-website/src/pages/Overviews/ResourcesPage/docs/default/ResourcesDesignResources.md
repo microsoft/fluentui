@@ -3,10 +3,11 @@
 These design toolkits provide styles, controls and layout templates that enable you to create beautiful and coherent Microsoft experiences.
 
 <ul class="md-list--flex">
-  <li class="mdut--half">Web Fluent (Sketch): Coming soon</li>
-  <li class="mdut--half">Web Fluent (Figma): Coming soon</li>
-  <li class="mdut--half">iOS Fluent (Sketch): Coming soon</li>
-  <li class="mdut--half">Android Fluent (Sketch): Coming soon</li>
+  <li class="mdut--half">[Web Fluent (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
+  <li class="mdut--half">[iOS Fluent (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
+  <li class="mdut--half">[iOS Fluent (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
+  <li class="mdut--half">[Android Fluent (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
+  <li class="mdut--half">[Android Fluent (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
 </ul>
 
 ### SharePoint Framework
@@ -31,7 +32,6 @@ The Add-ins design toolkit provides layouts for interface elements and commonly 
 ### Fonts
 
 <ul class="md-list--flex">
-  <li class="mdut--half">Segoe UI and Fabric MDL2 icon font (coming soon)</li>
   <li class="mdut--half">[iOS font](https://developer.apple.com/fonts/)</li>
   <li class="mdut--half">[Segoe UI and Fabric MDL2 external icon font](https://static2.sharepointonline.com/files/fabric/fabric-website/files/segoeui_fabricmdl2_icon_fonts.zip)</li>
   <li class="mdut--half">[Android font](https://fonts.google.com/specimen/Roboto)</li>
