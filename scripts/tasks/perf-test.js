@@ -121,7 +121,7 @@ function getStats(before, after) {
 
   Object.keys(before).forEach(scenario => {
     if (after[scenario]) {
-      scenariostats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, {});
+      scenariostats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, { alpha: 0.01 });
       scenariostats[scenario].pvalue = scenariostats[scenario].pValue();
       scenariostats[scenario].valid = scenariostats[scenario].valid();
     }
