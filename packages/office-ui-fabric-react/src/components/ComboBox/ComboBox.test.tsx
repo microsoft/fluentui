@@ -378,7 +378,7 @@ describe.only('ComboBox', () => {
     const onMenuOpenMock = jest.fn();
 
     wrapper = mount(<ComboBox defaultSelectedKey="1" openOnFocus options={DEFAULT_OPTIONS2} onMenuOpen={onMenuOpenMock} />);
-    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const comboBoxRoot = wrapper.find('.ms-ComboBox-Input').find('input');
     comboBoxRoot.simulate('focus');
     expect(onMenuOpenMock.mock.calls.length).toBe(1);
   });
