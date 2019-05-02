@@ -9,9 +9,13 @@ export interface IFabricPaletteProps {
 }
 
 const tableClassName = mergeStyles({
+  width: '100%',
   selectors: {
-    th: {
-      padding: 10,
+    thead: {
+      textAlign: 'center'
+    },
+    tr: {
+      padding: 80,
       textAlign: 'left'
     },
     td: {
@@ -52,16 +56,16 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
 
   return (
     <div className={itemWrapper}>
-      <h1>Fabric Palette</h1>
+      <h1>Fabric palette</h1>
       <table className={tableClassName}>
         <thead>
           <tr>
-            <th>PRIMARY</th>
-            <th>HEX</th>
-            <th>FOREGROUND</th>
-            <th>HEX</th>
-            <th>BACKGROUND</th>
-            <th>HEX</th>
+            <th>Primary</th>
+            <th>Hex</th>
+            <th>Foreground</th>
+            <th>Hex</th>
+            <th>Background</th>
+            <th>Hex</th>
           </tr>
         </thead>
         <tbody>

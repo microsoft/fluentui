@@ -34,7 +34,7 @@ export enum FabricSlots {
 
   neutralLighterAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade1]);
   neutralLighter, // BaseSlots.backgroundColor, Shade[Shade.Shade2]);
-  neutralLight, // BaseSlots.backgroundColor, Shade[Shade.Shade3]);
+  neutralLight, // BaseSlots.backgroundColor, Shade[Shade. pShade3]);
   neutralQuaternaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade4]);
   neutralQuaternary, // BaseSlots.backgroundColor, Shade[Shade.Shade5]);
   neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
@@ -52,10 +52,101 @@ export enum FabricSlots {
 /* List of all the semantic color slots for this theme.
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety. */
 export enum SemanticColorSlots {
-  bodyBackground,
-  bodyText,
-  disabledBackground,
-  disabledText
+  // Defaults - Body
+  bodyBackground, // white
+  bodyStandoutBackground, // neutralLighterAlt
+  bodyFrameBackground, // white
+  bodyFrameDivider, // neturalLight
+  bodyText, // neutralPrimary
+  bodyTextChecked, // black
+  bodySubtext, // neutralSecondary
+  bodyDivider, // neutralLight
+
+  // Inputs
+  disabledBackground, // neutralLighter
+  disabledText, // neutralTertiary
+
+  // Defaults - Body
+  disabledBodyText, // neutralTertiary
+
+  // Inputs
+  disabledSubText, // neutralQuaternary
+
+  // Defaults - Body
+  disabledBodySubtext, // neutralTeritaryAlt
+  focusBorder, // neutralSecondary
+  variantBorder, // neutralLight
+  variantBorderHovered, // neutralTertiary
+  defaultStateBackground, // neutralLighterAlt
+
+  // TODO later: Messaging - inverted colors
+
+  // Inputs
+  inputBorder, // neutralTertiary
+  inputBorderHovered, // neutralPrimary
+  inputBackground, // white
+  inputBackgroundChecked, // themePrimary
+  inputBackgroundCheckedHovered, // themeDarkAlt
+  inputForegroundChecked, // white
+  inputFocusBorderAlt, // themePrimary
+  smallInputBorder, // neutralSecondary
+  inputText, // neutralPrimary
+  inputTextHovered, // neutralDark
+  inputPlaceholderText, // neutralSecondary
+
+  // Buttons
+  buttonBackground, // neutralLighter
+  buttonBackgroundChecked, // neutralTertiaryAlt
+  buttonBackgroundHovered, // neutralLight
+  buttonBackgroundCheckedHovered, // neutralLight
+  buttonBackgroundPressed, // neutralLight
+  buttonBackgroundDisabled, // neutralLighter
+  buttonBorder, // 'transparent'
+  buttonText, // neutralPrimary
+  buttonTextHovered, // neutralDark
+  buttonTextChecked, // neutralDark
+  buttonTextCheckedHovered, // black
+  buttonTextPressed, // neutralDark
+  buttonTextDisabled, // neutralTertiary
+  buttonBorderDisabled, // 'transparent'
+
+  primaryButtonBackground, // themePrimary
+  primaryButtonBackgroundHovered, // themeDarkAlt
+  primaryButtonBackgroundPressed, // themeDark
+  primaryButtonBackgroundDisabled, // neutralLighter
+  primaryButtonBorder, // 'transparent'
+  primaryButtonText, // white
+  primaryButtonTextHovered, // white
+  primaryButtonTextPressed, // white
+  primaryButtonTextDisabled, // neutralQuaternary
+
+  accentButtonBackground, // accent
+  accentButtonText, // white
+
+  // Menus
+  menuBackground, // white
+  menuDivider, // neutralTertiaryAlt
+  menuIcon, // themePrimary
+  menuHeader, // themePrimary
+  menuItemBackgroundHovered, // neutralLighter
+  menuItemBackgroundPressed, // neutralLight
+  menuItemText, // neutralPrimary
+  menuItemTextHovered, // neutralDark
+
+  // Lists
+  listBackground, // white
+  listText, // neutralPrimary
+  listItemBackgroundHovered, // neutralLighter
+  listItemBackgroundChecked, // neutralLight
+  listItemBackgroundCheckedHovered, // neutralQuaternaryAlt
+  listHeaderBackgroundHovered, // neutralLighter
+  listHeaderBackgroundPressed, // neutralLight
+
+  // Links
+  actionLink, // neutralPrimary
+  actionLinkHovered, // neutralDark
+  link, // themePrimary
+  linkHovered // themeDarker
 }
 
 export function themeRulesStandardCreator(): IThemeRules {
@@ -174,66 +265,6 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[FabricSlots[FabricSlots.themeDarkAlt]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
-
-  /*** SEMANTIC SLOTS */
-  // This code is commented out for now but left for future semantic color customization.
-  // create the SlotRule for a semantic slot
-  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
-    const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-    const thisSlotRule = {
-      name: SemanticColorSlots[semanticSlot],
-      inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-      isCustomized: false,
-      dependentRules: []
-    };
-    slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
-    inherits.dependentRules.push(thisSlotRule);
-  }
-
-  // BODY
-  // None
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-
-  // Neutral
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.neutralLighter);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-
-  // Soft
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themeLighterAlt);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  // Strong
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themePrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.white);
-  // LINKS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // BUTTONS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // INPUTS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // LISTS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // MENUS
-  // None
-  // Neutral
-  // Soft
-  // Strong
 
   return slotRules;
 }

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Updating insureSlots method name to ensureSlots to use a more correct verb.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "aneeshak@microsoft.com"
+}

@@ -50,16 +50,15 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
     this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
     this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
-
-    hideSemanticSlots = true;
-    if (!hideSemanticSlots) {
-      semanticSlotsCard = <SemanticSlots />;
-    } else {
-      <div />;
-    }
   }
 
   public render() {
+    hideSemanticSlots = false;
+    if (!hideSemanticSlots) {
+      semanticSlotsCard = <SemanticSlots theme={this.state.theme} />;
+    } else {
+      <div />;
+    }
     return (
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
@@ -69,7 +68,10 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <IconButton
                 disabled={false}
                 checked={false}
-                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
+                iconProps={{
+                  iconName: 'Color',
+                  styles: { root: { fontSize: '20px' } }
+                }}
                 title="Colors"
                 ariaLabel="Colors"
               />
@@ -117,10 +119,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
   private _makeNewTheme = (): void => {
     if (this.state.themeRules) {
-      const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+      const themeAsJson: {
+        [key: string]: string;
+      } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
 
       const finalTheme = createTheme({
-        ...{ palette: themeAsJson }
+        ...{ palette: themeAsJson },
+        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
       });
       this.setState({ theme: finalTheme });
     }
@@ -169,7 +174,9 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
 
-    const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(themeRules);
+    const themeAsJson: {
+      [key: string]: string;
+    } = ThemeGenerator.getThemeAsJson(themeRules);
 
     const finalTheme = createTheme({
       ...{ palette: themeAsJson }
