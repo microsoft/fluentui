@@ -1,3 +1,5 @@
-The [Fabric React components](https://developer.microsoft.com/en-us/fabric#/components) are being updated to reflect the Fluent design system. While these changes will be the default in a future release, a preview is available via the [Fluent theme package](https://www.npmjs.com/package/@uifabric/fluent-theme) so that you can test the updated styles in your app. [Read more about how to use the Fluent theme in your app](#/controls/web/fluent-theme).
+Fabric’s robust, up-to-date web controls are built with the React framework. Look through the control list to see the building blocks that are available using Fabric React.
 
-The controls on this site represent the subset of Fabric React controls that have had the Fluent theme applied to them. To view the full set of controls, see the public [Fabric website](http://uifabric.io).
+### Fluent Updates
+
+The Fabric React components are being updated to reflect the Fluent design system. While these changes will be the default in a future release, a preview is available via the [Fluent theme package](https://www.npmjs.com/package/@uifabric/fluent-theme) so that you can test the updated styles in your app. [Read more about how to use the Fluent theme in your app](#/controls/web/fluent-theme).
