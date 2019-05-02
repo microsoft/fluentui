@@ -105,7 +105,9 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   private onMessageBarFix = () => {
     console.log('hello world');
     this.setState({ textColor: getColorFromString('#e1dfdd')! });
+    this._onColorChange(this.state.textColor, BaseSlots.foregroundColor, getColorFromString('#e1dfdd')!);
     this.setState({ backgroundColor: getColorFromString('#1b1a19')! });
+    this._onColorChange(this.state.backgroundColor, BaseSlots.backgroundColor, getColorFromString('#1b1a19')!);
   };
 
   private _onPrimaryColorPickerChange(newColor: IColor | undefined) {
