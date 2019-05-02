@@ -152,7 +152,7 @@ $linkPadding: 16px;
     @include ms-padding-left($App-padding-md - $linkPadding);
   }
 
-  .microsoftLogo {
+  .appLogo {
     justify-content: normal;
     margin: 0 -6px; // Account for padding to align it left still
   }

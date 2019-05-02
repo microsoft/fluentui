@@ -3,10 +3,12 @@
 These design toolkits provide styles, controls and layout templates that enable you to create beautiful and coherent Microsoft experiences.
 
 <ul class="md-list--flex">
-  <li class="mdut--half">Web Fluent (Sketch): Coming soon</li>
-  <li class="mdut--half">Web Fluent (Figma): Coming soon</li>
-  <li class="mdut--half">iOS Fluent (Sketch): Coming soon</li>
-  <li class="mdut--half">Android Fluent (Sketch): Coming soon</li>
+  <li class="mdut--half">[Web Fluent (Sketch)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EU75cB2smYVBrJRYdm1B02YBCfn-UR27avtbe4SWZDyrhg?e=kspHRE)</li>
+  <li class="mdut--half">[Web Fluent (Figma)](https://www.figma.com/file/BAfsTrZ9ehIYZ0oYuyskUN2R/Web-Fluent)</li>
+  <li class="mdut--half">[iOS Fluent (Sketch)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EQ6MYK3pi7JLrXd9Z4rhZLQBU8Iw49VV4ASatz5-UuPhOQ?e=JBZziy)</li>
+  <li class="mdut--half">[iOS Fluent (Figma)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EVFZno9IWANOn-00XrP-v3YBCsMZ1bcJJCQe2Al9Dx4UIQ?e=lwkR7d)</li>
+  <li class="mdut--half">[Android Fluent (Sketch)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/EVAotQvsRdZIvPouwtr16pUBUW4Kkz8lh5nGlm0ef6xL7A?e=gVAFJe)</li>
+  <li class="mdut--half">[Android Fluent (Figma)](https://microsoft.sharepoint-df.com/:u:/t/OPGUXLeads/ESiNcYH1qI9Mk77xxjQe-g0Bl8iFZsfECLE16q9EDsuTaQ?e=jG7gmk)</li>
 </ul>
 
 ### SharePoint Framework
@@ -31,7 +33,7 @@ The Add-ins design toolkit provides layouts for interface elements and commonly 
 ### Fonts
 
 <ul class="md-list--flex">
-  <li class="mdut--half">Segoe UI and Fabric MDL2 icon font (coming soon)</li>
+  <li class="mdut--half">[Segoe UI and Fabric MDL2 icon font](https://microsoft.sharepoint.com/teams/OfficeUIFabric97/SitePages/Fabric%20MDL2%20Icons.aspx)</li>
   <li class="mdut--half">[iOS font](https://developer.apple.com/fonts/)</li>
   <li class="mdut--half">[Segoe UI and Fabric MDL2 external icon font](https://static2.sharepointonline.com/files/fabric/fabric-website/files/segoeui_fabricmdl2_icon_fonts.zip)</li>
   <li class="mdut--half">[Android font](https://fonts.google.com/specimen/Roboto)</li>

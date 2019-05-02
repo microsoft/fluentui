@@ -41,6 +41,9 @@ export interface IPlatform {
 
   /** Optional className to be added the platform picker button. */
   className?: string;
+
+  /** Optional color code to use on the platform picker button. */
+  color?: string;
 }
 
 /**

@@ -24,7 +24,7 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
     TextField: {},
     Toggle: {}
   },
-  'Galleries and Pickers': {
+  'Galleries & Pickers': {
     Pickers: {},
     Calendar: {},
     ColorPicker: {},
@@ -32,7 +32,7 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
     PeoplePicker: {},
     SwatchColorPicker: {}
   },
-  'Items and Lists': {
+  'Items & Lists': {
     List: { title: 'Basic List' },
     DetailsList: {
       subPages: {
