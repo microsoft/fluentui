@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ISiteDefinition, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
 import { FluentCustomizations } from '@uifabric/fluent-theme';
-import { AboutPages, ControlsPages, ResourcesPages, StylesPages } from './SiteDefinition.pages/index';
+import { ControlsPages, ResourcesPages, StylesPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
 
 export const SiteDefinition: ISiteDefinition<Platforms> = {
@@ -37,7 +37,6 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     StylesPages,
     ControlsPages,
     ResourcesPages,
-    AboutPages,
     {
       title: 'Demo Loading Page',
       url: '#/ms-loading',
