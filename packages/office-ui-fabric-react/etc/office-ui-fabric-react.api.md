@@ -3312,6 +3312,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     dragDropEvents?: IDragDropEvents;
     // @deprecated
     enableShimmer?: boolean;
+    enableUpdateAnimations?: boolean;
     enterModalSelectionOnTouch?: boolean;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
@@ -3416,6 +3417,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     dragDropEvents?: IDragDropEvents;
     // Warning: (ae-forgotten-export) The symbol "IDragDropHelper" needs to be exported by the entry point index.d.ts
     dragDropHelper?: IDragDropHelper;
+    enableUpdateAnimations?: boolean;
     eventsToRegister?: {
         eventName: string;
         callback: (item?: any, index?: number, event?: any) => void;
@@ -3512,6 +3514,7 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
     className?: string;
     compact?: boolean;
     cellStyleProps?: ICellStyleProps;
+    enableUpdateAnimations?: boolean;
 };
 
 // @public (undocumented)

@@ -3,7 +3,6 @@ import { IColumn } from './DetailsList.types';
 import { css } from '../../Utilities';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
-import { AnimationClassNames } from '../../Styling';
 
 const getCellText = (item: any, column: IColumn): string => {
   let value = item && column && column.fieldName ? item[column.fieldName] : '';
@@ -48,9 +47,18 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
               ? onRender(item, itemIndex, column)
               : getCellText(item, column);
 
+          let key: number | string;
+          try {
+            const s = JSON.stringify(cellContentsRender);
+            key = s ? s + columnIndex : String(columnIndex);
+          } catch {
+            // circular reference
+            key = columnIndex;
+          }
+
           return (
             <div
-              key={cellContentsRender}
+              key={key}
               role={column.isRowHeader ? 'rowheader' : 'gridcell'}
               aria-colindex={columnIndex + columnStartIndex + 1}
               className={css(
@@ -60,8 +68,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
                 column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
                 shimmer && rowClassNames.shimmer,
                 rowClassNames.cell,
-                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded,
-                AnimationClassNames.slideLeftIn40
+                column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded
               )}
               style={{ width }}
               data-automationid="DetailsRowCell"

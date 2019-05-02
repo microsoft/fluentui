@@ -59,7 +59,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
     setInterval(() => {
       const newItems = this.state.items.slice();
       const i = Math.floor(Math.random() * 10);
-      newItems[i] = { ...newItems[i], ...{ value: (_lorem(2) as unknown) as number, name: _lorem(1) } };
+      newItems[i] = { ...newItems[i], ...{ value: Math.floor(Math.random() * 2), name: _lorem(1) } };
       this.setState({ items: newItems });
       this.forceUpdate();
     }, 2000);
@@ -99,6 +99,7 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
             ariaLabelForSelectionColumn="Toggle selection"
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
             onItemInvoked={this._onItemInvoked}
+            enableUpdateAnimations={true}
           />
         </MarqueeSelection>
       </Fabric>

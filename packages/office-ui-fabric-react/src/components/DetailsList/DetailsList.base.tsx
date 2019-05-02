@@ -529,7 +529,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       useReducedRowRenderer,
       indentWidth,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
-      onRenderCheckbox
+      onRenderCheckbox,
+      enableUpdateAnimations
     } = this.props;
     const collapseAllVisibility = groupProps && groupProps.collapseAllVisibility;
     const selection = this._selection;
@@ -560,7 +561,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       useReducedRowRenderer: useReducedRowRenderer,
       indentWidth,
       cellStyleProps: cellStyleProps,
-      onRenderDetailsCheckbox: onRenderCheckbox
+      onRenderDetailsCheckbox: onRenderCheckbox,
+      enableUpdateAnimations
     };
 
     if (!item) {
