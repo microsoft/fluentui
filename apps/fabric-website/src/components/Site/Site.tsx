@@ -27,6 +27,7 @@ import { appMaximumWidthLg } from '../../styles/constants';
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
   siteDefinition: ISiteDefinition<TPlatforms>;
+  hasUHF?: boolean;
 }
 
 export interface ISiteState<TPlatforms extends string = string> {
@@ -102,15 +103,15 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
   public render(): JSX.Element {
     const { platform, isContentFullBleed } = this.state;
-    const { children, siteDefinition } = this.props;
+    const { children, siteDefinition, hasUHF } = this.props;
     const { customizations } = siteDefinition;
     const childrenWithPlatform = React.Children.map(children, (child: React.ReactElement<IWithPlatformProps>) =>
       React.cloneElement(child, { platform })
     );
 
     const SiteContent = () => (
-      <div key="site" className="Site">
-        {this._renderTopNav()}
+      <div key="site" className={styles.siteRoot}>
+        {!hasUHF && this._renderTopNav()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
           <main className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
