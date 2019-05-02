@@ -4,28 +4,35 @@ import { MessageBar, css } from 'office-ui-fabric-react';
 import { camelize, pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
 import * as styles from './ImplementationSection.module.scss';
+import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { ApiReferencesTableSet } from '../../ApiReferencesTable/index';
 
 export interface IImplementationSectionProps extends IPageSectionProps {
-  propertiesTablesSources: string[];
+  jsonDocs?: IPageJson;
+  propertiesTablesSources?: string[];
   allowNativeProps?: boolean;
   nativePropsElement?: string | string[];
   allowNativePropsForComponentName?: string;
+  hideImplementationTitle?: boolean;
 }
 
 export const ImplementationSection: React.StatelessComponent<IImplementationSectionProps> = props => {
-  const { className, sectionName = 'Implementation', style, propertiesTablesSources } = props;
+  const { className, sectionName = 'Implementation', style, propertiesTablesSources, jsonDocs, hideImplementationTitle } = props;
   const { readableSectionName = sectionName } = props;
   const sectionClassName = camelize(sectionName);
   const sectionId = pascalize(sectionName);
   return (
     <div className={css(`Page-${sectionClassName}Section`, className)} style={style}>
-      <div className={css(styles.sectionHeader, `Page-${sectionClassName}SectionHeader`)}>
-        <h2 className={css(styles.subHeading, `Page-subHeading`)} id={sectionId}>
-          {readableSectionName}
-        </h2>
-      </div>
-      {_getNativePropsInfo(props)}
-      <PropertiesTableSet sources={propertiesTablesSources} />
+      {!hideImplementationTitle && (
+        <div className={css(styles.sectionHeader, `Page-${sectionClassName}SectionHeader`)}>
+          <h2 className={css(styles.subHeading, `Page-subHeading`)} id={sectionId}>
+            {readableSectionName}
+          </h2>
+        </div>
+      )}
+      {jsonDocs && <ApiReferencesTableSet jsonDocs={jsonDocs} />}
+      {!jsonDocs && _getNativePropsInfo(props)}
+      {!jsonDocs && <PropertiesTableSet sources={propertiesTablesSources} />}
     </div>
   );
 };

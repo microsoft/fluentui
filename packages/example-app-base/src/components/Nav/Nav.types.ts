@@ -1,5 +1,6 @@
 import * as React from 'react';
 import { TPlatformPages } from '../PlatformPicker/PlatformPicker.types';
+import { IRouteProps } from 'office-ui-fabric-react/lib/utilities/router/Route';
 
 /**
  * Props for the nav.
@@ -24,7 +25,7 @@ export interface INavProps<TPlatforms extends string = string> {
   searchablePageTitle?: string;
 }
 
-export interface INavPage<TPlatform extends string = string> {
+export interface INavPage<TPlatform extends string = string> extends Pick<IRouteProps, 'component' | 'getComponent'> {
   /**
    * The page's title, as shown in the navigation.
    */
@@ -39,16 +40,6 @@ export interface INavPage<TPlatform extends string = string> {
    * Unique CSS class name for this page.
    */
   className?: string;
-
-  /**
-   * The component to render for this page's content.
-   */
-  component?: React.ComponentType;
-
-  /**
-   * Loads the component using require.ensure;
-   */
-  getComponent?: (cb: (component: React.ComponentType) => void) => void;
 
   /**
    * Optional array of child pages belonging to this one.
