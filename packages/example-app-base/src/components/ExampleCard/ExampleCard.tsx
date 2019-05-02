@@ -3,7 +3,7 @@ import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { styled, classNamesFunction, Customizer, css } from 'office-ui-fabric-react/lib/Utilities';
+import { styled, classNamesFunction, Customizer, css, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 import { Highlight } from '../Highlight/Highlight';
@@ -123,11 +123,13 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
               <div className={classNames.code}>{isCodeVisible && <Highlight>{code}</Highlight>}</div>
 
               {activeCustomizations ? (
-                <Customizer {...activeCustomizations}>
-                  <ThemeProvider scheme={_schemes[schemeIndex]}>
-                    <Stack styles={regionStyles}>{exampleCardContent}</Stack>
-                  </ThemeProvider>
-                </Customizer>
+                <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+                  <Customizer {...activeCustomizations}>
+                    <ThemeProvider scheme={_schemes[schemeIndex]}>
+                      <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                    </ThemeProvider>
+                  </Customizer>
+                </CustomizerContext.Provider>
               ) : (
                 exampleCardContent
               )}
