@@ -30,7 +30,6 @@ export class PersonaCoinExample extends React.Component<{}, {}> {
             <Text>When passing text initials will be extracted from the text</Text>
             <PersonaCoinStack>
               <PersonaCoin text="Kevin Jameson" />
-              <PersonaCoin text="Kevin Jameson" />
               <PersonaCoin text="王力" />
               <PersonaCoin text="Eline Page" presence={4} />
               <PersonaCoin text="Eline Page" imageUrl={PersonaTestImages.personFemale} />

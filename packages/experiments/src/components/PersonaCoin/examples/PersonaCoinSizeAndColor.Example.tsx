@@ -23,6 +23,7 @@ export class PersonaCoinSizeAndColorExample extends React.Component<{}, {}> {
           <Stack tokens={tokens.personaCoinStack}>
             <Text>Sizes</Text>
             <Stack horizontal disableShrink tokens={tokens.personaCoinStack}>
+              <PersonaCoin text="Kevin Jameson" size={10} />
               <PersonaCoin text="Kevin Jameson" size={24} />
               <PersonaCoin text="Kevin Jameson" size={28} />
               <PersonaCoin text="Kevin Jameson" size={40} />

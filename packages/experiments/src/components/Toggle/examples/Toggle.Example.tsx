@@ -44,7 +44,6 @@ export class ToggleExample extends React.Component<{}, IToggleExampleState> {
           }}
         />
         <Toggle componentRef={this._toggle} onText="On" offText="Off" label="Focused Toggle" />
-        <Toggle />
       </div>
     );
   }

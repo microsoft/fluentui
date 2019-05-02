@@ -40,7 +40,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
         setMenuTarget(ev.currentTarget);
       }
     },
-    [expanded]
+    [disabled, expanded]
   );
 
   const viewProps: IMenuButtonViewProps = {
