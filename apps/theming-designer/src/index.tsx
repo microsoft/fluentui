@@ -3,6 +3,8 @@ import * as ReactDOM from 'react-dom';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { initializeIcons } from '@uifabric/icons';
 import { ThemingDesigner } from './components/ThemingDesigner';
+import { Customizer } from 'office-ui-fabric-react';
+import { FluentCustomizations } from '@uifabric/fluent-theme';
 
 initializeIcons();
 
@@ -15,7 +17,9 @@ function start(): void {
   }
   ReactDOM.render(
     <Fabric>
-      <ThemingDesigner />
+      <Customizer {...FluentCustomizations}>
+        <ThemingDesigner />
+      </Customizer>
     </Fabric>,
     _rootDiv
   );

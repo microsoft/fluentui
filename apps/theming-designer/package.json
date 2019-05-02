@@ -23,6 +23,7 @@
     "@uifabric/tslint-rules": ">=1.0.1 <2.0.0"
   },
   "dependencies": {
+    "@uifabric/fluent-theme": "^0.16.7",
     "@uifabric/react-cards": "0.1.0",
     "@uifabric/merge-styles": ">=6.17.1 <7.0.0",
     "@uifabric/example-app-base": "^6.16.1",
