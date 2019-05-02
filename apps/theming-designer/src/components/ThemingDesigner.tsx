@@ -92,7 +92,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <ThemeProvider theme={this.state.theme}>
                 <Samples backgroundColor={this.state.backgroundColor.str} />
               </ThemeProvider>
-              <AccessibilityChecker onMessageBarClick={this.onMessageBarFix} theme={this.state.theme} themeRules={this.state.themeRules} />
+              <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
               {semanticSlotsCard}
             </Stack>
@@ -119,28 +119,11 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
 
       const finalTheme = createTheme({
-        ...{ palette: themeAsJson }
-        // isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
+        ...{ palette: themeAsJson },
+        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
       });
       this.setState({ theme: finalTheme });
     }
-  };
-
-  private onMessageBarFix = () => {
-    this.setState({ textColor: getColorFromString('#e1dfdd')! });
-    this.setState({ backgroundColor: getColorFromString('#1b1a19')! });
-
-    const themeRules = this.state.themeRules;
-    if (themeRules) {
-      const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-      ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], getColorFromString('#e1dfdd')!, currentIsDark, true, true);
-      ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], getColorFromString('#1b1a19')!, currentIsDark, true, true);
-      if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
-        // isInverted got swapped, so need to refresh slots with new shading rules
-        ThemeGenerator.insureSlots(themeRules, currentIsDark);
-      }
-    }
-    this.setState({ themeRules: themeRules }, this._makeNewTheme);
   };
 
   private _onColorChange = (colorToChange: IColor, baseSlot: BaseSlots, newColor: IColor | undefined) => {
@@ -151,21 +134,16 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       if (colorToChange === this.state.primaryColor) {
         this.setState({ primaryColor: newColor });
       } else if (colorToChange === this.state.textColor) {
-        console.log('changing foreground');
         this.setState({ textColor: newColor });
       } else if (colorToChange === this.state.backgroundColor) {
-        console.log('changing background');
         this.setState({ backgroundColor: newColor });
       } else {
-        console.log('returning ');
         return;
       }
       colorChangeTimeout = this._async.setTimeout(() => {
         const themeRules = this.state.themeRules;
-        console.log('themeRules: ', themeRules);
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-          console.log('changing this slot: ', baseSlot.toString());
           ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
           if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
             // isInverted got swapped, so need to refresh slots with new shading rules

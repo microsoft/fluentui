@@ -19,7 +19,7 @@ export class Samples extends React.Component<ISamplesProps, {}> {
     return (
       <div className={itemWrapper} style={{ backgroundColor: this.props.backgroundColor }}>
         <h1>Samples</h1>
-        <Stack horizontal gap={50}>
+        <Stack horizontal gap={150}>
           <Stack gap={10}>
             <SamplesCardHeader label="TEXT" />
             <SamplesCardHeader size="tiny" label="MEMBER FEATURE STORY" />

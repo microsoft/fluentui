@@ -1,9 +1,9 @@
 import * as React from 'react';
-import { Card } from '@uifabric/react-cards';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
+import { itemWrapper } from '../shared/style';
 import { getVariant, VariantThemeType } from '@uifabric/variants';
 
 export interface ISemanticSlotsProps {
@@ -154,8 +154,8 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   strongSlots = fillVariantSlotsList(VariantThemeType.Strong);
 
   return (
-    <div style={{ width: '1200px', marginLeft: '200px' }}>
-      <h1>Semantic Slots</h1>
+    <div className={itemWrapper}>
+      <h1>Semantic slots</h1>
       <SemanticSlotsDetailsList
         slotNames={slotNames}
         noneSlots={noneSlots}

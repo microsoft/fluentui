@@ -9,7 +9,6 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 export interface IAccessibilityCheckerProps {
   theme?: ITheme;
   themeRules?: IThemeRules;
-  onMessageBarClick: () => void;
 }
 
 export interface IContrastRatioPair {
@@ -61,13 +60,8 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   loadAllContrastRatioPairsList();
   return (
     <div className={itemWrapper}>
-      <h1>Accessibility Checker</h1>
-      <AccessibilityDetailsList
-        onMessageBarClick={props.onMessageBarClick}
-        theme={props.theme!}
-        accessiblePairs={accessiblePairs}
-        nonAccessiblePairs={nonAccessiblePairs}
-      />
+      <h1>Accessibility checker</h1>
+      <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
     </div>
   );
 };

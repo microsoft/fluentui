@@ -9,7 +9,6 @@ import {
   SelectionMode
 } from 'office-ui-fabric-react/lib/DetailsList';
 import { MessageBar, MessageBarType } from 'office-ui-fabric-react/lib/MessageBar';
-import { MessageBarButton } from 'office-ui-fabric-react/lib/Button';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IContrastRatioPair } from './AccessibilityChecker';
 
@@ -17,7 +16,6 @@ export interface IAccessibilityDetailsListProps {
   accessiblePairs: IContrastRatioPair[];
   nonAccessiblePairs: IContrastRatioPair[];
   theme: ITheme | undefined;
-  onMessageBarClick?: () => void;
 }
 
 interface IAccessibilityDetailsList {
@@ -70,15 +68,7 @@ export const AccessibilityDetailsList: React.StatelessComponent<IAccessibilityDe
       nonAccessibleStartIndex.toString() +
       ' accessibility errors. Each pair of colors below should produce legible text and have a minimum contrast of 4.5';
     messageBar = (
-      <MessageBar
-        messageBarType={MessageBarType.error}
-        actions={
-          <div>
-            <MessageBarButton onClick={props.onMessageBarClick}>Fix errors</MessageBarButton>
-          </div>
-        }
-        isMultiline={false}
-      >
+      <MessageBar messageBarType={MessageBarType.error} isMultiline={false}>
         {errorsMessageBarString}
       </MessageBar>
     );
