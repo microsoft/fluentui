@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -38,6 +38,11 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
   const { theme, className, isMountedOffset, isInverted, beforeColor, afterColor } = props;
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
+  const beforeColorObj = beforeColor && getColorFromString(beforeColor);
+  const beforeAlt = beforeColorObj && getShade(beforeColorObj, Shade.Shade6).str;
+  const afterColorObj = afterColor && getColorFromString(afterColor);
+  const afterAlt = afterColorObj && getShade(afterColorObj, Shade.Shade6).str;
 
   const sectionAnimation: IStyle = [
     {
@@ -171,12 +176,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
           '&:before': {
             left: 0,
-            background: beforeColor // Adjust saturation
+            // background: beforeColor // Adjust saturation
+            background: beforeAlt
           },
 
           '&:after': {
             right: 0,
-            background: afterColor // Adjust saturation
+            // background: afterColor // Adjust saturation
+            background: afterAlt
           }
         }
       },
