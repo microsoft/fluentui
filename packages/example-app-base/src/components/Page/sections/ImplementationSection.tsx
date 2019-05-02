@@ -13,20 +13,23 @@ export interface IImplementationSectionProps extends IPageSectionProps {
   allowNativeProps?: boolean;
   nativePropsElement?: string | string[];
   allowNativePropsForComponentName?: string;
+  hideImplementationTitle?: boolean;
 }
 
 export const ImplementationSection: React.StatelessComponent<IImplementationSectionProps> = props => {
-  const { className, sectionName = 'Implementation', style, propertiesTablesSources, jsonDocs } = props;
+  const { className, sectionName = 'Implementation', style, propertiesTablesSources, jsonDocs, hideImplementationTitle } = props;
   const { readableSectionName = sectionName } = props;
   const sectionClassName = camelize(sectionName);
   const sectionId = pascalize(sectionName);
   return (
     <div className={css(`Page-${sectionClassName}Section`, className)} style={style}>
-      <div className={css(styles.sectionHeader, `Page-${sectionClassName}SectionHeader`)}>
-        <h2 className={css(styles.subHeading, `Page-subHeading`)} id={sectionId}>
-          {readableSectionName}
-        </h2>
-      </div>
+      {!hideImplementationTitle && (
+        <div className={css(styles.sectionHeader, `Page-${sectionClassName}SectionHeader`)}>
+          <h2 className={css(styles.subHeading, `Page-subHeading`)} id={sectionId}>
+            {readableSectionName}
+          </h2>
+        </div>
+      )}
       {jsonDocs && <ApiReferencesTableSet jsonDocs={jsonDocs} />}
       {!jsonDocs && _getNativePropsInfo(props)}
       {!jsonDocs && <PropertiesTableSet sources={propertiesTablesSources} />}
