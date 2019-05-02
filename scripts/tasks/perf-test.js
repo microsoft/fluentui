@@ -154,7 +154,7 @@ function createBlobFromResults(perfBlob) {
             <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].totalavg : '...'}</td>
             <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].peritemavg : '...'}</td>
             <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].peritemavg : '...'}</td>
-            <td>${perfBlob.stats[scenario] ? perfBlob.stats[scenario].valid : '...'}</td>
+            <td>${perfBlob.stats[scenario] ? !perfBlob.stats[scenario].valid : '...'}</td>
             <td>${
               perfBlob.now[scenario] && perfBlob.new[scenario] && perfBlob.stats[scenario]
                 ? !perfBlob.stats[scenario].valid && perfBlob.now[scenario] - perfBlob.new[scenario] < 0
