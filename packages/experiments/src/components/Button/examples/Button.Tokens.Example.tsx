@@ -16,7 +16,7 @@ const testTheme = createTheme({
     buttonText: '#E20000'
   },
   fonts: {
-    medium: {
+    small: {
       color: 'purple'
     }
   }

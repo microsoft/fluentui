@@ -3,6 +3,7 @@ import { mount } from 'enzyme';
 import * as sinon from 'sinon';
 
 import { Toggle } from './Toggle';
+import { IToggleProps } from './Toggle.types';
 
 describe('ToggleState', () => {
   it('can call the callback on a change of toggle', () => {
@@ -70,8 +71,11 @@ describe('ToggleState', () => {
   });
 
   it(`doesn't trigger onSubmit when placed inside a form`, () => {
-    let component: any;
+    let checked: boolean | undefined;
     const onSubmit = sinon.spy();
+    const onChange: IToggleProps['onChange'] = (ev, toggled) => {
+      checked = toggled;
+    };
 
     const wrapper = mount(
       <form
@@ -82,17 +86,13 @@ describe('ToggleState', () => {
           e.preventDefault();
         }}
       >
-        <Toggle
-          // tslint:disable-next-line:jsx-no-lambda
-          componentRef={ref => (component = ref)}
-          label="Label"
-        />
+        <Toggle label="Label" onChange={onChange} />
       </form>
     );
     const button: any = wrapper.find('button');
     // simulate to change toggle state
     button.simulate('click');
-    expect((component as React.Component<any, any>).state.checked).toEqual(true);
+    expect(checked).toEqual(true);
     expect(onSubmit.called).toEqual(false);
   });
 });

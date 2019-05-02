@@ -1,68 +1,56 @@
-import * as React from 'react';
-import { BaseState } from '../../../utilities/BaseState';
-import { IMenuButtonProps, IMenuButtonViewProps } from './MenuButton.types';
+import { useCallback, useState } from 'react';
+import { useControlledState } from '../../../Foundation';
+import { KeyCodes } from '../../../Utilities';
+import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
 
-export type IMenuButtonState = Pick<
-  IMenuButtonViewProps,
-  'expanded' | 'onClick' | 'onKeyDown' | 'buttonRef' | 'onMenuDismiss' | 'menuTarget'
->;
+export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
+  const [menuTarget, setMenuTarget] = useState<HTMLElement | undefined>(undefined);
+  const [expanded, setExpanded] = useControlledState(props, 'expanded', {
+    defaultPropName: 'defaultExpanded',
+    defaultPropValue: false
+  });
 
-export class MenuButtonState extends BaseState<IMenuButtonProps, IMenuButtonViewProps, IMenuButtonState> {
-  private _buttonRef = React.createRef<HTMLButtonElement>();
+  const _onMenuDismiss = useCallback(() => {
+    setExpanded(false);
+  }, []);
 
-  constructor(props: MenuButtonState['props']) {
-    super(props, {
-      controlledProps: ['expanded']
-    });
+  const { disabled, onClick } = props;
 
-    this.state = {
-      expanded: !!props.defaultExpanded,
-      onClick: this._onClick,
-      onKeyDown: this._onKeyDown,
-      buttonRef: this._buttonRef,
-      onMenuDismiss: this._onMenuDismiss,
-      menuTarget: undefined
-    };
-  }
+  const _onClick = useCallback(
+    (ev: React.MouseEvent<HTMLElement>) => {
+      if (!disabled) {
+        if (onClick) {
+          onClick(ev);
 
-  public focus(): void {
-    if (this._buttonRef.current) {
-      this._buttonRef.current.focus();
-    }
-  }
-
-  private _onMenuDismiss = () => {
-    this.setState({
-      expanded: false
-    });
-  };
-
-  private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { disabled, onClick } = this.props;
-
-    if (!disabled) {
-      if (onClick) {
-        onClick(ev);
-
-        if (ev.defaultPrevented) {
-          return;
+          if (ev.defaultPrevented) {
+            return;
+          }
         }
+        setExpanded(!expanded);
+        setMenuTarget(ev.currentTarget);
       }
+    },
+    [expanded, onClick]
+  );
 
-      this.setState({
-        expanded: !this.state.expanded,
-        menuTarget: ev.currentTarget
-      });
-    }
+  const _onKeyDown = useCallback(
+    (ev: React.KeyboardEvent<HTMLElement>) => {
+      if (!disabled && (ev.altKey || ev.metaKey) && ev.keyCode === KeyCodes.down) {
+        setExpanded(!expanded);
+        setMenuTarget(ev.currentTarget);
+      }
+    },
+    [expanded]
+  );
+
+  const viewProps: IMenuButtonViewProps = {
+    ...props,
+    expanded,
+    onClick: _onClick,
+    onKeyDown: _onKeyDown,
+    onMenuDismiss: _onMenuDismiss,
+    menuTarget
   };
 
-  private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>) => {
-    const { disabled } = this.props;
-    if (!disabled && (ev.altKey || ev.metaKey) && ev.keyCode === 40) {
-      this.setState({
-        expanded: !this.state.expanded,
-        menuTarget: ev.currentTarget
-      });
-    }
-  };
-}
+  return viewProps;
+};

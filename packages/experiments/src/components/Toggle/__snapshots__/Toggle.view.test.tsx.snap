@@ -100,7 +100,6 @@ exports[`ToggleView renders toggle correctly 1`] = `
             border-color: Highlight;
           }
       data-is-focusable={true}
-      onChange={[Function]}
       onClick={[Function]}
       role="switch"
       type="button"

@@ -76,27 +76,14 @@ export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet
   Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
 
 /**
- * Enforce props contract on state components, including the view prop and its shape.
+ * Defines the contract for state components.
  */
-export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
-  renderView: IViewRenderer<TViewProps>;
-};
+export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<TComponentProps>) => TViewProps;
 
 /**
- * Imposed state component props contract with styling props as well as a renderView
- * prop that the StateComponent should make use of in its render output (and should be its only render output.)
- */
-export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
-
-/**
- * Defines a view component.
+ * Defines the contract for view components.
  */
 export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
-
-/**
- * Handles rendering view component.
- */
-export type IViewRenderer<TViewProps> = (props?: TViewProps) => ReturnType<React.FunctionComponent>;
 
 /**
  * Component used by foundation to tie elements together.

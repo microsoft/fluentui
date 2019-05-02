@@ -1,5 +1,14 @@
 import * as React from 'react';
-import { MenuButton, IMenuButtonProps } from '@uifabric/experiments';
+import {
+  Button,
+  MenuButton,
+  SplitButton,
+  IButton,
+  ISplitButton,
+  IMenuButton,
+  IMenuButtonProps,
+  DefaultButton
+} from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const menuProps: IMenuButtonProps['menu'] = {
@@ -35,6 +44,10 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 
 // tslint:disable:jsx-no-lambda
 export class MenuButtonExample extends React.Component<{}, {}> {
+  private _button = React.createRef<IButton>();
+  private _splitButton = React.createRef<ISplitButton>();
+  private _menuButton = React.createRef<IMenuButton>();
+
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
@@ -54,6 +67,27 @@ export class MenuButtonExample extends React.Component<{}, {}> {
                   </Stack>
                 </MenuButton>
               </ButtonStack>
+              <DefaultButton
+                text="Focus Button"
+                onClick={() => {
+                  this._button.current && this._button.current.focus();
+                }}
+              />
+              <Button componentRef={this._button} content="Focused Button" />
+              <DefaultButton
+                text="Focus MenuButton"
+                onClick={() => {
+                  this._menuButton.current && this._menuButton.current.focus();
+                }}
+              />
+              <MenuButton componentRef={this._menuButton} content="Focused MenuButton" menu={menuProps} />
+              <DefaultButton
+                text="Focus SplitButton"
+                onClick={() => {
+                  this._splitButton.current && this._splitButton.current.focus();
+                }}
+              />
+              <SplitButton componentRef={this._splitButton} content="Focused SplitButton" menu={menuProps} />
             </Stack>
           </div>
         </Stack>
