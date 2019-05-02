@@ -157,7 +157,7 @@ export class Nav extends React.Component<INavProps, INavState> {
             href={page.url}
             onClick={this._onLinkClick}
             title={page.isExternal ? title + ' (External)' : title}
-            aria-label={ariaLabel}
+            aria-label={page.isExternal ? ariaLabel + ' (External)' : ariaLabel}
             target={page.isExternal && '_blank'}
           >
             {linkText}
