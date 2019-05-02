@@ -2,6 +2,7 @@ import * as React from 'react';
 import { IComponentAs } from 'office-ui-fabric-react';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
+import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 
 /**
  * Props for the page.
@@ -59,17 +60,32 @@ export interface IPageProps<TPlatforms extends string = string> {
   /** Knobs that applies to all the examples. */
   exampleKnobs?: React.ReactNode;
 
-  /** (7) Properties table(s) as Markdown string. */
+  /** (7) JSON to populate the API reference tables. Mutually exclusive with `propertiesTableSources`. */
+  jsonDocs?: IPageJson;
+
+  /** (7) Properties table(s) as Markdown string. Mutually exclusive with `jsonDocs`. */
   propertiesTablesSources?: string[];
 
-  /** For properties (implementation) section, whether the component allows native props. */
+  /**
+   * For properties (implementation) section, whether the component allows native props.
+   * Only relevant if using `propertiesTableSources`.
+   */
   allowNativeProps?: boolean;
 
-  /** For properties (implementation) section, native props root element. */
+  /**
+   * For properties (implementation) section, native props root element.
+   * Only relevant if using `propertiesTableSources`.
+   */
   nativePropsElement?: string | string[];
 
-  /** For properties (implementation) section, override component name to use in the native props message */
+  /**
+   * For properties (implementation) section, override component name to use in the native props message.
+   * Only relevant if using `propertiesTableSources`.
+   */
   allowNativePropsForComponentName?: string;
+
+  /** For properties (implementation) section, whether to hide the section title. */
+  hideImplementationTitle?: boolean;
 
   /** (8) Array of custom sections. */
   otherSections?: IPageSectionProps[];

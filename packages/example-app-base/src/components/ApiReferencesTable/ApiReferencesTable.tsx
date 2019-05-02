@@ -43,7 +43,6 @@ export const LARGE_GAP_SIZE = 48;
 const DEPRECATED_ROW_COLOR = '#FFF1CC';
 
 const backticksRegex = new RegExp('`[^`]*`', 'g');
-const hashRegex = new RegExp(/\#\/\w+\//);
 
 const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
   return (
@@ -460,19 +459,24 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return (
       <>
         {linkTokens.map((token: ILinkToken, index: number) => {
-          let match: RegExpMatchArray | null = null;
           let hash: string = '/components/';
           // get hash to set correct href value on the links for the local site vs. the Fabric site
-          if (this._baseUrl !== '') {
-            match = this._baseUrl.match(hashRegex);
-            if (match !== null) {
-              hash = match[0].substring(1);
+
+          const split = this._baseUrl.split('#');
+          const cleanedSplit = split.filter(value => !!value);
+          if (cleanedSplit && cleanedSplit.length > 1) {
+            // handle /references/referenceName structure
+            if (cleanedSplit[1].indexOf('/references/') !== -1) {
+              const indexOfReferenceName = cleanedSplit[1].lastIndexOf('/');
+              const indexOfReferences = cleanedSplit[1].lastIndexOf('/', indexOfReferenceName - 1);
+              hash = cleanedSplit[1].substring(0, indexOfReferences + 1);
+            } else {
+              const indexOfPageName = cleanedSplit[1].lastIndexOf('/');
+              hash = cleanedSplit[1].substring(0, indexOfPageName + 1);
             }
           }
           if (token.pageKind && token.hyperlinkedPage) {
             let href;
-            const split = this._baseUrl.split('#');
-            const cleanedSplit = split.filter(value => !!value);
 
             // whether the link should be opened in a new tab, defaults to true
             let newTab = true;

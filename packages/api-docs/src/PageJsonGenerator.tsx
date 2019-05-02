@@ -154,12 +154,6 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
       JsonFile.save(pageJson, pageJsonPath);
     }
   });
-
-  if (kind === 'References') {
-    const listJsonPath: string = path.join(options.pageJsonFolderPath, 'list.json');
-    referencesList.pages = referencesList.pages.sort();
-    JsonFile.save(referencesList, listJsonPath);
-  }
 }
 
 function renderDefaultValue(section: DocNodeContainer): string {

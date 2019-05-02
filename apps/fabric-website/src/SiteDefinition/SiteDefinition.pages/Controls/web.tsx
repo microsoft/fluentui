@@ -1,7 +1,9 @@
 import * as React from 'react';
-import { INavPage, LoadingComponent, Page } from '@uifabric/example-app-base/lib/index2';
+import { INavPage, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
+import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
+import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
+import { Omit } from 'office-ui-fabric-react/lib/Utilities';
 
-type Omit<U, K extends keyof U> = Pick<U, Exclude<keyof U, K>>;
 type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
 interface ICategory {
@@ -123,6 +125,7 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
   'Fluent Theme': {
     FluentTheme: { title: 'Fluent Theme', url: 'fluent-theme' }
   },
+  References: {},
   Other: {}
 };
 
@@ -221,6 +224,9 @@ function generateCategories() {
     }
   }
 
+  // Add reference pages
+  pagesByCategory.References = _loadReferences();
+
   // Convert the categories to an array (filter out empty categories)
   return categoryNames
     .filter(category => !!pagesByCategory[category].length)
@@ -249,6 +255,24 @@ function _generatePage(
     getComponent: cb => requireContext(pagePath).then((mod: any) => cb(mod[componentName + 'Page'])),
     ...nonUrlOverrides
   };
+}
+
+function _loadReferences(): INavPage[] {
+  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/, 'lazy');
+
+  return requireContext.keys().map(pagePath => {
+    const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
+    return {
+      title: pageName,
+      url: '#/controls/web/references/' + pageName.toLowerCase(),
+      isFilterable: true,
+      component: () => <LoadingComponent title={pageName} />,
+      getComponent: cb =>
+        requireContext(pagePath).then((jsonDocs: IPageJson) => {
+          cb(() => <ControlsAreaPage jsonDocs={jsonDocs} title={pageName} hideImplementationTitle />);
+        })
+    };
+  });
 }
 
 export const controlsPagesWeb: INavPage[] = [
