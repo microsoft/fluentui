@@ -266,34 +266,5 @@ export function themeRulesStandardCreator(): IThemeRules {
   slotRules[FabricSlots[FabricSlots.themeDark]].isCustomized = true;
   slotRules[FabricSlots[FabricSlots.themeDarker]].isCustomized = true;
 
-  /*** SEMANTIC SLOTS */
-  // This code is commented out for now but left for future semantic color customization.
-  // create the SlotRule for a semantic slot
-  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
-    const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-    const thisSlotRule = {
-      name: SemanticColorSlots[semanticSlot],
-      inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-      isCustomized: false,
-      dependentRules: []
-    };
-    slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
-    inherits.dependentRules.push(thisSlotRule);
-  }
-
-  // // BODY
-  // // None
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  // _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-
-  // // LINKS
-
-  // // BUTTONS
-
-  // // INPUTS
-
-  // // LISTS
-
-  // // MENUS
   return slotRules;
 }
