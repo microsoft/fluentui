@@ -156,11 +156,11 @@ function createBlobFromResults(perfBlob) {
             <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].peritemavg : '...'}</td>
             <td>${perfBlob.stats[scenario] ? perfBlob.stats[scenario].valid : '...'}</td>
             <td>${
-              perfBlob.now[scenario] && perfBlob.new[scenario] && perfBlobl.stats[scenario]
+              perfBlob.now[scenario] && perfBlob.new[scenario] && perfBlob.stats[scenario]
                 ? !perfBlob.stat[scenario].valid && perfBlob.now[scenario] - perfBlob.new[scenario] < 0
                 : '...'
             }</td>
-           </tr>  `
+           </tr>`
       )
       .join('\n')
       .concat(`</table>`)
