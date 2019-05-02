@@ -9,6 +9,7 @@ import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 export interface IAccessibilityCheckerProps {
   theme?: ITheme;
   themeRules?: IThemeRules;
+  onMessageBarClick: () => void;
 }
 
 export interface IContrastRatioPair {
@@ -43,8 +44,8 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
     // primary color also needs to be accessible, this is also strong variant default
     calculateContrastRatio(FabricSlots.white, FabricSlots.themePrimary);
     calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.neutralLighter); // neutral variant default
-    calculateContrastRatio(FabricSlots.themeDark, FabricSlots.neutralLighter);
-    calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.themeLighter); // neutral variant with primary color
+    calculateContrastRatio(FabricSlots.themePrimary, FabricSlots.white);
+    calculateContrastRatio(FabricSlots.themeDarkAlt, FabricSlots.neutralLighter);
     // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
     if (!isDark(props.themeRules![BaseSlots[BaseSlots.backgroundColor]].color!)) {
       // is not inverted
@@ -61,7 +62,12 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   return (
     <div className={itemWrapper}>
       <h1>Accessibility Checker</h1>
-      <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
+      <AccessibilityDetailsList
+        onMessageBarClick={props.onMessageBarClick}
+        theme={props.theme!}
+        accessiblePairs={accessiblePairs}
+        nonAccessiblePairs={nonAccessiblePairs}
+      />
     </div>
   );
 };

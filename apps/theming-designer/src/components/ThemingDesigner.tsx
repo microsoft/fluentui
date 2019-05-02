@@ -92,7 +92,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <ThemeProvider theme={this.state.theme}>
                 <Samples backgroundColor={this.state.backgroundColor.str} />
               </ThemeProvider>
-              <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
+              <AccessibilityChecker onMessageBarClick={this.onMessageBarFix} theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
               {semanticSlotsCard}
             </Stack>
@@ -101,6 +101,12 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       </Stack>
     );
   }
+
+  private onMessageBarFix = () => {
+    console.log('hello world');
+    this.setState({ textColor: getColorFromString('#e1dfdd')! });
+    this.setState({ backgroundColor: getColorFromString('#1b1a19')! });
+  };
 
   private _onPrimaryColorPickerChange(newColor: IColor | undefined) {
     this._onColorChange(this.state.primaryColor, BaseSlots.primaryColor, newColor);
@@ -147,7 +153,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
           ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
           if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
             // isInverted got swapped, so need to refresh slots with new shading rules
-            ThemeGenerator.ensureSlots(themeRules, currentIsDark);
+            ThemeGenerator.insureSlots(themeRules, currentIsDark);
           }
         }
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
@@ -164,7 +170,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
       textColor: getColorFromString('#323130')!,
       backgroundColor: getColorFromString('#ffffff')!
     };
-    ThemeGenerator.ensureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
+    ThemeGenerator.insureSlots(themeRules, isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!));
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.primaryColor]], colors.primaryColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
