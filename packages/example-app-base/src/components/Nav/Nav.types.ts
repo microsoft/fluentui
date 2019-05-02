@@ -75,6 +75,12 @@ export interface INavPage<TPlatform extends string = string> {
   isUhfLink?: boolean;
 
   /**
+   * Whether the link is to an external site.
+   * This flag enables the 'NavigateExternalInline' icon.
+   */
+  isExternal?: boolean;
+
+  /**
    * An object of platform arrays containing pages specific to each platform.
    */
   platforms?: TPlatformPages<TPlatform>;

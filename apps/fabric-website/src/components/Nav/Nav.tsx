@@ -4,6 +4,7 @@ import {
   css,
   FocusZone,
   IButtonStyles,
+  Icon,
   IIconProps,
   IconButton,
   ISearchBoxStyles,
@@ -152,8 +153,15 @@ export class Nav extends React.Component<INavProps, INavState> {
         key={linkIndex}
       >
         {!(page.isUhfLink && location.hostname !== 'localhost') && searchRegEx.test(page.title) && (
-          <Link href={page.url} onClick={this._onLinkClick} title={title} aria-label={ariaLabel}>
+          <Link
+            href={page.url}
+            onClick={this._onLinkClick}
+            title={page.isExternal ? title + ' (External)' : title}
+            aria-label={ariaLabel}
+            target={page.isExternal && '_blank'}
+          >
             {linkText}
+            {page.isExternal && <Icon iconName="NavigateExternalInline" className={styles.externalIcon} />}
           </Link>
         )}
 
