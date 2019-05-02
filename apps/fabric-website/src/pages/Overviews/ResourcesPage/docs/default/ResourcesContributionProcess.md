@@ -1,4 +1,4 @@
-Reference these step-by-step processes for contributing to the design toolkits, controls, icons and HIG.
+Reference these step-by-step processes for contributing to the design toolkits, controls, and icons.
 
 ### Fabric controls
 
