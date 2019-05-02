@@ -1725,8 +1725,11 @@ export interface IBreadcrumb {
     focus(): void;
 }
 
+// @public @deprecated (undocumented)
+export type IBreadCrumbData = IBreadcrumbData;
+
 // @public (undocumented)
-export interface IBreadCrumbData {
+export interface IBreadcrumbData {
     // (undocumented)
     props: IBreadcrumbProps;
     // (undocumented)
@@ -1753,7 +1756,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
     focusZoneProps?: IFocusZoneProps;
     items: IBreadcrumbItem[];
     maxDisplayedItems?: number;
-    onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
+    onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
     onRenderItem?: IRenderFunction<IBreadcrumbItem>;
     overflowAriaLabel?: string;
     overflowIndex?: number;
@@ -3223,11 +3226,11 @@ export type IDetailsHeaderStyleProps = Required<Pick<IDetailsHeaderProps, 'theme
 export interface IDetailsHeaderStyles {
     // (undocumented)
     accessibleLabel: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellIsActionable: IStyle;
     // (undocumented)
     cellIsCheck: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellIsEmpty: IStyle;
     // (undocumented)
     cellIsGroupExpander: IStyle;
@@ -3239,7 +3242,7 @@ export interface IDetailsHeaderStyles {
     cellSizerEnd: IStyle;
     // (undocumented)
     cellSizerStart: IStyle;
-    // (undocumented)
+    // @deprecated (undocumented)
     cellWrapperPadded: IStyle;
     // (undocumented)
     check: IStyle;
@@ -3558,6 +3561,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     className?: string;
     closeButtonAriaLabel?: string;
     componentRef?: IRefObject<IDialogContent>;
+    draggableHeaderClassName?: string;
     isMultiline?: boolean;
     onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
     // Warning: (ae-forgotten-export) The symbol "ResponsiveMode" needs to be exported by the entry point index.d.ts
@@ -3576,6 +3580,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
 // @public (undocumented)
 export interface IDialogContentStyleProps {
     className?: string;
+    draggableHeaderClassName?: string;
     // (undocumented)
     hidden?: boolean;
     // (undocumented)
@@ -3684,6 +3689,10 @@ export interface IDialogState {
     // (undocumented)
     id?: string;
     // (undocumented)
+    isInKeyboardMoveMode?: boolean;
+    // (undocumented)
+    isModalMenuOpen?: boolean;
+    // (undocumented)
     isOpen?: boolean;
     // (undocumented)
     isVisible?: boolean;
@@ -3691,6 +3700,10 @@ export interface IDialogState {
     isVisibleClose?: boolean;
     // (undocumented)
     modalRectangleTop?: number;
+    // (undocumented)
+    x: number;
+    // (undocumented)
+    y: number;
 }
 
 // @public (undocumented)
@@ -4064,6 +4077,15 @@ export interface IDocumentCardTitleStyleProps {
 export interface IDocumentCardTitleStyles {
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDragOptions {
+    closeMenuItemText: string;
+    dragHandleSelector?: string;
+    keyboardMoveIconProps?: IIconProps;
+    menu: React.StatelessComponent<IContextualMenuProps>;
+    moveMenuItemText: string;
 }
 
 // @public (undocumented)
@@ -5262,6 +5284,7 @@ export interface IModalProps extends React.ClassAttributes<ModalBase>, IWithResp
     className?: string;
     componentRef?: IRefObject<IModal>;
     containerClassName?: string;
+    dragOptions?: IDragOptions;
     isBlocking?: boolean;
     isDarkOverlay?: boolean;
     isModeless?: boolean;
@@ -5286,10 +5309,15 @@ export type IModalStyleProps = Required<Pick<IModalProps, 'theme'>> & Pick<IModa
     hasBeenOpened?: boolean;
     modalRectangleTop?: number;
     layerClassName?: string;
+    isDefaultDragHandle?: boolean;
 };
 
 // @public (undocumented)
 export interface IModalStyles {
+    // (undocumented)
+    keyboardMoveIcon: IStyle;
+    // (undocumented)
+    keyboardMoveIconContainer: IStyle;
     // (undocumented)
     layer: IStyle;
     // (undocumented)
@@ -7536,7 +7564,7 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
     calloutProps?: ICalloutProps;
     closeDelay?: number;
     componentRef?: IRefObject<ITooltipHost>;
-    content?: string;
+    content?: string | JSX.Element | JSX.Element[];
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;
@@ -7570,7 +7598,7 @@ export interface ITooltipHostStyles {
 export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | TooltipBase> {
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITooltip>;
-    content?: string;
+    content?: string | JSX.Element | JSX.Element[];
     delay?: TooltipDelay;
     directionalHint?: DirectionalHint;
     directionalHintForRTL?: DirectionalHint;

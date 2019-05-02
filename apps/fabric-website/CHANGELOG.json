@@ -2,6 +2,35 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.15.0",
+      "tag": "@uifabric/fabric-website_v6.15.0",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Check for undefined hashes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "37f6d5a9a46098bd70e41d687f5cfbccbc8ae14e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds a manifest generation script",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "c10e2981d691a1b2067546667d3cca134195095d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.0` to `^6.16.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.175.0` to `^6.176.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.0",
       "tag": "@uifabric/fabric-website_v6.14.0",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

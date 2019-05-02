@@ -68,7 +68,10 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <IconButton
                 disabled={false}
                 checked={false}
-                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
+                iconProps={{
+                  iconName: 'Color',
+                  styles: { root: { fontSize: '20px' } }
+                }}
                 title="Colors"
                 ariaLabel="Colors"
               />
@@ -116,7 +119,9 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
   private _makeNewTheme = (): void => {
     if (this.state.themeRules) {
-      const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+      const themeAsJson: {
+        [key: string]: string;
+      } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
 
       const finalTheme = createTheme({
         ...{ palette: themeAsJson },
@@ -169,7 +174,9 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
 
-    const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(themeRules);
+    const themeAsJson: {
+      [key: string]: string;
+    } = ThemeGenerator.getThemeAsJson(themeRules);
 
     const finalTheme = createTheme({
       ...{ palette: themeAsJson }

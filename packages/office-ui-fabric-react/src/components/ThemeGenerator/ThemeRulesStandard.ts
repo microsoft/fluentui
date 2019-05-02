@@ -281,52 +281,19 @@ export function themeRulesStandardCreator(): IThemeRules {
     inherits.dependentRules.push(thisSlotRule);
   }
 
-  // BODY
-  // None
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  // // BODY
+  // // None
+  // _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
+  // _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
 
-  // Neutral
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.neutralLighter);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
+  // // LINKS
 
-  // Soft
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themeLighterAlt);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  // Strong
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themePrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.white);
-  // LINKS
-  // None
-  // Neutral
-  // Soft
-  // Strong
+  // // BUTTONS
 
-  // BUTTONS
-  // None
-  // Neutral
-  // Soft
-  // Strong
+  // // INPUTS
 
-  // INPUTS
-  // None
-  // Neutral
-  // Soft
-  // Strong
+  // // LISTS
 
-  // LISTS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // MENUS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // No need to set semantic color slot rules to default value because they inherit from FabricSlots which inherit from BaseSlots
-
+  // // MENUS
   return slotRules;
 }
