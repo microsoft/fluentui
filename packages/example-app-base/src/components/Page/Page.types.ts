@@ -84,6 +84,9 @@ export interface IPageProps<TPlatforms extends string = string> {
    */
   allowNativePropsForComponentName?: string;
 
+  /** For properties (implementation) section, whether to hide the section title. */
+  hideImplementationTitle?: boolean;
+
   /** (8) Array of custom sections. */
   otherSections?: IPageSectionProps[];
 

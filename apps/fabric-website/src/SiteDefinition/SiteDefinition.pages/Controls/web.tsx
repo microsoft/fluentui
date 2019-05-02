@@ -269,7 +269,7 @@ function _loadReferences(): INavPage[] {
       component: () => <LoadingComponent title={pageName} />,
       getComponent: cb =>
         requireContext(pagePath).then((jsonDocs: IPageJson) => {
-          cb(() => <ControlsAreaPage jsonDocs={jsonDocs} title={pageName} />);
+          cb(() => <ControlsAreaPage jsonDocs={jsonDocs} title={pageName} hideImplementationTitle />);
         })
     };
   });
