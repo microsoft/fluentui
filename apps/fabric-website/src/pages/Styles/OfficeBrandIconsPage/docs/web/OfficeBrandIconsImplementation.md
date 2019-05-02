@@ -9,7 +9,7 @@ Office brand icons come in predefined dimensions at 16px, 48px, and 96px. Althou
 
 ### File type icons
 
-The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package from Fabric](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/file-type-icons) (npm package `@uifabric/file-type-icons`).  Here's a simple [demo of how](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx).  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are served up from Fabric-CDN but you should not directly clone or reference these.
+The most durable and future-proof way to get the right icon for a file or item is to use the [file-type-icons package from Fabric](https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/file-type-icons) (`@uifabric/file-type-icons` on npm).  Here's a [simple demo](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/experiments/src/components/FileTypeIcon/examples/FileTypeIcon.Basic.Example.tsx) of how to use the package.  The code for the main method you'll use ([`getFileTypeIconProps`](https://github.com/OfficeDev/office-ui-fabric-react/blob/master/packages/file-type-icons/src/getFileTypeIconProps.ts)) is also well-commented. The icons are served up from Fabric CDN, but you should not directly clone or reference these.
 
 Using the new file type icons looks something like this:
 
