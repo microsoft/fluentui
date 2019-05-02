@@ -54,8 +54,8 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
   redirects: {
     '#/customizations/': '#/controls/web/customizations/',
     '#/examples/announced/': '#/controls/web/announced/',
-    '#/components': '#/controls/web',
     '#/components/ComboBox': '#/controls/web/combobox',
-    '#/components/Calendar': '#/controls/web/calendar'
+    '#/components/Calendar': '#/controls/web/calendar',
+    '#/components': '#/controls/web'
   }
 };
