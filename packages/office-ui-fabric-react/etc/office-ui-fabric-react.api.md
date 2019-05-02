@@ -6322,6 +6322,7 @@ export interface ISelectableOption {
     ariaLabel?: string;
     data?: any;
     disabled?: boolean;
+    hidden?: boolean;
     index?: number;
     itemType?: SelectableOptionMenuItemType;
     key: string | number;

@@ -39,7 +39,7 @@ export interface ISelectableOption {
   disabled?: boolean;
 
   /**
-   * Wheter the option is hidden
+   * Defines whether the option is hidden or not.
    * @defaultvalue false
    */
   hidden?: boolean;
