@@ -22,17 +22,7 @@ export class PlatformPicker<TPlatforms extends string = string> extends React.Pu
                 pages = pagePlatforms[platformKey];
               }
               const { icon, color = '#0078d4' } = platform;
-              let iconClassName = css(styles.icon, platform.iconClassName);
-
-              switch (icon) {
-                case 'TVMonitor':
-                  iconClassName = css(styles.icon, styles.webIcon, platform.iconClassName);
-                  break;
-
-                case 'WindowsLogo':
-                  iconClassName = css(styles.icon, styles.windowsLogo, platform.iconClassName);
-                  break;
-              }
+              const iconClassName = css(styles.icon, platform.iconClassName);
 
               return (
                 <li key={platformKey} className={styles.platformItem}>

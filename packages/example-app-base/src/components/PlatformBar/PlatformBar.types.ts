@@ -1,7 +1,7 @@
 import { ITheme, IStyle, IStyleFunctionOrObject } from 'office-ui-fabric-react';
 import { IPlatformPickerProps } from '../PlatformPicker/index';
 
-export interface IPlatformBarProps extends IPlatformPickerProps {
+export interface IPlatformBarProps<TPlatforms extends string = string> extends IPlatformPickerProps {
   theme?: ITheme;
   className?: string;
   styles?: IStyleFunctionOrObject<IPlatformBarStyleProps, IPlatformBarStyles>;

@@ -61,7 +61,7 @@ export const getStyles = (props: IPlatformBarStyleProps): IPlatformBarStyles => 
         transition: `background ${MotionDurations.duration2} ${MotionTimings.decelerate}`,
 
         selectors: {
-          '&:hover': {
+          '&:hover, &:active, &:active:hover': {
             background: platformShade ? platformShade.str : palette.themeLight
           }
         }

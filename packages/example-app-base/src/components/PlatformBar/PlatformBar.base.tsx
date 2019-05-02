@@ -2,10 +2,11 @@ import * as React from 'react';
 import { classNamesFunction, FocusZone, DefaultButton, Icon, TooltipHost } from 'office-ui-fabric-react';
 import { IPlatformBarProps, IPlatformBarStyleProps, IPlatformBarStyles } from './PlatformBar.types';
 import { IPlatform } from '../PlatformPicker/index';
+import { INavPage } from '../Nav/index';
 
 const getClassNames = classNamesFunction<IPlatformBarStyleProps, IPlatformBarStyles>();
 
-export class PlatformBarBase extends React.PureComponent<IPlatformBarProps> {
+export class PlatformBarBase<TPlatforms extends string = string> extends React.PureComponent<IPlatformBarProps<TPlatforms>> {
   private _classNames: { [key in keyof IPlatformBarStyles]: string };
 
   public render(): JSX.Element {
@@ -28,24 +29,36 @@ export class PlatformBarBase extends React.PureComponent<IPlatformBarProps> {
   }
 
   private _renderPlatformGrid = (platforms: { [key: string]: IPlatform | undefined }): JSX.Element[] => {
-    return Object.keys(platforms).map(platformKey => {
-      const platform = platforms[platformKey];
-      return <li key={platform!.name}>{this._renderPlatformSquare(platform!, platformKey)}</li>;
-    });
+    return Object.keys(platforms)
+      .filter(platform => !!platforms[platform as TPlatforms])
+      .map((platformKey: TPlatforms) => {
+        const platform: IPlatform = platforms[platformKey]!;
+        return <li key={platform!.name}>{this._renderPlatformSquare(platform!, platformKey)}</li>;
+      });
   };
 
-  private _renderPlatformSquare = (platform: IPlatform, platformKey: string): JSX.Element => {
-    const { styles, theme } = this.props;
+  private _renderPlatformSquare = (platform: IPlatform, platformKey: TPlatforms): JSX.Element => {
+    const { styles, theme, pagePlatforms } = this.props;
     const { name, icon, color } = platform;
     const classNames = getClassNames(styles, { theme: theme!, platformColor: color });
+
+    let disabled: boolean = true;
+    let pages: INavPage<TPlatforms>[] | undefined;
+    if (pagePlatforms) {
+      const platformPages = pagePlatforms[platformKey] as INavPage<TPlatforms>[];
+      disabled = !platformPages;
+      pages = platformPages;
+    }
 
     return (
       <TooltipHost content={name} id={platformKey}>
         <DefaultButton
+          href={pages && this._getFirstPageUrl(pages)}
           className={classNames.platformButton}
           aria-describedby={platformKey}
           /* tslint:disable-next-line jsx-no-lambda */
           onClick={() => this._handlePlatformClick(platformKey)}
+          disabled={disabled}
         >
           <Icon iconName={icon} className={classNames.platformIcon} />
         </DefaultButton>
@@ -58,5 +71,24 @@ export class PlatformBarBase extends React.PureComponent<IPlatformBarProps> {
     if (onPlatformClick) {
       onPlatformClick(platformKey);
     }
+  };
+
+  private _getFirstPageUrl = (pages: INavPage[]): string => {
+    let url = '';
+    for (const page of pages) {
+      if (page.url) {
+        url = page.url;
+        break;
+      }
+      if (page.pages) {
+        url = this._getFirstPageUrl(page.pages);
+      }
+
+      if (url.length > 0) {
+        break;
+      }
+    }
+
+    return url;
   };
 }
