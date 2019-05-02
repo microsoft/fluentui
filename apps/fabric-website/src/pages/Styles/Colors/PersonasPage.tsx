@@ -176,14 +176,6 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       core: '$ms-color-sharedGray30',
                       react: 'SharedColors.gray30'
                     }
-                  },
-                  {
-                    name: 'Gray40',
-                    hex: '#393939',
-                    code: {
-                      core: '$ms-color-sharedGray40',
-                      react: 'SharedColors.gray40'
-                    }
                   }
                 ]}
               />

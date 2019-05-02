@@ -21,6 +21,7 @@ import { Nav } from '../Nav/index';
 import * as styles from './Site.module.scss';
 import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext } from '@uifabric/example-app-base/lib/index';
+import SiteMessageBar from './SiteMessageBar';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -34,7 +35,7 @@ export interface ISiteState<TPlatforms extends string = string> {
   hasPlatformPicker?: boolean;
   pagePlatforms?: TPlatformPages<TPlatforms>;
   activePages?: INavPage<TPlatforms>[];
-  pageUrl?: string;
+  pagePath?: string;
   activePlatforms: { [topLevelPage: string]: TPlatforms };
 }
 
@@ -61,6 +62,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       // Get local storage platforms for top level pages.
       let activePlatforms: ISiteState<TPlatforms>['activePlatforms'];
       try {
+        // Accessing localStorage can throw for various reasons
         activePlatforms = JSON.parse(localStorage.getItem('activePlatforms') || '') || {};
       } catch (ex) {
         activePlatforms = {};
@@ -116,6 +118,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
           onLinkClick={this._onTopNavLinkClick}
           badgeText={siteDefinition.badgeText}
         />
+        {this._renderMessageBar()}
         <div className={css(styles.siteWrapper, isContentFullBleed && styles.fullWidth)}>
           {this._renderPageNav()}
           <main className={styles.siteContent} data-is-scrollable="true" data-app-content-div="true" role="main">
@@ -190,7 +193,22 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     };
   }
 
-  private _renderPageNav = (): JSX.Element | null => {
+  private _renderMessageBar(): JSX.Element | null {
+    const { pagePath } = this.state;
+    // TODO: generalize when to show a message bar and how to provide the text
+    if (pagePath && pagePath.indexOf('#/controls/web') === 0 && pagePath.indexOf('fluent-theme') === -1) {
+      return (
+        <SiteMessageBar
+          text="You can now implement the new Fluent styles in Fabric Web controls."
+          learnMoreUrl="#/controls/web/fluent-theme"
+          localStoragePrefix="WebFluentUpdates"
+        />
+      );
+    }
+    return null;
+  }
+
+  private _renderPageNav(): JSX.Element | null {
     const { activePages, searchablePageTitle, isContentFullBleed, pagePlatforms = {} } = this.state;
 
     if (!isContentFullBleed && activePages) {
@@ -216,7 +234,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       );
     }
     return null;
-  };
+  }
 
   /**
    * Determines the current page's platform.
@@ -342,36 +360,36 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    * is detected in the window URL. Fires a pageView tracking event.
    */
   private _handleRouteChange = (): void => {
-    const { pageUrl, platform } = this.state;
+    const { pagePath: prevPagePath, platform } = this.state;
     const { siteDefinition } = this.props;
     const { platforms } = siteDefinition;
-    const url = window.location.hash;
+    const newPagePath = window.location.hash;
 
     const platformKeys = platforms && (Object.keys(platforms) as TPlatforms[]);
     if (platformKeys && platformKeys.length > 0) {
       // Test if the platform has changed on each hashchange to avoid costly forEach below.
       const isCurrentPlatform = new RegExp(`/${platform}`);
 
-      !isCurrentPlatform.test(url) &&
+      !isCurrentPlatform.test(newPagePath) &&
         platformKeys.forEach(platformKey => {
           // If the user navigates directly to a platform specific page, set the active platform to that of the new page.
           const isNewPlatform = new RegExp(`/${platformKey}`, 'gi');
-          if (isNewPlatform.test(url)) {
+          if (isNewPlatform.test(newPagePath)) {
             this._onPlatformChanged(platformKey);
           }
         });
     }
 
     // @TODO: investigate using real page name.
-    trackPageView('FabricPage', url, {
+    trackPageView('FabricPage', newPagePath, {
       currentArea: getSiteArea(),
-      previousPage: pageUrl,
+      previousPage: prevPagePath,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
       currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'
       referrer: document.referrer.length ? document.referrer : undefined
     });
 
     // @TODO: investigate using history to save a re-render.
-    this.setState({ pageUrl: url });
+    this.setState({ pagePath: newPagePath });
   };
 }
