@@ -22,6 +22,7 @@ $icon-size: 16px;
 
 .button {
   width: 100%;
+  min-width: 100%;
   height: 30px;
   padding: 8px;
   border: 1px solid $ms-color-neutralQuaternary;
@@ -68,5 +69,16 @@ $icon-size: 16px;
         stroke: $ms-color-black;
       }
     }
+  }
+}
+
+@media only screen and (max-width: $uhf-screen-max-lg) {
+  .platformPickerList {
+    margin: -$platform-button-margin -$platform-button-margin/2;
+  }
+
+  .platformItem {
+    margin: $platform-button-margin $platform-button-margin/2;
+    width: calc(#{percentage(1/3)} - #{$platform-button-margin});
   }
 }
