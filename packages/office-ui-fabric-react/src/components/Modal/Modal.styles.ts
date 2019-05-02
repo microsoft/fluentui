@@ -23,7 +23,8 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     theme,
     topOffsetFixed,
     isModeless,
-    layerClassName
+    layerClassName,
+    isDefaultDragHandle
   } = props;
   const { palette } = theme;
 
@@ -73,6 +74,9 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         hasBeenOpened && {
           top: modalRectangleTop
         },
+      isDefaultDragHandle && {
+        cursor: 'move'
+      },
       containerClassName
     ],
     scrollableContent: [
@@ -97,6 +101,17 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         width: 'unset',
         height: 'unset'
       }
-    ]
+    ],
+    keyboardMoveIconContainer: {
+      position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      padding: '3px 0px'
+    },
+    keyboardMoveIcon: {
+      fontSize: '24px',
+      width: '24px'
+    }
   };
 };
