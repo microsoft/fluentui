@@ -3,9 +3,11 @@ import { ISuggestionModel } from '../../../Pickers';
 
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];
+  private getAriaLabel?: (item: T) => string;
 
-  constructor() {
+  constructor(getAriaLabel?: (item: T) => string) {
     this.suggestions = [];
+    this.getAriaLabel = getAriaLabel;
   }
 
   public updateSuggestions(newSuggestions: T[]): void {
@@ -40,14 +42,14 @@ export class SuggestionsStore<T> {
   @autobind
   private _ensureSuggestionModel(suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> {
     if (this._isSuggestionModel(suggestion)) {
-      return suggestion as ISuggestionModel<T>;
+      return suggestion;
     } else {
       return {
         item: suggestion,
         selected: false,
         // tslint:disable-next-line:no-any
-        ariaLabel: (<any>suggestion).name || (<any>suggestion).primaryText
-      } as ISuggestionModel<T>;
+        ariaLabel: this.getAriaLabel !== undefined ? this.getAriaLabel() : (<any>suggestion).name || (<any>suggestion).primaryText
+      };
     }
   }
 }
