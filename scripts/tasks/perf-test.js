@@ -141,7 +141,7 @@ function createBlobFromResults(perfBlob) {
     <th>PR avg total (ms)</th>
     <th>Target branch avg per item (ms)</th>
     <th>PR avg per item (ms)</th>
-    <th>p-value for totals >= 0.05</th>
+    <th>p-value for totals >= 0.01</th>
   </tr>`.concat(
     scenariosFromMaster
       .concat(scenariosFromPr.filter(scn => !scenariosFromMaster.includes(scn)))
