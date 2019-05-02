@@ -7,7 +7,6 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 export const ElevationPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/ElevationPage/docs/web/ElevationContact.md') as string,
     related,
     componentUrl
   }

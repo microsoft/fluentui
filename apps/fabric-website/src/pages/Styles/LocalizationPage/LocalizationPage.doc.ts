@@ -8,7 +8,6 @@ const componentUrl =
 export const LocalizationPageProps: TFabricPlatformPageProps = {
   web: {
     title,
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationContact.md') as string,
     related,
     componentUrl
   }

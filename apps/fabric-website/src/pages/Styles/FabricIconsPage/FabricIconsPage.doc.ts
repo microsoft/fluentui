@@ -8,7 +8,6 @@ export const FabricIconsPageProps: TFabricPlatformPageProps = {
   web: {
     title,
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsOverview.md') as string,
-    contact: require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/FabricIconsPage/docs/web/FabricIconsContact.md') as string,
     related,
     componentUrl
   }
