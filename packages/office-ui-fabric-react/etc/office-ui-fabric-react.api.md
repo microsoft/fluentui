@@ -4144,6 +4144,7 @@ export interface IDropdownStyles {
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
     dropdownItemSelectedAndDisabled: IStyle;

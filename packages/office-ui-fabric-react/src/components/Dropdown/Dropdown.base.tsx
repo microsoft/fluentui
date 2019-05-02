@@ -542,14 +542,15 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
     // select the right className based on the combination of selected/disabled
-    const itemClassName =
-      isItemSelected && item.disabled === true // predicate: both selected and disabled
-        ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected // predicate: selected only
-        ? this._classNames.dropdownItemSelected
-        : item.disabled === true // predicate: disabled only
-        ? this._classNames.dropdownItemDisabled
-        : this._classNames.dropdownItem;
+    const itemClassName = item.hidden // predicate: item hidden
+      ? this._classNames.dropdownItemHidden
+      : isItemSelected && item.disabled === true // predicate: both selected and disabled
+      ? this._classNames.dropdownItemSelectedAndDisabled
+      : isItemSelected // predicate: selected only
+      ? this._classNames.dropdownItemSelected
+      : item.disabled === true // predicate: disabled only
+      ? this._classNames.dropdownItemDisabled
+      : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton
@@ -567,7 +568,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         aria-selected={isItemSelected ? 'true' : 'false'}
         ariaLabel={item.ariaLabel}
         title={item.title ? item.title : item.text}
-        hidden={item.hidden}
       >
         {onRenderOption(item, this._onRenderOption)}
       </CommandButton>
@@ -591,7 +591,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         role="option"
         aria-selected={isItemSelected ? 'true' : 'false'}
         checked={isItemSelected}
-        hidden={item.hidden}
       />
     );
   };

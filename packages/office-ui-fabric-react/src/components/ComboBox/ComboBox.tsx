@@ -1208,7 +1208,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           ariaLabel={this._getPreviewText(item)}
           disabled={item.disabled}
           title={title}
-          hidden={item.hidden}
         >
           {' '}
           {
@@ -1232,7 +1231,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
           aria-selected={isSelected ? 'true' : 'false'}
           checked={isSelected}
           title={title}
-          hidden={item.hidden}
         >
           {onRenderOption(item, this._onRenderOptionContent)}
         </Checkbox>
@@ -1969,7 +1967,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._isPendingOption(item));
+    return getOptionStyles(
+      this.props.theme!,
+      customStylesForAllOptions,
+      customStylesForCurrentOption,
+      this._isPendingOption(item),
+      item.hidden
+    );
   }
 
   /**

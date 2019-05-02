@@ -251,6 +251,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemSelected: dropdownItemSelected,
     dropdownItemDisabled: dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
+    dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],
     dropdownOptionText: [
       globalClassnames.dropdownOptionText,
