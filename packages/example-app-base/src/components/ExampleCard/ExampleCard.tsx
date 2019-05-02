@@ -55,7 +55,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
-          const { exampleCardCustomizations } = context;
+          const { exampleCardCustomizations, hideSchemes } = context;
           const activeCustomizations =
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
@@ -98,7 +98,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {exampleCardCustomizations && (
+                  {exampleCardCustomizations && !hideSchemes && (
                     <Dropdown
                       defaultSelectedKey={0}
                       onChange={this._onSchemeChange}
