@@ -24,6 +24,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     {
       title: 'Get started',
       url: '#/get-started',
+      isUhfLink: true,
       hasPlatformPicker: true,
       component: () => <LoadingComponent title="Get started" />,
       getComponent: cb =>
@@ -44,7 +45,6 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     StylesPages,
     ControlsPages,
     ResourcesPages,
-    AboutPages,
     {
       title: 'Demo Loading Page',
       url: '#/ms-loading',
