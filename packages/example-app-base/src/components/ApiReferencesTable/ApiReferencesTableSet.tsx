@@ -45,10 +45,11 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   public componentDidMount(): void {
     window.addEventListener('hashchange', this._onHashChange);
 
-    const hash = extractAnchorLink(window.location.hash);
+    const anchor = extractAnchorLink(window.location.hash);
 
-    if (!this.state.showSeeMore) {
-      const section = this.state.properties.filter(x => x.propertyName === hash)[0];
+    // If the "anchor" contains / that means it's the route path not an actual anchor
+    if (anchor && anchor.indexOf('/') === -1 && !this.state.showSeeMore) {
+      const section = this.state.properties.filter(x => x.propertyName === anchor)[0];
       if (section) {
         this.setState({
           showSeeMore: true
@@ -124,12 +125,12 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   private _onHashChange = (): void => {
     const { properties, showSeeMore } = this.state;
 
-    const hash = extractAnchorLink(window.location.hash);
-    if (hash) {
-      jumpToAnchor(hash, TITLE_LINE_HEIGHT);
+    const anchor = extractAnchorLink(window.location.hash);
+    if (anchor) {
+      jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
       if (!showSeeMore) {
-        const section = properties.filter(x => x.propertyName === hash)[0];
+        const section = properties.filter(x => x.propertyName === anchor)[0];
         if (section) {
           this.setState({
             showSeeMore: true

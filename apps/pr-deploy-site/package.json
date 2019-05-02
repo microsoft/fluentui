@@ -11,10 +11,12 @@
     "@uifabric/charting": "^0.28.13",
     "@uifabric/date-time": "6.0.3",
     "@uifabric/experiments": "^6.75.0",
-    "@uifabric/fabric-website-resources": "^6.15.0",
+    "@uifabric/fabric-website-resources": "^6.16.0",
+    "@uifabric/fabric-website": "^6.14.0",
     "@uifabric/foundation-scenarios": "^0.1.0",
+    "perf-test": "^6.0.0",
     "test-bundles": "^6.0.0",
-    "todo-app": "^6.0.0",
-    "perf-test": "^6.0.0"
+    "theming-designer": "^1.0.0",
+    "todo-app": "^6.0.0"
   }
 }

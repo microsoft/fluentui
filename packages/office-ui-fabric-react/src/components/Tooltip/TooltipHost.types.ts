@@ -50,9 +50,9 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   closeDelay?: number;
 
   /**
-   * String to be passed to the tooltip
+   *  Content to be passed to the tooltip
    */
-  content?: string;
+  content?: string | JSX.Element | JSX.Element[];
 
   /**
    * Length of delay

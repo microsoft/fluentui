@@ -96,7 +96,6 @@
       // Query params
       var dogfoodParam = getParameterByName('isDogfood');
       var productionParam = getParameterByName('isProduction');
-      var noCompress = isLocal || getParameterByName('noCompress');
       var devhost = getParameterByName('devhost');
 
       var entryPointFilename = 'fabric-sitev5';
@@ -111,7 +110,15 @@
       }
 
       // If the site is hosted, load the flight config script for production or dogfood
-      if (!isLocal) {
+      if (devhost !== null) {
+        if (devhost === '') {
+          var loc = window.location;
+          devhost = loc.protocol + '//' + loc.host + loc.pathname.replace('index.html', '');
+        }
+        appPath = devhost;
+        Flight.baseCDNUrl = devhost;
+        loadAppScripts(appPath);
+      } else if (!isLocal) {
         // Update as new fabric versions and its documentation are supported
         var fabricVersions = [5, 6];
 
@@ -128,43 +135,48 @@
         var prefixVer =
           fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
         // If a devhost is provided, override the config app path
-        if (devhost) {
-          appPath += devhost;
-          Flight.baseCDNUrl = devhost;
 
-          loadAppScripts(appPath);
-        } else {
-          var configPrefix = `fabric-website-${prefixVer}${isProduction ? 'prod' : 'df'}`;
+        var configPrefix = `fabric-website-${prefixVer}${isProduction ? 'prod' : 'df'}`;
 
-          var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
+        var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
-          loadScripts(configScript, function() {
-            if (window.Flight) {
-              appPath += window.Flight.baseCDNUrl;
+        loadScripts(configScript, function() {
+          if (window.Flight) {
+            appPath += window.Flight.baseCDNUrl;
 
-              loadAppScripts(appPath);
-            }
-          });
-        }
+            loadAppScripts(appPath);
+          }
+        });
       } else {
         loadAppScripts(appPath);
       }
 
       // Simple synchronous script loader with callback. Adapted from https://stackoverflow.com/questions/1866717
       function loadScripts(array, callback) {
-        var loader = function(src, handler) {
+        var loader = function(src, handler, failHandler) {
           var script = document.createElement('script');
           script.src = src;
           script.onload = script.onreadystatechange = function() {
             script.onreadystatechange = script.onload = null;
             handler();
           };
+
+          script.onerror = function() {
+            script.onerror = null;
+            if (failHandler) {
+              failHandler();
+            }
+          };
+
           var head = document.getElementsByTagName('head')[0];
           (head || document.body).appendChild(script);
         };
         (function run() {
           if (array.length != 0) {
-            loader(array.shift(), run);
+            const scriptName = array.shift();
+            loader(scriptName, run, () => {
+              loader(scriptName.replace('.min.js', '.js'), run);
+            });
           } else {
             callback && callback();
           }
@@ -172,20 +184,10 @@
       }
 
       function loadAppScripts(appPath) {
-        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react';
-        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom';
+        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react.production.min.js';
+        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom.production.min.js';
 
-        if (noCompress) {
-          reactPath = reactPath + '.development.js';
-          reactDomPath = reactDomPath + '.development.js';
-          appPath += entryPointFilename + '.js';
-        } else {
-          reactPath = reactPath + '.production.min.js';
-          reactDomPath = reactDomPath + '.production.min.js';
-          appPath += entryPointFilename + '.min.js';
-        }
-
-        var scripts = [reactPath, reactDomPath, appPath];
+        var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.min.js'];
 
         // Load React and app scripts
         loadScripts(scripts);
