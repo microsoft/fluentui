@@ -5,7 +5,6 @@ import { DialogType, IDialogContentProps } from './DialogContent.types';
 import { Modal, IModalProps, IDragOptions } from '../../Modal';
 import { ILayerProps } from '../../Layer';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { getMergedDialogContentStyles } from './Dialog.styles';
 
 const getClassNames = classNamesFunction<IDialogStyleProps, IDialogStyles>();
 
@@ -121,7 +120,8 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
 
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
-      ...this.props.dialogContentProps
+      ...this.props.dialogContentProps,
+      draggableHeaderClassName: dialogDraggableClassName
     };
 
     const classNames = getClassNames(styles!, {
@@ -132,8 +132,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       dialogDefaultMinWidth: minWidth,
       dialogDefaultMaxWidth: maxWidth
     });
-
-    const mergedDialogContentStyles = getMergedDialogContentStyles(dialogContentProps, dialogDraggableClassName);
 
     return (
       <Modal
@@ -165,7 +163,6 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
           onDismiss={onDismiss ? onDismiss : dialogContentProps!.onDismiss}
           className={contentClassName || dialogContentProps!.className}
           {...dialogContentProps}
-          styles={mergedDialogContentStyles}
         >
           {this.props.children}
         </DialogContent>
