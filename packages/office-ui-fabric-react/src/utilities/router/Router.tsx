@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
+import { initializeComponentRef, on } from '../../Utilities';
+import { IRouteProps } from './Route';
 
 export interface IRouterProps {
   /**
@@ -8,16 +9,28 @@ export interface IRouterProps {
   componentRef?: () => void;
 
   replaceState?: boolean;
-  children?: any;
+  children?: React.ReactNode;
   onNewRouteLoaded?: () => void;
 }
 
-export class Router extends BaseComponent<IRouterProps, {}> {
-  public componentDidMount(): void {
-    this._events.on(window, 'hashchange', () => this.forceUpdate());
+export class Router extends React.PureComponent<IRouterProps> {
+  private _disposables: Function[];
+
+  constructor(props: IRouterProps) {
+    super(props);
+    this._disposables = [];
+    initializeComponentRef(this);
   }
 
-  public render(): JSX.Element | null {
+  public componentDidMount(): void {
+    this._disposables.push(on(window, 'hashchange', () => this.forceUpdate()));
+  }
+
+  public componentWillUnmount(): void {
+    this._disposables.forEach(dispose => dispose());
+  }
+
+  public render() {
     return this._resolveRoute();
   }
 
@@ -38,26 +51,31 @@ export class Router extends BaseComponent<IRouterProps, {}> {
     return path;
   }
 
-  private _resolveRoute(path?: string, children?: React.ReactNode): React.DOMElement<any, Element> | null {
-    path = path || this._getPath();
+  private _resolveRoute(children?: React.ReactNode): React.ReactElement<any> | null {
+    const path = this._getPath().toLowerCase();
     children = children || this.props.children;
 
-    const routes = React.Children.toArray(children);
+    // The children are supposed to be Route elements, but we verify this below.
+    const routes = React.Children.toArray(children) as React.ReactElement<IRouteProps>[];
 
-    for (let i = 0; i < routes.length; i++) {
-      const route: any = routes[i];
-
-      if (_match(path, route)) {
-        const { getComponent } = route.props;
+    for (const route of routes) {
+      if (!route.props) {
+        continue; // probably some other child type, not a route
+      }
+      // Use this route if it has no path, or if the path matches the current path (from the hash)
+      const routePath = route.props.path;
+      if (!routePath || routePath.toLowerCase() === path) {
         let { component } = route.props;
 
+        // The loaded component is stored as a prop on the loader function...because obviously
+        const getComponent: Required<IRouteProps>['getComponent'] & { component?: React.ComponentType } = route.props.getComponent!;
         if (getComponent) {
           let asynchronouslyResolved = false;
 
           if (getComponent.component) {
             component = getComponent.component;
           } else {
-            getComponent((resolved: any) => {
+            getComponent((resolved: React.ComponentType) => {
               component = getComponent.component = resolved;
 
               if (asynchronouslyResolved) {
@@ -70,13 +88,8 @@ export class Router extends BaseComponent<IRouterProps, {}> {
         }
 
         if (component) {
-          const componentChildren = this._resolveRoute(path, route.props.children || []);
-
-          if (componentChildren) {
-            return React.createElement(component, { key: route.key }, componentChildren) as React.DOMElement<any, any>;
-          } else {
-            return React.createElement(component, { key: route.key }) as React.DOMElement<any, any>;
-          }
+          const componentChildren = this._resolveRoute(route.props.children || []);
+          return React.createElement(component, { key: route.key! }, componentChildren);
         } else if (getComponent) {
           // We are asynchronously fetching this component.
           return null;
@@ -86,17 +99,4 @@ export class Router extends BaseComponent<IRouterProps, {}> {
 
     return null;
   }
-}
-
-function _match(currentPath: string, child: any): boolean {
-  if (child.props) {
-    let { path } = child.props;
-
-    path = path || '';
-    currentPath = currentPath || '';
-
-    return !path || path.toLowerCase() === currentPath.toLowerCase();
-  }
-
-  return false;
 }
