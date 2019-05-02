@@ -4,6 +4,7 @@ import { HighContrastSelector } from '../../../Styling';
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
     contentPadding: '0px 10px',
+    menuIconSize: 12,
     minWidth: 0
   };
 };
@@ -104,6 +105,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
       className
     ],
     menuIcon: {
+      fontSize: tokens.menuIconSize,
       paddingTop: '3px'
     }
   };

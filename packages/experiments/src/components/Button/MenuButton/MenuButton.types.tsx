@@ -73,6 +73,11 @@ export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'
   menuTarget: HTMLElement | undefined;
 }
 
-export interface IMenuButtonTokens extends IButtonTokens {}
+export interface IMenuButtonTokens extends IButtonTokens {
+  /**
+   * Defines the size of the menu icon inside the Button.
+   */
+  menuIconSize?: number | string;
+}
 
 export type IMenuButtonStyles = IComponentStyles<IMenuButtonSlots>;

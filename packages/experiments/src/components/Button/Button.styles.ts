@@ -2,19 +2,23 @@ import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } fro
 import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
-const baseTokens: IButtonComponent['tokens'] = {
-  borderRadius: 0,
-  borderWidth: 1,
-  cursor: 'pointer',
-  minWidth: 100,
-  minHeight: 32,
-  lineHeight: 1,
-  contentPadding: '0px 16px',
-  textFamily: 'inherit',
-  textSize: 14,
-  textWeight: FontWeights.semibold,
-  iconSize: 14,
-  iconWeight: 400
+const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { effects } = theme;
+
+  return {
+    borderRadius: effects.roundedCorner2,
+    borderWidth: 1,
+    cursor: 'pointer',
+    minWidth: 100,
+    minHeight: 32,
+    lineHeight: 1,
+    contentPadding: '0px 20px',
+    textFamily: 'inherit',
+    textSize: 14,
+    textWeight: FontWeights.semibold,
+    iconSize: 16,
+    iconWeight: 400
+  };
 };
 
 const hrefTokens: IButtonComponent['tokens'] = {
@@ -37,8 +41,8 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.buttonBackground,
-    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
+    backgroundColor: semanticColors.inputBackground,
+    backgroundColorHovered: semanticColors.buttonBackground,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
 
     iconColor: semanticColors.buttonText,
@@ -130,7 +134,7 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
     highContrastIconColorHovered: 'Window',
     highContrastIconColorPressed: 'Window',
 
-    borderColor: semanticColors.primaryButtonBorder,
+    borderWidth: 0,
 
     msHighContrastAdjust: 'none'
   };
@@ -158,7 +162,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
 
   return {
     root: [
-      !circular && getFocusStyle(theme),
+      !circular && getFocusStyle(theme, { inset: 1 }),
       theme.fonts.small,
       {
         backgroundColor: tokens.backgroundColor,
