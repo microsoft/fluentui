@@ -1,8 +1,8 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { IButtonComponent, IButtonProps, IButtonTokens, IButtonTokenReturnType } from './Button.types';
+import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from './Button.types';
 import { ButtonVariantsType } from './ButtonVariants.types';
-import { createTheme, FontWeights } from '../../Styling';
+import { FontWeights } from '../../Styling';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { semanticColors } = theme;

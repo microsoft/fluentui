@@ -4,22 +4,21 @@ import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
 import { ButtonVariantsType } from './ButtonVariants.types';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { palette, semanticColors } = theme;
+  const { semanticColors } = theme;
 
   return {
     backgroundColor: 'transparent',
-    backgroundColorHovered: 'transparent',
-    backgroundColorPressed: 'transparent',
+    backgroundColorHovered: semanticColors.buttonBackground,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderColor: 'transparent',
-    color: semanticColors.actionLink,
-    colorHovered: semanticColors.actionLinkHovered,
-    colorPressed: palette.themePrimary,
+    borderColorHovered: 'transparent',
+    borderColorPressed: 'transparent',
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
-    iconColor: semanticColors.actionLink,
-    iconColorHovered: semanticColors.actionLinkHovered,
-    iconColorPressed: palette.themePrimary,
+    iconColor: semanticColors.primaryButtonBackground,
+    iconColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    iconColorPressed: semanticColors.primaryButtonBackgroundPressed,
     iconSize: 16
   };
 };
@@ -28,6 +27,9 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   const { semanticColors } = theme;
 
   return {
+    backgroundColor: semanticColors.inputBackground,
+    backgroundColorHovered: semanticColors.inputBackground,
+    backgroundColorPressed: semanticColors.inputBackground,
     iconColor: semanticColors.disabledText,
     iconColorHovered: semanticColors.disabledText,
     iconColorPressed: semanticColors.disabledText
