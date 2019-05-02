@@ -141,7 +141,8 @@ function createBlobFromResults(perfBlob) {
     <th>PR avg total (ms)</th>
     <th>Target branch avg per item (ms)</th>
     <th>PR avg per item (ms)</th>
-    <th>p-value for totals >= 0.01</th>
+    <th>Is significant change</th>
+    <th>Is regression</th>
   </tr>`.concat(
     scenariosFromMaster
       .concat(scenariosFromPr.filter(scn => !scenariosFromMaster.includes(scn)))
@@ -154,6 +155,11 @@ function createBlobFromResults(perfBlob) {
             <td>${perfBlob.now[scenario] ? perfBlob.now[scenario].peritemavg : '...'}</td>
             <td>${perfBlob.new[scenario] ? perfBlob.new[scenario].peritemavg : '...'}</td>
             <td>${perfBlob.stats[scenario] ? perfBlob.stats[scenario].valid : '...'}</td>
+            <td>${
+              perfBlob.now[scenario] && perfBlob.new[scenario] && perfBlobl.stats[scenario]
+                ? !perfBlob.stat[scenario].valid && perfBlob.now[scenario] - perfBlob.new[scenario] < 0
+                : '...'
+            }</td>
            </tr>  `
       )
       .join('\n')
