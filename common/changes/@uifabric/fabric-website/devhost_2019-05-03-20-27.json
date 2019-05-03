@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "ported logic for devhost from index.html to homepage.htm",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "kchau@microsoft.com"
+}
