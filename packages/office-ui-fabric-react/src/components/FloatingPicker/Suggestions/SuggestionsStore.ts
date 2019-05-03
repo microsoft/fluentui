@@ -48,7 +48,7 @@ export class SuggestionsStore<T> {
         item: suggestion,
         selected: false,
         // tslint:disable-next-line:no-any
-        ariaLabel: this.getAriaLabel !== undefined ? this.getAriaLabel() : (<any>suggestion).name || (<any>suggestion).primaryText
+        ariaLabel: this.getAriaLabel !== undefined ? this.getAriaLabel(suggestion) : (<any>suggestion).name || (<any>suggestion).primaryText
       };
     }
   }
