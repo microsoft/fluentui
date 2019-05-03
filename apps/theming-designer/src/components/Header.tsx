@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { CodepenComponent } from '@uifabric/example-app-base';
@@ -54,28 +53,13 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render(): JSX.Element {
     return (
-      <Card styles={{ root: { backgroundColor: 'white', minWidth: '99%', height: '25px', position: 'fixed', top: '0', zIndex: 600 } }}>
+      <Card styles={{ root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', top: '0', zIndex: 600 } }}>
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
           <Stack horizontal>
-            <IconButton
-              disabled={false}
-              checked={false}
-              iconProps={{ iconName: 'WindowsLogo', styles: { root: { fontSize: '20px' } } }}
-              ariaLabel="Microsoft UI Fabric | Theme Designer"
-            />
-            <Label styles={{ root: { fontWeight: 'bold' } }}>Microsoft UI Fabric | Theme Designer</Label>
+            <img src="https://uifabric.azurewebsites.net/media/images/MicrosoftUIFabric-logo-rgb_no-padding.svg" />
           </Stack>
-          <Stack horizontal styles={{ root: { position: 'absolute', right: '20px' } }}>
-            <IconButton
-              data-automation-id="test"
-              disabled={false}
-              checked={false}
-              iconProps={{ iconName: 'Export', styles: { root: { fontSize: '20px' } } }}
-              ariaLabel="Export to JSON/Code/PowerShell"
-              onClick={this.showPanel}
-              allowDisabledFocus={true}
-            />
-            <Label styles={{ root: { fontWeight: 'bold' } }}>Export theme</Label>
+          <Stack horizontal styles={{ root: { position: 'absolute', right: '25px' } }}>
+            <PrimaryButton text="Export theme" onClick={this.showPanel} styles={{ root: { width: '130px', height: '35px' } }} />
             <Panel
               isOpen={this.state.showPanel}
               type={PanelType.smallFixedFar}
