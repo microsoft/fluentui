@@ -26,20 +26,20 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
     case 'web':
       return [
         {
-          sectionName: 'Use our design language in your own experience',
-          editUrl: baseUrl + 'docs/web/GetStartedDesign.md',
-          content: (
-            <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDesign.md') as string}
-            </Markdown>
-          )
-        },
-        {
           sectionName: 'Develop with Fabric React',
           editUrl: baseUrl + 'docs/web/GetStartedDevelop.md',
           content: (
             <Markdown>
               {require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelop.md') as string}
+            </Markdown>
+          )
+        },
+        {
+          sectionName: 'Use our design language in your own experience',
+          editUrl: baseUrl + 'docs/web/GetStartedDesign.md',
+          content: (
+            <Markdown>
+              {require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDesign.md') as string}
             </Markdown>
           )
         }

@@ -1,10 +1,8 @@
-The UI Fabric library is really easy to use! To get started, make sure you have the latest LTS node.js installed:
+Getting started with the UI Fabric library is simple! To get started, make sure you have the [latest LTS Node.js](https://nodejs.org/en/) installed.
 
-- https://nodejs.org
+After you have downloaded and installed Node.js, there are a various options for how to start using Fabric.
 
-After you have downloaded and installed this, you can pick one of the following ways to quickly start exploring UI Fabric.
-
-## Easy Mode
+## Simplest Method
 
 Simply run this command in a folder in which you want to have the project created:
 
@@ -15,10 +13,11 @@ npm init uifabric
 It'll prompt you for a project name. For example, if you chose to create a project called `my-app`, you can start working on the project like this:
 
 ```shell
+cd my-app
 npm start
 ```
 
-This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow for customization on its configurations.
+This scaffold uses the [`just`](https://github.com/microsoft/just) build library. It is very flexible and requires no "eject" script to allow customizing configuration.
 
 ## Create React App
 
