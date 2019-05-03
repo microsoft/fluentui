@@ -83,6 +83,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         minHeight: 40,
         lineHeight: 40,
         fontSize: FontSizes.small,
+        padding: 0,
         margin: '0 12px 16px 0',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',
