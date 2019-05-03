@@ -27,7 +27,7 @@
   "devDependencies": {
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
-    "@types/webpack-env": "1.13.0",
+    "@types/webpack-env": "1.13.9",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1",
     "react": "~16.6.3",
