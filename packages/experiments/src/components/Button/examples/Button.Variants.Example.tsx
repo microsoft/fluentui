@@ -45,6 +45,10 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
   </Stack>
 );
 
+const alertClicked = (): void => {
+  alert('Clicked');
+};
+
 // tslint:disable:jsx-no-lambda
 export class ButtonVariantsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -159,7 +163,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
                   splitButtonAriaLabel={'See 2 sample options'}
                   aria-roledescription={'split button'}
                   styles={{ root: { height: '35px' } }}
-                  onClick={undefined}
+                  onClick={alertClicked}
                   menuProps={{
                     items: [
                       {
@@ -187,7 +191,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
                   split={true}
                   aria-roledescription={'split button'}
                   styles={{ root: { height: '35px' } }}
-                  onClick={undefined}
+                  onClick={alertClicked}
                   menuProps={{
                     items: [
                       {
@@ -214,7 +218,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
                   split={true}
                   aria-roledescription={'split button'}
                   styles={{ root: { height: '35px' } }}
-                  onClick={undefined}
+                  onClick={alertClicked}
                   menuProps={{
                     items: [
                       {
@@ -244,7 +248,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
                   split={true}
                   aria-roledescription={'split button'}
                   styles={{ root: { height: '35px' } }}
-                  onClick={undefined}
+                  onClick={alertClicked}
                   menuProps={{
                     items: [
                       {
@@ -271,7 +275,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
                   split={true}
                   aria-roledescription={'split button'}
                   styles={{ root: { height: '35px' } }}
-                  onClick={undefined}
+                  onClick={alertClicked}
                   menuProps={{
                     items: [
                       {
@@ -299,7 +303,7 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
                   split={true}
                   aria-roledescription={'split button'}
                   styles={{ root: { height: '35px' } }}
-                  onClick={undefined}
+                  onClick={alertClicked}
                   menuProps={{
                     items: [
                       {

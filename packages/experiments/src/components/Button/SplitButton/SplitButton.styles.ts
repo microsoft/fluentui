@@ -2,10 +2,10 @@ import { getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { effects, semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.buttonBackground,
-    borderColor: semanticColors.buttonBorder,
+    backgroundColor: semanticColors.inputBackground,
+    borderRadius: effects.roundedCorner2,
     borderWidth: 1,
     color: semanticColors.buttonText,
     contentPadding: '0px 10px',
@@ -17,9 +17,7 @@ const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBut
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
-    borderColor: semanticColors.primaryButtonBorder,
-    borderColorHovered: semanticColors.buttonBorder,
-    borderColorPressed: semanticColors.buttonBorder,
+    borderWidth: 0,
     color: semanticColors.primaryButtonText,
     highContrastColor: 'Window'
   };
@@ -37,28 +35,17 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   };
 };
 
-const primaryActionDisabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { semanticColors } = theme;
-  return {
-    borderColorHovered: semanticColors.buttonBorder,
-    borderColorPressed: semanticColors.buttonBorder
-  };
-};
-
 export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
-  (props.primaryActionDisabled || props.disabled) && disabledTokens,
-  props.primaryActionDisabled && primaryActionDisabledTokens
+  (props.primaryActionDisabled || props.disabled) && disabledTokens
 ];
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
   return {
     root: [
       {
-        borderColor: tokens.borderColor,
-        borderStyle: 'solid',
-        borderWidth: tokens.borderWidth,
+        borderRadius: tokens.borderRadius,
         boxSizing: 'border-box',
 
         selectors: {
@@ -79,7 +66,14 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     ],
     button: {
-      borderColor: 'transparent',
+      borderBottomLeftRadius: tokens.borderRadius as string,
+      borderBottomRightRadius: '0px',
+      borderTopLeftRadius: tokens.borderRadius as string,
+      borderTopRightRadius: '0px',
+      borderBottomWidth: tokens.borderWidth,
+      borderLeftWidth: tokens.borderWidth,
+      borderRightWidth: 0,
+      borderTopWidth: tokens.borderWidth,
       minWidth: tokens.minWidth,
 
       selectors: {
@@ -87,10 +81,10 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
           padding: tokens.contentPadding
         },
         ':hover': {
-          borderColor: 'transparent'
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
         },
         ':active': {
-          borderColor: 'transparent'
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
         }
       }
     },
@@ -109,16 +103,17 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
     },
     menuButton: {
       borderColor: 'transparent',
+      borderBottomLeftRadius: '0px',
+      borderBottomRightRadius: tokens.borderRadius as string,
+      borderStyle: 'solid',
+      borderTopLeftRadius: '0px',
+      borderTopRightRadius: tokens.borderRadius as string,
+      borderWidth: tokens.borderWidth,
+      height: '100%',
 
       selectors: {
         '> *': {
           padding: tokens.contentPadding
-        },
-        ':hover': {
-          borderColor: props.primaryActionDisabled ? tokens.borderColorHovered : 'transparent'
-        },
-        ':active': {
-          borderColor: props.primaryActionDisabled ? tokens.borderColorPressed : 'transparent'
         }
       }
     }

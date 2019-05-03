@@ -16,6 +16,10 @@ const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButt
     backgroundColorHovered: semanticColors.buttonBackgroundPressed,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
 
+    borderColor: semanticColors.buttonBorder,
+    borderColorHovered: semanticColors.buttonBorder,
+    borderColorPressed: semanticColors.buttonBorder,
+
     color: semanticColors.buttonTextPressed,
     colorHovered: semanticColors.buttonTextPressed,
     colorPressed: semanticColors.buttonTextPressed,
@@ -64,6 +68,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
     button: [
       {
         backgroundColor: tokens.backgroundColor,
+        borderColor: tokens.borderColor,
         color: tokens.color,
         minWidth: tokens.minWidth,
 
