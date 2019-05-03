@@ -15,7 +15,7 @@ export interface IChoiceGroupState {
 }
 
 /**
- * {@docCategory ContextualMenu}
+ * {@docCategory ChoiceGroup}
  */
 export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {

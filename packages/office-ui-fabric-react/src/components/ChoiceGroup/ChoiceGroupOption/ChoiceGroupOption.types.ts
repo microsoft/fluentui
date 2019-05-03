@@ -4,17 +4,17 @@ import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
 /**
- * {@docCategory ContextualMenu}
+ * {@docCategory ChoiceGroup}
  */
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
 
 /**
- * {@docCategory ContextualMenu}
+ * {@docCategory ChoiceGroup}
  */
 export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
 /**
- * {@docCategory ContextualMenu}
+ * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
@@ -60,7 +60,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
 }
 
 /**
- * {@docCategory ContextualMenu}
+ * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionStyleProps {
   theme: ITheme;
@@ -73,7 +73,7 @@ export interface IChoiceGroupOptionStyleProps {
 }
 
 /**
- * {@docCategory ContextualMenu}
+ * {@docCategory ChoiceGroup}
  */
 export interface IChoiceGroupOptionStyles {
   root?: IStyle;
