@@ -126,12 +126,10 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
     );
   };
 
-  // fill noneSlots
   const fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
-    // call getVariant to get the default
     let noneThemeVariant: ITheme;
     if (props.theme) {
-      noneThemeVariant = getVariant(props.theme!, variantType);
+      noneThemeVariant = getVariant(props.theme, variantType);
       let noneSemanticColors = noneThemeVariant.semanticColors;
 
       let tempJSXList: JSX.Element[];

@@ -38,9 +38,6 @@ const sidebarStyles = mergeStyles({
 
 let colorChangeTimeout: number;
 
-let hideSemanticSlots: boolean;
-let semanticSlotsCard: JSX.Element;
-
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   constructor(props: any) {
     super(props);
@@ -53,12 +50,6 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   }
 
   public render() {
-    hideSemanticSlots = false;
-    if (!hideSemanticSlots) {
-      semanticSlotsCard = <SemanticSlots theme={this.state.theme} />;
-    } else {
-      <div />;
-    }
     return (
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
@@ -97,7 +88,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               </ThemeProvider>
               <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
-              {semanticSlotsCard}
+              <SemanticSlots theme={this.state.theme} />;
             </Stack>
           </Stack.Item>
         </Stack>

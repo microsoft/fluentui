@@ -9,8 +9,6 @@ import {
   IGroup,
   SelectionMode
 } from 'office-ui-fabric-react/lib/DetailsList';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { SemanticColorSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 
 export interface ISemanticSlotsDetailsListProps {
   slotNames: string[];
@@ -43,8 +41,22 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
   let groups: IGroup[] = [];
   let columns: IColumn[] = [];
 
-  // const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
-  // };
+  const onRenderRow = (detailsRowProps: IDetailsRowProps | undefined): JSX.Element => {
+    if (detailsRowProps) {
+      const rowStyles: Partial<IDetailsRowStyles> = {
+        root: {
+          selectors: {
+            ':hover': {
+              background: 'transparent'
+            }
+          }
+        }
+      };
+      return <DetailsRow {...detailsRowProps!} styles={rowStyles} />;
+    } else {
+      return <div />;
+    }
+  };
 
   for (let i = 0; i < props.slotNames.length; i++) {
     items.push({
@@ -119,7 +131,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
         ariaLabelForSelectAllCheckbox="Toggle selection for all items"
         ariaLabelForSelectionColumn="Toggle selection"
         selectionMode={SelectionMode.none}
-        // onRenderRow={onRenderRow}
+        onRenderRow={onRenderRow}
         groupProps={{
           showEmptyGroups: true
         }}
