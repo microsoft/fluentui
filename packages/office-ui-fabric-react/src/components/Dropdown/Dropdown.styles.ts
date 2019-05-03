@@ -8,7 +8,9 @@ import {
   IStyle,
   getGlobalClassNames,
   normalize,
-  HighContrastSelectorWhite
+  HighContrastSelectorWhite,
+  getScreenSelector,
+  ScreenWidthMinMedium
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -61,6 +63,8 @@ const highContrastBorderState: IRawStyle = {
     }
   }
 };
+
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMinMedium);
 
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
   const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
@@ -288,7 +292,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         root: [panelClassName],
         main: {
           // Force drop shadow even under medium breakpoint
-          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
+          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
+          selectors: {
+            // In case of extra small screen sizes
+            [MinimumScreenSelector]: {
+              // panelWidth xs
+              width: 272
+            }
+          }
         },
         contentInner: { padding: '0 0 20px' }
       }
