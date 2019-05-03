@@ -42,6 +42,8 @@ const languageClassNames: { [key: string]: string } = {
   'lang-js': 'javascript',
   'lang-javascript': 'javascript',
   'lang-html': 'html',
+  'lang-bash': 'bash',
+  'lang-shell': 'shell',
   'lang-css': 'css',
   'lang-scss': 'scss',
   'lang-md': 'markdown',

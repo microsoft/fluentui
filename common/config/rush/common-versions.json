@@ -16,7 +16,7 @@
      * instead of the latest version.
      */
     // "some-package": "1.2.3"
-    "@types/webpack-env": "1.13.0",
+    "@types/webpack-env": "1.13.9",
     "css-loader": "^0.28.7",
     "enzyme": "^3.4.1",
     "jest": "^23.1.0",
@@ -43,6 +43,7 @@
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
     "react": ["~16.8.0"],
-    "react-dom": ["~16.8.0"]
+    "react-dom": ["~16.8.0"],
+    "office-ui-fabric-core": ["^9.0.0", "10.0.0"]
   }
 }

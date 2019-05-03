@@ -18,7 +18,6 @@
     "start": "node ../../scripts/just.js dev"
   },
   "disabledTasks": [
-    "sass",
     "verify-api-extractor"
   ],
   "devDependencies": {
@@ -30,7 +29,7 @@
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",
     "@types/react-custom-scrollbars": "^4.0.5",
-    "@types/webpack-env": "1.13.0",
+    "@types/webpack-env": "1.13.9",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1",
     "es6-map": "^0.1.5",
@@ -46,6 +45,7 @@
     "color-check": "0.0.2",
     "highlight.js": "^9.12.0",
     "markdown-to-jsx": "6.6.1",
+    "office-ui-fabric-core": "10.0.0",
     "office-ui-fabric-react": "^6.176.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-syntax-highlighter": "^10.1.3",

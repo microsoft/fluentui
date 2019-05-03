@@ -12,6 +12,7 @@ const css = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/css')
 const scss = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/scss').default;
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/bash').default;
+const shell = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/shell').default;
 const diff = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/diff').default;
 
 // Import SyntaxHighlighter styles
@@ -25,6 +26,7 @@ SyntaxHighlighter.registerLanguage('css', css);
 SyntaxHighlighter.registerLanguage('scss', scss);
 SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
+SyntaxHighlighter.registerLanguage('shell', shell);
 SyntaxHighlighter.registerLanguage('diff', diff);
 
 // Customize imported SyntaxHighlighter styles
