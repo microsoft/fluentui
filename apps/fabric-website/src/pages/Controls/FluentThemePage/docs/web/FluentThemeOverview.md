@@ -20,7 +20,7 @@ Yes! We're actively seeking feedback from developers and designers. Please try t
 
 The Fluent theme and component updates are included in the Fluent theme package:
 
-```
+```shell
 npm install @uifabric/fluent-theme
 ```
 

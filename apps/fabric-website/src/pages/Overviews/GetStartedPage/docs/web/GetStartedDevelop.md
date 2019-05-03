@@ -8,13 +8,13 @@ After you have downloaded and installed this, you can pick one of the following 
 
 Simply run this command in a folder in which you want to have the project created:
 
-```
+```shell
 npm init uifabric
 ```
 
 It'll prompt you for a project name. For example, if you chose to create a project called `my-app`, you can start working on the project like this:
 
-```
+```shell
 npm start
 ```
 
@@ -26,7 +26,7 @@ UI Fabric also provides a precanned `create-react-app` version of the above appl
 
 Clone or fork this repo: https://github.com/kenotron/create-react-app-uifabric
 
-```
+```shell
 git clone https://github.com/kenotron/create-react-app-uifabric.git my-app
 cd my-app
 yarn
@@ -37,7 +37,7 @@ yarn start
 
 To create blazing fast React websites and apps using UI Fabric and Gatsby.js, use the following starter kit:
 
-```
+```shell
 npm install -g gatsby-cli
 gatsby new gatsby-site kenotron/gatsby-starter-uifabric
 cd gatsby-site
