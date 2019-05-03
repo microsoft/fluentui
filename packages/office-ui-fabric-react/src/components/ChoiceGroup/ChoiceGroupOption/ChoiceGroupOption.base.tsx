@@ -7,6 +7,9 @@ import { IProcessedStyleSet } from '../../../Styling';
 
 const getClassNames = classNamesFunction<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>();
 
+/**
+ * {@docCategory ContextualMenu}
+ */
 export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionProps, any> {
   private _inputElement = React.createRef<HTMLInputElement>();
   private _classNames: IProcessedStyleSet<IChoiceGroupOptionStyles>;

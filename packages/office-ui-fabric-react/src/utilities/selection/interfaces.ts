@@ -1,15 +1,24 @@
+/**
+ * {@docCategory Selection}
+ */
 export interface IObjectWithKey {
   key?: string | number;
 }
 
 export const SELECTION_CHANGE = 'change';
 
+/**
+ * {@docCategory Selection}
+ */
 export enum SelectionMode {
   none = 0,
   single = 1,
   multiple = 2
 }
 
+/**
+ * {@docCategory Selection}
+ */
 export interface ISelection {
   count: number;
   mode: SelectionMode;
@@ -58,6 +67,9 @@ export interface ISelection {
   toggleRangeSelected(fromIndex: number, count: number): void;
 }
 
+/**
+ * {@docCategory Selection}
+ */
 export enum SelectionDirection {
   horizontal = 0,
   vertical = 1
