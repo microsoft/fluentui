@@ -1,9 +1,26 @@
 import * as React from 'react';
-import { Async, Icon, Image, Link, TooltipHost, classNamesFunction, registerIcons, IProcessedStyleSet } from 'office-ui-fabric-react';
+import {
+  Async,
+  css,
+  Icon,
+  Image,
+  Link,
+  TooltipHost,
+  classNamesFunction,
+  registerIcons,
+  IProcessedStyleSet,
+  IContextualMenuItem,
+  DirectionalHint,
+  ActionButton,
+  Stack,
+  IRawStyle
+} from 'office-ui-fabric-react';
 import { trackEvent, EventNames, getSiteArea } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
-import { AndroidLogo, AppleLogo, WebLogo } from '../../utilities/index';
+import { AndroidLogo, AppleLogo, WebLogo, getParameterByName } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
+import { monoFont } from './HomePage.styles';
+const reactPackageData = require<any>('office-ui-fabric-react/package.json');
 
 const getClassNames = classNamesFunction<IHomePageStyleProps, IHomePageStyles>();
 
@@ -31,19 +48,45 @@ const fabricUsageIcons = [
   { src: fabricUsageIconBaseUrl + 'teams_48x1.svg', title: 'Teams' }
 ];
 
+const fabricVersionOptions: IContextualMenuItem[] = [
+  {
+    key: '6',
+    text: 'Fabric 6',
+    data: '6'
+  },
+  {
+    key: '5',
+    text: 'Fabric 5',
+    data: '5'
+  }
+];
+
 export interface IHomePageState {
   isMounted: boolean;
   isMountedOffset: boolean;
+  fabricVer: string;
 }
 
 export class HomePageBase extends React.Component<IHomePageProps, IHomePageState> {
-  public readonly state: IHomePageState = {
-    isMounted: false,
-    isMountedOffset: false
-  };
-
   private _async = new Async();
   private _classNames: IProcessedStyleSet<IHomePageStyles>;
+
+  constructor(props: IHomePageProps) {
+    super(props);
+
+    let sessionStorageVersion: string | undefined;
+    try {
+      sessionStorageVersion = window.sessionStorage.getItem('fabricVer');
+    } catch (ex) {
+      // ignore
+    }
+
+    this.state = {
+      isMounted: false,
+      isMountedOffset: false,
+      fabricVer: getParameterByName('fabricVer') || sessionStorageVersion || fabricVersionOptions[0].data
+    };
+  }
 
   public componentDidMount(): void {
     // Delay adding section transition styles after page is mounted.
@@ -117,12 +160,43 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       isInverted: true
     });
 
+    const versionSwitcherColor: IRawStyle = { color: theme.palette.black };
+    const versionSwitcherActiveColor: IRawStyle = { color: theme.palette.neutralPrimary };
+
     return (
       <div className={classNames.platformCardsSection}>
         <div className={classNames.inner}>
           <div className={classNames.card} style={{ background: platforms.web.color }}>
             <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
-            <h3 className={classNames.cardTitle}>Web</h3>
+            <Stack horizontal verticalAlign="baseline" horizontalAlign="space-between">
+              <h3 className={classNames.cardTitle}>Web</h3>
+              <ActionButton
+                allowDisabledFocus={true}
+                className={classNames.versionSwitcher}
+                styles={{
+                  root: versionSwitcherColor,
+                  flexContainer: { fontFamily: monoFont },
+                  menuIcon: versionSwitcherColor,
+                  rootHovered: versionSwitcherActiveColor,
+                  rootPressed: versionSwitcherActiveColor,
+                  rootExpanded: versionSwitcherActiveColor
+                }}
+                menuProps={{
+                  gapSpace: 3,
+                  beakWidth: 8,
+                  isBeakVisible: true,
+                  shouldFocusOnMount: true,
+                  items: fabricVersionOptions,
+                  directionalHint: DirectionalHint.bottomCenter,
+                  onItemClick: this._onVersionMenuClick,
+                  styles: {
+                    root: { minWidth: 100 }
+                  }
+                }}
+              >
+                Fabric React {reactPackageData.version}
+              </ActionButton>
+            </Stack>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/styles/web', 'Styles')}</li>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/web', 'Controls')}</li>
@@ -210,7 +284,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <figure className={this._classNames.oneHalf}>
             <ul className={this._classNames.usageIconList}>{this._renderUsageIconList()}</ul>
             <figcaption>
-              <strong>+ many additional Microsoft sites and products</strong>
+              <strong>+ 52 additional Microsoft sites and products</strong>
             </figcaption>
           </figure>
         </div>
@@ -262,5 +336,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
       nextPage: url,
       currentPage: window.location.hash
     });
+  };
+
+  private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
+    this.setState({ fabricVer: item.data });
   };
 }
