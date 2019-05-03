@@ -9,6 +9,9 @@ export interface IAutofillState {
 const SELECTION_FORWARD = 'forward';
 const SELECTION_BACKWARD = 'backward';
 
+/**
+ * {@docCategory Autofill}
+ */
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
@@ -295,5 +298,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
 /**
  *  @deprecated do not use.
+ * {@docCategory Autofill}
  */
 export class BaseAutoFill extends Autofill {}

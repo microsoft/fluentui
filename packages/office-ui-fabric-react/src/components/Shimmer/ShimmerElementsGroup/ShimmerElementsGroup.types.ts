@@ -3,10 +3,14 @@ import { IStyle, ITheme } from '../../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IShimmerElement } from '../Shimmer.types';
 
+/**
+ * {@docCategory Shimmer}
+ */
 export interface IShimmerElementsGroup {}
 
 /**
  * ShimmerElementsGroup component props.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -55,6 +59,7 @@ export interface IShimmerElementsGroupProps extends React.AllHTMLAttributes<HTML
 
 /**
  * Props needed to construct styles.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerElementsGroupStyleProps {
   /**
@@ -68,6 +73,7 @@ export interface IShimmerElementsGroupStyleProps {
 
 /**
  * Represents the stylable areas of the control.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerElementsGroupStyles {
   /**

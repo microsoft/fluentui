@@ -5,6 +5,9 @@ import { IAnnouncedProps, IAnnouncedStyles } from './Announced.types';
 
 const getClassNames = classNamesFunction<{}, IAnnouncedStyles>();
 
+/**
+ * {@docCategory Announced}
+ */
 export class AnnouncedBase extends React.Component<IAnnouncedProps> {
   public static defaultProps: Partial<IAnnouncedProps> = {
     'aria-live': 'assertive'
