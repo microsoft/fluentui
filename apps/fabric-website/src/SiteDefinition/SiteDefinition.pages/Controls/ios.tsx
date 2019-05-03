@@ -24,15 +24,41 @@ export const controlsPagesIos: INavPage[] = [
     ]
   },
   {
-    title: 'Items and Lists',
-    url: '#/controls/ios/persona',
+    title: 'Items & Lists',
+    url: '#/controls/ios/chip',
     isCategory: true,
     pages: [
+      {
+        title: 'Chip',
+        url: '#/controls/ios/chip',
+        component: () => <LoadingComponent title="Chip" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
+      },
+      {
+        title: 'ListCells',
+        url: '#/controls/ios/listcells',
+        component: () => <LoadingComponent title="ListCells" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage))
+      },
       {
         title: 'Persona',
         url: '#/controls/ios/persona',
         component: () => <LoadingComponent title="Persona" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage))
+      }
+    ]
+  },
+  {
+    title: 'Commands, Menus & Navs',
+    url: '#/controls/ios/pivot',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Pivot',
+        url: '#/controls/ios/Pivot',
+        component: () => <LoadingComponent title="Pivot" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
       }
     ]
   },
@@ -49,6 +75,19 @@ export const controlsPagesIos: INavPage[] = [
           require.ensure([], require =>
             cb(require<any>('../../../pages/Controls/ProgressIndicatorPage/ProgressIndicatorPage').ProgressIndicatorPage)
           )
+      }
+    ]
+  },
+  {
+    title: 'Surfaces',
+    url: '#/controls/ios/drawer',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Drawer',
+        url: '#/controls/ios/drawer',
+        component: () => <LoadingComponent title="Drawer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
       }
     ]
   }
