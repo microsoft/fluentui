@@ -158,7 +158,7 @@ function createBlobFromResults(perfBlob) {
             <td>${perfBlob.stats[scenario] ? !perfBlob.stats[scenario].valid : '...'}</td>
             <td>${
               perfBlob.now[scenario] && perfBlob.new[scenario] && perfBlob.stats[scenario]
-                ? !perfBlob.stats[scenario].valid && perfBlob.now[scenario] - perfBlob.new[scenario] < 0
+                ? !perfBlob.stats[scenario].valid && perfBlob.stats[scenario].tvalue < 0
                 : '...'
             }</td>
            </tr>`
