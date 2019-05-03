@@ -37,6 +37,7 @@ export interface ISiteState<TPlatforms extends string = string> {
   isContentFullBleed?: boolean;
   hasPlatformPicker?: boolean;
   pagePlatforms?: TPlatformPages<TPlatforms>;
+  /** Pages currently shown in the left nav */
   activePages?: INavPage<TPlatforms>[];
   pagePath?: string;
   activePlatforms: { [topLevelPage: string]: TPlatforms };
@@ -191,14 +192,23 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   }
 
   private _renderMessageBar(): JSX.Element | null {
-    const { pagePath } = this.state;
+    const { pagePath = '' } = this.state;
     // TODO: generalize when to show a message bar and how to provide the text
-    if (pagePath && pagePath.indexOf('#/controls/web') === 0 && pagePath.indexOf('fluent-theme') === -1) {
+    if (pagePath && pagePath.indexOf('#/controls/web/') === 0 && pagePath.indexOf('fluent-theme') === -1) {
       return (
         <SiteMessageBar
           text="You can now implement the new Fluent styles in Fabric Web controls."
-          learnMoreUrl="#/controls/web/fluent-theme"
+          linkText="Learn more"
+          linkUrl="#/controls/web/fluent-theme"
           localStoragePrefix="WebFluentUpdates"
+        />
+      );
+    } else if (/^#?\/?$/.test(pagePath)) {
+      return (
+        <SiteMessageBar
+          text="Microsoft employees can sign in to see additional documentation."
+          linkText="Sign in"
+          linkUrl="http://aka.ms/hig"
         />
       );
     }

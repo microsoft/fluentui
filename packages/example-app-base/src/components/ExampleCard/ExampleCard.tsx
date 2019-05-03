@@ -55,7 +55,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
-          const { exampleCardCustomizations } = context;
+          const { exampleCardCustomizations, hideSchemes } = context;
           const activeCustomizations =
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
@@ -98,7 +98,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {exampleCardCustomizations && (
+                  {exampleCardCustomizations && !hideSchemes && (
                     <Dropdown
                       defaultSelectedKey={0}
                       onChange={this._onSchemeChange}
@@ -111,6 +111,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
+                      checked={isCodeVisible}
                       // TODO: fix once button has full styling support
                       styles={typeof codeButtonStyles === 'function' ? codeButtonStyles({}) : codeButtonStyles}
                     >

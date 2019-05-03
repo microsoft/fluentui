@@ -8,5 +8,6 @@ const exampleCardCustomizations: IExampleCardCustomizations[] = [
 ];
 
 export const AppCustomizations: IAppCustomizations = {
-  exampleCardCustomizations
+  exampleCardCustomizations,
+  hideSchemes: true
 };
