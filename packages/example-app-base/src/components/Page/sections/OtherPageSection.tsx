@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
 import { pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from './OtherPageSection.module.scss';
+import * as styles from '../Page.module.scss';
 import { EditSection } from '../../EditSection/index';
 import { Markdown } from '../../Markdown';
 

@@ -4,7 +4,7 @@ import { EditSection } from '../../EditSection/index';
 import { getEditUrl, pascalize } from '../../../utilities/index2';
 import { Markdown } from '../../Markdown/index';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from './OtherPageSection.module.scss';
+import * as styles from '../Page.module.scss';
 
 export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = props => {
   const {
