@@ -52,101 +52,10 @@ export enum FabricSlots {
 /* List of all the semantic color slots for this theme.
  * This is not so much an enum as it is a list. The enum is used to insure "type"-safety. */
 export enum SemanticColorSlots {
-  // Defaults - Body
-  bodyBackground, // white
-  bodyStandoutBackground, // neutralLighterAlt
-  bodyFrameBackground, // white
-  bodyFrameDivider, // neturalLight
-  bodyText, // neutralPrimary
-  bodyTextChecked, // black
-  bodySubtext, // neutralSecondary
-  bodyDivider, // neutralLight
-
-  // Inputs
-  disabledBackground, // neutralLighter
-  disabledText, // neutralTertiary
-
-  // Defaults - Body
-  disabledBodyText, // neutralTertiary
-
-  // Inputs
-  disabledSubText, // neutralQuaternary
-
-  // Defaults - Body
-  disabledBodySubtext, // neutralTeritaryAlt
-  focusBorder, // neutralSecondary
-  variantBorder, // neutralLight
-  variantBorderHovered, // neutralTertiary
-  defaultStateBackground, // neutralLighterAlt
-
-  // TODO later: Messaging - inverted colors
-
-  // Inputs
-  inputBorder, // neutralTertiary
-  inputBorderHovered, // neutralPrimary
-  inputBackground, // white
-  inputBackgroundChecked, // themePrimary
-  inputBackgroundCheckedHovered, // themeDarkAlt
-  inputForegroundChecked, // white
-  inputFocusBorderAlt, // themePrimary
-  smallInputBorder, // neutralSecondary
-  inputText, // neutralPrimary
-  inputTextHovered, // neutralDark
-  inputPlaceholderText, // neutralSecondary
-
-  // Buttons
-  buttonBackground, // neutralLighter
-  buttonBackgroundChecked, // neutralTertiaryAlt
-  buttonBackgroundHovered, // neutralLight
-  buttonBackgroundCheckedHovered, // neutralLight
-  buttonBackgroundPressed, // neutralLight
-  buttonBackgroundDisabled, // neutralLighter
-  buttonBorder, // 'transparent'
-  buttonText, // neutralPrimary
-  buttonTextHovered, // neutralDark
-  buttonTextChecked, // neutralDark
-  buttonTextCheckedHovered, // black
-  buttonTextPressed, // neutralDark
-  buttonTextDisabled, // neutralTertiary
-  buttonBorderDisabled, // 'transparent'
-
-  primaryButtonBackground, // themePrimary
-  primaryButtonBackgroundHovered, // themeDarkAlt
-  primaryButtonBackgroundPressed, // themeDark
-  primaryButtonBackgroundDisabled, // neutralLighter
-  primaryButtonBorder, // 'transparent'
-  primaryButtonText, // white
-  primaryButtonTextHovered, // white
-  primaryButtonTextPressed, // white
-  primaryButtonTextDisabled, // neutralQuaternary
-
-  accentButtonBackground, // accent
-  accentButtonText, // white
-
-  // Menus
-  menuBackground, // white
-  menuDivider, // neutralTertiaryAlt
-  menuIcon, // themePrimary
-  menuHeader, // themePrimary
-  menuItemBackgroundHovered, // neutralLighter
-  menuItemBackgroundPressed, // neutralLight
-  menuItemText, // neutralPrimary
-  menuItemTextHovered, // neutralDark
-
-  // Lists
-  listBackground, // white
-  listText, // neutralPrimary
-  listItemBackgroundHovered, // neutralLighter
-  listItemBackgroundChecked, // neutralLight
-  listItemBackgroundCheckedHovered, // neutralQuaternaryAlt
-  listHeaderBackgroundHovered, // neutralLighter
-  listHeaderBackgroundPressed, // neutralLight
-
-  // Links
-  actionLink, // neutralPrimary
-  actionLinkHovered, // neutralDark
-  link, // themePrimary
-  linkHovered // themeDarker
+  bodyBackground,
+  bodyText,
+  disabledBackground,
+  disabledText
 }
 
 export function themeRulesStandardCreator(): IThemeRules {
