@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/api-docs",
+      "comment": "add README",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/api-docs",
+  "email": "naethell@microsoft.com"
+}
