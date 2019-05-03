@@ -174,14 +174,11 @@ export class Page extends React.Component<IPageProps, IPageState> {
     }
 
     otherSections &&
-      otherSections.forEach((PageSection: IPageSectionProps) =>
+      otherSections.forEach((section: IPageSectionProps) =>
         sections.push({
           renderAs: OtherPageSection,
-          className: PageSection.className,
           ...sectionProps,
-          sectionName: PageSection.sectionName,
-          content: PageSection.content,
-          editUrl: PageSection.editUrl
+          ...section
         })
       );
 

@@ -14,8 +14,9 @@ export interface IEditSectionProps {
 
   /**
    * The name of the component
+   * @deprecated Specify the whole name of the thing to be edited as `section`
    */
-  title: string;
+  title?: string;
 
   /**
    * The section name this button is used to edit.
