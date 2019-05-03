@@ -124,6 +124,7 @@ function getStats(before, after) {
       scenarioStats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, { alpha: 0.01 });
       scenarioStats[scenario].pvalue = scenarioStats[scenario].pValue();
       scenarioStats[scenario].valid = scenarioStats[scenario].valid();
+      scenarioStats[scenario].tvalue = scenarioStats[scenario].testValue();
     }
   });
 
