@@ -42,7 +42,5 @@
      * For example, allow some projects to use an older TypeScript compiler
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
-    "react": ["~16.8.0"],
-    "react-dom": ["~16.8.0"]
   }
 }
