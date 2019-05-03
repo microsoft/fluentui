@@ -35,10 +35,23 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   };
 };
 
+const primaryActionDisabledTokens: ISplitButtonComponent['tokens'] = {
+  borderColor: 'transparent'
+};
+
+const expandedTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    borderColor: semanticColors.buttonBorder
+  };
+};
+
 export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
-  (props.primaryActionDisabled || props.disabled) && disabledTokens
+  (props.primaryActionDisabled || props.disabled) && disabledTokens,
+  props.primaryActionDisabled && primaryActionDisabledTokens,
+  props.expanded && expandedTokens
 ];
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
@@ -102,7 +115,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     },
     menuButton: {
-      borderColor: 'transparent',
+      borderColor: tokens.borderColor,
       borderBottomLeftRadius: '0px',
       borderBottomRightRadius: tokens.borderRadius as string,
       borderStyle: 'solid',
