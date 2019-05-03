@@ -1,5 +1,7 @@
 import { autobind } from '../../../Utilities';
 import { ISuggestionModel } from '../../../Pickers';
+import { IPersonaProps } from '../../Persona';
+import { ITag } from '../../pickers';
 
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];
@@ -48,7 +50,10 @@ export class SuggestionsStore<T> {
         item: suggestion,
         selected: false,
         // tslint:disable-next-line:no-any
-        ariaLabel: this.getAriaLabel !== undefined ? this.getAriaLabel(suggestion) : (<any>suggestion).name || (<any>suggestion).primaryText
+        ariaLabel:
+          this.getAriaLabel !== undefined
+            ? this.getAriaLabel(suggestion)
+            : ((suggestion as unknown) as ITag).name || (<IPersonaProps>suggestion).primaryText
       };
     }
   }
