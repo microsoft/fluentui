@@ -127,16 +127,16 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
   };
 
   const fillVariantSlotsList = (variantType: VariantThemeType): JSX.Element[] => {
-    let noneThemeVariant: ITheme;
+    let currThemeVariant: ITheme;
     if (props.theme) {
-      noneThemeVariant = getVariant(props.theme, variantType);
-      let noneSemanticColors = noneThemeVariant.semanticColors;
+      currThemeVariant = getVariant(props.theme, variantType);
+      let currVariantSemanticColors = currThemeVariant.semanticColors;
 
       let tempJSXList: JSX.Element[];
       tempJSXList = [];
-      for (let slot in noneSemanticColors) {
-        if (noneSemanticColors.hasOwnProperty(slot)) {
-          let currSlotJSX = semanticSlotWidget((noneSemanticColors as any)[slot], slot);
+      for (let slot in currVariantSemanticColors) {
+        if (currVariantSemanticColors.hasOwnProperty(slot)) {
+          let currSlotJSX = semanticSlotWidget((currVariantSemanticColors as any)[slot], slot);
           tempJSXList.push(currSlotJSX);
         }
       }
