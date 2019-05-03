@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Mon, 15 Apr 2019 12:33:42 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+
+## 6.17.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
 
 ## 6.17.0
 Mon, 15 Apr 2019 12:33:42 GMT

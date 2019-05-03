@@ -437,7 +437,7 @@
     {
       "packageName": "@uifabric/api-docs",
       "projectFolder": "packages/api-docs",
-      "shouldPublish": false
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/react-cards",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+
+## 6.47.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
 
 ## 6.47.0
 Tue, 30 Apr 2019 12:31:36 GMT

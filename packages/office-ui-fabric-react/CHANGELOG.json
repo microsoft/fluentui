@@ -2,6 +2,48 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.176.0",
+      "tag": "office-ui-fabric-react_v6.176.0",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add IBreadcrumbData, deprecate IBreadCrumbData",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "6b58d9989b9dcbb5ebb8b5dac52d11c727dee88d"
+          },
+          {
+            "comment": "Modal/Dialog: Add ability to move via mouse and/or keyboard",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c0bbb0d61e0da3bccbb78654a6f49e0c56b7996e"
+          },
+          {
+            "comment": "Tooltip/TooltipHost: content now can take JSX content.",
+            "author": "PaytonQuinn <45019384+PaytonQuinn@users.noreply.github.com>",
+            "commit": "c6cdb96a66783fb17dfc771474a5f110dbd05b54"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Remove out-of-date IE focus handling work-around. Pass forceFocusInsideTrap={false} to DatePicker FocusTrapZone. Adjust FocusTrapZone return focus handling.",
+            "author": "phtucker <46788634+phtucker@users.noreply.github.com>",
+            "commit": "b4d5e705f2e0bcb3847b4ec73ba005de492fabb3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.0` to `^6.17.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.0` to `^6.47.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.0` to `^6.38.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.175.0",
       "tag": "office-ui-fabric-react_v6.175.0",
       "date": "Wed, 01 May 2019 12:34:25 GMT",
