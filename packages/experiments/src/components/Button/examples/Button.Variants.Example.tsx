@@ -144,14 +144,14 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
             <MessageBarButton disabled text="Disabled message bar button" />
           </ButtonStack>
           <ButtonStack>
-            <OldDefaultButton text="Menu button" menuProps={menuProps} />
-            <OldPrimaryButton primary text="Menu primary button" menuProps={menuProps} />
-            <OldDefaultButton disabled text="Menu disabled button" menuProps={menuProps} />
+            <OldDefaultButton text="Button" menuProps={menuProps} />
+            <OldPrimaryButton primary text="Button" menuProps={menuProps} />
+            <OldDefaultButton disabled text="Button" menuProps={menuProps} />
           </ButtonStack>
           <ButtonStack>
-            <MenuButton content="Menu button" menu={menuProps} />
-            <MenuButton primary content="Menu primary button" menu={menuProps} />
-            <MenuButton disabled content="Menu disabled button" menu={menuProps} />
+            <MenuButton content="Button" menu={menuProps} />
+            <MenuButton primary content="Button" menu={menuProps} />
+            <MenuButton disabled content="Button" menu={menuProps} />
           </ButtonStack>
           <ButtonStack>
             <div className={css(classNames.twoup)}>

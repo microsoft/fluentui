@@ -4,21 +4,24 @@ import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
 import { ButtonVariantsType } from './ButtonVariants.types';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { palette } = theme;
+  const { semanticColors } = theme;
 
   return {
-    backgroundColor: palette.neutralLighter,
-    backgroundColorHovered: palette.neutralLight,
-    backgroundColorPressed: palette.neutralQuaternaryAlt,
+    backgroundColor: semanticColors.inputBackground,
+    backgroundColorHovered: semanticColors.buttonBackground,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+    borderRadius: 0,
+    borderWidth: 0,
+    contentPadding: '0px 8px',
+    color: semanticColors.buttonText,
+    colorHovered: semanticColors.buttonTextHovered,
+    colorPressed: semanticColors.buttonTextPressed,
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
-    color: palette.neutralPrimary,
-    colorHovered: palette.neutralDark,
-    colorPressed: theme.palette.black,
-    iconColor: theme.palette.themeDarkAlt,
-    iconColorHovered: theme.palette.themeDarkAlt,
-    iconColorPressed: theme.palette.themeDarkAlt,
+    iconColor: semanticColors.buttonText,
+    iconColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    iconColorPressed: semanticColors.primaryButtonBackgroundPressed,
     minHeight: 0,
     minWidth: 40,
     textWeight: 'normal'
@@ -29,15 +32,15 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   const { semanticColors } = theme;
 
   return {
-    backgroundColor: semanticColors.buttonBackgroundDisabled,
-    backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
-    backgroundColorPressed: semanticColors.buttonBackgroundDisabled,
+    backgroundColor: semanticColors.inputBackground,
+    backgroundColorHovered: semanticColors.inputBackground,
+    backgroundColorPressed: semanticColors.inputBackground,
     color: semanticColors.buttonTextDisabled,
     colorHovered: semanticColors.buttonTextDisabled,
     colorPressed: semanticColors.buttonTextDisabled,
-    iconColor: semanticColors.buttonTextDisabled,
-    iconColorHovered: semanticColors.buttonTextDisabled,
-    iconColorPressed: semanticColors.buttonTextDisabled
+    iconColor: semanticColors.disabledBodySubtext,
+    iconColorHovered: semanticColors.disabledBodySubtext,
+    iconColorPressed: semanticColors.disabledBodySubtext
   };
 };
 
