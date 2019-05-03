@@ -240,7 +240,8 @@ export class Page extends React.Component<IPageProps, IPageState> {
       otherSections,
       overview,
       propertiesTablesSources,
-      usage
+      usage,
+      jsonDocs
     } = this.props;
 
     const links: ISideRailLink[] = [];
@@ -287,7 +288,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
       });
     }
 
-    if (propertiesTablesSources) {
+    if (jsonDocs || propertiesTablesSources) {
       links.push({
         text: 'Implementation',
         url: 'Implementation'
