@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Properly propagate Esc in DatePicker",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "anihan@microsoft.com"
+}
