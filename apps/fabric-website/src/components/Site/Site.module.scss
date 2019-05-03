@@ -35,6 +35,7 @@
   .siteNavScrollWrapper {
     position: sticky;
     top: 0;
+    max-height: calc(100vh - #{$TopNav-height});
   }
 }
 
