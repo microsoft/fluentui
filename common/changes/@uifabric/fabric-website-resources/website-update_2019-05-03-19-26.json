@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "Updates for new website",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "elcraig@microsoft.com"
+}
