@@ -116,7 +116,7 @@ export interface IExample extends IExampleCardProps {
 
 export interface IPageSectionProps<TPlatforms extends string = string>
   extends Pick<IPageProps<TPlatforms>, 'title' | 'componentUrl' | 'fileNamePrefix' | 'platform'> {
-  /** The name of the section. Used to create camel case classNames and pascal case ID. */
+  /** The name of the section. Used to generate the section ID. */
   sectionName?: string;
 
   /** Use when the section name and Markdown file name are different. */
