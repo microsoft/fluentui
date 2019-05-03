@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, IRawStyle, styled, classNamesFunction } from 'office-ui-fabric-react';
+import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction } from 'office-ui-fabric-react';
 import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
 
 // tslint:disable no-any
@@ -69,23 +69,12 @@ const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = pr
   };
 };
 
-// SyntaxHighlighter needs a separate style object rather than a class name for line numbers
-const lineNumberStyle: IRawStyle = {
-  textAlign: 'right',
-  color: NeutralColors.gray120,
-  width: '3em',
-  display: 'block',
-  borderRight: `1px solid ${NeutralColors.gray120}`,
-  paddingRight: 4,
-  lineHeight: 'inherit'
-};
-
 const getClassNames = classNamesFunction<ICodeSnippetStyleProps, ICodeSnippetStyles>();
 
 const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, {});
   return (
-    <SyntaxHighlighter lineNumberStyle={lineNumberStyle} language={props.language} className={classNames.root} style={style}>
+    <SyntaxHighlighter language={props.language} className={classNames.root} style={style}>
       {props.children}
     </SyntaxHighlighter>
   );
