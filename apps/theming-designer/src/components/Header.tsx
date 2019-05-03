@@ -54,7 +54,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render(): JSX.Element {
     return (
-      <Card styles={{ root: { minWidth: '99%', height: '25px' } }}>
+      <Card styles={{ root: { backgroundColor: 'white', minWidth: '99%', height: '25px', position: 'fixed', top: '0', zIndex: 500 } }}>
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
           <Stack horizontal>
             <IconButton

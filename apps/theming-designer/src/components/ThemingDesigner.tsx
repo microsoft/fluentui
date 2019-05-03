@@ -28,12 +28,13 @@ const outerMostStack = mergeStyles({
 });
 
 const sidebarStyles = mergeStyles({
+  backgroundColor: 'white',
   borderRight: '1px solid #ddd',
   minHeight: '100%',
   paddingRight: '1rem',
-  position: 'fixed',
   top: '60px',
-  left: '10px'
+  left: '10px',
+  zIndex: 500
 });
 
 let colorChangeTimeout: number;
@@ -53,7 +54,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     return (
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
-        <Stack horizontal gap={10}>
+        <Stack horizontal gap={10} styles={{ root: { position: 'absolute', overflow: 'auto', top: '50px' } }}>
           <Stack gap={20} className={sidebarStyles}>
             <h1>
               <IconButton
