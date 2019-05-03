@@ -3,7 +3,7 @@ import { FeedbackList } from '../../FeedbackList/index';
 import { css } from 'office-ui-fabric-react';
 import { pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from './FeedbackSection.module.scss';
+import * as styles from '../Page.module.scss';
 
 export const FeedbackSection: React.StatelessComponent<IPageSectionProps> = props => {
   const { className, sectionName = 'Feedback', style, title } = props;

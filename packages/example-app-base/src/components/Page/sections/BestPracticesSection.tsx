@@ -4,7 +4,7 @@ import { css } from 'office-ui-fabric-react';
 import { getEditUrl, pascalize } from '../../../utilities/index2';
 import { Markdown } from '../../Markdown/index';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from './BestPracticesSection.module.scss';
+import * as styles from '../Page.module.scss';
 
 export interface IBestPracticesSectionProps extends IPageSectionProps {
   bestPractices?: string;
