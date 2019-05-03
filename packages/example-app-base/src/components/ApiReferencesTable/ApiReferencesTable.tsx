@@ -15,6 +15,7 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
+import { Markdown } from '../Markdown/index';
 
 export interface IApiReferencesTableProps {
   title?: string;
@@ -40,22 +41,28 @@ export const SMALL_GAP_SIZE = 8;
 export const MEDIUM_GAP_SIZE = 16;
 export const LARGE_GAP_SIZE = 48;
 
-const DEPRECATED_ROW_COLOR = '#FFF1CC';
+const DEPRECATED_COLOR = '#FFF1CC';
 
 const backticksRegex = new RegExp('`[^`]*`', 'g');
 
 const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
   return (
     <>
-      {deprecated ? (
-        <>
-          <Text block variant="small">
-            Warning: this API is now obsolete.
-          </Text>
-          <br />
-        </>
-      ) : (
-        undefined
+      {deprecated && (
+        <Text
+          block
+          variant="small"
+          styles={{
+            root: {
+              backgroundColor: DEPRECATED_COLOR,
+              padding: 10,
+              borderRadius: 2,
+              marginBottom: text ? '1em' : undefined
+            }
+          }}
+        >
+          Warning: this API is now obsolete.
+        </Text>
       )}
       <Text block variant="small">
         {text}
@@ -80,7 +87,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     if (props.renderAsEnum) {
       const properties = (props.properties as IApiEnumProperty[])
         .sort((a: IApiEnumProperty, b: IApiEnumProperty) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
-        .map((prop: IApiEnumProperty, index: number) => ({ ...prop, key: prop.name }));
+        .map((prop: IApiEnumProperty) => ({ ...prop, key: prop.name }));
 
       this.state = {
         properties,
@@ -318,20 +325,22 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
     let codeIndex = 0;
     let textIndex = 0;
+    let key = 0;
     while (textIndex < text.length && codeIndex < codeBlocks.length) {
       const codeBlock = codeBlocks[codeIndex];
       if (textIndex < codeBlock.index) {
         const str = text.substring(textIndex, codeBlock.index);
-        textElements.push(<span key={textIndex}>{str}</span>);
+        textElements.push(<span key={key}>{str}</span>);
         textIndex += str.length;
       } else {
-        textElements.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
+        textElements.push(<code key={key}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
         codeIndex++;
         textIndex += codeBlock.text.length;
       }
+      key++;
     }
     if (textIndex < text.length) {
-      textElements.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
+      textElements.push(<span key={key}>{text.substring(textIndex, text.length)}</span>);
     }
 
     return textElements;
@@ -386,14 +395,14 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   private _renderDescription(): JSX.Element | undefined {
     const { description } = this.props;
 
-    return description ? <Text variant={'medium'}>{description}</Text> : undefined;
+    return description ? <Markdown>{description}</Markdown> : undefined;
   }
 
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant={'xLarge'} id={name}>
+      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name}>
         {title}
       </Text>
     ) : (
@@ -402,7 +411,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   }
 
   private _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
-    const { item } = props;
     const rowStyles: Partial<IDetailsRowStyles> = {
       root: {
         selectors: {
@@ -415,21 +423,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         wordBreak: 'break-word'
       }
     };
-
-    if (item.deprecated === true) {
-      const deprecatedStyles: Partial<IDetailsRowStyles> = {
-        root: {
-          background: DEPRECATED_ROW_COLOR,
-          selectors: {
-            ':hover': {
-              background: DEPRECATED_ROW_COLOR
-            }
-          }
-        }
-      };
-
-      return <DetailsRow {...props} styles={{ ...rowStyles, ...deprecatedStyles }} />;
-    }
 
     return <DetailsRow {...props} styles={rowStyles} />;
   };
@@ -459,7 +452,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return (
       <>
         {linkTokens.map((token: ILinkToken, index: number) => {
-          let hash: string = '/components/';
+          let hash: string = '/controls/web/';
           // get hash to set correct href value on the links for the local site vs. the Fabric site
 
           const split = this._baseUrl.split('#');
@@ -505,7 +498,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               </Link>
             );
           } else if (token.text) {
-            return extend ? token.text : <code>{token.text}</code>;
+            return extend ? token.text : <code key={token.text + index}>{token.text}</code>;
           } else {
             return undefined;
           }

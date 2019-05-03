@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Bug fixes and styling updates for new website",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com"
+}

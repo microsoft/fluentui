@@ -2,6 +2,7 @@
 @import '../../styles/mixins';
 
 $PageSubHeadMargin: 20px;
+$usageListPadding: 24px;
 
 .Page {
   position: relative;
@@ -78,8 +79,10 @@ $PageSubHeadMargin: 20px;
     @include ms-fontSize-16;
   }
 
-  p {
-    margin-bottom: 12px;
+  p,
+  pre {
+    margin-top: 0;
+    margin-bottom: 1.2em;
 
     &:last-child {
       margin-bottom: 0;
@@ -237,6 +240,110 @@ $PageSubHeadMargin: 20px;
 
     > .mdut--half {
       flex-basis: calc(50% - #{$App-padding-sm});
+    }
+  }
+}
+
+.feedbackSection {
+  .feedbackList ul {
+    margin-bottom: 10px;
+    @include ms-padding-left(0);
+
+    > *:first-child {
+      @include ms-padding-left(0);
+
+      &:before {
+        @include ms-left(0);
+      }
+    }
+  }
+}
+
+.contentWithoutHeader {
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  p {
+    &:first-child {
+      padding-right: 40px;
+    }
+  }
+}
+
+.editSection {
+  position: absolute;
+  top: $App-padding-sm;
+  right: $App-padding-sm;
+
+  &:hover {
+    .edit {
+      opacity: 1;
+    }
+  }
+}
+
+.doSection,
+.dontSection {
+  width: 100%;
+  box-sizing: border-box;
+  display: inline-block;
+  vertical-align: top;
+  margin-bottom: 20px;
+}
+
+.doList,
+.dontList {
+  ul {
+    @include ms-padding-left($usageListPadding);
+
+    > li {
+      font-size: 14px;
+      list-style: none !important;
+      margin-bottom: 20px;
+      position: relative;
+
+      &:before {
+        content: '';
+        font-family: FabricMDL2Icons;
+        display: block;
+        position: absolute;
+        top: 1px;
+        @include ms-left(-$usageListPadding);
+      }
+
+      ul li {
+        font-size: 14px;
+        list-style: circle;
+        margin-bottom: 0;
+      }
+    }
+  }
+}
+
+.doList {
+  ul > li:before {
+    content: '\E8FB'; // 'Accept' fabric icon
+    color: $ms-color-green;
+  }
+}
+
+.dontList {
+  ul > li:before {
+    content: '\E711'; // 'Cancel' fabric icon
+    color: $ms-color-red;
+  }
+}
+
+@media screen and (min-width: $uhf-screen-min-mobile) {
+  .doSection,
+  .dontSection {
+    margin-bottom: -10px; // Trim last list item
+    width: calc(50% - (#{$App-padding-sm} / 2));
+
+    &:first-child {
+      @include ms-margin-right($App-padding-sm);
     }
   }
 }
