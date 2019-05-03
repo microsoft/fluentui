@@ -46,6 +46,7 @@ export interface ISlot<TProps> {
 export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = (
   componentProps: TProps & IProcessedSlotProps,
   userProps: ISlotProp<TProps, TShorthandProp>,
+  slotOptions: ISlotOptions<TProps> | undefined,
   defaultStyles: IStyle
 ) => ReturnType<React.FunctionComponent<TProps>>;
 
@@ -84,9 +85,11 @@ export type ExtractShorthand<TUnion> = TUnion extends boolean
 export type ISlots<TSlots> = { [slot in keyof TSlots]: ISlot<ExtractProps<TSlots[slot]>> };
 
 /**
- * Defines component slots props interface. Requires each slot prop to point to an ISlotProp value.
+ * Automatically defines 'slots' prop based on TSlots props.
  */
-export type ISlotProps<TSlots> = { [key in keyof TSlots]: ISlotProp<ExtractProps<TSlots[key]>, ExtractShorthand<TSlots[key]>> };
+export type ISlottableProps<TSlots> = TSlots & {
+  slots?: { [key in keyof TSlots]+?: ISlotOptions<ExtractProps<TSlots[key]>> };
+};
 
 /**
  * Defines user properties that are automatically applied by Slot utilities using slot name.
@@ -100,21 +103,16 @@ export interface IDefaultSlotProps<TSlots> {
  */
 // TODO: Constrain TProps more clearly (notably also exclude Functions) once this TS PR is merged:
 // https://github.com/Microsoft/TypeScript/pull/29317
-export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | ISlotOptions<TProps>;
+export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never> = TShorthandProp | TProps;
 
 /**
  * Defines the slot options object for all slot props:
- *    1. TProps object
- *    2. ISlotRender function.
- *    3. React component with TProps interface.
+ *    1. ISlotRender function.
+ *    2. React component with TProps interface.
  */
 
 // TODO: create mutually exclusive type for component & render, but only if it's a readable error for users.
 export interface ISlotOptions<TProps> {
-  // TODO: Really want this to work but it completely breaks TS's ability to infer TProps.
-  //       Infer ends up resolving to {} | TProps, which allows anything. May be a TS bug that should be isolated.
-  // props?: TProps | TShorthandProp;
-  props?: TProps;
   component?: React.ReactType<TProps>;
   render?: ISlotRender<TProps>;
 }

@@ -78,7 +78,7 @@ export class SeparatorBasicExample extends React.Component<{}, {}> {
           <>
             <Text>Empty vertical</Text>
             <Stack.Item className={verticalStyle}>
-              <Separator vertical>{content}</Separator>
+              <Separator vertical />
             </Stack.Item>
           </>
         </VerticalSeparatorStack>

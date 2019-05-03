@@ -1,4 +1,4 @@
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
@@ -46,7 +46,7 @@ export interface IButton {
 }
 
 export interface IButtonProps
-  extends IButtonSlots,
+  extends ISlottableProps<IButtonSlots>,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton> {
   /**

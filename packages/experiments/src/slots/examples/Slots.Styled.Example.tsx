@@ -43,19 +43,9 @@ export class SlotsStyledExample extends React.Component<{}, {}> {
     return (
       <Stack>
         <Stack {...stackProps}>
-          <Button
-            icon={{ props: { iconName: 'share', styles: ButtonTheme.scopedSettings.Icon.styles } }}
-            content="Icon as IIconProps with styles"
-          />
-          <Button
-            icon="share"
-            content={{ props: { children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles } }}
-          />
-          <Button
-            icon={{ props: { iconName: 'share', styles: { root: { color: 'red' } } } }}
-            styles={getButtonStyles}
-            content="Button styles prop"
-          />
+          <Button icon={{ iconName: 'share', styles: ButtonTheme.scopedSettings.Icon.styles }} content="Icon as IIconProps with styles" />
+          <Button icon="share" content={{ children: 'Text as ITextProps with styles', styles: ButtonTheme.scopedSettings.Text.styles }} />
+          <Button icon={{ iconName: 'share', styles: { root: { color: 'red' } } }} styles={getButtonStyles} content="Button styles prop" />
           <Customizer {...ButtonTheme}>
             <Button icon="share" content="Button scopedSettings" />
           </Customizer>

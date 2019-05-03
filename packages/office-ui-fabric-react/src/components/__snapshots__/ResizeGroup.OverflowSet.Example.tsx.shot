@@ -28,6 +28,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           className=
               ms-FocusZone
               ms-OverflowSet
+              &:focus {
+                outline: none;
+              }
               {
                 display: flex;
                 flex-wrap: nowrap;

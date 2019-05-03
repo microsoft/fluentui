@@ -5,18 +5,16 @@ import { SplitButton } from './SplitButton';
 import { ISplitButtonProps } from './SplitButton.types';
 
 const menuProps: ISplitButtonProps['menu'] = {
-  props: {
-    items: [
-      {
-        key: 'a',
-        name: 'Item a'
-      },
-      {
-        key: 'b',
-        name: 'Item b'
-      }
-    ]
-  }
+  items: [
+    {
+      key: 'a',
+      name: 'Item a'
+    },
+    {
+      key: 'b',
+      name: 'Item b'
+    }
+  ]
 };
 
 describe('SplitButton view', () => {

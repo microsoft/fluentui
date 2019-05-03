@@ -79,7 +79,6 @@
 .components {
   display: flex;
   flex-direction: column;
-  width: 100%;
 
   // Horizontal layout on large screens
   @media screen and (min-width: $uhf-screen-min-mobile) {
@@ -103,29 +102,11 @@
     padding: 16px 16px 24px 16px;
   }
 
-  &.featuredComponent .content {
-    background-color: #836c9f;
-  }
-
   // Horizontal layout
   @media screen and (min-width: $uhf-screen-min-mobile) {
     flex-direction: column;
     margin: 0 0 0 16px;
-
-    // Lift the featured component out
-    &.featuredComponent {
-      margin-left: 0;
-      position: relative;
-      top: -40px;
-
-      .componentImage {
-        height: 130px;
-      }
-
-      .content {
-        margin-bottom: -40px;
-      }
-    }
+    max-width: 450px;
   }
 }
 

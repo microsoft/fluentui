@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Button } from './Button';
-import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
+import { IButtonComponent, IButtonProps, IButtonTokenReturnType } from './Button.types';
 import { ButtonVariantsType } from './ButtonVariants.types';
 import { FontWeights } from '../../Styling';
 
@@ -42,16 +42,12 @@ export const ActionButtonTokens: IButtonComponent['tokens'] = (props, theme): IB
   props.disabled && disabledTokens
 ];
 
+const ActionButtonStackProps: IButtonProps['stack'] = {
+  horizontalAlign: 'start'
+};
+
 export const ActionButton: ButtonVariantsType = props => {
   const { text, iconProps, ...rest } = props;
 
-  return (
-    <Button
-      stack={{ props: { horizontalAlign: 'start' } }}
-      content={text}
-      icon={{ props: iconProps }}
-      tokens={ActionButtonTokens}
-      {...rest}
-    />
-  );
+  return <Button stack={ActionButtonStackProps} content={text} icon={iconProps} tokens={ActionButtonTokens} {...rest} />;
 };

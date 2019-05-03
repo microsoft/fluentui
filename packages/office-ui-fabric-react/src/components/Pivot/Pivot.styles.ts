@@ -1,14 +1,5 @@
 import { IPivotStyleProps, IPivotStyles } from './Pivot.types';
-import {
-  AnimationVariables,
-  getFocusStyle,
-  getGlobalClassNames,
-  HighContrastSelector,
-  IStyle,
-  normalize,
-  FontSizes,
-  FontWeights
-} from '../../Styling';
+import { AnimationVariables, getGlobalClassNames, HighContrastSelector, IStyle, normalize, FontSizes, FontWeights } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
 const globalClassNames = {
@@ -24,7 +15,7 @@ const globalClassNames = {
 };
 
 const linkStyles = (props: IPivotStyleProps): IStyle[] => {
-  const { rootIsLarge, rootIsTabs, theme } = props;
+  const { rootIsLarge, rootIsTabs } = props;
   const { palette, semanticColors } = props.theme;
   return [
     {
@@ -55,7 +46,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
         ':after': {
           color: 'transparent',
-          content: 'attr(title)',
+          content: 'attr(data-content)',
           display: 'block',
           fontWeight: FontWeights.bold,
           height: 1,
@@ -75,6 +66,11 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
         },
         [`.${IsFocusVisibleClassName} &:focus`]: {
           outline: `1px solid ${semanticColors.focusBorder}`
+        },
+        [`.${IsFocusVisibleClassName} &:focus:after`]: {
+          content: 'attr(data-content)',
+          position: 'relative',
+          border: 0
         }
       }
     },
@@ -82,7 +78,6 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       fontSize: FontSizes.medium
     },
     rootIsTabs && [
-      getFocusStyle(theme),
       {
         marginRight: 0,
         height: 44,

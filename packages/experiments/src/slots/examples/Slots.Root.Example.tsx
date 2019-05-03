@@ -11,8 +11,8 @@ export class SlotsRootExample extends React.Component<{}, {}> {
         <Button icon="share" href="https://developer.microsoft.com/en-us/fabric" content="Root: Implicit 'a' via href prop" />
         <Button
           icon="share"
-          root={{ render: (rootProps, DefaultComponent) => <DefaultComponent {...rootProps} /> }}
           content="Root: Function"
+          slots={{ root: { render: (rootProps, DefaultComponent) => <DefaultComponent {...rootProps} /> } }}
         />
       </Stack>
     );

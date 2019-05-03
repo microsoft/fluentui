@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/codepen-loader",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "Webpack loader for UI Fabric Codepen examples.",
   "main": "lib/index.js",
   "module": "lib/index.js",

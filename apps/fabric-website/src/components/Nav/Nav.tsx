@@ -121,7 +121,7 @@ export class Nav extends React.Component<INavProps, INavState> {
       return (
         <li key={page.title + '-heading'} className={css(styles.category, _hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
-            title={{ props: { text: page.title, styles: getTitleStyles } }}
+            title={{ text: page.title, styles: getTitleStyles }}
             styles={{ body: [{ marginLeft: '28px' }] }}
             defaultCollapsed={!_hasActiveChild(page)}
           >

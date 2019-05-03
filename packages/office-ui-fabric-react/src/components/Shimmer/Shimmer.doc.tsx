@@ -4,7 +4,6 @@ import { ShimmerCustomElementsExample } from './examples/Shimmer.CustomElements.
 import { ShimmerLoadDataExample } from './examples/Shimmer.LoadData.Example';
 import { ShimmerApplicationExample } from './examples/Shimmer.Application.Example';
 import { ShimmerStylingExample } from './examples/Shimmer.Styling.Example';
-import { ShimmerStatus } from './Shimmer.checklist';
 import { IDocPageProps } from '../../common/DocPage.types';
 
 const ShimmerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Shimmer/examples/Shimmer.Basic.Example.tsx') as string;
@@ -64,6 +63,5 @@ export const ShimmerPageProps: IDocPageProps = {
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Shimmer/docs/ShimmerDonts.md'),
   isHeaderVisible: true,
-  isFeedbackVisible: true,
-  componentStatus: ShimmerStatus
+  isFeedbackVisible: true
 };

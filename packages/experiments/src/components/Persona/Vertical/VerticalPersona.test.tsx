@@ -46,7 +46,7 @@ describe('VerticalPersona', () => {
           text="James Bond"
           secondaryText="Super secret agent"
           styles={testVerticalPersonaStyles}
-          coin={{ props: { initials: 'MI6', coinColor: 'red' } }}
+          coin={{ initials: 'MI6', coinColor: 'red' }}
         />
       )
       .toJSON();

@@ -4,7 +4,11 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -75,12 +79,12 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
+                border: 0px;
                 bottom: 2px;
-                content: "";
+                content: attr(data-content);
                 left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
+                position: relative;
                 right: 2px;
                 top: 2px;
                 z-index: 1;
@@ -133,7 +137,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -153,6 +157,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
+          data-content="Callout"
           data-is-focusable={true}
           id="Pivot0-Tab0"
           name="Callout"
@@ -233,12 +238,12 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
+                border: 0px;
                 bottom: 2px;
-                content: "";
+                content: attr(data-content);
                 left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
+                position: relative;
                 right: 2px;
                 top: 2px;
                 z-index: 1;
@@ -291,7 +296,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -301,6 +306,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
               }
+          data-content="Spinner"
           data-is-focusable={true}
           id="Pivot0-Tab1"
           name="Spinner"
@@ -381,12 +387,12 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid transparent;
+                border: 0px;
                 bottom: 2px;
-                content: "";
+                content: attr(data-content);
                 left: 2px;
                 outline: 1px solid #605e5c;
-                position: absolute;
+                position: relative;
                 right: 2px;
                 top: 2px;
                 z-index: 1;
@@ -439,7 +445,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -449,6 +455,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               .ms-Fabric--isFocusVisible &:focus {
                 outline: 1px solid #605e5c;
               }
+          data-content="Persona"
           data-is-focusable={true}
           id="Pivot0-Tab2"
           name="Persona"

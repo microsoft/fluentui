@@ -8,6 +8,12 @@ export interface IGetFocusStylesOptions {
   inset?: number;
 
   /**
+   * The width of the border in pixels.
+   * @defaultvalue 1
+   */
+  width?: number;
+
+  /**
    * The positioning applied to the container.
    * Must be 'relative' or 'absolute' so that the focus border can live around it.
    * @defaultvalue 'relative'

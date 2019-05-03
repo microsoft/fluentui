@@ -370,7 +370,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
     return (
       <div ref={this._root} {...divProps} role={pageElements.length > 0 ? role : undefined} className={css('ms-List', className)}>
-        <div ref={this._surface} className={css('ms-List-surface')} role="presentation">
+        <div ref={this._surface} className={'ms-List-surface'} role="presentation">
           {pageElements}
         </div>
       </div>
@@ -407,7 +407,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     const pageElement = onRenderPage(
       {
         page: page,
-        className: css('ms-List-page'),
+        className: 'ms-List-page',
         key: page.key,
         ref: page.key,
         style: pageStyle,
@@ -466,7 +466,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
       }
 
       cells.push(
-        <div role={cellRole} className={css('ms-List-cell')} key={itemKey} data-list-index={index} data-automationid="ListCell">
+        <div role={cellRole} className={'ms-List-cell'} key={itemKey} data-list-index={index} data-automationid="ListCell">
           {onRenderCell && onRenderCell(item, index, this.state.isScrolling)}
         </div>
       );

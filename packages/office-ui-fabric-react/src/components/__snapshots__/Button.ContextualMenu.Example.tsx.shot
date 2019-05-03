@@ -557,6 +557,9 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                           ms-ContextualMenu
                           is-open
                           ms-BaseButton-menuhost
+                          &:focus {
+                            outline: none;
+                          }
                           {
                             -moz-osx-font-smoothing: grayscale;
                             -webkit-font-smoothing: antialiased;

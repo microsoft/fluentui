@@ -34,22 +34,22 @@ export class VerticalPersonaExample extends React.Component<{}, {}> {
               <Persona
                 vertical
                 text="Hubert Blaine Wolfeschlegelsteinhausenbergerdorff Sr."
-                coin={{ props: { imageUrl: PersonaTestImages.personMale } }}
+                coin={{ imageUrl: PersonaTestImages.personMale }}
               />
               <Persona
                 vertical
                 text="Christian Duncan Claude Sandra Alvin Matilde Eriksson"
                 secondaryText="Director of global strategy management for the entire worldwide organization"
-                coin={{ props: { imageUrl: PersonaTestImages.personMale } }}
+                coin={{ imageUrl: PersonaTestImages.personMale }}
               />
             </VerticalPersonaStack>
           </Stack>
           <Stack tokens={tokens.personaCoinStack}>
             <Text>When passing coinProps</Text>
             <VerticalPersonaStack>
-              <Persona vertical text="Eline Page" secondaryText="eSports commentator" coin={{ props: { presence: 4 } }} />
-              <Persona vertical text="赵丽颖" coin={{ props: { imageUrl: PersonaTestImages.personFemale } }} />
-              <Persona vertical text="Kevin Jameson" coin={{ props: { imageUrl: PersonaTestImages.personMale } }} />
+              <Persona vertical text="Eline Page" secondaryText="eSports commentator" coin={{ presence: 4 }} />
+              <Persona vertical text="赵丽颖" coin={{ imageUrl: PersonaTestImages.personFemale }} />
+              <Persona vertical text="Kevin Jameson" coin={{ imageUrl: PersonaTestImages.personMale }} />
             </VerticalPersonaStack>
           </Stack>
           <Stack tokens={tokens.personaCoinStack}>

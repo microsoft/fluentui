@@ -36,12 +36,7 @@ const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (props, theme):
   ]
 });
 
-// TODO: is there any way to do lookup types here? like:
-// const titleTextRender: ICollapsibleSectionTitleProps['text']['render'] = {
-// which fails since 'render' may not exist due to union.
-// A helper version of this?
-// const titleTextRender: Exclude<ICollapsibleSectionTitleProps['text'], string | undefined>['render'] = (props, DefaultComponent) => (
-
+// TODO: use extendsComponent to create variants and clean up these examples
 const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
   <AsyncData
     data="done"
@@ -50,7 +45,7 @@ const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
   />
 );
 
-const bodyRender: ISlotRender<IHTMLSlot['props']> = (props, DefaultComponent) => (
+const bodyRender: ISlotRender<IHTMLSlot> = (props, DefaultComponent) => (
   <AsyncData
     data="done"
     // tslint:disable-next-line:jsx-no-lambda
@@ -72,15 +67,19 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
           key={1}
           defaultCollapsed={true}
           title={{
-            props: {
-              styles: titleTextStyles,
+            styles: titleTextStyles,
+            text: { children: 'Title Text' },
+            slots: {
               text: {
-                props: { children: 'Title Text' },
                 render: titleTextRender
               }
             }
           }}
-          body={{ render: bodyRender }}
+          slots={{
+            body: {
+              render: bodyRender
+            }
+          }}
         >
           Data loaded
         </CollapsibleSection>

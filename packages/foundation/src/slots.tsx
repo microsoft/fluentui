@@ -10,7 +10,7 @@ import {
   ISlotDefinition,
   ISlotFactory,
   ISlotProp,
-  ISlotProps,
+  ISlottableProps,
   ISlotOptions,
   IDefaultSlotProps,
   IProcessedSlotProps,
@@ -78,18 +78,16 @@ export function createFactory<TProps extends ValidProps, TShorthandProp extends 
 ): ISlotFactory<TProps, TShorthandProp> {
   const { defaultProp = 'children' } = options;
 
-  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, userProps, defaultStyles) => {
+  const result: ISlotFactory<TProps, TShorthandProp> = (componentProps, userProps, userSlotOptions, defaultStyles) => {
     // If they passed in raw JSX, just return that.
     if (React.isValidElement(userProps)) {
       return userProps;
     }
 
-    const flattenedUserProps: TProps | undefined = _flattenSlotProps(defaultProp as string, userProps);
+    const flattenedUserProps: TProps | undefined = _translateShorthand(defaultProp as string, userProps);
     const finalProps = _constructFinalProps(defaultStyles, componentProps, flattenedUserProps);
 
-    if (userProps) {
-      const userSlotOptions = userProps as ISlotOptions<TProps>;
-
+    if (userSlotOptions) {
       if (userSlotOptions.component) {
         // TODO: Remove cast if possible. This cast is needed because TS errors on the intrinsic portion of ReactType.
         // return <userSlotOptions.component {...finalProps} />;
@@ -119,7 +117,7 @@ const defaultFactory = memoizeFunction(type => createFactory(type));
  * @param slots - Slot definition object defining the default slot component for each slot.
  * @returns A set of created slots that components can render in JSX.
  */
-export function getSlots<TComponentProps extends TComponentSlots, TComponentSlots extends ISlotProps<TComponentSlots>>(
+export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(
   userProps: TComponentProps,
   slots: ISlotDefinition<Required<TComponentSlots>>
 ): ISlots<Required<TComponentSlots>> {
@@ -146,6 +144,7 @@ export function getSlots<TComponentProps extends TComponentSlots, TComponentSlot
           // TODO: this cast to any is hiding a relationship issue between the first two args
           componentProps as any,
           mixedProps[name],
+          mixedProps.slots && mixedProps.slots[name],
           // _defaultStyles should always be present, but a check for existence is added to make view tests easier to use.
           mixedProps._defaultStyles && mixedProps._defaultStyles[name]
         );
@@ -159,23 +158,22 @@ export function getSlots<TComponentProps extends TComponentSlots, TComponentSlot
 }
 
 /**
- * Helper function that translates shorthand and lifts props out of slot options as needed.
+ * Helper function that translates shorthand as needed.
  * @param defaultProp
  * @param slotProps
  */
-function _flattenSlotProps<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
+function _translateShorthand<TProps extends ValidProps, TShorthandProp extends ValidShorthand>(
   defaultProp: string,
   slotProps: ISlotProp<TProps, TShorthandProp>
 ): TProps | undefined {
-  const propsOptions = slotProps as ISlotOptions<TProps>;
   let transformedProps: TProps | undefined;
 
-  if (propsOptions && propsOptions.props) {
-    transformedProps = propsOptions.props;
-  } else if (typeof slotProps === 'string' || typeof slotProps === 'number' || typeof slotProps === 'boolean') {
+  if (typeof slotProps === 'string' || typeof slotProps === 'number' || typeof slotProps === 'boolean') {
     transformedProps = {
       [defaultProp]: slotProps as any
     } as TProps;
+  } else {
+    transformedProps = slotProps as TProps;
   }
 
   return transformedProps;
@@ -213,11 +211,17 @@ function _renderSlot<
   ComponentType: TSlotComponent,
   componentProps: TSlotProps,
   userProps: ISlotProp<TSlotProps, TSlotShorthand>,
+  slotOptions: ISlotOptions<TSlotProps> | undefined,
   defaultStyles: IStyle
 ): ReturnType<React.FunctionComponent> {
   if (ComponentType.create !== undefined) {
-    return ComponentType.create(componentProps, userProps, defaultStyles);
+    return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
   } else {
-    return (defaultFactory(ComponentType) as ISlotFactory<TSlotProps, TSlotShorthand>)(componentProps, userProps, defaultStyles);
+    return (defaultFactory(ComponentType) as ISlotFactory<TSlotProps, TSlotShorthand>)(
+      componentProps,
+      userProps,
+      slotOptions,
+      defaultStyles
+    );
   }
 }

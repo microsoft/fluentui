@@ -8,7 +8,6 @@ import { PersonaColorsExample } from './examples/Persona.Colors.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 import { PersonaCustomCoinRenderExample } from './examples/Persona.CustomCoinRender.Example';
 import { UnknownPersonaExample } from './examples/Persona.UnknownPersona.Example';
-import { PersonaStatus } from './Persona.checklist';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
@@ -22,7 +21,6 @@ export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
   componentName: 'Persona',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Persona',
-  componentStatus: PersonaStatus,
   examples: [
     {
       title: 'Persona in various sizes',

@@ -30,6 +30,9 @@ exports[`Rating Renders Rating correctly 1`] = `
         ms-FocusZone
         ms-Rating-focuszone
         ms-RatingStar-root--small
+        &:focus {
+          outline: none;
+        }
         {
           display: inline-block;
         }

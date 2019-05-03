@@ -13,8 +13,8 @@ import { Sticky } from '../../Sticky';
 export interface IScrollablePaneState {
   stickyTopHeight: number;
   stickyBottomHeight: number;
-  scrollbarWidth: number | undefined;
-  scrollbarHeight: number | undefined;
+  scrollbarWidth: number;
+  scrollbarHeight: number;
 }
 
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
@@ -37,8 +37,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     this.state = {
       stickyTopHeight: 0,
       stickyBottomHeight: 0,
-      scrollbarWidth: undefined,
-      scrollbarHeight: undefined
+      scrollbarWidth: 0,
+      scrollbarHeight: 0
     };
 
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
@@ -213,7 +213,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       sticky.setDistanceFromTop(this.contentContainer);
       this.sortSticky(sticky);
     }
-    this.notifySubscribers();
   };
 
   public removeSticky = (sticky: Sticky): void => {
@@ -340,7 +339,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
         const stickyListSorted = stickyList
           .sort((a, b) => {
-            return a.distanceFromTop - b.distanceFromTop;
+            return (a.state.distanceFromTop || 0) - (b.state.distanceFromTop || 0);
           })
           .filter(item => {
             const stickyContent = stickyContainer === this.stickyAbove ? item.stickyContentTop : item.stickyContentBottom;
@@ -352,7 +351,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         // Get first element that has a distance from top that is further than our sticky that is being added
         let targetStickyToAppendBefore: Sticky | undefined = undefined;
         for (const i in stickyListSorted) {
-          if (stickyListSorted[i].distanceFromTop >= sticky.distanceFromTop) {
+          if ((stickyListSorted[i].state.distanceFromTop || 0) >= (sticky.state.distanceFromTop || 0)) {
             targetStickyToAppendBefore = stickyListSorted[i];
             break;
           }
@@ -414,14 +413,14 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     };
   };
 
-  private _getScrollbarWidth(): number | undefined {
+  private _getScrollbarWidth(): number {
     const { contentContainer } = this;
-    return contentContainer ? contentContainer.offsetWidth - contentContainer.clientWidth : undefined;
+    return contentContainer ? contentContainer.offsetWidth - contentContainer.clientWidth : 0;
   }
 
-  private _getScrollbarHeight(): number | undefined {
+  private _getScrollbarHeight(): number {
     const { contentContainer } = this;
-    return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : undefined;
+    return contentContainer ? contentContainer.offsetHeight - contentContainer.clientHeight : 0;
   }
 
   private _onScroll = () => {

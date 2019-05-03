@@ -21,8 +21,10 @@ import {
   on,
   raiseClick,
   shouldWrapFocus,
-  warnDeprecations
+  warnDeprecations,
+  portalContainsElement
 } from '../../Utilities';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 const IS_FOCUSABLE_ATTRIBUTE = 'data-is-focusable';
 const IS_ENTER_DISABLED_ATTRIBUTE = 'data-disable-click-on-enter';
@@ -32,6 +34,27 @@ const NO_VERTICAL_WRAP = 'data-no-vertical-wrap';
 const NO_HORIZONTAL_WRAP = 'data-no-horizontal-wrap';
 const LARGE_DISTANCE_FROM_CENTER = 999999999;
 const LARGE_NEGATIVE_DISTANCE_FROM_CENTER = -999999999;
+
+let focusZoneStyles: string;
+
+const focusZoneClass: string = 'ms-FocusZone';
+
+// Helper function that will return a class for when the root is focused
+function getRootClass(): string {
+  if (!focusZoneStyles) {
+    focusZoneStyles = mergeStyles(
+      {
+        selectors: {
+          ':focus': {
+            outline: 'none'
+          }
+        }
+      },
+      focusZoneClass
+    );
+  }
+  return focusZoneStyles;
+}
 
 const _allInstances: {
   [key: string]: FocusZone;
@@ -199,7 +222,10 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
           // be any native element so typescript rightly flags this as a problem.
           ...rootProps as any
         }
-        className={css('ms-FocusZone', className)}
+        // Once the getClassName correctly memoizes inputs this should
+        // be replaced so that className is passed to getRootClass and is included there so
+        // the class names will always be in the same order.
+        className={css(getRootClass(), className)}
         ref={this._root}
         data-focuszone-id={this._id}
         aria-labelledby={ariaLabelledBy}
@@ -291,6 +317,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLElement>): void => {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { onActiveElementChanged, doNotAllowFocusEventToPropagate, onFocusNotification } = this.props;
     const isImmediateDescendant = this._isImmediateDescendantOfZone(ev.target as HTMLElement);
     let newActiveElement: HTMLElement | undefined;
@@ -383,6 +414,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
   };
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { disabled } = this.props;
 
     if (disabled) {
@@ -437,6 +473,11 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
    * Handle the keystrokes.
    */
   private _onKeyDown = (ev: React.KeyboardEvent<HTMLElement>): boolean | undefined => {
+    if (this._portalContainsElement(ev.target as HTMLElement)) {
+      // If the event target is inside a portal do not process the event.
+      return;
+    }
+
     const { direction, disabled, isInnerZoneKeystroke } = this.props;
 
     if (disabled) {
@@ -905,7 +946,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       parentElement = getParent(parentElement, ALLOW_VIRTUAL_ELEMENTS);
     }
 
-    return this._root.current;
+    return parentElement;
   }
 
   private _updateTabIndexes(element?: HTMLElement) {
@@ -1001,5 +1042,12 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 
   private _shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data-no-vertical-wrap' | 'data-no-horizontal-wrap'): boolean {
     return !!this.props.checkForNoWrap ? shouldWrapFocus(element, noWrapDataAttribute) : true;
+  }
+
+  /**
+   * Returns true if the element is a descendant of the FocusZone through a React portal.
+   */
+  private _portalContainsElement(element: HTMLElement): boolean {
+    return element && !!this._root.current && portalContainsElement(element, this._root.current);
   }
 }
