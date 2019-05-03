@@ -5,10 +5,15 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
   const { effects, semanticColors } = theme;
   return {
     backgroundColor: semanticColors.inputBackground,
+    borderColor: semanticColors.buttonBorder,
+    borderColorHovered: semanticColors.buttonBorder,
+    borderColorPressed: semanticColors.buttonBorder,
     borderRadius: effects.roundedCorner2,
     borderWidth: 1,
     color: semanticColors.buttonText,
-    contentPadding: '0px 10px',
+    contentPadding: '0px 19px',
+    dividerColor: semanticColors.menuDivider,
+    minHeight: 35,
     minWidth: 0
   };
 };
@@ -35,23 +40,10 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   };
 };
 
-const primaryActionDisabledTokens: ISplitButtonComponent['tokens'] = {
-  borderColor: 'transparent'
-};
-
-const expandedTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { semanticColors } = theme;
-  return {
-    borderColor: semanticColors.buttonBorder
-  };
-};
-
 export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
-  (props.primaryActionDisabled || props.disabled) && disabledTokens,
-  props.primaryActionDisabled && primaryActionDisabledTokens,
-  props.expanded && expandedTokens
+  (props.primaryActionDisabled || props.disabled) && disabledTokens
 ];
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
@@ -87,6 +79,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderLeftWidth: tokens.borderWidth,
       borderRightWidth: 0,
       borderTopWidth: tokens.borderWidth,
+      minHeight: tokens.minHeight,
       minWidth: tokens.minWidth,
 
       selectors: {
@@ -102,31 +95,48 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     },
     splitDivider: {
-      backgroundColor: tokens.color,
+      backgroundClip: 'content-box',
+      backgroundColor: tokens.dividerColor,
+      borderBottomColor: tokens.borderColor,
+      borderTopColor: tokens.borderColor,
+      borderStyle: 'solid',
+      borderBottomWidth: tokens.borderWidth,
+      borderLeftWidth: 0,
+      borderRightWidth: 0,
+      borderTopWidth: tokens.borderWidth,
       boxSizing: 'border-box',
-      height: 'calc(100% - 14px)',
-      margin: '7px 0px',
+      height: '100%',
+      padding: '7px 0px',
       width: 1,
 
       selectors: {
         [HighContrastSelector]: {
           borderColor: tokens.highContrastColor
+        },
+        ':hover': {
+          borderColor: tokens.borderColorHovered
+        },
+        ':active': {
+          borderColor: tokens.borderColorPressed
         }
       }
     },
     menuButton: {
-      borderColor: tokens.borderColor,
       borderBottomLeftRadius: '0px',
       borderBottomRightRadius: tokens.borderRadius as string,
-      borderStyle: 'solid',
       borderTopLeftRadius: '0px',
       borderTopRightRadius: tokens.borderRadius as string,
-      borderWidth: tokens.borderWidth,
+      borderStyle: 'solid',
+      borderBottomWidth: tokens.borderWidth,
+      borderLeftWidth: 0,
+      borderRightWidth: tokens.borderWidth,
+      borderTopWidth: tokens.borderWidth,
+      boxSizing: 'border-box',
       height: '100%',
 
       selectors: {
         '> *': {
-          padding: tokens.contentPadding
+          padding: '0px 10px'
         }
       }
     }

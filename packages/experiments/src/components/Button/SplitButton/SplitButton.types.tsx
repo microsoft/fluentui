@@ -67,6 +67,11 @@ export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'butto
   onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
-export interface ISplitButtonTokens extends IMenuButtonTokens {}
+export interface ISplitButtonTokens extends IMenuButtonTokens {
+  /**
+   * Defines the color of the SplitButton divider.
+   */
+  dividerColor?: string;
+}
 
 export type ISplitButtonStyles = IComponentStyles<ISplitButtonSlots>;
