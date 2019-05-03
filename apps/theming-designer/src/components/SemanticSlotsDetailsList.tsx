@@ -108,7 +108,7 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
       key: 'menus',
       name: 'Menus',
       startIndex: listIndex,
-      count: menuIndex, // TODO: change to length of each column's list .length
+      count: menuIndex,
       isCollapsed: true
     }
   ];
@@ -119,7 +119,6 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
     { key: 'neutralSlot', name: 'Netural', fieldName: 'neutralSlot', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'softSlot', name: 'Soft', fieldName: 'softSlot', minWidth: 100, maxWidth: 200, isResizable: true },
     { key: 'strongSlot', name: 'Strong', fieldName: 'strongSlot', minWidth: 100, maxWidth: 200, isResizable: true }
-    // TODO: INVERSES
   ];
 
   return (
