@@ -78,8 +78,10 @@ $PageSubHeadMargin: 20px;
     @include ms-fontSize-16;
   }
 
-  p {
-    margin-bottom: 12px;
+  p,
+  pre {
+    margin-top: 0;
+    margin-bottom: 1.2em;
 
     &:last-child {
       margin-bottom: 0;
