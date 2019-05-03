@@ -4,7 +4,7 @@ import { pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
 import * as styles from '../Page.module.scss';
 import { EditSection } from '../../EditSection/index';
-import { Markdown } from '../../Markdown';
+import { Markdown } from '../../Markdown/index';
 
 export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = props => {
   const { className, content, editUrl, sectionName, readableSectionName = sectionName, style, title = 'Page' } = props;
