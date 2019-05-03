@@ -40,22 +40,28 @@ export const SMALL_GAP_SIZE = 8;
 export const MEDIUM_GAP_SIZE = 16;
 export const LARGE_GAP_SIZE = 48;
 
-const DEPRECATED_ROW_COLOR = '#FFF1CC';
+const DEPRECATED_COLOR = '#FFF1CC';
 
 const backticksRegex = new RegExp('`[^`]*`', 'g');
 
 const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) => {
   return (
     <>
-      {deprecated ? (
-        <>
-          <Text block variant="small">
-            Warning: this API is now obsolete.
-          </Text>
-          <br />
-        </>
-      ) : (
-        undefined
+      {deprecated && (
+        <Text
+          block
+          variant="small"
+          styles={{
+            root: {
+              backgroundColor: DEPRECATED_COLOR,
+              padding: 10,
+              borderRadius: 4,
+              marginBottom: '1em'
+            }
+          }}
+        >
+          Warning: this API is now obsolete.
+        </Text>
       )}
       <Text block variant="small">
         {text}
@@ -80,7 +86,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     if (props.renderAsEnum) {
       const properties = (props.properties as IApiEnumProperty[])
         .sort((a: IApiEnumProperty, b: IApiEnumProperty) => (a.value < b.value ? -1 : a.value > b.value ? 1 : 0))
-        .map((prop: IApiEnumProperty, index: number) => ({ ...prop, key: prop.name }));
+        .map((prop: IApiEnumProperty) => ({ ...prop, key: prop.name }));
 
       this.state = {
         properties,
@@ -402,7 +408,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   }
 
   private _onRenderRow = (props: IDetailsRowProps, defaultRender?: IRenderFunction<IDetailsRowProps>): JSX.Element => {
-    const { item } = props;
     const rowStyles: Partial<IDetailsRowStyles> = {
       root: {
         selectors: {
@@ -415,21 +420,6 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         wordBreak: 'break-word'
       }
     };
-
-    if (item.deprecated === true) {
-      const deprecatedStyles: Partial<IDetailsRowStyles> = {
-        root: {
-          background: DEPRECATED_ROW_COLOR,
-          selectors: {
-            ':hover': {
-              background: DEPRECATED_ROW_COLOR
-            }
-          }
-        }
-      };
-
-      return <DetailsRow {...props} styles={{ ...rowStyles, ...deprecatedStyles }} />;
-    }
 
     return <DetailsRow {...props} styles={rowStyles} />;
   };
@@ -459,7 +449,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return (
       <>
         {linkTokens.map((token: ILinkToken, index: number) => {
-          let hash: string = '/components/';
+          let hash: string = '/controls/';
           // get hash to set correct href value on the links for the local site vs. the Fabric site
 
           const split = this._baseUrl.split('#');
