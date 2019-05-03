@@ -290,7 +290,7 @@ export class CardConfigureExample extends React.Component<{}, IExampleState> {
           </Card>
 
           {debugMode && (
-            <Card root={{ props: { verticalAlign: 'center' } }} tokens={debugCardTokens}>
+            <Card root={{ verticalAlign: 'center' }} tokens={debugCardTokens}>
               <DebugCardSection
                 height={
                   (firstCardSectionHeight < 75 + 2 * resolvedGap ? 75 + 2 * resolvedGap : firstCardSectionHeight) -
