@@ -487,12 +487,14 @@ export enum PersonaInitialsColor {
   magenta = 9,
   purple = 10,
   /**
-   * `black` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   * `black` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   * @deprecated will be removed in a future major release.
    */
   black = 11,
   orange = 12,
   /**
    * `red` is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * @deprecated will be removed in a future major release.
    */
   red = 13,
   darkRed = 14,

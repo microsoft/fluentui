@@ -7896,6 +7896,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
+    // @deprecated
     black = 11,
     // (undocumented)
     blue = 1,
@@ -7932,6 +7933,7 @@ export enum PersonaInitialsColor {
     pink = 8,
     // (undocumented)
     purple = 10,
+    // @deprecated
     red = 13,
     // (undocumented)
     rust = 24,
