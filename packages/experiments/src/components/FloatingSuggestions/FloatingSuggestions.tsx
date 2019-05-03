@@ -43,7 +43,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
   public forceResolveSuggestion(): void {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
-      this.completeSuggestion();
+      this.onCurrentlySelectedSuggestionChosen();
     } else {
       this._validateAndInsertCurrentQueryString();
     }
@@ -119,7 +119,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
     }
   }
 
-  public completeSuggestion = (): void => {
+  public onCurrentlySelectedSuggestionChosen = (): void => {
     if (this.suggestionsControl.current && this.suggestionsControl.current.hasSuggestionSelected()) {
       this._onChange(this.suggestionsControl.current.currentSuggestion!.item);
     }
@@ -203,7 +203,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
           onSuggestionRemove={this._onSuggestionRemove}
           suggestions={this.suggestionStore.getSuggestions()}
           componentRef={this.suggestionsControl}
-          completeSuggestion={this.completeSuggestion}
+          onCurrentlySelectedSuggestionChosen={this.onCurrentlySelectedSuggestionChosen}
           shouldLoopSelection={false}
         />
       </Callout>
