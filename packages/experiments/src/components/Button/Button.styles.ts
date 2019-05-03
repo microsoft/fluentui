@@ -26,12 +26,14 @@ const hrefTokens: IButtonComponent['tokens'] = {
 };
 
 const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+
   return {
     borderRadius: '50%',
     minWidth: 32,
     minHeight: 32,
     contentPadding: '',
-    borderColorFocused: theme.palette.neutralSecondary,
+    borderColorFocused: semanticColors.focusBorder,
     outlineColor: 'transparent',
     contentPaddingFocused: 1,
     backgroundClip: 'content-box'
