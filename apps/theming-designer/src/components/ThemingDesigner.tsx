@@ -170,7 +170,8 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     } = ThemeGenerator.getThemeAsJson(themeRules);
 
     const finalTheme = createTheme({
-      ...{ palette: themeAsJson }
+      ...{ palette: themeAsJson },
+      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
     });
 
     const state = {

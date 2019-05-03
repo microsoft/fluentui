@@ -61,7 +61,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
               disabled={false}
               checked={false}
               iconProps={{ iconName: 'WindowsLogo', styles: { root: { fontSize: '20px' } } }}
-              ariaLabel="Microsoft UI Fabric | Theming Designer"
+              ariaLabel="Microsoft UI Fabric | Theme Designer"
             />
             <Label styles={{ root: { fontWeight: 'bold' } }}>Microsoft UI Fabric | Theme Designer</Label>
           </Stack>
