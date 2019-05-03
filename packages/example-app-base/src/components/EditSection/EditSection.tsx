@@ -26,7 +26,7 @@ export const EditSectionBase: React.StatelessComponent<IEditSectionProps> = prop
   const tooltipHostId = pascalize(sectionName) + '-editButtonHost';
 
   return (
-    <TooltipHost content={`Edit ${title} ${section}`} id={tooltipHostId} hostClassName={css(classNames.root, className)}>
+    <TooltipHost content={sectionName} id={tooltipHostId} hostClassName={css(classNames.root, className)}>
       <IconButton
         aria-labelledby={tooltipHostId}
         iconProps={{ iconName: 'Edit' }}

@@ -15,6 +15,7 @@ import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { ILinkToken } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { IApiInterfaceProperty, IApiEnumProperty, IMethod } from './ApiReferencesTableSet.types';
+import { Markdown } from '../Markdown/index';
 
 export interface IApiReferencesTableProps {
   title?: string;
@@ -55,8 +56,8 @@ const referencesTableCell = (text: string | JSX.Element[], deprecated: boolean) 
             root: {
               backgroundColor: DEPRECATED_COLOR,
               padding: 10,
-              borderRadius: 4,
-              marginBottom: '1em'
+              borderRadius: 2,
+              marginBottom: text ? '1em' : undefined
             }
           }}
         >
@@ -324,20 +325,22 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
     let codeIndex = 0;
     let textIndex = 0;
+    let key = 0;
     while (textIndex < text.length && codeIndex < codeBlocks.length) {
       const codeBlock = codeBlocks[codeIndex];
       if (textIndex < codeBlock.index) {
         const str = text.substring(textIndex, codeBlock.index);
-        textElements.push(<span key={textIndex}>{str}</span>);
+        textElements.push(<span key={key}>{str}</span>);
         textIndex += str.length;
       } else {
-        textElements.push(<code key={textIndex}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
+        textElements.push(<code key={key}>{codeBlock.text.substring(1, codeBlock.text.length - 1)}</code>);
         codeIndex++;
         textIndex += codeBlock.text.length;
       }
+      key++;
     }
     if (textIndex < text.length) {
-      textElements.push(<span key={textIndex}>{text.substring(textIndex, text.length)}</span>);
+      textElements.push(<span key={key}>{text.substring(textIndex, text.length)}</span>);
     }
 
     return textElements;
@@ -392,14 +395,14 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   private _renderDescription(): JSX.Element | undefined {
     const { description } = this.props;
 
-    return description ? <Text variant={'medium'}>{description}</Text> : undefined;
+    return description ? <Markdown>{description}</Markdown> : undefined;
   }
 
   private _renderTitle(): JSX.Element | undefined {
     const { title, name } = this.props;
 
     return title ? (
-      <Text variant={'xLarge'} id={name}>
+      <Text variant="xLarge" as="h3" styles={{ root: { marginTop: 0 } }} id={name}>
         {title}
       </Text>
     ) : (
@@ -449,7 +452,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
     return (
       <>
         {linkTokens.map((token: ILinkToken, index: number) => {
-          let hash: string = '/controls/';
+          let hash: string = '/controls/web/';
           // get hash to set correct href value on the links for the local site vs. the Fabric site
 
           const split = this._baseUrl.split('#');
@@ -495,7 +498,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
               </Link>
             );
           } else if (token.text) {
-            return extend ? token.text : <code>{token.text}</code>;
+            return extend ? token.text : <code key={token.text + index}>{token.text}</code>;
           } else {
             return undefined;
           }
