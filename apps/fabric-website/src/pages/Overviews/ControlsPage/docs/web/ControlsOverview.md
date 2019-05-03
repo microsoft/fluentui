@@ -2,4 +2,4 @@ Fabric’s robust, up-to-date web controls are built with the React framework. L
 
 ### Fluent Updates
 
-The Fabric React components are being updated to reflect the Fluent design system. While these changes will be the default in a future release, a preview is available via the [Fluent theme package](https://www.npmjs.com/package/@uifabric/fluent-theme) so that you can test the updated styles in your app. [Read more about how to use the Fluent theme in your app](#/controls/web/fluent-theme).
+The Fabric React components are being updated to reflect the Fluent design system. While these changes will be the default in the May release of Fabric React 7, a preview is available via the [Fluent theme package](https://www.npmjs.com/package/@uifabric/fluent-theme) so that you can test the updated styles in your app. [Read more about how to use the Fluent theme in your app](#/controls/web/fluent-theme).
