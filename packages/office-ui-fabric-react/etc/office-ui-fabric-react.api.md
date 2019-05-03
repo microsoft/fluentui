@@ -9001,7 +9001,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 // @public (undocumented)
 export class SuggestionsStore<T> {
-    constructor();
+    constructor(getAriaLabel?: (item: T) => string);
     // (undocumented)
     convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[];
     // (undocumented)
