@@ -49,7 +49,6 @@ export class SuggestionsStore<T> {
       return {
         item: suggestion,
         selected: false,
-        // tslint:disable-next-line:no-any
         ariaLabel:
           this.getAriaLabel !== undefined
             ? this.getAriaLabel(suggestion)

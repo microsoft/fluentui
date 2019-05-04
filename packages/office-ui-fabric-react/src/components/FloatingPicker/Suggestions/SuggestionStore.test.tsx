@@ -1,17 +1,17 @@
 import { SuggestionsStore } from './SuggestionsStore';
 
-type DumbData = {
+type IMockSuggestion = {
   customName: string;
   name?: string;
   primaryText?: string;
 };
 
-const getCustomName = (d: DumbData): string => d.customName + ' label';
+const getCustomName = (d: IMockSuggestion): string => d.customName + ' label';
 
 describe('SuggestionsStore', () => {
   describe('when getting the aria-label', () => {
     it('uses getAriaLabel for item text when it is set', () => {
-      const store = new SuggestionsStore<DumbData>(getCustomName);
+      const store = new SuggestionsStore<IMockSuggestion>(getCustomName);
       store.updateSuggestions([
         {
           customName: 'me'
@@ -28,7 +28,7 @@ describe('SuggestionsStore', () => {
     });
 
     it('prioritizes getAriaLabel over name', () => {
-      const store = new SuggestionsStore<DumbData>(getCustomName);
+      const store = new SuggestionsStore<IMockSuggestion>(getCustomName);
       store.updateSuggestions([
         {
           customName: 'u',
@@ -47,7 +47,7 @@ describe('SuggestionsStore', () => {
     });
 
     it('prioritizes getAriaLabel over primaryText', () => {
-      const store = new SuggestionsStore<DumbData>(getCustomName);
+      const store = new SuggestionsStore<IMockSuggestion>(getCustomName);
       store.updateSuggestions([
         {
           customName: 'us',
@@ -66,7 +66,7 @@ describe('SuggestionsStore', () => {
     });
 
     it('prioritizes name over primaryText if getAriaLabel is unset', () => {
-      const store = new SuggestionsStore<DumbData>();
+      const store = new SuggestionsStore<IMockSuggestion>();
       store.updateSuggestions([
         {
           customName: 'us',
