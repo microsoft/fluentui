@@ -3,8 +3,14 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardActivityBase } from './DocumentCardActivity.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActivity {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActivityProps extends React.ClassAttributes<DocumentCardActivityBase> {
   /**
    * Gets the component ref.
@@ -37,6 +43,9 @@ export interface IDocumentCardActivityProps extends React.ClassAttributes<Docume
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActivityPerson {
   /**
    * The name of the person.
@@ -67,6 +76,9 @@ export interface IDocumentCardActivityPerson {
   initialsColor?: PersonaInitialsColor;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActivityStyleProps {
   /**
    * Accept theme prop.
@@ -84,6 +96,9 @@ export interface IDocumentCardActivityStyleProps {
   multiplePeople?: boolean;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardActivityStyles {
   root: IStyle;
   avatars: IStyle;

@@ -2,6 +2,47 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.47.3",
+      "tag": "@uifabric/styling_v6.47.3",
+      "date": "Sat, 04 May 2019 00:01:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ISemanticColors: Fix markdown formatting",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "03f07fda6ad2c8cee237a46c16601eb38d0ea528"
+          },
+          {
+            "comment": "Doc updates for new website",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.47.1",
+      "tag": "@uifabric/styling_v6.47.1",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "a new line is added to the end of the api-extractor.json file",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c0bbb0d61e0da3bccbb78654a6f49e0c56b7996e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.0` to `^6.17.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.0` to `^6.38.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.0",
       "tag": "@uifabric/styling_v6.47.0",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

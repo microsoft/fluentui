@@ -14,7 +14,7 @@ const GlobalClassNames = {
 };
 
 export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles => {
-  const { className, theme, isLargeHeader, isClose, hidden, isMultiline } = props;
+  const { className, theme, isLargeHeader, isClose, hidden, isMultiline, draggableHeaderClassName } = props;
 
   const { palette, fonts } = theme;
 
@@ -57,7 +57,13 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
           backgroundColor: palette.themePrimary
         }
       ],
-      isClose && classNames.close
+      isClose && classNames.close,
+      draggableHeaderClassName && [
+        draggableHeaderClassName,
+        {
+          cursor: 'move'
+        }
+      ]
     ],
 
     button: [

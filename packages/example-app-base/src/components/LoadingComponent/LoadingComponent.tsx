@@ -3,6 +3,9 @@ import { Async, css, memoizeFunction, Shimmer, ShimmerElementType as ElementType
 import { Page, IPageSectionProps } from '../Page/index';
 import { ILoadingComponentProps } from './LoadingComponent.types';
 
+const rootClass = mergeStyles({
+  minHeight: '100vh'
+});
 const shimmerSectionClass = mergeStyles({
   transition: 'transform .3s cubic-bezier(0.1, 0.9, 0.2, 1), opacity .3s cubic-bezier(0.1, 0.9, 0.2, 1) .05s'
 });
@@ -141,6 +144,7 @@ export class LoadingComponent extends React.PureComponent<ILoadingComponentProps
         otherSections={pastDelay ? this._otherSections : undefined}
         sectionWrapperClassName={css(pastDelay && pastDelayClass, pastOffset && pastOffsetClass)}
         showSideRail={false}
+        className={rootClass}
       />
     );
   }

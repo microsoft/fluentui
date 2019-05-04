@@ -4,6 +4,9 @@ import { IShimmerLineProps, IShimmerLineStyleProps, IShimmerLineStyles } from '.
 
 const getClassNames = classNamesFunction<IShimmerLineStyleProps, IShimmerLineStyles>();
 
+/**
+ * {@docCategory Shimmer}
+ */
 export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
   private _classNames: { [key in keyof IShimmerLineStyles]: string };
 

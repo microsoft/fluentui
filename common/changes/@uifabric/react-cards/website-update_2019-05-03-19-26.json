@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/date-time",
+      "packageName": "@uifabric/react-cards",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/date-time",
+  "packageName": "@uifabric/react-cards",
   "email": "elcraig@microsoft.com"
 }

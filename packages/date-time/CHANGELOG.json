@@ -2,6 +2,31 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.0.4",
+      "tag": "@uifabric/date-time_v6.0.4",
+      "date": "Sat, 04 May 2019 00:01:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CalendarDay: adjust styles to center align the selected days and months.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "867dc3bba916ce3528ffe2beafa370f7ea3a73bb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.2` to `^6.47.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.1` to `^6.17.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.3",
       "tag": "@uifabric/date-time_v6.0.3",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

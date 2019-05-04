@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/fabric-website",
+      "packageName": "@uifabric/file-type-icons",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/fabric-website",
+  "packageName": "@uifabric/file-type-icons",
   "email": "elcraig@microsoft.com"
 }

@@ -1,6 +1,29 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 01 May 2019 12:34:25 GMT and should not be manually modified.
+This log was last generated on Sat, 04 May 2019 00:01:54 GMT and should not be manually modified.
+
+## 6.176.2
+Sat, 04 May 2019 00:01:54 GMT
+
+### Patches
+
+- Properly propagate Esc in DatePicker
+- Add min panel width for small screen sizes
+- Documentation: adds more `docCategory` tags to API items.
+- Doc updates for new website
+
+## 6.176.0
+Thu, 02 May 2019 12:36:35 GMT
+
+### Minor changes
+
+- Add IBreadcrumbData, deprecate IBreadCrumbData
+- Modal/Dialog: Add ability to move via mouse and/or keyboard
+- Tooltip/TooltipHost: content now can take JSX content.
+
+### Patches
+
+- Remove out-of-date IE focus handling work-around. Pass forceFocusInsideTrap={false} to DatePicker FocusTrapZone. Adjust FocusTrapZone return focus handling.
 
 ## 6.175.0
 Wed, 01 May 2019 12:34:25 GMT

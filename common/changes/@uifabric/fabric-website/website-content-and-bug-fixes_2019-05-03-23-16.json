@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Check for undefined hashes",
+      "comment": "Adjust Resources content",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 01 May 2019 12:34:24 GMT and should not be manually modified.
+This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+
+## 6.38.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
 
 ## 6.38.0
 Wed, 01 May 2019 12:34:24 GMT

@@ -55,7 +55,7 @@ const MarkdownCodeBase: React.StatelessComponent<IMarkdownCodeProps> = props => 
   const classNames = getClassNames(styles, { theme: theme! });
 
   const language = languageClassNames[className!];
-  if (language) {
+  if (language || (typeof props.children === 'string' && props.children.indexOf('\n') !== -1)) {
     return <CodeSnippet {...rest} language={language} className={className} />;
   }
 
