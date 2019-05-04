@@ -4,4 +4,4 @@ The chip field control handles keyboard input, wrapping and truncation automatic
 
 |People Picker |Persona Chips |
 |---|---|
-|<img src="https://static2.sharepointonline.com/files/fabric/files/hig-media/images/controls/android/Persona/PeoplePickerView.png" alt="People Picker in Android" style="width: 50%;" /> |<img src="https://static2.sharepointonline.com/files/fabric/files/hig-media/images/controls/android/Persona/PersonaChipView.png" alt="Persona Chips in Android" style="width: 50%;" /> |
+|<img src="https://static2.sharepointonline.com/fabric-website/images/controls/android/Persona/PeoplePickerView.png" alt="People Picker in Android" style="width: 50%;" /> |<img src="https://static2.sharepointonline.com/fabric-website/images/controls/android/Persona/PersonaChipView.png" alt="Persona Chips in Android" style="width: 50%;" /> |
