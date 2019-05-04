@@ -475,102 +475,44 @@ export enum PersonaPresence {
  * {@docCategory Persona}
  */
 export enum PersonaInitialsColor {
-  // Old color names
-  /**
-   * @deprecated Use lightBlue30 instead
-   */
   lightBlue = 0,
-  /**
-   * @deprecated Use blue20 instead
-   */
   blue = 1,
-  /**
-   * @deprecated Use darkBlue10 instead
-   */
   darkBlue = 2,
-  /**
-   * @deprecated Use teal10 instead
-   */
   teal = 3,
-  /**
-   * @deprecated Use green10 instead
-   */
   lightGreen = 4,
-  /**
-   * @deprecated Use green10 instead
-   */
   green = 5,
-  /**
-   * @deprecated Use darkGreen20 instead
-   */
   darkGreen = 6,
-  /**
-   * @deprecated Use lightPink10 instead
-   */
   lightPink = 7,
-  /**
-   * @deprecated Use pink10 instead
-   */
   pink = 8,
-  /**
-   * @deprecated Use magenta10 instead
-   */
   magenta = 9,
-  /**
-   * @deprecated Use purple10 instead
-   */
   purple = 10,
   /**
-   * Black is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
-   * @deprecated Use gray40 instead
+   * `black` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides.
+   * @deprecated will be removed in a future major release.
    */
   black = 11,
-  /**
-   * @deprecated Use orange10 instead
-   */
   orange = 12,
   /**
-   * Red is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
-   * @deprecated Use red10 instead
+   * `red` is a color that often has a special meaning, so it is considered a reserved color and can only be set with overrides
+   * @deprecated will be removed in a future major release.
    */
   red = 13,
-  /**
-   * @deprecated Use darkRed20 instead
-   */
   darkRed = 14,
   /**
    * Transparent is not intended to be used with typical initials due to accessibility issues.
    * Its primary use is for overflow buttons, so it is considered a reserved color and can only be set with overrides.
    */
   transparent = 15,
-  /**
-   * @deprecated Use violet10 instead
-   */
   violet = 16,
-
-  // New color names
-  green10 = 25,
-  darkGreen20 = 26,
-  teal10 = 27,
-  cyan30 = 28,
-  lightBlue30 = 29,
-  blue20 = 30,
-  darkBlue10 = 31,
-  violet10 = 32,
-  purple10 = 33,
-  magenta10 = 34,
-  lightPink10 = 35,
-  pink10 = 36,
-  pinkRed10 = 37,
-  red10 = 38,
-  darkRed20 = 39,
-  orange10 = 40,
-  orange30 = 41,
-  orangeYellow20 = 42,
-  gray30 = 43,
+  lightRed = 17,
+  gold = 18,
+  burgundy = 19,
+  warmGray = 20,
+  coolGray = 21,
   /**
-   * gray40 is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
+   * `gray` is a color that can result in offensive persona coins with some initials combinations, so it can only be set with overrides
    */
-  gray40 = 44,
-  gray20 = 45
+  gray = 22,
+  cyan = 23,
+  rust = 24
 }
