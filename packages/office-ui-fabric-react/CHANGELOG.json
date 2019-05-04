@@ -2,6 +2,40 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.176.2",
+      "tag": "office-ui-fabric-react_v6.176.2",
+      "date": "Sat, 04 May 2019 00:01:54 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Properly propagate Esc in DatePicker",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "4715fb9f01495f078a25c0cbde569c96645b77b4"
+          },
+          {
+            "comment": "Add min panel width for small screen sizes",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "c8c3b8a77cea195c6db4054cf1455bb02e348c24"
+          },
+          {
+            "comment": "Documentation: adds more `docCategory` tags to API items.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "82f0873f1cbf1d2ae9fb7cd9b668feee14022bba"
+          },
+          {
+            "comment": "Doc updates for new website",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.2` to `^6.47.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.176.0",
       "tag": "office-ui-fabric-react_v6.176.0",
       "date": "Thu, 02 May 2019 12:36:35 GMT",
