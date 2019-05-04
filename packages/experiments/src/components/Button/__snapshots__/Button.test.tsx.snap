@@ -7,9 +7,9 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f3f2f1;
+        background-color: #ffffff;
         border-color: #8a8886;
-        border-radius: 0px;
+        border-radius: 2px;
         border-style: solid;
         border-width: 1px;
         box-sizing: border-box;
@@ -43,17 +43,17 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
+        left: 2px;
         outline: 1px solid #605e5c;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
       &:hover {
-        background-color: #edebe9;
+        background-color: #f3f2f1;
         border-color: #8a8886;
         color: #201f1e;
       }
@@ -98,8 +98,8 @@ exports[`Button view renders a default Button with content correctly 1`] = `
           height: 100%;
           justify-content: center;
           padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 0px;
           width: auto;
         }
@@ -145,9 +145,9 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         -webkit-font-smoothing: antialiased;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
-        border-radius: 0px;
+        border-radius: 2px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 0px;
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
@@ -179,13 +179,13 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
+        left: 2px;
         outline: 1px solid #605e5c;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
@@ -243,8 +243,8 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
           height: 100%;
           justify-content: center;
           padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 0px;
           width: auto;
         }
@@ -288,10 +288,10 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #0078d4;
-        border-color: transparent;
-        border-radius: 0px;
+        border-color: #8a8886;
+        border-radius: 2px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 0px;
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
@@ -323,13 +323,13 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
+        left: 2px;
         outline: 1px solid #605e5c;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
@@ -385,8 +385,8 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
           height: 100%;
           justify-content: center;
           padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 0px;
           width: auto;
         }
