@@ -4,9 +4,9 @@ Coming soon
 
 ### Control names
 
-MSAvatarView - individual profile picture
+`MSAvatarView` Individual profile picture in standard sizes.
 
-MSPersonaListView - personas arranged into a standard list
+`MSPersonaListView` Organizes persona avatars into list cells to render a set of people or addressable groups.
 
 ### Library
 
