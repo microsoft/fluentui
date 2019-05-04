@@ -30,12 +30,12 @@ interface ISemanticSlotsDetailsList {
 export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDetailsListProps> = (
   props: ISemanticSlotsDetailsListProps
 ) => {
-  let bodyIndex = 13;
-  let linkIndex = 17;
-  let buttonIndex = 42;
-  let inputIndex = 56;
-  let listIndex = 63;
-  let menuIndex = 71;
+  let countDefaults = 13;
+  let countLinks = 4;
+  let countButtons = 25;
+  let countInputs = 14;
+  let countLists = 7;
+  let countMenus = 8;
 
   let items: ISemanticSlotsDetailsList[] = [];
   let groups: IGroup[] = [];
@@ -70,45 +70,45 @@ export const SemanticSlotsDetailsList: React.StatelessComponent<ISemanticSlotsDe
   }
 
   groups = [
-    { key: 'defaults', name: 'Defaults', startIndex: 0, count: bodyIndex, isCollapsed: false },
+    { key: 'defaults', name: 'Defaults', startIndex: 0, count: countDefaults, isCollapsed: false },
 
     {
       key: 'Links',
       name: 'Links',
-      startIndex: bodyIndex,
-      count: linkIndex,
+      startIndex: countDefaults,
+      count: countLinks,
       isCollapsed: true
     },
 
     {
       key: 'button',
       name: 'Buttons',
-      startIndex: linkIndex,
-      count: buttonIndex,
+      startIndex: countLinks + countDefaults,
+      count: countButtons,
       isCollapsed: true
     },
 
     {
       key: 'inputs',
       name: 'Inputs',
-      startIndex: buttonIndex,
-      count: inputIndex,
+      startIndex: countButtons + countLinks + countDefaults,
+      count: countInputs,
       isCollapsed: true
     },
 
     {
       key: 'lists',
       name: 'Lists',
-      startIndex: inputIndex,
-      count: listIndex,
+      startIndex: countInputs + countButtons + countLinks + countDefaults,
+      count: countLists,
       isCollapsed: true
     },
 
     {
       key: 'menus',
       name: 'Menus',
-      startIndex: listIndex,
-      count: menuIndex,
+      startIndex: countLists + countInputs + countButtons + countLinks + countDefaults,
+      count: countMenus,
       isCollapsed: true
     }
   ];
