@@ -410,6 +410,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 data-is-focusable={false}
                 tabIndex={-1}
                 onClick={this._onComboBoxClick}
+                onBlur={this._onBlur}
                 iconProps={buttonIconProps}
                 disabled={disabled}
                 checked={isOpen}
