@@ -3,11 +3,11 @@
 These design toolkits provide styles, controls and layout templates that enable you to create beautiful and coherent Microsoft experiences.
 
 <ul class="md-list--flex">
-  <li class="mdut--half">[Web Fluent (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
-  <li class="mdut--half">[iOS Fluent (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
-  <li class="mdut--half">[iOS Fluent (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
-  <li class="mdut--half">[Android Fluent (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
-  <li class="mdut--half">[Android Fluent (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
+  <li class="mdut--half">[Microsoft Web Fluent (Sketch)](https://aka.ms/FluentToolkits/Web/Sketch)</li>
+  <li class="mdut--half">[Microsoft iOS Fluent (Sketch)](https://aka.ms/FluentToolkits/iOS/Sketch)</li>
+  <li class="mdut--half">[Microsoft iOS Fluent (Figma)](https://aka.ms/FluentToolkits/iOS/Figma)</li>
+  <li class="mdut--half">[Microsoft Android Fluent (Sketch)](https://aka.ms/FluentToolkits/Android/Sketch)</li>
+  <li class="mdut--half">[Microsoft Android Fluent (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
 </ul>
 
 ### SharePoint Framework
