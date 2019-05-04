@@ -2,4 +2,4 @@ These pickers let users quickly choose a date or time through a familiar popup a
 
 |Date Picker |Time Picker |
 |---|---|
-|<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/DateTimePicker/datepicker.png" alt="Date Picker in Android" style="width: 50%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/DateTimePicker/timepicker.png" alt="Time Picker in Android" style="width: 50%;" /> |
+|<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/datetimepicker/datepicker.png" alt="Date Picker in Android" style="width: 50%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/datetimepicker/timepicker.png" alt="Time Picker in Android" style="width: 50%;" /> |
