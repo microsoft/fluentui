@@ -1,14 +1,15 @@
+
 ### Design
 
-_link to abstract_
+Coming soon
 
 ### Control names
 
-AvatarView - individual round profile picture
+`AvatarView` Individual round profile picture
 
-PersonaView - the row cell design for a single person with 1 or 2 lines of text
+`PersonaView` The row cell design for a single person with 1 or 2 lines of text
 
-PersonaListView - assembling PersonaView into a performant list
+`PersonaListView` Assembling PersonaView into a performant list
 
 ### Library
 

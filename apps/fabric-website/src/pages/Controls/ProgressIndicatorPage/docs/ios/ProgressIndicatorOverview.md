@@ -5,3 +5,5 @@ For pauses between 2 sec and 400ms, adding animations may actually make the expe
 Use a standalone spinner when you need a progress indicator on an existing surface (such as a view that's already displayed but no content is shown yet, or when the user pulls-to-refresh, revealing the empty space above the scrolling list).
 
 For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the "MSHUD":
+
+<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/ProgressIndicator/ProgressIndicator.png" alt="Example of a progress indicator control in a floating overlay." style="width: 25%;" />

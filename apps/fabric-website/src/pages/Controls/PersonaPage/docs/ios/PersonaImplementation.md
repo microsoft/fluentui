@@ -4,9 +4,9 @@ Coming soon
 
 ### Control names
 
-MSAvatarView - individual profile picture
+`MSAvatarView` Individual profile picture
 
-MSPersonaListView - personas arranged into a standard list
+`MSPersonaListView` Personas arranged into a standard list
 
 ### Library
 
