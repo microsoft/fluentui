@@ -9,4 +9,4 @@ Persona controls are also available as a performant list view. The 'PersonaList'
 
 |Avatar Examples |Persona List |
 |---|---|
-|<img src="https://static2.sharepointonline.com/fabric-website/images/controls/ios/Persona/Avatars.png" alt="Person Avatars in Various Sizes" style="width: 50%;" /> |<img src="https://static2.sharepointonline.com/fabric-website/images/controls/ios/Persona/MSPersonaListView.png" alt="Example of Personas arranged in a list" style="width: 50%;" /> |
+|<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/Persona/Avatars.png" alt="Person Avatars in Various Sizes" style="width: 50%;" /> |<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/Persona/MSPersonaListView.png" alt="Example of Personas arranged in a list" style="width: 50%;" /> |
