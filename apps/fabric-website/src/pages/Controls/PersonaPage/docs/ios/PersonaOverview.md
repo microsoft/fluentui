@@ -7,6 +7,6 @@ Beside a profile picture, Persona controls can include text elements. The user's
 Persona controls are also available as a performant list view. The 'PersonaList' controls are perfect for listing many people. Examples of this may be an Address Book or a People Picker auto-complete experience.
 
 
-|MSAvatarView implements a single avatar (profile picture) in standard sizes. |MSPersonaListView utilizes the avatar and list cells to list a set of people or addressable groups. |
+|Avatar Examples |Persona List |
 |---|---|
 |<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/Persona/Avatars.png" alt="Person Avatars in Various Sizes" style="width: 50%;" /> |<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/Persona/MSPersonaListView.png" alt="Example of Personas arranged in a list" style="width: 50%;" /> |

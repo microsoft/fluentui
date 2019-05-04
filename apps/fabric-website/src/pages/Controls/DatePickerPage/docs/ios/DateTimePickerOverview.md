@@ -2,4 +2,4 @@ These pickers let users quickly choose a date or time through a familiar popup a
 
 |Date Picker |Time Picker |
 |---|---|
-|<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/DateTimePicker/datepicker.png" alt="Date Picker" style="width: 50%;" /> | <img src="https://uifabric.azurewebsites.net/media/images/controls/ios/DateTimePicker/timepicker.png" alt="Time Picker" style="width: 50%;" /> |
+|<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/DateTimePicker/datepicker.png" alt="Date Picker in Android" style="width: 50%;" /> | <img src="https://uifabric.azurewebsites.net/media/images/controls/ios/DateTimePicker/timepicker.png" alt="Time Picker in Android" style="width: 50%;" /> |
