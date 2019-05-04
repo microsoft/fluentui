@@ -4,4 +4,4 @@ The chip field control handles keyboard input, wrapping and truncation automatic
 
 |People Picker |Chip States |
 |---|---|
-|<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/Persona/BadgeExamples.png" alt="People Picker in iOS" style="width: 50%;" /> |<img src="https://uifabric.azurewebsites.net/media/images/controls/ios/Persona/BadgeVariants.png" alt="Persona Chips in iOS" style="width: 50%;" /> |
+|<img src="https://static2.sharepointonline.com/files/fabric/files/hig-media/images/controls/ios/Persona/BadgeExamples.png" alt="People Picker in iOS" style="width: 50%;" /> |<img src="https://static2.sharepointonline.com/files/fabric/files/hig-media/images/controls/ios/Persona/BadgeVariants.png" alt="Persona Chips in iOS" style="width: 50%;" /> |
