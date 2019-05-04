@@ -211,6 +211,7 @@ $PageSubHeadMargin: 20px;
     .sideRailWrapper {
       position: sticky;
       top: $App-padding-lg;
+      max-height: calc(100vh - #{$App-padding-lg});
     }
   }
 }

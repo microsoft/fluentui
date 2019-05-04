@@ -1,6 +1,14 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Sat, 04 May 2019 00:01:54 GMT and should not be manually modified.
+
+## 6.47.3
+Sat, 04 May 2019 00:01:54 GMT
+
+### Patches
+
+- ISemanticColors: Fix markdown formatting
+- Doc updates for new website
 
 ## 6.47.1
 Thu, 02 May 2019 12:36:35 GMT

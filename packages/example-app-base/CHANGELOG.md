@@ -1,6 +1,20 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Sat, 04 May 2019 00:01:53 GMT and should not be manually modified.
+
+## 6.17.0
+Sat, 04 May 2019 00:01:53 GMT
+
+### Minor changes
+
+- Adds shell and bash language support
+- Bug fixes and styling updates for new website
+- Updates for new website
+- Break out of existing customizations when showing example card.
+
+### Patches
+
+- conditionally render Implementation jump link based on presence of jsonDocs
 
 ## 6.16.1
 Thu, 02 May 2019 12:36:35 GMT

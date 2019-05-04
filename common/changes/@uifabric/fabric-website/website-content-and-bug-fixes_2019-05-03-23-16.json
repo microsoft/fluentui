@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Getting started update with CRA, just and Gatsby.js",
+      "comment": "Adjust Resources content",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "kchau@microsoft.com"
+  "email": "v-jojanz@microsoft.com"
 }

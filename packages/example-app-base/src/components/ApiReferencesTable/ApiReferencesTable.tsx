@@ -340,39 +340,32 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   private _renderClass(): JSX.Element | undefined {
     const { properties, methods } = this.state;
 
-    return methods ? (
+    return (
       <Stack gap={MEDIUM_GAP_SIZE}>
-        <Stack gap={SMALL_GAP_SIZE}>
-          <Text variant={'medium'}>Members</Text>
-          <DetailsList
-            selectionMode={SelectionMode.none}
-            layoutMode={DetailsListLayoutMode.justified}
-            items={properties}
-            columns={this._defaultColumns}
-            onRenderRow={this._onRenderRow}
-          />
-        </Stack>
-        <Stack gap={SMALL_GAP_SIZE}>
-          <Text variant={'medium'}>Methods</Text>
-          <DetailsList
-            selectionMode={SelectionMode.none}
-            layoutMode={DetailsListLayoutMode.justified}
-            items={methods}
-            columns={this._methodColumns}
-            onRenderRow={this._onRenderRow}
-          />
-        </Stack>
-      </Stack>
-    ) : (
-      <Stack gap={SMALL_GAP_SIZE}>
-        <Text variant={'medium'}>Members</Text>
-        <DetailsList
-          selectionMode={SelectionMode.none}
-          layoutMode={DetailsListLayoutMode.justified}
-          items={properties}
-          columns={this._defaultColumns}
-          onRenderRow={this._onRenderRow}
-        />
+        {properties && properties.length > 0 && (
+          <Stack gap={SMALL_GAP_SIZE}>
+            <Text variant={'medium'}>Members</Text>
+            <DetailsList
+              selectionMode={SelectionMode.none}
+              layoutMode={DetailsListLayoutMode.justified}
+              items={properties}
+              columns={this._defaultColumns}
+              onRenderRow={this._onRenderRow}
+            />
+          </Stack>
+        )}
+        {methods && methods.length > 0 && (
+          <Stack gap={SMALL_GAP_SIZE}>
+            <Text variant={'medium'}>Methods</Text>
+            <DetailsList
+              selectionMode={SelectionMode.none}
+              layoutMode={DetailsListLayoutMode.justified}
+              items={methods}
+              columns={this._methodColumns}
+              onRenderRow={this._onRenderRow}
+            />
+          </Stack>
+        )}
       </Stack>
     );
   }

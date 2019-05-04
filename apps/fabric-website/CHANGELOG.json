@@ -2,6 +2,46 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.16.0",
+      "tag": "@uifabric/fabric-website_v6.16.0",
+      "date": "Sat, 04 May 2019 00:01:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ported logic for devhost from index.html to homepage.htm",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "29b126116d1b3fc0711c6b7acaa986fa4e6f85e4"
+          },
+          {
+            "comment": "Switch to new website",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Getting started update with CRA, just and Gatsby.js",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "364af40d4e26d496c5687a4aecc0b0e02f2bdc63"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.0.0` to `^1.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.1` to `^6.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.16.0` to `^6.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.15.0",
       "tag": "@uifabric/fabric-website_v6.15.0",
       "date": "Thu, 02 May 2019 12:36:35 GMT",
