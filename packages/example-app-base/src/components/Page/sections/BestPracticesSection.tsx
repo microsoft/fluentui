@@ -44,12 +44,7 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
           {readableSectionName}
         </h2>
         {bestPractices && bestPracticesUrl && (
-          <EditSection
-            className={styles.edit}
-            section={title + ' Best Practices'}
-            readableSection={readableSectionName}
-            url={bestPracticesUrl}
-          />
+          <EditSection className={styles.edit} title={title} section="Best Practices" url={bestPracticesUrl} />
         )}
       </div>
       {bestPractices && (
@@ -66,7 +61,7 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
         <div className={styles.doSection}>
           <div className={styles.sectionHeader}>
             <h3 className={styles.smallSubHeading}>Do</h3>
-            {dos && dosUrl && <EditSection className={styles.edit} section={title + ' Dos'} url={dosUrl} />}
+            {dos && dosUrl && <EditSection className={styles.edit} title={title} section="Dos" url={dosUrl} />}
           </div>
           {dos && (
             <div className={css(styles.content, styles.doList)}>
@@ -77,7 +72,7 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
         <div className={styles.dontSection}>
           <div className={styles.sectionHeader}>
             <h3 className={css(styles.smallSubHeading)}>Don&rsquo;t</h3>
-            {donts && dontsUrl && <EditSection className={styles.edit} section={title + " Don'ts"} url={dontsUrl} />}
+            {donts && dontsUrl && <EditSection className={styles.edit} title={title} section="Don'ts" url={dontsUrl} />}
           </div>
           {donts && (
             <div className={css(styles.content, styles.dontList)}>
@@ -90,7 +85,7 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
   }
 
   return (
-    <div className={className} style={style}>
+    <div id="BestPractices" className={className} style={style}>
       {dosAndDonts}
     </div>
   );

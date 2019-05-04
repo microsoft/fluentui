@@ -22,7 +22,7 @@ export const EditSectionBase: React.StatelessComponent<IEditSectionProps> = prop
   const classNames = getClassNames(styles, { theme: theme! });
   const buttonStyles = classNames.subComponentStyles.button;
 
-  const sectionName = title ? `Edit ${title} ${section}` : `Edit ${section}`;
+  const sectionName = title && title !== section ? `Edit ${title} ${section}` : `Edit ${section}`;
   const tooltipHostId = pascalize(sectionName) + '-editButtonHost';
 
   return (

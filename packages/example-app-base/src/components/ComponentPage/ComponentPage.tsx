@@ -179,7 +179,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             <div className={classNames.dosDontsSection}>
               <Stack className={classNames.dosDontsHeading} {...headingWithEditStackProps}>
                 <h3>Do</h3>
-                {dosUrl && <EditSection section={title + ' Dos'} url={dosUrl} />}
+                {dosUrl && <EditSection title={title} section="Dos" url={dosUrl} />}
               </Stack>
               <hr className={css(classNames.dosDontsLine, classNames.dosLine)} />
               {dos}
@@ -187,7 +187,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
             <div className={css(classNames.dosDontsSection, classNames.dontsSection)}>
               <Stack className={classNames.dosDontsHeading} {...headingWithEditStackProps}>
                 <h3>Don&rsquo;t</h3>
-                {dontsUrl && <EditSection section={title + " Don'ts"} url={dontsUrl} />}
+                {dontsUrl && <EditSection title={title} section="Don'ts" url={dontsUrl} />}
               </Stack>
               <hr className={css(classNames.dosDontsLine, classNames.dontsLine)} />
               {donts}
@@ -267,7 +267,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
           <h2 className={css(titleClass)} id={!!id ? id : undefined}>
             {title}
           </h2>
-          {editUrl && <EditSection section={`${this.props.title} ${title}`} url={editUrl} />}
+          {editUrl && <EditSection title={this.props.title} section={title} url={editUrl} />}
         </Stack>
         {sectionContent}
       </div>
