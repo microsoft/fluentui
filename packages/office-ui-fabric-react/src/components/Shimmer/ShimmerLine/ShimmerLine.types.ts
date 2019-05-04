@@ -2,10 +2,14 @@ import * as React from 'react';
 import { IStyle, IRawStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
+/**
+ * {@docCategory Shimmer}
+ */
 export interface IShimmerLine {}
 
 /**
  * ShimmerLine component props.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -45,6 +49,7 @@ export interface IShimmerLineProps extends React.AllHTMLAttributes<HTMLElement> 
 
 /**
  * Props needed to construct styles.
+ * {@docCategory Shimmer}
  */
 export type IShimmerLineStyleProps = {
   /**
@@ -66,6 +71,7 @@ export type IShimmerLineStyleProps = {
 
 /**
  * Represents the stylable areas of the control.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerLineStyles {
   /**

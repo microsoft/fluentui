@@ -1,5 +1,5 @@
 import { FontWeights, getFocusOutlineStyle, IStyleFunction } from 'office-ui-fabric-react/lib/index';
-import { appPaddingSm, uhfScreenMaxLg } from '../../styles/constants';
+import { appPaddingSm } from '../../styles/constants';
 import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
 
 export const sideRailClassNames = {
@@ -76,7 +76,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
     },
     jumpLinkSection: {
       selectors: {
-        [`@media screen and (max-width: ${uhfScreenMaxLg}px)`]: {
+        '@media screen and (max-width: 1360px)': {
           display: 'none'
         }
       }

@@ -1,10 +1,10 @@
 One common usage of Announced is with operations that require multiple sub-operations, such as moving several files.
 
-# Examples
+### Examples
 
 Copying, uploading, or moving many items
 
-# Scenarios
+### Scenarios
 
 **User moves 30 items to another folder:**
 The Announced component should announce the total number of items moved.

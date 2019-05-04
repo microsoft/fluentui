@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, IRawStyle, styled, classNamesFunction } from 'office-ui-fabric-react';
+import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction } from 'office-ui-fabric-react';
 import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
 
 // tslint:disable no-any
@@ -12,6 +12,7 @@ const css = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/css')
 const scss = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/scss').default;
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/bash').default;
+const shell = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/shell').default;
 const diff = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/diff').default;
 
 // Import SyntaxHighlighter styles
@@ -25,6 +26,7 @@ SyntaxHighlighter.registerLanguage('css', css);
 SyntaxHighlighter.registerLanguage('scss', scss);
 SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
+SyntaxHighlighter.registerLanguage('shell', shell);
 SyntaxHighlighter.registerLanguage('diff', diff);
 
 // Customize imported SyntaxHighlighter styles
@@ -67,23 +69,12 @@ const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = pr
   };
 };
 
-// SyntaxHighlighter needs a separate style object rather than a class name for line numbers
-const lineNumberStyle: IRawStyle = {
-  textAlign: 'right',
-  color: NeutralColors.gray120,
-  width: '3em',
-  display: 'block',
-  borderRight: `1px solid ${NeutralColors.gray120}`,
-  paddingRight: 4,
-  lineHeight: 'inherit'
-};
-
 const getClassNames = classNamesFunction<ICodeSnippetStyleProps, ICodeSnippetStyles>();
 
 const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, {});
   return (
-    <SyntaxHighlighter lineNumberStyle={lineNumberStyle} language={props.language} className={classNames.root} style={style}>
+    <SyntaxHighlighter language={props.language} className={classNames.root} style={style}>
       {props.children}
     </SyntaxHighlighter>
   );

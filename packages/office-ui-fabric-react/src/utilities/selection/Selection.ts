@@ -1,6 +1,9 @@
 import { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionMode } from './interfaces';
 import { EventGroup } from '../../Utilities';
 
+/**
+ * {@docCategory Selection}
+ */
 export interface ISelectionOptions {
   onSelectionChanged?: () => void;
   getKey?: (item: IObjectWithKey, index?: number) => string | number;
@@ -8,6 +11,9 @@ export interface ISelectionOptions {
   selectionMode?: SelectionMode;
 }
 
+/**
+ * {@docCategory Selection}
+ */
 export class Selection implements ISelection {
   public count: number;
   public readonly mode: SelectionMode;

@@ -3,9 +3,19 @@ import { ITheme, IStyle } from '../../../Styling';
 import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
@@ -49,6 +59,9 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   name?: string;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionStyleProps {
   theme: ITheme;
   hasIcon?: boolean;
@@ -59,6 +72,9 @@ export interface IChoiceGroupOptionStyleProps {
   focused?: boolean;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionStyles {
   root?: IStyle;
   choiceFieldWrapper?: IStyle;
