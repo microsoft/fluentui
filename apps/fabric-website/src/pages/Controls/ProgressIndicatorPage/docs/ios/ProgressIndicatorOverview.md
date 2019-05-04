@@ -6,4 +6,4 @@ Use a standalone spinner when you need a progress indicator on an existing surfa
 
 For actions that happen "between views", you can use the progress indicator that lives in its own overlay, the "MSHUD":
 
-<img src="https://static2.sharepointonline.com/fabric-website/images/controls/ios/ProgressIndicator/ProgressIndicator.png" alt="Progress indicator control in a floating overlay." style="width: 25%;" />
+<img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/ProgressIndicator/ProgressIndicator.png" alt="Progress indicator control in a floating overlay." style="width: 25%;" />
