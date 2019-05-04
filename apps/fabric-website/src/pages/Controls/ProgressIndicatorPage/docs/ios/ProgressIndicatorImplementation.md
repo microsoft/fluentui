@@ -4,9 +4,9 @@ Coming soon
 
 ### Control Name
 
-MSHUD: The overlay with large spinner and modes.
+`MSHUD` The overlay with large spinner and modes.
 
-MSActivityIndicatorView: Just the spinning element.
+`MSActivityIndicatorView` Just the spinning element.
 
 ### Library
 

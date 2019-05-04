@@ -1,5 +1,11 @@
-Consistent representation of people within our experience helps users connect with others effortlessly. Fabric has a couple of controls available to illustrate people accurately and consistently.
+Representing users in a consistent manner across our products help with effortless communication. Using Fabric Persona controls ensure an accurate and consistent experience across Microsoft products.
 
-An Avatar control displays their profile picture in a circular frame, if one is available; if not, it displays the person's initials or a generic glyph. The Persona includes an Avatar, their name and possibly a few more bits of metadata.
+Persona controls display the profile picture and online status of the user. When a user does not have a profile picture, the user's initials sit on top of a background color. In the event that both of these options are unavailable, we use a generic icon called a "doughboy".
 
-The PersonaList view builds upon these controls to show a performant list, like you would see in an address book, or a People Picker auto-complete experience.
+Beside a profile picture, Persona controls can include text elements. The user's full name can show alongside other metadata, such as job title, company, and more.
+
+Persona controls are also available as a performant list view. The 'PersonaList' controls are perfect for listing many people. Examples of this may be an Address Book or a People Picker auto-complete experience.
+
+| MSAvatarView implements a single avatar (profile picture) in standard sizes.                                                                                                     | MSPersonaListView utilizes the avatar and list cells to list a set of people or addressable groups.                                                                                               |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/persona/avatars.png" alt="Person Avatars in Various Sizes" style="width: 50%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/ios/persona/mspersonalistview.png" alt="Example of Personas arranged in a list" style="width: 50%;" /> |

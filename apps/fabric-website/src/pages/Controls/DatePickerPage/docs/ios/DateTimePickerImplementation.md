@@ -4,7 +4,7 @@ Coming soon
 
 ### Control name
 
-MSDateTimePicker
+`MSDateTimePicker`
 
 ### Library
 
