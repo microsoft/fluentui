@@ -4,7 +4,7 @@ import { IAppCustomizations, IExampleCardCustomizations } from '@uifabric/exampl
 
 const exampleCardCustomizations: IExampleCardCustomizations[] = [
   { title: 'Fluent', customizations: FluentCustomizations },
-  { title: 'Pre-Fluent', customizations: DefaultCustomizations }
+  { title: 'Default', customizations: DefaultCustomizations }
 ];
 
 export const AppCustomizations: IAppCustomizations = {

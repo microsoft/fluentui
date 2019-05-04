@@ -283,7 +283,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <figure className={this._classNames.oneHalf}>
             <ul className={this._classNames.usageIconList}>{this._renderUsageIconList()}</ul>
             <figcaption>
-              <strong>+ 52 additional Microsoft sites and products</strong>
+              <strong>+ many additional Microsoft sites and products</strong>
             </figcaption>
           </figure>
         </div>
