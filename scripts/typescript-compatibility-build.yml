@@ -65,6 +65,10 @@ jobs:
     strategy:
       maxParallel: 2
       matrix:
+        'TypeScript 2.4':
+          TypeScriptVersion: 2.4
+        'TypeScript 2.7':
+          TypeScriptVersion: 2.7
         'TypeScript 2.9':
           TypeScriptVersion: 2.9
         'TypeScript 3.0':
