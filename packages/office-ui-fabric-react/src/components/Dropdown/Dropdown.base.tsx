@@ -30,7 +30,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -179,7 +179,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     } = this.props;
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
 
-    const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
+    const selectedOptions = getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(this.props, divProperties);
 
     const disabled = this._isDisabled();
@@ -713,20 +713,6 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       selectedIndices.push(this._getSelectedIndex(options, key));
     }
     return selectedIndices;
-  }
-
-  /** Get all selected options for multi-select mode */
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]): IDropdownOption[] {
-    const selectedOptions: IDropdownOption[] = [];
-    for (const index of selectedIndices) {
-      const option = options[index];
-
-      if (option) {
-        selectedOptions.push(option);
-      }
-    }
-
-    return selectedOptions;
   }
 
   private _getAllSelectedIndices(options: IDropdownOption[]): number[] {
