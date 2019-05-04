@@ -28,7 +28,7 @@ export const getEditUrl = (options: IEditUrlOptions): string | null => {
 
   // Temporary workaround until github pages are in platform folders.
   _urlResolver.href = baseUrl;
-  if (_urlResolver.host === 'github.com' && platform === 'web') {
+  if (_urlResolver.host === 'github.com') {
     platform = undefined;
   }
 

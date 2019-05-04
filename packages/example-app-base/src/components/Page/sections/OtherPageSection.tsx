@@ -1,23 +1,29 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
-import { pascalize } from '../../../utilities/index2';
+import { camelize, pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from '../Page.module.scss';
+import * as styles from './OtherPageSection.module.scss';
 import { EditSection } from '../../EditSection/index';
-import { Markdown } from '../../Markdown/index';
 
-export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = props => {
+export interface IOtherPageSectionProps extends IPageSectionProps {
+  sectionName?: string;
+}
+
+export const OtherPageSection: React.StatelessComponent<IOtherPageSectionProps> = props => {
   const { className, content, editUrl, sectionName, readableSectionName = sectionName, style, title = 'Page' } = props;
 
-  const sectionId = sectionName ? pascalize(sectionName || 'Other') : '';
+  const sectionClassName = sectionName ? camelize(sectionName) : '';
+  const sectionId = sectionName ? pascalize(sectionName) : '';
 
-  const editSection = editUrl && <EditSection className={styles.edit} section={`${title} ${sectionName || ''}`} url={editUrl} />;
+  const editSection = editUrl && (
+    <EditSection className={styles.edit} title={title} section={sectionId} readableSection={readableSectionName} url={editUrl} />
+  );
 
   return (
-    <div className={className} style={style}>
+    <div className={css(`Page-${sectionClassName}Section`, className)} style={style}>
       {readableSectionName ? (
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={sectionId}>
+        <div className={css(styles.sectionHeader, `Page-${sectionClassName}SectionHeader`)}>
+          <h2 className={css(styles.subHeading, `Page-subHeading`)} id={sectionId}>
             {readableSectionName}
           </h2>
           {editSection}
@@ -25,9 +31,7 @@ export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = pro
       ) : (
         <div className={styles.editSection}>{editSection}</div>
       )}
-      <div className={css(styles.content, editUrl && !readableSectionName && styles.contentWithoutHeader)}>
-        {typeof content === 'string' ? <Markdown>{content}</Markdown> : content}
-      </div>
+      <div className={css(editUrl && styles.contentWithoutHeader, styles.content)}>{content}</div>
     </div>
   );
 };

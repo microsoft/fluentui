@@ -4,7 +4,7 @@ import { css } from 'office-ui-fabric-react';
 import { camelize, getEditUrl, pascalize } from '../../../utilities/index2';
 import { Markdown } from '../../Markdown/index';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from '../Page.module.scss';
+import * as styles from './OverviewSection.module.scss';
 
 export const OverviewSection: React.StatelessComponent<IPageSectionProps> = props => {
   const { className, content: overview, fileNamePrefix, componentUrl, platform, sectionName = 'Overview', style, title = 'Page' } = props;

@@ -184,9 +184,8 @@
       }
 
       function loadAppScripts(appPath) {
-        var version = isLocal ? '.development.js' : '.production.min.js';
-        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react' + version;
-        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom' + version;
+        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react.production.min.js';
+        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom.production.min.js';
 
         var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.min.js'];
 

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import { PropertiesTableSet } from '../../PropertiesTable/index';
-import { MessageBar } from 'office-ui-fabric-react';
-import { pascalize } from '../../../utilities/index2';
+import { MessageBar, css } from 'office-ui-fabric-react';
+import { camelize, pascalize } from '../../../utilities/index2';
 import { IPageSectionProps } from '../Page.types';
-import * as styles from '../Page.module.scss';
+import * as styles from './ImplementationSection.module.scss';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { ApiReferencesTableSet } from '../../ApiReferencesTable/index';
 
@@ -19,12 +19,13 @@ export interface IImplementationSectionProps extends IPageSectionProps {
 export const ImplementationSection: React.StatelessComponent<IImplementationSectionProps> = props => {
   const { className, sectionName = 'Implementation', style, propertiesTablesSources, jsonDocs, hideImplementationTitle } = props;
   const { readableSectionName = sectionName } = props;
+  const sectionClassName = camelize(sectionName);
   const sectionId = pascalize(sectionName);
   return (
-    <div className={className} style={style}>
+    <div className={css(`Page-${sectionClassName}Section`, className)} style={style}>
       {!hideImplementationTitle && (
-        <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={sectionId}>
+        <div className={css(styles.sectionHeader, `Page-${sectionClassName}SectionHeader`)}>
+          <h2 className={css(styles.subHeading, `Page-subHeading`)} id={sectionId}>
             {readableSectionName}
           </h2>
         </div>

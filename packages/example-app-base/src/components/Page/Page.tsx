@@ -174,11 +174,14 @@ export class Page extends React.Component<IPageProps, IPageState> {
     }
 
     otherSections &&
-      otherSections.forEach((section: IPageSectionProps) =>
+      otherSections.forEach((PageSection: IPageSectionProps) =>
         sections.push({
           renderAs: OtherPageSection,
+          className: PageSection.className,
           ...sectionProps,
-          ...section
+          sectionName: PageSection.sectionName,
+          content: PageSection.content,
+          editUrl: PageSection.editUrl
         })
       );
 
@@ -237,8 +240,12 @@ export class Page extends React.Component<IPageProps, IPageState> {
       otherSections,
       overview,
       propertiesTablesSources,
+<<<<<<< HEAD
       usage,
       jsonDocs
+=======
+      usage
+>>>>>>> ecraig12345/more-controls
     } = this.props;
 
     const links: ISideRailLink[] = [];
@@ -285,7 +292,11 @@ export class Page extends React.Component<IPageProps, IPageState> {
       });
     }
 
+<<<<<<< HEAD
     if (jsonDocs || propertiesTablesSources) {
+=======
+    if (propertiesTablesSources) {
+>>>>>>> ecraig12345/more-controls
       links.push({
         text: 'Implementation',
         url: 'Implementation'
