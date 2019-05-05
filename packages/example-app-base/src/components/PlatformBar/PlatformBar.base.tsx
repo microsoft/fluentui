@@ -55,7 +55,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
         <DefaultButton
           href={pages && this._getFirstPageUrl(pages)}
           className={classNames.platformButton}
-          aria-describedby={platformKey}
+          aria-label={name}
           /* tslint:disable-next-line jsx-no-lambda */
           onClick={() => this._handlePlatformClick(platformKey)}
           disabled={disabled}

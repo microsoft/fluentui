@@ -28,7 +28,7 @@ export const EditSectionBase: React.StatelessComponent<IEditSectionProps> = prop
   return (
     <TooltipHost content={sectionName} id={tooltipHostId} hostClassName={css(classNames.root, className)}>
       <IconButton
-        aria-labelledby={tooltipHostId}
+        aria-label={sectionName}
         iconProps={{ iconName: 'Edit' }}
         href={url}
         target="_blank"
