@@ -18,7 +18,7 @@ export interface ITopNavProps<TPlatforms extends string = string> {
   /**
    * The currently active platform to determine if active styles should be applied.
    */
-  platform?: string;
+  platform?: TPlatforms;
 
   /**
    * Render callback passed to the mobile navigation panel.

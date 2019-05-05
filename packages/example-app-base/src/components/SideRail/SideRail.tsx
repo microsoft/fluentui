@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
-import { isPageActive, jumpToAnchor, getUrlMinusLastHash } from '../../utilities/index2';
+import { isPageActive, removeAnchorLink, jumpToAnchor } from '../../utilities/index2';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
 import { getStyles } from './SideRail.styles';
 
@@ -78,11 +78,14 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       return null;
     }
     const links = jumpLinks.map((jumpLink: ISideRailLink) => (
-      <li
-        key={jumpLink.url}
-        className={css(classNames.link, classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive)}
-      >
-        <Link href={this._getPageUrl(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
+      <li key={jumpLink.url} className={css(classNames.linkWrapper, classNames.jumpLinkWrapper)}>
+        <Link
+          href={this._getJumpLinkUrl(jumpLink.url)}
+          onClick={this._onJumpLinkClick}
+          styles={{
+            root: [classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive]
+          }}
+        >
           {jumpLink.text}
         </Link>
       </li>
@@ -107,7 +110,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
         links = (
           <ul>
             {linksToRender.map(link => (
-              <li key={link.url} className={classNames.link}>
+              <li key={link.url} className={classNames.linkWrapper}>
                 <Link href={link.url}>{link.text}</Link>
               </li>
             ))}
@@ -130,16 +133,16 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   // tslint:disable-next-line:no-any
   private _onJumpLinkClick = (ev?: React.MouseEvent<any>): void => {
     const target = ev && (ev.target as HTMLAnchorElement);
-    const url = target && target.dataset && target.dataset.anchorUrl;
-    if (url && ev) {
-      ev.preventDefault();
+    if (target && target.href === location.href) {
+      // If this link is already in the URL, scroll back to it on click
+      // (otherwise, scrolling will be handled elsewhere)
+      jumpToAnchor();
     }
-    return jumpToAnchor(url);
   };
 
-  private _getPageUrl(url: string): string {
+  private _getJumpLinkUrl(anchor: string): string {
     // This makes sure that location hash changes don't append
-    return `${getUrlMinusLastHash(location.hash)}#${url}`;
+    return `${removeAnchorLink(location.hash)}#${anchor}`;
   }
 }
 

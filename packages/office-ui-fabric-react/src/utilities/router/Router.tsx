@@ -13,17 +13,31 @@ export interface IRouterProps {
   onNewRouteLoaded?: () => void;
 }
 
-export class Router extends React.PureComponent<IRouterProps> {
+export interface IRouterState {
+  path: string;
+}
+
+export class Router extends React.Component<IRouterProps, IRouterState> {
   private _disposables: Function[];
 
   constructor(props: IRouterProps) {
     super(props);
     this._disposables = [];
     initializeComponentRef(this);
+    this.state = {
+      path: this._getPath()
+    };
   }
 
   public componentDidMount(): void {
-    this._disposables.push(on(window, 'hashchange', () => this.forceUpdate()));
+    this._disposables.push(
+      on(window, 'hashchange', () => {
+        const path = this._getPath();
+        if (path !== this.state.path) {
+          this.setState({ path });
+        }
+      })
+    );
   }
 
   public componentWillUnmount(): void {
@@ -52,7 +66,7 @@ export class Router extends React.PureComponent<IRouterProps> {
   }
 
   private _resolveRoute(children?: React.ReactNode): React.ReactElement<any> | null {
-    const path = this._getPath();
+    const { path } = this.state;
     children = children || this.props.children;
 
     // The children are supposed to be Route elements, but we verify this below.

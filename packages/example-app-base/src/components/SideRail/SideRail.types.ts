@@ -49,8 +49,9 @@ export interface ISideRailStyles {
   root: IStyle;
   section: IStyle;
   sectionTitle: IStyle;
-  link: IStyle;
+  linkWrapper: IStyle;
   markdownList: IStyle;
+  jumpLinkWrapper: IStyle;
   jumpLink: IStyle;
   jumpLinkActive: IStyle;
   jumpLinkSection: IStyle;
