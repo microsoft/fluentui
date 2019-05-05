@@ -200,7 +200,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
           text="You can now implement the new Fluent styles in Fabric Web controls."
           linkText="Learn more"
           linkUrl="#/controls/web/fluent-theme"
-          localStoragePrefix="WebFluentUpdates"
+          sessionStoragePrefix="WebFluentUpdates"
         />
       );
     } else if (/^#?\/?$/.test(pagePath)) {
@@ -209,6 +209,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
           text="Microsoft employees can sign in to see additional documentation."
           linkText="Sign in"
           linkUrl="http://aka.ms/hig"
+          sessionStoragePrefix="SignIn"
         />
       );
     }

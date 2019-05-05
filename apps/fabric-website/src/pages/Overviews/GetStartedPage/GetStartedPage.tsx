@@ -26,20 +26,57 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
     case 'web':
       return [
         {
-          sectionName: 'Develop with Fabric React',
-          editUrl: baseUrl + 'docs/web/GetStartedDevelop.md',
+          sectionName: 'Add to existing project',
+          editUrl: baseUrl + 'docs/web/GetStartedDevelopExisting.md',
           content: (
             <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelop.md') as string}
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopExisting.md') as string
+              }
             </Markdown>
           )
         },
         {
-          sectionName: 'Use our design language in your own experience',
-          editUrl: baseUrl + 'docs/web/GetStartedDesign.md',
+          sectionName: 'Quick start a new project',
+          editUrl: baseUrl + 'docs/web/GetStartedDevelopSimple.md',
           content: (
             <Markdown>
-              {require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDesign.md') as string}
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopSimple.md') as string
+              }
+            </Markdown>
+          )
+        },
+        {
+          sectionName: 'Use our Create React App',
+          editUrl: baseUrl + 'docs/web/GetStartedDevelopCRA.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCRA.md') as string
+              }
+            </Markdown>
+          )
+        },
+        {
+          sectionName: 'Use our Gatsby.js starter',
+          editUrl: baseUrl + 'docs/web/GetStartedDevelopGatsby.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopGatsby.md') as string
+              }
+            </Markdown>
+          )
+        },
+        {
+          sectionName: 'Use our design language in your site',
+          editUrl: baseUrl + 'docs/web/GetStartedDevelopCore.md',
+          content: (
+            <Markdown>
+              {
+                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCore.md') as string
+              }
             </Markdown>
           )
         }
