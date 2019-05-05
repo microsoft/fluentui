@@ -150,7 +150,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           hasActiveChild(page) && styles.hasActiveChild,
           page.isHomePage && styles.isHomePage
         )}
-        key={linkIndex}
+        key={linkIndex + page.url}
       >
         {!(page.isUhfLink && location.hostname !== 'localhost') && searchRegEx.test(page.title) && (
           <Link
