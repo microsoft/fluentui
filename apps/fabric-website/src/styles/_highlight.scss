@@ -9,15 +9,15 @@
 
   .hljs-comment,
   .hljs-quote {
-      color: #998;
+      color: $ms-color-gray120;
       font-style: italic;
   }
 
   .hljs-keyword,
   .hljs-selector-tag,
   .hljs-subst {
-      color: $ms-color-gray160;
-      font-weight: normal;
+    color: $ms-color-gray160;
+    font-weight: normal;
   }
 
   .hljs-number,

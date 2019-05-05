@@ -1,7 +1,7 @@
 import { IStyleFunctionOrObject, IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import { CodeSnippet } from '../CodeSnippet/index';
+import { CodeSnippet, codeFontFamily } from '../CodeSnippet/index';
 
 export interface IMarkdownCodeProps {
   className?: string;
@@ -20,7 +20,7 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
   const { theme } = props;
   return {
     root: {
-      fontFamily: 'monospace',
+      fontFamily: codeFontFamily,
       fontSize: '14px',
       padding: '0 4px',
       background: theme.palette.neutralLighter,

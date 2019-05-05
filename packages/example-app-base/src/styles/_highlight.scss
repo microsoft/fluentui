@@ -3,20 +3,20 @@
 :global {
   .hljs {
     display: block;
-    color: $ms-color-gray160;
+    color: $ms-color-gray180;
     background: $ms-color-gray20;
   }
 
   .hljs-comment,
   .hljs-quote {
-      color: #998;
+      color: $ms-color-gray120;
       font-style: italic;
   }
 
   .hljs-keyword,
   .hljs-selector-tag,
   .hljs-subst {
-      color: $ms-color-gray160;
+      color: $ms-color-gray180;
       font-weight: normal;
   }
 

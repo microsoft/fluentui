@@ -23,7 +23,8 @@ SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
 SyntaxHighlighter.registerLanguage('html', xml);
 
-// Customize imported SyntaxHighlighter styles
+// Customize imported SyntaxHighlighter styles. Available properties:
+// https://github.com/conorhastings/react-syntax-highlighter/blob/master/src/styles/hljs/github.js
 style.hljs = {
   fontSize: FontSizes.size14,
   padding: 8,
@@ -31,6 +32,13 @@ style.hljs = {
   color: NeutralColors.gray160,
   overflowX: 'auto'
 };
+// Darken comment color for accessibility
+style['hljs-comment'] = style['hljs-quote'] = {
+  color: NeutralColors.gray120,
+  fontStyle: 'italic'
+};
+
+export const codeFontFamily = 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace';
 
 export interface ICodeSnippetProps {
   className?: string;
@@ -55,7 +63,7 @@ const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = pr
 
       selectors: {
         code: {
-          fontFamily: 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace',
+          fontFamily: codeFontFamily,
           lineHeight: '1.6'
         }
       }

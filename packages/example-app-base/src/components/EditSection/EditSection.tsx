@@ -2,7 +2,6 @@ import * as React from 'react';
 import { IEditSectionProps, IEditSectionStyleProps, IEditSectionStyles } from './EditSection.types';
 import { IconButton, TooltipHost } from 'office-ui-fabric-react';
 import { IStyleFunction, classNamesFunction, styled, css } from 'office-ui-fabric-react/lib/Utilities';
-import { pascalize } from '../../utilities/string';
 
 const getStyles: IStyleFunction<IEditSectionStyleProps, IEditSectionStyles> = () => ({});
 
@@ -22,13 +21,12 @@ export const EditSectionBase: React.StatelessComponent<IEditSectionProps> = prop
   const classNames = getClassNames(styles, { theme: theme! });
   const buttonStyles = classNames.subComponentStyles.button;
 
-  const sectionName = title && title !== section ? `Edit ${title} ${section}` : `Edit ${section}`;
-  const tooltipHostId = pascalize(sectionName) + '-editButtonHost';
+  const tooltipContent = title && title !== section ? `Edit ${title} ${section}` : `Edit ${section}`;
 
   return (
-    <TooltipHost content={sectionName} id={tooltipHostId} hostClassName={css(classNames.root, className)}>
+    <TooltipHost content={tooltipContent} hostClassName={css(classNames.root, className)}>
       <IconButton
-        aria-label={sectionName}
+        aria-label={tooltipContent}
         iconProps={{ iconName: 'Edit' }}
         href={url}
         target="_blank"

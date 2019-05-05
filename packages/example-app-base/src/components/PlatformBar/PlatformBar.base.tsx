@@ -20,7 +20,8 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.inner}>
-          <FocusZone as="ul" className={this._classNames.platformGrid}>
+          {/* Override default role of "presentation" to prevent warning about li outside of ul */}
+          <FocusZone as="ul" className={this._classNames.platformGrid} role="list">
             {this._renderPlatformGrid(platforms)}
           </FocusZone>
         </div>

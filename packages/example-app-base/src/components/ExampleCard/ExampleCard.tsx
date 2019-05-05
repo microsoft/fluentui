@@ -10,7 +10,7 @@ import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomization
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
-import { CodeSnippet } from '../CodeSnippet';
+import { CodeSnippet } from '../CodeSnippet/index';
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
