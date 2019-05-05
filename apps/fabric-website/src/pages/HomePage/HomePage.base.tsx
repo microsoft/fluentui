@@ -312,12 +312,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     return fabricUsageIcons.map((icon, iconIndex) => (
       <li key={icon.title + iconIndex} className={this._classNames.usageIconListItem}>
         <TooltipHost content={icon.title} id={icon.title + iconIndex} styles={{ root: { display: 'inline-block' } }}>
-          <Image
-            src={icon.src}
-            className={this._classNames.usageIcon}
-            alt={`${icon.title} icon`}
-            aria-describedby={icon.title + iconIndex}
-          />
+          <Image src={icon.src} className={this._classNames.usageIcon} alt={`${icon.title} icon`} />
         </TooltipHost>
       </li>
     ));

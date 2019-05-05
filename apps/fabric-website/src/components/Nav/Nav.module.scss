@@ -18,6 +18,8 @@ $nav-group-header-height: 32px;
 }
 
 .link {
+  display: block;
+
   a {
     color: $ms-color-neutralPrimary;
     font-weight: $ms-font-weight-semibold;

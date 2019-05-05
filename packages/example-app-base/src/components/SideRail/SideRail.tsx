@@ -18,19 +18,17 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   public componentDidMount(): void {
     if (typeof IntersectionObserver !== 'undefined') {
       const { observe, jumpLinks } = this.props;
-      if (observe) {
+      if (observe && jumpLinks) {
         this._observer = new IntersectionObserver(this._handleObserver, {
           threshold: [0.5]
         });
 
-        if (jumpLinks) {
-          jumpLinks.forEach((jumpLink: ISideRailLink) => {
-            const element = document.getElementById(jumpLink.url);
-            if (element) {
-              this._observer.observe(element);
-            }
-          });
-        }
+        jumpLinks.forEach((jumpLink: ISideRailLink) => {
+          const element = document.getElementById(jumpLink.url);
+          if (element) {
+            this._observer.observe(element);
+          }
+        });
       }
     }
   }

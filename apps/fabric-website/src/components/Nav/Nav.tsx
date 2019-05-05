@@ -183,7 +183,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     if (page.isCategory && page.pages && this._hasMatchChild(page)) {
       const key = `${page.title}-${sectionIndex}`;
       return (
-        <div key={key} className={css(styles.section, hasActiveChild(page) && styles.hasActiveChild)}>
+        <li key={key} className={css(styles.section, hasActiveChild(page) && styles.hasActiveChild)}>
           <CollapsibleSection
             collapsed={!(this.state.collapsedSections[key] || hasActiveChild(page))}
             title={{
@@ -193,7 +193,7 @@ export class Nav extends React.Component<INavProps, INavState> {
           >
             {this._renderLinkList(page.pages, false)}
           </CollapsibleSection>
-        </div>
+        </li>
       );
     }
   };
