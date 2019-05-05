@@ -3,7 +3,7 @@ import { ExampleCard } from '../../ExampleCard/index';
 import { pascalize } from '../../../utilities/index2';
 import { IExample, IPageSectionProps } from '../Page.types';
 import * as styles from '../Page.module.scss';
-import { ICodeSnippetProps } from '../../CodeSnippet';
+import { ICodeSnippetProps } from '../../CodeSnippet/index';
 
 export interface IExamplesSectionProps extends IPageSectionProps {
   exampleKnobs?: React.ReactNode;
