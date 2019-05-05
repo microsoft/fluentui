@@ -48,11 +48,11 @@ export class Router extends React.PureComponent<IRouterProps> {
       path = path.substr(0, hashIndex);
     }
 
-    return path;
+    return _normalizePath(path);
   }
 
   private _resolveRoute(children?: React.ReactNode): React.ReactElement<any> | null {
-    const path = this._getPath().toLowerCase();
+    const path = this._getPath();
     children = children || this.props.children;
 
     // The children are supposed to be Route elements, but we verify this below.
@@ -63,8 +63,8 @@ export class Router extends React.PureComponent<IRouterProps> {
         continue; // probably some other child type, not a route
       }
       // Use this route if it has no path, or if the path matches the current path (from the hash)
-      const routePath = route.props.path;
-      if (!routePath || routePath.toLowerCase() === path) {
+      const routePath = _normalizePath(route.props.path);
+      if (!routePath || routePath === path) {
         let { component } = route.props;
 
         // The loaded component is stored as a prop on the loader function...because obviously
@@ -99,4 +99,11 @@ export class Router extends React.PureComponent<IRouterProps> {
 
     return null;
   }
+}
+
+function _normalizePath(path?: string): string {
+  if (path && path.slice(-1) === '/') {
+    path = path.slice(0, -1);
+  }
+  return (path || '').toLowerCase();
 }
