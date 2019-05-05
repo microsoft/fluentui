@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { css, Customizer } from 'office-ui-fabric-react';
+import { css, Customizer, Async } from 'office-ui-fabric-react';
 import {
   baseDefinition,
   EventNames,
@@ -16,11 +16,13 @@ import {
   INavPage,
   PlatformPicker,
   PlatformBar,
-  TPlatformPages
+  TPlatformPages,
+  jumpToAnchor,
+  removeAnchorLink
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
-import { AppCustomizationsContext } from '@uifabric/example-app-base/lib/index';
+import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
 import SiteMessageBar from './SiteMessageBar';
@@ -32,6 +34,13 @@ export interface ISiteProps<TPlatforms extends string = string> {
 }
 
 export interface ISiteState<TPlatforms extends string = string> {
+  /**
+   * Whether this is the initial mount/render of the component. If true, nothing will render.
+   * This is a simpler workaround until state initialization can be moved from componentDidMount
+   * to the constructor (almost none of the initialization logic requires the component to be
+   * mounted, but moving it around turned out to be a bit complicated).
+   */
+  initialRender: boolean;
   platform: TPlatforms;
   searchablePageTitle?: string;
   isContentFullBleed?: boolean;
@@ -39,6 +48,7 @@ export interface ISiteState<TPlatforms extends string = string> {
   pagePlatforms?: TPlatformPages<TPlatforms>;
   /** Pages currently shown in the left nav */
   activePages?: INavPage<TPlatforms>[];
+  /** Current active route, excluding any anchor link within the page */
   pagePath?: string;
   activePlatforms: { [topLevelPage: string]: TPlatforms };
 }
@@ -48,10 +58,15 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     siteDefinition: { ...baseDefinition }
   };
 
+  private _async: Async;
+  private _jumpInterval: number | undefined;
+
   constructor(props: ISiteProps<TPlatforms>) {
     super(props);
 
+    this._async = new Async();
     this.state = {
+      initialRender: true,
       activePlatforms: {},
       platform: 'default' as TPlatforms
     };
@@ -86,6 +101,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   }
 
   public componentWillUnmount(): void {
+    this._async.dispose();
     window.removeEventListener('hashchange', this._handleRouteChange);
   }
 
@@ -104,7 +120,17 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     this.setState(this._getNavData() as ISiteState<TPlatforms>);
   }
 
-  public render(): JSX.Element {
+  public componentDidUpdate(prevProps: ISiteProps, prevState: ISiteState): void {
+    if (prevState.pagePath !== this.state.pagePath) {
+      this._jumpToAnchor(extractAnchorLink(location.hash));
+    }
+  }
+
+  public render() {
+    if (this.state.initialRender) {
+      return null;
+    }
+
     const { platform, isContentFullBleed } = this.state;
     const { children, siteDefinition } = this.props;
     const { customizations } = siteDefinition;
@@ -192,7 +218,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   }
 
   private _renderMessageBar(): JSX.Element | null {
-    const { pagePath = '' } = this.state;
+    const { pagePath } = this.state;
     // TODO: generalize when to show a message bar and how to provide the text
     if (pagePath && pagePath.indexOf('#/controls/web/') === 0 && pagePath.indexOf('fluent-theme') === -1) {
       return (
@@ -407,7 +433,14 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const { pagePath: prevPagePath, platform } = this.state;
     const { siteDefinition } = this.props;
     const { platforms } = siteDefinition;
-    const newPagePath = window.location.hash;
+
+    const newPagePath = removeAnchorLink(location.hash);
+    if (prevPagePath === newPagePath && !this.state.initialRender) {
+      // Must have been a change to the anchor only (not the route).
+      // Don't do a full update, just jump to the anchor.
+      this._jumpToAnchor(extractAnchorLink(location.hash));
+      return;
+    }
 
     const platformKeys = platforms && (Object.keys(platforms) as TPlatforms[]);
     if (platformKeys && platformKeys.length > 0) {
@@ -434,6 +467,28 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     });
 
     // @TODO: investigate using history to save a re-render.
-    this.setState({ pagePath: newPagePath });
+    this.setState({ pagePath: newPagePath, initialRender: false });
   };
+
+  private _jumpToAnchor(anchor: string): void {
+    if (this._jumpInterval) {
+      this._async.clearInterval(this._jumpInterval);
+      this._jumpInterval = undefined;
+    }
+    if (anchor) {
+      // If we've just re-rendered, the element needed may not be rendered yet.
+      // Retry every 100ms (up to 1s) until the element shows up.
+      const start = Date.now();
+      this._jumpInterval = this._async.setInterval(() => {
+        const el = document.getElementById(anchor);
+        if (el || Date.now() - start > 1000) {
+          this._async.clearInterval(this._jumpInterval);
+          this._jumpInterval = undefined;
+          if (el) {
+            jumpToAnchor(anchor);
+          }
+        }
+      }, 100);
+    }
+  }
 }

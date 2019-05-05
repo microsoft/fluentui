@@ -29,7 +29,11 @@ export const ImplementationSection: React.StatelessComponent<IImplementationSect
           </h2>
         </div>
       )}
-      {jsonDocs && <ApiReferencesTableSet jsonDocs={jsonDocs} />}
+      {jsonDocs && (
+        // In this context, the table shouldn't handle jumping to anchors, because Page delay-renders
+        // its sections and the table shouldn't need to know about or handle that.
+        <ApiReferencesTableSet jsonDocs={jsonDocs} jumpToAnchors={false} />
+      )}
       {!jsonDocs && _getNativePropsInfo(props)}
       {!jsonDocs && <PropertiesTableSet sources={propertiesTablesSources} />}
     </div>

@@ -35,7 +35,11 @@ export interface ISideRailProps {
 export interface ISideRailLink {
   /** Link text to display */
   text: string;
-  /** Complete URL for the link */
+  /**
+   * URL for the link:
+   * - For related or contact links, a complete URL
+   * - For jump links, just an element ID (no #)
+   */
   url: string;
 }
 
@@ -45,8 +49,10 @@ export interface ISideRailStyles {
   root: IStyle;
   section: IStyle;
   sectionTitle: IStyle;
-  link: IStyle;
+  linkWrapper: IStyle;
   markdownList: IStyle;
+  jumpLinkWrapper: IStyle;
   jumpLink: IStyle;
+  jumpLinkActive: IStyle;
   jumpLinkSection: IStyle;
 }

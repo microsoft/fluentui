@@ -17,6 +17,10 @@ export interface IApiReferencesTableSetState {
 const TITLE_LINE_HEIGHT = 31.5;
 
 export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSetProps, IApiReferencesTableSetState> {
+  public static defaultProps: Partial<IApiReferencesTableSetProps> = {
+    jumpToAnchors: true
+  };
+
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
 
@@ -41,8 +45,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     const anchor = extractAnchorLink(window.location.hash);
 
-    // If the "anchor" contains / that means it's the route path not an actual anchor
-    if (anchor && anchor.indexOf('/') === -1 && !this.state.showSeeMore) {
+    if (anchor && !this.state.showSeeMore) {
       const section = this.state.properties.filter(x => x.propertyName === anchor)[0];
       if (section) {
         this.setState({
@@ -57,7 +60,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   public componentDidUpdate(prevProps: IApiReferencesTableSetProps, prevState: IApiReferencesTableSetState): void {
-    if (prevState.showSeeMore === false && this.state.showSeeMore === true) {
+    if (prevState.showSeeMore === false && this.state.showSeeMore === true && this.props.jumpToAnchors) {
       jumpToAnchor(undefined, TITLE_LINE_HEIGHT);
     }
   }
@@ -121,7 +124,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     const anchor = extractAnchorLink(window.location.hash);
     if (anchor) {
-      jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
+      this.props.jumpToAnchors && jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
       if (!showSeeMore) {
         const section = properties.filter(x => x.propertyName === anchor)[0];

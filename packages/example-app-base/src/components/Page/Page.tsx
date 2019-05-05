@@ -77,11 +77,12 @@ export class Page extends React.Component<IPageProps, IPageState> {
         )}
       >
         {// Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
-        this._getPageSections().map((section: IPageSectionProps, sectionIndex: number) => {
-          const { renderAs: RootType = OtherPageSection, className, style, ...rest } = section;
+        this._getPageSections().map((section: IPageSectionProps & React.Attributes, sectionIndex: number) => {
+          const { renderAs: SectionType = OtherPageSection, className, style, ...rest } = section;
           return (
-            <RootType
-              key={sectionIndex}
+            // All the props objects will include a key
+            // tslint:disable-next-line:jsx-key
+            <SectionType
               {...rest}
               className={css(className, styles.section)}
               style={{ transitionDelay: `${sectionIndex * SECTION_STAGGER_INTERVAL}s` }}
@@ -92,7 +93,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
     );
   };
 
-  private _getPageSections = (): IPageSectionProps[] => {
+  private _getPageSections = (): (IPageSectionProps & React.Attributes)[] => {
     const {
       allowNativeProps,
       allowNativePropsForComponentName,
@@ -125,14 +126,22 @@ export class Page extends React.Component<IPageProps, IPageState> {
       title
     };
 
-    const sections: IPageSectionProps[] = [];
+    const sections: (IPageSectionProps & React.Attributes)[] = [];
 
-    overview && sections.push({ renderAs: OverviewSection, ...sectionProps, content: overview });
+    overview && sections.push({ renderAs: OverviewSection, ...sectionProps, content: overview, key: 'Overview' });
 
-    addlContent && sections.push({ renderAs: MarkdownSection, sectionName: addlContentTitle, ...sectionProps, content: addlContent });
+    addlContent &&
+      sections.push({ renderAs: MarkdownSection, sectionName: addlContentTitle, ...sectionProps, content: addlContent, key: 'Markdown' });
 
     if (bestPractices || (dos && donts)) {
-      const bestPracticesProps: IBestPracticesSectionProps = { renderAs: BestPracticesSection, ...sectionProps, bestPractices, dos, donts };
+      const bestPracticesProps: IBestPracticesSectionProps & React.Attributes = {
+        renderAs: BestPracticesSection,
+        ...sectionProps,
+        bestPractices,
+        dos,
+        donts,
+        key: 'BestPractices'
+      };
       sections.push(bestPracticesProps);
     }
 
@@ -142,6 +151,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Usage',
         readableSectionName: 'Usage Guidelines',
+        key: 'Usage',
         content: usage
       });
 
@@ -151,16 +161,23 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Design',
         readableSectionName: 'Design Guidelines',
+        key: 'Design',
         content: design
       });
 
     if (examples) {
-      const examplesProps: IExamplesSectionProps = { renderAs: ExamplesSection, ...sectionProps, exampleKnobs, examples };
+      const examplesProps: IExamplesSectionProps & React.Attributes = {
+        renderAs: ExamplesSection,
+        ...sectionProps,
+        exampleKnobs,
+        examples,
+        key: 'Examples'
+      };
       sections.push(examplesProps);
     }
 
     if (propertiesTablesSources || jsonDocs) {
-      const propertiesTablesProps: IImplementationSectionProps = {
+      const propertiesTablesProps: IImplementationSectionProps & React.Attributes = {
         renderAs: ImplementationSection,
         ...sectionProps,
         allowNativeProps,
@@ -168,21 +185,23 @@ export class Page extends React.Component<IPageProps, IPageState> {
         allowNativePropsForComponentName,
         propertiesTablesSources,
         hideImplementationTitle,
-        jsonDocs
+        jsonDocs,
+        key: 'Implementation'
       };
       sections.push(propertiesTablesProps);
     }
 
     otherSections &&
-      otherSections.forEach((section: IPageSectionProps) =>
+      otherSections.forEach((section: IPageSectionProps, index: number) =>
         sections.push({
           renderAs: OtherPageSection,
+          key: section.sectionName || String(index),
           ...sectionProps,
           ...section
         })
       );
 
-    isFeedbackVisible && title && sections.push({ renderAs: FeedbackSection, ...sectionProps });
+    isFeedbackVisible && title && sections.push({ renderAs: FeedbackSection, ...sectionProps, key: 'Feedback' });
 
     return sections;
   };
@@ -293,13 +312,13 @@ export class Page extends React.Component<IPageProps, IPageState> {
     }
 
     if (otherSections) {
-      otherSections.map((PageSection: IPageSectionProps) => {
-        PageSection.sectionName &&
+      for (const section of otherSections) {
+        section.sectionName &&
           links.push({
-            text: PageSection.sectionName,
-            url: pascalize(PageSection.sectionName)
+            text: section.sectionName,
+            url: pascalize(section.sectionName)
           });
-      });
+      }
     }
 
     if (isFeedbackVisible) {
