@@ -69,9 +69,14 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
             }
           }
         }
-      },
-      [`&.${sideRailClassNames.isActive} a`]: {
-        borderLeftColor: theme.palette.themePrimary
+      }
+    },
+    jumpLinkActive: {
+      position: 'relative',
+      selectors: {
+        a: {
+          borderLeftColor: theme!.palette.themePrimary
+        }
       }
     },
     jumpLinkSection: {

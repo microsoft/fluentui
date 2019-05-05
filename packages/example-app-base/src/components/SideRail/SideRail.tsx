@@ -2,7 +2,7 @@ import * as React from 'react';
 import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
 import { isPageActive, jumpToAnchor, getUrlMinusLastHash } from '../../utilities/index2';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
-import { getStyles, sideRailClassNames } from './SideRail.styles';
+import { getStyles } from './SideRail.styles';
 
 export interface ISideRailState {
   activeLink?: string;
@@ -13,26 +13,31 @@ const getClassNames = classNamesFunction<ISideRailStyleProps, ISideRailStyles>()
 class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   public readonly state: ISideRailState = {};
   private _classNames: IProcessedStyleSet<ISideRailStyles>;
+  private _observer: IntersectionObserver;
 
   public componentDidMount(): void {
     if (typeof IntersectionObserver !== 'undefined') {
       const { observe, jumpLinks } = this.props;
       if (observe) {
-        const options: IntersectionObserverInit = {
+        this._observer = new IntersectionObserver(this._handleObserver, {
           threshold: [0.5]
-        };
-
-        const observer: IntersectionObserver = new IntersectionObserver(this._handleObserver, options);
+        });
 
         if (jumpLinks) {
           jumpLinks.forEach((jumpLink: ISideRailLink) => {
             const element = document.getElementById(jumpLink.url);
             if (element) {
-              observer.observe(element);
+              this._observer.observe(element);
             }
           });
         }
       }
+    }
+  }
+
+  public componentWillUnmount() {
+    if (this._observer) {
+      this._observer.disconnect();
     }
   }
 
@@ -75,7 +80,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     const links = jumpLinks.map((jumpLink: ISideRailLink) => (
       <li
         key={jumpLink.url}
-        className={css(classNames.link, classNames.jumpLink, jumpLink.url === activeLink && sideRailClassNames.isActive)}
+        className={css(classNames.link, classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive)}
       >
         <Link href={this._getPageUrl(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
           {jumpLink.text}
@@ -134,7 +139,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
 
   private _getPageUrl(url: string): string {
     // This makes sure that location hash changes don't append
-    return `${url}#${getUrlMinusLastHash(location.hash)}`;
+    return `${getUrlMinusLastHash(location.hash)}#${url}`;
   }
 }
 
