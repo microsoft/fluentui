@@ -9,9 +9,11 @@ import { Markdown } from '../../Markdown/index';
 export const OtherPageSection: React.StatelessComponent<IPageSectionProps> = props => {
   const { className, content, editUrl, sectionName, readableSectionName = sectionName, style, title = 'Page' } = props;
 
-  const sectionId = sectionName ? pascalize(sectionName || 'Other') : '';
+  const sectionId = sectionName ? pascalize(sectionName || readableSectionName || 'Other') : '';
 
-  const editSection = editUrl && <EditSection className={styles.edit} section={`${title} ${sectionName || ''}`} url={editUrl} />;
+  const editSection = editUrl && (
+    <EditSection className={styles.edit} title={title} section={readableSectionName || 'Other'} url={editUrl} />
+  );
 
   return (
     <div className={className} style={style}>

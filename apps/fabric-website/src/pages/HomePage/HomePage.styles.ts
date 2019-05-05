@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString, IRawStyle } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -25,6 +25,7 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   inner: 'ms-HomePage-inner',
   card: 'ms-HomePage-card',
   cardTitle: 'ms-HomePage-cardTitle',
+  versionSwitcher: 'ms-HomePage-versionSwitcher',
   cardList: 'ms-HomePage-cardList',
   cardListItem: 'ms-HomePage-cardListItem',
   cardIcon: 'ms-HomePage-cardIcon',
@@ -33,6 +34,10 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   linkText: 'ms-HomePage-linkText',
   illustration: 'ms-HomePage-illustration'
 };
+
+export const monoFont =
+  '"Segoe UI Mono",Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono",' +
+  '"Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace';
 
 export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
   const { theme, className, isMountedOffset, isInverted, beforeColor, afterColor } = props;
@@ -66,9 +71,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     ...sectionAnimation
   ];
 
+  const sectionTitleSize = FontSizes.size32;
   const sectionTitleStyles: IStyle = [
     {
-      fontSize: FontSizes.size32,
+      fontSize: sectionTitleSize,
       lineHeight: '1.1',
       marginTop: 0,
       marginBottom: '3em',
@@ -338,6 +344,14 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       }
     ],
 
+    versionSwitcher: [
+      classNames.versionSwitcher,
+      {
+        marginBottom: sectionTitleSize,
+        height: '1em'
+      }
+    ],
+
     cardList: [
       classNames.cardList,
       {
@@ -375,8 +389,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     link: [
       classNames.link,
       {
-        fontFamily:
-          '"Segoe UI Mono",Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono","Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace',
+        fontFamily: monoFont,
         display: 'flex',
         alignItems: 'center',
         color: 'inherit',
