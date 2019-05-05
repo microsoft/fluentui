@@ -33,6 +33,7 @@ export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, I
 
 /**
  * Standard People Picker.
+ * {@docCategory PeoplePicker}
  */
 export class NormalPeoplePickerBase extends BasePeoplePicker {
   /** Default props for NormalPeoplePicker. */
@@ -47,6 +48,7 @@ export class NormalPeoplePickerBase extends BasePeoplePicker {
 
 /**
  * Compact layout. It uses personas without secondary text when displaying search results.
+ * {@docCategory PeoplePicker}
  */
 export class CompactPeoplePickerBase extends BasePeoplePicker {
   /** Default props for CompactPeoplePicker. */
@@ -61,6 +63,7 @@ export class CompactPeoplePickerBase extends BasePeoplePicker {
 
 /**
  * MemberList layout. The selected people show up below the search box.
+ * {@docCategory PeoplePicker}
  */
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
   /** Default props for ListPeoplePicker. */
@@ -73,12 +76,18 @@ export class ListPeoplePickerBase extends MemberListPeoplePicker {
   };
 }
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export interface IGenericItem {
   primaryText: string;
   imageInitials: string;
   ValidationState: ValidationState;
 }
 
+/**
+ * {@docCategory PeoplePicker}
+ */
 export function createGenericItem(name: string, currentValidationState: ValidationState): IGenericItem & { key: React.Key } {
   const personaToConvert = {
     key: name,

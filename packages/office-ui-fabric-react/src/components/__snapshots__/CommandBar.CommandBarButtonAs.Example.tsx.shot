@@ -23,6 +23,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         className=
             ms-FocusZone
             ms-CommandBar
+            &:focus {
+              outline: none;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1347,6 +1350,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         className=
             ms-FocusZone
             ms-CommandBar
+            &:focus {
+              outline: none;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

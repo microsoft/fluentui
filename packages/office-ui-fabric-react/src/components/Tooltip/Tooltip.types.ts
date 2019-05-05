@@ -29,9 +29,9 @@ export interface ITooltipProps extends React.HTMLAttributes<HTMLDivElement | Too
   calloutProps?: ICalloutProps;
 
   /**
-   *  String to be passed to the tooltip
+   *  Content to be passed to the tooltip
    */
-  content?: string;
+  content?: string | JSX.Element | JSX.Element[];
 
   /**
    *  Render function to populate content area

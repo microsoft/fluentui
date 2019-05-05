@@ -1,6 +1,53 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 24 Apr 2019 12:35:54 GMT and should not be manually modified.
+This log was last generated on Sat, 04 May 2019 00:01:53 GMT and should not be manually modified.
+
+## 6.17.0
+Sat, 04 May 2019 00:01:53 GMT
+
+### Minor changes
+
+- Adds shell and bash language support
+- Bug fixes and styling updates for new website
+- Updates for new website
+- Break out of existing customizations when showing example card.
+
+### Patches
+
+- conditionally render Implementation jump link based on presence of jsonDocs
+
+## 6.16.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- extractAnchorLink shouldn't return undefined
+
+## 6.16.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Start copying new components and deprecating old things
+
+## 6.15.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add ApiReferencesTable and ApiReferencesTableSet
+
+### Patches
+
+- fix links for fabric demo/pr deploy site
+-  Use new getFocusStyle signature
+
+## 6.14.4
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Deprecate implementation examples
 
 ## 6.14.3
 Wed, 24 Apr 2019 12:35:54 GMT

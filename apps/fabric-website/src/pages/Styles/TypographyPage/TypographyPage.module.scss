@@ -1,5 +1,6 @@
-@import '../../../styles/variables';
-
-.typographyPage .typographyPageLink {
-  color: $ms-color-themePrimary;
+.example {
+  line-height: 1;
+  max-width: 580px;
+  // overflow: hidden;
+  white-space: nowrap;
 }

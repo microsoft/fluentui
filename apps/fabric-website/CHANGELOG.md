@@ -1,6 +1,43 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+This log was last generated on Sat, 04 May 2019 00:01:54 GMT and should not be manually modified.
+
+## 6.16.0
+Sat, 04 May 2019 00:01:54 GMT
+
+### Minor changes
+
+- ported logic for devhost from index.html to homepage.htm
+- Switch to new website
+
+### Patches
+
+- Getting started update with CRA, just and Gatsby.js
+
+## 6.15.0
+Thu, 02 May 2019 12:36:35 GMT
+
+### Minor changes
+
+- Adds a manifest generation script
+
+### Patches
+
+- Check for undefined hashes
+
+## 6.14.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add references section to nav
+
+## 6.13.6
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Remove implementation examples sections
 
 ## 6.13.5
 Tue, 23 Apr 2019 12:32:00 GMT

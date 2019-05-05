@@ -1,6 +1,89 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 25 Apr 2019 12:33:20 GMT and should not be manually modified.
+This log was last generated on Sat, 04 May 2019 00:01:54 GMT and should not be manually modified.
+
+## 6.176.2
+Sat, 04 May 2019 00:01:54 GMT
+
+### Patches
+
+- Properly propagate Esc in DatePicker
+- Add min panel width for small screen sizes
+- Documentation: adds more `docCategory` tags to API items.
+- Doc updates for new website
+
+## 6.176.0
+Thu, 02 May 2019 12:36:35 GMT
+
+### Minor changes
+
+- Add IBreadcrumbData, deprecate IBreadCrumbData
+- Modal/Dialog: Add ability to move via mouse and/or keyboard
+- Tooltip/TooltipHost: content now can take JSX content.
+
+### Patches
+
+- Remove out-of-date IE focus handling work-around. Pass forceFocusInsideTrap={false} to DatePicker FocusTrapZone. Adjust FocusTrapZone return focus handling.
+
+## 6.175.0
+Wed, 01 May 2019 12:34:25 GMT
+
+### Minor changes
+
+- BasePicker: re-add removed property to fix api break
+- Fix type in BasePicker onRemoveSuggestion api
+- DetailsHeader: mark cellIsActionable, cellIsEmpty, and cellWrapperPadded as deprecated
+- Introduces ImageFit.centerContain
+- Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme"
+- Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel
+
+## 6.174.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- DocPage: add types
+- Always reset pending info on option click.
+
+### Patches
+
+- FocusZone: remove outline on focus
+- Bugfix to set the correct width of the Pivot item's :after element, so Pivot items don't move on (un)selection
+- Use new getFocusStyle signature
+- DetailsColumn: Cleanup className vars, use lambdas for this binding, add type-safety to root ref
+
+## 6.173.0
+Mon, 29 Apr 2019 12:34:34 GMT
+
+### Minor changes
+
+- DetailsList: export DetailsHeader
+
+### Patches
+
+- Fixed typo in position utility
+
+## 6.172.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- Updating Icon, Checkbox, and Image to be pure components (correctly.)
+
+## 6.171.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Breadcrumb: Add in focuszone props to give more control
+- Teachingbubble: Improve target that's passed to callout
+- Add new prop 'detailsListStyles' to allow passing 'styles' prop to DetailsList. Deprecate all shimmer related props in DetailsList and DetailsListRow. Adds documentation
+
+### Patches
+
+- Deprecate implementation examples
+- Fix the picker suggestion items flashing issue.
+- Setting initial scrollbar height and width equal to 0 to prevent rendering when it's width/height changes from undefined to 0. Cascading updates caused due to notifySubscribers for sticky componentDidMount lifecycle hook. Reducing computations for sticky component by combining updates for change in sticky state (top/bottom/non-sticky) & distanceFromTop. Setting placeHolder width equal to scrollWidth of nonStickyContent.firstElementChild
 
 ## 6.170.0
 Thu, 25 Apr 2019 12:33:20 GMT

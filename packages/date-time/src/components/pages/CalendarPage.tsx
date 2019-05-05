@@ -160,6 +160,7 @@ export class CalendarPage extends React.Component<{}, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/Calendar.types.ts')]} />
         }
+        // tslint:disable:deprecation
         overview={
           <PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/Calendar/docs/CalendarOverview.md')}</PageMarkdown>
         }
