@@ -2,6 +2,40 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.17.1",
+      "tag": "@uifabric/example-app-base_v6.17.1",
+      "date": "Sun, 05 May 2019 19:59:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ApiReferencesTable: only render methods and members tables if not empty",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "b7d9ff1e23ef691665a09ef63bf1bc7a39f82c4d"
+          },
+          {
+            "comment": "Fix footer flashing, sticky nav, sticky side rail",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "680b301ae59d02a89aa5fe30c44ad6ba11f63ac2"
+          },
+          {
+            "comment": "Anchor link handling and other bug fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "725a292b5659ba883b0cc552d878323f60c7ad49"
+          },
+          {
+            "comment": "More EditSection tooltip fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d1f6243f45b7b292f4ecf2cb98b69e89548f31fb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.2` to `^6.176.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "@uifabric/example-app-base_v6.17.0",
       "date": "Sat, 04 May 2019 00:01:53 GMT",

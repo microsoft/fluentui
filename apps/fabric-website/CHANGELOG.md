@@ -1,6 +1,18 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Sat, 04 May 2019 00:01:54 GMT and should not be manually modified.
+This log was last generated on Sun, 05 May 2019 19:59:10 GMT and should not be manually modified.
+
+## 6.16.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- Added get started section
+- Added more mobile controls documentation
+- Mobile documentation updates
+- Adjust Resources content
+- Anchor link handling and other bug fixes
+- Add version dropdown and fix other bugs
 
 ## 6.16.0
 Sat, 04 May 2019 00:01:54 GMT

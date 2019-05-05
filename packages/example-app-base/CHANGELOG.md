@@ -1,6 +1,16 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Sat, 04 May 2019 00:01:53 GMT and should not be manually modified.
+This log was last generated on Sun, 05 May 2019 19:59:10 GMT and should not be manually modified.
+
+## 6.17.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- ApiReferencesTable: only render methods and members tables if not empty
+- Fix footer flashing, sticky nav, sticky side rail
+- Anchor link handling and other bug fixes
+- More EditSection tooltip fixes
 
 ## 6.17.0
 Sat, 04 May 2019 00:01:53 GMT
