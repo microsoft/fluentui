@@ -6,11 +6,11 @@ import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
 import { styled, classNamesFunction, Customizer, css, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
-import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
+import { CodeSnippet } from '../CodeSnippet';
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
@@ -49,7 +49,18 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
+    const {
+      title,
+      code,
+      children,
+      styles,
+      isRightAligned = false,
+      isScrollable = true,
+      codepenJS,
+      theme,
+      codeHighlighter: Highlighter = CodeSnippet,
+      codeHighlighterProps = {}
+    } = this.props;
     const { isCodeVisible, schemeIndex, themeIndex } = this.state;
 
     return (
@@ -121,7 +132,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </div>
               </div>
 
-              <div className={classNames.code}>{isCodeVisible && <Highlight>{code}</Highlight>}</div>
+              <div className={classNames.code}>{isCodeVisible && <Highlighter {...codeHighlighterProps}>{code}</Highlighter>}</div>
 
               {activeCustomizations ? (
                 <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>

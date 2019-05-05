@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction } from 'office-ui-fabric-react';
+import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
 import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
 
 // tslint:disable no-any
@@ -7,27 +7,21 @@ const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/light'
 
 // Import languages from SyntaxHighlighter
 const ts = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/typescript').default;
-const js = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/javascript').default;
-const css = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/css').default;
 const scss = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/scss').default;
 const md = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/markdown').default;
 const bash = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/bash').default;
-const shell = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/shell').default;
-const diff = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/diff').default;
+const xml = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/xml').default;
+// tslint:enable no-any
 
 // Import SyntaxHighlighter styles
-const style = require<any>('react-syntax-highlighter/dist/styles/hljs/github').default;
-// tslint:enable no-any
+const style: { [key: string]: IRawStyle } = require('react-syntax-highlighter/dist/styles/hljs/github').default;
 
 // Register languages
 SyntaxHighlighter.registerLanguage('typescript', ts);
-SyntaxHighlighter.registerLanguage('javascript', js);
-SyntaxHighlighter.registerLanguage('css', css);
 SyntaxHighlighter.registerLanguage('scss', scss);
 SyntaxHighlighter.registerLanguage('markdown', md);
 SyntaxHighlighter.registerLanguage('bash', bash);
-SyntaxHighlighter.registerLanguage('shell', shell);
-SyntaxHighlighter.registerLanguage('diff', diff);
+SyntaxHighlighter.registerLanguage('html', xml);
 
 // Customize imported SyntaxHighlighter styles
 style.hljs = {
@@ -71,10 +65,21 @@ const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = pr
 
 const getClassNames = classNamesFunction<ICodeSnippetStyleProps, ICodeSnippetStyles>();
 
+const languageMapping: { [key: string]: string } = {
+  ts: 'typescript',
+  tsx: 'typescript',
+  js: 'typescript',
+  javascript: 'typescript',
+  jsx: 'typescript',
+  shell: 'bash',
+  md: 'markdown',
+  css: 'scss'
+};
+
 const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, {});
   return (
-    <SyntaxHighlighter language={props.language} className={classNames.root} style={style}>
+    <SyntaxHighlighter language={languageMapping[props.language!] || props.language || 'text'} className={classNames.root} style={style}>
       {props.children}
     </SyntaxHighlighter>
   );
