@@ -32,6 +32,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
   public componentDidMount(): void {
     this._disposables.push(
       on(window, 'hashchange', () => {
+        // Don't update unless the route itself (not an anchor link) actually changed
         const path = this._getPath();
         if (path !== this.state.path) {
           this.setState({ path });
@@ -58,6 +59,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
       path = path.substr(0, questionMarkIndex);
     }
 
+    // If the hash has a second # (for an anchor), strip that out since it's not used for routing
     if (hashIndex > 0) {
       path = path.substr(0, hashIndex);
     }
@@ -115,6 +117,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
   }
 }
 
+/** Normalize path for comparison: strip any trailing slash and convert to lowercase */
 function _normalizePath(path?: string): string {
   if (path && path.slice(-1) === '/') {
     path = path.slice(0, -1);

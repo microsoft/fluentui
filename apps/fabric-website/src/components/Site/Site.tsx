@@ -34,6 +34,12 @@ export interface ISiteProps<TPlatforms extends string = string> {
 }
 
 export interface ISiteState<TPlatforms extends string = string> {
+  /**
+   * Whether this is the initial mount/render of the component. If true, nothing will render.
+   * This is a simpler workaround until state initialization can be moved from componentDidMount
+   * to the constructor (almost none of the initialization logic requires the component to be
+   * mounted, but moving it around turned out to be a bit complicated).
+   */
   initialRender: boolean;
   platform: TPlatforms;
   searchablePageTitle?: string;
@@ -431,7 +437,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const newPagePath = removeAnchorLink(location.hash);
     if (prevPagePath === newPagePath && !this.state.initialRender) {
       // Must have been a change to the anchor only (not the route).
-      // Don't do a full update, but handle jumping to the anchor.
+      // Don't do a full update, just jump to the anchor.
       this._jumpToAnchor(extractAnchorLink(location.hash));
       return;
     }
@@ -470,8 +476,8 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       this._jumpInterval = undefined;
     }
     if (anchor) {
-      // Since we've just re-rendered and Page sections are shown with a delay, the element needed
-      // may not be rendered yet. Retry every 100ms (up to 1s) until the element shows up.
+      // If we've just re-rendered, the element needed may not be rendered yet.
+      // Retry every 100ms (up to 1s) until the element shows up.
       const start = Date.now();
       this._jumpInterval = this._async.setInterval(() => {
         const el = document.getElementById(anchor);
