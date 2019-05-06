@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.17.4",
+      "tag": "@uifabric/example-app-base_v6.17.4",
+      "date": "Mon, 06 May 2019 19:32:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF styling conflicts",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7a8e3a847570d97a04e42c415593ee4bef600743"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.3",
       "tag": "@uifabric/example-app-base_v6.17.3",
       "date": "Mon, 06 May 2019 12:35:11 GMT",

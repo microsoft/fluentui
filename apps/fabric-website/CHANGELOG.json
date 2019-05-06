@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.16.4",
+      "tag": "@uifabric/fabric-website_v6.16.4",
+      "date": "Mon, 06 May 2019 19:32:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF styling conflicts",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7a8e3a847570d97a04e42c415593ee4bef600743"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.3` to `^6.17.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.3",
       "tag": "@uifabric/fabric-website_v6.16.3",
       "date": "Mon, 06 May 2019 12:35:11 GMT",

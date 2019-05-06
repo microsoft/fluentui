@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 06 May 2019 12:35:11 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2019 19:32:45 GMT and should not be manually modified.
+
+## 6.16.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
 
 ## 6.16.3
 Mon, 06 May 2019 12:35:11 GMT

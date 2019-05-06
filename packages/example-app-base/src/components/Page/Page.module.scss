@@ -11,6 +11,19 @@ $usageListPadding: 24px;
 
 .sectionWrapper {
   max-width: $content-width + ($App-padding-sm * 2);
+
+  // UHF overrides
+  a:global(.ms-Link) {
+    color: $linkColor;
+    &:link {
+      color: $linkColor;
+    }
+    &:active,
+    &:hover,
+    &:active:hover {
+      color: $linkHoveredColor;
+    }
+  }
 }
 
 .section {
