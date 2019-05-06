@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { MicroFeedback } from '../MicroFeedback';
 import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
+import { MicroFeedbackCallout } from '../MicroFeedbackCallout';
 
 export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -31,7 +31,7 @@ export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
     };
     return (
       <div>
-        <MicroFeedback
+        <MicroFeedbackCallout
           styles={microfeedbackStyles}
           thumbsDownQuestion={followUpOnThumbsDown}
           thumbsUpQuestion={followUpOnThumbsUp}

@@ -130,3 +130,14 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
     this._vote('dislike');
   };
 }
+
+// TODO: separate into a different file
+export class MicroFeedbackCalloutBase extends React.Component<IMicroFeedbackProps, IMicroFeedbackState> {
+  constructor(props: IMicroFeedbackProps) {
+    super(props);
+  }
+
+  public render() {
+    return <MicroFeedbackBase {...this.props} />;
+  }
+}

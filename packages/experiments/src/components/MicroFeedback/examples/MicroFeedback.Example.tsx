@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { MicroFeedback } from '../MicroFeedback';
-import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
+import { VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
 
 export class MicroFeedbackExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
