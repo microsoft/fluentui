@@ -14,7 +14,7 @@ describe('FocusZone', () => {
   it('can move focus from container to first item when added', async () => {
     // Arrange
     const page = await browser.newPage();
-    await page.goto('http://localhost:4322/#/example1');
+    await page.goto('http://localhost:4322/#/FocusZone.example1');
 
     // Act
     // 'Nesting FocusZons in list rows'
@@ -22,14 +22,6 @@ describe('FocusZone', () => {
     await focusZone.focus();
 
     // Assert
-    const button = await page.$('#a');
-    expect(await getActiveElementText(page)).toBe(button);
+    expect(await page.$eval('#a', (button: any) => document.activeElement === button));
   });
 });
-
-function getActiveElementText(page: puppeteer.Page): Promise<string> {
-  return page.evaluate(() => {
-    const activeElement = document.activeElement;
-    return activeElement ? (activeElement as any).innerText : '';
-  });
-}

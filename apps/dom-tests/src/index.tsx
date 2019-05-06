@@ -22,14 +22,16 @@ function _onLoad(): void {
 }
 
 function _getRoutes(): JSX.Element[] {
-  return [
-    {
-      component: (require('./FocusZone.example1') as any).default,
-      key: 'example1',
-      name: 'example1',
-      url: '#/example1'
-    }
-  ].map((page: any) => <Route key={page.key} path={page.url} component={page.component} />);
+  return require('./pages/pageList')
+    .map((page: string) => {
+      return {
+        component: (require(`./pages/${page}`) as any).default,
+        key: page,
+        name: page,
+        url: `#/${page}`
+      };
+    })
+    .map((page: any) => <Route key={page.key} path={page.url} component={page.component} />);
 }
 
 function _onUnload(): void {
