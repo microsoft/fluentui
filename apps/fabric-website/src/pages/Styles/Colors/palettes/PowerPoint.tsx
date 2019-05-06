@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { ColorPalette } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 
 import { WXPNeutrals } from './WXPNeutrals';
 
 export const PowerPoint = () => {
   return (
     <>
-      <h2>PowerPoint</h2>
+      <MarkdownHeader as="h2">PowerPoint</MarkdownHeader>
       <ColorPalette
         colors={[
           {

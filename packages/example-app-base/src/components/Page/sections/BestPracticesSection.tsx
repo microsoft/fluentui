@@ -2,7 +2,7 @@ import * as React from 'react';
 import { EditSection } from '../../EditSection/index';
 import { css } from 'office-ui-fabric-react';
 import { getEditUrl, pascalize } from '../../../utilities/index2';
-import { Markdown } from '../../Markdown/index';
+import { Markdown, MarkdownHeader } from '../../Markdown/index';
 import { IPageSectionProps } from '../Page.types';
 import * as styles from '../Page.module.scss';
 
@@ -60,7 +60,9 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
       <div className={styles.subSection} key="dosAndDonts">
         <div className={styles.doSection}>
           <div className={styles.sectionHeader}>
-            <h3 className={styles.smallSubHeading}>Do</h3>
+            <MarkdownHeader as="h3" className={styles.smallSubHeading}>
+              Do
+            </MarkdownHeader>
             {dos && dosUrl && <EditSection className={styles.edit} title={title} section="Dos" url={dosUrl} />}
           </div>
           {dos && (
@@ -71,7 +73,9 @@ export const BestPracticesSection: React.StatelessComponent<IBestPracticesSectio
         </div>
         <div className={styles.dontSection}>
           <div className={styles.sectionHeader}>
-            <h3 className={css(styles.smallSubHeading)}>Don&rsquo;t</h3>
+            <MarkdownHeader as="h3" className={css(styles.smallSubHeading)}>
+              Don&rsquo;t
+            </MarkdownHeader>
             {donts && dontsUrl && <EditSection className={styles.edit} title={title} section="Don'ts" url={dontsUrl} />}
           </div>
           {donts && (
