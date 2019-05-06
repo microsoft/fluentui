@@ -30,7 +30,12 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Callback issued when the selected option changes.
    */
-  onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number, options?: IDropdownOption[]) => void;
+  onChange?: (
+    event: React.FormEvent<HTMLDivElement>,
+    option?: IDropdownOption,
+    index?: number,
+    selectedOptions?: IDropdownOption[]
+  ) => void;
 
   /**
    * @deprecated Use `onChange` instead.

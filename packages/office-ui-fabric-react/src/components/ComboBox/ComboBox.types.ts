@@ -66,7 +66,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     option?: IComboBoxOption,
     index?: number,
     value?: string,
-    options?: IComboBoxOption[]
+    selectedOptions?: IComboBoxOption[]
   ) => void;
 
   /**
