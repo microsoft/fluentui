@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.16.3",
+      "tag": "@uifabric/fabric-website_v6.16.3",
+      "date": "Mon, 06 May 2019 12:35:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove css reset",
+            "author": "Micah Godbolt <mgodbolt@microsoft.com>",
+            "commit": "7c176f3b0e14bc446865a73ad4799d10aa18c5cb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.2` to `^6.17.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.2",
       "tag": "@uifabric/fabric-website_v6.16.2",
       "date": "Mon, 06 May 2019 00:28:08 GMT",

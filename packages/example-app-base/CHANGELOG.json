@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.17.3",
+      "tag": "@uifabric/example-app-base_v6.17.3",
+      "date": "Mon, 06 May 2019 12:35:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added css reset directly to ul",
+            "author": "Micah Godbolt <mgodbolt@microsoft.com>",
+            "commit": "7c176f3b0e14bc446865a73ad4799d10aa18c5cb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.2",
       "tag": "@uifabric/example-app-base_v6.17.2",
       "date": "Mon, 06 May 2019 00:28:08 GMT",
