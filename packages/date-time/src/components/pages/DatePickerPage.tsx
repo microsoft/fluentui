@@ -6,7 +6,8 @@ import { DatePickerRequiredExample } from '../DatePicker/examples/DatePicker.Req
 import { DatePickerInputExample } from '../DatePicker/examples/DatePicker.Input.Example';
 import { DatePickerFormatExample } from '../DatePicker/examples/DatePicker.Format.Example';
 import { DatePickerBoundedExample } from '../DatePicker/examples/DatePicker.Bounded.Example';
-import { ExampleCard, ComponentPage, PropertiesTableSet, PageMarkdown } from '@uifabric/example-app-base';
+import { ExampleCard, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
+import { Markdown } from '@uifabric/example-app-base/lib/index2';
 
 const DatePickerBasicExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerDisabledExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
@@ -54,19 +55,11 @@ export class DatePickerPage extends React.Component<{}, {}> {
           />
         }
         overview={
-          <PageMarkdown>
-            {require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerOverview.md')}
-          </PageMarkdown>
+          <Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerOverview.md')}</Markdown>
         }
         bestPractices={<div />}
-        dos={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDos.md')}</PageMarkdown>
-        }
-        donts={
-          <PageMarkdown>
-            {require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDonts.md')}
-          </PageMarkdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!@uifabric/date-time/src/components/DatePicker/docs/DatePickerDonts.md')}</Markdown>}
       />
     );
   }
