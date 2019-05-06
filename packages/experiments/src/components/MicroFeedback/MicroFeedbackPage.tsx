@@ -1,8 +1,13 @@
 import * as React from 'react';
 import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet } from '@uifabric/example-app-base';
 
-import { MicroFeedbackBasicExample } from './examples/MicroFeedback.Basic.Example';
-const MicroFeedbackBasicExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedback.Basic.Example.tsx') as string;
+import { MicroFeedbackExample } from './examples/MicroFeedback.Example';
+import { MicroFeedbackCalloutExample } from './examples/MicroFeedbackCallout.Example';
+import { MicroFeedbackStackExample } from './examples/MicroFeedbackStack.Example';
+
+const MicroFeedbackExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedback.Example.tsx') as string;
+const MicroFeedbackCalloutExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedback.Example.tsx') as string;
+const MicroFeedbackStackExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedback.Example.tsx') as string;
 
 export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -12,8 +17,14 @@ export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, 
         componentName="MicroFeedback"
         exampleCards={
           <div>
-            <ExampleCard title="Default with Callout" isOptIn={true} code={MicroFeedbackBasicExampleCode}>
-              <MicroFeedbackBasicExample />
+            <ExampleCard title="Default" isOptIn={true} code={MicroFeedbackExampleCode}>
+              <MicroFeedbackExample />
+            </ExampleCard>
+            <ExampleCard title="With Callout followup" isOptIn={true} code={MicroFeedbackCalloutExampleCode}>
+              <MicroFeedbackCalloutExample />
+            </ExampleCard>
+            <ExampleCard title="With Stack followup" isOptIn={true} code={MicroFeedbackStackExampleCode}>
+              <MicroFeedbackStackExample />
             </ExampleCard>
           </div>
         }

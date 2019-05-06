@@ -2,7 +2,7 @@ import * as React from 'react';
 import { MicroFeedback } from '../MicroFeedback';
 import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
 
-export class MicroFeedbackBasicExample extends React.Component<{}, {}> {
+export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const followUpOnThumbsDown: IMicroFeedbackQuestion = {
       options: ['Translation is incorrect', 'Context is incorrect', 'Language can be better'],
