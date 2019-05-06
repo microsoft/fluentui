@@ -16,8 +16,8 @@
   ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
-    "@types/react": "16.8.3",
-    "@types/react-dom": "16.8.1",
+    "@types/react": ">=16.8.0 <17.0.0",
+    "@types/react-dom": ">=16.8.0 <17.0.0",
     "@types/webpack-env": "1.13.0",
     "@uifabric/prettier-rules": "^1.0.1",
     "@uifabric/tslint-rules": "^1.0.1"

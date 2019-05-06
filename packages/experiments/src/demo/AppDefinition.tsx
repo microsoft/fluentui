@@ -107,12 +107,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/toggle'
         },
         {
-          component: require<any>('../components/Shimmer/ShimmerPage').ShimmerPage,
-          key: 'Shimmer',
-          name: 'Shimmer',
-          url: '#/examples/shimmer'
-        },
-        {
           component: require<any>('../components/VirtualizedList/VirtualizedListPage').VirtualizedListPage,
           key: 'VirtualizedList',
           name: 'VirtualizedList',

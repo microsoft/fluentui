@@ -14,7 +14,7 @@ import * as PropTypes from 'prop-types';
 import * as React_2 from 'react';
 
 // @public
-export function createComponent<TComponentProps extends ValidProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps extends TComponentProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React_2.FunctionComponent<TComponentProps> & TStatics;
+export function createComponent<TComponentProps extends ValidProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React_2.FunctionComponent<TComponentProps> & TStatics;
 
 // @public
 export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(DefaultComponent: React_2.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps, TShorthandProp>;
@@ -24,9 +24,6 @@ export type ExtractProps<TUnion> = TUnion extends ISlotProp<infer TProps> ? TPro
 
 // @public
 export type ExtractShorthand<TUnion> = TUnion extends boolean ? boolean : TUnion extends number ? number : TUnion extends string ? string : never;
-
-// @public
-export function getControlledDerivedProps<TProps, TProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, derivedValue: TProps[TProp]): TProps[TProp];
 
 // @public
 export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(userProps: TComponentProps, slots: ISlotDefinition<Required<TComponentSlots>>): ISlots<Required<TComponentSlots>>;
@@ -47,14 +44,6 @@ export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSe
 export type IComponentStyles<TSlots> = {
     [key in keyof TSlots]?: IStyle;
 };
-
-// @public (undocumented)
-export interface IControlledStateOptions<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps> {
-    // (undocumented)
-    defaultPropName?: TDefaultProp;
-    // (undocumented)
-    defaultPropValue?: TProps[TProp];
-}
 
 // @public (undocumented)
 export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> = IStyleableComponentProps<TViewProps, TTokens, TStyleSet> & Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
@@ -105,7 +94,7 @@ export interface ISlotCreator<TProps extends ValidProps, TShorthandProp extends 
 
 // @public
 export type ISlotDefinition<TSlots> = {
-    [slot in keyof TSlots]: React.ReactType<ExtractProps<TSlots[slot]>>;
+    [slot in keyof TSlots]: React.ElementType<ExtractProps<TSlots[slot]>>;
 };
 
 // @public
@@ -114,7 +103,7 @@ export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends Valid
 // @public
 export interface ISlotOptions<TProps> {
     // (undocumented)
-    component?: React.ReactType<TProps>;
+    component?: React.ElementType<TProps>;
     // (undocumented)
     render?: ISlotRender<TProps>;
 }
@@ -141,10 +130,15 @@ export type ISlottableProps<TSlots> = TSlots & {
 };
 
 // @public
-export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ReactType<TProps> & ISlotCreator<TProps, TShorthandProp>;
+export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ElementType<TProps> & ISlotCreator<TProps, TShorthandProp>;
 
 // @public
-export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<TComponentProps>) => TViewProps;
+export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
+    renderView: IViewRenderer<TViewProps>;
+};
+
+// @public
+export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
 
 // @public
 export interface IStyleableComponentProps<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>> {
@@ -191,13 +185,13 @@ export type ITokenFunctionOrObject<TViewProps, TTokens> = ITokenFunction<TViewPr
 // @public
 export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
 
+// @public
+export type IViewRenderer<TViewProps> = (props?: TViewProps) => ReturnType<React.FunctionComponent>;
+
 export { legacyStyled }
 
 // @public
 export const ThemeProvider: React_2.FunctionComponent<IThemeProviderProps>;
-
-// @public
-export function useControlledState<TProps, TProp extends keyof TProps, TDefaultProp extends keyof TProps>(props: Readonly<TProps>, propName: TProp, options?: IControlledStateOptions<TProps, TProp, TDefaultProp>): [TProps[TProp] | undefined, React.Dispatch<React.SetStateAction<TProps[TProp]>>];
 
 // @public
 export type ValidProps = object;
