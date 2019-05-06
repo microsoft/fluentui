@@ -7,7 +7,7 @@ import { DatePickerBase, IDatePickerState } from './DatePicker.base';
 import { IDatePickerStrings, IDatePickerProps } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { resetIds } from '@uifabric/Utilities';
+import { resetIds } from '@uifabric/utilities';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 
 describe('DatePicker', () => {

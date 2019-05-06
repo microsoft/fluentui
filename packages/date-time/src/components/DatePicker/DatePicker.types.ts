@@ -1,8 +1,8 @@
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
-import { IStyle, ITheme } from '@uifabric/Styling';
-import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '@uifabric/Utilities';
+import { IStyle, ITheme } from '@uifabric/styling';
+import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '@uifabric/utilities';
 import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 
