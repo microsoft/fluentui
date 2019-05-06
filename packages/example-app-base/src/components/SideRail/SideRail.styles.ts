@@ -38,6 +38,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
             display: 'block',
             flex: '1',
             padding: '4px 8px',
+
             selectors: {
               '&:hover': { background: theme.palette.neutralLight }
             }
@@ -68,7 +69,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       borderLeft: '2px solid transparent',
       paddingLeft: 6, // 8px - 2px border
       selectors: {
-        '&:focus': {
+        '&:focus, &:link': {
           color: theme.palette.neutralPrimary + ' !important'
         }
       }
