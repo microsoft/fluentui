@@ -5,7 +5,8 @@
 // the header links larger than they should be, so reset that here.
 :global {
   #headerWrapper,
-  #footerWrapper #socialMediaContainer,
+  #footerWrapper,
+  #socialMediaContainer,
   .m-back-to-top {
     p,
     ul,

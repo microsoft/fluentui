@@ -51,19 +51,17 @@ const fabricVersionOptions: IContextualMenuItem[] = [
   {
     key: '6',
     text: 'Fabric 6',
-    data: '6'
+    checked: true
   },
   {
     key: '5',
-    text: 'Fabric 5',
-    data: '5'
+    text: 'Fabric 5'
   }
 ];
 
 export interface IHomePageState {
   isMounted: boolean;
   isMountedOffset: boolean;
-  fabricVer: string;
 }
 
 export class HomePageBase extends React.Component<IHomePageProps, IHomePageState> {
@@ -73,17 +71,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   constructor(props: IHomePageProps) {
     super(props);
 
-    let sessionStorageVersion: string | undefined;
-    try {
-      sessionStorageVersion = window.sessionStorage.getItem('fabricVer');
-    } catch (ex) {
-      // ignore
-    }
-
     this.state = {
       isMounted: false,
-      isMountedOffset: false,
-      fabricVer: getParameterByName('fabricVer') || sessionStorageVersion || fabricVersionOptions[0].data
+      isMountedOffset: false
     };
   }
 
@@ -333,6 +323,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
   };
 
   private _onVersionMenuClick = (event: any, item: IContextualMenuItem): void => {
-    this.setState({ fabricVer: item.data });
+    if (item.key === '5') {
+      // Reload the page to switch to version 5
+      location.href = `${location.protocol}//${location.host}${location.pathname}?fabricVer=5`;
+    }
   };
 }
