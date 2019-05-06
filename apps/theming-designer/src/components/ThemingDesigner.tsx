@@ -28,18 +28,16 @@ const outerMostStack = mergeStyles({
 });
 
 const sidebarStyles = mergeStyles({
+  backgroundColor: 'white',
   borderRight: '1px solid #ddd',
   minHeight: '100%',
   paddingRight: '1rem',
-  position: 'fixed',
   top: '60px',
-  left: '10px'
+  left: '10px',
+  zIndex: 500
 });
 
 let colorChangeTimeout: number;
-
-let hideSemanticSlots: boolean;
-let semanticSlotsCard: JSX.Element;
 
 export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
   constructor(props: any) {
@@ -50,26 +48,22 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
     this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
     this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
-
-    hideSemanticSlots = true;
-    if (!hideSemanticSlots) {
-      semanticSlotsCard = <SemanticSlots />;
-    } else {
-      <div />;
-    }
   }
 
   public render() {
     return (
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
-        <Stack horizontal gap={10}>
+        <Stack horizontal gap={10} styles={{ root: { position: 'absolute', overflow: 'auto', top: '50px' } }}>
           <Stack gap={20} className={sidebarStyles}>
             <h1>
               <IconButton
                 disabled={false}
                 checked={false}
-                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
+                iconProps={{
+                  iconName: 'Color',
+                  styles: { root: { fontSize: '20px' } }
+                }}
                 title="Colors"
                 ariaLabel="Colors"
               />
@@ -95,7 +89,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               </ThemeProvider>
               <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
-              {semanticSlotsCard}
+              <SemanticSlots theme={this.state.theme} />;
             </Stack>
           </Stack.Item>
         </Stack>
@@ -117,10 +111,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
 
   private _makeNewTheme = (): void => {
     if (this.state.themeRules) {
-      const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
+      const themeAsJson: {
+        [key: string]: string;
+      } = ThemeGenerator.getThemeAsJson(this.state.themeRules);
 
       const finalTheme = createTheme({
-        ...{ palette: themeAsJson }
+        ...{ palette: themeAsJson },
+        isInverted: isDark(this.state.themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
       });
       this.setState({ theme: finalTheme });
     }
@@ -169,10 +166,13 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.foregroundColor]], colors.textColor);
     ThemeGenerator.setSlot(themeRules[BaseSlots[BaseSlots.backgroundColor]], colors.backgroundColor);
 
-    const themeAsJson: { [key: string]: string } = ThemeGenerator.getThemeAsJson(themeRules);
+    const themeAsJson: {
+      [key: string]: string;
+    } = ThemeGenerator.getThemeAsJson(themeRules);
 
     const finalTheme = createTheme({
-      ...{ palette: themeAsJson }
+      ...{ palette: themeAsJson },
+      isInverted: isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)
     });
 
     const state = {

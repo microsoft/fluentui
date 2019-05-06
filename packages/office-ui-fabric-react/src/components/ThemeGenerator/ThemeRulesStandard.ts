@@ -178,62 +178,21 @@ export function themeRulesStandardCreator(): IThemeRules {
   /*** SEMANTIC SLOTS */
   // This code is commented out for now but left for future semantic color customization.
   // create the SlotRule for a semantic slot
-  function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
-    const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
-    const thisSlotRule = {
-      name: SemanticColorSlots[semanticSlot],
-      inherits: slotRules[FabricSlots[inheritedFabricSlot]],
-      isCustomized: false,
-      dependentRules: []
-    };
-    slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
-    inherits.dependentRules.push(thisSlotRule);
-  }
+  // function _makeSemanticSlotRule(semanticSlot: SemanticColorSlots, inheritedFabricSlot: FabricSlots): void {
+  //   const inherits = slotRules[FabricSlots[inheritedFabricSlot]];
+  //   const thisSlotRule = {
+  //     name: SemanticColorSlots[semanticSlot],
+  //     inherits: slotRules[FabricSlots[inheritedFabricSlot]],
+  //     isCustomized: false,
+  //     dependentRules: []
+  //   };
+  //   slotRules[SemanticColorSlots[semanticSlot]] = thisSlotRule;
+  //   inherits.dependentRules.push(thisSlotRule);
+  // }
 
-  // BODY
-  // None
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-
-  // Neutral
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.neutralLighter);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-
-  // Soft
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themeLighterAlt);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
-  // Strong
-  _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.themePrimary);
-  _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.white);
-  // LINKS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // BUTTONS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // INPUTS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // LISTS
-  // None
-  // Neutral
-  // Soft
-  // Strong
-
-  // MENUS
-  // None
-  // Neutral
-  // Soft
-  // Strong
+  // Basic simple slots
+  // _makeSemanticSlotRule(SemanticColorSlots.bodyBackground, FabricSlots.white);
+  // _makeSemanticSlotRule(SemanticColorSlots.bodyText, FabricSlots.neutralPrimary);
 
   return slotRules;
 }
