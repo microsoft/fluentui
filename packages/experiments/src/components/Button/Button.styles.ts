@@ -138,6 +138,8 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
 
     borderWidth: 0,
 
+    outlineColor: 'transparent',
+
     msHighContrastAdjust: 'none'
   };
 };
@@ -164,7 +166,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
 
   return {
     root: [
-      !circular && getFocusStyle(theme, { inset: 1, outlineColor: tokens.borderColor }),
+      !circular && getFocusStyle(theme, { inset: 1, outlineColor: tokens.outlineColor }),
       circular && {
         selectors: {
           [`.${IsFocusVisibleClassName} &:focus`]: {
