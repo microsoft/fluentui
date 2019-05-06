@@ -3,13 +3,17 @@ import { ISuggestionModel } from '../../../Pickers';
 import { IPersonaProps } from '../../Persona';
 import { ITag } from '../../pickers';
 
+type SuggestionsStoreOptions<T> = {
+  getAriaLabel?: (item: T) => string;
+};
+
 export class SuggestionsStore<T> {
   public suggestions: ISuggestionModel<T>[];
   private getAriaLabel?: (item: T) => string;
 
-  constructor(getAriaLabel?: (item: T) => string) {
+  constructor(options?: SuggestionsStoreOptions<T>) {
     this.suggestions = [];
-    this.getAriaLabel = getAriaLabel;
+    this.getAriaLabel = options && options.getAriaLabel;
   }
 
   public updateSuggestions(newSuggestions: T[]): void {
@@ -52,7 +56,8 @@ export class SuggestionsStore<T> {
         ariaLabel:
           this.getAriaLabel !== undefined
             ? this.getAriaLabel(suggestion)
-            : ((suggestion as unknown) as ITag).name || (<IPersonaProps>suggestion).primaryText
+            : // tslint:disable-next-line:no-any
+              ((suggestion as any) as ITag).name || (<IPersonaProps>suggestion).primaryText
       };
     }
   }

@@ -11,7 +11,9 @@ const getCustomName = (d: IMockSuggestion): string => d.customName + ' label';
 describe('SuggestionsStore', () => {
   describe('when getting the aria-label', () => {
     it('uses getAriaLabel for item text when it is set', () => {
-      const store = new SuggestionsStore<IMockSuggestion>(getCustomName);
+      const store = new SuggestionsStore<IMockSuggestion>({
+        getAriaLabel: getCustomName
+      });
       store.updateSuggestions([
         {
           customName: 'me'
@@ -28,7 +30,9 @@ describe('SuggestionsStore', () => {
     });
 
     it('prioritizes getAriaLabel over name', () => {
-      const store = new SuggestionsStore<IMockSuggestion>(getCustomName);
+      const store = new SuggestionsStore<IMockSuggestion>({
+        getAriaLabel: getCustomName
+      });
       store.updateSuggestions([
         {
           customName: 'u',
@@ -47,7 +51,9 @@ describe('SuggestionsStore', () => {
     });
 
     it('prioritizes getAriaLabel over primaryText', () => {
-      const store = new SuggestionsStore<IMockSuggestion>(getCustomName);
+      const store = new SuggestionsStore<IMockSuggestion>({
+        getAriaLabel: getCustomName
+      });
       store.updateSuggestions([
         {
           customName: 'us',
