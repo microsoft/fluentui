@@ -43,29 +43,10 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
-    title: 'Commands, Menus & Navs',
-    url: '#/controls/android/pivot',
-    isCategory: true,
-    pages: [
-      {
-        title: 'Pivot',
-        url: '#/controls/android/Pivot',
-        component: () => <LoadingComponent title="Pivot" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
-      }
-    ]
-  },
-  {
     title: 'Surfaces',
     url: '#/controls/android/drawer',
     isCategory: true,
     pages: [
-      {
-        title: 'Drawer',
-        url: '#/controls/android/drawer',
-        component: () => <LoadingComponent title="Drawer" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
-      },
       {
         title: 'Tooltip',
         url: '#/controls/android/tooltip',
