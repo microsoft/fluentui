@@ -87,18 +87,21 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                     <ul className={styles.exampleIcons}>
                       <li>
                         <Icon
+                          aria-label="Word file icon"
                           className={styles.productIcon}
                           {...getFileTypeIconProps({ extension: 'docx', size: 96, imageFileType: 'svg' })}
                         />
                       </li>
                       <li>
                         <Icon
+                          aria-label="Excel file icon"
                           className={styles.productIcon}
                           {...getFileTypeIconProps({ extension: 'xlsx', size: 96, imageFileType: 'svg' })}
                         />
                       </li>
                       <li>
                         <Icon
+                          aria-label="PowerPoint file icon"
                           className={styles.productIcon}
                           {...getFileTypeIconProps({ extension: 'pptx', size: 96, imageFileType: 'svg' })}
                         />
@@ -242,7 +245,11 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                       height="48"
                       alt={icon.name + ' file type icon'}
                     /> */}
-                    <Icon {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })} className={styles.icon} />
+                    <Icon
+                      {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })}
+                      className={styles.icon}
+                      role="presentation"
+                    />
                     <span className={styles.iconName}>{icon.name}</span>
                   </li>
                 ))}

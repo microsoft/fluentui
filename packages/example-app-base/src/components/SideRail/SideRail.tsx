@@ -18,19 +18,17 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   public componentDidMount(): void {
     if (typeof IntersectionObserver !== 'undefined') {
       const { observe, jumpLinks } = this.props;
-      if (observe) {
+      if (observe && jumpLinks) {
         this._observer = new IntersectionObserver(this._handleObserver, {
           threshold: [0.5]
         });
 
-        if (jumpLinks) {
-          jumpLinks.forEach((jumpLink: ISideRailLink) => {
-            const element = document.getElementById(jumpLink.url);
-            if (element) {
-              this._observer.observe(element);
-            }
-          });
-        }
+        jumpLinks.forEach((jumpLink: ISideRailLink) => {
+          const element = document.getElementById(jumpLink.url);
+          if (element) {
+            this._observer.observe(element);
+          }
+        });
       }
     }
   }
@@ -93,7 +91,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     return (
       <div className={css(classNames.section, classNames.jumpLinkSection)}>
         <h3 className={classNames.sectionTitle}>On this page</h3>
-        <ul>{links}</ul>
+        <ul className={classNames.links}>{links}</ul>
       </div>
     );
   };
@@ -108,7 +106,7 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       const linksToRender = linksFromProps.filter(link => !isPageActive(link.url));
       if (linksToRender.length) {
         links = (
-          <ul>
+          <ul className={classNames.links}>
             {linksToRender.map(link => (
               <li key={link.url} className={classNames.linkWrapper}>
                 <Link href={link.url}>{link.text}</Link>

@@ -13,6 +13,9 @@ export const stylesPagesWeb: INavPage[] = [
     title: 'Colors',
     url: '#/styles/web/colors',
     isCategory: true,
+    // workaround to show the Products page if someone goes directly to #/styles/web/colors
+    component: () => <LoadingComponent title="Products" />,
+    getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/ProductsPage').ColorsProductsPage)),
     pages: [
       {
         title: 'Products',

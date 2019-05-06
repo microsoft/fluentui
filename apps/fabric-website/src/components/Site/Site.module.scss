@@ -1,6 +1,16 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
 
+// #headerWrapper is the UHF header wrapper. The p, ul, ol style in _typography.scss was making
+// the header links larger than they should be, so reset that here.
+:global(#headerWrapper, #footerWrapper, #socialMediaContainer, .m-back-to-top) {
+  p,
+  ul,
+  ol {
+    font-size: inherit;
+  }
+}
+
 .siteRoot {
   min-height: 100vh;
   display: flex;

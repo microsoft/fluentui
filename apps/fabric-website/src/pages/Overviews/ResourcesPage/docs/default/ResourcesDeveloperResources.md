@@ -7,7 +7,7 @@ Get started with React and learn how to build your first projects.
   <li class="mdut--full">[Fabric React tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric)</li>
 </ul>
 
-### SharePoint Framework
+<h3 id="sharepoint-framework-dev">SharePoint Framework</h3>
 
 SharePoint uses Fabric, so if you’re building on top of or within a SharePoint experience, you can be sure that your UI will blend in.
 
@@ -18,7 +18,7 @@ SharePoint uses Fabric, so if you’re building on top of or within a SharePoint
   <li class="mdut--half">[Get started with building client-side web parts](https://aka.ms/spfx-tutorials)</li>
 </ul>
 
-### Office Add-ins
+<h3 id="office-add-ins-dev">Office Add-ins</h3>
 
 Fabric is the official UI toolkit for creating Office Add-ins. Check out some of these resources to learn more about how to use Fabric in your next Add-in.
 

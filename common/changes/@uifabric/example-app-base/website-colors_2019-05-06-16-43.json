@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "More EditSection tooltip fixes",
+      "comment": "Fix UHF styling conflicts",
       "type": "patch"
     }
   ],

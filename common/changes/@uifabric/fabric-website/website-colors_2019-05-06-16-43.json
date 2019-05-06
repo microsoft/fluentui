@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Added get started section",
+      "comment": "Fix UHF styling conflicts",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "mgodbolt@microsoft.com"
+  "email": "elcraig@microsoft.com"
 }

@@ -1,13 +1,14 @@
 import * as React from 'react';
 import MarkdownToJsx, { MarkdownProps } from 'markdown-to-jsx';
-import { DefaultButton, Image, IImageStyles, Link, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
+import { DefaultButton, Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
 import * as MDTable from '../MarkdownTable/index';
 import { MarkdownCode } from './MarkdownCode';
 import { MarkdownHeader } from './MarkdownHeader';
 import { MarkdownParagraph } from './MarkdownParagraph';
 import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMarkdownStyles } from './Markdown.types';
+import { MarkdownLink } from './MarkdownLink';
 
-const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = () => {
+const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
   const imageStyles: Partial<IImageStyles> = {
     root: {
       maxWidth: '100%',
@@ -25,7 +26,7 @@ const getClassNames = classNamesFunction<IMarkdownStyleProps, IMarkdownStyles>()
 
 const MarkdownBase: React.StatelessComponent<IMarkdownProps> & { displayName?: string } = props => {
   const { styles, theme, children } = props;
-  const classNames = getClassNames(styles, { theme });
+  const classNames = getClassNames(styles, { theme: theme! });
   return (
     <div className={classNames.root}>
       <MarkdownToJsx {...getMarkdownProps(classNames.subComponentStyles)}>{children}</MarkdownToJsx>
@@ -71,7 +72,7 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): Mark
           props: { styles: subComponentStyles.paragraph }
         },
         a: {
-          component: Link,
+          component: MarkdownLink,
           props: { className: 'ms-mdLink', styles: subComponentStyles.link }
         },
         img: {

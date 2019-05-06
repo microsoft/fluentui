@@ -2,6 +2,7 @@
 @import '../../styles/mixins';
 
 $PageSubHeadMargin: 20px;
+$PageParagraphMargin: 1.2em;
 $usageListPadding: 24px;
 
 .Page {
@@ -10,6 +11,19 @@ $usageListPadding: 24px;
 
 .sectionWrapper {
   max-width: $content-width + ($App-padding-sm * 2);
+
+  // UHF overrides
+  a:global(.ms-Link) {
+    color: $linkColor;
+    &:link {
+      color: $linkColor;
+    }
+    &:active,
+    &:hover,
+    &:active:hover {
+      color: $linkHoveredColor;
+    }
+  }
 }
 
 .section {
@@ -82,7 +96,7 @@ $usageListPadding: 24px;
   p,
   pre {
     margin-top: 0;
-    margin-bottom: 1.2em;
+    margin-bottom: $PageParagraphMargin;
 
     &:last-child {
       margin-bottom: 0;
@@ -110,6 +124,13 @@ $usageListPadding: 24px;
 
   li {
     margin-bottom: 8px;
+  }
+
+  hr {
+    border: 0;
+    height: 1px;
+    background: $ms-color-gray100;
+    margin: $PageParagraphMargin 0;
   }
 }
 

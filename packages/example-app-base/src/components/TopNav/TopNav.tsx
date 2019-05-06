@@ -121,9 +121,9 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
     const home = pages.filter((page: INavPage) => page.isHomePage)[0];
     if (home) {
       return (
-        <a href={home.url} title="UI Fabric Home page" aria-label="UI Fabric Home page" className={styles.appLogo}>
+        <a href={home.url} className={styles.appLogo} title="UI Fabric Home page">
           {/* @todo: Set up baseImageUrl to easily swap image host. */}
-          <img src={this.props.siteLogoSource} />
+          <img src={this.props.siteLogoSource} role="presentation" />
         </a>
       );
     }

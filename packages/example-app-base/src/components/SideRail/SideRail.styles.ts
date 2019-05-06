@@ -25,6 +25,10 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       marginTop: 0,
       paddingLeft: 8
     },
+    links: {
+      margin: 0,
+      padding: 0
+    },
     linkWrapper: {
       display: 'flex',
       fontSize: theme.fonts.medium.fontSize,
@@ -65,7 +69,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       paddingLeft: 6, // 8px - 2px border
       selectors: {
         '&:focus': {
-          color: theme.palette.neutralPrimary + ' !important'
+          color: theme.palette.neutralPrimary
         }
       }
     },

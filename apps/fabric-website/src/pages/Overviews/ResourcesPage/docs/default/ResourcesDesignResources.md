@@ -10,7 +10,8 @@ These design toolkits provide styles, controls and layout templates that enable 
   <li class="mdut--half">[Microsoft Android Fluent (Figma)](https://aka.ms/FluentToolkits/Android/Figma)</li>
 </ul>
 
-### SharePoint Framework
+<!-- headings get auto-generated IDs usually, and this page has two "SharePoint Framework" headings -->
+<h3 id="sharepoint-framework-design">SharePoint Framework</h3>
 
 These SharePoint design resources provide everything you need to design your web parts, including responsive page grids and columns.
 
@@ -19,7 +20,7 @@ These SharePoint design resources provide everything you need to design your web
   <li class="mdut--half">[SharePoint Toolkit (XD)](https://aka.ms/sharepoint-toolkit)</li>
 </ul>
 
-### Office Add-ins
+<h3 id="office-add-ins-design">Office Add-ins</h3>
 
 The Add-ins design toolkit provides layouts for interface elements and commonly used patterns in Word, Excel, and PowerPoint. Use it in addition to the Microsoft design toolkits to create an add-in that fits within Office.
 

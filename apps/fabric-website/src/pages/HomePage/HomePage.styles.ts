@@ -261,7 +261,8 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       {
         display: 'inline-flex',
         flexWrap: 'wrap',
-        margin: '0 -8px 24px'
+        margin: '0 -8px 24px',
+        padding: 0
       }
     ],
 
@@ -355,7 +356,8 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
     cardList: [
       classNames.cardList,
       {
-        marginBottom: -12
+        margin: '0 0 -12px 0',
+        padding: '0'
       }
     ],
 

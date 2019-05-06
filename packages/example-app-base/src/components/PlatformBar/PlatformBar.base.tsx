@@ -20,7 +20,8 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.inner}>
-          <FocusZone as="ul" className={this._classNames.platformGrid}>
+          {/* Override default role of "presentation" to prevent warning about li outside of ul */}
+          <FocusZone as="ul" className={this._classNames.platformGrid} role="list">
             {this._renderPlatformGrid(platforms)}
           </FocusZone>
         </div>
@@ -55,7 +56,7 @@ export class PlatformBarBase<TPlatforms extends string = string> extends React.P
         <DefaultButton
           href={pages && this._getFirstPageUrl(pages)}
           className={classNames.platformButton}
-          aria-describedby={platformKey}
+          aria-label={name}
           /* tslint:disable-next-line jsx-no-lambda */
           onClick={() => this._handlePlatformClick(platformKey)}
           disabled={disabled}
