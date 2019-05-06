@@ -1,4 +1,4 @@
-import { styled } from '@uifabric/Utilities';
+import { styled } from '@uifabric/utilities';
 import { IDatePickerProps, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import { DatePickerBase } from './DatePicker.base';
 import { styles } from './DatePicker.styles';
