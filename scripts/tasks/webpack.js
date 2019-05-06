@@ -19,6 +19,8 @@ exports.webpackDevServer = async function() {
     execSync(`node ${webpackDevServerPath} --config ${configPath} --port ${port} --open`);
   }
 };
+
+let server;
 exports.webpackDevServerWithCompileResolution = async function() {
   return new Promise((resolve, reject) => {
     const webpack = require('webpack');
@@ -33,10 +35,18 @@ exports.webpackDevServerWithCompileResolution = async function() {
     const devServerOptions = Object.assign({}, webpackConfig.devServer, {
       stats: 'minimal'
     });
-    const server = new webpackDevServer(compiler, devServerOptions);
+    server = new webpackDevServer(compiler, devServerOptions);
     const port = webpackConfig.devServer.port;
     server.listen(port, '127.0.0.1', () => {
       console.log(`started server on http://localhost:${port}`);
+    });
+  });
+};
+
+exports.webpackDevServerWithCompileResolution.done = async function() {
+  return new Promise((resolve, reject) => {
+    server.close(() => {
+      resolve();
     });
   });
 };

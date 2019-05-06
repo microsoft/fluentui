@@ -87,7 +87,7 @@ function preset() {
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
-  task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom'));
+  task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom', webpackDevServerWithCompileResolution.done));
 }
 
 module.exports = preset;
