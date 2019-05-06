@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Sun, 05 May 2019 19:59:10 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2019 00:28:08 GMT and should not be manually modified.
+
+## 6.16.2
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Accessibility fixes
 
 ## 6.16.1
 Sun, 05 May 2019 19:59:10 GMT

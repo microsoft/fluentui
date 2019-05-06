@@ -2,6 +2,20 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.17.2",
+      "tag": "@uifabric/example-app-base_v6.17.2",
+      "date": "Mon, 06 May 2019 00:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Syntax highlighting optimizations",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7aee8d38d602a2beab913b381aa0fc67eb159f6b"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.1",
       "tag": "@uifabric/example-app-base_v6.17.1",
       "date": "Sun, 05 May 2019 19:59:10 GMT",

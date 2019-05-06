@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website-resources",
-  "version": "6.17.0",
+  "version": "6.17.1",
   "description": "Office UI Fabric React website resources project",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -59,7 +59,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.0.1",
     "@uifabric/azure-themes": "^0.1.8",
-    "@uifabric/example-app-base": "^6.17.1",
+    "@uifabric/example-app-base": "^6.17.2",
     "@uifabric/fluent-theme": "^0.16.7",
     "@uifabric/icons": "^6.5.1",
     "@uifabric/merge-styles": "^6.17.1",
