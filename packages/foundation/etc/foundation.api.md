@@ -94,7 +94,7 @@ export interface ISlotCreator<TProps extends ValidProps, TShorthandProp extends 
 
 // @public
 export type ISlotDefinition<TSlots> = {
-    [slot in keyof TSlots]: React.ReactType<ExtractProps<TSlots[slot]>>;
+    [slot in keyof TSlots]: React.ElementType<ExtractProps<TSlots[slot]>>;
 };
 
 // @public
@@ -103,7 +103,7 @@ export type ISlotFactory<TProps extends ValidProps, TShorthandProp extends Valid
 // @public
 export interface ISlotOptions<TProps> {
     // (undocumented)
-    component?: React.ReactType<TProps>;
+    component?: React.ElementType<TProps>;
     // (undocumented)
     render?: ISlotRender<TProps>;
 }
@@ -130,7 +130,7 @@ export type ISlottableProps<TSlots> = TSlots & {
 };
 
 // @public
-export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ReactType<TProps> & ISlotCreator<TProps, TShorthandProp>;
+export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ElementType<TProps> & ISlotCreator<TProps, TShorthandProp>;
 
 // @public
 export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
