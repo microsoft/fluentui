@@ -19,7 +19,7 @@ export interface IMicroFeedbackProps {
   renderFollowupContainer?: (
     children: JSX.Element,
     classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
-    targetElement: Element,
+    targetElement: HTMLDivElement | null,
     onCalloutDismiss: () => void
   ) => JSX.Element;
 
