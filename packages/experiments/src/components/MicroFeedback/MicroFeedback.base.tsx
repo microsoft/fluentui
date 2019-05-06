@@ -46,10 +46,9 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
         <div ref={this.dislikeRef}>
           <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._dislikeVote} />
         </div>
-        {this.props.thumbsUpQuestion ? (
+        {this.props.thumbsUpQuestion && !hideThumbsUpCallout ? (
           <Callout
             className={this.classNames.followUpContainer}
-            hidden={hideThumbsUpCallout}
             role="alertdialog"
             gapSpace={0}
             target={this.likeRef.current}
@@ -68,10 +67,9 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
             </FocusZone>
           </Callout>
         ) : null}
-        {this.props.thumbsDownQuestion ? (
+        {this.props.thumbsDownQuestion && !hideThumbsDownCallout ? (
           <Callout
             className={this.classNames.followUpContainer}
-            hidden={hideThumbsDownCallout}
             role="alertdialog"
             gapSpace={0}
             target={this.dislikeRef.current}
@@ -138,6 +136,26 @@ export class MicroFeedbackCalloutBase extends React.Component<IMicroFeedbackProp
   }
 
   public render() {
-    return <MicroFeedbackBase {...this.props} />;
+    return <MicroFeedbackBase {...this.props} renderFollowupContainer={this._renderFollowupContainer} />;
   }
+
+  private _renderFollowupContainer = (
+    children: JSX.Element,
+    classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
+    targetElement: Element,
+    onCalloutDismiss: () => void
+  ): JSX.Element => {
+    return (
+      <Callout
+        className={classNames.followUpContainer}
+        role="alertdialog"
+        gapSpace={0}
+        target={targetElement}
+        setInitialFocus={true}
+        onDismiss={onCalloutDismiss}
+      >
+        {children}
+      </Callout>
+    );
+  };
 }

@@ -1,5 +1,6 @@
 import { IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 // Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
 
@@ -15,6 +16,12 @@ export interface IMicroFeedbackProps {
   thumbsUpQuestion?: IMicroFeedbackQuestion; // Optional question to be asked if user selected thumbsUp
   thumbsDownQuestion?: IMicroFeedbackQuestion; // Optional question to be asked if user selectes thumbsDown
   defaultText?: string;
+  renderFollowupContainer?: (
+    children: JSX.Element,
+    classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
+    targetElement: Element,
+    onCalloutDismiss: () => void
+  ) => JSX.Element;
 
   styles?: IStyleFunctionOrObject<IMicroFeedbackStyleProps, IMicroFeedbackStyles>;
   theme?: ITheme;
