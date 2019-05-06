@@ -3,7 +3,7 @@ import { ISuggestionModel } from '../../../Pickers';
 import { IPersonaProps } from '../../Persona';
 import { ITag } from '../../pickers';
 
-type SuggestionsStoreOptions<T> = {
+export type SuggestionsStoreOptions<T> = {
   getAriaLabel?: (item: T) => string;
 };
 
