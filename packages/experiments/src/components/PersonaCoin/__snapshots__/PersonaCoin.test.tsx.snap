@@ -116,7 +116,7 @@ exports[`PersonaCoin renders a correct persona 1`] = `
       test-cn-root
       {
         align-items: center;
-        background-color: #750B1C;
+        background-color: #A4262C;
         border-radius: 50%;
         color: white;
         display: flex;

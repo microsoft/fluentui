@@ -3,16 +3,31 @@ import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryCompon
 import { IBaseProps } from '../../../Utilities';
 import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps } from '../Button.types';
 
+/**
+ * {@docCategory Button}
+ */
 export type IMenuButtonComponent = IComponent<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles, IMenuButtonViewProps>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+/**
+ * {@docCategory Button}
+ */
 export type IMenuButtonTokenReturnType = ReturnType<Extract<IMenuButtonComponent['tokens'], Function>>;
+/**
+ * {@docCategory Button}
+ */
 export type IMenuButtonStylesReturnType = ReturnType<Extract<IMenuButtonComponent['styles'], Function>>;
 
+/**
+ * {@docCategory Button}
+ */
 export type IMenuButtonSlot = ISlotProp<IMenuButtonProps>;
 
+/**
+ * {@docCategory Button}
+ */
 export interface IMenuButtonSlots extends IButtonSlots {
   /**
    * Defines the button that is going to be rendered.
@@ -22,7 +37,7 @@ export interface IMenuButtonSlots extends IButtonSlots {
   /**
    * Defines the contextual menu that appears when you click on the MenuButton.
    */
-  menu: IContextualMenuSlot;
+  menu?: IContextualMenuSlot;
 
   /**
    * Defines the menu chevron icon that is displayed insisde the MenuButton.
@@ -30,6 +45,9 @@ export interface IMenuButtonSlots extends IButtonSlots {
   menuIcon?: IIconSlot;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IMenuButton {
   /**
    * Sets focus to the MenuButton.
@@ -37,9 +55,12 @@ export interface IMenuButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel'>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'allowDisabledFocus' | 'ariaLabel'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton> {
   /**
@@ -61,18 +82,24 @@ export interface IMenuButtonProps
   onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
   /**
    * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */
-  onMenuDismiss: () => void;
+  onMenuDismiss?: () => void;
 
   /**
    * Defines the target that the contextual menu uses to position itself.
    */
-  menuTarget: HTMLElement | undefined;
+  menuTarget?: HTMLElement | undefined;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IMenuButtonTokens extends IButtonTokens {
   /**
    * Defines the size of the menu icon inside the Button.
@@ -80,4 +107,7 @@ export interface IMenuButtonTokens extends IButtonTokens {
   menuIconSize?: number | string;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type IMenuButtonStyles = IComponentStyles<IMenuButtonSlots>;

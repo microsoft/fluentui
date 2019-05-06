@@ -84,6 +84,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span
@@ -379,6 +380,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span

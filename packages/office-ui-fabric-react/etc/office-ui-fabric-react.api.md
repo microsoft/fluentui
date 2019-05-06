@@ -6309,33 +6309,23 @@ export interface ISelectionOptions {
     selectionMode?: SelectionMode;
 }
 
-// @public (undocumented)
+// @public
 export interface ISelectionZone {
-    // (undocumented)
     ignoreNextFocus: () => void;
 }
 
-// @public (undocumented)
+// @public
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
-    // (undocumented)
     componentRef?: () => void;
-    // (undocumented)
     disableAutoSelectOnInputElements?: boolean;
-    // (undocumented)
     enterModalOnTouch?: boolean;
-    // (undocumented)
     isSelectedOnFocus?: boolean;
     // @deprecated (undocumented)
     layout?: {};
-    // (undocumented)
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
-    // (undocumented)
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
-    // (undocumented)
     selection: ISelection;
-    // (undocumented)
     selectionMode?: SelectionMode;
-    // (undocumented)
     selectionPreservedOnEmptyClick?: boolean;
 }
 
@@ -7898,78 +7888,52 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 export enum PersonaInitialsColor {
     // @deprecated
     black = 11,
-    // @deprecated (undocumented)
+    // (undocumented)
     blue = 1,
     // (undocumented)
-    blue20 = 30,
+    burgundy = 19,
     // (undocumented)
-    cyan30 = 28,
-    // @deprecated (undocumented)
+    coolGray = 21,
+    // (undocumented)
+    cyan = 23,
+    // (undocumented)
     darkBlue = 2,
     // (undocumented)
-    darkBlue10 = 31,
-    // @deprecated (undocumented)
     darkGreen = 6,
     // (undocumented)
-    darkGreen20 = 26,
-    // @deprecated (undocumented)
     darkRed = 14,
     // (undocumented)
-    darkRed20 = 39,
+    gold = 18,
+    gray = 22,
     // (undocumented)
-    gray20 = 45,
-    // (undocumented)
-    gray30 = 43,
-    gray40 = 44,
-    // @deprecated (undocumented)
     green = 5,
     // (undocumented)
-    green10 = 25,
-    // @deprecated (undocumented)
     lightBlue = 0,
     // (undocumented)
-    lightBlue30 = 29,
-    // @deprecated (undocumented)
     lightGreen = 4,
-    // @deprecated (undocumented)
+    // (undocumented)
     lightPink = 7,
     // (undocumented)
-    lightPink10 = 35,
-    // @deprecated (undocumented)
+    lightRed = 17,
+    // (undocumented)
     magenta = 9,
     // (undocumented)
-    magenta10 = 34,
-    // @deprecated (undocumented)
     orange = 12,
     // (undocumented)
-    orange10 = 40,
-    // (undocumented)
-    orange30 = 41,
-    // (undocumented)
-    orangeYellow20 = 42,
-    // @deprecated (undocumented)
     pink = 8,
     // (undocumented)
-    pink10 = 36,
-    // (undocumented)
-    pinkRed10 = 37,
-    // @deprecated (undocumented)
     purple = 10,
-    // (undocumented)
-    purple10 = 33,
     // @deprecated
     red = 13,
     // (undocumented)
-    red10 = 38,
-    // @deprecated (undocumented)
-    teal = 3,
+    rust = 24,
     // (undocumented)
-    teal10 = 27,
+    teal = 3,
     transparent = 15,
-    // @deprecated (undocumented)
+    // (undocumented)
     violet = 16,
     // (undocumented)
-    violet10 = 32
+    warmGray = 20
 }
 
 // @public (undocumented)
@@ -8439,7 +8403,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     componentDidMount(): void;
     // (undocumented)
     static defaultProps: {
-        isMultiSelectEnabled: boolean;
         isSelectedOnFocus: boolean;
         selectionMode: SelectionMode;
     };

@@ -9,16 +9,32 @@ import {
   IMenuButtonViewProps
 } from '../MenuButton/MenuButton.types';
 
+/**
+ * {@docCategory Button}
+ */
 export type ISplitButtonComponent = IComponent<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles, ISplitButtonViewProps>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+/**
+ * {@docCategory Button}
+ */
 export type ISplitButtonTokenReturnType = ReturnType<Extract<ISplitButtonComponent['tokens'], Function>>;
+
+/**
+ * {@docCategory Button}
+ */
 export type ISplitButtonStylesReturnType = ReturnType<Extract<ISplitButtonComponent['styles'], Function>>;
 
+/**
+ * {@docCategory Button}
+ */
 export type ISplitButtonSlot = ISlotProp<ISplitButtonProps>;
 
+/**
+ * {@docCategory Button}
+ */
 export interface ISplitButtonSlots extends IMenuButtonSlots {
   /**
    * Defines the root slot of the component.
@@ -36,6 +52,9 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   splitDivider?: IHTMLSlot;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface ISplitButton {
   /**
    * Sets focus to the first focus stop of the SplitButton.
@@ -43,9 +62,15 @@ export interface ISplitButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface ISplitButtonProps
   extends ISlottableProps<ISplitButtonSlots>,
-    Pick<IMenuButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'ariaLabel' | 'defaultExpanded' | 'expanded' | 'onKeyDown'>,
+    Pick<
+      IMenuButtonProps,
+      'href' | 'primary' | 'disabled' | 'onClick' | 'allowDisabledFocus' | 'ariaLabel' | 'defaultExpanded' | 'expanded' | 'onKeyDown'
+    >,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
     IBaseProps<ISplitButton> {
   /**
@@ -60,6 +85,9 @@ export interface ISplitButtonProps
   secondaryAriaLabel?: string;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
   /**
    * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
@@ -67,6 +95,9 @@ export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'butto
   onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface ISplitButtonTokens extends IMenuButtonTokens {
   /**
    * Defines the color of the SplitButton divider.
@@ -74,4 +105,7 @@ export interface ISplitButtonTokens extends IMenuButtonTokens {
   dividerColor?: string;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type ISplitButtonStyles = IComponentStyles<ISplitButtonSlots>;
