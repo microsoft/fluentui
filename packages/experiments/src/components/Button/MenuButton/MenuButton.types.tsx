@@ -37,7 +37,7 @@ export interface IMenuButtonSlots extends IButtonSlots {
   /**
    * Defines the contextual menu that appears when you click on the MenuButton.
    */
-  menu: IContextualMenuSlot;
+  menu?: IContextualMenuSlot;
 
   /**
    * Defines the menu chevron icon that is displayed insisde the MenuButton.
@@ -89,12 +89,12 @@ export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'
   /**
    * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */
-  onMenuDismiss: () => void;
+  onMenuDismiss?: () => void;
 
   /**
    * Defines the target that the contextual menu uses to position itself.
    */
-  menuTarget: HTMLElement | undefined;
+  menuTarget?: HTMLElement | undefined;
 }
 
 /**
