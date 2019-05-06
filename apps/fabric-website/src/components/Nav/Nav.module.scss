@@ -14,10 +14,13 @@ $nav-group-header-height: 32px;
 }
 
 .links {
-  margin-bottom: 0;
+  margin: 0;
+  padding: 0;
 }
 
 .link {
+  display: block;
+
   a {
     color: $ms-color-neutralPrimary;
     font-weight: $ms-font-weight-semibold;

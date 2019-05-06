@@ -35,6 +35,7 @@ export interface IHomePageStyles {
   inner: IStyle;
   card: IStyle;
   cardTitle: IStyle;
+  versionSwitcher: IStyle;
   cardList: IStyle;
   cardListItem: IStyle;
   cardIcon: IStyle;

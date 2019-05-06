@@ -24,15 +24,53 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
-    title: 'Items and Lists',
-    url: '#/controls/android/persona',
+    title: 'Items & Lists',
+    url: '#/controls/android/chip',
     isCategory: true,
     pages: [
+      {
+        title: 'Chip',
+        url: '#/controls/android/chip',
+        component: () => <LoadingComponent title="Chip" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
+      },
       {
         title: 'Persona',
         url: '#/controls/android/persona',
         component: () => <LoadingComponent title="Persona" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage))
+      }
+    ]
+  },
+  {
+    title: 'Commands, Menus & Navs',
+    url: '#/controls/android/pivot',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Pivot',
+        url: '#/controls/android/Pivot',
+        component: () => <LoadingComponent title="Pivot" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
+      }
+    ]
+  },
+  {
+    title: 'Surfaces',
+    url: '#/controls/android/drawer',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Drawer',
+        url: '#/controls/android/drawer',
+        component: () => <LoadingComponent title="Drawer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
+      },
+      {
+        title: 'Tooltip',
+        url: '#/controls/android/tooltip',
+        component: () => <LoadingComponent title="Tooltip" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage))
       }
     ]
   }

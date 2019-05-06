@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.17.1",
+      "tag": "@uifabric/fabric-website-resources_v6.17.1",
+      "date": "Mon, 06 May 2019 00:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Specify component for syntax highlighting",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7aee8d38d602a2beab913b381aa0fc67eb159f6b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.1` to `^6.17.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "@uifabric/fabric-website-resources_v6.17.0",
       "date": "Sat, 04 May 2019 00:01:54 GMT",

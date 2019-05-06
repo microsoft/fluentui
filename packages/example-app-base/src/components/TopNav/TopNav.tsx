@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { css, FocusZone, IconButton, Panel, PanelType, ScreenWidthMinUhfMobile } from 'office-ui-fabric-react';
-import { hasActiveChild } from '../../utilities/index2';
+import { css, FocusZone, IconButton, Panel, PanelType, ScreenWidthMinUhfMobile, on } from 'office-ui-fabric-react';
+import { hasActiveChild, removeAnchorLink } from '../../utilities/index2';
 import { INavPage } from '../Nav/Nav.types';
 import { Badge } from '../Badge/index';
 import { ITopNavProps } from './TopNav.types';
@@ -15,27 +15,23 @@ export interface ITopNavState {
 let resizeTimer: any; // tslint:disable-line no-any
 
 export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
-  private _isMounted = false;
-  public constructor(props: ITopNavProps) {
-    super(props);
+  public state: Readonly<ITopNavState> = { isNavOpen: false };
 
-    this.state = {
-      isNavOpen: false
-    };
-  }
+  private _disposables: Function[] = [];
+  private _isMounted: boolean = false;
+  private _route: string = removeAnchorLink(location.hash);
 
   public componentDidMount(): void {
     this._isMounted = true;
-    window.addEventListener('resize', this._onWindowResize);
-    window.addEventListener('hashchange', this._onHashChange);
+    this._disposables.push(on(window, 'resize', this._onWindowResize));
+    this._disposables.push(on(window, 'hashchange', this._onHashChange));
 
     this._onWindowResize();
   }
 
   public componentWillUnmount(): void {
     this._isMounted = false;
-    window.removeEventListener('resize', this._onWindowResize);
-    window.removeEventListener('hashchange', this._onHashChange);
+    this._disposables.forEach(dispose => dispose());
   }
 
   public render(): JSX.Element {
@@ -106,7 +102,11 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
   };
 
   private _onHashChange = (): void => {
-    this._isMounted && this.setState({ isNavOpen: false });
+    const newRoute = removeAnchorLink(location.hash);
+    if (this._isMounted && newRoute !== this._route) {
+      this._route = newRoute;
+      this.setState({ isNavOpen: false });
+    }
   };
 
   private _openNavPanel = (): void => {
@@ -121,9 +121,9 @@ export class TopNav extends React.Component<ITopNavProps, ITopNavState> {
     const home = pages.filter((page: INavPage) => page.isHomePage)[0];
     if (home) {
       return (
-        <a href={home.url} title="UI Fabric Home page" aria-label="UI Fabric Home page" className={styles.appLogo}>
+        <a href={home.url} className={styles.appLogo} title="UI Fabric Home page">
           {/* @todo: Set up baseImageUrl to easily swap image host. */}
-          <img src={this.props.siteLogoSource} />
+          <img src={this.props.siteLogoSource} role="presentation" />
         </a>
       );
     }

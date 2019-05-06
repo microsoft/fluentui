@@ -25,7 +25,11 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       marginTop: 0,
       paddingLeft: 8
     },
-    link: {
+    links: {
+      margin: 0,
+      padding: 0
+    },
+    linkWrapper: {
       display: 'flex',
       fontSize: theme.fonts.medium.fontSize,
       selectors: {
@@ -56,23 +60,21 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
         ]
       }
     },
+    jumpLinkWrapper: {
+      position: 'relative'
+    },
     jumpLink: {
-      position: 'relative',
+      color: theme.palette.neutralPrimary,
+      borderLeft: '2px solid transparent',
+      paddingLeft: 6, // 8px - 2px border
       selectors: {
-        a: {
-          color: theme.palette.neutralPrimary,
-          borderLeft: '2px solid transparent',
-          paddingLeft: 6, // 8px - 2px border
-          selectors: {
-            '&:focus': {
-              color: theme.palette.neutralPrimary
-            }
-          }
+        '&:focus': {
+          color: theme.palette.neutralPrimary + ' !important'
         }
-      },
-      [`&.${sideRailClassNames.isActive} a`]: {
-        borderLeftColor: theme.palette.themePrimary
       }
+    },
+    jumpLinkActive: {
+      borderLeftColor: theme!.palette.themePrimary
     },
     jumpLinkSection: {
       selectors: {
