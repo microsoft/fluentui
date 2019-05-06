@@ -25,7 +25,6 @@ import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
-import SiteMessageBar from './SiteMessageBar';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -219,25 +218,11 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
   private _renderMessageBar(): JSX.Element | null {
     const { pagePath } = this.state;
-    // TODO: generalize when to show a message bar and how to provide the text
-    if (pagePath && pagePath.indexOf('#/controls/web/') === 0 && pagePath.indexOf('fluent-theme') === -1) {
-      return (
-        <SiteMessageBar
-          text="You can now implement the new Fluent styles in Fabric Web controls."
-          linkText="Learn more"
-          linkUrl="#/controls/web/fluent-theme"
-          sessionStoragePrefix="WebFluentUpdates"
-        />
-      );
-    } else if (/^#?\/?$/.test(pagePath)) {
-      return (
-        <SiteMessageBar
-          text="Microsoft employees can sign in to see additional documentation."
-          linkText="Sign in"
-          linkUrl="http://aka.ms/hig"
-          sessionStoragePrefix="SignIn"
-        />
-      );
+    const { siteDefinition } = this.props;
+    const { renderSiteMessageBar } = siteDefinition;
+
+    if (renderSiteMessageBar && pagePath) {
+      return renderSiteMessageBar(pagePath);
     }
     return null;
   }
