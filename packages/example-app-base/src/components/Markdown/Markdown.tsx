@@ -1,11 +1,12 @@
 import * as React from 'react';
 import MarkdownToJsx, { MarkdownProps } from 'markdown-to-jsx';
-import { DefaultButton, Image, IImageStyles, Link, classNamesFunction, IStyleFunction, styled, ILinkStyles } from 'office-ui-fabric-react';
+import { DefaultButton, Image, IImageStyles, classNamesFunction, IStyleFunction, styled } from 'office-ui-fabric-react';
 import * as MDTable from '../MarkdownTable/index';
 import { MarkdownCode } from './MarkdownCode';
 import { MarkdownHeader } from './MarkdownHeader';
 import { MarkdownParagraph } from './MarkdownParagraph';
 import { IMarkdownProps, IMarkdownSubComponentStyles, IMarkdownStyleProps, IMarkdownStyles } from './Markdown.types';
+import { MarkdownLink } from './MarkdownLink';
 
 const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props => {
   const imageStyles: Partial<IImageStyles> = {
@@ -14,20 +15,10 @@ const getStyles: IStyleFunction<IMarkdownStyleProps, IMarkdownStyles> = props =>
       margin: '8px 0'
     }
   };
-  const linkStyles: Partial<ILinkStyles> = {
-    root: {
-      selectors: {
-        '&:link': {
-          // UHF override...
-          color: props.theme.semanticColors.link + ' !important'
-        }
-      }
-    }
-  };
 
   return {
     root: 'ms-Markdown',
-    subComponentStyles: { image: imageStyles, link: linkStyles } as IMarkdownSubComponentStyles
+    subComponentStyles: { image: imageStyles } as IMarkdownSubComponentStyles
   };
 };
 
@@ -81,7 +72,7 @@ function getMarkdownProps(subComponentStyles: IMarkdownSubComponentStyles): Mark
           props: { styles: subComponentStyles.paragraph }
         },
         a: {
-          component: Link,
+          component: MarkdownLink,
           props: { className: 'ms-mdLink', styles: subComponentStyles.link }
         },
         img: {

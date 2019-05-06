@@ -5,8 +5,8 @@
  */
 export function removeAnchorLink(url: string): string {
   // First group: most of the URL
-  // Second group: optional last hash with only word characters following (an anchor)
-  const match = url.match(/^(.*?)(#\w*)?$/);
+  // Second group: optional last hash with only word or dash characters following (an anchor)
+  const match = url.match(/^(.*?)(#[\w-]*)?$/);
   if (match) {
     return match[1];
   }

@@ -69,7 +69,7 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       paddingLeft: 6, // 8px - 2px border
       selectors: {
         '&:focus': {
-          color: theme.palette.neutralPrimary + ' !important'
+          color: theme.palette.neutralPrimary
         }
       }
     },
