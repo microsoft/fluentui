@@ -4,11 +4,11 @@ import { IButtonComponent, IButtonTokenReturnType } from './Button.types';
 import { ButtonVariantsType } from './ButtonVariants.types';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
-    backgroundColor: semanticColors.inputBackground,
-    backgroundColorHovered: semanticColors.buttonBackground,
+    backgroundColor: palette.white,
+    backgroundColorHovered: palette.neutralLighter,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderRadius: 0,
     borderWidth: 0,
@@ -20,8 +20,8 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
     iconColor: semanticColors.buttonText,
-    iconColorHovered: semanticColors.primaryButtonBackgroundHovered,
-    iconColorPressed: semanticColors.primaryButtonBackgroundPressed,
+    iconColorHovered: palette.themeDarkAlt,
+    iconColorPressed: palette.themeDark,
     minHeight: 0,
     minWidth: 40,
     textWeight: 'normal'

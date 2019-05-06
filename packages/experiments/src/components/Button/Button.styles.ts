@@ -41,10 +41,10 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 };
 
 const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.inputBackground,
-    backgroundColorHovered: semanticColors.buttonBackground,
+    backgroundColor: palette.white,
+    backgroundColorHovered: palette.neutralLighter,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
 
     iconColor: semanticColors.buttonText,
