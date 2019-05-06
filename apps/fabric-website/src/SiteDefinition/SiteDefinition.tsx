@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISiteDefinition, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
+import { ISiteDefinition, LoadingComponent, SiteMessageBar } from '@uifabric/example-app-base/lib/index2';
 import { FluentCustomizations } from '@uifabric/fluent-theme';
 import { ControlsPages, ResourcesPages, StylesPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
@@ -59,6 +59,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       getComponent: cb => require.ensure([], require => cb(require<any>('../pages/PageTemplates/TemplatePage/TemplatePage').TemplatePage))
     }
   ],
+  renderSiteMessageBar: _renderSiteMessageBar,
   redirects: {
     '#/customizations/': '#/controls/web/customizations/',
     '#/examples/announced/': '#/controls/web/announced/',
@@ -76,3 +77,25 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     '#/styles/utilities': '#/styles/web'
   }
 };
+
+function _renderSiteMessageBar(pagePath?: string): JSX.Element | undefined {
+  if (pagePath && pagePath.indexOf('#/controls/web') === 0 && pagePath.indexOf('fluent-theme') === -1) {
+    return (
+      <SiteMessageBar
+        text="You can now implement the new Fluent styles in Fabric Web controls."
+        linkText="Learn more"
+        linkUrl="#/controls/web/fluent-theme"
+        sessionStoragePrefix="WebFluentUpdates"
+      />
+    );
+  } else if (/^#?\/?$/.test(pagePath)) {
+    return (
+      <SiteMessageBar
+        text="Microsoft employees can sign in to see additional documentation."
+        linkText="Sign in"
+        linkUrl="http://aka.ms/hig"
+        sessionStoragePrefix="SignIn"
+      />
+    );
+  }
+}

@@ -30,4 +30,9 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
    * given value and redirect.
    */
   redirects?: { [from: string]: string };
+
+  /**
+   * Render function for the message bar below the top nav.
+   */
+  renderSiteMessageBar?: (pagePath?: string) => JSX.Element | undefined;
 }
