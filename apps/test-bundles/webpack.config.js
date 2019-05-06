@@ -7,6 +7,11 @@ const TopLevelEntryFileExclusions = ['index.js', 'version.js', 'index.bundle.js'
 
 const Entries = _buildEntries('office-ui-fabric-react');
 
+let experimentalButtonPath = path.join(path.dirname(require.resolve('office-ui-fabric-react')).replace('lib-commonjs', 'lib'), 'Button.js');
+const oufrPosition = experimentalButtonPath.lastIndexOf('office-ui-fabric-react');
+experimentalButtonPath = experimentalButtonPath.substr(0, oufrPosition) + 'experiments' + experimentalButtonPath.substr(oufrPosition + 22);
+Entries['experiments-Button'] = experimentalButtonPath;
+
 module.exports = Object.keys(Entries).map(
   entryName =>
     resources.createConfig(
