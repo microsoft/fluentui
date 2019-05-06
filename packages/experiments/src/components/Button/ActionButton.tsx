@@ -5,7 +5,7 @@ import { ButtonVariantsType } from './ButtonVariants.types';
 import { FontWeights } from '../../Styling';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
     backgroundColor: 'transparent',
@@ -15,13 +15,13 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderColorHovered: 'transparent',
     borderColorPressed: 'transparent',
     color: semanticColors.buttonText,
-    colorHovered: semanticColors.link,
-    colorPressed: semanticColors.buttonTextCheckedHovered,
+    colorHovered: palette.themePrimary,
+    colorPressed: palette.black,
     contentPadding: '0px 8px',
     height: '40px',
     iconColor: semanticColors.buttonText,
-    iconColorHovered: semanticColors.link,
-    iconColorPressed: semanticColors.buttonTextCheckedHovered,
+    iconColorHovered: palette.themePrimary,
+    iconColorPressed: palette.black,
     textWeight: FontWeights.regular
   };
 };
