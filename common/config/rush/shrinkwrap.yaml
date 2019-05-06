@@ -15969,8 +15969,8 @@ specifiers:
   puppeteer: ^1.13.0
   raf: ^3.4.0
   raw-loader: ^0.5.1
-  react: '>=16.8.0 <17.0.0'
-  react-dom: '>=16.8.0 <17.0.0'
+  react: 16.8.6
+  react-dom: 16.8.6
   react-highlight: 0.10.0
   react-loadable: '>=5.0.0'
   react-syntax-highlighter: ^7.0.2

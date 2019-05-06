@@ -20,8 +20,10 @@
     "css-loader": "^0.28.7",
     "enzyme": "^3.4.1",
     "jest": "24.1.0",
-    "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0",
+    // React deps are pinned to prevent Invalid Hook Warnings with duplicate React deps.
+    // https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "style-loader": "^0.21.0",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
