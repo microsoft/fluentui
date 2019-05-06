@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentAs } from 'office-ui-fabric-react';
+import { IComponentAs, Omit } from 'office-ui-fabric-react';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
@@ -116,11 +116,27 @@ export interface IExample extends IExampleCardProps {
 
 export interface IPageSectionProps<TPlatforms extends string = string>
   extends Pick<IPageProps<TPlatforms>, 'title' | 'componentUrl' | 'fileNamePrefix' | 'platform'> {
-  /** The name of the section. Used to generate the section ID. */
+  /** ID for the section (auto-generated if not specified) */
+  id?: string;
+
+  /**
+   * The name of the section. Used in the UI if `readableSectionName` is not specified.
+   * It's also used to generate the edit URL if `editUrl` is not provided, and to generate
+   * the key/id if `readableSectionName` and `id` are not given.
+   */
   sectionName?: string;
 
-  /** Use when the section name and Markdown file name are different. */
+  /**
+   * Text to display in the UI when the section name and Markdown file name are different.
+   * Also used to generate the key/id if `id` is not given.
+   */
   readableSectionName?: string;
+
+  /**
+   * Custom text for the side rail jump link for this section, if for some reason you want it to be
+   * different from both `sectionName` and `realSectionName`.
+   */
+  jumpLinkName?: string;
 
   /** Content to render into the section. */
   content?: JSX.Element | string;
@@ -136,6 +152,15 @@ export interface IPageSectionProps<TPlatforms extends string = string>
 
   /** What section type to render. */
   renderAs?: IComponentAs<IPageSectionProps<TPlatforms>>;
+
+  /**
+   * Extra jump links for the side rail, pointing to things within this section.
+   * Note that the `url` property should be an element ID (no leading #).
+   */
+  jumpLinks?: ISideRailLink[];
 }
+
+/** Version of IPageSectionProps where `sectionName` is required. */
+export type IPageSectionPropsWithSectionName = Required<Pick<IPageSectionProps, 'sectionName'>> & Omit<IPageSectionProps, 'sectionName'>;
 
 export type TPlatformPageProps<TPlatforms extends string> = { [platform in TPlatforms]?: IPageProps<TPlatforms> };
