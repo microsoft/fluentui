@@ -162,6 +162,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -182,7 +183,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -225,6 +226,9 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-60 {
         color: GrayText;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -306,6 +310,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -326,7 +331,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -368,6 +373,9 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
         color: Window;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"

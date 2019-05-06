@@ -299,6 +299,7 @@ exports[`Button view renders a PrimaryButton correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -319,7 +320,7 @@ exports[`Button view renders a PrimaryButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -361,6 +362,9 @@ exports[`Button view renders a PrimaryButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
         color: Window;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -1465,6 +1469,16 @@ exports[`Button view renders a disabled IconButton correctly 1`] = `
         user-select: none;
         vertical-align: baseline;
       }
+      .ms-Fabric--isFocusVisible &:focus {
+        background-clip: content-box;
+        border-color: #605e5c;
+        border-width: 1px;
+        outline-color: transparent;
+        padding-bottom: 1px;
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-top: 1px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         background-color: Window;
         border-color: transparent;
@@ -1501,15 +1515,6 @@ exports[`Button view renders a disabled IconButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-100 {
         color: GrayText;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        background-clip: content-box;
-        border-color: #605e5c;
-        outline-color: transparent;
-        padding-bottom: 1px;
-        padding-left: 1px;
-        padding-right: 1px;
-        padding-top: 1px;
       }
   disabled={true}
   onClick={[Function]}
@@ -1592,6 +1597,7 @@ exports[`Button view renders a disabled PrimaryButton correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1612,7 +1618,7 @@ exports[`Button view renders a disabled PrimaryButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -1655,6 +1661,9 @@ exports[`Button view renders a disabled PrimaryButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-60 {
         color: GrayText;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -1737,6 +1746,7 @@ exports[`Button view renders a primary CompoundButton correctly 1`] = `
         margin-top: 0px;
         min-height: 72px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1757,7 +1767,7 @@ exports[`Button view renders a primary CompoundButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -1799,6 +1809,9 @@ exports[`Button view renders a primary CompoundButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-89 {
         color: Window;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -1889,6 +1902,7 @@ exports[`Button view renders a primary MessageBarButton correctly 1`] = `
         margin-top: 0px;
         min-height: 24px;
         min-width: 84px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -1910,7 +1924,7 @@ exports[`Button view renders a primary MessageBarButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -1952,6 +1966,9 @@ exports[`Button view renders a primary MessageBarButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-108 {
         color: Window;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
@@ -2034,6 +2051,7 @@ exports[`Button view renders a primary disabled CompoundButton correctly 1`] = `
         margin-top: 0px;
         min-height: 72px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -2054,7 +2072,7 @@ exports[`Button view renders a primary disabled CompoundButton correctly 1`] = `
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -2097,6 +2115,9 @@ exports[`Button view renders a primary disabled CompoundButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-93 {
         color: GrayText;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -2189,6 +2210,7 @@ exports[`Button view renders a primary disabled MessageBarButton correctly 1`] =
         margin-top: 0px;
         min-height: 24px;
         min-width: 84px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -2210,7 +2232,7 @@ exports[`Button view renders a primary disabled MessageBarButton correctly 1`] =
         bottom: 2px;
         content: "";
         left: 2px;
-        outline: 1px solid #605e5c;
+        outline: 1px solid transparent;
         position: absolute;
         right: 2px;
         top: 2px;
@@ -2253,6 +2275,9 @@ exports[`Button view renders a primary disabled MessageBarButton correctly 1`] =
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-110 {
         color: GrayText;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -2481,6 +2506,16 @@ exports[`Button view renders an IconButton correctly 1`] = `
         user-select: none;
         vertical-align: baseline;
       }
+      .ms-Fabric--isFocusVisible &:focus {
+        background-clip: content-box;
+        border-color: #605e5c;
+        border-width: 1px;
+        outline-color: transparent;
+        padding-bottom: 1px;
+        padding-left: 1px;
+        padding-right: 1px;
+        padding-top: 1px;
+      }
       @media screen and (-ms-high-contrast: active){& {
         border-color: transparent;
       }
@@ -2513,15 +2548,6 @@ exports[`Button view renders an IconButton correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-95 {
         color: Highlight;
-      }
-      .ms-Fabric--isFocusVisible &:focus {
-        background-clip: content-box;
-        border-color: #605e5c;
-        outline-color: transparent;
-        padding-bottom: 1px;
-        padding-left: 1px;
-        padding-right: 1px;
-        padding-top: 1px;
       }
   onClick={[Function]}
   role="button"
