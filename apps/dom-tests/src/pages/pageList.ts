@@ -1,1 +1,1 @@
-module.exports = ['FocusTrapZone.example1', 'FocusZone.example1'];
+module.exports = ['FocusZone.example1'];
