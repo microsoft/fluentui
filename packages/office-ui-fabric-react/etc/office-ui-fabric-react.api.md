@@ -9001,7 +9001,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 // @public (undocumented)
 export class SuggestionsStore<T> {
-    constructor(getAriaLabel?: (item: T) => string);
+    constructor(options?: SuggestionsStoreOptions<T>);
     // (undocumented)
     convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[];
     // (undocumented)
@@ -9015,6 +9015,11 @@ export class SuggestionsStore<T> {
     // (undocumented)
     updateSuggestions(newSuggestions: T[]): void;
 }
+
+// @public (undocumented)
+export type SuggestionsStoreOptions<T> = {
+    getAriaLabel?: (item: T) => string;
+};
 
 // @public (undocumented)
 export const SwatchColorPicker: React_2.StatelessComponent<ISwatchColorPickerProps>;

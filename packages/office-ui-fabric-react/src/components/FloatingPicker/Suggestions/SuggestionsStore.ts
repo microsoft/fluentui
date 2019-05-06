@@ -1,7 +1,7 @@
 import { autobind } from '../../../Utilities';
 import { ISuggestionModel } from '../../../Pickers';
 import { IPersonaProps } from '../../Persona';
-import { ITag } from '../../pickers';
+import { ITag } from '../../pickers/TagPicker/TagPicker.types';
 
 export type SuggestionsStoreOptions<T> = {
   getAriaLabel?: (item: T) => string;
