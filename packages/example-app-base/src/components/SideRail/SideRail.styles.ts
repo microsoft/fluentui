@@ -25,6 +25,10 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       marginTop: 0,
       paddingLeft: 8
     },
+    links: {
+      margin: 0,
+      padding: 0
+    },
     linkWrapper: {
       display: 'flex',
       fontSize: theme.fonts.medium.fontSize,
