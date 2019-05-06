@@ -31,6 +31,18 @@ const textAreaClassName = mergeStyles({
   color: '#333'
 });
 
+const microsoftLogo = mergeStyles({
+  width: '120px'
+});
+
+const pipeFabricClassName = mergeStyles({
+  fontSize: '15px',
+  fontWeight: 'bold',
+  color: '#000000',
+  textDecoration: 'none',
+  marginTop: '10px'
+});
+
 const codeHeader = "import { loadTheme } from 'office-ui-fabric-react';\n\n";
 const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
 const codepenSamples =
@@ -53,10 +65,27 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render(): JSX.Element {
     return (
-      <Card styles={{ root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', top: '0', zIndex: 600 } }}>
+      <Card
+        styles={{
+          root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', left: '0', top: '0', zIndex: 600 }
+        }}
+      >
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
           <Stack horizontal>
-            <img src="https://uifabric.azurewebsites.net/media/images/MicrosoftUIFabric-logo-rgb_no-padding.svg" />
+            <a href="https://www.microsoft.com" title="Microsoft Home Page" aria-label="Microsoft Home Page" className={microsoftLogo}>
+              <img
+                src="https://themingdesigner.blob.core.windows.net/$web/Screen%20Shot%202019-05-06%20at%209.39.50%20AM.png"
+                className={microsoftLogo}
+              />
+            </a>
+            <a
+              href="https://www.aka.ms/themedesigner"
+              title="Microsoft Theme Designer page"
+              aria-label="Microsoft Fabric Theme Designer page"
+              className={pipeFabricClassName}
+            >
+              <span> | UI Fabric Theme Designer </span>
+            </a>
           </Stack>
           <Stack horizontal styles={{ root: { position: 'absolute', right: '25px' } }}>
             <PrimaryButton text="Export theme" onClick={this.showPanel} styles={{ root: { width: '130px', height: '35px' } }} />
