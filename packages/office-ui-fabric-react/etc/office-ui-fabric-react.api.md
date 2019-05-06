@@ -6309,33 +6309,23 @@ export interface ISelectionOptions {
     selectionMode?: SelectionMode;
 }
 
-// @public (undocumented)
+// @public
 export interface ISelectionZone {
-    // (undocumented)
     ignoreNextFocus: () => void;
 }
 
-// @public (undocumented)
+// @public
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
-    // (undocumented)
     componentRef?: () => void;
-    // (undocumented)
     disableAutoSelectOnInputElements?: boolean;
-    // (undocumented)
     enterModalOnTouch?: boolean;
-    // (undocumented)
     isSelectedOnFocus?: boolean;
     // @deprecated (undocumented)
     layout?: {};
-    // (undocumented)
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
-    // (undocumented)
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
-    // (undocumented)
     selection: ISelection;
-    // (undocumented)
     selectionMode?: SelectionMode;
-    // (undocumented)
     selectionPreservedOnEmptyClick?: boolean;
 }
 
@@ -8420,7 +8410,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     componentDidMount(): void;
     // (undocumented)
     static defaultProps: {
-        isMultiSelectEnabled: boolean;
         isSelectedOnFocus: boolean;
         selectionMode: SelectionMode;
     };

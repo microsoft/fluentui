@@ -7,7 +7,7 @@ import { Icon } from '../../utilities/factoryComponents';
 import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { icon, content, children, disabled, onClick, ariaLabel, buttonRef, ...rest } = props;
+  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, buttonRef, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
@@ -35,8 +35,9 @@ export const ButtonView: IButtonComponent['view'] = props => {
       role="button"
       onClick={_onClick}
       {...buttonProps}
-      disabled={disabled}
+      disabled={disabled && !allowDisabledFocus}
       aria-disabled={disabled}
+      tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
       aria-label={ariaLabel}
       ref={buttonRef}
     >
