@@ -164,7 +164,14 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
 
   return {
     root: [
-      !circular && getFocusStyle(theme, { inset: 1 }),
+      !circular && getFocusStyle(theme, { inset: 1, outlineColor: tokens.borderColor }),
+      circular && {
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            borderWidth: 1
+          }
+        }
+      },
       theme.fonts.small,
       {
         backgroundColor: tokens.backgroundColor,
