@@ -9,6 +9,9 @@ import { TagItem } from './TagItem';
 import { TagItemSuggestion } from './TagItemSuggestion';
 import { ITagPickerProps, ITag, ITagItemProps } from './TagPicker.types';
 
+/**
+ * {@docCategory TagPicker}
+ */
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
   public static defaultProps = {
     onRenderItem: (props: ITagItemProps) => <TagItem {...props}>{props.item.name}</TagItem>,

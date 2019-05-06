@@ -4,6 +4,9 @@ import { BaseComponent, customizable, nullRender } from '../../../Utilities';
 import { IButtonProps } from '../Button.types';
 import { getStyles } from './ActionButton.styles';
 
+/**
+ * {@docCategory Button}
+ */
 @customizable('ActionButton', ['theme', 'styles'], true)
 export class ActionButton extends BaseComponent<IButtonProps, {}> {
   /**

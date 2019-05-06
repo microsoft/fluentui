@@ -1,6 +1,41 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2019 00:28:08 GMT and should not be manually modified.
+
+## 6.17.1
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Specify component for syntax highlighting
+
+## 6.17.0
+Sat, 04 May 2019 00:01:54 GMT
+
+### Minor changes
+
+- Updates for new website
+
+## 6.16.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Updating insureSlots method name to ensureSlots to use a more correct verb.
+
+## 6.15.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- change component pages to use page json files
+
+## 6.14.4
+Wed, 24 Apr 2019 12:35:54 GMT
+
+### Patches
+
+- Delete outdated component status info
 
 ## 6.14.3
 Tue, 16 Apr 2019 12:32:59 GMT

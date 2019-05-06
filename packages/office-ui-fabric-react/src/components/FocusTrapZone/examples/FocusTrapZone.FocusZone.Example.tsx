@@ -18,20 +18,6 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
   private _toggle = React.createRef<IToggle>();
 
   public render() {
-    return (
-      <div>
-        {this.state.useTrapZone ? (
-          <FocusTrapZone forceFocusInsideTrap={true} focusPreviouslyFocusedInnerElement={true}>
-            {this._internalContents()}
-          </FocusTrapZone>
-        ) : (
-          this._internalContents()
-        )}
-      </div>
-    );
-  }
-
-  private _internalContents() {
     const { useTrapZone } = this.state;
     const padding = 10;
     const border = '2px dashed #ababab';
@@ -39,34 +25,36 @@ export class FocusTrapZoneFocusZoneExample extends React.Component<{}, IFocusTra
     const tokens: IStackTokens = { childrenGap: 10 };
 
     return (
-      <Stack tokens={tokens} horizontalAlign="start" styles={{ root: { border: rootBorder, padding } }}>
-        <Toggle
-          label="Use trap zone"
-          componentRef={this._toggle}
-          checked={useTrapZone}
-          onChange={this._onFocusTrapZoneToggleChanged}
-          onText="On (toggle to exit)"
-          offText="Off"
-        />
+      <FocusTrapZone disabled={!useTrapZone} forceFocusInsideTrap={true} focusPreviouslyFocusedInnerElement={true}>
+        <Stack tokens={tokens} horizontalAlign="start" styles={{ root: { border: rootBorder, padding } }}>
+          <Toggle
+            label="Use trap zone"
+            componentRef={this._toggle}
+            checked={useTrapZone}
+            onChange={this._onFocusTrapZoneToggleChanged}
+            onText="On (toggle to exit)"
+            offText="Off"
+          />
 
-        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-          <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
-            <DefaultButton text="FZ1" />
-            <DefaultButton text="FZ1" />
-            <DefaultButton text="FZ1" />
-          </Stack>
-        </FocusZone>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
+              <DefaultButton text="FZ1" />
+              <DefaultButton text="FZ1" />
+              <DefaultButton text="FZ1" />
+            </Stack>
+          </FocusZone>
 
-        <DefaultButton text="No FZ" />
+          <DefaultButton text="No FZ" />
 
-        <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
-          <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
-            <DefaultButton text="FZ2" />
-            <DefaultButton text="FZ2" />
-            <DefaultButton text="FZ2" />
-          </Stack>
-        </FocusZone>
-      </Stack>
+          <FocusZone direction={FocusZoneDirection.horizontal} data-is-visible={true}>
+            <Stack horizontal tokens={tokens} styles={{ root: { border, padding } }}>
+              <DefaultButton text="FZ2" />
+              <DefaultButton text="FZ2" />
+              <DefaultButton text="FZ2" />
+            </Stack>
+          </FocusZone>
+        </Stack>
+      </FocusTrapZone>
     );
   }
 

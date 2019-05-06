@@ -28,6 +28,7 @@ const getDefaultStyles = (props: IPageParagraphStyleProps): IPageParagraphStyles
   ]
 });
 
+/** @deprecated Use `MarkdownParagraph` */
 @customizable('PageParagraph', ['theme', 'styles'])
 export class PageParagraph extends BaseComponent<IPageParagraphProps, {}> {
   public render(): JSX.Element {

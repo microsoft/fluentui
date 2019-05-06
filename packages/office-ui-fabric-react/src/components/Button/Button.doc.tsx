@@ -78,12 +78,9 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
       title: 'Command Button',
       code: ButtonCommandExampleCode,
       view: <ButtonCommandExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
-    }
-  ],
-
-  implementationExamples: [
+    },
     {
-      title: 'Button Like Anchor',
+      title: 'Button-like Anchor',
       code: ButtonAnchorExampleCode,
       view: <ButtonAnchorExample disabled={props.areButtonsDisabled} checked={props.areButtonsChecked} />
     },
@@ -106,7 +103,6 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
 
   allowNativeProps: true,
   nativePropsElement: ['a', 'button'],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),

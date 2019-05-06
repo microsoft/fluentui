@@ -42,7 +42,7 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={this._menuButtonElement}
+              target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}
               onDismiss={this._onDismiss}

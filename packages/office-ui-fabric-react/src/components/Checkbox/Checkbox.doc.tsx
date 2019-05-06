@@ -2,11 +2,12 @@ import * as React from 'react';
 import { CheckboxBasicExample } from './examples/Checkbox.Basic.Example';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { CheckboxImplementationExamples } from './examples/Checkbox.Other.Example';
+import { CheckboxOtherExamples } from './examples/Checkbox.Other.Example';
 
 const CheckboxBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
 const CheckboxBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Basic.Example.tsx') as string;
-const CheckboxImplementationExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
+const CheckboxOtherExamplesCode = require('!raw-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
+const CheckboxOtherExamplesCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Checkbox/examples/Checkbox.Other.Example.tsx') as string;
 
 export const CheckboxPageProps: IDocPageProps = {
   title: 'Checkbox',
@@ -21,11 +22,11 @@ export const CheckboxPageProps: IDocPageProps = {
     },
     {
       title: 'Implementation Examples',
-      code: CheckboxImplementationExamplesCode,
-      view: <CheckboxImplementationExamples />
+      code: CheckboxOtherExamplesCode,
+      view: <CheckboxOtherExamples />,
+      codepenJS: CheckboxOtherExamplesCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/Checkbox.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Checkbox/docs/CheckboxDos.md'),

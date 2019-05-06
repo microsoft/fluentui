@@ -1,7 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctly 1`] = `
-<div>
+<div
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onFocusCapture={[Function]}
+>
+  <div
+    aria-hidden={true}
+    data-is-visible={true}
+    onFocus={[Function]}
+    style={
+      Object {
+        "pointerEvents": "none",
+        "position": "fixed",
+      }
+    }
+    tabIndex={-1}
+  />
   <div
     className=
         ms-Stack
@@ -197,7 +213,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       data-is-visible={true}
       onFocus={[Function]}
@@ -690,7 +710,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </button>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone14"
       data-is-visible={true}
       onFocus={[Function]}
@@ -1069,5 +1093,17 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </div>
   </div>
+  <div
+    aria-hidden={true}
+    data-is-visible={true}
+    onFocus={[Function]}
+    style={
+      Object {
+        "pointerEvents": "none",
+        "position": "fixed",
+      }
+    }
+    tabIndex={-1}
+  />
 </div>
 `;

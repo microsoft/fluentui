@@ -11,7 +11,6 @@ import { SuggestionsController } from './Suggestions/SuggestionsController';
 import { IBasePicker, IBasePickerProps, ValidationState, IBasePickerStyleProps, IBasePickerStyles } from './BasePicker.types';
 import { IAutofill, Autofill } from '../Autofill/index';
 import { IPickerItemProps } from './PickerItem.types';
-import { IPersonaProps } from '../Persona/Persona.types';
 import * as stylesImport from './BasePicker.scss';
 const legacyStyles: any = stylesImport;
 
@@ -30,6 +29,7 @@ export interface IBasePickerState {
 
 /**
  * Aria id's for internal picker components
+ * {@docCategory Pickers}
  */
 export type IPickerAriaIds = {
   /**
@@ -48,6 +48,18 @@ export type IPickerAriaIds = {
 
 const getClassNames = classNamesFunction<IBasePickerStyleProps, IBasePickerStyles>();
 
+/**
+ * Should be removed once new picker without inheritance is created
+ */
+function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<T>) => Suggestions<T>) {
+  return styled<ISuggestionsProps<any>, ISuggestionsStyleProps, ISuggestionsStyles>(suggestionsType, suggestionsStyles, undefined, {
+    scope: 'Suggestions'
+  });
+}
+
+/**
+ * {@docCategory Pickers}
+ */
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();
@@ -57,9 +69,13 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
 
   protected selection: Selection;
   protected suggestionStore: SuggestionsController<T>;
+  /**
+   * @deprecated this is no longer necessary as typescript now supports generic elements
+   */
   protected SuggestionOfProperType = Suggestions as new (props: ISuggestionsProps<T>) => Suggestions<T>;
   protected currentPromise: PromiseLike<any> | undefined;
   protected _ariaMap: IPickerAriaIds;
+  private _styledSuggestions = getStyledSuggestions(this.SuggestionOfProperType);
   private _id: string;
 
   constructor(basePickerProps: P) {
@@ -277,17 +293,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
   }
 
   protected renderSuggestions(): JSX.Element | null {
-    const TypedSuggestions = this.SuggestionOfProperType;
-
-    // TODO:
-    // Move this styled component in a separate file and make it available to the public API.
-    // This should be done after rewriting pickers to use a composition pattern instead of inheritance.
-    const StyledTypedSuggestions = styled<ISuggestionsProps<T>, ISuggestionsStyleProps, ISuggestionsStyles>(
-      TypedSuggestions,
-      suggestionsStyles,
-      undefined,
-      { scope: 'Suggestions' }
-    );
+    const StyledTypedSuggestions: React.StatelessComponent<ISuggestionsProps<T>> = this._styledSuggestions;
 
     return this.state.suggestionsVisible && this.input ? (
       <Callout
@@ -466,9 +472,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     this.setState({ suggestionsVisible: false });
   };
 
-  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: IPersonaProps, index: number): void => {
+  protected onSuggestionRemove = (ev: React.MouseEvent<HTMLElement>, item: T, index: number): void => {
     if (this.props.onRemoveSuggestion) {
-      (this.props.onRemoveSuggestion as any)(item);
+      this.props.onRemoveSuggestion(item);
     }
     this.suggestionStore.removeSuggestion(index);
   };
@@ -571,7 +577,7 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
             this.suggestionStore.currentIndex !== -1
           ) {
             if (this.props.onRemoveSuggestion) {
-              (this.props.onRemoveSuggestion as any)(this.suggestionStore.currentSuggestion!.item);
+              this.props.onRemoveSuggestion(this.suggestionStore.currentSuggestion!.item);
             }
             this.suggestionStore.removeSuggestion(this.suggestionStore.currentIndex);
             this.forceUpdate();

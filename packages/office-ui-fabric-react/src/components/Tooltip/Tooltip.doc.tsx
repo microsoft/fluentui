@@ -60,10 +60,6 @@ export const TooltipPageProps: IDocPageProps = {
       view: <TooltipAbsolutePositionExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/Tooltip.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/TooltipHost.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Tooltip/docs/TooltipOverview.md'),
   isHeaderVisible: true,
   isFeedbackVisible: true,

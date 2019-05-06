@@ -3,7 +3,7 @@ import { IStyle, ITheme } from '../../Styling';
 import { IStyleFunctionOrObject, IPoint } from '../../Utilities';
 
 /**
- * {@docCategory Keytip}
+ * {@docCategory Keytips}
  */
 export interface IKeytipProps {
   /**
@@ -82,7 +82,7 @@ export interface IKeytipProps {
 
 /**
  * Props to style Keytip component
- * {@docCategory Keytip}
+ * {@docCategory Keytips}
  */
 export interface IKeytipStyleProps {
   /**
@@ -102,7 +102,7 @@ export interface IKeytipStyleProps {
 }
 
 /**
- * {@docCategory Keytip}
+ * {@docCategory Keytips}
  */
 export interface IKeytipStyles {
   /**

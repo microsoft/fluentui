@@ -11,13 +11,13 @@
     "generate-reports": "node ./scripts/generate-sarif-reports.js"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^6.14.3",
+    "@uifabric/fabric-website-resources": "^6.17.1",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^1.0.0",
     "concurrently": "^4.1.0",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^6.168.0",
+    "office-ui-fabric-react": "^6.176.3",
     "puppeteer": "^1.13.0",
     "tslib": "^1.7.1",
     "wait-on": "^3.2.0"

@@ -38,7 +38,6 @@ export const SeparatorPageProps: IDocPageProps = {
       codepenJS: SeparatorIconExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/Separator.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Separator/docs/SeparatorDos.md'),

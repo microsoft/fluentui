@@ -6,6 +6,9 @@ import { PersonaSize, PersonaCoin, IPersonaSharedProps, IPersonaCoinProps } from
 
 type OptionalReactKey = { key?: React.Key };
 
+/**
+ * {@docCategory ActivityItem}
+ */
 export class ActivityItem extends React.Component<IActivityItemProps, {}> {
   constructor(props: IActivityItemProps) {
     super(props);

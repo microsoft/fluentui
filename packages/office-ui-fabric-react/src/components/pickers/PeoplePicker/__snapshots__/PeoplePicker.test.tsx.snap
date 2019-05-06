@@ -9,7 +9,11 @@ exports[`PeoplePicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -93,7 +97,11 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
