@@ -107,11 +107,9 @@ export function createSite<TPlatforms extends string>(
 
     const renderSite = (props: {}) => <Site siteDefinition={siteDefinition} hasUHF={hasUHF} {...props} />;
 
-    const routerDidMount = () => jumpToAnchor(undefined, scrollDistance);
-
     ReactDOM.render(
       <Fabric>
-        <Router onNewRouteLoaded={routerDidMount}>
+        <Router>
           <Route component={renderSite}>{_getSiteRoutes()}</Route>
         </Router>
       </Fabric>,

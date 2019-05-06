@@ -3,6 +3,7 @@ import { ExampleCard } from '../../ExampleCard/index';
 import { pascalize } from '../../../utilities/index2';
 import { IExample, IPageSectionProps } from '../Page.types';
 import * as styles from '../Page.module.scss';
+import { ICodeSnippetProps } from '../../CodeSnippet/index';
 
 export interface IExamplesSectionProps extends IPageSectionProps {
   exampleKnobs?: React.ReactNode;
@@ -13,6 +14,9 @@ export const ExamplesSection: React.StatelessComponent<IExamplesSectionProps> = 
   const { className, examples, exampleKnobs, sectionName = 'Usage', style } = props;
   const { readableSectionName = sectionName } = props;
   const sectionId = pascalize(sectionName);
+  const codeHighlighterProps: ICodeSnippetProps = {
+    language: 'typescript'
+  };
 
   return (
     <div className={className} style={style}>
@@ -27,7 +31,9 @@ export const ExamplesSection: React.StatelessComponent<IExamplesSectionProps> = 
           const { view, ...exampleProps } = example;
           return (
             <div key={example.title + '-key'} className={styles.subSection}>
-              <ExampleCard {...exampleProps}>{view}</ExampleCard>
+              <ExampleCard {...exampleProps} codeHighlighterProps={codeHighlighterProps}>
+                {view}
+              </ExampleCard>
             </div>
           );
         })}

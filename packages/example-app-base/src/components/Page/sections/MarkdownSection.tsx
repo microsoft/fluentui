@@ -23,7 +23,9 @@ export const MarkdownSection: React.StatelessComponent<IPageSectionProps> = prop
   const editUrl =
     props.editUrl || (componentUrl && getEditUrl({ name: fileNamePrefix || title, section: sectionId, baseUrl: componentUrl, platform }));
 
-  const editSection = editUrl && <EditSection className={styles.edit} section={`${title} ${sectionName}`} url={editUrl} />;
+  const editSection = editUrl && (
+    <EditSection className={styles.edit} title={sectionName} section={readableSectionName || 'Markdown'} url={editUrl} />
+  );
 
   return (
     <div className={className} style={style}>

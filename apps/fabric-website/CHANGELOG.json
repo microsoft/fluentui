@@ -2,6 +2,94 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.16.3",
+      "tag": "@uifabric/fabric-website_v6.16.3",
+      "date": "Mon, 06 May 2019 12:35:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove css reset",
+            "author": "Micah Godbolt <mgodbolt@microsoft.com>",
+            "commit": "7c176f3b0e14bc446865a73ad4799d10aa18c5cb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.2` to `^6.17.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.2",
+      "tag": "@uifabric/fabric-website_v6.16.2",
+      "date": "Mon, 06 May 2019 00:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7aee8d38d602a2beab913b381aa0fc67eb159f6b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.1` to `^6.17.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.17.0` to `^6.17.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.1",
+      "tag": "@uifabric/fabric-website_v6.16.1",
+      "date": "Sun, 05 May 2019 19:59:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added get started section",
+            "author": "Micah Godbolt <mgodbolt@microsoft.com>",
+            "commit": "a0d98e8f61ccab3591fccf74043b164d97f0df07"
+          },
+          {
+            "comment": "Added more mobile controls documentation",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "64915020b038085785fc339b5d91374581de4a36"
+          },
+          {
+            "comment": "Mobile documentation updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "9c59589394e9564f2fdce2f0881c3b6a082f5d0c"
+          },
+          {
+            "comment": "Adjust Resources content",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "680b301ae59d02a89aa5fe30c44ad6ba11f63ac2"
+          },
+          {
+            "comment": "Anchor link handling and other bug fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "725a292b5659ba883b0cc552d878323f60c7ad49"
+          },
+          {
+            "comment": "Add version dropdown and fix other bugs",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d1f6243f45b7b292f4ecf2cb98b69e89548f31fb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.0` to `^6.17.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.2` to `^6.176.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.0",
       "tag": "@uifabric/fabric-website_v6.16.0",
       "date": "Sat, 04 May 2019 00:01:54 GMT",

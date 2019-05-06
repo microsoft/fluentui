@@ -64,6 +64,15 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     '#/examples/announced/': '#/controls/web/announced/',
     '#/components/ComboBox': '#/controls/web/combobox',
     '#/components/Calendar': '#/controls/web/calendar',
-    '#/components': '#/controls/web'
+    '#/components': '#/controls/web',
+    '#/styles/animation': '#/styles/web/motion',
+    '#/styles/brand-icons': '#/styles/web/office-brand-icons',
+    '#/styles/colors': '#/styles/web/colors/products',
+    '#/styles/icons': '#/styles/web/icons',
+    '#/styles/layout': '#/styles/web/layout',
+    '#/styles/localization': '#/styles/web/localization',
+    '#/styles/themegenerator': '#/styles/web',
+    '#/styles/typography': '#/styles/web/typography',
+    '#/styles/utilities': '#/styles/web'
   }
 };

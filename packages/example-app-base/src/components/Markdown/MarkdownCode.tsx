@@ -1,7 +1,7 @@
 import { IStyleFunctionOrObject, IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import { CodeSnippet } from '../CodeSnippet/index';
+import { CodeSnippet, codeFontFamily } from '../CodeSnippet/index';
 
 export interface IMarkdownCodeProps {
   className?: string;
@@ -20,7 +20,7 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
   const { theme } = props;
   return {
     root: {
-      fontFamily: 'monospace',
+      fontFamily: codeFontFamily,
       fontSize: '14px',
       padding: '0 4px',
       background: theme.palette.neutralLighter,
@@ -33,28 +33,11 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
 
 const getClassNames = classNamesFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles>();
 
-// These class names will be automatically passed in to PageTag instances created by
-// markdown-to-jsx based on the language specified in the markdown code block.
-const languageClassNames: { [key: string]: string } = {
-  'lang-tsx': 'typescript',
-  'lang-typescript': 'typescript',
-  'lang-jsx': 'javascript',
-  'lang-js': 'javascript',
-  'lang-javascript': 'javascript',
-  'lang-html': 'html',
-  'lang-bash': 'bash',
-  'lang-shell': 'shell',
-  'lang-css': 'css',
-  'lang-scss': 'scss',
-  'lang-md': 'markdown',
-  'lang-diff': 'diff'
-};
-
 const MarkdownCodeBase: React.StatelessComponent<IMarkdownCodeProps> = props => {
   const { theme, className, styles, ...rest } = props;
   const classNames = getClassNames(styles, { theme: theme! });
 
-  const language = languageClassNames[className!];
+  const language = (className || '').replace('lang-', '');
   if (language || (typeof props.children === 'string' && props.children.indexOf('\n') !== -1)) {
     return <CodeSnippet {...rest} language={language} className={className} />;
   }

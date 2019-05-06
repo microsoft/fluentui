@@ -14,10 +14,10 @@ export interface ISiteMessageBarProps {
   linkUrl?: string;
 
   /**
-   * Prefix for local storage key for storing if the message bar has been closed.
+   * Prefix for session storage key for storing if the message bar has been closed.
    * If not provided, local storage will not be used.
    */
-  localStoragePrefix?: string;
+  sessionStoragePrefix?: string;
 
   /** Styles for the message bar */
   styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
@@ -28,17 +28,17 @@ export interface ISiteMessageBarState {
 }
 
 export default class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteMessageBarState> {
-  private _localStorageKey: string | undefined;
+  private _sessionStorageKey: string | undefined;
 
   constructor(props: ISiteMessageBarProps) {
     super(props);
 
     let isVisible = true;
-    if (props.localStoragePrefix) {
-      this._localStorageKey = props.localStoragePrefix + 'MessageBarHidden';
+    if (props.sessionStoragePrefix) {
+      this._sessionStorageKey = props.sessionStoragePrefix + 'MessageBarHidden';
       try {
-        // Accessing localStorage can throw for various reasons--just ignore if this happens
-        isVisible = !localStorage.getItem(this._localStorageKey);
+        // Accessing sessionStorage can throw for various reasons--just ignore if this happens
+        isVisible = !sessionStorage.getItem(this._sessionStorageKey);
       } catch (ex) {
         isVisible = true;
       }
@@ -64,9 +64,9 @@ export default class SiteMessageBar extends React.Component<ISiteMessageBarProps
   }
 
   private _onClose = () => {
-    if (this._localStorageKey) {
+    if (this._sessionStorageKey) {
       try {
-        localStorage.setItem(this._localStorageKey, '1');
+        sessionStorage.setItem(this._sessionStorageKey, '1');
       } catch (ex) {
         // ignore
       }

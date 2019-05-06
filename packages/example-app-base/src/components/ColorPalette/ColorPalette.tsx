@@ -94,26 +94,31 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
           <div className={classNames.detailValues}>
             <span className={classNames.detailHex}>{hex}</span>
             {code && (
-              <>
-                <span className={classNames.detailCode} aria-describedby="code">
-                  {code.react.split('.')[1]}{' '}
-                  <TooltipHost
-                    tooltipProps={{
-                      onRenderContent: () => this._renderCodeDetails(code)
-                    }}
-                    closeDelay={500}
-                    id="code"
-                  >
-                    <Icon className={classNames.detailCodeInfoIcon} iconName="Info" />
-                  </TooltipHost>
-                </span>
-              </>
+              <span className={classNames.detailCode} aria-label={this._getCodeAriaLabel(code)}>
+                {code.react.split('.')[1]}{' '}
+                <TooltipHost
+                  tooltipProps={{
+                    onRenderContent: () => this._renderCodeDetails(code)
+                  }}
+                  closeDelay={500}
+                  id="code"
+                >
+                  <Icon className={classNames.detailCodeInfoIcon} iconName="Info" />
+                </TooltipHost>
+              </span>
             )}
           </div>
         </div>
       </div>
     );
   };
+
+  private _getCodeAriaLabel(code: IColorCode): string | undefined {
+    const { core, react } = code;
+    if (core || react) {
+      return (core ? `Fabric Core: ${core}. ` : '') + (react ? `Fabric React: ${react}` : '');
+    }
+  }
 
   private _renderCodeDetails = (code: IColorCode): JSX.Element | null => {
     const { core, react } = code;
