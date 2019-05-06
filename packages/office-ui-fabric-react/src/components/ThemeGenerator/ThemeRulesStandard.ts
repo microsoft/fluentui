@@ -34,7 +34,7 @@ export enum FabricSlots {
 
   neutralLighterAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade1]);
   neutralLighter, // BaseSlots.backgroundColor, Shade[Shade.Shade2]);
-  neutralLight, // BaseSlots.backgroundColor, Shade[Shade. pShade3]);
+  neutralLight, // BaseSlots.backgroundColor, Shade[Shade.Shade3]);
   neutralQuaternaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade4]);
   neutralQuaternary, // BaseSlots.backgroundColor, Shade[Shade.Shade5]);
   neutralTertiaryAlt, // BaseSlots.backgroundColor, Shade[Shade.Shade6]); // bg6 or fg2
