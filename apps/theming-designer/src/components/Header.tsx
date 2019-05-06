@@ -73,10 +73,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
           <Stack horizontal>
             <a href="https://www.microsoft.com" title="Microsoft Home Page" aria-label="Microsoft Home Page" className={microsoftLogo}>
-              <img
-                src="https://themingdesigner.blob.core.windows.net/$web/Screen%20Shot%202019-05-06%20at%209.39.50%20AM.png"
-                className={microsoftLogo}
-              />
+              <img src="https://themingdesigner.blob.core.windows.net/$web/MicrosoftLogo.png" className={microsoftLogo} />
             </a>
             <a
               href="https://www.aka.ms/themedesigner"
