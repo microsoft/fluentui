@@ -17,7 +17,7 @@ export type ISlottableComponentType<TProps extends ValidProps, TShorthandProp ex
 /**
  * Slottable version of React.ReactType.
  */
-export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ReactType<TProps> &
+export type ISlottableReactType<TProps extends ValidProps, TShorthandProp extends ValidShorthand> = React.ElementType<TProps> &
   ISlotCreator<TProps, TShorthandProp>;
 
 /**
@@ -30,7 +30,7 @@ export interface IProcessedSlotProps {
 /**
  * An interface for defining slots. Each key in TSlot must point to an ISlottableType.
  */
-export type ISlotDefinition<TSlots> = { [slot in keyof TSlots]: React.ReactType<ExtractProps<TSlots[slot]>> };
+export type ISlotDefinition<TSlots> = { [slot in keyof TSlots]: React.ElementType<ExtractProps<TSlots[slot]>> };
 
 /**
  * Created Slot structure used for rendering by components.
@@ -113,7 +113,7 @@ export type ISlotProp<TProps extends ValidProps, TShorthandProp extends ValidSho
 
 // TODO: create mutually exclusive type for component & render, but only if it's a readable error for users.
 export interface ISlotOptions<TProps> {
-  component?: React.ReactType<TProps>;
+  component?: React.ElementType<TProps>;
   render?: ISlotRender<TProps>;
 }
 
