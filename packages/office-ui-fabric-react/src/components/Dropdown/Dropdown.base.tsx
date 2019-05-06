@@ -30,7 +30,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -297,6 +297,7 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
     const { onChange, onChanged, options, selectedKey, selectedKeys, multiSelect, notifyOnReselect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
+    let newIndexes: number[] = [];
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
@@ -304,11 +305,9 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
       return;
     } else if (!multiSelect && selectedKey === undefined) {
       // Set the selected option if this is an uncontrolled component
-      this.setState({
-        selectedIndices: [index]
-      });
+      newIndexes = [index];
     } else if (multiSelect && selectedKeys === undefined) {
-      const newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
+      newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
       if (checked) {
         const position = newIndexes.indexOf(index);
         if (position > -1) {
@@ -319,16 +318,17 @@ export class DropdownBase extends BaseComponent<IDropdownInternalProps, IDropdow
         // add the new selected index into the existing one
         newIndexes.push(index);
       }
-      this.setState({
-        selectedIndices: newIndexes
-      });
     }
+
+    this.setState({
+      selectedIndices: newIndexes
+    });
 
     if (onChange) {
       // for single-select, option passed in will always be selected.
       // for multi-select, flip the checked value
       const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChange(event, changedOpt, index);
+      onChange(event, changedOpt, index, getAllSelectedOptions(options, newIndexes));
     }
 
     if (onChanged) {

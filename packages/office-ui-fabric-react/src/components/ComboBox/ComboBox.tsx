@@ -24,7 +24,7 @@ import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from 
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 
 export interface IComboBoxState {
   /** The open state */
@@ -871,7 +871,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       }
 
       if (onChange) {
-        onChange(submitPendingValueEvent, option, index, undefined);
+        onChange(submitPendingValueEvent, option, index, undefined, getAllSelectedOptions(currentOptions, selectedIndices));
       }
 
       if (onChanged) {
@@ -1027,7 +1027,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (onChange || onChanged) {
         if (onChange) {
           // trigger onChange to clear value
-          onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
+          onChange(
+            submitPendingValueEvent,
+            undefined,
+            undefined,
+            currentPendingValue,
+            getAllSelectedOptions(currentOptions, selectedIndices!)
+          );
         }
         if (onChanged) {
           // trigger onChanged to clear value

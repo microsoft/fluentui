@@ -1318,6 +1318,9 @@ module FontWeights {
 export function format(s: string, ...values: any[]): string;
 
 // @public (undocumented)
+export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
+
+// @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public
@@ -2902,7 +2905,7 @@ interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
   isButtonAriaHidden?: boolean;
   keytipProps?: IKeytipProps;
   multiSelect?: boolean;
-  onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+  onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string, options?: IComboBoxOption[]) => void;
   // @deprecated
   onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
   onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -7617,7 +7620,7 @@ interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown, HTMLDi
   multiSelect?: boolean;
   multiSelectDelimiter?: string;
   notifyOnReselect?: boolean;
-  onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
+  onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number, options?: IDropdownOption[]) => void;
   // @deprecated (undocumented)
   onChanged?: (option: IDropdownOption, index?: number) => void;
   onDismiss?: () => void;
