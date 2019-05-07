@@ -39,13 +39,15 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
     });
 
     return (
-      <Stack className={this.classNames.root} horizontal>
-        <div ref={this.likeRef}>
-          <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._likeVote} />
-        </div>
-        <div ref={this.dislikeRef}>
-          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._dislikeVote} />
-        </div>
+      <Stack className={this.classNames.root}>
+        <Stack horizontal>
+          <div ref={this.likeRef}>
+            <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._likeVote} />
+          </div>
+          <div ref={this.dislikeRef}>
+            <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._dislikeVote} />
+          </div>
+        </Stack>
         {this.props.thumbsUpQuestion && !hideThumbsUpCallout
           ? this.props.renderFollowupContainer!(
               <FocusZone direction={FocusZoneDirection.vertical}>
@@ -76,7 +78,7 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
                 />
               </FocusZone>,
               this.classNames,
-              this.likeRef.current,
+              this.dislikeRef.current,
               this._onCalloutDismiss
             )
           : null}
@@ -121,7 +123,6 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
   };
 }
 
-// TODO: separate into a different file
 export class MicroFeedbackCalloutBase extends React.Component<IMicroFeedbackProps, IMicroFeedbackState> {
   constructor(props: IMicroFeedbackProps) {
     super(props);
@@ -152,7 +153,6 @@ export class MicroFeedbackCalloutBase extends React.Component<IMicroFeedbackProp
   };
 }
 
-// class for stack
 export class MicroFeedbackStackBase extends React.Component<IMicroFeedbackProps, IMicroFeedbackState> {
   constructor(props: IMicroFeedbackProps) {
     super(props);
