@@ -54,7 +54,7 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
         Basic: {},
         Compact: {},
         Grouped: {},
-        LargeGrouped: {},
+        LargeGrouped: { title: 'Large Grouped' },
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },
