@@ -125,8 +125,10 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
   'Fluent Theme': {
     FluentTheme: { title: 'Fluent Theme', url: 'fluent-theme' }
   },
-  References: {},
-  Other: {}
+  References: {}
+  // The "Other" category can be useful for local development, but it currently can also cause
+  // non-web controls (such as Chip) to show up on the web controls page.
+  // Other: {}
 };
 
 function generateCategories() {
