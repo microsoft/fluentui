@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { PropertiesTableSet } from '../../PropertiesTable/index';
 import { MessageBar } from 'office-ui-fabric-react';
-import { pascalize } from '../../../utilities/index2';
-import { IPageSectionProps } from '../Page.types';
+import { IPageSectionPropsWithSectionName } from '../Page.types';
 import * as styles from '../Page.module.scss';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { ApiReferencesTableSet } from '../../ApiReferencesTable/index';
 
-export interface IImplementationSectionProps extends IPageSectionProps {
+export interface IImplementationSectionProps extends IPageSectionPropsWithSectionName {
   jsonDocs?: IPageJson;
   propertiesTablesSources?: string[];
   allowNativeProps?: boolean;
@@ -17,15 +16,13 @@ export interface IImplementationSectionProps extends IPageSectionProps {
 }
 
 export const ImplementationSection: React.StatelessComponent<IImplementationSectionProps> = props => {
-  const { className, sectionName = 'Implementation', style, propertiesTablesSources, jsonDocs, hideImplementationTitle } = props;
-  const { readableSectionName = sectionName } = props;
-  const sectionId = pascalize(sectionName);
+  const { className, sectionName, readableSectionName, style, propertiesTablesSources, jsonDocs, hideImplementationTitle, id } = props;
   return (
     <div className={className} style={style}>
       {!hideImplementationTitle && (
         <div className={styles.sectionHeader}>
-          <h2 className={styles.subHeading} id={sectionId}>
-            {readableSectionName}
+          <h2 className={styles.subHeading} id={id}>
+            {readableSectionName || sectionName}
           </h2>
         </div>
       )}
@@ -50,7 +47,7 @@ function _getNativePropsInfo(props: IImplementationSectionProps): JSX.Element | 
 
   const elementsArr: React.ReactNode[] = [];
   for (const elem of nativePropsElems) {
-    elementsArr.push(<code key={elem}>{`<${elem}>`}</code>);
+    elementsArr.push(<code id={elem}>{`<${elem}>`}</code>);
     elementsArr.push(' and ');
   }
   elementsArr.pop(); // remove last ' and '

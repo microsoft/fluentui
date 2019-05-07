@@ -27,12 +27,11 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
   const platformControls: INavPage[] = controls[platform];
 
   if (platformControls) {
-    return platformControls
+    let sections: IPageSectionProps<Platforms>[] = platformControls
       .filter(page => !page.isHiddenFromMainNav && page.isCategory)
       .map(
-        (category, categoryIndex) =>
+        category =>
           category.pages && {
-            key: categoryIndex,
             sectionName: category.title,
             content: (
               <ul className={PageStyles.uListFlex}>
@@ -45,6 +44,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             )
           }
       );
+
+    if (platform === 'web') {
+      sections.push({
+        sectionName: 'Need a control Fabric React doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string
+      });
+    }
+    return sections;
   }
 }
 
