@@ -73,20 +73,15 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
   const buttonStyles: Partial<IButtonStyles> = {
     root: [
       sharedToggleButtonStyles,
-      {
-        // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
-        lineHeight: '1',
-        selectors: {
-          '&:hover': codeButtonActiveStyles
-        }
-      },
-      globalClassNames.codeButton,
-      isCodeVisible && [codeButtonActiveStyles, globalClassNames.isActive]
+      { lineHeight: '1' }, // quotes prevent interpretation as px
+      globalClassNames.codeButton
     ],
     label: {
       color: theme.palette.neutralDark,
       borderColor: theme.palette.neutralDark
-    }
+    },
+    rootHovered: codeButtonActiveStyles,
+    rootChecked: [codeButtonActiveStyles, globalClassNames.isActive]
   };
 
   return {
@@ -157,7 +152,8 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
           ],
           code: {
             display: 'block',
-            margin: 12
+            margin: 12,
+            fontSize: '14px'
           }
         }
       },

@@ -380,6 +380,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "theming-designer",
+      "projectFolder": "apps/theming-designer",
+      "shouldPublish": false
+    },
+    {
       "packageName": "server-rendered-app",
       "projectFolder": "apps/server-rendered-app",
       "shouldPublish": false
@@ -433,6 +438,11 @@
       "packageName": "@uifabric/pr-deploy-site",
       "projectFolder": "apps/pr-deploy-site",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/api-docs",
+      "projectFolder": "packages/api-docs",
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/react-cards",

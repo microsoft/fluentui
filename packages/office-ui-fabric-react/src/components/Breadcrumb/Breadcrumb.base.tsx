@@ -5,23 +5,23 @@ import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { Link } from '../../Link';
 import { Icon } from '../../Icon';
 import { IconButton } from '../../Button';
-import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps } from './Breadcrumb.types';
+import { IBreadcrumbProps, IBreadcrumbItem, IDividerAsProps, IBreadcrumbData } from './Breadcrumb.types';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { ResizeGroup } from '../../ResizeGroup';
 import { TooltipHost, TooltipOverflowMode } from '../../Tooltip';
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from './Breadcrumb.types';
 
-const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
+/** @deprecated Use IBreadcrumbData */
+export type IBreadCrumbData = IBreadcrumbData;
 
-export interface IBreadCrumbData {
-  props: IBreadcrumbProps;
-  renderedItems: IBreadcrumbItem[];
-  renderedOverflowItems: IBreadcrumbItem[];
-}
+const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyles>();
 
 const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],
@@ -53,7 +53,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     const { onReduceData = this._onReduceData, overflowIndex, maxDisplayedItems, items, className, theme, styles } = this.props;
     const renderedItems = [...items];
     const renderedOverflowItems = renderedItems.splice(overflowIndex!, renderedItems.length - maxDisplayedItems!);
-    const breadCrumbData: IBreadCrumbData = {
+    const breadcrumbData: IBreadcrumbData = {
       props: this.props,
       renderedItems,
       renderedOverflowItems
@@ -64,10 +64,10 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       theme: theme!
     });
 
-    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadCrumbData} />;
+    return <ResizeGroup onRenderData={this._onRenderBreadcrumb} onReduceData={onReduceData} data={breadcrumbData} />;
   }
 
-  private _onReduceData = (data: IBreadCrumbData): IBreadCrumbData | undefined => {
+  private _onReduceData = (data: IBreadcrumbData): IBreadcrumbData | undefined => {
     let { renderedItems, renderedOverflowItems } = data;
     const { overflowIndex } = data.props;
 
@@ -82,7 +82,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     }
   };
 
-  private _onRenderBreadcrumb = (data: IBreadCrumbData) => {
+  private _onRenderBreadcrumb = (data: IBreadcrumbData) => {
     const {
       ariaLabel,
       dividerAs: DividerType = Icon as React.ReactType<IDividerAsProps>,

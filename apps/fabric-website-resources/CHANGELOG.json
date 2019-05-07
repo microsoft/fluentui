@@ -2,6 +2,112 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.17.1",
+      "tag": "@uifabric/fabric-website-resources_v6.17.1",
+      "date": "Mon, 06 May 2019 00:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Specify component for syntax highlighting",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7aee8d38d602a2beab913b381aa0fc67eb159f6b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.1` to `^6.17.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.0",
+      "tag": "@uifabric/fabric-website-resources_v6.17.0",
+      "date": "Sat, 04 May 2019 00:01:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updates for new website",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.0.0` to `^1.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.1` to `^6.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.2` to `^6.47.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.0",
+      "tag": "@uifabric/fabric-website-resources_v6.16.0",
+      "date": "Wed, 01 May 2019 12:34:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating insureSlots method name to ensureSlots to use a more correct verb.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "634914a899a098a97441d33c58b6cbe3896c210c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.15.0` to `^6.16.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.1` to `^6.38.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.174.0` to `^6.175.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/fabric-website-resources_v6.15.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "change component pages to use page json files",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "382ec4fe6678eef91be9bc7e66091b11ff92e0a2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^0.1.7` to `^0.1.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.37.0` to `^6.37.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.4",
       "tag": "@uifabric/fabric-website-resources_v6.14.4",
       "date": "Wed, 24 Apr 2019 12:35:54 GMT",

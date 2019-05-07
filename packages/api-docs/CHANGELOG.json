@@ -1,0 +1,34 @@
+{
+  "name": "@uifabric/api-docs",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@uifabric/api-docs_v1.0.1",
+      "date": "Sat, 04 May 2019 00:01:53 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updates for new website",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ],
+        "none": [
+          {
+            "comment": "add README",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "be19c7170906e5cd4b34d88a24e6b1ca5fd9a77b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.2` to `^6.47.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+          }
+        ]
+      }
+    }
+  ]
+}

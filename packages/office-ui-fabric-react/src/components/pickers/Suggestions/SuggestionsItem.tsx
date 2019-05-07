@@ -10,6 +10,9 @@ const legacyStyles: any = stylesImport;
 
 const getClassNames = classNamesFunction<ISuggestionsItemStyleProps, ISuggestionsItemStyles>();
 
+/**
+ * {@docCategory Pickers}
+ */
 export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {}> {
   public render(): JSX.Element {
     const {

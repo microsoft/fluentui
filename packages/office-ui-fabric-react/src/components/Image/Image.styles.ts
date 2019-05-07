@@ -9,6 +9,7 @@ const GlobalClassNames = {
   imageCenter: 'ms-Image-image--center',
   imageContain: 'ms-Image-image--contain',
   imageCover: 'ms-Image-image--cover',
+  imageCenterContain: 'ms-Image-image--centerContain',
   imageCenterCover: 'ms-Image-image--centerCover',
   imageNone: 'ms-Image-image--none',
   imageLandscape: 'ms-Image-image--landscape',
@@ -28,6 +29,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
     isCenter,
     isContain,
     isCover,
+    isCenterContain,
     isCenterCover,
     isNone,
     isError,
@@ -65,7 +67,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
         }
       ],
       isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
-      (isCenter || isContain || isCover || isCenterCover) && {
+      (isCenter || isContain || isCover || isCenterContain || isCenterCover) && {
         position: 'relative'
       },
       className
@@ -101,6 +103,16 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           objectFit: 'cover'
         },
         !supportsObjectFit && fallbackObjectFitStyles,
+        ImageFitStyles
+      ],
+      isCenterContain && [
+        classNames.imageCenterContain,
+        isLandscape && {
+          maxWidth: '100%'
+        },
+        !isLandscape && {
+          maxHeight: '100%'
+        },
         ImageFitStyles
       ],
       isCenterCover && [

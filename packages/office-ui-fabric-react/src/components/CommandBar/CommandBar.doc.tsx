@@ -48,10 +48,6 @@ export const CommandBarPageProps: IDocPageProps = {
       view: <CommandBarSplitDisabledExample {...cmdBarParamsTextAndIcons} />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarDos.md'),

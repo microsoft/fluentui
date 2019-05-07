@@ -28,6 +28,7 @@ module.exports = [
         '@uifabric/legacy/lib': path.join(__dirname, '../../packageslegacy/lib'),
         'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
         'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
+        '@uifabric/api-docs/lib': path.resolve(__dirname, 'node_modules/@uifabric/api-docs/lib'),
         'Props.ts.js': 'Props',
         'Example.tsx.js': 'Example'
       }

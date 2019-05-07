@@ -20,6 +20,9 @@ import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNa
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 
+/**
+ * {@docCategory Button}
+ */
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
   variantClassName?: string;
@@ -31,6 +34,9 @@ export interface IBaseButtonState {
 
 const TouchIdleDelay = 500; /* ms */
 
+/**
+ * {@docCategory Button}
+ */
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
   private get _isSplitButton(): boolean {
     return !!this.props.menuProps && !!this.props.onClick && this.props.split === true;
