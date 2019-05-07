@@ -63,27 +63,23 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
               this._onCalloutDismiss
             )
           : null}
-        {this.props.thumbsDownQuestion && !hideThumbsDownCallout ? (
-          <Callout
-            className={this.classNames.followUpContainer}
-            role="alertdialog"
-            gapSpace={0}
-            target={this.dislikeRef.current}
-            setInitialFocus={true}
-            onDismiss={this._onCalloutDismiss}
-          >
-            <FocusZone direction={FocusZoneDirection.vertical}>
-              <Text block={true} className={this.classNames.followUpQuestion} variant="small">
-                {this.props.thumbsDownQuestion.question}
-              </Text>
-              <List
-                items={this.props.thumbsDownQuestion.options}
-                className={this.classNames.followUpOptionText}
-                onRenderCell={this._onRenderCalloutItem}
-              />
-            </FocusZone>
-          </Callout>
-        ) : null}
+        {this.props.thumbsDownQuestion && !hideThumbsDownCallout
+          ? this.props.renderFollowupContainer!(
+              <FocusZone direction={FocusZoneDirection.vertical}>
+                <Text block={true} className={this.classNames.followUpQuestion} variant="small">
+                  {this.props.thumbsDownQuestion.question}
+                </Text>
+                <List
+                  items={this.props.thumbsDownQuestion.options}
+                  className={this.classNames.followUpOptionText}
+                  onRenderCell={this._onRenderCalloutItem}
+                />
+              </FocusZone>,
+              this.classNames,
+              this.likeRef.current,
+              this._onCalloutDismiss
+            )
+          : null}
       </Stack>
     );
   }
@@ -152,6 +148,30 @@ export class MicroFeedbackCalloutBase extends React.Component<IMicroFeedbackProp
       >
         {children}
       </Callout>
+    );
+  };
+}
+
+// class for stack
+export class MicroFeedbackStackBase extends React.Component<IMicroFeedbackProps, IMicroFeedbackState> {
+  constructor(props: IMicroFeedbackProps) {
+    super(props);
+  }
+
+  public render() {
+    return <MicroFeedbackBase {...this.props} renderFollowupContainer={this._renderFollowupContainer} />;
+  }
+
+  private _renderFollowupContainer = (
+    children: JSX.Element,
+    classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
+    targetElement: HTMLDivElement | null,
+    onCalloutDismiss: () => void
+  ): JSX.Element => {
+    return (
+      <Stack className={classNames.followUpContainer} role="alertdialog" gap={0}>
+        {children}
+      </Stack>
     );
   };
 }
