@@ -2,6 +2,9 @@ import * as React from 'react';
 import { IRefObject, IRectangle, IRenderFunction } from '../../Utilities';
 import { List } from './List';
 
+/**
+ * {@docCategory List}
+ */
 export const ScrollToMode = {
   /**
    * Does not make any consideration to where in the viewport the item should align to.
@@ -21,8 +24,14 @@ export const ScrollToMode = {
   center: 3 as 3
 };
 
+/**
+ * {@docCategory List}
+ */
 export type ScrollToMode = typeof ScrollToMode[keyof typeof ScrollToMode];
 
+/**
+ * {@docCategory List}
+ */
 export interface IList {
   /**
    * Force the component to update.
@@ -49,7 +58,10 @@ export interface IList {
   getStartItemIndexInView: () => number;
 }
 
-export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> {
+/**
+ * {@docCategory List}
+ */
+export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTMLDivElement> {
   /**
    * Optional callback to access the IList interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -60,7 +72,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
   className?: string;
 
   /** Items to render. */
-  items?: any[];
+  items?: T[];
 
   /**
    * Method to call when trying to render an item.
@@ -68,7 +80,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * @param index - The index of the cell being rendered.
    * @param isScrolling - True if the list is being scrolled. May be useful for rendering a placeholder if your cells are complex.
    */
-  onRenderCell?: (item?: any, index?: number, isScrolling?: boolean) => React.ReactNode;
+  onRenderCell?: (item?: T, index?: number, isScrolling?: boolean) => React.ReactNode;
 
   /**
    * Optional callback invoked when List rendering completed.
@@ -78,16 +90,16 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * To track individual page Add / Remove use onPageAdded / onPageRemoved instead.
    * @param pages - The current array of pages in the List.
    */
-  onPagesUpdated?: (pages: IPage[]) => void;
+  onPagesUpdated?: (pages: IPage<T>[]) => void;
 
   /** Optional callback for monitoring when a page is added. */
-  onPageAdded?: (page: IPage) => void;
+  onPageAdded?: (page: IPage<T>) => void;
 
   /** Optional callback for monitoring when a page is removed. */
-  onPageRemoved?: (page: IPage) => void;
+  onPageRemoved?: (page: IPage<T>) => void;
 
   /** Optional callback to get the item key, to be used on render. */
-  getKey?: (item: any, index?: number) => string;
+  getKey?: (item: T, index?: number) => string;
 
   /**
    * Called by the list to get the specification for a page.
@@ -116,7 +128,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * Method called by the list to derive the page style object. For spacer pages, the list will derive
    * the height and passed in heights will be ignored.
    */
-  getPageStyle?: (page: IPage) => any;
+  getPageStyle?: (page: IPage<T>) => any;
 
   /**
    * In addition to the visible window, how many windowHeights should we render ahead.
@@ -149,7 +161,7 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
    * The default implementation will virtualize when this callback is not provided.
    */
-  onShouldVirtualize?: (props: IListProps) => boolean;
+  onShouldVirtualize?: (props: IListProps<T>) => boolean;
 
   /**
    * The role to assign to the list root element.
@@ -161,12 +173,15 @@ export interface IListProps extends React.HTMLAttributes<List | HTMLDivElement> 
    * Called when the List will render a page.
    * Override this to control how cells are rendered within a page.
    */
-  onRenderPage?: (pageProps: IPageProps, defaultRender?: IRenderFunction<IPageProps>) => React.ReactNode;
+  onRenderPage?: (pageProps: IPageProps<T>, defaultRender?: IRenderFunction<IPageProps<T>>) => React.ReactNode;
 }
 
-export interface IPage {
+/**
+ * {@docCategory List}
+ */
+export interface IPage<T = any> {
   key: string;
-  items: any[] | undefined;
+  items: T[] | undefined;
   startIndex: number;
   itemCount: number;
   style: React.CSSProperties;
@@ -176,7 +191,10 @@ export interface IPage {
   isSpacer?: boolean;
 }
 
-export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
+/**
+ * {@docCategory List}
+ */
+export interface IPageProps<T = any> extends React.HTMLAttributes<HTMLDivElement>, React.ClassAttributes<HTMLDivElement> {
   /**
    * The role being assigned to the rendered page element by the list.
    */
@@ -184,9 +202,12 @@ export interface IPageProps extends React.HTMLAttributes<HTMLDivElement>, React.
   /**
    * The allocation data for the page.
    */
-  page: IPage;
+  page: IPage<T>;
 }
 
+/**
+ * {@docCategory List}
+ */
 export interface IPageSpecification {
   /**
    * The number of items to allocate to the page.

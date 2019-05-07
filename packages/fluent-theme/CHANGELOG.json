@@ -2,6 +2,172 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.7",
+      "tag": "@uifabric/fluent-theme_v0.16.7",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": " Use new getFocusStyle signature",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "376e3c909728320b23dfdf60dd581f712064763a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.1` to `^6.47.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.6",
+      "tag": "@uifabric/fluent-theme_v0.16.6",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "CommandBarButton: Update expanded and expanded hover color",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "65a16420e0b71c7cf47f2bb3f7ec774795650a9d"
+          },
+          {
+            "comment": "Fix selector for ms-Button-icon in CommandBarButton",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "ceb458fbe637d9684a0464362f317a62587259e3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.3` to `^6.168.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.5",
+      "tag": "@uifabric/fluent-theme_v0.16.5",
+      "date": "Mon, 22 Apr 2019 12:32:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Fluent styles for CommandBar and CommandBarButton",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "7c03154e750f1f6581fd4ea7bd66686d79e6c373"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.46.0` to `^6.46.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.167.2` to `^6.167.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.4",
+      "tag": "@uifabric/fluent-theme_v0.16.4",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.0` to `^6.14.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.164.0` to `^6.164.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.3",
+      "tag": "@uifabric/fluent-theme_v0.16.3",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IconButton style fixes and removing the SwatchColorPicker styles.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "0c04b004f69676a2a0aba9219d76caf98961dd84"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.1 <7.0.0` to `>=6.16.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.45.0 <7.0.0` to `>=6.45.1 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.161.0 <7.0.0` to `>=6.162.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.2",
+      "tag": "@uifabric/fluent-theme_v0.16.2",
+      "date": "Tue, 19 Mar 2019 12:36:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "2db50f202254e0222e7c7979154162a46df45f21"
+          },
+          {
+            "comment": "Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "c55e05bd509fa16a87d31cec0627a101507c84a0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.1",
+      "tag": "@uifabric/fluent-theme_v0.16.1",
+      "date": "Fri, 15 Mar 2019 12:34:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Breadcrumb: fixed last-child styling",
+            "author": "Xi Huang <dayumikoda@gmail.com>",
+            "commit": "e64f3beede5328eb553dac20ced49170e1227892"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `>=6.156.0 <7.0.0` to `>=6.157.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.0",
       "tag": "@uifabric/fluent-theme_v0.16.0",
       "date": "Wed, 27 Feb 2019 01:28:58 GMT",

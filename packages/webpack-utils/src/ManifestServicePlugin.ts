@@ -2,7 +2,7 @@ import * as fs from 'fs';
 import * as path from 'path';
 import * as webpack from 'webpack';
 
-export interface IManifestServicePluginOptionss {
+export interface IManifestServicePluginOptions {
   /** Name of manifest to write output to */
   manifestName?: string;
 }
@@ -12,12 +12,12 @@ export interface IManifestServicePluginOptionss {
  */
 class ManifestServicePlugin {
   private moduleRequestMap: { [request: string]: string };
-  private options: IManifestServicePluginOptionss;
+  private options: IManifestServicePluginOptions;
 
-  constructor(options?: IManifestServicePluginOptionss) {
+  constructor(options?: IManifestServicePluginOptions) {
     this.moduleRequestMap = {};
 
-    const baseOptions: IManifestServicePluginOptionss = {
+    const baseOptions: IManifestServicePluginOptions = {
       manifestName: 'manifest'
     };
     this.options = { ...baseOptions, ...options };

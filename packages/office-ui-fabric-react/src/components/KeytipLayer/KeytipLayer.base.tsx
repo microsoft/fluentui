@@ -35,6 +35,7 @@ const getClassNames = classNamesFunction<IKeytipLayerStyleProps, IKeytipLayerSty
 
 /**
  * A layer that holds all keytip items
+ * {@docCategory Keytips}
  */
 export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLayerState> {
   public static defaultProps: IKeytipLayerProps = {
@@ -447,6 +448,16 @@ export class KeytipLayerBase extends BaseComponent<IKeytipLayerProps, IKeytipLay
     // Add the keytip to the queue to show later
     if (this._keytipTree.isCurrentKeytipParent(keytipProps)) {
       this._addKeytipToQueue(sequencesToID(keytipProps.keySequences));
+      // Check to make sure that child of currentKeytip is successfully added to currentKeytip's children and update it if not
+      // Note: Added this condition because KeytipTree.addNode was not always reflecting updates made to a parent node in currentKeytip
+      // when that parent is the currentKeytip
+      if (
+        this._keytipTree.currentKeytip &&
+        this._keytipTree.currentKeytip.hasDynamicChildren &&
+        this._keytipTree.currentKeytip.children.indexOf(keytipProps.id) < 0
+      ) {
+        this._keytipTree.currentKeytip = this._keytipTree.getNode(this._keytipTree.currentKeytip.id);
+      }
     }
 
     if (this._newCurrentKeytipSequences && arraysEqual(keytipProps.keySequences, this._newCurrentKeytipSequences)) {

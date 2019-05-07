@@ -1,4 +1,5 @@
-import { BaseComponent, IRenderComponent, mergeAriaAttributeValues } from '../../Utilities';
+import * as React from 'react';
+import { IRenderComponent, mergeAriaAttributeValues } from '../../Utilities';
 import { IKeytipDataProps } from './KeytipData.types';
 import { IKeytipProps } from '../../Keytip';
 import { KeytipManager } from '../../utilities/keytips/KeytipManager';
@@ -6,8 +7,9 @@ import { mergeOverflows, sequencesToID, getAriaDescribedBy } from '../../utiliti
 
 /**
  * A small element to help the target component correctly read out its aria-describedby for its Keytip
+ * {@docCategory Keytips}
  */
-export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponent<{}>, {}> {
+export class KeytipData extends React.Component<IKeytipDataProps & IRenderComponent<{}>, {}> {
   private _uniqueId: string;
   private _keytipManager: KeytipManager = KeytipManager.getInstance();
 
@@ -46,8 +48,8 @@ export class KeytipData extends BaseComponent<IKeytipDataProps & IRenderComponen
 
   /**
    * Gets the aria- and data- attributes to attach to the component
-   * @param keytipProps
-   * @param describedByPrepend
+   * @param keytipProps - props for Keytip
+   * @param describedByPrepend - ariaDescribedBy value to prepend
    */
   private _getKtpAttrs(keytipProps: IKeytipProps, describedByPrepend?: string): any {
     if (keytipProps) {

@@ -7,6 +7,9 @@ import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardActionsStyleProps, IDocumentCardActionsStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardActionsBase extends BaseComponent<IDocumentCardActionsProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardActionsStyles>;
 

@@ -1,95 +1,99 @@
 import * as React from 'react';
 
-/* tslint:disable:no-string-literal */
-
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import './FocusTrapZone.Box.Example.scss';
 
 interface IFocusTrapComponentProps {
-  name: string;
+  zoneNumber: number;
   isActive: boolean;
-  setIsActive: (name: string, isActive: boolean) => void;
+  setIsActive: (zoneNumber: number, isActive: boolean) => void;
 }
 
-interface IFocusTrapComponentState {}
-
-class FocusTrapComponent extends React.Component<IFocusTrapComponentProps, IFocusTrapComponentState> {
+class FocusTrapComponent extends React.Component<IFocusTrapComponentProps> {
   public render() {
-    const contents = (
-      <div className="ms-FocusTrapComponent">
-        <DefaultButton onClick={this._onStringButtonClicked} text={this.props.name} />
-        <Toggle
-          defaultChecked={this.props.isActive}
-          onChange={this._onFocusTrapZoneToggleChanged}
-          label="Focus Trap Zone"
-          onText="On"
-          offText="Off"
-        />
-        {this.props.children}
-      </div>
-    );
+    const { isActive, zoneNumber, children } = this.props;
 
-    if (this.props.isActive) {
-      return <FocusTrapZone forceFocusInsideTrap={false}>{contents}</FocusTrapZone>;
-    }
-    return contents;
+    return (
+      <FocusTrapZone disabled={!isActive} forceFocusInsideTrap={false}>
+        <Stack
+          horizontalAlign="start"
+          tokens={{ childrenGap: 10 }}
+          styles={{
+            root: { border: `2px solid ${isActive ? '#ababab' : 'transparent'}`, padding: 10 }
+          }}
+        >
+          <Toggle
+            checked={isActive}
+            onChange={this._onFocusTrapZoneToggleChanged}
+            label={'Enable trap zone ' + zoneNumber}
+            onText="On (toggle to exit)"
+            offText="Off"
+            styles={{
+              // Set a width on these toggles in the horizontal zone to prevent jumping when enabled
+              root: zoneNumber >= 2 && zoneNumber <= 4 && { width: 200 }
+            }}
+          />
+          <DefaultButton onClick={this._onStringButtonClicked} text={`Zone ${zoneNumber} button`} />
+          {children}
+        </Stack>
+      </FocusTrapZone>
+    );
   }
 
   private _onStringButtonClicked = (): void => {
-    console.log(this.props.name);
+    alert(`Button ${this.props.zoneNumber} clicked`);
   };
 
   private _onFocusTrapZoneToggleChanged = (ev: React.MouseEvent<HTMLElement>, isChecked: boolean): void => {
-    this.props.setIsActive(this.props.name, isChecked);
+    this.props.setIsActive(this.props.zoneNumber, isChecked);
   };
 }
 
 export interface IFocusTrapZoneNestedExampleState {
-  stateMap: {
-    [key: string]: boolean;
-  };
+  activeStates: { [key: number]: boolean };
 }
 
-const NAMES: string[] = ['One', 'Two', 'Three', 'Four', 'Five'];
-
-export default class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
-  constructor(props: {}) {
-    super(props);
-
-    this.state = {
-      stateMap: {}
-    };
-  }
+export class FocusTrapZoneNestedExample extends React.Component<{}, IFocusTrapZoneNestedExampleState> {
+  public state: IFocusTrapZoneNestedExampleState = { activeStates: {} };
 
   public render() {
-    const { stateMap } = this.state;
+    const { activeStates } = this.state;
 
     return (
       <div>
-        <FocusTrapComponent name={'One'} isActive={!!stateMap['One']} setIsActive={this._setIsActive}>
-          <FocusTrapComponent name={'Two'} isActive={!!stateMap['Two']} setIsActive={this._setIsActive}>
-            <FocusTrapComponent name={'Three'} isActive={!!stateMap['Three']} setIsActive={this._setIsActive} />
-            <FocusTrapComponent name={'Four'} isActive={!!stateMap['Four']} setIsActive={this._setIsActive} />
+        <DefaultButton onClick={this._randomize} styles={{ root: { marginBottom: 10 } }}>
+          Randomize
+        </DefaultButton>
+
+        <FocusTrapComponent zoneNumber={1} isActive={!!activeStates[1]} setIsActive={this._setIsActive}>
+          <FocusTrapComponent zoneNumber={2} isActive={!!activeStates[2]} setIsActive={this._setIsActive}>
+            <FocusTrapComponent zoneNumber={3} isActive={!!activeStates[3]} setIsActive={this._setIsActive} />
+            <FocusTrapComponent zoneNumber={4} isActive={!!activeStates[4]} setIsActive={this._setIsActive} />
           </FocusTrapComponent>
-          <FocusTrapComponent name={'Five'} isActive={!!stateMap['Five']} setIsActive={this._setIsActive} />
+          <FocusTrapComponent zoneNumber={5} isActive={!!activeStates[5]} setIsActive={this._setIsActive} />
         </FocusTrapComponent>
-        <DefaultButton onClick={this._randomize}>Randomize</DefaultButton>
       </div>
     );
   }
 
-  private _setIsActive = (name: string, isActive: boolean): void => {
-    this.state.stateMap[name] = isActive;
-    this.forceUpdate();
+  private _setIsActive = (zoneNumber: number, isActive: boolean): void => {
+    const { activeStates } = this.state;
+    this.setState({ activeStates: { ...activeStates, [zoneNumber]: isActive } });
   };
 
+  // This randomize example is exposing a quirk in focus stack behavior.
+  // For the randomize example, components render from the bottom up with all of the new "activeStates" simultaneously set.
+  // The most recently active item in the focusStack ends up being the highest parent, which is the reverse order focus
+  // trap zones would normally be put on the focusStack. That means children aren't capturing focus as one would normally
+  // expect when toggling the FTZ's individually. This would also be an issue if anyone ever rendered multiple nested and enabled
+  //  FocusTrapZones simultaneously.
   private _randomize = (): void => {
-    NAMES.forEach(name => {
-      this.state.stateMap[name] = Math.random() >= 0.5;
+    const activeStates: IFocusTrapZoneNestedExampleState['activeStates'] = {};
+    [1, 2, 3, 4, 5].forEach(zoneNumber => {
+      activeStates[zoneNumber] = Math.random() >= 0.5;
     });
-
-    this.forceUpdate();
+    this.setState({ activeStates });
   };
 }

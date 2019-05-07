@@ -1,4 +1,3 @@
-// @codepen
 import * as React from 'react';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
@@ -104,8 +103,17 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       }
     };
 
+    const tokens = {
+      sectionStack: {
+        childrenGap: 10
+      },
+      configureStack: {
+        childrenGap: 20
+      }
+    };
+
     return (
-      <Stack gap={10}>
+      <Stack tokens={tokens.sectionStack}>
         <Stack horizontal disableShrink>
           <Stack.Item grow>
             <Stack>
@@ -125,7 +133,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
             </Stack>
           </Stack.Item>
           <Stack.Item grow>
-            <Stack horizontal disableShrink gap={20}>
+            <Stack horizontal disableShrink tokens={tokens.configureStack}>
               <Stack>
                 <Checkbox label="Wrap items" onChange={this._onWrapChange} styles={{ root: { marginBottom: 10 } }} />
                 <Checkbox label="Shrink items" onChange={this._onShrinkChange} />
@@ -145,7 +153,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal disableShrink gap={20}>
+        <Stack horizontal disableShrink tokens={tokens.configureStack}>
           <Stack.Item grow>
             <Stack>
               <Slider
@@ -214,7 +222,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal disableShrink gap={20} verticalAlign="end">
+        <Stack horizontal disableShrink tokens={tokens.configureStack} verticalAlign="end">
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -252,7 +260,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
           horizontal
           wrap={wrap}
           disableShrink={disableShrink}
-          gap={rowGap + ' ' + columnGap}
+          tokens={{ childrenGap: rowGap + ' ' + columnGap }}
           padding={`${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`}
           horizontalAlign={horizontalAlignment}
           verticalAlign={verticalAlignment}

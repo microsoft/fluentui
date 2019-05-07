@@ -1,59 +1,68 @@
 import { IDemoPageProps } from './DemoPage.types';
-import { ComponentPage, ExampleCard, PropertiesTableSet, PageMarkdown, FeedbackList } from '@uifabric/example-app-base';
+import {
+  ComponentPage,
+  ExampleCard,
+  ApiReferencesTableSet,
+  PropertiesTableSet,
+  PageMarkdown,
+  FeedbackList,
+  Highlight
+} from '@uifabric/example-app-base';
 import * as React from 'react';
-import { ComponentStatus } from '../ComponentStatus/ComponentStatus';
 
-export const DemoPage: React.StatelessComponent<IDemoPageProps> = componentPageProps => {
+export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps => {
+  const {
+    implementationExamples,
+    exampleKnobs,
+    examples,
+    propertiesTablesSources,
+    overview,
+    bestPractices,
+    dos,
+    donts,
+    // This is unused but has to be pulled out because ComponentPage has a prop with the same name and different type
+    componentStatus,
+    // Passing the extra props to ComponentPage like this helps to keep the prop names in sync
+    ...componentPageProps
+  } = demoPageProps;
   return (
     <ComponentPage
-      title={componentPageProps.title}
-      componentName={componentPageProps.componentName}
-      componentUrl={componentPageProps.componentUrl}
+      {...componentPageProps}
       implementationExampleCards={
-        componentPageProps.implementationExamples ? (
+        implementationExamples && (
           <div>
-            {componentPageProps.implementationExamples.map(example => (
-              <ExampleCard title={example.title} code={example.code} key={example.title}>
+            {implementationExamples.map(example => (
+              <ExampleCard title={example.title} code={example.code} key={example.title} codeHighlighter={Highlight}>
                 {example.view}
               </ExampleCard>
             ))}
           </div>
-        ) : (
-          undefined
         )
       }
-      related={componentPageProps.related || undefined}
       exampleCards={
-        componentPageProps.exampleKnobs || componentPageProps.examples ? (
+        (exampleKnobs || examples) && (
           <div>
-            {componentPageProps.exampleKnobs}
-            {componentPageProps.examples &&
-              componentPageProps.examples.map(example => (
-                <ExampleCard
-                  title={example.title}
-                  code={example.code}
-                  key={example.title}
-                  codepenJS={example.codepenJS}
-                  isScrollable={example.isScrollable}
-                >
-                  {example.view}
-                </ExampleCard>
-              ))}
+            {exampleKnobs}
+            {examples &&
+              examples.map(example => {
+                const { view, ...cardProps } = example;
+                return (
+                  <ExampleCard key={cardProps.title} {...cardProps}>
+                    {view}
+                  </ExampleCard>
+                );
+              })}
           </div>
-        ) : (
-          undefined
         )
       }
       propertiesTables={
-        componentPageProps.propertiesTablesSources && <PropertiesTableSet sources={componentPageProps.propertiesTablesSources} />
+        (componentPageProps.jsonDocs && <ApiReferencesTableSet jsonDocs={componentPageProps.jsonDocs} />) ||
+        (propertiesTablesSources && <PropertiesTableSet sources={propertiesTablesSources} />)
       }
-      overview={componentPageProps.overview ? <PageMarkdown>{componentPageProps.overview}</PageMarkdown> : undefined}
-      bestPractices={componentPageProps.bestPractices ? <PageMarkdown>{componentPageProps.bestPractices}</PageMarkdown> : undefined}
-      dos={componentPageProps.dos ? <PageMarkdown>{componentPageProps.dos}</PageMarkdown> : undefined}
-      donts={componentPageProps.donts ? <PageMarkdown>{componentPageProps.donts}</PageMarkdown> : undefined}
-      isHeaderVisible={componentPageProps.isHeaderVisible}
-      componentStatus={componentPageProps.componentStatus ? <ComponentStatus {...componentPageProps.componentStatus} /> : undefined}
-      isFeedbackVisible={componentPageProps.isFeedbackVisible}
+      overview={overview ? <PageMarkdown>{overview}</PageMarkdown> : undefined}
+      bestPractices={bestPractices ? <PageMarkdown>{bestPractices}</PageMarkdown> : undefined}
+      dos={dos ? <PageMarkdown>{dos}</PageMarkdown> : undefined}
+      donts={donts ? <PageMarkdown>{donts}</PageMarkdown> : undefined}
       feedback={componentPageProps.isFeedbackVisible ? <FeedbackList title={componentPageProps.title} /> : undefined}
     />
   );

@@ -1,11 +1,11 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
-import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
-import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
+import { TooltipHost, DirectionalHint } from 'office-ui-fabric-react/lib/Tooltip';
 import { IOverflowSetItemProps, OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
 
-export class OverflowSetVerticalExample extends BaseComponent<any, any> {
+const noOp = () => undefined;
+
+export class OverflowSetVerticalExample extends React.PureComponent {
   public render(): JSX.Element {
     return (
       <OverflowSet
@@ -16,25 +16,19 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
             icon: 'Add',
             name: 'Link 1',
             ariaLabel: 'New. Use left and right arrow keys to navigate',
-            onClick: () => {
-              return;
-            }
+            onClick: noOp
           },
           {
             key: 'item2',
             icon: 'Upload',
             name: 'Link 2',
-            onClick: () => {
-              return;
-            }
+            onClick: noOp
           },
           {
             key: 'item3',
             icon: 'Share',
             name: 'Link 3',
-            onClick: () => {
-              return;
-            }
+            onClick: noOp
           }
         ]}
         overflowItems={[
@@ -42,17 +36,13 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
             key: 'item4',
             icon: 'Mail',
             name: 'Overflow Link 1',
-            onClick: () => {
-              return;
-            }
+            onClick: noOp
           },
           {
             key: 'item5',
             icon: 'Calendar',
             name: 'Overflow Link 2',
-            onClick: () => {
-              return;
-            }
+            onClick: noOp
           }
         ]}
         onRenderOverflowButton={this._onRenderOverflowButton}
@@ -61,15 +51,15 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
     );
   }
 
-  private _onRenderItem(item: IOverflowSetItemProps): JSX.Element {
+  private _onRenderItem = (item: IOverflowSetItemProps): JSX.Element => {
     return (
       <TooltipHost content={item.name} calloutProps={{ directionalHint: DirectionalHint.rightCenter, beakWidth: 12 }}>
         <CommandBarButton styles={{ root: { padding: '10px' } }} iconProps={{ iconName: item.icon }} onClick={item.onClick} />
       </TooltipHost>
     );
-  }
+  };
 
-  private _onRenderOverflowButton(overflowItems: any[] | undefined): JSX.Element {
+  private _onRenderOverflowButton = (overflowItems: any[] | undefined): JSX.Element => {
     return (
       <CommandBarButton
         styles={{ root: { padding: '10px' }, menuIcon: { fontSize: '16px' } }}
@@ -77,5 +67,5 @@ export class OverflowSetVerticalExample extends BaseComponent<any, any> {
         menuProps={{ items: overflowItems! }}
       />
     );
-  }
+  };
 }

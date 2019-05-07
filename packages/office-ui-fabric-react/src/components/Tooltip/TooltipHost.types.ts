@@ -6,6 +6,9 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipHost {
   /**
    * Shows the tooltip.
@@ -18,6 +21,9 @@ export interface ITooltipHost {
   dismiss: () => void;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export enum TooltipOverflowMode {
   /** Only show tooltip if parent DOM element is overflowing */
   Parent,
@@ -28,6 +34,7 @@ export enum TooltipOverflowMode {
 
 /**
  * Tooltip component props.
+ * {@docCategory Tooltip}
  */
 export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement | TooltipHostBase> {
   /**
@@ -50,9 +57,9 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   closeDelay?: number;
 
   /**
-   * String to be passed to the tooltip
+   *  Content to be passed to the tooltip
    */
-  content?: string;
+  content?: string | JSX.Element | JSX.Element[];
 
   /**
    * Length of delay
@@ -109,6 +116,9 @@ export interface ITooltipHostProps extends React.HTMLAttributes<HTMLDivElement |
   onTooltipToggle?(isTooltipVisible: boolean): void;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipHostStyleProps {
   /**
    * Accept theme prop.
@@ -121,6 +131,9 @@ export interface ITooltipHostStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory Tooltip}
+ */
 export interface ITooltipHostStyles {
   /**
    * Style for the host wrapper element.

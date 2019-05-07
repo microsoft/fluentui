@@ -191,6 +191,20 @@ describe('KeytipTree', () => {
       expect(nodeB.disabled).toEqual(true);
       expect(nodeB.hasDynamicChildren).toEqual(true);
     });
+
+    it('correctly updates node when keytip sequence changes', () => {
+      keytipTree.addNode(keytipPropsC, uniqueIdC);
+      keytipTree.addNode(keytipPropsB, uniqueIdB);
+      const updatedKeytipId = KTP_FULL_PREFIX + 'c' + KTP_SEPARATOR + 'g';
+      const updatedKeytipSequence = ['c', 'g'];
+      const updatedKeytipProps = createKeytipProps(updatedKeytipSequence);
+      keytipTree.updateNode(updatedKeytipProps, uniqueIdB);
+      const updatedNode = keytipTree.getNode(updatedKeytipId)!;
+      const updatedNodeParent = keytipTree.getNode(keytipIdC)!;
+      expect(updatedNode.id).toEqual(updatedKeytipId);
+      expect(updatedNode.keySequences).toEqual(updatedKeytipSequence);
+      expect(updatedNodeParent.children).toContain(updatedNode.id);
+    });
   });
 
   describe('removeNode', () => {

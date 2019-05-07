@@ -1,0 +1,19 @@
+{
+  "name": "@uifabric/prettier-rules",
+  "entries": [
+    {
+      "version": "1.0.1",
+      "tag": "@uifabric/prettier-rules_v1.0.1",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update package description",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "241811c66c35075032d7a35556d568c45f936682"
+          }
+        ]
+      }
+    }
+  ]
+}

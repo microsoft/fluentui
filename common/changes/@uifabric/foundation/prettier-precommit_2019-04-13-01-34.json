@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "Run prettier on all files",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "elcraig@microsoft.com"
+}

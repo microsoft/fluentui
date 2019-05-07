@@ -18,10 +18,9 @@ import { PanelScrollExample } from './examples/Panel.Scroll.Example';
 import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
-import { PanelStatus } from './Panel.checklist';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
-const PanelSmallRightExampleCodepen = require('!raw-loader!office-ui-fabric-react/lib/codepen/components/Panel/Panel.SmallRight.Example.Codepen.txt') as string;
+const PanelSmallRightExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallLeftExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallLeft.Example.tsx') as string;
 const PanelSmallFluidExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallFluid.Example.tsx') as string;
 const PanelMediumExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Medium.Example.tsx') as string;
@@ -33,6 +32,7 @@ const PanelCustomLeftExampleCode = require('!raw-loader!office-ui-fabric-react/s
 const PanelHiddenOnDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.HiddenOnDismiss.Example.tsx') as string;
 const PanelLightDismissExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismiss.Example.tsx') as string;
 const PanelLightDismissCustomExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
+const PanelLightDismissCustomExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.LightDismissCustom.Example.tsx') as string;
 const PanelNonModalExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.NonModal.Example.tsx') as string;
 const PanelFooterExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Footer.Example.tsx') as string;
 const PanelNavigationExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.Navigation.Example.tsx') as string;
@@ -44,7 +44,6 @@ export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
   componentName: 'Panel',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
-  componentStatus: PanelStatus,
   examples: [
     {
       title: 'Panel - Small Panel, Anchored Right, Fixed Width',
@@ -105,6 +104,7 @@ export const PanelPageProps: IDocPageProps = {
     {
       title: 'Panel - Custom Light Dismiss',
       code: PanelLightDismissCustomExampleCode,
+      codepenJS: PanelLightDismissCustomExampleCodepen,
       view: <PanelLightDismissCustomExample />
     },
     {
@@ -138,7 +138,6 @@ export const PanelPageProps: IDocPageProps = {
       view: <PanelScrollExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),

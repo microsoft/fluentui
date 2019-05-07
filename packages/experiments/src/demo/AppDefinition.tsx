@@ -17,12 +17,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/button'
         },
         {
-          component: require<any>('../components/Card/CardPage').CardPage,
-          key: 'Card',
-          name: 'Card',
-          url: '#/examples/card'
-        },
-        {
           component: require<any>('../components/CollapsibleSection/CollapsibleSectionPage').CollapsibleSectionPage,
           key: 'CollapsibleSection',
           name: 'CollapsibleSection',
@@ -53,6 +47,12 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/layoutgroup'
         },
         {
+          component: require<any>('../components/MicroFeedback/MicroFeedbackPage').MicroFeedbackPage,
+          key: 'MicroFeedback',
+          name: 'MicroFeedback',
+          url: '#/examples/microfeedback'
+        },
+        {
           component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
           key: 'Pagination',
           name: 'Pagination',
@@ -69,12 +69,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Persona',
           name: 'Persona',
           url: '#/examples/persona'
-        },
-        {
-          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
-          key: 'Separator',
-          name: 'Separator',
-          url: '#/examples/separator'
         },
         {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,

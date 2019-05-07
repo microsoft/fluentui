@@ -14,18 +14,18 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build"
+    "build": "node ../../scripts/just.js build",
+    "code-style": "node ../../scripts/just.js code-style"
   },
   "disabledTasks": [
     "copy",
     "webpack",
-    "build-codepen-examples",
     "verify-api-extractor"
   ],
   "devDependencies": {
     "@types/jest": "23.0.0",
-    "@uifabric/prettier-rules": ">=1.0.0 <2.0.0",
-    "@uifabric/tslint-rules": ">=1.0.0 <2.0.0"
+    "@uifabric/prettier-rules": "^1.0.1",
+    "@uifabric/tslint-rules": "^1.0.1"
   },
   "dependencies": {
     "tslib": "^1.7.1"

@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
@@ -24,13 +22,13 @@ const fileIcons: { name: string }[] = [
   { name: 'xsn' }
 ];
 
-const ITEMS_COUNT = 500;
+const ITEMS_COUNT = 200;
 const INTERVAL_DELAY = 2500;
 
 let _items: IExampleItem[];
 
 export interface IShimmerApplicationExampleState {
-  items?: IExampleItem[];
+  items: IExampleItem[]; // DetailsList `items` prop is required so it expects at least an empty array.
   columns?: IColumn[];
   isDataLoaded?: boolean;
 }
@@ -65,7 +63,7 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
         <div>
           <ShimmeredDetailsList
             setKey="items"
-            items={items!}
+            items={items}
             columns={columns}
             selectionMode={SelectionMode.none}
             onRenderItemColumn={this._onRenderItemColumn}

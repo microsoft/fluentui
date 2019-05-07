@@ -162,7 +162,10 @@ describe('Dropdown', () => {
       const onChangeSpy = jest.fn();
 
       try {
-        ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />, container);
+        ReactDOM.render(
+          <Dropdown id="foo" label="testgroup" defaultSelectedKey="1" onChange={onChangeSpy} options={DEFAULT_OPTIONS} />,
+          container
+        );
         dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
         ReactTestUtils.Simulate.click(dropdownRoot);
@@ -171,6 +174,7 @@ describe('Dropdown', () => {
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
         expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2);
+        expect(onChangeSpy.mock.calls[0][0].target.id).toEqual('foo');
       }
     });
 
@@ -237,6 +241,24 @@ describe('Dropdown', () => {
       wrapper.update();
 
       expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
+    });
+
+    it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
+      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      let selectedKey = 0;
+      const dropdown = React.createRef<IDropdown>();
+
+      const wrapper = mount(<Dropdown componentRef={dropdown} options={options} selectedKey={selectedKey} />);
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
+
+      selectedKey = -1;
+      const newProps = { options, selectedKey };
+
+      wrapper.setProps(newProps);
+      wrapper.update();
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
     });
 
     it('does not issue the onChange callback when the selected item is not different', () => {
@@ -412,6 +434,24 @@ describe('Dropdown', () => {
       wrapper.update();
       state = (dropdown.current as DropdownBase).state.selectedIndices;
       expect(state).toEqual(selectedKeys);
+    });
+
+    it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
+      const options = [{ key: 0, text: 'item1' }, { key: 1, text: 'item2' }];
+      let selectedKeys = [0];
+      const dropdown = React.createRef<IDropdown>();
+
+      const wrapper = mount(<Dropdown componentRef={dropdown} options={options} selectedKeys={selectedKeys} multiSelect />);
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual(selectedKeys);
+
+      selectedKeys = [-1];
+      const newProps = { options, selectedKeys };
+
+      wrapper.setProps(newProps);
+      wrapper.update();
+
+      expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {

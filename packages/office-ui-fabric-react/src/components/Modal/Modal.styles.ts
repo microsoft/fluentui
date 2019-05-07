@@ -22,7 +22,9 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
     modalRectangleTop,
     theme,
     topOffsetFixed,
-    isModeless
+    isModeless,
+    layerClassName,
+    isDefaultDragHandle
   } = props;
   const { palette } = theme;
 
@@ -72,23 +74,44 @@ export const getStyles = (props: IModalStyleProps): IModalStyles => {
         hasBeenOpened && {
           top: modalRectangleTop
         },
+      isDefaultDragHandle && {
+        cursor: 'move'
+      },
       containerClassName
     ],
     scrollableContent: [
       classNames.scrollableContent,
       {
         overflowY: 'auto',
-        flexGrow: 1
+        flexGrow: 1,
+        maxHeight: '100vh',
+        selectors: {
+          ['@supports (-webkit-overflow-scrolling: touch)']: {
+            maxHeight: window.innerHeight
+          }
+        }
       },
       scrollableContentClassName
     ],
     layer: isModeless && [
+      layerClassName,
       classNames.layer,
       {
         position: 'static',
         width: 'unset',
         height: 'unset'
       }
-    ]
+    ],
+    keyboardMoveIconContainer: {
+      position: 'absolute',
+      display: 'flex',
+      justifyContent: 'center',
+      width: '100%',
+      padding: '3px 0px'
+    },
+    keyboardMoveIcon: {
+      fontSize: '24px',
+      width: '24px'
+    }
   };
 };

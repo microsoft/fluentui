@@ -15,9 +15,23 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-10"`,
-      src: `url('${baseUrl}fabric-icons-10-45ab7e58.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-10-1ca3e4a1.woff') format('woff')`
     },
     icons: {
+      HighlightMappedShapes: '\uF2A1',
+      TextCallout: '\uF2A2',
+      IconSetsFlag: '\uF2A4',
+      VisioLogo: '\uF2A7',
+      VisioLogoFill: '\uF2A8',
+      VisioDocument: '\uF2A9',
+      TimelineProgress: '\uF2AA',
+      TimelineDelivery: '\uF2AB',
+      Backlog: '\uF2AC',
+      TeamFavorite: '\uF2AD',
+      TaskGroup: '\uF2AE',
+      TaskGroupMirrored: '\uF2AF',
+      ScopeTemplate: '\uF2B0',
+      AssessmentGroupTemplate: '\uF2B1',
       NewTeamProject: '\uF2B2',
       CommentAdd: '\uF2B3',
       CommentNext: '\uF2B4',
@@ -103,21 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       CommentUrgent: '\uF307',
       Storyboard: '\uF308',
       DiffInline: '\uF309',
-      DiffSideBySide: '\uF30A',
-      ImageDiff: '\uF30B',
-      ImagePixel: '\uF30C',
-      FileBug: '\uF30D',
-      FileCode: '\uF30E',
-      FileComment: '\uF30F',
-      BusinessHoursSign: '\uF310',
-      FileImage: '\uF311',
-      FileSymlink: '\uF312',
-      AutoFillTemplate: '\uF313',
-      WorkItem: '\uF314',
-      WorkItemBug: '\uF315',
-      LogRemove: '\uF316',
-      ColumnOptions: '\uF317',
-      Packages: '\uF318'
+      DiffSideBySide: '\uF30A'
     }
   };
 

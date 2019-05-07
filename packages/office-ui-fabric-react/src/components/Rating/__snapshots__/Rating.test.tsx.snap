@@ -30,6 +30,9 @@ exports[`Rating Renders Rating correctly 1`] = `
         ms-FocusZone
         ms-Rating-focuszone
         ms-RatingStar-root--small
+        &:focus {
+          outline: none;
+        }
         {
           display: inline-block;
         }
@@ -315,10 +318,10 @@ exports[`Rating Renders Rating correctly 1`] = `
                 speak: none;
                 width: 100%;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
         >
-          
+          
         </i>
         <i
           className=
@@ -343,7 +346,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
           style={
             Object {
@@ -351,7 +354,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
           }
         >
-          
+          
         </i>
       </div>
     </button>
@@ -470,10 +473,10 @@ exports[`Rating Renders Rating correctly 1`] = `
                 speak: none;
                 width: 100%;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
         >
-          
+          
         </i>
         <i
           className=
@@ -498,7 +501,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
           style={
             Object {
@@ -506,7 +509,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
           }
         >
-          
+          
         </i>
       </div>
     </button>
@@ -625,10 +628,10 @@ exports[`Rating Renders Rating correctly 1`] = `
                 speak: none;
                 width: 100%;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
         >
-          
+          
         </i>
         <i
           className=
@@ -653,7 +656,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
           style={
             Object {
@@ -661,7 +664,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
           }
         >
-          
+          
         </i>
       </div>
     </button>
@@ -780,10 +783,10 @@ exports[`Rating Renders Rating correctly 1`] = `
                 speak: none;
                 width: 100%;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
         >
-          
+          
         </i>
         <i
           className=
@@ -808,7 +811,7 @@ exports[`Rating Renders Rating correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
-          data-icon-name="FavoriteStarFill"
+          data-icon-name="FavoriteStar"
           role="presentation"
           style={
             Object {
@@ -816,7 +819,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
           }
         >
-          
+          
         </i>
       </div>
     </button>

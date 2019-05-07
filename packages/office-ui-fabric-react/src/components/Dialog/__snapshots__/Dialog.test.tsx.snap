@@ -87,3 +87,100 @@ exports[`Dialog renders Dialog correctly 1`] = `
   </div>
 </div>
 `;
+
+exports[`Dialog renders Dialog with a jsx title 1`] = `
+<div
+  className=
+
+      {
+        flex-grow: 1;
+        overflow-y: hidden;
+      }
+>
+  <div
+    className=
+        ms-Dialog-header
+        {
+          box-sizing: border-box;
+          position: relative;
+          width: 100%;
+        }
+  >
+    <p
+      aria-level={2}
+      className=
+          ms-Dialog-title
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            color: #333333;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 21px;
+            font-weight: 100;
+            margin-bottom: 0;
+            margin-left: 0;
+            margin-right: 0;
+            margin-top: 0;
+            padding-bottom: 20px;
+            padding-left: 28px;
+            padding-right: 36px;
+            padding-top: 20px;
+          }
+      role="heading"
+    >
+      <div>
+        <span>
+          I am span 1
+        </span>
+        <span>
+          I am span 2
+        </span>
+      </div>
+    </p>
+    <div
+      className=
+
+          {
+            display: flex;
+            flex-direction: row;
+            flex-wrap: nowrap;
+            padding-bottom: 0;
+            padding-left: 0;
+            padding-right: 12px;
+            padding-top: 12px;
+            position: absolute;
+            right: 0;
+            top: 0;
+          }
+          & > * {
+            flex: 0 0 auto;
+          }
+    />
+  </div>
+  <div
+    className=
+        ms-Dialog-inner
+        {
+          padding-bottom: 20px;
+          padding-left: 28px;
+          padding-right: 28px;
+          padding-top: 0;
+        }
+  >
+    <div
+      className=
+          ms-Dialog-content
+          {
+            position: relative;
+            width: 100%;
+          }
+          & .ms-Button.ms-Button--compount {
+            margin-bottom: 20px;
+          }
+          &:last-child {
+            margin-bottom: 0;
+          }
+    />
+  </div>
+</div>
+`;

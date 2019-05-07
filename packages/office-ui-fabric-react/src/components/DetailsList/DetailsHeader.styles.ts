@@ -293,7 +293,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         selectors: {
           [HighContrastSelector]: {
             background: 'transparent',
-            '-ms-high-contrast-adjust': 'none'
+            MsHighContrastAdjust: 'none'
           }
         }
       }

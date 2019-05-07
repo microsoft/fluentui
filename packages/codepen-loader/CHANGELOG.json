@@ -1,0 +1,19 @@
+{
+  "name": "@uifabric/codepen-loader",
+  "entries": [
+    {
+      "version": "0.1.1",
+      "tag": "@uifabric/codepen-loader_v0.1.1",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add codepen webpack loader",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "faeffcb5cc3b937dd45edc0a4188eebd987b0048"
+          }
+        ]
+      }
+    }
+  ]
+}

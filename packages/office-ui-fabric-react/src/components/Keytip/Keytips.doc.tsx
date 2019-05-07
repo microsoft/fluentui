@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { KeytipStatus } from './Keytip.checklist';
 import { KeytipsBasicExample } from './examples/Keytips.Basic.Example';
 import { KeytipsButtonExample } from './examples/Keytips.Button.Example';
 import { KeytipsCommandBarExample } from './examples/Keytips.CommandBar.Example';
@@ -15,7 +14,6 @@ export const KeytipsPageProps: IDocPageProps = {
   title: 'Keytips',
   componentName: 'Keytips',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Keytips',
-  componentStatus: KeytipStatus,
   examples: [
     {
       title: 'Keytips on Buttons',
@@ -37,10 +35,6 @@ export const KeytipsPageProps: IDocPageProps = {
       code: KeytipsBasicCode,
       view: <KeytipsBasicExample />
     }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/Keytip.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/KeytipLayer/KeytipLayer.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Keytip/docs/KeytipOverview.md'),
   bestPractices: '',

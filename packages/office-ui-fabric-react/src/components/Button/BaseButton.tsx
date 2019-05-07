@@ -20,6 +20,9 @@ import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNa
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 
+/**
+ * {@docCategory Button}
+ */
 export interface IBaseButtonProps extends IButtonProps {
   baseClassName?: string;
   variantClassName?: string;
@@ -31,16 +34,20 @@ export interface IBaseButtonState {
 
 const TouchIdleDelay = 500; /* ms */
 
+/**
+ * {@docCategory Button}
+ */
 export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState> implements IButton {
   private get _isSplitButton(): boolean {
     return !!this.props.menuProps && !!this.props.onClick && this.props.split === true;
   }
 
   private get _isExpanded(): boolean {
+    const { menuProps } = this.state;
     if (this.props.persistMenu) {
-      return !this.state.menuProps!.hidden;
+      return !!menuProps && !menuProps.hidden;
     }
-    return !!this.state.menuProps;
+    return !!menuProps;
   }
 
   public static defaultProps: Partial<IBaseButtonProps> = {
@@ -73,8 +80,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._ariaDescriptionId = getId();
     let menuProps = null;
     if (props.persistMenu && props.menuProps) {
-      menuProps = props.menuProps;
-      menuProps.hidden = true;
+      // Clone props so we don't mutate them.
+      menuProps = { ...props.menuProps, hidden: true };
     }
     this.state = {
       menuProps: menuProps
@@ -114,7 +121,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          this._isMenuExpanded(),
+          this._isExpanded,
           this.props.split,
           !!allowDisabledFocus
         )
@@ -127,7 +134,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
           menuIconProps && menuIconProps.className,
           isPrimaryButtonDisabled!,
           checked!,
-          this._isMenuExpanded(),
+          this._isExpanded,
           this.props.split
         );
 
@@ -221,9 +228,12 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   }
 
   public componentDidUpdate(prevProps: IBaseButtonProps, prevState: IBaseButtonState) {
-    // If Button's menu was closed, run onAfterMenuDismiss
-    if (this.props.onAfterMenuDismiss && prevState.menuProps && !this.state.menuProps) {
-      this.props.onAfterMenuDismiss();
+    // If Button's menu was closed, run onAfterMenuDismiss. If the menu is being persisted
+    // this condition is tested by checking on a change on the menuProps hidden value.
+    if (this.props.onAfterMenuDismiss && prevState.menuProps) {
+      if (!this.state.menuProps || (this.props.persistMenu && !prevState.menuProps.hidden && this.state.menuProps.hidden)) {
+        this.props.onAfterMenuDismiss();
+      }
     }
   }
 
@@ -358,11 +368,6 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     return this.props.text !== null && (this.props.text !== undefined || typeof this.props.children === 'string');
   }
 
-  private _isMenuExpanded(): boolean {
-    const { menuProps } = this.state;
-    return !!menuProps && !menuProps.hidden;
-  }
-
   private _onRenderChildren = (): JSX.Element | null => {
     const { children } = this.props;
 
@@ -435,8 +440,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _dismissMenu = (): void => {
     let menuProps = null;
     if (this.props.persistMenu && this.state.menuProps) {
-      menuProps = this.state.menuProps;
-      menuProps.hidden = true;
+      // Create a new object to trigger componentDidUpdate
+      menuProps = { ...this.state.menuProps, hidden: true };
     }
     this.setState({ menuProps: menuProps });
   };
@@ -469,8 +474,8 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     let { keytipProps } = this.props;
 
     const classNames = getSplitButtonClassNames
-      ? getSplitButtonClassNames(!!disabled, !!this.state.menuProps, !!checked, !!allowDisabledFocus)
-      : styles && getBaseSplitButtonClassNames(styles!, !!disabled, !!this.state.menuProps, !!checked);
+      ? getSplitButtonClassNames(!!disabled, this._isExpanded, !!checked, !!allowDisabledFocus)
+      : styles && getBaseSplitButtonClassNames(styles!, !!disabled, this._isExpanded, !!checked);
 
     assign(buttonProps, {
       onClick: undefined,
@@ -658,6 +663,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this.props.onKeyDown(ev);
     }
 
+    const isUp = ev.which === KeyCodes.up;
+    const isDown = ev.which === KeyCodes.down;
+
     if (!ev.defaultPrevented && this._isValidMenuOpenKey(ev)) {
       const { onMenuClick } = this.props;
       if (onMenuClick) {
@@ -667,6 +675,23 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       this._onToggleMenu(false);
       ev.preventDefault();
       ev.stopPropagation();
+    }
+
+    if (!(ev.altKey || ev.metaKey) && (isUp || isDown)) {
+      this.setState(state => {
+        if (state.menuProps && !state.menuProps.shouldFocusOnMount) {
+          return { menuProps: { ...state.menuProps, shouldFocusOnMount: true } };
+        }
+        return state;
+      });
+
+      // This should be done in the setStateCallback but because preventDefault
+      // needs to be called, we have to evaluate the current state, even though
+      // it might not be 100% accurate;
+      if (this.state.menuProps && !this.state.menuProps.shouldFocusOnMount) {
+        ev.preventDefault();
+        ev.stopPropagation();
+      }
     }
   };
 

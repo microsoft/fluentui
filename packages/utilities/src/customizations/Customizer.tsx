@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { BaseComponent } from '../BaseComponent';
-import { IBaseProps } from '../BaseComponent.types';
-import { Customizations, ISettings, ISettingsFunction } from './Customizations';
+import { Customizations } from './Customizations';
 import { CustomizerContext, ICustomizerContext } from './CustomizerContext';
 import { mergeCustomizations } from './mergeCustomizations';
 import { ICustomizerProps } from './Customizer.types';
@@ -20,9 +18,7 @@ import { ICustomizerProps } from './Customizer.types';
  *
  * @public
  */
-export class Customizer extends BaseComponent<ICustomizerProps> {
-  private _changeCount = 0;
-
+export class Customizer extends React.Component<ICustomizerProps> {
   public componentDidMount(): void {
     Customizations.observe(this._onCustomizationChange);
   }

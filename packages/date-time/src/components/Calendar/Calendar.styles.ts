@@ -34,7 +34,7 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
       }
     ],
     goTodayButton: [
-      getFocusStyle(theme, -1, 'relative'),
+      getFocusStyle(theme, { inset: -1 }),
       {
         bottom: 0,
         color: palette.neutralPrimary,
@@ -58,6 +58,10 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
           },
           '&:active': {
             color: palette.themeDark
+          },
+          '&:disabled': {
+            color: palette.neutralTertiaryAlt,
+            pointerEvents: 'none'
           }
         }
       }

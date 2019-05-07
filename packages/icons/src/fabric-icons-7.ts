@@ -15,9 +15,15 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-7"`,
-      src: `url('${baseUrl}fabric-icons-7-36bda45d.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-7-bbebf62d.woff') format('woff')`
     },
     icons: {
+      FormLibraryMirrored: '\uEEBA',
+      ReportLibrary: '\uEEBB',
+      ReportLibraryMirrored: '\uEEBC',
+      ContactCard: '\uEEBD',
+      CustomList: '\uEEBE',
+      CustomListMirrored: '\uEEBF',
       IssueTracking: '\uEEC0',
       IssueTrackingMirrored: '\uEEC1',
       PictureLibrary: '\uEEC2',
@@ -46,6 +52,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Header2: '\uEF36',
       Header3: '\uEF37',
       Header4: '\uEF38',
+      RingerSolid: '\uEF3A',
       Eyedropper: '\uEF3C',
       MarketDown: '\uEF42',
       CalendarWorkWeek: '\uEF51',
@@ -110,14 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       PageArrowRight: '\uEFB8',
       PageRemove: '\uEFBA',
       Database: '\uEFC7',
-      CRMServices: '\uEFD2',
-      EditContact: '\uEFD3',
-      ConnectContacts: '\uEFD4',
-      AppIconDefaultAdd: '\uEFDA',
-      AppIconDefaultList: '\uEFDE',
-      ActivateOrders: '\uEFE0',
-      DeactivateOrders: '\uEFE1',
-      DocumentManagement: '\uEFFC'
+      DataManagementSettings: '\uEFC8'
     }
   };
 

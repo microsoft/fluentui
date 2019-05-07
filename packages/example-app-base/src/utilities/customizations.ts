@@ -2,7 +2,7 @@ import * as React from 'react';
 
 import { ICustomizations } from 'office-ui-fabric-react';
 
-export type IExampleCardCustomizations = {
+export interface IExampleCardCustomizations {
   /**
    * Theme title used in selectors shown to user.
    */
@@ -11,12 +11,14 @@ export type IExampleCardCustomizations = {
    * Associated customizations that will be applied to example card.
    */
   customizations: ICustomizations;
-};
+}
 
-export type IAppCustomizations = {
+export interface IAppCustomizations {
   exampleCardCustomizations?: IExampleCardCustomizations[];
-};
+  hideSchemes?: boolean;
+}
 
 export const AppCustomizationsContext = React.createContext<IAppCustomizations>({
-  exampleCardCustomizations: undefined
+  exampleCardCustomizations: undefined,
+  hideSchemes: false
 });

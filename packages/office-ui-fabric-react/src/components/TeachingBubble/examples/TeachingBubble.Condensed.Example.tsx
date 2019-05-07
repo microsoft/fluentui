@@ -7,12 +7,11 @@ export interface ITeachingBubbleCondensedExampleState {
 }
 
 export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachingBubbleCondensedExampleState> {
-  private _menuButtonElement: HTMLElement;
-
   public constructor(props: {}) {
     super(props);
 
     this._onDismiss = this._onDismiss.bind(this);
+    this._onShow = this._onShow.bind(this);
 
     this.state = {
       isTeachingBubbleVisible: false
@@ -24,13 +23,17 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
 
     return (
       <div className="ms-TeachingBubbleExample">
-        <span className="ms-TeachingBubbleBasicExample-buttonArea" ref={menuButton => (this._menuButtonElement = menuButton!)}>
-          <DefaultButton onClick={this._onDismiss} text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'} />
+        <span className="ms-TeachingBubbleBasicExample-buttonArea">
+          <DefaultButton
+            onClick={isTeachingBubbleVisible ? this._onDismiss : this._onShow}
+            text={isTeachingBubbleVisible ? 'Hide TeachingBubble' : 'Show TeachingBubble'}
+            id={'buttonId'}
+          />
         </span>
         {isTeachingBubbleVisible ? (
           <div>
             <TeachingBubble
-              targetElement={this._menuButtonElement}
+              target={'#buttonId'}
               hasCondensedHeadline={true}
               onDismiss={this._onDismiss}
               hasCloseIcon={true}
@@ -46,7 +49,13 @@ export class TeachingBubbleCondensedExample extends React.Component<{}, ITeachin
 
   private _onDismiss(ev: any): void {
     this.setState({
-      isTeachingBubbleVisible: !this.state.isTeachingBubbleVisible
+      isTeachingBubbleVisible: false
+    });
+  }
+
+  private _onShow(ev: any): void {
+    this.setState({
+      isTeachingBubbleVisible: true
     });
   }
 }

@@ -30,9 +30,11 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
           -webkit-font-smoothing: antialiased;
           color: inherit;
           display: inline;
-          font-family: inherit;
-          font-size: inherit;
-          font-weight: inherit;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          moz-osx-font-smoothing: grayscale;
+          webkit-font-smoothing: antialiased;
         }
   >
     Turn on Narrator and type a letter or two into the TagPicker. This picker will filter added items from the search suggestions.
@@ -45,7 +47,11 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
     onKeyDown={[Function]}
   >
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -81,20 +87,9 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                 border-color: #333333;
               }
         >
-          <span
-            className=
-                ms-BasePicker-itemsWrapper
-                {
-                  display: flex;
-                  flex-wrap: wrap;
-                }
-            id="selected-items-id__0"
-            role="list"
-          />
           <input
             aria-autocomplete="both"
             aria-controls=" "
-            aria-describedby="selected-items-id__0"
             aria-expanded={false}
             aria-haspopup="true"
             aria-label="Tag Picker"

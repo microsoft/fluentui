@@ -6,6 +6,10 @@ import { getStyles } from './PersonaCoin.styles';
 /**
  * PersonaCoin is used to render an individual's avatar and presence.
  */
-export const PersonaCoin = styled<IPersonaCoinProps, IPersonaCoinStyleProps, IPersonaCoinStyles>(PersonaCoinBase, getStyles, undefined, {
+export const PersonaCoin: React.StatelessComponent<IPersonaCoinProps> = styled<
+  IPersonaCoinProps,
+  IPersonaCoinStyleProps,
+  IPersonaCoinStyles
+>(PersonaCoinBase, getStyles, undefined, {
   scope: 'PersonaCoin'
 });

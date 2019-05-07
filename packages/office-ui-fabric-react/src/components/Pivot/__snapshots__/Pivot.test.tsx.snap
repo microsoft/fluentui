@@ -3,7 +3,11 @@
 exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -74,12 +78,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -131,7 +135,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -147,6 +151,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="test"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="test"
@@ -227,12 +232,12 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -282,7 +287,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -296,6 +301,7 @@ exports[`Pivot renders Pivot correctly when itemCount is a string 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link (20+)"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link"
@@ -367,7 +373,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
   className="specialClassName"
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -438,12 +448,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -495,7 +505,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -511,6 +521,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -591,12 +602,12 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -646,7 +657,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -660,6 +671,7 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link 2"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link 2"
@@ -718,7 +730,11 @@ exports[`Pivot renders Pivot correctly with custom className 1`] = `
 exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -789,12 +805,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -846,7 +862,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -862,6 +878,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content=" (12)"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         onClick={[Function]}
@@ -943,12 +960,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -998,7 +1015,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1012,6 +1029,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Test Link (12)"
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name="Test Link"
@@ -1105,12 +1123,12 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -1160,7 +1178,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1174,6 +1192,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content="Text with icon xx"
         data-is-focusable={true}
         id="Pivot0-Tab2"
         name="Text with icon"
@@ -1255,7 +1274,11 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
 exports[`Pivot renders large link Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1327,12 +1350,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -1384,7 +1407,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1400,6 +1423,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -1480,12 +1504,12 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -1535,7 +1559,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1549,6 +1573,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -1605,7 +1630,11 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
 exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -1678,14 +1707,14 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1737,7 +1766,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1764,6 +1793,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             &:active, &:hover {
               color: #ffffff;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -1844,14 +1874,14 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1901,7 +1931,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -1923,6 +1953,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
             &:hover, &:focus {
               color: #000000;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -1979,7 +2010,11 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
 exports[`Pivot renders link Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2050,12 +2085,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -2107,7 +2142,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2123,6 +2158,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             @media screen and (-ms-high-contrast: active){& {
               color: Highlight;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -2203,12 +2239,12 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
+              border: 0px;
               bottom: 0px;
-              content: "";
+              content: attr(data-content);
               left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
+              position: relative;
               right: 0px;
               top: 0px;
               z-index: 1;
@@ -2258,7 +2294,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2272,6 +2308,7 @@ exports[`Pivot renders link Pivot correctly 1`] = `
               border-bottom: 2px solid transparent;
               box-sizing: border-box;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -2328,7 +2365,11 @@ exports[`Pivot renders link Pivot correctly 1`] = `
 exports[`Pivot renders tabbed Pivot correctly 1`] = `
 <div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -2400,14 +2441,14 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2459,7 +2500,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2486,6 +2527,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             &:active, &:hover {
               color: #ffffff;
             }
+        data-content="Test Link 1"
         data-is-focusable={true}
         id="Pivot0-Tab0"
         name="Test Link 1"
@@ -2566,14 +2608,14 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 1px;
-              content: "";
-              left: 1px;
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
               outline: 1px solid #666666;
-              position: absolute;
-              right: 1px;
-              top: 1px;
+              position: relative;
+              right: 0px;
+              top: 0px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2623,7 +2665,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             }
             &:after {
               color: transparent;
-              content: attr(title);
+              content: attr(data-content);
               display: block;
               font-weight: 700;
               height: 1px;
@@ -2645,6 +2687,7 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
             &:hover, &:focus {
               color: #000000;
             }
+        data-content=""
         data-is-focusable={true}
         id="Pivot0-Tab1"
         name=""
@@ -2694,6 +2737,365 @@ exports[`Pivot renders tabbed Pivot correctly 1`] = `
     role="tabpanel"
   >
     <div />
+  </div>
+</div>
+`;
+
+exports[`Pivot supports JSX expressions 1`] = `
+<div>
+  <div
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone1"
+    onFocus={[Function]}
+    onKeyDown={[Function]}
+    onMouseDownCapture={[Function]}
+    role="presentation"
+  >
+    <div
+      className=
+          ms-Pivot
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            box-shadow: none;
+            box-sizing: border-box;
+            color: #0078d4;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
+            padding-bottom: 0px;
+            padding-left: 0px;
+            padding-right: 0px;
+            padding-top: 0px;
+            position: relative;
+            white-space: nowrap;
+          }
+      role="tablist"
+    >
+      <button
+        aria-selected={false}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #333333;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 400;
+              height: 40px;
+              line-height: 40px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
+              outline: 1px solid #666666;
+              position: relative;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #212121;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              color: #000000;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: transparent;
+              bottom: 0px;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #666666;
+            }
+            &:hover::before {
+              border-bottom: 2px solid transparent;
+              box-sizing: border-box;
+            }
+        data-content="Test Link 1"
+        data-is-focusable={true}
+        id="Pivot0-Tab0"
+        name="Test Link 1"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <div
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+        >
+          <span
+            className=
+                ms-Pivot-linkContent
+
+          >
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              Test Link 1
+            </span>
+          </span>
+        </div>
+      </button>
+      <button
+        aria-selected={true}
+        className=
+            ms-Button
+            ms-Button--action
+            ms-Button--command
+            ms-Pivot-link
+            is-selected
+            {
+              -moz-osx-font-smoothing: grayscale;
+              -webkit-font-smoothing: antialiased;
+              background-color: transparent;
+              border-radius: 0px;
+              border: 0px;
+              box-sizing: border-box;
+              color: #333333;
+              cursor: pointer;
+              display: inline-block;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 14px;
+              font-weight: 600;
+              height: 40px;
+              line-height: 40px;
+              margin-right: 8px;
+              outline: transparent;
+              padding-bottom: 0;
+              padding-left: 8px;
+              padding-right: 8px;
+              padding-top: 0;
+              position: relative;
+              text-align: center;
+              text-decoration: none;
+              user-select: none;
+              vertical-align: top;
+            }
+            &::-moz-focus-inner {
+              border: 0;
+            }
+            .ms-Fabric--isFocusVisible &:focus:after {
+              border: 0px;
+              bottom: 0px;
+              content: attr(data-content);
+              left: 0px;
+              outline: 1px solid #666666;
+              position: relative;
+              right: 0px;
+              top: 0px;
+              z-index: 1;
+            }
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
+              border: none;
+              bottom: -2px;
+              left: -2px;
+              outline-color: ButtonText;
+              right: -2px;
+              top: -2px;
+            }
+            &:active > * {
+              left: 0px;
+              position: relative;
+              top: 0px;
+            }
+            &:hover {
+              color: #212121;
+              cursor: pointer;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover {
+              border-color: Highlight;
+              color: Highlight;
+            }
+            &:hover .ms-Button-icon {
+              color: #0078d4;
+            }
+            &:focus {
+              outline: none;
+            }
+            &:active {
+              color: #000000;
+            }
+            &:active .ms-Button-icon {
+              color: #004578;
+            }
+            &:before {
+              background-color: transparent;
+              border-bottom: 2px solid #0078d4;
+              bottom: 0px;
+              box-sizing: border-box;
+              content: "";
+              height: 2px;
+              left: 8px;
+              position: absolute;
+              right: 8px;
+              transition: background-color 0.267s cubic-bezier(.1,.25,.75,.9);
+            }
+            &:after {
+              color: transparent;
+              content: attr(data-content);
+              display: block;
+              font-weight: 700;
+              height: 1px;
+              overflow: hidden;
+              visibility: hidden;
+            }
+            .ms-Fabric--isFocusVisible &:focus {
+              outline: 1px solid #666666;
+            }
+            @media screen and (-ms-high-contrast: active){&:before {
+              border-bottom-color: Highlight;
+            }
+            @media screen and (-ms-high-contrast: active){& {
+              color: Highlight;
+            }
+        data-content="Test Link 3"
+        data-is-focusable={true}
+        id="Pivot0-Tab1"
+        name="Test Link 3"
+        onClick={[Function]}
+        onKeyDown={[Function]}
+        onKeyPress={[Function]}
+        onKeyUp={[Function]}
+        onMouseDown={[Function]}
+        onMouseUp={[Function]}
+        role="tab"
+        type="button"
+      >
+        <div
+          className=
+              ms-Button-flexContainer
+              {
+                align-items: center;
+                display: flex;
+                flex-wrap: nowrap;
+                height: 100%;
+                justify-content: flex-start;
+              }
+        >
+          <span
+            className=
+                ms-Pivot-linkContent
+
+          >
+            <span
+              className=
+                  ms-Pivot-text
+                  {
+                    display: inline-block;
+                    vertical-align: top;
+                  }
+            >
+               
+              Test Link 3
+            </span>
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+  <div
+    aria-labelledby="Pivot0-Tab1"
+    role="tabpanel"
+  >
+    <div>
+      <div>
+        This is Item 3
+      </div>
+    </div>
   </div>
 </div>
 `;

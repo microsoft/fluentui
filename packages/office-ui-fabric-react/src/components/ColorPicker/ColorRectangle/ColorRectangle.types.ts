@@ -1,12 +1,18 @@
 import { ITheme, IStyle } from '../../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
-import { IColor } from '../../../utilities/color/colors';
+import { IColor } from '../../../utilities/color/interfaces';
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorRectangle {
   /** Currently selected color. */
   color: IColor;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   /**
    * Gets the component ref.
@@ -50,6 +56,9 @@ export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
   onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorRectangleStyleProps {
   /**
    * Theme (provided through customization).
@@ -62,6 +71,9 @@ export interface IColorRectangleStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorRectangleStyles {
   /**
    * Style set for the root element.
