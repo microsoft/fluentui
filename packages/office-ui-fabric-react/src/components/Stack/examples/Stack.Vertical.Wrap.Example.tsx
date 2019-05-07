@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackHeight: number;
@@ -18,35 +19,29 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
   public render(): JSX.Element {
     const { stackHeight } = this.state;
 
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: stackHeight,
         selectors: {
           '& span': {
-            width: 50,
+            alignItems: 'center',
+            background: DefaultPalette.themePrimary,
+            color: DefaultPalette.white,
             height: 50,
             display: 'flex',
-            alignItems: 'center',
             justifyContent: 'center',
-            background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white
+            width: 50
           }
         }
       }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: 20
-      }
     };
 
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const wrapStackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Slider
           label="Change the stack height to see how child items wrap onto multiple columns:"
           min={1}
@@ -57,7 +52,7 @@ export class VerticalStackWrapExample extends React.Component<{}, IExampleState>
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap tokens={tokens.wrapStack} className={styles.root}>
+        <Stack wrap styles={stackStyles} tokens={wrapStackTokens}>
           <span>1</span>
           <span>2</span>
           <span>3</span>

@@ -6794,12 +6794,16 @@ export interface IStackItemTokens {
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    // @deprecated
     gap?: number | string;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
     horizontal?: boolean;
     horizontalAlign?: Alignment;
+    // @deprecated
     maxHeight?: number | string;
+    // @deprecated
     maxWidth?: number | string;
+    // @deprecated
     padding?: number | string;
     reversed?: boolean;
     verticalAlign?: Alignment;

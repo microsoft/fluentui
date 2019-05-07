@@ -45,7 +45,7 @@ export interface ICardItemProps
     IStyleableComponentProps<ICardItemProps, ICardItemTokens, ICardItemStyles>,
     IBaseProps<ICardItem> {
   /**
-   * Defines if the CardItem should disregard the children margin specified by Card.
+   * Determines if the CardItem should disregard the children margin specified by Card.
    */
   fill?: boolean;
 }

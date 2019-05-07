@@ -7,6 +7,9 @@ const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/c
 import { CardCompactExample } from './examples/Card.Compact.Example';
 const CardCompactExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Compact.Example.tsx') as string;
 
+import { CardConfigureExample } from './examples/Card.Configure.Example';
+const CardConfigureExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Configure.Example.tsx') as string;
+
 export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
     return (
@@ -20,6 +23,9 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="Compact Card" code={CardCompactExampleCode}>
               <CardCompactExample />
+            </ExampleCard>
+            <ExampleCard title="Configure Properties" code={CardConfigureExampleCode}>
+              <CardConfigureExample />
             </ExampleCard>
           </div>
         }

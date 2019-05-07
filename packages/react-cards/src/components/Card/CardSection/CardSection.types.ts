@@ -29,7 +29,7 @@ export type ICardSectionSlot = ISlotProp<ICardSectionProps>;
 /**
  * {@docCategory CardSection}
  */
-export interface ICardSectionSlots extends IStackSlots {}
+export interface ICardSectionSlots extends Pick<IStackSlots, 'root'> {}
 
 /**
  * {@docCategory CardSection}
@@ -48,7 +48,7 @@ export interface ICardSectionProps
     IStyleableComponentProps<ICardSectionProps, ICardSectionTokens, ICardSectionStyles>,
     IBaseProps<ICardSection> {
   /**
-   * Defines if the CardSection should disregard the children margin specified by Card.
+   * Determines if the CardSection should disregard the children margin specified by Card.
    */
   fill?: boolean;
 }
