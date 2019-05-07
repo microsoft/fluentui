@@ -1,6 +1,18 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Mon, 06 May 2019 19:32:45 GMT and should not be manually modified.
+This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+
+## 6.18.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Use kebab case IDs and add more jump link options
+
+### Patches
+
+- Fix UHF header style bugs.
+- Allow regex redirects
 
 ## 6.17.4
 Mon, 06 May 2019 19:32:45 GMT

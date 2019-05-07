@@ -2,6 +2,61 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.17.0",
+      "tag": "@uifabric/fabric-website_v6.17.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList large grouped demo infinite loading loop",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "82b5bd3d675e92be729c4bad2d3afd3cef4d2d3d"
+          },
+          {
+            "comment": "Include .md files in npm package",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "12772428d745ee70303fc750ff932093dfc4c3bf"
+          },
+          {
+            "comment": "Fix UHF element selectors for un-overriding font",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "0dd57d9e24667575ec3e163ca88577d4a690ace2"
+          },
+          {
+            "comment": "Fix UHF header styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2a162cb9dcee4fb702ad3efc0b653478db4b012e"
+          },
+          {
+            "comment": "Add stub \"get started\" pages for mobile",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "69fc9864a11922528497a65c6a9b6e08872fb068"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expand getting started info and use kebab case IDs",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9400b25f3b43de9abe6162d813755d442d114e41"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.4` to `^6.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.75.0` to `^6.76.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.17.1` to `^6.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.3` to `^6.177.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.16.4",
       "tag": "@uifabric/fabric-website_v6.16.4",
       "date": "Mon, 06 May 2019 19:32:45 GMT",
