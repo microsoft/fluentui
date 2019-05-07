@@ -129,11 +129,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
     if (prevState.isDatePickerShown && !this.state.isDatePickerShown) {
-      // In browsers like IE, textfield gets unfocused when datepicker is collapsed
-      if (this.props.allowTextInput) {
-        this._async.requestAnimationFrame(() => this.focus());
-      }
-
       // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
       if (this.props.onAfterMenuDismiss) {
         this.props.onAfterMenuDismiss();
@@ -236,7 +231,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             onDismiss={this._calendarDismissed}
             onPositioned={this._onCalloutPositioned}
           >
-            <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={this.props.disableAutoFocus}>
+            <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={this.props.disableAutoFocus} forceFocusInsideTrap={false}>
               <CalendarType
                 {...calendarProps}
                 onSelectDate={this._onSelectDate}
@@ -418,7 +413,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    ev.stopPropagation();
+    if (this.state.isDatePickerShown) {
+      ev.stopPropagation();
+    }
     this._calendarDismissed();
   };
 

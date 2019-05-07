@@ -45,7 +45,6 @@ export const FocusZonePageProps: IDocPageProps = {
       view: <FocusZoneTabbableExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/FocusZone.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/FocusZone/docs/FocusZoneOverview.md'),
   bestPractices: '',
   dos: '',

@@ -3,6 +3,7 @@
 ##### The React-based front-end framework for building experiences for Office and Office 365.
 
 [![npm version](https://badge.fury.io/js/office-ui-fabric-react.svg)](https://badge.fury.io/js/office-ui-fabric-react)
+
 [![Build Status](https://uifabric.visualstudio.com/fabricpublic/_apis/build/status/office-ui-fabric-react%20-%20PR?branchName=master)](https://uifabric.visualstudio.com/fabricpublic/_build/latest?definitionId=84&branchName=master)
 
 Fabric React is a responsive, mobile-first collection of robust components designed to make it quick and simple for you to create web experiences using the Office Design Language.
@@ -87,7 +88,7 @@ Note: we are evaluating a more robust theming and style loading approach, which 
 
 ## Documentation
 
-To learn more about how to use the components in your application visit the [Office UI Fabric website](https://developer.microsoft.com/en-us/fabric#/components). If you are looking to create a new fabric component, or contribute to the project, the developer documentation can be found in [our Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
+To learn more about how to use the components in your application visit the [Office UI Fabric website](https://developer.microsoft.com/en-us/fabric#/controls/web). If you are looking to create a new fabric component, or contribute to the project, the developer documentation can be found in [our Wiki](https://github.com/OfficeDev/office-ui-fabric-react/wiki).
 
 ## Testing
 

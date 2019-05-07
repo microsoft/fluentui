@@ -27,5 +27,6 @@ export interface IEnumProperty {
 
 export enum PropertyType {
   enum = 0,
-  interface = 1
+  interface = 1,
+  class = 2
 }

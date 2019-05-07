@@ -5,6 +5,9 @@ import { HoverCardPageProps } from 'office-ui-fabric-react/lib/components/HoverC
 
 export const HoverCardPage = (props: { isHeaderVisible: boolean }) => (
   <LayerHost>
-    <DemoPage {...{ ...HoverCardPageProps, ...props }} />
+    <DemoPage
+      jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/HoverCard.page.json')}
+      {...{ ...HoverCardPageProps, ...props }}
+    />
   </LayerHost>
 );

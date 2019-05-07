@@ -62,7 +62,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public componentWillUnmount(): void {
-    if (!this.props.disabled) {
+    // don't handle return focus unless forceFocusInsideTrap is true or focus is still within FocusTrapZone
+    if (
+      !this.props.disabled ||
+      this.props.forceFocusInsideTrap ||
+      !elementContains(this._root.current, document.activeElement as HTMLElement)
+    ) {
       this._returnFocusToInitiator();
     }
   }

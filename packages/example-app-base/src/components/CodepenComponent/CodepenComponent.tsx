@@ -1,25 +1,17 @@
 import * as React from 'react';
-import { IComponentAs, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-import { CommandButton, IButtonProps, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
+import { CommandButton } from 'office-ui-fabric-react/lib/Button';
+import { ICodepenProps, ICodepenStyleProps, ICodepenStyles } from './CodepenComponent.types';
+import { IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 
-export interface ICodepenProps {
-  /** JS string to be passed into Codepen */
-  jsContent: string;
-  /** Optional button type */
-  buttonAs?: IComponentAs<IButtonProps>;
-  /** Custom styles for the button */
-  // TODO: remove any once button fully supports styling
-  // tslint:disable-next-line:no-any
-  buttonStyles?: IStyleFunctionOrObject<any, IButtonStyles>;
-  /**
-   * Custom class name for the button.
-   * @deprecated Use `buttonStyles`
-   */
-  buttonClassName?: string;
-}
+const getStyles: IStyleFunction<ICodepenStyleProps, ICodepenStyles> = () => ({});
 
-export const CodepenComponent: React.StatelessComponent<ICodepenProps> = props => {
-  const { jsContent, buttonAs: ButtonType = CommandButton, buttonClassName, buttonStyles } = props;
+const getClassNames = classNamesFunction<ICodepenStyleProps, ICodepenStyles>();
+
+const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
+  const { jsContent, buttonAs: ButtonType = CommandButton, buttonClassName, styles, theme } = props;
+
+  const classNames = getClassNames(styles, { theme: theme! });
+  const buttonStyles = classNames.subComponentStyles.button;
 
   // boilerplate for codepen API
   const htmlContent = '<script src="//unpkg.com/office-ui-fabric-react/dist/office-ui-fabric-react.js"></script>\n<div id="content"></div>';
@@ -54,3 +46,10 @@ export const CodepenComponent: React.StatelessComponent<ICodepenProps> = props =
     </form>
   );
 };
+
+export const CodepenComponent: React.StatelessComponent<ICodepenProps> = styled<ICodepenProps, ICodepenStyleProps, ICodepenStyles>(
+  CodepenComponentBase,
+  getStyles,
+  undefined,
+  { scope: 'CodepenComponent' }
+);

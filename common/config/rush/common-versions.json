@@ -18,7 +18,7 @@
     // "some-package": "1.2.3"
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
-    "@types/webpack-env": "1.13.0",
+    "@types/webpack-env": "1.13.9",
     "css-loader": "^0.28.7",
     "enzyme": "^3.4.1",
     "jest": "24.1.0",
@@ -46,5 +46,8 @@
      * For example, allow some projects to use an older TypeScript compiler
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
+    "react": ["~16.8.0"],
+    "react-dom": ["~16.8.0"],
+    "office-ui-fabric-core": ["^9.0.0", "10.0.0"]
   }
 }

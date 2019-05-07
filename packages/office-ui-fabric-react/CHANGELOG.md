@@ -1,6 +1,63 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 29 Apr 2019 12:34:34 GMT and should not be manually modified.
+This log was last generated on Sun, 05 May 2019 19:59:10 GMT and should not be manually modified.
+
+## 6.176.3
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- Router: ignore trailing slashes, don't update if hash didn't change
+
+## 6.176.2
+Sat, 04 May 2019 00:01:54 GMT
+
+### Patches
+
+- Properly propagate Esc in DatePicker
+- Add min panel width for small screen sizes
+- Documentation: adds more `docCategory` tags to API items.
+- Doc updates for new website
+
+## 6.176.0
+Thu, 02 May 2019 12:36:35 GMT
+
+### Minor changes
+
+- Add IBreadcrumbData, deprecate IBreadCrumbData
+- Modal/Dialog: Add ability to move via mouse and/or keyboard
+- Tooltip/TooltipHost: content now can take JSX content.
+
+### Patches
+
+- Remove out-of-date IE focus handling work-around. Pass forceFocusInsideTrap={false} to DatePicker FocusTrapZone. Adjust FocusTrapZone return focus handling.
+
+## 6.175.0
+Wed, 01 May 2019 12:34:25 GMT
+
+### Minor changes
+
+- BasePicker: re-add removed property to fix api break
+- Fix type in BasePicker onRemoveSuggestion api
+- DetailsHeader: mark cellIsActionable, cellIsEmpty, and cellWrapperPadded as deprecated
+- Introduces ImageFit.centerContain
+- Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme"
+- Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel
+
+## 6.174.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- DocPage: add types
+- Always reset pending info on option click.
+
+### Patches
+
+- FocusZone: remove outline on focus
+- Bugfix to set the correct width of the Pivot item's :after element, so Pivot items don't move on (un)selection
+- Use new getFocusStyle signature
+- DetailsColumn: Cleanup className vars, use lambdas for this binding, add type-safety to root ref
 
 ## 6.173.0
 Mon, 29 Apr 2019 12:34:34 GMT

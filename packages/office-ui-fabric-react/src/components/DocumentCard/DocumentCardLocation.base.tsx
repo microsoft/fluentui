@@ -5,6 +5,9 @@ import { IDocumentCardLocationProps, IDocumentCardLocationStyleProps, IDocumentC
 
 const getClassNames = classNamesFunction<IDocumentCardLocationStyleProps, IDocumentCardLocationStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardLocationBase extends BaseComponent<IDocumentCardLocationProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardLocationStyles>;
 
