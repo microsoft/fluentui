@@ -39,7 +39,8 @@
     "generate-version-files": "node scripts/just.js generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "precommit": "node scripts/node_modules/lint-staged/index.js",
-    "perf-test": "node scripts/just.js perf-test"
+    "perf-test": "node scripts/just.js perf-test",
+    "dom-test": "cd apps/dom-tests && node ../../scripts/just.js jest-dom-with-webpack"
   },
   "license": "MIT",
   "lint-staged": {
