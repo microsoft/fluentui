@@ -18,7 +18,8 @@ import {
   PlatformBar,
   TPlatformPages,
   jumpToAnchor,
-  removeAnchorLink
+  removeAnchorLink,
+  SiteMessageBar
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
@@ -219,12 +220,32 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
   private _renderMessageBar(): JSX.Element | null {
     const { pagePath } = this.state;
     const { siteDefinition } = this.props;
-    const { renderSiteMessageBar } = siteDefinition;
+    const { messageBars } = siteDefinition;
 
-    if (renderSiteMessageBar && pagePath) {
-      return renderSiteMessageBar(pagePath);
+    let _messageBar: JSX.Element | null = null;
+
+    if (messageBars && pagePath) {
+      for (const messageBar of messageBars) {
+        let { path, exclude, ...rest } = messageBar;
+        // Ensure path to match is a RegExp
+        path = new RegExp(path);
+        if (path.test(pagePath)) {
+          // The path matches, but test if there are exclusions that match
+          if (exclude !== undefined) {
+            // Ensure exclude is a RegExp
+            exclude = new RegExp(exclude);
+            if (exclude.test(pagePath)) {
+              // Exclude matched, break to return null
+              break;
+            }
+          }
+          // No exclusions matched, set the message bar JSX and break to return it
+          _messageBar = <SiteMessageBar {...rest} />;
+          break;
+        }
+      }
     }
-    return null;
+    return _messageBar;
   }
 
   private _renderPageNav(): JSX.Element | null {

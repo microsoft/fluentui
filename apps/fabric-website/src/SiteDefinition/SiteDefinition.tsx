@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ISiteDefinition, LoadingComponent, SiteMessageBar } from '@uifabric/example-app-base/lib/index2';
+import { ISiteDefinition, LoadingComponent } from '@uifabric/example-app-base/lib/index2';
 import { FluentCustomizations } from '@uifabric/fluent-theme';
 import { ControlsPages, ResourcesPages, StylesPages, GetStartedPages } from './SiteDefinition.pages/index';
 import { Platforms } from '../interfaces/Platforms';
@@ -56,27 +56,21 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/utilities', to: '#/styles/web' },
     { from: new RegExp('#/get-started$'), to: '#/get-started/web' }
   ],
-  renderSiteMessageBar: _renderSiteMessageBar
+  messageBars: [
+    {
+      path: '#/controls/web',
+      exclude: 'fluent-theme',
+      text: 'You can now implement the new Fluent styles in Fabric Web controls.',
+      linkText: 'Learn more',
+      linkUrl: '#/controls/web/fluent-theme',
+      sessionStoragePrefix: 'WebFluentUpdates'
+    },
+    {
+      path: new RegExp(/^#?\/?$/),
+      text: 'Microsoft employees can sign in to see additional documentation.',
+      linkText: 'Sign in',
+      linkUrl: 'https://aka.ms/hig',
+      sessionStoragePrefix: 'SignIn'
+    }
+  ]
 };
-
-function _renderSiteMessageBar(pagePath?: string): JSX.Element | undefined {
-  if (pagePath && pagePath.indexOf('#/controls/web') === 0 && pagePath.indexOf('fluent-theme') === -1) {
-    return (
-      <SiteMessageBar
-        text="You can now implement the new Fluent styles in Fabric Web controls."
-        linkText="Learn more"
-        linkUrl="#/controls/web/fluent-theme"
-        sessionStoragePrefix="WebFluentUpdates"
-      />
-    );
-  } else if (/^#?\/?$/.test(pagePath)) {
-    return (
-      <SiteMessageBar
-        text="Microsoft employees can sign in to see additional documentation."
-        linkText="Sign in"
-        linkUrl="http://aka.ms/hig"
-        sessionStoragePrefix="SignIn"
-      />
-    );
-  }
-}
