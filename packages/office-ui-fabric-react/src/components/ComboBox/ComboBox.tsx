@@ -26,7 +26,7 @@ import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboB
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
-import { BaseButton, Button } from '../Button';
+import { BaseButton, Button } from '../Button/index';
 
 export interface IComboBoxState {
   /** The open state */
