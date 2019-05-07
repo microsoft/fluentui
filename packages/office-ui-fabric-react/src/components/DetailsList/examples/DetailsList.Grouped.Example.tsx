@@ -1,21 +1,19 @@
-// @codepen
-
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IDetailsList, DetailsList, IColumn, IGroup } from 'office-ui-fabric-react/lib/DetailsList';
+import { IDetailsList, DetailsList, IColumn, IGroup, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+import { DetailsHeader } from '../DetailsHeader';
 
 const margin = '0 20px 20px 0';
 const controlWrapperClass = mergeStyles({
   display: 'flex',
-  alignItems: 'center',
   flexWrap: 'wrap'
 });
 const toggleStyles: Partial<IToggleStyles> = {
-  label: { display: 'inline-block', marginLeft: '10px', marginBottom: '3px' },
-  root: { display: 'flex', flexDirection: 'row-reverse', alignItems: 'center', margin: margin }
+  root: { margin: margin },
+  label: { marginLeft: 10 }
 };
 
 export interface IDetailsListGroupedExampleItem {
@@ -23,58 +21,6 @@ export interface IDetailsListGroupedExampleItem {
   name: string;
   color: string;
 }
-
-const _columns: IColumn[] = [
-  {
-    key: 'name',
-    name: 'Name',
-    fieldName: 'name',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  },
-  {
-    key: 'color',
-    name: 'Color',
-    fieldName: 'color',
-    minWidth: 100,
-    maxWidth: 200
-  }
-];
-// NOTE: If changing these, also change the initial definition of state.groups below
-const _initialRedIndex = 0;
-const _initialRedCount = 2;
-const _initialGreenIndex = 2;
-const _initialGreenCount = 0;
-const _initialBlueIndex = 2;
-const _initialBlueCount = 3;
-const _items: IDetailsListGroupedExampleItem[] = [
-  {
-    key: 'a',
-    name: 'a',
-    color: 'red'
-  },
-  {
-    key: 'b',
-    name: 'b',
-    color: 'red'
-  },
-  {
-    key: 'c',
-    name: 'c',
-    color: 'blue'
-  },
-  {
-    key: 'd',
-    name: 'd',
-    color: 'blue'
-  },
-  {
-    key: 'e',
-    name: 'e',
-    color: 'blue'
-  }
-];
 
 export interface IDetailsListGroupedExampleState {
   items: IDetailsListGroupedExampleItem[];
@@ -86,36 +32,33 @@ const _blueGroupIndex = 2;
 
 export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGroupedExampleState> {
   private _root = React.createRef<IDetailsList>();
+  private _columns: IColumn[];
 
   constructor(props: {}) {
     super(props);
 
     this.state = {
-      items: _items,
-      // This is based on the definition of _items
+      items: [
+        { key: 'a', name: 'a', color: 'red' },
+        { key: 'b', name: 'b', color: 'red' },
+        { key: 'c', name: 'c', color: 'blue' },
+        { key: 'd', name: 'd', color: 'blue' },
+        { key: 'e', name: 'e', color: 'blue' }
+      ],
+      // This is based on the definition of items
       groups: [
-        {
-          key: 'groupred0',
-          name: 'Color: "red"',
-          startIndex: _initialRedIndex,
-          count: _initialRedCount
-        },
-        {
-          key: 'groupgreen2',
-          name: 'Color: "green"',
-          startIndex: _initialGreenIndex,
-          count: _initialGreenCount
-        },
-        {
-          key: 'groupblue2',
-          name: 'Color: "blue"',
-          startIndex: _initialBlueIndex,
-          count: _initialBlueCount
-        }
+        { key: 'groupred0', name: 'Color: "red"', startIndex: 0, count: 2 },
+        { key: 'groupgreen2', name: 'Color: "green"', startIndex: 2, count: 0 },
+        { key: 'groupblue2', name: 'Color: "blue"', startIndex: 2, count: 3 }
       ],
       showItemIndexInView: false,
       isCompactMode: false
     };
+
+    this._columns = [
+      { key: 'name', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'color', name: 'Color', fieldName: 'color', minWidth: 100, maxWidth: 200 }
+    ];
   }
 
   public componentWillUnmount() {
@@ -132,9 +75,10 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
       <div>
         <div className={controlWrapperClass}>
           <DefaultButton onClick={this._addItem} text="Add an item" styles={{ root: { margin: margin } }} />
-          <Toggle label="Compact mode" checked={isCompactMode} onChange={this._onChangeCompactMode} styles={toggleStyles} />
+          <Toggle label="Compact mode" inlineLabel checked={isCompactMode} onChange={this._onChangeCompactMode} styles={toggleStyles} />
           <Toggle
             label="Show index of first item in view when unmounting"
+            inlineLabel
             checked={this.state.showItemIndexInView}
             onChange={this._onShowItemIndexInViewChanged}
             styles={toggleStyles}
@@ -144,9 +88,10 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
           componentRef={this._root}
           items={items}
           groups={groups}
-          columns={_columns}
+          columns={this._columns}
           ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           ariaLabelForSelectionColumn="Toggle selection"
+          onRenderDetailsHeader={this._onRenderDetailsHeader}
           groupProps={{
             showEmptyGroups: true
           }}
@@ -180,6 +125,10 @@ export class DetailsListGroupedExample extends BaseComponent<{}, IDetailsListGro
       }
     );
   };
+
+  private _onRenderDetailsHeader(props: IDetailsHeaderProps, _defaultRender?: IRenderFunction<IDetailsHeaderProps>) {
+    return <DetailsHeader {...props} ariaLabelForToggleAllGroupsButton={'Expand collapse groups'} />;
+  }
 
   private _onRenderColumn(item: IDetailsListGroupedExampleItem, index: number, column: IColumn) {
     const value = item && column && column.fieldName ? item[column.fieldName as keyof IDetailsListGroupedExampleItem] || '' : '';

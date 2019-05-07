@@ -1,13 +1,15 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
-import { IPersonaProps } from '../Persona/Persona.types';
-import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { ISuggestionModel } from './Suggestions/Suggestions.types';
+import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
 
-/** BasePicker component. */
+/**
+ * BasePicker component.
+ * {@docCategory Pickers}
+ */
 export interface IBasePicker<T> {
   /** Gets the current value of the input. */
   items: T[] | undefined;
@@ -19,9 +21,11 @@ export interface IBasePicker<T> {
   focusInput: () => void;
 }
 
-// Type T is the type of the item that is displayed
-// and searched for by the picker. For example, if the picker is
-// displaying persona's then type T could either be of Persona or IPersona props
+/* Type T is the type of the item that is displayed
+ * and searched for by the picker. For example, if the picker is
+ * displaying persona's then type T could either be of Persona or IPersona props
+ * {@docCategory Pickers}
+ */
 export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Optional callback to access the IBasePicker interface. Use this instead of ref for accessing
@@ -110,9 +114,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   inputProps?: IInputProps;
 
   /**
-   * A callback for when a persona is removed from the suggestion list
+   * A callback for when an item is removed from the suggestion list
    */
-  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  onRemoveSuggestion?: (item: T) => void;
 
   /**
    * A function used to validate if raw text entered into the well can be added into the selected items list
@@ -188,94 +192,37 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   theme?: ITheme;
 }
 
-export interface IBasePickerSuggestionsProps {
-  /**
-   * Function that specifies what to render when no results are found.
-   */
-  onRenderNoResultFound?: IRenderFunction<void>;
+/**
+ * Subset of picker options that may be legally passed through a picker to its
+ * internal Suggestions component.
+ * {@docCategory Pickers}
+ */
+export interface IBasePickerSuggestionsProps<T = any>
+  extends Pick<
+    ISuggestionsProps<T>,
+    | 'onRenderNoResultFound'
+    | 'suggestionsHeaderText'
+    | 'mostRecentlyUsedHeaderText'
+    | 'noResultsFoundText'
+    | 'className'
+    | 'suggestionsClassName'
+    | 'suggestionsItemClassName'
+    | 'searchForMoreText'
+    | 'forceResolveText'
+    | 'loadingText'
+    | 'searchingText'
+    | 'resultsFooterFull'
+    | 'resultsFooter'
+    | 'resultsMaximumNumber'
+    | 'showRemoveButtons'
+    | 'suggestionsAvailableAlertText'
+    | 'suggestionsContainerAriaLabel'
+  > {}
 
-  /**
-   * The text that should appear at the top of the suggestion box.
-   */
-  suggestionsHeaderText?: string;
-
-  /**
-   * The text that should appear at the top of the most recently used box.
-   */
-  mostRecentlyUsedHeaderText?: string;
-
-  /**
-   * The text that should appear when no results are returned.
-   */
-  noResultsFoundText?: string;
-
-  /**
-   * Suggestions root className.
-   */
-  className?: string;
-
-  /**
-   * Suggestions List className.
-   */
-  suggestionsClassName?: string;
-
-  /**
-   * ClassName for suggestion items.
-   */
-  suggestionsItemClassName?: string;
-
-  /**
-   * The text that should appear on the button to search for more.
-   */
-  searchForMoreText?: string;
-
-  /**
-   * The text that appears indicating to the use to force resolve the input
-   */
-  forceResolveText?: string;
-
-  /**
-   * The text to display while the results are loading.
-   */
-  loadingText?: string;
-
-  /**
-   * The text to display while searching for more results in a limited suggestions list.
-   */
-  searchingText?: string;
-
-  /**
-   * A renderer that adds an element at the end of the suggestions list if it has more items than resultsMaximumNumber.
-   */
-  resultsFooterFull?: () => JSX.Element;
-
-  /**
-   * A renderer that adds an element at the end of the suggestions list when there are fewer than resultsMaximumNumber.
-   */
-  resultsFooter?: () => JSX.Element;
-
-  /**
-   * Maximum number of suggestions to show in the full suggestion list.
-   */
-  resultsMaximumNumber?: number;
-
-  /**
-   * Indicates whether to show a button with each suggestion to remove that suggestion.
-   */
-  showRemoveButtons?: boolean;
-
-  /**
-   * Screen reader message to read when there are suggestions available.
-   */
-  suggestionsAvailableAlertText?: string;
-
-  /**
-   * An ARIA label for the container that is the parent of the suggestions.
-   */
-  suggestionsContainerAriaLabel?: string;
-}
-
-/** Validation state of the user's input. */
+/**
+ * Validation state of the user's input.
+ * {@docCategory Pickers}
+ */
 export enum ValidationState {
   /** User input is valid. */
   valid,
@@ -287,7 +234,10 @@ export enum ValidationState {
   invalid
 }
 
-/** Pickers' input props interface */
+/**
+ * Pickers' input props interface
+ * {@docCategory Pickers}
+ */
 export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   /**
    * Screen reader label to apply to an input element.
@@ -302,7 +252,10 @@ export interface IInputProps extends React.InputHTMLAttributes<HTMLInputElement>
   defaultVisibleValue?: string;
 }
 
-/** The props needed to construct styles. */
+/**
+ * The props needed to construct styles.
+ * {@docCategory Pickers}
+ */
 export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'className' | 'disabled'> & {
   /** Whether text style area is focused */
   isFocused?: boolean;
@@ -311,7 +264,10 @@ export type IBasePickerStyleProps = Pick<IBasePickerProps<any>, 'theme' | 'class
   inputClassName?: string;
 };
 
-/** Represents the stylable areas of the control. */
+/**
+ * Represents the stylable areas of the control.
+ * {@docCategory Pickers}
+ */
 export interface IBasePickerStyles {
   /** Root element of any picker extending from BasePicker (wraps all the elements). */
   root: IStyle;

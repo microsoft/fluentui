@@ -1,5 +1,6 @@
 import { beep } from './beep';
 
+/** @deprecated */
 // tslint:disable-next-line:no-any
 export function instrumentMethod(target: any, methodName: string): void {
   const originalMethod = target[methodName];
@@ -8,11 +9,10 @@ export function instrumentMethod(target: any, methodName: string): void {
   target[methodName] = function(): any {
     beep();
 
-    let startTime = performance.now();
-    let retVal = originalMethod.apply(this, arguments);
-    let duration = performance.now() - startTime;
+    const startTime = performance.now();
+    const retVal = originalMethod.apply(this, arguments);
+    const duration = performance.now() - startTime;
 
-    /* tslint:disable:no-console */
     if (duration <= 1) {
       console.log(`${methodName} called`, getStackTrace());
     } else if (duration <= 10) {
@@ -20,14 +20,14 @@ export function instrumentMethod(target: any, methodName: string): void {
     } else {
       console.error(`${methodName} called, took ${Math.round(duration * 1000) / 1000}ms`, getStackTrace());
     }
-    /* tslint:enable:no-console */
 
     return retVal;
   };
 }
 
+/** @deprecated */
 export function getStackTrace(): string {
-  let obj = {
+  const obj = {
     stack: ''
   };
 
@@ -37,7 +37,7 @@ export function getStackTrace(): string {
 
   if (captureStackTrace) {
     captureStackTrace(obj, getStackTrace);
-    let stackEntries = obj.stack.split('at ');
+    const stackEntries = obj.stack.split('at ');
 
     obj.stack = stackEntries[2];
   }

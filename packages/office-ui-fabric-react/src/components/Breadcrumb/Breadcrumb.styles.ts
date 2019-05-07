@@ -23,8 +23,6 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
   const { className, theme } = props;
 
   const overflowButtonFontSize = 16;
-  const itemMaxWidth = 160;
-  const itemMaxWidthSmall = 116;
   const chevronSmallFontSize = 8;
 
   return {
@@ -128,7 +126,6 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
         textDecoration: 'none',
         color: theme.semanticColors.bodyText,
         padding: '0 8px',
-        maxWidth: itemMaxWidth,
 
         selectors: {
           ':hover': {
@@ -149,12 +146,7 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
             color: theme.palette.neutralPrimary
           },
           [MediumScreenSelector]: theme.fonts.large,
-          [MinimumScreenSelector]: [
-            theme.fonts.medium,
-            {
-              maxWidth: itemMaxWidthSmall
-            }
-          ],
+          [MinimumScreenSelector]: [theme.fonts.medium],
           [`.${IsFocusVisibleClassName} &:focus`]: {
             outline: `none`
           }
@@ -167,7 +159,6 @@ export const getStyles = (props: IBreadcrumbStyleProps): IBreadcrumbStyles => {
       {
         color: theme.semanticColors.bodyText,
         padding: '0 8px',
-        maxWidth: itemMaxWidth,
 
         selectors: {
           ':hover': {

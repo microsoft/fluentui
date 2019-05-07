@@ -1,6 +1,117 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Thu, 10 Jan 2019 04:58:48 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 0.16.7
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+-  Use new getFocusStyle signature
+
+## 0.16.6
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- CommandBarButton: Update expanded and expanded hover color
+- Fix selector for ms-Button-icon in CommandBarButton
+
+## 0.16.5
+Mon, 22 Apr 2019 12:32:06 GMT
+
+### Patches
+
+- Update Fluent styles for CommandBar and CommandBarButton
+
+## 0.16.4
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 0.16.3
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- IconButton style fixes and removing the SwatchColorPicker styles.
+
+## 0.16.2
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- TeachingBubble: fixes bug were the styles for TeachingBubbleContent were not applied properly when not used directly.
+- Fixes the scope name of `ListPeoplePicker` inside of `FluentCustomizations` object.
+
+## 0.16.1
+Fri, 15 Mar 2019 12:34:06 GMT
+
+### Patches
+
+- Breadcrumb: fixed last-child styling
+
+## 0.16.0
+Wed, 27 Feb 2019 01:28:58 GMT
+
+### Minor changes
+
+- Cleans up the `fluent-theme` styles of hard coded values for colors. Replaces the `borderRadius` and `boxShadow` styles with values from theme.
+
+## 0.15.1
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Update DetailsList Fluent styles
+
+## 0.15.0
+Wed, 20 Feb 2019 13:30:29 GMT
+
+### Minor changes
+
+- Panel: adds fluent styles overrides.
+
+### Patches
+
+- Breadcrumb: fixes issue where the last child was not bolded if not clickable to align design toolkit redlines.
+
+## 0.14.2
+Mon, 18 Feb 2019 13:38:30 GMT
+
+### Patches
+
+- Dialog: Adjust right padding of title
+
+## 0.14.1
+Fri, 15 Feb 2019 13:33:05 GMT
+
+### Patches
+
+- Remove unnecessary theme colors
+
+## 0.14.0
+Tue, 12 Feb 2019 13:36:43 GMT
+
+### Minor changes
+
+- Pickers: adds minor adjustments to align to new fluent style patterns.
+
+## 0.13.4
+Mon, 28 Jan 2019 13:35:27 GMT
+
+### Patches
+
+- Dropdown: fixes a misalignment of some items in the dropdown. 
+
+## 0.13.3
+Fri, 25 Jan 2019 13:38:07 GMT
+
+### Patches
+
+- TeachingBubble: split the styles in two different regions to take into account when the TeachingBubbleContent is used as a standalone component.
 
 ## 0.13.2
 Thu, 10 Jan 2019 04:58:48 GMT

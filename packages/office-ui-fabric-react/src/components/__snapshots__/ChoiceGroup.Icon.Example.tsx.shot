@@ -93,7 +93,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
 
         >
           <input
-            checked={false}
+            checked={true}
             className=
                 ms-ChoiceField-input
                 {
@@ -108,7 +108,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-            data-is-focusable={true}
             id="ChoiceGroup0-day"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -119,9 +118,11 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
           <label
             className=
                 ms-ChoiceField-field
+                is-checked
                 ms-ChoiceField--icon
                 {
                   align-items: center;
+                  border-color: #0078d4;
                   border: 2px solid transparent;
                   box-sizing: content-box;
                   cursor: pointer;
@@ -143,28 +144,28 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   vertical-align: top;
                 }
                 &:hover {
-                  border-color: #c8c8c8;
+                  border-color: #005a9e;
                 }
                 &:hover .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:hover:before {
-                  border-color: #333333;
+                  border-color: #005a9e;
                   opacity: 1;
                 }
                 &:focus {
-                  border-color: #c8c8c8;
+                  border-color: #005a9e;
                 }
                 &:focus .ms-ChoiceFieldLabel {
                   color: #000000;
                 }
                 &:focus:before {
-                  border-color: #333333;
+                  border-color: #005a9e;
                   opacity: 1;
                 }
                 &:before {
                   background-color: #ffffff;
-                  border-color: #666666;
+                  border-color: #0078d4;
                   border-radius: 50%;
                   border-style: solid;
                   border-width: 1px;
@@ -174,7 +175,7 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   font-weight: normal;
                   height: 20px;
                   left: auto;
-                  opacity: 0;
+                  opacity: 1;
                   position: absolute;
                   right: 3px;
                   top: 3px;
@@ -183,18 +184,28 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                   width: 20px;
                 }
+                @media screen and (-ms-high-contrast: active){&:before {
+                  border-color: Highlight;
+                }
                 &:after {
+                  border-color: #0078d4;
                   border-radius: 50%;
+                  border-style: solid;
+                  border-width: 5px;
                   box-sizing: border-box;
                   content: "";
-                  height: 0px;
-                  left: 10px;
+                  height: 10px;
+                  left: auto;
                   position: absolute;
-                  right: 0px;
+                  right: 8px;
+                  top: 8px;
                   transition-duration: 200ms;
                   transition-property: border-width;
                   transition-timing-function: cubic-bezier(.4, 0, .23, 1);
-                  width: 0px;
+                  width: 10px;
+                }
+                @media screen and (-ms-high-contrast: active){&:after {
+                  border-color: Highlight;
                 }
             htmlFor="ChoiceGroup0-day"
           >
@@ -321,7 +332,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-week"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -534,7 +544,6 @@ exports[`Component Examples renders ChoiceGroup.Icon.Example.tsx correctly 1`] =
                   top: 0px;
                   width: 100%;
                 }
-            data-is-focusable={false}
             disabled={true}
             id="ChoiceGroup0-month"
             name="ChoiceGroup0"

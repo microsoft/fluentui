@@ -3,7 +3,7 @@ import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
-import { IGroup, IGroupRenderProps, IGroupDividerProps } from '../GroupedList/index';
+import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
 import { IDetailsFooterProps, IDetailsFooterBaseProps } from './DetailsFooter.types';
@@ -12,9 +12,13 @@ import { IList, IListProps, ScrollToMode } from '../List/index';
 import { ITheme, IStyle } from '../../Styling';
 import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
+import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
 export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsList extends IList {
   /**
    * Ensures that the list content is updated. Call this in cases where the list prop updates don't change, but the list
@@ -45,6 +49,9 @@ export interface IDetailsList extends IList {
   getStartItemIndexInView: () => number;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
   /**
    * Theme provided by the Higher Order Component
@@ -131,7 +138,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   rowElementEventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
 
   /** Callback for when the details list has been updated. Useful for telemetry tracking externally. */
-  onDidUpdate?: (detailsList?: DetailsListBase) => any;
+  onDidUpdate?: (detailsList?: DetailsListBase) => void;
 
   /** Callback for when a given row has been mounted. Useful for identifying when a row has been rendered on the page. */
   onRowDidMount?: (item?: any, index?: number) => void;
@@ -166,7 +173,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * If provided, will be the "default" item column renderer method. This affects cells within the rows; not the rows themselves.
    * If a column definition provides its own onRender method, that will be used instead of this.
    */
-  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => any;
+  onRenderItemColumn?: (item?: any, index?: number, column?: IColumn) => React.ReactNode;
 
   /** Map of callback functions related to row drag and drop functionality. */
   dragDropEvents?: IDragDropEvents;
@@ -177,6 +184,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
    * @defaultvalue false
+   * @deprecated Use `ShimmeredDetailsList` pass-through component instead which supports this prop. Will be removed in Fabric 7.0
    */
   enableShimmer?: boolean;
 
@@ -189,6 +197,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * An override to render the details footer.
    */
   onRenderDetailsFooter?: IRenderFunction<IDetailsFooterProps>;
+
+  /**
+   * If provided, can be used to render a custom checkbox
+   */
+  onRenderCheckbox?: IRenderFunction<IDetailsListCheckboxProps>;
 
   /** Viewport, provided by the withViewport decorator. */
   viewport?: IViewport;
@@ -268,15 +281,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   columnReorderOptions?: IColumnReorderOptions;
 
   /**
-   * Optional function which will be called to estimate the height (in pixels) of the given group.
-   *
-   * By default, scrolling through a large virtualized GroupedList will often "jump" due to the order
-   * in which heights are calculated. For more details, see https://github.com/OfficeDev/office-ui-fabric-react/issues/5094
-   *
-   * Pass this prop to ensure the list uses the computed height rather than cached DOM measurements,
-   * avoiding the scroll jumping issue.
+   * Optional function to override default group height calculation used by list virtualization.
    */
-  getGroupHeight?: (group: IGroup, groupIndex: number) => number;
+  getGroupHeight?: IGroupedListProps['getGroupHeight'];
 
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
@@ -296,6 +303,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   disableSelectionZone?: boolean;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumn {
   /**
    * A unique key for identifying the column.
@@ -412,12 +422,12 @@ export interface IColumn {
   /**
    * If provided, will be executed when the user clicks on the column header.
    */
-  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => any;
+  onColumnClick?: (ev: React.MouseEvent<HTMLElement>, column: IColumn) => void;
 
   /**
    * If provided, will be executed when the user accesses the contextmenu on a column header.
    */
-  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => any;
+  onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * If provided, will be executed when the column is resized with the column's current width.
@@ -485,6 +495,7 @@ export interface IColumn {
  * Enum to describe how a particular column header behaves.... This enum is used to
  * to specify the property IColumn:columnActionsMode.
  * If IColumn:columnActionsMode is undefined, then it's equivalent to ColumnActionsMode.clickable
+ * {@docCategory DetailsList}
  */
 export enum ColumnActionsMode {
   /**
@@ -503,6 +514,9 @@ export enum ColumnActionsMode {
   hasDropdown = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum ConstrainMode {
   /** If specified, lets the content grow which allows the page to manage scrolling. */
   unconstrained = 0,
@@ -513,6 +527,9 @@ export enum ConstrainMode {
   horizontalConstrained = 1
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnReorderOptions {
   /**
    * Specifies the number fixed columns from left(0th index)
@@ -552,6 +569,9 @@ export interface IColumnReorderOptions {
   onDragEnd?: (columnDropLocationDetails: ColumnDragEndLocation) => void;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IColumnDragDropDetails {
   /**
    * Specifies the source column index
@@ -568,6 +588,7 @@ export interface IColumnDragDropDetails {
 
 /**
  * Enum to describe where the column has been dropped, after starting the drag
+ * {@docCategory DetailsList}
  */
 export enum ColumnDragEndLocation {
   /**
@@ -586,6 +607,9 @@ export enum ColumnDragEndLocation {
   header = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum DetailsListLayoutMode {
   /**
    * Lets the user resize columns and makes not attempt to fit them.
@@ -599,6 +623,9 @@ export enum DetailsListLayoutMode {
   justified = 1
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export enum CheckboxVisibility {
   /**
    * Visible on hover.
@@ -616,6 +643,9 @@ export enum CheckboxVisibility {
   hidden = 2
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> &
   Pick<IDetailsListProps, 'className'> & {
     /** Whether the the list is horizontally constrained */
@@ -628,6 +658,9 @@ export type IDetailsListStyleProps = Required<Pick<IDetailsListProps, 'theme'>> 
     isFixed?: boolean;
   };
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsListStyles {
   root: IStyle;
   focusZone: IStyle;
@@ -635,9 +668,17 @@ export interface IDetailsListStyles {
   contentWrapper: IStyle;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsGroupRenderProps extends IGroupRenderProps {
   onRenderFooter?: IRenderFunction<IDetailsGroupDividerProps>;
   onRenderHeader?: IRenderFunction<IDetailsGroupDividerProps>;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDetailsGroupDividerProps extends IGroupDividerProps, IDetailsItemProps {}
+
+export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {}

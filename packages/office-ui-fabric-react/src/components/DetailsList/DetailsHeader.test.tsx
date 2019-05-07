@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DetailsHeader } from './DetailsHeader';
-import { IDetailsHeader, IDropHintDetails } from './DetailsHeader.types';
-import { DetailsListLayoutMode, IColumn, ColumnActionsMode } from './DetailsList.types';
+import { IDetailsHeader, IDropHintDetails, SelectAllVisibility } from './DetailsHeader.types';
+import { DetailsListLayoutMode, IColumn, ColumnActionsMode, CheckboxVisibility } from './DetailsList.types';
 import { Selection, SelectionMode } from '../../utilities/selection/index';
 import { EventGroup } from '../../Utilities';
 import { mount } from 'enzyme';
@@ -241,6 +241,19 @@ describe('DetailsHeader', () => {
         selection={_selection}
         selectionMode={SelectionMode.multiple}
         layoutMode={DetailsListLayoutMode.fixedColumns}
+        columns={_columns}
+      />
+    );
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
+  it('can render a hidden select all checkbox in single selection mode', () => {
+    const component = renderer.create(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.single}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        selectAllVisibility={SelectAllVisibility.hidden}
         columns={_columns}
       />
     );
@@ -516,11 +529,11 @@ describe('DetailsHeader', () => {
     // dragover b/w b&c and c&d -> dead zone b/w 370 and 810
     _RaiseEvent(detailsColSourceC, _DRAGOVER, 400);
     expect(header._draggedColumnIndex).toBe(2);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
 
     _RaiseEvent(detailsColTargetD, _DRAGOVER, 710);
     expect(header._draggedColumnIndex).toBe(2);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
 
     // dead zone : idx 2 and 3 -> no hint shown
     dropHintElement = component.find('#columnDropHint_2').getDOMNode();
@@ -681,7 +694,7 @@ describe('DetailsHeader', () => {
 
     // drop on source column itself -> drophintindex should not be set and hence target index not updated
     _RaiseEvent(detailsColTarget, _DROP, 500);
-    expect(header._currentDropHintIndex).toBe(Number.MIN_SAFE_INTEGER);
+    expect(header._currentDropHintIndex).toBe(-1);
     expect(_sourceIndex).toBe(2);
   });
 
@@ -708,5 +721,22 @@ describe('DetailsHeader', () => {
     );
 
     expect(component.find(`.${headerClassName}`).exists()).toBe(true);
+  });
+
+  it('renders details header with custom checkbox render', () => {
+    const onRenderCheckboxMock = jest.fn();
+
+    mount(
+      <DetailsHeader
+        selection={_selection}
+        selectionMode={SelectionMode.multiple}
+        layoutMode={DetailsListLayoutMode.fixedColumns}
+        onRenderDetailsCheckbox={onRenderCheckboxMock}
+        checkboxVisibility={CheckboxVisibility.always}
+      />
+    );
+
+    expect(onRenderCheckboxMock).toHaveBeenCalledTimes(1);
+    expect(onRenderCheckboxMock.mock.calls[0][0]).toEqual({ checked: false });
   });
 });

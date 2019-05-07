@@ -211,6 +211,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -378,6 +379,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -545,6 +547,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }
@@ -712,6 +715,7 @@ exports[`Component Examples renders Nav.ByKeys.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                           overflow: hidden;
+                          text-align: left;
                           text-overflow: ellipsis;
                           vertical-align: middle;
                         }

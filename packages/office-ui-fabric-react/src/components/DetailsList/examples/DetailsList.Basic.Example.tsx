@@ -1,8 +1,6 @@
-// @codepen
-
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
-import { DetailsList, DetailsListLayoutMode, Selection, IColumn, IDetailsList } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, DetailsListLayoutMode, Selection, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
@@ -11,37 +9,6 @@ const exampleChildClass = mergeStyles({
   display: 'block',
   marginBottom: '10px'
 });
-
-// Populate with items for demos.
-const _items: IDetailsListBasicExampleItem[] = [];
-for (let i = 0; i < 200; i++) {
-  _items.push({
-    key: i,
-    name: 'Item ' + i,
-    value: i
-  });
-}
-
-const _columns: IColumn[] = [
-  {
-    key: 'column1',
-    name: 'Name',
-    fieldName: 'name',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for name'
-  },
-  {
-    key: 'column2',
-    name: 'Value',
-    fieldName: 'value',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true,
-    ariaLabel: 'Operations for value'
-  }
-];
 
 export interface IDetailsListBasicExampleItem {
   key: number;
@@ -56,7 +23,8 @@ export interface IDetailsListBasicExampleState {
 
 export class DetailsListBasicExample extends React.Component<{}, IDetailsListBasicExampleState> {
   private _selection: Selection;
-  private _detailsList = React.createRef<IDetailsList>();
+  private _allItems: IDetailsListBasicExampleItem[];
+  private _columns: IColumn[];
 
   constructor(props: {}) {
     super(props);
@@ -65,8 +33,23 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
       onSelectionChanged: () => this.setState({ selectionDetails: this._getSelectionDetails() })
     });
 
+    // Populate with items for demos.
+    this._allItems = [];
+    for (let i = 0; i < 200; i++) {
+      this._allItems.push({
+        key: i,
+        name: 'Item ' + i,
+        value: i
+      });
+    }
+
+    this._columns = [
+      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+    ];
+
     this.state = {
-      items: _items,
+      items: this._allItems,
       selectionDetails: this._getSelectionDetails()
     };
   }
@@ -85,9 +68,8 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
         />
         <MarqueeSelection selection={this._selection}>
           <DetailsList
-            componentRef={this._detailsList}
             items={items}
-            columns={_columns}
+            columns={this._columns}
             setKey="set"
             layoutMode={DetailsListLayoutMode.fixedColumns}
             selection={this._selection}
@@ -115,7 +97,9 @@ export class DetailsListBasicExample extends React.Component<{}, IDetailsListBas
   }
 
   private _onFilter = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+    this.setState({
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems
+    });
   };
 
   private _onItemInvoked = (item: IDetailsListBasicExampleItem): void => {

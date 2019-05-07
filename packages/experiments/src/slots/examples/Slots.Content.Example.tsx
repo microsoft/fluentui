@@ -1,6 +1,6 @@
 import * as React from 'react';
-import { Button, Text, Stack } from '@uifabric/experiments';
-import { Spinner } from 'office-ui-fabric-react';
+import { Button } from '@uifabric/experiments';
+import { Spinner, Stack, Text } from 'office-ui-fabric-react';
 import { stackProps } from './SlotExampleUtils';
 
 // tslint:disable:jsx-no-lambda
@@ -18,11 +18,13 @@ export class SlotsContentExample extends React.Component<{}, {}> {
           <p>Content: Function, Spinner</p>
         </Button>
         <Button
-          content={(contentProps, ContentType) => (
-            <b>
-              Content: <ContentType {...contentProps}>TextType</ContentType>
-            </b>
-          )}
+          content={render =>
+            render((ContentType, contentProps) => (
+              <b>
+                Content: <ContentType {...contentProps}>TextType</ContentType>
+              </b>
+            ))
+          }
         >
           <p>Content: Function, Text + ContentType</p>
         </Button>

@@ -4,8 +4,7 @@ import { IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles } from './Do
 export const DocumentCardPreviewGlobalClassNames = {
   root: 'ms-DocumentCardPreview',
   icon: 'ms-DocumentCardPreview-icon',
-  iconContainer: 'ms-DocumentCardPreview-iconContainer',
-  previewFileTypeIcon: 'ms-DocumentCardPreview-previewFileTypeIcon'
+  iconContainer: 'ms-DocumentCardPreview-iconContainer'
 };
 
 export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardPreviewStyles => {
@@ -34,8 +33,8 @@ export const getStyles = (props: IDocumentCardPreviewStyleProps): IDocumentCardP
         height: '100%'
       }
     ],
-    previewFileTypeIcon: [
-      classNames.previewFileTypeIcon,
+    icon: [
+      classNames.icon,
       {
         left: '10px',
         bottom: '10px',

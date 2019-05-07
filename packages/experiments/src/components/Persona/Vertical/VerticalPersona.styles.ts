@@ -27,6 +27,7 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       boxSizing: 'border-box'
     },
     primaryText: {
+      width: '100%',
       paddingTop: tokens.primaryTextPaddingTop,
       fontFamily: tokens.fontFamily,
       fontSize: tokens.primaryTextFontSize,
@@ -34,9 +35,11 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       color: theme.palette.neutralPrimary,
       textAlign: 'center',
       whiteSpace: 'initial',
-      wordBreak: 'break-word'
+      wordBreak: 'break-word',
+      wordWrap: 'break-word'
     },
     secondaryText: {
+      width: '100%',
       paddingTop: tokens.secondaryTextPaddingTop,
       fontFamily: tokens.fontFamily,
       fontSize: tokens.secondaryTextFontSize,
@@ -44,7 +47,8 @@ export const VerticalPersonaStyles: IVerticalPersonaComponent['styles'] = (props
       textAlign: 'center',
       whiteSpace: 'initial',
       color: theme.palette.neutralSecondary,
-      wordBreak: 'break-word'
+      wordBreak: 'break-word',
+      wordWrap: 'break-word'
     }
   };
 };

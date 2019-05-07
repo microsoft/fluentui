@@ -135,7 +135,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
             </div>
           </SelectionZone>
         </FocusZone>
-        {this.renderSuggestions()}
+        {this.renderFloatingPicker()}
       </div>
     );
   }
@@ -149,27 +149,31 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     return itemLimit === undefined || this.items.length < itemLimit;
   }
 
-  protected renderSuggestions(): JSX.Element {
-    const onRenderFloatingPicker = this.props.onRenderFloatingPicker;
-    return onRenderFloatingPicker({
-      componentRef: this.floatingPicker,
-      onChange: this._onSuggestionSelected,
-      inputElement: this.input.current ? this.input.current.inputElement : undefined,
-      selectedItems: this.items,
-      suggestionItems: this.props.suggestionItems ? this.props.suggestionItems : undefined,
-      ...this.floatingPickerProps
-    });
+  protected renderFloatingPicker(): JSX.Element {
+    const FloatingPicker: React.ComponentType<IBaseFloatingPickerProps<T>> = this.props.onRenderFloatingPicker;
+    return (
+      <FloatingPicker
+        componentRef={this.floatingPicker}
+        onChange={this._onSuggestionSelected}
+        inputElement={this.input.current ? this.input.current.inputElement : undefined}
+        selectedItems={this.items}
+        suggestionItems={this.props.suggestionItems ? this.props.suggestionItems : undefined}
+        {...this.floatingPickerProps}
+      />
+    );
   }
 
   protected renderSelectedItemsList(): JSX.Element {
-    const onRenderSelectedItems = this.props.onRenderSelectedItems;
-    return onRenderSelectedItems({
-      componentRef: this.selectedItemsList,
-      selection: this.selection,
-      selectedItems: this.props.selectedItems ? this.props.selectedItems : undefined,
-      onItemsDeleted: this.props.selectedItems ? this.props.onItemsRemoved : undefined,
-      ...this.selectedItemsListProps
-    });
+    const SelectedItems: React.ComponentType<IBaseSelectedItemsListProps<T>> = this.props.onRenderSelectedItems;
+    return (
+      <SelectedItems
+        componentRef={this.selectedItemsList}
+        selection={this.selection}
+        selectedItems={this.props.selectedItems ? this.props.selectedItems : undefined}
+        onItemsDeleted={this.props.selectedItems ? this.props.onItemsRemoved : undefined}
+        {...this.selectedItemsListProps}
+      />
+    );
   }
 
   protected onInputChange = (value: string): void => {

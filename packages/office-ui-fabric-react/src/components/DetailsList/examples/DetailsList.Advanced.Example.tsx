@@ -55,8 +55,6 @@ const PAGING_SIZE = 10;
 const PAGING_DELAY = 2000;
 const ITEMS_COUNT = 5000;
 
-const _items: IExampleItem[] = createListItems(ITEMS_COUNT);
-
 export interface IDetailsListAdvancedExampleState {
   canResizeColumns?: boolean;
   checkboxVisibility?: CheckboxVisibility;
@@ -78,19 +76,21 @@ export interface IDetailsListAdvancedExampleState {
 export class DetailsListAdvancedExample extends React.Component<{}, IDetailsListAdvancedExampleState> {
   private _isFetchingItems: boolean;
   private _selection: Selection;
+  private _allItems: IExampleItem[];
 
   constructor(props: {}) {
     super(props);
 
     this._getCommandItems = memoizeFunction(this._getCommandItems);
 
+    this._allItems = createListItems(ITEMS_COUNT);
     this._selection = new Selection({
       onSelectionChanged: this._onItemsSelectionChanged
     });
-    this._selection.setItems(_items, false);
+    this._selection.setItems(this._allItems, false);
 
     this.state = {
-      items: _items,
+      items: this._allItems,
       selectionCount: 0,
       groups: undefined,
       groupItemLimit: DEFAULT_ITEM_LIMIT,
@@ -99,7 +99,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
       selectionMode: SelectionMode.multiple,
       canResizeColumns: true,
       checkboxVisibility: CheckboxVisibility.onHover,
-      columns: this._buildColumns(_items, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
+      columns: this._buildColumns(this._allItems, true, this._onColumnClick, '', undefined, undefined, this._onColumnContextMenu),
       contextualMenuProps: undefined,
       sortedColumnKey: 'name',
       isSortedDescending: false,
@@ -210,7 +210,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
         this._isFetchingItems = false;
         const itemsCopy = [...this.state.items];
 
-        itemsCopy.splice(index, PAGING_SIZE).concat(_items.slice(index, index + PAGING_SIZE));
+        itemsCopy.splice(index, PAGING_SIZE).concat(this._allItems.slice(index, index + PAGING_SIZE));
 
         this.setState({
           items: itemsCopy
@@ -231,7 +231,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
 
     this.setState({
       isLazyLoaded: isLazyLoaded,
-      items: isLazyLoaded ? _items.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)) : _items
+      items: isLazyLoaded ? this._allItems.slice(0, PAGING_SIZE).concat(new Array(ITEMS_COUNT - PAGING_SIZE)) : this._allItems
     });
   };
 
@@ -537,7 +537,7 @@ export class DetailsListAdvancedExample extends React.Component<{}, IDetailsList
   };
 
   private _onSortColumn = (columnKey: string, isSortedDescending: boolean): void => {
-    const sortedItems = _copyAndSort(_items, columnKey, isSortedDescending);
+    const sortedItems = _copyAndSort(this._allItems, columnKey, isSortedDescending);
 
     this.setState({
       items: sortedItems,

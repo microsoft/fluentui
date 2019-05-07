@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Icon } from 'office-ui-fabric-react';
-import { Text } from '../../../Text';
+import { Icon, Text } from 'office-ui-fabric-react';
 import { IPersonaCoinProps } from '../PersonaCoin.types';
 import { getInitials, getRTL } from '../../../Utilities';
 
@@ -11,7 +10,7 @@ export interface IPersonaCoinInitialsProps {
   className: string;
 }
 
-export const PersonaCoinInitials: React.ComponentType<IPersonaCoinInitialsProps> = props => {
+export const PersonaCoinInitials: React.StatelessComponent<IPersonaCoinInitialsProps> = props => {
   const initials = (typeof props.initials === 'string' && props.initials) || getInitials(props.text, getRTL(), props.allowPhoneInitials);
 
   if (initials) {

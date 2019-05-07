@@ -129,11 +129,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   public componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState) {
     if (prevState.isDatePickerShown && !this.state.isDatePickerShown) {
-      // In browsers like IE, textfield gets unfocused when datepicker is collapsed
-      if (this.props.allowTextInput) {
-        this._async.requestAnimationFrame(() => this.focus());
-      }
-
       // If DatePicker's menu (Calendar) is closed, run onAfterMenuDismiss
       if (this.props.onAfterMenuDismiss) {
         this.props.onAfterMenuDismiss();
@@ -162,6 +157,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       showCloseButton,
       calendarProps,
       calloutProps,
+      textField: textFieldProps,
       underlined,
       allFocusable,
       calendarAs: CalendarType = Calendar,
@@ -179,6 +175,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
     const calloutId = getId('DatePicker-Callout');
     const nativeProps = getNativeProps(this.props, divProperties, ['value']);
+    const iconProps = textFieldProps && textFieldProps.iconProps;
 
     return (
       <div {...nativeProps} className={classNames.root}>
@@ -190,31 +187,33 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
           aria-owns={isDatePickerShown ? calloutId : undefined}
         >
           <TextField
-            id={this._id + '-label'}
-            className={classNames.textField}
             label={label}
             ariaLabel={ariaLabel}
             aria-controls={isDatePickerShown ? calloutId : undefined}
             required={isRequired}
             disabled={disabled}
+            errorMessage={errorMessage}
+            placeholder={placeholder}
+            borderless={borderless}
+            value={formattedDate}
+            componentRef={this._textField}
+            underlined={underlined}
+            tabIndex={tabIndex}
+            readOnly={!allowTextInput}
+            {...textFieldProps}
+            id={this._id + '-label'}
+            className={css(classNames.textField, textFieldProps && textFieldProps.className)}
+            iconProps={{
+              iconName: 'Calendar',
+              ...iconProps,
+              className: css(classNames.icon, iconProps && iconProps.className),
+              onClick: this._onIconClick
+            }}
             onKeyDown={this._onTextFieldKeyDown}
             onFocus={this._onTextFieldFocus}
             onBlur={this._onTextFieldBlur}
             onClick={this._onTextFieldClick}
             onChange={this._onTextFieldChanged}
-            errorMessage={errorMessage}
-            placeholder={placeholder}
-            borderless={borderless}
-            iconProps={{
-              iconName: 'Calendar',
-              onClick: this._onIconClick,
-              className: classNames.icon
-            }}
-            readOnly={!allowTextInput}
-            value={formattedDate}
-            componentRef={this._textField}
-            underlined={underlined}
-            tabIndex={tabIndex}
           />
         </div>
         {isDatePickerShown && (
@@ -232,7 +231,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             onDismiss={this._calendarDismissed}
             onPositioned={this._onCalloutPositioned}
           >
-            <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={this.props.disableAutoFocus}>
+            <FocusTrapZone isClickableOutsideFocusTrap={true} disableFirstFocus={this.props.disableAutoFocus} forceFocusInsideTrap={false}>
               <CalendarType
                 {...calendarProps}
                 onSelectDate={this._onSelectDate}
@@ -292,7 +291,14 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _onCalloutPositioned = (): void => {
-    if (this._calendar.current && !this.props.disableAutoFocus) {
+    let shouldFocus = true;
+    // If the user has specified that the callout shouldn't use initial focus, then respect
+    // that and don't attempt to set focus. That will default to true within the callout
+    // so we need to check if it's undefined here.
+    if (this.props.calloutProps && this.props.calloutProps.setInitialFocus !== undefined) {
+      shouldFocus = this.props.calloutProps.setInitialFocus;
+    }
+    if (this._calendar.current && shouldFocus) {
       this._calendar.current.focus();
     }
   };
@@ -407,7 +413,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    ev.stopPropagation();
+    if (this.state.isDatePickerShown) {
+      ev.stopPropagation();
+    }
     this._calendarDismissed();
   };
 

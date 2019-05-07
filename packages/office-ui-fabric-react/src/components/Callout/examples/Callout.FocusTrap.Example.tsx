@@ -2,29 +2,26 @@ import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { FocusTrapCallout } from 'office-ui-fabric-react/lib/Callout';
 import { CommandBar, ICommandBarItemProps } from 'office-ui-fabric-react/lib/CommandBar';
+import { getId } from 'office-ui-fabric-react/lib/Utilities';
 import './CalloutExample.scss';
 
 export interface ICalloutFocusTrapExampleProps {
   items: ICommandBarItemProps[];
 }
 
-export class CalloutFocusTrapExample extends React.Component<
-  ICalloutFocusTrapExampleProps,
-  {
-    isCalloutVisible: boolean;
-  }
-> {
+export interface ICalloutFocusTrapExampleState {
+  isCalloutVisible: boolean;
+}
+
+export class CalloutFocusTrapExample extends React.Component<ICalloutFocusTrapExampleProps, ICalloutFocusTrapExampleState> {
+  public state: ICalloutFocusTrapExampleState = {
+    isCalloutVisible: false
+  };
+
   private _menuButtonElement: HTMLElement | null;
-
-  public constructor(props: ICalloutFocusTrapExampleProps) {
-    super(props);
-
-    this._onDismiss = this._onDismiss.bind(this);
-
-    this.state = {
-      isCalloutVisible: false
-    };
-  }
+  // Use getId() to ensure that the callout title ID is unique on the page.
+  // (It's also okay to use a plain string without getId() and manually ensure its uniqueness.)
+  private _titleId: string = getId('callout-label');
 
   public render(): JSX.Element {
     const { isCalloutVisible } = this.state;
@@ -37,8 +34,8 @@ export class CalloutFocusTrapExample extends React.Component<
         {isCalloutVisible ? (
           <div>
             <FocusTrapCallout
-              role={'alertdialog'}
-              ariaLabelledBy={'callout-label-2'}
+              role="alertdialog"
+              ariaLabelledBy={this._titleId}
               className="ms-CalloutExample-callout"
               gapSpace={0}
               target={this._menuButtonElement}
@@ -46,7 +43,7 @@ export class CalloutFocusTrapExample extends React.Component<
               setInitialFocus={true}
             >
               <div className="ms-CalloutExample-header">
-                <p className="ms-CalloutExample-title" id={'callout-label-2'}>
+                <p className="ms-CalloutExample-title" id={this._titleId}>
                   Callout title here
                 </p>
               </div>
@@ -65,9 +62,9 @@ export class CalloutFocusTrapExample extends React.Component<
     );
   }
 
-  private _onDismiss(ev: any): void {
+  private _onDismiss = () => {
     this.setState({
       isCalloutVisible: !this.state.isCalloutVisible
     });
-  }
+  };
 }

@@ -1,5 +1,6 @@
 let path = require('path');
 let resources = require('../../scripts/webpack/webpack-resources');
+
 const devServerConfig = {
   inline: true,
   port: 4321
@@ -23,8 +24,11 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
+      '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
+      '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
       'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+      '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

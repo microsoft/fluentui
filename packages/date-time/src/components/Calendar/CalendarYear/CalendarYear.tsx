@@ -6,7 +6,7 @@ import { CalendarYearBase } from './CalendarYear.base';
 /**
  * CalendarYear description
  */
-export const CalendarYear: (props: ICalendarYearProps) => JSX.Element = styled<
+export const CalendarYear: React.StatelessComponent<ICalendarYearProps> = styled<
   ICalendarYearProps,
   ICalendarYearStyleProps,
   ICalendarYearStyles

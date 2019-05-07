@@ -16,7 +16,7 @@ export const CollapsibleSectionView: ICollapsibleSectionComponent['view'] = prop
   return (
     <Slots.root onKeyDown={props.onRootKeyDown}>
       <Slots.title collapsed={props.collapsed} focusElementRef={titleElementRef} onClick={onClick} onKeyDown={onKeyDown} indent={indent} />
-      <Slots.body>{!collapsed && children}</Slots.body>
+      {!collapsed && <Slots.body>{children}</Slots.body>}
     </Slots.root>
   );
 };

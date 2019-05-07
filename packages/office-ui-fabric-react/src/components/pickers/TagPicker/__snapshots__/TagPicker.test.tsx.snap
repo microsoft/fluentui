@@ -9,7 +9,11 @@ exports[`TagPicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -45,20 +49,9 @@ exports[`TagPicker renders correctly 1`] = `
               border-color: #333333;
             }
       >
-        <span
-          className=
-              ms-BasePicker-itemsWrapper
-              {
-                display: flex;
-                flex-wrap: wrap;
-              }
-          id="selected-items-id__0"
-          role="list"
-        />
         <input
           aria-autocomplete="both"
           aria-controls=" "
-          aria-describedby="selected-items-id__0"
           aria-expanded={false}
           aria-haspopup="true"
           autoCapitalize="off"

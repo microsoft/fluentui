@@ -5,7 +5,7 @@ import {
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles
 } from './ColorPickerGridCell.types';
-import { getColorFromString } from '../../utilities/color/colors';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
 import { IButtonClassNames } from '../Button/BaseButton.classNames';
@@ -21,10 +21,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
   public static defaultProps = {
     circle: true,
     disabled: false,
-    selected: false,
-    height: 20,
-    width: 20,
-    borderWidth: 2
+    selected: false
   } as IColorPickerGridCellProps;
 
   private _classNames: { [key in keyof IColorPickerGridCellStyles]: string };

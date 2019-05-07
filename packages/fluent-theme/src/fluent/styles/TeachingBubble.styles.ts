@@ -1,11 +1,10 @@
-import { Depths } from '../FluentDepths';
 import { FontSizes } from '../FluentType';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
 
 export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<ITeachingBubbleStyles> => {
   const { hasCondensedHeadline, hasSmallHeadline, theme } = props;
-  const { palette } = theme;
+  const { effects, palette } = theme;
 
   let headlineSize = FontSizes.size14;
   if (!hasCondensedHeadline && !hasSmallHeadline) {
@@ -29,13 +28,17 @@ export const TeachingBubbleStyles = (props: ITeachingBubbleStyleProps): Partial<
       selectors: {
         '&:hover': {
           color: palette.black
+        },
+        '&:active': {
+          background: palette.themeDarkAlt,
+          color: palette.black
         }
       }
     },
     subComponentStyles: {
       callout: {
         root: {
-          boxShadow: Depths.depth16
+          boxShadow: effects.elevation16
         }
       }
     }

@@ -6,7 +6,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
     className=
 
         {
-          align-items: center;
           display: flex;
           flex-wrap: wrap;
         }
@@ -138,7 +137,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             -webkit-font-smoothing: antialiased;
             align-items: center;
             display: flex;
-            flex-direction: row-reverse;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -158,14 +156,15 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
-              display: inline-block;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              margin-bottom: 3px;
+              margin-bottom: 0px;
               margin-left: 10px;
               margin-right: 0px;
               margin-top: 0px;
+              order: 1;
               overflow-wrap: break-word;
               padding-bottom: 5px;
               padding-left: 0;
@@ -174,6 +173,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="Toggle3"
+        id="Toggle3-label"
       >
         Compact mode
       </label>
@@ -187,6 +187,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle3-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -268,7 +269,6 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
             -webkit-font-smoothing: antialiased;
             align-items: center;
             display: flex;
-            flex-direction: row-reverse;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
             font-weight: 400;
@@ -288,14 +288,15 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               box-shadow: none;
               box-sizing: border-box;
               color: #333333;
-              display: inline-block;
+              display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              margin-bottom: 3px;
+              margin-bottom: 0px;
               margin-left: 10px;
               margin-right: 0px;
               margin-top: 0px;
+              order: 1;
               overflow-wrap: break-word;
               padding-bottom: 5px;
               padding-left: 0;
@@ -304,6 +305,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
               word-wrap: break-word;
             }
         htmlFor="Toggle4"
+        id="Toggle4-label"
       >
         Show index of first item in view when unmounting
       </label>
@@ -317,6 +319,7 @@ exports[`Component Examples renders DetailsList.Grouped.Example.tsx correctly 1`
       >
         <button
           aria-checked={false}
+          aria-labelledby="Toggle4-label"
           checked={false}
           className=
               ms-Toggle-background

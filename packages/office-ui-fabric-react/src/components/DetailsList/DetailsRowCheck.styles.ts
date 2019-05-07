@@ -22,7 +22,7 @@ export const getStyles = (props: IDetailsRowCheckStyleProps): IDetailsRowCheckSt
     root: [classNames.root, className],
 
     check: [
-      !canSelect && [classNames.isDisabled, { visibility: 'hidden' }],
+      !canSelect && classNames.isDisabled,
       isHeader && classNames.isHeader,
       getFocusStyle(theme),
       theme.fonts.small,

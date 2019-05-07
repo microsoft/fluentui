@@ -1,9 +1,8 @@
-import { IComponent, IComponentStyles, IHTMLButtonSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
-import { IFontWeight } from 'office-ui-fabric-react';
-import { IContextualMenuSlot, IIconSlot } from '../../utilities/factoryComponents.types';
-import { IStackSlot } from '../../Stack';
-import { ITextSlot } from '../../Text';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
+import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
+import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps>;
 
@@ -16,62 +15,124 @@ export type IButtonStylesReturnType = ReturnType<Extract<IButtonComponent['style
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
 export interface IButtonSlots {
-  root?: IHTMLButtonSlot;
+  /**
+   * Defines the root slot of the component.
+   */
+  root?: IHTMLElementSlot<'button'>;
+
+  /**
+   * Defines the horizontal stack used for specifying the inner layout of the Button.
+   */
   stack?: IStackSlot;
+
+  /**
+   * Defines the text that is displayed inside the Button.
+   */
   content?: ITextSlot;
+
+  /**
+   * Defines the icon that is displayed next to the text inside the Button.
+   */
   icon?: IIconSlot;
-  menu?: IContextualMenuSlot;
-  menuIcon?: IIconSlot;
 }
 
-export interface IButton {}
+export interface IButton {
+  /**
+   * Sets focus to the Button.
+   */
+  focus: () => void;
+}
 
 export interface IButtonProps
   extends IButtonSlots,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton> {
+  /**
+   * Defines an href reference that, if provided, will make this component render as an anchor.
+   */
   href?: string;
 
+  /**
+   * Defines whether the visual representation of the Button should be emphasized.
+   * @defaultvalue false
+   */
   primary?: boolean;
-  circular?: boolean;
-  disabled?: boolean;
-  expanded?: boolean;
-  defaultExpanded?: boolean;
 
+  /**
+   * Defines whether the Button should be circular.
+   * In general, circular Buttons should not specify the menu and container slots.
+   * @defaultvalue false
+   */
+  circular?: boolean;
+
+  /**
+   * Defines whether the Button is disabled.
+   * @defaultvalue false
+   */
+  disabled?: boolean;
+
+  /**
+   * Defines an event callback that is triggered when the Button is clicked.
+   */
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * Defines the aria label that the screen readers use when focus goes on the Button.
+   */
+  ariaLabel?: string;
 }
 
 export interface IButtonViewProps extends IButtonProps {
-  onMenuDismiss: () => void;
-  menuTarget: HTMLElement | undefined;
+  /**
+   * Defines a reference to the inner button.
+   */
+  buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 export interface IButtonTokens {
+  backgroundClip?: IRawStyleBase['backgroundClip'];
   backgroundColor?: string;
   backgroundColorHovered?: string;
   backgroundColorPressed?: string;
+  borderColor?: string;
+  borderColorFocused?: string;
+  borderColorHovered?: string;
+  borderColorPressed?: string;
+  borderRadius?: number | string;
+  borderWidth?: number | string;
   color?: string;
   colorHovered?: string;
   colorPressed?: string;
-  borderColor?: string;
-  borderColorHovered?: string;
-  borderColorPressed?: string;
+  contentPadding?: number | string;
+  contentPaddingFocused?: number | string;
+  cursor?: string;
+  height?: number | string;
+  highContrastBackgroundColor?: string;
+  highContrastBackgroundColorHovered?: string;
+  highContrastBackgroundColorPressed?: string;
+  highContrastBorderColor?: string;
+  highContrastBorderColorHovered?: string;
+  highContrastBorderColorPressed?: string;
+  highContrastColor?: string;
+  highContrastColorHovered?: string;
+  highContrastColorPressed?: string;
+  highContrastIconColor?: string;
+  highContrastIconColorHovered?: string;
+  highContrastIconColorPressed?: string;
   iconColor?: string;
   iconColorHovered?: string;
   iconColorPressed?: string;
-  borderRadius?: number | string;
-  borderWidth?: number | string;
-  contentPadding?: number | string;
+  iconSize?: number | string;
+  iconWeight?: number;
+  lineHeight?: number | string;
+  minHeight?: number | string;
+  minWidth?: number | string;
+  msHighContrastAdjust?: string;
+  outlineColor?: string;
   textFamily?: string;
   textSize?: number | string;
   textWeight?: IFontWeight;
   width?: number | string;
-  height?: number | string;
-  iconSize?: number | string;
-  iconWeight?: number;
-  lineHeight?: number | string;
-  minWidth?: number | string;
-  minHeight?: number | string;
 }
 
 export type IButtonStyles = IComponentStyles<IButtonSlots>;

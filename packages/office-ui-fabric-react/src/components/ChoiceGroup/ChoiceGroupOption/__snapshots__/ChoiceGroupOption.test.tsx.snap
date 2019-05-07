@@ -35,9 +35,16 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField-input
             {
+              height: 100%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               opacity: 0;
               position: absolute;
-              top: 8px;
+              right: 0px;
+              top: 0px;
+              width: 100%;
             }
         onBlur={[Function]}
         onChange={[Function]}
@@ -163,9 +170,16 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField-input
             {
+              height: 100%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               opacity: 0;
               position: absolute;
-              top: 8px;
+              right: 0px;
+              top: 0px;
+              width: 100%;
             }
         onBlur={[Function]}
         onChange={[Function]}
@@ -292,9 +306,16 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField-input
             {
+              height: 100%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               opacity: 0;
               position: absolute;
-              top: 8px;
+              right: 0px;
+              top: 0px;
+              width: 100%;
             }
         onBlur={[Function]}
         onChange={[Function]}
@@ -304,6 +325,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             {
               border-color: #0078d4;
               cursor: pointer;
@@ -410,9 +432,16 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField-input
             {
+              height: 100%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               opacity: 0;
               position: absolute;
-              top: 8px;
+              right: 0px;
+              top: 0px;
+              width: 100%;
             }
         disabled={true}
         onBlur={[Function]}
@@ -516,9 +545,16 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
         className=
             ms-ChoiceField-input
             {
+              height: 100%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               opacity: 0;
               position: absolute;
-              top: 8px;
+              right: 0px;
+              top: 0px;
+              width: 100%;
             }
         disabled={true}
         onBlur={[Function]}
@@ -529,6 +565,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             {
               border-color: #0078d4;
               cursor: default;
@@ -541,7 +578,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
             }
             &:before {
               background-color: #ffffff;
-              border-color: #0078d4;
+              border-color: #a6a6a6;
               border-radius: 50%;
               border-style: solid;
               border-width: 1px;
@@ -563,7 +600,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
               color: GrayText;
             }
             &:after {
-              border-color: #0078d4;
+              border-color: #a6a6a6;
               border-radius: 50%;
               border-style: solid;
               border-width: 5px;
@@ -1091,6 +1128,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
       <label
         className=
             ms-ChoiceField-field
+            is-checked
             ms-ChoiceField--icon
             {
               align-items: center;

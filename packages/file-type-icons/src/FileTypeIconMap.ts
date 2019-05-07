@@ -4,7 +4,9 @@
  * Always use getFileTypeIconProps to get the most up-to-date icon at the right pixel density.
  */
 export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
-  accdb: { extensions: ['accdb', 'mdb'] },
+  accdb: {
+    extensions: ['accdb', 'mdb']
+  },
   archive: {
     extensions: ['7z', 'ace', 'arc', 'arj', 'dmg', 'gz', 'iso', 'lzh', 'pkg', 'rar', 'sit', 'tgz', 'tar', 'z']
   },
@@ -26,7 +28,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'mid',
       'mmf',
       'mp3',
-      'ogg',
       'oga',
       'ra',
       'rm',
@@ -212,7 +213,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'scss',
       'sgml',
       'sh',
-      'sh',
       'shtml',
       'sml',
       'svn-base',
@@ -244,19 +244,37 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   css: {}, // we dont have the icon yet, but i believe we want it, snapping to 'code' for now
-  csv: { extensions: ['csv'] },
+  csv: {
+    extensions: ['csv']
+  },
   docset: {},
-  docx: { extensions: ['doc', 'docm', 'docx', 'docb'] },
-  dotx: { extensions: ['dot', 'dotm', 'dotx'] },
-  email: { extensions: ['eml', 'msg', 'ost', 'pst'] },
-  exe: { extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap'] },
+  docx: {
+    extensions: ['doc', 'docm', 'docx', 'docb']
+  },
+  dotx: {
+    extensions: ['dot', 'dotm', 'dotx']
+  },
+  email: {
+    extensions: ['eml', 'msg', 'ost', 'pst']
+  },
+  exe: {
+    extensions: ['application', 'appref-ms', 'apk', 'app', 'appx', 'exe', 'ipa', 'msi', 'xap']
+  },
   folder: {},
-  font: { extensions: ['ttf', 'otf', 'woff'] },
+  font: {
+    extensions: ['ttf', 'otf', 'woff']
+  },
   genericfile: {},
-  html: { extensions: ['htm', 'html', 'mht'] },
-  link: { extensions: ['lnk', 'link', 'url', 'website', 'webloc'] },
+  html: {
+    extensions: ['htm', 'html', 'mht']
+  },
+  link: {
+    extensions: ['lnk', 'link', 'url', 'website', 'webloc']
+  },
   linkedfolder: {},
-  splist: { extensions: ['listitem'] },
+  splist: {
+    extensions: ['listitem']
+  },
   model: {
     extensions: [
       '3ds',
@@ -286,11 +304,21 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'x'
     ]
   },
-  mpp: { extensions: ['mpp'] },
-  mpt: { extensions: ['mpt'] },
-  one: { extensions: ['one', 'onepkg'] }, // this is a format for exported single-file notebook pages
-  onetoc: { extensions: ['ms-one-stub', 'onetoc', 'onetoc2'] }, // this icon represents a complete, logical notebook.
-  pdf: { extensions: ['pdf'] },
+  mpp: {
+    extensions: ['mpp']
+  },
+  mpt: {
+    extensions: ['mpt']
+  },
+  one: {
+    extensions: ['one'] // this is a format for exported single - file notebook pages
+  },
+  onetoc: {
+    extensions: ['ms-one-stub', 'onetoc', 'onetoc2', 'onepkg'] // this icon represents a complete, logical notebook.
+  },
+  pdf: {
+    extensions: ['pdf']
+  },
   photo: {
     extensions: [
       'arw',
@@ -329,15 +357,34 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   photo360: {},
-  potx: { extensions: ['pot', 'potm', 'potx'] },
-  ppsx: { extensions: ['pps', 'ppsm', 'ppsx'] },
-  pptx: { extensions: ['ppt', 'pptm', 'pptx', 'sldx', 'sldm'] },
-  presentation: { extensions: ['odp', 'gslides', 'key'] },
-  pub: { extensions: ['pub'] },
-  spo: { extensions: ['aspx'] },
+  potx: {
+    extensions: ['pot', 'potm', 'potx']
+  },
+  powerbi: {
+    extensions: ['pbix']
+  },
+  ppsx: {
+    extensions: ['pps', 'ppsm', 'ppsx']
+  },
+  pptx: {
+    extensions: ['ppt', 'pptm', 'pptx', 'sldx', 'sldm']
+  },
+  presentation: {
+    extensions: ['odp', 'gslides', 'key']
+  },
+  pub: {
+    extensions: ['pub']
+  },
+  spo: {
+    extensions: ['aspx']
+  },
   sponews: {},
-  spreadsheet: { extensions: ['ods', 'gsheet', 'numbers'] },
-  rtf: { extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages'] },
+  spreadsheet: {
+    extensions: ['ods', 'gsheet', 'numbers']
+  },
+  rtf: {
+    extensions: ['epub', 'gdoc', 'odt', 'rtf', 'wri', 'pages']
+  },
   sharedfolder: {},
   sway: {},
   sysfile: {
@@ -357,7 +404,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'ithmb',
       'jar',
       'kb',
-      'kdc',
       'ldt',
       'lrprev',
       'ppa',
@@ -372,7 +418,11 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'xll'
     ]
   },
-  txt: { extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt'] },
+  txt: {
+    extensions: ['dif', 'diff', 'readme', 'out', 'plist', 'properties', 'text', 'txt']
+  },
+  vaultclosed: {},
+  vaultopen: {},
   vector: {
     extensions: [
       'ai',
@@ -434,12 +484,28 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
     ]
   },
   video360: {},
-  vsdx: { extensions: ['vsd', 'vsdm', 'vsdx', 'vdw'] },
-  vssx: { extensions: ['vss', 'vssm', 'vssx'] },
-  vstx: { extensions: ['vst', 'vstm', 'vstx'] },
-  xlsx: { extensions: ['xls', 'xlsb', 'xlsm', 'xlsx'] },
-  xltx: { extensions: ['xlt', 'xltm', 'xltx'] },
-  xml: { extensions: ['xaml', 'xml', 'xsl'] },
-  xsn: { extensions: ['xsn'] },
-  zip: { extensions: ['zip'] }
+  vsdx: {
+    extensions: ['vsd', 'vsdm', 'vsdx', 'vdw']
+  },
+  vssx: {
+    extensions: ['vss', 'vssm', 'vssx']
+  },
+  vstx: {
+    extensions: ['vst', 'vstm', 'vstx']
+  },
+  xlsx: {
+    extensions: ['xls', 'xlsb', 'xlsm', 'xlsx']
+  },
+  xltx: {
+    extensions: ['xlt', 'xltm', 'xltx']
+  },
+  xml: {
+    extensions: ['xaml', 'xml', 'xsl']
+  },
+  xsn: {
+    extensions: ['xsn']
+  },
+  zip: {
+    extensions: ['zip']
+  }
 };

@@ -1,24 +1,24 @@
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IRefObject, IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
+import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';
 import { ICalloutPositionedInfo } from '../../utilities/positioning';
 import { ILayerProps } from '../../Layer';
 
-export interface ICallout {}
+/**
+ * {@docCategory Callout}
+ */
+export type Target = Element | string | MouseEvent | IPoint | null;
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
-  /**
-   * Optional callback to access the ICallout interface. Use this instead of ref for accessing
-   * the public methods and properties of the component.
-   */
-  componentRef?: IRefObject<ICallout>;
-
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: Element | string | MouseEvent | IPoint | null;
+  target?: Target;
 
   /**
    * How the element should be positioned
@@ -228,6 +228,9 @@ export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   hidden?: boolean;
 }
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutContentStyleProps {
   /**
    * Theme to apply to the calloutContent.
@@ -271,6 +274,9 @@ export interface ICalloutContentStyleProps {
   calloutMaxWidth?: number;
 }
 
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutContentStyles {
   /**
    * Style for wrapper of Callout component.

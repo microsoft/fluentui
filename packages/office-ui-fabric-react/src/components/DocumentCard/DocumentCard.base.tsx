@@ -5,6 +5,9 @@ import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyle
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal
@@ -42,7 +45,7 @@ export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> imp
     }
 
     // if this element is actionable it should have an aria role
-    const role = this.props.role || actionable ? (onClick ? 'button' : 'link') : undefined;
+    const role = this.props.role || (actionable ? (onClick ? 'button' : 'link') : undefined);
     const tabIndex = actionable ? 0 : undefined;
 
     return (

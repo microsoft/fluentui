@@ -128,7 +128,7 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): 
     ],
     pill: [
       classNames.pill,
-      getFocusStyle(theme, -3),
+      getFocusStyle(theme, { inset: -3 }),
       {
         fontSize: '20px',
         boxSizing: 'border-box',
@@ -200,7 +200,6 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): 
         }
       }
     ],
-    offText: textStyles,
-    onText: textStyles
+    text: textStyles
   };
 };

@@ -1,10 +1,10 @@
 import * as React from 'react';
 import { TextField } from 'office-ui-fabric-react/lib/TextField';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { DetailsList, DetailsListLayoutMode, Selection, SelectionMode, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { lorem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 
 const classNames = mergeStyleSets({
   fileIconHeaderIcon: {
@@ -29,34 +29,25 @@ const classNames = mergeStyleSets({
     maxHeight: '16px',
     maxWidth: '16px'
   },
+  controlWrapper: {
+    display: 'flex',
+    flexWrap: 'wrap'
+  },
   exampleToggle: {
     display: 'inline-block',
     marginBottom: '10px',
     marginRight: '30px'
   },
-  exampleChild: {
-    display: 'block',
-    marginBottom: '10px'
+  selectionDetails: {
+    marginBottom: '20px'
   }
 });
-
-const fileIcons: { name: string }[] = [
-  { name: 'accdb' },
-  { name: 'csv' },
-  { name: 'docx' },
-  { name: 'dotx' },
-  { name: 'mpt' },
-  { name: 'odt' },
-  { name: 'one' },
-  { name: 'onepkg' },
-  { name: 'onetoc' },
-  { name: 'pptx' },
-  { name: 'pub' },
-  { name: 'vsdx' },
-  { name: 'xls' },
-  { name: 'xlsx' },
-  { name: 'xsn' }
-];
+const controlStyles = {
+  root: {
+    margin: '0 30px 20px 0',
+    maxWidth: '300px'
+  }
+};
 
 export interface IDetailsListDocumentsExampleState {
   columns: IColumn[];
@@ -78,13 +69,14 @@ export interface IDocument {
   fileSizeRaw: number;
 }
 
-const _items: IDocument[] = _generateDocuments();
-
 export class DetailsListDocumentsExample extends React.Component<{}, IDetailsListDocumentsExampleState> {
   private _selection: Selection;
+  private _allItems: IDocument[];
 
   constructor(props: {}) {
     super(props);
+
+    this._allItems = _generateDocuments();
 
     const columns: IColumn[] = [
       {
@@ -173,7 +165,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     });
 
     this.state = {
-      items: _items,
+      items: this._allItems,
       columns: columns,
       selectionDetails: this._getSelectionDetails(),
       isModalSelection: false,
@@ -185,25 +177,27 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     const { columns, isCompactMode, items, selectionDetails, isModalSelection } = this.state;
 
     return (
-      <div>
-        <Toggle
-          className={classNames.exampleToggle}
-          label="Enable compact mode"
-          checked={isCompactMode}
-          onChange={this._onChangeCompactMode}
-          onText="Compact"
-          offText="Normal"
-        />
-        <Toggle
-          className={classNames.exampleToggle}
-          label="Enable modal selection"
-          checked={isModalSelection}
-          onChange={this._onChangeModalSelection}
-          onText="Modal"
-          offText="Normal"
-        />
-        <div className={classNames.exampleChild}>{selectionDetails}</div>
-        <TextField className={classNames.exampleChild} label="Filter by name:" onChange={this._onChangeText} />
+      <Fabric>
+        <div className={classNames.controlWrapper}>
+          <Toggle
+            label="Enable compact mode"
+            checked={isCompactMode}
+            onChange={this._onChangeCompactMode}
+            onText="Compact"
+            offText="Normal"
+            styles={controlStyles}
+          />
+          <Toggle
+            label="Enable modal selection"
+            checked={isModalSelection}
+            onChange={this._onChangeModalSelection}
+            onText="Modal"
+            offText="Normal"
+            styles={controlStyles}
+          />
+          <TextField label="Filter by name:" onChange={this._onChangeText} styles={controlStyles} />
+        </div>
+        <div className={classNames.selectionDetails}>{selectionDetails}</div>
         <MarqueeSelection selection={this._selection}>
           <DetailsList
             items={items}
@@ -221,7 +215,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             ariaLabelForSelectAllCheckbox="Toggle selection for all items"
           />
         </MarqueeSelection>
-      </div>
+      </Fabric>
     );
   }
 
@@ -240,7 +234,9 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
   };
 
   private _onChangeText = (ev: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, text: string): void => {
-    this.setState({ items: text ? _items.filter(i => i.name.toLowerCase().indexOf(text) > -1) : _items });
+    this.setState({
+      items: text ? this._allItems.filter(i => i.name.toLowerCase().indexOf(text) > -1) : this._allItems
+    });
   };
 
   private _onItemInvoked(item: any): void {
@@ -292,9 +288,9 @@ function _generateDocuments() {
     const randomDate = _randomDate(new Date(2012, 0, 1), new Date());
     const randomFileSize = _randomFileSize();
     const randomFileType = _randomFileIcon();
-    let fileName: string = lorem(2).replace(/\W/g, '');
-    let userName: string = lorem(2).replace(/[^a-zA-Z ]/g, '');
+    let fileName = _lorem(2);
     fileName = fileName.charAt(0).toUpperCase() + fileName.slice(1).concat(`.${randomFileType.docType}`);
+    let userName = _lorem(2);
     userName = userName
       .split(' ')
       .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
@@ -316,15 +312,32 @@ function _generateDocuments() {
 
 function _randomDate(start: Date, end: Date): { value: number; dateFormatted: string } {
   const date: Date = new Date(start.getTime() + Math.random() * (end.getTime() - start.getTime()));
-  const dateData = {
+  return {
     value: date.valueOf(),
     dateFormatted: date.toLocaleDateString()
   };
-  return dateData;
 }
 
+const FILE_ICONS: { name: string }[] = [
+  { name: 'accdb' },
+  { name: 'csv' },
+  { name: 'docx' },
+  { name: 'dotx' },
+  { name: 'mpt' },
+  { name: 'odt' },
+  { name: 'one' },
+  { name: 'onepkg' },
+  { name: 'onetoc' },
+  { name: 'pptx' },
+  { name: 'pub' },
+  { name: 'vsdx' },
+  { name: 'xls' },
+  { name: 'xlsx' },
+  { name: 'xsn' }
+];
+
 function _randomFileIcon(): { docType: string; url: string } {
-  const docType: string = fileIcons[Math.floor(Math.random() * fileIcons.length) + 0].name;
+  const docType: string = FILE_ICONS[Math.floor(Math.random() * FILE_ICONS.length)].name;
   return {
     docType,
     url: `https://static2.sharepointonline.com/files/fabric/assets/brand-icons/document/svg/${docType}_16x1.svg`
@@ -337,4 +350,17 @@ function _randomFileSize(): { value: string; rawSize: number } {
     value: `${fileSize} KB`,
     rawSize: fileSize
   };
+}
+
+const LOREM_IPSUM = (
+  'lorem ipsum dolor sit amet consectetur adipiscing elit sed do eiusmod tempor incididunt ut ' +
+  'labore et dolore magna aliqua ut enim ad minim veniam quis nostrud exercitation ullamco laboris nisi ut ' +
+  'aliquip ex ea commodo consequat duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore ' +
+  'eu fugiat nulla pariatur excepteur sint occaecat cupidatat non proident sunt in culpa qui officia deserunt '
+).split(' ');
+let loremIndex = 0;
+function _lorem(wordCount: number): string {
+  const startIndex = loremIndex + wordCount > LOREM_IPSUM.length ? 0 : loremIndex;
+  loremIndex = startIndex + wordCount;
+  return LOREM_IPSUM.slice(startIndex, loremIndex).join(' ');
 }

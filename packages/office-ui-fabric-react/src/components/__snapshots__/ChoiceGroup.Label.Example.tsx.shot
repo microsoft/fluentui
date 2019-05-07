@@ -2,18 +2,47 @@
 
 exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] = `
 <div>
-  <div
-    id="labelElement"
+  <label
+    className=
+        ms-Label
+        {
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          box-shadow: none;
+          box-sizing: border-box;
+          color: #333333;
+          display: block;
+          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+          font-size: 14px;
+          font-weight: 400;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
+          overflow-wrap: break-word;
+          padding-bottom: 5px;
+          padding-left: 0;
+          padding-right: 0;
+          padding-top: 5px;
+          word-wrap: break-word;
+        }
+        &::after {
+          color: #a80000;
+          content: ' *';
+          padding-right: 12px;
+        }
+    id="labelElement0"
+    required={true}
   >
-    Here is a custom label
-  </div>
+    Custom label
+  </label>
   <div
     className=
 
 
   >
     <div
-      aria-labelledby="labelElement"
+      aria-labelledby="labelElement0"
       className=
           ms-ChoiceFieldGroup
           {
@@ -65,14 +94,20 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
               data-automation-id="auto1"
-              data-is-focusable={false}
-              id="ChoiceGroup0-A"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-A"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -135,11 +170,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                     transition-timing-function: cubic-bezier(.4, 0, .23, 1);
                     width: 0px;
                   }
-              htmlFor="ChoiceGroup0-A"
+              htmlFor="ChoiceGroup1-A"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-A"
+                id="ChoiceGroupLabel2-A"
               >
                 Option A
               </span>
@@ -180,13 +215,19 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
-              data-is-focusable={true}
-              id="ChoiceGroup0-B"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-B"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -196,6 +237,7 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
             <label
               className=
                   ms-ChoiceField-field
+                  is-checked
                   {
                     border-color: #0078d4;
                     cursor: pointer;
@@ -260,11 +302,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                   @media screen and (-ms-high-contrast: active){&:after {
                     border-color: Highlight;
                   }
-              htmlFor="ChoiceGroup0-B"
+              htmlFor="ChoiceGroup1-B"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-B"
+                id="ChoiceGroupLabel2-B"
               >
                 Option B
               </span>
@@ -305,14 +347,20 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
-              data-is-focusable={false}
               disabled={true}
-              id="ChoiceGroup0-C"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-C"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -372,11 +420,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
                   }
-              htmlFor="ChoiceGroup0-C"
+              htmlFor="ChoiceGroup1-C"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-C"
+                id="ChoiceGroupLabel2-C"
               >
                 Option C
               </span>
@@ -417,14 +465,20 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
               className=
                   ms-ChoiceField-input
                   {
+                    height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0;
                     position: absolute;
-                    top: 8px;
+                    right: 0px;
+                    top: 0px;
+                    width: 100%;
                   }
-              data-is-focusable={false}
               disabled={true}
-              id="ChoiceGroup0-D"
-              name="ChoiceGroup0"
+              id="ChoiceGroup1-D"
+              name="ChoiceGroup1"
               onBlur={[Function]}
               onChange={[Function]}
               onFocus={[Function]}
@@ -484,11 +538,11 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
                   @media screen and (-ms-high-contrast: active){& {
                     color: GrayText;
                   }
-              htmlFor="ChoiceGroup0-D"
+              htmlFor="ChoiceGroup1-D"
             >
               <span
                 className="ms-ChoiceFieldLabel"
-                id="ChoiceGroupLabel1-D"
+                id="ChoiceGroupLabel2-D"
               >
                 Option D
               </span>

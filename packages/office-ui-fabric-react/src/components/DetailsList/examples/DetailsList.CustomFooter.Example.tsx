@@ -1,5 +1,3 @@
-// @codepen
-
 import * as React from 'react';
 import {
   DetailsList,
@@ -18,40 +16,33 @@ export interface IDetailsListCustomFooterExampleItem {
   value: number;
 }
 
-const _items: IDetailsListCustomFooterExampleItem[] = [];
-for (let i = 0; i < 5; i++) {
-  _items.push({
-    key: i,
-    name: 'Item ' + i,
-    value: i
-  });
-}
-
-const _columns: IColumn[] = [
-  {
-    key: 'column1',
-    name: 'Name',
-    fieldName: 'name',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  },
-  {
-    key: 'column2',
-    name: 'Value',
-    fieldName: 'value',
-    minWidth: 100,
-    maxWidth: 200,
-    isResizable: true
-  }
-];
-
 export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
+  private _items: IDetailsListCustomFooterExampleItem[];
+  private _columns: IColumn[];
+
+  constructor(props: {}) {
+    super(props);
+
+    this._items = [];
+    for (let i = 0; i < 5; i++) {
+      this._items.push({
+        key: i,
+        name: 'Item ' + i,
+        value: i
+      });
+    }
+
+    this._columns = [
+      { key: 'column1', name: 'Name', fieldName: 'name', minWidth: 100, maxWidth: 200, isResizable: true },
+      { key: 'column2', name: 'Value', fieldName: 'value', minWidth: 100, maxWidth: 200, isResizable: true }
+    ];
+  }
+
   public render(): JSX.Element {
     return (
       <DetailsList
-        items={_items}
-        columns={_columns}
+        items={this._items}
+        columns={this._columns}
         setKey="set"
         layoutMode={DetailsListLayoutMode.fixedColumns}
         selectionPreservedOnEmptyClick={true}
@@ -66,12 +57,12 @@ export class DetailsListCustomFooterExample extends React.Component<{}, {}> {
     return (
       <DetailsRow
         {...detailsFooterProps}
-        columns={detailsFooterProps!.columns}
+        columns={detailsFooterProps.columns}
         item={{}}
         itemIndex={-1}
-        groupNestingDepth={detailsFooterProps!.groupNestingDepth}
+        groupNestingDepth={detailsFooterProps.groupNestingDepth}
         selectionMode={SelectionMode.single}
-        selection={detailsFooterProps!.selection}
+        selection={detailsFooterProps.selection}
         onRenderItemColumn={_renderDetailsFooterItemColumn}
         onRenderCheck={_onRenderCheckForFooterRow}
       />

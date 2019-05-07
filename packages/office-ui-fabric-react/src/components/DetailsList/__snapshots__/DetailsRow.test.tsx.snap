@@ -51,6 +51,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -66,6 +69,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -382,9 +386,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-key-name "
+                aria-labelledby="header0-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -515,9 +518,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-name-name "
+                aria-labelledby="header0-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -648,9 +650,8 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-value-name "
+                aria-labelledby="header0-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -713,6 +714,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -862,6 +866,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -877,6 +884,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -1193,9 +1201,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name "
+                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1326,9 +1333,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name "
+                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1459,9 +1465,8 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name "
+                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1524,6 +1529,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -1629,6 +1637,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   className=
       ms-FocusZone
       ms-DetailsRow
+      &:focus {
+        outline: none;
+      }
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2205,6 +2216,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2220,6 +2234,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2536,9 +2551,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-key-name "
+                aria-labelledby="header3-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2669,9 +2683,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-name-name "
+                aria-labelledby="header3-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2802,9 +2815,8 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-value-name "
+                aria-labelledby="header3-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2867,6 +2879,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -3016,6 +3031,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3031,6 +3049,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3347,9 +3366,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header6-key-name "
+                aria-labelledby="header6-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3480,9 +3498,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header6-name-name "
+                aria-labelledby="header6-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3613,9 +3630,8 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header6-value-name "
+                aria-labelledby="header6-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3678,6 +3694,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;

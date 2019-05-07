@@ -51,6 +51,9 @@ exports[`DetailsList renders List correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -66,6 +69,7 @@ exports[`DetailsList renders List correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -382,9 +386,8 @@ exports[`DetailsList renders List correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header6-key-name "
+                aria-labelledby="header6-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -503,6 +506,9 @@ exports[`DetailsList renders List correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -632,6 +638,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -647,6 +656,7 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -964,9 +974,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_0-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_0-name "
+                aria-labelledby="header0-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1120,9 +1129,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_1-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_1-name "
+                aria-labelledby="header0-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1276,9 +1284,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_2-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_2-name "
+                aria-labelledby="header0-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1432,9 +1439,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_3-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_3-name "
+                aria-labelledby="header0-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1588,9 +1594,8 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
             >
               <span
                 aria-describedby="header0-column_key_4-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header0-column_key_4-name "
+                aria-labelledby="header0-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -1675,6 +1680,9 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -1805,6 +1813,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1820,6 +1831,7 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2136,9 +2148,8 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header12-key-name "
+                aria-labelledby="header12-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2257,6 +2268,9 @@ exports[`DetailsList renders List in compact mode correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -2387,6 +2401,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2402,6 +2419,7 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -2718,9 +2736,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header9-key-name "
+                aria-labelledby="header9-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -2907,9 +2924,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header9-name-name "
+                aria-labelledby="header9-name-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3096,9 +3112,8 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header9-value-name "
+                aria-labelledby="header9-value-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3217,6 +3232,9 @@ exports[`DetailsList renders List in fixed constrained layout correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -3346,6 +3364,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3361,6 +3382,7 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -3678,9 +3700,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_0-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_0-name "
+                aria-labelledby="header3-column_key_0-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3837,9 +3858,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_1-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_1-name "
+                aria-labelledby="header3-column_key_1-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -3996,9 +4016,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_2-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_2-name "
+                aria-labelledby="header3-column_key_2-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4155,9 +4174,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_3-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_3-name "
+                aria-labelledby="header3-column_key_3-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4314,9 +4332,8 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
             >
               <span
                 aria-describedby="header3-column_key_4-tooltip"
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header3-column_key_4-name "
+                aria-labelledby="header3-column_key_4-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4404,6 +4421,9 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -4533,6 +4553,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -4548,6 +4571,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                 line-height: 32px;
                 min-width: 100%;
                 padding-bottom: 1px;
+                padding-top: 1px;
                 position: relative;
                 user-select: none;
                 vertical-align: top;
@@ -4573,6 +4597,7 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
           }
         >
           <div
+            aria-expanded={true}
             className=
                 ms-DetailsHeader-cell
                 {
@@ -4725,9 +4750,8 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                   }
             >
               <span
-                aria-expanded={false}
                 aria-haspopup={false}
-                aria-labelledby="header15-key-name "
+                aria-labelledby="header15-key-name"
                 className=
                     ms-DetailsHeader-cellTitle
                     {
@@ -4846,6 +4870,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -4970,6 +4997,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           <div
                             className=
                                 ms-FocusZone
+                                &:focus {
+                                  outline: none;
+                                }
                                 {
                                   align-items: center;
                                   display: flex;
@@ -5145,6 +5175,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5215,18 +5248,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 32,
                                       }
                                     }
@@ -5343,6 +5368,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5413,18 +5441,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 32,
                                       }
                                     }
@@ -5608,6 +5628,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                           <div
                             className=
                                 ms-FocusZone
+                                &:focus {
+                                  outline: none;
+                                }
                                 {
                                   align-items: center;
                                   display: flex;
@@ -5783,6 +5806,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -5853,18 +5879,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 32,
                                       }
                                     }
@@ -5981,6 +5999,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -6051,18 +6072,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 32,
                                       }
                                     }
@@ -6179,6 +6192,9 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                       ms-FocusZone
                                       ms-DetailsRow
                                       is-contentUnselectable
+                                      &:focus {
+                                        outline: none;
+                                      }
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
@@ -6249,18 +6265,10 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                   }
                                 >
                                   <span
-                                    className=
-                                        ms-GroupSpacer
-                                        {
-                                          -moz-osx-font-smoothing: grayscale;
-                                          -webkit-font-smoothing: antialiased;
-                                          display: inline-block;
-                                          font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                                          font-size: 14px;
-                                          font-weight: 400;
-                                        }
+                                    className="ms-GroupSpacer"
                                     style={
                                       Object {
+                                        "display": "inline-block",
                                         "width": 32,
                                       }
                                     }

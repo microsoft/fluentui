@@ -15,9 +15,12 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
     },
     fontFace: {
       fontFamily: `"FabricMDL2Icons-1"`,
-      src: `url('${baseUrl}fabric-icons-1-0f021d71.woff') format('woff')`
+      src: `url('${baseUrl}fabric-icons-1-360e3054.woff') format('woff')`
     },
     icons: {
+      Financial: '\uE7BB',
+      Education: '\uE7BE',
+      ShoppingCart: '\uE7BF',
       Train: '\uE7C0',
       Move: '\uE7C2',
       TouchPointer: '\uE7C9',
@@ -62,6 +65,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       FolderOpen: '\uE838',
       PinnedFill: '\uE842',
       RevToggleKey: '\uE845',
+      USB: '\uE88E',
       Previous: '\uE892',
       Next: '\uE893',
       Sync: '\uE895',
@@ -113,11 +117,7 @@ export function initializeIcons(baseUrl: string = '', options?: IIconOptions): v
       Like: '\uE8E1',
       AlignCenter: '\uE8E3',
       OpenFile: '\uE8E5',
-      FontDecrease: '\uE8E7',
-      FontIncrease: '\uE8E8',
-      FontSize: '\uE8E9',
-      CellPhone: '\uE8EA',
-      RepeatAll: '\uE8EE'
+      FontDecrease: '\uE8E7'
     }
   };
 

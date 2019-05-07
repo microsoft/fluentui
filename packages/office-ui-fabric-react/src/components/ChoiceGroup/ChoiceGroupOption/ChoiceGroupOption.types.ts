@@ -1,11 +1,21 @@
 import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject } from '../../../Utilities';
 import { IChoiceGroupOption } from '../../ChoiceGroup/ChoiceGroup.types';
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void | undefined;
+
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export type OnChangeCallback = (evt?: React.FormEvent<HTMLElement | HTMLInputElement>, props?: IChoiceGroupOption) => void;
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   /**
    * Optional callback to access the IChoiceGroup interface. Use this instead of ref for accessing
@@ -39,11 +49,6 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   theme?: ITheme;
 
   /**
-   * Call to provide customized styling that will layer on top of the variant rules.
-   */
-  styles?: IStyleFunctionOrObject<IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles>;
-
-  /**
    * If true, it specifies that an option must be selected in the ChoiceGroup before submitting the form
    */
   required?: boolean;
@@ -54,6 +59,9 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
   name?: string;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionStyleProps {
   theme: ITheme;
   hasIcon?: boolean;
@@ -64,6 +72,9 @@ export interface IChoiceGroupOptionStyleProps {
   focused?: boolean;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export interface IChoiceGroupOptionStyles {
   root?: IStyle;
   choiceFieldWrapper?: IStyle;

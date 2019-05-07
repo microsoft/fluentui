@@ -5,18 +5,21 @@ import { Image, ImageFit } from 'office-ui-fabric-react/lib/Image';
 import { DetailsList, buildColumns, IColumn } from 'office-ui-fabric-react/lib/DetailsList';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-const _items: IExampleItem[] = createListItems(500);
-
 export interface IDetailsListCustomColumnsExampleState {
   sortedItems: IExampleItem[];
   columns: IColumn[];
 }
 
 export class DetailsListCustomColumnsExample extends React.Component<{}, IDetailsListCustomColumnsExampleState> {
-  public state: IDetailsListCustomColumnsExampleState = {
-    sortedItems: _items,
-    columns: _buildColumns()
-  };
+  constructor(props: {}) {
+    super(props);
+
+    const items = createListItems(500);
+    this.state = {
+      sortedItems: items,
+      columns: _buildColumns(items)
+    };
+  }
 
   public render() {
     const { sortedItems, columns } = this.state;
@@ -73,8 +76,8 @@ export class DetailsListCustomColumnsExample extends React.Component<{}, IDetail
   }
 }
 
-function _buildColumns(): IColumn[] {
-  const columns = buildColumns(_items);
+function _buildColumns(items: IExampleItem[]): IColumn[] {
+  const columns = buildColumns(items);
 
   const thumbnailColumn = columns.filter(column => column.name === 'thumbnail')[0];
 

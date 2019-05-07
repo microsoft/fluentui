@@ -1,9 +1,12 @@
-import { IStyle } from '../../Styling';
+import { IStyle, ITheme } from '../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { CoachmarkBase } from './Coachmark.base';
 import { ITeachingBubble } from '../../TeachingBubble';
 
+/**
+ * {@docCategory Coachmark}
+ */
 export interface ICoachmark {
   /**
    * Forces the Coachmark to dismiss
@@ -11,13 +14,21 @@ export interface ICoachmark {
   dismiss?: (ev?: any) => void;
 }
 
-/** Coachmark component props */
+/**
+ * Coachmark component props
+ * {@docCategory Coachmark}
+ */
 export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
   /**
    * Optional callback to access the ICoachmark interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
    */
   componentRef?: IRefObject<ICoachmark>;
+
+  /**
+   * If provided, additional class name to provide on the root element.
+   */
+  className?: string;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules
@@ -176,10 +187,28 @@ export interface ICoachmarkProps extends React.ClassAttributes<CoachmarkBase> {
    * Callback when the Coachmark tries to close.
    */
   onDismiss?: (ev?: any) => void;
+
+  /**
+   * Theme provided by higher order component.
+   */
+  theme?: ITheme;
 }
 
-/** The props needed to construct styles. */
+/**
+ * The props needed to construct styles.
+ * {@docCategory Coachmark}
+ */
 export interface ICoachmarkStyleProps {
+  /**
+   * ClassName to provide on the root style area.
+   */
+  className?: string;
+
+  /**
+   * Current theme.
+   */
+  theme?: ITheme;
+
   /**
    * Is the Coachmark collapsed.
    * Deprecated, use `isCollapsed` instead.
@@ -254,7 +283,10 @@ export interface ICoachmarkStyleProps {
   delayBeforeCoachmarkAnimation?: string;
 }
 
-/** Represents the stylable areas of the control. */
+/**
+ * Represents the stylable areas of the control.
+ * {@docCategory Coachmark}
+ */
 export interface ICoachmarkStyles {
   /**
    * Style for the root element in the default enabled/unchecked state.
@@ -309,5 +341,8 @@ export interface ICoachmarkStyles {
   ariaContainer?: IStyle;
 }
 
-/** @deprecated */
+/**
+ * @deprecated No longer used.
+ * {@docCategory Coachmark}
+ */
 export type ICoachmarkTypes = ICoachmarkProps;

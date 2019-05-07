@@ -22,10 +22,6 @@ const textFieldStyles: Partial<ITextFieldStyles> = {
   fieldGroup: { maxWidth: '100px' }
 };
 
-let _draggedItem: IExampleItem | null = null;
-let _draggedIndex = -1;
-const _items: IExampleItem[] = createListItems(10, 0);
-
 export interface IDetailsListDragDropExampleState {
   items: IExampleItem[];
   columns: IColumn[];
@@ -37,16 +33,20 @@ export interface IDetailsListDragDropExampleState {
 export class DetailsListDragDropExample extends React.Component<{}, IDetailsListDragDropExampleState> {
   private _selection: Selection;
   private _dragDropEvents: IDragDropEvents;
+  private _draggedItem: IExampleItem | undefined;
+  private _draggedIndex: number;
 
   constructor(props: {}) {
     super(props);
 
-    this._dragDropEvents = this._getDragDropEvents();
     this._selection = new Selection();
+    this._dragDropEvents = this._getDragDropEvents();
+    this._draggedIndex = -1;
+    const items = createListItems(10, 0);
 
     this.state = {
-      items: _items,
-      columns: buildColumns(_items, true),
+      items: items,
+      columns: buildColumns(items, true),
       isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
       frozenColumnCountFromEnd: '0'
@@ -151,17 +151,17 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
         return;
       },
       onDrop: (item?: any, event?: DragEvent) => {
-        if (_draggedItem) {
+        if (this._draggedItem) {
           this._insertBeforeItem(item);
         }
       },
       onDragStart: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => {
-        _draggedItem = item;
-        _draggedIndex = itemIndex!;
+        this._draggedItem = item;
+        this._draggedIndex = itemIndex!;
       },
       onDragEnd: (item?: any, event?: DragEvent) => {
-        _draggedItem = null;
-        _draggedIndex = -1;
+        this._draggedItem = undefined;
+        this._draggedIndex = -1;
       }
     };
   }
@@ -180,9 +180,9 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
   };
 
   private _insertBeforeItem(item: IExampleItem): void {
-    const draggedItems = this._selection.isIndexSelected(_draggedIndex)
+    const draggedItems = this._selection.isIndexSelected(this._draggedIndex)
       ? (this._selection.getSelection() as IExampleItem[])
-      : [_draggedItem!];
+      : [this._draggedItem!];
 
     const items = this.state.items.filter(itm => draggedItems.indexOf(itm) === -1);
     let insertIndex = items.indexOf(item);

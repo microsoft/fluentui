@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
+import { classNamesFunction, getNativeProps, imageProperties } from '../../Utilities';
 import { IImageProps, IImageStyleProps, IImageStyles, ImageCoverStyle, ImageFit, ImageLoadState } from './Image.types';
 
 const getClassNames = classNamesFunction<IImageStyleProps, IImageStyles>();
@@ -10,7 +10,7 @@ export interface IImageState {
 
 const KEY_PREFIX = 'fabricImage';
 
-export class ImageBase extends BaseComponent<IImageProps, IImageState> {
+export class ImageBase extends React.Component<IImageProps, IImageState> {
   public static defaultProps = {
     shouldFadeIn: true
   };
@@ -78,6 +78,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       isLoaded: loadState === ImageLoadState.loaded || (loadState === ImageLoadState.notLoaded && this.props.shouldStartVisible),
       isLandscape: coverStyle === ImageCoverStyle.landscape,
       isCenter: imageFit === ImageFit.center,
+      isCenterContain: imageFit === ImageFit.centerContain,
       isCenterCover: imageFit === ImageFit.centerCover,
       isContain: imageFit === ImageFit.contain,
       isCover: imageFit === ImageFit.cover,
@@ -147,7 +148,10 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
 
     // Do not compute cover style if it was already specified in props
     if (
-      (imageFit === ImageFit.cover || imageFit === ImageFit.contain || imageFit === ImageFit.centerCover) &&
+      (imageFit === ImageFit.cover ||
+        imageFit === ImageFit.contain ||
+        imageFit === ImageFit.centerContain ||
+        imageFit === ImageFit.centerCover) &&
       this.props.coverStyle === undefined &&
       this._imageElement.current &&
       this._frameElement.current
@@ -155,7 +159,7 @@ export class ImageBase extends BaseComponent<IImageProps, IImageState> {
       // Determine the desired ratio using the width and height props.
       // If those props aren't available, measure measure the frame.
       let desiredRatio;
-      if (!!width && !!height && imageFit !== ImageFit.centerCover) {
+      if (!!width && !!height && imageFit !== ImageFit.centerContain && imageFit !== ImageFit.centerCover) {
         desiredRatio = (width as number) / (height as number);
       } else {
         desiredRatio = this._frameElement.current.clientWidth / this._frameElement.current.clientHeight;

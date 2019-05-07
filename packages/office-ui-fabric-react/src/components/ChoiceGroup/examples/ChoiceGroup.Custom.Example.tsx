@@ -16,6 +16,7 @@ export class ChoiceGroupCustomExample extends React.Component {
             {
               key: 'A',
               text: 'Mark displayed items as read after',
+              ariaLabel: 'Mark displayed items as read after - Press tab for further action',
               onRenderField: (props, render) => {
                 return (
                   <div className={css(styles.root)}>
@@ -24,7 +25,8 @@ export class ChoiceGroupCustomExample extends React.Component {
                       className={css(styles.dropdown)}
                       defaultSelectedKey="A"
                       options={[{ key: 'A', text: '5 seconds' }, { key: 'B', text: '10 seconds' }, { key: 'C', text: '20 seconds' }]}
-                      disabled={false}
+                      disabled={props ? !props.checked : false}
+                      ariaLabel="Select a time span"
                     />
                   </div>
                 );
@@ -32,7 +34,12 @@ export class ChoiceGroupCustomExample extends React.Component {
             },
             {
               key: 'B',
-              text: 'Option B'
+              text: 'Option B',
+              styles: {
+                root: {
+                  border: '1px solid green'
+                }
+              }
             },
             {
               key: 'C',

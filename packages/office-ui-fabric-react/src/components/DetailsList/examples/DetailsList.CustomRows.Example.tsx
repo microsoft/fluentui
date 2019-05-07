@@ -4,11 +4,17 @@ import { createListItems, IExampleItem } from 'office-ui-fabric-react/lib/utilit
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 const theme = getTheme();
-const _items: IExampleItem[] = createListItems(500);
 
-export class DetailsListCustomRowsExample extends React.Component {
+export class DetailsListCustomRowsExample extends React.Component<{}, {}> {
+  private _items: IExampleItem[];
+
+  constructor(props: {}) {
+    super(props);
+    this._items = createListItems(500);
+  }
+
   public render() {
-    return <DetailsList items={_items} setKey="set" onRenderRow={this._onRenderRow} />;
+    return <DetailsList items={this._items} setKey="set" onRenderRow={this._onRenderRow} />;
   }
 
   private _onRenderRow = (props: IDetailsRowProps): JSX.Element => {

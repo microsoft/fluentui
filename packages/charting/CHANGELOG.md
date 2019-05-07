@@ -1,6 +1,62 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 08 Jan 2019 13:34:49 GMT and should not be manually modified.
+This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+
+## 0.28.13
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Remove nonexistent related links from docs
+
+## 0.28.12
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 0.28.11
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- Replace custom high contrast selector with constant
+
+## 0.28.10
+Tue, 26 Mar 2019 12:32:51 GMT
+
+### Patches
+
+- Remove IE 11-incompatible constructs
+
+## 0.28.9
+Thu, 21 Mar 2019 12:36:29 GMT
+
+### Patches
+
+- "added the background color and opacity for legends in the high contrast mode "
+
+## 0.28.8
+Tue, 05 Mar 2019 17:33:41 GMT
+
+### Patches
+
+- Add type annotations based on update to "styled"
+
+## 0.28.7
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Patches
+
+- Add saparator 2px for data segments
+
+## 0.28.6
+Wed, 06 Feb 2019 13:38:06 GMT
+
+### Patches
+
+- office ui fabric charting package, legend related changes 
 
 ## 0.28.5
 Tue, 08 Jan 2019 13:34:49 GMT

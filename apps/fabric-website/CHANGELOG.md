@@ -1,6 +1,230 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 21 Jan 2019 13:36:01 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2019 19:32:45 GMT and should not be manually modified.
+
+## 6.16.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
+
+## 6.16.3
+Mon, 06 May 2019 12:35:11 GMT
+
+### Patches
+
+- Remove css reset
+
+## 6.16.2
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Accessibility fixes
+
+## 6.16.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- Added get started section
+- Added more mobile controls documentation
+- Mobile documentation updates
+- Adjust Resources content
+- Anchor link handling and other bug fixes
+- Add version dropdown and fix other bugs
+
+## 6.16.0
+Sat, 04 May 2019 00:01:54 GMT
+
+### Minor changes
+
+- ported logic for devhost from index.html to homepage.htm
+- Switch to new website
+
+### Patches
+
+- Getting started update with CRA, just and Gatsby.js
+
+## 6.15.0
+Thu, 02 May 2019 12:36:35 GMT
+
+### Minor changes
+
+- Adds a manifest generation script
+
+### Patches
+
+- Check for undefined hashes
+
+## 6.14.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- add references section to nav
+
+## 6.13.6
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Patches
+
+- Remove implementation examples sections
+
+## 6.13.5
+Tue, 23 Apr 2019 12:32:00 GMT
+
+### Patches
+
+- Remove very old things from the website	
+
+## 6.13.4
+Wed, 17 Apr 2019 12:33:35 GMT
+
+### Patches
+
+- Run prettier on all files
+
+## 6.13.3
+Tue, 16 Apr 2019 12:32:59 GMT
+
+### Patches
+
+- Update example-app-base styling overrides to use css-in-js
+
+## 6.13.2
+Thu, 04 Apr 2019 12:34:57 GMT
+
+### Patches
+
+- HomePage: check sessionStorage for fabricVer
+
+## 6.13.1
+Tue, 02 Apr 2019 00:38:14 GMT
+
+### Patches
+
+- Use ^ ranges instead of >=
+
+## 6.13.0
+Mon, 01 Apr 2019 12:37:03 GMT
+
+### Minor changes
+
+- add Separator page
+
+### Patches
+
+- move Text under Utilities
+
+## 6.12.6
+Fri, 29 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add session storage to index to preserve fabricVer between page navigation
+- Fix key errors from Nav
+
+## 6.12.5
+Thu, 28 Mar 2019 12:36:39 GMT
+
+### Patches
+
+- Remove unused state in HomePage.tsx
+- Keytips: Adding component page to AppState.
+
+## 6.12.4
+Wed, 27 Mar 2019 12:34:02 GMT
+
+### Patches
+
+- HomePage: Add ContextualMenu to enable switching documentation versions
+
+## 6.12.3
+Fri, 22 Mar 2019 02:41:50 GMT
+
+### Patches
+
+- Add missing hypen for prefixVer
+
+## 6.12.2
+Wed, 20 Mar 2019 12:34:45 GMT
+
+### Patches
+
+- Remove template literal in fabric-website/index
+
+## 6.12.1
+Tue, 19 Mar 2019 12:36:45 GMT
+
+### Patches
+
+- Add query parameter to change Fabric version
+
+## 6.12.0
+Tue, 05 Mar 2019 04:25:07 GMT
+
+### Minor changes
+
+- add Announced demo pages and values to redirect map for Announced links
+
+## 6.11.0
+Tue, 26 Feb 2019 13:31:28 GMT
+
+### Minor changes
+
+- add Text component
+
+## 6.10.2
+Mon, 25 Feb 2019 13:31:08 GMT
+
+### Patches
+
+- Tweaking the package json to remove uneeded side effects, which helps with bundling.
+
+## 6.10.1
+Fri, 22 Feb 2019 13:31:09 GMT
+
+### Patches
+
+- Icon Page: updated directions for adding dir tag
+- Fix usage of 'ms-text-align'
+
+## 6.10.0
+Fri, 15 Feb 2019 17:41:16 GMT
+
+### Minor changes
+
+- Stack: Adding StackComponentPage to AppState.tsx.
+
+## 6.9.0
+Thu, 14 Feb 2019 13:34:54 GMT
+
+### Minor changes
+
+- Website: redirects defunct URLs to new
+
+## 6.8.7
+Wed, 13 Feb 2019 13:36:45 GMT
+
+### Patches
+
+- Adds documentation for setting the 'dir' attribute for Fabric Core
+
+## 6.8.6
+Fri, 08 Feb 2019 13:37:21 GMT
+
+### Patches
+
+- Fix site links to allow for deeplinks to the customizations
+
+## 6.8.5
+Wed, 23 Jan 2019 22:53:13 GMT
+
+### Patches
+
+- DetailsList examples: Fix copy paste error causing infinite loop
 
 ## 6.8.4
 Mon, 21 Jan 2019 13:36:01 GMT

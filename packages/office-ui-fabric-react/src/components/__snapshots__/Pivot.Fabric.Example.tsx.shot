@@ -4,7 +4,11 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
 <div>
   <div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -75,12 +79,12 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -132,7 +136,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -148,6 +152,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
+          data-content="Callout"
           data-is-focusable={true}
           id="Pivot0-Tab0"
           name="Callout"
@@ -228,12 +233,12 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -283,7 +288,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -297,6 +302,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content="Spinner"
           data-is-focusable={true}
           id="Pivot0-Tab1"
           name="Spinner"
@@ -377,12 +383,12 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -432,7 +438,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -446,6 +452,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content="Persona"
           data-is-focusable={true}
           id="Pivot0-Tab2"
           name="Persona"
@@ -602,7 +609,6 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     color: #212121;
                   }
               data-is-focusable={true}
-              id="toggleCallout"
               onClick={[Function]}
               onKeyDown={[Function]}
               onKeyPress={[Function]}
@@ -640,7 +646,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                           margin-right: 4px;
                           margin-top: 0;
                         }
-                    id="id__11"
+                    id="id__13"
                   >
                     Show callout
                   </div>
@@ -754,7 +760,95 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                     }
                   }
                   tabIndex={-1}
-                />
+                >
+                  <div
+                    aria-describedby="callout-description12"
+                    aria-labelledby="callout-label11"
+                    className=
+                        ms-Callout-main
+                        {
+                          background-color: #ffffff;
+                          overflow-x: hidden;
+                          overflow-y: auto;
+                          position: relative;
+                        }
+                    onKeyDown={[Function]}
+                    role="alertdialog"
+                    style={
+                      Object {
+                        "maxHeight": 750,
+                        "outline": "none",
+                        "overflowY": undefined,
+                      }
+                    }
+                  >
+                    <div
+                      className="ms-CalloutExample-header"
+                    >
+                      <p
+                        className="ms-CalloutExample-title"
+                        id="callout-label11"
+                      >
+                        All of your favorite people
+                      </p>
+                    </div>
+                    <div
+                      className="ms-CalloutExample-inner"
+                    >
+                      <div
+                        className="ms-CalloutExample-content"
+                      >
+                        <p
+                          className="ms-CalloutExample-subText"
+                          id="callout-description12"
+                        >
+                          Message body is optional. If help documentation is available, consider adding a link to learn more at the bottom.
+                        </p>
+                      </div>
+                      <div
+                        className="ms-CalloutExample-actions"
+                      >
+                        <a
+                          className=
+                              ms-Link
+                              ms-CalloutExample-link
+                              {
+                                -moz-osx-font-smoothing: grayscale;
+                                -webkit-font-smoothing: antialiased;
+                                color: #0078d4;
+                                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                                font-size: inherit;
+                                font-weight: inherit;
+                                outline: none;
+                                text-decoration: none;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus {
+                                box-shadow: 0 0 0 1px #666666 inset;
+                              }
+                              @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                                outline: 1px solid WindowText;
+                              }
+                              @media screen and (-ms-high-contrast: active){& {
+                                border-bottom: none;
+                              }
+                              &:active, &:hover, &:active:hover {
+                                color: #004578;
+                              }
+                              @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
+                                text-decoration: underline;
+                              }
+                              &:focus {
+                                color: #0078d4;
+                              }
+                          href="http://microsoft.com"
+                          onClick={[Function]}
+                        >
+                          Go to microsoft
+                        </a>
+                      </div>
+                    </div>
+                  </div>
+                </div>
               </div>
             </div>
           </span>

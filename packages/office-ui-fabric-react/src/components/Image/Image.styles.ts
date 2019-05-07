@@ -1,5 +1,6 @@
 import { AnimationClassNames, getGlobalClassNames, IStyle } from '../../Styling';
 import { IImageStyleProps, IImageStyles } from './Image.types';
+import { getWindow } from '../../Utilities';
 
 const GlobalClassNames = {
   root: 'ms-Image',
@@ -8,6 +9,7 @@ const GlobalClassNames = {
   imageCenter: 'ms-Image-image--center',
   imageContain: 'ms-Image-image--contain',
   imageCover: 'ms-Image-image--cover',
+  imageCenterContain: 'ms-Image-image--centerContain',
   imageCenterCover: 'ms-Image-image--centerCover',
   imageNone: 'ms-Image-image--none',
   imageLandscape: 'ms-Image-image--landscape',
@@ -27,6 +29,7 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
     isCenter,
     isContain,
     isCover,
+    isCenterContain,
     isCenterCover,
     isNone,
     isError,
@@ -43,6 +46,12 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
     transform: 'translate(-50%,-50%)' // @todo test RTL renders transform: translate(50%,-50%);
   };
 
+  // Cut the mustard using msMaxTouchPoints to detect IE11 which does not support CSS object-fit
+  const window: Window | undefined = getWindow();
+  const supportsObjectFit: boolean = window !== undefined && window.navigator.msMaxTouchPoints === undefined;
+  const fallbackObjectFitStyles =
+    (isContain && isLandscape) || (isCover && !isLandscape) ? { width: '100%', height: 'auto' } : { width: 'auto', height: '100%' };
+
   return {
     root: [
       classNames.root,
@@ -57,7 +66,8 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
           width: '100%'
         }
       ],
-      (isCenter || isContain || isCover || isCenterCover) && {
+      isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
+      (isCenter || isContain || isCover || isCenterContain || isCenterCover) && {
         position: 'relative'
       },
       className
@@ -77,25 +87,31 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
       isCenter && [classNames.imageCenter, ImageFitStyles],
       isContain && [
         classNames.imageContain,
-        isLandscape && {
+        supportsObjectFit && {
           width: '100%',
-          height: 'auto'
+          height: '100%',
+          objectFit: 'contain'
         },
-        !isLandscape && {
-          width: 'auto',
-          height: '100%'
-        },
+        !supportsObjectFit && fallbackObjectFitStyles,
         ImageFitStyles
       ],
       isCover && [
         classNames.imageCover,
+        supportsObjectFit && {
+          width: '100%',
+          height: '100%',
+          objectFit: 'cover'
+        },
+        !supportsObjectFit && fallbackObjectFitStyles,
+        ImageFitStyles
+      ],
+      isCenterContain && [
+        classNames.imageCenterContain,
         isLandscape && {
-          width: 'auto',
-          height: '100%'
+          maxWidth: '100%'
         },
         !isLandscape && {
-          width: '100%',
-          height: 'auto'
+          maxHeight: '100%'
         },
         ImageFitStyles
       ],
@@ -133,7 +149,6 @@ export const getStyles = (props: IImageStyleProps): IImageStyles => {
             width: '100%'
           }
       ],
-      isLoaded && shouldFadeIn && !shouldStartVisible && AnimationClassNames.fadeIn400,
       isLandscape && classNames.imageLandscape,
       !isLandscape && classNames.imagePortrait,
       !isLoaded && 'is-notLoaded',

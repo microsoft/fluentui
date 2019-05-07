@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
 import { IBaseProps, IRefObject } from '../../Utilities';
 import { ICollapsibleSectionTitleSlot } from './CollapsibleSectionTitle.types';
 
@@ -17,9 +17,9 @@ export type ICollapsibleSectionTokenReturnType = ReturnType<Extract<ICollapsible
 export type ICollapsibleSectionStylesReturnType = ReturnType<Extract<ICollapsibleSectionComponent['styles'], Function>>;
 
 export interface ICollapsibleSectionSlots {
-  root?: IHTMLDivSlot;
+  root?: IHTMLSlot;
   title?: ICollapsibleSectionTitleSlot;
-  body?: IHTMLDivSlot;
+  body?: IHTMLSlot;
 }
 
 export interface ICollapsibleSection {}

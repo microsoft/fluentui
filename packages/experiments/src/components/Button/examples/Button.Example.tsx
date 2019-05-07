@@ -1,17 +1,25 @@
 import * as React from 'react';
 import { Button } from '../index';
-import { Stack, Text } from '@uifabric/experiments';
-import { ContextualMenu, IContextualMenuProps, Icon, CommandBar } from 'office-ui-fabric-react';
+import { Icon, CommandBar, Stack, Text } from 'office-ui-fabric-react';
 
-const menuItems = [{ key: 'a', name: 'Item a' }, { key: 'b', name: 'Item b' }];
-const buttonMenu = (props: IContextualMenuProps) => <ContextualMenu {...props} items={menuItems} />;
+const tokens = {
+  sectionStack: {
+    childrenGap: 32
+  },
+  headingStack: {
+    childrenGap: 16
+  },
+  buttonStack: {
+    childrenGap: 12
+  }
+};
 
-const sectionGap = 32;
-const headingGap = 16;
-const buttonGap = 12;
+const alertClicked = (): void => {
+  alert('Clicked');
+};
 
 const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
-  <Stack horizontal gap={buttonGap}>
+  <Stack horizontal disableShrink tokens={tokens.buttonStack}>
     {props.children}
   </Stack>
 );
@@ -20,15 +28,15 @@ const ButtonStack = (props: { children: JSX.Element[] | JSX.Element }) => (
 export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
-      <Stack gap={sectionGap}>
-        <Stack gap={headingGap} padding={8}>
+      <Stack tokens={tokens.sectionStack}>
+        <Stack tokens={tokens.headingStack} padding={8}>
           <div>
-            <Stack gap={buttonGap}>
+            <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
-                <Button content="Default button" />
-                <Button disabled content="Disabled default button" />
-                <Button primary content="Primary button" />
-                <Button disabled primary content="Primary disabled button" />
+                <Button content="Default button" onClick={alertClicked} />
+                <Button disabled content="Disabled default button" onClick={alertClicked} />
+                <Button primary content="Primary button" onClick={alertClicked} />
+                <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" circular />
@@ -40,7 +48,6 @@ export class ButtonExample extends React.Component<{}, {}> {
                 <Button icon="Upload" content="Button with string icon" />
                 <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
                 <Button icon={() => <Icon iconName="Download" />} content="Button with icon render function" />
-                <Button icon={<Icon iconName="Download" />} content="Button with icon JSX" />
               </ButtonStack>
               <ButtonStack>
                 <Button>
@@ -51,23 +58,6 @@ export class ButtonExample extends React.Component<{}, {}> {
                   <Text>With custom text/icon right aligned</Text>
                   <Icon iconName="Upload" />
                 </Button>
-              </ButtonStack>
-              <ButtonStack>
-                <Button content="Menu button" menu={buttonMenu} />
-                <Button primary content="Menu primary button" menu={buttonMenu} />
-                <Button disabled content="Menu disabled button" menu={buttonMenu} />
-                <Button expanded content="Menu expanded button" />
-                <Button expanded primary content="Menu expanded primary button" />
-              </ButtonStack>
-              <ButtonStack>
-                <Button icon="Share" menu={buttonMenu}>
-                  <Stack padding="8px 0" as="span" horizontalAlign="start">
-                    <Text>I am a compound multiline button.</Text>
-                    <Text variant="small">I can have a caption.</Text>
-                  </Stack>
-                </Button>
-                <Button disabled content="Menu disabled button" />
-                <Button expanded content="Menu expanded button" />
               </ButtonStack>
               <CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />
             </Stack>

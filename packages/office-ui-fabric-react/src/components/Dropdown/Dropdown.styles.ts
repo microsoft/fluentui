@@ -1,6 +1,17 @@
 import { IDropdownStyles, IDropdownStyleProps } from './Dropdown.types';
 import { IStyleFunction } from '../../Utilities';
-import { FontSizes, FontWeights, HighContrastSelector, IRawStyle, IStyle, getGlobalClassNames, normalize } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  HighContrastSelector,
+  IRawStyle,
+  IStyle,
+  getGlobalClassNames,
+  normalize,
+  HighContrastSelectorWhite,
+  getScreenSelector,
+  ScreenWidthMinMedium
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-Dropdown-container',
@@ -24,8 +35,7 @@ const DROPDOWN_HEIGHT = 32;
 const DROPDOWN_ITEM_HEIGHT = 32;
 
 const highContrastAdjustMixin = {
-  // highContrastAdjust mixin
-  '@media screen and (-ms-high-contrast: active), screen and (-ms-high-contrast: black-on-white)': {
+  [`${HighContrastSelector}, ${HighContrastSelectorWhite.replace('@media ', '')}`]: {
     MsHighContrastAdjust: 'none'
   }
 };
@@ -53,6 +63,8 @@ const highContrastBorderState: IRawStyle = {
     }
   }
 };
+
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMinMedium);
 
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
   const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
@@ -199,6 +211,9 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         right: 12,
         height: DROPDOWN_HEIGHT,
         lineHeight: DROPDOWN_HEIGHT - 2 // height minus the border
+      },
+      !disabled && {
+        cursor: 'pointer'
       }
     ],
     caretDown: [
@@ -277,7 +292,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         root: [panelClassName],
         main: {
           // Force drop shadow even under medium breakpoint
-          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
+          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
+          selectors: {
+            // In case of extra small screen sizes
+            [MinimumScreenSelector]: {
+              // panelWidth xs
+              width: 272
+            }
+          }
         },
         contentInner: { padding: '0 0 20px' }
       }

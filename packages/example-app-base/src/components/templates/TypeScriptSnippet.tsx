@@ -1,14 +1,13 @@
 import * as React from 'react';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
-// tslint:disable-next-line:no-any
-declare const require: (location: string) => any;
+// tslint:disable no-any
+const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/light').default;
+const ts = require<any>('react-syntax-highlighter/dist/esm/languages/hljs/typescript').default;
+const style = require<any>('react-syntax-highlighter/dist/styles/hljs/vs2015').default;
+// tslint:enable no-any
 
-const { default: SyntaxHighlighter, registerLanguage } = require('react-syntax-highlighter/light');
-const { default: ts } = require('react-syntax-highlighter/languages/hljs/typescript');
-const { default: style } = require('react-syntax-highlighter/styles/hljs/vs2015');
-
-registerLanguage('typescript', ts);
+SyntaxHighlighter.registerLanguage('typescript', ts);
 
 export const rootClass = mergeStyles({
   overflowY: 'auto',
@@ -32,6 +31,7 @@ export const lineNumberStyle = {
   lineHeight: 'inherit'
 };
 
+/** @deprecated Use `CodeSnippet` */
 export class TypeScriptSnippet extends React.Component {
   public render(): JSX.Element {
     return (

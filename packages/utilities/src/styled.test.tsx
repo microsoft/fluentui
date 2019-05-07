@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
-import { Customizer } from './Customizer';
+import { Customizer } from './customizations/Customizer';
 import { IStyle, Stylesheet, InjectionMode, IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
-import { Customizations } from './Customizations';
+import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@uifabric/test-utilities';
+import { mount } from 'enzyme';
 
 interface ITestStyles {
   root: IStyle;
@@ -24,11 +25,12 @@ const getClassNames = classNamesFunction<{}, ITestStyles>();
 class TestBase extends React.Component<ITestProps> {
   public constructor(props: ITestProps) {
     super(props);
-    _lastProps = props;
   }
 
   public render(): JSX.Element {
     _renderCount++;
+
+    _lastProps = this.props;
 
     const classNames = getClassNames(this.props.styles, this.props);
 
@@ -61,6 +63,34 @@ describe('styled', () => {
     Stylesheet.getInstance().reset();
   });
 
+  it('can create pure components', () => {
+    let renderCount = 0;
+    const render = () => {
+      renderCount++;
+      return <div />;
+    };
+    const styles = () => ({});
+    const Comp = styled(render, styles);
+    const PureComp = styled(render, styles, undefined, undefined, true);
+    const App = () => {
+      return (
+        <div>
+          <Comp />
+          <PureComp />
+        </div>
+      );
+    };
+    const appWrapper = mount(<App />);
+
+    try {
+      expect(renderCount).toEqual(2);
+      appWrapper.setProps({ 'data-foo': '1' });
+      expect(renderCount).toEqual(3);
+    } finally {
+      appWrapper.unmount();
+    }
+  });
+
   it('renders base styles (background red)', () => {
     safeCreate(<Test />, (component: renderer.ReactTestRenderer) => {
       // Test that defaults are the base styles (red).
@@ -72,6 +102,39 @@ describe('styled', () => {
     safeCreate(<Test styles={{ root: { background: 'green' } }} />, (component: renderer.ReactTestRenderer) => {
       expect(component.toJSON()).toMatchSnapshot();
     });
+  });
+
+  it('does not create any new closured functions', () => {
+    let _firstProps: ITestProps | undefined;
+
+    const component = mount(<Test />);
+
+    _firstProps = _lastProps;
+    expect(_renderCount).toEqual(1);
+
+    try {
+      component.setProps({ cool: true });
+
+      expect(_renderCount).toEqual(2);
+      expect(_firstProps).not.toBe(_lastProps);
+
+      if (_firstProps) {
+        // Validate that all functions and objects are the same instances as before.
+        for (let propName in _firstProps) {
+          if (_firstProps.hasOwnProperty(propName)) {
+            // tslint:disable-next-line:no-any
+            const propValue = (_firstProps as any)[propName];
+
+            if (typeof propValue === 'function' || typeof propValue === 'object') {
+              // tslint:disable-next-line:no-any
+              expect(propValue).toBe((_lastProps as any)[propName]);
+            }
+          }
+        }
+      }
+    } finally {
+      component.unmount();
+    }
   });
 
   it('allows for contextual overrides (background yellow)', () => {

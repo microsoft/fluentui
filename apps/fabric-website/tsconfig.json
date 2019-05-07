@@ -12,6 +12,9 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": true,
+    "noImplicitThis": true,
+    "skipLibCheck": true,
+    "lib": ["es5", "dom"],
     "types": ["node", "webpack-env"],
     "paths": {
       "office-ui-fabric-react/lib/*": ["node_modules/office-ui-fabric-react/lib/*"]

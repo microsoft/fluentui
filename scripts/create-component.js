@@ -2,13 +2,12 @@
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newComponentName = argv.name;
-const slots = argv.slots;
 const stateless = argv.stateless;
 const fs = require('fs');
 
 // Template Sequences
-const statefulSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State', 'StateTest'];
-const statelessSequence = ['GlobalIndex', 'Styles', 'Index', 'View', 'ViewTest', 'TypesStateless', 'ComponentStateless'];
+const statefulSequence = ['GlobalIndex', 'Styles', 'Test', 'Index', 'View', 'ViewTest', 'Types', 'Component', 'State', 'StateTest'];
+const statelessSequence = ['GlobalIndex', 'Styles', 'Test', 'Index', 'View', 'ViewTest', 'TypesStateless', 'ComponentStateless'];
 
 // Paths/File Names
 const rootComponentFolderPath = './packages/experiments/src/';
@@ -25,6 +24,7 @@ const outputFiles = {
   State: componentPathNamePrefix + '.state.ts',
   StateTest: componentPathNamePrefix + '.state.test.tsx',
   Styles: componentPathNamePrefix + '.styles.ts',
+  Test: componentPathNamePrefix + '.test.tsx',
   Types: componentPathNamePrefix + '.types.ts',
   TypesStateless: componentPathNamePrefix + '.types.ts',
   View: componentPathNamePrefix + '.view.tsx',
@@ -97,11 +97,6 @@ function writeFileCallback(error, createFileError, cb) {
 function makeComponent(error) {
   if (!handleError(error, errorCreatingComponentDir)) {
     return;
-  }
-
-  // TODO: obsolete existing templates and promote "slots" templates upon slots promotion
-  if (slots) {
-    templateFolderPath += '/slots';
   }
 
   if (stateless) {

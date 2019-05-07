@@ -2,7 +2,7 @@
   "compilerOptions": {
     "target": "es5",
     "module": "commonjs",
-    "lib": ["es2017", "dom"],
+    "lib": ["es5", "dom"],
     "jsx": "react",
     "declaration": true,
     "sourceMap": true,
@@ -12,7 +12,7 @@
     "forceConsistentCasingInFileNames": true,
     "moduleResolution": "node",
     "preserveConstEnums": false,
-    "types": []
+    "types": ["webpack-env"]
   },
   "include": ["src"]
 }

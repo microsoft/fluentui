@@ -1,0 +1,7 @@
+import * as React from 'react';
+import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
+import { BreadcrumbPageProps } from './BreadcrumbPage.doc';
+
+export const BreadcrumbPage: React.StatelessComponent<IControlsPageProps> = props => {
+  return <ControlsAreaPage {...props} {...BreadcrumbPageProps[props.platform]} />;
+};

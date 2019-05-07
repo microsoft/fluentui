@@ -1,13 +1,12 @@
-The entire color palette of the controls are themeable. We provide a set of sensible defaults, but you can override all colors individually.
-In order to do this you must provide a theme at app startup and provide it to `loadTheme()`.
+The entire color palette of the controls is themeable. We provide a set of sensible defaults, but you can override all colors individually. To do this, you must call `loadTheme()` with a custom theme object at app startup.
 
 ## Using Themes
 
-In order to use themes, an application must call `loadTheme()` immediately at app startup before any app code executes.
-Here is an example that has been generated from the <a href='#/customizations/colors'>Colors Customization page</a> (using the default palette generated):
+To use themes, an application must call `loadTheme()` immediately at app startup before any app code executes.
+Here is an example:
 
 ```tsx
-import { loadTheme } from 'office-ui-fabric-react';
+import { loadTheme } from 'office-ui-fabric-react/lib/Styling';
 
 loadTheme({
   palette: {
@@ -32,7 +31,7 @@ loadTheme({
     neutralPrimary: '#333333',
     neutralDark: '#272727',
     black: '#1d1d1d',
-    white: '#ffffff',
+    white: '#ffffff'
   }
 });
 ```

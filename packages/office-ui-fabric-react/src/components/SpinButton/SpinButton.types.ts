@@ -6,7 +6,11 @@ import { ISpinButtonClassNames } from './SpinButton.classNames';
 import { KeyboardSpinDirection } from './SpinButton';
 import { IButtonStyles } from '../../Button';
 import { IKeytipProps } from '../../Keytip';
+import { IRefObject } from '../../Utilities';
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButton {
   /**
    * The value of the SpinButton. Use this if you intend to pass in a new value as a result of onChange events.
@@ -20,11 +24,14 @@ export interface ISpinButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonProps {
   /**
    * Gets the component ref.
    */
-  componentRef?: (component?: ISpinButton | null) => void;
+  componentRef?: IRefObject<ISpinButton>;
 
   /**
    * The initial value of the SpinButton. Use this if you intend for the SpinButton to be an uncontrolled component.
@@ -66,6 +73,11 @@ export interface ISpinButtonProps {
   ariaLabel?: string;
 
   /**
+   * Optional prop to add a string id that can be referenced inside the aria-describedby attribute
+   */
+  ariaDescribedBy?: string;
+
+  /**
    * A title for the SpinButton used for a more descriptive name that's also visible on its tooltip.
    */
   title?: string;
@@ -83,7 +95,7 @@ export interface ISpinButtonProps {
   /**
    * Descriptive label for the SpinButton.
    */
-  label: string;
+  label?: string;
 
   /**
    * @defaultvalue Left
@@ -224,6 +236,9 @@ export interface ISpinButtonProps {
   keytipProps?: IKeytipProps;
 }
 
+/**
+ * {@docCategory SpinButton}
+ */
 export interface ISpinButtonStyles {
   /**
    * Styles for the root of the spin button component.

@@ -2,6 +2,413 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.38.1",
+      "tag": "@uifabric/utilities_v6.38.1",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "a new line is added to the end of the api-extractor.json file",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c0bbb0d61e0da3bccbb78654a6f49e0c56b7996e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.0` to `^6.17.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.0",
+      "tag": "@uifabric/utilities_v6.38.0",
+      "date": "Wed, 01 May 2019 12:34:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export Omit from utilities",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4d72d00867790618c3062374d5f38160aa2d7c4e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.1",
+      "tag": "@uifabric/utilities_v6.37.1",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds pointer events to baseElementProperties",
+            "author": "Lorin Tackett <lorin.tackett@gmail.com>",
+            "commit": "df594f0141c680d84e48ef2fdd06247c2d9edf7b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.0",
+      "tag": "@uifabric/utilities_v6.37.0",
+      "date": "Sat, 27 Apr 2019 00:04:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "108330f1118fafab4a13a8a2d18a0cd6bdf8639d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.36.0",
+      "tag": "@uifabric/utilities_v6.36.0",
+      "date": "Fri, 26 Apr 2019 12:35:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make isFocusVisible toggleable by user.",
+            "author": "apneer <sasha050909@gmail.com>",
+            "commit": "fc97ae2b21bdddb77dbc613c2bfcd7ad07e28be8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.7",
+      "tag": "@uifabric/utilities_v6.35.7",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing closure from `styled` helper to improve performance.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9e9159e8c887f52ca0cc2ad2b9575708839c63bc"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.6",
+      "tag": "@uifabric/utilities_v6.35.6",
+      "date": "Fri, 19 Apr 2019 12:33:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing closure from `styled` helper to improve performance.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "67f3b4289dfc67f85b12037692a57c16ed28a330"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.5",
+      "tag": "@uifabric/utilities_v6.35.5",
+      "date": "Thu, 11 Apr 2019 12:37:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Documentation: add @docCategory inline tags",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "61ffe7ba8a1f40a61a8335ac9ef9fb6e4dc30fd7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.4` to `^6.16.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.4",
+      "tag": "@uifabric/utilities_v6.35.4",
+      "date": "Mon, 08 Apr 2019 12:37:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Customizer modified to avoid BaseComponent.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c352f028d072a7ead8c9d25ee06975f4f7d02beb"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.3",
+      "tag": "@uifabric/utilities_v6.35.3",
+      "date": "Tue, 02 Apr 2019 00:38:15 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.16.3` to `^6.16.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.7` to `^6.0.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.2` to `^6.0.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.2",
+      "tag": "@uifabric/utilities_v6.35.2",
+      "date": "Wed, 27 Mar 2019 12:34:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update API file",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "f1d7bb3c35531554d4e855a9b2e3e7966a47fc17"
+          },
+          {
+            "comment": "update api file generated by api-extractor 7",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "84a6854128de7b11e1b3babb41569be749786f8d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.16.1 <7.0.0` to `>=6.16.2 <7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `>=6.0.0 <7.0.0` to `>=6.0.2 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.1",
+      "tag": "@uifabric/utilities_v6.35.1",
+      "date": "Fri, 15 Mar 2019 12:34:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove some unused variables and types from Customizer",
+            "author": "Mark Polak <mark@thedutchies.com>",
+            "commit": "3fc7cecfad646dcfde46a4244ffd9d570e11d085"
+          },
+          {
+            "comment": "Use typeof check on process before checking process.env.NODE_ENV",
+            "author": "Thomas Michon <thomas@michon.com>",
+            "commit": "12513bd032a8ce7a6ef1e0257bd2ae99a0a00849"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.0",
+      "tag": "@uifabric/utilities_v6.35.0",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Focus utilities: Fix tabbable element issue and add optional argument.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "882f4b91eddf44fca406d1d66b1081d7e72fa439"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.34.0",
+      "tag": "@uifabric/utilities_v6.34.0",
+      "date": "Wed, 06 Mar 2019 13:27:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities for managing componentRef initialization added.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bf912f0679f7c54bfd6864c6e8b7a9dfc2de128b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `>=1.0.0 <2.0.0` to `>=1.0.1 <2.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.33.0",
+      "tag": "@uifabric/utilities_v6.33.0",
+      "date": "Tue, 05 Mar 2019 17:33:41 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Modify return type of styled (function to React.StatelessComponent)",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "846c063f27dbc440ea9773ff735420d0ba7c1754"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.1",
+      "tag": "@uifabric/utilities_v6.32.1",
+      "date": "Tue, 05 Mar 2019 04:25:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Utilities: removing redundant export for `setVirtualParent`.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "43389eaf8b8a548d18420253258930b047bdae01"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.32.0",
+      "tag": "@uifabric/utilities_v6.32.0",
+      "date": "Mon, 04 Mar 2019 13:29:58 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Utilities: Adding setVirtualParent export.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "1a77a4df9b080b4b582f6cea185e3c6180cbb5de"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.31.0",
+      "tag": "@uifabric/utilities_v6.31.0",
+      "date": "Fri, 01 Mar 2019 19:40:21 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Reinstroducing dom/warn top level imports.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "c224ca9e56e49a2dbe983fa5b1203fb339407d66"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.30.0",
+      "tag": "@uifabric/utilities_v6.30.0",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "A number of files containing many exports have been split into smaller units for finer debuggability in bundle size implications. Some unneeded dependencies on EventGroup have been removed.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "bd191a3964734c6619fa49fcdb1d6127e2834522"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `>=6.15.2 <7.0.0` to `>=6.16.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.4",
+      "tag": "@uifabric/utilities_v6.29.4",
+      "date": "Tue, 26 Feb 2019 22:45:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ARIA: mergeAriaAttributeValues should produce space-delimited output by default",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "6381336da4f0bf9ae6cd6c8963534fe8a44451a0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.3",
+      "tag": "@uifabric/utilities_v6.29.3",
+      "date": "Fri, 22 Feb 2019 13:31:09 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "mergeAriaAttributeValues: Trim output string",
+            "author": "Dalimil Hajek <dalimilhajek@gmail.com>",
+            "commit": "2f516dd704711bb7ac7c7a2d581693751ba54e94"
+          },
+          {
+            "comment": "Add check for tabIndex in isElementTabbable if role=button",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "a1526db47d9afd3518b295b15e69ab6d4020b220"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.2",
+      "tag": "@uifabric/utilities_v6.29.2",
+      "date": "Wed, 20 Feb 2019 13:30:29 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getRTL: Check for existence of body element before reading attributes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f8deb819680c93729495956f900b11a9e7bf3753"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.1",
+      "tag": "@uifabric/utilities_v6.29.1",
+      "date": "Thu, 14 Feb 2019 13:34:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add fallback for reading direction attribute from body element.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "ea1c5970709209dab8f7ba2781cdb5e21b92e9f5"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.29.0",
+      "tag": "@uifabric/utilities_v6.29.0",
+      "date": "Thu, 31 Jan 2019 20:10:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adding helper functions to get and restore focus elements based on index paths.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "468af6a86a680e882009c7bc33e0956877d3fa26"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.28.1",
+      "tag": "@uifabric/utilities_v6.28.1",
+      "date": "Fri, 25 Jan 2019 13:38:07 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating 'customizable.tsx' to evaluate style functions.",
+            "author": "Humberto Makoto Morimoto Burgos <Humberto.Morimoto@microsoft.com>",
+            "commit": "4585011f2001a2d276525fb64f81ecabfe2316b4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.28.0",
       "tag": "@uifabric/utilities_v6.28.0",
       "date": "Fri, 11 Jan 2019 05:00:46 GMT",

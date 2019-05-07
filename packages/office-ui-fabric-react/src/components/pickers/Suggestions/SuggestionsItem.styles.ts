@@ -1,7 +1,7 @@
 import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { ISuggestionsItemStyleProps, ISuggestionsItemStyles } from './SuggestionsItem.types';
 
-const GlobalClassNames = {
+export const SuggestionsItemGlobalClassNames = {
   root: 'ms-Suggestions-item',
   itemButton: 'ms-Suggestions-itemButton',
   closeButton: 'ms-Suggestions-closeButton',
@@ -13,7 +13,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
 
   const { palette } = theme;
 
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const classNames = getGlobalClassNames(SuggestionsItemGlobalClassNames, theme);
 
   return {
     root: [
@@ -33,6 +33,35 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
           }
         }
       },
+
+      className
+    ],
+    itemButton: [
+      classNames.itemButton,
+      {
+        width: '100%',
+        padding: 0,
+        border: 'none',
+        height: '100%',
+        // Force the item button to be collapsible so it can always shrink
+        // to accommodate the close button as a peer in its flex container.
+        minWidth: 0,
+        selectors: {
+          [HighContrastSelector]: {
+            color: 'WindowText',
+            selectors: {
+              ':hover': {
+                background: 'Highlight',
+                color: 'HighlightText',
+                MsHighContrastAdjust: 'none'
+              }
+            }
+          },
+          ':hover': {
+            color: palette.neutralDark
+          }
+        }
+      },
       suggested && [
         classNames.isSuggested,
         {
@@ -48,25 +77,7 @@ export function getStyles(props: ISuggestionsItemStyleProps): ISuggestionsItemSt
             }
           }
         }
-      ],
-      className
-    ],
-    itemButton: [
-      classNames.itemButton,
-      {
-        width: '100%',
-        padding: 0,
-        border: 'none',
-        height: '100%',
-        selectors: {
-          [HighContrastSelector]: {
-            color: 'WindowText'
-          },
-          ':hover': {
-            color: palette.neutralDark
-          }
-        }
-      }
+      ]
     ],
     closeButton: [
       classNames.closeButton,

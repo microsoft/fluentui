@@ -4,6 +4,8 @@ import { FloatingPeoplePickerTypesExample } from '../PeoplePicker/examples/Float
 import { IDocPageProps } from '../../../common/DocPage.types';
 
 const FloatingPeoplePickerBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+const FloatingPeoplePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/FloatingPicker/PeoplePicker/examples/FloatingPeoplePicker.Basic.Example.tsx') as string;
+
 export const FloatingPeoplePickerPageProps: IDocPageProps = {
   title: 'FloatingPeoplePicker',
   componentName: 'FloatingPeoplePicker',
@@ -13,6 +15,7 @@ export const FloatingPeoplePickerPageProps: IDocPageProps = {
     {
       title: 'Floating People Picker',
       code: FloatingPeoplePickerBasicExampleCode,
+      codepenJS: FloatingPeoplePickerBasicExampleCodepen,
       view: <FloatingPeoplePickerTypesExample />
     }
   ],

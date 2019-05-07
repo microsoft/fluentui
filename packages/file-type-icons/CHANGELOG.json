@@ -2,6 +2,131 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.4.8",
+      "tag": "@uifabric/file-type-icons_v6.4.8",
+      "date": "Sat, 27 Apr 2019 00:04:47 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "removing duplicate entries in FileTypeIconMap.ts",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "d4d8555146170e4c15e93c9453274a39aa09a367"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.7",
+      "tag": "@uifabric/file-type-icons_v6.4.7",
+      "date": "Fri, 26 Apr 2019 12:35:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "reverting the json payload back inside the ts file due to downstream issues",
+            "author": "Kosta Tachtevrenidis <tachtevrenidis@hotmail.com>",
+            "commit": "c0b7dd66d1b09e30f9b92e40f8c517b119acc48e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.6",
+      "tag": "@uifabric/file-type-icons_v6.4.6",
+      "date": "Thu, 18 Apr 2019 12:31:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "1da3c07739e6247db245c35122e65d85786ee503"
+          },
+          {
+            "comment": "updating getFileTypeIconProps to make reference to correct sharepoint… ",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "1da3c07739e6247db245c35122e65d85786ee503"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Run prettier on all files",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "68bf892681e7cec48499ea62312aad3dee5bbfd1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.5",
+      "tag": "@uifabric/file-type-icons_v6.4.5",
+      "date": "Wed, 10 Apr 2019 12:33:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "decoupled the icon mapping from ts in file-type-icons so that it can be use in an upcoming cocoapod for fabric-cdn icons",
+            "author": "Kosta Tachtevrenidis <tachtevrenidis@hotmail.com>",
+            "commit": "d400a6b56242c5a3d4f72c71f33b5909e4be7367"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.4",
+      "tag": "@uifabric/file-type-icons_v6.4.4",
+      "date": "Tue, 02 Apr 2019 00:38:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use ^ ranges instead of >=",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "6a536804ce9cff3444e6f631925a30c58274d931"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.45.1` to `^6.45.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.3",
+      "tag": "@uifabric/file-type-icons_v6.4.3",
+      "date": "Tue, 12 Mar 2019 12:31:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "4dff01ca4ecf3985386cfea56e61f8836939ef3e"
+          },
+          {
+            "comment": "updating getFileTypeIconProps to make reference to correct sharepoint… ",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "4dff01ca4ecf3985386cfea56e61f8836939ef3e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.4.2",
+      "tag": "@uifabric/file-type-icons_v6.4.2",
+      "date": "Fri, 01 Mar 2019 13:33:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "820dd8dfef5f64addefb58fb151d8dc78a28b428"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `>=6.42.0 <7.0.0` to `>=6.43.0 <7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.1",
       "tag": "@uifabric/file-type-icons_v6.4.1",
       "date": "Thu, 06 Dec 2018 13:34:21 GMT",

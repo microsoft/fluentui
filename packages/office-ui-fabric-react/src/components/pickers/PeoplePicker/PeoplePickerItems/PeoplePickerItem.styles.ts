@@ -64,7 +64,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
   return {
     root: [
       classNames.root,
-      getFocusStyle(theme, -2),
+      getFocusStyle(theme, { inset: -2 }),
       {
         borderRadius: 15,
         display: 'inline-flex',
@@ -75,6 +75,7 @@ export function getStyles(props: IPeoplePickerItemSelectedStyleProps): IPeoplePi
         userSelect: 'none',
         maxWidth: 300,
         verticalAlign: 'middle',
+        minWidth: 0,
         selectors: {
           ':hover': {
             background: !selected && !disabled ? palette.neutralLight : ''

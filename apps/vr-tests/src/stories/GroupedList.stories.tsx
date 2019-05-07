@@ -1,19 +1,18 @@
 /*! Copyright (c) Microsoft Corporation. All rights reserved. Licensed under the MIT license. */
 import * as React from 'react';
-import Screener, { Steps } from 'screener-storybook/src/screener';
+import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecorator } from '../utilities';
 import { GroupedList } from 'office-ui-fabric-react';
 
-const groupCount = 2;
-const groupDepth = 2;
-// tslint:disable-next-line:max-line-length
+// tslint:disable:max-line-length
 const items = [
   {
     thumbnail: '//placehold.it/175x175',
     key: 'item-0 nostrud proident, id non',
     name: 'id velit labore ipsum magna',
-    description: 'dolor nostrud Ut ex dolore mollit veniam, Excepteur aute in magna sint ex sit occaecat non quis cupidatat sit esse',
+    description:
+      'dolor nostrud Ut ex dolore mollit veniam, Excepteur aute in magna sint ex sit occaecat non quis cupidatat sit esse',
     color: 'red',
     shape: 'circle',
     location: 'Los Angeles',
@@ -83,7 +82,7 @@ const groups = [
   }
 ];
 
-let onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
+const onRenderCell = (nestingDepth: number, item: any, itemIndex: number) => {
   return <div>{item.name}</div>;
 };
 
@@ -105,8 +104,13 @@ storiesOf('GroupedList', module)
   ))
   .addStory(
     'Root',
-    () => <GroupedList groups={groups} items={items} onRenderCell={onRenderCell} styles={{ root: { color: '#333333' } }} />,
-    {
-      rtl: true
-    }
+    () => (
+      <GroupedList
+        groups={groups}
+        items={items}
+        onRenderCell={onRenderCell}
+        styles={{ root: { color: '#333333' } }}
+      />
+    ),
+    { rtl: true }
   );

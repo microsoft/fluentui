@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponent, IComponentStyles, IHTMLButtonSlot, IHTMLDivSlot, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
 import { IKeytipProps } from 'office-ui-fabric-react/lib/Keytip';
 import { IBaseProps, IComponentAs } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
@@ -15,39 +15,34 @@ export type IToggleStylesReturnType = ReturnType<Extract<IToggleComponent['style
 
 export interface IToggleSlots {
   /**
-   * Root element.
+   * Defines root slot.
    */
-  root?: IHTMLDivSlot;
+  root?: IHTMLSlot;
 
   /**
-   * A label for the toggle.
+   * Defines label slot displayed above pill.
    */
   label?: ILabelSlot;
 
   /**
-   * Container for the toggle pill and the text next to it.
+   * Defines container slot for the toggle pill and the text next to it.
    */
-  container?: IHTMLDivSlot;
+  container?: IHTMLSlot;
 
   /**
-   * Pill, rendered as a button.
+   * Defines pill slot, rendered as a button by default.
    */
-  pill?: IHTMLButtonSlot;
+  pill?: IHTMLElementSlot<'button'>;
 
   /**
-   * Thumb inside of the pill.
+   * Defines thumb slot inside of the pill.
    */
-  thumb?: IHTMLDivSlot;
+  thumb?: IHTMLSlot;
 
   /**
-   * Text to display when toggle is ON.
+   * Defines text slot displayed alongside pill. Overrides onText and offText.
    */
-  onText?: ILabelSlot;
-
-  /**
-   * Text to display when toggle is OFF.
-   */
-  offText?: ILabelSlot;
+  text?: ILabelSlot;
 }
 
 export interface IToggle {
@@ -95,6 +90,16 @@ export interface IToggleProps
    * Optional keytip for this toggle
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Text to display when toggle is ON.
+   */
+  onText?: string;
+
+  /**
+   * Text to display when toggle is OFF.
+   */
+  offText?: string;
 }
 
 export interface IToggleViewProps extends IToggleProps {

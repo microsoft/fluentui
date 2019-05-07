@@ -23,7 +23,9 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
       }
     },
     caretDownWrapper: {
-      right: 8
+      right: 8,
+      height: StyleConstants.inputControlHeightInner,
+      lineHeight: StyleConstants.inputControlHeight
     },
     caretDown: {
       color: semanticColors.inputText
@@ -31,6 +33,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     dropdown: [
       {
         fontSize: FontSizes.size12,
+        height: StyleConstants.inputControlHeight,
         color: semanticColors.inputText,
         selectors: {
           ['.ms-Dropdown-titleIsPlaceHolder']: {
@@ -75,7 +78,16 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     },
     title: [
       {
-        borderColor: semanticColors.inputBorder
+        height: StyleConstants.inputControlHeight,
+        lineHeight: StyleConstants.inputControlHeight,
+        borderColor: semanticColors.inputBorder,
+        selectors: {
+          span: {
+            lineHeight: StyleConstants.inputControlHeightInner,
+            position: 'absolute',
+            top: '1px'
+          }
+        }
       },
       hasError && {
         borderColor: semanticColors.errorBackground,

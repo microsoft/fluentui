@@ -1,6 +1,6 @@
 import { getNeutralVariant, getSoftVariant, getStrongVariant } from '@uifabric/variants';
-import { IStackComponent, IStackStylesReturnType } from '@uifabric/experiments/lib/Stack';
 
+import { IStackComponent, IStackStylesReturnType } from 'office-ui-fabric-react/lib/Stack';
 import { createTheme, IPalette, ITheme, getTheme } from 'office-ui-fabric-react/lib/Styling';
 
 export const regionStyles: IStackComponent['styles'] = (props, theme): IStackStylesReturnType => ({
@@ -50,6 +50,7 @@ const invertedPrimaryPalette: IPalette = {
   neutralSecondaryAlt: '#767676',
   accent: '#0078d4',
   whiteTranslucent40: 'rgba(255,255,255,.4)',
+  yellowDark: '#d29200',
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',
@@ -102,6 +103,7 @@ const invertedDefaultPalette: IPalette = {
   neutralSecondaryAlt: '#767676',
   accent: '#0078d4',
   whiteTranslucent40: 'rgba(255,255,255,.4)',
+  yellowDark: '#d29200',
   yellow: '#ffb900',
   yellowLight: '#fff100',
   orange: '#d83b01',

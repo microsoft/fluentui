@@ -1,18 +1,26 @@
 import * as React from 'react';
-import { FolderCover, IFolderCoverProps, getFolderCoverLayout, renderFolderCoverWithLayout, SharedSignal } from '@uifabric/experiments';
+import {
+  FolderCover,
+  IFolderCoverProps,
+  getFolderCoverLayout,
+  renderFolderCoverWithLayout,
+  SharedSignal
+} from '@uifabric/experiments';
 import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
-import { ISize, fitContentToBounds } from 'office-ui-fabric-react';
+import { ISize, fitContentToBounds, Fabric } from 'office-ui-fabric-react';
 import { FabricDecorator } from '../utilities';
 
 interface IFolderCoverWithImageProps extends IFolderCoverProps {
   originalImageSize: ISize;
 }
 
-const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (props: IFolderCoverWithImageProps): JSX.Element => {
+const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps> = (
+  props: IFolderCoverWithImageProps
+): JSX.Element => {
   const { originalImageSize, ...folderCoverProps } = props;
 
-  const folderCover = <FolderCover style={{ fontFamily: 'Segoe UI' }} {...folderCoverProps} />;
+  const folderCover = <FolderCover {...folderCoverProps} />;
 
   const { contentSize } = getFolderCoverLayout(folderCover);
 
@@ -23,13 +31,25 @@ const FolderCoverWithImage: React.StatelessComponent<IFolderCoverWithImageProps>
   });
 
   return renderFolderCoverWithLayout(folderCover, {
-    children: <img src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`} />
+    children: (
+      <img src={`//placehold.it/${Math.round(imageSize.width)}x${Math.round(imageSize.height)}`} />
+    )
   });
 };
 
 storiesOf('FolderCover', module)
+  .addDecorator(story => <Fabric>{story()}</Fabric>)
   .addDecorator(FabricDecorator)
-  .addDecorator(story => <Screener steps={new Screener.Steps().snapshot('default', { cropTo: '.testWrapper' }).end()}>{story()}</Screener>)
+  .addDecorator(story =>
+    // prettier-ignore
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .end()}
+    >
+      {story()}
+    </Screener>
+  )
   .addStory('Large Default Cover', () => (
     <FolderCoverWithImage
       originalImageSize={{

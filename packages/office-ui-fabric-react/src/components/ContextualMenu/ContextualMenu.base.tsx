@@ -10,6 +10,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
+import { divProperties, getNativeProps } from '../../Utilities';
 
 import {
   assign,
@@ -257,7 +258,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     this._adjustedFocusZoneProps = { ...focusZoneProps, direction: this._getFocusZoneDirection() };
 
     const hasCheckmarks = canAnyMenuItemsCheck(items);
-    const submenuProps = this.state.expandedMenuItemKey ? this._getSubmenuProps() : null;
+    const submenuProps = this.state.expandedMenuItemKey && this.props.hidden !== true ? this._getSubmenuProps() : null;
 
     isBeakVisible = isBeakVisible === undefined ? this.props.responsiveMode! <= ResponsiveMode.medium : isBeakVisible;
     /**
@@ -317,7 +318,6 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
           hidden={this.props.hidden}
         >
           <div
-            role="menu"
             aria-label={ariaLabel}
             aria-labelledby={labelElementId}
             style={contextMenuStyle}
@@ -371,6 +371,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
         this._previousActiveElement && this._previousActiveElement!.focus();
       }, 0);
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
+
+    // We need to dismiss any submenu related state properties,
+    // so that when the menu is shown again, the submenu is collapsed
+    this.setState({
+      expandedByMouseClick: undefined,
+      dismissedMenuItemKey: undefined,
+      expandedMenuItemKey: undefined,
+      submenuTarget: undefined
+    });
   }
 
   /**
@@ -392,7 +401,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): JSX.Element => {
     let indexCorrection = 0;
     return (
-      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp}>
+      <ul className={this._classNames.list} onKeyDown={this._onKeyDown} onKeyUp={this._onKeyUp} role="menu">
         {menuListProps.items.map((item, index) => {
           const menuItem = this._renderMenuItem(
             item,
@@ -601,9 +610,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   ): React.ReactNode {
     const { contextualMenuItemAs: ChildrenRenderer = ContextualMenuItem } = this.props;
     const { itemProps } = item;
-
+    const divHtmlProperties = itemProps && getNativeProps(itemProps, divProperties);
     return (
-      <div className={this._classNames.header} style={item.style}>
+      <div className={this._classNames.header} {...divHtmlProperties} style={item.style}>
         <ChildrenRenderer
           item={item}
           classNames={classNames}
@@ -782,9 +791,9 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   /**
    * Calls `shouldHandleKey` to determine whether the keyboard event should be handled;
    * if so, stops event propagation and dismisses menu(s).
-   * @param ev The keyboard event.
-   * @param shouldHandleKey Returns whether we should handle this keyboard event.
-   * @param dismissAllMenus If true, dismiss all menus. Otherwise, dismiss only the current menu.
+   * @param ev - The keyboard event.
+   * @param shouldHandleKey - Returns whether we should handle this keyboard event.
+   * @param dismissAllMenus - If true, dismiss all menus. Otherwise, dismiss only the current menu.
    * Only does anything if `shouldHandleKey` returns true.
    * @returns Whether the event was handled.
    */
@@ -1110,8 +1119,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   /**
    * Returns the item that mathes a given key if any.
-   * @param key The key of the item to match
-   * @param items The items to look for the key
+   * @param key - The key of the item to match
+   * @param items - The items to look for the key
    */
   private _findItemByKeyFromItems(key: string, items: IContextualMenuItem[]): IContextualMenuItem | undefined {
     for (const item of items) {

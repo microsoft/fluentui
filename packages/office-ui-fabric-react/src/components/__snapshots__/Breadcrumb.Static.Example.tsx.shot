@@ -43,7 +43,11 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
           role="navigation"
         >
           <div
-            className="ms-FocusZone"
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
             data-focuszone-id="FocusZone0"
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -284,7 +288,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -299,16 +302,20 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -358,9 +365,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=
@@ -445,7 +452,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -460,16 +466,20 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -519,9 +529,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=
@@ -607,7 +617,6 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         margin-left: 0px;
                         margin-right: 0px;
                         margin-top: 0px;
-                        max-width: 160px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;
@@ -622,16 +631,20 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         white-space: nowrap;
                       }
                       .ms-Fabric--isFocusVisible &:focus {
+                        box-shadow: 0 0 0 1px #666666 inset;
                         outline: none;
+                      }
+                      @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
+                        outline: 1px solid WindowText;
+                      }
+                      @media screen and (-ms-high-contrast: active){& {
+                        border-bottom: none;
                       }
                       @media screen and (-ms-high-contrast: white-on-black){& {
                         color: #FFFF00;
                       }
                       @media screen and (-ms-high-contrast: black-on-white){& {
                         color: #00009F;
-                      }
-                      @media screen and (-ms-high-contrast: active), (-ms-high-contrast: none){& {
-                        border-bottom: none;
                       }
                       &:active, &:hover, &:active:hover {
                         color: #004578;
@@ -681,9 +694,9 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                         font-size: 14px;
                         font-weight: 400;
-                        max-width: 116px;
                       }
                   onClick={[Function]}
+                  type="button"
                 >
                   <div
                     className=

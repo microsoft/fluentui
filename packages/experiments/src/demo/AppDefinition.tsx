@@ -11,12 +11,6 @@ export const AppDefinition: IAppDefinition = {
     {
       links: [
         {
-          component: require<any>('../components/Announced/AnnouncedPage').AnnouncedPage,
-          key: 'Announced',
-          name: 'Announced',
-          url: '#/examples/announced'
-        },
-        {
           component: require<any>('../components/Button/ButtonPage').ButtonPage,
           key: 'Button',
           name: 'Button',
@@ -41,12 +35,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/foldercover'
         },
         {
-          component: require<any>('../components/Form/FormPage').FormPage,
-          key: 'Form',
-          name: 'Form',
-          url: '#/examples/form'
-        },
-        {
           component: require<any>('../components/FileTypeIcon/FileTypeIconPage').FileTypeIconPage,
           key: 'FileTypeIcon',
           name: 'FileTypeIcon',
@@ -57,6 +45,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'LayoutGroup',
           name: 'LayoutGroup',
           url: '#/examples/layoutgroup'
+        },
+        {
+          component: require<any>('../components/MicroFeedback/MicroFeedbackPage').MicroFeedbackPage,
+          key: 'MicroFeedback',
+          name: 'MicroFeedback',
+          url: '#/examples/microfeedback'
         },
         {
           component: require<any>('../components/Pagination/PaginationPage').PaginationPage,
@@ -77,12 +71,6 @@ export const AppDefinition: IAppDefinition = {
           url: '#/examples/persona'
         },
         {
-          component: require<any>('../components/Separator/SeparatorPage').SeparatorPage,
-          key: 'Separator',
-          name: 'Separator',
-          url: '#/examples/separator'
-        },
-        {
           component: require<any>('../components/signals/SignalsPage').SignalsPage,
           key: 'Signals',
           name: 'Signals',
@@ -99,18 +87,6 @@ export const AppDefinition: IAppDefinition = {
           key: 'Slots',
           name: 'Slots',
           url: '#/examples/slots'
-        },
-        {
-          component: require<any>('../components/Stack/StackPage').StackPage,
-          key: 'Stack',
-          name: 'Stack',
-          url: '#/examples/stack'
-        },
-        {
-          component: require<any>('../components/Text/TextPage').TextPage,
-          key: 'Text',
-          name: 'Text',
-          url: '#/examples/text'
         },
         {
           component: require<any>('../components/Tile/TilePage').TilePage,

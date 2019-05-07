@@ -5,8 +5,14 @@ import { ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogContent {}
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogContentProps extends React.ClassAttributes<DialogContentBase> {
   /**
    * Optional callback to access the IDialogContent interface. Use this instead of ref for accessing
@@ -67,7 +73,7 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
   /**
    * The title text to display at the top of the dialog.
    */
-  title?: string;
+  title?: string | JSX.Element;
 
   /**
    * Responsive mode passed in from decorator.
@@ -85,8 +91,16 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * @defaultvalue DialogType.normal
    */
   type?: DialogType;
+
+  /**
+   * The classname for when the header is draggable
+   */
+  draggableHeaderClassName?: string;
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export enum DialogType {
   /** Standard dialog */
   normal = 0,
@@ -96,6 +110,9 @@ export enum DialogType {
   close = 2
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogContentStyleProps {
   /**
    * Accept theme prop.
@@ -115,8 +132,16 @@ export interface IDialogContentStyleProps {
    * Is inside a multiline wrapper
    */
   isMultiline?: boolean;
+
+  /**
+   * The classname for when the header is draggable
+   */
+  draggableHeaderClassName?: string;
 }
 
+/**
+ * {@docCategory Dialog}
+ */
 export interface IDialogContentStyles {
   /**
    * Style for the content element.

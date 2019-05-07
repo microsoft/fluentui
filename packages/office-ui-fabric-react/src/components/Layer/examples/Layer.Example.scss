@@ -1,38 +1,38 @@
 @import '../../../common/common';
 
-:global {
-  .LayerExample-content {
-    background-color: $ms-color-themePrimary;
-    color: $ms-color-white;
-    line-height: 50px;
-    padding: 0 20px;
-    display: flex;
-  }
+.content {
+  background-color: $ms-color-themePrimary;
+  color: $ms-color-white;
+  line-height: 50px;
+  padding: 0 20px;
+  display: flex;
+}
 
-  .LayerExample-textContent {
-    flex-grow: 1;
-  }
+.textContent {
+  flex-grow: 1;
+}
 
-  .LayerExample-nonLayered {
-    background-color: $ms-color-neutralTertiaryAlt;
-    line-height: 50px;
-    padding: 0 20px;
-    margin: 8px 0;
-  }
+.nonLayered {
+  background-color: $ms-color-neutralTertiaryAlt;
+  line-height: 50px;
+  padding: 0 20px;
+  margin: 8px 0;
+}
 
-  .ms-LayerHost.LayerExample-customHost {
+.customHost {
+  &:global(.ms-LayerHost) {
     height: 100px;
     padding: 20px;
-    background: rgba(255, 0, 0, .2);
+    background: rgba(255, 0, 0, 0.2);
     border: 1px dashed black;
     position: relative;
   }
 
-  .LayerExample-customHost:before {
+  &:before {
     position: absolute;
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
-    content: 'I am a LayerHost with id=layerhost1'
+    content: 'I am a LayerHost with id=layerhost1';
   }
 }

@@ -114,6 +114,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -140,6 +141,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -153,6 +155,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -166,6 +169,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <span>
       Persona Children
@@ -239,9 +243,9 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
         className=
             ms-Persona-initials
             {
-              background-color: #eaeaea;
+              background-color: rgb(234, 234, 234);
               border-radius: 50%;
-              color: #a80000;
+              color: rgb(168, 0, 0);
               font-size: 17px;
               font-weight: 400;
               height: 48px;
@@ -302,6 +306,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -328,6 +333,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -341,6 +347,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -354,6 +361,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
   </div>
 </div>
@@ -457,8 +465,9 @@ exports[`Persona renders Persona correctly with image 1`] = `
               is-fadeIn
               {
                 display: block;
-                height: auto;
+                height: 100%;
                 left: 50% /* @noflip */;
+                object-fit: cover;
                 opacity: 0;
                 position: absolute;
                 top: 50%;
@@ -499,6 +508,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -525,6 +535,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -538,6 +549,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -551,6 +563,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
   </div>
 </div>
@@ -670,6 +683,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -696,6 +710,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -709,6 +724,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -722,6 +738,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
   </div>
 </div>
@@ -855,6 +872,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -867,6 +885,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -880,6 +899,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
     <div
       className=
@@ -893,6 +913,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     />
   </div>
 </div>
@@ -1091,6 +1112,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1117,6 +1139,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1144,6 +1167,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1171,6 +1195,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1289,8 +1314,9 @@ exports[`Persona renders correctly with onRender callback 1`] = `
               is-fadeIn
               {
                 display: block;
-                height: auto;
+                height: 100%;
                 left: 50% /* @noflip */;
+                object-fit: cover;
                 opacity: 0;
                 position: absolute;
                 top: 50%;
@@ -1406,6 +1432,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1432,6 +1459,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1459,6 +1487,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1486,6 +1515,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             text-overflow: ellipsis;
             white-space: nowrap;
           }
+      dir="auto"
     >
       <div
         className=
@@ -1568,8 +1598,9 @@ exports[`PersonaCoin does not render the initials when showInitialsUntilImageLoa
             is-fadeIn
             {
               display: block;
-              height: auto;
+              height: 100%;
               left: 50% /* @noflip */;
+              object-fit: cover;
               opacity: 0;
               position: absolute;
               top: 50%;
@@ -1716,8 +1747,9 @@ exports[`PersonaCoin renders correctly with image 1`] = `
             is-fadeIn
             {
               display: block;
-              height: auto;
+              height: 100%;
               left: 50% /* @noflip */;
+              object-fit: cover;
               opacity: 0;
               position: absolute;
               top: 50%;
@@ -1983,8 +2015,9 @@ exports[`PersonaCoin renders the initials before the image is loaded 1`] = `
             is-fadeIn
             {
               display: block;
-              height: auto;
+              height: 100%;
               left: 50% /* @noflip */;
+              object-fit: cover;
               opacity: 0;
               position: absolute;
               top: 50%;

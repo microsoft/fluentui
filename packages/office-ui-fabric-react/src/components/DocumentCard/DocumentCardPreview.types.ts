@@ -4,8 +4,14 @@ import { ILinkProps } from '../../Link';
 import { IStyle, ITheme } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardPreview {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   /**
    * Gets the component ref.
@@ -39,6 +45,9 @@ export interface IDocumentCardPreviewProps extends IBaseProps<{}> {
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardPreviewImage {
   /**
    * Gets the component ref.
@@ -115,6 +124,9 @@ export interface IDocumentCardPreviewImage {
   previewIconContainerClass?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardPreviewStyleProps {
   /**
    * Accept theme prop.
@@ -132,10 +144,13 @@ export interface IDocumentCardPreviewStyleProps {
   isFileList?: boolean;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardPreviewStyles {
   root: IStyle;
   previewIcon: IStyle;
-  previewFileTypeIcon: IStyle;
+  icon: IStyle;
   fileList: IStyle;
   fileListIcon: IStyle;
   fileListOverflowText: IStyle;

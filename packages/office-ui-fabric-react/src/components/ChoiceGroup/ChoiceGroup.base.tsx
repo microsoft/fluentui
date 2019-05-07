@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 import { Label } from '../../Label';
-import { BaseComponent, classNamesFunction, find, getId } from '../../Utilities';
+import { initializeComponentRef, warnDeprecations, warnMutuallyExclusive, classNamesFunction, find, getId } from '../../Utilities';
 import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import { ChoiceGroupOption, OnChangeCallback, OnFocusCallback } from './ChoiceGroupOption/index';
 
@@ -14,7 +14,10 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
-export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
+/**
+ * {@docCategory ChoiceGroup}
+ */
+export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {
     options: []
   };
@@ -28,10 +31,14 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
   constructor(props: IChoiceGroupProps) {
     super(props);
 
-    this._warnDeprecations({ onChanged: 'onChange' });
-    this._warnMutuallyExclusive({
-      selectedKey: 'defaultSelectedKey'
-    });
+    initializeComponentRef(this);
+
+    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+      warnDeprecations('ChoiceGroup', props, { onChanged: 'onChange' });
+      warnMutuallyExclusive('ChoiceGroup', props, {
+        selectedKey: 'defaultSelectedKey'
+      });
+    }
 
     const validDefaultSelectedKey: boolean = !!props.options && props.options.some(option => option.key === props.defaultSelectedKey);
 
@@ -81,11 +88,6 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
       ? this._id + '-label'
       : (this.props as any)['aria-labelledby'];
 
-    // In cases where no option is checked, set focusable to first enabled option so that ChoiceGroup remains focusable.
-    // If no options are enabled, ChoiceGroup is not focusable. If any option is checked, do not set keyDefaultFocusable.
-    const firstEnabledOption = disabled || options === undefined ? undefined : find(options, option => !option.disabled);
-    const keyDefaultFocusable = keyChecked === undefined && firstEnabledOption ? firstEnabledOption.key : undefined;
-
     return (
       <div role={role} className={classNames.applicationRole}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
@@ -100,7 +102,6 @@ export class ChoiceGroupBase extends BaseComponent<IChoiceGroupProps, IChoiceGro
                 ...option,
                 focused: option.key === keyFocused,
                 checked: option.key === keyChecked,
-                'data-is-focusable': option.key === keyChecked || option.key === keyDefaultFocusable ? true : false,
                 disabled: option.disabled || disabled,
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,

@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps, IClassNames, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps, customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle, mergeStyleSets, IStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IImageProps } from 'office-ui-fabric-react/lib/Image';
 
@@ -36,6 +36,7 @@ const getDefaultStyles = (props: IPageImageSetStyleProps): IStyleSet<IPageImageS
   }
 });
 
+/** @deprecated Use `MarkdownImageSet` */
 @customizable('PageImageSet', ['theme', 'styles'])
 export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
   public render(): JSX.Element {

@@ -5,19 +5,17 @@ import {
   IDialogFooterStyles
 } from 'office-ui-fabric-react/lib/Dialog';
 import { FontWeights } from '@uifabric/styling';
-
 import { FontSizes } from '../FluentType';
-import { fluentBorderRadius } from './styleConstants';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
   const { theme } = props;
-  const { palette } = theme;
+  const { palette, effects } = theme;
 
   return {
     title: {
       fontSize: FontSizes.size20,
       fontWeight: FontWeights.semibold,
-      padding: '16px 24px 24px 24px',
+      padding: '16px 46px 24px 24px',
       lineHeight: 'normal'
     },
     topButton: {
@@ -28,7 +26,7 @@ export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<ID
         },
         '.ms-Dialog-button:hover': {
           color: palette.neutralDark,
-          borderRadius: fluentBorderRadius
+          borderRadius: effects.roundedCorner2
         }
       }
     },

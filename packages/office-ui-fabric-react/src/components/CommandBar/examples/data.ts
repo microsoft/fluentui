@@ -83,6 +83,7 @@ export const farItems = [
   {
     key: 'sort',
     name: 'Sort',
+    ariaLabel: 'Sort',
     iconProps: {
       iconName: 'SortLines'
     },
@@ -91,6 +92,7 @@ export const farItems = [
   {
     key: 'tile',
     name: 'Grid view',
+    ariaLabel: 'Grid view',
     iconProps: {
       iconName: 'Tiles'
     },
@@ -100,6 +102,7 @@ export const farItems = [
   {
     key: 'info',
     name: 'Info',
+    ariaLabel: 'Info',
     iconProps: {
       iconName: 'Info'
     },

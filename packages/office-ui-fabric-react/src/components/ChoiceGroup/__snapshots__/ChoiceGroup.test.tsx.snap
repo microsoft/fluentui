@@ -93,12 +93,18 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             data-automation-id="auto1"
-            data-is-focusable={true}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -208,11 +214,17 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -322,11 +334,17 @@ exports[`ChoiceGroup label does not have className prop from parent 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -465,12 +483,18 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
             data-automation-id="auto1"
-            data-is-focusable={true}
             id="ChoiceGroup0-1"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -580,11 +604,17 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-2"
             name="ChoiceGroup0"
             onBlur={[Function]}
@@ -694,11 +724,17 @@ exports[`ChoiceGroup renders ChoiceGroup correctly 1`] = `
             className=
                 ms-ChoiceField-input
                 {
+                  height: 100%;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   opacity: 0;
                   position: absolute;
-                  top: 8px;
+                  right: 0px;
+                  top: 0px;
+                  width: 100%;
                 }
-            data-is-focusable={false}
             id="ChoiceGroup0-3"
             name="ChoiceGroup0"
             onBlur={[Function]}

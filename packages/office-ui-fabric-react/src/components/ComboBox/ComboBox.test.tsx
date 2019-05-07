@@ -110,6 +110,30 @@ describe.only('ComboBox', () => {
     expect(inputElement.props().value).toEqual('zero');
   });
 
+  it('changes to a selected key change the input', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: 1 });
+
+    expect(wrapper.find('input').props().value).toEqual('one');
+  });
+
+  it('changes to a selected item on key change', () => {
+    const options: IComboBoxOption[] = [{ key: 0, text: 'zero' }, { key: 1, text: 'one' }];
+    wrapper = mount(<ComboBox selectedKey={0} options={options} />);
+
+    expect(wrapper.find('input').props().value).toEqual('zero');
+
+    wrapper.setProps({ selectedKey: null });
+
+    // \u200B is a zero width space.
+    // See https://github.com/OfficeDev/office-ui-fabric-react/blob/d4e9b6d28b25a3e123b2d47c0a03f18113fbee60/packages/office-ui-fabric-react/src/components/ComboBox/ComboBox.tsx#L481.
+    expect(wrapper.find('input').props().value).toEqual('\u200B');
+  });
+
   it('Renders a placeholder', () => {
     const placeholder = 'Select an option';
     wrapper = mount(<ComboBox placeholder={placeholder} options={DEFAULT_OPTIONS} />);
@@ -382,6 +406,36 @@ describe.only('ComboBox', () => {
     expect(indexSeen).toContain(1);
   });
 
+  it('onPendingValueChanged is called with an empty string when the input is cleared', () => {
+    let changedValue: string | undefined = undefined;
+    const pendingValueChangedHandler = (option?: IComboBoxOption, index?: number, value?: string) => {
+      changedValue = value;
+    };
+
+    const baseNode = document.createElement('div');
+    document.body.appendChild(baseNode);
+
+    const component = ReactDOM.render(
+      <ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} onPendingValueChanged={pendingValueChangedHandler} />,
+      baseNode
+    );
+
+    const input = (ReactDOM.findDOMNode(component as React.ReactInstance) as Element).querySelector('input') as HTMLInputElement;
+    if (input === null) {
+      throw 'ComboBox input element is null';
+    }
+
+    // Simulate typing one character into the ComboBox input
+    input.value = 'a';
+    ReactTestUtils.Simulate.input(input);
+    expect(changedValue).toEqual('a');
+
+    // Simulate clearing the ComboBox input
+    input.value = '';
+    ReactTestUtils.Simulate.input(input);
+    expect(changedValue).toEqual('');
+  });
+
   it('Can type a complete option with autocomplete and allowFreeform on and submit it', () => {
     let updatedOption;
     let updatedIndex;
@@ -460,10 +514,10 @@ describe.only('ComboBox', () => {
     const buttons = document.querySelectorAll('.ms-ComboBox-option > input');
 
     ReactTestUtils.Simulate.change(buttons[0]);
-    ReactTestUtils.Simulate.change(buttons[1]);
     ReactTestUtils.Simulate.change(buttons[2]);
+    ReactTestUtils.Simulate.change(buttons[1]);
 
-    expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 1, 2]);
+    expect((comboBoxRef.current as ComboBox).state.selectedIndices).toEqual([0, 2, 1]);
   });
 
   it('in multiSelect mode, optional onItemClick callback invoked per option select', () => {
@@ -489,4 +543,174 @@ describe.only('ComboBox', () => {
 
     expect(onItemClickMock).toHaveBeenCalledTimes(1);
   });
+
+  it('allows adding a custom aria-describedby id to the input', () => {
+    const comboBoxRef = React.createRef<any>();
+    const customId = 'customAriaDescriptionId';
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} ariaDescribedBy={customId} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaDescribedByAttribute = inputElement.getAttribute('aria-describedby');
+    expect(ariaDescribedByAttribute).toMatch(new RegExp('\\b' + customId + '\\b'));
+  });
+
+  it('adds aria-required to the DOM when the required prop is set to true', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} required={true} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
+    expect(ariaRequiredAttribute).toEqual('true');
+  });
+
+  it('does not add aria-required to the DOM when the required prop is not set', () => {
+    const comboBoxRef = React.createRef<any>();
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} componentRef={comboBoxRef} />);
+
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+    const inputElement = comboBoxRoot.find('input').getDOMNode();
+    const ariaRequiredAttribute = inputElement.getAttribute('aria-required');
+    expect(ariaRequiredAttribute).toBeNull();
+  });
+
+  it('test persistMenu, callout should exist before and after opening menu', () => {
+    const onMenuOpenMock = jest.fn();
+    const onMenuDismissedMock = jest.fn();
+
+    wrapper = mount(
+      <ComboBox
+        defaultSelectedKey="1"
+        persistMenu={true}
+        options={DEFAULT_OPTIONS2}
+        onMenuOpen={onMenuOpenMock}
+        onMenuDismissed={onMenuDismissedMock}
+      />
+    );
+    const comboBoxRoot = wrapper.find('.ms-ComboBox');
+
+    // Find menu
+    const calloutBeforeOpen = document.querySelector('.ms-Callout')!;
+    expect(calloutBeforeOpen).toBeDefined();
+    expect(calloutBeforeOpen.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+
+    // Open combobox
+    const buttonElement = comboBoxRoot.find('button');
+    buttonElement.simulate('click');
+    expect(onMenuOpenMock.mock.calls.length).toBe(1);
+
+    // Close combobox
+    buttonElement.simulate('click');
+    expect(onMenuDismissedMock.mock.calls.length).toBe(1);
+
+    // Ensure menu is still there
+    const calloutAfterClose = document.querySelector('.ms-Callout')!;
+    expect(calloutAfterClose).toBeDefined();
+    expect(calloutAfterClose.classList.contains('ms-ComboBox-callout')).toBeTruthy();
+  });
+
+  // Adds currentPendingValue to options and makes it selected onBlur
+  // if allowFreeFrom is true for multiselect with default selected values
+  it('adds currentPendingValue to options and selects if multiSelected with default values', () => {
+    const componentRef = React.createRef<any>();
+    const comboBoxOption: IComboBoxOption = {
+      key: 'ManuallyEnteredValue',
+      text: 'ManuallyEnteredValue'
+    };
+    wrapper = mount(
+      <ComboBox
+        multiSelect
+        options={DEFAULT_OPTIONS}
+        defaultSelectedKey={['1', '2', '3']}
+        allowFreeform={true}
+        componentRef={componentRef}
+      />
+    );
+    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], [0, 1, 2]);
+    inputElement.simulate('focus');
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], [0, 1, 2]);
+    inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], [0, 1, 2]);
+    inputElement.simulate('blur');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [0, 1, 2, 3]);
+  });
+
+  // Adds currentPendingValue to options and makes it selected onBlur
+  // if allowFreeForm is true for multiSelect with no default value selected
+  it('adds currentPendingValue to options and selects for multiSelect with no default value', () => {
+    const componentRef = React.createRef<any>();
+    const comboBoxOption: IComboBoxOption = {
+      key: 'ManuallyEnteredValue',
+      text: 'ManuallyEnteredValue'
+    };
+    wrapper = mount(<ComboBox multiSelect options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />);
+    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('focus');
+    expect((componentRef.current as ComboBox).state.focused).toEqual(true);
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('blur');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+
+    // this should toggle the checkbox
+    inputElement.simulate('focus');
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    inputElement.simulate('blur');
+    _verifyStateVariables(
+      componentRef,
+      false,
+      [
+        ...DEFAULT_OPTIONS,
+        {
+          ...comboBoxOption,
+          selected: false
+        }
+      ],
+      []
+    );
+  });
+
+  // adds currentPendingValue to options and makes it selected onBlur
+  // if allowFreeForm is true for singleSelect
+  it('adds currentPendingValue to options and selects for singleSelect', () => {
+    const componentRef = React.createRef<any>();
+    const comboBoxOption: IComboBoxOption = {
+      key: 'ManuallyEnteredValue',
+      text: 'ManuallyEnteredValue'
+    };
+    wrapper = mount(<ComboBox options={DEFAULT_OPTIONS} allowFreeform={true} componentRef={componentRef} />);
+    const inputElement: InputElementWrapper = wrapper.find('.ms-ComboBox input');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('focus');
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS], []);
+    inputElement.simulate('blur');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+
+    // this should toggle the checkbox
+    inputElement.simulate('focus');
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    inputElement.simulate('input', { target: { value: 'ManuallyEnteredValue' } });
+    _verifyStateVariables(componentRef, true, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+    inputElement.simulate('blur');
+    _verifyStateVariables(componentRef, false, [...DEFAULT_OPTIONS, { ...comboBoxOption }], [3]);
+  });
+
+  function _verifyStateVariables(
+    componentRef: React.RefObject<any>,
+    isFocused: boolean,
+    currentOptions: IComboBoxOption[],
+    selectedIndices?: number[]
+  ): void {
+    expect((componentRef.current as ComboBox).state.focused).toEqual(isFocused);
+    expect((componentRef.current as ComboBox).state.selectedIndices).toEqual(selectedIndices);
+    expect((componentRef.current as ComboBox).state.currentOptions).toEqual(currentOptions);
+  }
 });
