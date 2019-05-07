@@ -12,6 +12,7 @@ const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButt
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundPressed,
+    backgroundColorExpanded: semanticColors.buttonBackgroundPressed,
     backgroundColorHovered: semanticColors.buttonBackgroundPressed,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
 
@@ -37,6 +38,7 @@ const primaryExpandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IM
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorExpanded: semanticColors.primaryButtonBackgroundPressed,
     backgroundColorHovered: semanticColors.primaryButtonBackgroundPressed,
     backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
 
@@ -66,7 +68,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
   return {
     button: [
       {
-        backgroundColor: tokens.backgroundColor,
+        backgroundColor: props.expanded ? tokens.backgroundColorExpanded : tokens.backgroundColor,
         borderColor: tokens.borderColor,
         color: tokens.color,
         minWidth: tokens.minWidth,
@@ -100,9 +102,6 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
                 borderColor: tokens.highContrastBorderColorPressed
               }
             }
-          },
-          '> *': {
-            padding: tokens.contentPadding
           }
         }
       },

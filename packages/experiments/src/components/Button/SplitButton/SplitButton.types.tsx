@@ -103,6 +103,11 @@ export interface ISplitButtonTokens extends IMenuButtonTokens {
    * Defines the color of the SplitButton divider.
    */
   dividerColor?: string;
+
+  /**
+   * Defines the padding of the menu section of the SplitButton.
+   */
+  secondaryPadding?: number | string;
 }
 
 /**

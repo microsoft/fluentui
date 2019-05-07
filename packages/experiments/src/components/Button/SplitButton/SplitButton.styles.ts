@@ -2,9 +2,10 @@ import { getFocusStyle, HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { effects, semanticColors } = theme;
+  const { effects, palette, semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.inputBackground,
+    backgroundColor: palette.white,
+    backgroundColorHovered: palette.neutralLighter,
     borderColor: semanticColors.buttonBorder,
     borderColorHovered: semanticColors.buttonBorder,
     borderColorPressed: semanticColors.buttonBorder,
@@ -14,7 +15,8 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
     contentPadding: '0px 19px',
     dividerColor: semanticColors.menuDivider,
     minHeight: 35,
-    minWidth: 0
+    minWidth: 0,
+    secondaryPadding: '0px 10px'
   };
 };
 
@@ -67,7 +69,13 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       },
       getFocusStyle(theme),
       {
-        backgroundColor: tokens.backgroundColor
+        backgroundColor: tokens.backgroundColor,
+
+        selectors: {
+          ':hover': {
+            backgroundColor: tokens.backgroundColorHovered
+          }
+        }
       }
     ],
     button: {
@@ -83,9 +91,6 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       minWidth: tokens.minWidth,
 
       selectors: {
-        '> *': {
-          padding: tokens.contentPadding
-        },
         ':hover': {
           borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
         },
@@ -132,13 +137,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderRightWidth: tokens.borderWidth,
       borderTopWidth: tokens.borderWidth,
       boxSizing: 'border-box',
-      height: '100%',
-
-      selectors: {
-        '> *': {
-          padding: '0px 10px'
-        }
-      }
+      height: '100%'
     }
   };
 };

@@ -206,7 +206,7 @@ export interface IButtonTokens {
   /**
    * Defines the mouse cursor to be displayed when pointing over the Button.
    */
-  cursor?: string | undefined;
+  cursor?: string;
 
   /**
    * Defines a fixed height for the Button.

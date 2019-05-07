@@ -102,7 +102,12 @@ export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'
  */
 export interface IMenuButtonTokens extends IButtonTokens {
   /**
-   * Defines the size of the menu icon inside the Button.
+   * Defines the background color of the MenuButton when its menu is in an expanded state.
+   */
+  backgroundColorExpanded?: string;
+
+  /**
+   * Defines the size of the menu icon inside the MenuButton.
    */
   menuIconSize?: number | string;
 }

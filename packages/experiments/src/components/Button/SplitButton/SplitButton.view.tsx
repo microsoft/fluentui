@@ -5,11 +5,12 @@ import { Icon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots } from './SplitButton.types';
+import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots, ISplitButtonTokens } from './SplitButton.types';
 
 export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const {
     styles,
+    tokens,
     children,
     content,
     primary,
@@ -43,6 +44,9 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
 
   const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
 
+  const { contentPadding, contentPaddingFocused, secondaryPadding, ...splitButtonTokens } = tokens as ISplitButtonTokens;
+  const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
+
   return (
     <Slots.root horizontal as="span" verticalAlign="stretch">
       <Slots.button
@@ -53,6 +57,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         onClick={onClick}
         componentRef={buttonRef}
         content={content}
+        tokens={tokens}
         {...rest}
       >
         {children}
@@ -69,6 +74,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         ariaLabel={menuButtonAriaLabel}
         onClick={onSecondaryActionClick}
         menu={Menu}
+        tokens={menuButtonTokens}
       />
     </Slots.root>
   );

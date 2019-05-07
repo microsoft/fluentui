@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IMenuButtonProps, MenuButton } from '@uifabric/experiments/lib/MenuButton';
 import { ISplitButtonProps, SplitButton } from '@uifabric/experiments/lib/SplitButton';
@@ -25,19 +25,22 @@ const menuProps: ISplitButtonProps['menu'] = {
   ]
 };
 
-const RibbonMenuButtonTokens = { backgroundColorHovered: '#C8C6C4', backgroundColorPressed: '#C8C6C4' };
+const RibbonMenuButtonTokens = {
+  backgroundColorExpanded: '#C8C6C4',
+  backgroundColorHovered: '#C8C6C4',
+  backgroundColorPressed: '#C8C6C4',
+  height: '100%'
+};
 
 const RibbonMenuButtonVerticalTokens = {
-  contentPadding: '0px 4px',
+  ...RibbonMenuButtonTokens,
+  contentPadding: '2px 4px 0px',
   iconSize: '32px',
   textSize: '12px',
   minHeight: 0
 };
 
 const RibbonMenuButtonVerticalStyles = {
-  root: {
-    paddingTop: 2
-  },
   icon: {
     marginBottom: 4,
     padding: 4
@@ -65,28 +68,37 @@ export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
 };
 
 const SplitMenuButtonVerticalTokens = {
+  ...RibbonMenuButtonTokens,
   contentPadding: 4,
+  secondaryPadding: '0px 4px',
   iconSize: '32px',
   textSize: '12px'
 };
 
-const SplitMenuButtonVerticalStyles = {
-  root: {
-    border: '1px solid transparent',
-
-    selectors: {
-      ':hover': {
-        border: '1px solid #C8C6C4'
-      }
+const SplitMenuButtonVerticalStyles: ISplitRibbonMenuButtonProps['styles'] = (props, theme, tokens) => {
+  return {
+    button: {
+      borderBottomLeftRadius: 0,
+      borderBottomRightRadius: 0,
+      borderTopLeftRadius: tokens.borderRadius,
+      borderTopRightRadius: tokens.borderRadius,
+      borderBottomWidth: tokens.borderWidth,
+      borderLeftWidth: tokens.borderWidth,
+      borderRightWidth: tokens.borderWidth,
+      borderTopWidth: tokens.borderWidth,
+      width: '100%'
+    },
+    menuButton: {
+      borderBottomLeftRadius: tokens.borderRadius,
+      borderBottomRightRadius: tokens.borderRadius,
+      borderTopLeftRadius: 0,
+      borderTopRightRadius: 0,
+      borderBottomWidth: tokens.borderWidth,
+      borderLeftWidth: tokens.borderWidth,
+      borderRightWidth: tokens.borderWidth,
+      borderTopWidth: 0
     }
-  },
-  button: {
-    paddingTop: '2px',
-    width: '100%'
-  },
-  menuButton: {
-    border: 'none'
-  }
+  };
 };
 
 const SplitMenuButtonVerticalSlots: ISplitRibbonMenuButtonProps['slots'] = {
@@ -108,7 +120,7 @@ export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = pro
   const mergedProps: ISplitRibbonMenuButtonProps = vertical
     ? {
         ...rest,
-        root: { horizontal: false, horizontalAlign: 'center' },
+        root: { horizontal: false, horizontalAlign: 'center', verticalAlign: 'stretch' },
         menuButton: verticalMenuButtonProps,
         styles: SplitMenuButtonVerticalStyles,
         tokens: SplitMenuButtonVerticalTokens,
@@ -121,15 +133,17 @@ export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = pro
 
 export class ButtonSlotsExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
+    const stackTokens: IStackTokens = { childrenGap: 10 };
+
     return (
-      <Stack tokens={{ childrenGap: 8 }}>
+      <Stack tokens={stackTokens}>
         <Text>Horizontal Buttons</Text>
-        <Stack horizontal>
+        <Stack horizontal tokens={stackTokens}>
           <RibbonSplitMenuButton icon="Microphone" content="Dictate" menu={menuProps} />
           <RibbonMenuButton icon="MarkAsProtected" content="Sensitivity" menu={menuProps} />
         </Stack>
         <Text>Vertical Buttons</Text>
-        <Stack horizontal>
+        <Stack horizontal verticalAlign="stretch" tokens={stackTokens}>
           <RibbonSplitMenuButton vertical icon="Microphone" content="Dictate" menu={menuProps} />
           <RibbonMenuButton vertical icon="MarkAsProtected" content="Sensitivity" menu={menuProps} />
         </Stack>
