@@ -156,6 +156,11 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   color: 'HighlightText'
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default hover background
+            [HighContrastSelector]: {
+              background: 'Highlight'
             }
           }
         },
@@ -187,6 +192,22 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
                   color: 'HighlightText'
                 }
               }
+            },
+
+            // Ensure high-contrast mode overrides default focus background
+            [HighContrastSelector]: {
+              background: 'Highlight'
+            }
+          }
+        },
+
+        [HighContrastSelector]: {
+          background: 'Highlight',
+          color: 'HighlightText',
+          MsHighContrastAdjust: 'none',
+          selectors: {
+            a: {
+              color: 'HighlightText'
             }
           }
         },

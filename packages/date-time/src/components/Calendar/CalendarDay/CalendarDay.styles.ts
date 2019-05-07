@@ -118,9 +118,6 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       fontSize: FontSizes.xSmall,
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
-      boxSizing: 'border-box',
-      justifyContent: 'center',
-      alignItems: 'center',
       selectors: {
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLight
@@ -141,17 +138,14 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       }
     ],
     weekNumberCell: {
+      margin: 0,
+      padding: 0,
       borderRight: '1px solid',
       borderColor: palette.neutralLight,
       boxSizing: 'border-box',
       width: 28,
       height: 28,
-      lineHeight: 28,
-      margin: 0,
-      fontWeight: FontWeights.regular,
-      padding: 0,
-      justifyContent: 'center',
-      alignItems: 'center'
+      fontWeight: FontWeights.regular
     },
     disabledStyle: disabledStyle,
     dayOutsideBounds: disabledStyle,
@@ -165,9 +159,8 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         width: 24,
         height: 24,
         lineHeight: 24,
+        fontSize: FontSizes.small,
         borderRadius: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
         border: 'none',
         padding: 0,
         backgroundColor: 'transparent',

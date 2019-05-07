@@ -1,3 +1,4 @@
+/** @deprecated No longer used */
 export interface IComponentStatusProps {
   /**
    * Components should be fully usable with the keyboard. For this badge to pass, all of the functionalities of
@@ -70,7 +71,10 @@ export interface IDocPageProps {
   /** URL of the checked in component, should be somewhere on github.com */
   componentUrl: string;
 
-  /** Status of the component; e.g. keyboard accessible */
+  /**
+   * Status of the component; e.g. keyboard accessible
+   * @deprecated No longer used
+   */
   componentStatus?: IComponentStatusProps;
 
   /** Knobs that applies to all the examples */
@@ -79,7 +83,7 @@ export interface IDocPageProps {
   /** Array of examples, displayed in the order defined */
   examples?: IExample[];
 
-  /** Array of implementation examples, displayed in the order defined */
+  /** @deprecated */
   implementationExamples?: {
     /** Title of the example */
     title: string;
@@ -135,4 +139,62 @@ export interface IDocPageProps {
     title: string;
     section: JSX.Element;
   }[];
+
+  /**
+   * JSON to populate the api reference tables
+   */
+  jsonDocs?: IPageJson;
+}
+
+/**
+ * Used to keep track of where the page will live on the site
+ */
+export type PageKind = 'References' | 'Components';
+
+/**
+ * Excerpt token that is part of a type or extends block and may have a hyperlink
+ */
+export interface ILinkToken {
+  text: string;
+  hyperlinkedPage?: string;
+  pageKind?: PageKind;
+}
+
+/**
+ * Generic table row
+ */
+export interface ITableRowJson {
+  name: string;
+  typeTokens: ILinkToken[];
+  defaultValue?: string;
+  description: string;
+  deprecated: boolean;
+  deprecatedMessage?: string;
+  kind?: 'Method' | 'Property';
+}
+
+/**
+ * Enum table row
+ */
+export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'description'>> & {
+  value: string;
+};
+
+/**
+ * Api table
+ */
+export interface ITableJson {
+  kind: 'interface' | 'enum' | 'class';
+  name: string;
+  extendsTokens: ILinkToken[];
+  description: string;
+  members: ITableRowJson[] | IEnumTableRowJson[];
+}
+
+/**
+ * Structure of the page.json files
+ */
+export interface IPageJson {
+  tables: ITableJson[];
+  name: string;
 }

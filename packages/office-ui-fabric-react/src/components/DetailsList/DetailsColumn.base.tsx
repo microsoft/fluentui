@@ -17,19 +17,9 @@ const TRANSITION_DURATION_DROP = 1500; // ms
 const CLASSNAME_ADD_INTERVAL = 20; // ms
 
 export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
-  private _root: any;
+  private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription: IDisposable;
   private _classNames: IClassNames<IDetailsColumnStyles>;
-
-  constructor(props: IDetailsColumnProps) {
-    super(props);
-
-    this._root = React.createRef();
-    this._onDragStart = this._onDragStart.bind(this);
-    this._onDragEnd = this._onDragEnd.bind(this);
-    this._onRootMouseDown = this._onRootMouseDown.bind(this);
-    this._updateHeaderDragInfo = this._updateHeaderDragInfo.bind(this);
-  }
 
   public render(): JSX.Element {
     const { column, columnIndex, parentId, isDraggable, styles, theme, cellStyleProps = DEFAULT_CELL_STYLE_PROPS } = this.props;
@@ -256,36 +246,36 @@ export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     ) : null;
   }
 
-  private _onDragStart(item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void {
+  private _onDragStart = (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent): void => {
     const classNames = this._classNames;
     if (itemIndex) {
       this._updateHeaderDragInfo(itemIndex);
-      this._root.current.classList.add(classNames.borderWhileDragging);
+      (this._root.current as HTMLElement).classList.add(classNames.borderWhileDragging);
       this._async.setTimeout(() => {
         if (this._root.current) {
           this._root.current.classList.add(classNames.noBorderWhileDragging);
         }
       }, CLASSNAME_ADD_INTERVAL);
     }
-  }
+  };
 
-  private _onDragEnd(item?: any, event?: MouseEvent): void {
+  private _onDragEnd = (item?: any, event?: MouseEvent): void => {
     const classNames = this._classNames;
     if (event) {
       this._updateHeaderDragInfo(-1, event);
     }
-    this._root.current.classList.remove(classNames.borderWhileDragging);
-    this._root.current.classList.remove(classNames.noBorderWhileDragging);
-  }
+    (this._root.current as HTMLElement).classList.remove(classNames.borderWhileDragging);
+    (this._root.current as HTMLElement).classList.remove(classNames.noBorderWhileDragging);
+  };
 
-  private _updateHeaderDragInfo(itemIndex: number, event?: MouseEvent) {
+  private _updateHeaderDragInfo = (itemIndex: number, event?: MouseEvent) => {
     if (this.props.setDraggedItemIndex) {
       this.props.setDraggedItemIndex(itemIndex);
     }
     if (this.props.updateDragInfo) {
       this.props.updateDragInfo({ itemIndex }, event);
     }
-  }
+  };
 
   private _onColumnContextMenu(column: IColumn, ev: React.MouseEvent<HTMLElement>): void {
     const { onColumnContextMenu } = this.props;

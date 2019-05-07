@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { StackStatus } from './Stack.checklist';
 
 // Vertical Stack Examples
 import { VerticalStackBasicExample } from './examples/Stack.Vertical.Basic.Example';
@@ -97,7 +96,6 @@ export const StackPageProps: IDocPageProps = {
   title: 'Stack',
   componentName: 'Stack',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Stack',
-  componentStatus: StackStatus,
   examples: [
     {
       title: 'Basic Vertical Stack',
@@ -231,10 +229,6 @@ export const StackPageProps: IDocPageProps = {
       view: <HorizontalStackConfigureExample />,
       codepenJS: HorizontalStackConfigureExampleCodepen
     }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/Stack.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/StackItem/StackItem.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Stack/docs/StackOverview.md'),
   bestPractices: '',

@@ -12,6 +12,9 @@ import { IShimmerCircleStyles } from '../ShimmerCircle/ShimmerCircle.types';
 
 const getClassNames = classNamesFunction<IShimmerElementsGroupStyleProps, IShimmerElementsGroupStyles>();
 
+/**
+ * {@docCategory Shimmer}
+ */
 export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGroupProps, {}> {
   public static defaultProps: IShimmerElementsGroupProps = {
     flexWrap: false

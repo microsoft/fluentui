@@ -1,7 +1,23 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctly 1`] = `
-<div>
+<div
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onFocusCapture={[Function]}
+>
+  <div
+    aria-hidden={true}
+    data-is-visible={true}
+    onFocus={[Function]}
+    style={
+      Object {
+        "pointerEvents": "none",
+        "position": "fixed",
+      }
+    }
+    tabIndex={-1}
+  />
   <div
     className=
         ms-Stack
@@ -385,5 +401,17 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
       Hyperlink inside trap zone
     </a>
   </div>
+  <div
+    aria-hidden={true}
+    data-is-visible={true}
+    onFocus={[Function]}
+    style={
+      Object {
+        "pointerEvents": "none",
+        "position": "fixed",
+      }
+    }
+    tabIndex={-1}
+  />
 </div>
 `;

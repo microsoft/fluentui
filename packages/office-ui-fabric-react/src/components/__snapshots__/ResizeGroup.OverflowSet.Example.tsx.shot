@@ -28,6 +28,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           className=
               ms-FocusZone
               ms-OverflowSet
+              &:focus {
+                outline: none;
+              }
               {
                 display: flex;
                 flex-wrap: nowrap;
@@ -56,7 +59,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -115,9 +118,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -145,7 +160,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -209,7 +224,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -268,9 +283,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -298,7 +325,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -362,7 +389,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -421,9 +448,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -451,7 +490,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -515,7 +554,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -574,9 +613,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -604,7 +655,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -668,7 +719,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -727,9 +778,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -757,7 +820,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -821,7 +884,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -880,9 +943,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -910,7 +985,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -974,7 +1049,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1033,9 +1108,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1063,7 +1150,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1127,7 +1214,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1186,9 +1273,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1216,7 +1315,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1280,7 +1379,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1339,9 +1438,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1369,7 +1480,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1433,7 +1544,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1492,9 +1603,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1522,7 +1645,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1586,7 +1709,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1645,9 +1768,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1675,7 +1810,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1739,7 +1874,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1798,9 +1933,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1828,7 +1975,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -1892,7 +2039,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -1951,9 +2098,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -1981,7 +2140,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2045,7 +2204,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -2104,9 +2263,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2134,7 +2305,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2198,7 +2369,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -2257,9 +2428,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2287,7 +2470,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2351,7 +2534,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -2410,9 +2593,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2440,7 +2635,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2504,7 +2699,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -2563,9 +2758,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2593,7 +2800,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2657,7 +2864,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -2716,9 +2923,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2746,7 +2965,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2810,7 +3029,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -2869,9 +3088,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -2899,7 +3130,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";
@@ -2963,7 +3194,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: transparent;
+                    background-color: #ffffff;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
@@ -3022,9 +3253,21 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                   @media screen and (-ms-high-contrast: active){&:hover {
                     color: Highlight;
                   }
+                  &:hover .ms-Button-icon {
+                    color: #106ebe;
+                  }
+                  &:hover .ms-Button-menuIcon {
+                    color: #323130;
+                  }
                   &:active {
                     background-color: #edebe9;
-                    color: #000000;
+                    color: #201f1e;
+                  }
+                  &:active .ms-Button-icon {
+                    color: #005a9e;
+                  }
+                  &:active .ms-Button-menuIcon {
+                    color: #323130;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -3052,7 +3295,7 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                       {
                         -moz-osx-font-smoothing: grayscale;
                         -webkit-font-smoothing: antialiased;
-                        color: #106ebe;
+                        color: #0078d4;
                         display: inline-block;
                         flex-shrink: 0;
                         font-family: "FabricMDL2Icons";

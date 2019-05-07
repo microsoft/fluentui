@@ -37,6 +37,9 @@ const DefaultFields = ['theme', 'styles'];
  * @param baseStyles - The styles which should be curried with the component.
  * @param getProps - A helper which provides default props.
  * @param customizable - An object which defines which props can be customized using the Customizer.
+ * @param pure - A boolean indicating if the component should avoid re-rendering when props haven't changed.
+ * Note that pure should not be used on components which allow children, or take in complex objects or
+ * arrays as props which could mutate on every render.
  */
 export function styled<
   TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>,
@@ -46,19 +49,22 @@ export function styled<
   Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>,
   baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>,
   getProps?: (props: TComponentProps) => Partial<TComponentProps>,
-  customizable?: ICustomizableProps
+  customizable?: ICustomizableProps,
+  pure?: boolean
 ): React.StatelessComponent<TComponentProps> {
   customizable = customizable || { scope: '', fields: undefined };
 
   const { scope, fields = DefaultFields } = customizable;
+  const ParentComponent = pure ? React.PureComponent : React.Component;
 
-  class Wrapped extends React.Component<TComponentProps, {}> {
+  class Wrapped extends ParentComponent<TComponentProps, {}> {
     // Function.prototype.name is an ES6 feature, so the cast to any is required until we're
     // able to drop IE 11 support and compile with ES6 libs
     // tslint:disable-next-line:no-any
     public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
+    private _customizedStyles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 
     public render(): JSX.Element {
       return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
@@ -81,10 +87,15 @@ export function styled<
 
       const settings = Customizations.getSettings(fields, scope, context.customizations);
       const { styles: customizedStyles, ...rest } = settings;
-      const styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
-
       const additionalProps = getProps ? getProps(this.props) : undefined;
-      return <Component {...rest} {...additionalProps} {...this.props} styles={styles} />;
+
+      this._customizedStyles = customizedStyles;
+
+      return <Component {...rest} {...additionalProps} {...this.props} styles={this._resolveClassNames} />;
+    };
+
+    private _resolveClassNames = (styleProps: TStyleProps): IConcatenatedStyleSet<TStyleSet> | undefined => {
+      return _resolve(styleProps, baseStyles, this._customizedStyles, this.props.styles);
     };
 
     private _onSettingsChanged = () => this.forceUpdate();

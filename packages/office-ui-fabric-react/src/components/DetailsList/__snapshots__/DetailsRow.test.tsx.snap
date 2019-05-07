@@ -51,6 +51,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -717,6 +720,9 @@ exports[`DetailsRow renders details list row correctly 1`] = `
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -866,6 +872,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -1532,6 +1541,9 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -1637,6 +1649,9 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
   className=
       ms-FocusZone
       ms-DetailsRow
+      &:focus {
+        outline: none;
+      }
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -2220,6 +2235,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -2886,6 +2904,9 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;
@@ -3035,6 +3056,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
           className=
               ms-FocusZone
               ms-DetailsHeader
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -3701,6 +3725,9 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
         <div
           className=
               ms-FocusZone
+              &:focus {
+                outline: none;
+              }
               {
                 display: inline-block;
                 min-height: 1px;

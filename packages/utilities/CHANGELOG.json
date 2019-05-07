@@ -2,6 +2,95 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.38.1",
+      "tag": "@uifabric/utilities_v6.38.1",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "a new line is added to the end of the api-extractor.json file",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c0bbb0d61e0da3bccbb78654a6f49e0c56b7996e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.0` to `^6.17.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.0",
+      "tag": "@uifabric/utilities_v6.38.0",
+      "date": "Wed, 01 May 2019 12:34:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export Omit from utilities",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4d72d00867790618c3062374d5f38160aa2d7c4e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.1",
+      "tag": "@uifabric/utilities_v6.37.1",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds pointer events to baseElementProperties",
+            "author": "Lorin Tackett <lorin.tackett@gmail.com>",
+            "commit": "df594f0141c680d84e48ef2fdd06247c2d9edf7b"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.0",
+      "tag": "@uifabric/utilities_v6.37.0",
+      "date": "Sat, 27 Apr 2019 00:04:47 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "108330f1118fafab4a13a8a2d18a0cd6bdf8639d"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.36.0",
+      "tag": "@uifabric/utilities_v6.36.0",
+      "date": "Fri, 26 Apr 2019 12:35:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Make isFocusVisible toggleable by user.",
+            "author": "apneer <sasha050909@gmail.com>",
+            "commit": "fc97ae2b21bdddb77dbc613c2bfcd7ad07e28be8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.35.7",
+      "tag": "@uifabric/utilities_v6.35.7",
+      "date": "Tue, 23 Apr 2019 12:32:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing closure from `styled` helper to improve performance.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "9e9159e8c887f52ca0cc2ad2b9575708839c63bc"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.35.6",
       "tag": "@uifabric/utilities_v6.35.6",
       "date": "Fri, 19 Apr 2019 12:33:02 GMT",

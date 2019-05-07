@@ -12,7 +12,6 @@ import { PivotRemoveExample } from './examples/Pivot.Remove.Example';
 import { PivotOverrideExample } from './examples/Pivot.Override.Example';
 import { PivotSeparateExample } from './examples/Pivot.Separate.Example';
 import { PivotSeparateNoSelectedKeyExample } from './examples/Pivot.SeparateNoSelectedKey.Example';
-import { PivotStatus } from './Pivot.checklist';
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
@@ -30,7 +29,6 @@ export const PivotPageProps: IDocPageProps = {
   title: 'Pivot',
   componentName: 'Pivot',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Pivot',
-  componentStatus: PivotStatus,
   examples: [
     {
       title: 'Default Pivot',
@@ -87,10 +85,6 @@ export const PivotPageProps: IDocPageProps = {
       code: PivotNoSelectedKeyExampleCode,
       view: <PivotSeparateNoSelectedKeyExample />
     }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
   bestPractices: '',

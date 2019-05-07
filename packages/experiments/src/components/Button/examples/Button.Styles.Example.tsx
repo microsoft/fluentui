@@ -107,7 +107,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => ({ root: { color: '#8F6800' } })
+                    styles: () => ({ root: { color: '#8F6800' } })
                   }}
                   content="Icon Styles Function: Golden Brown Icon"
                 />

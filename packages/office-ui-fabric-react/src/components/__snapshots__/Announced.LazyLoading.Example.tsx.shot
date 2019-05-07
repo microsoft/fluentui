@@ -233,7 +233,11 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
     </div>
   </div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}

@@ -6,7 +6,6 @@ import { IDocPageProps } from '../../common/DocPage.types';
 import { ChoiceGroupCustomExample } from './examples/ChoiceGroup.Custom.Example';
 import { ChoiceGroupImageExample } from './examples/ChoiceGroup.Image.Example';
 import { ChoiceGroupIconExample } from './examples/ChoiceGroup.Icon.Example';
-import { ChoiceGroupStatus } from './ChoiceGroup.checklist';
 
 const ChoiceGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
 const ChoiceGroupBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/ChoiceGroup/examples/ChoiceGroup.Basic.Example.tsx') as string;
@@ -22,7 +21,6 @@ export const ChoiceGroupPageProps: IDocPageProps = {
   componentName: 'ChoiceGroup',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ChoiceGroup',
-  componentStatus: ChoiceGroupStatus,
   examples: [
     {
       title: 'Default ChoiceGroup',
@@ -53,7 +51,6 @@ export const ChoiceGroupPageProps: IDocPageProps = {
       codepenJS: ChoiceGroupIconExampleCodepen
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/ChoiceGroup.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ChoiceGroup/docs/ChoiceGroupDos.md'),

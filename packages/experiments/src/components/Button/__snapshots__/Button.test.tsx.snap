@@ -84,6 +84,7 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span
@@ -214,16 +215,16 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Icon-57 {
+      &:hover .ms-Icon-60 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-60 {
         color: GrayText;
       }
-      &:active .ms-Icon-57 {
+      &:active .ms-Icon-60 {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-60 {
         color: GrayText;
       }
   disabled={true}
@@ -357,20 +358,21 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Icon-55 {
+      &:hover .ms-Icon-57 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-55 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
         color: Window;
       }
-      &:active .ms-Icon-55 {
+      &:active .ms-Icon-57 {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-55 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
         color: Window;
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span

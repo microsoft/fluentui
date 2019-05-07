@@ -1,24 +1,44 @@
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
+/**
+ * {@docCategory Button}
+ */
 export type IButtonComponent = IComponent<IButtonProps, IButtonTokens, IButtonStyles, IButtonViewProps>;
 
 // These types are redundant with IButtonComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+/**
+ * {@docCategory Button}
+ */
 export type IButtonTokenReturnType = ReturnType<Extract<IButtonComponent['tokens'], Function>>;
+/**
+ * {@docCategory Button}
+ */
 export type IButtonStylesReturnType = ReturnType<Extract<IButtonComponent['styles'], Function>>;
 
+/**
+ * {@docCategory Button}
+ */
 export type IButtonSlot = ISlotProp<IButtonProps>;
 
+/**
+ * {@docCategory Button}
+ */
+export type IButtonRootElements = 'a' | 'button' | 'div';
+
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonSlots {
   /**
    * Defines the root slot of the component.
    */
-  root?: IHTMLElementSlot<'button'>;
+  root?: IHTMLElementSlot<IButtonRootElements>;
 
   /**
    * Defines the horizontal stack used for specifying the inner layout of the Button.
@@ -36,6 +56,9 @@ export interface IButtonSlots {
   icon?: IIconSlot;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButton {
   /**
    * Sets focus to the Button.
@@ -43,8 +66,11 @@ export interface IButton {
   focus: () => void;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonProps
-  extends IButtonSlots,
+  extends ISlottableProps<IButtonSlots>,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton> {
   /**
@@ -77,11 +103,20 @@ export interface IButtonProps
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
+   * Defines whether disabled buttons should be tabbable via keyboard navigation or not.
+   * @defaultvalue false
+   */
+  allowDisabledFocus?: boolean;
+
+  /**
    * Defines the aria label that the screen readers use when focus goes on the Button.
    */
   ariaLabel?: string;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonViewProps extends IButtonProps {
   /**
    * Defines a reference to the inner button.
@@ -89,6 +124,9 @@ export interface IButtonViewProps extends IButtonProps {
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export interface IButtonTokens {
   /**
    * Defines how far should the background extend within the Button.
@@ -306,4 +344,7 @@ export interface IButtonTokens {
   width?: number | string;
 }
 
+/**
+ * {@docCategory Button}
+ */
 export type IButtonStyles = IComponentStyles<IButtonSlots>;

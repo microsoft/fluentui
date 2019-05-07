@@ -1,6 +1,5 @@
 import * as React from 'react';
 import { IDocPageProps } from '../../common/DocPage.types';
-import { ActivityItemStatus } from './ActivityItem.checklist';
 import { ActivityItemBasicExample } from './examples/ActivityItem.Basic.Example';
 import { ActivityItemPersonaExample } from './examples/ActivityItem.Persona.Example';
 import { ActivityItemCompactExample } from './examples/ActivityItem.Compact.Example';
@@ -14,7 +13,6 @@ export const ActivityItemPageProps: IDocPageProps = {
   componentName: 'ActivityItem',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ActivityItem',
-  componentStatus: ActivityItemStatus,
   examples: [
     {
       title: 'Activity Items with Icons',
@@ -32,7 +30,6 @@ export const ActivityItemPageProps: IDocPageProps = {
       view: <ActivityItemCompactExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/ActivityItem.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ActivityItem/docs/ActivityItemDos.md'),

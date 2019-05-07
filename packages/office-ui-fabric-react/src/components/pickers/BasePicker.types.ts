@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { IPickerItemProps } from './PickerItem.types';
-import { IPersonaProps } from '../Persona/Persona.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { ISuggestionModel, ISuggestionsProps } from './Suggestions/Suggestions.types';
 import { BaseAutoFill } from './AutoFill/BaseAutoFill';
 import { ICalloutProps } from '../../Callout';
 import { ITheme, IStyle } from '../../Styling';
+import { ISuggestionItemProps } from '../pickers/Suggestions/SuggestionsItem.types';
 
 /**
  * BasePicker component.
@@ -42,7 +42,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   /**
    * Function that specifies how an individual suggestion item will appear.
    */
-  onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
+  onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
 
   /**
    * A callback for what should happen when a person types text into the input.
@@ -115,9 +115,9 @@ export interface IBasePickerProps<T> extends React.Props<any> {
   inputProps?: IInputProps;
 
   /**
-   * A callback for when a persona is removed from the suggestion list
+   * A callback for when an item is removed from the suggestion list
    */
-  onRemoveSuggestion?: (item: IPersonaProps) => void;
+  onRemoveSuggestion?: (item: T) => void;
 
   /**
    * A function used to validate if raw text entered into the well can be added into the selected items list

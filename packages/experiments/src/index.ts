@@ -8,7 +8,6 @@ export * from './MenuButton';
 export * from './Pagination';
 export * from './Persona';
 export * from './PersonaCoin';
-export * from './Shimmer';
 export * from './Sidebar';
 export * from './Signals';
 export * from './SplitButton';

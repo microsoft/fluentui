@@ -1,10 +1,8 @@
 import * as React from 'react';
 import { NavBasicExample } from './examples/Nav.Basic.Example';
-
 import { IDocPageProps } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { NavFabricDemoAppExample } from './examples/Nav.FabricDemoApp.Example';
 import { NavNestedExample } from './examples/Nav.Nested.Example';
-import { NavStatus } from './Nav.checklist';
 import { NavCustomGroupHeadersExample } from './examples/Nav.CustomGroupHeaders.Example';
 
 const NavBasicExampleCode = require('!raw-loader!@uifabric/legacy/src/components/Nav/examples/Nav.Basic.Example.tsx') as string;
@@ -20,7 +18,6 @@ export const NavPageProps: IDocPageProps = {
   title: 'Nav',
   componentName: 'Nav',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Nav',
-  componentStatus: NavStatus,
   examples: [
     {
       title: 'Basic nav with sample links',

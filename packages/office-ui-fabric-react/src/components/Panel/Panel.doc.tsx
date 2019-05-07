@@ -19,7 +19,6 @@ import { PanelScrollExample } from './examples/Panel.Scroll.Example';
 import { PanelSmallFluidExample } from './examples/Panel.SmallFluid.Example';
 import { PanelSmallLeftExample } from './examples/Panel.SmallLeft.Example';
 import { PanelSmallRightExample } from './examples/Panel.SmallRight.Example';
-import { PanelStatus } from './Panel.checklist';
 
 const PanelSmallRightExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
 const PanelSmallRightExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Panel/examples/Panel.SmallRight.Example.tsx') as string;
@@ -47,7 +46,6 @@ export const PanelPageProps: IDocPageProps = {
   title: 'Panel',
   componentName: 'Panel',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Panel',
-  componentStatus: PanelStatus,
   examples: [
     {
       title: 'Panel - Small Panel, Anchored Right, Fixed Width',
@@ -152,7 +150,6 @@ export const PanelPageProps: IDocPageProps = {
       view: <PanelScrollExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/Panel.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Panel/docs/PanelDos.md'),
