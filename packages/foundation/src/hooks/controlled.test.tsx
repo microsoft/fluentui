@@ -1,84 +1,89 @@
-/* tslint:disable:no-unused-variable */
-// import * as React from 'react';
-/* tslint:enable:no-unused-variable */
+import { renderHook, act } from 'react-hooks-testing-library';
+import { useControlledState, getControlledDerivedProps } from './controlled';
 
-// Use any new Testing libraries?
-// Can't test hooks as standalone JS functions because they depend on magic in created React elements.
-// They either need to be wrapped with a component or tested with a library like react-hooks-testing-library.
-// https://github.com/mpeyper/react-hooks-testing-library
-// https://github.com/testing-library/react-testing-library
+interface ITestProps {
+  testProp?: string;
+  defaultTestProp?: string;
+}
 
-// TODO: tests for controlled hooks
-// import { mount } from 'enzyme';
-// import { BaseState } from './BaseState';
-// import { IBaseProps } from './BaseComponentMin';
-
-// interface ITestComponentProps extends IBaseProps {
-//   propControlled?: string;
-//   propUncontrolled?: string;
-// }
-
-// interface ITestViewProps extends ITestComponentProps {
-//   stateVar: string;
-// }
-
-// type ITestViewState = ITestViewProps;
-
-// class TestBaseState extends BaseState<ITestComponentProps, ITestViewProps, ITestViewState> {
-//   constructor(props: TestBaseState['props']) {
-//     super(props, {
-//       controlledProps: ['propControlled']
-//     });
-
-//     this.state = {
-//       propControlled: 'stateControlledValue',
-//       propUncontrolled: 'stateUncontrolledValue',
-//       stateVar: 'stateVarValue'
-//     };
-//   }
-// }
-
-describe('controlled hooks', () => {
-  it('dummy test', () => {
-    expect.assertions(0);
+describe('useControlledState', () => {
+  test('should use prop value', () => {
+    const { result } = renderHook(() => useControlledState({ testProp: 'testPropValue' }, 'testProp'));
+    expect(result.current[0]).toBe('testPropValue');
   });
-  // it('passes state to renderView', done => {
-  //   const renderView = (viewProps: ITestViewProps) => {
-  //     expect(viewProps.propControlled).toEqual('stateControlledValue');
-  //     expect(viewProps.propUncontrolled).toEqual('stateUncontrolledValue');
-  //     expect(viewProps.stateVar).toEqual('stateVarValue');
-  //     done();
-  //     return <div />;
-  //   };
 
-  //   mount(<TestBaseState renderView={renderView} />);
-  // });
+  test('should be undefined with no options', () => {
+    const { result } = renderHook(() => useControlledState({} as ITestProps, 'testProp'));
+    expect(result.current[0]).toBeUndefined();
+  });
 
-  // it('prioritizes controlled component prop over state', done => {
-  //   const testProps: ITestComponentProps = {
-  //     propControlled: 'propControlledValue'
-  //   };
+  test('should use defaultPropName', () => {
+    const { result } = renderHook(() =>
+      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', { defaultPropName: 'defaultTestProp' })
+    );
+    expect(result.current[0]).toBe('defaultNameValue');
+  });
 
-  //   const renderView = (viewProps: ITestViewProps) => {
-  //     expect(viewProps.propControlled).toEqual('propControlledValue');
-  //     done();
-  //     return <div />;
-  //   };
+  test('should use defaultPropValue', () => {
+    const { result } = renderHook(() =>
+      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', { defaultPropValue: 'defaultPropValue' })
+    );
+    expect(result.current[0]).toBe('defaultPropValue');
+  });
 
-  //   mount(<TestBaseState {...testProps} renderView={renderView} />);
-  // });
+  test('should use defaultPropName over defaultPropValue', () => {
+    const { result } = renderHook(() =>
+      useControlledState({ defaultTestProp: 'defaultNameValue' } as ITestProps, 'testProp', {
+        defaultPropValue: 'defaultPropValue',
+        defaultPropName: 'defaultTestProp'
+      })
+    );
+    expect(result.current[0]).toBe('defaultNameValue');
+  });
 
-  // it('prioritizes uncontrolled state over component prop', done => {
-  //   const testProps: ITestComponentProps = {
-  //     propUncontrolled: 'propUncontrolledValue'
-  //   };
+  test('should not use defaults when prop exists', () => {
+    const { result } = renderHook(() =>
+      useControlledState({ testProp: 'testPropValue', defaultTestProp: 'defaultTestPropValue' }, 'testProp', {
+        defaultPropValue: 'defaultValue',
+        defaultPropName: 'defaultTestProp'
+      })
+    );
+    expect(result.current[0]).toBe('testPropValue');
+  });
 
-  //   const renderView = (viewProps: ITestViewProps) => {
-  //     expect(viewProps.propUncontrolled).toEqual('stateUncontrolledValue');
-  //     done();
-  //     return <div />;
-  //   };
+  test('should change state when prop is not present', () => {
+    const { result } = renderHook(() => useControlledState({} as ITestProps, 'testProp'));
+    act(() => result.current[1]('stateValue'));
+    expect(result.current[0]).toBe('stateValue');
+  });
 
-  //   mount(<TestBaseState {...testProps} renderView={renderView} />);
-  // });
+  test('should let state override default values', () => {
+    const { result } = renderHook(() =>
+      useControlledState({ defaultTestProp: 'defaultTestPropValue' } as ITestProps, 'testProp', {
+        defaultPropValue: 'defaultValue',
+        defaultPropName: 'defaultTestProp'
+      })
+    );
+    expect(result.current[0]).toBe('defaultTestPropValue');
+    act(() => result.current[1]('stateValue'));
+    expect(result.current[0]).toBe('stateValue');
+  });
+
+  test('should give prop value priority over state updates', () => {
+    const { result } = renderHook(() => useControlledState({ testProp: 'testPropValue' }, 'testProp'));
+    act(() => result.current[1]('stateValue'));
+    expect(result.current[0]).toBe('testPropValue');
+  });
+});
+
+describe('getControlledDerivedProps', () => {
+  test('should use prop value over derived value', () => {
+    const result = getControlledDerivedProps({ testProp: 'testPropValue' }, 'testProp', 'derivedValue');
+    expect(result).toBe('testPropValue');
+  });
+
+  test('should use derived value', () => {
+    const result = getControlledDerivedProps({} as ITestProps, 'testProp', 'derivedValue');
+    expect(result).toBe('derivedValue');
+  });
 });
