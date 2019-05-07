@@ -1250,6 +1250,9 @@ export const FocusZoneTabbableElements: {
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
 // @public (undocumented)
+export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
+
+// @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public
@@ -2658,7 +2661,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
-    onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
+    onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string, selectedOptions?: IComboBoxOption[]) => void;
     // @deprecated
     onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
     onItemClick?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -4114,7 +4117,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     multiSelect?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
-    onChange?: (event: React_2.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
+    onChange?: (event: React_2.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number, selectedOptions?: IDropdownOption[]) => void;
     // @deprecated (undocumented)
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
