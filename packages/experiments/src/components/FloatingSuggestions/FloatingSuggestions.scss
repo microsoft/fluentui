@@ -1,0 +1,10 @@
+.callout {
+  :global(.ms-Suggestions-itemButton) {
+    padding: 0px;
+    border: none;
+  }
+
+  :global(.ms-Suggestions) {
+    min-width: 300px;
+  }
+}
