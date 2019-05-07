@@ -26,13 +26,20 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
   siteLogoSource?: string;
 
   /**
-   * If the hash contains any of this object's keys, replace that segment of the hash with the
-   * given value and redirect.
+   * If the hash contains any of the strings or matches any of the regular expressions specified in
+   * an entry's `from` property, replace that segment of the hash with the `to` property and redirect.
    */
-  redirects?: { [from: string]: string };
+  redirects?: IRedirect[];
 
   /**
    * Render function for the message bar below the top nav.
    */
   renderSiteMessageBar?: (pagePath?: string) => JSX.Element | undefined;
+}
+
+export interface IRedirect {
+  /** Look for URLs containing this string or matching this regex */
+  from: string | RegExp;
+  /** Replace the matching segment with this string */
+  to: string;
 }

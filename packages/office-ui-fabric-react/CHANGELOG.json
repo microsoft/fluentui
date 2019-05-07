@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.177.0",
+      "tag": "office-ui-fabric-react_v6.177.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Router should error if getComponent doesn't return anything",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "82b5bd3d675e92be729c4bad2d3afd3cef4d2d3d"
+          },
+          {
+            "comment": "Truncate suggestions in IE11",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "c256f13b9bb0689609312fa6db226289514b98e6"
+          },
+          {
+            "comment": "Icon documentation update",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9400b25f3b43de9abe6162d813755d442d114e41"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme\"",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "6d1ba22a9981261b64777813e89f80da88cd5aeb"
+          },
+          {
+            "comment": "Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "6d1ba22a9981261b64777813e89f80da88cd5aeb"
+          },
+          {
+            "comment": "New feature: Semantic Slots card as well as clean up of layout & css.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "6d1ba22a9981261b64777813e89f80da88cd5aeb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.176.3",
       "tag": "office-ui-fabric-react_v6.176.3",
       "date": "Sun, 05 May 2019 19:59:10 GMT",

@@ -10,7 +10,7 @@ We’re updating Fabric to include a new set of Web Fluent design styles, which 
 
 ### When will these updates be released?
 
-We're tracking updates to the Fabric React components in [this GitHub project](https://github.com/OfficeDev/office-ui-fabric-react/projects/23). Fluent styles for components will continue to be added to the @uifabric/fluent-theme package for Fabric React 6. They will become the default styles for Fabric React components in v7, which we aim to release by end of May 2019.
+We're tracking updates to the Fabric React components in [this GitHub project](https://github.com/OfficeDev/office-ui-fabric-react/projects/23). Fluent styles for components will continue to be added to the `@uifabric/fluent-theme` package for Fabric React 6. They will become the default styles for Fabric React components in v7, which we aim to release by end of May 2019.
 
 ### Can I preview the changes in my app?
 
@@ -24,7 +24,7 @@ The Fluent theme and component updates are included in the Fluent theme package:
 npm install @uifabric/fluent-theme
 ```
 
-Once installed, the Customizer component can be used to wrap portions of your app to apply the Fluent styles. You can even wrap your entire app:
+Once the theme is installed, the Customizer component can be used to wrap portions of your app to apply the Fluent styles. You can even wrap your entire app:
 
 ```jsx
 import { Customizer } from 'office-ui-fabric-react';
@@ -38,10 +38,10 @@ import { AppCode } from 'myApp/AppCode';
 
 #### Fabric Core (CSS styles)
 
-For apps built with Fabric Core, a [Fluent branch](https://github.com/OfficeDev/office-ui-fabric-core/tree/fluent) is available for testing. This includes new colors, type sizes, animations, and shadows. Use NPM to import the latest release:
+For apps built with Fabric Core, version 10 has now been released and includes the new Fluent colors, type sizes, animations, and shadows. Use NPM to import the latest release:
 
 ```
-npm install office-ui-fabric-core@fluent
+npm install office-ui-fabric-core
 ```
 
 Once imported, you can reference the new SCSS variables and mixins for colors, type sizes, animations, depth, and more.

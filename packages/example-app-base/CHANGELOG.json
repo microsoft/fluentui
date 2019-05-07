@@ -2,6 +2,51 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.18.0",
+      "tag": "@uifabric/example-app-base_v6.18.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF header style bugs.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2a162cb9dcee4fb702ad3efc0b653478db4b012e"
+          },
+          {
+            "comment": "Allow regex redirects",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "69fc9864a11922528497a65c6a9b6e08872fb068"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Use kebab case IDs and add more jump link options",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9400b25f3b43de9abe6162d813755d442d114e41"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.3` to `^6.177.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.4",
+      "tag": "@uifabric/example-app-base_v6.17.4",
+      "date": "Mon, 06 May 2019 19:32:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF styling conflicts",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7a8e3a847570d97a04e42c415593ee4bef600743"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.3",
       "tag": "@uifabric/example-app-base_v6.17.3",
       "date": "Mon, 06 May 2019 12:35:11 GMT",

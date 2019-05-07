@@ -54,7 +54,7 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
         Basic: {},
         Compact: {},
         Grouped: {},
-        LargeGrouped: {},
+        LargeGrouped: { title: 'Large Grouped' },
         CustomColumns: { title: 'Custom Item Columns', url: 'customitemcolumns' },
         CustomRows: { title: 'Custom Item Rows', url: 'customitemrows' },
         CustomFooter: { title: 'Custom Footer' },
@@ -125,8 +125,10 @@ const categories: { Other?: ICategory; [name: string]: ICategory } = {
   'Fluent Theme': {
     FluentTheme: { title: 'Fluent Theme', url: 'fluent-theme' }
   },
-  References: {},
-  Other: {}
+  References: {}
+  // The "Other" category can be useful for local development, but it currently can also cause
+  // non-web controls (such as Chip) to show up on the web controls page.
+  // Other: {}
 };
 
 function generateCategories() {
