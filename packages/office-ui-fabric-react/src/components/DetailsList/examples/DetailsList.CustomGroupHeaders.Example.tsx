@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
+import { DetailsList, IGroup, IGroupDividerProps, IColumn, buildColumns } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import { DEFAULT_ROW_HEIGHTS } from '../DetailsRow.styles';
@@ -41,20 +41,14 @@ const ITEMS_PER_GROUP = 20;
 const GROUP_COUNT = 20;
 
 export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}> {
-  private _items: IExampleItem[];
-  private _groups: IGroup[];
-
-  constructor(props: {}) {
-    super(props);
-
-    this._items = createListItems(500);
-    this._groups = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
-  }
+  private _items: IExampleItem[] = createListItems(500);
+  private _groups: IGroup[] = createGroups(GROUP_COUNT, 1, 0, ITEMS_PER_GROUP);
 
   public render(): JSX.Element {
     return (
       <DetailsList
         items={this._items}
+        columns={this._alterColumnNames(buildColumns(this._items))}
         groups={this._groups}
         groupProps={{
           onRenderHeader: this._onRenderGroupHeader,
@@ -110,4 +104,16 @@ export class DetailsListCustomGroupHeadersExample extends React.Component<{}, {}
       props!.onToggleCollapse!(props!.group!);
     };
   }
+
+  /** alterColumnNames modifies columns from example data to clarify their usage in examples.
+   * It is not necessary to replicate this function in your own code.
+   */
+  private _alterColumnNames = (cols: IColumn[]): IColumn[] => {
+    cols.forEach(c => {
+      if (c.name === 'thumbnail') {
+        c.name = 'thumbnail url';
+      }
+    });
+    return cols;
+  };
 }

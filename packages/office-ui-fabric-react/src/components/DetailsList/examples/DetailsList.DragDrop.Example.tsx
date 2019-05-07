@@ -46,7 +46,7 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
 
     this.state = {
       items: items,
-      columns: buildColumns(items, true),
+      columns: this._alterColumnNames(buildColumns(items, true)),
       isColumnReorderEnabled: true,
       frozenColumnCountFromStart: '1',
       frozenColumnCountFromEnd: '0'
@@ -196,4 +196,16 @@ export class DetailsListDragDropExample extends React.Component<{}, IDetailsList
 
     this.setState({ items: items });
   }
+
+  /** alterColumnNames modifies columns from example data to clarify their usage in examples.
+   * It is not necessary to replicate this function in your own code.
+   */
+  private _alterColumnNames = (cols: IColumn[]): IColumn[] => {
+    cols.forEach(c => {
+      if (c.name === 'thumbnail') {
+        c.name = 'thumbnail url';
+      }
+    });
+    return cols;
+  };
 }
