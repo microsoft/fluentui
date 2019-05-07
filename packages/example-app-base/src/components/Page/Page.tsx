@@ -70,6 +70,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
     return (
       <div
         className={css(
+          'Page-content',
           styles.sectionWrapper,
           showSideRail && styles.showSideRail,
           isMountedOffset && styles.isMountedOffset,

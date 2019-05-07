@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
+import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction, IRawStyle, css } from 'office-ui-fabric-react';
 import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
 
 // tslint:disable no-any
@@ -87,7 +87,11 @@ const languageMapping: { [key: string]: string } = {
 const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
   const classNames = getClassNames(props.styles, {});
   return (
-    <SyntaxHighlighter language={languageMapping[props.language!] || props.language || 'text'} className={classNames.root} style={style}>
+    <SyntaxHighlighter
+      language={languageMapping[props.language!] || props.language || 'text'}
+      className={css(classNames.root, props.className)}
+      style={style}
+    >
       {props.children}
     </SyntaxHighlighter>
   );

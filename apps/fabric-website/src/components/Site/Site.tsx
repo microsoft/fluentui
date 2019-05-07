@@ -181,31 +181,29 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     let pagePlatforms: TPlatformPages<TPlatforms> = {};
 
     const activePages: INavPage<TPlatforms>[] = [];
+    const page = pages.filter(p => hasActiveChild(p, platform)).slice(-1)[0];
+    if (page) {
+      isContentFullBleed = !!page.isContentFullBleed;
+      hasPlatformPicker = !!page.hasPlatformPicker;
+      if (page.isSearchable) {
+        searchablePageTitle = page.title;
+      }
 
-    pages
-      .filter(page => !page.isHiddenFromMainNav && hasActiveChild(page, platform))
-      .forEach(page => {
-        isContentFullBleed = !!page.isContentFullBleed;
-        hasPlatformPicker = !!page.hasPlatformPicker;
-        if (page.isSearchable) {
-          searchablePageTitle = page.title;
+      if (page.platforms) {
+        pagePlatforms = page.platforms;
+
+        // Get active platform pages.
+        const platforms: INavPage<TPlatforms>[] | undefined = pagePlatforms[platform];
+        if (platforms) {
+          activePages.push(...platforms);
         }
+      }
 
-        if (page.platforms) {
-          pagePlatforms = page.platforms;
-
-          // Get active platform pages.
-          const platforms: INavPage<TPlatforms>[] | undefined = pagePlatforms[platform];
-          if (platforms) {
-            activePages.push(...platforms);
-          }
-        }
-
-        // Get the rest of the active pages.
-        if (page.pages) {
-          activePages.push(...page.pages);
-        }
-      });
+      // Get the rest of the active pages.
+      if (page.pages) {
+        activePages.push(...page.pages);
+      }
+    }
 
     return {
       platform,

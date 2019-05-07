@@ -57,6 +57,15 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       isHiddenFromMainNav: true,
       component: () => <LoadingComponent title="Template Page" />,
       getComponent: cb => require.ensure([], require => cb(require<any>('../pages/PageTemplates/TemplatePage/TemplatePage').TemplatePage))
+    },
+    {
+      title: 'Legacy Theme Generator',
+      url: '#/legacythemegenerator',
+      isHiddenFromMainNav: true,
+      isSearchable: false,
+      isContentFullBleed: true,
+      component: () => <LoadingComponent title="Legacy Theme Generator" />,
+      getComponent: cb => require.ensure([], require => cb(require<any>('../pages/Styles/LegacyThemePage/LegacyThemePage').LegacyThemePage))
     }
   ],
   redirects: {
@@ -71,7 +80,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     '#/styles/icons': '#/styles/web/icons',
     '#/styles/layout': '#/styles/web/layout',
     '#/styles/localization': '#/styles/web/localization',
-    '#/styles/themegenerator': '#/styles/web',
+    '#/styles/themegenerator': '#/legacythemegenerator',
     '#/styles/typography': '#/styles/web/typography',
     '#/styles/utilities': '#/styles/web'
   }

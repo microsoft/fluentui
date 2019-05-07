@@ -1,0 +1,86 @@
+@import '../../../styles/variables';
+@import '../../../styles/mixins';
+
+a.themeGeneratorPageLink {
+  color: $ms-color-themePrimary;
+}
+
+.themer {
+  max-width: 100%;
+
+  h2,
+  h3,
+  h4 {
+    color: $ms-color-black;
+  }
+
+  h3 {
+    margin: 0;
+  }
+
+  @media screen and (min-width: $uhf-screen-min-mobile) {
+    @include ms-padding-right($App-padding-right-lg);
+    @include ms-padding-left($App-padding-left-lg);
+  }
+
+  @media only screen and (max-width: $uhf-screen-max-mobile) {
+    @include contentPadding($App-padding-sm, 50px);
+  }
+}
+
+.themerPaletteSlot {
+  text-align: center;
+  padding: 16px;
+}
+
+.themerSwatch {
+  display: inline-block;
+  flex-shrink: 0;
+  height: 36px;
+  width: 36px;
+  margin: 4px;
+}
+
+.themerSwatchBg {
+  padding: 4px;
+  font-size: 0;
+  .themerSwatch {
+    height: 28px;
+    width: 28px;
+    margin: 2px;
+  }
+}
+
+.themerFabricPaletteRoot {
+  display: flex;
+  > div {
+    padding-left: 20px;
+  }
+}
+
+.themerAccessibilityTable td {
+  padding: 4px;
+  text-align: center;
+}
+
+.themerSlot {
+  display: flex;
+  align-items: center;
+  overflow: auto;
+}
+
+.themerOutputRoot {
+  display: flex;
+  textarea {
+    height: 400px;
+    width: 280px;
+    margin-right: 28px;
+    background-color: white;
+    color: #333;
+  }
+}
+
+.codeSnippet {
+  max-width: 600px;
+  max-height: 300px;
+}
