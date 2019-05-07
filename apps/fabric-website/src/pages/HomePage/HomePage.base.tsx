@@ -14,7 +14,7 @@ import {
   Stack,
   IRawStyle
 } from 'office-ui-fabric-react';
-import { trackEvent, EventNames, getSiteArea } from '@uifabric/example-app-base/lib/index2';
+import { trackEvent, EventNames, getSiteArea, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { platforms } from '../../SiteDefinition/SiteDefinition.platforms';
 import { AndroidLogo, AppleLogo, WebLogo, getParameterByName } from '../../utilities/index';
 import { IHomePageProps, IHomePageStyles, IHomePageStyleProps } from './HomePage.types';
@@ -158,7 +158,9 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           <div className={classNames.card} style={{ background: platforms.web.color }}>
             <Icon iconName="WebLogo-homePage" className={classNames.cardIcon} />
             <Stack horizontal verticalAlign="baseline" horizontalAlign="space-between">
-              <h3 className={classNames.cardTitle}>Web</h3>
+              <MarkdownHeader as="h3" className={classNames.cardTitle}>
+                Web
+              </MarkdownHeader>
               <ActionButton
                 allowDisabledFocus={true}
                 className={classNames.versionSwitcher}
@@ -194,14 +196,18 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
           </div>
           <div className={classNames.card} style={{ background: platforms.ios.color }}>
             <Icon iconName="AppleLogo-homePage" className={classNames.cardIcon} />
-            <h3 className={classNames.cardTitle}>iOS</h3>
+            <MarkdownHeader as="h3" className={classNames.cardTitle}>
+              iOS
+            </MarkdownHeader>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/ios', 'Controls')}</li>
             </ul>
           </div>
           <div className={classNames.card} style={{ background: platforms.android.color }}>
             <Icon iconName="AndroidLogo-homePage" className={classNames.cardIcon} />
-            <h3 className={classNames.cardTitle}>Android</h3>
+            <MarkdownHeader as="h3" className={classNames.cardTitle}>
+              Android
+            </MarkdownHeader>
             <ul className={classNames.cardList}>
               <li className={classNames.cardListItem}>{this._renderLink('#/controls/android', 'Controls')}</li>
             </ul>

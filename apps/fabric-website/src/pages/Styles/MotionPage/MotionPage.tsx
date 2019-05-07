@@ -5,6 +5,7 @@ import {
   AnimationExample,
   IPageSectionProps,
   Markdown,
+  MarkdownHeader,
   Table,
   Video
 } from '@uifabric/example-app-base/lib/index2';
@@ -62,7 +63,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/web/MotionAnimationPatterns.md') as string}
               </Markdown>
 
-              <h3>Delete & Slide</h3>
+              <MarkdownHeader as="h3">Delete & Slide</MarkdownHeader>
               <p>This pattern for deleting an object from the view and how the remaining objects realign themselves.</p>
               <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/deleteslide.mp4" />
               <PatternTable
@@ -84,7 +85,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ]}
               />
 
-              <h3>Slide & Add</h3>
+              <MarkdownHeader as="h3">Slide & Add</MarkdownHeader>
               <p>This pattern for adding an object to a view, and how the other objects react to the new element.</p>
               <Video source="https://static2.sharepointonline.com/files/fabric/fabric-website/video/slideadd.mp4" />
               <PatternTable
@@ -106,7 +107,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ]}
               />
 
-              <h3>Drill In</h3>
+              <MarkdownHeader as="h3">Drill In</MarkdownHeader>
               <p>
                 This pattern handles the transition from one view into another. Some elements persist, some leave the view, and new ones
                 enter as well.
@@ -131,7 +132,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ]}
               />
 
-              <h3>Drill In with Continuity</h3>
+              <MarkdownHeader as="h3">Drill In with Continuity</MarkdownHeader>
               <p>
                 This pattern handles the transition from one view into another. Some elements persist, some leave the view, and new ones
                 enter as well.
@@ -163,7 +164,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 ]}
               />
 
-              <h3>Tabs & Pivots</h3>
+              <MarkdownHeader as="h3">Tabs & Pivots</MarkdownHeader>
               <p>
                 This pattern describes the transition from selecting one tab to another. Includes the selection state that travels across
                 the tab set. Also describes the tab content coming in and out as well.
@@ -207,14 +208,14 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/MotionPage/docs/web/MotionBasicAnimations.md') as string}
               </Markdown>
 
-              <h3>Fade</h3>
+              <MarkdownHeader as="h3">Fade</MarkdownHeader>
               <p>The most basic and fundamental animation for adding and removing objects. Use fades as the default choice.</p>
               <AnimationDetailGrid>
                 <AnimationDetail animation="Fade in" coreClass="ms-motion-fadeIn" reactVariable="MotionAnimations.fadeIn" />
                 <AnimationDetail animation="Fade out" coreClass="ms-motion-fadeOut" reactVariable="MotionAnimations.fadeOut" />
               </AnimationDetailGrid>
 
-              <h3>Scale</h3>
+              <MarkdownHeader as="h3">Scale</MarkdownHeader>
               <p>
                 A more dramatic animation than fading, scaling draws the eye and implies a sense of depth. Use these animations sparingly
                 where more emphasis is needed.
@@ -228,7 +229,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 />
               </AnimationDetailGrid>
 
-              <h3>Slide</h3>
+              <MarkdownHeader as="h3">Slide</MarkdownHeader>
               <p>
                 Use sliding animations for when there is an obvious directionality to the entrance and exit of an object. These animations
                 help users build a mental model of where the object can be found when it isn’t visible.

@@ -1,5 +1,12 @@
 import * as React from 'react';
-import { Markdown, ColorPalette, IColor, IColorPaletteTheme, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import {
+  Markdown,
+  MarkdownHeader,
+  ColorPalette,
+  IColor,
+  IColorPaletteTheme,
+  IPageSectionProps
+} from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { ColorsProductsPageProps } from './ProductsPage.doc';
 
@@ -57,7 +64,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
                 <ColorPalette colors={AppColorSwatches} onColorSelected={this._changeApp} />
                 {activeAppColorPalette && (
                   <>
-                    <h2>{activeAppColorPalette.name}</h2>
+                    <MarkdownHeader as="h2">{activeAppColorPalette.name}</MarkdownHeader>
                     <p>{activeAppColorPalette.notes}</p>
                     <ColorPalette colors={activeAppColorPalette.colors} />
                   </>
