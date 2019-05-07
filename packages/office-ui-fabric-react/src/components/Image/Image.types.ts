@@ -109,7 +109,14 @@ export enum ImageFit {
    * behave as ImageFit.center if the image's natural height or width is less than the Image frame's height or width,
    * but if both natural height and width are larger than the frame it will behave as ImageFit.cover.
    */
-  centerCover = 4
+  centerCover = 4,
+
+  /**
+   * The image will be centered horizontally and vertically within the frame and maintains its aspect ratio. It will
+   * behave as ImageFit.center if the image's natural height and width is less than the Image frame's height and width,
+   * but if either natural height or width are larger than the frame it will behave as ImageFit.contain.
+   */
+  centerContain = 5
 }
 
 /**
@@ -199,11 +206,12 @@ export interface IImageStyleProps {
   isLandscape?: boolean;
 
   /**
-   * ImageFit booleans for center, cover, contain, centerCover, none
+   * ImageFit booleans for center, cover, contain, centerContain, centerCover, none
    */
   isCenter?: boolean;
   isContain?: boolean;
   isCover?: boolean;
+  isCenterContain?: boolean;
   isCenterCover?: boolean;
   isNone?: boolean;
 

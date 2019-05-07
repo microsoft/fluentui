@@ -86,10 +86,6 @@ export const PivotPageProps: IDocPageProps = {
       view: <PivotSeparateNoSelectedKeyExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/Pivot.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/PivotItem.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Pivot/docs/PivotDos.md'),

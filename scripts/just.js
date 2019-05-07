@@ -1,3 +1,7 @@
+#!/usr/bin/env node
+
+const fs = require('fs');
+
 function just(cmd) {
   const path = require('path');
 
@@ -6,11 +10,18 @@ function just(cmd) {
     startIndex = 2;
   }
 
+  const cwd = process.cwd();
+
+  const config = fs.existsSync(path.resolve(cwd, 'just-task.js'))
+    ? path.resolve(cwd, 'just-task.js')
+    : path.resolve(__dirname, 'just-task.js');
+
+  // prettier-ignore
   process.argv = [
     ...process.argv.slice(0, startIndex),
     ...(cmd ? [cmd] : []),
     '--config',
-    path.resolve(__dirname, 'just-task.js'),
+    config,
     ...process.argv.slice(startIndex)
   ];
 

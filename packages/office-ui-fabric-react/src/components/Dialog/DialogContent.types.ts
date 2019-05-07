@@ -91,6 +91,11 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
    * @defaultvalue DialogType.normal
    */
   type?: DialogType;
+
+  /**
+   * The classname for when the header is draggable
+   */
+  draggableHeaderClassName?: string;
 }
 
 /**
@@ -127,6 +132,11 @@ export interface IDialogContentStyleProps {
    * Is inside a multiline wrapper
    */
   isMultiline?: boolean;
+
+  /**
+   * The classname for when the header is draggable
+   */
+  draggableHeaderClassName?: string;
 }
 
 /**

@@ -34,7 +34,7 @@ const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
 /**
- * Component API for {@link SelectionZone}.
+ * {@docCategory Selection}
  */
 export interface ISelectionZone {
   /**
@@ -44,7 +44,7 @@ export interface ISelectionZone {
 }
 
 /**
- * Props API for {@link SelectionZone}.
+ * {@docCategory Selection}
  */
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   /**
@@ -96,6 +96,9 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
+/**
+ * {@docCategory Selection}
+ */
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
     isSelectedOnFocus: true,

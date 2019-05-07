@@ -2,6 +2,53 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.38.1",
+      "tag": "@uifabric/utilities_v6.38.1",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "a new line is added to the end of the api-extractor.json file",
+            "author": "jspurlin <jspurlin@microsoft.com>",
+            "commit": "c0bbb0d61e0da3bccbb78654a6f49e0c56b7996e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.0` to `^6.17.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.38.0",
+      "tag": "@uifabric/utilities_v6.38.0",
+      "date": "Wed, 01 May 2019 12:34:24 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Export Omit from utilities",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4d72d00867790618c3062374d5f38160aa2d7c4e"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.37.1",
+      "tag": "@uifabric/utilities_v6.37.1",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Adds pointer events to baseElementProperties",
+            "author": "Lorin Tackett <lorin.tackett@gmail.com>",
+            "commit": "df594f0141c680d84e48ef2fdd06247c2d9edf7b"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.37.0",
       "tag": "@uifabric/utilities_v6.37.0",
       "date": "Sat, 27 Apr 2019 00:04:47 GMT",

@@ -21,6 +21,9 @@ const getClassNames = classNamesFunction<IColorPickerStyleProps, IColorPickerSty
 
 const colorComponents: Array<keyof IRGBHex> = ['hex', 'r', 'g', 'b', 'a'];
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
   public static defaultProps = {
     hexLabel: 'Hex',

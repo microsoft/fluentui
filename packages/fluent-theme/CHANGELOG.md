@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+
+## 0.16.7
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+-  Use new getFocusStyle signature
 
 ## 0.16.6
 Tue, 23 Apr 2019 12:32:00 GMT

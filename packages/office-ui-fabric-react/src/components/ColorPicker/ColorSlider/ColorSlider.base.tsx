@@ -3,6 +3,10 @@ import { BaseComponent, classNamesFunction } from '../../../Utilities';
 import { IColorSliderProps, IColorSliderStyleProps, IColorSliderStyles } from './ColorSlider.types';
 
 const getClassNames = classNamesFunction<IColorSliderStyleProps, IColorSliderStyles>();
+
+/**
+ * {@docCategory ColorPicker}
+ */
 export interface IColorSliderProps {
   componentRef?: () => void;
   minValue?: number;
@@ -23,6 +27,9 @@ export interface IColorSliderState {
   currentValue?: number;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export class ColorSliderBase extends BaseComponent<IColorSliderProps, IColorSliderState> {
   public static defaultProps = {
     minValue: 0,

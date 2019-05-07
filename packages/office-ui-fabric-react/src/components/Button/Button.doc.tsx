@@ -105,7 +105,6 @@ export const ButtonPageProps = (props: IButtonDocPageProps): IDocPageProps => ({
 
   allowNativeProps: true,
   nativePropsElement: ['a', 'button'],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/Button.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonOverview.md'),
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDos.md'),
   donts: require<string>('!raw-loader!office-ui-fabric-react/src/components/Button/docs/ButtonDonts.md'),

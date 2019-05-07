@@ -26,6 +26,7 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/Card.types.ts')]} />
         }
+        // tslint:disable:deprecation
         overview={
           <PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md')}</PageMarkdown>
         }

@@ -37,6 +37,7 @@ export interface IPageHeaderProps extends IBaseProps {
 
 const getClassNames = classNamesFunction<IPageHeaderStyleProps, IPageHeaderStyles>();
 
+/** @deprecated Use `MarkdownHeader` */
 @customizable('PageHeader', ['theme', 'styles'])
 export class PageHeaderBase extends BaseComponent<IPageHeaderProps, {}> {
   public render(): JSX.Element {
