@@ -63,15 +63,13 @@ export const CardView: ICardComponent['view'] = props => {
         /* Resolve tokens, sending childrenGap only if the child type is CardSection as CardItem doesn't have a childrenGap token in its
          * type specification. We're sending childrenGap to CardSection so that elements inside a CardSection maintain the overall gap
          * provided to the Card. */
-        let resolvedTokens = {
+        const resolvedTokens = {
           margin,
-          childrenGap: child.type === CardSectionType ? childrenGap : undefined
+          childrenGap: child.type === CardSectionType ? childrenGap : undefined,
+          ...childTokens
         };
 
-        // Overwrite any resolved default tokens with the user provided ones.
-        resolvedTokens = { ...resolvedTokens, ...childTokens };
-
-        // Clone the child with the c
+        // Clone the child with the correct tokens.
         return React.cloneElement(child, {
           tokens: resolvedTokens,
           ...childRest

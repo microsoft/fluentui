@@ -1,73 +1,77 @@
 import * as React from 'react';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { IStackItemStyles } from '../StackItem/StackItem.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackReversedExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary
-      },
-
-      item: {
-        color: DefaultPalette.white,
-        background: DefaultPalette.themePrimary,
-        padding: 5
       }
-    });
-
-    const tokens = {
-      fiveGapStack: {
-        childrenGap: 5
-      },
-      tenGapStack: {
-        childrenGap: 10
-      },
-      tenPaddingStack: {
-        padding: 10
+    };
+    const stackItemStyles: IStackItemStyles = {
+      root: {
+        background: DefaultPalette.themePrimary,
+        color: DefaultPalette.white,
+        padding: 5
       }
     };
 
+    const containerStackTokens: IStackTokens = { childrenGap: 5 };
+    const verticalGapStackTokens: IStackTokens = {
+      childrenGap: 10,
+      padding: 10
+    };
+    const itemAlignmentStackTokens: IStackTokens = {
+      childrenGap: 5,
+      padding: 10
+    };
+    const clickableStackTokens: IStackTokens = {
+      padding: 10
+    };
+
     return (
-      <Stack tokens={tokens.fiveGapStack}>
+      <Stack tokens={containerStackTokens}>
         <span>Default vertical stack</span>
-        <Stack reversed className={styles.root}>
+        <Stack reversed styles={stackStyles}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Vertical gap between items</span>
-        <Stack reversed className={styles.root} tokens={{ ...tokens.tenGapStack, ...tokens.tenPaddingStack }}>
+        <Stack reversed styles={stackStyles} tokens={verticalGapStackTokens}>
           <span>Item One</span>
           <span>Item Two</span>
           <span>Item Three</span>
         </Stack>
 
         <span>Item alignments</span>
-        <Stack reversed className={styles.root} tokens={{ ...tokens.fiveGapStack, ...tokens.tenPaddingStack }}>
-          <Stack.Item align="auto" className={styles.item}>
+        <Stack reversed styles={stackStyles} tokens={itemAlignmentStackTokens}>
+          <Stack.Item align="auto" styles={stackItemStyles}>
             <span>Auto-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="stretch" className={styles.item}>
+          <Stack.Item align="stretch" styles={stackItemStyles}>
             <span>Stretch-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="baseline" className={styles.item}>
+          <Stack.Item align="baseline" styles={stackItemStyles}>
             <span>Baseline-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="start" className={styles.item}>
+          <Stack.Item align="start" styles={stackItemStyles}>
             <span>Start-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="center" className={styles.item}>
+          <Stack.Item align="center" styles={stackItemStyles}>
             <span>Center-aligned item</span>
           </Stack.Item>
-          <Stack.Item align="end" className={styles.item}>
+          <Stack.Item align="end" styles={stackItemStyles}>
             <span>End-aligned item</span>
           </Stack.Item>
         </Stack>
 
         <span>Clickable vertical stack</span>
-        <Stack onClick={this._onClick} className={styles.root} tokens={tokens.tenPaddingStack}>
+        <Stack onClick={this._onClick} styles={stackStyles} tokens={clickableStackTokens}>
           <span>Click inside this box</span>
         </Stack>
       </Stack>

@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackWidth: number;
@@ -16,35 +17,29 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
   }
 
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         width: `${this.state.stackWidth}%`,
         selectors: {
           '& span': {
-            width: 50,
-            height: 50,
-            display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
             background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white
+            color: DefaultPalette.white,
+            display: 'flex',
+            height: 50,
+            justifyContent: 'center',
+            width: 50
           }
         }
       }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: 30
-      }
     };
 
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const wrapStackTokens: IStackTokens = { childrenGap: 30 };
+
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Slider
           label="Change the stack width to see how child items wrap onto multiple rows:"
           min={1}
@@ -55,7 +50,7 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
           onChange={this._onWidthChange}
         />
 
-        <Stack horizontal wrap tokens={tokens.wrapStack} className={styles.root}>
+        <Stack horizontal wrap styles={stackStyles} tokens={wrapStackTokens}>
           <span>1</span>
           <span>2</span>
           <span>3</span>

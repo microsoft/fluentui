@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -31,40 +32,31 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${stackWidth}%`,
         overflow,
+        width: `${stackWidth}%`,
         selectors: {
           '& span': {
-            width: 50,
-            height: 50,
-            display: 'flex',
             alignItems: 'center',
-            justifyContent: 'center',
             background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white
+            color: DefaultPalette.white,
+            display: 'flex',
+            height: 50,
+            justifyContent: 'center',
+            width: 50
           }
         }
-      },
-
-      container: {
-        height: containerHeight
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: 20
       }
     };
+    const containerStyles = mergeStyles({ height: containerHeight });
+
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const wrapStackTokens: IStackTokens = { childrenGap: 20 };
 
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
             <Slider label="Stack height:" min={1} max={420} step={1} defaultValue={420} showValue={true} onChange={this._onHeightChange} />
@@ -82,7 +74,7 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal tokens={tokens.wrapStack}>
+        <Stack horizontal tokens={wrapStackTokens}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -119,14 +111,8 @@ export class VerticalStackWrapAdvancedExample extends React.Component<{}, IExamp
           </Stack.Item>
         </Stack>
 
-        <div className={styles.container}>
-          <Stack
-            wrap
-            tokens={tokens.wrapStack}
-            horizontalAlign={horizontalAlignment}
-            verticalAlign={verticalAlignment}
-            className={styles.root}
-          >
+        <div className={containerStyles}>
+          <Stack wrap horizontalAlign={horizontalAlignment} verticalAlign={verticalAlignment} styles={stackStyles} tokens={wrapStackTokens}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
