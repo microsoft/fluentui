@@ -4,7 +4,7 @@
 
 Fabric Core is primarily meant for non-React applications or static pages.
 
-If you're using Fabric React, you probably don't need Fabric Core. Most of the styles from Fabric Core are also available via CSS-in-JS styling, which is the recommended styling approach with Fabric React.
+If you're using Fabric React, you may not need Fabric Core. Most of the styles from Fabric Core are also available via CSS-in-JS styling, which is the recommended styling approach with Fabric React.
 
 ### Adding Fabric Core to your site
 
