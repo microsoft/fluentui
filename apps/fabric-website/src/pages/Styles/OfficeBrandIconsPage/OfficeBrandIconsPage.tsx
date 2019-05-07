@@ -221,38 +221,44 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
             <>
               <MarkdownHeader as="h3">Product icons</MarkdownHeader>
               <ul className={styles.iconList}>
-                {productIcons.map((icon, iconIndex) => (
-                  <li key={iconIndex}>
-                    <Image
-                      src={`${fabricCDN}/brand-icons/product-fluent/svg/${icon.icon}_48x1.svg`}
-                      width="48"
-                      height="48"
-                      alt={icon.name + ' product icon'}
-                      className={styles.icon}
-                    />
-                    <span className={styles.iconName}>{icon.name}</span>
-                  </li>
-                ))}
+                {productIcons.map((icon, iconIndex) => {
+                  const key = icon.icon + iconIndex;
+                  let iconPath: string = '/brand-icons/product-fluent/svg/';
+                  switch (icon.icon) {
+                    case 'access':
+                      iconPath = '/brand-icons/product/svg/';
+                      break;
+                  }
+                  return (
+                    <li key={key}>
+                      <Image
+                        src={`${fabricCDN}${iconPath}${icon.icon}_48x1.svg`}
+                        width="48"
+                        height="48"
+                        alt={icon.name + ' product icon'}
+                        className={styles.icon}
+                      />
+                      <span className={styles.iconName}>{icon.name}</span>
+                    </li>
+                  );
+                })}
               </ul>
 
               <MarkdownHeader as="h3">File type icons</MarkdownHeader>
               <ul className={styles.iconList}>
-                {documentIcons.map((icon, iconIndex) => (
-                  <li key={iconIndex}>
-                    {/* <Image
-                      src={`${fabricCDN}/item-types-fluent/48/${icon.name}.svg`}
-                      width="48"
-                      height="48"
-                      alt={icon.name + ' file type icon'}
-                    /> */}
-                    <Icon
-                      {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })}
-                      className={styles.icon}
-                      role="presentation"
-                    />
-                    <span className={styles.iconName}>{icon.name}</span>
-                  </li>
-                ))}
+                {documentIcons.map((icon, iconIndex) => {
+                  const key = icon.icon + iconIndex;
+                  return (
+                    <li key={key}>
+                      <Icon
+                        {...getFileTypeIconProps({ extension: icon.name, size: 48, imageFileType: 'svg' })}
+                        className={styles.icon}
+                        role="presentation"
+                      />
+                      <span className={styles.iconName}>{icon.name}</span>
+                    </li>
+                  );
+                })}
               </ul>
 
               <MarkdownHeader as="h3">Single-color icons</MarkdownHeader>
