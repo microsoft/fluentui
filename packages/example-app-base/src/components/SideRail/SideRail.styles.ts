@@ -1,5 +1,5 @@
 import { FontWeights, getFocusOutlineStyle, IStyleFunction } from 'office-ui-fabric-react/lib/index';
-import { appPaddingSm, uhfScreenMaxLg } from '../../styles/constants';
+import { appPaddingSm } from '../../styles/constants';
 import { ISideRailStyleProps, ISideRailStyles } from './SideRail.types';
 
 export const sideRailClassNames = {
@@ -25,7 +25,11 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
       marginTop: 0,
       paddingLeft: 8
     },
-    link: {
+    links: {
+      margin: 0,
+      padding: 0
+    },
+    linkWrapper: {
       display: 'flex',
       fontSize: theme.fonts.medium.fontSize,
       selectors: {
@@ -56,27 +60,25 @@ export const getStyles: IStyleFunction<ISideRailStyleProps, ISideRailStyles> = p
         ]
       }
     },
+    jumpLinkWrapper: {
+      position: 'relative'
+    },
     jumpLink: {
-      position: 'relative',
+      color: theme.palette.neutralPrimary,
+      borderLeft: '2px solid transparent',
+      paddingLeft: 6, // 8px - 2px border
       selectors: {
-        a: {
-          color: theme.palette.neutralPrimary,
-          borderLeft: '2px solid transparent',
-          paddingLeft: 6, // 8px - 2px border
-          selectors: {
-            '&:focus': {
-              color: theme.palette.neutralPrimary
-            }
-          }
+        '&:focus': {
+          color: theme.palette.neutralPrimary
         }
-      },
-      [`&.${sideRailClassNames.isActive} a`]: {
-        borderLeftColor: theme.palette.themePrimary
       }
+    },
+    jumpLinkActive: {
+      borderLeftColor: theme!.palette.themePrimary
     },
     jumpLinkSection: {
       selectors: {
-        [`@media screen and (max-width: ${uhfScreenMaxLg}px)`]: {
+        '@media screen and (max-width: 1360px)': {
           display: 'none'
         }
       }

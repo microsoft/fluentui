@@ -19,6 +19,9 @@ const getClassNames = classNamesFunction<IBreadcrumbStyleProps, IBreadcrumbStyle
 const OVERFLOW_KEY = 'overflow';
 const nullFunction = (): null => null;
 
+/**
+ * {@docCategory Breadcrumb}
+ */
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
   public static defaultProps: IBreadcrumbProps = {
     items: [],

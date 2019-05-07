@@ -21,16 +21,13 @@ export const EditSectionBase: React.StatelessComponent<IEditSectionProps> = prop
   const classNames = getClassNames(styles, { theme: theme! });
   const buttonStyles = classNames.subComponentStyles.button;
 
-  const sectionId = title.replace(/[^\w-]/g, '');
-  const tooltipHostId = `${title}-${sectionId}-editButtonHost`;
+  const tooltipContent = title && title !== section ? `Edit ${title} ${section}` : `Edit ${section}`;
 
   return (
-    <TooltipHost content={`Edit ${title} ${section}`} id={tooltipHostId} hostClassName={css(classNames.root, className)}>
+    <TooltipHost content={tooltipContent} hostClassName={css(classNames.root, className)}>
       <IconButton
-        aria-labelledby={tooltipHostId}
-        iconProps={{
-          iconName: 'Edit'
-        }}
+        aria-label={tooltipContent}
+        iconProps={{ iconName: 'Edit' }}
         href={url}
         target="_blank"
         rel="noopener noreferrer"

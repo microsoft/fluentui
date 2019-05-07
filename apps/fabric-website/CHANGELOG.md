@@ -1,6 +1,51 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2019 19:32:45 GMT and should not be manually modified.
+
+## 6.16.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
+
+## 6.16.3
+Mon, 06 May 2019 12:35:11 GMT
+
+### Patches
+
+- Remove css reset
+
+## 6.16.2
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Accessibility fixes
+
+## 6.16.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- Added get started section
+- Added more mobile controls documentation
+- Mobile documentation updates
+- Adjust Resources content
+- Anchor link handling and other bug fixes
+- Add version dropdown and fix other bugs
+
+## 6.16.0
+Sat, 04 May 2019 00:01:54 GMT
+
+### Minor changes
+
+- ported logic for devhost from index.html to homepage.htm
+- Switch to new website
+
+### Patches
+
+- Getting started update with CRA, just and Gatsby.js
 
 ## 6.15.0
 Thu, 02 May 2019 12:36:35 GMT

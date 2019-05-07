@@ -1,0 +1,7 @@
+import * as React from 'react';
+import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
+import { AnnouncedQuickActionsPageProps } from './AnnouncedQuickActionsPage.doc';
+
+export const AnnouncedQuickActionsPage: React.StatelessComponent<IControlsPageProps> = props => {
+  return <ControlsAreaPage {...props} {...AnnouncedQuickActionsPageProps[props.platform]} />;
+};

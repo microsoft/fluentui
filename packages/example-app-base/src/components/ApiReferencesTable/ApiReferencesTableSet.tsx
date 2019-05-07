@@ -2,8 +2,6 @@ import * as React from 'react';
 import { ActionButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ApiReferencesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './ApiReferencesTable';
 import { IApiProperty, IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
 import { IEnumTableRowJson, ITableRowJson, ITableJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
@@ -16,13 +14,13 @@ export interface IApiReferencesTableSetState {
   showSeeMore: boolean;
 }
 
-const apiReferencesTableTopMargin = mergeStyles({
-  marginTop: '40px'
-});
-
 const TITLE_LINE_HEIGHT = 31.5;
 
 export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSetProps, IApiReferencesTableSetState> {
+  public static defaultProps: Partial<IApiReferencesTableSetProps> = {
+    jumpToAnchors: true
+  };
+
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
 
@@ -35,7 +33,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   public render(): JSX.Element {
     const { className } = this.props;
     return (
-      <Stack gap={LARGE_GAP_SIZE} className={css(apiReferencesTableTopMargin, className)}>
+      <Stack gap={LARGE_GAP_SIZE} className={className}>
         {this._renderFirst()}
         {this._renderEach()}
       </Stack>
@@ -47,8 +45,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     const anchor = extractAnchorLink(window.location.hash);
 
-    // If the "anchor" contains / that means it's the route path not an actual anchor
-    if (anchor && anchor.indexOf('/') === -1 && !this.state.showSeeMore) {
+    if (anchor && !this.state.showSeeMore) {
       const section = this.state.properties.filter(x => x.propertyName === anchor)[0];
       if (section) {
         this.setState({
@@ -63,7 +60,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   public componentDidUpdate(prevProps: IApiReferencesTableSetProps, prevState: IApiReferencesTableSetState): void {
-    if (prevState.showSeeMore === false && this.state.showSeeMore === true) {
+    if (prevState.showSeeMore === false && this.state.showSeeMore === true && this.props.jumpToAnchors) {
       jumpToAnchor(undefined, TITLE_LINE_HEIGHT);
     }
   }
@@ -127,7 +124,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
 
     const anchor = extractAnchorLink(window.location.hash);
     if (anchor) {
-      jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
+      this.props.jumpToAnchors && jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
       if (!showSeeMore) {
         const section = properties.filter(x => x.propertyName === anchor)[0];

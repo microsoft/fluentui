@@ -33,10 +33,16 @@ const SELECTION_INVOKE_ATTRIBUTE_NAME = 'data-selection-invoke';
 const SELECTALL_TOGGLE_ALL_ATTRIBUTE_NAME = 'data-selection-all-toggle';
 const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
 
+/**
+ * {@docCategory Selection}
+ */
 export interface ISelectionZone {
   ignoreNextFocus: () => void;
 }
 
+/**
+ * {@docCategory Selection}
+ */
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
   componentRef?: () => void;
   selection: ISelection;
@@ -53,6 +59,9 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
+/**
+ * {@docCategory Selection}
+ */
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
     isMultiSelectEnabled: true,

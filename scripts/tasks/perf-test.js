@@ -124,6 +124,7 @@ function getStats(before, after) {
       scenarioStats[scenario] = ttest(before[scenario].peritem, after[scenario].peritem, { alpha: 0.01 });
       scenarioStats[scenario].pvalue = scenarioStats[scenario].pValue();
       scenarioStats[scenario].valid = scenarioStats[scenario].valid();
+      scenarioStats[scenario].tvalue = scenarioStats[scenario].testValue();
     }
   });
 
@@ -157,7 +158,7 @@ function createBlobFromResults(perfBlob) {
             <td>${perfBlob.stats[scenario] ? !perfBlob.stats[scenario].valid : '...'}</td>
             <td>${
               perfBlob.now[scenario] && perfBlob.new[scenario] && perfBlob.stats[scenario]
-                ? !perfBlob.stats[scenario].valid && perfBlob.now[scenario] - perfBlob.new[scenario] < 0
+                ? !perfBlob.stats[scenario].valid && perfBlob.stats[scenario].tvalue < 0
                 : '...'
             }</td>
            </tr>`

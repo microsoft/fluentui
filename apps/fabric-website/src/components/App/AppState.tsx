@@ -1,16 +1,17 @@
 import * as React from 'react';
 
 // Props
-import { INavPage } from '../Nav/Nav.types';
 import { ComponentPage } from '../ComponentPage/ComponentPage';
 import { PageHeader } from '../PageHeader/PageHeader';
 import { ApiReferencesTableSet } from '@uifabric/example-app-base';
 import { IReferencesList } from '@uifabric/fabric-website-resources/lib/AppDefinition';
 const pageStyles: any = require('../../pages/PageStyles.module.scss');
 
+export interface ILegacyNavPage {}
+
 export interface IAppState {
   appTitle: string;
-  pages: INavPage[];
+  pages: ILegacyNavPage[];
 }
 
 // Giving the loading component a height so that the left nav loads in full screen and there is less flashing as the component page loads.
@@ -32,22 +33,25 @@ const StylesLoadingComponent = (props: any): JSX.Element => {
   );
 };
 
-function loadReferences(): INavPage[] {
-  const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
+function loadReferences(): ILegacyNavPage[] {
+  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
 
-  return pageList.pages.map(pageName => ({
-    title: pageName,
-    url: '#/components/references/' + pageName.toLowerCase(),
-    isFilterable: true,
-    component: () => (
-      <div className={pageStyles.basePage}>
-        <ComponentPage>
-          <PageHeader pageTitle={pageName} backgroundColor="#038387" />
-          <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
-        </ComponentPage>
-      </div>
-    )
-  }));
+  return requireContext.keys().map(pagePath => {
+    const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
+    return {
+      title: pageName,
+      url: '#/components/references/' + pageName.toLowerCase(),
+      isFilterable: true,
+      component: () => (
+        <div className={pageStyles.basePage}>
+          <ComponentPage>
+            <PageHeader pageTitle={pageName} backgroundColor="#038387" />
+            <ApiReferencesTableSet jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')} />
+          </ComponentPage>
+        </div>
+      )
+    };
+  });
 }
 
 export const AppState: IAppState = {

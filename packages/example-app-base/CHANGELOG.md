@@ -1,6 +1,51 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Mon, 06 May 2019 19:32:45 GMT and should not be manually modified.
+
+## 6.17.4
+Mon, 06 May 2019 19:32:45 GMT
+
+### Patches
+
+- Fix UHF styling conflicts
+
+## 6.17.3
+Mon, 06 May 2019 12:35:11 GMT
+
+### Patches
+
+- Added css reset directly to ul
+
+## 6.17.2
+Mon, 06 May 2019 00:28:08 GMT
+
+### Patches
+
+- Syntax highlighting optimizations
+
+## 6.17.1
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- ApiReferencesTable: only render methods and members tables if not empty
+- Fix footer flashing, sticky nav, sticky side rail
+- Anchor link handling and other bug fixes
+- More EditSection tooltip fixes
+
+## 6.17.0
+Sat, 04 May 2019 00:01:53 GMT
+
+### Minor changes
+
+- Adds shell and bash language support
+- Bug fixes and styling updates for new website
+- Updates for new website
+- Break out of existing customizations when showing example card.
+
+### Patches
+
+- conditionally render Implementation jump link based on presence of jsonDocs
 
 ## 6.16.1
 Thu, 02 May 2019 12:36:35 GMT

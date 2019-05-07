@@ -1,10 +1,9 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
-import { Label } from 'office-ui-fabric-react/lib/Label';
 import { IThemeRules, ThemeGenerator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { CodepenComponent } from '@uifabric/example-app-base';
@@ -32,6 +31,18 @@ const textAreaClassName = mergeStyles({
   color: '#333'
 });
 
+const microsoftLogo = mergeStyles({
+  width: '120px'
+});
+
+const pipeFabricClassName = mergeStyles({
+  fontSize: '15px',
+  fontWeight: 'bold',
+  color: '#000000',
+  textDecoration: 'none',
+  marginTop: '10px'
+});
+
 const codeHeader = "import { loadTheme } from 'office-ui-fabric-react';\n\n";
 const codepenHeader = 'const { loadTheme, DefaultButton, PrimaryButton, Toggle, TooltipHost } = Fabric;\n\n';
 const codepenSamples =
@@ -54,28 +65,27 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
 
   public render(): JSX.Element {
     return (
-      <Card styles={{ root: { minWidth: '99%', height: '25px' } }}>
+      <Card
+        styles={{
+          root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', left: '0', top: '0', zIndex: 600 }
+        }}
+      >
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
           <Stack horizontal>
-            <IconButton
-              disabled={false}
-              checked={false}
-              iconProps={{ iconName: 'WindowsLogo', styles: { root: { fontSize: '20px' } } }}
-              ariaLabel="Microsoft UI Fabric | Theming Designer"
-            />
-            <Label styles={{ root: { fontWeight: 'bold' } }}>Microsoft UI Fabric | Theming Designer</Label>
+            <a href="https://www.microsoft.com" title="Microsoft Home Page" aria-label="Microsoft Home Page" className={microsoftLogo}>
+              <img src="https://themingdesigner.blob.core.windows.net/$web/MicrosoftLogo.png" className={microsoftLogo} />
+            </a>
+            <a
+              href="https://www.aka.ms/themedesigner"
+              title="Microsoft Theme Designer page"
+              aria-label="Microsoft Fabric Theme Designer page"
+              className={pipeFabricClassName}
+            >
+              <span> | UI Fabric Theme Designer </span>
+            </a>
           </Stack>
-          <Stack horizontal styles={{ root: { position: 'absolute', right: '20px' } }}>
-            <IconButton
-              data-automation-id="test"
-              disabled={false}
-              checked={false}
-              iconProps={{ iconName: 'Export', styles: { root: { fontSize: '20px' } } }}
-              ariaLabel="Export to JSON/Code/PowerShell"
-              onClick={this.showPanel}
-              allowDisabledFocus={true}
-            />
-            <Label styles={{ root: { fontWeight: 'bold' } }}>Export theme</Label>
+          <Stack horizontal styles={{ root: { position: 'absolute', right: '25px' } }}>
+            <PrimaryButton text="Export theme" onClick={this.showPanel} styles={{ root: { width: '130px', height: '35px' } }} />
             <Panel
               isOpen={this.state.showPanel}
               type={PanelType.smallFixedFar}

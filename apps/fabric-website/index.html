@@ -1,13 +1,12 @@
 <!DOCTYPE html>
-<html dir="ltr">
+<html dir="ltr" lang="en-us">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0" user-scalable="no" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" user-scalable="no" />
     <title>Office UI Fabric</title>
     <link href="https://devofficecdn.azureedge.net/themes/DevOffice/Content/favicon.ico" rel="shortcut icon" type="image/x-icon" />
-    <script src="https://cdn.optimizely.com/js/5703250400.js"></script>
-    <style>
+    <style type="text/css">
       body,
       html {
         margin: 0;
@@ -16,12 +15,64 @@
 
       .loading {
         align-items: center;
-        background-color: #212121;
+        background-color: #faf9f8;
         display: flex;
         height: 100vh;
         justify-content: center;
       }
     </style>
+    <!--
+      <script type="text/javascript">
+        var appInsights =
+          window.appInsights ||
+          (function(a) {
+            function b(a) {
+              c[a] = function() {
+                var b = arguments;
+                c.queue.push(function() {
+                  c[a].apply(c, b);
+                });
+              };
+            }
+            var c = { config: a },
+              d = document,
+              e = window;
+            setTimeout(function() {
+              var b = d.createElement('script');
+              (b.src = a.url || 'https://az416426.vo.msecnd.net/scripts/a/ai.0.js'),
+                d.getElementsByTagName('script')[0].parentNode.appendChild(b);
+            });
+            try {
+              c.cookie = d.cookie;
+            } catch (a) {}
+            c.queue = [];
+            for (var f = ['Event', 'Exception', 'Metric', 'PageView', 'Trace', 'Dependency']; f.length; ) b('track' + f.pop());
+            if (
+              (b('setAuthenticatedUserContext'),
+              b('clearAuthenticatedUserContext'),
+              b('startTrackEvent'),
+              b('stopTrackEvent'),
+              b('startTrackPage'),
+              b('stopTrackPage'),
+              b('flush'),
+              !a.disableExceptionTracking)
+            ) {
+              (f = 'onerror'), b('_' + f);
+              var g = e[f];
+              e[f] = function(a, b, d, e, h) {
+                var i = g && g(a, b, d, e, h);
+                return !0 !== i && c['_' + f](a, b, d, e, h), i;
+              };
+            }
+            return c;
+          })({
+            instrumentationKey: '18e07455-6fee-47f7-ab59-8dbf99a31d23'
+          });
+
+        // @TODO: Add custom referrer tracking here. https://stackoverflow.com/questions/5097808/is-document-referrer-cross-browser-compatible
+        (window.appInsights = appInsights), appInsights.queue && 0 === appInsights.queue.length && appInsights.trackPageView();
+      </script>
+    -->
   </head>
 
   <body>
@@ -45,7 +96,6 @@
       // Query params
       var dogfoodParam = getParameterByName('isDogfood');
       var productionParam = getParameterByName('isProduction');
-      var noCompress = isLocal || getParameterByName('noCompress');
       var devhost = getParameterByName('devhost');
 
       var entryPointFilename = 'fabric-sitev5';
@@ -84,8 +134,9 @@
 
         var prefixVer =
           fabricVersions.indexOf(fabricVersion) > -1 && fabricVersion !== fabricVersions.slice(-1)[0] ? 'v' + fabricVersion + '-' : '';
+        // If a devhost is provided, override the config app path
 
-        var configPrefix = isProduction ? 'fabric-website-' + prefixVer + 'prod' : 'fabric-website-' + prefixVer + 'df';
+        var configPrefix = `fabric-website-${prefixVer}${isProduction ? 'prod' : 'df'}`;
 
         var configScript = ['https://fabricweb.azureedge.net/fabric-website/manifests/' + configPrefix + '.js'];
 
@@ -133,11 +184,9 @@
       }
 
       function loadAppScripts(appPath) {
-        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.3.2/umd/react';
-        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.2/umd/react-dom';
-
-        reactPath = reactPath + '.production.min.js';
-        reactDomPath = reactDomPath + '.production.min.js';
+        var version = isLocal ? '.development.js' : '.production.min.js';
+        var reactPath = '//cdnjs.cloudflare.com/ajax/libs/react/16.8.3/umd/react' + version;
+        var reactDomPath = '//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.3/umd/react-dom' + version;
 
         var scripts = [reactPath, reactDomPath, appPath + entryPointFilename + '.min.js'];
 
