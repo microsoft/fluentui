@@ -1,7 +1,5 @@
-import { autobind } from '../../../Utilities';
-import { ISuggestionModel } from '../../../Pickers';
-import { IPersonaProps } from '../../Persona';
-import { ITag } from '../../pickers/TagPicker/TagPicker.types';
+import { ISuggestionModel, ITag } from '../../../Pickers';
+import { IPersonaProps } from '../../../Persona';
 
 export type SuggestionsStoreOptions<T> = {
   getAriaLabel?: (item: T) => string;
@@ -40,13 +38,11 @@ export class SuggestionsStore<T> {
     return Array.isArray(suggestions) ? suggestions.map(this._ensureSuggestionModel) : [];
   }
 
-  @autobind
-  private _isSuggestionModel(value: ISuggestionModel<T> | T): value is ISuggestionModel<T> {
+  private _isSuggestionModel = (value: ISuggestionModel<T> | T): value is ISuggestionModel<T> => {
     return (<ISuggestionModel<T>>value).item !== undefined;
-  }
+  };
 
-  @autobind
-  private _ensureSuggestionModel(suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> {
+  private _ensureSuggestionModel = (suggestion: ISuggestionModel<T> | T): ISuggestionModel<T> => {
     if (this._isSuggestionModel(suggestion)) {
       return suggestion;
     } else {
@@ -60,5 +56,5 @@ export class SuggestionsStore<T> {
               ((suggestion as any) as ITag).name || (<IPersonaProps>suggestion).primaryText
       };
     }
-  }
+  };
 }
