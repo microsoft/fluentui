@@ -28,7 +28,9 @@ const menuProps: ISplitButtonProps['menu'] = {
 const RibbonMenuButtonTokens = {
   backgroundColorExpanded: '#C8C6C4',
   backgroundColorHovered: '#C8C6C4',
+  backgroundColorExpandedHovered: '#C8C6C4',
   backgroundColorPressed: '#C8C6C4',
+  backgroundColorExpandedPressed: '#C8C6C4',
   height: '100%'
 };
 

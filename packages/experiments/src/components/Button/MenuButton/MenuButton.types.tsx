@@ -107,6 +107,16 @@ export interface IMenuButtonTokens extends IButtonTokens {
   backgroundColorExpanded?: string;
 
   /**
+   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in a hovered state.
+   */
+  backgroundColorExpandedHovered?: string;
+
+  /**
+   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in an active state.
+   */
+  backgroundColorExpandedPressed?: string;
+
+  /**
    * Defines the size of the menu icon inside the MenuButton.
    */
   menuIconSize?: number | string;

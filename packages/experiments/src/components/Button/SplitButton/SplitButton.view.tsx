@@ -45,6 +45,16 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
 
   const { contentPadding, contentPaddingFocused, secondaryPadding, ...splitButtonTokens } = tokens as ISplitButtonTokens;
+  const {
+    backgroundColor,
+    backgroundColorHovered,
+    backgroundColorPressed,
+    color,
+    colorHovered,
+    colorPressed,
+    ...nonColoredButtonTokens
+  } = splitButtonTokens;
+  const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, nonColoredButtonTokens } : tokens;
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
@@ -57,7 +67,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         onClick={onClick}
         componentRef={buttonRef}
         content={content}
-        tokens={tokens}
+        tokens={buttonTokens}
         {...rest}
       >
         {children}

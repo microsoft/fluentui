@@ -52,6 +52,9 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         top: 2px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        border-width: 1px;
+      }
       &:hover {
         background-color: #f3f2f1;
         border-color: #8a8886;
@@ -81,6 +84,9 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       }
       @media screen and (-ms-high-contrast: active){&:active .ms-Icon-47 {
         color: Highlight;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
       }
   onClick={[Function]}
   role="button"
@@ -194,6 +200,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
+        border-width: 1px;
         color: GrayText;
       }
       &:hover {
@@ -229,6 +236,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
         outline-color: transparent;
       }
   disabled={true}
@@ -341,6 +349,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
+        border-width: 1px;
         color: Window;
       }
       &:hover {
@@ -376,6 +385,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
         outline-color: transparent;
       }
   onClick={[Function]}

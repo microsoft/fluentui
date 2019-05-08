@@ -1,4 +1,4 @@
-import { getFocusStyle, HighContrastSelector } from '../../../Styling';
+import { HighContrastSelector } from '../../../Styling';
 import { ISplitButtonComponent, ISplitButtonStylesReturnType, ISplitButtonTokenReturnType } from './SplitButton.types';
 
 const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
@@ -24,8 +24,13 @@ const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBut
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
+    backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
     borderWidth: 0,
     color: semanticColors.primaryButtonText,
+    highContrastBackgroundColor: 'WindowText',
+    highContrastBackgroundColorHovered: 'Highlight',
+    highContrastBackgroundColorPressed: 'Highlight',
     highContrastColor: 'Window'
   };
 };
@@ -34,6 +39,8 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
   const { semanticColors } = theme;
   return {
     backgroundColor: semanticColors.buttonBackgroundDisabled,
+    backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
+    backgroundColorPressed: semanticColors.buttonBackgroundDisabled,
     borderColor: semanticColors.buttonBorderDisabled,
     borderColorHovered: semanticColors.buttonBorderDisabled,
     borderColorPressed: semanticColors.buttonBorderDisabled,
@@ -45,39 +52,43 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
 export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => [
   baseTokens,
   props.primary && primaryTokens,
-  (props.primaryActionDisabled || props.disabled) && disabledTokens
+  props.disabled && disabledTokens
 ];
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
   return {
-    root: [
-      {
-        borderRadius: tokens.borderRadius,
-        boxSizing: 'border-box',
+    root: {
+      backgroundColor: tokens.backgroundColor,
+      borderRadius: tokens.borderRadius,
+      boxSizing: 'border-box',
 
-        selectors: {
-          ':hover': {
-            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
-          },
-          ':active': {
-            borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
-          },
-          [HighContrastSelector]: {
-            borderColor: 'transparent'
+      selectors: {
+        [HighContrastSelector]: {
+          backgroundColor: tokens.highContrastBackgroundColor,
+          borderColor: 'transparent'
+        },
+        ':hover': {
+          backgroundColor: tokens.backgroundColorHovered,
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
+
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: tokens.highContrastBackgroundColorHovered
+            }
           }
-        }
-      },
-      getFocusStyle(theme),
-      {
-        backgroundColor: tokens.backgroundColor,
+        },
+        ':active': {
+          backgroundColor: tokens.backgroundColorPressed,
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
 
-        selectors: {
-          ':hover': {
-            backgroundColor: tokens.backgroundColorHovered
+          selectors: {
+            [HighContrastSelector]: {
+              backgroundColor: tokens.highContrastBackgroundColorPressed
+            }
           }
         }
       }
-    ],
+    },
     button: {
       borderBottomLeftRadius: tokens.borderRadius,
       borderBottomRightRadius: '0px',

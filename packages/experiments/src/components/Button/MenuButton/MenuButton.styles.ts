@@ -11,10 +11,9 @@ const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTo
 const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.buttonBackgroundPressed,
     backgroundColorExpanded: semanticColors.buttonBackgroundPressed,
-    backgroundColorHovered: semanticColors.buttonBackgroundPressed,
-    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+    backgroundColorExpandedHovered: semanticColors.buttonBackgroundPressed,
+    backgroundColorExpandedPressed: semanticColors.buttonBackgroundPressed,
 
     borderColor: semanticColors.buttonBorder,
     borderColorHovered: semanticColors.buttonBorder,
@@ -37,10 +36,9 @@ const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButt
 const primaryExpandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.primaryButtonBackgroundPressed,
     backgroundColorExpanded: semanticColors.primaryButtonBackgroundPressed,
-    backgroundColorHovered: semanticColors.primaryButtonBackgroundPressed,
-    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorExpandedHovered: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorExpandedPressed: semanticColors.primaryButtonBackgroundPressed,
 
     highContrastBackgroundColor: 'Highlight',
     highContrastBackgroundColorHovered: 'Highlight',
@@ -80,7 +78,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
             borderColor: tokens.highContrastBorderColor
           },
           ':hover': {
-            backgroundColor: tokens.backgroundColorHovered,
+            backgroundColor: props.expanded ? tokens.backgroundColorExpandedHovered : tokens.backgroundColorHovered,
             color: tokens.colorHovered,
 
             selectors: {
@@ -92,7 +90,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
             }
           },
           ':hover:active': {
-            backgroundColor: tokens.backgroundColorPressed,
+            backgroundColor: props.expanded ? tokens.backgroundColorExpandedPressed : tokens.backgroundColorPressed,
             color: tokens.colorPressed,
 
             selectors: {

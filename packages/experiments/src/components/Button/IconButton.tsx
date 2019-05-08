@@ -13,6 +13,8 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderColor: 'transparent',
     borderColorHovered: 'transparent',
     borderColorPressed: 'transparent',
+    borderStyleFocused: 'solid',
+    borderWidthFocused: 1,
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',

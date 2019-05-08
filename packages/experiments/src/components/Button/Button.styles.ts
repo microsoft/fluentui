@@ -7,6 +7,8 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
 
   return {
     borderRadius: effects.roundedCorner2,
+    borderStyle: 'solid',
+    borderStyleFocused: 'solid',
     borderWidth: 1,
     cursor: 'pointer',
     minWidth: 100,
@@ -30,6 +32,8 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 
   return {
     borderRadius: '50%',
+    borderStyleFocused: 'double',
+    borderWidthFocused: 3,
     minWidth: 32,
     minHeight: 32,
     contentPadding: '',
@@ -144,12 +148,18 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
   };
 };
 
+const primaryCircularTokens: IButtonComponent['tokens'] = {
+  borderStyleFocused: 'solid',
+  borderWidthFocused: 1
+};
+
 export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   !!props.href && hrefTokens,
   !props.disabled && enabledTokens,
   props.primary && primaryEnabledTokens,
   props.circular && circularTokens,
+  props.circular && props.primary && primaryCircularTokens,
   props.disabled && disabledTokens
 ];
 
@@ -179,7 +189,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         backgroundColor: tokens.backgroundColor,
         borderColor: tokens.borderColor,
         borderRadius: tokens.borderRadius,
-        borderStyle: 'solid',
+        borderStyle: tokens.borderStyle,
         borderWidth: tokens.borderWidth,
         boxSizing: 'border-box',
         color: tokens.color,
@@ -204,8 +214,9 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: tokens.highContrastBackgroundColor,
-            color: tokens.highContrastColor,
             borderColor: tokens.highContrastBorderColor,
+            borderWidth: 1,
+            color: tokens.highContrastColor,
             MsHighContrastAdjust: tokens.msHighContrastAdjust
           },
           ':hover': {
@@ -257,6 +268,8 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
           // we don't have access to via getFocusStyle.
           [`.${IsFocusVisibleClassName} &:focus`]: {
             borderColor: tokens.borderColorFocused,
+            borderStyle: tokens.borderStyleFocused,
+            borderWidth: tokens.borderWidthFocused,
             outlineColor: tokens.outlineColor,
             backgroundClip: tokens.backgroundClip,
             padding: tokens.contentPaddingFocused
