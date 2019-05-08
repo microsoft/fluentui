@@ -112,6 +112,11 @@ export interface IButtonProps
    * Defines the aria label that the screen readers use when focus goes on the Button.
    */
   ariaLabel?: string;
+
+  /**
+   * Defines whether the Button should be ignored or not by screen readers.
+   */
+  ariaHidden?: boolean;
 }
 
 /**
