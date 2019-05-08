@@ -10,6 +10,8 @@ import { IPanelStyleProps } from '../Panel/Panel.types';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
+export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
+
 /**
  * {@docCategory Dropdown}
  */
