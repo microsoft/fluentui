@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "merge-styles: Removing `typeof window` call in `getInstance` to remove an IE11 memory leak.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "dzearing@microsoft.com"
+}
