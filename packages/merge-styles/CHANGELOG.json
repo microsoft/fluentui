@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.17.2",
+      "tag": "@uifabric/merge-styles_v6.17.2",
+      "date": "Wed, 08 May 2019 12:37:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "merge-styles: Removing `typeof window` call in `getInstance` to remove an IE11 memory leak.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "42361ef14d62a43d8f6df72515cdc2836651c1d4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.1",
       "tag": "@uifabric/merge-styles_v6.17.1",
       "date": "Thu, 02 May 2019 12:36:35 GMT",
