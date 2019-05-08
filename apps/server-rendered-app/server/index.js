@@ -7,12 +7,12 @@ const { configureLoadStyles } = require('@microsoft/load-themed-styles');
 const { initializeIcons } = require('@uifabric/icons');
 
 const ReactMinScripts =
-  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.production.min.js"></script>` +
-  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.production.min.js"></script>`;
+  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.production.min.js"></script>` +
+  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.production.min.js"></script>`;
 
 const ReactScripts =
-  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/16.3.1/umd/react.development.js"></script>` +
-  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react-dom/16.3.1/umd/react-dom.development.js"></script>`;
+  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react/16.8.6/umd/react.development.js"></script>` +
+  `<script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/react-dom/16.8.6/umd/react-dom.development.js"></script>`;
 
 const AppScript = `<script type="text/javascript" src="test-app.min.js"></script>`;
 

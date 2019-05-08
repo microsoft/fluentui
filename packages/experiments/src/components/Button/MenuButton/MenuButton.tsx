@@ -1,6 +1,5 @@
-import * as React from 'react';
 import { createComponent } from '../../../Foundation';
-import { MenuButtonState as state } from './MenuButton.state';
+import { useMenuButtonState as state } from './MenuButton.state';
 import { MenuButtonStyles as styles, MenuButtonTokens as tokens } from './MenuButton.styles';
 import { IMenuButtonProps } from './MenuButton.types';
 import { MenuButtonView as view } from './MenuButton.view';
