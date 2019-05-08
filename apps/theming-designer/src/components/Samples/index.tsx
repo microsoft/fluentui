@@ -20,7 +20,7 @@ export interface ISamplesProps {
   backgroundColor: string;
 }
 
-export interface ISampelsState {
+export interface ISamplesState {
   learnMoreLinkDisabled: boolean;
   selectOneDropdownDisabled: boolean;
   textFieldDisabled: boolean;
@@ -147,7 +147,17 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
     this.state = {
       learnMoreLinkDisabled: false,
       selectOneDropdownDisabled: false,
-      textFieldDisabled: false
+      textFieldDisabled: false,
+      checkboxOneDisabled: false,
+      checkboxTwoDisabled: false,
+      checkboxThreeDisabled: false,
+      choicegroupDisabled: false,
+      sliderDisabled: false,
+      likeIconButtonDisabled: false,
+      bookmarkIconButtonDisabled: false,
+      sunnyIconButtonDisabled: false,
+      primaryButtonDisabled: false,
+      defaultButtonDisabled: false
     };
     this._onToggleChange = this._onToggleChange.bind(this);
   }
@@ -224,13 +234,21 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
                     <PivotItem headerText="Activity" />
                   </Pivot>
                   <Stack horizontal gap={15}>
-                    <IconButton disabled={this.state.likeIconButton} iconProps={{ iconName: 'Like' }} className={iconButtonStyles} />
                     <IconButton
-                      disabled={this.state.bookmarkIconButton}
+                      disabled={this.state.likeIconButtonDisabled}
+                      iconProps={{ iconName: 'Like' }}
+                      className={iconButtonStyles}
+                    />
+                    <IconButton
+                      disabled={this.state.bookmarkIconButtonDisabled}
                       iconProps={{ iconName: 'SingleBookmark' }}
                       className={iconButtonStyles}
                     />
-                    <IconButton disabled={this.state.sunnyIconButton} iconProps={{ iconName: 'Sunny' }} className={iconButtonStyles} />
+                    <IconButton
+                      disabled={this.state.sunnyIconButtonDisabled}
+                      iconProps={{ iconName: 'Sunny' }}
+                      className={iconButtonStyles}
+                    />
                   </Stack>
                   <Stack horizontal gap={10}>
                     <PrimaryButton disabled={this.state.primaryButtonDisabled} text="Primary button" />
@@ -254,9 +272,9 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
       checkboxTwoDisabled: !this.state.checkboxTwoDisabled,
       checkboxThreeDisabled: !this.state.checkboxThreeDisabled,
       sliderDisabled: !this.state.sliderDisabled,
-      likeIconButtonDisabled: !this.state.likeIconButton,
-      bookmarkIconButtonDisabled: !this.state.bookmarkIconButton,
-      sunnyIconButtonDisabled: !this.state.sunnyIconButton,
+      likeIconButtonDisabled: !this.state.likeIconButtonDisabled,
+      bookmarkIconButtonDisabled: !this.state.bookmarkIconButtonDisabled,
+      sunnyIconButtonDisabled: !this.state.sunnyIconButtonDisabled,
       primaryButtonDisabled: !this.state.primaryButtonDisabled,
       defaultButtonDisabled: !this.state.defaultButtonDisabled
     });
