@@ -96,6 +96,7 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
     title: [
       {
         borderRadius: isOpen ? titleOpenBorderRadius : effects.roundedCorner2,
+        borderColor: palette.neutralSecondaryAlt,
         padding: `0 28px 0 8px`
       },
       hasError && { borderColor: !isOpen ? palette.red : palette.redDark },
