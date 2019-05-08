@@ -51,9 +51,6 @@ const MIN_COLUMN_WIDTH = 100; // this is the global min width
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
 
-const SHIMMER_INITIAL_ITEMS = 10;
-const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
-
 @withViewport
 export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
   public static defaultProps = {
@@ -62,7 +59,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    enableShimmer: false,
     compact: false
   };
 
@@ -310,7 +306,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer,
       viewport,
       minimumPixelsForDrag,
       getGroupHeight,
@@ -384,7 +379,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       <List
         ref={this._list}
         role="presentation"
-        items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+        items={items}
         onRenderCell={this._onRenderListCell(0)}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}

@@ -5347,21 +5347,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
                                           }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
-                                          }
                                           {
                                             padding-right: 8px;
                                           }
@@ -5546,21 +5531,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;
@@ -5992,21 +5962,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
                                           }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
-                                          }
                                           {
                                             padding-right: 8px;
                                           }
@@ -6192,21 +6147,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
                                           }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
-                                          }
                                           {
                                             padding-right: 8px;
                                           }
@@ -6391,21 +6331,6 @@ exports[`DetailsList renders List with hidden checkboxes correctly 1`] = `
                                           }
                                           & [data-is-focusable='true']::-moz-focus-inner {
                                             border: 0;
-                                          }
-                                          &$shimmer {
-                                            border-bottom: 17.5px solid #ffffff;
-                                            border-left: 12px solid #ffffff;
-                                            border-right: 32px solid #ffffff;
-                                            border-top: 17.5px solid #ffffff;
-                                            padding-bottom: 0px;
-                                            padding-left: 0px;
-                                            padding-right: 0px;
-                                            padding-top: 0px;
-                                          }
-                                          &$shimmerIconPlaceholder {
-                                            border-bottom: 13px solid #ffffff;
-                                            border-right: 8px solid #ffffff;
-                                            border-top: 13px solid #ffffff;
                                           }
                                           {
                                             padding-right: 8px;
