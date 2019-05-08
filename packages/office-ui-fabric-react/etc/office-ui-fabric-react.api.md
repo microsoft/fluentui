@@ -2749,7 +2749,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
     onGrowData?: (data: ICommandBarData) => ICommandBarData;
-    onReduceData?: (data: ICommandBarData) => ICommandBarData;
+    onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
