@@ -9,11 +9,12 @@ import { Header } from './Header';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { mergeStyles } from '@uifabric/merge-styles';
-import { Samples } from './Samples';
+import { Samples } from './Samples/index';
 import { SemanticSlots } from './SemanticSlots';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
+import { MainPanelWidth } from '../shared/MainPanelStyles';
 
 export interface IThemingDesignerState {
   primaryColor: IColor;
@@ -28,13 +29,23 @@ const outerMostStack = mergeStyles({
 });
 
 const sidebarStyles = mergeStyles({
-  backgroundColor: 'white',
+  marginTop: '35px',
+  width: '300px'
+});
+
+const sidebarContentStyles = mergeStyles({
   borderRight: '1px solid #ddd',
   minHeight: '100%',
   paddingRight: '1rem',
+  position: 'fixed',
   top: '60px',
   left: '10px',
-  zIndex: 500
+  width: '300px'
+});
+
+const cardsBlockStyles = mergeStyles({
+  minWidth: MainPanelWidth,
+  marginTop: '35px'
 });
 
 let colorChangeTimeout: number;
@@ -54,36 +65,35 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     return (
       <Stack gap={10} className={outerMostStack}>
         <Header themeRules={this.state.themeRules} />
-        <Stack horizontal gap={10} styles={{ root: { position: 'absolute', overflow: 'auto', top: '50px' } }}>
-          <Stack gap={20} className={sidebarStyles}>
-            <h1>
-              <IconButton
-                disabled={false}
-                checked={false}
-                iconProps={{
-                  iconName: 'Color',
-                  styles: { root: { fontSize: '20px' } }
-                }}
-                title="Colors"
-                ariaLabel="Colors"
+        <Stack horizontal gap={10}>
+          <Stack.Item shrink={false} grow={false} className={sidebarStyles}>
+            <Stack gap={20} className={sidebarContentStyles}>
+              <h1>
+                <IconButton
+                  disabled={false}
+                  checked={false}
+                  iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
+                  title="Colors"
+                  ariaLabel="Colors"
+                />
+                Color
+              </h1>
+              {/* the three base slots, prominently displayed at the top of the page */}
+              <ThemeDesignerColorPicker
+                color={this.state.primaryColor}
+                onColorChange={this._onPrimaryColorPickerChange}
+                label={'Primary color'}
               />
-              Color
-            </h1>
-            {/* the three base slots, prominently displayed at the top of the page */}
-            <ThemeDesignerColorPicker
-              color={this.state.primaryColor}
-              onColorChange={this._onPrimaryColorPickerChange}
-              label={'Primary color'}
-            />
-            <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
-            <ThemeDesignerColorPicker
-              color={this.state.backgroundColor}
-              onColorChange={this._onBkgColorPickerChange}
-              label={'Background color'}
-            />
-          </Stack>
-          <Stack.Item grow={1}>
-            <Stack horizontalAlign={'center'}>
+              <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
+              <ThemeDesignerColorPicker
+                color={this.state.backgroundColor}
+                onColorChange={this._onBkgColorPickerChange}
+                label={'Background color'}
+              />
+            </Stack>
+          </Stack.Item>
+          <Stack.Item grow={1} disableShrink className={cardsBlockStyles}>
+            <Stack>
               <ThemeProvider theme={this.state.theme}>
                 <Samples backgroundColor={this.state.backgroundColor.str} />
               </ThemeProvider>
