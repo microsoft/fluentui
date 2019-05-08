@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Wed, 08 May 2019 12:37:40 GMT and should not be manually modified.
+
+## 6.178.0
+Wed, 08 May 2019 12:37:40 GMT
+
+### Minor changes
+
+- Fix return type of onReduceDate in CommandBar
 
 ## 6.177.0
 Tue, 07 May 2019 12:34:52 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Wed, 08 May 2019 12:37:40 GMT and should not be manually modified.
+
+## 6.17.2
+Wed, 08 May 2019 12:37:40 GMT
+
+### Patches
+
+- merge-styles: Removing `typeof window` call in `getInstance` to remove an IE11 memory leak.
 
 ## 6.17.1
 Thu, 02 May 2019 12:36:35 GMT
