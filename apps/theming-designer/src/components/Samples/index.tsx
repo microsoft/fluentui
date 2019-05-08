@@ -20,10 +20,29 @@ export interface ISamplesProps {
   backgroundColor: string;
 }
 
+export interface ISampelsState {
+  learnMoreLinkDisabled: boolean;
+  selectOneDropdownDisabled: boolean;
+  textFieldDisabled: boolean;
+  checkboxOneDisabled: boolean;
+  checkboxTwoDisabled: boolean;
+  checkboxThreeDisabled: boolean;
+  choicegroupDisabled: boolean;
+  sliderDisabled: boolean;
+  likeIconButtonDisabled: boolean;
+  bookmarkIconButtonDisabled: boolean;
+  sunnyIconButtonDisabled: boolean;
+  primaryButtonDisabled: boolean;
+  defaultButtonDisabled: boolean;
+}
+
 const columnSpace = 48;
 const columns = 3;
 const sampleColumn = mergeStyles({
   width: (MainPanelNumericalWidth - columnSpace * (columns - 1)) / columns
+});
+const iconButtonStyles = mergeStyles({
+  color: '#0078D4'
 });
 
 const commandBarItems = [
@@ -79,18 +98,25 @@ const commandBarItems = [
       iconName: 'Download'
     },
     onClick: () => console.log('Download')
+  },
+  {
+    key: 'more',
+    name: 'More',
+    iconProps: {
+      iconName: 'More'
+    },
+    onClick: () => console.log('More')
   }
 ];
 
 const commandBarFarItems = [
   {
-    key: 'sort',
-    name: 'Sort',
-    ariaLabel: 'Sort',
+    key: 'search',
+    ariaLabel: 'Search',
     iconProps: {
-      iconName: 'SortLines'
+      iconName: 'Search'
     },
-    onClick: () => console.log('Sort')
+    onClick: () => console.log('Search')
   },
   {
     key: 'tile',
@@ -109,12 +135,22 @@ const commandBarFarItems = [
     iconProps: {
       iconName: 'Info'
     },
+    backgroundColor: '#ffffff',
     iconOnly: true,
     onClick: () => console.log('Info')
   }
 ];
 
-export class Samples extends React.Component<ISamplesProps, {}> {
+export class Samples extends React.Component<ISamplesProps, ISamplesState> {
+  constructor(props: any) {
+    super(props);
+    this.state = {
+      learnMoreLinkDisabled: false,
+      selectOneDropdownDisabled: false,
+      textFieldDisabled: false
+    };
+    this._onToggleChange = this._onToggleChange.bind(this);
+  }
   public render() {
     return (
       <div style={{ backgroundColor: this.props.backgroundColor }}>
@@ -131,13 +167,9 @@ export class Samples extends React.Component<ISamplesProps, {}> {
                       Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to people
                       inside or outisde your team. Share your ideas, results, and more in this visually compelling format.
                     </Text>
-                    <Link>
+                    <Link disabled={this.state.learnMoreLinkDisabled}>
                       Learn more <Icon iconName="ChevronRight" />
                     </Link>
-                  </Stack>
-                  <Stack horizontal gap={20}>
-                    <IconButton iconProps={{ iconName: 'SingleBookmark' }} />
-                    <IconButton iconProps={{ iconName: 'Sunny' }} />
                   </Stack>
                   <Persona text="Cameron Evans" secondaryText="Senior Researcher at Contoso" presence={PersonaPresence.online} />
                 </Stack>
@@ -148,14 +180,15 @@ export class Samples extends React.Component<ISamplesProps, {}> {
                     selectedKey="content"
                     label="Select one"
                     options={[{ key: 'content', text: 'Content' }, { key: 'morecontent', text: 'More content' }]}
+                    disabled={this.state.selectOneDropdownDisabled}
                   />
-                  <TextField label="Enter text here" placeholder="Placeholder" />
+                  <TextField disabled={this.state.textFieldDisabled} label="Enter text here" placeholder="Placeholder" />
                   <Stack horizontal gap={20}>
                     <Stack gap={13} grow={1}>
                       <div />
-                      <Checkbox label="Option 1" />
-                      <Checkbox label="Option 2" defaultChecked />
-                      <Checkbox label="Option 3" defaultChecked />
+                      <Checkbox disabled={this.state.checkboxOneDisabled} label="Option 1" />
+                      <Checkbox disabled={this.state.checkboxTwoDisabled} label="Option 2" defaultChecked />
+                      <Checkbox disabled={this.state.checkboxThreeDisabled} label="Option 3" defaultChecked />
                     </Stack>
                     <Stack gap={10} grow={1}>
                       <ChoiceGroup
@@ -174,25 +207,35 @@ export class Samples extends React.Component<ISamplesProps, {}> {
                             text: 'Option 3'
                           }
                         ]}
+                        disabled={this.state.choicegroupDisabled}
                       />
                     </Stack>
-                  </Stack>
-                  <Stack horizontal gap={10}>
-                    <PrimaryButton text="Primary button" />
-                    <DefaultButton text="Default button" />
                   </Stack>
                 </Stack>
               </Stack.Item>
               <Stack.Item className={sampleColumn} grow={1}>
                 <Stack gap={32}>
-                  <Slider max={11} />
-                  <Toggle onText="On" offText="Off" inlineLabel label="Toggle for disabled statest" onChange={this._onChange} />
+                  <Slider disabled={this.state.sliderDisabled} max={11} />
+                  <Toggle onText="On" offText="Off" inlineLabel label="Toggle for disabled states" onChange={this._onToggleChange} />
                   <Pivot>
                     <PivotItem headerText="Home" />
                     <PivotItem headerText="Pages" />
                     <PivotItem headerText="Documents" />
                     <PivotItem headerText="Activity" />
                   </Pivot>
+                  <Stack horizontal gap={15}>
+                    <IconButton disabled={this.state.likeIconButton} iconProps={{ iconName: 'Like' }} className={iconButtonStyles} />
+                    <IconButton
+                      disabled={this.state.bookmarkIconButton}
+                      iconProps={{ iconName: 'SingleBookmark' }}
+                      className={iconButtonStyles}
+                    />
+                    <IconButton disabled={this.state.sunnyIconButton} iconProps={{ iconName: 'Sunny' }} className={iconButtonStyles} />
+                  </Stack>
+                  <Stack horizontal gap={10}>
+                    <PrimaryButton disabled={this.state.primaryButtonDisabled} text="Primary button" />
+                    <DefaultButton disabled={this.state.defaultButtonDisabled} text="Default button" />
+                  </Stack>
                 </Stack>
               </Stack.Item>
             </Stack>
@@ -202,8 +245,20 @@ export class Samples extends React.Component<ISamplesProps, {}> {
     );
   }
 
-  private _onChange(ev: React.MouseEvent<HTMLElement>, checked?: boolean) {
-    console.log('hello world');
-    // commandBarItems.push(disabled: {false});
+  private _onToggleChange() {
+    this.setState({
+      learnMoreLinkDisabled: !this.state.learnMoreLinkDisabled,
+      selectOneDropdownDisabled: !this.state.selectOneDropdownDisabled,
+      textFieldDisabled: !this.state.textFieldDisabled,
+      checkboxOneDisabled: !this.state.checkboxOneDisabled,
+      checkboxTwoDisabled: !this.state.checkboxTwoDisabled,
+      checkboxThreeDisabled: !this.state.checkboxThreeDisabled,
+      sliderDisabled: !this.state.sliderDisabled,
+      likeIconButtonDisabled: !this.state.likeIconButton,
+      bookmarkIconButtonDisabled: !this.state.bookmarkIconButton,
+      sunnyIconButtonDisabled: !this.state.sunnyIconButton,
+      primaryButtonDisabled: !this.state.primaryButtonDisabled,
+      defaultButtonDisabled: !this.state.defaultButtonDisabled
+    });
   }
 }
