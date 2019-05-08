@@ -81,7 +81,6 @@ dependencies:
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
   '@types/webpack-env': 1.13.9
-  '@uifabric/react-cards': 0.1.0
   async: 2.6.2
   autoprefixer: 7.2.6
   awesome-typescript-loader: 3.5.0
@@ -159,6 +158,7 @@ dependencies:
   react-custom-scrollbars: 4.2.1
   react-dom: 16.8.6
   react-highlight: 0.10.0
+  react-hooks-testing-library: 0.5.0
   react-loadable: 5.5.0
   react-syntax-highlighter: 10.2.1
   react-test-renderer: 16.8.6
@@ -1332,32 +1332,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-sTuyzO2jJuDZwOM7mv7NXqIkcr/32qM45gDTUDHGaWMQQBIsr3etgJwUgwpzL1lhqttd/4W8SHu74N/GMLLalw==
-  /@uifabric/charting/0.28.13:
-    dependencies:
-      '@microsoft/load-themed-styles': 1.8.89
-      '@types/d3-array': 1.2.1
-      '@types/d3-axis': 1.0.10
-      '@types/d3-scale': 2.0.0
-      '@types/d3-selection': 1.3.0
-      '@types/d3-shape': 1.3.1
-      '@types/d3-time-format': 2.1.1
-      '@uifabric/icons': 6.5.1
-      '@uifabric/set-version': 1.1.3
-      d3-array: 1.2.1
-      d3-axis: 1.0.8
-      d3-scale: 2.0.0
-      d3-selection: 1.3.0
-      d3-shape: 1.3.5
-      d3-time-format: 2.1.3
-      office-ui-fabric-react: 6.176.3
-      prop-types: 15.7.2
-      tslib: 1.9.3
-    dev: false
-    peerDependencies:
-      react: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
-      react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
-    resolution:
-      integrity: sha512-IQgJhJUq3ZY84N+aWfPxQsQwcZSvmp0hubTUavLDMp7rFyohhbNiwJta7hYwv9eppwXtgaFBbOXKOC5ieG/YMQ==
   /@uifabric/charting/0.28.13/react-dom@16.8.6+react@16.8.6:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.89
@@ -1387,31 +1361,6 @@ packages:
       react-dom: ^0.14.9 || ^15.0.1-0 || ^16.0.0-0
     resolution:
       integrity: sha512-IQgJhJUq3ZY84N+aWfPxQsQwcZSvmp0hubTUavLDMp7rFyohhbNiwJta7hYwv9eppwXtgaFBbOXKOC5ieG/YMQ==
-  /@uifabric/experiments/6.75.0:
-    dependencies:
-      '@microsoft/load-themed-styles': 1.8.89
-      '@uifabric/azure-themes': 0.1.8
-      '@uifabric/charting': 0.28.13
-      '@uifabric/file-type-icons': 6.4.8
-      '@uifabric/fluent-theme': 0.16.7
-      '@uifabric/foundation': 0.7.4
-      '@uifabric/icons': 6.5.1
-      '@uifabric/merge-styles': 6.17.1
-      '@uifabric/set-version': 1.1.3
-      '@uifabric/styling': 6.47.3
-      '@uifabric/theme-samples': 0.1.5
-      '@uifabric/utilities': 6.38.1
-      '@uifabric/variants': 6.14.1
-      deep-assign: 2.0.0
-      office-ui-fabric-react: 6.176.3
-      prop-types: 15.7.2
-      tslib: 1.9.3
-    dev: false
-    peerDependencies:
-      react: '>=16.3.2-0 <17.0.0'
-      react-dom: '>=16.3.2-0 <17.0.0'
-    resolution:
-      integrity: sha512-CMh9/5hN/u3JgIjSSavxTdcVuamoZtY6FICReNND/oShqBl1FLLlXxJ+OaudMYqYPzbRqq9rzPJWnTULUlX4xw==
   /@uifabric/experiments/6.75.0/react-dom@16.8.6+react@16.8.6:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.89
@@ -1440,17 +1389,6 @@ packages:
       react-dom: '>=16.3.2-0 <17.0.0'
     resolution:
       integrity: sha512-CMh9/5hN/u3JgIjSSavxTdcVuamoZtY6FICReNND/oShqBl1FLLlXxJ+OaudMYqYPzbRqq9rzPJWnTULUlX4xw==
-  /@uifabric/file-type-icons/6.4.8:
-    dependencies:
-      '@uifabric/set-version': 1.1.3
-      '@uifabric/styling': 6.47.3
-      tslib: 1.9.3
-    dev: false
-    peerDependencies:
-      react: '>=16.3.2-0 <17.0.0'
-      react-dom: '>=16.3.2-0 <17.0.0'
-    resolution:
-      integrity: sha512-JQF3Ok7bvR/yGquMe0u0A+kroSA6B2ngkUIjiFEgdBmqqlyiN60PP20Mon9PG9KD6aNNVOE9QV4W6CLJiVoByQ==
   /@uifabric/file-type-icons/6.4.8/react-dom@16.8.6+react@16.8.6:
     dependencies:
       '@uifabric/set-version': 1.1.3
@@ -1518,26 +1456,6 @@ packages:
     dev: false
     resolution:
       integrity: sha512-3stMnzsOTjqmEqka2V1MnfxlhDuyVyqQ8c9CCNReHCywau5pdtmFX+8l7jNhnP5/fK954WgrKKnAp/0WlusCBg==
-  /@uifabric/react-cards/0.1.0:
-    dependencies:
-      '@microsoft/load-themed-styles': 1.8.89
-      '@uifabric/azure-themes': 0.1.8
-      '@uifabric/experiments': 6.75.0
-      '@uifabric/file-type-icons': 6.4.8
-      '@uifabric/fluent-theme': 0.16.7
-      '@uifabric/foundation': 0.7.4
-      '@uifabric/set-version': 1.1.3
-      '@uifabric/styling': 6.47.3
-      '@uifabric/theme-samples': 0.1.5
-      '@uifabric/utilities': 6.38.1
-      office-ui-fabric-react: 6.176.3
-      tslib: 1.9.3
-    dev: false
-    peerDependencies:
-      react: '>=16.3.2-0 <17.0.0'
-      react-dom: '>=16.3.2-0 <17.0.0'
-    resolution:
-      integrity: sha512-jUeKghRAbVaui7DHFf4Xd7xvWHfAuzfzj38SeYUGpHWi6f2gLzVvdUSy7n+mQO+japOUoP5A4MsDzO0XIz6khg==
   /@uifabric/react-cards/0.1.0/react-dom@16.8.6+react@16.8.6:
     dependencies:
       '@microsoft/load-themed-styles': 1.8.89
@@ -12004,6 +11922,27 @@ packages:
     dev: false
     resolution:
       integrity: sha1-04b53Oq4Z9wNzCNkFT+xzHZF0EY=
+  /react-hooks-testing-library/0.5.0:
+    dependencies:
+      '@babel/runtime': 7.4.4
+    dev: false
+    peerDependencies:
+      react: ^16.8.0
+      react-test-renderer: ^16.8.0
+    resolution:
+      integrity: sha512-qX4SA28pcCCf1Q23Gtl1VKqQk26pSPTEsdLtfJanDqm4oacT5wadL+e2Xypk/H+AOXN5kdZrWmXkt+hAaiNHgg==
+  /react-hooks-testing-library/0.5.0/4ca4b340b5593909f11580174eacf0b7:
+    dependencies:
+      '@babel/runtime': 7.4.4
+      react: 16.8.6
+      react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
+    dev: false
+    id: registry.npmjs.org/react-hooks-testing-library/0.5.0
+    peerDependencies:
+      react: ^16.8.0
+      react-test-renderer: ^16.8.0
+    resolution:
+      integrity: sha512-qX4SA28pcCCf1Q23Gtl1VKqQk26pSPTEsdLtfJanDqm4oacT5wadL+e2Xypk/H+AOXN5kdZrWmXkt+hAaiNHgg==
   /react-html-attributes/1.4.6:
     dependencies:
       html-element-attributes: 1.3.1
@@ -16026,13 +15965,14 @@ packages:
       enzyme-adapter-react-16: /enzyme-adapter-react-16/1.12.1/ee2efeb9ba09e3479f87e6d53c5a2c00
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
+      react-hooks-testing-library: /react-hooks-testing-library/0.5.0/4ca4b340b5593909f11580174eacf0b7
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       sinon: 4.5.0
       tslib: 1.9.3
     dev: false
     name: '@rush-temp/foundation'
     resolution:
-      integrity: sha512-U9ZUp93eUym4SnvY7WMZQcHjgne/QW6s4PUhj1/KQ7Yo2se/3ppXYfBBKe9jNKE6KPbZpJme/HY2KMSIDy8jmQ==
+      integrity: sha512-/ap0WbwegCkHCd3joXGQ4mIykvh6YCOi3IH2+HxEeeHjSqQ6nOLy84omV9vvEpNecc3rZM2dRduOjwcqf16cBQ==
       tarball: 'file:projects/foundation.tgz'
     version: 0.0.0
   'file:projects/icons.tgz':
@@ -16349,7 +16289,7 @@ packages:
     dev: false
     name: '@rush-temp/theming-designer'
     resolution:
-      integrity: sha512-0Coz8LeU4tTnA+GZ95jPoABLCANoAh4qKMIioWJF1EGlO+GOL+eSJSheAUkMU5QJ9UQY9eJ51K1M1De0sB3HnA==
+      integrity: sha512-S4RLUv7TKTUheaP0CkL6N32HuJW2NB3ZNd5d+lHJiZl8V1uG6BEncpC+ZUJxsibYtrR3xiFNJ5PPpII0FCbDeQ==
       tarball: 'file:projects/theming-designer.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -16548,7 +16488,6 @@ specifiers:
   '@types/storybook__react': 3.0.5
   '@types/webpack': 4.4.0
   '@types/webpack-env': 1.13.9
-  '@uifabric/react-cards': 0.1.0
   async: ^2.6.1
   autoprefixer: ^7.1.5
   awesome-typescript-loader: ^3.2.3
@@ -16626,6 +16565,7 @@ specifiers:
   react-custom-scrollbars: ^4.2.1
   react-dom: 16.8.6
   react-highlight: 0.10.0
+  react-hooks-testing-library: ^0.5.0
   react-loadable: '>=5.0.0'
   react-syntax-highlighter: ^10.1.3
   react-test-renderer: ^16.3.0

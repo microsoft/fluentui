@@ -4,15 +4,7 @@ import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric
 import { createFactory } from './slots';
 import { assign } from './utilities';
 
-import {
-  IComponent,
-  ICustomizationProps,
-  IStyleableComponentProps,
-  IStylesFunctionOrObject,
-  IToken,
-  ITokenFunction,
-  IViewRenderer
-} from './IComponent';
+import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from './IComponent';
 import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
 /**
@@ -34,62 +26,44 @@ export function createComponent<
   TComponentProps extends ValidProps,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps = TComponentProps,
+  TViewProps extends TComponentProps = TComponentProps,
   TStatics = {}
 >(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {} } = component;
   const { defaultProp } = factoryOptions;
 
-  const result: React.FunctionComponent<TComponentProps> = (componentProps: TComponentProps) => {
-    return (
-      // TODO: createComponent is also affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
-      <CustomizerContext.Consumer>
-        {(context: ICustomizerContext) => {
-          // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations
-          //        via ICustomizationProps cast. Is there mechanism that guarantees theme and other request fields will be defined?
-          //        is there a static init that guarantees theme will be provided?
-          //        what happens if createTheme/loadTheme is not called?
-          //        if so, convey through getCustomizations typing keying off fields. can we convey this
-          //          all the way from Customizations with something like { { K in fields }: object}? hmm
-          //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
-          // For now cast return value as if theme is always available.
-          const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
-            component.displayName,
-            context,
-            component.fields
-          );
-
-          const renderView: IViewRenderer<TViewProps> = viewProps => {
-            // The approach here is to allow state components to provide only the props they care about, automatically
-            //    merging user props and state props together. This ensures all props are passed properly to view,
-            //    including children and styles.
-            // TODO: for full 'fields' support, 'rest' props from customizations need to pass onto view.
-            //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
-            const mergedProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> = viewProps
-              ? {
-                  ...(componentProps as any),
-                  ...(viewProps as any)
-                }
-              : componentProps;
-
-            const theme = mergedProps.theme || settings.theme;
-
-            const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
-            const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
-
-            const viewComponentProps: typeof mergedProps & IDefaultSlotProps<any> = {
-              ...(mergedProps as any),
-              styles,
-              tokens,
-              _defaultStyles: styles
-            };
-
-            return component.view(viewComponentProps);
-          };
-          return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
-        }}
-      </CustomizerContext.Consumer>
+  const result: React.FunctionComponent<TComponentProps> = (
+    componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
+  ) => {
+    const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
+      component.displayName,
+      React.useContext(CustomizerContext),
+      component.fields
     );
+
+    const useState = component.state;
+
+    if (useState) {
+      // Don't assume state will return all props, so spread useState result over component props.
+      componentProps = {
+        ...componentProps,
+        ...useState(componentProps)
+      };
+    }
+
+    const theme = componentProps.theme || settings.theme;
+
+    const tokens = _resolveTokens(componentProps, theme, component.tokens, settings.tokens, componentProps.tokens);
+    const styles = _resolveStyles(componentProps, theme, tokens, component.styles, settings.styles, componentProps.styles);
+
+    const viewProps = {
+      ...componentProps,
+      styles,
+      tokens,
+      _defaultStyles: styles
+    } as TViewProps & IDefaultSlotProps<any>;
+
+    return component.view(viewProps);
   };
 
   result.displayName = component.displayName;
