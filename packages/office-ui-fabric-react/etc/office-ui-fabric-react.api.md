@@ -4163,6 +4163,7 @@ export interface IDropdownStyles {
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
     dropdownItemSelectedAndDisabled: IStyle;
@@ -6347,6 +6348,7 @@ export interface ISelectableOption {
     ariaLabel?: string;
     data?: any;
     disabled?: boolean;
+    hidden?: boolean;
     index?: number;
     itemType?: SelectableOptionMenuItemType;
     key: string | number;
