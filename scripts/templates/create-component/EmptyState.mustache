@@ -1,20 +1,31 @@
-import { useState } from 'react';
+import { useCallback, useState } from 'react';
 import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}}ViewProps } from './{{componentName}}.types';
 import { useControlledState } from '../../Foundation';
 
 export const use{{componentName}}State: I{{componentName}}Component['state'] = (
   props: Readonly<I{{componentName}}Props>
 ): I{{componentName}}ViewProps => {
-  const [status] = useState('State Text');
+  const [clicks, setClicks] = useState(0);
   const [text] = useControlledState(props, 'text', {
     defaultPropName: 'defaultText',
-    defaultPropValue: 'Default Text'
+    defaultPropValue: 'Click Me!'
   });
+
+  // useCallback memoizes functions based on its dependency list to avoid unnecessarily mutating callback references.
+  // It is important that any props and state used (like 'clicks' here) are also listed in the dependency array argument
+  // to ensure that callbacks change when their dependencies do.
+  const _onClick = useCallback(() => {
+    setClicks(clicks + 1);
+  },
+    [clicks]
+  );
 
   const viewProps: I{{componentName}}ViewProps = {
     ...props,
     text,
-    status
+    clicks,
+    onClick: _onClick
   };
+
   return viewProps;
 };

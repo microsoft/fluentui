@@ -1,11 +1,11 @@
-import { renderHook } from 'react-hooks-testing-library';
+import { act, renderHook } from 'react-hooks-testing-library';
 import { use{{componentName}}State } from './{{componentName}}.state';
 
 describe('{{componentName}}State', () => {
   test('should fall back to default values', () => {
     const { result } = renderHook(() => use{{componentName}}State({}));
-    expect(result.current.status).toBe('State Text');
-    expect(result.current.text).toBe('Default Text');
+    expect(result.current.clicks).toBe(0);
+    expect(result.current.text).toBe('Click Me!');
   });
 
   test('should use default prop value', () => {
@@ -16,5 +16,15 @@ describe('{{componentName}}State', () => {
   test('should give prop value highest priority', () => {
     const { result } = renderHook(() => use{{componentName}}State({ text: 'propValue', defaultText: 'defaultPropValue' }));
     expect(result.current.text).toBe('propValue');
+  });
+
+  test('should increment clicks on callback', () => {
+    const { result } = renderHook(() => use{{componentName}}State({}));
+    expect(result.current.clicks).toBe(0);
+    expect(result.current.onClick).toBeDefined();
+    act(() => {
+      (result.current.onClick as any)();
+    });
+    expect(result.current.clicks).toBe(1);
   });
 });
