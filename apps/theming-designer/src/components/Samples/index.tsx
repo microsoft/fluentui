@@ -119,25 +119,24 @@ const commandBarFarItems = [
     onClick: () => console.log('Search')
   },
   {
-    key: 'tile',
-    name: 'Grid view',
-    ariaLabel: 'Grid view',
+    key: 'filter',
+    name: 'Filter',
+    ariaLabel: 'Filter',
     iconProps: {
-      iconName: 'Tiles'
+      iconName: 'Filter'
     },
     iconOnly: true,
-    onClick: () => console.log('Tiles')
+    onClick: () => console.log('Filter')
   },
   {
-    key: 'info',
-    name: 'Info',
-    ariaLabel: 'Info',
+    key: 'list',
+    name: 'List',
+    ariaLabel: 'List',
     iconProps: {
-      iconName: 'Info'
+      iconName: 'List'
     },
-    backgroundColor: '#ffffff',
     iconOnly: true,
-    onClick: () => console.log('Info')
+    onClick: () => console.log('List')
   }
 ];
 
