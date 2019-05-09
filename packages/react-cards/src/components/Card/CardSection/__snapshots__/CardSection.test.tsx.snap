@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Card Item renders correctly 1`] = `
+exports[`Card Section renders correctly 1`] = `
 <div
   className=
       ms-Stack
@@ -36,12 +36,15 @@ exports[`Card Item renders correctly 1`] = `
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -56,13 +59,22 @@ exports[`Card Item renders correctly 1`] = `
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the first item in a Compact Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the first section in a Compact Card 1`] = `
 <div
   className=
       ms-Stack
@@ -98,12 +110,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -118,17 +133,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -143,13 +170,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the first item in a Vertical Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the first section in a Vertical Card 1`] = `
 <div
   className=
       ms-Stack
@@ -185,12 +221,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -205,17 +244,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -230,13 +281,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the last item in a Compact Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the last section in a Compact Card 1`] = `
 <div
   className=
       ms-Stack
@@ -272,12 +332,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -292,17 +355,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -317,13 +392,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the last item in a Vertical Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the last section in a Vertical Card 1`] = `
 <div
   className=
       ms-Stack
@@ -359,12 +443,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -379,17 +466,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -404,13 +503,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the middle item in a Compact Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the middle section in a Compact Card 1`] = `
 <div
   className=
       ms-Stack
@@ -446,12 +554,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -466,17 +577,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -491,17 +614,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -516,13 +651,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the middle item in a Vertical Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the middle section in a Vertical Card 1`] = `
 <div
   className=
       ms-Stack
@@ -558,12 +702,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -578,17 +725,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -603,17 +762,29 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -628,13 +799,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the only item in a Compact Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the only section in a Compact Card 1`] = `
 <div
   className=
       ms-Stack
@@ -670,12 +850,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -690,13 +873,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when filling up the margins while being the only item in a Vertical Card 1`] = `
+exports[`Card Section renders correctly when filling up the margins while being the only section in a Vertical Card 1`] = `
 <div
   className=
       ms-Stack
@@ -732,12 +924,15 @@ exports[`Card Item renders correctly when filling up the margins while being the
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -752,13 +947,22 @@ exports[`Card Item renders correctly when filling up the margins while being the
           padding-top: 0px;
           width: auto;
         }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
+        }
   >
     <div />
   </div>
 </div>
 `;
 
-exports[`Card Item renders correctly when having tokens passed to it 1`] = `
+exports[`Card Section renders correctly when having tokens passed to it 1`] = `
 <div
   className=
       ms-Stack
@@ -794,12 +998,15 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
 >
   <div
     className=
-        ms-StackItem
-        ms-CardItem
+        ms-Stack
+        ms-CardSection
         {
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
-          flex-shrink: 0;
+          box-sizing: border-box;
+          display: flex;
+          flex-direction: column;
+          flex-wrap: nowrap;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 18px;
           font-weight: 400;
@@ -813,6 +1020,15 @@ exports[`Card Item renders correctly when having tokens passed to it 1`] = `
           padding-right: 0px;
           padding-top: 0px;
           width: auto;
+        }
+        & > * {
+          text-overflow: ellipsis;
+        }
+        & > *:not(:first-child) {
+          margin-top: 12px;
+        }
+        & > *:not(.ms-StackItem) {
+          flex-shrink: 1;
         }
   >
     <div />

@@ -6773,20 +6773,24 @@ export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['
 
 // @public (undocumented)
 export interface IStackItemTokens {
-    // (undocumented)
     margin?: number | string;
+    padding?: number | string;
 }
 
 // @public (undocumented)
 export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React_2.HTMLAttributes<HTMLElement> {
     as?: React_2.ReactType<React_2.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    // @deprecated
     gap?: number | string;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
     horizontal?: boolean;
     horizontalAlign?: Alignment;
+    // @deprecated
     maxHeight?: number | string;
+    // @deprecated
     maxWidth?: number | string;
+    // @deprecated
     padding?: number | string;
     reversed?: boolean;
     verticalAlign?: Alignment;
@@ -6815,6 +6819,9 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 // @public (undocumented)
 export interface IStackTokens {
     childrenGap?: number | string;
+    maxHeight?: number | string;
+    maxWidth?: number | string;
+    padding?: number | string;
 }
 
 // @public (undocumented)

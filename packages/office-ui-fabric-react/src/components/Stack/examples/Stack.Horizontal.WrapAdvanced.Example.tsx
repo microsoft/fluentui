@@ -2,7 +2,8 @@ import * as React from 'react';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -31,7 +32,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         width: `${stackWidth}%`,
@@ -47,27 +48,16 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
             color: DefaultPalette.white
           }
         }
-      },
-
-      container: {
-        height: containerHeight
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      configureStack: {
-        childrenGap: 20
-      },
-      wrapStack: {
-        childrenGap: 30
       }
     };
+    const containerStyles = mergeStyles({ height: containerHeight });
+
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const configureStackTokens: IStackTokens = { childrenGap: 20 };
+    const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
             <Slider label="Stack width:" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
@@ -85,7 +75,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal tokens={tokens.configureStack}>
+        <Stack horizontal tokens={configureStackTokens}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -122,15 +112,15 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           </Stack.Item>
         </Stack>
 
-        <div className={styles.container}>
+        <div className={containerStyles}>
           <Stack
             horizontal
             verticalFill
             wrap
-            tokens={tokens.wrapStack}
             horizontalAlign={horizontalAlignment}
             verticalAlign={verticalAlignment}
-            className={styles.root}
+            styles={stackStyles}
+            tokens={wrapStackTokens}
           >
             <span>1</span>
             <span>2</span>
