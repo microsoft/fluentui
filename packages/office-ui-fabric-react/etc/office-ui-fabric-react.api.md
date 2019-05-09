@@ -3564,7 +3564,6 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     draggableHeaderClassName?: string;
     isMultiline?: boolean;
     onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
-    // Warning: (ae-forgotten-export) The symbol "ResponsiveMode" needs to be exported by the entry point index.d.ts
     responsiveMode?: ResponsiveMode;
     showCloseButton?: boolean;
     styles?: IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles>;
@@ -8346,6 +8345,22 @@ export enum ResizeGroupDirection {
     horizontal = 0,
     // (undocumented)
     vertical = 1,
+}
+
+// @public (undocumented)
+export enum ResponsiveMode {
+    // (undocumented)
+    large = 2,
+    // (undocumented)
+    medium = 1,
+    // (undocumented)
+    small = 0,
+    // (undocumented)
+    xLarge = 3,
+    // (undocumented)
+    xxLarge = 4,
+    // (undocumented)
+    xxxLarge = 5,
 }
 
 // @public
