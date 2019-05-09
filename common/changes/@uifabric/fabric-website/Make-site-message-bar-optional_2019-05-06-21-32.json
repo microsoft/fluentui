@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Move renderSiteMessageBar to SiteDefinition",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "v-jojanz@microsoft.com"
+}

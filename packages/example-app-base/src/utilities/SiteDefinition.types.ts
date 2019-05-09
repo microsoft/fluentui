@@ -1,6 +1,7 @@
 import { ICustomizations } from 'office-ui-fabric-react';
 import { INavPage } from '../components/Nav/index';
 import { IPlatform } from '../components/PlatformPicker/index';
+import { ISiteMessageBarProps } from '../components/SiteMessageBar/index';
 
 /**
  * Site definition.
@@ -30,6 +31,20 @@ export interface ISiteDefinition<TPlatforms extends string = string> {
    * an entry's `from` property, replace that segment of the hash with the `to` property and redirect.
    */
   redirects?: IRedirect[];
+
+  /**
+   * Config for the message bars below the top nav. Include the props for the message bar and the paths
+   * that need to show that message bar. You can define exclusions too.
+   */
+  messageBars?: ISiteMessageBarConfig[];
+}
+
+export interface ISiteMessageBarConfig extends ISiteMessageBarProps {
+  /** Look for URLs containing this string or matching this regex */
+  path: string | RegExp;
+
+  /** Exclude URLs that contain this string or matching this regex */
+  exclude?: string | RegExp;
 }
 
 export interface IRedirect {
