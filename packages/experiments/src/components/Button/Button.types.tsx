@@ -103,6 +103,11 @@ export interface IButtonProps
   onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
+   * Defines whether the Button is in a checked state (for toggle buttons).
+   */
+  checked?: boolean;
+
+  /**
    * Defines whether disabled buttons should be tabbable via keyboard navigation or not.
    * @defaultvalue false
    */

@@ -75,4 +75,28 @@ describe('Button view', () => {
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
   });
+
+  it('renders a default checked Button correctly', () => {
+    const component = renderer.create(<Button checked content="Button" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a primary checked Button correctly', () => {
+    const component = renderer.create(<Button primary checked content="Button" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a default circular checked Button correctly', () => {
+    const component = renderer.create(<Button checked circular icon="Volume3" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a primary circular checked Button correctly', () => {
+    const component = renderer.create(<Button primary checked circular icon="Volume3" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
 });

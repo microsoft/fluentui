@@ -73,6 +73,7 @@ export interface ISplitButtonProps
       | 'primary'
       | 'disabled'
       | 'onClick'
+      | 'checked'
       | 'allowDisabledFocus'
       | 'ariaLabel'
       | 'ariaHidden'

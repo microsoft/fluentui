@@ -60,7 +60,7 @@ export interface IMenuButton {
  */
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'allowDisabledFocus' | 'ariaLabel' | 'ariaHidden'>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'ariaHidden'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton> {
   /**
