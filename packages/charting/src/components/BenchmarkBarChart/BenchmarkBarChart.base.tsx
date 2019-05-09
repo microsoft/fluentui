@@ -16,7 +16,7 @@ export class BenchmarkBarChartBase extends React.Component<IBenchmarkBarChartPro
   }
 
   public render(): JSX.Element {
-    const { chartTitle, data, benchmarkData, totalData } = this.props.data;
+    const { chartTitle, benchmarkLabel, data, benchmarkData, totalData } = this.props.data;
 
     const dataRatio = Math.round((data / totalData) * 100);
     const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
@@ -25,6 +25,9 @@ export class BenchmarkBarChartBase extends React.Component<IBenchmarkBarChartPro
     if (this.props.isPercentage) {
       percentageContent = dataRatio + '%';
     }
+
+    let benchmarkAriaLabel = benchmarkLabel || '';
+    benchmarkAriaLabel += benchmarkData;
 
     const benchmarkStyles: IStyle = {
       marginLeft: 'calc(' + benchmarkRatio + '% - 8px)'
@@ -58,7 +61,7 @@ export class BenchmarkBarChartBase extends React.Component<IBenchmarkBarChartPro
             <div
               className={mergeStyles(this._classNames.triangle, benchmarkStyles)}
               hidden={this.props.hideBenchmark}
-              aria-label={String(benchmarkData)}
+              aria-label={benchmarkAriaLabel}
               data-is-focusable={true}
             />
           </FocusZone>

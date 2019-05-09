@@ -55,6 +55,11 @@ export interface IChartingProps {
   chartTitle?: string;
 
   /**
+   * Localized string of the benchmark triangle label for screen reader
+   */
+  benchmarkLabel?: string;
+
+  /**
    * The datapoint in the chart
    */
   data: number;
