@@ -23,7 +23,7 @@ describe('{{componentName}}State', () => {
     expect(result.current.clicks).toBe(0);
     expect(result.current.onClick).toBeDefined();
     act(() => {
-      (result.current.onClick as any)();
+      result.current.onClick!();
     });
     expect(result.current.clicks).toBe(1);
   });
