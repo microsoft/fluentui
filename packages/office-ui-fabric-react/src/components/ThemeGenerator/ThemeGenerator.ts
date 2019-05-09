@@ -47,6 +47,7 @@ export class ThemeGenerator {
    * Does not override colors of rules where isCustomized is true (i.e. doesn't override existing customizations).
    */
   public static insureSlots(slotRules: IThemeRules, isInverted: boolean) {
+    console.log('currentIsDark: ', isInverted);
     // Get all the "root" rules, the ones which don't inherit. Then "set" them to trigger updating dependent slots.
     for (const ruleName in slotRules) {
       if (slotRules.hasOwnProperty(ruleName)) {

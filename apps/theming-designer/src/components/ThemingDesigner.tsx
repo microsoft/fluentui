@@ -137,6 +137,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     if (colorChangeTimeout) {
       clearTimeout(colorChangeTimeout);
     }
+
     if (newColor) {
       if (colorToChange === this.state.primaryColor) {
         this.setState({ primaryColor: newColor });
@@ -151,10 +152,11 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
         const themeRules = this.state.themeRules;
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-          ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
+          ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, false, true);
           if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
+            console.log('got here');
             // isInverted got swapped, so need to refresh slots with new shading rules
-            ThemeGenerator.insureSlots(themeRules, currentIsDark);
+            ThemeGenerator.insureSlots(themeRules, !currentIsDark);
           }
         }
         this.setState({ themeRules: themeRules }, this._makeNewTheme);
