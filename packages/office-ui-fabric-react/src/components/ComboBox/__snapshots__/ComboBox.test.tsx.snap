@@ -229,6 +229,7 @@ exports[`ComboBox Renders correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -515,6 +516,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
