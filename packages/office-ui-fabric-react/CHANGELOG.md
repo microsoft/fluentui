@@ -1,6 +1,17 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 08 May 2019 12:37:40 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+
+## 6.179.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Added support for hidden options in dropdown and combo box
+
+### Patches
+
+- Include md files in nested docs folders
 
 ## 6.178.0
 Wed, 08 May 2019 12:37:40 GMT

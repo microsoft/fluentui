@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+
+## 6.17.1
+Thu, 09 May 2019 12:35:50 GMT
+
+### Patches
+
+- Include md files in nested docs folders
+- Move renderSiteMessageBar to SiteDefinition
 
 ## 6.17.0
 Tue, 07 May 2019 12:34:52 GMT

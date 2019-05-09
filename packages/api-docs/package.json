@@ -25,7 +25,7 @@
     "@uifabric/styling": "^6.47.3",
     "@uifabric/merge-styles": "^6.17.2",
     "@uifabric/utilities": "^6.38.1",
-    "office-ui-fabric-react": "^6.178.0"
+    "office-ui-fabric-react": "^6.179.0"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.8",

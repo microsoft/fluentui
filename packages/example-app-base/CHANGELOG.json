@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.19.0",
+      "tag": "@uifabric/example-app-base_v6.19.0",
+      "date": "Thu, 09 May 2019 12:35:50 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add SiteMessageBar component and renderSiteMessageBar api to ISiteDefinition",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "fc466fcc96d0052a2446770485addc7116607bfc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.178.0` to `^6.179.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.0",
       "tag": "@uifabric/example-app-base_v6.18.0",
       "date": "Tue, 07 May 2019 12:34:52 GMT",

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+
+## 6.19.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Add SiteMessageBar component and renderSiteMessageBar api to ISiteDefinition
 
 ## 6.18.0
 Tue, 07 May 2019 12:34:52 GMT

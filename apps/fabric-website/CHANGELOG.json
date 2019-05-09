@@ -2,6 +2,33 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.17.1",
+      "tag": "@uifabric/fabric-website_v6.17.1",
+      "date": "Thu, 09 May 2019 12:35:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Include md files in nested docs folders",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "075d60c4fa36348ee9f5c62811fcee0141672a2c"
+          },
+          {
+            "comment": "Move renderSiteMessageBar to SiteDefinition",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "fc466fcc96d0052a2446770485addc7116607bfc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.18.0` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.178.0` to `^6.179.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.0",
       "tag": "@uifabric/fabric-website_v6.17.0",
       "date": "Tue, 07 May 2019 12:34:52 GMT",
