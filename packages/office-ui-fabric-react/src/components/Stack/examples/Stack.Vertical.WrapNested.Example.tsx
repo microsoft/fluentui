@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Slider } from 'office-ui-fabric-react/lib/Slider';
 import { Stack } from '../Stack';
-import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackHeight: number;
@@ -27,13 +28,14 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
 
     const { stackHeight } = this.state;
 
-    const styles = mergeStyleSets({
+    const containerStackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: stackHeight
-      },
-
-      stackOne: {
+      }
+    };
+    const firstStackStyles: IStackStyles = {
+      root: {
         background: DefaultPalette.neutralTertiary,
         selectors: {
           '& span': {
@@ -41,9 +43,10 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
             background: DefaultPalette.themePrimary
           }
         }
-      },
-
-      stackTwo: {
+      }
+    };
+    const secondStackStyles: IStackStyles = {
+      root: {
         background: DefaultPalette.neutralSecondary,
         selectors: {
           '& span': {
@@ -51,9 +54,10 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
             background: DefaultPalette.themeDark
           }
         }
-      },
-
-      stackThree: {
+      }
+    };
+    const thirdStackStyles: IStackStyles = {
+      root: {
         background: DefaultPalette.neutralPrimary,
         selectors: {
           '& span': {
@@ -62,25 +66,15 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           }
         }
       }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: '30 40'
-      },
-      firstStack: {
-        childrenGap: '10 30'
-      },
-      secondStack: {
-        childrenGap: '20 50'
-      }
     };
 
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const wrapStackTokens: IStackTokens = { childrenGap: '30 40' };
+    const firstStackTokens: IStackTokens = { childrenGap: '10 30' };
+    const secondStackTokens: IStackTokens = { childrenGap: '20 50' };
+
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Slider
           label="Change the stack height to see how child items wrap onto multiple columns:"
           min={1}
@@ -91,8 +85,8 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap tokens={tokens.wrapStack} className={styles.root}>
-          <Stack wrap tokens={tokens.firstStack} className={styles.stackOne}>
+        <Stack wrap styles={containerStackStyles} tokens={wrapStackTokens}>
+          <Stack wrap styles={firstStackStyles} tokens={firstStackTokens}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
@@ -102,13 +96,13 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
             <span>7</span>
           </Stack>
 
-          <Stack wrap tokens={tokens.secondStack} className={styles.stackTwo}>
+          <Stack wrap styles={secondStackStyles} tokens={secondStackTokens}>
             <span>1</span>
             <span>2</span>
             <span>3</span>
           </Stack>
 
-          <Stack wrap className={styles.stackThree}>
+          <Stack wrap styles={thirdStackStyles}>
             <span>1</span>
             <span>2</span>
             <span>3</span>

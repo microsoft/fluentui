@@ -74,7 +74,15 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
  * {@docCategory Stack}
  */
 export interface IStackItemTokens {
+  /**
+   * Defines the margin to be applied to the StackItem relative to its container.
+   */
   margin?: number | string;
+
+  /**
+   * Defines the padding to be applied to the StackItem contents relative to its border.
+   */
+  padding?: number | string;
 }
 
 /**

@@ -1,16 +1,23 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '../../Foundation';
+import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
 import StackItem from './StackItem/StackItem';
 import { IStackItemProps } from './StackItem/StackItem.types';
-import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 import { styles } from './Stack.styles';
-import { getNativeProps, htmlElementProperties } from '../../Utilities';
+import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
 const view: IStackComponent['view'] = props => {
   const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
+
+  warnDeprecations('Stack', props, {
+    gap: 'tokens.childrenGap',
+    maxHeight: 'tokens.maxHeight',
+    maxWidth: 'tokens.maxWidth',
+    padding: 'tokens.padding'
+  });
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,

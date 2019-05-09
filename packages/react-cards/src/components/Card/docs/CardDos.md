@@ -1,0 +1,3 @@
+- Make sure all the children of the Card component are of type CardItem or CardSection.
+- Take into account that CardItems are intended to hold only one child while making layout management easier (use it as you would use a [StackItem](https://developer.microsoft.com/en-us/fabric#/components/stack)).
+- Take into account that CardSections are intended to hold multiple children while making layout management easier (use it as you would use a [Stack](https://developer.microsoft.com/en-us/fabric#/components/stack)).
