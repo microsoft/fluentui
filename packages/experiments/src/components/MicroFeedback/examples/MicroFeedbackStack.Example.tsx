@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
 import { MicroFeedbackStack } from '../MicroFeedbackStack';
+import { Text } from 'office-ui-fabric-react';
 
 export class MicroFeedbackStackExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -26,7 +27,10 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
 
     const microfeedbackStyles: IMicroFeedbackStyles = {
       root: {
-        float: 'left'
+        width: '100%'
+      },
+      iconContainer: {
+        float: 'right'
       },
       followUpContainer: {
         background: '#f3f2f1'
@@ -43,7 +47,9 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
           thumbsDownTitle="Dislike"
           sendFeedback={sendFeedbackCallback}
           sendFollowupIndex={sendFollowupIndexCallback}
-        />
+        >
+          <Text>Please help us improve</Text>
+        </MicroFeedbackStack>
       </div>
     );
   }

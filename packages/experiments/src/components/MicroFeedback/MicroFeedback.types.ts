@@ -41,6 +41,9 @@ export interface IMicroFeedbackStyles {
   //  Base styles for the root element of buttons and followup
   root?: IStyle;
 
+  //  Styles for the element containing the icons
+  iconContainer?: IStyle;
+
   //  Styles for container element of follow up question and options
   followUpContainer?: IStyle;
 

@@ -3,7 +3,9 @@ import { IMicroFeedbackStyleProps, IMicroFeedbackStyles } from './MicroFeedback.
 export const getStyles = (props: IMicroFeedbackStyleProps): IMicroFeedbackStyles => {
   return {
     root: {
-      margin: '4px 8px 4px 8px',
+      margin: '4px 8px 4px 8px'
+    },
+    iconContainer: {
       float: 'right'
     },
     followUpQuestion: {

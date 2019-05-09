@@ -4,6 +4,7 @@ import { classNamesFunction } from '../../Utilities';
 import { IconButton, DefaultButton, Callout, FocusZone, FocusZoneDirection, List, Text } from 'office-ui-fabric-react';
 import { IMicroFeedbackProps, IMicroFeedbackStyleProps, IMicroFeedbackStyles, VoteType } from './MicroFeedback.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+// import { IStackTokens } from '../Stack.types';
 
 const getClassNames = classNamesFunction<IMicroFeedbackStyleProps, IMicroFeedbackStyles>();
 
@@ -40,7 +41,8 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
 
     return (
       <Stack className={this.classNames.root}>
-        <Stack horizontal>
+        <Stack horizontal className={this.classNames.iconContainer}>
+          {this.props.children}
           <div ref={this.likeRef}>
             <IconButton menuIconProps={{ iconName: likeIcon }} title={this.props.thumbsUpTitle} onClick={this._likeVote} />
           </div>
