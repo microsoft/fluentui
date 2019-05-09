@@ -63,6 +63,24 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
       }
     }
 
+    public componentDidUpdate(newProps: TProps) {
+      const { skipViewportMeasures: oldSkipViewportMeasures } = this.props as IWithViewportProps;
+      const { skipViewportMeasures: newSkipViewportMeasures } = newProps as IWithViewportProps;
+      const viewportElement = this._root.current;
+
+      if (oldSkipViewportMeasures !== newSkipViewportMeasures) {
+        if (newSkipViewportMeasures) {
+          this._viewportResizeObserver.disconnect();
+          this._viewportResizeObserver = null;
+          this._events.on(window, 'resize', this._onAsyncResize);
+        } else {
+          this._events.off(window, 'resize', this._onAsyncResize);
+          this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
+          this._viewportResizeObserver.observe(viewportElement);
+        }
+      }
+    }
+
     public componentWillUnmount(): void {
       this._events.dispose();
 
