@@ -1,20 +1,20 @@
-import { I{{componentName}}Props, I{{componentName}}ViewProps } from './{{componentName}}.types';
-import { BaseState } from '../../utilities/BaseState';
+import { useState } from 'react';
+import { I{{componentName}}Component, I{{componentName}}Props, I{{componentName}}ViewProps } from './{{componentName}}.types';
+import { useControlledState } from '../../Foundation';
 
-// Internal state will most likely include a subset of your ViewProps. This template just equates them to start with.
-export type I{{componentName}}State = I{{componentName}}ViewProps;
+export const use{{componentName}}State: I{{componentName}}Component['state'] = (
+  props: Readonly<I{{componentName}}Props>
+): I{{componentName}}ViewProps => {
+  const [status] = useState('State Text');
+  const [text] = useControlledState(props, 'text', {
+    defaultPropName: 'defaultText',
+    defaultPropValue: 'Default Text'
+  });
 
-export class {{componentName}}State extends BaseState<I{{componentName}}Props, I{{componentName}}ViewProps, I{{componentName}}State > {
-  constructor(props: {{componentName}}State['props']) {
-    super(props, {
-      // Mark controlledProps to ensure that they get priority when provided as a component prop.
-      // For props not marked controlled, component state will get priority over component props.
-      controlledProps: ['text']
-    });
-
-    this.state = {
-      text: props.defaultText || 'Default Text',
-      status: 'State Text'
-    };
-  }
-}
+  const viewProps: I{{componentName}}ViewProps = {
+    ...props,
+    text,
+    status
+  };
+  return viewProps;
+};

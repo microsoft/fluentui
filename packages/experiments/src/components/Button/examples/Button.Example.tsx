@@ -32,7 +32,7 @@ export class ButtonExample extends React.Component<{}, {}> {
         <Stack tokens={tokens.headingStack} padding={8}>
           <Stack tokens={tokens.buttonStack}>
             <ButtonStack>
-              <Button content="Default button" onClick={alertClicked} slots={{ content: { render: () => <div>I'm new</div> } }} />
+              <Button content="Default button" onClick={alertClicked} />
               <Button disabled content="Disabled default button" onClick={alertClicked} />
               <Button primary content="Primary button" onClick={alertClicked} />
               <Button primary disabled content="Disabled primary button" onClick={alertClicked} />
