@@ -1015,7 +1015,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
     const { isOpen, selectedIndices, hasFocus } = this.state;
-    const { multiSelect, openOnFocus } = this.props;
+    const { multiSelect, openOnKeyboardFocus } = this.props;
 
     const disabled = this._isDisabled();
 
@@ -1027,10 +1027,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }
-      if (openOnFocus && !hasFocus) {
-        this.setState({ isOpen: true });
+      const state: Pick<IDropdownState, 'hasFocus'> | Pick<IDropdownState, 'hasFocus' | 'isOpen'> = { hasFocus: true };
+      if (openOnKeyboardFocus && !hasFocus) {
+        (state as Pick<IDropdownState, 'hasFocus' | 'isOpen'>).isOpen = true;
       }
-      this.setState({ hasFocus: true });
+      this.setState(state);
     }
   };
 

@@ -359,10 +359,10 @@ describe('Dropdown', () => {
       expect(thirdItemElement.getAttribute('title')).toEqual('3');
     });
 
-    it('opens on focus if openOnFocus is true', () => {
+    it('opens on focus if openOnKeyboardFocus is true', () => {
       let dropdownRoot: HTMLElement | undefined;
 
-      ReactDOM.render(<Dropdown key={'asdf'} openOnFocus label="testgroup" options={DEFAULT_OPTIONS} />, container);
+      ReactDOM.render(<Dropdown key={'asdf'} openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />, container);
       dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.focus(dropdownRoot);
 
