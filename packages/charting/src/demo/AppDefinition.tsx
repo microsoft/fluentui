@@ -50,6 +50,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'StackedBarChart',
           name: 'StackedBarChart',
           url: '#/examples/stackedbarchart'
+        },
+        {
+          component: require<any>('../components/BenchmarkBarChart/BenchmarkBarChartPage').BenchmarkBarChartPage,
+          key: 'BenchmarkBarChart',
+          name: 'BenchmarkBarChart',
+          url: '#/examples/benchmarkbarchart'
         }
       ]
     }
