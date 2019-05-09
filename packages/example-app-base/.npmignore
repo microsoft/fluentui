@@ -20,5 +20,3 @@ tsd.json
 tslint.json
 typings
 webpack.config.js
-
-!src/**/*.types.ts
