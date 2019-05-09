@@ -152,7 +152,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
         const themeRules = this.state.themeRules;
         if (themeRules) {
           const currentIsDark = isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!);
-          ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, false, true);
+          ThemeGenerator.setSlot(themeRules[BaseSlots[baseSlot]], newColor, currentIsDark, true, true);
           if (currentIsDark !== isDark(themeRules[BaseSlots[BaseSlots.backgroundColor]].color!)) {
             console.log('got here');
             // isInverted got swapped, so need to refresh slots with new shading rules
