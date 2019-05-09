@@ -26,8 +26,8 @@ import {
   ITextStyles
 } from 'office-ui-fabric-react';
 
-const alertClicked = (): void => {
-  alert('Clicked');
+const cardClicked = (): void => {
+  /** no-impl **/
 };
 
 // Styles used in story examples.
@@ -198,7 +198,7 @@ storiesOf('Card', module)
   ))
   .addStory('Vertical Card - Basic - Hoverable', () => (
     <Fabric>
-      <Card onClick={alertClicked}>
+      <Card onClick={cardClicked}>
         <Card.Item>
           <Text>Basic vertical card</Text>
         </Card.Item>
@@ -207,7 +207,7 @@ storiesOf('Card', module)
   ))
   .addStory('Vertical Card - Example with contents - Image on top', () => (
     <Fabric>
-      <Card onClick={alertClicked} tokens={cardTokens}>
+      <Card onClick={cardClicked} tokens={cardTokens}>
         <Card.Item>
           <Persona text="Kevin Jameson" secondaryText="Feb 2, 2019" />
         </Card.Item>
@@ -238,7 +238,7 @@ storiesOf('Card', module)
   ))
   .addStory('Vertical Card - Example with contents - Image in middle', () => (
     <Fabric>
-      <Card onClick={alertClicked} tokens={cardTokens}>
+      <Card onClick={cardClicked} tokens={cardTokens}>
         <Card.Section
           fill
           verticalAlign="end"
@@ -293,7 +293,7 @@ storiesOf('Card', module)
   ))
   .addStory('Compact Card - Basic - Hoverable', () => (
     <Fabric>
-      <Card compact onClick={alertClicked}>
+      <Card compact onClick={cardClicked}>
         <Card.Item>
           <Text>Basic compact card</Text>
         </Card.Item>
@@ -302,7 +302,7 @@ storiesOf('Card', module)
   ))
   .addStory('Compact Card - Example with contents', () => (
     <Fabric>
-      <Card compact onClick={alertClicked} tokens={cardTokens}>
+      <Card compact onClick={cardClicked} tokens={cardTokens}>
         <Card.Item fill>
           <Image src="https://placehold.it/180x135" alt="Placeholder image." />
         </Card.Item>
