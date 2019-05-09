@@ -1,3 +1,4 @@
+import 'react-app-polyfill/ie11';
 import { registerIcons } from 'office-ui-fabric-react';
 import { initializeFileTypeIcons } from '@uifabric/file-type-icons';
 import { createSite } from './utilities/createSite';
