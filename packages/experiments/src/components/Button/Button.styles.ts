@@ -153,6 +153,40 @@ const primaryCircularTokens: IButtonComponent['tokens'] = {
   borderWidthFocused: 1
 };
 
+const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.buttonBackgroundChecked,
+    backgroundColorHovered: semanticColors.buttonBackgroundCheckedHovered,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    color: semanticColors.buttonTextChecked,
+    colorHovered: semanticColors.buttonTextCheckedHovered,
+    colorPressed: semanticColors.buttonTextPressed,
+
+    iconColor: semanticColors.buttonTextChecked,
+    iconColorHovered: semanticColors.buttonTextCheckedHovered,
+    iconColorPressed: semanticColors.buttonTextPressed
+  };
+};
+
+const primaryCheckedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
+
+    color: semanticColors.primaryButtonTextPressed,
+    colorHovered: semanticColors.primaryButtonTextHovered,
+    colorPressed: semanticColors.primaryButtonTextPressed,
+
+    iconColor: semanticColors.primaryButtonTextPressed,
+    iconColorHovered: semanticColors.primaryButtonTextHovered,
+    iconColorPressed: semanticColors.primaryButtonTextPressed
+  };
+};
+
 export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => [
   baseTokens,
   !!props.href && hrefTokens,
@@ -160,6 +194,8 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
   props.primary && primaryEnabledTokens,
   props.circular && circularTokens,
   props.circular && props.primary && primaryCircularTokens,
+  props.checked && checkedTokens,
+  props.checked && props.primary && primaryCheckedTokens,
   props.disabled && disabledTokens
 ];
 

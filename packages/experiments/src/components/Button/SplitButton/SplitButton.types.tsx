@@ -69,7 +69,16 @@ export interface ISplitButtonProps
   extends ISlottableProps<ISplitButtonSlots>,
     Pick<
       IMenuButtonProps,
-      'href' | 'primary' | 'disabled' | 'onClick' | 'allowDisabledFocus' | 'ariaLabel' | 'defaultExpanded' | 'expanded' | 'onKeyDown'
+      | 'href'
+      | 'primary'
+      | 'disabled'
+      | 'onClick'
+      | 'checked'
+      | 'allowDisabledFocus'
+      | 'ariaLabel'
+      | 'defaultExpanded'
+      | 'expanded'
+      | 'onKeyDown'
     >,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
     IBaseProps<ISplitButton> {
