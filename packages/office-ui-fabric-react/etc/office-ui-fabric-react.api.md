@@ -2749,7 +2749,7 @@ export interface ICommandBarProps extends React.HTMLAttributes<HTMLDivElement> {
     onDataGrown?: (movedItem: ICommandBarItemProps) => void;
     onDataReduced?: (movedItem: ICommandBarItemProps) => void;
     onGrowData?: (data: ICommandBarData) => ICommandBarData;
-    onReduceData?: (data: ICommandBarData) => ICommandBarData;
+    onReduceData?: (data: ICommandBarData) => ICommandBarData | undefined;
     overflowButtonAs?: IComponentAs<IButtonProps>;
     overflowButtonProps?: IButtonProps;
     overflowItems?: ICommandBarItemProps[];
@@ -3564,7 +3564,6 @@ export interface IDialogContentProps extends React.ClassAttributes<DialogContent
     draggableHeaderClassName?: string;
     isMultiline?: boolean;
     onDismiss?: (ev?: React.MouseEvent<HTMLButtonElement>) => any;
-    // Warning: (ae-forgotten-export) The symbol "ResponsiveMode" needs to be exported by the entry point index.d.ts
     responsiveMode?: ResponsiveMode;
     showCloseButton?: boolean;
     styles?: IStyleFunctionOrObject<IDialogContentStyleProps, IDialogContentStyles>;
@@ -4163,6 +4162,7 @@ export interface IDropdownStyles {
     dropdownItem: IStyle;
     dropdownItemDisabled: IStyle;
     dropdownItemHeader: IStyle;
+    dropdownItemHidden: IStyle;
     dropdownItems: IStyle;
     dropdownItemSelected: IStyle;
     dropdownItemSelectedAndDisabled: IStyle;
@@ -6347,6 +6347,7 @@ export interface ISelectableOption {
     ariaLabel?: string;
     data?: any;
     disabled?: boolean;
+    hidden?: boolean;
     index?: number;
     itemType?: SelectableOptionMenuItemType;
     key: string | number;
@@ -8344,6 +8345,22 @@ export enum ResizeGroupDirection {
     horizontal = 0,
     // (undocumented)
     vertical = 1,
+}
+
+// @public (undocumented)
+export enum ResponsiveMode {
+    // (undocumented)
+    large = 2,
+    // (undocumented)
+    medium = 1,
+    // (undocumented)
+    small = 0,
+    // (undocumented)
+    xLarge = 3,
+    // (undocumented)
+    xxLarge = 4,
+    // (undocumented)
+    xxxLarge = 5,
 }
 
 // @public

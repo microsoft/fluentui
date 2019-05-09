@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Mon, 06 May 2019 00:28:08 GMT and should not be manually modified.
+This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+
+## 6.18.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Updating insureSlots method name to ensureSlots to use a more correct verb.
 
 ## 6.17.1
 Mon, 06 May 2019 00:28:08 GMT

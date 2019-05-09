@@ -1,33 +1,13 @@
 import * as React from 'react';
 import { Link } from 'office-ui-fabric-react/lib/Link';
-import { MessageBar, IMessageBarStyles, IMessageBarStyleProps } from 'office-ui-fabric-react/lib/MessageBar';
-import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
-
-export interface ISiteMessageBarProps {
-  /** Text for the message bar */
-  text: string;
-
-  /** Text for a link shown after the main text */
-  linkText?: string;
-
-  /** URL for a link shown after the main text */
-  linkUrl?: string;
-
-  /**
-   * Prefix for session storage key for storing if the message bar has been closed.
-   * If not provided, local storage will not be used.
-   */
-  sessionStoragePrefix?: string;
-
-  /** Styles for the message bar */
-  styles?: IStyleFunctionOrObject<IMessageBarStyleProps, IMessageBarStyles>;
-}
+import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
+import { ISiteMessageBarProps } from './SiteMessageBar.types';
 
 export interface ISiteMessageBarState {
   isVisible: boolean;
 }
 
-export default class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteMessageBarState> {
+export class SiteMessageBar extends React.Component<ISiteMessageBarProps, ISiteMessageBarState> {
   private _sessionStorageKey: string | undefined;
 
   constructor(props: ISiteMessageBarProps) {

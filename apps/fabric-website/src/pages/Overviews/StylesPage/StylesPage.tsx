@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Icon } from 'office-ui-fabric-react';
-import { withPlatform, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { withPlatform, Page, IPageProps, IPageSectionProps, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { getSubTitle } from '../../../utilities/index';
 import * as styles from './StylesPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
@@ -28,9 +28,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/colors/products" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="colors" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="colors" className={styles.cardTitle}>
                   Colors
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="Color" className={styles.cardIcon} />
               </div>
             </Link>
@@ -41,9 +41,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/elevation" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="elevation" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="elevation" className={styles.cardTitle}>
                   Elevation
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="ArrangeSendBackward" className={styles.cardIcon} />
               </div>
             </Link>
@@ -54,9 +54,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/icons" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="iconography" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="iconography" className={styles.cardTitle}>
                   Iconography
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="EmojiTabSymbols" className={styles.cardIcon} />
               </div>
             </Link>
@@ -67,9 +67,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/layout" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="layout" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="layout" className={styles.cardTitle}>
                   Layout
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="Tiles" className={styles.cardIcon} />
               </div>
             </Link>
@@ -80,9 +80,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/motion" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="motion" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="motion" className={styles.cardTitle}>
                   Motion
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="MiniExpand" className={styles.cardIcon} />
               </div>
             </Link>
@@ -93,9 +93,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/typography" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="typography" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="typography" className={styles.cardTitle}>
                   Typography
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="FontSize" className={styles.cardIcon} />
               </div>
             </Link>
@@ -106,9 +106,9 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
           content: (
             <Link href="#/styles/web/localization" className={styles.cardLink}>
               <div className={styles.cardContent}>
-                <h2 id="localization" className={styles.cardTitle}>
+                <MarkdownHeader as="h2" id="localization" className={styles.cardTitle}>
                   Localization
-                </h2>
+                </MarkdownHeader>
                 <Icon iconName="World" className={styles.cardIcon} />
               </div>
             </Link>

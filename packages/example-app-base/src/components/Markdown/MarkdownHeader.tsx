@@ -9,6 +9,7 @@ import { FontSizes } from '@uifabric/fluent-theme';
 export interface IMarkdownHeaderProps {
   as?: keyof React.ReactHTML;
   children?: React.ReactNode;
+  className?: string;
   id?: string;
 
   theme?: ITheme;
@@ -20,6 +21,7 @@ export interface IMarkdownHeaderProps {
  */
 export type IMarkdownHeaderStyleProps = {
   as: string;
+  className?: string;
 };
 
 /**
@@ -30,6 +32,7 @@ export interface IMarkdownHeaderStyles {
 }
 
 const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles> = props => {
+  const { className } = props;
   return {
     root: [
       {
@@ -66,7 +69,8 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
           fontSize: FontSizes.size20,
           marginBottom: '8px'
         }
-      ]
+      ],
+      className
     ]
   };
 };
@@ -74,9 +78,9 @@ const getStyles: IStyleFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles
 const getClassNames = classNamesFunction<IMarkdownHeaderStyleProps, IMarkdownHeaderStyles>();
 
 const MarkdownHeaderBase: React.StatelessComponent<IMarkdownHeaderProps> = props => {
-  const { as: RootType = 'h1', children, id, styles } = props;
+  const { as: RootType = 'h1', children, id, styles, className } = props;
 
-  const classNames = getClassNames(styles, { as: RootType });
+  const classNames = getClassNames(styles, { as: RootType, className });
   return (
     <RootType className={classNames.root} id={id}>
       {children}

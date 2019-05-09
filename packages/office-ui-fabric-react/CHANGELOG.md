@@ -1,6 +1,39 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Sun, 05 May 2019 19:59:10 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+
+## 6.179.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Added support for hidden options in dropdown and combo box
+
+### Patches
+
+- Include md files in nested docs folders
+
+## 6.178.0
+Wed, 08 May 2019 12:37:40 GMT
+
+### Minor changes
+
+- Fix return type of onReduceDate in CommandBar
+
+## 6.177.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme"
+- Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel
+- New feature: Semantic Slots card as well as clean up of layout & css.
+
+### Patches
+
+- Router should error if getComponent doesn't return anything
+- Truncate suggestions in IE11
+- Icon documentation update
 
 ## 6.176.3
 Sun, 05 May 2019 19:59:10 GMT

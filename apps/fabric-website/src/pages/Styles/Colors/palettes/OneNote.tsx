@@ -1,11 +1,11 @@
 import * as React from 'react';
 
-import { ColorPalette } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 
 export const OneNote = () => {
   return (
     <>
-      <h2>OneNote</h2>
+      <MarkdownHeader as="h2">OneNote</MarkdownHeader>
 
       <ColorPalette
         colors={[
