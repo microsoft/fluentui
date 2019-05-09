@@ -56,6 +56,7 @@
     "@uifabric/icons": "^6.5.1",
     "@uifabric/set-version": "^1.1.3",
     "@uifabric/theme-samples": "^0.1.5",
+    "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
     "office-ui-fabric-react": "^6.179.0",
     "tslib": "^1.7.1",
