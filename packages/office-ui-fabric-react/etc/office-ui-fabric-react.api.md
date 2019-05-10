@@ -3367,7 +3367,6 @@ export interface IDetailsItemProps {
     indentWidth?: number | undefined;
     selection?: ISelection | undefined;
     selectionMode?: SelectionMode | undefined;
-    // Warning: (ae-forgotten-export) The symbol "IViewport" needs to be exported by the entry point index.d.ts
     viewport?: IViewport | undefined;
 }
 
@@ -3382,8 +3381,6 @@ export interface IDetailsList extends IList {
 export interface IDetailsListCheckboxProps extends IDetailsCheckboxProps {
 }
 
-// Warning: (ae-forgotten-export) The symbol "IWithViewportProps" needs to be exported by the entry point index.d.ts
-// 
 // @public (undocumented)
 export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewportProps {
     ariaLabel?: string;
@@ -3402,7 +3399,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     componentRef?: IRefObject<IDetailsList>;
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
-    // Warning: (ae-forgotten-export) The symbol "IDragDropEvents" needs to be exported by the entry point index.d.ts
     dragDropEvents?: IDragDropEvents;
     // @deprecated
     enableShimmer?: boolean;
@@ -4191,6 +4187,34 @@ export interface IDocumentCardTitleStyleProps {
 export interface IDocumentCardTitleStyles {
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDragDropContext {
+    // (undocumented)
+    data: any;
+    // (undocumented)
+    index: number;
+    // (undocumented)
+    isGroup?: boolean;
+}
+
+// @public (undocumented)
+export interface IDragDropEvents {
+    // (undocumented)
+    canDrag?: (item?: any) => boolean;
+    // (undocumented)
+    canDrop?: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => boolean;
+    // (undocumented)
+    onDragEnd?: (item?: any, event?: DragEvent) => void;
+    // (undocumented)
+    onDragEnter?: (item?: any, event?: DragEvent) => string;
+    // (undocumented)
+    onDragLeave?: (item?: any, event?: DragEvent) => void;
+    // (undocumented)
+    onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
+    // (undocumented)
+    onDrop?: (item?: any, event?: DragEvent) => void;
 }
 
 // @public (undocumented)
@@ -7768,6 +7792,20 @@ export interface IVerticalDividerStyles {
 }
 
 // @public (undocumented)
+export interface IViewport {
+    // (undocumented)
+    height: number;
+    // (undocumented)
+    width: number;
+}
+
+// @public (undocumented)
+export interface IWithViewportProps {
+    // (undocumented)
+    skipViewportMeasures?: boolean;
+}
+
+// @public (undocumented)
 export enum KeyboardSpinDirection {
     // (undocumented)
     down = -1,
@@ -9413,10 +9451,6 @@ export * from "@uifabric/foundation";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
-
-// Warnings were encountered during analysis:
-// 
-// lib/components/DetailsList/DetailsList.types.d.ts:111:9 - (ae-forgotten-export) The symbol "IDragDropContext" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
