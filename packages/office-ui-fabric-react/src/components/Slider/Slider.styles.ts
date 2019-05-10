@@ -22,9 +22,10 @@ const GlobalClassNames = {
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   const { className, titleLabelClassName, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
+  const semanticColors = theme.semanticColors;
 
   const slideBoxActiveSectionStyles = !props.disabled && {
-    backgroundColor: theme.palette.themePrimary,
+    backgroundColor: semanticColors.inputBackgroundChecked,
     selectors: {
       [HighContrastSelector]: {
         backgroundColor: 'Highlight'
@@ -33,7 +34,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxInactiveSectionStyles = !props.disabled && {
-    backgroundColor: theme.palette.themeLight,
+    backgroundColor: theme.palette.themeLight, // There's no semantic slot with a value of hemeLight in the noneVariant, only strong & soft
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
@@ -42,7 +43,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
   };
 
   const slideBoxActiveThumbStyles = !props.disabled && {
-    border: `2px solid ${theme.palette.themePrimary}`,
+    border: `2px solid ${semanticColors.inputBackgroundChecked}`,
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
@@ -107,10 +108,10 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
             {
               borderWidth: 2,
               borderStyle: 'solid',
-              borderColor: theme.palette.neutralSecondary,
+              borderColor: semanticColors.smallInputBorder, // Could use focusBorder also but better to keep with the input theme
               borderRadius: 10,
               boxSizing: 'border-box',
-              background: theme.palette.white,
+              background: semanticColors.inputBackground,
               display: 'block',
               width: 16,
               height: 16,
@@ -130,7 +131,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
               transition: `left ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
             },
             props.disabled && {
-              borderColor: theme.palette.neutralTertiaryAlt,
+              borderColor: semanticColors.buttonBackgroundChecked, // None of the disabled semantic slots had a value of neturalTertiaryAlt
               selectors: {
                 [HighContrastSelector]: {
                   borderColor: 'GrayText'
@@ -193,7 +194,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     activeSection: [
       classNames.activeSection,
       {
-        background: theme.palette.neutralSecondary,
+        background: semanticColors.inputPlaceholderText,
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'WindowText'
@@ -204,7 +205,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       props.disabled && {
-        background: theme.palette.neutralTertiaryAlt,
+        background: semanticColors.buttonBackgroundChecked, // Only other semantic slots with value of neutralTertiaryAlt are menu slots
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText',
@@ -216,7 +217,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     inactiveSection: [
       classNames.inactiveSection,
       {
-        background: theme.palette.neutralTertiaryAlt,
+        background: semanticColors.buttonBackgroundChecked,
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'
@@ -227,7 +228,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         transition: `width ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
       },
       props.disabled && {
-        background: theme.palette.neutralLight,
+        background: semanticColors.bodyDivider, // None of the disabled slots have value of neturalLight
+        // Except button slots in hover/pressed/etc states which didn't make sense for this since this is referring to a section
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: 'GrayText',
@@ -241,7 +243,7 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
       {
         flexShrink: 1,
         width: 30,
-        lineHeight: '1' // using a string here meaning it's relative to the size of the font
+        lineHeight: '1' // Using a string here meaning it's relative to the size of the font
       },
       props.vertical
         ? {
