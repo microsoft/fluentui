@@ -74,9 +74,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public syncScroll = (container: HTMLElement): void => {
     const { nonStickyContent } = this;
-
-    if (nonStickyContent && this.props.isScrollSynced) {
-      nonStickyContent.scrollLeft = container.scrollLeft;
+    const { scrollablePane } = this.context;
+    if (nonStickyContent && this.props.isScrollSynced && scrollablePane) {
+      nonStickyContent.scrollLeft = scrollablePane.getScrollPosition(true);
     }
   };
 
@@ -110,20 +110,17 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
     const { isStickyBottom, isStickyTop, distanceFromTop } = this.state;
-    let syncScroll: boolean = false;
     if (prevState.distanceFromTop !== distanceFromTop) {
       scrollablePane.sortSticky(this, true /*sortAgain*/);
-      syncScroll = true;
     }
     if (prevState.isStickyTop !== isStickyTop || prevState.isStickyBottom !== isStickyBottom) {
       if (this._activeElement) {
         this._activeElement.focus();
       }
       scrollablePane.updateStickyRefHeights();
-      syncScroll = true;
     }
     // horizontal scroll has to be synced only if component is sticky
-    if ((isStickyBottom || isStickyTop) && syncScroll) {
+    if ((isStickyBottom || isStickyTop) && scrollablePane.getScrollPosition(true)) {
       // Sync Sticky scroll position with content container on each update
       scrollablePane.syncScrollSticky(this);
     }

@@ -23,6 +23,7 @@ export interface IScrollablePaneContext {
     usePlaceholderForSticky: (isTop: boolean) => boolean;
     verifyStickyContainerBehavior: (isTop: boolean, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
     getUserInteractionStatus: () => boolean;
+    getScrollPosition: (horizontal?: boolean) => number;
   };
 }
 
@@ -41,6 +42,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _userInteractionStarted: boolean;
+  private _scrollLeft: number;
+  private _scrollTop: number;
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -62,6 +65,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       scrollbarHeight: 0
     };
     this._userInteractionStarted = false;
+    this._scrollLeft = this._scrollTop = 0;
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
@@ -94,7 +98,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         syncScrollSticky: this.syncScrollSticky,
         usePlaceholderForSticky: this.usePlaceholderForSticky,
         verifyStickyContainerBehavior: this.verifyStickyContainerBehavior,
-        getUserInteractionStatus: this.getUserInteractionStatus
+        getUserInteractionStatus: this.getUserInteractionStatus,
+        getScrollPosition: this.getScrollPosition
       }
     };
   }
@@ -376,9 +381,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
   };
 
-  public getScrollPosition = (): number => {
+  public getScrollPosition = (horizontal?: boolean): number => {
     if (this.contentContainer) {
-      return this.contentContainer.scrollTop;
+      return horizontal ? this._scrollLeft : this._scrollTop;
     }
 
     return 0;
@@ -549,7 +554,12 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   private _onWindowResize = (): void => {
     const scrollbarWidth = this._getScrollbarWidth();
     const scrollbarHeight = this._getScrollbarHeight();
+    const { contentContainer } = this;
 
+    if (contentContainer) {
+      this._scrollLeft = contentContainer.scrollLeft;
+      this._scrollTop = contentContainer.scrollTop;
+    }
     this.setState({
       scrollbarWidth,
       scrollbarHeight
@@ -602,11 +612,20 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     const { contentContainer } = this;
 
     if (contentContainer) {
-      this._stickies.forEach((sticky: Sticky) => {
-        sticky.syncScroll(contentContainer);
-      });
-      this._userInteractionStarted = true;
-      this._notifyThrottled();
+      // sync Sticky scroll if contentContainer has scrolled horizontally and Sticky component is in sticky state
+      if (this._scrollLeft !== contentContainer.scrollLeft) {
+        this._stickies.forEach((sticky: Sticky) => {
+          const { isStickyBottom, isStickyTop } = sticky.state;
+          if (isStickyBottom || isStickyTop) {
+            sticky.syncScroll(contentContainer);
+          }
+        });
+      }
+
+      if (this._scrollTop !== contentContainer.scrollTop) {
+        this._userInteractionStarted = true;
+        this._notifyThrottled();
+      }
     }
   };
 }
