@@ -1,5 +1,5 @@
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
-import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
+import { IFontWeight, IKeytipProps, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
@@ -117,6 +117,11 @@ export interface IButtonProps
    * Defines the aria label that the screen readers use when focus goes on the Button.
    */
   ariaLabel?: string;
+
+  /**
+   * Defines optional keytips for this button.
+   */
+  keytipProps?: IKeytipProps;
 }
 
 /**
