@@ -44,6 +44,7 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
             <TeachingBubble
               target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}
+              multistepProps={{ text: '1 of 2' }}
               secondaryButtonProps={exampleSecondaryButtonProps}
               onDismiss={this._onDismiss}
               headline="Discover what’s trending around you"

@@ -88,6 +88,12 @@ describe('TeachingBubble', () => {
     expect(treeContent).toMatchSnapshot();
   });
 
+  it('renders TeachingBubbleContent with multistep text', () => {
+    const componentContent = renderer.create(<TeachingBubbleContent multistepProps={{ text: '1 of 2' }}>Content</TeachingBubbleContent>);
+    const treeContent = componentContent.toJSON();
+    expect(treeContent).toMatchSnapshot();
+  });
+
   it('merges callout classNames', () => {
     ReactTestUtils.renderIntoDocument(<TeachingBubbleContent headline="Title" calloutProps={{ className: 'foo' }} />);
     setTimeout(() => {

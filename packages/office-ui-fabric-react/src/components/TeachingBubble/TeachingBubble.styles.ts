@@ -23,6 +23,7 @@ const globalClassNames = {
   headerIsLarge: 'ms-TeachingBubble-header--large',
   headline: 'ms-TeachingBubble-headline',
   image: 'ms-TeachingBubble-image',
+  multistepText: 'ms-TeachingBubble-multistepText',
   primaryButton: 'ms-TeachingBubble-primaryButton',
   secondaryButton: 'ms-TeachingBubble-secondaryButton',
   subText: 'ms-TeachingBubble-subText',
@@ -142,6 +143,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
     hasCondensedHeadline,
     hasSmallHeadline,
     isWide,
+    multistepTextClassName,
     primaryButtonClassName,
     secondaryButtonClassName,
     theme
@@ -293,6 +295,17 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
             borderColor: palette.white
           }
         }
+      }
+    ],
+    multistepText: [
+      classNames.multistepText,
+      multistepTextClassName,
+      {
+        alignItems: 'center',
+        backgroundColor: palette.themePrimary,
+        color: palette.white,
+        display: 'flex',
+        padding: '0 16px'
       }
     ],
     subText: [

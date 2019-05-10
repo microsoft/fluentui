@@ -5329,6 +5329,12 @@ export interface IModalStyles {
 }
 
 // @public (undocumented)
+export interface IMultistepProps {
+    className?: string;
+    text: string;
+}
+
+// @public (undocumented)
 export interface INav {
     selectedKey: string | undefined;
 }
@@ -7276,6 +7282,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     headline?: string;
     illustrationImage?: IImageProps;
     isWide?: boolean;
+    multistepProps?: IMultistepProps;
     onDismiss?: (ev?: any) => void;
     primaryButtonProps?: IButtonProps;
     secondaryButtonProps?: IButtonProps;
@@ -7295,6 +7302,7 @@ export interface ITeachingBubbleState {
 // @public (undocumented)
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
     calloutClassName?: string;
+    multistepTextClassName?: string;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
 };
@@ -7317,6 +7325,8 @@ export interface ITeachingBubbleStyles {
     headline: IStyle;
     // (undocumented)
     imageContent: IStyle;
+    // (undocumented)
+    multistepText: IStyle;
     // (undocumented)
     primaryButton: IStyle;
     // (undocumented)

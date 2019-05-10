@@ -60,7 +60,8 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       styles,
       theme,
       ariaDescribedBy,
-      ariaLabelledBy
+      ariaLabelledBy,
+      multistepProps
     } = this.props;
 
     let imageContent;
@@ -74,6 +75,7 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       hasCondensedHeadline,
       hasSmallHeadline,
       isWide,
+      multistepTextClassName: multistepProps ? multistepProps.className : undefined,
       primaryButtonClassName: primaryButtonProps ? primaryButtonProps.className : undefined,
       secondaryButtonClassName: secondaryButtonProps ? secondaryButtonProps.className : undefined
     });
@@ -110,11 +112,12 @@ export class TeachingBubbleContentBase extends BaseComponent<ITeachingBubbleProp
       );
     }
 
-    if (primaryButtonProps || secondaryButtonProps) {
+    if (primaryButtonProps || secondaryButtonProps || multistepProps) {
       footerContent = (
         <div className={classNames.footer}>
           {primaryButtonProps && <PrimaryButton {...primaryButtonProps} className={classNames.primaryButton} />}
           {secondaryButtonProps && <DefaultButton {...secondaryButtonProps} className={classNames.secondaryButton} />}
+          {multistepProps && <div className={classNames.multistepText}>{multistepProps.text}</div>}
         </div>
       );
     }
