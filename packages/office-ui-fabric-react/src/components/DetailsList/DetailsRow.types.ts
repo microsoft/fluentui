@@ -3,14 +3,14 @@ import { DetailsRowBase } from './DetailsRow.base';
 import { IStyle, ITheme } from '../../Styling';
 import { IColumn, CheckboxVisibility, IDetailsListProps } from './DetailsList.types';
 import { ISelection, SelectionMode } from '../../utilities/selection/interfaces';
-import { IDragDropHelper, IDragDropEvents } from '../../utilities/dragdrop/interfaces';
+import { IDragDropHelper, IDragDropEvents, IDragDropOptions } from '../../utilities/dragdrop/interfaces';
 import { IViewport } from '../../utilities/decorators/withViewport';
 import { CollapseAllVisibility } from '../GroupedList/GroupedList.types';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from '../../Utilities';
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
-export { IDragDropHelper };
+export { IDragDropHelper, IDragDropOptions };
 
 /**
  * {@docCategory DetailsList}
