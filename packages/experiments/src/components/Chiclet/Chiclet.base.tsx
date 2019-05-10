@@ -1,11 +1,9 @@
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
 import { ChicletCard } from './ChicletCard';
-// import { XSmallChiclet } from './XSmallChiclet';
 import { getOpenGraphProperties } from './OpenGraph';
 import { IChicletProps, ChicletSize } from './Chiclet.types';
 import { IChicletCardProps } from './ChicletCard.types';
-// import { IXSmallChicletProps } from './XSmallChiclet.types';
 
 export interface IChicletState {
   chicletCardProps?: IChicletCardProps;
