@@ -1,15 +1,15 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people } from '../../../UnifiedPicker/UnifiedPeoplePicker/examples/PeopleExampleData';
-import { SelectedPeopleList } from '../SelectedPeopleList';
+import { people } from './PeopleExampleData';
+import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from '../../../../../../office-ui-fabric-react/lib';
 import { SelectedPersona } from '../Items/SelectedPersona';
 import { EditableItem } from '../../Items/EditableItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
 import { EditingItemFloatingPickerProps } from '../../Items/EditingItem';
-import { ExampleSuggestionsModel } from '../../../UnifiedPicker/examples/ExampleSuggestionsModel';
+import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
 import { SuggestionsStore } from '../../../FloatingSuggestions';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
@@ -19,7 +19,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: SelectedPeopleList;
+  private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   // Used to resolve suggestions on the editableItem
@@ -53,9 +53,9 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
       <div>
         <SelectedPeopleList
           key={'normal'}
+          ref={this._setComponentRef}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
-          componentRef={this._setComponentRef}
           selection={this.selection}
           onRenderItem={this.SelectedItem}
         />
@@ -63,7 +63,7 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
     );
   }
 
-  private _setComponentRef = (component: SelectedPeopleList): void => {
+  private _setComponentRef = (component: ISelectedPeopleList): void => {
     this._selectionList = component;
   };
 

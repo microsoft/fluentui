@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people } from '../../../UnifiedPicker/UnifiedPeoplePicker/examples/PeopleExampleData';
-import { SelectedPeopleList } from '../SelectedPeopleList';
+import { people } from './PeopleExampleData';
+import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from '../../../../../../office-ui-fabric-react/lib';
 import { SelectedPersona } from '../Items/SelectedPersona';
@@ -16,7 +16,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: SelectedPeopleList;
+  private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   /**
@@ -29,7 +29,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
         key: 'remove',
         text: 'Remove',
         onClick: () => {
-          this._selectionList.removeItem(item);
+          this._selectionList.removeItems([item]);
         }
       },
       {
@@ -66,7 +66,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
     );
   }
 
-  private _setComponentRef = (component: SelectedPeopleList): void => {
+  private _setComponentRef = (component: ISelectedPeopleList): void => {
     this._selectionList = component;
   };
 

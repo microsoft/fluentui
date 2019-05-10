@@ -4,14 +4,34 @@ import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface ISelectedItemsList<T> {
-  /** Gets the current value of the input. */
-  items: T[] | undefined;
-
+  /**
+   * Current value of the input
+   */
+  items: T[];
+  /**
+   * The items that are in the selection -- either the one passed in
+   * via props, or the internal selection maintained by the component
+   * when no seleciton is provided in the props
+   */
+  itemsInSelection: T[] | undefined;
+  /*
+   * Adds items to the selection
+   */
   addItems: (items: T[]) => void;
+  /*
+   * Removes all items from the selection.
+   * If called with a selection passed in, this will mutate the
+   * seelection in props. Prefer to update the selection yourself.
+   */
+  unselectAll: () => void;
+  /**
+   * Removes items from the selection
+   */
+  removeItems: (items: T[]) => void;
 }
 
 export interface ISelectedItemProps<T> extends IPickerItemProps<T> {
-  onCopyItem: (item: T) => void;
+  onCopyItem: () => void;
   /**
    * Override onItemChange to support replacing an item with multiple items.
    */
@@ -33,9 +53,9 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   selection?: Selection;
   /**
-   * A callback for when items are copied
+   * Gets the copy text that will be set in the item.
    */
-  onCopyItems?: (items: T[]) => string;
+  getItemCopyText?: (items: T[]) => string;
   /**
    * Function that specifies how the selected item will appear.
    */
@@ -53,10 +73,6 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    */
   createGenericItem?: (input: string, ValidationState: ValidationState) => ISuggestionModel<T>;
   /**
-   * A callback to process a selection after the user selects something from the picker.
-   */
-  onItemSelected?: (selectedItem?: T) => T | PromiseLike<T>;
-  /**
    * The items that the base picker should currently display as selected. If this is provided then the picker will act as a
    * controlled component.
    */
@@ -67,19 +83,14 @@ export interface ISelectedItemsListProps<T> extends React.ClassAttributes<any> {
    * @defaultvalue ''
    */
   removeButtonAriaLabel?: string;
-  /**
-   * A callback when an item is deleted
-   * @deprecated Use `onItemsDeleted` instead.
-   */
-  onItemDeleted?: (deletedItem: T) => void;
 
   /**
-   * A callback when and item or items are deleted
+   * A callback when and item or items are removed
    */
-  onItemsDeleted?: (deletedItems: T[]) => void;
+  onItemsRemoved?: (removedItems: T[]) => void;
 
   /**
-   * A callback on whether this item can be deleted
+   * A callback on whether this item can be removed
    */
   canRemoveItem?: (item: T) => boolean;
 }

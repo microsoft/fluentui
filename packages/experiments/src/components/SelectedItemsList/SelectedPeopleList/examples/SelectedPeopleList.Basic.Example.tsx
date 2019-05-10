@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people } from '../../../UnifiedPicker/UnifiedPeoplePicker/examples/PeopleExampleData';
-import { SelectedPeopleList } from '../../SelectedPeopleList/SelectedPeopleList';
+import { people } from './PeopleExampleData';
+import { SelectedPeopleList, ISelectedPeopleList } from '../../SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 import { IPersona } from '../../../../../../office-ui-fabric-react/lib';
@@ -13,7 +13,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: SelectedPeopleList;
+  private _selectionList: ISelectedPeopleList;
   private index: number;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
@@ -50,13 +50,13 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
           selectedItems={this.state.controlledComponent ? this.state.currentSelectedItems : undefined}
           componentRef={this._setComponentRef}
           selection={this.selection}
-          onItemDeleted={this.state.controlledComponent ? this._onItemDeleted : undefined}
+          onItemsRemoved={this.state.controlledComponent ? this._onItemsRemoved : undefined}
         />
       </div>
     );
   }
 
-  private _setComponentRef = (component: SelectedPeopleList): void => {
+  private _setComponentRef = (component: ISelectedPeopleList): void => {
     this._selectionList = component;
   };
 
@@ -75,7 +75,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
     }
   };
 
-  private _onItemDeleted = (item: IPersona): void => {
+  private _onItemsRemoved = (item: IPersona): void => {
     const indexToRemove = this.state.currentSelectedItems.indexOf(item);
     this.setState({
       currentSelectedItems: this.state.currentSelectedItems

@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from 'office-ui-fabric-react/lib/Utilities';
 import { FloatingSuggestions, IFloatingSuggestionsProps } from '../../FloatingSuggestions';
 
@@ -45,7 +43,7 @@ export interface IEditingItemProps<TItem> extends React.HTMLAttributes<any> {
 
 export type EditingItemFloatingPickerProps<T> = Pick<
   IFloatingSuggestionsProps<T>,
-  'componentRef' | 'onChange' | 'inputElement' | 'selectedItems' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
+  'componentRef' | 'onChange' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
 >;
 
 /**
@@ -101,7 +99,6 @@ export class EditingItem<TItem> extends React.PureComponent<IEditingItemProps<TI
         componentRef={this._editingFloatingPicker}
         onChange={this._onSuggestionSelected}
         inputElement={this._editingInput}
-        selectedItems={[]}
         onRemoveSuggestion={this.props.onRemoveItem}
         onSuggestionsHidden={this.props.onSuggestionsHidden}
       />

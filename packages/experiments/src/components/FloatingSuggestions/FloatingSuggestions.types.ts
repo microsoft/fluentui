@@ -58,7 +58,7 @@ export interface IFloatingSuggestionsProps<T> extends React.ClassAttributes<any>
    * If used in conjunction with resolveDelay this will ony kick off after the delay throttle.
    * Return null if using as a controlled component
    */
-  onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
+  onResolveSuggestions: (filter: string) => T[] | PromiseLike<T[]> | null;
 
   /**
    * A callback for when the input has been changed
@@ -110,12 +110,6 @@ export interface IFloatingSuggestionsProps<T> extends React.ClassAttributes<any>
    * The text to display while searching for more results in a limited suggestions list
    */
   searchingText?: ((props: { input: string }) => string) | string;
-
-  /**
-   * The items that the base picker should currently display as selected. If this is provided then the picker will act as a controlled
-   * component.
-   */
-  selectedItems?: T[];
 
   /**
    * Width for the suggestions callout

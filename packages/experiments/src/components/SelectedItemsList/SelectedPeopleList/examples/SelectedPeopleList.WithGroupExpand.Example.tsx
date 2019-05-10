@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people, groupOne, groupTwo } from '../../../UnifiedPicker/UnifiedPeoplePicker/examples/PeopleExampleData';
-import { SelectedPeopleList } from '../SelectedPeopleList';
+import { people, groupOne, groupTwo } from './PeopleExampleData';
+import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SelectedPersona } from '../Items/SelectedPersona';
@@ -14,7 +14,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: SelectedPeopleList;
+  private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   public render(): JSX.Element {
@@ -51,7 +51,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
     );
   }
 
-  private _setComponentRef = (component: SelectedPeopleList): void => {
+  private _setComponentRef = (component: ISelectedPeopleList): void => {
     this._selectionList = component;
   };
 

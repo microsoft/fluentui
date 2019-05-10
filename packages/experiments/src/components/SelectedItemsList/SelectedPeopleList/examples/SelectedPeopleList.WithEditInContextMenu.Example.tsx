@@ -1,8 +1,8 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
-import { people } from '../../../UnifiedPicker/UnifiedPeoplePicker/examples/PeopleExampleData';
-import { SelectedPeopleList } from '../SelectedPeopleList';
+import { people } from './PeopleExampleData';
+import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from '../../../../../../office-ui-fabric-react/lib';
 import { SelectedPersona } from '../Items/SelectedPersona';
@@ -11,7 +11,7 @@ import { copyToClipboard } from '../../utils/copyToClipboard';
 import { EditableItem } from '../../Items/EditableItem';
 import { EditingItemFloatingPickerProps } from '../../Items/EditingItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
-import { ExampleSuggestionsModel } from '../../../UnifiedPicker/examples/ExampleSuggestionsModel';
+import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
 import { SuggestionsStore } from '../../../FloatingSuggestions';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
@@ -21,7 +21,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithEditInContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: SelectedPeopleList;
+  private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   // Used to resolve suggestions on the editableItem
@@ -42,7 +42,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
           key: 'remove',
           text: 'Remove',
           onClick: () => {
-            this._selectionList.removeItem(item);
+            this._selectionList.removeItems([item]);
           }
         },
         {
@@ -85,7 +85,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     );
   }
 
-  private _setComponentRef = (component: SelectedPeopleList): void => {
+  private _setComponentRef = (component: ISelectedPeopleList): void => {
     this._selectionList = component;
   };
 

@@ -1,10 +1,7 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-import * as ReactDOM from 'react-dom';
-/* tslint:enable:no-unused-variable */
-import * as renderer from 'react-test-renderer';
+import { act, create } from 'react-test-renderer';
 
-import { ISelectedItemsListProps, ISelectedItemProps } from './SelectedItemsList.types';
+import { ISelectedItemProps, ISelectedItemsList } from './SelectedItemsList.types';
 import { SelectedItemsList } from './SelectedItemsList';
 
 export interface ISimple {
@@ -13,55 +10,59 @@ export interface ISimple {
 }
 
 const basicItemRenderer = (props: ISelectedItemProps<ISimple>) => {
-  return <div key={props.key}> {props.name} </div>;
+  return <div key={props.name}> {props.name} </div>;
 };
-
-export type TypedSelectedItemsList = SelectedItemsList<ISimple>;
 
 describe('SelectedItemsList', () => {
   describe('SelectedItemsList', () => {
-    const SelectedItemsListWithType = SelectedItemsList as new (props: ISelectedItemsListProps<ISimple>) => SelectedItemsList<ISimple>;
-
     const renderNothing = () => <></>;
 
     it('renders SelectedItemsList correctly', () => {
-      const component = renderer.create(<SelectedItemsListWithType onRenderItem={renderNothing} />);
+      const component = create(<SelectedItemsList onRenderItem={renderNothing} />);
       const tree = component.toJSON();
       expect(tree).toMatchSnapshot();
     });
 
     it('can remove items', () => {
-      const root = document.createElement('div');
-
       const onChange = (items: ISimple[] | undefined): void => {
         expect(items!.length).toBe(1);
         expect(items![0].name).toBe('b');
       };
 
-      const itemsList: TypedSelectedItemsList = (ReactDOM.render(
-        <SelectedItemsListWithType
+      const listRef = React.createRef<ISelectedItemsList<ISimple>>();
+      create(
+        <SelectedItemsList<ISimple>
+          ref={listRef}
           onRenderItem={basicItemRenderer}
           selectedItems={[{ key: '1', name: 'a' }, { key: '2', name: 'b' }]}
           onChange={onChange}
-        />,
-        root
-      ) as unknown) as TypedSelectedItemsList;
+        />
+      );
 
-      expect(itemsList.items.length).toEqual(2);
-      itemsList.removeItemAt(0);
+      if (!listRef.current) {
+        throw new Error('listRef was not initialized');
+      }
+
+      expect(listRef.current.items.length).toEqual(2);
+      act(() => {
+        listRef.current && listRef.current.removeItems([listRef.current.items[1]]);
+      });
+      expect(listRef.current.items.length).toEqual(1);
     });
 
     it('can add items', () => {
-      const root = document.createElement('div');
-      const itemsList: TypedSelectedItemsList = (ReactDOM.render(
-        <SelectedItemsListWithType onRenderItem={basicItemRenderer} />,
-        root
-      ) as unknown) as TypedSelectedItemsList;
+      const listRef = React.createRef<ISelectedItemsList<ISimple>>();
+      create(<SelectedItemsList<ISimple> ref={listRef} onRenderItem={basicItemRenderer} />);
 
       const items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
-      itemsList.addItems(items);
+      if (!listRef.current) {
+        throw new Error('listRef was not initialized');
+      }
 
-      expect(itemsList.items.length).toEqual(2);
+      act(() => {
+        listRef.current && listRef.current.addItems(items);
+      });
+      expect(listRef.current.items.length).toEqual(2);
     });
   });
 });
