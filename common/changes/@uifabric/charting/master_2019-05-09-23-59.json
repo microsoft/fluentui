@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Adding BenchmarkBarChart component with examples.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "dajiang@microsoft.com"
+}
