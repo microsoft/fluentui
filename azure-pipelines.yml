@@ -72,6 +72,18 @@ steps:
       artifactName: 'CodeAnalysisLogs'
     displayName: publish sarif a11y reports
 
+  - task: CopyFiles@2
+    inputs:
+      contents: 'packages/*/*.api.json'
+      targetFolder: $(Build.ArtifactStagingDirectory)/api
+    displayName: Copying API JSON files to Staging Area
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: $(Build.ArtifactStagingDirectory)/api
+      artifactName: 'ApiJsonArtifacts'
+    displayName: Publishing API JSON files as Artifacts
+
   - script: |
       git config --global user.email "fabrictactical@microsoft.com"
       git config --global user.name "Fabric Tactical"
