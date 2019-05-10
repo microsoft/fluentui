@@ -14,7 +14,14 @@ import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
-export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
+export {
+  IDetailsHeaderProps,
+  IDetailsRowBaseProps,
+  IDetailsHeaderBaseProps,
+  IDetailsFooterBaseProps,
+  IDragDropContext,
+  IWithViewportProps
+};
 
 /**
  * {@docCategory DetailsList}
