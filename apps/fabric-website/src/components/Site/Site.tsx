@@ -19,7 +19,8 @@ import {
   TPlatformPages,
   jumpToAnchor,
   removeAnchorLink,
-  SiteMessageBar
+  SiteMessageBar,
+  pascalize
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
@@ -89,7 +90,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
       // Set active platform for each top level page to local storage platform or the first platform defined for that page.
       topLevelPages.forEach(item => {
-        activePlatforms[item] = activePlatforms[item] || getPageFirstPlatform(item, siteDefinition);
+        activePlatforms[pascalize(item)] = activePlatforms[item] || getPageFirstPlatform(item, siteDefinition);
       });
 
       // Set the initial state with navigation data and the activePlatforms.
@@ -453,14 +454,16 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
       // Test if the platform has changed on each hashchange to avoid costly forEach below.
       const isCurrentPlatform = new RegExp(`/${platform}`);
 
-      !isCurrentPlatform.test(newPagePath) &&
-        platformKeys.forEach(platformKey => {
+      if (!isCurrentPlatform.test(newPagePath)) {
+        for (const key of platformKeys) {
           // If the user navigates directly to a platform specific page, set the active platform to that of the new page.
-          const isNewPlatform = new RegExp(`/${platformKey}`, 'gi');
+          const isNewPlatform = new RegExp(`/${key}`, 'gi');
           if (isNewPlatform.test(newPagePath)) {
-            this._onPlatformChanged(platformKey);
+            this._onPlatformChanged(key);
+            break;
           }
-        });
+        }
+      }
     }
 
     // @TODO: investigate using real page name.
