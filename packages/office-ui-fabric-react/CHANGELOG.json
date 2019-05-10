@@ -2,6 +2,37 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.180.0",
+      "tag": "office-ui-fabric-react_v6.180.0",
+      "date": "Fri, 10 May 2019 12:36:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix focus state on ComboBox",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "db5e7d73e8718f76e5670679f16d8c037f3ef515"
+          },
+          {
+            "comment": "Fix ARIA issue in Surfaces",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "85b43c2f0cb5c26ee41776040a9923993bd3f420"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export ResponsiveMode from controls that expect it as a prop.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "80119d3d40ca9b185dc6f8f0d3bedfe0296f176d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.3` to `^6.47.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.179.0",
       "tag": "office-ui-fabric-react_v6.179.0",
       "date": "Thu, 09 May 2019 12:35:50 GMT",
