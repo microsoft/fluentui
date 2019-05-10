@@ -20,6 +20,7 @@ export {
   IDetailsHeaderBaseProps,
   IDetailsFooterBaseProps,
   IDragDropContext,
+  IDragDropEvents,
   IViewport,
   IWithViewportProps
 };
