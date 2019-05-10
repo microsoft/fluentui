@@ -4219,8 +4219,6 @@ export interface IDragDropEvents {
 export interface IDragDropHelper {
     // (undocumented)
     dispose: () => void;
-    // Warning: (ae-forgotten-export) The symbol "IDragDropOptions" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     subscribe: (root: HTMLElement, events: EventGroup, options: IDragDropOptions) => {
         key: string;
@@ -4228,6 +4226,35 @@ export interface IDragDropHelper {
     };
     // (undocumented)
     unsubscribe: (root: HTMLElement, key: string) => void;
+}
+
+// @public (undocumented)
+export interface IDragDropOptions {
+    // (undocumented)
+    canDrag?: (item?: any) => boolean;
+    // (undocumented)
+    canDrop?: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => boolean;
+    // (undocumented)
+    context: IDragDropContext;
+    // (undocumented)
+    eventMap?: {
+        eventName: string;
+        callback: (context: IDragDropContext, event?: any) => void;
+    }[];
+    // (undocumented)
+    key?: string;
+    // (undocumented)
+    onDragEnd?: (item?: any, event?: DragEvent) => void;
+    // (undocumented)
+    onDragOver?: (item?: any, event?: DragEvent) => void;
+    // (undocumented)
+    onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
+    // (undocumented)
+    onDrop?: (item?: any, event?: DragEvent) => void;
+    // (undocumented)
+    selectionIndex: number;
+    // (undocumented)
+    updateDropState: (isDropping: boolean, event: DragEvent) => void;
 }
 
 // @public (undocumented)
