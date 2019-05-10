@@ -48,7 +48,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
       keyFocused: undefined
     };
 
-    this._id = getId('ChoiceGroup');
+    this._id = props.id || getId('ChoiceGroup');
     this._labelId = getId('ChoiceGroupLabel');
   }
 
@@ -89,7 +89,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
       : (this.props as any)['aria-labelledby'];
 
     return (
-      <div role={role} className={classNames.applicationRole}>
+      <div role={role} className={classNames.applicationRole} id={this._id}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (
             <Label className={classNames.label} required={required} id={this._id + '-label'}>
