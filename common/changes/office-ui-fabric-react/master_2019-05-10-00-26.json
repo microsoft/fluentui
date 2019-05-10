@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Nav: Fixed an issue where nav link text overflow was not properly left aligned.",
+      "comment": "This latest PR is to ensure Nav link without icon should not be rendered with <i> place-holder",
       "type": "patch"
     }
   ],
