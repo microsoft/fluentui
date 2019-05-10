@@ -614,6 +614,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (contentContainer) {
       // sync Sticky scroll if contentContainer has scrolled horizontally and Sticky component is in sticky state
       if (this._scrollLeft !== contentContainer.scrollLeft) {
+        this._scrollLeft = contentContainer.scrollLeft;
         this._stickies.forEach((sticky: Sticky) => {
           const { isStickyBottom, isStickyTop } = sticky.state;
           if (isStickyBottom || isStickyTop) {
@@ -623,6 +624,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       }
 
       if (this._scrollTop !== contentContainer.scrollTop) {
+        this._scrollTop = contentContainer.scrollTop;
         this._userInteractionStarted = true;
         this._notifyThrottled();
       }

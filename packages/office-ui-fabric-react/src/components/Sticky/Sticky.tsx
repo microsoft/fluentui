@@ -4,6 +4,7 @@ import { BaseComponent } from '../../Utilities';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
 import { StickyContainerBehaviorType } from '../ScrollablePane/ScrollablePane.types';
+import { ScrollablePane } from '../..';
 
 export interface IStickyState {
   isStickyTop: boolean;
@@ -74,8 +75,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   public syncScroll = (container: HTMLElement): void => {
     const { nonStickyContent } = this;
+    const { isStickyBottom, isStickyTop } = this.state;
     const { scrollablePane } = this.context;
-    if (nonStickyContent && this.props.isScrollSynced && scrollablePane) {
+    if (!scrollablePane) {
+      return;
+    }
+    if (isStickyTop && !scrollablePane.usePlaceholderForSticky(true) && this.stickyContentTop) {
+      this.stickyContentTop.children[0].scrollLeft = scrollablePane.getScrollPosition(true);
+    } else if (isStickyBottom && !scrollablePane.usePlaceholderForSticky(false) && this.stickyContentBottom) {
+      this.stickyContentBottom.children[0].scrollLeft = scrollablePane.getScrollPosition(true);
+    } else if (nonStickyContent && this.props.isScrollSynced && scrollablePane) {
       nonStickyContent.scrollLeft = scrollablePane.getScrollPosition(true);
     }
   };
@@ -212,9 +221,16 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   }
 
   private _getContentStyles(isSticky: boolean): React.CSSProperties {
+    const { scrollablePane } = this.context;
+    if (!scrollablePane) {
+      return {};
+    }
+    const isVisible = isSticky ? scrollablePane.usePlaceholderForSticky(true) || scrollablePane.usePlaceholderForSticky(false) : true;
+
     return {
       backgroundColor: this.props.stickyBackgroundColor || this._getBackground(),
-      overflow: isSticky ? 'hidden' : ''
+      overflow: isSticky ? 'hidden' : '',
+      visibility: isVisible ? 'visible' : 'hidden'
     };
   }
 
