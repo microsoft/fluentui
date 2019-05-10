@@ -108,6 +108,9 @@ exports[`Component Examples renders Announced.SearchResults.Example.tsx correctl
                   padding-right: 6px;
                   padding-top: 0;
                 }
+                &::-ms-clear {
+                  display: none;
+                }
             data-lpignore={true}
             onBlur={[Function]}
             onChange={[Function]}
