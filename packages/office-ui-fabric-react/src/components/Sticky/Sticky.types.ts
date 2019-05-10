@@ -29,6 +29,12 @@ export interface IStickyProps extends React.Props<Sticky> {
    * @defaultvalue true
    */
   isScrollSynced?: boolean;
+
+  /**
+   * If provided, it will decide the order of stickies
+   * Best Practices: Perf reasons
+   */
+  order?: number;
 }
 
 export enum StickyPositionType {

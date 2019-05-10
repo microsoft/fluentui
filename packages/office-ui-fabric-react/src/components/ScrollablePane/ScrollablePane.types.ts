@@ -58,6 +58,25 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    * Best Practices: Perf reasons
    */
   notUsePlaceholderForStickyBottom?: boolean;
+
+  /**
+   * If it is provided, stickies' stickyPosition must not be 'Both'
+   */
+  stickiesTopBehaviorType?: StickyContainerBehaviorType;
+
+  /**
+   * If it is provided, stickies' stickyPosition must not be 'Both'
+   */
+  stickiesBottomBehaviorType?: StickyContainerBehaviorType;
+}
+
+export enum StickyContainerBehaviorType {
+  // Perf reasons
+  StickyOnScroll = 1,
+  /**
+   * If it is provided, stickies' stickyPosition must not be 'Both'
+   */
+  StickyAlways = 2
 }
 
 /**
