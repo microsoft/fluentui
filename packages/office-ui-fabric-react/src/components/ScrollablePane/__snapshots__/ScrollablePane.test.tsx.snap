@@ -25,6 +25,7 @@ exports[`ScrollablePane renders correctly 1`] = `
           -webkit-overflow-scrolling: touch;
           bottom: 0px;
           left: 0px;
+          overflow-x: auto;
           overflow-y: auto;
           position: absolute;
           right: 0px;
