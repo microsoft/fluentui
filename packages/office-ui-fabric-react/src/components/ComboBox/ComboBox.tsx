@@ -903,7 +903,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     if (!this.state.focused) {
-      this.setState({ focused: true });
+      const state: Pick<IComboBoxState, 'focused'> | Pick<IComboBoxState, 'focused' | 'isOpen'> = { focused: true };
+
+      if (this.props.openOnKeyboardFocus && !this.state.isOpen && !this.props.disabled) {
+        (state as Pick<IComboBoxState, 'focused' | 'isOpen'>).isOpen = true;
+      }
+      this.setState(state);
     }
   };
 
