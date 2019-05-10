@@ -116,6 +116,16 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     };
   }
 
+  /**
+   * All selected options
+   */
+  public get selectedOptions(): IDropdownOption[] {
+    const { options } = this.props;
+    const { selectedIndices } = this.state;
+
+    return getAllSelectedOptions(options, selectedIndices);
+  }
+
   public componentWillUnmount() {
     clearTimeout(this._scrollIdleTimeoutId);
   }
@@ -336,24 +346,29 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       }
     }
 
-    this.setState({
-      selectedIndices: newIndexes
-    });
+    event.persist();
+    // Call onChange after state is updated
+    this.setState(
+      {
+        selectedIndices: newIndexes
+      },
+      () => {
+        if (onChange) {
+          // for single-select, option passed in will always be selected.
+          // for multi-select, flip the checked value
+          const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
 
-    if (onChange) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
+          onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
+        }
 
-      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index, getAllSelectedOptions(options, newIndexes));
-    }
-
-    if (onChanged) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChanged(changedOpt, index);
-    }
+        if (onChanged) {
+          // for single-select, option passed in will always be selected.
+          // for multi-select, flip the checked value
+          const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
+          onChanged(changedOpt, index);
+        }
+      }
+    );
   }
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */

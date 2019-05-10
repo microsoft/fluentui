@@ -13,6 +13,11 @@ import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
  */
 export interface IComboBox {
   /**
+   * All selected options
+   */
+  readonly selectedOptions: IComboBoxOption[];
+
+  /**
    * If there is a menu open this will dismiss the menu
    */
   dismissMenu: () => void;
@@ -71,13 +76,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
    * 2) a manually edited value is submitted. In this case there may not be a matched option if allowFreeform is also true
    *    (and hence only value would be true, the other parameter would be null in this case)
    */
-  onChange?: (
-    event: React.FormEvent<IComboBox>,
-    option?: IComboBoxOption,
-    index?: number,
-    value?: string,
-    selectedOptions?: IComboBoxOption[]
-  ) => void;
+  onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
    * Deprecated, use `onChange` instead.

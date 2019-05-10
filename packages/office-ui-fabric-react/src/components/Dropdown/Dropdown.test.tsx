@@ -173,7 +173,7 @@ describe('Dropdown', () => {
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
-        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2, [DEFAULT_OPTIONS[2]]);
+        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[2], 2);
         expect(onChangeSpy.mock.calls[0][0].target.id).toEqual('foo');
       }
     });
@@ -198,7 +198,7 @@ describe('Dropdown', () => {
         const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
         ReactTestUtils.Simulate.click(secondItemElement);
       } finally {
-        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[3], 3, [DEFAULT_OPTIONS[3]]);
+        expect(onChangeSpy).toHaveBeenCalledWith(expect.anything(), DEFAULT_OPTIONS[3], 3);
       }
     });
 

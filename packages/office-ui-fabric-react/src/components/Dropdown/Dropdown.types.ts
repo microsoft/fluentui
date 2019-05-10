@@ -14,6 +14,11 @@ export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../util
  * {@docCategory Dropdown}
  */
 export interface IDropdown {
+  /**
+   * All selected options
+   */
+  readonly selectedOptions: IDropdownOption[];
+
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 
@@ -36,12 +41,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
   /**
    * Callback issued when the selected option changes.
    */
-  onChange?: (
-    event: React.FormEvent<HTMLDivElement>,
-    option?: IDropdownOption,
-    index?: number,
-    selectedOptions?: IDropdownOption[]
-  ) => void;
+  onChange?: (event: React.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
 
   /**
    * @deprecated Use `onChange` instead.
