@@ -86,7 +86,7 @@ export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<
 export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
 
 /**
- * Component used by foundation to tie elements together.
+ * Component options used by foundation to tie elements together.
  *
  * * TComponentProps: A styleable props interface for the created component.
  * * TTokens: The type for tokens props.
@@ -95,7 +95,13 @@ export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>)
  * component is not provided, TComponentProps is the same as TViewProps.
  * * TStatics: Static type for statics applied to created component object.
  */
-export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
+export interface IComponentOptions<
+  TComponentProps,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps = TComponentProps,
+  TStatics = {}
+> {
   /**
    * Display name to identify component in React hierarchy.
    */
@@ -129,6 +135,17 @@ export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSe
    */
   factoryOptions?: IFactoryOptions<TComponentProps>;
 }
+
+/**
+ * Component helper that defines options as required for ease of use by component consumers.
+ */
+export type IComponent<
+  TComponentProps,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps = TComponentProps,
+  TStatics = {}
+> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>>;
 
 /**
  * Factory options for creating component.

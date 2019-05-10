@@ -14,7 +14,7 @@ import * as PropTypes from 'prop-types';
 import * as React_2 from 'react';
 
 // @public
-export function createComponent<TComponentProps extends ValidProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps extends TComponentProps = TComponentProps, TStatics = {}>(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React_2.FunctionComponent<TComponentProps> & TStatics;
+export function createComponent<TComponentProps extends ValidProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps extends TComponentProps = TComponentProps, TStatics = {}>(component: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React_2.FunctionComponent<TComponentProps> & TStatics;
 
 // @public
 export function createFactory<TProps extends ValidProps, TShorthandProp extends ValidShorthand = never>(DefaultComponent: React_2.ComponentType<TProps>, options?: IFactoryOptions<TProps>): ISlotFactory<TProps, TShorthandProp>;
@@ -32,7 +32,10 @@ export function getControlledDerivedProps<TProps, TProp extends keyof TProps>(pr
 export function getSlots<TComponentProps extends ISlottableProps<TComponentSlots>, TComponentSlots>(userProps: TComponentProps, slots: ISlotDefinition<Required<TComponentSlots>>): ISlots<Required<TComponentSlots>>;
 
 // @public
-export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
+export type IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>>;
+
+// @public
+export interface IComponentOptions<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
     displayName: string;
     factoryOptions?: IFactoryOptions<TComponentProps>;
     fields?: string[];
