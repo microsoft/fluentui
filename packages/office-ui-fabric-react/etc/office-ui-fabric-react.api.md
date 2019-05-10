@@ -839,6 +839,18 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
 // @public (undocumented)
+export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
+    // (undocumented)
+    componentDidMount(): void;
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillUnmount(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    }
+
+// @public (undocumented)
 export const DetailsHeader: React_2.StatelessComponent<IDetailsHeaderBaseProps>;
 
 // @public (undocumented)
@@ -2583,7 +2595,6 @@ export interface IColumn {
     onColumnContextMenu?: (column?: IColumn, ev?: React.MouseEvent<HTMLElement>) => void;
     onColumnResize?: (width?: number) => void;
     onRender?: (item?: any, index?: number, column?: IColumn) => any;
-    // Warning: (ae-forgotten-export) The symbol "IDetailsColumnProps" needs to be exported by the entry point index.d.ts
     onRenderDivider?: IRenderFunction<IDetailsColumnProps>;
     sortAscendingAriaLabel?: string;
     sortDescendingAriaLabel?: string;
@@ -3134,6 +3145,89 @@ export interface IDetailsCheckboxProps {
 }
 
 // @public (undocumented)
+export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColumnBase> {
+    // (undocumented)
+    cellStyleProps?: ICellStyleProps;
+    // (undocumented)
+    column: IColumn;
+    // (undocumented)
+    columnIndex: number;
+    // (undocumented)
+    componentRef?: () => void;
+    // Warning: (ae-forgotten-export) The symbol "IDragDropHelper" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    dragDropHelper?: IDragDropHelper | null;
+    // (undocumented)
+    isDraggable?: boolean;
+    // (undocumented)
+    isDropped?: boolean;
+    // (undocumented)
+    onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
+    // (undocumented)
+    onColumnContextMenu?: (column: IColumn, ev: React_2.MouseEvent<HTMLElement>) => void;
+    // (undocumented)
+    onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
+    // (undocumented)
+    parentId?: string;
+    // (undocumented)
+    setDraggedItemIndex?: (itemIndex: number) => void;
+    // (undocumented)
+    styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
+    // (undocumented)
+    theme?: ITheme;
+    // (undocumented)
+    updateDragInfo?: (props: {
+        itemIndex: number;
+    }, event?: MouseEvent) => void;
+}
+
+// @public (undocumented)
+export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme' | 'cellStyleProps'>> & {
+    headerClassName?: string;
+    isActionable?: boolean;
+    isEmpty?: boolean;
+    isIconVisible?: boolean;
+    isPadded?: boolean;
+    isIconOnly?: boolean;
+    iconClassName?: string;
+    transitionDurationDrag?: number;
+    transitionDurationDrop?: number;
+};
+
+// @public (undocumented)
+export interface IDetailsColumnStyles {
+    // (undocumented)
+    accessibleLabel: IStyle;
+    // (undocumented)
+    borderAfterDropping: IStyle;
+    // (undocumented)
+    borderWhileDragging: IStyle;
+    // (undocumented)
+    cellName: IStyle;
+    // (undocumented)
+    cellTitle: IStyle;
+    // (undocumented)
+    cellTooltip: IStyle;
+    // (undocumented)
+    filterChevron: IStyle;
+    // (undocumented)
+    gripperBarVerticalStyle: IStyle;
+    // (undocumented)
+    iconClassName: IStyle;
+    // (undocumented)
+    nearIcon: IStyle;
+    // (undocumented)
+    noBorderAfterDropping: IStyle;
+    // (undocumented)
+    noBorderWhileDragging: IStyle;
+    // (undocumented)
+    root: IStyle;
+    // (undocumented)
+    sortIcon: IStyle;
+}
+
+// @public (undocumented)
 export interface IDetailsFooterBaseProps extends IDetailsItemProps {
 }
 
@@ -3414,7 +3508,6 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     compact?: boolean;
     componentRef?: IRefObject<IDetailsRow>;
     dragDropEvents?: IDragDropEvents;
-    // Warning: (ae-forgotten-export) The symbol "IDragDropHelper" needs to be exported by the entry point index.d.ts
     dragDropHelper?: IDragDropHelper;
     eventsToRegister?: {
         eventName: string;
@@ -3428,7 +3521,6 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderCheck?: (props: IDetailsRowCheckProps) => JSX.Element;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
-    // Warning: (ae-forgotten-export) The symbol "IDetailsRowFieldsProps" needs to be exported by the entry point index.d.ts
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
     // @deprecated
     shimmer?: boolean;
@@ -3467,6 +3559,29 @@ export interface IDetailsRowCheckStyles {
     isDisabled: IStyle;
     // (undocumented)
     root: IStyle;
+}
+
+// @public (undocumented)
+export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
+    // (undocumented)
+    cellStyleProps?: ICellStyleProps;
+    columns: IColumn[];
+    columnStartIndex: number;
+    compact?: boolean;
+    item: any;
+    itemIndex: number;
+    rowClassNames: {
+        isMultiline: string;
+        isRowHeader: string;
+        shimmerIconPlaceholder: string;
+        shimmer: string;
+        cell: string;
+        cellPadded: string;
+        cellUnpadded: string;
+        fields: string;
+    };
+    // @deprecated
+    shimmer?: boolean;
 }
 
 // @public (undocumented)
@@ -5510,6 +5625,9 @@ export interface IOverlayStyleProps {
 export interface IOverlayStyles {
     root: IStyle;
 }
+
+// @public (undocumented)
+export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
 export interface IPage<T = any> {
