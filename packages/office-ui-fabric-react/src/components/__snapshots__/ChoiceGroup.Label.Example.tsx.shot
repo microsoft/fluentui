@@ -40,7 +40,6 @@ exports[`Component Examples renders ChoiceGroup.Label.Example.tsx correctly 1`] 
     className=
 
 
-    id="ChoiceGroup1"
   >
     <div
       aria-labelledby="labelElement0"
