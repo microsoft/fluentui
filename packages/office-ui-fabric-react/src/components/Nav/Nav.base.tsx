@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps, getWindow } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
 import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
@@ -297,7 +297,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       return link.key === this.props.selectedKey;
     } else if (this.state.selectedKey !== undefined) {
       return link.key === this.state.selectedKey;
-    } else if (typeof window === 'undefined' || !link.url) {
+    } else if (typeof getWindow() === 'undefined' || !link.url) {
       // resolve is not supported for ssr
       return false;
     } else {
