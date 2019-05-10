@@ -103,8 +103,8 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
   placeholder?: string;
 
   /**
-   * @default false
    * Whether or not the combobox should expand on keyboard focus
+   * @default false
    */
   openOnKeyboardFocus?: boolean;
 }
