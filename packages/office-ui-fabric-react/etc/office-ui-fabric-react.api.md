@@ -3154,8 +3154,6 @@ export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColu
     columnIndex: number;
     // (undocumented)
     componentRef?: () => void;
-    // Warning: (ae-forgotten-export) The symbol "IDragDropHelper" needs to be exported by the entry point index.d.ts
-    // 
     // (undocumented)
     dragDropHelper?: IDragDropHelper | null;
     // (undocumented)
@@ -4215,6 +4213,21 @@ export interface IDragDropEvents {
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
     // (undocumented)
     onDrop?: (item?: any, event?: DragEvent) => void;
+}
+
+// @public (undocumented)
+export interface IDragDropHelper {
+    // (undocumented)
+    dispose: () => void;
+    // Warning: (ae-forgotten-export) The symbol "IDragDropOptions" needs to be exported by the entry point index.d.ts
+    // 
+    // (undocumented)
+    subscribe: (root: HTMLElement, events: EventGroup, options: IDragDropOptions) => {
+        key: string;
+        dispose: () => void;
+    };
+    // (undocumented)
+    unsubscribe: (root: HTMLElement, key: string) => void;
 }
 
 // @public (undocumented)
