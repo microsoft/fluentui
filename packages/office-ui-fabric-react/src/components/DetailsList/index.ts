@@ -11,5 +11,6 @@ export * from './DetailsRow.base';
 export * from './DetailsRow.types';
 export * from './DetailsRowCheck';
 export * from './DetailsRowCheck.types';
+export * from './DetailsRowFields.types';
 export * from './DetailsFooter.types';
 export * from './DetailsColumn.types';
