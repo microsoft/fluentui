@@ -10,6 +10,8 @@ import { IBaseProps, IRefObject, IStyleFunctionOrObject, IRenderFunction } from 
 import { IDetailsRowCheckProps, IDetailsCheckboxProps } from './DetailsRowCheck.types';
 import { IDetailsRowFieldsProps } from './DetailsRowFields.types';
 
+export { IDragDropHelper };
+
 /**
  * {@docCategory DetailsList}
  */
