@@ -46,6 +46,18 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
   initialScrollPosition?: number;
 
   scrollbarVisibility?: ScrollbarVisibility;
+
+  /**
+   * If true, it replicates actual element instead of keeping placeholder
+   * Best Practices: Perf reasons
+   */
+  notUsePlaceholderForStickyTop?: boolean;
+
+  /**
+   * If true, it replicates actual element instead of keeping placeholder
+   * Best Practices: Perf reasons
+   */
+  notUsePlaceholderForStickyBottom?: boolean;
 }
 
 /**

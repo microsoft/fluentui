@@ -10,7 +10,7 @@
 .stickyAbove,
 .stickyBelow {
   position: absolute;
-  pointer-events: auto;
+  pointer-events: none;
   width: 100%;
   z-index: 1;
 }

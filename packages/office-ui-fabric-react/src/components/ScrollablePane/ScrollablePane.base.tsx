@@ -14,6 +14,7 @@ export interface IScrollablePaneContext {
     sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
+    usePlaceholderForSticky: (isTop: boolean) => boolean;
   };
 }
 
@@ -81,7 +82,8 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         updateStickyRefHeights: this.updateStickyRefHeights,
         sortSticky: this.sortSticky,
         notifySubscribers: this.notifySubscribers,
-        syncScrollSticky: this.syncScrollSticky
+        syncScrollSticky: this.syncScrollSticky,
+        usePlaceholderForSticky: this.usePlaceholderForSticky
       }
     };
   }
@@ -185,7 +187,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (prevState.stickyTopHeight !== this.state.stickyTopHeight || prevState.stickyBottomHeight !== this.state.stickyBottomHeight) {
       this.notifySubscribers();
     }
-
+    // why is this needed?
     this._async.setTimeout(this._onWindowResize, 0);
   }
 
@@ -232,6 +234,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   public addSticky = (sticky: Sticky): void => {
+    // this method is called once per sticky lifecycle
     this._stickies.add(sticky);
 
     // If ScrollablePane is mounted, then sort sticky in correct place
@@ -264,27 +267,29 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public updateStickyRefHeights = (): void => {
     const stickyItems = this._stickies;
-
+    const placeholderUsedForStickyContentTop = this.usePlaceholderForSticky(true /** Top*/);
+    const placeholderUsedForStickyContentBottom = this.usePlaceholderForSticky(false /** Bottom*/);
     let stickyTopHeight = 0;
     let stickyBottomHeight = 0;
 
-    stickyItems.forEach((sticky: Sticky) => {
-      const { isStickyTop, isStickyBottom } = sticky.state;
-      if (sticky.nonStickyContent) {
-        if (isStickyTop) {
-          stickyTopHeight += sticky.nonStickyContent.offsetHeight;
+    if (placeholderUsedForStickyContentTop || placeholderUsedForStickyContentBottom) {
+      stickyItems.forEach((sticky: Sticky) => {
+        const { isStickyTop, isStickyBottom } = sticky.state;
+        if (sticky.nonStickyContent) {
+          if (isStickyTop && placeholderUsedForStickyContentTop) {
+            stickyTopHeight += sticky.nonStickyContent.offsetHeight;
+          }
+          if (isStickyBottom && placeholderUsedForStickyContentBottom) {
+            stickyBottomHeight += sticky.nonStickyContent.offsetHeight;
+          }
+          this._checkStickyStatus(sticky);
         }
-        if (isStickyBottom) {
-          stickyBottomHeight += sticky.nonStickyContent.offsetHeight;
-        }
-        this._checkStickyStatus(sticky);
-      }
-    });
-
-    this.setState({
-      stickyTopHeight: stickyTopHeight,
-      stickyBottomHeight: stickyBottomHeight
-    });
+      });
+      this.setState({
+        stickyTopHeight: stickyTopHeight,
+        stickyBottomHeight: stickyBottomHeight
+      });
+    }
   };
 
   public notifySubscribers = (): void => {
@@ -310,16 +315,33 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
   };
 
+  public usePlaceholderForSticky = (isTop: boolean): boolean => {
+    const { notUsePlaceholderForStickyBottom, notUsePlaceholderForStickyTop } = this.props;
+    return isTop ? !notUsePlaceholderForStickyTop : !notUsePlaceholderForStickyBottom;
+  };
+
   private _checkStickyStatus(sticky: Sticky): void {
+    const placeholderUsedForStickyContentTop = this.usePlaceholderForSticky(true);
+    const placeholderUsedForStickyContentBottom = this.usePlaceholderForSticky(false);
     if (this.stickyAbove && this.stickyBelow && this.contentContainer && sticky.nonStickyContent) {
       // If sticky is sticky, then append content to appropriate container
       if (sticky.state.isStickyTop || sticky.state.isStickyBottom) {
-        if (sticky.state.isStickyTop && !this.stickyAbove.contains(sticky.nonStickyContent) && sticky.stickyContentTop) {
-          sticky.addSticky(sticky.stickyContentTop);
+        if (
+          placeholderUsedForStickyContentTop &&
+          sticky.state.isStickyTop &&
+          !this.stickyAbove.contains(sticky.nonStickyContent) &&
+          sticky.stickyContentTop
+        ) {
+          sticky.addSticky(sticky.stickyContentTop, true);
         }
 
-        if (sticky.state.isStickyBottom && !this.stickyBelow.contains(sticky.nonStickyContent) && sticky.stickyContentBottom) {
-          sticky.addSticky(sticky.stickyContentBottom);
+        if (
+          placeholderUsedForStickyContentBottom &&
+          sticky.state.isStickyBottom &&
+          !this.stickyBelow.contains(sticky.nonStickyContent) &&
+          sticky.stickyContentBottom
+        ) {
+          sticky.addSticky(sticky.stickyContentBottom, false);
         }
       } else if (!this.contentContainer.contains(sticky.nonStickyContent)) {
         // Reset sticky if it's not sticky and not in the contentContainer element
@@ -403,8 +425,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _getStickyContainerStyle = (height: number, isTop: boolean): React.CSSProperties => {
+    const stickyContainerHeight = this.usePlaceholderForSticky(isTop) ? height : undefined;
     return {
-      height: height,
+      ...(stickyContainerHeight !== undefined ? { height: height } : {}),
       ...(getRTL()
         ? {
             right: '0',
