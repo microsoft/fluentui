@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { IMenuButtonProps, MenuButton } from '@uifabric/experiments/lib/MenuButton';
 import { ISplitButtonProps, SplitButton } from '@uifabric/experiments/lib/SplitButton';
@@ -56,10 +56,16 @@ const RibbonMenuButtonVerticalStyles = {
 };
 
 export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
+  const stackProps: IStackProps = {
+    horizontal: false,
+    tokens: { childrenGap: 0 },
+    verticalFill: true
+  };
+
   const mergedProps: IMenuButtonProps = props.vertical
     ? {
         ...props,
-        stack: { horizontal: false, tokens: { childrenGap: 0 }, verticalFill: true },
+        stack: stackProps,
         menuIcon: 'ChevronDownSmall',
         styles: RibbonMenuButtonVerticalStyles,
         tokens: RibbonMenuButtonVerticalTokens
@@ -113,6 +119,11 @@ const SplitMenuButtonVerticalSlots: ISplitRibbonMenuButtonProps['slots'] = {
 export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = props => {
   const { content, vertical, ...rest } = props;
 
+  const rootProps: IStackProps = {
+    horizontal: false,
+    horizontalAlign: 'center'
+  };
+
   // TODO: This cast is required because menu is required in IMenuButtonSlots.
   // However, it's provided by the top level props of ISplitRibbonMenuButton props, so it shouldn't be required in multiple places.
   // Should menu be made optional in IMenuButtonSlots?
@@ -122,7 +133,7 @@ export const RibbonSplitMenuButton: React.SFC<ISplitRibbonMenuButtonProps> = pro
   const mergedProps: ISplitRibbonMenuButtonProps = vertical
     ? {
         ...rest,
-        root: { horizontal: false, horizontalAlign: 'center', verticalAlign: 'stretch' },
+        root: rootProps,
         menuButton: verticalMenuButtonProps,
         styles: SplitMenuButtonVerticalStyles,
         tokens: SplitMenuButtonVerticalTokens,

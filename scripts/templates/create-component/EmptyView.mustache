@@ -13,8 +13,8 @@ export const {{componentName}}View: I{{componentName}}Component['view'] = props 
 
   return (
     <Slots.root>
-      <Slots.text />
-      <br/><span>Status: {props.status}</span>
+      <Slots.text onClick={props.onClick} />
+      <br /><span>Status: {props.clicks} clicks</span>
     </Slots.root>
   );
 };

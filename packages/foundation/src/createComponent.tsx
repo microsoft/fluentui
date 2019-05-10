@@ -4,7 +4,14 @@ import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric
 import { createFactory } from './slots';
 import { assign } from './utilities';
 
-import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, ITokenFunction } from './IComponent';
+import {
+  IComponentOptions,
+  ICustomizationProps,
+  IStyleableComponentProps,
+  IStylesFunctionOrObject,
+  IToken,
+  ITokenFunction
+} from './IComponent';
 import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
 /**
@@ -20,7 +27,7 @@ import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
  * State component is optional. If state is not provided, created component is essentially a functional stateless component.
  *
- * @param component - component Component options. See IComponent for more detail.
+ * @param component - component Component options. See IComponentOptions for more detail.
  */
 export function createComponent<
   TComponentProps extends ValidProps,
@@ -28,7 +35,9 @@ export function createComponent<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps extends TComponentProps = TComponentProps,
   TStatics = {}
->(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.FunctionComponent<TComponentProps> & TStatics {
+>(
+  component: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>
+): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {} } = component;
   const { defaultProp } = factoryOptions;
 

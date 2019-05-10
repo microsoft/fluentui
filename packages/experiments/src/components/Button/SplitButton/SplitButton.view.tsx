@@ -20,7 +20,9 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     ariaLabel,
     defaultExpanded,
     expanded,
-    menu: Menu,
+    root,
+    button,
+    menu,
     primaryActionDisabled,
     secondaryAriaLabel,
     buttonRef,
@@ -83,7 +85,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         allowDisabledFocus={allowDisabledFocus}
         ariaLabel={menuButtonAriaLabel}
         onClick={onSecondaryActionClick}
-        menu={Menu}
+        menu={menu}
         tokens={menuButtonTokens}
       />
     </Slots.root>
