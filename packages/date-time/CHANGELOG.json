@@ -2,6 +2,25 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.1.0",
+      "tag": "@uifabric/date-time_v6.1.0",
+      "date": "Wed, 08 May 2019 12:37:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding DatePicker component and examples",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "702ca5371c733b30487c03e96dd097756d6ba4ee"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.177.0` to `^6.178.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.4",
       "tag": "@uifabric/date-time_v6.0.4",
       "date": "Sat, 04 May 2019 00:01:53 GMT",

@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.76.0",
+      "tag": "@uifabric/experiments_v6.76.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add isFluentStyling prop and styles to Tile component",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "309cc7262eafb58489d275c0b9e2dc270a25bd4b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.3` to `^6.177.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.4` to `^6.18.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.75.0",
       "tag": "@uifabric/experiments_v6.75.0",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

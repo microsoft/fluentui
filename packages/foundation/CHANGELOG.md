@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+
+## 0.7.5
+Thu, 09 May 2019 12:35:50 GMT
+
+### Patches
+
+- Remove duplicate export from foundation package.
 
 ## 0.7.4
 Tue, 02 Apr 2019 00:38:14 GMT

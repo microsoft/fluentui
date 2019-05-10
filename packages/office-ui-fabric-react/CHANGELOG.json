@@ -2,6 +2,95 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.179.0",
+      "tag": "office-ui-fabric-react_v6.179.0",
+      "date": "Thu, 09 May 2019 12:35:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Include md files in nested docs folders",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "075d60c4fa36348ee9f5c62811fcee0141672a2c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added support for hidden options in dropdown and combo box",
+            "author": "Patricio Beltran <pbelsal@gmail.com>",
+            "commit": "265f0b77eb5e3deafe5829446ff560984313e122"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.4` to `^0.7.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.4` to `^0.7.5`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.178.0",
+      "tag": "office-ui-fabric-react_v6.178.0",
+      "date": "Wed, 08 May 2019 12:37:40 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Fix return type of onReduceDate in CommandBar",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "bc4e26cdf748bcbc44d78db9c66f7c8210c7d996"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.1` to `^6.17.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.177.0",
+      "tag": "office-ui-fabric-react_v6.177.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Router should error if getComponent doesn't return anything",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "82b5bd3d675e92be729c4bad2d3afd3cef4d2d3d"
+          },
+          {
+            "comment": "Truncate suggestions in IE11",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "c256f13b9bb0689609312fa6db226289514b98e6"
+          },
+          {
+            "comment": "Icon documentation update",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9400b25f3b43de9abe6162d813755d442d114e41"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme\"",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "6d1ba22a9981261b64777813e89f80da88cd5aeb"
+          },
+          {
+            "comment": "Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "6d1ba22a9981261b64777813e89f80da88cd5aeb"
+          },
+          {
+            "comment": "New feature: Semantic Slots card as well as clean up of layout & css.",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "6d1ba22a9981261b64777813e89f80da88cd5aeb"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.176.3",
       "tag": "office-ui-fabric-react_v6.176.3",
       "date": "Sun, 05 May 2019 19:59:10 GMT",

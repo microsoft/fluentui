@@ -1984,7 +1984,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._isPendingOption(item));
+    return getOptionStyles(
+      this.props.theme!,
+      customStylesForAllOptions,
+      customStylesForCurrentOption,
+      this._isPendingOption(item),
+      item.hidden
+    );
   }
 
   /**

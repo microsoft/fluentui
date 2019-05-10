@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Export ResponsiveMode from controls that expect it as a prop.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "jdh@microsoft.com"
+}
