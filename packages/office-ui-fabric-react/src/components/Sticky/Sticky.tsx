@@ -3,7 +3,7 @@ import * as PropTypes from 'prop-types';
 import { BaseComponent } from '../../Utilities';
 import { IStickyProps, StickyPositionType } from './Sticky.types';
 import { IScrollablePaneContext } from '../ScrollablePane/ScrollablePane.base';
-import { StickyContainerBehaviorType } from '../..';
+import { StickyContainerBehaviorType } from '../ScrollablePane/ScrollablePane.types';
 
 export interface IStickyState {
   isStickyTop: boolean;
