@@ -204,7 +204,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     warningHighlight: !isInverted ? '#ffb900' : '#fff100',
     successBackground: !isInverted ? 'rgba(95, 210, 85, .2)' : 'rgba(186, 216, 10, .4)',
 
-    inputBorder: p.neutralTertiary,
+    inputBorder: p.neutralSecondaryAlt,
     inputBorderHovered: p.neutralPrimary,
     inputBackground: p.white,
     inputBackgroundChecked: p.themePrimary,

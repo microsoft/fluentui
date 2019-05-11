@@ -3,7 +3,7 @@ import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
-  const { palette, fonts, semanticColors } = theme;
+  const { palette, fonts, semanticColors, effects } = theme;
 
   return {
     root: [
@@ -19,7 +19,8 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         alignItems: 'stretch',
         // The 1px top and bottom padding ensure the input field does not overlap the border
         padding: '1px 0 1px 4px',
-        border: `1px solid ${palette.neutralTertiary}`,
+        borderRadius: effects.roundedCorner2,
+        border: `1px solid ${semanticColors.inputBorder}`,
         height: 32,
         selectors: {
           [HighContrastSelector]: {
