@@ -4,7 +4,7 @@ import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { Omit } from 'office-ui-fabric-react/lib/Utilities';
 
-type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
+export type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
 export interface ICategory {
   [component: string]: CategoryPage;
