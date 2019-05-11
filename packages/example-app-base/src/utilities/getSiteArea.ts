@@ -6,8 +6,8 @@ import { pascalize } from './string';
  * @param pascal - If the returned string should be in pascal case.
  */
 export function getSiteArea(hash?: string, pascal?: boolean): string {
+  pascal = pascal || false;
   hash = hash || window.location.hash;
-  const mod = pascal !== false;
   const area = hash.indexOf('#/') > -1 ? hash.split('#/')[1].split('/')[0] : '';
-  return mod ? pascalize(area) : area;
+  return pascal ? pascalize(area) : area;
 }
