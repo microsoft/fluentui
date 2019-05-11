@@ -6,7 +6,7 @@ import { Omit } from 'office-ui-fabric-react/lib/Utilities';
 
 type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
-interface ICategory {
+export interface ICategory {
   [component: string]: CategoryPage;
 }
 
