@@ -205,7 +205,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border: 1px solid #a19f9d;
+              border: 1px solid #8a8886;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -372,7 +372,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               align-items: stretch;
               background: #ffffff;
               border-radius: 2px;
-              border: 1px solid #a19f9d;
+              border: 1px solid #8a8886;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;

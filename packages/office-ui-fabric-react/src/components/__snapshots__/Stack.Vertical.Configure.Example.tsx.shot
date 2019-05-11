@@ -1789,7 +1789,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Dropdown-title
                       {
                         background-color: #ffffff;
-                        border-color: #a19f9d;
+                        border-color: #8a8886;
                         border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
@@ -2018,7 +2018,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       ms-Dropdown-title
                       {
                         background-color: #ffffff;
-                        border-color: #a19f9d;
+                        border-color: #8a8886;
                         border-radius: 2px;
                         border-style: solid;
                         border-width: 1px;
@@ -2313,7 +2313,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                         align-items: stretch;
                         background: #ffffff;
                         border-radius: 2px;
-                        border: 1px solid #a19f9d;
+                        border: 1px solid #8a8886;
                         box-shadow: none;
                         box-sizing: border-box;
                         cursor: text;

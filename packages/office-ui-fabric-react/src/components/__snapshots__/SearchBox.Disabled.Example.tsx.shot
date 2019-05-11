@@ -14,7 +14,8 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           align-items: stretch;
           background-color: #f3f2f1;
           border-color: #f3f2f1;
-          border: 1px solid #a19f9d;
+          border-radius: 2px;
+          border: 1px solid #8a8886;
           box-shadow: none;
           box-sizing: border-box;
           color: #323130;
@@ -145,8 +146,9 @@ exports[`Component Examples renders SearchBox.Disabled.Example.tsx correctly 1`]
           align-items: stretch;
           background-color: transparent;
           border-color: #f3f2f1;
+          border-radius: 2px;
           border-width: 0 0 1px 0;
-          border: 1px solid #a19f9d;
+          border: 1px solid #8a8886;
           box-shadow: none;
           box-sizing: border-box;
           color: #323130;

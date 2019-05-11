@@ -38,7 +38,7 @@ exports[`TagPicker renders correctly 1`] = `
             {
               align-items: center;
               border-radius: 2px;
-              border: 1px solid #a19f9d;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
               display: flex;
               flex-wrap: wrap;

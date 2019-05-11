@@ -9,7 +9,8 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border: 1px solid #a19f9d;
+        border-radius: 2px;
+        border: 1px solid #8a8886;
         box-shadow: none;
         box-sizing: border-box;
         color: #323130;
@@ -135,7 +136,8 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         -webkit-font-smoothing: antialiased;
         align-items: stretch;
         background-color: #ffffff;
-        border: 1px solid #a19f9d;
+        border-radius: 2px;
+        border: 1px solid #8a8886;
         box-shadow: none;
         box-sizing: border-box;
         color: #323130;

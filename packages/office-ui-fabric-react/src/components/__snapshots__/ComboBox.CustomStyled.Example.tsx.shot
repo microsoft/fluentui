@@ -79,7 +79,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #b4a0ff;
-            border-color: #a19f9d;
+            border-color: #8a8886;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -405,7 +405,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #a19f9d;
+            border-color: #8a8886;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
