@@ -838,7 +838,7 @@ export class DefaultButton extends BaseComponent<IButtonProps, {}> {
 // @public (undocumented)
 export type DefaultProps = Required<Pick<ISpinButtonProps, 'step' | 'min' | 'max' | 'disabled' | 'labelPosition' | 'label' | 'incrementButtonIcon' | 'decrementButtonIcon'>>;
 
-// @public (undocumented)
+// @public
 export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
     // (undocumented)
     componentDidMount(): void;
@@ -3146,35 +3146,21 @@ export interface IDetailsCheckboxProps {
 
 // @public (undocumented)
 export interface IDetailsColumnProps extends React_2.ClassAttributes<DetailsColumnBase> {
-    // (undocumented)
     cellStyleProps?: ICellStyleProps;
-    // (undocumented)
     column: IColumn;
-    // (undocumented)
     columnIndex: number;
-    // (undocumented)
     componentRef?: () => void;
-    // (undocumented)
     dragDropHelper?: IDragDropHelper | null;
-    // (undocumented)
     isDraggable?: boolean;
-    // (undocumented)
     isDropped?: boolean;
-    // (undocumented)
     onColumnClick?: (ev: React_2.MouseEvent<HTMLElement>, column: IColumn) => void;
-    // (undocumented)
     onColumnContextMenu?: (column: IColumn, ev: React_2.MouseEvent<HTMLElement>) => void;
-    // (undocumented)
     onRenderColumnHeaderTooltip?: IRenderFunction<ITooltipHostProps>;
-    // (undocumented)
     parentId?: string;
-    // (undocumented)
+    // @deprecated (undocumented)
     setDraggedItemIndex?: (itemIndex: number) => void;
-    // (undocumented)
     styles?: IStyleFunctionOrObject<IDetailsColumnStyleProps, IDetailsColumnStyles>;
-    // (undocumented)
     theme?: ITheme;
-    // (undocumented)
     updateDragInfo?: (props: {
         itemIndex: number;
     }, event?: MouseEvent) => void;
@@ -3195,33 +3181,19 @@ export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme
 
 // @public (undocumented)
 export interface IDetailsColumnStyles {
-    // (undocumented)
     accessibleLabel: IStyle;
-    // (undocumented)
     borderAfterDropping: IStyle;
-    // (undocumented)
     borderWhileDragging: IStyle;
-    // (undocumented)
     cellName: IStyle;
-    // (undocumented)
     cellTitle: IStyle;
-    // (undocumented)
     cellTooltip: IStyle;
-    // (undocumented)
     filterChevron: IStyle;
-    // (undocumented)
     gripperBarVerticalStyle: IStyle;
-    // (undocumented)
     iconClassName: IStyle;
-    // (undocumented)
     nearIcon: IStyle;
-    // (undocumented)
     noBorderAfterDropping: IStyle;
-    // (undocumented)
     noBorderWhileDragging: IStyle;
-    // (undocumented)
     root: IStyle;
-    // (undocumented)
     sortIcon: IStyle;
 }
 
@@ -3555,9 +3527,8 @@ export interface IDetailsRowCheckStyles {
     root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
-    // (undocumented)
     cellStyleProps?: ICellStyleProps;
     columns: IColumn[];
     columnStartIndex: number;
@@ -4187,73 +4158,49 @@ export interface IDocumentCardTitleStyles {
     root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface IDragDropContext {
-    // (undocumented)
     data: any;
-    // (undocumented)
     index: number;
-    // (undocumented)
     isGroup?: boolean;
 }
 
-// @public (undocumented)
+// @public
 export interface IDragDropEvents {
-    // (undocumented)
     canDrag?: (item?: any) => boolean;
-    // (undocumented)
     canDrop?: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => boolean;
-    // (undocumented)
     onDragEnd?: (item?: any, event?: DragEvent) => void;
-    // (undocumented)
     onDragEnter?: (item?: any, event?: DragEvent) => string;
-    // (undocumented)
     onDragLeave?: (item?: any, event?: DragEvent) => void;
-    // (undocumented)
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
-    // (undocumented)
     onDrop?: (item?: any, event?: DragEvent) => void;
 }
 
-// @public (undocumented)
+// @public
 export interface IDragDropHelper {
-    // (undocumented)
     dispose: () => void;
-    // (undocumented)
     subscribe: (root: HTMLElement, events: EventGroup, options: IDragDropOptions) => {
         key: string;
         dispose: () => void;
     };
-    // (undocumented)
     unsubscribe: (root: HTMLElement, key: string) => void;
 }
 
-// @public (undocumented)
+// @public
 export interface IDragDropOptions {
-    // (undocumented)
     canDrag?: (item?: any) => boolean;
-    // (undocumented)
     canDrop?: (dropContext?: IDragDropContext, dragContext?: IDragDropContext) => boolean;
-    // (undocumented)
     context: IDragDropContext;
-    // (undocumented)
     eventMap?: {
         eventName: string;
         callback: (context: IDragDropContext, event?: any) => void;
     }[];
-    // (undocumented)
     key?: string;
-    // (undocumented)
     onDragEnd?: (item?: any, event?: DragEvent) => void;
-    // (undocumented)
     onDragOver?: (item?: any, event?: DragEvent) => void;
-    // (undocumented)
     onDragStart?: (item?: any, itemIndex?: number, selectedItems?: any[], event?: MouseEvent) => void;
-    // (undocumented)
     onDrop?: (item?: any, event?: DragEvent) => void;
-    // (undocumented)
     selectionIndex: number;
-    // (undocumented)
     updateDropState: (isDropping: boolean, event: DragEvent) => void;
 }
 
@@ -5690,7 +5637,7 @@ export interface IOverlayStyles {
     root: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 // @public (undocumented)
@@ -7831,17 +7778,14 @@ export interface IVerticalDividerStyles {
     wrapper: IStyle;
 }
 
-// @public (undocumented)
+// @public
 export interface IViewport {
-    // (undocumented)
     height: number;
-    // (undocumented)
     width: number;
 }
 
-// @public (undocumented)
+// @public
 export interface IWithViewportProps {
-    // (undocumented)
     skipViewportMeasures?: boolean;
 }
 
