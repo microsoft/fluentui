@@ -4,6 +4,8 @@ import { IDetailsListProps } from './DetailsList';
 import { IDetailsRowProps } from './DetailsRow';
 
 /**
+ * Extended column render props.
+ *
  * {@docCategory DetailsList}
  */
 export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
