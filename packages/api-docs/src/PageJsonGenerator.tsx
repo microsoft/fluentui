@@ -157,11 +157,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
 }
 
 function renderDefaultValue(section: DocNodeContainer): string {
-  let defaultValueAsString = '';
-  for (const node of section.nodes) {
-    defaultValueAsString += extractText(node);
-  }
-  return defaultValueAsString;
+  return section.nodes.map((node: DocNode) => extractText(node)).join('');
 }
 
 /**
@@ -241,21 +237,12 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
         };
 
         if (apiPropertySignature.tsdocComment) {
-          let defaultValue = getBlockTagByName('@defaultValue', apiPropertySignature.tsdocComment);
+          const defaultValue =
+            getBlockTagByName('@defaultValue', apiPropertySignature.tsdocComment) ||
+            getBlockTagByName('@defaultvalue', apiPropertySignature.tsdocComment) ||
+            getBlockTagByName('@default', apiPropertySignature.tsdocComment);
 
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@defaultvalue', apiPropertySignature.tsdocComment);
-          }
-
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@default', apiPropertySignature.tsdocComment);
-          }
-
-          let defaultValueAsString = '';
-          if (defaultValue) {
-            defaultValueAsString = renderDefaultValue(defaultValue);
-          }
-          tableRowJson.defaultValue = defaultValueAsString;
+          tableRowJson.defaultValue = defaultValue ? renderDefaultValue(defaultValue) : '';
         }
 
         const tokenRange = apiPropertySignature.propertyTypeExcerpt.tokenRange;
@@ -422,21 +409,12 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
         };
 
         if (classItem.tsdocComment) {
-          let defaultValue = getBlockTagByName('@defaultValue', classItem.tsdocComment);
+          const defaultValue =
+            getBlockTagByName('@defaultValue', classItem.tsdocComment) ||
+            getBlockTagByName('@defaultvalue', classItem.tsdocComment) ||
+            getBlockTagByName('@default', classItem.tsdocComment);
 
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@defaultvalue', classItem.tsdocComment);
-          }
-
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@default', classItem.tsdocComment);
-          }
-
-          let defaultValueAsString = '';
-          if (defaultValue) {
-            defaultValueAsString = renderDefaultValue(defaultValue);
-          }
-          tableRowJson.defaultValue = defaultValueAsString;
+          tableRowJson.defaultValue = defaultValue ? renderDefaultValue(defaultValue) : '';
         }
 
         const tokenRange = apiProperty.propertyTypeExcerpt.tokenRange;
