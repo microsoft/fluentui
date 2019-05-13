@@ -40,7 +40,7 @@ export const SelectedPersona = React.memo(<TPersona extends IPersonaProps = IPer
     ev => {
       ev.stopPropagation();
       ev.preventDefault();
-      onRemoveItem && onRemoveItem(item);
+      onRemoveItem && onRemoveItem();
     },
     [onRemoveItem]
   );

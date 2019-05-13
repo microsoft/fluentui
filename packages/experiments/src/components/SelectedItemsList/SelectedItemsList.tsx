@@ -11,16 +11,16 @@ const useSelectedIndeces = (inputSelection: Selection | undefined): [Selection, 
         ? inputSelection
         : new Selection({
             onSelectionChanged: () => {
+              // selectedIndeces depends on selection, which has to be initialized
+              // with the setSelectedIndeces callback. Capture it in a closure.
+              //
+              // tslint:disable-next-line:no-use-before-declare
               setSelectedIndeces(selection.getSelectedIndices());
             }
           }),
     [inputSelection]
   );
 
-  // selectedIndeces depends on selection, which has to be initialized
-  // with the setSelectedIndeces callback.
-  //
-  // tslint:ignore-next-line:no-use-before-declare
   const [selectedIndices, setSelectedIndeces] = React.useState(selection.getSelectedIndices());
   return [selection, selectedIndices];
 };
@@ -30,6 +30,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   ref: React.Ref<ISelectedItemsList<TItem>>
 ) => {
   const [items, updateItems] = React.useState(props.selectedItems || props.defaultSelectedItems || []);
+  const renderedItems = React.useMemo(() => props.selectedItems || items, [items, props.selectedItems]);
 
   // Selection which initializes at the beginning of the component and
   // only updates if seleciton becomes set in props (e.g. compoennt transitions from
@@ -71,7 +72,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
     }
   }, [itemsInSelection, selectedIndices]);
 
-  // Callbacks only used for something else
+  // Callbacks only used in the imperitive handle
 
   const addItems = React.useCallback(
     (newItems: TItem[]) => {
@@ -108,7 +109,7 @@ const _SelectedItemsList = <TItem extends BaseSelectedItem>(
   const SelectedItem = props.onRenderItem;
   return (
     <>
-      {items.map((item: TItem, index: number) => (
+      {renderedItems.map((item: TItem, index: number) => (
         <SelectedItem
           item={item}
           index={index}

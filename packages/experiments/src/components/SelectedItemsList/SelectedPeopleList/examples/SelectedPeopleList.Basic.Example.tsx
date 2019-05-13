@@ -1,11 +1,11 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IPersona } from 'office-ui-fabric-react/lib/Persona';
 import { people } from './PeopleExampleData';
 import { SelectedPeopleList, ISelectedPeopleList } from '../../SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { IPersona } from '../../../../../../office-ui-fabric-react/lib';
 
 export interface IPeopleSelectedItemsListExampleState {
   currentSelectedItems: IPersona[];
@@ -44,11 +44,11 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
     return (
       <div>
         <SelectedPeopleList
+          ref={this._setComponentRef}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
           selectedItems={this.state.controlledComponent ? this.state.currentSelectedItems : undefined}
-          componentRef={this._setComponentRef}
           selection={this.selection}
           onItemsRemoved={this.state.controlledComponent ? this._onItemsRemoved : undefined}
         />
@@ -61,26 +61,26 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
   };
 
   private _onAddItemButtonClicked = (): void => {
-    if (this._selectionList) {
-      if (!this.index) {
-        this.index = 0;
-      }
-
-      if (this.state.controlledComponent) {
-        this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, people[this.index]] });
-      } else {
-        this._selectionList.addItems([people[this.index]]);
-      }
-      this.index++;
+    if (!this.index) {
+      this.index = 0;
     }
+
+    if (this.state.controlledComponent) {
+      this.setState({ currentSelectedItems: [...this.state.currentSelectedItems, people[this.index]] });
+    } else if (this._selectionList) {
+      this._selectionList.addItems([people[this.index]]);
+    } else {
+      return;
+    }
+
+    this.index++;
   };
 
-  private _onItemsRemoved = (item: IPersona): void => {
-    const indexToRemove = this.state.currentSelectedItems.indexOf(item);
-    this.setState({
-      currentSelectedItems: this.state.currentSelectedItems
-        .slice(0, indexToRemove)
-        .concat(this.state.currentSelectedItems.slice(indexToRemove + 1))
+  private _onItemsRemoved = (items: IPersona[]): void => {
+    const currentSelectedItemsCopy = this.state.currentSelectedItems.slice();
+    items.forEach(item => {
+      const indexToRemove = currentSelectedItemsCopy.indexOf(item);
+      currentSelectedItemsCopy.splice(indexToRemove, 1);
     });
   };
 

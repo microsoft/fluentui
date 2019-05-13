@@ -1,10 +1,10 @@
 import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { people } from './PeopleExampleData';
 import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { IPersonaProps } from '../../../../../../office-ui-fabric-react/lib';
 import { SelectedPersona } from '../Items/SelectedPersona';
 import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
 import { copyToClipboard } from '../../utils/copyToClipboard';
@@ -58,7 +58,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
-          componentRef={this._setComponentRef}
+          ref={this._setComponentRef}
           selection={this.selection}
           onRenderItem={this.SelectedItem}
         />
