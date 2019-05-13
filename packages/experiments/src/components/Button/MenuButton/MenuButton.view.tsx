@@ -7,7 +7,27 @@ import { Button } from '../Button';
 import { IMenuButtonComponent, IMenuButtonProps, IMenuButtonSlots } from './MenuButton.types';
 
 export const MenuButtonView: IMenuButtonComponent['view'] = props => {
-  const { children, disabled, onClick, expanded, onMenuDismiss, menuTarget, buttonRef, ...rest } = props;
+  const {
+    children,
+    disabled,
+    onClick,
+    allowDisabledFocus,
+    keytipProps: keytips,
+    menu,
+    expanded,
+    onMenuDismiss,
+    menuTarget,
+    buttonRef,
+    ...rest
+  } = props;
+  let { keytipProps } = props;
+
+  if (keytipProps && menu) {
+    keytipProps = {
+      ...keytipProps,
+      hasMenu: true
+    };
+  }
 
   const Slots = getSlots<IMenuButtonProps, IMenuButtonSlots>(props, {
     root: 'div',
@@ -21,7 +41,15 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
 
   return (
     <Slots.root>
-      <Slots.button aria-expanded={expanded} onClick={onClick} disabled={disabled} componentRef={buttonRef} {...rest}>
+      <Slots.button
+        aria-expanded={expanded}
+        onClick={onClick}
+        disabled={disabled}
+        componentRef={buttonRef}
+        allowDisabledFocus={allowDisabledFocus}
+        keytipProps={keytipProps}
+        {...rest}
+      >
         {children}
         <Stack.Item>
           <Slots.menuIcon iconName="ChevronDown" />
