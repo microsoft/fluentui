@@ -105,7 +105,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
     const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton } = this.props;
-    const isLinkWithIcon = link.iconProps && (!!link.iconProps.iconName || !!link.iconProps.imageProps);
+    const isLinkWithIcon = link.icon || (link.iconProps && (!!link.iconProps.iconName || !!link.iconProps.imageProps));
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: this._isLinkSelected(link),
