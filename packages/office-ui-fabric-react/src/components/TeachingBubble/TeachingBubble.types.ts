@@ -123,8 +123,6 @@ export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'the
   Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
     /** Class name for callout. */
     calloutClassName?: string;
-    /** Class name for multistep text */
-    multistepTextClassName?: string;
     /** Class name for primary button. */
     primaryButtonClassName?: string;
     /** Class name for secondary button. */

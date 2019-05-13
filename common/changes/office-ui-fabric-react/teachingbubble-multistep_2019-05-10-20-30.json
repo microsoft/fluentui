@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TeachingBubble: Add prop to render text for multi-step experience",
+      "comment": "TeachingBubble: Add footerContent prop to render custom footer text",
       "type": "minor"
     }
   ],

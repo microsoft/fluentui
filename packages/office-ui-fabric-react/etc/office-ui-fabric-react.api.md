@@ -7296,7 +7296,6 @@ export interface ITeachingBubbleState {
 // @public (undocumented)
 export type ITeachingBubbleStyleProps = Required<Pick<ITeachingBubbleProps, 'theme'>> & Pick<ITeachingBubbleProps, 'hasCondensedHeadline' | 'hasSmallHeadline' | 'isWide'> & {
     calloutClassName?: string;
-    multistepTextClassName?: string;
     primaryButtonClassName?: string;
     secondaryButtonClassName?: string;
 };
