@@ -9,6 +9,8 @@ import { IDetailsRowProps } from './DetailsRow';
 export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 /**
+ * Props interface for the {@link DetailsRowFields} component.
+ *
  * {@docCategory DetailsList}
  */
 export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
@@ -57,5 +59,8 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     fields: string;
   };
 
+  /**
+   * Style properties to customize cell render output.
+   */
   cellStyleProps?: ICellStyleProps;
 }
