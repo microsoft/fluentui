@@ -2,9 +2,9 @@ import * as React from 'react';
 import { Stack } from '../../Stack';
 import { classNamesFunction } from '../../Utilities';
 import { IconButton, DefaultButton, Callout, FocusZone, FocusZoneDirection, List, Text } from 'office-ui-fabric-react';
-import { IMicroFeedbackProps, IMicroFeedbackStyleProps, IMicroFeedbackStyles, VoteType } from './MicroFeedback.types';
+import { IMicroFeedbackProps, IMicroFeedbackSlots, IMicroFeedbackStyleProps, IMicroFeedbackStyles, VoteType } from './MicroFeedback.types';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-// import { IStackTokens } from '../Stack.types';
+import { getSlots } from '../../Foundation';
 
 const getClassNames = classNamesFunction<IMicroFeedbackStyleProps, IMicroFeedbackStyles>();
 
@@ -39,6 +39,21 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
       theme: this.props.theme
     });
 
+    const callout = (
+      <Stack
+        className={this.classNames.followUpContainer}
+        role="alertdialog"
+        gapSpace={0}
+        /* target={this.likeRef} */
+        setInitialFocus={true}
+        onDismiss={this._onCalloutDismiss}
+      />
+    );
+
+    const Slots = getSlots<IMicroFeedbackProps, IMicroFeedbackSlots>(this.props, {
+      followup: Stack
+    });
+
     return (
       <Stack className={this.classNames.root}>
         <Stack horizontal className={this.classNames.iconContainer}>
@@ -50,40 +65,36 @@ export class MicroFeedbackBase extends React.Component<IMicroFeedbackProps, IMic
             <IconButton menuIconProps={{ iconName: dislikeIcon }} title={this.props.thumbsDownTitle} onClick={this._dislikeVote} />
           </div>
         </Stack>
-        {this.props.thumbsUpQuestion && !hideThumbsUpCallout
-          ? this.props.renderFollowupContainer!(
-              <FocusZone direction={FocusZoneDirection.vertical}>
-                <Text block={true} className={this.classNames.followUpQuestion} variant="small">
-                  {this.props.thumbsUpQuestion.question}
-                </Text>
-                <List
-                  items={this.props.thumbsUpQuestion.options}
-                  className={this.classNames.followUpOptionText}
-                  onRenderCell={this._onRenderCalloutItem}
-                />
-              </FocusZone>,
-              this.classNames,
-              this.likeRef.current,
-              this._onCalloutDismiss
-            )
-          : null}
-        {this.props.thumbsDownQuestion && !hideThumbsDownCallout
-          ? this.props.renderFollowupContainer!(
-              <FocusZone direction={FocusZoneDirection.vertical}>
-                <Text block={true} className={this.classNames.followUpQuestion} variant="small">
-                  {this.props.thumbsDownQuestion.question}
-                </Text>
-                <List
-                  items={this.props.thumbsDownQuestion.options}
-                  className={this.classNames.followUpOptionText}
-                  onRenderCell={this._onRenderCalloutItem}
-                />
-              </FocusZone>,
-              this.classNames,
-              this.dislikeRef.current,
-              this._onCalloutDismiss
-            )
-          : null}
+        {this.props.thumbsUpQuestion && !hideThumbsUpCallout ? (
+          <Slots.followup>
+            <FocusZone direction={FocusZoneDirection.vertical}>
+              <Text block={true} className={this.classNames.followUpQuestion} variant="small">
+                {this.props.thumbsUpQuestion.question}
+              </Text>
+              <List
+                items={this.props.thumbsUpQuestion.options}
+                className={this.classNames.followUpOptionText}
+                onRenderCell={this._onRenderCalloutItem}
+              />
+            </FocusZone>
+            , this.classNames, this.likeRef.current, this._onCalloutDismiss
+          </Slots.followup>
+        ) : null}
+        {this.props.thumbsDownQuestion && !hideThumbsDownCallout ? (
+          <Slots.followup>
+            <FocusZone direction={FocusZoneDirection.vertical}>
+              <Text block={true} className={this.classNames.followUpQuestion} variant="small">
+                {this.props.thumbsDownQuestion.question}
+              </Text>
+              <List
+                items={this.props.thumbsDownQuestion.options}
+                className={this.classNames.followUpOptionText}
+                onRenderCell={this._onRenderCalloutItem}
+              />
+            </FocusZone>
+            , this.classNames, this.dislikeRef.current, this._onCalloutDismiss
+          </Slots.followup>
+        ) : null}
       </Stack>
     );
   }

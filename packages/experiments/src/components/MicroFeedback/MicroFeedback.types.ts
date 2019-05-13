@@ -1,4 +1,5 @@
 import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
 import { IStyle, ITheme } from '../../Styling';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
@@ -6,9 +7,16 @@ import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
 export type VoteType = 'dislike' | 'no_vote' | 'like';
 
+export interface IMicroFeedbackSlots {
+  /**
+   * Defines root slot.
+   */
+  followup?: ISlotRender;
+}
+
 // Extending IStyleableComponentProps will automatically add styleable props for you, such as styles, tokens and theme.
 // If you don't want these props to be included in your component, just remove this extension.
-export interface IMicroFeedbackProps {
+export interface IMicroFeedbackProps extends IMicroFeedbackSlots {
   sendFeedback?: (vote: VoteType) => void; // Callback for sending feedback to a backend
   sendFollowupIndex?: (id: string, index: number) => void; // Callback for sending followup index to a backend
   thumbsUpTitle?: string; // Localized string for the thumbsUp icon
