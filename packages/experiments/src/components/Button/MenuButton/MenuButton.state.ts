@@ -1,4 +1,4 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useImperativeHandle, useState } from 'react';
 import { useControlledState } from '../../../Foundation';
 import { KeyCodes } from '../../../Utilities';
 import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
@@ -42,6 +42,15 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
     },
     [disabled, expanded]
   );
+
+  useImperativeHandle(props.componentRef, () => ({
+    focus: () => {
+      /** no impl **/
+    },
+    onKeyDown: (ev: React.KeyboardEvent<HTMLElement>) => {
+      _onKeyDown(ev);
+    }
+  }));
 
   const viewProps: IMenuButtonViewProps = {
     ...props,

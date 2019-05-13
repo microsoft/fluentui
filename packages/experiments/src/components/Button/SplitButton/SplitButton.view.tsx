@@ -27,6 +27,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     onMenuDismiss,
     menuTarget,
     onSecondaryActionClick,
+    menuButtonRef,
     ...rest
   } = props;
 
@@ -69,6 +70,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         ariaLabel={menuButtonAriaLabel}
         onClick={onSecondaryActionClick}
         menu={menu}
+        componentRef={menuButtonRef}
       />
     </Slots.root>
   );

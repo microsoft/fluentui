@@ -124,7 +124,7 @@ export interface IButtonProps
  */
 export interface IButtonViewProps extends IButtonProps {
   /**
-   * Defines a reference to the inner button.
+   * Defines a reference to the inner Button.
    */
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }

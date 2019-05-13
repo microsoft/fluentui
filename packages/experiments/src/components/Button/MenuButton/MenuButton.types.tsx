@@ -53,6 +53,11 @@ export interface IMenuButton {
    * Sets focus to the MenuButton.
    */
   focus: () => void;
+
+  /**
+   * Defines an event callback that is triggered when a keypress is made with the focus on a MenuButton.
+   */
+  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**

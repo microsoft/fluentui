@@ -2,6 +2,7 @@ import { IStackSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import {
+  IMenuButton,
   IMenuButtonProps,
   IMenuButtonSlot,
   IMenuButtonSlots,
@@ -97,11 +98,18 @@ export interface ISplitButtonProps
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
+export interface ISplitButtonViewProps
+  extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onKeyDown' | 'onMenuDismiss' | 'menuTarget'>,
+    ISplitButtonProps {
   /**
    * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
    */
   onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
+
+  /**
+   * Defines a reference to the inner menu button.
+   */
+  menuButtonRef?: React.RefObject<IMenuButton>;
 }
 
 /**
