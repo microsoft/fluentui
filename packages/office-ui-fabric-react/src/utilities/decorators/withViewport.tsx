@@ -23,7 +23,7 @@ export interface IWithViewportState {
 }
 
 /**
- * Props interface for {@link withViewport}.
+ * Props interface for the withViewport component.
  *
  * {@docCategory DetailsList}
  */

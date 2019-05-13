@@ -55,7 +55,7 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
    */
   isDraggable?: boolean;
   /**
-   * @deprecated, use `updateDragInfo`
+   * @deprecated use `updateDragInfo`
    */
   setDraggedItemIndex?: (itemIndex: number) => void;
   /**

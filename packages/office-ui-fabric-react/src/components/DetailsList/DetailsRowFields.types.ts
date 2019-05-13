@@ -11,7 +11,7 @@ import { IDetailsRowProps } from './DetailsRow';
 export type IOverrideColumnRenderProps = Pick<IDetailsListProps, 'onRenderItemColumn'> & Pick<IDetailsRowProps, 'cellsByColumn'>;
 
 /**
- * Props interface for the {@link DetailsRowFields} component.
+ * Props interface for the DetailsRowFields component.
  *
  * {@docCategory DetailsList}
  */

@@ -3,7 +3,7 @@ import { EventGroup } from '../../Utilities';
 
 /**
  * Helper for subscribing and unsubscribing to
- * drag and drop events on an {@link HTMLElement}.
+ * drag and drop events on an HTMLElement.
  *
  * {@docCategory IDragDropHelper}
  */
