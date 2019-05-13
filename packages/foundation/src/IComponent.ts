@@ -103,9 +103,9 @@ export interface IComponentOptions<
   TStatics = {}
 > {
   /**
-   * Display name to identify component in React hierarchy.
+   * Display name to identify component in React hierarchy. This parameter is required for targeted component styling via theming.
    */
-  displayName: string;
+  displayName?: string;
   /**
    * List of fields which can be customized.
    */
@@ -114,10 +114,6 @@ export interface IComponentOptions<
    * Styles prop to pass into component.
    */
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
-  /**
-   * React view component.
-   */
-  view: IViewComponent<TViewProps>;
   /**
    * Optional state component that processes TComponentProps into TViewProps.
    */
@@ -145,7 +141,12 @@ export type IComponent<
   TStyleSet extends IStyleSet<TStyleSet>,
   TViewProps = TComponentProps,
   TStatics = {}
-> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>>;
+> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>> & {
+  /**
+   * Component that generates view output.
+   */
+  view: IViewComponent<TViewProps>;
+};
 
 /**
  * Factory options for creating component.

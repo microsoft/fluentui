@@ -1,13 +1,12 @@
 import * as React from 'react';
 import { createComponent } from '../../Foundation';
 import { ITextProps } from './Text.types';
-import { TextView as view } from './Text.view';
+import { TextView } from './Text.view';
 import { TextStyles as styles } from './Text.styles';
 
-export const Text: React.StatelessComponent<ITextProps> = createComponent({
+export const Text: React.StatelessComponent<ITextProps> = createComponent(TextView, {
   displayName: 'Text',
-  styles,
-  view
+  styles
 });
 
 export default Text;
