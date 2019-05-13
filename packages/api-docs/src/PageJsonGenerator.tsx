@@ -26,6 +26,7 @@ import {
   ApiPackage,
   ApiProperty,
   ApiPropertySignature,
+  ApiTypeAlias,
   ExcerptToken,
   ExcerptTokenKind
 } from '@microsoft/api-extractor-model';
@@ -140,8 +141,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
             break;
           }
           case ApiItemKind.TypeAlias: {
-            // TODO: handle typealias
-            console.log('Type alias');
+            pageJson.tables.push(createTypeAliasPageJson(collectedData, apiItem as ApiTypeAlias));
             break;
           }
         }
@@ -511,6 +511,42 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
 }
 
 /**
+ * Creates a type alias json object
+ * @param collectedData - Collected data to use for linking
+ * @param typeAliasItem - Type alias item to search
+ */
+function createTypeAliasPageJson(collectedData: CollectedData, typeAliasItem: ApiTypeAlias): ITableJson {
+  const tableJson: ITableJson = {
+    kind: 'typeAlias',
+    name: typeAliasItem.displayName,
+    extendsTokens: [],
+    description: '',
+    members: []
+  };
+
+  if (typeAliasItem.tsdocComment) {
+    tableJson.description += renderDocNodeWithoutInlineTag(typeAliasItem.tsdocComment.summarySection);
+  }
+
+  for (const token of typeAliasItem.excerptTokens) {
+    if (token.kind === ExcerptTokenKind.Reference) {
+      // search for reference in collectedData
+      const apiPage = collectedData.apiToPage.get(token.text);
+      if (apiPage !== undefined) {
+        // not actually technically extendsTokens, but we'll handle the type alias differently
+        tableJson.extendsTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
+      } else {
+        tableJson.extendsTokens.push({ text: token.text });
+      }
+    } else {
+      tableJson.extendsTokens.push({ text: token.text });
+    }
+  }
+
+  return tableJson;
+}
+
+/**
  * Renders the doc node (likely a DocComment's DocSection) without the inline tag
  *
  * @param docNode - Doc node from which to remove the inline tag
@@ -576,7 +612,8 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
     switch (apiItem.kind) {
       case ApiItemKind.Interface:
       case ApiItemKind.Enum:
-      case ApiItemKind.Class: {
+      case ApiItemKind.Class:
+      case ApiItemKind.TypeAlias: {
         console.log('Analyzing ' + apiItem.displayName);
 
         if (apiItem.tsdocComment !== undefined) {

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/api-docs",
+      "comment": "PageJsonGenerator: handle type aliases.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/api-docs",
+  "email": "natalie.ethell@microsoft.com"
+}

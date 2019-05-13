@@ -184,7 +184,7 @@ export type IEnumTableRowJson = Required<Pick<ITableRowJson, 'name' | 'descripti
  * Api table
  */
 export interface ITableJson {
-  kind: 'interface' | 'enum' | 'class';
+  kind: 'interface' | 'enum' | 'class' | 'typeAlias';
   name: string;
   extendsTokens: ILinkToken[];
   description: string;
