@@ -6335,6 +6335,7 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
     onRenderItem?: IRenderFunction<ISelectableOption>;
     onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
     onRenderOption?: IRenderFunction<ISelectableOption>;
+    openOnKeyboardFocus?: boolean;
     options?: any;
     panelProps?: IPanelProps;
     placeholder?: string;

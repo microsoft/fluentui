@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/experiments",
-  "version": "6.76.0",
+  "version": "6.76.1",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -59,12 +59,12 @@
     "@uifabric/icons": "^6.5.1",
     "@uifabric/merge-styles": "^6.17.2",
     "@uifabric/set-version": "^1.1.3",
-    "@uifabric/styling": "^6.47.3",
+    "@uifabric/styling": "^6.47.4",
     "@uifabric/theme-samples": "^0.1.5",
     "@uifabric/utilities": "^6.38.1",
     "@uifabric/variants": "^6.14.1",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": "^6.179.0",
+    "office-ui-fabric-react": "^6.180.0",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

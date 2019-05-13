@@ -2,6 +2,28 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.76.1",
+      "tag": "@uifabric/experiments_v6.76.1",
+      "date": "Fri, 10 May 2019 12:36:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update snapshot",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "db5e7d73e8718f76e5670679f16d8c037f3ef515"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.3` to `^6.47.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.179.0` to `^6.180.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.76.0",
       "tag": "@uifabric/experiments_v6.76.0",
       "date": "Tue, 07 May 2019 12:34:52 GMT",

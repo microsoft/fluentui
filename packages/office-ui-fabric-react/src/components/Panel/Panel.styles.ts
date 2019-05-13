@@ -12,6 +12,8 @@ import {
   ScreenWidthMinUhfMobile,
   IStyle
 } from '../../Styling';
+import { getWindow } from '../../Utilities';
+
 // TODO -Issue #5689: Comment in once Button is converted to mergeStyles
 // import { IStyleFunctionOrObject } from '../../Utilities';
 // import { IButtonStyles, IButtonStyleProps } from '../../Button';
@@ -201,7 +203,8 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
   const { palette } = theme;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
   const isCustomPanel = type === PanelType.custom || type === PanelType.customNear;
-  const windowHeight = typeof window !== 'undefined' ? window.innerHeight : '100%';
+  const win = getWindow();
+  const windowHeight = typeof win !== 'undefined' ? win.innerHeight : '100%';
 
   return {
     root: [

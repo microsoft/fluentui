@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+This log was last generated on Fri, 10 May 2019 12:36:11 GMT and should not be manually modified.
+
+## 6.17.2
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Fixes website to be IE11 compatible with polyfills provided by react-app-polyfill
 
 ## 6.17.1
 Thu, 09 May 2019 12:35:50 GMT

@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.17.2",
+      "tag": "@uifabric/fabric-website_v6.17.2",
+      "date": "Fri, 10 May 2019 12:36:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes website to be IE11 compatible with polyfills provided by react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "dc258e887455db9ac8c4adafc0d4e28c7cf40c14"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.76.0` to `^6.76.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.179.0` to `^6.180.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.1",
       "tag": "@uifabric/fabric-website_v6.17.1",
       "date": "Thu, 09 May 2019 12:35:50 GMT",

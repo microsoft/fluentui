@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Export ResponsiveMode from controls that expect it as a prop.",
-      "type": "minor"
+      "comment": "In Edge, prevent pickers from showing \"ms-clear\" icon when typing.",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

@@ -2,6 +2,20 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.47.4",
+      "tag": "@uifabric/styling_v6.47.4",
+      "date": "Fri, 10 May 2019 12:36:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add _theme.effects to legacyLoadTheme",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "b2b86550e7510c3f15c51a2fa400e902ab88ce57"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.3",
       "tag": "@uifabric/styling_v6.47.3",
       "date": "Sat, 04 May 2019 00:01:54 GMT",

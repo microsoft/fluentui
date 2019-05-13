@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 09 May 2019 12:35:50 GMT and should not be manually modified.
+This log was last generated on Fri, 10 May 2019 12:36:11 GMT and should not be manually modified.
+
+## 6.180.0
+Fri, 10 May 2019 12:36:11 GMT
+
+### Minor changes
+
+- Export ResponsiveMode from controls that expect it as a prop.
+
+### Patches
+
+- Fix focus state on ComboBox
+- Fix ARIA issue in Surfaces
 
 ## 6.179.0
 Thu, 09 May 2019 12:35:50 GMT
