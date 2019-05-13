@@ -5,7 +5,7 @@ import { EventGroup } from '../../Utilities';
  * Helper for subscribing and unsubscribing to
  * drag and drop events on an {@link HTMLElement}.
  *
- * {@docCategory DetailsList}
+ * {@docCategory IDragDropHelper}
  */
 export interface IDragDropHelper {
   /**
@@ -32,7 +32,7 @@ export interface IDragDropHelper {
 /**
  * Drag & drop event callback interface.
  *
- * {@docCategory DetailsList}
+ * {@docCategory IDragDropHelper}
  */
 export interface IDragDropEvents {
   /**
@@ -68,7 +68,7 @@ export interface IDragDropEvents {
 /**
  * Drag & drop event contextual information.
  *
- * {@docCategory DetailsList}
+ * {@docCategory IDragDropHelper}
  */
 export interface IDragDropContext {
   /**
@@ -94,7 +94,7 @@ export interface IDragDropTarget {
 /**
  * The drag and drop event listener configuration.
  *
- * {@docCategory DetailsList}
+ * {@docCategory IDragDropHelper}
  */
 export interface IDragDropOptions {
   /**
@@ -147,7 +147,7 @@ export interface IDragDropOptions {
 }
 
 /**
- * {@docCategory DetailsList}
+ * {@docCategory IDragDropHelper}
  */
 export interface IDragDropEvent {
   /**
