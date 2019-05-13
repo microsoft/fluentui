@@ -118,18 +118,60 @@ export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme
  * {@docCategory DetailsList}
  */
 export interface IDetailsColumnStyles {
+  /**
+   * Styleable root region.
+   */
   root: IStyle;
+  /**
+   * Styleable resize glyph region.
+   */
   gripperBarVerticalStyle: IStyle;
+  /**
+   * Styleable cell tooltip region.
+   */
   cellTooltip: IStyle;
+  /**
+   * Styleable cell title region.
+   */
   cellTitle: IStyle;
+  /**
+   * Styleable cell name region.
+   */
   cellName: IStyle;
+  /**
+   * Styleable icon region.
+   */
   iconClassName: IStyle;
+  /**
+   * Styleable margin by icon region.
+   */
   nearIcon: IStyle;
+  /**
+   * Styleable label region.
+   */
   accessibleLabel: IStyle;
+  /**
+   * Styleable column sort icon region.
+   */
   sortIcon: IStyle;
+  /**
+   * Styleable filter glyph.
+   */
   filterChevron: IStyle;
+  /**
+   * Styleable border region after drag & drop.
+   */
   borderAfterDropping: IStyle;
+  /**
+   * Transparent no border region after drag & drop to avoid content shift.
+   */
   noBorderAfterDropping: IStyle;
+  /**
+   * Styleable border while drag & drop occurs.
+   */
   borderWhileDragging: IStyle;
+  /**
+   * Transparent no border region while drag & drop occurs to avoid content shift.
+   */
   noBorderWhileDragging: IStyle;
 }
