@@ -76,14 +76,41 @@ export interface IDetailsColumnProps extends React.ClassAttributes<DetailsColumn
  * {@docCategory DetailsList}
  */
 export type IDetailsColumnStyleProps = Required<Pick<IDetailsColumnProps, 'theme' | 'cellStyleProps'>> & {
+  /**
+   * Classname to provide for header region.
+   */
   headerClassName?: string;
+  /**
+   * Whether or not the column is actionable.
+   */
   isActionable?: boolean;
+  /**
+   * Whether or not the column contains contents.
+   */
   isEmpty?: boolean;
+  /**
+   * Whether or not the column has a visible icon.
+   */
   isIconVisible?: boolean;
+  /**
+   * Whether or not the column is padded.
+   */
   isPadded?: boolean;
+  /**
+   * Whether or not the column has icon only content/
+   */
   isIconOnly?: boolean;
+  /**
+   * Classname to provide for the header's icon region.
+   */
   iconClassName?: string;
+  /**
+   * CSS transition duration on drag event.
+   */
   transitionDurationDrag?: number;
+  /**
+   * CSS transition duration on drop event.
+   */
   transitionDurationDrop?: number;
 };
 
