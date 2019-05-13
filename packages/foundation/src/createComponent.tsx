@@ -77,7 +77,7 @@ export function createComponent<
     return view(viewProps);
   };
 
-  result.displayName = (options && options.displayName) || view.name;
+  result.displayName = options.displayName || view.name;
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
