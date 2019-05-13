@@ -4,6 +4,8 @@ import { findScrollableParent, getRect, getWindow } from '../../Utilities';
 
 /**
  * Viewport rectangle dimensions.
+ *
+ * {@docCategory DetailsList}
  */
 export interface IViewport {
   /**
@@ -22,6 +24,8 @@ export interface IWithViewportState {
 
 /**
  * Props interface for {@link withViewport}.
+ *
+ * {@docCategory DetailsList}
  */
 export interface IWithViewportProps {
   /**

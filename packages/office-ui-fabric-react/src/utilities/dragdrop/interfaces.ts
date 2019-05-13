@@ -4,6 +4,8 @@ import { EventGroup } from '../../Utilities';
 /**
  * Helper for subscribing and unsubscribing to
  * drag and drop events on an {@link HTMLElement}.
+ *
+ * {@docCategory DetailsList}
  */
 export interface IDragDropHelper {
   /**
@@ -29,6 +31,8 @@ export interface IDragDropHelper {
 
 /**
  * Drag & drop event callback interface.
+ *
+ * {@docCategory DetailsList}
  */
 export interface IDragDropEvents {
   /**
@@ -63,6 +67,8 @@ export interface IDragDropEvents {
 
 /**
  * Drag & drop event contextual information.
+ *
+ * {@docCategory DetailsList}
  */
 export interface IDragDropContext {
   /**
@@ -87,6 +93,8 @@ export interface IDragDropTarget {
 
 /**
  * The drag and drop event listener configuration.
+ *
+ * {@docCategory DetailsList}
  */
 export interface IDragDropOptions {
   /**
@@ -96,7 +104,10 @@ export interface IDragDropOptions {
   /**
    * Map of event name to callback function to subscribe to.
    */
-  eventMap?: { eventName: string; callback: (context: IDragDropContext, event?: any) => void }[];
+  eventMap?: {
+    eventName: string;
+    callback: (context: IDragDropContext, event?: any) => void;
+  }[];
   /**
    * Selection index on drag and drop event.
    */
@@ -135,6 +146,12 @@ export interface IDragDropOptions {
   onDragOver?: (item?: any, event?: DragEvent) => void;
 }
 
+/**
+ * {@docCategory DetailsList}
+ */
 export interface IDragDropEvent {
+  /**
+   * Whether or not the drag & drop event was handled.
+   */
   isHandled?: boolean;
 }
