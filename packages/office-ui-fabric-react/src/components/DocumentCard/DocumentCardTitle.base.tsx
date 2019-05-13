@@ -3,6 +3,7 @@ import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IDocumentCardTitleProps, IDocumentCardTitleStyleProps, IDocumentCardTitleStyles } from './DocumentCardTitle.types';
 import { IProcessedStyleSet } from '../../Styling';
+import { autobind } from '../../../../utilities/lib';
 
 const getClassNames = classNamesFunction<IDocumentCardTitleStyleProps, IDocumentCardTitleStyles>();
 
@@ -48,15 +49,15 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
     this._events.off(window, 'resize', this._updateTruncation);
 
     if (this.props.shouldTruncate) {
-      this._truncateTitle(this.props);
-      this._shrinkTitle();
+      this._truncateTitle();
+      requestAnimationFrame(this._shrinkTitle);
       this._events.on(window, 'resize', this._updateTruncation);
     }
   }
 
   public componentDidMount(): void {
     if (this.props.shouldTruncate) {
-      this._truncateTitle(this.props);
+      this._truncateTitle();
       this._events.on(window, 'resize', this._updateTruncation);
     }
   }
@@ -101,13 +102,18 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
   }
 
   // Truncate logic here way can't handle the case that chars with different widths are mixed very well, let _shrinkTitle take care of that.
-  private _truncateTitle = (props: IDocumentCardTitleProps): void => {
+  private _truncateTitle = (): void => {
     if (!this.state.needMeasurement) {
       return;
     }
 
-    const originalTitle = props.title;
+    this._async.requestAnimationFrame(this._truncateWhenInAnimation);
+  };
+
+  private _truncateWhenInAnimation: () => void = () => {
+    const originalTitle = this.props.title;
     const element: HTMLDivElement | null = this._measureTitleElement.current;
+
     if (element) {
       const style: CSSStyleDeclaration = getComputedStyle(element);
       if (style.width && style.lineHeight && style.height) {
@@ -115,7 +121,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
         const lines: number = Math.floor(
           (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10)
         );
-        // Used to calculate how many chars should be truncated.
+        // Used to calculate the number of chars that should be truncated.
         const overFlowRate: number = scrollWidth / (parseInt(style.width, 10) * lines);
 
         if (overFlowRate > 1) {
@@ -133,46 +139,46 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
     return this.setState({ needMeasurement: false });
   };
 
-  private _shrinkTitle(): void {
+  private _shrinkTitle: () => void = () => {
     const { truncatedTitleFirstPiece, truncatedTitleSecondPiece } = this.state;
-    if (truncatedTitleFirstPiece && truncatedTitleSecondPiece && this._doesTitleOverflow()) {
-      this.setState({
-        truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
-        truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
-      });
-    }
-  }
+    if (truncatedTitleFirstPiece && truncatedTitleSecondPiece) {
+      const titleElement = this._titleElement.current;
 
-  private _doesTitleOverflow(): boolean {
-    const titleElement = this._titleElement.current;
+      if (!titleElement) {
+        return false;
+      }
 
-    if (!titleElement) {
-      return false;
-    }
-
-    return (
-      titleElement.scrollHeight > titleElement.clientHeight + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD ||
-      titleElement.scrollWidth > titleElement.clientWidth
-    );
-  }
-
-  private _updateTruncation(): void {
-    // Only update truncation if the title's size has changed since the last time we truncated
-    if (this._titleElement.current) {
-      const clientWidth: number = this._titleElement.current.clientWidth;
-      // Throttle truncation so that it doesn't happen during a window resize
-      clearTimeout(this._scrollTimerId);
-      if (this.state.clientWidth !== clientWidth) {
-        this._scrollTimerId = this._async.setTimeout(
-          () =>
-            this.setState({
-              truncatedTitleFirstPiece: undefined,
-              truncatedTitleSecondPiece: undefined,
-              needMeasurement: true
-            }),
-          250
-        );
+      if (
+        titleElement.scrollHeight > titleElement.clientHeight + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD ||
+        titleElement.scrollWidth > titleElement.clientWidth
+      ) {
+        this.setState({
+          truncatedTitleFirstPiece: truncatedTitleFirstPiece.slice(0, truncatedTitleFirstPiece.length - 1),
+          truncatedTitleSecondPiece: truncatedTitleSecondPiece.slice(1)
+        });
       }
     }
+  };
+
+  private _updateTruncation(): void {
+    this._async.requestAnimationFrame(() => {
+      // Only update truncation if the title's size has changed since the last time we truncated
+      if (this._titleElement.current) {
+        const clientWidth: number = this._titleElement.current.clientWidth;
+        // Throttle truncation so that it doesn't happen during a window resize
+        clearTimeout(this._scrollTimerId);
+        if (this.state.clientWidth !== clientWidth) {
+          this._scrollTimerId = this._async.setTimeout(
+            () =>
+              this.setState({
+                truncatedTitleFirstPiece: undefined,
+                truncatedTitleSecondPiece: undefined,
+                needMeasurement: true
+              }),
+            250
+          );
+        }
+      }
+    });
   }
 }
