@@ -42,13 +42,12 @@ export function createComponent<
 ): React.FunctionComponent<TComponentProps> & TStatics {
   const { factoryOptions = {} } = options;
   const { defaultProp } = factoryOptions;
-  const displayName = (options && options.displayName) || view.name;
 
   const result: React.FunctionComponent<TComponentProps> = (
     componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
-      displayName,
+      options && options.displayName,
       React.useContext(CustomizerContext),
       options.fields
     );
@@ -78,7 +77,7 @@ export function createComponent<
     return view(viewProps);
   };
 
-  result.displayName = displayName;
+  result.displayName = (options && options.displayName) || view.name;
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
@@ -144,7 +143,7 @@ function _resolveTokens<TViewProps, TTokens>(
  * @param fields Optional list of properties to grab from global store and context.
  */
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
-  displayName: string,
+  displayName: string | undefined,
   context: ICustomizerContext,
   fields?: string[]
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
