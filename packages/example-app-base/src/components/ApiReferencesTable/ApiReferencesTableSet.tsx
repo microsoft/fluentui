@@ -115,6 +115,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
         methods={item.methods}
         renderAsEnum={item.propertyType === PropertyType.enum}
         renderAsClass={item.propertyType === PropertyType.class}
+        renderAsTypeAlias={item.propertyType === PropertyType.typeAlias}
       />
     );
   }
@@ -215,6 +216,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     // the type alias
     return {
       propertyName: table.name,
+      extendsTokens: table.extendsTokens,
       description: table.description,
       title: table.name,
       propertyType: PropertyType.typeAlias,

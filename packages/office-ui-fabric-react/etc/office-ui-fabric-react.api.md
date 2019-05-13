@@ -1609,7 +1609,7 @@ export interface IBasePicker<T> {
     items: T[] | undefined;
 }
 
-// @public (undocumented)
+// @public
 export interface IBasePickerProps<T> extends React.Props<any> {
     className?: string;
     componentRef?: IRefObject<IBasePicker<T>>;
