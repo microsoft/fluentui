@@ -2,7 +2,7 @@ trigger:
   branches:
     include:
       - tsc-compat-debug
-      #- refs/tags/office-ui-fabric-react_v*
+      - refs/tags/office-ui-fabric-react_v*
 
 variables:
   - name: PackageName
