@@ -17,17 +17,6 @@ export interface ITeachingBubble {
   focus(): void;
 }
 
-export interface IMultistepProps {
-  /**
-   * If provided, additional class name to provide on the root element.
-   */
-  className?: string;
-
-  /**
-   * Text to render for multi-step callouts, for example "1 of 2".
-   */
-  text: string;
-}
 /**
  * TeachingBubble component props.
  * {@docCategory TeachingBubble}
@@ -85,6 +74,11 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
   secondaryButtonProps?: IButtonProps;
 
   /**
+   * Text that will be rendered in the footer of the TeachingBubble. May be rendered alongside primary and secondary buttons.
+   */
+  footerContent?: string;
+
+  /**
    * @deprecated use target instead
    * Element to anchor the TeachingBubble to.
    */
@@ -120,11 +114,6 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
    * Defines the element id referencing the element containing the description for the TeachingBubble.
    */
   ariaDescribedBy?: string;
-
-  /**
-   * Props for a multi-step callout experience.
-   */
-  multistepProps?: IMultistepProps;
 }
 
 /**
@@ -155,7 +144,6 @@ export interface ITeachingBubbleStyles {
   header: IStyle;
   headline: IStyle;
   imageContent: IStyle;
-  multistepText: IStyle;
   primaryButton: IStyle;
   secondaryButton: IStyle;
   subText: IStyle;
