@@ -47,7 +47,7 @@ export function createComponent<
     componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
-      options && options.displayName,
+      options.displayName,
       React.useContext(CustomizerContext),
       options.fields
     );
