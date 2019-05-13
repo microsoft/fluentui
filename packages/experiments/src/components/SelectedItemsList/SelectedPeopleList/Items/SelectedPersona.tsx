@@ -1,16 +1,28 @@
 import * as React from 'react';
-import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
+import { getId, styled, classNamesFunction, IStyleFunctionOrObject, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
+import { getStyles } from './SelectedPersona.styles';
+import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
+import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import * as stylesImport from './SelectedPersona.scss';
-// tslint:disable-next-line:no-any
-const styles: any = stylesImport;
+
+const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
 
 type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
   isValid?: (item: TPersona) => boolean;
   canExpand?: (item: TPersona) => boolean;
   getExpandedItems?: (item: TPersona) => TPersona[];
+
+  /**
+   * Call to provide customized styling that will layer on top of the variant rules.
+   */
+  styles?: IStyleFunctionOrObject<ISelectedPersonaStyleProps, ISelectedPersonaStyles>;
+
+  /**
+   * Theme for the component.
+   */
+  theme?: ITheme;
 };
 
 /**
@@ -19,8 +31,20 @@ type ISelectedPersonaProps<TPersona> = ISelectedItemProps<TPersona> & {
  * To use the removal / expansion, bind isValid / canExpand /  getExpandedItems
  * when passing the onRenderItem to your SelectedItemsList
  */
-export const SelectedPersona = React.memo(<TPersona extends IPersonaProps = IPersonaProps>(props: ISelectedPersonaProps<TPersona>) => {
-  const { item, onRemoveItem, onItemChange, removeButtonAriaLabel, index, selected, isValid, canExpand, getExpandedItems } = props;
+const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPersonaProps>(props: ISelectedPersonaProps<TPersona>) => {
+  const {
+    item,
+    onRemoveItem,
+    onItemChange,
+    removeButtonAriaLabel,
+    index,
+    selected,
+    isValid,
+    canExpand,
+    getExpandedItems,
+    styles,
+    theme
+  } = props;
   const itemId = getId();
 
   const onExpandClicked = React.useCallback(
@@ -43,16 +67,21 @@ export const SelectedPersona = React.memo(<TPersona extends IPersonaProps = IPer
     [onRemoveItem]
   );
 
+  const classNames = React.useMemo(
+    () =>
+      getClassNames(styles, {
+        isSelected: selected || false,
+        isValid: isValid ? isValid(item) : true,
+        theme: theme!
+      }),
+    [selected, isValid, theme]
+  );
+
   return (
     <div
       onContextMenu={props.onContextMenu}
       onClick={props.onClick}
-      className={css(
-        'ms-PickerPersona-container',
-        styles.personaContainer,
-        { ['is-selected ' + styles.personaContainerIsSelected]: selected },
-        { ['is-invalid ' + styles.validationError]: isValid && !isValid(item) }
-      )}
+      className={css('ms-PickerPersona-container', classNames.personaContainer)}
       data-is-focusable={true}
       data-is-sub-focuszone={true}
       data-selection-index={index}
@@ -63,21 +92,27 @@ export const SelectedPersona = React.memo(<TPersona extends IPersonaProps = IPer
         <IconButton
           onClick={onExpandClicked}
           iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
-          className={css('ms-PickerItem-removeButton', styles.expandButton, styles.actionButton)}
+          className={css('ms-PickerItem-removeButton', classNames.expandButton, classNames.actionButton)}
           ariaLabel={removeButtonAriaLabel}
         />
       </div>
-      <div className={css(styles.personaWrapper)}>
-        <div className={css('ms-PickerItem-content', styles.itemContent)} id={'selectedItemPersona-' + itemId}>
+      <div className={css(classNames.personaWrapper)}>
+        <div className={css('ms-PickerItem-content', classNames.itemContentWrapper)} id={'selectedItemPersona-' + itemId}>
           <Persona {...item} size={PersonaSize.size32} />
         </div>
         <IconButton
           onClick={onRemoveClicked}
           iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
-          className={css('ms-PickerItem-removeButton', styles.removeButton, styles.actionButton)}
+          className={css('ms-PickerItem-removeButton', classNames.removeButton, classNames.actionButton)}
           ariaLabel={removeButtonAriaLabel}
         />
       </div>
     </div>
   );
 });
+
+export const SelectedPersona = styled(SelectedPersonaInner, getStyles, undefined, {
+  scope: 'SelectedPersona'
+});
+
+export type SelectedPersona<TPersona extends IPersonaProps = IPersonaProps> = React.ComponentType<ISelectedPersonaProps<TPersona>>;

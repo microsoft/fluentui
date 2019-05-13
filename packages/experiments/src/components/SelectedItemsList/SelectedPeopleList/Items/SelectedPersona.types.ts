@@ -1,9 +1,9 @@
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
 
 export interface ISelectedPersonaStyleProps {
-  theme?: ITheme;
-  personaContainerIsSelected: boolean;
+  theme: ITheme;
   isValid: boolean;
+  isSelected: boolean;
 }
 
 export interface ISelectedPersonaStyles {
@@ -11,4 +11,6 @@ export interface ISelectedPersonaStyles {
   expandButton: IStyle;
   personaWrapper: IStyle;
   removeButton: IStyle;
+  actionButton: IStyle;
+  itemContentWrapper: IStyle;
 }
