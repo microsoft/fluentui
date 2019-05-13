@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/example-app-base",
-      "comment": "handle type aliases",
+      "comment": "ApiReferencesTable/ApiReferencesTableSet: handle type aliases.",
       "type": "minor"
     }
   ],
