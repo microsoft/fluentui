@@ -23,5 +23,7 @@ describe('SelectedPeopleList', () => {
     const personBNodes = rendered.root.findAll(x => !!x.children.length && x.children.indexOf('Person B') !== -1);
     expect(personANodes.length).toBeGreaterThan(0);
     expect(personBNodes.length).toBeGreaterThan(0);
+
+    expect(rendered.toJSON()).toMatchSnapshot();
   });
 });

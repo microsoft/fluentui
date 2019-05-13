@@ -1,6 +1,4 @@
-/* tslint:disable */
 import * as React from 'react';
-/* tslint:enable */
 import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
 import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
