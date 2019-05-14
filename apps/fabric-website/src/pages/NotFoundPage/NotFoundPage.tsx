@@ -10,7 +10,7 @@ import {
   IPageSectionProps
 } from '@uifabric/example-app-base/lib/index2';
 import { SiteDefinition } from '../../SiteDefinition/index';
-import { topNavHeight } from '../../styles/constants';
+import { topNavHeight, mediaQuery } from '../../styles/constants';
 
 const illustrations = [
   'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error1.svg',
@@ -23,7 +23,13 @@ const rootClass = mergeStyles({
   backgroundSize: '480px',
   backgroundPosition: '80% 80%',
   backgroundImage: `url(${randomEntry(illustrations)})`,
-  minHeight: `calc(100vh - ${topNavHeight}px)`
+  minHeight: `calc(100vh - ${topNavHeight}px)`,
+
+  selectors: {
+    [mediaQuery.maxMobile]: {
+      backgroundSize: '80%'
+    }
+  }
 });
 
 export interface INotFoundPageProps extends IPageProps {}
