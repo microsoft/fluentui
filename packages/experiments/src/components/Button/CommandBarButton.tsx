@@ -29,12 +29,12 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
 };
 
 const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
 
   return {
-    backgroundColor: semanticColors.inputBackground,
-    backgroundColorHovered: semanticColors.inputBackground,
-    backgroundColorPressed: semanticColors.inputBackground,
+    backgroundColor: palette.white,
+    backgroundColorHovered: palette.white,
+    backgroundColorPressed: palette.white,
     color: semanticColors.buttonTextDisabled,
     colorHovered: semanticColors.buttonTextDisabled,
     colorPressed: semanticColors.buttonTextDisabled,

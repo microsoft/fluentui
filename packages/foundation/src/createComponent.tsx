@@ -10,7 +10,8 @@ import {
   IStyleableComponentProps,
   IStylesFunctionOrObject,
   IToken,
-  ITokenFunction
+  ITokenFunction,
+  IViewComponent
 } from './IComponent';
 import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
@@ -27,7 +28,7 @@ import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
  * State component is optional. If state is not provided, created component is essentially a functional stateless component.
  *
- * @param component - component Component options. See IComponentOptions for more detail.
+ * @param options - component Component options. See IComponentOptions for more detail.
  */
 export function createComponent<
   TComponentProps extends ValidProps,
@@ -36,21 +37,22 @@ export function createComponent<
   TViewProps extends TComponentProps = TComponentProps,
   TStatics = {}
 >(
-  component: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>
+  view: IViewComponent<TViewProps>,
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {}
 ): React.FunctionComponent<TComponentProps> & TStatics {
-  const { factoryOptions = {} } = component;
+  const { factoryOptions = {} } = options;
   const { defaultProp } = factoryOptions;
 
   const result: React.FunctionComponent<TComponentProps> = (
     componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
   ) => {
     const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
-      component.displayName,
+      options.displayName,
       React.useContext(CustomizerContext),
-      component.fields
+      options.fields
     );
 
-    const useState = component.state;
+    const useState = options.state;
 
     if (useState) {
       // Don't assume state will return all props, so spread useState result over component props.
@@ -62,8 +64,8 @@ export function createComponent<
 
     const theme = componentProps.theme || settings.theme;
 
-    const tokens = _resolveTokens(componentProps, theme, component.tokens, settings.tokens, componentProps.tokens);
-    const styles = _resolveStyles(componentProps, theme, tokens, component.styles, settings.styles, componentProps.styles);
+    const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens);
+    const styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
 
     const viewProps = {
       ...componentProps,
@@ -72,19 +74,19 @@ export function createComponent<
       _defaultStyles: styles
     } as TViewProps & IDefaultSlotProps<any>;
 
-    return component.view(viewProps);
+    return view(viewProps);
   };
 
-  result.displayName = component.displayName;
+  result.displayName = options.displayName || view.name;
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
-  //       Need to weigh creating default factories on component creation vs. memozing them on use in slots.tsx.
+  //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
     (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
   }
 
-  assign(result, component.statics);
+  assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
   return result as React.FunctionComponent<TComponentProps> & TStatics;
@@ -141,7 +143,7 @@ function _resolveTokens<TViewProps, TTokens>(
  * @param fields Optional list of properties to grab from global store and context.
  */
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
-  displayName: string,
+  displayName: string | undefined,
   context: ICustomizerContext,
   fields?: string[]
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {

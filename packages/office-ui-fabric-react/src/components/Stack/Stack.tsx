@@ -9,7 +9,7 @@ import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
-const view: IStackComponent['view'] = props => {
+const StackView: IStackComponent['view'] = props => {
   const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
 
   warnDeprecations('Stack', props, {
@@ -65,10 +65,9 @@ const StackStatics = {
 
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createComponent({
+} = createComponent(StackView, {
   displayName: 'Stack',
   styles,
-  view,
   statics: StackStatics
 });
 

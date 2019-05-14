@@ -2,13 +2,12 @@ import * as React from 'react';
 import { createComponent } from '@uifabric/foundation';
 import { CardSectionStyles as styles, CardSectionTokens as tokens } from './CardSection.styles';
 import { ICardSectionProps } from './CardSection.types';
-import { CardSectionView as view } from './CardSection.view';
+import { CardSectionView } from './CardSection.view';
 
-export const CardSection: React.FunctionComponent<ICardSectionProps> = createComponent({
+export const CardSection: React.FunctionComponent<ICardSectionProps> = createComponent(CardSectionView, {
   displayName: 'CardSection',
   styles,
-  tokens,
-  view
+  tokens
 });
 
 export default CardSection;

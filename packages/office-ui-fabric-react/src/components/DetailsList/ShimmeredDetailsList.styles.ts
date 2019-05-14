@@ -1,13 +1,13 @@
 import { IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles } from './ShimmeredDetailsList.types';
 
 export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDetailsListStyles => {
-  const { theme, className, enableShimmer } = props;
+  const { theme } = props;
   const { palette } = theme;
 
   return {
     root: [
       theme.fonts.xSmall,
-      enableShimmer && {
+      {
         selectors: {
           ':after': {
             content: '""',
@@ -19,8 +19,7 @@ export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDet
             backgroundImage: `linear-gradient(to bottom, transparent 30%, ${palette.whiteTranslucent40} 65%,${palette.white} 100%)`
           }
         }
-      },
-      className
+      }
     ]
   };
 };

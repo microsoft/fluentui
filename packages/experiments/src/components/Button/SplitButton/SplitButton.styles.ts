@@ -6,6 +6,7 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
   return {
     backgroundColor: palette.white,
     backgroundColorHovered: palette.neutralLighter,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderColor: semanticColors.buttonBorder,
     borderColorHovered: semanticColors.buttonBorder,
     borderColorPressed: semanticColors.buttonBorder,
@@ -61,6 +62,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       backgroundColor: tokens.backgroundColor,
       borderRadius: tokens.borderRadius,
       boxSizing: 'border-box',
+      zIndex: 1,
 
       selectors: {
         [HighContrastSelector]: {
