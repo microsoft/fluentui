@@ -23,7 +23,7 @@ export function isRelativeUrl(url: string): boolean {
 const getClassNames = classNamesFunction<INavStyleProps, INavStyles>();
 
 export interface INavState {
-  isGroupCollapsed?: { [key: string]: boolean };
+  isGroupCollapsed: { [key: string]: boolean };
   isLinkExpandStateChanged?: boolean;
   selectedKey?: string;
 }
@@ -41,36 +41,6 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       isLinkExpandStateChanged: false,
       selectedKey: props.initialSelectedKey || props.selectedKey
     };
-
-    if (props.groups) {
-      for (const group of props.groups) {
-        if (group.collapseByDefault && group.name) {
-          this.state.isGroupCollapsed![group.name] = true;
-        }
-      }
-    }
-  }
-
-  public componentWillReceiveProps(newProps: INavProps): void {
-    const newGroups = newProps.groups || [];
-    const isGroupCollapsed = this.state.isGroupCollapsed!;
-
-    // If the component's props were updated, new groups may have been added, which may have
-    // collapseByDefault set. Ensure that setting is respected for any new groups.
-    // (If isGroupCollapsed is already set for a group, don't overwrite that.)
-    let hasUpdated = false;
-    for (const newGroup of newGroups) {
-      if (newGroup.name && newGroup.collapseByDefault && !isGroupCollapsed.hasOwnProperty(newGroup.name)) {
-        isGroupCollapsed[newGroup.name] = true;
-        hasUpdated = true;
-      }
-    }
-
-    if (hasUpdated) {
-      this.setState({
-        isGroupCollapsed: isGroupCollapsed
-      });
-    }
   }
 
   public render(): JSX.Element | null {
@@ -201,7 +171,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
-      isExpanded: !this.state.isGroupCollapsed![group.name!],
+      isExpanded: this._isGroupExpanded(group),
       groups
     });
 
@@ -218,7 +188,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isGroup: true,
-      isExpanded: !this.state.isGroupCollapsed![group.name!],
+      isExpanded: this._isGroupExpanded(group),
       groups
     });
 
@@ -227,7 +197,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         className={classNames.chevronButton}
         onClick={this._onGroupHeaderClicked.bind(this, group)}
         aria-label={expandButtonAriaLabel}
-        aria-expanded={!this.state.isGroupCollapsed![group.name!]}
+        aria-expanded={this._isGroupExpanded(group)}
       >
         <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
         {group.name}
@@ -236,16 +206,11 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
   };
 
   private _onGroupHeaderClicked(group: INavLinkGroup, ev: React.MouseEvent<HTMLElement>): void {
-    const { isGroupCollapsed } = this.state;
-    const groupKey = group.name!;
-    const isCollapsed = !isGroupCollapsed![groupKey];
-
     if (group.onHeaderClick) {
-      group.onHeaderClick(ev, isCollapsed);
+      group.onHeaderClick(ev, this._isGroupExpanded(group));
     }
 
-    isGroupCollapsed![groupKey] = isCollapsed;
-    this.setState({ isGroupCollapsed: isGroupCollapsed });
+    this._toggleCollapsed(group);
 
     ev.preventDefault();
     ev.stopPropagation();
@@ -330,5 +295,25 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     }
 
     return false;
+  }
+
+  private _isGroupExpanded(group: INavLinkGroup): boolean {
+    if (group.name && this.state.isGroupCollapsed.hasOwnProperty(group.name)) {
+      return !this.state.isGroupCollapsed[group.name];
+    }
+    if (group.collapseByDefault !== undefined) {
+      return !group.collapseByDefault;
+    }
+    return true;
+  }
+
+  private _toggleCollapsed(group: INavLinkGroup): void {
+    if (group.name) {
+      const newGroupCollapsed = {
+        ...this.state.isGroupCollapsed, // Make a copy in order to not modify state
+        [group.name]: this._isGroupExpanded(group) // sic - presently open will be collapsed after setState
+      };
+      this.setState({ isGroupCollapsed: newGroupCollapsed });
+    }
   }
 }
