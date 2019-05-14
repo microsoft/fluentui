@@ -1,6 +1,28 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 10 May 2019 12:36:11 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 6.18.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Fix pages not rendering on first load
+- Update Fabric assets link
+- Fix left nav section behavior
+
+## 6.18.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Export `categories` object to serve as a source of navigation structure for the table of content on docs.microsoft
+
+### Patches
+
+- Update neutrals content and move palette objects to json files.
+- Fix IE11 home page styles
+- Fix types import
 
 ## 6.17.2
 Fri, 10 May 2019 12:36:11 GMT

@@ -2,6 +2,110 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.1",
+      "tag": "@uifabric/fabric-website_v6.18.1",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix pages not rendering on first load",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2c69e2e8bedb433ff86bb487ebd6f20e590a32fd"
+          },
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          },
+          {
+            "comment": "Fix left nav section behavior",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "678798efb0d3f679e22bbd9efa795b590ad1d83b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.0` to `^1.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.20.0` to `^6.20.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.76.1` to `^6.76.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.18.0` to `^6.18.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.8` to `^6.4.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.8` to `^0.16.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.1` to `^6.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.5` to `^0.1.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.0",
+      "tag": "@uifabric/fabric-website_v6.18.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update neutrals content and move palette objects to json files.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "66b92fec130a529d5e97b2e663f033892a6a47e0"
+          },
+          {
+            "comment": "Fix IE11 home page styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cde3dd04394a4b24540de3125b66fe9259aa3196"
+          },
+          {
+            "comment": "Fix types import",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "56cd0b49be95e536a0f503a32fbe113d3b8e8b17"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export `categories` object to serve as a source of navigation structure for the table of content on docs.microsoft",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "b0b4e05fe7e90c6baf365452a02aaac760ec30c4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.0.1` to `^1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.19.0` to `^6.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.8`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.2",
       "tag": "@uifabric/fabric-website_v6.17.2",
       "date": "Fri, 10 May 2019 12:36:11 GMT",

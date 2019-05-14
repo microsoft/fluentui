@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 May 2019 12:36:11 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:31 GMT and should not be manually modified.
+
+## 6.181.1
+Tue, 14 May 2019 07:50:31 GMT
+
+### Patches
+
+- The FocusZone photos example now correctly renders focus rectangles.
+- Update Fabric assets link
+
+## 6.181.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Dropdown/Combobox: Add prop to allow open on focus
+- DetailsList: Export missing public API symbols
+
+### Patches
+
+- added element id to the ChoiceGroup component
+- In Edge, prevent pickers from showing "ms-clear" icon when typing.
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+- Picker/DocPage: fix IBasePickerProps doc comment and add type alias to DocPage.
+- withViewport: Respect value change of skipViewportMeasures by reassigning appropriate resize listener
 
 ## 6.180.0
 Fri, 10 May 2019 12:36:11 GMT

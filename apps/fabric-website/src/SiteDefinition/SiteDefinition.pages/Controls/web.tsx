@@ -4,13 +4,16 @@ import { ControlsAreaPage } from '../../../pages/Controls/ControlsAreaPage';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { Omit } from 'office-ui-fabric-react/lib/Utilities';
 
-type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
+export type CategoryPage = Partial<Omit<INavPage, 'pages'>> & { subPages?: ICategory };
 
-interface ICategory {
+export interface ICategory {
   [component: string]: CategoryPage;
 }
 
-const categories: { Other?: ICategory; [name: string]: ICategory } = {
+// Exporting this object to be used in generating a TOC (table of content) for docs.microsoft documentation repo.
+// Any changes to this object need to be communicated to avoid accidental breaking of the documentation
+// and to allow the appropriate actions to be taken to mitigate this.
+export const categories: { Other?: ICategory; [name: string]: ICategory } = {
   'Basic Inputs': {
     Button: {},
     Checkbox: {},

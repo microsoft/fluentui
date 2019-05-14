@@ -324,7 +324,7 @@ export class HomePageBase extends React.Component<IHomePageProps, IHomePageState
     trackEvent(EventNames.ClickedInternalLink, {
       topic: url, // @TODO: Remove topic when data is stale.
       currentArea: getSiteArea(),
-      nextArea: getSiteArea(url),
+      nextArea: getSiteArea(undefined, url),
       nextPage: url,
       currentPage: window.location.hash
     });

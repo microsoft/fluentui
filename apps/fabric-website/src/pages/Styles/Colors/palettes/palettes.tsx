@@ -1,6 +1,6 @@
-import { IColor, IColorPaletteTheme } from '@uifabric/example-app-base/lib/index2';
+import { IColorSwatch, IColorPaletteTheme } from '@uifabric/example-app-base/lib/index2';
 
-export const AppColorSwatches: IColor[] = [
+export const AppColorSwatches: IColorSwatch[] = [
   {
     name: 'Access',
     hex: '#a4373a',

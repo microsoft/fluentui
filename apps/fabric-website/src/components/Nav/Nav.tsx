@@ -20,9 +20,6 @@ export interface INavState {
   searchQuery: string;
   defaultSortState: keyof typeof NavSortType;
   sortState: keyof typeof NavSortType;
-  collapsedSections: {
-    [sectionKey: string]: boolean;
-  };
 }
 
 export interface INavLocalItems {
@@ -42,7 +39,6 @@ export class Nav extends React.Component<INavProps, INavState> {
       : {};
 
     this.state = {
-      collapsedSections: {},
       defaultSortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories,
       searchQuery: '',
       sortState: this._localItems.defaultSortState ? NavSortType[this._localItems.defaultSortState] : NavSortType.categories
@@ -184,28 +180,12 @@ export class Nav extends React.Component<INavProps, INavState> {
       const key = `${page.title}-${sectionIndex}`;
       return (
         <li key={key} className={css(styles.section, hasActiveChild(page) && styles.hasActiveChild)}>
-          <CollapsibleSection
-            collapsed={!(this.state.collapsedSections[key] || hasActiveChild(page))}
-            title={{
-              text: page.title,
-              onClick: () => this._handleSectionClick(key)
-            }}
-          >
+          <CollapsibleSection defaultCollapsed={!hasActiveChild(page)} title={page.title}>
             {this._renderLinkList(page.pages, false)}
           </CollapsibleSection>
         </li>
       );
     }
-  };
-
-  private _handleSectionClick = (sectionKey: string) => {
-    const collapsedSections = { ...this.state.collapsedSections };
-    this.setState((prevState: INavState) => ({
-      collapsedSections: {
-        ...collapsedSections,
-        [sectionKey]: !prevState.collapsedSections[sectionKey]
-      }
-    }));
   };
 
   private _renderSortedLinks(pages: INavPage[]): React.ReactElement<{}> {

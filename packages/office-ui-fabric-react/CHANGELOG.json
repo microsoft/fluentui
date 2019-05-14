@@ -2,6 +2,117 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.181.1",
+      "tag": "office-ui-fabric-react_v6.181.1",
+      "date": "Tue, 14 May 2019 07:50:31 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "The FocusZone photos example now correctly renders focus rectangles.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "0ed5a7f4fdcdda6713c0bbe4306c41ef1f90be78"
+          },
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.5` to `^0.7.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.1` to `^6.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.2` to `^6.17.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.5` to `^6.47.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.2` to `^6.38.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/codepen-loader\" from `^0.1.1` to `^0.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.5` to `^0.7.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.8` to `^6.0.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.3` to `^6.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/webpack-utils\" from `^0.8.1` to `^0.8.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.181.0",
+      "tag": "office-ui-fabric-react_v6.181.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added element id to the ChoiceGroup component",
+            "author": "Denis Fisenko <dfisenko@users.noreply.github.com>",
+            "commit": "920dbfa1e78055b117d22c88c0deaa6b0e433e0f"
+          },
+          {
+            "comment": "In Edge, prevent pickers from showing \"ms-clear\" icon when typing.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "9e86e1ae040720383ea84deb9fa1d5d59a565d10"
+          },
+          {
+            "comment": "Removed a few more `typeof window` references to avoid memory leaks with IE11.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "548045e693860ef8d1d4812277a278a51866773e"
+          },
+          {
+            "comment": "Picker/DocPage: fix IBasePickerProps doc comment and add type alias to DocPage.",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "97917560d3624d7bec09a7fd7cc2bb1144132bba"
+          },
+          {
+            "comment": "withViewport: Respect value change of skipViewportMeasures by reassigning appropriate resize listener",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "aa6b12709217c88ca3f9d1a25150f461f86d89e5"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown/Combobox: Add prop to allow open on focus",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "998980c2cfffa299703c3be9ec84e05c9bbcba02"
+          },
+          {
+            "comment": "DetailsList: Export missing public API symbols",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "2f79cc96b7c4249210fe88d24d70f0029b795ace"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.4` to `^6.47.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.1` to `^6.38.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.180.0",
       "tag": "office-ui-fabric-react_v6.180.0",
       "date": "Fri, 10 May 2019 12:36:11 GMT",
