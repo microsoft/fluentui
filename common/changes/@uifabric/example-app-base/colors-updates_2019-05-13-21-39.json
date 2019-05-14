@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Add `themeSlots` api to ColorPalette.",
+      "packageName": "@uifabric/example-app-base",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "v-jojanz@microsoft.com"
+}
