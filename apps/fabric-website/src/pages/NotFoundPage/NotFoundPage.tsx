@@ -13,11 +13,9 @@ import { SiteDefinition } from '../../SiteDefinition/index';
 import { topNavHeight } from '../../styles/constants';
 
 const illustrations = [
-  'https://uifabric.azurewebsites.net/media/images/notfound/empty_discover.svg',
-  'https://uifabric.azurewebsites.net/media/images/notfound/empty_recyclebin.svg',
-  'https://uifabric.azurewebsites.net/media/images/notfound/empty_search.svg',
-  'https://uifabric.azurewebsites.net/media/images/notfound/error2.svg',
-  'https://uifabric.azurewebsites.net/media/images/notfound/error3.svg'
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error1.svg',
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error2.svg',
+  'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/images/error/error3.svg'
 ];
 
 const rootClass = mergeStyles({
