@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/utilities",
-      "comment": "Removed a few more `typeof window` references to avoid memory leaks with IE11.",
+      "comment": "Update Fabric assets link",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "dzearing@microsoft.com"
+  "email": "pejahn@microsoft.com"
 }

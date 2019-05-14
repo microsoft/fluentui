@@ -53,8 +53,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/localization', to: '#/styles/web/localization' },
     { from: '#/styles/themegenerator', to: '#/styles/web' },
     { from: '#/styles/typography', to: '#/styles/web/typography' },
-    { from: '#/styles/utilities', to: '#/styles/web' },
-    { from: new RegExp('#/get-started$'), to: '#/get-started/web' }
+    { from: '#/styles/utilities', to: '#/styles/web' }
   ],
   messageBars: [
     {

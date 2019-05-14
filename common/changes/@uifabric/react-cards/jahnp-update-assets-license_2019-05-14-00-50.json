@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Update Fabric assets link",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "pejahn@microsoft.com"
+}

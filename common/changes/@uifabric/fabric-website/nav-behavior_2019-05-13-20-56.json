@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Fix types import",
+      "comment": "Fix left nav section behavior",
       "type": "patch"
     }
   ],

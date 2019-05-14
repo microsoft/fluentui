@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { css } from 'office-ui-fabric-react';
-import { Markdown, withPlatform, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, PlatformContext, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { getSubTitle } from '../../../utilities/index';
 import { TemplatePageProps } from './TemplatePage.doc';
 
@@ -100,5 +100,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
   }
 }
 
-// Use the `withPlatform` higher-order component to ensure the platform prop is passed to the page from App correctly using react context.
-export const TemplatePage: React.StatelessComponent<IPageProps<Platforms>> = withPlatform<Platforms>(TemplatePageBase);
+// Use the `PlatformContext.Consumer` component to ensure the platform prop is passed to the page from App correctly using react context.
+export const TemplatePage: React.StatelessComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
+  <PlatformContext.Consumer>{(platform: Platforms) => <TemplatePageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+);

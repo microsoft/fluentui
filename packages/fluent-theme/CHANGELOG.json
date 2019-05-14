@@ -2,6 +2,28 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.8",
+      "tag": "@uifabric/fluent-theme_v0.16.8",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update border colors during rest state for certain components",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "dd3d625b8079479ef3d8f60d238828abde07f533"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.4` to `^6.47.5`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.7",
       "tag": "@uifabric/fluent-theme_v0.16.7",
       "date": "Tue, 30 Apr 2019 12:31:36 GMT",

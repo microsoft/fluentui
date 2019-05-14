@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "In Edge, prevent pickers from showing \"ms-clear\" icon when typing.",
+      "comment": "Update Fabric assets link",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com"
+  "email": "pejahn@microsoft.com"
 }

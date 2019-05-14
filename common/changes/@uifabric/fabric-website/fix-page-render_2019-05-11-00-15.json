@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Fix IE11 home page styles",
+      "comment": "Fix pages not rendering on first load",
       "type": "patch"
     }
   ],

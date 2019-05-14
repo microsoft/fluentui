@@ -2,6 +2,33 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.20.0",
+      "tag": "@uifabric/example-app-base_v6.20.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add `themeSlots` api to ColorPalette.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "66b92fec130a529d5e97b2e663f033892a6a47e0"
+          },
+          {
+            "comment": "ApiReferencesTable/ApiReferencesTableSet: handle type aliases.",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "97917560d3624d7bec09a7fd7cc2bb1144132bba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.8`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.0",
       "tag": "@uifabric/example-app-base_v6.19.0",
       "date": "Thu, 09 May 2019 12:35:50 GMT",

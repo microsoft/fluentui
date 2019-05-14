@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/tslint-rules",
+      "comment": "Update Fabric assets link",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/tslint-rules",
+  "email": "pejahn@microsoft.com"
+}
