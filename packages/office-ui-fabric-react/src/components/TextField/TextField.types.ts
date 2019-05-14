@@ -203,7 +203,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * - If invalid, it returns the error message and the text field will
    *   show a red border and show an error message below the text field.
    *
-   * When it returns Promise<string | JSX.Element>:
+   * When it returns Promise\<string | JSX.Element\>:
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
