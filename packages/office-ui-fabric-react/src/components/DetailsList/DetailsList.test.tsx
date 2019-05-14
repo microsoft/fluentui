@@ -352,7 +352,7 @@ describe('DetailsList', () => {
     jest.runOnlyPendingTimers();
   });
 
-  it.only('reset focusedItemIndex when setKey updates', () => {
+  it('reset focusedItemIndex when setKey updates', () => {
     jest.useFakeTimers();
 
     let component: any;
