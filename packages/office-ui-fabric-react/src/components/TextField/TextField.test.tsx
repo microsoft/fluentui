@@ -9,7 +9,7 @@ import { resetIds } from '../../Utilities';
 
 import { TextField } from './TextField';
 import { TextFieldBase } from './TextField.base';
-import { ITextFieldStyles, ITextField, TextFieldErrorMessage } from './TextField.types';
+import { ITextFieldStyles, ITextField } from './TextField.types';
 import { mockEvent, renderIntoDocument } from '../../common/testUtilities';
 
 describe('TextField', () => {
@@ -215,7 +215,7 @@ describe('TextField', () => {
       </span>
     );
 
-    function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: TextFieldErrorMessage | boolean): void {
+    function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSX.Element | boolean): void {
       const errorMessageDOM = renderedDOM.querySelector('[data-automation-id=error-message]');
 
       if (expectedErrorMessage === false) {
@@ -245,7 +245,7 @@ describe('TextField', () => {
     });
 
     it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
-      function validator(value: string): TextFieldErrorMessage {
+      function validator(value: string): string | JSX.Element {
         return value.length > 3 ? errorMessageJSX : '';
       }
 
@@ -277,7 +277,7 @@ describe('TextField', () => {
     });
 
     it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', () => {
-      function validator(value: string): Promise<TextFieldErrorMessage> {
+      function validator(value: string): Promise<string | JSX.Element> {
         return Promise.resolve(value.length > 3 ? errorMessageJSX : '');
       }
 

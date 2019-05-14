@@ -2,8 +2,6 @@ import { IStyle, IStyleSet, ITheme } from '../../Styling';
 import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IIconProps } from '../../Icon';
 
-export type TextFieldErrorMessage = string | JSX.Element;
-
 /**
  * {@docCategory TextField}
  */
@@ -168,7 +166,7 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
    * change the error message displayed (if any) based on the current value. `errorMessage` and
    * `onGetErrorMessage` are mutually exclusive (`errorMessage` takes precedence).
    */
-  errorMessage?: TextFieldErrorMessage;
+  errorMessage?: string | JSX.Element;
 
   /**
    * Callback for when the input value changes.
@@ -194,22 +192,22 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
   /**
    * Function called after validation completes.
    */
-  onNotifyValidationResult?: (errorMessage: TextFieldErrorMessage, value: string | undefined) => void;
+  onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
 
   /**
    * Function used to determine whether the input value is valid and get an error message if not.
    * Mutually exclusive with the static string `errorMessage` (it will take precedence over this).
    *
-   * When it returns TextFieldErrorMessage:
+   * When it returns string | JSX.Element:
    * - If valid, it returns empty string.
    * - If invalid, it returns the error message and the text field will
    *   show a red border and show an error message below the text field.
    *
-   * When it returns Promise<TextFieldErrorMessage>:
+   * When it returns Promise<string | JSX.Element>:
    * - The resolved value is displayed as the error message.
    * - If rejected, the value is thrown away.
    */
-  onGetErrorMessage?: (value: string) => TextFieldErrorMessage | PromiseLike<TextFieldErrorMessage> | undefined;
+  onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
 
   /**
    * Text field will start to validate after users stop typing for `deferredValidationTime` milliseconds.

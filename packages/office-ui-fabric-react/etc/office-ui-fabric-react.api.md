@@ -7365,7 +7365,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
-    errorMessage?: TextFieldErrorMessage;
+    errorMessage?: string | JSX.Element;
     // @deprecated (undocumented)
     iconClass?: string;
     iconProps?: IIconProps;
@@ -7381,8 +7381,8 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
-    onGetErrorMessage?: (value: string) => TextFieldErrorMessage | PromiseLike<TextFieldErrorMessage> | undefined;
-    onNotifyValidationResult?: (errorMessage: TextFieldErrorMessage, value: string | undefined) => void;
+    onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
+    onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     // @deprecated (undocumented)
     onRenderAddon?: IRenderFunction<ITextFieldProps>;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
@@ -7404,7 +7404,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
 
 // @public (undocumented)
 export interface ITextFieldState {
-    errorMessage: TextFieldErrorMessage;
+    errorMessage: string | JSX.Element;
     isFocused: boolean;
     // (undocumented)
     value: string;
@@ -9141,9 +9141,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     setSelectionStart(value: number): void;
     readonly value: string | undefined;
 }
-
-// @public (undocumented)
-export type TextFieldErrorMessage = string | JSX.Element;
 
 // @public (undocumented)
 export const TextStyles: ITextComponent['styles'];
