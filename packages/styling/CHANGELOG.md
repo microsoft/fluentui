@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Fri, 10 May 2019 12:36:11 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 01:56:43 GMT and should not be manually modified.
+
+## 6.47.5
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
 
 ## 6.47.4
 Fri, 10 May 2019 12:36:11 GMT

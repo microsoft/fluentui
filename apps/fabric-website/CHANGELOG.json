@@ -2,6 +2,51 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.0",
+      "tag": "@uifabric/fabric-website_v6.18.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update neutrals content and move palette objects to json files.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "66b92fec130a529d5e97b2e663f033892a6a47e0"
+          },
+          {
+            "comment": "Fix IE11 home page styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cde3dd04394a4b24540de3125b66fe9259aa3196"
+          },
+          {
+            "comment": "Fix types import",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "56cd0b49be95e536a0f503a32fbe113d3b8e8b17"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export `categories` object to serve as a source of navigation structure for the table of content on docs.microsoft",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "b0b4e05fe7e90c6baf365452a02aaac760ec30c4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.0.1` to `^1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.19.0` to `^6.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.8`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.2",
       "tag": "@uifabric/fabric-website_v6.17.2",
       "date": "Fri, 10 May 2019 12:36:11 GMT",

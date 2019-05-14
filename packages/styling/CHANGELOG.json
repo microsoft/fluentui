@@ -2,6 +2,25 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.47.5",
+      "tag": "@uifabric/styling_v6.47.5",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removed a few more `typeof window` references to avoid memory leaks with IE11.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "548045e693860ef8d1d4812277a278a51866773e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.1` to `^6.38.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.4",
       "tag": "@uifabric/styling_v6.47.4",
       "date": "Fri, 10 May 2019 12:36:11 GMT",

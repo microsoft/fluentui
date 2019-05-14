@@ -2,6 +2,60 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.181.0",
+      "tag": "office-ui-fabric-react_v6.181.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added element id to the ChoiceGroup component",
+            "author": "Denis Fisenko <dfisenko@users.noreply.github.com>",
+            "commit": "920dbfa1e78055b117d22c88c0deaa6b0e433e0f"
+          },
+          {
+            "comment": "In Edge, prevent pickers from showing \"ms-clear\" icon when typing.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "9e86e1ae040720383ea84deb9fa1d5d59a565d10"
+          },
+          {
+            "comment": "Removed a few more `typeof window` references to avoid memory leaks with IE11.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "548045e693860ef8d1d4812277a278a51866773e"
+          },
+          {
+            "comment": "Picker/DocPage: fix IBasePickerProps doc comment and add type alias to DocPage.",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "97917560d3624d7bec09a7fd7cc2bb1144132bba"
+          },
+          {
+            "comment": "withViewport: Respect value change of skipViewportMeasures by reassigning appropriate resize listener",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "aa6b12709217c88ca3f9d1a25150f461f86d89e5"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Dropdown/Combobox: Add prop to allow open on focus",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "998980c2cfffa299703c3be9ec84e05c9bbcba02"
+          },
+          {
+            "comment": "DetailsList: Export missing public API symbols",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "2f79cc96b7c4249210fe88d24d70f0029b795ace"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.4` to `^6.47.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.1` to `^6.38.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.180.0",
       "tag": "office-ui-fabric-react_v6.180.0",
       "date": "Fri, 10 May 2019 12:36:11 GMT",
