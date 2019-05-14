@@ -106,7 +106,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
       currentArea: getSiteArea(SiteDefinition.pages),
       currentPage: window.location.hash,
       context: 'NotFoundPage',
-      referrer: document.referrer.length ? document.referrer : undefined
+      referrer: document.referrer || undefined
     });
     window.history.back();
   };
