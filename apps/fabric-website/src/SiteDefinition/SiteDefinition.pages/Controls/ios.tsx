@@ -11,7 +11,7 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Basic Inputs',
-    url: '#/controls/ios/basic-inputs',
+    url: '#/controls/ios/button',
     isCategory: true,
     pages: [
       {

@@ -53,6 +53,7 @@ export class ButtonPage extends React.Component<
         {...buttonPageProps[this.props.platform]}
         exampleKnobs={this.renderKnobs()}
         otherSections={this._otherSections(this.props.platform)}
+        title="Button"
       />
     );
   }
@@ -64,11 +65,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/ios/ButtonImplementation.md',
-            content: (
-              <Markdown>
-                {require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string}
-              </Markdown>
-            )
+            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonImplementation.md') as string
           }
         ];
 
@@ -77,13 +74,7 @@ export class ButtonPage extends React.Component<
           {
             sectionName: 'Implementation',
             editUrl: baseUrl + 'docs/android/ButtonImplementation.md',
-            content: (
-              <Markdown>
-                {
-                  require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string
-                }
-              </Markdown>
-            )
+            content: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonImplementation.md') as string
           }
         ];
     }

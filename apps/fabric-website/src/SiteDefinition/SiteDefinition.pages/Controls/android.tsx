@@ -11,7 +11,7 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Basic Inputs',
-    url: '#/controls/android/basic-inputs',
+    url: '#/controls/android/button',
     isCategory: true,
     pages: [
       {

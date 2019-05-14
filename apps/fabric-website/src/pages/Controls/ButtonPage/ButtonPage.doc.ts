@@ -13,15 +13,11 @@ export const ButtonPageProps = (disabled: boolean, checked: boolean): TPlatformP
       related
     },
     ios: {
-      title: 'Button',
-      fileNamePrefix: 'Button',
       overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/ios/ButtonOverview.md') as string,
       related,
       componentUrl
     },
     android: {
-      title: 'Button',
-      fileNamePrefix: 'Button',
       overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ButtonPage/docs/android/ButtonOverview.md') as string,
       related,
       componentUrl
