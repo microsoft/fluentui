@@ -36,27 +36,6 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
               }
             }
           ],
-          // primary text in personas
-          '.ms-Persona-primaryText': {
-            color: !isValid
-              ? // red iff valid, else white iff selected, else dark
-                palette.red
-              : isSelected
-              ? palette.white
-              : palette.themeDark,
-            fontSize: FontSizes.small,
-            selectors: {
-              [HighContrastSelector]: {
-                color: 'HighlightText'
-              }
-            }
-          },
-          // Make initials large when invalid and rendering a persona without an image
-          '.ms-Persona-initials': isValid
-            ? {}
-            : {
-                fontSize: 20
-              },
           // Add border and background in high contrast
           [HighContrastSelector]: {
             borderColor: 'Highlight',
@@ -75,34 +54,10 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         }
       }
     ],
-    // Class applied to all 3 buttons
-    actionButton: [
-      {
-        color: palette.white,
-        selectors: {
-          '.ms-Button-icon': {
-            color: isSelected ? palette.white : palette.themeDark,
-            selectors: {
-              ':hover': {
-                backgroundColor: isSelected ? palette.themeDark : undefined
-              },
-              [HighContrastSelector]: {
-                color: 'HighlightText'
-              }
-            }
-          }
-        }
-      }
-    ],
     personaWrapper: [
       {
         position: 'relative',
-        display: 'inherit',
-        selectors: {
-          '.ms-Persona-details': {
-            padding: '0 8px'
-          }
-        }
+        display: 'inherit'
       }
     ],
     expandButton: [
@@ -113,7 +68,12 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         paddingRight: 16,
         position: 'inherit',
         display: 'flex',
-        marginRight: -17
+        marginRight: -17,
+        selectors: {
+          ':hover': {
+            backgroundColor: palette.themeLight
+          }
+        }
       }
     ],
     removeButton: [
@@ -122,7 +82,12 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         flex: '0 0 auto',
         width: 33,
         height: 33,
-        flexBasis: 32
+        flexBasis: 32,
+        selectors: {
+          ':hover': {
+            backgroundColor: palette.themeLight
+          }
+        }
       }
     ],
     itemContentWrapper: [
@@ -132,6 +97,51 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
         /** Needed for IE 11 to properly truncate long persona names in the picker **/
         maxWidth: '100%'
       }
-    ]
+    ],
+    subComponentStyles: {
+      personaStyles: {
+        // primary text in personas
+        primaryText: {
+          color: !isValid
+            ? // red iff valid, else white iff selected, else dark
+              palette.red
+            : isSelected
+            ? palette.white
+            : palette.themeDark,
+          fontSize: FontSizes.small,
+          selectors: {
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
+        },
+        details: {
+          padding: '0 8px'
+        }
+      },
+      personaCoinStyles: {
+        initials: isValid
+          ? {}
+          : {
+              fontSize: 20
+            }
+      },
+      actionButtonStyles: {
+        root: {
+          color: palette.white
+        },
+        icon: {
+          color: isSelected ? palette.white : palette.themeDark,
+          selectors: {
+            ':hover': {
+              backgroundColor: isSelected ? palette.themeDark : undefined
+            },
+            [HighContrastSelector]: {
+              color: 'HighlightText'
+            }
+          }
+        }
+      }
+    }
   };
 };

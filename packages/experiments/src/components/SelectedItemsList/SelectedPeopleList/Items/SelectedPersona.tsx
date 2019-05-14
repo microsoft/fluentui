@@ -4,7 +4,7 @@ import { Persona, PersonaSize, IPersonaProps } from 'office-ui-fabric-react/lib/
 import { ISelectedItemProps } from '../../SelectedItemsList.types';
 import { getStyles } from './SelectedPersona.styles';
 import { ISelectedPersonaStyles, ISelectedPersonaStyleProps } from './SelectedPersona.types';
-import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { ITheme, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 
 const getClassNames = classNamesFunction<ISelectedPersonaStyleProps, ISelectedPersonaStyles>();
@@ -67,7 +67,7 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
     [onRemoveItem]
   );
 
-  const classNames = React.useMemo(
+  const classNames: IProcessedStyleSet<ISelectedPersonaStyles> = React.useMemo(
     () =>
       getClassNames(styles, {
         isSelected: selected || false,
@@ -76,6 +76,8 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
       }),
     [selected, isValid, theme]
   );
+
+  const coinProps = {};
 
   return (
     <div
@@ -92,18 +94,20 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
         <IconButton
           onClick={onExpandClicked}
           iconProps={{ iconName: 'Add', style: { fontSize: '14px' } }}
-          className={css('ms-PickerItem-removeButton', classNames.expandButton, classNames.actionButton)}
+          className={css('ms-PickerItem-removeButton', classNames.expandButton)}
+          styles={classNames.subComponentStyles.actionButtonStyles()}
           ariaLabel={removeButtonAriaLabel}
         />
       </div>
       <div className={css(classNames.personaWrapper)}>
         <div className={css('ms-PickerItem-content', classNames.itemContentWrapper)} id={'selectedItemPersona-' + itemId}>
-          <Persona {...item} size={PersonaSize.size32} />
+          <Persona {...item} size={PersonaSize.size32} styles={classNames.subComponentStyles.personaStyles} coinProps={coinProps} />
         </div>
         <IconButton
           onClick={onRemoveClicked}
           iconProps={{ iconName: 'Cancel', style: { fontSize: '14px' } }}
-          className={css('ms-PickerItem-removeButton', classNames.removeButton, classNames.actionButton)}
+          className={css('ms-PickerItem-removeButton', classNames.removeButton)}
+          styles={classNames.subComponentStyles.actionButtonStyles()}
           ariaLabel={removeButtonAriaLabel}
         />
       </div>
@@ -111,8 +115,7 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
   );
 });
 
+// export casting back to typeof inner to preserve generics.
 export const SelectedPersona = styled(SelectedPersonaInner, getStyles, undefined, {
   scope: 'SelectedPersona'
-});
-
-export type SelectedPersona<TPersona extends IPersonaProps = IPersonaProps> = React.ComponentType<ISelectedPersonaProps<TPersona>>;
+}) as typeof SelectedPersonaInner;

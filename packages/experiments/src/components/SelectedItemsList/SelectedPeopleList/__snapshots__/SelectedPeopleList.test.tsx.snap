@@ -4,7 +4,33 @@ exports[`SelectedPeopleList renders personas that are passed in 1`] = `
 Array [
   <div
     aria-labelledby="selectedItemPersona-id__0"
-    className="ms-PickerPersona-container"
+    className=
+        ms-PickerPersona-container
+        {
+          align-items: center;
+          background: #eff6fc;
+          border-radius: 15px;
+          cursor: default;
+          display: inline-flex;
+          margin-bottom: 4px;
+          margin-left: 4px;
+          margin-right: 4px;
+          margin-top: 4px;
+          position: relative;
+          user-select: none;
+          vertical-align: middle;
+        }
+        &:hover {
+          background: #deecf9;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          -ms-high-contrast-adjust: none;
+          background: Highlight;
+          border-color: Highlight;
+        }
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={0}
@@ -22,27 +48,28 @@ Array [
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 2px;
+              border-radius: 15px 0px 0px 15px;
               border: none;
               box-sizing: border-box;
-              color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
-              display: inline-block;
+              display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 32px;
+              height: 33px;
+              margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
-              padding-right: 4px;
+              padding-right: 16px;
               padding-top: 0;
-              position: relative;
+              position: inherit;
               text-align: center;
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
+              width: 44px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -72,7 +99,7 @@ Array [
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #c7e0f4;
               color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -109,6 +136,7 @@ Array [
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  color: #005a9e;
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
@@ -125,6 +153,9 @@ Array [
                   text-align: center;
                   vertical-align: middle;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: HighlightText;
+                }
             data-icon-name="Add"
             role="presentation"
             style={
@@ -139,10 +170,21 @@ Array [
       </button>
     </div>
     <div
-      className=""
+      className=
+
+          {
+            display: inherit;
+            position: relative;
+          }
     >
       <div
-        className="ms-PickerItem-content"
+        className=
+            ms-PickerItem-content
+            {
+              flex: 0 1 auto;
+              max-width: 100%;
+              min-width: 0px;
+            }
         id="selectedItemPersona-id__0"
       >
         <div
@@ -254,12 +296,15 @@ Array [
               className=
                   ms-Persona-primaryText
                   {
-                    color: #323130;
+                    color: #005a9e;
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: HighlightText;
                   }
               dir="auto"
             >
@@ -331,16 +376,18 @@ Array [
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 2px;
+              border-radius: 15px;
               border: none;
               box-sizing: border-box;
-              color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
               display: inline-block;
+              flex-basis: 32;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 32px;
+              height: 33px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -351,7 +398,7 @@ Array [
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
+              width: 33px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -381,7 +428,7 @@ Array [
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #c7e0f4;
               color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -418,6 +465,7 @@ Array [
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  color: #005a9e;
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
@@ -433,6 +481,9 @@ Array [
                   speak: none;
                   text-align: center;
                   vertical-align: middle;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: HighlightText;
                 }
             data-icon-name="Cancel"
             role="presentation"
@@ -450,7 +501,33 @@ Array [
   </div>,
   <div
     aria-labelledby="selectedItemPersona-id__8"
-    className="ms-PickerPersona-container"
+    className=
+        ms-PickerPersona-container
+        {
+          align-items: center;
+          background: #eff6fc;
+          border-radius: 15px;
+          cursor: default;
+          display: inline-flex;
+          margin-bottom: 4px;
+          margin-left: 4px;
+          margin-right: 4px;
+          margin-top: 4px;
+          position: relative;
+          user-select: none;
+          vertical-align: middle;
+        }
+        &:hover {
+          background: #deecf9;
+        }
+        @media screen and (-ms-high-contrast: active){&:hover {
+          color: HighlightText;
+        }
+        @media screen and (-ms-high-contrast: active){& {
+          -ms-high-contrast-adjust: none;
+          background: Highlight;
+          border-color: Highlight;
+        }
     data-is-focusable={true}
     data-is-sub-focuszone={true}
     data-selection-index={1}
@@ -468,27 +545,28 @@ Array [
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 2px;
+              border-radius: 15px 0px 0px 15px;
               border: none;
               box-sizing: border-box;
-              color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
-              display: inline-block;
+              display: flex;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 32px;
+              height: 33px;
+              margin-right: -17px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
-              padding-right: 4px;
+              padding-right: 16px;
               padding-top: 0;
-              position: relative;
+              position: inherit;
               text-align: center;
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
+              width: 44px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -518,7 +596,7 @@ Array [
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #c7e0f4;
               color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -555,6 +633,7 @@ Array [
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  color: #005a9e;
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
@@ -571,6 +650,9 @@ Array [
                   text-align: center;
                   vertical-align: middle;
                 }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: HighlightText;
+                }
             data-icon-name="Add"
             role="presentation"
             style={
@@ -585,10 +667,21 @@ Array [
       </button>
     </div>
     <div
-      className=""
+      className=
+
+          {
+            display: inherit;
+            position: relative;
+          }
     >
       <div
-        className="ms-PickerItem-content"
+        className=
+            ms-PickerItem-content
+            {
+              flex: 0 1 auto;
+              max-width: 100%;
+              min-width: 0px;
+            }
         id="selectedItemPersona-id__8"
       >
         <div
@@ -700,12 +793,15 @@ Array [
               className=
                   ms-Persona-primaryText
                   {
-                    color: #323130;
+                    color: #005a9e;
                     font-size: 14px;
                     font-weight: 400;
                     overflow: hidden;
                     text-overflow: ellipsis;
                     white-space: nowrap;
+                  }
+                  @media screen and (-ms-high-contrast: active){& {
+                    color: HighlightText;
                   }
               dir="auto"
             >
@@ -777,16 +873,18 @@ Array [
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 2px;
+              border-radius: 15px;
               border: none;
               box-sizing: border-box;
-              color: #0078d4;
+              color: #ffffff;
               cursor: pointer;
               display: inline-block;
+              flex-basis: 32;
+              flex: 0 0 auto;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
-              height: 32px;
+              height: 33px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -797,7 +895,7 @@ Array [
               text-decoration: none;
               user-select: none;
               vertical-align: top;
-              width: 32px;
+              width: 33px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -827,7 +925,7 @@ Array [
               top: 0px;
             }
             &:hover {
-              background-color: #f3f2f1;
+              background-color: #c7e0f4;
               color: #106ebe;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -864,6 +962,7 @@ Array [
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
+                  color: #005a9e;
                   display: inline-block;
                   flex-shrink: 0;
                   font-family: "FabricMDL2Icons";
@@ -879,6 +978,9 @@ Array [
                   speak: none;
                   text-align: center;
                   vertical-align: middle;
+                }
+                @media screen and (-ms-high-contrast: active){& {
+                  color: HighlightText;
                 }
             data-icon-name="Cancel"
             role="presentation"
