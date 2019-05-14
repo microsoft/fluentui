@@ -6,12 +6,14 @@ export interface IWithPlatformProps<TPlatforms extends string = string> {
   platform?: TPlatforms;
 }
 
-export function withPlatform<TPlatforms extends string = string>(
-  Component: React.ComponentType
-): React.StatelessComponent<IWithPlatformProps<TPlatforms>> {
-  // tslint:disable-next-line no-any
-  const ComponentWithPlatform = (props: any) => (
+export function withPlatform<
+  TPlatforms extends string = string,
+  TProps extends IWithPlatformProps<TPlatforms> = IWithPlatformProps<TPlatforms>
+>(Component: React.ComponentType<TProps>): React.StatelessComponent<IWithPlatformProps<TPlatforms>> {
+  const ComponentWithPlatform: React.StatelessComponent = (props: TProps & { children?: React.ReactNode }) => (
     <PlatformContext.Consumer>{(platform: string) => <Component {...props} platform={platform} />}</PlatformContext.Consumer>
   );
+  // tslint:disable no-any
+  ComponentWithPlatform.displayName = (Component.displayName || (Component as any).name) + 'WithPlatform';
   return ComponentWithPlatform;
 }
