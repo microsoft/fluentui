@@ -69,26 +69,40 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
 
     public componentDidMount(): void {
       const { skipViewportMeasures } = this.props as IWithViewportProps;
+      const win = getWindow();
+
       this._onAsyncResize = this._async.debounce(this._onAsyncResize, RESIZE_DELAY, {
         leading: false
       });
-
-      const window = getWindow();
-      const viewportElement = this._root.current;
 
       // ResizeObserver seems always fire even window is not resized. This is
       // particularly bad when skipViewportMeasures is set when optimizing fixed layout lists.
       // It will measure and update and re-render the entire list after list is fully rendered.
       // So fallback to listen to resize event when skipViewportMeasures is set.
-      if (!skipViewportMeasures && window && (window as any).ResizeObserver) {
-        this._viewportResizeObserver = new (window as any).ResizeObserver(this._onAsyncResize);
-        this._viewportResizeObserver.observe(viewportElement);
+      if (!skipViewportMeasures && this._isResizeObserverAvailable()) {
+        this._registerResizeObserver();
       } else {
-        this._events.on(window, 'resize', this._onAsyncResize);
+        this._events.on(win, 'resize', this._onAsyncResize);
       }
 
       if (!skipViewportMeasures) {
         this._updateViewport();
+      }
+    }
+
+    public componentDidUpdate(newProps: TProps) {
+      const { skipViewportMeasures: oldSkipViewportMeasures } = this.props as IWithViewportProps;
+      const { skipViewportMeasures: newSkipViewportMeasures } = newProps as IWithViewportProps;
+      const win = getWindow();
+
+      if (oldSkipViewportMeasures !== newSkipViewportMeasures) {
+        if (newSkipViewportMeasures) {
+          this._unregisterResizeObserver();
+          this._events.on(win, 'resize', this._onAsyncResize);
+        } else if (!newSkipViewportMeasures && this._isResizeObserverAvailable()) {
+          this._events.off(win, 'resize', this._onAsyncResize);
+          this._registerResizeObserver();
+        }
       }
     }
 
@@ -119,6 +133,26 @@ export function withViewport<TProps extends { viewport?: IViewport }, TState>(
     private _onAsyncResize(): void {
       this._updateViewport();
     }
+
+    private _isResizeObserverAvailable(): boolean {
+      const win = getWindow();
+
+      return win && (win as any).ResizeObserver;
+    }
+
+    private _registerResizeObserver = () => {
+      const win = getWindow();
+
+      this._viewportResizeObserver = new (win as any).ResizeObserver(this._onAsyncResize);
+      this._viewportResizeObserver.observe(this._root.current);
+    };
+
+    private _unregisterResizeObserver = () => {
+      if (this._viewportResizeObserver) {
+        this._viewportResizeObserver.disconnect();
+        this._viewportResizeObserver = null;
+      }
+    };
 
     /* Note: using lambda here because decorators don't seem to work in decorators. */
     private _updateViewport = (withForceUpdate?: boolean) => {
