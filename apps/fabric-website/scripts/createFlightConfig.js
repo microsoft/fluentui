@@ -6,6 +6,9 @@ const fs = require('fs');
 const path = require('path');
 const { argv, logger } = require('@uifabric/build/just-task').just;
 
+/**
+ * A Task Function for Fabric Website that Generates a Manifest for Non-UHF "Internal" Site
+ */
 module.exports.createInternalFlightConfigTask = function() {
   return function() {
     let date = new Date();
@@ -31,6 +34,9 @@ module.exports.createInternalFlightConfigTask = function() {
   };
 };
 
+/**
+ * A Task Function for Fabric Website that Generates a Manifest for UHF Public Site
+ */
 module.exports.createPublicFlightConfigTask = function() {
   return function() {
     let date = new Date();
