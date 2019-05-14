@@ -69,7 +69,7 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   /** Gets the top level page from the current URL and returns a link to it. */
   private _getAreaLink = (): JSX.Element => {
     const area = getSiteArea(SiteDefinition.pages);
-    const SiteDefinitionFilter = SiteDefinition.pages.filter(page => page.title === area);
+    const pageForArea = SiteDefinition.pages.filter(page => page.title === area)[0];
     if (SiteDefinitionFilter.length) {
       const SiteDefinitionPage = SiteDefinitionFilter[0];
       const { title, url } = SiteDefinitionPage;
