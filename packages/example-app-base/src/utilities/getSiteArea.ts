@@ -6,14 +6,16 @@ import { removeAnchorLink } from './removeAnchorLink';
  * @param pages - Array of pages.
  * @param hash - The hash.
  */
-
 export function getSiteArea(pages?: INavPage[], hash: string = location.hash): string {
   hash = removeAnchorLink(hash);
+  // Get the first level from the URL as a fallback. "#/controls/web/button" would be "controls"
   const topLevel = hash.indexOf('#/') > -1 ? hash.split('#/')[1].split('/')[0] : '';
+  const urlRegex = new RegExp(`\^#/${topLevel}\\b`);
   let area = topLevel;
   if (pages) {
     for (const page of pages) {
-      if (page.url.indexOf(topLevel) === 2) {
+      // Test if the page url starts with '#/' + the topLevel string
+      if (urlRegex.test(page.url)) {
         area = page.title;
         break;
       }

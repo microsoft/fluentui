@@ -459,9 +459,9 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const platformKeys = platforms && (Object.keys(platforms) as TPlatforms[]);
     if (platformKeys && platformKeys.length > 0) {
       // Test if the platform has changed on each hashchange to avoid costly forEach below.
-      const isCurrentPlatform = new RegExp(`/${platform}`);
+      const currentPlatformRegex = new RegExp(`/${platform}\\b`);
 
-      if (!isCurrentPlatform.test(newPagePath)) {
+      if (!currentPlatformRegex.test(newPagePath)) {
         for (const key of platformKeys) {
           // If the user navigates directly to a platform specific page, set the active platform to that of the new page.
           const isNewPlatform = new RegExp(`/${key}`, 'gi');
