@@ -313,7 +313,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
     const { iconProps } = this.props;
 
-    if (iconProps) {
+    if (iconProps && (iconProps.iconName || iconProps.imageProps)) {
       const { className, ...rest } = iconProps;
 
       return <Icon className={css(this._classNames.icon, className)} {...rest} />;

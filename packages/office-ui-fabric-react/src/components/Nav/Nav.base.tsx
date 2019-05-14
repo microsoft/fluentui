@@ -105,13 +105,13 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderNavLink(link: INavLink, linkIndex: number, nestingLevel: number): JSX.Element {
     const { styles, groups, theme, onRenderLink = this._onRenderLink, linkAs: LinkAs = ActionButton } = this.props;
-
+    const isLinkWithIcon = link.icon || link.iconProps;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isSelected: this._isLinkSelected(link),
       isDisabled: link.disabled,
       isButtonEntry: link.onClick && !link.forceAnchor,
-      leftPadding: _indentationSize * nestingLevel + _baseIndent,
+      leftPadding: _indentationSize * nestingLevel + _baseIndent + (isLinkWithIcon ? 0 : 24),
       groups
     });
 
@@ -123,7 +123,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
         className={classNames.link}
         styles={buttonStyles}
         href={link.url || (link.forceAnchor ? 'javascript:' : undefined)}
-        iconProps={link.iconProps || { iconName: link.icon || '' }}
+        iconProps={link.iconProps || { iconName: link.icon }}
         onClick={link.onClick ? this._onNavButtonLinkClicked.bind(this, link) : this._onNavAnchorLinkClicked.bind(this, link)}
         title={link.title || link.name}
         target={link.target}
