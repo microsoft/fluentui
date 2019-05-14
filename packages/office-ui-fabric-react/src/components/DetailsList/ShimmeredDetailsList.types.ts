@@ -50,7 +50,6 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
 /**
  * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
- * @internal
  */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
   /**
@@ -68,7 +67,6 @@ export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsLis
 
 /**
  * Represents the stylable areas of the control.
- * @internal
  */
 export interface IShimmeredDetailsListStyles {
   /**
