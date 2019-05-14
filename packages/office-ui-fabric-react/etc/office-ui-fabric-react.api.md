@@ -657,6 +657,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
     }
 
 // @public (undocumented)
@@ -1063,6 +1064,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     focus(shouldOpenOnFocus?: boolean): void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IDropdownOption[];
     // (undocumented)
     setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
     }
@@ -2641,6 +2643,7 @@ export interface IColumnResizeDetails {
 export interface IComboBox {
     dismissMenu: () => void;
     focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 // @public (undocumented)
@@ -2672,7 +2675,7 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     isButtonAriaHidden?: boolean;
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
-    onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string, selectedOptions?: IComboBoxOption[]) => void;
+    onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
     // @deprecated
     onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
     onItemClick?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
@@ -4220,6 +4223,7 @@ export interface IDragOptions {
 export interface IDropdown {
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
+    readonly selectedOptions: IDropdownOption[];
 }
 
 // @public
@@ -4242,7 +4246,7 @@ export interface IDropdownProps extends ISelectableDroppableTextProps<IDropdown,
     multiSelect?: boolean;
     multiSelectDelimiter?: string;
     notifyOnReselect?: boolean;
-    onChange?: (event: React_2.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number, selectedOptions?: IDropdownOption[]) => void;
+    onChange?: (event: React_2.FormEvent<HTMLDivElement>, option?: IDropdownOption, index?: number) => void;
     // @deprecated (undocumented)
     onChanged?: (option: IDropdownOption, index?: number) => void;
     onDismiss?: () => void;
@@ -9437,6 +9441,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 
