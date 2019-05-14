@@ -207,6 +207,7 @@ describe('ColorPicker', () => {
     const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input')!;
 
     ReactTestUtils.Simulate.input(hexInput, mockEvent('faf'));
+    expect(onChange).toHaveBeenCalledTimes(0);
     ReactTestUtils.Simulate.blur(hexInput);
     expect(updatedColor!.hex).toBe('ffaaff');
     expect(onChange).toHaveBeenCalledTimes(1);
