@@ -50,7 +50,7 @@ export interface IMicroFeedbackSlots {
   /**
    * Defines the container element that includes the follow up question and options.
    */
-  followUpContainer?: ICalloutSlot | IStackSlot;
+  followUpContainer?: ICalloutSlot;
 
   /**
    * Defines the follow up question text.
@@ -98,17 +98,46 @@ export interface IMicroFeedbackProps
    * Defines an optional question that is asked if thumbs down is selected.
    */
   thumbsDownQuestion?: IMicroFeedbackQuestion;
-
-  // defaultText?: string;
-  // renderFollowupContainer?: (
-  //   children: JSX.Element,
-  //   classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
-  //   targetElement: HTMLDivElement | null,
-  //   onCalloutDismiss: () => void
-  // ) => JSX.Element;
 }
 
-export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {}
+export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
+  /**
+   * Defines the current vote selection so far.
+   * @defaultvalue 'no_vote'
+   */
+  vote: VoteType;
+
+  /**
+   * Determines if the follow up section is visible or not.
+   * @defaultvalue false
+   */
+  isFollowUpVisible?: boolean;
+
+  /**
+   * Defines a reference for the thumbs up button.
+   */
+  likeRef: React.RefObject<HTMLDivElement>;
+
+  /**
+   * Defines a reference for the thumbs down button.
+   */
+  dislikeRef: React.RefObject<HTMLDivElement>;
+
+  /**
+   * Defines a callback that is called when the Callout is dismissed.
+   */
+  onCalloutDismiss: () => void;
+
+  /**
+   * Defines a callback that is called when thumbs up is selected.
+   */
+  onLikeVote: () => void;
+
+  /**
+   * Defines a callback that is called when thumbs down is selected.
+   */
+  onDislikeVote: () => void;
+}
 
 export interface IMicroFeedbackTokens {}
 
