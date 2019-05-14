@@ -36,6 +36,9 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
   private _textChangeHandlers: {
     [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
   };
+  private _textBlurHandlers: {
+    [K in keyof IRGBHex]: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void
+  };
   private _textLabels: { [K in keyof IRGBHex]?: string };
 
   constructor(props: IColorPickerProps) {
@@ -50,8 +53,10 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     };
 
     this._textChangeHandlers = {} as any;
+    this._textBlurHandlers = {} as any;
     for (const component of colorComponents) {
       this._textChangeHandlers[component] = this._onTextChange.bind(this, component);
+      this._textBlurHandlers[component] = this._onTextBlur.bind(this, component);
     }
     this._textLabels = {
       r: props.redLabel,
@@ -120,6 +125,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
                       <TextField
                         className={classNames.input}
                         onChange={this._textChangeHandlers[comp]}
+                        onBlur={this._textBlurHandlers[comp]}
                         value={this._getDisplayValue(comp)}
                         spellCheck={false}
                         ariaLabel={this._textLabels[comp]}
@@ -163,7 +169,7 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     }
 
     let newColor: IColor | undefined;
-    if (isHex) {
+    if (isHex && newValue && newValue.length === 6) {
       newColor = getColorFromString('#' + newValue);
     } else {
       newColor = getColorFromRGBA({
@@ -175,6 +181,20 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
       });
     }
     this._updateColor(event, newColor);
+  }
+
+  private _onTextBlur(component: keyof IRGBHex, event: React.FormEvent<HTMLInputElement>): void {
+    const color = this.state.color;
+    const isHex = component === 'hex';
+    const newValue = event.currentTarget.value;
+
+    if (String(color[component]) === newValue) {
+      return;
+    }
+
+    if (isHex) {
+      this._updateColor(event, getColorFromString('#' + newValue));
+    }
   }
 
   /**

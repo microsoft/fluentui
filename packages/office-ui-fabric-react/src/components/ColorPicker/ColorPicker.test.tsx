@@ -180,6 +180,38 @@ describe('ColorPicker', () => {
     expect(colorPicker!.color.str).toBe('rgba(0, 255, 0, 0.5)');
   });
 
+  it('allows typing in a 6-digit hex value', () => {
+    let updatedColor: IColor | undefined;
+    const onChange = jest.fn((ev: any, color: IColor) => {
+      updatedColor = color;
+    });
+
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input')!;
+    const testHexValue = 'f1f2f3';
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent(testHexValue));
+    expect(updatedColor!.hex).toBe(testHexValue);
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
+  it('allows typing in a 3-digit hex value', () => {
+    let updatedColor: IColor | undefined;
+    const onChange = jest.fn((ev: any, color: IColor) => {
+      updatedColor = color;
+    });
+
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const hexInput = wrapper.getDOMNode().querySelector('.ms-ColorPicker-input input')!;
+
+    ReactTestUtils.Simulate.input(hexInput, mockEvent('faf'));
+    ReactTestUtils.Simulate.blur(hexInput);
+    expect(updatedColor!.hex).toBe('ffaaff');
+    expect(onChange).toHaveBeenCalledTimes(1);
+  });
+
   it('allows updating text fields when alpha slider is hidden', () => {
     let updatedColor: string | undefined;
     const onChange = jest.fn((ev: any, color: IColor) => {
