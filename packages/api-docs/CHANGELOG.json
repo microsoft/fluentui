@@ -2,6 +2,31 @@
   "name": "@uifabric/api-docs",
   "entries": [
     {
+      "version": "1.1.0",
+      "tag": "@uifabric/api-docs_v1.1.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "PageJsonGenerator: handle type aliases.",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "97917560d3624d7bec09a7fd7cc2bb1144132bba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.4` to `^6.47.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.1` to `^6.38.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "1.0.1",
       "tag": "@uifabric/api-docs_v1.0.1",
       "date": "Sat, 04 May 2019 00:01:53 GMT",
