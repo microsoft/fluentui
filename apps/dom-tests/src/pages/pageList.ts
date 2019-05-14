@@ -1,1 +1,2 @@
-module.exports = ['FocusZone.example1'];
+const pages: string[] = ['FocusZone.example1'];
+module.exports = pages;
