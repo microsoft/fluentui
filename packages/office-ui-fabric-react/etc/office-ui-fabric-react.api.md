@@ -6213,12 +6213,12 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
     initialScrollPosition?: number;
-    notUsePlaceholderForStickyBottom?: boolean;
-    notUsePlaceholderForStickyTop?: boolean;
     // (undocumented)
     scrollbarVisibility?: ScrollbarVisibility;
-    stickiesBottomBehaviorType?: StickyContainerBehaviorType;
-    stickiesTopBehaviorType?: StickyContainerBehaviorType;
+    // (undocumented)
+    stickyAboveContainerBehavior?: IStickyContainerBehavior;
+    // (undocumented)
+    stickyBelowContainerBehavior?: IStickyContainerBehavior;
     styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
     theme?: ITheme;
 }
@@ -6961,6 +6961,13 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 export interface IStackTokens {
     // (undocumented)
     childrenGap?: number | string;
+}
+
+// @public (undocumented)
+export interface IStickyContainerBehavior {
+    arrangeStickiesBasedOnOrder: boolean;
+    containerBehavior: StickyContainerBehaviorType;
+    notUsePlaceHolder: boolean;
 }
 
 // @public (undocumented)

@@ -47,29 +47,26 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
 
   scrollbarVisibility?: ScrollbarVisibility;
 
-  /**
-   * If true, it replicates actual element instead of keeping placeholder
-   * Best Practices: Perf reasons
-   */
-  notUsePlaceholderForStickyTop?: boolean;
-
-  /**
-   * If true, it replicates actual element instead of keeping placeholder
-   * Best Practices: Perf reasons
-   */
-  notUsePlaceholderForStickyBottom?: boolean;
-
-  /**
-   * If it is provided, stickies' stickyPosition must not be 'Both'
-   */
-  stickiesTopBehaviorType?: StickyContainerBehaviorType;
-
-  /**
-   * If it is provided, stickies' stickyPosition must not be 'Both'
-   */
-  stickiesBottomBehaviorType?: StickyContainerBehaviorType;
+  stickyAboveContainerBehavior?: IStickyContainerBehavior;
+  stickyBelowContainerBehavior?: IStickyContainerBehavior;
 }
 
+export interface IStickyContainerBehavior {
+  /**
+   * If true, it replicates actual element instead of keeping placeholder
+   * Best Practices: Perf reasons
+   */
+  notUsePlaceHolder: boolean;
+  /**
+   * If true, arranges stickies based on 'order' prop
+   */
+  arrangeStickiesBasedOnOrder: boolean;
+
+  /**
+   * If it is provided, stickies' stickyPosition must not be 'Both'
+   */
+  containerBehavior: StickyContainerBehaviorType;
+}
 export enum StickyContainerBehaviorType {
   // Perf reasons
   StickyOnScroll = 1,
