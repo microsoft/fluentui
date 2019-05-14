@@ -115,6 +115,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
         methods={item.methods}
         renderAsEnum={item.propertyType === PropertyType.enum}
         renderAsClass={item.propertyType === PropertyType.class}
+        renderAsTypeAlias={item.propertyType === PropertyType.typeAlias}
       />
     );
   }
@@ -177,6 +178,10 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             preResults.push(this._generateClassProperty(jsonDocs.tables[j]));
             break;
           }
+          case 'typeAlias': {
+            preResults.push(this._generateTypeAliasProperty(jsonDocs.tables[j]));
+            break;
+          }
         }
       }
     }
@@ -204,6 +209,18 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
       title: table.kind ? table.name + ' ' + table.kind : table.name,
       propertyType: PropertyType.enum,
       property: enumMembers
+    };
+  }
+
+  private _generateTypeAliasProperty(table: ITableJson): IApiProperty {
+    // the type alias
+    return {
+      propertyName: table.name,
+      extendsTokens: table.extendsTokens,
+      description: table.description,
+      title: table.name,
+      propertyType: PropertyType.typeAlias,
+      property: []
     };
   }
 

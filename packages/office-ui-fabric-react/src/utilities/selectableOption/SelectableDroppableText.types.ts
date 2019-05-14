@@ -101,4 +101,10 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
    * Input placeholder text. Displayed until option is selected.
    */
   placeholder?: string;
+
+  /**
+   * Whether or not the combobox should expand on keyboard focus
+   * @default false
+   */
+  openOnKeyboardFocus?: boolean;
 }

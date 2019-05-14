@@ -38,6 +38,7 @@ fabric-website/ @jordandrako
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
+Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
 packages/charting/ @Raghurk @veeray @chankev

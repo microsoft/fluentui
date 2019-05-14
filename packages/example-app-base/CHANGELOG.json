@@ -2,6 +2,66 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.20.1",
+      "tag": "@uifabric/example-app-base_v6.20.1",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getSiteArea now pulls name from page definition instead of URL",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2c69e2e8bedb433ff86bb487ebd6f20e590a32fd"
+          },
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.8` to `^0.16.9`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.20.0",
+      "tag": "@uifabric/example-app-base_v6.20.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add `themeSlots` api to ColorPalette.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "66b92fec130a529d5e97b2e663f033892a6a47e0"
+          },
+          {
+            "comment": "ApiReferencesTable/ApiReferencesTableSet: handle type aliases.",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "97917560d3624d7bec09a7fd7cc2bb1144132bba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.8`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.0",
       "tag": "@uifabric/example-app-base_v6.19.0",
       "date": "Thu, 09 May 2019 12:35:50 GMT",

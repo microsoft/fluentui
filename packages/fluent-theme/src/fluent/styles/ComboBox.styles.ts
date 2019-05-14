@@ -10,6 +10,7 @@ export const ComboBoxStyles = (props: IComboBoxProps): Partial<IComboBoxStyles> 
   return {
     root: {
       borderRadius: effects.roundedCorner2, // the bound input box
+      borderColor: palette.neutralSecondaryAlt,
       paddingLeft: 8
     },
     rootHovered: {

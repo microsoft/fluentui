@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Export ResponsiveMode from controls that expect it as a prop.",
+      "comment": "Allow custom aria label generation in suggestionStore",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jdh@microsoft.com"
+  "email": "mhuan13@gmail.com"
 }
