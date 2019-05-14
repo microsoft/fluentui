@@ -11,7 +11,7 @@ export interface IChicletBasicExampleState {
   textFieldValue: string;
 }
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/pull/8962/merge/experiments/dist/index.html';
+const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
 export class ChicletBasicExample extends React.Component<{}, IChicletBasicExampleState> {
   private _textField = createRef<ITextField>();
@@ -29,7 +29,7 @@ export class ChicletBasicExample extends React.Component<{}, IChicletBasicExampl
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Text>Try changing the url to see the chiclet with other metadata (eg. https://onedrive.com)</Text>
+        <Text>{'Try changing the url to see the chiclet with other metadata (eg. https://onedrive.com)'}</Text>
         <Stack horizontal tokens={{ childrenGap: 8 }}>
           <TextField componentRef={this._textField} styles={{ root: { width: '300px' } }} defaultValue="" />
           <DefaultButton text="Change url" onClick={this._onClickButton} />

@@ -6,7 +6,7 @@ import * as exampleStyles from './Chiclet.Basic.Example.scss';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/pull/8962/merge/experiments/dist/index.html';
+const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
 export class FooterComponent extends React.Component<IFooterComponent, {}> {
   constructor(props: IFooterComponent) {

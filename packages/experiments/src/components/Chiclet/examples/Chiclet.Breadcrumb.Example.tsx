@@ -7,7 +7,7 @@ import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Too
 import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
 
-const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/pull/8962/merge/experiments/dist/index.html';
+const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
 export class ChicletBreadcrumbExample extends React.Component<{}, {}> {
   constructor(props: {}) {
