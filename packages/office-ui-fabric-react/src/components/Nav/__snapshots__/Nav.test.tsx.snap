@@ -104,7 +104,7 @@ exports[`Nav renders Nav correctly 1`] = `
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       position: relative;
