@@ -1,4 +1,4 @@
-import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyle, ITheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IBenchmarkBarChartProps {
@@ -26,7 +26,8 @@ export interface IBenchmarkBarChartProps {
   height?: number;
 
   /**
-   * Width of bar chart, it could be number or percentage
+   * Width of bar chart, it could be number or percentage.
+   * Number represents pixel and string is used to display the percentage
    * For example: 10, 10%
    * @default 300
    */
@@ -41,6 +42,11 @@ export interface IBenchmarkBarChartProps {
    * Color for the benchmark triangle
    */
   benchmarkColor?: string;
+
+  /**
+   * Theme (provided through customization.)
+   */
+  theme?: ITheme;
 
   /**
    * Call to provide customized styling that will layer on top of the variant rules.
@@ -76,6 +82,11 @@ export interface IChartingProps {
 }
 
 export interface IBenchmarkBarChartStyleProps {
+  /**
+   * Theme (provided through customization.)
+   */
+  theme: ITheme;
+
   /**
    * Width of the chart.
    */

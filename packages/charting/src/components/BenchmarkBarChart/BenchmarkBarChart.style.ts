@@ -1,12 +1,13 @@
 import { IBenchmarkBarChartStyleProps, IBenchmarkBarChartStyle } from './BenchmarkBarChart.types';
 
 export const getBenchmarkBarChartStyles = (props: IBenchmarkBarChartStyleProps): IBenchmarkBarChartStyle => {
-  const { width, benchmarkColor } = props;
+  const { theme, width, benchmarkColor } = props;
+  const { palette } = theme!;
 
   return {
     root: {
       width: width || 300,
-      fontFamily: 'Segoe UI',
+      fontFamily: `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
       fontSize: '13px'
     },
     chartHeader: {
@@ -28,7 +29,7 @@ export const getBenchmarkBarChartStyles = (props: IBenchmarkBarChartStyleProps):
       borderLeft: '8px solid transparent',
       borderRight: '8px solid transparent',
       borderTop: '8px solid',
-      borderTopColor: benchmarkColor || '#00A5B0'
+      borderTopColor: benchmarkColor || palette.blue
     },
     barChart: {
       width: '100%'

@@ -36,8 +36,9 @@ export class BenchmarkBarChartBase extends React.Component<IBenchmarkBarChartPro
     const barChartColor = this.props.color || DefaultPalette.purple;
     const barHeight = this.props.height || 10;
 
-    const { width, benchmarkColor, styles } = this.props;
+    const { theme, width, benchmarkColor, styles } = this.props;
     this._classNames = getClassNames(styles!, {
+      theme: theme!,
       width: width,
       benchmarkColor: benchmarkColor
     });
@@ -45,15 +46,11 @@ export class BenchmarkBarChartBase extends React.Component<IBenchmarkBarChartPro
     return (
       <div className={this._classNames.root}>
         <div className={this._classNames.chartHeader}>
-          <FocusZone>
-            <div className={this._classNames.chartTitle}>
-              <strong data-is-focusable={true}>{chartTitle}</strong>
-            </div>
+          <FocusZone className={this._classNames.chartTitle}>
+            <strong data-is-focusable={true}>{chartTitle}</strong>
           </FocusZone>
-          <FocusZone>
-            <div className={this._classNames.percentage}>
-              <strong data-is-focusable={true}>{percentageContent}</strong>
-            </div>
+          <FocusZone className={this._classNames.percentage}>
+            <strong data-is-focusable={true}>{percentageContent}</strong>
           </FocusZone>
         </div>
         <div className={this._classNames.chartBody}>
