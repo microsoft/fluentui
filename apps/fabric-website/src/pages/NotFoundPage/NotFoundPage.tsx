@@ -70,9 +70,8 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   private _getAreaLink = (): JSX.Element => {
     const area = getSiteArea(SiteDefinition.pages);
     const pageForArea = SiteDefinition.pages.filter(page => page.title === area)[0];
-    if (SiteDefinitionFilter.length) {
-      const SiteDefinitionPage = SiteDefinitionFilter[0];
-      const { title, url } = SiteDefinitionPage;
+    if (pageForArea) {
+      const { title, url } = pageForArea;
 
       return (
         <li>
