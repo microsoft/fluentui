@@ -2,8 +2,19 @@ import * as React from 'react';
 import { BaseDecorator } from './BaseDecorator';
 import { findScrollableParent, getRect, getWindow } from '../../Utilities';
 
+/**
+ * Viewport rectangle dimensions.
+ *
+ * {@docCategory DetailsList}
+ */
 export interface IViewport {
+  /**
+   * Width in pixels.
+   */
   width: number;
+  /**
+   * Height in pixels.
+   */
   height: number;
 }
 
@@ -11,13 +22,31 @@ export interface IWithViewportState {
   viewport?: IViewport;
 }
 
+/**
+ * Props interface for the withViewport component.
+ *
+ * {@docCategory DetailsList}
+ */
 export interface IWithViewportProps {
+  /**
+   * Whether or not to use ResizeObserver (if available) to detect
+   * and measure viewport on 'resize' events.
+   *
+   * Falls back to window 'resize' event.
+   *
+   * @defaultValue false
+   */
   skipViewportMeasures?: boolean;
 }
 
 const RESIZE_DELAY = 500;
 const MAX_RESIZE_ATTEMPTS = 3;
 
+/**
+ * A decorator to update decorated component on viewport or window resize events.
+ *
+ * @param ComposedComponent decorated React component reference.
+ */
 export function withViewport<TProps extends { viewport?: IViewport }, TState>(
   ComposedComponent: new (props: TProps, ...args: any[]) => React.Component<TProps, TState>
 ): any {

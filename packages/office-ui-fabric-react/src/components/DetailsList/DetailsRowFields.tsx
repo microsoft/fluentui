@@ -14,6 +14,11 @@ const getCellText = (item: any, column: IColumn): string => {
   return value;
 };
 
+/**
+ * Component for rendering a row's cells in a {@link DetailsList}.
+ *
+ * {@docCategory DetailsList}
+ */
 export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps> {
   public render(): JSX.Element {
     const {
