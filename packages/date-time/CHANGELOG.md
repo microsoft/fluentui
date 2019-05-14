@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 08 May 2019 12:37:40 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 6.1.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
 
 ## 6.1.0
 Wed, 08 May 2019 12:37:40 GMT

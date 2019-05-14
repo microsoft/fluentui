@@ -2,6 +2,39 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.20.1",
+      "tag": "@uifabric/example-app-base_v6.20.1",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "getSiteArea now pulls name from page definition instead of URL",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2c69e2e8bedb433ff86bb487ebd6f20e590a32fd"
+          },
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.8` to `^0.16.9`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.20.0",
       "tag": "@uifabric/example-app-base_v6.20.0",
       "date": "Tue, 14 May 2019 01:56:43 GMT",

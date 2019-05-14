@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 16 Apr 2019 12:32:59 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 0.28.14
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
 
 ## 0.28.13
 Tue, 16 Apr 2019 12:32:59 GMT

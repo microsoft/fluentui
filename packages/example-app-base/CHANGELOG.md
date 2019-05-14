@@ -1,6 +1,14 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 14 May 2019 01:56:43 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 6.20.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- getSiteArea now pulls name from page definition instead of URL
+- Update Fabric assets link
 
 ## 6.20.0
 Tue, 14 May 2019 01:56:43 GMT
