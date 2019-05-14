@@ -68,10 +68,8 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
 
   /** Gets the top level page from the current URL and returns a link to it. */
   private _getAreaLink = (): JSX.Element => {
-    // const area = getSiteArea(SiteDefinition.pages);
-    const hash = window.location.hash;
-    const area = hash.indexOf('#/') > -1 && '#/' + hash.split('#/')[1].split('/')[0];
-    const SiteDefinitionFilter = SiteDefinition.pages.filter(page => page.url === area);
+    const area = getSiteArea(SiteDefinition.pages);
+    const SiteDefinitionFilter = SiteDefinition.pages.filter(page => page.title === area);
     if (SiteDefinitionFilter.length) {
       const SiteDefinitionPage = SiteDefinitionFilter[0];
       const { title, url } = SiteDefinitionPage;
@@ -104,23 +102,23 @@ export class NotFoundPage extends React.Component<INotFoundPageProps, {}> {
   };
 
   private _onGoBackClick = (): void => {
-    // trackEvent(EventNames.ClickedGoBack, {
-    //   currentArea: getSiteArea(SiteDefinition.pages),
-    //   currentPage: window.location.hash,
-    //   context: 'NotFoundPage',
-    //   referrer: document.referrer.length ? document.referrer : undefined
-    // });
+    trackEvent(EventNames.ClickedGoBack, {
+      currentArea: getSiteArea(SiteDefinition.pages),
+      currentPage: window.location.hash,
+      context: 'NotFoundPage',
+      referrer: document.referrer.length ? document.referrer : undefined
+    });
     window.history.back();
   };
 
   private _onInternalLinkClick = (ev: React.MouseEvent<{}> | React.KeyboardEvent<{}>, url: string): void => {
-    // trackEvent(EventNames.ClickedInternalLink, {
-    //   currentArea: getSiteArea(SiteDefinition.pages),
-    //   nextArea: getSiteArea(SiteDefinition.pages, url),
-    //   currentPage: window.location.hash,
-    //   nextPage: url,
-    //   context: 'NotFoundPage',
-    //   referrer: document.referrer.length ? document.referrer : undefined
-    // });
+    trackEvent(EventNames.ClickedInternalLink, {
+      currentArea: getSiteArea(SiteDefinition.pages),
+      nextArea: getSiteArea(SiteDefinition.pages, url),
+      currentPage: window.location.hash,
+      nextPage: url,
+      context: 'NotFoundPage',
+      referrer: document.referrer.length ? document.referrer : undefined
+    });
   };
 }
