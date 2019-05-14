@@ -31,6 +31,15 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
           min-height: 38px;
           word-break: break-word;
         }
+        &:after {
+          background-image: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,.4) 65%,#ffffff 100%);
+          bottom: 0px;
+          content: "";
+          left: 0px;
+          position: absolute;
+          right: 0px;
+          top: 0px;
+        }
     data-automationid="DetailsList"
     data-is-scrollable="false"
   >
@@ -346,24 +355,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
             role="presentation"
           >
             <div
-              className=
-                  ms-List
-                  {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 12px;
-                    font-weight: 400;
-                  }
-                  &:after {
-                    background-image: linear-gradient(to bottom, transparent 30%, rgba(255,255,255,.4) 65%,#ffffff 100%);
-                    bottom: 0px;
-                    content: "";
-                    left: 0px;
-                    position: absolute;
-                    right: 0px;
-                    top: 0px;
-                  }
+              className="ms-List"
               role="presentation"
             >
               <div
