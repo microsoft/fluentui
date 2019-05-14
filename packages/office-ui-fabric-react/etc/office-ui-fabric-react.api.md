@@ -7496,7 +7496,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
-    errorMessage?: string;
+    errorMessage?: string | JSX.Element;
     // @deprecated (undocumented)
     iconClass?: string;
     iconProps?: IIconProps;
@@ -7512,8 +7512,8 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
-    onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
-    onNotifyValidationResult?: (errorMessage: string, value: string | undefined) => void;
+    onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
+    onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     // @deprecated (undocumented)
     onRenderAddon?: IRenderFunction<ITextFieldProps>;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
@@ -7535,7 +7535,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
 
 // @public (undocumented)
 export interface ITextFieldState {
-    errorMessage: string;
+    errorMessage: string | JSX.Element;
     isFocused: boolean;
     // (undocumented)
     value: string;
