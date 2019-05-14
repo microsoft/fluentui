@@ -1,66 +1,115 @@
-import { IStyleFunctionOrObject } from '../../Utilities';
-import { IStackSlot, IStackTokens } from 'office-ui-fabric-react';
-import { IStyle, ITheme } from '../../Styling';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { ICalloutSlot } from '../../utilities/factoryComponents.types';
+import { IBaseProps } from '../../Utilities';
+import { IButtonSlot } from '@uifabric/experiments';
+import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 
-// Optional interface to use for componentRef. This should be limited in scope with the most common scenario being for focusing elements.
+export type IMicroFeedbackComponent = IComponent<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles, IMicroFeedbackViewProps>;
 
+// These types are redundant with IMicroFeedbackComponent but are needed until TS function return widening issue is resolved:
+// https://github.com/Microsoft/TypeScript/issues/241
+// For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
+export type IMicroFeedbackTokenReturnType = ReturnType<Extract<IMicroFeedbackComponent['tokens'], Function>>;
+export type IMicroFeedbackStylesReturnType = ReturnType<Extract<IMicroFeedbackComponent['styles'], Function>>;
+
+export type IMicroFeedbackSlot = ISlotProp<IMicroFeedbackProps>;
+
+/**
+ * Defines the type of feedback that is being given (positive, none or negative).
+ */
 export type VoteType = 'dislike' | 'no_vote' | 'like';
+
+export interface IMicroFeedbackQuestion {
+  /**
+   * Defines the text of the question to be asked after a vote is given.
+   */
+  question: string;
+
+  /**
+   * Defines a list of options from which to choose as answers to the given question.
+   */
+  options: string[];
+
+  /**
+   * Defines an identifier that correlates the question to the thumbs up or thumbs down.
+   */
+  id: string;
+}
 
 export interface IMicroFeedbackSlots {
   /**
-   * Defines root slot.
+   * Defines the root slot of the component.
    */
-  followup?: ISlotRender;
+  root?: IStackSlot;
+
+  /**
+   * Defines the stack container for the like/dislike pair of icons.
+   */
+  iconContainer?: IStackSlot;
+
+  /**
+   * Defines the container element that includes the follow up question and options.
+   */
+  followUpContainer?: ICalloutSlot | IStackSlot;
+
+  /**
+   * Defines the follow up question text.
+   */
+  followUpQuestion?: ITextSlot;
+
+  /**
+   * Defines the options available for the follow up questions.
+   */
+  followUpOption?: IButtonSlot;
 }
 
-// Extending IStyleableComponentProps will automatically add styleable props for you, such as styles, tokens and theme.
-// If you don't want these props to be included in your component, just remove this extension.
-export interface IMicroFeedbackProps extends IMicroFeedbackSlots {
-  sendFeedback?: (vote: VoteType) => void; // Callback for sending feedback to a backend
-  sendFollowupIndex?: (id: string, index: number) => void; // Callback for sending followup index to a backend
-  thumbsUpTitle?: string; // Localized string for the thumbsUp icon
-  thumbsDownTitle?: string; // Localized string for the thumbsDown icon
-  thumbsUpQuestion?: IMicroFeedbackQuestion; // Optional question to be asked if user selected thumbsUp
-  thumbsDownQuestion?: IMicroFeedbackQuestion; // Optional question to be asked if user selectes thumbsDown
-  defaultText?: string;
-  renderFollowupContainer?: (
-    children: JSX.Element,
-    classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
-    targetElement: HTMLDivElement | null,
-    onCalloutDismiss: () => void
-  ) => JSX.Element;
+export interface IMicroFeedback {}
 
-  styles?: IStyleFunctionOrObject<IMicroFeedbackStyleProps, IMicroFeedbackStyles>;
-  theme?: ITheme;
+export interface IMicroFeedbackProps
+  extends IMicroFeedbackSlots,
+    IStyleableComponentProps<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles>,
+    IBaseProps<IMicroFeedback> {
+  /**
+   * Defines a callback that sends the feedback to backend.
+   */
+  sendFeedback?: (vote: VoteType) => void;
+
+  /**
+   * Defines a callback for sending the index of the chosen option for the follow up question to backend.
+   */
+  sendFollowUpIndex?: (id: string, index: number) => void;
+
+  /**
+   * Defines a localized string for the thumbs up icon.
+   */
+  thumbsUpTitle?: string;
+
+  /**
+   * Defines a localized string for the thumbs down icon.
+   */
+  thumbsDownTitle?: string;
+
+  /**
+   * Defines an optional question that is asked if thumbs up is selected.
+   */
+  thumbsUpQuestion?: IMicroFeedbackQuestion;
+
+  /**
+   * Defines an optional question that is asked if thumbs down is selected.
+   */
+  thumbsDownQuestion?: IMicroFeedbackQuestion;
+
+  // defaultText?: string;
+  // renderFollowupContainer?: (
+  //   children: JSX.Element,
+  //   classNames: IProcessedStyleSet<IMicroFeedbackStyles>,
+  //   targetElement: HTMLDivElement | null,
+  //   onCalloutDismiss: () => void
+  // ) => JSX.Element;
 }
 
-export interface IMicroFeedbackStyleProps {
-  theme?: ITheme;
-}
+export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {}
 
-export interface IMicroFeedbackQuestion {
-  question: string; // Question to be asked after a vote
-  options: string[]; // List of options to be shown as answers
-  id: string; // An identifier that correlates with the thumbsUp or thumbsDown
-}
+export interface IMicroFeedbackTokens {}
 
-export interface IMicroFeedbackStyles {
-  //  Base styles for the root element of buttons and followup
-  root?: IStyle;
-
-  //  Styles for the element containing the icons
-  iconContainer?: IStyle;
-
-  //  Styles for container element of follow up question and options
-  followUpContainer?: IStyle;
-
-  // Styles for follow up question
-  followUpQuestion?: IStyle;
-
-  // Styles for follow up option container
-  followUpOptionContainer?: IStyle;
-
-  // Styles for follow up option
-  followUpOptionText?: IStyle;
-}
+export type IMicroFeedbackStyles = IComponentStyles<IMicroFeedbackSlots>;
