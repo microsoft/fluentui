@@ -180,7 +180,7 @@ describe('ColorPicker', () => {
     expect(colorPicker!.color.str).toBe('rgba(0, 255, 0, 0.5)');
   });
 
-  it('allows typing in a 6-digit hex value', () => {
+  it('allows typing in a 6-char hex value', () => {
     let updatedColor: IColor | undefined;
     const onChange = jest.fn((ev: any, color: IColor) => {
       updatedColor = color;
@@ -196,7 +196,7 @@ describe('ColorPicker', () => {
     expect(onChange).toHaveBeenCalledTimes(1);
   });
 
-  it('allows typing in a 3-digit hex value', () => {
+  it('allows typing in a 3-char hex value', () => {
     let updatedColor: IColor | undefined;
     const onChange = jest.fn((ev: any, color: IColor) => {
       updatedColor = color;
