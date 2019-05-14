@@ -34,7 +34,7 @@ The Add-ins design toolkit provides layouts for interface elements and commonly 
 
 <ul class="md-list--flex">
   <li class="mdut--half">[iOS font](https://developer.apple.com/fonts/)</li>
-  <li class="mdut--half">[Segoe UI and Fabric MDL2 external icon font](https://static2.sharepointonline.com/files/fabric/fabric-website/files/segoeui_fabricmdl2_icon_fonts.zip)</li>
+  <li class="mdut--half">[Segoe UI and Fabric MDL2 external icon font](https://aka.ms/WebFluentFonts)</li>
   <li class="mdut--half">[Android font](https://fonts.google.com/specimen/Roboto)</li>
 </ul>
 
