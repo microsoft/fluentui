@@ -23,6 +23,7 @@ export interface IApiReferencesTableProps {
   methods?: IMethod[];
   renderAsEnum?: boolean;
   renderAsClass?: boolean;
+  renderAsTypeAlias?: boolean;
   key?: string;
   name?: string;
   description?: string;
@@ -34,6 +35,7 @@ export interface IApiReferencesTableState {
   methods?: IMethod[];
   isEnum: boolean;
   isClass: boolean;
+  isTypeAlias: boolean;
 }
 
 export const XSMALL_GAP_SIZE = 2.5;
@@ -92,7 +94,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       this.state = {
         properties,
         isEnum: true,
-        isClass: false
+        isClass: false,
+        isTypeAlias: false
       };
     } else if (props.renderAsClass) {
       const members = (props.properties as IApiInterfaceProperty[])
@@ -107,6 +110,7 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
         properties: members,
         isEnum: false,
         isClass: true,
+        isTypeAlias: false,
         methods: methods
       };
     } else {
@@ -117,7 +121,8 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
       this.state = {
         properties,
         isEnum: !!props.renderAsEnum,
-        isClass: !!props.renderAsClass
+        isClass: !!props.renderAsClass,
+        isTypeAlias: !!props.renderAsTypeAlias
       };
     }
 
@@ -255,19 +260,15 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
 
     return (
       <Stack gap={MEDIUM_GAP_SIZE}>
-        {description && extendsTokens && extendsTokens.length > 0 ? (
-          <Stack gap={SMALL_GAP_SIZE}>
-            {this._renderTitle()}
-            {(description || (extendsTokens && extendsTokens.length > 0)) && (
-              <Stack gap={XSMALL_GAP_SIZE}>
-                {this._renderDescription()}
-                {this._renderExtends()}
-              </Stack>
-            )}
-          </Stack>
-        ) : (
-          this._renderTitle()
-        )}
+        <Stack gap={SMALL_GAP_SIZE}>
+          {this._renderTitle()}
+          {(description || (extendsTokens && extendsTokens.length > 0)) && (
+            <Stack gap={XSMALL_GAP_SIZE}>
+              {this._renderDescription()}
+              {this._renderExtends()}
+            </Stack>
+          )}
+        </Stack>
         {isClass
           ? this._renderClass()
           : properties.length >= 1 && (
@@ -421,8 +422,16 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
   };
 
   private _parseILinkTokens(extend: boolean, linkTokens?: ILinkToken[]): JSX.Element | undefined {
+    const { isTypeAlias } = this.state;
+
     if (linkTokens && linkTokens.length > 0) {
-      if (extend) {
+      if (isTypeAlias) {
+        return (
+          <Text variant={'medium'}>
+            <code>{this._parseILinkTokensHelper(linkTokens, false)}</code>
+          </Text>
+        );
+      } else if (extend) {
         return (
           <Text variant={'small'}>
             {'Extends '}

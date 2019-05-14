@@ -26,6 +26,7 @@ import {
   ApiPackage,
   ApiProperty,
   ApiPropertySignature,
+  ApiTypeAlias,
   ExcerptToken,
   IExcerptTokenRange
 } from '@microsoft/api-extractor-model';
@@ -141,8 +142,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
             break;
           }
           case ApiItemKind.TypeAlias: {
-            // TODO: handle typealias
-            console.log('Type alias');
+            pageJson.tables.push(createTypeAliasPageJson(collectedData, apiItem as ApiTypeAlias));
             break;
           }
         }
@@ -457,6 +457,29 @@ function getTokenHyperlinks(
 }
 
 /**
+ * Creates a type alias json object
+ * @param collectedData - Collected data to use for linking
+ * @param typeAliasItem - Type alias item to search
+ */
+function createTypeAliasPageJson(collectedData: CollectedData, typeAliasItem: ApiTypeAlias): ITableJson {
+  const tableJson: ITableJson = {
+    kind: 'typeAlias',
+    name: typeAliasItem.displayName,
+    extendsTokens: [],
+    description: '',
+    members: []
+  };
+
+  if (typeAliasItem.tsdocComment) {
+    tableJson.description += renderDocNodeWithoutInlineTag(typeAliasItem.tsdocComment.summarySection);
+  }
+
+  tableJson.extendsTokens = getTokenHyperlinks(collectedData, typeAliasItem.excerptTokens, typeAliasItem.excerpt.tokenRange);
+
+  return tableJson;
+}
+
+/**
  * Renders the doc node (likely a DocComment's DocSection) without the inline tag
  *
  * @param docNode - Doc node from which to remove the inline tag
@@ -522,7 +545,8 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
     switch (apiItem.kind) {
       case ApiItemKind.Interface:
       case ApiItemKind.Enum:
-      case ApiItemKind.Class: {
+      case ApiItemKind.Class:
+      case ApiItemKind.TypeAlias: {
         console.log('Analyzing ' + apiItem.displayName);
 
         if (apiItem.tsdocComment !== undefined) {

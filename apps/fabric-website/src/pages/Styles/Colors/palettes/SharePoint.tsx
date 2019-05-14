@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ColorPalette, IColor, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, IColorSwatch, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { SharePointNeutrals, SharePointThemes } from './sharePointThemes';
 
 export class SharePoint extends React.Component<{}, { activeThemeName?: string }> {
@@ -42,7 +42,7 @@ export class SharePoint extends React.Component<{}, { activeThemeName?: string }
     );
   }
 
-  private _changeTheme = (theme: IColor) => {
+  private _changeTheme = (theme: IColorSwatch) => {
     this.setState(
       prevState =>
         prevState.activeThemeName !== theme.name && {

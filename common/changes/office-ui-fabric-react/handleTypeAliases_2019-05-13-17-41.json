@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Picker/DocPage: fix IBasePickerProps doc comment and add type alias to DocPage.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "natalie.ethell@microsoft.com"
+}
