@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Update Fabric assets link",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "pejahn@microsoft.com"
+}
