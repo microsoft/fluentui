@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from 'office-ui-fabric-react/lib/Utilities';
-import { FloatingSuggestions, IFloatingSuggestionsProps } from '../../FloatingSuggestions';
+import { FloatingSuggestions } from '../../FloatingSuggestions/FloatingSuggestions';
+import { IFloatingSuggestionsProps } from '../../FloatingSuggestions/FloatingSuggestions.types';
 
 import * as styles from './EditingItem.scss';
 

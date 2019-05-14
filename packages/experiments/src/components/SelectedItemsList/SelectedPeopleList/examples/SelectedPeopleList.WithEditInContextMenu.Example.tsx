@@ -11,8 +11,8 @@ import { copyToClipboard } from '../../utils/copyToClipboard';
 import { EditableItem } from '../../Items/EditableItem';
 import { EditingItemFloatingPickerProps } from '../../Items/EditingItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
 import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
-import { SuggestionsStore } from '../../../FloatingSuggestions';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
 export interface IPeopleSelectedItemsListExampleState {

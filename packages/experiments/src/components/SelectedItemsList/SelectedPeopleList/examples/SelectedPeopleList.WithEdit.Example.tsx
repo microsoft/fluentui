@@ -4,13 +4,13 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people } from './PeopleExampleData';
 import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { IPersonaProps } from '../../../../../../office-ui-fabric-react/lib';
+import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SelectedPersona } from '../Items/SelectedPersona';
 import { EditableItem } from '../../Items/EditableItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
 import { EditingItemFloatingPickerProps } from '../../Items/EditingItem';
 import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
-import { SuggestionsStore } from '../../../FloatingSuggestions';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
 export interface IPeopleSelectedItemsListExampleState {
