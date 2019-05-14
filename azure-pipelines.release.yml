@@ -33,6 +33,7 @@ steps:
 
   - script: |
       echo Making $(Build.ArtifactStagingDirectory)/api &&
+      mkdir -p $(Build.ArtifactStagingDirectory)/api &&
       cp packages/*/dist/*.api.json $(Build.ArtifactStagingDirectory)/api
     displayName: Copy api.json files to artifact staging directory
 
