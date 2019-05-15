@@ -90,7 +90,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
 
   /**
    * Sets the aria-describedby attribute.
-   * @deprecated Directly use the 'aria-describedby' attribute instead
+   * @deprecated Directly use the `aria-describedby` attribute instead
    */
   ariaDescribedBy?: string;
 
