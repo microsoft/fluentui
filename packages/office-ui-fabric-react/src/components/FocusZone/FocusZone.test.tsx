@@ -56,14 +56,14 @@ describe('FocusZone', () => {
     lastFocusedElement = undefined;
   });
 
-  it('renders Persona correctly with no props', () => {
+  it('renders FocusZone correctly with no props', () => {
     const component = renderer.create(<FocusZone />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });
 
-  it('renders Persona correctly with aria-describedby and aria-labelledby', () => {
-    const component = renderer.create(<FocusZone ariaDescribedBy="customDescribedBy" ariaLabelledBy="customLabelledBy" />);
+  it('renders FocusZone correctly with aria-describedby and aria-labelledby', () => {
+    const component = renderer.create(<FocusZone aria-describedby="customDescribedBy" aria-labelledby="customLabelledBy" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
   });

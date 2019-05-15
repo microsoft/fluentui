@@ -117,7 +117,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       warnDeprecations('FocusZone', props, {
         rootProps: undefined,
         allowTabKey: 'handleTabKey',
-        elementType: 'as'
+        elementType: 'as',
+        ariaDescribedBy: 'aria-describedby',
+        ariaLabelledBy: 'aria-labelledby'
       });
     }
 

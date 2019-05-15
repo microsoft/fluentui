@@ -491,7 +491,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
           id={id + '-list'}
           className={this._classNames.dropdownItems}
           aria-label={ariaLabel}
-          ariaLabelledBy={label && !ariaLabel ? id + '-label' : undefined}
+          aria-labelledby={label && !ariaLabel ? id + '-label' : undefined}
           role="listbox"
         >
           {onRenderList(props, this._onRenderList)}
