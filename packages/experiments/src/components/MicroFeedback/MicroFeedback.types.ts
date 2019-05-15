@@ -1,5 +1,5 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../Foundation';
-import { ICalloutSlot } from '../../utilities/factoryComponents.types';
+import { ICalloutSlot, IListSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IButtonSlot } from '@uifabric/experiments';
 import { IStackSlot, ITextSlot } from 'office-ui-fabric-react';
@@ -58,9 +58,19 @@ export interface IMicroFeedbackSlots {
   followUpQuestion?: ITextSlot;
 
   /**
+   * Defines the list of options that can be chosen as an answer to the follow up question.
+   */
+  followUpOptionList?: IListSlot;
+
+  /**
    * Defines the options available for the follow up questions.
    */
   followUpOption?: IButtonSlot;
+
+  /**
+   * Defines the text that is provided in the options available for the follow up questions.
+   */
+  followUpOptionText?: ITextSlot;
 }
 
 export interface IMicroFeedback {}

@@ -3,6 +3,7 @@ import {
   IContextualMenuProps,
   IIconProps,
   ILabelProps,
+  IListProps,
   IPersonaPresenceProps,
   PersonaPresence
 } from 'office-ui-fabric-react';
@@ -14,4 +15,5 @@ export type ICalloutSlot = ISlotProp<ICalloutProps>;
 export type IContextualMenuSlot = ISlotProp<IContextualMenuProps>;
 export type IIconSlot = ISlotProp<IIconProps, string>;
 export type ILabelSlot = ISlotProp<ILabelProps, React.ReactNode>;
+export type IListSlot = ISlotProp<IListProps, React.ReactNode>;
 export type IPersonaPresenceSlot = ISlotProp<IPersonaPresenceProps, PersonaPresence>;

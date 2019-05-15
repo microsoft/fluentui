@@ -3,11 +3,11 @@ import { ExampleCard, IComponentDemoPageProps, ComponentPage, PropertiesTableSet
 
 import { MicroFeedbackExample } from './examples/MicroFeedback.Example';
 import { MicroFeedbackCalloutExample } from './examples/MicroFeedbackCallout.Example';
-// import { MicroFeedbackStackExample } from './examples/MicroFeedbackStack.Example';
+import { MicroFeedbackStackExample } from './examples/MicroFeedbackStack.Example';
 
 const MicroFeedbackExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedback.Example.tsx') as string;
 const MicroFeedbackCalloutExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedbackCallout.Example.tsx') as string;
-// const MicroFeedbackStackExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedbackStack.Example.tsx') as string;
+const MicroFeedbackStackExampleCode = require('!raw-loader!@uifabric/experiments/src/components/MicroFeedback/examples/MicroFeedbackStack.Example.tsx') as string;
 
 export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -23,9 +23,9 @@ export class MicroFeedbackPage extends React.Component<IComponentDemoPageProps, 
             <ExampleCard title="With Callout followup" isOptIn={true} code={MicroFeedbackCalloutExampleCode}>
               <MicroFeedbackCalloutExample />
             </ExampleCard>
-            {/* <ExampleCard title="With Stack followup" isOptIn={true} code={MicroFeedbackStackExampleCode}>
+            <ExampleCard title="With Stack followup" isOptIn={true} code={MicroFeedbackStackExampleCode}>
               <MicroFeedbackStackExample />
-            </ExampleCard> */}
+            </ExampleCard>
           </div>
         }
         propertiesTables={

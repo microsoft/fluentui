@@ -32,20 +32,22 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     iconContainer: Stack,
     followUpContainer: Callout,
     followUpQuestion: Text,
-    followUpOption: Button
+    followUpOptionList: List,
+    followUpOption: Button,
+    followUpOptionText: Text
   });
 
   const onRenderLikeCalloutItem = (item: string, index: number | undefined): JSX.Element => {
     const listOption = (): void => {
       onCalloutDismiss();
-      if (sendFollowUpIndex && index && thumbsUpQuestion) {
+      if (sendFollowUpIndex && index !== undefined && thumbsUpQuestion) {
         sendFollowUpIndex(thumbsUpQuestion!.id, index);
       }
     };
 
     return (
       <Slots.followUpOption data-is-focusable={true} onClick={listOption}>
-        <Text>{`${item}`}</Text>
+        <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
       </Slots.followUpOption>
     );
   };
@@ -53,14 +55,14 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const onRenderDislikeCalloutItem = (item: string, index: number | undefined): JSX.Element => {
     const listOption = (): void => {
       onCalloutDismiss();
-      if (sendFollowUpIndex && index && thumbsDownQuestion) {
+      if (sendFollowUpIndex && index !== undefined && thumbsDownQuestion) {
         sendFollowUpIndex(thumbsDownQuestion!.id, index);
       }
     };
 
     return (
       <Slots.followUpOption data-is-focusable={true} onClick={listOption}>
-        <Text>{`${item}`}</Text>
+        <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
       </Slots.followUpOption>
     );
   };
@@ -76,10 +78,9 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
           <IconButton menuIconProps={{ iconName: dislikeIcon }} title={thumbsDownTitle} onClick={onDislikeVote} />
         </div>
       </Slots.iconContainer>
-      {thumbsUpQuestion && (
+      {thumbsUpQuestion && !hideThumbsUpCallout && (
         <Slots.followUpContainer
           gapSpace={0}
-          hidden={hideThumbsUpCallout}
           onDismiss={onCalloutDismiss}
           role="alertdialog"
           setInitialFocus={true}
@@ -89,14 +90,13 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
             <Slots.followUpQuestion block variant="small">
               {thumbsUpQuestion.question}
             </Slots.followUpQuestion>
-            <List items={thumbsUpQuestion.options} onRenderCell={onRenderLikeCalloutItem} />
+            <Slots.followUpOptionList items={thumbsUpQuestion.options} onRenderCell={onRenderLikeCalloutItem} />
           </FocusZone>
         </Slots.followUpContainer>
       )}
-      {thumbsDownQuestion && (
+      {thumbsDownQuestion && !hideThumbsDownCallout && (
         <Slots.followUpContainer
           gapSpace={0}
-          hidden={hideThumbsDownCallout}
           onDismiss={onCalloutDismiss}
           role="alertdialog"
           setInitialFocus={true}
@@ -106,7 +106,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
             <Slots.followUpQuestion block variant="small">
               {thumbsDownQuestion.question}
             </Slots.followUpQuestion>
-            <List items={thumbsDownQuestion.options} onRenderCell={onRenderDislikeCalloutItem} />
+            <Slots.followUpOptionList items={thumbsDownQuestion.options} onRenderCell={onRenderDislikeCalloutItem} />
           </FocusZone>
         </Slots.followUpContainer>
       )}

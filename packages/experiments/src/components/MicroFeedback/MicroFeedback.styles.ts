@@ -17,15 +17,6 @@ export const MicroFeedbackStyles: IMicroFeedbackComponent['styles'] = (props, th
       letterSpacing: '0.1px',
       border: '0px'
     },
-    // followUpOptionText: {
-    //   fontFamily: "'Segoe UI'",
-    //   margin: '4px 0px 4px 0px',
-    //   fontSize: '12px',
-    //   letterSpacing: '0.11px',
-    //   textAlign: 'left',
-    //   border: '0px',
-    //   width: '100%'
-    // },
     followUpContainer: {
       paddingLeft: '0px'
     },
@@ -33,6 +24,15 @@ export const MicroFeedbackStyles: IMicroFeedbackComponent['styles'] = (props, th
       paddingLeft: '12px',
       paddingRight: '12px',
       background: 'transparent',
+      border: '0px',
+      width: '100%'
+    },
+    followUpOptionText: {
+      fontFamily: "'Segoe UI'",
+      margin: '4px 0px 4px 0px',
+      fontSize: '12px',
+      letterSpacing: '0.11px',
+      textAlign: 'left',
       border: '0px',
       width: '100%'
     }
