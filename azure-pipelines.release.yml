@@ -66,8 +66,8 @@ steps:
     displayName: 'Publish Artifact: Fabric'
 
   - script: |
-      node ./common/scripts/install-run-rush.js publish -a -b release.test -n $(npmToken) --add-commit-details --set-access-level public
-    displayName: 'Publish Change Requests'
+      node ./common/scripts/install-run-rush.js publish -a -p -b master -n $(npmToken) --add-commit-details --set-access-level public
+    displayName: 'Publish Change Requests and Bump Versions'
 
   - script: |
       node scripts/updateReleaseNotes.js --token=$(githubPAT) --apply --debug
