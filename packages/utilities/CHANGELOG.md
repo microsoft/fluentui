@@ -1,6 +1,41 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Sat, 27 Apr 2019 00:04:47 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 6.38.3
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.38.2
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+
+## 6.38.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
+
+## 6.38.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Export Omit from utilities
+
+## 6.37.1
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Adds pointer events to baseElementProperties
 
 ## 6.37.0
 Sat, 27 Apr 2019 00:04:47 GMT

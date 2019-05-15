@@ -7,8 +7,9 @@ import { DatePickerBase } from './DatePicker.base';
 import { IDatePickerStrings } from './DatePicker.types';
 import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { shallow, mount, ReactWrapper } from 'enzyme';
-import { resetIds } from '../../Utilities';
+import { resetIds, KeyCodes } from '../../Utilities';
 import { Callout } from '../Callout/Callout';
+import { PrimaryButton } from '../Button/PrimaryButton/PrimaryButton';
 
 describe('DatePicker', () => {
   beforeEach(() => {
@@ -112,6 +113,33 @@ describe('DatePicker', () => {
     const calloutProps = datePicker.find(Callout).props();
 
     expect(calloutProps.ariaLabel).toBe('Calendar');
+  });
+
+  it('should close parent Callout if Esc is pressed', () => {
+    const menu = (props: any) => {
+      return (
+        <Callout {...props}>
+          <DatePicker />
+        </Callout>
+      );
+    };
+    const wrapper = mount(
+      <PrimaryButton
+        menuAs={menu}
+        menuProps={{
+          items: []
+        }}
+      />
+    );
+    wrapper.simulate('click');
+    let callout = wrapper.find(Callout);
+    expect(callout.exists()).toBe(true);
+
+    const datePicker = wrapper.find(DatePickerBase);
+    datePicker.simulate('keydown', { which: KeyCodes.escape });
+
+    callout = wrapper.find(Callout);
+    expect(callout.exists()).toBe(false);
   });
 
   describe('when Calendar properties are not specified', () => {

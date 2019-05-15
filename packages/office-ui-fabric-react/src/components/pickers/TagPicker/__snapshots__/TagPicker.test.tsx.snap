@@ -9,7 +9,11 @@ exports[`TagPicker renders correctly 1`] = `
   onKeyDown={[Function]}
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone1"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -64,6 +68,9 @@ exports[`TagPicker renders correctly 1`] = `
                 padding-left: 6px;
                 padding-right: 6px;
                 padding-top: 0;
+              }
+              &::-ms-clear {
+                display: none;
               }
           data-lpignore={true}
           onBlur={[Function]}

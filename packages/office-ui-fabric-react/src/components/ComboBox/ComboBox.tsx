@@ -26,6 +26,7 @@ import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboB
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
 import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+import { BaseButton, Button } from '../Button/index';
 
 export interface IComboBoxState {
   /** The open state */
@@ -410,6 +411,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
                 data-is-focusable={false}
                 tabIndex={-1}
                 onClick={this._onComboBoxClick}
+                onBlur={this._onBlur}
                 iconProps={buttonIconProps}
                 disabled={disabled}
                 checked={isOpen}
@@ -885,11 +887,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       if (onChanged) {
         onChanged(option, index, undefined, submitPendingValueEvent);
       }
-
-      // if we have a new selected index,
-      // clear all of the pending info
-      this._clearPendingInfo();
     }
+
+    // clear all of the pending info
+    this._clearPendingInfo();
   }
 
   /**
@@ -902,7 +903,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     if (!this.state.focused) {
-      this.setState({ focused: true });
+      const state: Pick<IComboBoxState, 'focused'> | Pick<IComboBoxState, 'focused' | 'isOpen'> = { focused: true };
+
+      if (this.props.openOnKeyboardFocus && !this.state.isOpen && !this.props.disabled) {
+        (state as Pick<IComboBoxState, 'focused' | 'isOpen'>).isOpen = true;
+      }
+      this.setState(state);
     }
   };
 
@@ -941,7 +947,9 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * OnBlur handler. Set the focused state to false
    * and submit any pending value
    */
-  private _onBlur = (event: React.FocusEvent<HTMLInputElement>): void => {
+  private _onBlur = (
+    event: React.FocusEvent<HTMLInputElement | Autofill | HTMLAnchorElement | HTMLButtonElement | HTMLDivElement | BaseButton | Button>
+  ): void => {
     // Do nothing if the blur is coming from something
     // inside the comboBox root or the comboBox menu since
     // it we are not really bluring from the whole comboBox
@@ -1968,7 +1976,13 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { comboBoxOptionStyles: customStylesForAllOptions } = this.props;
     const { styles: customStylesForCurrentOption } = item;
 
-    return getOptionStyles(this.props.theme!, customStylesForAllOptions, customStylesForCurrentOption, this._isPendingOption(item));
+    return getOptionStyles(
+      this.props.theme!,
+      customStylesForAllOptions,
+      customStylesForCurrentOption,
+      this._isPendingOption(item),
+      item.hidden
+    );
   }
 
   /**

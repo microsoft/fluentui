@@ -2,10 +2,14 @@ import * as React from 'react';
 import { IStyle, IRawStyle, ITheme } from '../../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
+/**
+ * {@docCategory Shimmer}
+ */
 export interface IShimmerGap {}
 
 /**
  * ShimmerGap component props.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -45,6 +49,7 @@ export interface IShimmerGapProps extends React.AllHTMLAttributes<HTMLElement> {
 
 /**
  * Props needed to construct styles.
+ * {@docCategory Shimmer}
  */
 export type IShimmerGapStyleProps = {
   /**
@@ -66,6 +71,7 @@ export type IShimmerGapStyleProps = {
 
 /**
  * Represents the stylable areas of the control.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerGapStyles {
   /**

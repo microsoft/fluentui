@@ -4,6 +4,9 @@ import { DemoPage } from '../../DemoPage';
 
 export const AnnouncedPage = (props: { isHeaderVisible: boolean }) => (
   <div>
-    <DemoPage {...{ ...AnnouncedPageProps, ...props }} />
+    <DemoPage
+      jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/Announced.page.json')}
+      {...{ ...AnnouncedPageProps, ...props }}
+    />
   </div>
 );

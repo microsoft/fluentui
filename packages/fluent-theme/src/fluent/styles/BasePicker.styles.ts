@@ -5,11 +5,12 @@ export const BasePickerStyles = (props: IBasePickerStyleProps): Partial<IBasePic
   if (!theme) {
     throw new Error('Theme is undefined or null.');
   }
-  const { effects } = theme;
+  const { effects, palette } = theme;
 
   return {
     text: {
-      borderRadius: effects.roundedCorner2
+      borderRadius: effects.roundedCorner2,
+      borderColor: palette.neutralSecondaryAlt
     },
     input: {
       borderRadius: effects.roundedCorner2

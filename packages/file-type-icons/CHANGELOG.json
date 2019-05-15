@@ -2,6 +2,31 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.4.9",
+      "tag": "@uifabric/file-type-icons_v6.4.9",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.5` to `^6.47.6`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.4.8",
       "tag": "@uifabric/file-type-icons_v6.4.8",
       "date": "Sat, 27 Apr 2019 00:04:47 GMT",

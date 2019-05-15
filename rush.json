@@ -355,6 +355,11 @@
       "shouldPublish": false
     },
     {
+      "packageName": "dom-tests",
+      "projectFolder": "apps/dom-tests",
+      "shouldPublish": false
+    },
+    {
       "packageName": "perf-test",
       "projectFolder": "apps/perf-test",
       "shouldPublish": false
@@ -372,6 +377,11 @@
     {
       "packageName": "todo-app",
       "projectFolder": "apps/todo-app",
+      "shouldPublish": false
+    },
+    {
+      "packageName": "theming-designer",
+      "projectFolder": "apps/theming-designer",
       "shouldPublish": false
     },
     {
@@ -428,6 +438,11 @@
       "packageName": "@uifabric/pr-deploy-site",
       "projectFolder": "apps/pr-deploy-site",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/api-docs",
+      "projectFolder": "packages/api-docs",
+      "shouldPublish": true
     },
     {
       "packageName": "@uifabric/react-cards",

@@ -87,6 +87,11 @@ describe('Image', () => {
     expect(component.update().find('.ms-Image-image--landscape')).toHaveLength(1);
   });
 
+  it('renders ImageFit.centerContain correctly', () => {
+    const component = renderer.create(<Image src={testImage1x1} imageFit={ImageFit.centerContain} width={50} height={100} />);
+    expect(component.toJSON()).toMatchSnapshot();
+  });
+
   it('renders ImageFit.centerCover correctly', () => {
     const component = renderer.create(<Image src={testImage1x1} imageFit={ImageFit.centerCover} width={50} height={100} />);
     expect(component.toJSON()).toMatchSnapshot();

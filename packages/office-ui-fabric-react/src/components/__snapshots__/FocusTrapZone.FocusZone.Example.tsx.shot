@@ -7,7 +7,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
   onFocusCapture={[Function]}
 >
   <div
-    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={
@@ -213,7 +212,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       data-is-visible={true}
       onFocus={[Function]}
@@ -706,7 +709,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </button>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone14"
       data-is-visible={true}
       onFocus={[Function]}
@@ -1086,7 +1093,6 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
     </div>
   </div>
   <div
-    aria-hidden={true}
     data-is-visible={true}
     onFocus={[Function]}
     style={

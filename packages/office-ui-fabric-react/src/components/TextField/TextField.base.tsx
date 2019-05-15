@@ -32,7 +32,7 @@ export interface ITextFieldState {
    * - If there is no validation error or we have not validated the input value, errorMessage is an empty string.
    * - If we have done the validation and there is validation error, errorMessage is the validation error message.
    */
-  errorMessage: string;
+  errorMessage: string | JSX.Element;
 }
 
 const DEFAULT_STATE_VALUE = '';
@@ -418,7 +418,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     return <span style={{ paddingBottom: '1px' }}>{suffix}</span>;
   }
 
-  private get _errorMessage(): string | undefined {
+  private get _errorMessage(): string | JSX.Element | undefined {
     let { errorMessage } = this.state;
     if (!errorMessage && this.props.errorMessage) {
       errorMessage = this.props.errorMessage;
@@ -524,13 +524,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     const result = onGetErrorMessage(value || '');
 
     if (result !== undefined) {
-      if (typeof result === 'string') {
+      if (typeof result === 'string' || !('then' in result)) {
         this.setState({ errorMessage: result } as ITextFieldState);
         this._notifyAfterValidate(value, result);
       } else {
         const currentValidation: number = ++this._lastValidation;
 
-        result.then((errorMessage: string) => {
+        result.then((errorMessage: string | JSX.Element) => {
           if (this._isMounted && currentValidation === this._lastValidation) {
             this.setState({ errorMessage } as ITextFieldState);
           }
@@ -542,7 +542,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     }
   }
 
-  private _notifyAfterValidate(value: string | undefined, errorMessage: string): void {
+  private _notifyAfterValidate(value: string | undefined, errorMessage: string | JSX.Element): void {
     if (this._isMounted && value === this.state.value && this.props.onNotifyValidationResult) {
       this.props.onNotifyValidationResult(errorMessage, value);
     }

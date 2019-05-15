@@ -23,7 +23,7 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=${file}"],
+      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
@@ -144,6 +144,20 @@
       "cwd": "${workspaceRoot}/packages/charting/src",
       "stopOnEntry": false,
       "args": ["--name", "TestComponentName"],
+      "runtimeExecutable": null,
+      "runtimeArgs": ["--nolazy", "--debug"],
+      "env": {
+        "NODE_ENV": "development"
+      },
+      "sourceMaps": true
+    },
+    {
+      "name": "Debug page json generator",
+      "type": "node",
+      "request": "launch",
+      "program": "${workspaceRoot}/packages/api-docs/lib-commonjs/generatePageJsonFiles.js",
+      "cwd": "${workspaceRoot}/packages/api-docs",
+      "stopOnEntry": false,
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
