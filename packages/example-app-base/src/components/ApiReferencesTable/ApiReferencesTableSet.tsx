@@ -254,7 +254,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const classMethods: IMethod[] = [];
 
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    members.map((member: ITableRowJson) => {
+    members.forEach((member: ITableRowJson) => {
       if (member.kind === 'Method') {
         classMethods.push({
           description: member.description,
