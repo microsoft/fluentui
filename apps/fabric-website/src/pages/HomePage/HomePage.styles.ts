@@ -48,6 +48,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
   const beforeAlt = beforeColorObj && getShade(beforeColorObj, Shade.Shade6).str;
   const afterColorObj = afterColor && getColorFromString(afterColor);
   const afterAlt = afterColorObj && getShade(afterColorObj, Shade.Shade6).str;
+  const textColor = isInverted ? palette.white : palette.black;
 
   const sectionAnimation: IStyle = [
     {
@@ -139,7 +140,7 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
 
         selectors: {
           p: {
-            color: isInverted ? palette.black : palette.white
+            color: textColor
           }
         }
       }
@@ -395,12 +396,13 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         fontFamily: monoFont,
         display: 'flex',
         alignItems: 'center',
-        color: 'inherit',
+        color: textColor,
 
         selectors: {
-          '&:hover, &:active, &:active:hover': {
+          // Override default link styles and UHF styles
+          '&:hover, &:active, &:active:hover, &:link': {
             textDecoration: 'none',
-            color: 'inherit'
+            color: textColor
           },
 
           [`
