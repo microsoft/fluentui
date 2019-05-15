@@ -34,7 +34,7 @@ azure-pipelines.yml @ecraig12345 @kenotron
 
 #### Apps
 # component-demo/
-fabric-website/ @jordandrako @ecraig12345
+fabric-website/ @jordandrako @ecraig12345 @Jahnp
 fabric-website-resources/ @ecraig12345
 # ssr-tests/
 # test-bundle-button/ @dzearing
@@ -45,7 +45,7 @@ Controls/web.tsx @Vitalius1 @natalieethell
 packages/charting/ @Raghurk @veeray @chankev
 packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
-packages/example-app-base/ @ecraig12345
+packages/example-app-base/ @ecraig12345 @jordandrako
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
