@@ -1,11 +1,5 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
-// @TODO: The following line fails when de-forking because _common.scss is not included in ouifr's npm package.
-// The fix could be one of the 3:
-// 1.) export _common.scss in ouifr
-// 2.) reconstruct a local _common in fabric-website
-// 3.) manually importing the right files here
-// @import '~office-ui-fabric-react/src/common/common';
 
 $linkPadding: 16px;
 

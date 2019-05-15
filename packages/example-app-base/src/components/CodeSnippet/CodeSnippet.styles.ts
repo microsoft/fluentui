@@ -13,18 +13,21 @@ export const baseCodeStyle: IRawStyle = {
 
 export const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = props => {
   return {
-    root: {
-      overflowY: 'auto',
-      maxHeight: '400px',
-      display: 'flex',
-      margin: '12px 0',
+    root: [
+      {
+        overflowY: 'auto',
+        maxHeight: '400px',
+        display: 'flex',
+        margin: '12px 0',
 
-      selectors: {
-        code: {
-          fontFamily: codeFontFamily,
-          lineHeight: '1.6'
+        selectors: {
+          code: {
+            fontFamily: codeFontFamily,
+            lineHeight: '1.6'
+          }
         }
-      }
-    }
+      },
+      props.className
+    ]
   };
 };

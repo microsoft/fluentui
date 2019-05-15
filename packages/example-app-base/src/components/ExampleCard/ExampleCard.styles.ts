@@ -44,7 +44,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     borderColor: NeutralColors.gray90,
     selectors: {
       '.ms-Button-icon': {
-        color: '#0078d4' // communicationPrimary
+        color: theme.palette.themePrimary
       },
       '.ms-Button-label': {
         color: NeutralColors.gray160
