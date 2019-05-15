@@ -1,5 +1,5 @@
 /** @jsx withSlots */
-import { Stack, Text } from 'office-ui-fabric-react';
+import { Stack, Text, KeytipData } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
 import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
@@ -7,7 +7,7 @@ import { Icon } from '../../utilities/factoryComponents';
 import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IButtonViewProps } from './Button.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
-  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, buttonRef, ...rest } = props;
+  const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, buttonProperties) };
@@ -30,23 +30,28 @@ export const ButtonView: IButtonComponent['view'] = props => {
   };
 
   return (
-    <Slots.root
-      type="button" // stack doesn't take in native button props
-      role="button"
-      onClick={_onClick}
-      {...buttonProps}
-      disabled={disabled && !allowDisabledFocus}
-      aria-disabled={disabled}
-      tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
-      aria-label={ariaLabel}
-      ref={buttonRef}
-    >
-      <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
-        <Slots.icon />
-        <Slots.content />
-        {children}
-      </Slots.stack>
-    </Slots.root>
+    <KeytipData keytipProps={keytipProps} disabled={disabled && !allowDisabledFocus}>
+      {(keytipAttributes: any): JSX.Element => (
+        <Slots.root
+          type="button" // stack doesn't take in native button props
+          role="button"
+          onClick={_onClick}
+          {...buttonProps}
+          {...keytipAttributes}
+          disabled={disabled && !allowDisabledFocus}
+          aria-disabled={disabled}
+          tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
+          aria-label={ariaLabel}
+          ref={buttonRef}
+        >
+          <Slots.stack horizontal as="span" tokens={{ childrenGap: 8 }} verticalAlign="center" horizontalAlign="center" verticalFill>
+            <Slots.icon />
+            <Slots.content />
+            {children}
+          </Slots.stack>
+        </Slots.root>
+      )}
+    </KeytipData>
   );
 };
 

@@ -49,6 +49,8 @@ const ProvinceSuggestionItem = ({ name, id }: Province) => (
   <div
     id={`province-${id}`}
     style={{
+      // Required for text truncation in IE11
+      overflow: 'hidden',
       minWidth: 0,
       flexShrink: 1
     }}

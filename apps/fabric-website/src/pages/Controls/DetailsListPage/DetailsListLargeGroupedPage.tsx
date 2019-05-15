@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
-import { DetailsListGroupedPageProps } from './DetailsListGroupedPage.doc';
+import { DetailsListLargeGroupedPageProps } from './DetailsListLargeGroupedPage.doc';
 
-export const DetailsListGroupedPage: React.StatelessComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...DetailsListGroupedPageProps[props.platform]} />;
+export const DetailsListLargeGroupedPage: React.StatelessComponent<IControlsPageProps> = props => {
+  return <ControlsAreaPage {...props} {...DetailsListLargeGroupedPageProps[props.platform]} />;
 };

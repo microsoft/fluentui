@@ -8,7 +8,7 @@ import { styles } from './Accordion.styles';
 
 const AccordionItemType = (<CollapsibleSection /> as React.ReactElement<ICollapsibleSectionProps>).type;
 
-const view: IAccordionComponent['view'] = props => {
+const AccordionView: IAccordionComponent['view'] = props => {
   const { collapseItems } = props;
 
   const children: React.ReactChild[] = React.Children.map(
@@ -43,10 +43,9 @@ const AccordionStatics = {
 
 export const Accordion: React.StatelessComponent<IAccordionProps> & {
   Item: React.StatelessComponent<ICollapsibleSectionProps>;
-} = createComponent({
+} = createComponent(AccordionView, {
   displayName: 'Accordion',
   styles,
-  view,
   statics: AccordionStatics
 });
 

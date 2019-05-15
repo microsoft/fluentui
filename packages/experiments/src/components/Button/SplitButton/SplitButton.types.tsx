@@ -77,6 +77,7 @@ export interface ISplitButtonProps
       | 'checked'
       | 'allowDisabledFocus'
       | 'ariaLabel'
+      | 'keytipProps'
       | 'defaultExpanded'
       | 'expanded'
       | 'onKeyDown'

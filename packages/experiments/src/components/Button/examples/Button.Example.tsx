@@ -7,7 +7,8 @@ const tokens = {
     childrenGap: 32
   },
   headingStack: {
-    childrenGap: 16
+    childrenGap: 16,
+    padding: 8
   },
   buttonStack: {
     childrenGap: 12
@@ -29,7 +30,7 @@ export class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Stack tokens={tokens.headingStack} padding={8}>
+        <Stack tokens={tokens.headingStack}>
           <Stack tokens={tokens.buttonStack}>
             <ButtonStack>
               <Button content="Default button" onClick={alertClicked} />

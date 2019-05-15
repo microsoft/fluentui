@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "This latest PR is to ensure Nav link without icon should not be rendered with <i> place-holder",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "inateeg@microsoft.com"
+}

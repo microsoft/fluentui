@@ -1,19 +1,21 @@
 import { ITheme, IStyleFunctionOrObject, IStyle } from 'office-ui-fabric-react';
 
 export interface IColorPaletteProps {
-  colors: IColor[];
+  colors: IColorSwatch[];
   isCondensed?: boolean;
-  onColorSelected?: (color: IColor) => void;
+  onColorSelected?: (color: IColorSwatch) => void;
   styles?: IStyleFunctionOrObject<IColorPaletteStyleProps, IColorPaletteStyles>;
   theme?: ITheme;
+  className?: string;
 }
 
-export type IColorPaletteStyleProps = Pick<IColorPaletteProps, 'theme' | 'isCondensed'>;
+export type IColorPaletteStyleProps = Pick<IColorPaletteProps, 'theme' | 'isCondensed' | 'className'>;
 
 export interface IColorPaletteStyles {
   root: IStyle;
   grid: IStyle;
   swatch: IStyle;
+  swatchTooltip: IStyle;
   swatchSelected: IStyle;
   swatchContent: IStyle;
   swatchContentSelected: IStyle;
@@ -28,22 +30,23 @@ export interface IColorPaletteStyles {
   detailCodeInfoIcon: IStyle;
 }
 
-export interface IColor {
+export interface IColorSwatch {
   name?: string;
   hex: string;
-  code?: IColorCode;
+  code?: IColorSwatchCode;
   icon?: string;
   key?: string;
 }
 
-export interface IColorCode {
+export interface IColorSwatchCode {
   core: string;
   react: string;
+  themeSlot?: string;
 }
 
 export interface IColorPaletteTheme {
   key?: string;
   name?: string;
   background?: string;
-  colors: IColor[];
+  colors: IColorSwatch[];
 }

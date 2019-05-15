@@ -2251,7 +2251,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 onFocusCapture={[Function]}
                               >
                                 <div
-                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={
@@ -2487,7 +2486,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   </div>
                                 </div>
                                 <div
-                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={

@@ -1556,6 +1556,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               color: #201f1e;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

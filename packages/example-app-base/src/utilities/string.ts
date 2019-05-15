@@ -1,5 +1,9 @@
 /**
- * Makes a string url compatible.
+ * Converts a string to URL-compatible "kebab case": converts to lowercase, replaces spaces with dashes,
+ * and removes non-letter/number characters.
+ *
+ * For example, "I'm some awesome text!" becomes "im-some-awesome-text".
+ *
  * @param str Text to convert
  */
 export function slugify(str: string): string {

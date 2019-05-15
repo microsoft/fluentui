@@ -16,6 +16,11 @@ const TRANSITION_DURATION_DRAG = 200; // ms
 const TRANSITION_DURATION_DROP = 1500; // ms
 const CLASSNAME_ADD_INTERVAL = 20; // ms
 
+/**
+ * Component for rendering columns in a {@link DetailsList}.
+ *
+ * {@docCategory DetailsList}
+ */
 export class DetailsColumnBase extends BaseComponent<IDetailsColumnProps> {
   private _root = React.createRef<HTMLDivElement>();
   private _dragDropSubscription: IDisposable;
