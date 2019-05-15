@@ -37,6 +37,20 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
+    title: 'Progress',
+    url: '#/controls/android/snackbar',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Snackbar',
+        url: '#/controls/android/snackbar',
+        component: () => <LoadingComponent title="Snackbar" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/SnackbarPage/SnackbarPage').SnackbarPage))
+      }
+    ]
+  },
+  {
     title: 'Items & Lists',
     url: '#/controls/android/chip',
     isCategory: true,
