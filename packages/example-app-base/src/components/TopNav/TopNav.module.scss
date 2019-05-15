@@ -7,15 +7,10 @@
 // 3.) manually importing the right files here
 // @import '~office-ui-fabric-react/src/common/common';
 
-// TopNav variables
-$TopNav-height: 52px;
-$TopNav-backgroundColor: $ms-color-white;
-$TopNav-height-full-uhf: $TopNav-height * 2;
-
 $linkPadding: 16px;
 
 .topNavWrapper {
-  background: $TopNav-backgroundColor;
+  background: $ms-color-white;
   box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.06);
   position: relative;
   z-index: 100;
