@@ -190,17 +190,16 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _generateEnumProperty(table: ITableJson): IApiProperty {
-    const enumMembers: IApiEnumProperty[] = [];
-
     const members: IEnumTableRowJson[] = table.members as IEnumTableRowJson[];
-    members.map((member: IEnumTableRowJson) => {
+
+    const enumMembers: IApiEnumProperty[] = members.map((member: IEnumTableRowJson) =>
       // each member within the enum
-      enumMembers.push({
+      ({
         description: member.description,
         name: member.name,
         value: member.value
-      });
-    });
+      })
+    );
 
     // the enum
     return {
@@ -225,19 +224,18 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _generateInterfaceProperty(table: ITableJson): IApiProperty {
-    const interfaceMembers: IApiInterfaceProperty[] = [];
-
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    members.map((member: ITableRowJson) => {
+
+    const interfaceMembers: IApiInterfaceProperty[] = members.map((member: ITableRowJson) =>
       // each member within the interface
-      interfaceMembers.push({
+      ({
         description: member.description,
         name: member.name,
         typeTokens: member.typeTokens,
         deprecated: member.deprecated,
         defaultValue: member.defaultValue || ''
-      });
-    });
+      })
+    );
 
     // the interface
     return {
