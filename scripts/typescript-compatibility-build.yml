@@ -129,3 +129,16 @@ jobs:
           node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
         displayName: Build TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__
+
+  - job: POST_Result
+    dependsOn: Compatibility
+    condition: succeeded()
+    timeoutInMinutes: 5
+    pool:
+      vmImage: $(VmImage)
+    steps:
+      # Echo variables
+      - script: |
+          echo $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
+        displayName: Echo variables in POST_Result job
+
