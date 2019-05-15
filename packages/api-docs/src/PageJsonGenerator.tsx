@@ -158,7 +158,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
 }
 
 function renderDefaultValue(section: DocNodeContainer): string {
-  return section.nodes.map((node: DocNode) => extractText(node)).join('');
+  return section.nodes.map(extractText).join('');
 }
 
 /**
