@@ -48,6 +48,7 @@ packages/foundation/ @JasonGore
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
+packages/lists/ @dzearing @KevinTCoughlin @aditima
 # packages/merge-styles/
 # packages/prettier-rules/
 # packages/tslint-rules/
