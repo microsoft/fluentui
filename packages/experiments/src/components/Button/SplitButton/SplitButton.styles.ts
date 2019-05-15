@@ -57,37 +57,23 @@ export const SplitButtonTokens: ISplitButtonComponent['tokens'] = (props, theme)
 ];
 
 export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme, tokens): ISplitButtonStylesReturnType => {
+  const { semanticColors } = theme;
+
   return {
     root: {
-      backgroundColor: tokens.backgroundColor,
       borderRadius: tokens.borderRadius,
       boxSizing: 'border-box',
       zIndex: 1,
 
       selectors: {
         [HighContrastSelector]: {
-          backgroundColor: tokens.highContrastBackgroundColor,
           borderColor: 'transparent'
         },
         ':hover': {
-          backgroundColor: tokens.backgroundColorHovered,
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
-
-          selectors: {
-            [HighContrastSelector]: {
-              backgroundColor: tokens.highContrastBackgroundColorHovered
-            }
-          }
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
         },
         ':active': {
-          backgroundColor: tokens.backgroundColorPressed,
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
-
-          selectors: {
-            [HighContrastSelector]: {
-              backgroundColor: tokens.highContrastBackgroundColorPressed
-            }
-          }
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
         }
       }
     },
@@ -104,17 +90,42 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       minWidth: tokens.minWidth,
 
       selectors: {
+        '+ *': {
+          backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColor
+        },
         ':hover': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorHovered,
+
+          selectors: {
+            '+ *': {
+              backgroundColor: tokens.backgroundColorHovered,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: tokens.highContrastBackgroundColorHovered
+                }
+              }
+            }
+          }
         },
         ':active': {
-          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed
+          borderColor: props.primaryActionDisabled ? 'transparent' : tokens.borderColorPressed,
+
+          selectors: {
+            '+ *': {
+              backgroundColor: tokens.backgroundColorPressed,
+
+              selectors: {
+                [HighContrastSelector]: {
+                  backgroundColor: tokens.highContrastBackgroundColorPressed
+                }
+              }
+            }
+          }
         }
       }
     },
-    splitDivider: {
-      backgroundClip: 'content-box',
-      backgroundColor: tokens.dividerColor,
+    splitDividerContainer: {
       borderBottomColor: tokens.borderColor,
       borderTopColor: tokens.borderColor,
       borderStyle: 'solid',
@@ -124,11 +135,11 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderTopWidth: tokens.borderWidth,
       boxSizing: 'border-box',
       height: '100%',
-      padding: '7px 0px',
-      width: 1,
+      width: 'auto',
 
       selectors: {
         [HighContrastSelector]: {
+          backgroundColor: tokens.highContrastBackgroundColor,
           borderColor: tokens.highContrastColor
         },
         ':hover': {
@@ -138,6 +149,14 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
           borderColor: tokens.borderColorPressed
         }
       }
+    },
+    splitDivider: {
+      backgroundColor: tokens.dividerColor,
+      boxSizing: 'border-box',
+      display: 'inline-block',
+      height: 'calc(100% - 14px)',
+      margin: '7px 0px',
+      width: '1px'
     },
     menuButton: {
       borderBottomLeftRadius: '0px',

@@ -6753,6 +6753,9 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
 }
 
 // @public (undocumented)
+export type IStackItemSlot = ISlotProp<IStackItemProps>;
+
+// @public (undocumented)
 export interface IStackItemSlots {
     // (undocumented)
     root?: IHTMLSlot;

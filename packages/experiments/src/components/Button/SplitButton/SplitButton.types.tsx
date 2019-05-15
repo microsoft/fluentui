@@ -1,4 +1,4 @@
-import { IStackSlot } from 'office-ui-fabric-react';
+import { IStackSlot, IStackItemSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import {
@@ -45,6 +45,11 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
    * Menu button that is going to be rendered.
    */
   menuButton?: IMenuButtonSlot;
+
+  /**
+   * Defines the container for the divider that is used for styling purposes.
+   */
+  splitDividerContainer?: IStackItemSlot;
 
   /**
    * Defines the divider that separates the left and right parts of a SplitButton.

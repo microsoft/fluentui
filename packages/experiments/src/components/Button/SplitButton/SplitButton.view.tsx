@@ -42,6 +42,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     content: Text,
     menu: ContextualMenu,
     menuIcon: Icon,
+    splitDividerContainer: Stack.Item,
     splitDivider: 'span'
   });
 
@@ -76,7 +77,9 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
         {children}
       </Slots.button>
 
-      <Slots.splitDivider />
+      <Slots.splitDividerContainer>
+        <Slots.splitDivider />
+      </Slots.splitDividerContainer>
 
       <Slots.menuButton
         primary={primary}
