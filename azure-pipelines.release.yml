@@ -74,7 +74,7 @@ steps:
     displayName: 'Update github release notes'
 
   - script: |
-      set oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
+      oufrVersion=$(node -p -e "require('./packages/office-ui-fabric-react/package.json').version") &&
       echo "OUFR Version: $oufrVersion" &&
       echo $oufrVersion > oufr-version.txt &&
       echo "##vso[task.setvariable variable=oufrVersion;]$oufrVersion"
@@ -88,7 +88,7 @@ steps:
     displayName: 'Publish Artifact: oufr-version.txt'
 
   - script: |
-      npm run create-public-flight-config
+      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/
     workingDirectory: apps/fabric-website
     displayName: 'Generate Fabric Website Flight Manifest Files'
 

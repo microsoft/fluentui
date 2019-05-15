@@ -48,7 +48,7 @@ module.exports.createPublicFlightConfigTask = function() {
 
     let configData = {
       version: process.env.BUILD_BUILDNUMBER || '0',
-      baseCDNUrl: path.join(argv().baseCDNUrl || 'https://fabricweb.azureedge.net/fabric-website/', process.env.BUILD_BUILDNUMBER) + '/',
+      baseCDNUrl: path.join(argv().baseCDNUrl, process.env.BUILD_BUILDNUMBER) + '/',
       buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
       createdDate: today
     };
