@@ -29,6 +29,8 @@ jobs:
           versionSpec: '$(NodeVersion)'
           checkLatest: true
 
+      - script: echo "Aftab Test"
+
       # Install Rush repo dependencies
       - script: |
           node common/scripts/install-run-rush.js install --bypass-policy
