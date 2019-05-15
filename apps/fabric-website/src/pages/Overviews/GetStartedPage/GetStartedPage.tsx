@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Markdown, withPlatform, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { PlatformContext, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { GetStartedPageProps } from './GetStartedPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';
@@ -7,6 +7,8 @@ import { getSubTitle } from '../../../utilities/index';
 export interface IGetStartedPageProps extends IPageProps<Platforms> {}
 
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Overviews/GetStartedPage/';
+// en dashes look like regular dashes in a monospace font
+const enDash = '–';
 
 const GetStartedPageBase: React.StatelessComponent<IGetStartedPageProps> = props => {
   const { platform } = props;
@@ -26,59 +28,33 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
     case 'web':
       return [
         {
-          sectionName: 'Add to existing project',
+          sectionName: 'Fabric React',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopExisting.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopExisting.md') as string
-              }
-            </Markdown>
-          )
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopExisting.md') as string,
+          jumpLinks: [{ text: enDash + ' Add to existing project', url: 'add-to-existing-project' }]
         },
         {
-          sectionName: 'Quick start a new project',
+          sectionName: 'Start a new Fabric React project',
+          jumpLinkName: enDash + ' Start a new project',
           editUrl: baseUrl + 'docs/web/GetStartedDevelopSimple.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopSimple.md') as string
-              }
-            </Markdown>
-          )
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopSimple.md') as string
         },
         {
-          sectionName: 'Use our Create React App',
-          editUrl: baseUrl + 'docs/web/GetStartedDevelopCRA.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCRA.md') as string
-              }
-            </Markdown>
-          )
+          sectionName: 'Next steps with Fabric React',
+          jumpLinkName: enDash + ' Next steps',
+          editUrl: baseUrl + 'docs/web/GetStartedNextSteps.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedNextSteps.md') as string
         },
         {
-          sectionName: 'Use our Gatsby.js starter',
-          editUrl: baseUrl + 'docs/web/GetStartedDevelopGatsby.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopGatsby.md') as string
-              }
-            </Markdown>
-          )
+          sectionName: 'Fabric Core',
+          editUrl: baseUrl + 'docs/web/GetStartedDevelopCore.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCore.md') as string
         },
         {
           sectionName: 'Use our design language in your site',
-          editUrl: baseUrl + 'docs/web/GetStartedDevelopCore.md',
-          content: (
-            <Markdown>
-              {
-                require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDevelopCore.md') as string
-              }
-            </Markdown>
-          )
+          jumpLinkName: 'Design language',
+          editUrl: baseUrl + 'docs/web/GetStartedDesign.md',
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/GetStartedPage/docs/web/GetStartedDesign.md') as string
         }
       ];
 
@@ -87,4 +63,6 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
   }
 }
 
-export const GetStartedPage: React.StatelessComponent<IGetStartedPageProps> = withPlatform<Platforms>(GetStartedPageBase);
+export const GetStartedPage: React.StatelessComponent<IGetStartedPageProps> = (props: IGetStartedPageProps) => (
+  <PlatformContext.Consumer>{(platform: Platforms) => <GetStartedPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+);

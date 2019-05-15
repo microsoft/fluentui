@@ -27,3 +27,9 @@ exports.jestWatch = () => {
     _: ['-i', ...(args._ || []).filter(arg => arg !== 'jest-watch')]
   });
 };
+
+exports.jestDom = () =>
+  jestTask({
+    runInBand: true,
+    config: path.join(process.cwd(), 'jest.dom.config.js')
+  });

@@ -312,6 +312,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 color: #201f1e;
               }
           data-is-focusable={false}
+          onBlur={[Function]}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -770,6 +771,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #201f1e;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -1098,6 +1100,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #201f1e;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -1424,6 +1427,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #201f1e;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -3571,6 +3575,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #201f1e;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -3873,6 +3878,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
         data-is-focusable={false}
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

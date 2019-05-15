@@ -18,14 +18,14 @@ import {
   PlatformBar,
   TPlatformPages,
   jumpToAnchor,
-  removeAnchorLink
+  removeAnchorLink,
+  SiteMessageBar
 } from '@uifabric/example-app-base/lib/index2';
 import { Nav } from '../Nav/index';
 import { AppCustomizations } from './customizations';
 import { AppCustomizationsContext, extractAnchorLink } from '@uifabric/example-app-base/lib/index';
 import * as styles from './Site.module.scss';
 import { appMaximumWidthLg } from '../../styles/constants';
-import SiteMessageBar from './SiteMessageBar';
 
 export interface ISiteProps<TPlatforms extends string = string> {
   children?: React.ReactNode;
@@ -65,39 +65,41 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     super(props);
 
     this._async = new Async();
-    this.state = {
-      initialRender: true,
-      activePlatforms: {},
-      platform: 'default' as TPlatforms
-    };
-  }
 
-  public componentDidMount(): void {
+    let activePlatforms: ISiteState<TPlatforms>['activePlatforms'] = {};
+
     const { siteDefinition } = this.props;
     if (siteDefinition.pages) {
       // Get top level pages with platforms.
       const topLevelPages = siteDefinition.pages.filter(page => !!page.platforms).map(page => page.title);
 
       // Get local storage platforms for top level pages.
-      let activePlatforms: ISiteState<TPlatforms>['activePlatforms'];
       try {
         // Accessing localStorage can throw for various reasons
         activePlatforms = JSON.parse(localStorage.getItem('activePlatforms') || '') || {};
       } catch (ex) {
-        activePlatforms = {};
+        // ignore
       }
 
       // Set active platform for each top level page to local storage platform or the first platform defined for that page.
       topLevelPages.forEach(item => {
         activePlatforms[item] = activePlatforms[item] || getPageFirstPlatform(item, siteDefinition);
       });
-
-      // Set the initial state with navigation data and the activePlatforms.
-      this.setState({ ...(this._getNavData() as ISiteState<TPlatforms>), activePlatforms }, this._setActivePlatforms);
-      // Handle hash routing
-      window.addEventListener('hashchange', this._handleRouteChange);
-      this._handleRouteChange();
     }
+
+    this.state = {
+      initialRender: true,
+      activePlatforms: activePlatforms,
+      platform: 'default' as TPlatforms
+    };
+  }
+
+  public componentDidMount(): void {
+    // Set the initial state with navigation data.
+    this.setState({ ...(this._getNavData() as ISiteState<TPlatforms>) }, this._setActivePlatforms);
+    // Handle hash routing
+    window.addEventListener('hashchange', this._handleRouteChange);
+    this._handleRouteChange();
   }
 
   public componentWillUnmount(): void {
@@ -219,36 +221,44 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
 
   private _renderMessageBar(): JSX.Element | null {
     const { pagePath } = this.state;
-    // TODO: generalize when to show a message bar and how to provide the text
-    if (pagePath && pagePath.indexOf('#/controls/web/') === 0 && pagePath.indexOf('fluent-theme') === -1) {
-      return (
-        <SiteMessageBar
-          text="You can now implement the new Fluent styles in Fabric Web controls."
-          linkText="Learn more"
-          linkUrl="#/controls/web/fluent-theme"
-          sessionStoragePrefix="WebFluentUpdates"
-        />
-      );
-    } else if (/^#?\/?$/.test(pagePath)) {
-      return (
-        <SiteMessageBar
-          text="Microsoft employees can sign in to see additional documentation."
-          linkText="Sign in"
-          linkUrl="http://aka.ms/hig"
-          sessionStoragePrefix="SignIn"
-        />
-      );
+    const { siteDefinition } = this.props;
+    const { messageBars } = siteDefinition;
+
+    let _messageBar: JSX.Element | null = null;
+
+    if (messageBars && pagePath) {
+      for (const messageBar of messageBars) {
+        let { path, exclude, ...rest } = messageBar;
+        // Ensure path to match is a RegExp
+        path = new RegExp(path);
+        if (path.test(pagePath)) {
+          // The path matches, but test if there are exclusions that match
+          if (exclude !== undefined) {
+            // Ensure exclude is a RegExp
+            exclude = new RegExp(exclude);
+            if (exclude.test(pagePath)) {
+              // Exclude matched, break to return null
+              break;
+            }
+          }
+          // No exclusions matched, set the message bar JSX and break to return it
+          _messageBar = <SiteMessageBar {...rest} />;
+          break;
+        }
+      }
     }
-    return null;
+    return _messageBar;
   }
 
   private _renderPageNav(): JSX.Element | null {
-    const { activePages, searchablePageTitle, isContentFullBleed, pagePlatforms = {} } = this.state;
+    const { activePages, searchablePageTitle, isContentFullBleed, pagePlatforms } = this.state;
+    const { siteDefinition } = this.props;
 
     if (!isContentFullBleed && activePages) {
       // If current page doesn't have pages for the active platform, switch to its first platform.
       if (Object.keys(pagePlatforms).length > 0 && activePages.length === 0) {
-        this._onPlatformChanged(Object.keys(pagePlatforms)[0] as TPlatforms);
+        const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
+        this._onPlatformChanged(firstPlatform);
       }
 
       return (
@@ -274,7 +284,7 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    * Determines the current page's platform.
    */
   private _getPlatform = (): TPlatforms => {
-    const currentPage = getSiteArea();
+    const currentPage = getSiteArea(this.props.siteDefinition.pages);
     const { activePlatforms } = this.state;
 
     if (activePlatforms[currentPage]) {
@@ -342,12 +352,13 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    */
   private _onTopNavLinkClick = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     const { platform } = this.state;
+    const { siteDefinition } = this.props;
     const target = ev.currentTarget as HTMLAnchorElement;
     trackEvent(EventNames.ClickedTopNavLink, {
       // Use the dom element's title or innerText as the topic.
       topic: target.title || target.innerText, // @TODO: Remove topic when data is stale.
-      currentArea: getSiteArea(),
-      nextArea: getSiteArea(target.hash || target.href),
+      currentArea: getSiteArea(siteDefinition.pages),
+      nextArea: getSiteArea(siteDefinition.pages, target.hash || target.href),
       nextPage: target.hash || target.href,
       currentPage: window.location.hash,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
@@ -360,12 +371,13 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    */
   private _onLeftNavLinkClick = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     const { platform } = this.state;
+    const { siteDefinition } = this.props;
     const target = ev.currentTarget as HTMLAnchorElement;
     trackEvent(EventNames.ClickedLeftNavLink, {
       // Use the dom element's title or innerText as the topic.
       topic: target.title || target.innerText, // @TODO: Remove topic when data is stale.
-      currentArea: getSiteArea(),
-      nextArea: getSiteArea(target.hash || target.href),
+      currentArea: getSiteArea(siteDefinition.pages),
+      nextArea: getSiteArea(siteDefinition.pages, target.hash || target.href),
       nextPage: target.hash || target.href,
       currentPage: window.location.hash,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
@@ -378,10 +390,11 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    */
   private _onLeftNavSearchBoxClick = (ev: React.MouseEvent<HTMLAnchorElement>) => {
     const { platform } = this.state;
+    const { siteDefinition } = this.props;
     trackEvent(EventNames.ClickedSearchFilter, {
       // Use the dom element's title or innerText as the topic.
-      topic: getSiteArea(undefined, false), // @TODO: Remove topic when data is stale.
-      currentArea: getSiteArea(),
+      topic: getSiteArea(siteDefinition.pages), // @TODO: Remove topic when data is stale.
+      currentArea: getSiteArea(siteDefinition.pages),
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
       currentPlatform: platform === 'default' ? 'None' : platform // Pages that don't have a platform will say 'none'
     });
@@ -392,17 +405,18 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
    * @param platformKey The key of the target platform as defined in siteDefinition.
    */
   private _onPlatformChanged = (platformKey: TPlatforms): void => {
+    const { siteDefinition } = this.props;
     if (platformKey !== this.state.platform) {
       trackEvent(EventNames.ChangedPlatform, {
-        topic: getSiteArea(undefined, false), // @TODO: Remove topic when data is stale.
-        currentArea: getSiteArea(),
+        topic: getSiteArea(siteDefinition.pages), // @TODO: Remove topic when data is stale.
+        currentArea: getSiteArea(siteDefinition.pages),
         platform: platformKey, // @TODO: Remove platform when data is stale.
         currentPlatform: this.state.platform,
         nextPlatform: platformKey
       });
 
       const { activePlatforms } = this.state;
-      const currentPage = getSiteArea();
+      const currentPage = getSiteArea(siteDefinition.pages);
 
       this.setState(
         {
@@ -445,21 +459,23 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     const platformKeys = platforms && (Object.keys(platforms) as TPlatforms[]);
     if (platformKeys && platformKeys.length > 0) {
       // Test if the platform has changed on each hashchange to avoid costly forEach below.
-      const isCurrentPlatform = new RegExp(`/${platform}`);
+      const currentPlatformRegex = new RegExp(`/${platform}\\b`);
 
-      !isCurrentPlatform.test(newPagePath) &&
-        platformKeys.forEach(platformKey => {
+      if (!currentPlatformRegex.test(newPagePath)) {
+        for (const key of platformKeys) {
           // If the user navigates directly to a platform specific page, set the active platform to that of the new page.
-          const isNewPlatform = new RegExp(`/${platformKey}`, 'gi');
+          const isNewPlatform = new RegExp(`/${key}`, 'gi');
           if (isNewPlatform.test(newPagePath)) {
-            this._onPlatformChanged(platformKey);
+            this._onPlatformChanged(key);
+            break;
           }
-        });
+        }
+      }
     }
 
     // @TODO: investigate using real page name.
     trackPageView('FabricPage', newPagePath, {
-      currentArea: getSiteArea(),
+      currentArea: getSiteArea(siteDefinition.pages),
       previousPage: prevPagePath,
       platform: platform === 'default' ? 'None' : platform, // @TODO: Remove platform when data is stale.
       currentPlatform: platform === 'default' ? 'None' : platform, // Pages that don't have a platform will say 'none'

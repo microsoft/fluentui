@@ -542,14 +542,15 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const isItemSelected = item.index !== undefined && selectedIndices ? selectedIndices.indexOf(item.index) > -1 : false;
 
     // select the right className based on the combination of selected/disabled
-    const itemClassName =
-      isItemSelected && item.disabled === true // predicate: both selected and disabled
-        ? this._classNames.dropdownItemSelectedAndDisabled
-        : isItemSelected // predicate: selected only
-        ? this._classNames.dropdownItemSelected
-        : item.disabled === true // predicate: disabled only
-        ? this._classNames.dropdownItemDisabled
-        : this._classNames.dropdownItem;
+    const itemClassName = item.hidden // predicate: item hidden
+      ? this._classNames.dropdownItemHidden
+      : isItemSelected && item.disabled === true // predicate: both selected and disabled
+      ? this._classNames.dropdownItemSelectedAndDisabled
+      : isItemSelected // predicate: selected only
+      ? this._classNames.dropdownItemSelected
+      : item.disabled === true // predicate: disabled only
+      ? this._classNames.dropdownItemDisabled
+      : this._classNames.dropdownItem;
 
     return !this.props.multiSelect ? (
       <CommandButton
@@ -1014,8 +1015,8 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   private _onFocus = (ev: React.FocusEvent<HTMLDivElement>): void => {
-    const { isOpen, selectedIndices } = this.state;
-    const { multiSelect } = this.props;
+    const { isOpen, selectedIndices, hasFocus } = this.state;
+    const { multiSelect, openOnKeyboardFocus } = this.props;
 
     const disabled = this._isDisabled();
 
@@ -1027,7 +1028,11 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       if (this.props.onFocus) {
         this.props.onFocus(ev);
       }
-      this.setState({ hasFocus: true });
+      const state: Pick<IDropdownState, 'hasFocus'> | Pick<IDropdownState, 'hasFocus' | 'isOpen'> = { hasFocus: true };
+      if (openOnKeyboardFocus && !hasFocus) {
+        (state as Pick<IDropdownState, 'hasFocus' | 'isOpen'>).isOpen = true;
+      }
+      this.setState(state);
     }
   };
 

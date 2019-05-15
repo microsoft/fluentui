@@ -1,0 +1,122 @@
+trigger:
+  branches:
+    include:
+      - tsc-compat-debug
+  tags:
+    include:
+      - office-ui-fabric-react_v*
+
+variables:
+  - name: PackageName
+    value: office-ui-fabric-react
+  - name: CompatRepoUrl
+    value: https://github.com/Microsoft/ui-fabric-ts-validation.git
+  - name: NodeVersion
+    value: '10.x'
+  - name: VmImage
+    value: 'Ubuntu 16.04'
+
+jobs:
+  - job: Build
+    pool:
+      vmImage: $(VmImage)
+    timeoutInMinutes: 60
+    steps:
+      - checkout: self
+        clean: true
+
+      - task: NodeTool@0
+        displayName: 'Use Node $(NodeVersion)'
+        inputs:
+          versionSpec: '$(NodeVersion)'
+          checkLatest: true
+
+      # Install Rush repo dependencies
+      - script: |
+          node common/scripts/install-run-rush.js install --bypass-policy
+        displayName: Run Rush install in office-ui-fabric-react repository
+
+      # Build package in Rush repo
+      - script: |
+          node common/scripts/install-run-rush.js build --to $(PackageName)
+        displayName: Run Rush build --to $(PackageName)
+
+      # Run npm pack to simulate installation from feed
+      - script: |
+          npm pack ./packages/$(PackageName)
+        displayName: Run npm pack $(PackageName)
+
+      # Rename built package tarball to reference later
+      - script: |
+          mv *.tgz $(Build.StagingDirectory)/$(PackageName).tgz
+        displayName: Move $(PackageName).tgz to Build.StagingDirectory
+
+      # Publish built library for validation job
+      - task: PublishBuildArtifacts@1
+        displayName: Publish Build Artifacts
+        inputs:
+          pathtoPublish: $(Build.StagingDirectory)
+          artifactName: drop
+
+  - job: Compatibility
+    dependsOn: Build
+    condition: succeeded()
+    timeoutInMinutes: 60
+    pool:
+      vmImage: $(VmImage)
+    strategy:
+      maxParallel: 2
+      matrix:
+        'TypeScript 2.4':
+          TypeScriptVersion: 2.4
+        'TypeScript 2.7':
+          TypeScriptVersion: 2.7
+        'TypeScript 2.9':
+          TypeScriptVersion: 2.9
+        'TypeScript 3.0':
+          TypeScriptVersion: 3.0
+        'TypeScript 3.1':
+          TypeScriptVersion: 3.1
+        'TypeScript 3.2':
+          TypeScriptVersion: 3.2
+        'TypeScript 3.3':
+          TypeScriptVersion: 3.3
+        'TypeScript 3.4':
+          TypeScriptVersion: 3.4
+    steps:
+      - checkout: none
+      - task: NodeTool@0
+        displayName: 'Use Node $(NodeVersion)'
+        inputs:
+          versionSpec: '$(NodeVersion)'
+          checkLatest: true
+
+      # Download build library
+      - task: DownloadBuildArtifacts@0
+        displayName: 'Download Build Artifacts'
+        inputs:
+          artifactName: drop
+          downloadPath: $(Build.StagingDirectory)
+
+      # Clone repository containing versioned TypeScript sample apps
+      - script: |
+          git clone $(CompatRepoUrl) $(Build.StagingDirectory)/__tests__
+        displayName: Clone compatibility repository
+
+      # Install repository's dependencies
+      - script: |
+          node common/scripts/install-run-rush.js install
+        displayName: Run Rush install in compatibility repository
+        workingDirectory: $(Build.StagingDirectory)/__tests__
+
+      # Install built package tarball in sample app
+      - script: |
+          npm install $(Build.StagingDirectory)/drop/$(PackageName).tgz
+        displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
+        workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
+
+      # Build sample app consuming Office UI Fabric React to test TypeScript version compatibility
+      - script: |
+          node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
+        displayName: Build TypeScript $(TypeScriptVersion) test app
+        workingDirectory: $(Build.StagingDirectory)/__tests__

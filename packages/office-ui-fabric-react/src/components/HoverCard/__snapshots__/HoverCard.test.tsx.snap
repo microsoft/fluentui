@@ -141,7 +141,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
             onFocusCapture={[Function]}
           >
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -169,7 +168,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
               </div>
             </div>
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -327,7 +325,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
             onFocusCapture={[Function]}
           >
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -353,7 +350,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
               </div>
             </div>
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
