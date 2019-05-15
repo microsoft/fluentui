@@ -50,7 +50,7 @@ export interface IMicroFeedbackSlots {
   /**
    * Defines the container element that includes the follow up question and options.
    */
-  followUpContainer?: ICalloutSlot;
+  followUpContainer?: ICalloutSlot | IStackSlot;
 
   /**
    * Defines the follow up question text.
@@ -108,6 +108,8 @@ export interface IMicroFeedbackProps
    * Defines an optional question that is asked if thumbs down is selected.
    */
   thumbsDownQuestion?: IMicroFeedbackQuestion;
+
+  inline?: boolean;
 }
 
 export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
@@ -149,6 +151,10 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   onDislikeVote: () => void;
 }
 
-export interface IMicroFeedbackTokens {}
+export interface IMicroFeedbackTokens {
+  followUpBackgroundColor?: string;
+  questionMargin?: number | string;
+  width?: number | string;
+}
 
 export type IMicroFeedbackStyles = IComponentStyles<IMicroFeedbackSlots>;

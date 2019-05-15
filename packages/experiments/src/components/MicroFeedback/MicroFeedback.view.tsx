@@ -1,6 +1,7 @@
 /** @jsx withSlots */
 import { Callout, IconButton, FocusZone, FocusZoneDirection, List, Stack, Text } from 'office-ui-fabric-react';
 import { Button } from '../Button/Button';
+import { IButtonTokens } from '../Button/Button.types';
 import { withSlots, getSlots } from '../../Foundation';
 
 import { IMicroFeedbackComponent, IMicroFeedbackProps, IMicroFeedbackSlots } from './MicroFeedback.types';
@@ -19,7 +20,8 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     dislikeRef,
     onCalloutDismiss,
     onLikeVote,
-    onDislikeVote
+    onDislikeVote,
+    inline
   } = props;
 
   const likeIcon = vote === 'like' ? 'LikeSolid' : 'Like';
@@ -30,12 +32,14 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const Slots = getSlots<IMicroFeedbackProps, IMicroFeedbackSlots>(props, {
     root: Stack,
     iconContainer: Stack,
-    followUpContainer: Callout,
+    followUpContainer: inline ? Stack : Callout,
     followUpQuestion: Text,
     followUpOptionList: List,
     followUpOption: Button,
     followUpOptionText: Text
   });
+
+  const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
 
   const onRenderLikeCalloutItem = (item: string, index: number | undefined): JSX.Element => {
     const listOption = (): void => {
@@ -46,7 +50,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     };
 
     return (
-      <Slots.followUpOption data-is-focusable={true} onClick={listOption}>
+      <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
         <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
       </Slots.followUpOption>
     );
@@ -61,7 +65,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     };
 
     return (
-      <Slots.followUpOption data-is-focusable={true} onClick={listOption}>
+      <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
         <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
       </Slots.followUpOption>
     );

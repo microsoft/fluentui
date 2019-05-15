@@ -1,7 +1,6 @@
 import * as React from 'react';
-import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
+import { IMicroFeedbackQuestion, VoteType } from '../MicroFeedback.types';
 import { MicroFeedback } from '../MicroFeedback';
-import { Stack } from 'office-ui-fabric-react';
 
 // tslint:disable:jsx-no-lambda
 
@@ -27,28 +26,16 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
       console.log('Logged selection index:', index, 'with id:', id);
     };
 
-    const microfeedbackStyles: IMicroFeedbackStyles = {
-      root: {
-        width: '100%'
-      },
-      iconContainer: {
-        float: 'right'
-      },
-      followUpContainer: {
-        background: '#f3f2f1'
-      }
-    };
-
     return (
       <MicroFeedback
-        followUpContainer={render => render((ContainerType, props) => <Stack {...props as any} horizontal={false} />)}
-        styles={microfeedbackStyles}
+        inline
         thumbsDownQuestion={followUpOnThumbsDown}
         thumbsUpQuestion={followUpOnThumbsUp}
         thumbsUpTitle="Like"
         thumbsDownTitle="Dislike"
         sendFeedback={sendFeedbackCallback}
         sendFollowUpIndex={sendFollowupIndexCallback}
+        tokens={{ followUpBackgroundColor: 'lightblue' }}
       />
     );
   }

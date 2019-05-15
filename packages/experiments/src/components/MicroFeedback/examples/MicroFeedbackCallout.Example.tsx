@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
+import { IMicroFeedbackQuestion, VoteType } from '../MicroFeedback.types';
 import { MicroFeedback } from '../MicroFeedback';
 
 export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
@@ -24,15 +24,9 @@ export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
       console.log('Logged selection index:', index, 'with id:', id);
     };
 
-    const microfeedbackStyles: IMicroFeedbackStyles = {
-      root: {
-        float: 'left'
-      }
-    };
     return (
       <div>
         <MicroFeedback
-          styles={microfeedbackStyles}
           thumbsDownQuestion={followUpOnThumbsDown}
           thumbsUpQuestion={followUpOnThumbsUp}
           thumbsUpTitle="Like"
