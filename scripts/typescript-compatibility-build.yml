@@ -48,6 +48,7 @@ jobs:
 
       # Rename built package tarball to reference later
       - script: |
+          echo *.tgz 
           mv *.tgz $(Build.StagingDirectory)/$(PackageName).tgz
         displayName: Move $(PackageName).tgz to Build.StagingDirectory
 
