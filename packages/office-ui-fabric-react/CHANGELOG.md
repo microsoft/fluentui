@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 14 May 2019 07:50:31 GMT and should not be manually modified.
+This log was last generated on Wed, 15 May 2019 12:31:44 GMT and should not be manually modified.
+
+## 6.182.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Nav respects changes to collapsedByDefault
+- Allow custom aria label generation in suggestionStore
+- ShimmeredDetailsList: export to the surface missing API items.
+
+### Patches
+
+- added the title attribute for the cancel icon in the panel which is same as aira-label
+- Add TextField multiple-line errorMessage support
+- This latest PR is to ensure Nav link without icon should not be rendered with <i> place-holder
 
 ## 6.181.1
 Tue, 14 May 2019 07:50:31 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Wed, 15 May 2019 12:31:44 GMT and should not be manually modified.
+
+## 6.18.2
+Wed, 15 May 2019 12:31:44 GMT
+
+### Patches
+
+- Add 404 page
 
 ## 6.18.1
 Tue, 14 May 2019 07:50:30 GMT
