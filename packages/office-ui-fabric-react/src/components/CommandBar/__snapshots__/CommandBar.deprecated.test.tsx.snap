@@ -24,6 +24,9 @@ exports[`CommandBar renders commands correctly 1`] = `
         className=
             ms-FocusZone
             ms-CommandBar
+            &:focus {
+              outline: none;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;

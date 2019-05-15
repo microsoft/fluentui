@@ -23,6 +23,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         className=
             ms-FocusZone
             ms-CommandBar
+            &:focus {
+              outline: none;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -1356,6 +1359,9 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
         className=
             ms-FocusZone
             ms-CommandBar
+            &:focus {
+              outline: none;
+            }
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
@@ -2126,7 +2132,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 onFocusCapture={[Function]}
                               >
                                 <div
-                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={
@@ -2364,7 +2369,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   </div>
                                 </div>
                                 <div
-                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={

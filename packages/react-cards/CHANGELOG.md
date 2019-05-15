@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Mon, 22 Apr 2019 12:32:06 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 0.3.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
 
 ## 0.3.1
 Mon, 22 Apr 2019 12:32:06 GMT

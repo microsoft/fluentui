@@ -2,7 +2,7 @@ import * as React from 'react';
 import { DetailsListBase } from './DetailsList.base';
 import { ISelection, SelectionMode, ISelectionZoneProps } from '../../utilities/selection/index';
 import { IRefObject, IBaseProps, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
-import { IDragDropEvents, IDragDropContext } from './../../utilities/dragdrop/index';
+import { IDragDropEvents, IDragDropContext, IDragDropHelper, IDragDropOptions } from './../../utilities/dragdrop/index';
 import { IGroup, IGroupRenderProps, IGroupDividerProps, IGroupedListProps } from '../GroupedList/index';
 import { IDetailsRowProps, IDetailsRowBaseProps } from '../DetailsList/DetailsRow';
 import { IDetailsHeaderProps, IDetailsHeaderBaseProps } from './DetailsHeader';
@@ -14,7 +14,18 @@ import { ICellStyleProps, IDetailsItemProps } from './DetailsRow.types';
 import { IDetailsColumnProps } from './DetailsColumn';
 import { IDetailsCheckboxProps } from './DetailsRowCheck.types';
 
-export { IDetailsHeaderProps, IDetailsRowBaseProps, IDetailsHeaderBaseProps, IDetailsFooterBaseProps };
+export {
+  IDetailsHeaderProps,
+  IDetailsRowBaseProps,
+  IDetailsHeaderBaseProps,
+  IDetailsFooterBaseProps,
+  IDragDropContext,
+  IDragDropEvents,
+  IDragDropHelper,
+  IDragDropOptions,
+  IViewport,
+  IWithViewportProps
+};
 
 /**
  * {@docCategory DetailsList}
@@ -184,6 +195,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /**
    * If set to true and we provide an empty array, it will render 10 lines of whatever provided in onRenderMissingItem.
    * @defaultvalue false
+   * @deprecated Use `ShimmeredDetailsList` pass-through component instead which supports this prop. Will be removed in Fabric 7.0
    */
   enableShimmer?: boolean;
 

@@ -1,4 +1,4 @@
-// @uifabric/react-cards@0.3.1
+// @uifabric/react-cards@0.3.2
   // Do not modify this file, the file is generated as part of publish. The checked in version is a placeholder only.
   import { setVersion } from '@uifabric/set-version';
-  setVersion('@uifabric/react-cards', '0.3.1');
+  setVersion('@uifabric/react-cards', '0.3.2');

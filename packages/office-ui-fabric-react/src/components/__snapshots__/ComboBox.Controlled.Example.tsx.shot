@@ -293,6 +293,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -604,6 +605,7 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

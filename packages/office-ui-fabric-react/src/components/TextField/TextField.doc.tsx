@@ -8,7 +8,6 @@ import { TextFieldErrorMessageExample } from './examples/TextField.ErrorMessage.
 import { TextFieldMultilineExample } from './examples/TextField.Multiline.Example';
 import { TextFieldControlledExample } from './examples/TextField.Controlled.Example';
 import { TextFieldPrefixAndSuffixExample } from './examples/TextField.PrefixAndSuffix.Example';
-import { TextFieldStatus } from './TextField.checklist';
 import { TextFieldStyledExample } from './examples/TextField.Styled.Example';
 
 const TextFieldBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/TextField/examples/TextField.Basic.Example.tsx') as string;
@@ -32,7 +31,6 @@ export const TextFieldPageProps: IDocPageProps = {
   title: 'TextField',
   componentName: 'TextField',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/TextField',
-  componentStatus: TextFieldStatus,
   examples: [
     {
       title: 'Basic TextFields',
@@ -83,7 +81,6 @@ export const TextFieldPageProps: IDocPageProps = {
       view: <TextFieldStyledExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/TextField.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/TextField/docs/TextFieldDos.md'),

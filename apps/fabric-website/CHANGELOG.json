@@ -2,6 +2,462 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.2",
+      "tag": "@uifabric/fabric-website_v6.18.2",
+      "date": "Wed, 15 May 2019 12:31:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add 404 page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "1a7b6c65005dab8fbcc6fe21dbaa42ed042465eb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.20.1` to `^6.21.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.1` to `^6.182.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.1",
+      "tag": "@uifabric/fabric-website_v6.18.1",
+      "date": "Tue, 14 May 2019 07:50:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix pages not rendering on first load",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2c69e2e8bedb433ff86bb487ebd6f20e590a32fd"
+          },
+          {
+            "comment": "Update Fabric assets link",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "4cbda272f3ba109cdff14d9ff1b603564b73ea2a"
+          },
+          {
+            "comment": "Fix left nav section behavior",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "678798efb0d3f679e22bbd9efa795b590ad1d83b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.0` to `^1.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.20.0` to `^6.20.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.76.1` to `^6.76.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.18.0` to `^6.18.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.4.8` to `^6.4.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.8` to `^0.16.9`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.1` to `^6.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.5` to `^0.1.6`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.0` to `^6.181.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^1.0.1` to `^1.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^1.0.1` to `^1.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.0",
+      "tag": "@uifabric/fabric-website_v6.18.0",
+      "date": "Tue, 14 May 2019 01:56:43 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update neutrals content and move palette objects to json files.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "66b92fec130a529d5e97b2e663f033892a6a47e0"
+          },
+          {
+            "comment": "Fix IE11 home page styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "cde3dd04394a4b24540de3125b66fe9259aa3196"
+          },
+          {
+            "comment": "Fix types import",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "56cd0b49be95e536a0f503a32fbe113d3b8e8b17"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Export `categories` object to serve as a source of navigation structure for the table of content on docs.microsoft",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "b0b4e05fe7e90c6baf365452a02aaac760ec30c4"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.0.1` to `^1.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.19.0` to `^6.20.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.6` to `^0.16.8`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.180.0` to `^6.181.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.2",
+      "tag": "@uifabric/fabric-website_v6.17.2",
+      "date": "Fri, 10 May 2019 12:36:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixes website to be IE11 compatible with polyfills provided by react-app-polyfill",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "dc258e887455db9ac8c4adafc0d4e28c7cf40c14"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.76.0` to `^6.76.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.179.0` to `^6.180.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.1",
+      "tag": "@uifabric/fabric-website_v6.17.1",
+      "date": "Thu, 09 May 2019 12:35:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Include md files in nested docs folders",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "075d60c4fa36348ee9f5c62811fcee0141672a2c"
+          },
+          {
+            "comment": "Move renderSiteMessageBar to SiteDefinition",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "fc466fcc96d0052a2446770485addc7116607bfc"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.18.0` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.178.0` to `^6.179.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.17.0",
+      "tag": "@uifabric/fabric-website_v6.17.0",
+      "date": "Tue, 07 May 2019 12:34:52 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix DetailsList large grouped demo infinite loading loop",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "82b5bd3d675e92be729c4bad2d3afd3cef4d2d3d"
+          },
+          {
+            "comment": "Include .md files in npm package",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "12772428d745ee70303fc750ff932093dfc4c3bf"
+          },
+          {
+            "comment": "Fix UHF element selectors for un-overriding font",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "0dd57d9e24667575ec3e163ca88577d4a690ace2"
+          },
+          {
+            "comment": "Fix UHF header styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2a162cb9dcee4fb702ad3efc0b653478db4b012e"
+          },
+          {
+            "comment": "Add stub \"get started\" pages for mobile",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "69fc9864a11922528497a65c6a9b6e08872fb068"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Expand getting started info and use kebab case IDs",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9400b25f3b43de9abe6162d813755d442d114e41"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.4` to `^6.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.75.0` to `^6.76.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.17.1` to `^6.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.3` to `^6.177.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.4",
+      "tag": "@uifabric/fabric-website_v6.16.4",
+      "date": "Mon, 06 May 2019 19:32:45 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix UHF styling conflicts",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7a8e3a847570d97a04e42c415593ee4bef600743"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.3` to `^6.17.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.3",
+      "tag": "@uifabric/fabric-website_v6.16.3",
+      "date": "Mon, 06 May 2019 12:35:11 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove css reset",
+            "author": "Micah Godbolt <mgodbolt@microsoft.com>",
+            "commit": "7c176f3b0e14bc446865a73ad4799d10aa18c5cb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.2` to `^6.17.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.2",
+      "tag": "@uifabric/fabric-website_v6.16.2",
+      "date": "Mon, 06 May 2019 00:28:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Accessibility fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "7aee8d38d602a2beab913b381aa0fc67eb159f6b"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.1` to `^6.17.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.17.0` to `^6.17.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.1",
+      "tag": "@uifabric/fabric-website_v6.16.1",
+      "date": "Sun, 05 May 2019 19:59:10 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added get started section",
+            "author": "Micah Godbolt <mgodbolt@microsoft.com>",
+            "commit": "a0d98e8f61ccab3591fccf74043b164d97f0df07"
+          },
+          {
+            "comment": "Added more mobile controls documentation",
+            "author": "Peter Jahn <pejahn@microsoft.com>",
+            "commit": "64915020b038085785fc339b5d91374581de4a36"
+          },
+          {
+            "comment": "Mobile documentation updates",
+            "author": "Elizabeth Craig <ecraig12345@gmail.com>",
+            "commit": "9c59589394e9564f2fdce2f0881c3b6a082f5d0c"
+          },
+          {
+            "comment": "Adjust Resources content",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "680b301ae59d02a89aa5fe30c44ad6ba11f63ac2"
+          },
+          {
+            "comment": "Anchor link handling and other bug fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "725a292b5659ba883b0cc552d878323f60c7ad49"
+          },
+          {
+            "comment": "Add version dropdown and fix other bugs",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d1f6243f45b7b292f4ecf2cb98b69e89548f31fb"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.17.0` to `^6.17.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.2` to `^6.176.3`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.16.0",
+      "tag": "@uifabric/fabric-website_v6.16.0",
+      "date": "Sat, 04 May 2019 00:01:54 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "ported logic for devhost from index.html to homepage.htm",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "29b126116d1b3fc0711c6b7acaa986fa4e6f85e4"
+          },
+          {
+            "comment": "Switch to new website",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "12e6c0b16ca155792d4bfa8c968119d5efd3cd2b"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Getting started update with CRA, just and Gatsby.js",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "364af40d4e26d496c5687a4aecc0b0e02f2bdc63"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.0.0` to `^1.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.1` to `^6.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.16.0` to `^6.17.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.176.1` to `^6.176.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.15.0",
+      "tag": "@uifabric/fabric-website_v6.15.0",
+      "date": "Thu, 02 May 2019 12:36:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Check for undefined hashes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "37f6d5a9a46098bd70e41d687f5cfbccbc8ae14e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Adds a manifest generation script",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "c10e2981d691a1b2067546667d3cca134195095d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.16.0` to `^6.16.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.175.0` to `^6.176.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.14.0",
+      "tag": "@uifabric/fabric-website_v6.14.0",
+      "date": "Tue, 30 Apr 2019 12:31:36 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "add references section to nav",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "382ec4fe6678eef91be9bc7e66091b11ff92e0a2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.74.2` to `^6.75.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.14.4` to `^6.15.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.173.0` to `^6.174.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.13.6",
+      "tag": "@uifabric/fabric-website_v6.13.6",
+      "date": "Fri, 26 Apr 2019 12:35:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Remove implementation examples sections",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "4bd19808850a6a27e49a77cba869f278785e2a7a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.14.3` to `^6.14.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.170.0` to `^6.171.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.13.5",
       "tag": "@uifabric/fabric-website_v6.13.5",
       "date": "Tue, 23 Apr 2019 12:32:00 GMT",

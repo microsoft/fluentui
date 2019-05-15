@@ -27,7 +27,11 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
       }
     >
       <div
-        className="ms-FocusZone"
+        className=
+            ms-FocusZone
+            &:focus {
+              outline: none;
+            }
         data-focuszone-id="FocusZone1"
         onFocus={[Function]}
         onKeyDown={[Function]}
@@ -97,12 +101,12 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
+                  border: 0px;
                   bottom: 0px;
-                  content: "";
+                  content: attr(data-content);
                   left: 0px;
                   outline: 1px solid #666666;
-                  position: absolute;
+                  position: relative;
                   right: 0px;
                   top: 0px;
                   z-index: 1;
@@ -152,7 +156,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 }
                 &:after {
                   color: transparent;
-                  content: attr(title);
+                  content: attr(data-content);
                   display: block;
                   font-weight: 700;
                   height: 1px;
@@ -166,6 +170,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border-bottom: 2px solid transparent;
                   box-sizing: border-box;
                 }
+            data-content="Thing1"
             data-is-focusable={true}
             id="ShapeColorPivot_Thing1"
             name="Thing1"
@@ -246,12 +251,12 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
+                  border: 0px;
                   bottom: 0px;
-                  content: "";
+                  content: attr(data-content);
                   left: 0px;
                   outline: 1px solid #666666;
-                  position: absolute;
+                  position: relative;
                   right: 0px;
                   top: 0px;
                   z-index: 1;
@@ -301,7 +306,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 }
                 &:after {
                   color: transparent;
-                  content: attr(title);
+                  content: attr(data-content);
                   display: block;
                   font-weight: 700;
                   height: 1px;
@@ -315,6 +320,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border-bottom: 2px solid transparent;
                   box-sizing: border-box;
                 }
+            data-content="Thing2"
             data-is-focusable={true}
             id="ShapeColorPivot_Thing2"
             name="Thing2"
@@ -395,12 +401,12 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
+                  border: 0px;
                   bottom: 0px;
-                  content: "";
+                  content: attr(data-content);
                   left: 0px;
                   outline: 1px solid #666666;
-                  position: absolute;
+                  position: relative;
                   right: 0px;
                   top: 0px;
                   z-index: 1;
@@ -450,7 +456,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                 }
                 &:after {
                   color: transparent;
-                  content: attr(title);
+                  content: attr(data-content);
                   display: block;
                   font-weight: 700;
                   height: 1px;
@@ -464,6 +470,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   border-bottom: 2px solid transparent;
                   box-sizing: border-box;
                 }
+            data-content="Thing3"
             data-is-focusable={true}
             id="ShapeColorPivot_Thing3"
             name="Thing3"

@@ -4,5 +4,8 @@ import { BreadcrumbPageProps } from 'office-ui-fabric-react/lib/components/Bread
 import { DemoPage } from '../DemoPage';
 
 export const BreadcrumbPage = (props: { isHeaderVisible: boolean }) => (
-  <DemoPage {...{ ...BreadcrumbPageProps, ...props }} />
+  <DemoPage
+    jsonDocs={require('@uifabric/api-docs/lib/pages/office-ui-fabric-react/Breadcrumb.page.json')}
+    {...{ ...BreadcrumbPageProps, ...props }}
+  />
 );

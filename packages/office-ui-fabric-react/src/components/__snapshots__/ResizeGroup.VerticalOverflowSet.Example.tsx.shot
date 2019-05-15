@@ -30,6 +30,9 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
         className=
             ms-FocusZone
             ms-OverflowSet
+            &:focus {
+              outline: none;
+            }
             {
               display: flex;
               flex-direction: column;

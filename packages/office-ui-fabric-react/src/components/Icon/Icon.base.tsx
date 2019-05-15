@@ -12,7 +12,7 @@ export interface IIconState {
 
 const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
 
-export class IconBase extends React.PureComponent<IIconProps, IIconState> {
+export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {
     super(props);
     this.state = {

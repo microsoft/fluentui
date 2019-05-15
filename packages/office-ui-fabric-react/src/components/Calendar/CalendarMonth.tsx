@@ -332,9 +332,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
   };
 
   private _onHeaderKeyDown = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    const { onHeaderSelect } = this.props;
-    if (onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
-      onHeaderSelect(true);
+    if (this._onHeaderSelect && (ev.which === KeyCodes.enter || ev.which === KeyCodes.space)) {
+      this._onHeaderSelect();
     }
   };
 }

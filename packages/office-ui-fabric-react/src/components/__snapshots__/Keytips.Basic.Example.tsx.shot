@@ -7,7 +7,11 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
   </p>
   <div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       onFocus={[Function]}
       onKeyDown={[Function]}
@@ -79,12 +83,12 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -136,7 +140,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -152,6 +156,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               @media screen and (-ms-high-contrast: active){& {
                 color: Highlight;
               }
+          data-content="Pivot 1"
           data-is-focusable={true}
           data-ktp-execute-target="ktp-a"
           data-ktp-target="ktp-a"
@@ -235,12 +240,12 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -290,7 +295,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -304,6 +309,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content="Pivot 2"
           data-is-focusable={true}
           data-ktp-execute-target="ktp-b"
           data-ktp-target="ktp-b"
@@ -387,12 +393,12 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
+                border: 0px;
                 bottom: 0px;
-                content: "";
+                content: attr(data-content);
                 left: 0px;
                 outline: 1px solid #666666;
-                position: absolute;
+                position: relative;
                 right: 0px;
                 top: 0px;
                 z-index: 1;
@@ -442,7 +448,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
               }
               &:after {
                 color: transparent;
-                content: attr(title);
+                content: attr(data-content);
                 display: block;
                 font-weight: 700;
                 height: 1px;
@@ -456,6 +462,7 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                 border-bottom: 2px solid transparent;
                 box-sizing: border-box;
               }
+          data-content="Pivot 3"
           data-is-focusable={true}
           data-ktp-execute-target="ktp-c"
           data-ktp-target="ktp-c"

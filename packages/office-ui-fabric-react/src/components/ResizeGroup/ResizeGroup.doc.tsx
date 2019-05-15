@@ -3,7 +3,6 @@ import { ResizeGroupOverflowSetExample } from './examples/ResizeGroup.OverflowSe
 
 import { IDocPageProps } from '../../common/DocPage.types';
 import { FlexBoxResizeGroupExample } from './examples/ResizeGroup.FlexBox.Example';
-import { ResizeGroupStatus } from './ResizeGroup.checklist';
 import { ResizeGroupVerticalOverflowSetExample } from './examples/ResizeGroup.VerticalOverflowSet.Example';
 
 const ResizeGroupBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/examples/ResizeGroup.OverflowSet.Example.tsx') as string;
@@ -17,7 +16,6 @@ export const ResizeGroupPageProps: IDocPageProps = {
   componentName: 'ResizeGroup',
   componentUrl:
     'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/ResizeGroup',
-  componentStatus: ResizeGroupStatus,
   examples: [
     {
       title: 'Use ResizeGroup to move commands into an overflow menu',
@@ -36,7 +34,6 @@ export const ResizeGroupPageProps: IDocPageProps = {
       view: <FlexBoxResizeGroupExample />
     }
   ],
-  propertiesTablesSources: [require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/ResizeGroup.types.ts')],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/ResizeGroup/docs/ResizeGroupDos.md'),

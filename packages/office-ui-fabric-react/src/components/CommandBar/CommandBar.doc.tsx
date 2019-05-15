@@ -1,7 +1,6 @@
 import * as React from 'react';
 
 import { IDocPageProps } from '../../common/DocPage.types';
-import { CommandBarStatus } from './CommandBar.checklist';
 import { ICommandBarProps } from './CommandBar.types';
 import { CommandBarBasicExample } from './examples/CommandBar.Basic.Example';
 import { CommandBarButtonAsExample } from './examples/CommandBar.ButtonAs.Example';
@@ -27,7 +26,6 @@ export const CommandBarPageProps: IDocPageProps = {
   title: 'CommandBar',
   componentName: 'CommandBar',
   componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/CommandBar',
-  componentStatus: CommandBarStatus,
   examples: [
     {
       title: 'CommandBar with overflowing menu items',
@@ -49,10 +47,6 @@ export const CommandBarPageProps: IDocPageProps = {
       code: CommandBarSplitDisabledExampleCode,
       view: <CommandBarSplitDisabledExample {...cmdBarParamsTextAndIcons} />
     }
-  ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/CommandBar.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/ContextualMenu/ContextualMenu.types.ts')
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/CommandBar/docs/CommandBarOverview.md'),
   bestPractices: '',

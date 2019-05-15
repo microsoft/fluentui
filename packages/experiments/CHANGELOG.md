@@ -1,6 +1,38 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 19 Apr 2019 12:33:02 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 6.76.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.76.1
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Update snapshot
+
+## 6.76.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Add isFluentStyling prop and styles to Tile component
+
+## 6.75.0
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Minor changes
+
+- Adding a new Microfeedback component
+
+### Patches
+
+-  Use new getFocusStyle signature
 
 ## 6.74.2
 Fri, 19 Apr 2019 12:33:02 GMT

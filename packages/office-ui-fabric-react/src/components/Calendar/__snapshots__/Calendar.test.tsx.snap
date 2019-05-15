@@ -105,7 +105,11 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </div>
             </div>
             <div
-              className="ms-FocusZone"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
               data-focuszone-id="FocusZone3"
               onFocus={[Function]}
               onKeyDown={[Function]}
@@ -1159,7 +1163,11 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               </div>
             </div>
             <div
-              className="ms-FocusZone"
+              className=
+                  ms-FocusZone
+                  &:focus {
+                    outline: none;
+                  }
               data-focuszone-id="FocusZone4"
               onFocus={[Function]}
               onKeyDown={[Function]}

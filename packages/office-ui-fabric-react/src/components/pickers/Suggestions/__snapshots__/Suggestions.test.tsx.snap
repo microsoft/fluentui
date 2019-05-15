@@ -54,6 +54,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -189,6 +190,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -321,6 +323,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -453,6 +456,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -585,6 +589,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -717,6 +722,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -849,6 +855,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -981,6 +988,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1113,6 +1121,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1245,6 +1254,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1377,6 +1387,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1509,6 +1520,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1641,6 +1653,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1773,6 +1786,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -1905,6 +1919,7 @@ exports[`Suggestions renders a list properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2067,6 +2082,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2202,6 +2218,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2334,6 +2351,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2466,6 +2484,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2598,6 +2617,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2730,6 +2750,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2862,6 +2883,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -2994,6 +3016,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3126,6 +3149,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3258,6 +3282,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3390,6 +3415,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3522,6 +3548,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3654,6 +3681,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3786,6 +3814,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -3918,6 +3947,7 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4083,6 +4113,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4215,6 +4246,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4347,6 +4379,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4479,6 +4512,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4611,6 +4645,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4743,6 +4778,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -4875,6 +4911,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5007,6 +5044,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5141,6 +5179,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5276,6 +5315,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5408,6 +5448,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5540,6 +5581,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5672,6 +5714,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5804,6 +5847,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;
@@ -5936,6 +5980,7 @@ exports[`Suggestions scrolls to selected index properly 1`] = `
                 height: 100%;
                 min-width: 0px;
                 outline: transparent;
+                overflow: hidden;
                 padding-bottom: 0px;
                 padding-left: 0px;
                 padding-right: 0px;

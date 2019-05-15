@@ -1,0 +1,7 @@
+Chips are compact representations of entities (most commonly, people) that can be typed in, deleted or dragged easily. The most common example can be seen in the To field of a new email in Outlook Mobile.
+
+The chip field control handles keyboard input, wrapping and truncation automatically.
+
+| People Picker                                                                                                                                                                          | Persona Chips                                                                                                                                                                         |
+| -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/peoplepickerview.png" alt="People Picker in Android" style="width: 50%;" /> | <img src="https://static2.sharepointonline.com/files/fabric/fabric-website/images/controls/android/persona/personachipview.png" alt="Persona Chips in Android" style="width: 50%;" /> |

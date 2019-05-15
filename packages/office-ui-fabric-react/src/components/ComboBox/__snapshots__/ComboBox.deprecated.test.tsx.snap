@@ -229,6 +229,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

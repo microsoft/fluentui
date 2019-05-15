@@ -290,6 +290,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                         ms-ContextualMenu
                         is-open
                         ms-BaseButton-menuhost
+                        &:focus {
+                          outline: none;
+                        }
                         {
                           -moz-osx-font-smoothing: grayscale;
                           -webkit-font-smoothing: antialiased;

@@ -28,6 +28,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           className=
               ms-FocusZone
               ms-OverflowSet
+              &:focus {
+                outline: none;
+              }
               {
                 display: flex;
                 flex-wrap: nowrap;
@@ -3133,28 +3136,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             display: flex;
             position: relative;
           }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
     >
       <input
         checked={false}
@@ -3194,14 +3175,27 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               text-align: left;
               user-select: none;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-61"
       >
@@ -3273,28 +3267,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             display: flex;
             position: relative;
           }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
     >
       <input
         checked={false}
@@ -3334,14 +3306,27 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               text-align: left;
               user-select: none;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-62"
       >
@@ -3413,28 +3398,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             display: flex;
             position: relative;
           }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
     >
       <input
         checked={false}
@@ -3474,14 +3437,27 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               text-align: left;
               user-select: none;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-63"
       >

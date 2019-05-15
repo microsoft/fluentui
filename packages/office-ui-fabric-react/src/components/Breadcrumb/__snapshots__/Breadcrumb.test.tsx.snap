@@ -35,7 +35,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone1"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -400,7 +404,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone6"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -780,7 +788,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 3 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone12"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1064,7 +1076,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone17"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1444,7 +1460,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone23"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1742,7 +1762,11 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone28"
           onFocus={[Function]}
           onKeyDown={[Function]}
@@ -1958,7 +1982,11 @@ exports[`Breadcrumb renders empty breadcrumb 1`] = `
         role="navigation"
       >
         <div
-          className="ms-FocusZone"
+          className=
+              ms-FocusZone
+              &:focus {
+                outline: none;
+              }
           data-focuszone-id="FocusZone0"
           onFocus={[Function]}
           onKeyDown={[Function]}

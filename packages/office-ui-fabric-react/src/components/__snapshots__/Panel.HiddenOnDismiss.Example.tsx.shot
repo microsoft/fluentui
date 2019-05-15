@@ -248,7 +248,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
             style={Object {}}
           >
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={
@@ -498,7 +497,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
               </div>
             </div>
             <div
-              aria-hidden={true}
               data-is-visible={true}
               onFocus={[Function]}
               style={

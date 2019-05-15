@@ -297,6 +297,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -608,6 +609,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

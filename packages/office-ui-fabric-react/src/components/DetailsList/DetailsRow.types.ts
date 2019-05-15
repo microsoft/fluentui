@@ -166,6 +166,7 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
 
   /**
    * Whether to render shimmer
+   * @deprecated Use `ShimmeredDetailsList` instead: https://developer.microsoft.com/en-us/fabric#/components/detailslist/shimmer
    */
   shimmer?: boolean;
 
@@ -259,9 +260,21 @@ export interface IDetailsRowStyles {
   fields: IStyle;
   cellMeasurer: IStyle;
   checkCover: IStyle;
+  /**
+   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
+   */
   shimmer: IStyle;
+  /**
+   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
+   */
   shimmerIconPlaceholder: IStyle;
+  /**
+   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
+   */
   shimmerLeftBorder: IStyle;
+  /**
+   * @deprecated Will be removed in Fabric 7.0. Use `ShimmeredDetailsList` instead.
+   */
   shimmerBottomBorder: IStyle;
   check: IStyle;
 }
