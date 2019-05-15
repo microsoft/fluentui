@@ -143,6 +143,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -297,6 +298,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -451,6 +453,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -605,6 +608,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -759,6 +763,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -913,6 +918,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1067,6 +1073,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1221,6 +1228,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1375,6 +1383,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1529,6 +1538,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1683,6 +1693,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1837,6 +1848,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1991,6 +2003,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2145,6 +2158,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2299,6 +2313,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2453,6 +2468,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2607,6 +2623,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2761,6 +2778,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2915,6 +2933,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -3069,6 +3088,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {

@@ -111,6 +111,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -192,6 +193,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -273,6 +275,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 1 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -540,6 +543,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -569,6 +573,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 </div>
               </button>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -650,6 +655,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -1134,6 +1140,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -1282,6 +1289,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1311,6 +1319,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                 </div>
               </button>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -1511,6 +1520,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                 </div>
               </span>
               <i
+                aria-hidden={true}
                 className=
                     ms-Breadcrumb-chevron
                     {
@@ -1659,6 +1669,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1874,6 +1885,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {

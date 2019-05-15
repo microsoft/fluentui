@@ -136,6 +136,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -186,6 +187,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
           </div>
         </div>
         <i
+          aria-hidden={true}
           className=
               ms-Button-menuIcon
               {
@@ -337,6 +339,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -387,6 +390,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
           </div>
         </div>
         <i
+          aria-hidden={true}
           className=
               ms-Button-menuIcon
               {
@@ -698,6 +702,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   }
                             >
                               <i
+                                aria-hidden={true}
                                 className=
                                     ms-ContextualMenu-icon
                                     {
@@ -860,6 +865,7 @@ exports[`Component Examples renders Button.ContextualMenu.Example.tsx correctly 
                                   }
                             >
                               <i
+                                aria-hidden={true}
                                 className=
                                     ms-ContextualMenu-icon
                                     {

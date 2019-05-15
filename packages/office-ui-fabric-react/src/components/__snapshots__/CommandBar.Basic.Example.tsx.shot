@@ -164,6 +164,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -216,6 +217,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                     </div>
                   </div>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-menuIcon
                         {
@@ -350,6 +352,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -507,6 +510,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -664,6 +668,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -822,6 +827,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-menuIcon
                         {
@@ -970,6 +976,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1139,6 +1146,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1285,6 +1293,7 @@ exports[`Component Examples renders CommandBar.Basic.Example.tsx correctly 1`] =
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {

@@ -64,6 +64,7 @@ exports[`Component Examples renders SearchBox.Underlined.Example.tsx correctly 1
     onClick={[Function]}
   >
     <i
+      aria-hidden={true}
       className=
           ms-SearchBox-icon
           {

@@ -165,6 +165,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   {
@@ -388,6 +389,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--with-label
                   {

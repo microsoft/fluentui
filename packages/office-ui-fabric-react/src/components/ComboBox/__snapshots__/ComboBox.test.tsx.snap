@@ -251,6 +251,7 @@ exports[`ComboBox Renders correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -537,6 +538,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {

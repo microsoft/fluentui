@@ -102,6 +102,7 @@ exports[`Checkbox renders Checkbox correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Checkbox-checkmark
             {

@@ -214,6 +214,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             {
@@ -322,6 +323,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             ms-Button-menuIcon
@@ -353,6 +355,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     </div>
                   </button>
                   <span
+                    aria-hidden={true}
                     className=
 
                         {
@@ -525,6 +528,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             {
@@ -638,6 +642,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             ms-Button-menuIcon
@@ -669,6 +674,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     </div>
                   </button>
                   <span
+                    aria-hidden={true}
                     className=
 
                         {
@@ -789,6 +795,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -958,6 +965,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1093,6 +1101,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-menuIcon
                         {
@@ -1241,6 +1250,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1410,6 +1420,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1556,6 +1567,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {

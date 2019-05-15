@@ -597,6 +597,7 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {

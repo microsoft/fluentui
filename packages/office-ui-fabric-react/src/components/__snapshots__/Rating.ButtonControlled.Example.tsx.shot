@@ -125,6 +125,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -144,6 +145,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -262,6 +264,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -281,6 +284,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -399,6 +403,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -418,6 +423,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -536,6 +542,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -555,6 +562,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -673,6 +681,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -692,6 +701,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
