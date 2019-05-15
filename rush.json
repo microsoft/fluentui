@@ -463,6 +463,11 @@
       "packageName": "a11y-tests",
       "projectFolder": "apps/a11y-tests",
       "shouldPublish": false
+    },
+    {
+      "packageName": "@uifabric/lists",
+      "projectFolder": "packages/lists",
+      "shouldPublish": false
     }
   ]
 }
