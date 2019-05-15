@@ -57,7 +57,6 @@ export class BenchmarkBarChartBase extends React.Component<IBenchmarkBarChartPro
           <FocusZone>
             <div
               className={mergeStyles(this._classNames.triangle, benchmarkStyles)}
-              hidden={this.props.hideBenchmark}
               aria-label={benchmarkAriaLabel}
               data-is-focusable={true}
             />

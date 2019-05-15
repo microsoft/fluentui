@@ -8,12 +8,6 @@ export interface IBenchmarkBarChartProps {
   data: IChartingProps;
 
   /**
-   * This property tells whether to show benchmark triangle on top of benchmark bar chart or not
-   * @default false
-   */
-  hideBenchmark?: boolean;
-
-  /**
    * This property tells whether to show pencentage or fraction on top right of benchmark bar chart
    * @default false
    */
@@ -73,7 +67,7 @@ export interface IChartingProps {
   /**
    * The benchmark datapoint in the chart
    */
-  benchmarkData?: number;
+  benchmarkData: number;
 
   /**
    * The maximum data in the chart
