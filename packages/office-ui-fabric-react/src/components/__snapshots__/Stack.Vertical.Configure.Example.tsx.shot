@@ -363,11 +363,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label::before {
+                  .ms-Fabric--isFocusVisible &:focus + label {
                     outline-offset: 2px;
                     outline: 1px solid #666666;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-1"
@@ -493,11 +493,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label::before {
+                  .ms-Fabric--isFocusVisible &:focus + label {
                     outline-offset: 2px;
                     outline: 1px solid #666666;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-2"
@@ -623,11 +623,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label::before {
+                  .ms-Fabric--isFocusVisible &:focus + label {
                     outline-offset: 2px;
                     outline: 1px solid #666666;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-3"
@@ -752,11 +752,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     opacity: 0;
                     position: absolute;
                   }
-                  .ms-Fabric--isFocusVisible &:focus + label::before {
+                  .ms-Fabric--isFocusVisible &:focus + label {
                     outline-offset: 2px;
                     outline: 1px solid #666666;
                   }
-                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                  @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
                     outline: 1px solid ActiveBorder;
                   }
               id="checkbox-4"
@@ -1132,11 +1132,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   opacity: 0;
                   position: absolute;
                 }
-                .ms-Fabric--isFocusVisible &:focus + label::before {
+                .ms-Fabric--isFocusVisible &:focus + label {
                   outline-offset: 2px;
                   outline: 1px solid #666666;
                 }
-                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
                   outline: 1px solid ActiveBorder;
                 }
             defaultChecked={true}
@@ -2070,11 +2070,11 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       opacity: 0;
                       position: absolute;
                     }
-                    .ms-Fabric--isFocusVisible &:focus + label::before {
+                    .ms-Fabric--isFocusVisible &:focus + label {
                       outline-offset: 2px;
                       outline: 1px solid #666666;
                     }
-                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+                    @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
                       outline: 1px solid ActiveBorder;
                     }
                 id="checkbox-10"
