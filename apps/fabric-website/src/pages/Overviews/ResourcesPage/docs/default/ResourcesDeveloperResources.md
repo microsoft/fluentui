@@ -9,7 +9,7 @@ Get started with React and learn how to build your first projects.
 
 ### Release notes and demos
 
-View Fabric's versioned release notes and component demos.
+View Fabric React's versioned release notes and component demos.
 
 <ul class="md-list--flex">
   <li class="mdut--full">[Release notes and demos](https://aka.ms/FabricDemo)</li>
