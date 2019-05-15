@@ -56,7 +56,7 @@ jobs:
       # Rename built package tarball to reference later
       - script: |
           echo "setReleaseIdStep.ReleaseId"
-          echo $(setReleaseIdStep.ReleaseId) | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)
+          echo $(setReleaseIdStep.ReleaseId) | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'
           mv *.tgz $(Build.StagingDirectory)/$(PackageName).tgz
         displayName: Move $(PackageName).tgz to Build.StagingDirectory
 
