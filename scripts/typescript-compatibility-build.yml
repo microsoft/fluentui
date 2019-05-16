@@ -33,8 +33,11 @@ jobs:
 
      # Invoke POST REST API
       - powershell:
-          $person = @{first='joe'; lastname='doe'}
-          $json = $person | ConvertTo-Json
+          $person = @{
+            first='joe'
+            lastname='doe'
+          }
+          $body = (ConvertTo-Json $person)
           $response = Invoke-RestMethod 'https://jsonplaceholder.typicode.com/posts' -Method Put -Body $json -ContentType 'application/json'
           echo $response
         name: InvokeTypicodeAPI
