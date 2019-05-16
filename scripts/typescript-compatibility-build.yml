@@ -20,7 +20,163 @@ jobs:
       vmImage: $(VmImage)
     timeoutInMinutes: 60
     steps:
-     # Invoke POST REST API
+      - checkout: self
+        clean: true
+
+      - task: NodeTool@0
+        displayName: 'Use Node $(NodeVersion)'
+        inputs:
+          versionSpec: '$(NodeVersion)'
+          checkLatest: true
+
+      - script: echo "Aftab Test"
+
+      # Install Rush repo dependencies
+      - script: |
+          node common/scripts/install-run-rush.js install --bypass-policy
+        displayName: Run Rush install in office-ui-fabric-react repository
+
+      # Build package in Rush repo
+      - script: |
+          node common/scripts/install-run-rush.js build --to $(PackageName)
+        displayName: Run Rush build --to $(PackageName)
+
+      # Run npm pack to simulate installation from feed
+      - script: |
+          npm pack ./packages/$(PackageName)
+        displayName: Run npm pack $(PackageName)
+
+      # Move built package tarball to staging directory to reference later
+      - script: |
+          mv *.tgz $(Build.StagingDirectory)/.
+        displayName: Move OUFR tarball to Build.StagingDirectory
+
+      # Publish built library for validation job
+      - task: PublishBuildArtifacts@1
+        displayName: Publish Build Artifacts
+        inputs:
+          pathtoPublish: $(Build.StagingDirectory)
+          artifactName: drop
+
+  - job: Compatibility
+    dependsOn: Build
+    condition: succeeded()
+    timeoutInMinutes: 60
+    pool:
+      vmImage: $(VmImage)
+    strategy:
+      maxParallel: 2
+      matrix:
+        # 'TypeScript_2.4':
+        #   TypeScriptVersion: 2.4
+        # 'TypeScript_2.7':
+        #   TypeScriptVersion: 2.7
+        # 'TypeScript_2.9':
+        #   TypeScriptVersion: 2.9
+        # 'TypeScript_3.0':
+        #   TypeScriptVersion: 3.0
+        # 'TypeScript_3.1':
+        #   TypeScriptVersion: 3.1
+        # 'TypeScript_3.2':
+        #   TypeScriptVersion: 3.2
+        # 'TypeScript_3.3':
+        #   TypeScriptVersion: 3.3
+        'TypeScript_3.4':
+          TypeScriptVersion: 3.4
+    steps:
+      - checkout: none
+      - task: NodeTool@0
+        displayName: 'Use Node $(NodeVersion)'
+        inputs:
+          versionSpec: '$(NodeVersion)'
+          checkLatest: true
+
+      # Download build library
+      - task: DownloadBuildArtifacts@0
+        displayName: 'Download Build Artifacts'
+        inputs:
+          artifactName: drop
+          downloadPath: $(Build.StagingDirectory)
+
+      # Only moving to drop2 
+      - script: |
+          mkdir $(Build.StagingDirectory)/drop2
+          cp $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop2/
+        displayName: Only moving to drop2
+
+        # Save ReleaseId name
+        # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+      - script: |
+          echo "##vso[task.setvariable variable=ReleaseIdWholeName;isOutput=true]$(Build.StagingDirectory)/drop2/*.tgz"
+        name: setReleaseIdWholeStep
+        displayName: Save ReleaseId into a variable whole
+
+      # Save ReleaseId name
+      # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
+      - script: |
+          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'"
+        name: setReleaseIdStep
+        displayName: Save ReleaseId into a variable
+
+      # Move built package tarball to staging directory to reference later
+      - script: |
+          echo "before"
+          echo $(Build.StagingDirectory)/drop/*.tgz 
+          mv $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop/$(PackageName).tgz
+          echo "======"
+          echo "after"
+          echo $(Build.StagingDirectory)/drop/*.tgz 
+        displayName: Move OUFR tarball to Build.StagingDirectory
+
+      # Clone repository containing versioned TypeScript sample apps
+      - script: |
+          git clone $(CompatRepoUrl) $(Build.StagingDirectory)/__tests__
+        displayName: Clone compatibility repository
+
+      # Install repository's dependencies
+      - script: |
+          node common/scripts/install-run-rush.js install
+        displayName: Run Rush install in compatibility repository
+        workingDirectory: $(Build.StagingDirectory)/__tests__
+
+      # Install built package tarball in sample app
+      - script: |
+          npm install $(Build.StagingDirectory)/drop/$(PackageName).tgz
+        displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
+        workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
+
+      # Build sample app consuming Office UI Fabric React to test TypeScript version compatibility
+      - script: |
+          node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
+        displayName: Build TypeScript $(TypeScriptVersion) test app
+        workingDirectory: $(Build.StagingDirectory)/__tests__
+
+      # Set matrix version names
+      # - powershell: echo "##vso[task.setvariable variable=$(TypeScriptVersion);isOutput=true]truevalue"
+      - script: |
+          echo "##vso[task.setvariable variable=TypeScriptVersion;isOutput=true]truevalue"
+        name: setMatrixVersionNamesStep
+        displayName: Set matrix version names
+
+      # echo releaseVersion in Compatibility job
+      - script: |
+          echo "start with name"
+          echo "setReleaseIdWholeStep.ReleaseIdWholeName"
+          echo $(setReleaseIdWholeStep.ReleaseIdWholeName)
+          echo "======================="
+          echo "setReleaseIdStep.ReleaseId"
+          echo $(setReleaseIdStep.ReleaseId)
+          echo "======================="
+          echo "TypeScriptVersion"
+          echo $(setMatrixVersionNamesStep.TypeScriptVersion)
+          echo "end with name"
+          echo "======================="
+          echo "======================="
+          echo "======================="
+        name: whatEverInCompatibility
+        displayName: Echo variables in POST_Result job WITH NAME
+
+      # Invoke POST REST API
       - powershell:
           $person = @{
             first='joe';
