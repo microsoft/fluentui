@@ -67,22 +67,22 @@ jobs:
     strategy:
       maxParallel: 2
       matrix:
-        # 'TypeScript_2.4':
-        #   TypeScriptVersion: 2.4
-        # 'TypeScript_2.7':
-        #   TypeScriptVersion: 2.7
+        'TypeScript_2.4':
+          TypeScriptVersion: 2.4
+        'TypeScript_2.7':
+          TypeScriptVersion: 2.7
         'TypeScript_2.9':
           TypeScriptVersion: 2.9
-        # 'TypeScript_3.0':
-        #   TypeScriptVersion: 3.0
-        # 'TypeScript_3.1':
-        #   TypeScriptVersion: 3.1
-        # 'TypeScript_3.2':
-        #   TypeScriptVersion: 3.2
-        # 'TypeScript_3.3':
-        #   TypeScriptVersion: 3.3
-        # 'TypeScript_3.4':
-        #   TypeScriptVersion: 3.4
+        'TypeScript_3.0':
+          TypeScriptVersion: 3.0
+        'TypeScript_3.1':
+          TypeScriptVersion: 3.1
+        'TypeScript_3.2':
+          TypeScriptVersion: 3.2
+        'TypeScript_3.3':
+          TypeScriptVersion: 3.3
+        'TypeScript_3.4':
+          TypeScriptVersion: 3.4
     steps:
       - checkout: none
       - task: NodeTool@0
@@ -170,5 +170,8 @@ jobs:
           echo "TypeScriptVersion"
           echo $(setMatrixVersionNamesStep.TypeScriptVersion)
           echo "end with name"
+          echo "======================="
+          echo "======================="
+          echo "======================="
         name: whatEverInCompatibility
         displayName: Echo variables in POST_Result job WITH NAME
