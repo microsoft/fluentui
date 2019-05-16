@@ -79,8 +79,8 @@ jobs:
       matrix:
         # 'TypeScript_2.4':
         #   TypeScriptVersion: 2.4
-        'TypeScript_2.7':
-          TypeScriptVersion: 2.7
+        # 'TypeScript_2.7':
+        #   TypeScriptVersion: 2.7
         'TypeScript_2.9':
           TypeScriptVersion: 2.9
         # 'TypeScript_3.0':
