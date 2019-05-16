@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.182.1",
+      "tag": "office-ui-fabric-react_v6.182.1",
+      "date": "Thu, 16 May 2019 05:28:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[Checkbox] Fix outline on focus.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d0d926c5c415c4df00e3e537297e36cdb5efccdd"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.182.0",
       "tag": "office-ui-fabric-react_v6.182.0",
       "date": "Wed, 15 May 2019 12:31:44 GMT",

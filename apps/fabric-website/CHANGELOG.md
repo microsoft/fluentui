@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 15 May 2019 12:31:44 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2019 05:28:50 GMT and should not be manually modified.
+
+## 6.18.3
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Adding mobile examples and docs for Button.
 
 ## 6.18.2
 Wed, 15 May 2019 12:31:44 GMT

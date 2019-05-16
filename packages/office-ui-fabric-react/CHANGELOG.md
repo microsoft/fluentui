@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 15 May 2019 12:31:44 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2019 05:28:50 GMT and should not be manually modified.
+
+## 6.182.1
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- [Checkbox] Fix outline on focus.
 
 ## 6.182.0
 Wed, 15 May 2019 12:31:44 GMT
