@@ -8,18 +8,19 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
 
   return {
     backgroundColor: 'transparent',
-    backgroundColorHovered: 'transparent',
-    backgroundColorPressed: 'transparent',
+    backgroundColorHovered: palette.neutralLighter,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
     borderColor: 'transparent',
-    color: semanticColors.actionLink,
-    colorHovered: semanticColors.actionLinkHovered,
-    colorPressed: palette.themePrimary,
+    borderColorHovered: 'transparent',
+    borderColorPressed: 'transparent',
+    borderStyleFocused: 'solid',
+    borderWidthFocused: 1,
     highContrastBorderColor: 'transparent',
     highContrastBorderColorHovered: 'transparent',
     highContrastBorderColorPressed: 'transparent',
-    iconColor: semanticColors.actionLink,
-    iconColorHovered: semanticColors.actionLinkHovered,
-    iconColorPressed: palette.themePrimary,
+    iconColor: palette.themePrimary,
+    iconColorHovered: palette.themeDarkAlt,
+    iconColorPressed: palette.themeDark,
     iconSize: 16
   };
 };
@@ -28,6 +29,9 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   const { semanticColors } = theme;
 
   return {
+    backgroundColor: semanticColors.inputBackground,
+    backgroundColorHovered: semanticColors.inputBackground,
+    backgroundColorPressed: semanticColors.inputBackground,
     iconColor: semanticColors.disabledText,
     iconColorHovered: semanticColors.disabledText,
     iconColorPressed: semanticColors.disabledText

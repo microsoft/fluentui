@@ -100,7 +100,27 @@ export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'
 /**
  * {@docCategory Button}
  */
-export interface IMenuButtonTokens extends IButtonTokens {}
+export interface IMenuButtonTokens extends IButtonTokens {
+  /**
+   * Defines the background color of the MenuButton when its menu is in an expanded state.
+   */
+  backgroundColorExpanded?: string;
+
+  /**
+   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in a hovered state.
+   */
+  backgroundColorExpandedHovered?: string;
+
+  /**
+   * Defines the background color of the MenuButton when its menu is in an expanded state and the Button is in an active state.
+   */
+  backgroundColorExpandedPressed?: string;
+
+  /**
+   * Defines the size of the menu icon inside the MenuButton.
+   */
+  menuIconSize?: number | string;
+}
 
 /**
  * {@docCategory Button}
