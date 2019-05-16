@@ -33,8 +33,5 @@ jobs:
 
       # Install Rush repo dependencies
       - script: |
-          $person = @{
-            first='joe'
-            lastname='doe'
-          }
+          $params = @{ To = "+15558675309"; Body = "Hello from PowerShell" }
         displayName: create an object
