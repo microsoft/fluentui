@@ -34,7 +34,7 @@ jobs:
      # Invoke POST REST API
       - powershell:
           $person = @{
-            first='joe'
+            first='joe';
             lastname='doe'
           }
           $body = (ConvertTo-Json $person)
