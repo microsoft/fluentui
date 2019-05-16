@@ -48,9 +48,6 @@ jobs:
 
       # Only moving to drop2 
       - script: |
-          $person = @{ 
-            name="Johan";
-            surname="McGuinness"
-          }
+          $person = @{ name="Johan"; surname="McGuinness"}
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
