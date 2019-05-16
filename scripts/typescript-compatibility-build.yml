@@ -48,7 +48,10 @@ jobs:
 
       # Only moving to drop2 
       - script: |
-          $params = @{ To = "+15558675309"; From = $number; Body = "Hello from PowerShell" }
-          echo $params
+          $data = @{
+            customer = 'something'
+            name = 'whatever'
+          }
+          echo $data
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
