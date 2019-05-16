@@ -110,7 +110,12 @@ jobs:
 
       # Move built package tarball to staging directory to reference later
       - script: |
+          echo "before"
+          echo $(Build.StagingDirectory)/drop/*.tgz 
           mv $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop/$(PackageName).tgz
+          echo "======"
+          echo "after"
+          echo $(Build.StagingDirectory)/drop/*.tgz 
         displayName: Move OUFR tarball to Build.StagingDirectory
 
       # Clone repository containing versioned TypeScript sample apps
@@ -144,8 +149,13 @@ jobs:
       # echo releaseVersion in Compatibility job
       - script: |
           echo "start with name"
+          echo "setReleaseIdWholeStep.ReleaseId"
           echo $(setReleaseIdWholeStep.ReleaseId)
+          echo "======================="
+          echo "setReleaseIdStep.ReleaseId"
           echo $(setReleaseIdStep.ReleaseId)
+          echo "======================="
+          echo $(setMatrixVersionNamesStep.$(TypeScriptVersion))
           echo "end with name"
         name: whatEverInCompatibility
         displayName: Echo variables in POST_Result job WITH NAME
