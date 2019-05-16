@@ -50,10 +50,20 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         width: 20,
         height: 20,
         background: 'white',
-        border: `1px solid ${palette.white}`,
+        border: `1px solid ${palette.neutralSecondaryAlt}`,
         borderRadius: '50%',
         boxShadow: effects.elevation8,
         transform: 'translate(-50%, -50%)'
+      }
+    ],
+    thumbInner: [
+      'ms-ColorPicker-thumbInner',
+      {
+        width: '100%',
+        height: '100%',
+        border: `2px solid ${palette.white}`,
+        borderRadius: '50%',
+        boxSizing: 'border-box'
       }
     ]
   };

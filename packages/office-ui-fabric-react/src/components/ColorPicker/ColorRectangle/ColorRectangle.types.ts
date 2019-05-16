@@ -94,4 +94,9 @@ export interface IColorRectangleStyles {
    * Style set for the draggable thumb element.
    */
   thumb?: IStyle;
+
+  /**
+   * Style set for inner element in the draggable thumb.
+   */
+  thumbInner?: IStyle;
 }
