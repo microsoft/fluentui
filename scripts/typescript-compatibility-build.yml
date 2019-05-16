@@ -180,7 +180,7 @@ jobs:
       - powershell:
           echo "##vso[task.setvariable variable=oufrVersion;isOutput=true](echo $(setReleaseIdStep.ReleaseId))"
           $person = @{
-            oufrreleaseversion=$(InvokeTypicodeAPI.oufrVersion);
+            oufrreleaseversion=$(oufrVersion);
             tsversion=$(TypeScriptVersion);
           };
           $body = (ConvertTo-Json $person);
