@@ -80,16 +80,16 @@ jobs:
           TypeScriptVersion: 2.7
         'TypeScript_2.9':
           TypeScriptVersion: 2.9
-        'TypeScript_3.0':
-          TypeScriptVersion: 3.0
-        'TypeScript_3.1':
-          TypeScriptVersion: 3.1
-        'TypeScript_3.2':
-          TypeScriptVersion: 3.2
-        'TypeScript_3.3':
-          TypeScriptVersion: 3.3
-        'TypeScript_3.4':
-          TypeScriptVersion: 3.4
+        # 'TypeScript_3.0':
+        #   TypeScriptVersion: 3.0
+        # 'TypeScript_3.1':
+        #   TypeScriptVersion: 3.1
+        # 'TypeScript_3.2':
+        #   TypeScriptVersion: 3.2
+        # 'TypeScript_3.3':
+        #   TypeScriptVersion: 3.3
+        # 'TypeScript_3.4':
+        #   TypeScriptVersion: 3.4
     steps:
       - checkout: none
       - task: NodeTool@0
