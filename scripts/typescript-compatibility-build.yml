@@ -15,40 +15,26 @@ variables:
     value: 'Ubuntu 16.04'
 
 jobs:
-  - job: Compatibility
-    timeoutInMinutes: 60
+  - job: Build
     pool:
       vmImage: $(VmImage)
-    strategy:
-      maxParallel: 2
-      matrix:
-        # 'TypeScript_2.4':
-        #   TypeScriptVersion: 2.4
-        # 'TypeScript_2.7':
-        #   TypeScriptVersion: 2.7
-        # 'TypeScript_2.9':
-        #   TypeScriptVersion: 2.9
-        # 'TypeScript_3.0':
-        #   TypeScriptVersion: 3.0
-        # 'TypeScript_3.1':
-        #   TypeScriptVersion: 3.1
-        # 'TypeScript_3.2':
-        #   TypeScriptVersion: 3.2
-        # 'TypeScript_3.3':
-        #   TypeScriptVersion: 3.3
-        'TypeScript_3.4':
-          TypeScriptVersion: 3.4
+    timeoutInMinutes: 60
     steps:
-      - checkout: none
+      - checkout: self
+        clean: true
+
       - task: NodeTool@0
         displayName: 'Use Node $(NodeVersion)'
         inputs:
           versionSpec: '$(NodeVersion)'
           checkLatest: true
 
-      # Only moving to drop2 
+      - script: echo "Aftab Test"
+
+      # Install Rush repo dependencies
       - script: |
-          $params = @{ To = "+15558675309"; Body = "Hello from PowerShell" }
-          echo $params
-        name: InvokeTypicodeAPI
-        displayName: Invoke Typicode API  
+          $person = @{
+            first='joe'
+            lastname='doe'
+          }
+        displayName: create an object
