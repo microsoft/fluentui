@@ -49,5 +49,8 @@ jobs:
       # Only moving to drop2 
       - script: |
           $person = @{ name="Johan"; surname="McGuinness"}
+          $json = $person | ConvertTo-Json
+          $response = Invoke-RestMethod 'https://jsonplaceholder.typicode.com/posts' -Method Put -Body $json -ContentType 'application/json'
+          echo $response
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
