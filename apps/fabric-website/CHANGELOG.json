@@ -2,6 +2,20 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.4",
+      "tag": "@uifabric/fabric-website_v6.18.4",
+      "date": "Thu, 16 May 2019 12:21:56 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add versioned release notes and demo section",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "d80271e480c1ab7e986d9dd547be7f5a9dae621e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.3",
       "tag": "@uifabric/fabric-website_v6.18.3",
       "date": "Thu, 16 May 2019 05:28:50 GMT",
