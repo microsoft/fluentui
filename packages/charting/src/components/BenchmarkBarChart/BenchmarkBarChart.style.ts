@@ -2,14 +2,16 @@ import { IBenchmarkBarChartStyleProps, IBenchmarkBarChartStyle } from './Benchma
 
 export const getBenchmarkBarChartStyles = (props: IBenchmarkBarChartStyleProps): IBenchmarkBarChartStyle => {
   const { theme, width, benchmarkColor } = props;
-  const { palette } = theme!;
+  const { palette, fonts } = theme!;
 
   return {
-    root: {
-      width: width || 300,
-      fontFamily: `'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif`,
-      fontSize: '13px'
-    },
+    root: [
+      fonts.medium,
+      {
+        width: width || 300,
+        fontSize: '13px'
+      }
+    ],
     chartHeader: {
       margin: '5px 0'
     },
