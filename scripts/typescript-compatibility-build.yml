@@ -71,6 +71,9 @@ jobs:
     timeoutInMinutes: 60
     pool:
       vmImage: $(VmImage)
+    variables:
+      - name: releaseVersion
+        value: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
     strategy:
       maxParallel: 2
       matrix:
@@ -133,6 +136,14 @@ jobs:
         name: setMatrixVersionNamesStep
         displayName: Set matrix version names
 
+      # echo releaseVersion in Compatibility job
+      - script: |
+          echo "start with name"
+          echo $(releaseVersion)
+          echo "end with name"
+        name: whatEverInCompatibility
+        displayName: Echo variables in POST_Result job WITH NAME
+
   - job: POST_Result
     dependsOn: Build
     condition: always()
@@ -147,29 +158,23 @@ jobs:
     variables:
       - name: releaseVersion
         value: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
-      - name: releaseResult24
-        value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
-      - name: releaseResult27
-        value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
-      - name: releaseResult29
-        value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
+      # - name: releaseResult24
+      #   value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
+      # - name: releaseResult27
+      #   value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
+      # - name: releaseResult29
+      #   value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
     steps:
       # Echo variables
       - script: |
           echo "start"
           echo $(releaseVersion)
-          echo $(releaseResult24)
-          echo $(releaseResult27)
-          echo $(releaseResult29)
           echo "end"
         displayName: Echo variables in POST_Result job
 
       - script: |
           echo "start with name"
           echo $(releaseVersion)
-          echo $(releaseResult24)
-          echo $(releaseResult27)
-          echo $(releaseResult29)
           echo "end with name"
         name: whatEver
         displayName: Echo variables in POST_Result job WITH NAME
