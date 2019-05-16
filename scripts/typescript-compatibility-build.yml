@@ -108,7 +108,7 @@ jobs:
       # Save ReleaseId name
       # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
       - script: |
-          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
+          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'"
         name: setReleaseIdStep
         displayName: Save ReleaseId into a variable
 
@@ -116,6 +116,8 @@ jobs:
       - script: |
           echo "before"
           echo $(Build.StagingDirectory)/drop/*.tgz 
+          mkdir $(Build.StagingDirectory)/drop2
+          cp $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop2/$(PackageName).tgz
           mv $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop/$(PackageName).tgz
           echo "======"
           echo "after"
