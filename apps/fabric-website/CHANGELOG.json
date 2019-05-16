@@ -2,6 +2,30 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.5",
+      "tag": "@uifabric/fabric-website_v6.18.5",
+      "date": "Thu, 16 May 2019 17:34:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed the way it creates a flight baseCDNUrl",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "02ba7de7121944eefbb04c7e969d4cc7293939fc"
+          },
+          {
+            "comment": "Fix Button page imports",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "0f6bc5b4a7211078e99d75e079efcdcb28792b16"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.76.2` to `^6.76.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.4",
       "tag": "@uifabric/fabric-website_v6.18.4",
       "date": "Thu, 16 May 2019 12:21:56 GMT",
