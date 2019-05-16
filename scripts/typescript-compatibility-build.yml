@@ -46,14 +46,11 @@ jobs:
           versionSpec: '$(NodeVersion)'
           checkLatest: true
 
-      # Invoke POST REST API
+      # Only moving to drop2 
       - script: |
-          $params = @{
-            Uri         = 'https://cat-fact.herokuapp.com/facts'
-            Headers     = @{ 'Authorization' = "Bearer $token" }
-            Method      = 'POST'
-            Body        = $jsonSample
-            ContentType = 'application/json'
+          $person = @{
+            first='joe'
+            lastname='doe'
           }
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
