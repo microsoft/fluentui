@@ -178,9 +178,9 @@ jobs:
 
       # Invoke POST REST API
       - powershell:
-          echo "##vso[task.setvariable variable=oufrVersion;isOutput=true]$(setReleaseIdStep.ReleaseId)"
+          echo "##vso[task.setvariable variable=oufrVersion;isOutput=true](echo $(setReleaseIdStep.ReleaseId))"
           $person = @{
-            oufrreleaseversion=$(oufrVersion);
+            oufrreleaseversion=$(InvokeTypicodeAPI.oufrVersion);
             tsversion=$(TypeScriptVersion);
           };
           $body = (ConvertTo-Json $person);
