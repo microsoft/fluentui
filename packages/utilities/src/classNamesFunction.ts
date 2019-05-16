@@ -48,7 +48,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     styleProps: TStyleProps = {} as TStyleProps
   ): IProcessedStyleSet<TStyleSet> => {
     let current: Map<any, any> = map;
-    const disableCaching = options.disableCaching || !!styleProps;
+    const disableCaching = options.disableCaching;
 
     if (!options.disableCaching) {
       current = _traverseMap(map, styleFunctionOrObject as any);
@@ -74,7 +74,11 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     if (resultCount > MAX_CACHE_COUNT) {
       map.clear();
       resultCount = 0;
+
+      // Mutate the options passed in, that's all we can do.
       options.disableCaching = true;
+
+      console.log('MAX COUNT HIT');
 
       if (process.env.NODE_ENV !== 'production') {
         console.log('Styles are being recalculated far too frequently. Something is mutating the class over and over.');

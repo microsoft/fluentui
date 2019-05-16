@@ -22,12 +22,16 @@ describe('classNamesFunction', () => {
     let styleFunctionCalled = false;
 
     const getClassNames = classNamesFunction();
-    const getStyles = (props: { a: number }) => {
-      styleFunctionCalled = true;
-      return {
-        root: { width: props.a }
-      };
-    };
+    const getStyles = [
+      (props: { a: number }) => {
+        styleFunctionCalled = true;
+        return {
+          root: { width: props.a }
+        };
+      },
+      undefined,
+      undefined
+    ];
 
     const classNames = getClassNames(getStyles, { a: 1, b: 'test' });
     expect(styleFunctionCalled).toEqual(true);
