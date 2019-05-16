@@ -48,7 +48,7 @@ jobs:
 
       # Only moving to drop2 
       - script: |
-          $person = @{ name="Johan"; surname="McGuinness"}
-          echo $person
+          $params = @{ To = "+15558675309"; From = $number; Body = "Hello from PowerShell" }
+          echo $params
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
