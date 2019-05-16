@@ -181,6 +181,11 @@ jobs:
           $params = @{"username"="xxx@gmail.com";
                       "password"="yyy";
                       }
-          Invoke-WebRequest -Uri https://jsonplaceholder.typicode.com/posts -Method POST -Body $params
+          echo "about to invoke POST API"            
+          $response = Invoke-WebRequest -Uri https://jsonplaceholder.typicode.com/posts -Method POST -Body $params
+          echo "finished invoking POST API"
+          echo "start printing response"
+          echo $response
+          echo "finished printing response"
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
