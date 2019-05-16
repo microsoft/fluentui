@@ -182,7 +182,8 @@ jobs:
                       "compatibility"="true";
                       }
           echo "about to invoke POST API"            
-          $response = Invoke-WebRequest -Uri https://jsonplaceholder.typicode.com/posts -Method POST -Body $params
+          # $response = Invoke-WebRequest -Uri https://jsonplaceholder.typicode.com/posts -Method POST -Body $params
+          $response = Invoke-WebRequest -Uri https://jsonplaceholder.typicode.com/posts -Method POST -Body ($params|ConvertTo-Json) -ContentType "application/json"
           echo "finished invoking POST API"
           echo "start printing response"
           echo $response
