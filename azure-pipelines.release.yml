@@ -88,7 +88,7 @@ steps:
     displayName: 'Publish Artifact: oufr-version.txt'
 
   - script: |
-      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/
+      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
     workingDirectory: apps/fabric-website
     displayName: 'Generate Fabric Website Flight Manifest Files'
 
