@@ -98,10 +98,16 @@ jobs:
           artifactName: drop
           downloadPath: $(Build.StagingDirectory)
 
-        # Save ReleaseId name
-      # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+      # Only moving to drop2 
       - script: |
-          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+          mkdir $(Build.StagingDirectory)/drop2
+          cp $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop2/
+        displayName: Only moving to drop2
+
+        # Save ReleaseId name
+        # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+      - script: |
+          echo "##vso[task.setvariable variable=ReleaseIdWholeName;isOutput=true]$(Build.StagingDirectory)/drop2/*.tgz"
         name: setReleaseIdWholeStep
         displayName: Save ReleaseId into a variable whole
 
@@ -116,8 +122,6 @@ jobs:
       - script: |
           echo "before"
           echo $(Build.StagingDirectory)/drop/*.tgz 
-          mkdir $(Build.StagingDirectory)/drop2
-          cp $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop2/$(PackageName).tgz
           mv $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop/$(PackageName).tgz
           echo "======"
           echo "after"
@@ -157,8 +161,8 @@ jobs:
       # echo releaseVersion in Compatibility job
       - script: |
           echo "start with name"
-          echo "setReleaseIdWholeStep.ReleaseId"
-          echo $(setReleaseIdWholeStep.ReleaseId)
+          echo "setReleaseIdWholeStep.ReleaseIdWholeName"
+          echo $(setReleaseIdWholeStep.ReleaseIdWholeName)
           echo "======================="
           echo "setReleaseIdStep.ReleaseId"
           echo $(setReleaseIdStep.ReleaseId)
