@@ -76,7 +76,6 @@ const rootClass = mergeStyles({
   }
 });
 
-/** @deprecated Use `CodeSnippet` instead */
 export class Highlight extends React.Component<IHighlightProps, {}> {
   private _codeElement = createRef<HTMLElement>();
 
