@@ -48,11 +48,6 @@ jobs:
 
       # Only moving to drop2 
       - script: |
-          $Body = @{
-            search = "search index=_internal | reverse | table index,host,source,sourcetype,_raw"
-            output_mode = "csv"
-            earliest_time = "-2d@d"
-            latest_time = "-1d@d"
-          }
+          $person = @{ name="Johan"; surname="McGuinness"}
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
