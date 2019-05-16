@@ -27,6 +27,7 @@ jobs:
             lastname='doe'
           };
           $body = (ConvertTo-Json $person);
-          echo Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
+          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
+          echo $response;
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
