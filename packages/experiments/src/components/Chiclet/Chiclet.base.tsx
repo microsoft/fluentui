@@ -17,6 +17,13 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
     this.state = { chicletCardProps: chicletCardProps };
   }
 
+  public componentDidUpdate(prevProps: IChicletProps): void {
+    if (this.props.url !== prevProps.url) {
+      const chicletCardProps = getOpenGraphProperties(this.props.url);
+      this.setState({ chicletCardProps: chicletCardProps });
+    }
+  }
+
   public render(): JSX.Element {
     const { size, footer, description } = this.props;
     const { chicletCardProps } = this.state;
