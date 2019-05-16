@@ -75,7 +75,7 @@ exports[`ColorPicker renders correctly 1`] = `
             {
               background: white;
               border-radius: 50%;
-              border: 1px solid #ffffff;
+              border: 1px solid #8a8886;
               box-shadow: 0 3.2px 7.2px 0 rgba(0, 0, 0, 0.132), 0 0.6px 1.8px 0 rgba(0, 0, 0, 0.108);
               height: 20px;
               position: absolute;
@@ -89,7 +89,19 @@ exports[`ColorPicker renders correctly 1`] = `
             "top": "6%",
           }
         }
-      />
+      >
+        <div
+          className=
+              ms-ColorPicker-thumbInner
+              {
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                box-sizing: border-box;
+                height: 100%;
+                width: 100%;
+              }
+        />
+      </div>
     </div>
     <div
       className=
