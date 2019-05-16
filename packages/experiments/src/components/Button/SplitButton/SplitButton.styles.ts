@@ -22,13 +22,14 @@ const baseTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButton
 };
 
 const primaryTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
   return {
     backgroundColor: semanticColors.primaryButtonBackground,
     backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
     backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
     borderWidth: 0,
     color: semanticColors.primaryButtonText,
+    dividerColor: palette.white,
     highContrastBackgroundColor: 'WindowText',
     highContrastBackgroundColorHovered: 'Highlight',
     highContrastBackgroundColorPressed: 'Highlight',
@@ -46,6 +47,7 @@ const disabledTokens: ISplitButtonComponent['tokens'] = (props, theme): ISplitBu
     borderColorHovered: semanticColors.buttonBorderDisabled,
     borderColorPressed: semanticColors.buttonBorderDisabled,
     color: semanticColors.disabledText,
+    dividerColor: semanticColors.menuDivider,
     highContrastColor: 'GrayText'
   };
 };
@@ -98,7 +100,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
           selectors: {
             '+ *': {
-              backgroundColor: tokens.backgroundColorHovered,
+              backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColorHovered,
 
               selectors: {
                 [HighContrastSelector]: {
@@ -113,7 +115,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
 
           selectors: {
             '+ *': {
-              backgroundColor: tokens.backgroundColorPressed,
+              backgroundColor: props.primaryActionDisabled ? semanticColors.buttonBackgroundDisabled : tokens.backgroundColorPressed,
 
               selectors: {
                 [HighContrastSelector]: {
@@ -129,10 +131,10 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderBottomColor: tokens.borderColor,
       borderTopColor: tokens.borderColor,
       borderStyle: 'solid',
-      borderBottomWidth: tokens.borderWidth,
+      borderBottomWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
       borderLeftWidth: 0,
       borderRightWidth: 0,
-      borderTopWidth: tokens.borderWidth,
+      borderTopWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
       boxSizing: 'border-box',
       height: '100%',
       width: 'auto',
@@ -151,7 +153,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       }
     },
     splitDivider: {
-      backgroundColor: tokens.dividerColor,
+      backgroundColor: props.primaryActionDisabled ? semanticColors.menuDivider : tokens.dividerColor,
       boxSizing: 'border-box',
       display: 'inline-block',
       height: 'calc(100% - 14px)',
