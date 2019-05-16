@@ -46,13 +46,6 @@ jobs:
           versionSpec: '$(NodeVersion)'
           checkLatest: true
 
-      # Download build library
-      - task: DownloadBuildArtifacts@0
-        displayName: 'Download Build Artifacts'
-        inputs:
-          artifactName: drop
-          downloadPath: $(Build.StagingDirectory)
-
       # Invoke POST REST API
       - script: |
           $person = @{
