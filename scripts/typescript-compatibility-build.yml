@@ -181,7 +181,6 @@ jobs:
           $person = @{
             oufrreleaseversion=$env:setReleaseIdStep.ReleaseId;
             tsversion=$env:TypeScriptVersion;
-            compatibility='true'
           };
           $body = (ConvertTo-Json $person);
           $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
