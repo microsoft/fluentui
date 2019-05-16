@@ -48,7 +48,7 @@ jobs:
 
       # Move built package tarball to staging directory to reference later
       - script: |
-          mv *.tgz $(Build.StagingDirectory)/*.tgz
+          mv *.tgz $(Build.StagingDirectory)/.
         displayName: Move OUFR tarball to Build.StagingDirectory
 
       # Publish built library for validation job
