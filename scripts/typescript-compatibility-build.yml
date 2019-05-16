@@ -147,10 +147,21 @@ jobs:
     steps:
       # Echo variables
       - script: |
+          echo "start"
           echo $(releaseVersion)
           echo $(releaseResult24)
           echo $(releaseResult27)
           echo $(releaseResult29)
-      
+          echo "end"
         displayName: Echo variables in POST_Result job
+
+      - script: |
+          echo "start with name"
+          echo $(releaseVersion)
+          echo $(releaseResult24)
+          echo $(releaseResult27)
+          echo $(releaseResult29)
+          echo "end with name"
+        name: whatEver
+        displayName: Echo variables in POST_Result job WITH NAME
 
