@@ -121,7 +121,7 @@ jobs:
 
       # Echo compatMap
       - script: |
-          echo "$(<$(Build.StagingDirectory)/drop/compatMap.txt)"
+          cat $(Build.StagingDirectory)/drop/compatMap.txt
         displayName: Echo compatMap
 
       # Build sample app consuming Office UI Fabric React to test TypeScript version compatibility
