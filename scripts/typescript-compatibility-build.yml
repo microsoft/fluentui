@@ -179,7 +179,7 @@ jobs:
       # Invoke POST REST API
       - powershell:
           echo "===="
-          $justTheVersion = $(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'
+          $justTheVersion = echo $(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'
           echo $justTheVersion
           echo "===="
           echo "ReleaseId"
