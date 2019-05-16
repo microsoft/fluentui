@@ -178,13 +178,13 @@ jobs:
 
       # Invoke POST REST API
       - powershell:
-          echo "$ReleaseId"
+          echo "ReleaseId"
           echo $ReleaseId
           echo "====="
-          echo "$setReleaseIdStep.ReleaseId"
+          echo "setReleaseIdStep.ReleaseId"
           echo $setReleaseIdStep.ReleaseId
           echo "====="
-          echo "($setReleaseIdStep.ReleaseId)"
+          echo "(setReleaseIdStep.ReleaseId)"
           echo $(setReleaseIdStep.ReleaseId)
 
           $person = @{
