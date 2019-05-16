@@ -139,12 +139,18 @@ jobs:
     timeoutInMinutes: 5
     pool:
       vmImage: $(VmImage)
+    variables:
+      releaseVersion: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
+      releaseResult24: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
+      releaseResult27: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
+      releaseResult29: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
     steps:
       # Echo variables
       - script: |
-          echo $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
-          echo $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
-          echo $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
-          echo $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
+          echo $(releaseVersion)
+          echo $(releaseResult24)
+          echo $(releaseResult27)
+          echo $(releaseResult29)
+      
         displayName: Echo variables in POST_Result job
 
