@@ -132,7 +132,6 @@ jobs:
 
   - job: POST_Result
     dependsOn: Compatibility
-    condition: succeeded()
     timeoutInMinutes: 5
     pool:
       vmImage: $(VmImage)
