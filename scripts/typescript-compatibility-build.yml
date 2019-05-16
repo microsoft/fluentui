@@ -99,7 +99,7 @@ jobs:
           downloadPath: $(Build.StagingDirectory)
 
       # Save ReleaseId name
-      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'"
+      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'"
         name: setReleaseIdStep
         displayName: Save ReleaseId into a variable
 
@@ -143,4 +143,3 @@ jobs:
           echo "end with name"
         name: whatEverInCompatibility
         displayName: Echo variables in POST_Result job WITH NAME
-        
