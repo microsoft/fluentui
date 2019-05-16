@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Rotated the x-axis text for date values",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "polu.balakrishna96@gmail.com"
+}
