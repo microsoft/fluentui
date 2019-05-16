@@ -197,7 +197,8 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     defaultStateBackground: p.neutralLighterAlt,
 
     errorText: !isInverted ? p.redDark : '#ff5f5f',
-    warningText: !isInverted ? '#333333' : '#ffffff',
+    warningText: !isInverted ? '#323130' : '#ffffff',
+    successText: !isInverted ? '#107C10' : '#ffffff',
     errorBackground: !isInverted ? 'rgba(245, 135, 145, .2)' : 'rgba(232, 17, 35, .5)',
     blockingBackground: !isInverted ? 'rgba(250, 65, 0, .2)' : 'rgba(234, 67, 0, .5)',
     warningBackground: !isInverted ? 'rgba(255, 200, 10, .2)' : 'rgba(255, 251, 0, .6)',

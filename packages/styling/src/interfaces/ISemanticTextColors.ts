@@ -71,7 +71,10 @@ export interface ISemanticTextColors {
    * The color of text on errorBackground, warningBackground, blockingBackground, or successBackground.
    */
   warningText: string;
-
+  /**
+   * The color of text on success text.
+   */
+  successText: string;
   /**
    * The color of input text.
    */
