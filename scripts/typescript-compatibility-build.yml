@@ -20,17 +20,6 @@ jobs:
       vmImage: $(VmImage)
     timeoutInMinutes: 60
     steps:
-      - checkout: self
-        clean: true
-
-      - task: NodeTool@0
-        displayName: 'Use Node $(NodeVersion)'
-        inputs:
-          versionSpec: '$(NodeVersion)'
-          checkLatest: true
-
-      - script: echo "Aftab Test"
-
      # Invoke POST REST API
       - powershell:
           $person = @{
