@@ -46,17 +46,10 @@ jobs:
           npm pack ./packages/$(PackageName)
         displayName: Run npm pack $(PackageName)
 
-      # Save ReleaseId name
-      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'"
-        name: setReleaseIdStep
-        displayName: Save ReleaseId into a variable
-
-      # Rename built package tarball to reference later
+      # Move built package tarball to staging directory to reference later
       - script: |
-          echo "setReleaseIdStep.ReleaseId"
-          echo $(setReleaseIdStep.ReleaseId)
-          mv *.tgz $(Build.StagingDirectory)/$(PackageName).tgz
-        displayName: Move $(PackageName).tgz to Build.StagingDirectory
+          mv *.tgz $(Build.StagingDirectory)/*.tgz
+        displayName: Move OUFR tarball to Build.StagingDirectory
 
       # Publish built library for validation job
       - task: PublishBuildArtifacts@1
@@ -71,8 +64,6 @@ jobs:
     timeoutInMinutes: 60
     pool:
       vmImage: $(VmImage)
-    variables:
-      releaseVersion: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
     strategy:
       maxParallel: 2
       matrix:
@@ -107,6 +98,16 @@ jobs:
           artifactName: drop
           downloadPath: $(Build.StagingDirectory)
 
+      # Save ReleaseId name
+      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'"
+        name: setReleaseIdStep
+        displayName: Save ReleaseId into a variable
+
+      # Move built package tarball to staging directory to reference later
+      - script: |
+          mv $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop/$(PackageName).tgz
+        displayName: Move OUFR tarball to Build.StagingDirectory
+
       # Clone repository containing versioned TypeScript sample apps
       - script: |
           git clone $(CompatRepoUrl) $(Build.StagingDirectory)/__tests__
@@ -138,43 +139,8 @@ jobs:
       # echo releaseVersion in Compatibility job
       - script: |
           echo "start with name"
-          echo $(releaseVersion)
+          echo $(setReleaseIdStep.ReleaseId)
           echo "end with name"
         name: whatEverInCompatibility
         displayName: Echo variables in POST_Result job WITH NAME
-
-  - job: POST_Result
-    dependsOn: Build
-    condition: always()
-    timeoutInMinutes: 5
-    pool:
-      vmImage: $(VmImage)
-    # variables:
-    #   releaseVersion: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
-    #   releaseResult24: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
-    #   releaseResult27: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
-    #   releaseResult29: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
-    variables:
-      - name: releaseVersion
-        value: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
-      # - name: releaseResult24
-      #   value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
-      # - name: releaseResult27
-      #   value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
-      # - name: releaseResult29
-      #   value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
-    steps:
-      # Echo variables
-      - script: |
-          echo "start"
-          echo $(releaseVersion)
-          echo "end"
-        displayName: Echo variables in POST_Result job
-
-      - script: |
-          echo "start with name"
-          echo $(releaseVersion)
-          echo "end with name"
-        name: whatEver
-        displayName: Echo variables in POST_Result job WITH NAME
-
+        
