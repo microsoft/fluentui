@@ -190,6 +190,14 @@ jobs:
 
       # Invoke POST REST API
       - script: |
-          curl -i -H "Content-type: application/json" -X POST https://jsonplaceholder.typicode.com/posts -d '{"oufrreleaseversion":$(setReleaseIdStep.ReleaseId),"tsversion":$(TypeScriptVersion)}'
+          Response=$(curl -i -H "Content-type: application/json" -X POST https://jsonplaceholder.typicode.com/posts -d '
+          {
+            "oufrreleaseversion":$(setReleaseIdStep.ReleaseId),
+            "tsversion":$(TypeScriptVersion)
+          }')
+          echo $Response
+          echo "====="
+          echo "$Response"
+          echo "====="
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API
