@@ -37,13 +37,12 @@ jobs:
             first='joe';
             lastname='doe'
           };
-          echo $person
-          echo "==="
+          echo $person;
+          echo "===";
           $body = (ConvertTo-Json $person);
-          echo $body
-          echo "====="
-          Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json'
-          echo $response
-          echo "===="
+          echo $body;
+          echo "=====";
+          echo Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
+          echo "====";
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
