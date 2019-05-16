@@ -50,7 +50,7 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         width: 20,
         height: 20,
         background: 'white',
-        border: `1px solid ${palette.neutralTertiary}`,
+        border: `1px solid ${palette.white}`,
         borderRadius: '50%',
         boxShadow: effects.elevation8,
         transform: 'translate(-50%, -50%)'
