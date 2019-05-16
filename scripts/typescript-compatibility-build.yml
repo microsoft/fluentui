@@ -31,7 +31,14 @@ jobs:
 
       - script: echo "Aftab Test"
 
-      # Install Rush repo dependencies
-      - script: |
-          $params = @{ To = "+15558675309"; Body = "Hello from PowerShell" }
-        displayName: create an object
+     # Invoke POST REST API
+      - powershell:
+          $person = @{
+            first='joe'
+            lastname='doe'
+          }
+          $json = $person | ConvertTo-Json
+          $response = Invoke-RestMethod 'https://jsonplaceholder.typicode.com/posts' -Method Put -Body $json -ContentType 'application/json'
+          echo $response
+        name: InvokeTypicodeAPI
+        displayName: Invoke Typicode API  
