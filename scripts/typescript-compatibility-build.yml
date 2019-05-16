@@ -139,11 +139,20 @@ jobs:
     timeoutInMinutes: 5
     pool:
       vmImage: $(VmImage)
+    # variables:
+    #   releaseVersion: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
+    #   releaseResult24: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
+    #   releaseResult27: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
+    #   releaseResult29: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
     variables:
-      releaseVersion: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
-      releaseResult24: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
-      releaseResult27: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
-      releaseResult29: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
+    - name: releaseVersion
+      value: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
+    - name: releaseResult24
+      value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
+    - name: releaseResult27
+      value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
+    - name: releaseResult29
+      value: $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
     steps:
       # Echo variables
       - script: |
