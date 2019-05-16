@@ -179,7 +179,8 @@ jobs:
       # Invoke POST REST API
       - powershell:
           $person = @{
-            tsversion=$(TypeScriptVersion);
+            oufrreleaseversion=$env:setReleaseIdStep.ReleaseId;
+            tsversion=$env:TypeScriptVersion;
             compatibility='true'
           };
           $body = (ConvertTo-Json $person);
