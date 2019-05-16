@@ -98,8 +98,13 @@ jobs:
           artifactName: drop
           downloadPath: $(Build.StagingDirectory)
 
+        # Save ReleaseId name
+      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+        name: setReleaseIdWholeStep
+        displayName: Save ReleaseId into a variable whole
+
       # Save ReleaseId name
-      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'"
+      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
         name: setReleaseIdStep
         displayName: Save ReleaseId into a variable
 
@@ -139,6 +144,7 @@ jobs:
       # echo releaseVersion in Compatibility job
       - script: |
           echo "start with name"
+          echo $(setReleaseIdWholeStep.ReleaseId)
           echo $(setReleaseIdStep.ReleaseId)
           echo "end with name"
         name: whatEverInCompatibility
