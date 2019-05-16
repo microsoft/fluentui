@@ -29,8 +29,6 @@ jobs:
           versionSpec: '$(NodeVersion)'
           checkLatest: true
 
-      - script: echo "Aftab Test"
-
       # Install Rush repo dependencies
       - script: |
           node common/scripts/install-run-rush.js install --bypass-policy
@@ -46,10 +44,16 @@ jobs:
           npm pack ./packages/$(PackageName)
         displayName: Run npm pack $(PackageName)
 
-      # Move built package tarball to staging directory to reference later
+      # Save ReleaseId into a txt artifact file
       - script: |
-          mv *.tgz $(Build.StagingDirectory)/.
-        displayName: Move OUFR tarball to Build.StagingDirectory
+          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'" >> $(Build.StagingDirectory)/compatMap.txt
+        name: setReleaseIdStep
+        displayName: Save ReleaseId into a txt artifact file
+
+      # Rename built package tarball to reference later
+      - script: |
+          mv *.tgz $(Build.StagingDirectory)/$(PackageName).tgz
+        displayName: Move $(PackageName).tgz to Build.StagingDirectory
 
       # Publish built library for validation job
       - task: PublishBuildArtifacts@1
@@ -67,21 +71,21 @@ jobs:
     strategy:
       maxParallel: 2
       matrix:
-        # 'TypeScript_2.4':
-        #   TypeScriptVersion: 2.4
-        # 'TypeScript_2.7':
+        'TypeScript 2.4':
+          TypeScriptVersion: 2.4
+        # 'TypeScript 2.7':
         #   TypeScriptVersion: 2.7
-        # 'TypeScript_2.9':
+        # 'TypeScript 2.9':
         #   TypeScriptVersion: 2.9
-        # 'TypeScript_3.0':
+        # 'TypeScript 3.0':
         #   TypeScriptVersion: 3.0
-        # 'TypeScript_3.1':
+        # 'TypeScript 3.1':
         #   TypeScriptVersion: 3.1
-        # 'TypeScript_3.2':
+        # 'TypeScript 3.2':
         #   TypeScriptVersion: 3.2
-        # 'TypeScript_3.3':
-        #   TypeScriptVersion: 3.3
-        'TypeScript_3.4':
+        'TypeScript 3.3':
+          TypeScriptVersion: 3.3
+        'TypeScript 3.4':
           TypeScriptVersion: 3.4
     steps:
       - checkout: none
@@ -97,36 +101,6 @@ jobs:
         inputs:
           artifactName: drop
           downloadPath: $(Build.StagingDirectory)
-
-      # Only moving to drop2 
-      - script: |
-          mkdir $(Build.StagingDirectory)/drop2
-          cp $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop2/
-        displayName: Only moving to drop2
-
-        # Save ReleaseId name
-        # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
-      - script: |
-          echo "##vso[task.setvariable variable=ReleaseIdWholeName;isOutput=true]$(Build.StagingDirectory)/drop2/*.tgz"
-        name: setReleaseIdWholeStep
-        displayName: Save ReleaseId into a variable whole
-
-      # Save ReleaseId name
-      # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
-      - script: |
-          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'"
-        name: setReleaseIdStep
-        displayName: Save ReleaseId into a variable
-
-      # Move built package tarball to staging directory to reference later
-      - script: |
-          echo "before"
-          echo $(Build.StagingDirectory)/drop/*.tgz 
-          mv $(Build.StagingDirectory)/drop/*.tgz $(Build.StagingDirectory)/drop/$(PackageName).tgz
-          echo "======"
-          echo "after"
-          echo $(Build.StagingDirectory)/drop/*.tgz 
-        displayName: Move OUFR tarball to Build.StagingDirectory
 
       # Clone repository containing versioned TypeScript sample apps
       - script: |
@@ -145,72 +119,18 @@ jobs:
         displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
 
+      # Echo compatMap
+      - script: |
+          echo "$(<$(Build.StagingDirectory)/drop/compatMap.txt)"
+        displayName: Echo compatMap
+
       # Build sample app consuming Office UI Fabric React to test TypeScript version compatibility
       - script: |
           node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
         displayName: Build TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__
 
-      # Set matrix version names
-      # - powershell: echo "##vso[task.setvariable variable=$(TypeScriptVersion);isOutput=true]truevalue"
+      # Write successful ts versions to compatMap.txt
       - script: |
-          echo "##vso[task.setvariable variable=TypeScriptVersion;isOutput=true]truevalue"
-        name: setMatrixVersionNamesStep
-        displayName: Set matrix version names
-
-      # echo releaseVersion in Compatibility job
-      - script: |
-          echo "start with name"
-          echo "setReleaseIdWholeStep.ReleaseIdWholeName"
-          echo $(setReleaseIdWholeStep.ReleaseIdWholeName)
-          echo "======================="
-          echo "setReleaseIdStep.ReleaseId"
-          echo $(setReleaseIdStep.ReleaseId)
-          echo "======================="
-          echo "TypeScriptVersion"
-          echo $(setMatrixVersionNamesStep.TypeScriptVersion)
-          echo "end with name"
-          echo "======================="
-          echo "======================="
-          echo "======================="
-        name: whatEverInCompatibility
-        displayName: Echo variables in POST_Result job WITH NAME
-
-      # Invoke POST REST API
-      - powershell:
-          Write-Host "===="
-          $justTheVersion = $(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'
-          Write-Host $justTheVersion
-          Write-Host "===="
-          Write-Host "ReleaseId"
-          Write-Host $ReleaseId
-          Write-Host "====="
-          Write-Host "setReleaseIdStep.ReleaseId"
-          Write-Host $setReleaseIdStep.ReleaseId
-          Write-Host "====="
-          Write-Host "(setReleaseIdStep.ReleaseId)"
-          Write-Host $(setReleaseIdStep.ReleaseId)
-
-          $person = @{
-            oufrreleaseversion="$(setReleaseIdStep.ReleaseId)";
-            tsversion=$(TypeScriptVersion);
-          };
-          $body = (ConvertTo-Json $person);
-          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
-          Write-Host $response;
-        name: InvokeTypicodeAPI
-        displayName: Invoke Typicode API  
-
-      # # Invoke POST REST API
-      # - script: |
-      #     Response=$(curl -i -H "Content-type: application/json" -X POST https://jsonplaceholder.typicode.com/posts -d '
-      #     {
-      #       "oufrreleaseversion":$(setReleaseIdStep.ReleaseId),
-      #       "tsversion":$(TypeScriptVersion)
-      #     }')
-      #     echo $Response
-      #     echo "====="
-      #     echo "$Response"
-      #     echo "====="
-      #   name: InvokeTypicodeAPI
-      #   displayName: Invoke Typicode API
+          echo $(TypeScriptVersion) >> $(Build.StagingDirectory)/drop/compatMap.txt
+        displayName: Write successful ts versions to compatMap.txt 
