@@ -74,8 +74,8 @@ jobs:
     strategy:
       maxParallel: 2
       matrix:
-        'TypeScript_2.4':
-          TypeScriptVersion: 2.4
+        # 'TypeScript_2.4':
+        #   TypeScriptVersion: 2.4
         'TypeScript_2.7':
           TypeScriptVersion: 2.7
         'TypeScript_2.9':
@@ -134,7 +134,7 @@ jobs:
         displayName: Set matrix version names
 
   - job: POST_Result
-    dependsOn: Compatibility
+    dependsOn: Build
     condition: always()
     timeoutInMinutes: 5
     pool:
