@@ -14,10 +14,10 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style"
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style"
   },
   "disabledTasks": [
     "sass",
@@ -26,7 +26,8 @@
   ],
   "devDependencies": {
     "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2"
+    "@uifabric/tslint-rules": "^1.0.2",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@uifabric/set-version": "^1.1.3",

@@ -4,12 +4,12 @@
   "version": "6.0.0",
   "private": true,
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "start": "node ../../scripts/just.js dev",
-    "jest-dom": "node ../../scripts/just.js "
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
+    "start": "npx just-scripts dev",
+    "jest-dom": "npx just-scripts "
   },
   "disabledTasks": [
     "verify-api-extractor",
@@ -28,7 +28,8 @@
     "jest-environment-node": "23.4.0",
     "jest-environment-puppeteer": "3.9.0",
     "jest-puppeteer": "3.5.1",
-    "puppeteer": "^1.13.0"
+    "puppeteer": "^1.13.0",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@uifabric/set-version": "^1.1.3",

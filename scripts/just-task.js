@@ -1,6 +1,6 @@
 // @ts-check
 
-const just = require('just-task');
+const just = require('just-scripts');
 const { task, series, parallel, condition, option, argv, logger, addResolvePath } = just;
 
 const path = require('path');
@@ -21,8 +21,6 @@ const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const perfTest = require('./tasks/perf-test');
 
-let packageJson;
-
 function preset() {
   // this add s a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
@@ -37,29 +35,37 @@ function preset() {
   // Build only commonjs (not other TS variants) but still run other tasks
   option('commonjs');
 
-  registerTask('clean', clean);
-  registerTask('copy', copy);
-  registerTask('jest', jest);
-  registerTask('jest-watch', jestWatch);
-  registerTask('jest-dom', jestDom);
-  registerTask('sass', sass);
-  registerTask('ts:commonjs', ts.commonjs);
-  registerTask('ts:esm', ts.esm);
-  registerTask('ts:amd', ts.amd);
-  registerTask('tslint', tslint);
-  registerTask('ts:commonjs-only', ts.commonjsOnly);
-  registerTask('webpack', webpack);
-  registerTask('webpack-dev-server', webpackDevServer);
-  registerTask('verify-api-extractor', verifyApiExtractor);
-  registerTask('update-api-extractor', updateApiExtractor);
-  registerTask('lint-imports', lintImports);
-  registerTask('prettier', prettier);
-  registerTask('bundle-size-collect', bundleSizeCollect);
-  registerTask('check-for-modified-files', checkForModifiedFiles);
-  registerTask('generate-version-files', generateVersionFiles);
-  registerTask('perf-test', perfTest);
+  task('clean', clean);
+  task('copy', copy);
+  task('jest', jest);
+  task('jest-watch', jestWatch);
+  task('jest-dom', jestDom);
+  task('sass', sass);
+  task('ts:commonjs', ts.commonjs);
+  task('ts:esm', ts.esm);
+  task('ts:amd', ts.amd);
+  task('tslint', tslint);
+  task('ts:commonjs-only', ts.commonjsOnly);
+  task('webpack', webpack);
+  task('webpack-dev-server', webpackDevServer);
+  task('verify-api-extractor', verifyApiExtractor);
+  task('update-api-extractor', updateApiExtractor);
+  task('lint-imports', lintImports);
+  task('prettier', prettier);
+  task('bundle-size-collect', bundleSizeCollect);
+  task('check-for-modified-files', checkForModifiedFiles);
+  task('generate-version-files', generateVersionFiles);
+  task('perf-test', perfTest);
 
-  task('ts', parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min)));
+  task(
+    'ts',
+    argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min))
+  );
+
+  task('validate', series('tslint', 'jest', 'lint-imports'));
+  task('code-style', series('prettier', 'tslint'));
+  task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
+  task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
 
   task(
     'build',
@@ -68,11 +74,9 @@ function preset() {
       'copy',
       'sass',
       parallel(
-        condition('tslint', () => !argv().min),
-        condition('jest', () => !argv().min),
+        condition('validate', () => !argv().min),
         series(
-          argv().commonjs ? 'ts:commonjs-only' : 'ts',
-          condition('lint-imports', () => !argv().min),
+          'ts',
           // verify-api-extractor must always be run now because the api-docs package depends on its output
           parallel(condition('webpack', () => !argv().min), 'verify-api-extractor')
         )
@@ -84,45 +88,11 @@ function preset() {
   task('build-jest-serializer-merge-styles', series('ts', 'jest'));
 
   task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
-  task('code-style', series('prettier', 'tslint'));
-  task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
-  task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
+
   task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom', webpackDevServerWithCompileResolution.done));
 }
 
-module.exports = preset;
-preset.just = just;
-
-// Utility functions
-function getPackage() {
-  if (packageJson) {
-    return packageJson;
-  }
-
-  let packagePath = path.resolve(process.cwd(), 'package.json');
-
-  if (fs.existsSync(packagePath)) {
-    packageJson = JSON.parse(fs.readFileSync(packagePath, 'utf8'));
-    return packageJson;
-  }
-
-  return undefined;
-}
-
-function getDisabledTasks() {
-  const pkgJson = getPackage();
-  return (pkgJson && pkgJson.disabledTasks) || [];
-}
-
-function registerTask(name, taskFunction) {
-  const disabledTasks = getDisabledTasks();
-
-  task(
-    name,
-    disabledTasks.includes(name)
-      ? () => {
-          logger.info(`${name} task is disabled in package.json`);
-        }
-      : taskFunction
-  );
-}
+module.exports = {
+  preset,
+  just
+};

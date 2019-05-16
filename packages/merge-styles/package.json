@@ -14,11 +14,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "start-test": "node ../../scripts/just.js jest-watch",
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
+    "start-test": "npx just-scripts jest-watch",
     "update-api": "node ../../scripts/update-api.js"
   },
   "disabledTasks": [
@@ -28,7 +28,8 @@
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2"
+    "@uifabric/tslint-rules": "^1.0.2",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@uifabric/set-version": "^1.1.3",

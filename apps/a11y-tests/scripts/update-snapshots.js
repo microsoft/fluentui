@@ -4,8 +4,8 @@ const concurrently = require('concurrently');
 
 concurrently(
   [
-    'cd ../fabric-website-resources && node ../../scripts/just.js webpack-dev-server',
-    'npx wait-on http://localhost:4322 && node ../../scripts/just.js jest -u'
+    'cd ../fabric-website-resources && npx just-scripts webpack-dev-server',
+    'npx wait-on http://localhost:4322 && npx just-scripts jest -u'
   ],
   {
     killOthers: ['success', 'failure'],

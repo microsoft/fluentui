@@ -8,10 +8,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build-commonjs-only",
-    "code-style": "node ../../scripts/just.js code-style",
-    "clean": "node ../../scripts/just.js clean",
-    "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5"
+    "build": "npx just-scripts build-commonjs-only",
+    "code-style": "npx just-scripts code-style",
+    "clean": "npx just-scripts clean",
+    "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5",
+    "just": "npx just-scripts"
   },
   "disabledTasks": [
     "copy",
@@ -24,7 +25,8 @@
     "@types/webpack": "4.4.0",
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
-    "webpack": "4.29.5"
+    "webpack": "4.29.5",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "loader-utils": "^1.1.0",

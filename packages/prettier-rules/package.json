@@ -6,9 +6,13 @@
   "scripts": {
     "clean": "",
     "build": "node -v",
-    "code-style": "node ../../scripts/just.js code-style"
+    "code-style": "npx just-scripts code-style",
+    "just": "npx just-scripts"
   },
   "disabledTasks": [
     "verify-api-extractor"
-  ]
+  ],
+  "devDependencies": {
+    "@uifabric/build": "*"
+  }
 }

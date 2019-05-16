@@ -4,12 +4,13 @@
   "version": "6.0.0",
   "private": true,
   "scripts": {
-    "build": "node ../../scripts/just.js build-commonjs-only",
+    "build": "npx just-scripts build-commonjs-only",
     "clean": "",
-    "code-style": "node ../../scripts/just.js code-style",
+    "code-style": "npx just-scripts code-style",
     "screener": "screener-storybook --conf screener.config.js",
     "screener:local": "screener-storybook --conf screener.local.config.js --debug",
-    "start": "start-storybook --port 5555"
+    "start": "start-storybook --port 5555",
+    "just": "npx just-scripts"
   },
   "devDependencies": {
     "@storybook/addons": "^3.0.0",
@@ -33,7 +34,8 @@
     "screener-runner": "^0.10.15",
     "screener-storybook": "^0.16.8",
     "storybook-readme": "^3.3.0",
-    "style-loader": "^0.21.0"
+    "style-loader": "^0.21.0",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@uifabric/experiments": "^6.76.2",

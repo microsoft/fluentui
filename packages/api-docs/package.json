@@ -6,9 +6,9 @@
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build && node ./lib-commonjs/generatePageJsonFiles.js",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean"
+    "build": "npx just-scripts build && node ./lib-commonjs/generatePageJsonFiles.js",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean"
   },
   "disabledTasks": [
     "copy",
@@ -25,7 +25,8 @@
     "@uifabric/styling": "^6.47.6",
     "@uifabric/merge-styles": "^6.17.3",
     "@uifabric/utilities": "^6.38.3",
-    "office-ui-fabric-react": "^6.182.1"
+    "office-ui-fabric-react": "^6.182.1",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.8",

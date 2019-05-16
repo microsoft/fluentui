@@ -7,10 +7,10 @@
     "lib/version.js"
   ],
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
     "start": "node ./server/index.js"
   },
   "disabledTasks": [
@@ -26,7 +26,8 @@
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "express": "^4.16.3",
-    "compression": "^1.7.2"
+    "compression": "^1.7.2",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",

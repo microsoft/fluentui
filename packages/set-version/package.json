@@ -14,8 +14,9 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "code-style": "node ../../scripts/just.js code-style"
+    "build": "npx just-scripts build",
+    "code-style": "npx just-scripts code-style",
+    "just": "npx just-scripts"
   },
   "disabledTasks": [
     "copy",
@@ -25,7 +26,8 @@
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2"
+    "@uifabric/tslint-rules": "^1.0.2",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "tslib": "^1.7.1"

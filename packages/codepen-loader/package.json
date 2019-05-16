@@ -11,12 +11,12 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build --commonjs",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "just": "node ../../scripts/just.js",
-    "start-test": "node ../../scripts/just.js jest-watch",
-    "update-snapshots": "node ../../scripts/just.js jest -u"
+    "build": "npx just-scripts build --commonjs",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
+    "just": "npx just-scripts",
+    "start-test": "npx just-scripts jest-watch",
+    "update-snapshots": "npx just-scripts jest -u"
   },
   "disabledTasks": [
     "webpack",
@@ -32,7 +32,8 @@
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "ts-jest": "^22.4.6",
-    "webpack": "4.29.5"
+    "webpack": "4.29.5",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "babylon": "^7.0.0-beta.47",
