@@ -3,8 +3,8 @@ import { Checkbox } from 'office-ui-fabric-react';
 import { ControlsAreaPage, IControlsPageProps } from '../ControlsAreaPage';
 import { ButtonPageProps } from './ButtonPage.doc';
 import * as exampleStylesImport from 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
-import { Platforms } from 'src/interfaces/Platforms';
-import { IPageSectionProps, Markdown } from '../../../../../../packages/example-app-base/lib/index2';
+import { Platforms } from '../../../interfaces/Platforms';
+import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
 const exampleStyles: any = exampleStylesImport;
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/ButtonPage/';
@@ -50,10 +50,10 @@ export class ButtonPage extends React.Component<
     return (
       <ControlsAreaPage
         {...this.props}
+        title="Button"
         {...buttonPageProps[this.props.platform]}
         exampleKnobs={this.renderKnobs()}
         otherSections={this._otherSections(this.props.platform)}
-        title="Button"
       />
     );
   }
