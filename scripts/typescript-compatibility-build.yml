@@ -99,12 +99,16 @@ jobs:
           downloadPath: $(Build.StagingDirectory)
 
         # Save ReleaseId name
-      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+      # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
+      - script: |
+          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz"
         name: setReleaseIdWholeStep
         displayName: Save ReleaseId into a variable whole
 
       # Save ReleaseId name
-      - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
+      # - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
+      - script: |
+          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]$(Build.StagingDirectory)/drop/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop/office-ui-fabric-react-).*(?=.tgz)'"
         name: setReleaseIdStep
         displayName: Save ReleaseId into a variable
 
@@ -142,7 +146,9 @@ jobs:
         workingDirectory: $(Build.StagingDirectory)/__tests__
 
       # Set matrix version names
-      - powershell: echo "##vso[task.setvariable variable=$(TypeScriptVersion);isOutput=true]truevalue"
+      # - powershell: echo "##vso[task.setvariable variable=$(TypeScriptVersion);isOutput=true]truevalue"
+      - script: |
+          echo "##vso[task.setvariable variable=TypeScriptVersion;isOutput=true]truevalue"
         name: setMatrixVersionNamesStep
         displayName: Set matrix version names
 
@@ -155,7 +161,8 @@ jobs:
           echo "setReleaseIdStep.ReleaseId"
           echo $(setReleaseIdStep.ReleaseId)
           echo "======================="
-          echo $(setMatrixVersionNamesStep.$(TypeScriptVersion))
+          echo "TypeScriptVersion")
+          echo $(setMatrixVersionNamesStep.TypeScriptVersion)
           echo "end with name"
         name: whatEverInCompatibility
         displayName: Echo variables in POST_Result job WITH NAME
