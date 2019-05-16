@@ -72,8 +72,7 @@ jobs:
     pool:
       vmImage: $(VmImage)
     variables:
-      - name: releaseVersion
-        value: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
+      releaseVersion: $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
     strategy:
       maxParallel: 2
       matrix:
