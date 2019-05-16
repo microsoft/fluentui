@@ -178,26 +178,26 @@ jobs:
 
       # Invoke POST REST API
       - powershell:
-          echo "===="
-          $justTheVersion = echo $(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'
-          echo $justTheVersion
-          echo "===="
-          echo "ReleaseId"
-          echo $ReleaseId
-          echo "====="
-          echo "setReleaseIdStep.ReleaseId"
-          echo $setReleaseIdStep.ReleaseId
-          echo "====="
-          echo "(setReleaseIdStep.ReleaseId)"
-          echo $(setReleaseIdStep.ReleaseId)
+          Write-Host "===="
+          $justTheVersion = $(Build.StagingDirectory)/drop2/*.tgz | grep -oP '(?<=$(Build.StagingDirectory)/drop2/office-ui-fabric-react-).*(?=.tgz)'
+          Write-Host $justTheVersion
+          Write-Host "===="
+          Write-Host "ReleaseId"
+          Write-Host $ReleaseId
+          Write-Host "====="
+          Write-Host "setReleaseIdStep.ReleaseId"
+          Write-Host $setReleaseIdStep.ReleaseId
+          Write-Host "====="
+          Write-Host "(setReleaseIdStep.ReleaseId)"
+          Write-Host $(setReleaseIdStep.ReleaseId)
 
           $person = @{
-            oufrreleaseversion=$justTheVersion;
+            oufrreleaseversion="$(setReleaseIdStep.ReleaseId)";
             tsversion=$(TypeScriptVersion);
           };
           $body = (ConvertTo-Json $person);
           $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
-          echo $response;
+          Write-Host $response;
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
 
