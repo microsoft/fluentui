@@ -180,7 +180,7 @@ jobs:
       - powershell:
           $oufrVersion = echo $(setReleaseIdStep.ReleaseId);
           $person = @{
-            oufrreleaseversion=$oufrVersion;
+            oufrreleaseversion=$(oufrVersion);
             tsversion=$(TypeScriptVersion);
           };
           $body = (ConvertTo-Json $person);
