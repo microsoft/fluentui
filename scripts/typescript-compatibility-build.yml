@@ -46,7 +46,7 @@ jobs:
 
       # Save ReleaseId into a txt artifact file
       - script: |
-          echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'" >> $(Build.StagingDirectory)/compatMap.txt
+          echo "*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'" >> $(Build.StagingDirectory)/compatMap.txt
         name: setReleaseIdStep
         displayName: Save ReleaseId into a txt artifact file
 
