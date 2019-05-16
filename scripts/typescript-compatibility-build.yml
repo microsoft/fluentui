@@ -48,9 +48,12 @@ jobs:
 
       # Invoke POST REST API
       - script: |
-          $person = @{
-            first='joe'
-            lastname='doe'
+          $params = @{
+            Uri         = 'https://cat-fact.herokuapp.com/facts'
+            Headers     = @{ 'Authorization' = "Bearer $token" }
+            Method      = 'POST'
+            Body        = $jsonSample
+            ContentType = 'application/json'
           }
         name: InvokeTypicodeAPI
         displayName: Invoke Typicode API  
