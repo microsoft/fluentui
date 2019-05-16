@@ -161,7 +161,7 @@ jobs:
           echo "setReleaseIdStep.ReleaseId"
           echo $(setReleaseIdStep.ReleaseId)
           echo "======================="
-          echo "TypeScriptVersion")
+          echo "TypeScriptVersion"
           echo $(setMatrixVersionNamesStep.TypeScriptVersion)
           echo "end with name"
         name: whatEverInCompatibility
