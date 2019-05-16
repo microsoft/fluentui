@@ -176,28 +176,29 @@ jobs:
         name: whatEverInCompatibility
         displayName: Echo variables in POST_Result job WITH NAME
 
-      # # Invoke POST REST API
-      # - powershell:
-      #     $person = @{
-      #       oufrreleaseversion=$env:setReleaseIdStep.ReleaseId;
-      #       tsversion=$env:TypeScriptVersion;
-      #     };
-      #     $body = (ConvertTo-Json $person);
-      #     $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
-      #     echo $response;
-      #   name: InvokeTypicodeAPI
-      #   displayName: Invoke Typicode API  
-
       # Invoke POST REST API
-      - script: |
-          Response=$(curl -i -H "Content-type: application/json" -X POST https://jsonplaceholder.typicode.com/posts -d '
-          {
-            "oufrreleaseversion":$(setReleaseIdStep.ReleaseId),
-            "tsversion":$(TypeScriptVersion)
-          }')
-          echo $Response
-          echo "====="
-          echo "$Response"
-          echo "====="
+      - powershell:
+          $oufrVersion = echo $(setReleaseIdStep.ReleaseId);
+          $person = @{
+            oufrreleaseversion=$oufrVersion;
+            tsversion=$(TypeScriptVersion);
+          };
+          $body = (ConvertTo-Json $person);
+          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
+          echo $response;
         name: InvokeTypicodeAPI
-        displayName: Invoke Typicode API
+        displayName: Invoke Typicode API  
+
+      # # Invoke POST REST API
+      # - script: |
+      #     Response=$(curl -i -H "Content-type: application/json" -X POST https://jsonplaceholder.typicode.com/posts -d '
+      #     {
+      #       "oufrreleaseversion":$(setReleaseIdStep.ReleaseId),
+      #       "tsversion":$(TypeScriptVersion)
+      #     }')
+      #     echo $Response
+      #     echo "====="
+      #     echo "$Response"
+      #     echo "====="
+      #   name: InvokeTypicodeAPI
+      #   displayName: Invoke Typicode API
