@@ -130,16 +130,52 @@ export interface ISemanticTextColors {
    * Color of text in a pressed primary button; i.e. currently being clicked by mouse
    */
   primaryButtonTextPressed: string;
-
   /**
    * Color of text in a disabled primary button
    */
   primaryButtonTextDisabled: string;
-
+  /**
+   * Color of subtext in a primary button
+   */
+  primaryButtonSubtext: string;
+  /**
+   * Color of subtext in a primary button on hover
+   */
+  primaryButtonSubtextHovered: string;
   /**
    * Color of text for accent button (kicker)
    */
   accentButtonText: string;
+
+  /**
+   * Color of text in an action button
+   */
+  actionButtonText: string;
+
+  /**
+   * Color of text in an action button on hover
+   */
+  actionButtonTextHovered: string;
+
+  /**
+   * Color of text in a pressed action button
+   */
+  actionButtonTextPressed: string;
+
+  /**
+   * Color of text in a checked action button
+   */
+  actionButtonTextChecked: string;
+
+  /**
+   * Color of text in a checked action button on hover
+   */
+  actionButtonTextCheckedHovered: string;
+
+  /**
+   * Color of text in an action button when it's disabled
+   */
+  actionButtonTextDisabled: string;
 
   //// Lists
 

@@ -151,6 +151,11 @@ export interface ISemanticColors extends ISemanticTextColors {
   smallInputBorder: string;
 
   /**
+   * The border of a small input control in its resting unchecked state on hover.
+   */
+  smallInputBorderHovered: string;
+
+  /**
    * The border color of a large hovered input control, such as textbox.
    */
   inputBorderHovered: string;
@@ -169,6 +174,16 @@ export interface ISemanticColors extends ISemanticTextColors {
    * The background of a checked and hovered control; e.g. checked checkbox's background color on hover.
    */
   inputBackgroundCheckedHovered: string;
+
+  /**
+   * The foreground color of an input.
+   */
+  inputForeground: string;
+
+  /**
+   * The foreground color of a control on hover.
+   */
+  inputForegroundHovered: string;
 
   /**
    * The foreground of a checked control; e.g. checked checkbox's checkmark color, checked toggle's thumb color,
@@ -214,9 +229,49 @@ export interface ISemanticColors extends ISemanticTextColors {
   buttonBackgroundPressed: string;
 
   /**
+   * The subtext color of a button.
+   */
+  buttonSubtext: string;
+
+  /**
+   * The subtext color of a button on hover.
+   */
+  buttonSubtextHovered: string;
+
+  /**
    * Border of a standard button
    */
   buttonBorder: string;
+
+  /**
+   * The color of the border of a standard button on hover.
+   */
+  buttonBorderHovered: string;
+
+  /**
+   * The color of the border of a pressed standard button.
+   */
+  buttonBorderPressed: string;
+
+  /**
+   * The color of the icon of a standard button.
+   */
+  buttonIcon: string;
+
+  /**
+   * The color of the divider of a button.
+   */
+  buttonDivider: string;
+
+  /**
+   * The color of border of a standard button on focus.
+   */
+  buttonFocusBorder: string;
+
+  /**
+   * The color of the icon of a standard button on hover.
+   */
+  buttonIconHovered: string;
 
   /**
    * Border of a disabled standard button
@@ -249,9 +304,94 @@ export interface ISemanticColors extends ISemanticTextColors {
   primaryButtonBorder: string;
 
   /**
+   * Border of a primary button on hover
+   */
+  primaryButtonBorderHovered: string;
+
+  /**
+   * Border of a pressed primary button
+   */
+  primaryButtonBorderPressed: string;
+
+  /**
+   * Border of a primary button when it's disabled
+   */
+  primaryButtonBorderDisabled: string;
+
+  /**
+   * Icon of a primary button
+   */
+  primaryButtonIcon: string;
+
+  /**
+   * Icon of a primary button on hover
+   */
+  primaryButtonIconHovered: string;
+
+  /**
+   * Border of a primary button on focus
+   */
+  primaryButtonFocusBorder: string;
+
+  /**
    * Background of an accent button (kicker)
    */
   accentButtonBackground: string;
+
+  /**
+   * Background of an action button
+   */
+  actionButtonBackground: string;
+
+  /**
+   * Background of an action button on hover
+   */
+  actionButtonBackgroundHovered: string;
+
+  /**
+   * Background of a pressed action button
+   */
+  actionButtonBackgroundPressed: string;
+
+  /**
+   * Background of a checked action button
+   */
+  actionButtonBackgroundChecked: string;
+
+  /**
+   * Background of a checked action button on hover
+   */
+  actionButtonBackgroundCheckedHovered: string;
+
+  /**
+   * Background of a disabled action button
+   */
+  actionButtonBackgroundDisabled: string;
+
+  /**
+   * Icon of an action button
+   */
+  actionButtonIcon: string;
+
+  /**
+   * Icon of an action button on hover
+   */
+  actionButtonIconHovered: string;
+
+  /**
+   * Subicon of an action button
+   */
+  actionButtonSubIcon: string;
+
+  /**
+   * Subicon of an action button on hover
+   */
+  actionButtonSubIconHovered: string;
+
+  /**
+   * Divider of an action button
+   */
+  actionButtonDivider: string;
 
   //// Menus, popups, etc
 
