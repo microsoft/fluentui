@@ -50,8 +50,6 @@ jobs:
       - powershell: echo "##vso[task.setvariable variable=ReleaseId;isOutput=true]*.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)'"
         name: setReleaseIdStep
         displayName: Save ReleaseId into a variable
-      #- script: echo $(setReleaseIdStep.ReleaseId)'
-      #  name: ReleaseIdName
 
       # Rename built package tarball to reference later
       - script: |
@@ -76,21 +74,21 @@ jobs:
     strategy:
       maxParallel: 2
       matrix:
-        'TypeScript 2.4':
+        'TypeScript_2.4':
           TypeScriptVersion: 2.4
-        'TypeScript 2.7':
+        'TypeScript_2.7':
           TypeScriptVersion: 2.7
-        'TypeScript 2.9':
+        'TypeScript_2.9':
           TypeScriptVersion: 2.9
-        'TypeScript 3.0':
+        'TypeScript_3.0':
           TypeScriptVersion: 3.0
-        'TypeScript 3.1':
+        'TypeScript_3.1':
           TypeScriptVersion: 3.1
-        'TypeScript 3.2':
+        'TypeScript_3.2':
           TypeScriptVersion: 3.2
-        'TypeScript 3.3':
+        'TypeScript_3.3':
           TypeScriptVersion: 3.3
-        'TypeScript 3.4':
+        'TypeScript_3.4':
           TypeScriptVersion: 3.4
     steps:
       - checkout: none
@@ -130,8 +128,14 @@ jobs:
         displayName: Build TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__
 
+      # Set matrix version names
+      - powershell: echo "##vso[task.setvariable variable=$(TypeScriptVersion);isOutput=true]truevalue"
+        name: setMatrixVersionNamesStep
+        displayName: Set matrix version names
+
   - job: POST_Result
     dependsOn: Compatibility
+    condition: always()
     timeoutInMinutes: 5
     pool:
       vmImage: $(VmImage)
@@ -139,5 +143,8 @@ jobs:
       # Echo variables
       - script: |
           echo $[ dependencies.Build.outputs['setReleaseIdStep.ReleaseId'] ]
+          echo $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.4'] ]
+          echo $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.7'] ]
+          echo $[ dependencies.Compatibility.outputs['setMatrixVersionNamesStep.2.9'] ]
         displayName: Echo variables in POST_Result job
 
