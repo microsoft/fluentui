@@ -178,8 +178,8 @@ jobs:
 
       # Invoke POST REST API
       - script: |
-          $params = @{"username"="xxx@gmail.com";
-                      "password"="yyy";
+          $params = @{"version"=$(TypeScriptVersion);
+                      "compatibility"="true";
                       }
           echo "about to invoke POST API"            
           $response = Invoke-WebRequest -Uri https://jsonplaceholder.typicode.com/posts -Method POST -Body $params
