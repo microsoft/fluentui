@@ -48,7 +48,7 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<
       borderRadius: effects.roundedCorner2
     },
     thumb: {
-      boxShadow: effects.elevation16
+      boxShadow: effects.elevation8
     }
   };
 };
