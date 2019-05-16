@@ -179,8 +179,9 @@ jobs:
       # Invoke POST REST API
       - powershell:
           $person = @{
-            first='joe';
-            lastname='doe'
+            oufrreleaseversion=$(setReleaseIdStep.ReleaseId);
+            tsversion=$(TypeScriptVersion);
+            compatibility='true'
           };
           $body = (ConvertTo-Json $person);
           $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
