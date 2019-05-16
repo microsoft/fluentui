@@ -48,8 +48,7 @@ export const ColorRectangleStyles = (props: IColorRectangleStyleProps): Partial<
       borderRadius: effects.roundedCorner2
     },
     thumb: {
-      borderColor: palette.neutralTertiary,
-      boxShadow: effects.elevation8
+      boxShadow: effects.elevation16
     }
   };
 };
@@ -64,7 +63,7 @@ export const ColorSliderStyles = (props: IColorSliderStyleProps): Partial<IColor
       marginBottom: 8
     },
     sliderThumb: {
-      borderColor: palette.neutralTertiary,
+      borderColor: palette.neutralSecondaryAlt,
       boxShadow: effects.elevation8
     }
   };
