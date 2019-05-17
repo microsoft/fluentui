@@ -20,7 +20,7 @@ const ButtonSlotsExampleCode = require('!raw-loader!@uifabric/experiments/src/co
 const ButtonStylesExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Styles.Example.tsx') as string;
 const ButtonToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Toggle.Example.tsx') as string;
 const ButtonTokensExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
-const ButtonVariantsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Tokens.Example.tsx') as string;
+const ButtonVariantsExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Button/examples/Button.Variants.Example.tsx') as string;
 
 export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {

@@ -7,15 +7,14 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
   const { palette } = theme;
 
   return {
-    backgroundColor: palette.neutralQuaternaryAlt,
-    backgroundColorHovered: palette.neutralTertiaryAlt,
-    backgroundColorPressed: palette.neutralTertiary,
-    color: palette.neutralPrimary,
-    colorHovered: palette.neutralDark,
-    colorPressed: palette.neutralDark,
-    iconColor: palette.neutralPrimary,
-    iconColorHovered: palette.neutralDark,
-    iconColorPressed: palette.neutralDark
+    borderColor: palette.neutralTertiaryAlt,
+    borderColorHovered: palette.neutralTertiaryAlt,
+    borderColorPressed: palette.neutralTertiaryAlt,
+    contentPadding: 0,
+    height: 24,
+    minHeight: 24,
+    minWidth: 84,
+    width: 84
   };
 };
 
@@ -23,15 +22,9 @@ const disabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
   const { semanticColors } = theme;
 
   return {
-    backgroundColor: semanticColors.buttonBackgroundDisabled,
-    backgroundColorHovered: semanticColors.buttonBackgroundDisabled,
-    backgroundColorPressed: semanticColors.buttonBackgroundDisabled,
-    color: semanticColors.buttonTextDisabled,
-    colorHovered: semanticColors.buttonTextDisabled,
-    colorPressed: semanticColors.buttonTextDisabled,
-    iconColor: semanticColors.buttonTextDisabled,
-    iconColorHovered: semanticColors.buttonTextDisabled,
-    iconColorPressed: semanticColors.buttonTextDisabled
+    borderColor: semanticColors.buttonBorderDisabled,
+    borderColorHovered: semanticColors.buttonBorderDisabled,
+    borderColorPressed: semanticColors.buttonBorderDisabled
   };
 };
 
