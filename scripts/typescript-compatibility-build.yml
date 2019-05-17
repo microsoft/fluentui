@@ -177,6 +177,20 @@ jobs:
           Write-Host $response;
         displayName: Echo compatMap 2
 
+  - job: InvokePOSTAPIBackup
+    dependsOn: Compatibility
+    condition: always()
+    timeoutInMinutes: 60
+    pool:
+      vmImage: $(VmImage)
+    steps:
+      # Download build library
+      - task: DownloadBuildArtifacts@0
+        displayName: 'Download Build Artifacts'
+        inputs:
+          artifactName: drop
+          downloadPath: $(Build.StagingDirectory)
+
       # Echo compatMap
       - powershell:
           $i = 0;
@@ -202,4 +216,4 @@ jobs:
           $body = (ConvertTo-Json $jsonBody);
           $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
           Write-Host $response;
-        displayName: Echo compatMap 3
+        displayName: Echo compatMap 3      
