@@ -117,6 +117,12 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
    * Optional function to format the slider value.
    */
   valueFormat?: (value: number) => string;
+
+  /**
+   * Optional flag to attach the origin of slider to zero. Helpful when the range include negatives.
+   * @defaultvalue false
+   */
+  originFromZero?: boolean;
 }
 
 /**
@@ -143,4 +149,5 @@ export interface ISliderStyles {
   activeSection: IStyle;
   inactiveSection: IStyle;
   valueLabel: IStyle;
+  zeroTick: IStyle;
 }

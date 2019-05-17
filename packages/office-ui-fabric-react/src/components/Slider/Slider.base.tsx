@@ -26,7 +26,8 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     showValue: true,
     disabled: false,
     vertical: false,
-    buttonProps: {}
+    buttonProps: {},
+    originFromZero: false
   };
 
   private _sliderLine = React.createRef<HTMLDivElement>();
@@ -65,9 +66,24 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
   }
 
   public render(): React.ReactElement<{}> {
-    const { ariaLabel, className, disabled, label, max, min, showValue, buttonProps, vertical, valueFormat, styles, theme } = this.props;
+    const {
+      ariaLabel,
+      className,
+      disabled,
+      label,
+      max,
+      min,
+      showValue,
+      buttonProps,
+      vertical,
+      valueFormat,
+      styles,
+      theme,
+      originFromZero
+    } = this.props;
     const { value, renderedValue } = this.state;
     const thumbOffsetPercent: number = min === max ? 0 : ((renderedValue! - min!) / (max! - min!)) * 100;
+    const zeroOffsetPercent: number = min! >= 0 ? 0 : (-min! / (max! - min!)) * 100;
     const lengthString = vertical ? 'height' : 'width';
     const onMouseDownProp: {} = disabled ? {} : { onMouseDown: this._onMouseDownOrTouchStart };
     const onTouchStartProp: {} = disabled ? {} : { onTouchStart: this._onMouseDownOrTouchStart };
@@ -108,15 +124,37 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
             data-is-focusable={!disabled}
           >
             <div ref={this._sliderLine} className={classNames.line}>
-              <span ref={this._thumb} className={classNames.thumb} style={this._getThumbStyle(vertical, thumbOffsetPercent)} />
-              <span
-                className={css(classNames.lineContainer, classNames.activeSection)}
-                style={{ [lengthString]: thumbOffsetPercent + '%' }}
-              />
-              <span
-                className={css(classNames.lineContainer, classNames.inactiveSection)}
-                style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
-              />
+              {originFromZero && (
+                <span className={css(classNames.zeroTick)} style={this._getStyleUsingOffsetPercent(vertical, zeroOffsetPercent)} />
+              )}
+              <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
+              {originFromZero ? (
+                <React.Fragment>
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.activeSection)}
+                    style={{ [lengthString]: Math.abs(zeroOffsetPercent - thumbOffsetPercent) + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
+                  />
+                </React.Fragment>
+              ) : (
+                <React.Fragment>
+                  <span
+                    className={css(classNames.lineContainer, classNames.activeSection)}
+                    style={{ [lengthString]: thumbOffsetPercent + '%' }}
+                  />
+                  <span
+                    className={css(classNames.lineContainer, classNames.inactiveSection)}
+                    style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
+                  />
+                </React.Fragment>
+              )}
             </div>
           </div>
           {showValue && <Label className={classNames.valueLabel}>{valueFormat ? valueFormat(value!) : value}</Label>}
@@ -140,7 +178,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
     }
   };
 
-  private _getThumbStyle(vertical: boolean | undefined, thumbOffsetPercent: number): any {
+  private _getStyleUsingOffsetPercent(vertical: boolean | undefined, thumbOffsetPercent: number): any {
     const direction: string = vertical ? 'bottom' : getRTL() ? 'right' : 'left';
     return {
       [direction]: thumbOffsetPercent + '%'
