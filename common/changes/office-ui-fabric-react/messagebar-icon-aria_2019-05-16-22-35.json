@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "[MessageBar] aria hidden for message bar icon",
+      "comment": "MessageBar: Add `aria-hidden` property for message bar icon",
       "type": "patch"
     }
   ],
