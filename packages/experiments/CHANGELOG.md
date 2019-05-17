@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Thu, 16 May 2019 17:34:08 GMT and should not be manually modified.
+This log was last generated on Fri, 17 May 2019 12:22:31 GMT and should not be manually modified.
+
+## 6.76.4
+Fri, 17 May 2019 12:22:31 GMT
+
+### Patches
+
+- Chiclet: update examples and use opengraph API
 
 ## 6.76.3
 Thu, 16 May 2019 17:34:08 GMT
