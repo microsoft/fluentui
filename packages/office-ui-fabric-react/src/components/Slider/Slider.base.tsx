@@ -129,7 +129,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
               )}
               <span ref={this._thumb} className={classNames.thumb} style={this._getStyleUsingOffsetPercent(vertical, thumbOffsetPercent)} />
               {originFromZero ? (
-                <React.Fragment>
+                <>
                   <span
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
                     style={{ [lengthString]: Math.min(thumbOffsetPercent, zeroOffsetPercent) + '%' }}
@@ -142,9 +142,9 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
                     style={{ [lengthString]: Math.min(100 - thumbOffsetPercent, 100 - zeroOffsetPercent) + '%' }}
                   />
-                </React.Fragment>
+                </>
               ) : (
-                <React.Fragment>
+                <>
                   <span
                     className={css(classNames.lineContainer, classNames.activeSection)}
                     style={{ [lengthString]: thumbOffsetPercent + '%' }}
@@ -153,7 +153,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
                     className={css(classNames.lineContainer, classNames.inactiveSection)}
                     style={{ [lengthString]: 100 - thumbOffsetPercent + '%' }}
                   />
-                </React.Fragment>
+                </>
               )}
             </div>
           </div>
