@@ -155,21 +155,22 @@ jobs:
       - powershell:
           $i = 0;
           $releaseVersion = "";
-          $compatibleTsVersions = @()
-          foreach($line in Get-Content $(Build.StagingDirectory)/drop/compatMap.txt) {
+          $compatibleTsVersions = @();
+          $compatMapArray = Get-Content $(Build.StagingDirectory)/drop/compatMap.txt;
+          foreach($line in $compatMapArray) {
             if($i -match 0){
               $releaseVersion = $line;
             } else {
-              $compatibleTsVersions += $line
+              $compatibleTsVersions += $line;
             }
             $i++;
           }
-          Write-Host $releaseVersion
-          Write-Host $compatibleTsVersions
+          Write-Host $releaseVersion;
+          Write-Host $compatibleTsVersions;
 
           $jsonBody = @{
-            oufrreleaseversion=$(releaseVersion);
-            tsversion=$(compatibleTsVersions);
+            oufrreleaseversion=$releaseVersion;
+            tsversion=$compatibleTsVersions;
           };
           $body = (ConvertTo-Json $jsonBody);
           $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
