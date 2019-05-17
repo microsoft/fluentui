@@ -53,17 +53,20 @@ export const getStyles = (props: IColorRectangleStyleProps): IColorRectangleStyl
         border: `1px solid ${palette.neutralSecondaryAlt}`,
         borderRadius: '50%',
         boxShadow: effects.elevation8,
-        transform: 'translate(-50%, -50%)'
-      }
-    ],
-    thumbInner: [
-      'ms-ColorPicker-thumbInner',
-      {
-        width: '100%',
-        height: '100%',
-        border: `2px solid ${palette.white}`,
-        borderRadius: '50%',
-        boxSizing: 'border-box'
+        transform: 'translate(-50%, -50%)',
+        selectors: {
+          ':before': {
+            position: 'absolute',
+            left: 0,
+            right: 0,
+            top: 0,
+            bottom: 0,
+            border: `2px solid ${palette.white}`,
+            borderRadius: '50%',
+            boxSizing: 'border-box',
+            content: '""'
+          }
+        }
       }
     ]
   };

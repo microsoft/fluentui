@@ -70,9 +70,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
         <div
           className={classNames.thumb}
           style={{ left: color!.s + '%', top: MAX_COLOR_VALUE - color!.v + '%', backgroundColor: color!.str }}
-        >
-          <div className={classNames.thumbInner} />
-        </div>
+        />
       </div>
     );
   }
