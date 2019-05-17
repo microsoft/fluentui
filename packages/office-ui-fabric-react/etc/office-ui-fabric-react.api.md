@@ -2523,7 +2523,6 @@ export interface IColorRectangleStyles {
     light?: IStyle;
     root?: IStyle;
     thumb?: IStyle;
-    thumbInner?: IStyle;
 }
 
 // @public (undocumented)
