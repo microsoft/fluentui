@@ -155,24 +155,25 @@ jobs:
       - powershell:
           $i = 0;
           $releaseVersion = "";
-          $compatibleTsVersions = @();
+          $compatibleTsVersions = "";
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/drop/compatMap.txt;
           foreach($line in $compatMapArray) {
             if($i -match 0){
               $releaseVersion = $line;
             } else {
-              $compatibleTsVersions += $line;
+              if($i -match 1){
+                $compatibleTsVersions += $line;  
+              } else {
+                $compatibleTsVersions += "-";
+                $compatibleTsVersions += $line;
+              }
             }
             $i++;
           }
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;
 
-          $body = @{
-            releaseVersion=$releaseVersion;
-            compatibleTsVersions=$compatibleTsVersions;
-          };
-          $jsonBody = (ConvertTo-Json $body);
-          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $jsonBody -ContentType 'application/json';
+          $APIUrl = http://c0fb2ec4.ngrok.io/oufr/registerNew?version=$releaseVersion&time=2019-04-12T12:38:25.899Z&compatibleTsVersions=$compatibleTsVersions
+          $response = Invoke-RestMethod -Uri 'http://c0fb2ec4.ngrok.io/oufr/registerNew?version=6.202.0&time=2019-04-12T12:38:25.899Z' -Method Get -ContentType 'application/json';
           Write-Host $response;
         displayName: Invoke POST API with json body
