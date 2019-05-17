@@ -11,6 +11,11 @@ export interface IDocumentCardTitleState {
   truncatedTitleSecondPiece?: string;
   clientWidth?: number;
   previousTitle: string;
+
+  /**
+   * In measuring, it will render a same style text with whiteSpace: 'nowrap', to get overflow rate.
+   * So that the logic can predict truncated text well.
+   */
   needMeasurement: boolean;
 }
 
