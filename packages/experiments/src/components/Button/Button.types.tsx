@@ -1,7 +1,7 @@
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IKeytipProps, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
-import { IBaseProps } from '../../Utilities';
+import { IBaseProps, Omit } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 /**
@@ -66,10 +66,7 @@ export interface IButton {
   focus: () => void;
 }
 
-export type INativeButtonProps = Pick<
-  React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>,
-  Exclude<keyof React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>, 'content'>
->;
+export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>, 'content'>;
 
 /**
  * {@docCategory Button}
