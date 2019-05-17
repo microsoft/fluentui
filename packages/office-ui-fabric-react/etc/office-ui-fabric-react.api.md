@@ -7648,7 +7648,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
