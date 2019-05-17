@@ -448,6 +448,17 @@ export type ISchemeNames = 'default' | 'neutral' | 'soft' | 'strong';
 // @public
 export interface ISemanticColors extends ISemanticTextColors {
     accentButtonBackground: string;
+    actionButtonBackground: string;
+    actionButtonBackgroundChecked: string;
+    actionButtonBackgroundCheckedHovered: string;
+    actionButtonBackgroundDisabled: string;
+    actionButtonBackgroundHovered: string;
+    actionButtonBackgroundPressed: string;
+    actionButtonDivider: string;
+    actionButtonIcon: string;
+    actionButtonIconHovered: string;
+    actionButtonSubIcon: string;
+    actionButtonSubIconHovered: string;
     blockingBackground: string;
     bodyBackground: string;
     bodyDivider: string;
@@ -462,8 +473,17 @@ export interface ISemanticColors extends ISemanticTextColors {
     buttonBackgroundPressed: string;
     buttonBorder: string;
     buttonBorderDisabled: string;
+    buttonBorderHovered: string;
+    buttonBorderPressed: string;
+    buttonDivider: string;
+    buttonFocusBorder: string;
+    buttonIcon: string;
+    buttonIconHovered: string;
+    buttonSubtext: string;
+    buttonSubtextHovered: string;
     defaultStateBackground: string;
     disabledBackground: string;
+    disabledBorder: string;
     errorBackground: string;
     focusBorder: string;
     inputBackground: string;
@@ -472,7 +492,10 @@ export interface ISemanticColors extends ISemanticTextColors {
     inputBorder: string;
     inputBorderHovered: string;
     inputFocusBorderAlt: string;
+    inputForeground: string;
     inputForegroundChecked: string;
+    inputForegroundCheckedHovered: string;
+    inputForegroundHovered: string;
     listBackground: string;
     listHeaderBackgroundHovered: string;
     listHeaderBackgroundPressed: string;
@@ -495,7 +518,14 @@ export interface ISemanticColors extends ISemanticTextColors {
     primaryButtonBackgroundHovered: string;
     primaryButtonBackgroundPressed: string;
     primaryButtonBorder: string;
+    primaryButtonBorderDisabled: string;
+    primaryButtonBorderHovered: string;
+    primaryButtonBorderPressed: string;
+    primaryButtonFocusBorder: string;
+    primaryButtonIcon: string;
+    primaryButtonIconHovered: string;
     smallInputBorder: string;
+    smallInputBorderHovered: string;
     successBackground: string;
     variantBorder: string;
     variantBorderHovered: string;
@@ -506,6 +536,12 @@ export interface ISemanticColors extends ISemanticTextColors {
 // @public (undocumented)
 export interface ISemanticTextColors {
     accentButtonText: string;
+    actionButtonText: string;
+    actionButtonTextChecked: string;
+    actionButtonTextCheckedHovered: string;
+    actionButtonTextDisabled: string;
+    actionButtonTextHovered: string;
+    actionButtonTextPressed: string;
     actionLink: string;
     actionLinkHovered: string;
     bodySubtext: string;
@@ -530,10 +566,13 @@ export interface ISemanticTextColors {
     listText: string;
     // @deprecated (undocumented)
     listTextColor: string;
+    primaryButtonSubtext: string;
+    primaryButtonSubtextHovered: string;
     primaryButtonText: string;
     primaryButtonTextDisabled: string;
     primaryButtonTextHovered: string;
     primaryButtonTextPressed: string;
+    successText: string;
     warningText: string;
 }
 
