@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Card: Porting latest Fabric-7 changes to master.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
