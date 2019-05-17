@@ -4,7 +4,7 @@ const argv = require('yargs').argv;
 const newPageName = argv.name;
 const newPagePath = argv.path;
 const cssModule = argv.cssmodule;
-const fs = require('fs');
+const fse = require('fs-extra');
 
 // Template Sequences
 const cssInJsSequence = ['Doc', 'Styles', 'Types', 'PageBase', 'Page'];
@@ -53,8 +53,7 @@ const errorUnableToOpenTemplate = templateFile => `Unable to open mustache templ
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
 
 // Success strings
-const successPageCreated = 'New page ' + newPageName + ' successfully created. Creating markdown files...';
-const successMarkdownCreated = 'Markdown files successfully created.';
+const successPageCreated = 'New page ' + newPageName + ' successfully created! Please add your page to the SiteDefinition.';
 
 function handleError(error, errorPrependMessage) {
   if (error) {
@@ -65,74 +64,43 @@ function handleError(error, errorPrependMessage) {
   }
 }
 
-function createPageFiles(sequence, stepIndex) {
-  if (stepIndex >= sequence.length) {
-    // Success! The page has been created.
-    console.log(successPageCreated);
-    fs.mkdirSync(pageDocsPathRoot);
-    fs.mkdirSync(pageDocsPath);
-    createMarkdownFiles(markdownSequence, 0);
-    return;
-  }
-  const step = sequence[stepIndex];
-  const mustacheTemplateName = `Empty${step}.mustache`;
+function createFiles(sequence) {
+  fse.mkdirsSync(pageDocsPath);
 
-  console.log('Creating ' + outputFiles[step] + '...');
+  // Create page files
+  sequence.forEach(step => {
+    const mustacheTemplateName = `Empty${step}.mustache`;
 
-  fs.readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8', (error, data) => {
-    readFileCallback(
-      error,
-      data,
-      outputFiles[step],
-      () => createPageFiles(sequence, stepIndex + 1),
-      errorUnableToOpenTemplate(mustacheTemplateName),
-      errorUnableToWriteFile(step)
-    );
+    console.log('Creating ' + outputFiles[step] + '...');
+
+    fse
+      .readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8')
+      .then(results => {
+        handleWriteFile(results, outputFiles[step], step);
+      })
+      .catch(error => handleError(error, errorUnableToOpenTemplate(mustacheTemplateName)));
   });
+
+  // Create markdown files
+  markdownSequence.forEach(step => {
+    const mustacheTemplateName = `Empty${step}.mustache`;
+
+    console.log('Creating ' + markdownFiles[step] + '...');
+
+    fse
+      .readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8')
+      .then(results => {
+        handleWriteFile(results, markdownFiles[step], step);
+      })
+      .catch(error => handleError(error, errorUnableToOpenTemplate(mustacheTemplateName)));
+  });
+
+  console.log(successPageCreated);
 }
 
-function createMarkdownFiles(sequence, stepIndex) {
-  if (stepIndex >= sequence.length) {
-    // Success! Markdown files created.
-    console.log(successMarkdownCreated);
-    return;
-  }
-  const step = sequence[stepIndex];
-  const mustacheTemplateName = `Empty${step}.mustache`;
-
-  console.log('Creating ' + markdownFiles[step] + '...');
-
-  fs.readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8', (error, data) => {
-    readFileCallback(
-      error,
-      data,
-      markdownFiles[step],
-      () => createMarkdownFiles(sequence, stepIndex + 1),
-      errorUnableToOpenTemplate(mustacheTemplateName),
-      errorUnableToWriteFile(step)
-    );
-  });
-}
-
-function readFileCallback(error, data, filePath, cb, openMustacheTemplateError, createFileError) {
-  if (!handleError(error, openMustacheTemplateError)) {
-    return;
-  }
-
-  const fileData = mustache.render(data, { pageName: newPageName, pagePath: newPagePath });
-  fs.writeFile(filePath, fileData, error => {
-    writeFileCallback(error, createFileError, cb);
-  });
-}
-
-function writeFileCallback(error, createFileError, cb) {
-  if (!handleError(error, createFileError)) {
-    return;
-  }
-
-  if (cb) {
-    cb();
-  }
+function handleWriteFile(buffer, filePath, step) {
+  const fileData = mustache.render(buffer, { pageName: newPageName, pagePath: newPagePath });
+  fse.writeFile(filePath, fileData).catch(error => handleError(error, errorUnableToWriteFile(step)));
 }
 
 function makePage(error) {
@@ -142,20 +110,15 @@ function makePage(error) {
 
   if (cssModule) {
     console.log('Creating css module page...');
-    createPageFiles(cssModuleSequence, 0);
+    createFiles(cssModuleSequence);
   } else {
     console.log('Creating css-in-js page... (if you want a css module page, use --cssmodule arg)');
-    createPageFiles(cssInJsSequence, 0);
+    createFiles(cssInJsSequence);
   }
 }
 
 if (newPageName && newPagePath) {
-  try {
-    fs.accessSync(pagePath);
-  } catch (error) {
-    fs.mkdirSync(pagePath);
-  }
-  fs.mkdir(pageFolderPath, makePage);
+  fse.mkdirs(pageFolderPath, makePage);
 } else {
   if (!newPageName) {
     console.error(errorPageName);
