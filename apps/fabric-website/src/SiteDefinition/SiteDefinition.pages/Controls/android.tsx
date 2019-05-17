@@ -33,6 +33,13 @@ export const controlsPagesAndroid: INavPage[] = [
         component: () => <LoadingComponent title="Date & Time Picker" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage))
+      },
+      {
+        title: 'PeoplePicker',
+        url: '#/controls/android/peoplepicker',
+        component: () => <LoadingComponent title="PeoplePicker" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PeoplePickerPage/PeoplePickerPage').PeoplePickerPage))
       }
     ]
   },
