@@ -69,20 +69,20 @@ jobs:
     pool:
       vmImage: $(VmImage)
     strategy:
-      maxParallel: 1
+      maxParallel: 2
       matrix:
         'TypeScript 2.4':
           TypeScriptVersion: 2.4
-        # 'TypeScript 2.7':
-        #   TypeScriptVersion: 2.7
-        # 'TypeScript 2.9':
-        #   TypeScriptVersion: 2.9
-        # 'TypeScript 3.0':
-        #   TypeScriptVersion: 3.0
-        # 'TypeScript 3.1':
-        #   TypeScriptVersion: 3.1
-        # 'TypeScript 3.2':
-        #   TypeScriptVersion: 3.2
+        'TypeScript 2.7':
+          TypeScriptVersion: 2.7
+        'TypeScript 2.9':
+          TypeScriptVersion: 2.9
+        'TypeScript 3.0':
+          TypeScriptVersion: 3.0
+        'TypeScript 3.1':
+          TypeScriptVersion: 3.1
+        'TypeScript 3.2':
+          TypeScriptVersion: 3.2
         'TypeScript 3.3':
           TypeScriptVersion: 3.3
         'TypeScript 3.4':
