@@ -78,8 +78,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       // Mutate the options passed in, that's all we can do.
       options.disableCaching = true;
 
-      console.log('MAX COUNT HIT');
-
       if (process.env.NODE_ENV !== 'production') {
         console.log('Styles are being recalculated far too frequently. Something is mutating the class over and over.');
         // tslint:disable-next-line:no-console

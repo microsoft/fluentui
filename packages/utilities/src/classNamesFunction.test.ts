@@ -20,7 +20,6 @@ describe('classNamesFunction', () => {
 
   it('can cache rules', () => {
     let styleFunctionCalled = false;
-
     const getClassNames = classNamesFunction();
     const getStyles = [
       (props: { a: number }) => {
