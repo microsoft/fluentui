@@ -4,7 +4,7 @@
   "version": "6.0.0",
   "private": true,
   "scripts": {
-    "build": "npx just-scripts build-commonjs-only",
+    "build": "npx just-scripts build",
     "clean": "",
     "code-style": "npx just-scripts code-style",
     "screener": "screener-storybook --conf screener.config.js",

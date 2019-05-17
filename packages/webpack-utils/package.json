@@ -8,7 +8,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build-commonjs-only",
+    "build": "npx just-scripts build",
     "code-style": "npx just-scripts code-style",
     "clean": "npx just-scripts clean",
     "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5",
