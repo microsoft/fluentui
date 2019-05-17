@@ -6855,6 +6855,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     min?: number;
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
@@ -6881,26 +6882,17 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISl
 
 // @public (undocumented)
 export interface ISliderStyles {
-    // (undocumented)
     activeSection: IStyle;
-    // (undocumented)
     container: IStyle;
-    // (undocumented)
     inactiveSection: IStyle;
-    // (undocumented)
     line: IStyle;
-    // (undocumented)
     lineContainer: IStyle;
-    // (undocumented)
     root: IStyle;
-    // (undocumented)
     slideBox: IStyle;
-    // (undocumented)
     thumb: IStyle;
-    // (undocumented)
     titleLabel: IStyle;
-    // (undocumented)
     valueLabel: IStyle;
+    zeroTick: IStyle;
 }
 
 // @public (undocumented)
