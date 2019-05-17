@@ -89,6 +89,17 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 transform: translate(-50%, -50%);
                 width: 20px;
               }
+              &:before {
+                border-radius: 50%;
+                border: 2px solid #ffffff;
+                bottom: 0px;
+                box-sizing: border-box;
+                content: "";
+                left: 0px;
+                position: absolute;
+                right: 0px;
+                top: 0px;
+              }
           style={
             Object {
               "backgroundColor": "#ffffff",
@@ -96,19 +107,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               "top": "0%",
             }
           }
-        >
-          <div
-            className=
-                ms-ColorPicker-thumbInner
-                {
-                  border-radius: 50%;
-                  border: 2px solid #ffffff;
-                  box-sizing: border-box;
-                  height: 100%;
-                  width: 100%;
-                }
-          />
-        </div>
+        />
       </div>
       <div
         className=
