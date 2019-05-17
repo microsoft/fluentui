@@ -44,7 +44,17 @@ describe('warnMutuallyExclusive', () => {
     expect(_lastWarning).toEqual(undefined);
   });
 
-  it('can warn on mutual exlusive props', () => {
+  it('does not warn unnecessarily when the key of the exclusive map has undefined value in props', () => {
+    warnMutuallyExclusive('Foo', { foo: undefined, bar: 1 }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('does not warn unnecessarily when the matching prop of the exclusive map key has undefined value in props', () => {
+    warnMutuallyExclusive('Foo', { foo: 1, bar: undefined }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('can warn on mutual exclusive props', () => {
     // tslint:disable-next-line:no-any
     warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' } as any);
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
