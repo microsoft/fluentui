@@ -125,14 +125,25 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
         const lines: number = Math.floor(
           (parseInt(style.height, 10) + TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD) / parseInt(style.lineHeight, 10)
         );
-        // Used to calculate the number of chars that should be truncated.
+
+        // Use overflow to predict truncated length.
+        // Take an example.The text is: A text with A very long text that need to be truncated.ppt
+        // if container is like
+        // |A text with A very| long text that need to be truncated.ppt
+        // The scroll width is 58, (take two | out of length)
+        // The client width is 18
+        // the overflow rate is scrollWidth/clientWidth which should be close to length(overflowText)/length(visualText)
+        // And the length of remaining text should be truncated is (original Length)/(58/18) -3 = 15.
+        // So that the logic can predict truncated text well.
+        // first piece will be `A text `, * second piece will be `ated.ppt`
+        // |A text ...ated.ppt|
         const overFlowRate: number = scrollWidth / (parseInt(style.width, 10) * lines);
 
         if (overFlowRate > 1) {
           const truncatedLength: number = originalTitle.length / overFlowRate - 3 /** Saved for separator */;
           return this.setState({
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
-            truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),
+            truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2, originalTitle.length),
             clientWidth,
             needMeasurement: false
           });
