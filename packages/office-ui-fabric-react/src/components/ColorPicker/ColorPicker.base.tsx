@@ -169,8 +169,10 @@ export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPick
     }
 
     let newColor: IColor | undefined;
-    if (isHex && newValue && newValue.length === 6) {
-      newColor = getColorFromString('#' + newValue);
+    if (isHex) {
+      if (newValue && newValue.length === 6) {
+        newColor = getColorFromString('#' + newValue);
+      }
     } else {
       newColor = getColorFromRGBA({
         r: color.r,
