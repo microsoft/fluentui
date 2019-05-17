@@ -59,9 +59,15 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Items & Lists',
-    url: '#/controls/android/chip',
+    url: '#/controls/android/avatar',
     isCategory: true,
     pages: [
+      {
+        title: 'Avatar',
+        url: '#/controls/android/avatar',
+        component: () => <LoadingComponent title="Avatar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage))
+      },
       {
         title: 'Chip',
         url: '#/controls/android/chip',

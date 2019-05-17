@@ -38,9 +38,15 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Items & Lists',
-    url: '#/controls/ios/chip',
+    url: '#/controls/ios/avatar',
     isCategory: true,
     pages: [
+      {
+        title: 'Avatar',
+        url: '#/controls/ios/avatar',
+        component: () => <LoadingComponent title="Avatar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage))
+      },
       {
         title: 'Chip',
         url: '#/controls/ios/chip',
