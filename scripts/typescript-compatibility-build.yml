@@ -69,7 +69,7 @@ jobs:
     pool:
       vmImage: $(VmImage)
     strategy:
-      maxParallel: 2
+      maxParallel: 1
       matrix:
         'TypeScript 2.4':
           TypeScriptVersion: 2.4
@@ -133,4 +133,11 @@ jobs:
       # Write successful ts versions to compatMap.txt
       - script: |
           echo $(TypeScriptVersion) >> $(Build.StagingDirectory)/drop/compatMap.txt
-        displayName: Write successful ts versions to compatMap.txt 
+        displayName: Write successful ts versions to compatMap.txt
+
+      # Publish built library for validation job
+      - task: PublishBuildArtifacts@1
+        displayName: Publish Build Artifacts
+        inputs:
+          pathtoPublish: $(Build.StagingDirectory)
+          artifactName: drop  
