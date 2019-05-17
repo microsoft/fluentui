@@ -119,11 +119,6 @@ jobs:
         displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
 
-      # Echo compatMap
-      - script: |
-          cat $(Build.StagingDirectory)/drop/compatMap.txt
-        displayName: Echo compatMap
-
       # Build sample app consuming Office UI Fabric React to test TypeScript version compatibility
       - script: |
           node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
@@ -140,4 +135,23 @@ jobs:
         displayName: Publish Build Artifacts
         inputs:
           pathtoPublish: $(Build.StagingDirectory)/drop
-          artifactName: drop  
+          artifactName: drop
+
+  - job: InvokePOSTAPI
+    dependsOn: Compatibility
+    condition: always()
+    timeoutInMinutes: 60
+    pool:
+      vmImage: $(VmImage)
+    steps:
+      # Download build library
+      - task: DownloadBuildArtifacts@0
+        displayName: 'Download Build Artifacts'
+        inputs:
+          artifactName: drop
+          downloadPath: $(Build.StagingDirectory)
+
+      # Echo compatMap
+      - script: |
+          cat $(Build.StagingDirectory)/drop/compatMap.txt
+        displayName: Echo compatMap    
