@@ -158,22 +158,22 @@ jobs:
           $compatibleTsVersions = "";
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/drop/compatMap.txt;
           foreach($line in $compatMapArray) {
-            if($i -match 0){
-              $releaseVersion = $line;
+          if($i -match 0){
+            $releaseVersion = $line;
+          } else {
+            if($i -match 1){
+            $compatibleTsVersions += $line;  
             } else {
-              if($i -match 1){
-                $compatibleTsVersions += $line;  
-              } else {
-                $compatibleTsVersions += "-";
-                $compatibleTsVersions += $line;
-              }
+            $compatibleTsVersions += "-";
+            $compatibleTsVersions += $line;
             }
-            $i++;
+          }
+          $i++;
           }
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;
 
-          $APIUrl = http://c0fb2ec4.ngrok.io/oufr/registerNew?version=$releaseVersion&time=2019-04-12T12:38:25.899Z&compatibleTsVersions=$compatibleTsVersions
-          $response = Invoke-RestMethod -Uri 'http://c0fb2ec4.ngrok.io/oufr/registerNew?version=6.202.0&time=2019-04-12T12:38:25.899Z' -Method Get -ContentType 'application/json';
+          $APIUrl = "http://c0fb2ec4.ngrok.io/oufr/registerNew?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions"
+          $response = Invoke-RestMethod -Uri $APIUrl -Method Get;
           Write-Host $response;
         displayName: Invoke POST API with json body
