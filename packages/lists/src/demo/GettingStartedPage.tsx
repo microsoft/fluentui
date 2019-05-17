@@ -11,7 +11,7 @@ export const GettingStartedPage: React.StatelessComponent = () => {
   return (
     <div className={rootClass}>
       {/* tslint:disable-next-line:deprecation */}
-      <PageMarkdown>{require<string>('!raw-loader!../../README.md')}</PageMarkdown>;
+      <PageMarkdown>{require<string>('!raw-loader!../../README.md')}</PageMarkdown>
     </div>
   );
 };
