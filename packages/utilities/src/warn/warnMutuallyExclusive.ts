@@ -10,7 +10,7 @@ import { ISettingsMap, warn } from './warn';
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void {
   if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
     for (const propName in exclusiveMap) {
-      if (props && propName in props && props[propName] !== undefined) {
+      if (props && props[propName] !== undefined) {
         let propInExclusiveMapValue = exclusiveMap[propName];
         if (propInExclusiveMapValue && props[propInExclusiveMapValue as keyof P] !== undefined) {
           warn(`${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`);
