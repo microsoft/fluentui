@@ -1,13 +1,13 @@
 import * as React from 'react';
 
-import { ColorPalette } from '@uifabric/example-app-base/lib/index2';
+import { ColorPalette, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 
 export const Skype = () => {
   return (
     <>
-      <h2>Skype</h2>
+      <MarkdownHeader as="h2">Skype</MarkdownHeader>
 
-      <h3>Blue theme (default)</h3>
+      <MarkdownHeader as="h3">Blue theme (default)</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -38,7 +38,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Blurple theme</h3>
+      <MarkdownHeader as="h3">Blurple theme</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -59,7 +59,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Purple theme</h3>
+      <MarkdownHeader as="h3">Purple theme</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -80,7 +80,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Pink theme</h3>
+      <MarkdownHeader as="h3">Pink theme</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -101,7 +101,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Orange theme</h3>
+      <MarkdownHeader as="h3">Orange theme</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -132,7 +132,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Default theme neutrals</h3>
+      <MarkdownHeader as="h3">Default theme neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -218,7 +218,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Dark theme neutrals</h3>
+      <MarkdownHeader as="h3">Dark theme neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {
@@ -304,7 +304,7 @@ export const Skype = () => {
         ]}
       />
 
-      <h3>Call theme neutrals</h3>
+      <MarkdownHeader as="h3">Call theme neutrals</MarkdownHeader>
       <ColorPalette
         colors={[
           {

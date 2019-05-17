@@ -3,6 +3,7 @@ import * as React from 'react';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
+import { renderToStaticMarkup } from 'react-dom/server';
 
 import { resetIds } from '../../Utilities';
 
@@ -206,14 +207,24 @@ describe('TextField', () => {
 
   describe('error message', () => {
     const errorMessage = 'The string is too long, should not exceed 3 characters.';
+    const errorMessageJSX = (
+      <span>
+        The string is too long,
+        <br />
+        should not exceed 3 characters.
+      </span>
+    );
 
-    function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | boolean): void {
+    function assertErrorMessage(renderedDOM: Element, expectedErrorMessage: string | JSX.Element | boolean): void {
       const errorMessageDOM = renderedDOM.querySelector('[data-automation-id=error-message]');
 
       if (expectedErrorMessage === false) {
         expect(errorMessageDOM).toBeNull(); // element not exists
-      } else {
+      } else if (typeof expectedErrorMessage === 'string') {
         expect(errorMessageDOM!.textContent).toEqual(expectedErrorMessage);
+      } else if (typeof expectedErrorMessage !== 'boolean') {
+        const xhtml = errorMessageDOM!.innerHTML.replace(/<br>/g, '<br/>');
+        expect(xhtml).toEqual(renderToStaticMarkup(expectedErrorMessage));
       }
     }
 
@@ -233,6 +244,22 @@ describe('TextField', () => {
       return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
     });
 
+    it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
+      function validator(value: string): string | JSX.Element {
+        return value.length > 3 ? errorMessageJSX : '';
+      }
+
+      const textField = mount(
+        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />
+      );
+
+      const inputDOM = textField.getDOMNode().querySelector('input');
+      ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
+
+      // The value is delayed to validate, so it must to query error message after a while.
+      return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessageJSX));
+    });
+
     it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
       function validator(value: string): Promise<string> {
         return Promise.resolve(value.length > 3 ? errorMessage : '');
@@ -247,6 +274,22 @@ describe('TextField', () => {
 
       // The value is delayed to validate, so it must to query error message after a while.
       return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessage));
+    });
+
+    it('should render error message when onGetErrorMessage returns a Promise<JSX.Element>', () => {
+      function validator(value: string): Promise<string | JSX.Element> {
+        return Promise.resolve(value.length > 3 ? errorMessageJSX : '');
+      }
+
+      const textField = mount(
+        <TextField label="text-field-label" value="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />
+      );
+
+      const inputDOM = textField.getDOMNode().querySelector('input');
+      ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
+
+      // The value is delayed to validate, so it must to query error message after a while.
+      return delay(20).then(() => assertErrorMessage(textField.getDOMNode(), errorMessageJSX));
     });
 
     it('should render error message on first render when onGetErrorMessage returns a string', () => {

@@ -1,9 +1,14 @@
-import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSlot, IComponent, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 
 /**
  * {@docCategory Stack}
  */
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
+
+/**
+ * {@docCategory Stack}
+ */
+export type IStackItemSlot = ISlotProp<IStackItemProps>;
 
 /**
  * {@docCategory Stack}

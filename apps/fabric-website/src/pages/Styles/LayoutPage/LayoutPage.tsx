@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Table } from '../../../components/Table/Table';
-import { IPageSectionProps, CodeSnippet } from '@uifabric/example-app-base/lib/index2';
+import { IPageSectionProps, CodeSnippet, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { LayoutPageProps } from './LayoutPage.doc';
 import * as styles from './LayoutPage.module.scss';
@@ -169,7 +169,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
 
-              <h4>Inheritance</h4>
+              <MarkdownHeader as="h4">Inheritance</MarkdownHeader>
               <p>
                 Because Fabric is mobile-first, any layout defined for small screens is automatically inherited by medium and large screens.
                 The small size utilities (ms-sm6) are required. If you want to change the layout on larger screens, you can apply the other
@@ -188,7 +188,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
 
-              <h4>Push and pull</h4>
+              <MarkdownHeader as="h4">Push and pull</MarkdownHeader>
               <p>
                 You might want your column source order to differ from the display order, or to change the column display order based on the
                 screen size. The push and pull utilities make this possible. Push moves a column to the right; pull moves it to the left.
@@ -208,7 +208,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 </div>
               </div>
 
-              <h4>Visibility</h4>
+              <MarkdownHeader as="h4">Visibility</MarkdownHeader>
               <p>
                 Some designs call for certain content to be shown or hidden depending on the screen size. You can achieve this using
                 Fabric's responsive visibility classes. These allow you to show or hide content at a specific screen size, or across a whole

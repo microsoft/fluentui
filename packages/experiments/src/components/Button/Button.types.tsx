@@ -1,5 +1,5 @@
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
-import { IFontWeight, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
+import { IFontWeight, IKeytipProps, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
@@ -117,6 +117,11 @@ export interface IButtonProps
    * Defines the aria label that the screen readers use when focus goes on the Button.
    */
   ariaLabel?: string;
+
+  /**
+   * Defines optional keytips for this button.
+   */
+  keytipProps?: IKeytipProps;
 }
 
 /**
@@ -169,7 +174,7 @@ export interface IButtonTokens {
   borderColorHovered?: string;
 
   /**
-   * Defines the border color of the Button when it is in a hovered state.
+   * Defines the border color of the Button when it is in an active state.
    */
   borderColorPressed?: string;
 
@@ -179,9 +184,24 @@ export interface IButtonTokens {
   borderRadius?: number | string;
 
   /**
+   * Defines the border style of the Button.
+   */
+  borderStyle?: string;
+
+  /**
+   * Defines the border style of the Button when the focus is on it.
+   */
+  borderStyleFocused?: string;
+
+  /**
    * Defines the border width of the Button.
    */
   borderWidth?: number | string;
+
+  /**
+   * Defines the border width of the Button when the focus is on it.
+   */
+  borderWidthFocused?: number | string;
 
   /**
    * Defines the text color of elements inside the Button.
@@ -211,7 +231,7 @@ export interface IButtonTokens {
   /**
    * Defines the mouse cursor to be displayed when pointing over the Button.
    */
-  cursor?: string | undefined;
+  cursor?: string;
 
   /**
    * Defines a fixed height for the Button.

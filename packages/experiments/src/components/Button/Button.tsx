@@ -2,14 +2,13 @@ import { createComponent } from '../../Foundation';
 import { useButtonState as state } from './Button.state';
 import { ButtonStyles as styles, ButtonTokens as tokens } from './Button.styles';
 import { IButtonProps } from './Button.types';
-import { ButtonView as view } from './Button.view';
+import { ButtonView } from './Button.view';
 
-export const Button: React.StatelessComponent<IButtonProps> = createComponent({
+export const Button: React.StatelessComponent<IButtonProps> = createComponent(ButtonView, {
   displayName: 'Button',
   state,
   styles,
-  tokens,
-  view
+  tokens
 });
 
 export default Button;

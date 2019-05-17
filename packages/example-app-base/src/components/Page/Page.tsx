@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Async, css } from 'office-ui-fabric-react';
-import { pascalize } from '../../utilities/index2';
+import { slugify } from '../../utilities/index2';
 import { PageHeader } from '../PageHeader/index';
 import { Markdown } from '../Markdown/index';
 import { ScrollBars } from '../ScrollBars/index';
@@ -21,6 +21,8 @@ import { IPageProps, IPageSectionProps } from './Page.types';
 import * as styles from './Page.module.scss';
 
 const SECTION_STAGGER_INTERVAL = 0.05;
+/** Section key/id prefix for sections which don't have a title */
+const GENERIC_SECTION = 'genericsection';
 
 export interface IPageState {
   isMountedOffset?: boolean;
@@ -52,18 +54,19 @@ export class Page extends React.Component<IPageProps, IPageState> {
   public render(): JSX.Element {
     const { className } = this.props;
 
+    const sections = this._getPageSections();
     return (
       <div className={css(styles.Page, className)}>
         {this._getPageHeader()}
         <div className={styles.main}>
-          {this._pageContent()}
-          {this._getSideRail()}
+          {this._pageContent(sections)}
+          {this._getSideRail(sections)}
         </div>
       </div>
     );
   }
 
-  private _pageContent = (): JSX.Element | undefined => {
+  private _pageContent = (sections: IPageSectionProps[]): JSX.Element | undefined => {
     const { sectionWrapperClassName, showSideRail } = this.props;
     const { isMountedOffset } = this.state;
 
@@ -77,12 +80,11 @@ export class Page extends React.Component<IPageProps, IPageState> {
         )}
       >
         {// Map over array of section objects in order to add increasing transitionDelay to stagger load animation.
-        this._getPageSections().map((section: IPageSectionProps & React.Attributes, sectionIndex: number) => {
+        sections.map((section: IPageSectionProps, sectionIndex: number) => {
           const { renderAs: SectionType = OtherPageSection, className, style, ...rest } = section;
           return (
-            // All the props objects will include a key
-            // tslint:disable-next-line:jsx-key
             <SectionType
+              key={section.id || sectionIndex}
               {...rest}
               className={css(className, styles.section)}
               style={{ transitionDelay: `${sectionIndex * SECTION_STAGGER_INTERVAL}s` }}
@@ -93,7 +95,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
     );
   };
 
-  private _getPageSections = (): (IPageSectionProps & React.Attributes)[] => {
+  private _getPageSections = (): IPageSectionProps[] => {
     const {
       allowNativeProps,
       allowNativePropsForComponentName,
@@ -126,21 +128,21 @@ export class Page extends React.Component<IPageProps, IPageState> {
       title
     };
 
-    const sections: (IPageSectionProps & React.Attributes)[] = [];
+    const sections: IPageSectionProps[] = [];
 
-    overview && sections.push({ renderAs: OverviewSection, ...sectionProps, content: overview, key: 'Overview' });
+    overview && sections.push({ renderAs: OverviewSection, ...sectionProps, sectionName: 'Overview', content: overview });
 
     addlContent &&
-      sections.push({ renderAs: MarkdownSection, sectionName: addlContentTitle, ...sectionProps, content: addlContent, key: 'Markdown' });
+      sections.push({ renderAs: MarkdownSection, sectionName: addlContentTitle, ...sectionProps, content: addlContent, id: 'markdown' });
 
     if (bestPractices || (dos && donts)) {
-      const bestPracticesProps: IBestPracticesSectionProps & React.Attributes = {
+      const bestPracticesProps: IBestPracticesSectionProps = {
         renderAs: BestPracticesSection,
         ...sectionProps,
+        sectionName: 'Best Practices',
         bestPractices,
         dos,
-        donts,
-        key: 'BestPractices'
+        donts
       };
       sections.push(bestPracticesProps);
     }
@@ -151,7 +153,6 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Usage',
         readableSectionName: 'Usage Guidelines',
-        key: 'Usage',
         content: usage
       });
 
@@ -161,32 +162,31 @@ export class Page extends React.Component<IPageProps, IPageState> {
         ...sectionProps,
         sectionName: 'Design',
         readableSectionName: 'Design Guidelines',
-        key: 'Design',
         content: design
       });
 
     if (examples) {
-      const examplesProps: IExamplesSectionProps & React.Attributes = {
+      const examplesProps: IExamplesSectionProps = {
         renderAs: ExamplesSection,
         ...sectionProps,
+        sectionName: 'Usage',
         exampleKnobs,
-        examples,
-        key: 'Examples'
+        examples
       };
       sections.push(examplesProps);
     }
 
     if (propertiesTablesSources || jsonDocs) {
-      const propertiesTablesProps: IImplementationSectionProps & React.Attributes = {
+      const propertiesTablesProps: IImplementationSectionProps = {
         renderAs: ImplementationSection,
         ...sectionProps,
+        sectionName: 'Implementation',
         allowNativeProps,
         nativePropsElement,
         allowNativePropsForComponentName,
         propertiesTablesSources,
         hideImplementationTitle,
-        jsonDocs,
-        key: 'Implementation'
+        jsonDocs
       };
       sections.push(propertiesTablesProps);
     }
@@ -195,13 +195,17 @@ export class Page extends React.Component<IPageProps, IPageState> {
       otherSections.forEach((section: IPageSectionProps, index: number) =>
         sections.push({
           renderAs: OtherPageSection,
-          key: section.sectionName || String(index),
           ...sectionProps,
           ...section
         })
       );
 
-    isFeedbackVisible && title && sections.push({ renderAs: FeedbackSection, ...sectionProps, key: 'Feedback' });
+    isFeedbackVisible && title && sections.push({ renderAs: FeedbackSection, ...sectionProps, sectionName: 'Feedback' });
+
+    // Ensure all the sections have an ID
+    for (let i = 0; i < sections.length; i++) {
+      sections[i].id = _getSectionId(sections[i], i);
+    }
 
     return sections;
   };
@@ -211,7 +215,7 @@ export class Page extends React.Component<IPageProps, IPageState> {
     return title ? <PageHeader pageTitle={title} pageSubTitle={subTitle} /> : null;
   };
 
-  private _getSideRail = (): JSX.Element | undefined => {
+  private _getSideRail = (sections: IPageSectionProps[]): JSX.Element | undefined => {
     const { contact, related, showSideRail } = this.props;
 
     if (showSideRail) {
@@ -230,7 +234,16 @@ export class Page extends React.Component<IPageProps, IPageState> {
         processedContacts = contact;
       }
 
-      const jumpLinks = this._getJumpLinks();
+      const jumpLinks: ISideRailLink[] = [];
+      for (const section of sections) {
+        if (section.id!.indexOf(GENERIC_SECTION) === -1) {
+          jumpLinks.push({
+            text: (section.jumpLinkName || section.readableSectionName || section.sectionName)!,
+            url: section.id!
+          });
+          jumpLinks.push(...(section.jumpLinks || []));
+        }
+      }
 
       return (
         <div className={css(styles.sideRailWrapper)}>
@@ -242,92 +255,8 @@ export class Page extends React.Component<IPageProps, IPageState> {
     }
     return undefined;
   };
+}
 
-  private _getJumpLinks = (): ISideRailLink[] => {
-    const {
-      bestPractices,
-      design,
-      dos,
-      donts,
-      examples,
-      isFeedbackVisible,
-      addlContent,
-      addlContentTitle,
-      otherSections,
-      overview,
-      propertiesTablesSources,
-      usage,
-      jsonDocs
-    } = this.props;
-
-    const links: ISideRailLink[] = [];
-
-    if (overview) {
-      links.push({
-        text: 'Overview',
-        url: 'Overview'
-      });
-    }
-
-    if (addlContent && addlContentTitle) {
-      links.push({
-        text: addlContentTitle,
-        url: pascalize(addlContentTitle)
-      });
-    }
-
-    if (bestPractices || dos || donts) {
-      links.push({
-        text: 'Best Practices',
-        url: 'BestPractices'
-      });
-    }
-
-    if (usage) {
-      links.push({
-        text: 'Usage Guidelines',
-        url: 'Usage'
-      });
-    }
-
-    if (design) {
-      links.push({
-        text: 'Design Guidelines',
-        url: 'Design'
-      });
-    }
-
-    if (examples) {
-      links.push({
-        text: 'Usage',
-        url: 'Usage'
-      });
-    }
-
-    if (jsonDocs || propertiesTablesSources) {
-      links.push({
-        text: 'Implementation',
-        url: 'Implementation'
-      });
-    }
-
-    if (otherSections) {
-      for (const section of otherSections) {
-        section.sectionName &&
-          links.push({
-            text: section.sectionName,
-            url: pascalize(section.sectionName)
-          });
-      }
-    }
-
-    if (isFeedbackVisible) {
-      links.push({
-        text: 'Feedback',
-        url: 'Feedback'
-      });
-    }
-
-    return links;
-  };
+function _getSectionId(props: IPageSectionProps, index: number): string {
+  return props.id || slugify(props.readableSectionName || props.sectionName || `${GENERIC_SECTION}-${index}`);
 }

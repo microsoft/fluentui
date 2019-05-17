@@ -234,6 +234,11 @@ function _flipToFit(
   gap: number = 0
 ): IElementPosition {
   const directions: RectangleEdge[] = [RectangleEdge.left, RectangleEdge.right, RectangleEdge.bottom, RectangleEdge.top];
+  // In RTL page, RectangleEdge.right has a higher priority than RectangleEdge.left, therefore the order should be updated.
+  if (getRTL()) {
+    directions[0] *= -1;
+    directions[1] *= -1;
+  }
   let currentEstimate = rect;
   let currentEdge = positionData.targetEdge;
   let currentAlignment = positionData.alignmentEdge;

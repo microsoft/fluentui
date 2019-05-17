@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Markdown, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Markdown, MarkdownHeader, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { Table } from '../../../components/Table/Table';
 import { IStylesPageProps, StylesAreaPage } from '../StylesAreaPage';
 import { LocalizationPageProps } from './LocalizationPage.doc';
@@ -63,7 +63,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               <Markdown>
                 {require('!raw-loader!@uifabric/fabric-website/src/pages/Styles/LocalizationPage/docs/web/LocalizationRTL.md')}
               </Markdown>
-              <h3>Supported languages</h3>
+              <MarkdownHeader as="h3">Supported languages</MarkdownHeader>
               <p>Fabric supports a variety of language codes, which map to the following font stacks:</p>
               <Table content={localizedFontsData} />
             </>

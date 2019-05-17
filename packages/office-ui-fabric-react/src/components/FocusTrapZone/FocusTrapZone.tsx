@@ -82,7 +82,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
         position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
       tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
-      'aria-hidden': true,
       'data-is-visible': true
     } as React.HTMLAttributes<HTMLDivElement>;
 

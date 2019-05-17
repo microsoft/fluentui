@@ -83,7 +83,7 @@ export interface INavProps {
 // @public (undocumented)
 export interface INavState {
     // (undocumented)
-    isGroupCollapsed?: {
+    isGroupCollapsed: {
         [key: string]: boolean;
     };
     // (undocumented)
@@ -137,14 +137,12 @@ export const Nav: React.StatelessComponent<INavProps>;
 export class NavBase extends React_2.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
-    componentWillReceiveProps(newProps: INavProps): void;
-    // (undocumented)
     static defaultProps: INavProps;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
     readonly selectedKey: string | undefined;
-}
+    }
 
 
 // (No @packageDocumentation comment for this package)

@@ -92,6 +92,13 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
             component = getComponent.component;
           } else {
             getComponent((resolved: React.ComponentType) => {
+              if (!resolved) {
+                throw new Error(
+                  `Router: Calling getComponent for the route with path ${route.props.path} ` +
+                    `returned ${resolved}, not a component. Check your getComponent implementation ` +
+                    `(including the name of the module member you're attempting to return).`
+                );
+              }
               component = getComponent.component = resolved;
 
               if (asynchronouslyResolved) {

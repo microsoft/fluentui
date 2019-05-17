@@ -10,6 +10,8 @@ import { IPanelStyleProps } from '../Panel/Panel.types';
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
 
+export { ResponsiveMode }; // Exported because the type is an optional prop and not exported otherwise.
+
 /**
  * {@docCategory Dropdown}
  */
@@ -229,6 +231,9 @@ export interface IDropdownStyles {
 
   /** Style for a dropdown item when it is both selected and disabled. */
   dropdownItemSelectedAndDisabled: IStyle;
+
+  /** Style for a dropdown item when it is hidden */
+  dropdownItemHidden: IStyle;
 
   /**
    * Refers to the text element that renders the actual dropdown item/option text. This would be wrapped by the element

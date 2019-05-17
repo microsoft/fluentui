@@ -1,4 +1,4 @@
-import { IStackSlot } from 'office-ui-fabric-react';
+import { IStackSlot, IStackItemSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
 import {
@@ -47,6 +47,11 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
   menuButton?: IMenuButtonSlot;
 
   /**
+   * Defines the container for the divider that is used for styling purposes.
+   */
+  splitDividerContainer?: IStackItemSlot;
+
+  /**
    * Defines the divider that separates the left and right parts of a SplitButton.
    */
   splitDivider?: IHTMLSlot;
@@ -76,6 +81,7 @@ export interface ISplitButtonProps
       | 'checked'
       | 'allowDisabledFocus'
       | 'ariaLabel'
+      | 'keytipProps'
       | 'defaultExpanded'
       | 'expanded'
       | 'onKeyDown'
@@ -107,7 +113,17 @@ export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'butto
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonTokens extends IMenuButtonTokens {}
+export interface ISplitButtonTokens extends IMenuButtonTokens {
+  /**
+   * Defines the color of the SplitButton divider.
+   */
+  dividerColor?: string;
+
+  /**
+   * Defines the padding of the menu section of the SplitButton.
+   */
+  secondaryPadding?: number | string;
+}
 
 /**
  * {@docCategory Button}

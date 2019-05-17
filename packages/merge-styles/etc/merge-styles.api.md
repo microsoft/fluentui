@@ -137,8 +137,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     border?: ICSSRule | 0 | string;
     borderBottom?: ICSSRule | ICSSPixelUnitRule;
     borderBottomColor?: ICSSRule | string;
-    borderBottomLeftRadius?: ICSSRule | string;
-    borderBottomRightRadius?: ICSSRule | string;
+    borderBottomLeftRadius?: ICSSRule | ICSSPixelUnitRule;
+    borderBottomRightRadius?: ICSSRule | ICSSPixelUnitRule;
     borderBottomStyle?: ICSSRule | string;
     borderBottomWidth?: ICSSRule | ICSSPixelUnitRule;
     borderCollapse?: ICSSRule | string;
@@ -159,8 +159,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     borderStyle?: ICSSRule | string;
     borderTop?: ICSSRule | ICSSPixelUnitRule;
     borderTopColor?: ICSSRule | string;
-    borderTopLeftRadius?: ICSSRule | string;
-    borderTopRightRadius?: ICSSRule | string;
+    borderTopLeftRadius?: ICSSRule | ICSSPixelUnitRule;
+    borderTopRightRadius?: ICSSRule | ICSSPixelUnitRule;
     borderTopStyle?: ICSSRule | string;
     borderTopWidth?: ICSSRule | ICSSPixelUnitRule;
     borderWidth?: ICSSRule | ICSSPixelUnitRule;
@@ -432,7 +432,7 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
@@ -459,7 +459,7 @@ export class Stylesheet {
 
 
 // Warnings were encountered during analysis:
-//
+// 
 // lib/IStyleSet.d.ts:48:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
