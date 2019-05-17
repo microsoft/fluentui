@@ -156,58 +156,6 @@ jobs:
           $i = 0;
           $releaseVersion = "";
           $compatibleTsVersions = @();
-          $compatMapArray = Get-Content $(Build.StagingDirectory)/drop/compatMap.txt;
-          foreach($line in $compatMapArray) {
-            if($i -match 0){
-              $releaseVersion = $line;
-            } else {
-              $compatibleTsVersions += $line;
-            }
-            $i++;
-          }
-          Write-Host $releaseVersion;
-          Write-Host $compatibleTsVersions;
-
-          $jsonBody = @{
-            oufrreleaseversion=$releaseVersion;
-            tsversion=$compatibleTsVersions;
-          };
-          $body = (ConvertTo-Json $jsonBody);
-          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
-          Write-Host $response;
-        displayName: Echo compatMap
-
-      # Echo compatMap
-      - powershell:
-          $i = 0;
-          $releaseVersion = "";
-          $compatibleTsVersions = @();
-          $compatMapArray = Get-Content $Env:Build.StagingDirectory/drop/compatMap.txt;
-          foreach($line in $compatMapArray) {
-            if($i -match 0){
-              $releaseVersion = $line;
-            } else {
-              $compatibleTsVersions += $line;
-            }
-            $i++;
-          }
-          Write-Host $releaseVersion;
-          Write-Host $compatibleTsVersions;
-
-          $jsonBody = @{
-            oufrreleaseversion=$releaseVersion;
-            tsversion=$compatibleTsVersions;
-          };
-          $body = (ConvertTo-Json $jsonBody);
-          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
-          Write-Host $response;
-        displayName: Echo compatMap 1
-
-      # Echo compatMap
-      - powershell:
-          $i = 0;
-          $releaseVersion = "";
-          $compatibleTsVersions = @();
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/drop/compatMap.txt;
           foreach($line in $compatMapArray) {
             if($i -match 0){
