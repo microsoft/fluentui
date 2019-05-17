@@ -151,7 +151,7 @@ jobs:
           artifactName: drop
           downloadPath: $(Build.StagingDirectory)
 
-      # Echo compatMap
+      # Invoke POST API with json body
       - powershell:
           $i = 0;
           $releaseVersion = "";
@@ -168,52 +168,11 @@ jobs:
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;
 
-          $jsonBody = @{
-            oufrreleaseversion=$releaseVersion;
-            tsversion=$compatibleTsVersions;
+          $body = @{
+            releaseVersion=$releaseVersion;
+            compatibleTsVersions=$compatibleTsVersions;
           };
-          $body = (ConvertTo-Json $jsonBody);
-          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
+          $jsonBody = (ConvertTo-Json $body);
+          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $jsonBody -ContentType 'application/json';
           Write-Host $response;
-        displayName: Echo compatMap 2
-
-  - job: InvokePOSTAPIBackup
-    dependsOn: Compatibility
-    condition: always()
-    timeoutInMinutes: 60
-    pool:
-      vmImage: $(VmImage)
-    steps:
-      # Download build library
-      - task: DownloadBuildArtifacts@0
-        displayName: 'Download Build Artifacts'
-        inputs:
-          artifactName: drop
-          downloadPath: $(Build.StagingDirectory)
-
-      # Echo compatMap
-      - powershell:
-          $i = 0;
-          $releaseVersion = "";
-          $compatibleTsVersions = @();
-          $artifactFilePath = $env:BUILD_STAGINGDIRECTORY + "/drop/compatMap.txt"
-          $compatMapArray = Get-Content $artifactFilePath;
-          foreach($line in $compatMapArray) {
-            if($i -match 0){
-              $releaseVersion = $line;
-            } else {
-              $compatibleTsVersions += $line;
-            }
-            $i++;
-          }
-          Write-Host $releaseVersion;
-          Write-Host $compatibleTsVersions;
-
-          $jsonBody = @{
-            oufrreleaseversion=$releaseVersion;
-            tsversion=$compatibleTsVersions;
-          };
-          $body = (ConvertTo-Json $jsonBody);
-          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
-          Write-Host $response;
-        displayName: Echo compatMap 3      
+        displayName: Invoke POST API with json body
