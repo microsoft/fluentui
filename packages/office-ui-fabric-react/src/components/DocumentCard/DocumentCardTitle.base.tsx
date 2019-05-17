@@ -160,7 +160,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       const titleElement = this._titleElement.current;
 
       if (!titleElement) {
-        return false;
+        return;
       }
 
       if (
