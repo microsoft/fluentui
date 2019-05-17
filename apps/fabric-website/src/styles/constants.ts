@@ -35,6 +35,7 @@ export const PageHeaderFullHeight = 136;
 export const navWidthSm = 252;
 export const navWidthLg = 302;
 export const navPadding = appPaddingSm;
+export const topNavHeight = 52;
 
 // We want the text to appear the same distance from the body and the nav. It include 8 padding already.
 export const sideRailPaddingLeft = appPaddingMd - 8;

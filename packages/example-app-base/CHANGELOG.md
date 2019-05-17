@@ -1,6 +1,40 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Wed, 15 May 2019 12:31:44 GMT and should not be manually modified.
+
+## 6.21.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Add randomEntry utility
+
+### Patches
+
+- PlatformContext: improve types, add displayName
+
+## 6.20.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- getSiteArea now pulls name from page definition instead of URL
+- Update Fabric assets link
+
+## 6.20.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Add `themeSlots` api to ColorPalette.
+- ApiReferencesTable/ApiReferencesTableSet: handle type aliases.
+
+## 6.19.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Add SiteMessageBar component and renderSiteMessageBar api to ISiteDefinition
 
 ## 6.18.0
 Tue, 07 May 2019 12:34:52 GMT

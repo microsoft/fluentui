@@ -1,6 +1,32 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Fri, 17 May 2019 12:22:31 GMT and should not be manually modified.
+
+## 6.76.4
+Fri, 17 May 2019 12:22:31 GMT
+
+### Patches
+
+- Chiclet: update examples and use opengraph API
+
+## 6.76.3
+Thu, 16 May 2019 17:34:08 GMT
+
+*Version update only*
+
+## 6.76.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.76.1
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Update snapshot
 
 ## 6.76.0
 Tue, 07 May 2019 12:34:52 GMT

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/tslint-rules",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared TSLint rules for UI Fabric projects",
   "main": "tslint.json",
   "scripts": {
@@ -15,6 +15,6 @@
     "tslint-react": "^3.2.0"
   },
   "devDependencies": {
-    "@uifabric/prettier-rules": "^1.0.1"
+    "@uifabric/prettier-rules": "^1.0.2"
   }
 }

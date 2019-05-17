@@ -3,7 +3,7 @@ import {
   Markdown,
   MarkdownHeader,
   ColorPalette,
-  IColor,
+  IColorSwatch,
   IColorPaletteTheme,
   IPageSectionProps
 } from '@uifabric/example-app-base/lib/index2';
@@ -94,7 +94,7 @@ export class ColorsProductsPage extends React.Component<IStylesPageProps, IColor
     }
   };
 
-  private _changeApp = (color: IColor) => {
+  private _changeApp = (color: IColorSwatch) => {
     const { activeAppColorPalette } = this.state;
 
     // Show the active app's color palette (optional).

@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
-import { itemWrapper } from '../shared/style';
+import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
@@ -55,7 +55,7 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
   };
 
   return (
-    <div className={itemWrapper}>
+    <div className={MainPanelInnerContent}>
       <h1>Fabric palette</h1>
       <table className={tableClassName}>
         <thead>

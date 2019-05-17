@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { max as d3Max } from 'd3-array';
+import { max as d3Max, min as d3Min } from 'd3-array';
 import { axisLeft as d3AxisLeft, axisBottom as d3AxisBottom } from 'd3-axis';
 import { scaleLinear as d3ScaleLinear, scaleTime as d3ScaleTime } from 'd3-scale';
 import { select as d3Select } from 'd3-selection';
@@ -217,9 +217,9 @@ export class LineChartBase extends React.Component<
     }
   }
 
-  private _prepareDatapoints(maxVal: number, splitInto: number, includeZero: boolean): number[] {
+  private _prepareDatapoints(minVal: number, maxVal: number, splitInto: number, includeZero: boolean): number[] {
     const val = Math.ceil(maxVal / splitInto);
-    const dataPointsArray: number[] = includeZero ? [0, val] : [val];
+    const dataPointsArray: number[] = minVal > 100 ? [100, val] : includeZero ? [0, val] : [val];
     while (dataPointsArray[dataPointsArray.length - 1] < maxVal) {
       dataPointsArray.push(dataPointsArray[dataPointsArray.length - 1] + val);
     }
@@ -254,8 +254,12 @@ export class LineChartBase extends React.Component<
     if (this.xAxisElement) {
       d3Select(this.xAxisElement)
         .call(xAxis)
-        .select('text')
-        .style('font', '10px Segoe UI Semibold');
+        .selectAll('text')
+        .style('text-anchor', 'end')
+        .style('font', '10px Segoe UI Semibold')
+        .attr('dx', '-0.5em')
+        .attr('dy', '-0.5em')
+        .attr('transform', 'rotate(-30)');
     }
   };
 
@@ -263,7 +267,10 @@ export class LineChartBase extends React.Component<
     const yMax = d3Max(this._points, (point: ILineChartPoints) => {
       return d3Max(point.data, (item: ILineChartDataPoint) => item.y);
     })!;
-    const domainValues = this._prepareDatapoints(yMax, 4, true);
+    const yMin = d3Min(this._points, (point: ILineChartPoints) => {
+      return d3Min(point.data, (item: ILineChartDataPoint) => item.y);
+    })!;
+    const domainValues = this._prepareDatapoints(yMin, yMax, 4, true);
     const yAxisScale = d3ScaleLinear()
       .domain([0, domainValues[domainValues.length - 1]])
       .range([this.state.containerHeight - this.margins.bottom, this.margins.top]);

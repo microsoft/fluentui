@@ -16,4 +16,4 @@ Our Fabric design toolkits provide styles, controls and layout templates that en
 
 ---
 
-Usage of Fabric assets, such as fonts and icons, is subject to the [assets license agreement](https://static2.sharepointonline.com/files/fabric/assets/microsoft_fabric_assets_license_agreement_10262017.pdf).
+Usage of Fabric assets, such as fonts and icons, is subject to the [assets license agreement](https://aka.ms/fabric-assets-license).

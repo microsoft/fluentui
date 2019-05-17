@@ -26,13 +26,15 @@ import {
   ApiPackage,
   ApiProperty,
   ApiPropertySignature,
+  ApiTypeAlias,
   ExcerptToken,
-  ExcerptTokenKind
+  IExcerptTokenRange
 } from '@microsoft/api-extractor-model';
 import { FileSystem, JsonFile } from '@microsoft/node-core-library';
 import {
   IPageJson,
   ITableJson,
+  ITokenJson,
   ITableRowJson,
   IEnumTableRowJson,
   IReferencesList,
@@ -140,8 +142,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
             break;
           }
           case ApiItemKind.TypeAlias: {
-            // TODO: handle typealias
-            console.log('Type alias');
+            pageJson.tables.push(createTypeAliasPageJson(collectedData, apiItem as ApiTypeAlias));
             break;
           }
         }
@@ -157,11 +158,7 @@ function createPageJsonFiles(collectedData: CollectedData, options: IPageJsonOpt
 }
 
 function renderDefaultValue(section: DocNodeContainer): string {
-  let defaultValueAsString = '';
-  for (const node of section.nodes) {
-    defaultValueAsString += extractText(node);
-  }
-  return defaultValueAsString;
+  return section.nodes.map(extractText).join('');
 }
 
 /**
@@ -211,22 +208,9 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
     if (numOfExtendsType > 0) {
       tableJson.extendsTokens.push({ text: ', ' });
     }
-    // This API could be improved
-    const tokenRange = extendsType.excerpt.tokenRange;
-    for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-      const token: ExcerptToken = extendsType.excerpt.tokens[i];
-      if (token.kind === ExcerptTokenKind.Reference) {
-        // search for reference in collectedData
-        const apiPage = collectedData.apiToPage.get(token.text);
-        if (apiPage) {
-          tableJson.extendsTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
-        } else {
-          tableJson.extendsTokens.push({ text: token.text });
-        }
-      } else {
-        tableJson.extendsTokens.push({ text: token.text });
-      }
-    }
+
+    tableJson.extendsTokens = getTokenHyperlinks(collectedData, extendsType.excerpt.tokens, extendsType.excerpt.tokenRange);
+
     numOfExtendsType++;
   }
   for (const member of interfaceItem.members) {
@@ -241,38 +225,20 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
         };
 
         if (apiPropertySignature.tsdocComment) {
-          let defaultValue = getBlockTagByName('@defaultValue', apiPropertySignature.tsdocComment);
+          const defaultValue =
+            getBlockTagByName('@defaultValue', apiPropertySignature.tsdocComment) ||
+            getBlockTagByName('@defaultvalue', apiPropertySignature.tsdocComment) ||
+            getBlockTagByName('@default', apiPropertySignature.tsdocComment);
 
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@defaultvalue', apiPropertySignature.tsdocComment);
-          }
-
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@default', apiPropertySignature.tsdocComment);
-          }
-
-          let defaultValueAsString = '';
-          if (defaultValue) {
-            defaultValueAsString = renderDefaultValue(defaultValue);
-          }
-          tableRowJson.defaultValue = defaultValueAsString;
+          tableRowJson.defaultValue = defaultValue ? renderDefaultValue(defaultValue) : '';
         }
 
-        const tokenRange = apiPropertySignature.propertyTypeExcerpt.tokenRange;
-        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-          const token: ExcerptToken = apiPropertySignature.excerptTokens[i];
-          if (token.kind === ExcerptTokenKind.Reference) {
-            // search for reference in collectedData
-            const apiPage = collectedData.apiToPage.get(token.text);
-            if (apiPage !== undefined) {
-              tableRowJson.typeTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
-            } else {
-              tableRowJson.typeTokens.push({ text: token.text });
-            }
-          } else {
-            tableRowJson.typeTokens.push({ text: token.text });
-          }
-        }
+        tableRowJson.typeTokens = getTokenHyperlinks(
+          collectedData,
+          apiPropertySignature.excerptTokens,
+          apiPropertySignature.propertyTypeExcerpt.tokenRange
+        );
+
         if (apiPropertySignature.tsdocComment) {
           if (apiPropertySignature.tsdocComment.deprecatedBlock) {
             tableRowJson.deprecated = true;
@@ -292,21 +258,12 @@ function createInterfacePageJson(collectedData: CollectedData, interfaceItem: Ap
           deprecated: false
         };
 
-        const tokenRange = apiMethodSignature.excerpt.tokenRange;
-        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-          const token: ExcerptToken = apiMethodSignature.excerptTokens[i];
-          if (token.kind === ExcerptTokenKind.Reference) {
-            // search for reference in collectedData
-            const apiPage = collectedData.apiToPage.get(token.text);
-            if (apiPage !== undefined) {
-              tableRowJson.typeTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
-            } else {
-              tableRowJson.typeTokens.push({ text: token.text });
-            }
-          } else {
-            tableRowJson.typeTokens.push({ text: token.text });
-          }
-        }
+        tableRowJson.typeTokens = getTokenHyperlinks(
+          collectedData,
+          apiMethodSignature.excerptTokens,
+          apiMethodSignature.excerpt.tokenRange
+        );
+
         if (apiMethodSignature.tsdocComment) {
           if (apiMethodSignature.tsdocComment.deprecatedBlock) {
             tableRowJson.deprecated = true;
@@ -422,38 +379,16 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
         };
 
         if (classItem.tsdocComment) {
-          let defaultValue = getBlockTagByName('@defaultValue', classItem.tsdocComment);
+          const defaultValue =
+            getBlockTagByName('@defaultValue', classItem.tsdocComment) ||
+            getBlockTagByName('@defaultvalue', classItem.tsdocComment) ||
+            getBlockTagByName('@default', classItem.tsdocComment);
 
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@defaultvalue', classItem.tsdocComment);
-          }
-
-          if (defaultValue === undefined) {
-            defaultValue = getBlockTagByName('@default', classItem.tsdocComment);
-          }
-
-          let defaultValueAsString = '';
-          if (defaultValue) {
-            defaultValueAsString = renderDefaultValue(defaultValue);
-          }
-          tableRowJson.defaultValue = defaultValueAsString;
+          tableRowJson.defaultValue = defaultValue ? renderDefaultValue(defaultValue) : '';
         }
 
-        const tokenRange = apiProperty.propertyTypeExcerpt.tokenRange;
-        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-          const token: ExcerptToken = apiProperty.excerptTokens[i];
-          if (token.kind === ExcerptTokenKind.Reference) {
-            // search for reference in collectedData
-            const apiPage = collectedData.apiToPage.get(token.text);
-            if (apiPage !== undefined) {
-              tableRowJson.typeTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
-            } else {
-              tableRowJson.typeTokens.push({ text: token.text });
-            }
-          } else {
-            tableRowJson.typeTokens.push({ text: token.text });
-          }
-        }
+        tableRowJson.typeTokens = getTokenHyperlinks(collectedData, apiProperty.excerptTokens, apiProperty.propertyTypeExcerpt.tokenRange);
+
         if (apiProperty.tsdocComment) {
           if (apiProperty.tsdocComment.deprecatedBlock) {
             tableRowJson.deprecated = true;
@@ -474,21 +409,8 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
           kind: 'Method'
         };
 
-        const tokenRange = apiMethod.excerpt.tokenRange;
-        for (let i: number = tokenRange.startIndex; i < tokenRange.endIndex; ++i) {
-          const token: ExcerptToken = apiMethod.excerptTokens[i];
-          if (token.kind === ExcerptTokenKind.Reference) {
-            // search for reference in collectedData
-            const apiPage = collectedData.apiToPage.get(token.text);
-            if (apiPage !== undefined) {
-              tableRowJson.typeTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
-            } else {
-              tableRowJson.typeTokens.push({ text: token.text });
-            }
-          } else {
-            tableRowJson.typeTokens.push({ text: token.text });
-          }
-        }
+        tableRowJson.typeTokens = getTokenHyperlinks(collectedData, apiMethod.excerptTokens, apiMethod.excerpt.tokenRange);
+
         if (apiMethod.tsdocComment) {
           if (apiMethod.tsdocComment.deprecatedBlock) {
             tableRowJson.deprecated = true;
@@ -506,6 +428,53 @@ function createClassPageJson(collectedData: CollectedData, classItem: ApiClass):
   }
 
   tableJson.members = classTableRowJson;
+
+  return tableJson;
+}
+
+/**
+ * Loops through excerpt tokens and returns a token array with hyperlink data
+ *
+ * @returns An array of ITokenJson objects with hyperlinks
+ */
+function getTokenHyperlinks(
+  collectedData: CollectedData,
+  excerptTokens: ReadonlyArray<ExcerptToken>,
+  excerptTokenRange: Readonly<IExcerptTokenRange>
+): ITokenJson[] {
+  const typeTokens: ITokenJson[] = [];
+
+  for (let i: number = excerptTokenRange.startIndex; i < excerptTokenRange.endIndex; ++i) {
+    const token: ExcerptToken = excerptTokens[i];
+    const apiPage = collectedData.apiToPage.get(token.text);
+    if (apiPage !== undefined) {
+      typeTokens.push({ text: token.text, hyperlinkedPage: apiPage.pageName, pageKind: apiPage.kind });
+    } else {
+      typeTokens.push({ text: token.text });
+    }
+  }
+  return typeTokens;
+}
+
+/**
+ * Creates a type alias json object
+ * @param collectedData - Collected data to use for linking
+ * @param typeAliasItem - Type alias item to search
+ */
+function createTypeAliasPageJson(collectedData: CollectedData, typeAliasItem: ApiTypeAlias): ITableJson {
+  const tableJson: ITableJson = {
+    kind: 'typeAlias',
+    name: typeAliasItem.displayName,
+    extendsTokens: [],
+    description: '',
+    members: []
+  };
+
+  if (typeAliasItem.tsdocComment) {
+    tableJson.description += renderDocNodeWithoutInlineTag(typeAliasItem.tsdocComment.summarySection);
+  }
+
+  tableJson.extendsTokens = getTokenHyperlinks(collectedData, typeAliasItem.excerptTokens, typeAliasItem.excerpt.tokenRange);
 
   return tableJson;
 }
@@ -576,7 +545,8 @@ function collectPageData(collectedData: CollectedData, apiItem: ApiItem, kind: P
     switch (apiItem.kind) {
       case ApiItemKind.Interface:
       case ApiItemKind.Enum:
-      case ApiItemKind.Class: {
+      case ApiItemKind.Class:
+      case ApiItemKind.TypeAlias: {
         console.log('Analyzing ' + apiItem.displayName);
 
         if (apiItem.tsdocComment !== undefined) {

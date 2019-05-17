@@ -1,4 +1,4 @@
-import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString, IRawStyle } from 'office-ui-fabric-react';
+import { IStyle, getGlobalClassNames, Shade, getShade, getColorFromString } from 'office-ui-fabric-react';
 import { MotionDurations, MotionTimings, FontSizes } from '@uifabric/fluent-theme';
 import { IHomePageStyleProps, IHomePageStyles } from './HomePage.types';
 import { appPadding, mediaQuery } from '../../styles/constants';
@@ -132,9 +132,10 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
       classNames.sectionContent,
       {
         display: 'flex',
-        flex: 1,
+        flex: '1 0 auto',
         flexWrap: 'wrap',
         maxWidth: CONTENT_WIDTH,
+        width: '100%', // IE11 needs width for flexbox to calculate correctly.
 
         selectors: {
           p: {

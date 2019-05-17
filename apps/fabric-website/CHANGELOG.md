@@ -1,6 +1,72 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2019 17:34:08 GMT and should not be manually modified.
+
+## 6.18.5
+Thu, 16 May 2019 17:34:08 GMT
+
+### Patches
+
+- fixed the way it creates a flight baseCDNUrl
+- Fix Button page imports
+
+## 6.18.4
+Thu, 16 May 2019 12:21:56 GMT
+
+### Patches
+
+- Add versioned release notes and demo section
+
+## 6.18.3
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Adding mobile examples and docs for Button.
+
+## 6.18.2
+Wed, 15 May 2019 12:31:44 GMT
+
+### Patches
+
+- Add 404 page
+
+## 6.18.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Fix pages not rendering on first load
+- Update Fabric assets link
+- Fix left nav section behavior
+
+## 6.18.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Export `categories` object to serve as a source of navigation structure for the table of content on docs.microsoft
+
+### Patches
+
+- Update neutrals content and move palette objects to json files.
+- Fix IE11 home page styles
+- Fix types import
+
+## 6.17.2
+Fri, 10 May 2019 12:36:11 GMT
+
+### Patches
+
+- Fixes website to be IE11 compatible with polyfills provided by react-app-polyfill
+
+## 6.17.1
+Thu, 09 May 2019 12:35:50 GMT
+
+### Patches
+
+- Include md files in nested docs folders
+- Move renderSiteMessageBar to SiteDefinition
 
 ## 6.17.0
 Tue, 07 May 2019 12:34:52 GMT

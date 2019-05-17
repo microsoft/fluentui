@@ -21,7 +21,8 @@ export interface IBasePicker<T> {
   focusInput: () => void;
 }
 
-/* Type T is the type of the item that is displayed
+/**
+ * Type T is the type of the item that is displayed
  * and searched for by the picker. For example, if the picker is
  * displaying persona's then type T could either be of Persona or IPersona props
  * {@docCategory Pickers}

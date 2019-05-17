@@ -54,7 +54,7 @@ export const TemplatePageProps: TFabricPlatformPageProps = {
     contact: require('!raw-loader!@uifabric/fabric-website/src/pages/PageTemplates/TemplatePage/docs/default/TemplateContact.md') as string,
 
     // Raw import of a types definition file to render the Implementation Section. (Array)
-    propertiesTablesSources: [require('!raw-loader!@uifabric/example-app-base/src/components/Page/Page.types.ts') as string]
+    propertiesTablesSources: [require('!raw-loader!office-ui-fabric-react/src/components/TeachingBubble/TeachingBubble.types.ts') as string]
   }
 
   // Define the platform specific props as default above, just make sure that the imports point to the correct files and folders.

@@ -53,7 +53,23 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/localization', to: '#/styles/web/localization' },
     { from: '#/styles/themegenerator', to: '#/styles/web' },
     { from: '#/styles/typography', to: '#/styles/web/typography' },
-    { from: '#/styles/utilities', to: '#/styles/web' },
-    { from: new RegExp('#/get-started$'), to: '#/get-started/web' }
+    { from: '#/styles/utilities', to: '#/styles/web' }
+  ],
+  messageBars: [
+    {
+      path: '#/controls/web',
+      exclude: 'fluent-theme',
+      text: 'You can now implement the new Fluent styles in Fabric Web controls.',
+      linkText: 'Learn more',
+      linkUrl: '#/controls/web/fluent-theme',
+      sessionStoragePrefix: 'WebFluentUpdates'
+    },
+    {
+      path: new RegExp(/^#?\/?$/),
+      text: 'Microsoft employees can sign in to see additional documentation.',
+      linkText: 'Sign in',
+      linkUrl: 'https://aka.ms/hig',
+      sessionStoragePrefix: 'SignIn'
+    }
   ]
 };
