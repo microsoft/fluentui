@@ -186,6 +186,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     bodyDivider: p.neutralLight,
 
     disabledBackground: p.neutralLighter,
+    disabledBorder: p.neutralTertiary,
     disabledText: p.neutralTertiary,
     disabledBodyText: p.neutralTertiary,
     disabledSubtext: p.neutralQuaternary,
@@ -213,6 +214,7 @@ function _makeSemanticColorsFromPalette(p: IPalette, isInverted: boolean, depCom
     inputForegroundHovered: p.neutralPrimary,
     inputBackgroundCheckedHovered: p.themeDarkAlt,
     inputForegroundChecked: p.white,
+    inputForegroundCheckedHovered: p.white,
     inputFocusBorderAlt: p.themePrimary,
     smallInputBorder: p.neutralSecondary,
     smallInputBorderHovered: p.neutralSecondary,

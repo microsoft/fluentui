@@ -96,6 +96,11 @@ export interface ISemanticColors extends ISemanticTextColors {
   disabledBackground: string;
 
   /**
+   * The default color for the order of disabled controls.
+   */
+  disabledBorder: string;
+
+  /**
    * The color of the outline around focused controls that don't already have a border; e.g. menu items
    */
   focusBorder: string;
@@ -190,6 +195,11 @@ export interface ISemanticColors extends ISemanticTextColors {
    * radio button's background color around the dot.
    */
   inputForegroundChecked: string;
+
+  /**
+   * The foreground of a checked control on hover.
+   */
+  inputForegroundCheckedHovered: string;
 
   /**
    * The alternate focus border color for elements that already have a border; e.g. text field borders on focus.
