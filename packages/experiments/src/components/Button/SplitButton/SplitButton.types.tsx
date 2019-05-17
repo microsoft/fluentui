@@ -87,7 +87,6 @@ export interface ISplitButtonProps
       | 'defaultExpanded'
       | 'expanded'
       | 'onMenuDismiss'
-      | 'menuTarget'
     >,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
     IBaseProps<ISplitButton>,
@@ -102,17 +101,17 @@ export interface ISplitButtonProps
    * Defines the aria label that the screen readers use when focus goes on the second focus stop of the SplitButton.
    */
   secondaryAriaLabel?: string;
+
+  /**
+   * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
+   */
+  onSecondaryActionClick?: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => void;
 }
 
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef'>, ISplitButtonProps {
-  /**
-   * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
-   */
-  onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-}
+export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>, ISplitButtonProps {}
 
 /**
  * {@docCategory Button}

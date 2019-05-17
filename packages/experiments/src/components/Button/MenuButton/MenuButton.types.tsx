@@ -81,17 +81,17 @@ export interface IMenuButtonProps
    * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */
   onMenuDismiss?: () => void;
-
-  /**
-   * Defines the target that the contextual menu uses to position itself.
-   */
-  menuTarget?: HTMLElement | undefined;
 }
 
 /**
  * {@docCategory Button}
  */
-export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {}
+export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
+  /**
+   * Defines a reference to the MenuButton.
+   */
+  menuButtonRef?: React.RefObject<HTMLButtonElement>;
+}
 
 /**
  * {@docCategory Button}

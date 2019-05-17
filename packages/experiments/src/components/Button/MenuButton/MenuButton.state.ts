@@ -1,10 +1,10 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { useControlledState } from '../../../Foundation';
 import { KeyCodes } from '../../../Utilities';
 import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
 
 export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
-  const [menuTarget, setMenuTarget] = useState<HTMLElement | undefined>(undefined);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const [expanded, setExpanded] = useControlledState(props, 'expanded', {
     defaultPropName: 'defaultExpanded',
     defaultPropValue: false
@@ -28,10 +28,9 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
           }
         }
         setExpanded(!expanded);
-        setMenuTarget(ev.currentTarget);
       }
     },
-    [expanded, onClick]
+    [disabled, expanded, onClick]
   );
 
   const _onKeyDown = useCallback(
@@ -47,7 +46,6 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
 
         if ((ev.altKey || ev.metaKey) && ev.keyCode === KeyCodes.down) {
           setExpanded(true);
-          setMenuTarget(ev.currentTarget);
         }
       }
     },
@@ -60,7 +58,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
     onClick: _onClick,
     onKeyDown: _onKeyDown,
     onMenuDismiss: _onMenuDismiss,
-    menuTarget
+    menuButtonRef
   };
 
   return viewProps;
