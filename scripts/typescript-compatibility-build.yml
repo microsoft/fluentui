@@ -139,5 +139,5 @@ jobs:
       - task: PublishBuildArtifacts@1
         displayName: Publish Build Artifacts
         inputs:
-          pathtoPublish: $(Build.StagingDirectory)
+          pathtoPublish: $(Build.StagingDirectory)/drop
           artifactName: drop  
