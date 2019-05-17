@@ -750,7 +750,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a19f9d;
+                  border-color: #8a8886;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -979,7 +979,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a19f9d;
+                  border-color: #8a8886;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
@@ -1208,7 +1208,7 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a19f9d;
+                  border-color: #8a8886;
                   border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;

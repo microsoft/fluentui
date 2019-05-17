@@ -112,7 +112,7 @@ exports[`Dropdown multi-select Renders multiselect Dropdown correctly 1`] = `
           ms-Dropdown-titleIsPlaceHolder
           {
             background-color: #ffffff;
-            border-color: #a19f9d;
+            border-color: #8a8886;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;
@@ -289,7 +289,7 @@ exports[`Dropdown single-select Renders single-select Dropdown correctly 1`] = `
           ms-Dropdown-titleIsPlaceHolder
           {
             background-color: #ffffff;
-            border-color: #a19f9d;
+            border-color: #8a8886;
             border-radius: 2px;
             border-style: solid;
             border-width: 1px;

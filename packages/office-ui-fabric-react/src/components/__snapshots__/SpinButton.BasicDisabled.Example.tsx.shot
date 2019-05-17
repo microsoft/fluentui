@@ -72,7 +72,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
             background-color: #f3f2f1;
             border-color: transparent;
             border-radius: 2px;
-            border: 1px solid #a19f9d;
+            border: 1px solid #8a8886;
             box-sizing: border-box;
             color: #a19f9d;
             cursor: default;
