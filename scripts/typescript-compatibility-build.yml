@@ -173,7 +173,7 @@ jobs:
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;
 
-          $APIUrl = "http://c0fb2ec4.ngrok.io/oufr/registerNew?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
+          $APIUrl = "http://c0fb2ec4.ngrok.io/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
           $response = Invoke-RestMethod -Uri $APIUrl -Method Get;
           Write-Host $response;
         displayName: Invoke POST API with json body
