@@ -34,7 +34,6 @@ import {
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
-import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
@@ -392,7 +391,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
-    return <ContextualMenu {...subMenuProps} />;
+    return <ContextualMenuBase {...subMenuProps} />;
   }
 
   private _onRenderMenuList = (
