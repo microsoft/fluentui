@@ -48,7 +48,6 @@ const markdownFiles = {
 const errorCreatingPageDir = 'Error creating page directory';
 const errorPageName = 'Please pass in the page name using --name';
 const errorPagePath = 'Please pass in the page path using --path. ie: Overviews, Controls, Styles, etc';
-const errorPagePathDoesNotExist = "The path you gave doesn't exist. Please pass in a path that exists in the pages directory.";
 
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for page`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
@@ -151,13 +150,12 @@ function makePage(error) {
 }
 
 if (newPageName && newPagePath) {
-  if (fs.existsSync(pagePath)) {
-    // Create new folder in packages/src/office-ui-fabric-react
-    fs.mkdir(pageFolderPath, makePage);
-    console.log("Success! Don't forget to add your page to SiteDefinition.");
-  } else {
-    console.error(errorPagePathDoesNotExist);
+  try {
+    fs.accessSync(pagePath);
+  } catch (error) {
+    fs.mkdirSync(pagePath);
   }
+  fs.mkdir(pageFolderPath, makePage);
 } else {
   if (!newPageName) {
     console.error(errorPageName);
