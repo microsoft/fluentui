@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add selectedOptions to onChange in ComboBox and Dropdown",
+      "comment": "Add selectedOptions to ComboBox and Dropdown",
       "type": "minor"
     }
   ],
