@@ -4,7 +4,7 @@
   "version": "1.0.0",
   "private": true,
   "scripts": {
-    "build": "npx just-scripts build-commonjs-only",
+    "build": "npx just-scripts build",
     "test": "node ./scripts/test.js",
     "update-snapshots": "node ./scripts/update-snapshots.js",
     "code-style": "npx just-scripts code-style",
@@ -28,8 +28,5 @@
     "@types/puppeteer": "1.12.3",
     "@uifabric/tslint-rules": "^1.0.2",
     "@uifabric/build": "*"
-  },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ]
+  }
 }

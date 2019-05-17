@@ -1,4 +1,4 @@
-const { logger } = require('just-task');
+const { logger } = require('just-scripts');
 const ttest = require('ttest');
 
 const componentCount = 1000;

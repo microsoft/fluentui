@@ -10,23 +10,14 @@
     "just": "npx just-scripts",
     "clean": "npx just-scripts clean"
   },
-  "disabledTasks": [
-    "copy",
-    "karma",
-    "webpack",
-    "build-codepen-examples",
-    "verify-api-extractor",
-    "update-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
+    "just-scripts": "~0.15.3",
     "@types/node": "^8.10.29",
     "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
     "@uifabric/styling": "^6.47.6",
     "@uifabric/merge-styles": "^6.17.3",
     "@uifabric/utilities": "^6.38.3",
-    "office-ui-fabric-react": "^6.182.1",
-    "@uifabric/build": "*"
+    "office-ui-fabric-react": "^6.182.1"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.8",

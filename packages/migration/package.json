@@ -13,7 +13,7 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "npx just-scripts build-commonjs-only",
+    "build": "npx just-scripts build",
     "clean": "npx just-scripts clean",
     "code-style": "npx just-scripts code-style",
     "start": "npx just-scripts dev",

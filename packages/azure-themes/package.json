@@ -17,7 +17,7 @@
     "build": "npx just-scripts build",
     "just": "npx just-scripts",
     "code-style": "npx just-scripts code-style",
-    "clean": "npx just-scripts clean"
+    "clean": "node node_modules/@uifabric/build/just-scripts.js clean"
   },
   "disabledTasks": [
     "jest",

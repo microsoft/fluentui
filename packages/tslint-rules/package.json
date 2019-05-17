@@ -5,9 +5,7 @@
   "main": "tslint.json",
   "scripts": {
     "clean": "",
-    "build": "node -v",
-    "code-style": "npx just-scripts code-style",
-    "just": "npx just-scripts"
+    "build": "node -v"
   },
   "disabledTasks": [
     "verify-api-extractor"
@@ -16,7 +14,6 @@
     "tslint-react": "^3.2.0"
   },
   "devDependencies": {
-    "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/build": "*"
+    "@uifabric/prettier-rules": "^1.0.2"
   }
 }

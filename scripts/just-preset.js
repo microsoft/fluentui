@@ -1,18 +1,17 @@
 // @ts-check
 
-const just = require('just-scripts');
-const { task, series, parallel, condition, option, argv, logger, addResolvePath } = just;
+const { task, series, parallel, condition, option, argv, logger, addResolvePath } = require('just-scripts');
 
 const path = require('path');
 const fs = require('fs');
 
 const { clean } = require('./tasks/clean');
 const { copy } = require('./tasks/copy');
-const { jest, jestWatch, jestDom } = require('./tasks/jest');
+const { jest, jestWatch } = require('./tasks/jest');
 const { sass } = require('./tasks/sass');
 const { ts } = require('./tasks/ts');
 const { tslint } = require('./tasks/tslint');
-const { webpack, webpackDevServer, webpackDevServerWithCompileResolution } = require('./tasks/webpack');
+const { webpack, webpackDevServer } = require('./tasks/webpack');
 const { verifyApiExtractor, updateApiExtractor } = require('./tasks/api-extractor');
 const lintImports = require('./tasks/lint-imports');
 const prettier = require('./tasks/prettier');
@@ -21,7 +20,7 @@ const checkForModifiedFiles = require('./tasks/check-for-modified-files');
 const generateVersionFiles = require('./tasks/generate-version-files');
 const perfTest = require('./tasks/perf-test');
 
-function preset() {
+module.exports = function preset() {
   // this add s a resolve path for the build tooling deps like TS from the scripts folder
   addResolvePath(__dirname);
 
@@ -39,7 +38,6 @@ function preset() {
   task('copy', copy);
   task('jest', jest);
   task('jest-watch', jestWatch);
-  task('jest-dom', jestDom);
   task('sass', sass);
   task('ts:commonjs', ts.commonjs);
   task('ts:esm', ts.esm);
@@ -56,16 +54,21 @@ function preset() {
   task('check-for-modified-files', checkForModifiedFiles);
   task('generate-version-files', generateVersionFiles);
   task('perf-test', perfTest);
+  task('ts', () => {
+    return argv().commonjs
+      ? 'ts:commonjs-only'
+      : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
+  });
 
-  task(
-    'ts',
-    argv().commonjs ? 'ts:commonjs-only' : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min))
-  );
-
-  task('validate', series('tslint', 'jest', 'lint-imports'));
+  task('validate', series('tslint', 'jest'));
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
+
+  // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
+  task('build-jest-serializer-merge-styles', series('ts', 'jest'));
+
+  task('build:node-lib', series('clean', 'copy', parallel(condition('validate', () => !argv().min), 'ts:commonjs-only')));
 
   task(
     'build',
@@ -75,24 +78,9 @@ function preset() {
       'sass',
       parallel(
         condition('validate', () => !argv().min),
-        series(
-          'ts',
-          // verify-api-extractor must always be run now because the api-docs package depends on its output
-          parallel(condition('webpack', () => !argv().min), 'verify-api-extractor')
-        )
+        condition('lint-imports', () => argv().production && !argv().min),
+        series('ts', condition('webpack', () => !argv().min))
       )
     )
   );
-
-  // Special case build for the serializer, which needs to absolutely run typescript and jest serially.
-  task('build-jest-serializer-merge-styles', series('ts', 'jest'));
-
-  task('build-commonjs-only', series('clean', 'ts:commonjs-only'));
-
-  task('jest-dom-with-webpack', series(webpackDevServerWithCompileResolution, 'jest-dom', webpackDevServerWithCompileResolution.done));
-}
-
-module.exports = {
-  preset,
-  just
 };

@@ -4,7 +4,7 @@
 
 const fs = require('fs');
 const path = require('path');
-const { argv, logger } = require('@uifabric/build/just-task').just;
+const { argv, logger } = require('@uifabric/build').just;
 
 /**
  * A Task Function for Fabric Website that Generates a Manifest for Non-UHF "Internal" Site

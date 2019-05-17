@@ -18,11 +18,6 @@
     "code-style": "npx just-scripts code-style",
     "just": "npx just-scripts"
   },
-  "disabledTasks": [
-    "copy",
-    "webpack",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@uifabric/prettier-rules": "^1.0.2",
