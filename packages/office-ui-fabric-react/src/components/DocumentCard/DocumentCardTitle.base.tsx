@@ -143,7 +143,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
           const truncatedLength: number = originalTitle.length / overFlowRate - 3 /** Saved for separator */;
           return this.setState({
             truncatedTitleFirstPiece: originalTitle.slice(0, truncatedLength / 2),
-            truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2, originalTitle.length),
+            truncatedTitleSecondPiece: originalTitle.slice(originalTitle.length - truncatedLength / 2),
             clientWidth,
             needMeasurement: false
           });
