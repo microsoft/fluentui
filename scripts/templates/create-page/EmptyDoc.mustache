@@ -1,4 +1,4 @@
-import { THigPlatformPageProps } from '../../../interfaces/Platforms';
+import { TFabricPlatformPageProps } from '../../../interfaces/Platforms';
 
 // This file is where many of the commonly appearing properties are defined for each page.
 
@@ -15,7 +15,7 @@ const related = require('!raw-loader!@uifabric/fabric-website-internal/src/pages
 
 // An object containing the page props for each platform. Remove as needed.
 // NOTE: A section won't render if the Markdown file imported here is empty. This is to make it easy to remove sections by just deleting the text instead of removing files and props.
-export const {{pageName}}PageProps: THigPlatformPageProps = {
+export const {{pageName}}PageProps: TFabricPlatformPageProps = {
   default: {
     // Page title.
     title,
@@ -56,7 +56,6 @@ export const {{pageName}}PageProps: THigPlatformPageProps = {
 
   // Define the platform specific props as default above, just make sure that the imports point to the correct files and folders.
   // web: {},
-  // win32: {},
   // ios: {},
   // android: {},
 };
