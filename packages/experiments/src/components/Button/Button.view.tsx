@@ -19,7 +19,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
     content: Text
   });
 
-  const _onClick = (ev: React.MouseEvent<HTMLElement>) => {
+  const _onClick = (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
     if (!disabled && onClick) {
       onClick(ev);
 

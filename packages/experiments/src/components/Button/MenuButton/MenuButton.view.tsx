@@ -17,7 +17,6 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
     expanded,
     onMenuDismiss,
     menuTarget,
-    buttonRef,
     ...rest
   } = props;
   let { keytipProps } = props;
@@ -45,7 +44,6 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
         aria-expanded={expanded}
         onClick={onClick}
         disabled={disabled}
-        componentRef={buttonRef}
         allowDisabledFocus={allowDisabledFocus}
         keytipProps={keytipProps}
         {...rest}

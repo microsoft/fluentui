@@ -1,7 +1,7 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps } from '../Button.types';
+import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
 
 /**
  * {@docCategory Button}
@@ -53,11 +53,6 @@ export interface IMenuButton {
    * Sets focus to the MenuButton.
    */
   focus: () => void;
-
-  /**
-   * Defines an event callback that is triggered when a keypress is made with the focus on a MenuButton.
-   */
-  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
 }
 
 /**
@@ -65,9 +60,10 @@ export interface IMenuButton {
  */
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps'>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
-    IBaseProps<IMenuButton> {
+    IBaseProps<IMenuButton>,
+    INativeButtonProps {
   /**
    * Defines the inital expanded state of the MenuButton. If you want the MenuButton to maintain its own state, use this.
    * Otherwise refer to `expanded`.
@@ -82,16 +78,6 @@ export interface IMenuButtonProps
   expanded?: boolean;
 
   /**
-   * Defines an event callback that is triggered when a keypress is made with the focus on a MenuButton.
-   */
-  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
-}
-
-/**
- * {@docCategory Button}
- */
-export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
-  /**
    * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */
   onMenuDismiss?: () => void;
@@ -101,6 +87,11 @@ export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'
    */
   menuTarget?: HTMLElement | undefined;
 }
+
+/**
+ * {@docCategory Button}
+ */
+export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {}
 
 /**
  * {@docCategory Button}
