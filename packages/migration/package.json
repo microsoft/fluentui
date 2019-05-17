@@ -34,8 +34,5 @@
     "tslib": "^1.7.1",
     "riceburn": "^1.2.0",
     "typescript": "2.8.4"
-  },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ]
+  }
 }

@@ -20,11 +20,6 @@
     "code-style": "npx just-scripts code-style",
     "start-test": "npx just-scripts jest-watch"
   },
-  "disabledTasks": [
-    "copy",
-    "sass",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@types/react": "16.3.16",

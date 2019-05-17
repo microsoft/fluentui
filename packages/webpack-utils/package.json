@@ -14,11 +14,6 @@
     "start": "node ../../scripts/node_modules/typescript/bin/tsc -w --outDir lib -m commonjs -t es5",
     "just": "npx just-scripts"
   },
-  "disabledTasks": [
-    "copy",
-    "webpack",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@types/loader-utils": "1.1.3",

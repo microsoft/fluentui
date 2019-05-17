@@ -18,11 +18,6 @@
     "start-test": "npx just-scripts jest-watch",
     "update-snapshots": "npx just-scripts jest -u"
   },
-  "disabledTasks": [
-    "webpack",
-    "build-codepen-examples",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "just-scripts": "~0.15.3",
     "@types/babylon": "^6.16.5",

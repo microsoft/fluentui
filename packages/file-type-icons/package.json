@@ -19,11 +19,6 @@
     "clean": "npx just-scripts clean",
     "code-style": "npx just-scripts code-style"
   },
-  "disabledTasks": [
-    "sass",
-    "jest",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",

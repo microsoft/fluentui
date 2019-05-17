@@ -13,11 +13,6 @@
     "code-style": "npx just-scripts code-style",
     "start": "node ./server/index.js"
   },
-  "disabledTasks": [
-    "tslint",
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.3.16",

@@ -22,10 +22,6 @@
     "update-api": "node ../../scripts/update-api.js",
     "update-snapshots": "npx just-scripts jest -u"
   },
-  "disabledTasks": [
-    "copy",
-    "webpack"
-  ],
   "devDependencies": {
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",

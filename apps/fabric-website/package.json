@@ -23,10 +23,6 @@
     "startuhf": "npx just-scripts dev --webpackConfig webpack.uhf.serve.config.js"
   },
   "license": "MIT",
-  "disabledTasks": [
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/node": "^8.10.29",

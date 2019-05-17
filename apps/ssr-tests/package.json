@@ -17,9 +17,6 @@
     "just": "npx just-scripts"
   },
   "license": "MIT",
-  "disabledTasks": [
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/mocha": "2.2.39",

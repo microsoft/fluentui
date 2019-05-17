@@ -19,11 +19,6 @@
     "code-style": "npx just-scripts code-style",
     "clean": "node node_modules/@uifabric/build/just-scripts.js clean"
   },
-  "disabledTasks": [
-    "jest",
-    "sass",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/jest": "23.0.0",
     "@uifabric/jest-serializer-merge-styles": "^6.0.9",

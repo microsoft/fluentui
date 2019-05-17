@@ -21,10 +21,6 @@
     "code-style": "npx just-scripts code-style",
     "start": "npx just-scripts dev"
   },
-  "disabledTasks": [
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
     "@types/react": "16.3.16",
     "@types/react-dom": "16.0.5",

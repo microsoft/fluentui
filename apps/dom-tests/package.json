@@ -11,10 +11,6 @@
     "start": "npx just-scripts dev",
     "jest-dom": "npx just-scripts "
   },
-  "disabledTasks": [
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",

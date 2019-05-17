@@ -8,8 +8,5 @@
     "build": "node -v",
     "code-style": "node ../../scripts/bin/just-scripts.js code-style",
     "just": "node ../../scripts/bin/just-scripts.js"
-  },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ]
+  }
 }

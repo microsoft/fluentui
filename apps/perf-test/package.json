@@ -10,10 +10,6 @@
     "code-style": "npx just-scripts code-style",
     "start": "npx just-scripts dev"
   },
-  "disabledTasks": [
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.8.12",
