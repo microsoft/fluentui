@@ -152,6 +152,26 @@ jobs:
           downloadPath: $(Build.StagingDirectory)
 
       # Echo compatMap
-      - script: |
-          cat $(Build.StagingDirectory)/drop/compatMap.txt
-        displayName: Echo compatMap    
+      - powershell:
+          $i = 0;
+          $releaseVersion = "";
+          $compatibleTsVersions = @()
+          foreach($line in Get-Content $(Build.StagingDirectory)/drop/compatMap.txt) {
+            if($i -match 0){
+              $releaseVersion = $line;
+            } else {
+              $compatibleTsVersions += $line
+            }
+            $i++;
+          }
+          Write-Host $releaseVersion
+          Write-Host $compatibleTsVersions
+
+          $jsonBody = @{
+            oufrreleaseversion=$(releaseVersion);
+            tsversion=$(compatibleTsVersions);
+          };
+          $body = (ConvertTo-Json $jsonBody);
+          $response = Invoke-RestMethod -Uri 'https://jsonplaceholder.typicode.com/posts' -Method Post -Body $body -ContentType 'application/json';
+          Write-Host $response;
+        displayName: Echo compatMap
