@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "TeachingBubble: changed entrance animation. This is still a WIP but need to send to some folks so they can get theireyes on the progress.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "marygans@microsoft.com"
+}
