@@ -5,11 +5,12 @@ import { KeyCodes } from '../../../Utilities';
 export const useSplitButtonState: ISplitButtonComponent['state'] = props => {
   const [expanded, setExpanded] = useState<boolean>(false);
 
-  const _onMenuDismiss = useCallback(() => {
-    setExpanded(false);
-  }, []);
+  const { disabled, onMenuDismiss, onSecondaryActionClick } = props;
 
-  const { disabled, onSecondaryActionClick } = props;
+  const _onMenuDismiss = useCallback(() => {
+    onMenuDismiss && onMenuDismiss();
+    setExpanded(false);
+  }, [onMenuDismiss]);
 
   const _onSecondaryActionClick = useCallback(
     (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
