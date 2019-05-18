@@ -16,8 +16,7 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
     menu,
     expanded,
     onMenuDismiss,
-    menuTarget,
-    buttonRef,
+    menuButtonRef,
     ...rest
   } = props;
   let { keytipProps } = props;
@@ -40,12 +39,11 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
   });
 
   return (
-    <Slots.root>
+    <Slots.root ref={menuButtonRef}>
       <Slots.button
         aria-expanded={expanded}
         onClick={onClick}
         disabled={disabled}
-        componentRef={buttonRef}
         allowDisabledFocus={allowDisabledFocus}
         keytipProps={keytipProps}
         {...rest}
@@ -56,7 +54,12 @@ export const MenuButtonView: IMenuButtonComponent['view'] = props => {
         </Stack.Item>
       </Slots.button>
       {expanded && (
-        <Slots.menu target={menuTarget} onDismiss={onMenuDismiss} items={[]} directionalHint={DirectionalHint.bottomRightEdge} />
+        <Slots.menu
+          target={menuButtonRef && menuButtonRef.current}
+          onDismiss={onMenuDismiss}
+          items={[]}
+          directionalHint={DirectionalHint.bottomRightEdge}
+        />
       )}
     </Slots.root>
   );

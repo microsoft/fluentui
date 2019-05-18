@@ -1,7 +1,7 @@
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { IFontWeight, IKeytipProps, IStackSlot, ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
-import { IBaseProps } from '../../Utilities';
+import { IBaseProps, Omit } from '../../Utilities';
 import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 
 /**
@@ -66,13 +66,16 @@ export interface IButton {
   focus: () => void;
 }
 
+export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>, 'content'>;
+
 /**
  * {@docCategory Button}
  */
 export interface IButtonProps
   extends ISlottableProps<IButtonSlots>,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
-    IBaseProps<IButton> {
+    IBaseProps<IButton>,
+    INativeButtonProps {
   /**
    * Defines an href reference that, if provided, will make this component render as an anchor.
    */
@@ -96,11 +99,6 @@ export interface IButtonProps
    * @defaultvalue false
    */
   disabled?: boolean;
-
-  /**
-   * Defines an event callback that is triggered when the Button is clicked.
-   */
-  onClick?: (ev: React.MouseEvent<HTMLElement>) => void;
 
   /**
    * Defines whether the Button is in a checked state (for toggle buttons).
@@ -129,7 +127,7 @@ export interface IButtonProps
  */
 export interface IButtonViewProps extends IButtonProps {
   /**
-   * Defines a reference to the inner button.
+   * Defines a reference to the inner Button.
    */
   buttonRef?: React.RefObject<HTMLButtonElement>;
 }

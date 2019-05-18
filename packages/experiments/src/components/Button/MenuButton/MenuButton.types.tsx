@@ -1,7 +1,7 @@
 import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps } from '../Button.types';
+import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
 
 /**
  * {@docCategory Button}
@@ -60,9 +60,10 @@ export interface IMenuButton {
  */
 export interface IMenuButtonProps
   extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'onClick' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps'>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
-    IBaseProps<IMenuButton> {
+    IBaseProps<IMenuButton>,
+    INativeButtonProps {
   /**
    * Defines the inital expanded state of the MenuButton. If you want the MenuButton to maintain its own state, use this.
    * Otherwise refer to `expanded`.
@@ -77,9 +78,9 @@ export interface IMenuButtonProps
   expanded?: boolean;
 
   /**
-   * Defines an event callback that is triggered when a keypress is made with the focus on a MenuButton.
+   * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
    */
-  onKeyDown?: (ev: React.KeyboardEvent<HTMLElement>) => void;
+  onMenuDismiss?: () => void;
 }
 
 /**
@@ -87,14 +88,9 @@ export interface IMenuButtonProps
  */
 export interface IMenuButtonViewProps extends Pick<IButtonViewProps, 'buttonRef'>, IMenuButtonProps {
   /**
-   * Defines a callback that runs after the MenuButton's contextual menu has been closed (removed from the DOM).
+   * Defines a reference to the MenuButton.
    */
-  onMenuDismiss?: () => void;
-
-  /**
-   * Defines the target that the contextual menu uses to position itself.
-   */
-  menuTarget?: HTMLElement | undefined;
+  menuButtonRef?: React.RefObject<HTMLButtonElement>;
 }
 
 /**

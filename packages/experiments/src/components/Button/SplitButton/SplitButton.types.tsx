@@ -1,6 +1,7 @@
 import { IStackSlot, IStackItemSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
+import { INativeButtonProps } from '../Button.types';
 import {
   IMenuButtonProps,
   IMenuButtonSlot,
@@ -78,16 +79,18 @@ export interface ISplitButtonProps
       | 'primary'
       | 'disabled'
       | 'onClick'
+      | 'onKeyDown'
       | 'checked'
       | 'allowDisabledFocus'
       | 'ariaLabel'
       | 'keytipProps'
       | 'defaultExpanded'
       | 'expanded'
-      | 'onKeyDown'
+      | 'onMenuDismiss'
     >,
     IStyleableComponentProps<ISplitButtonProps, ISplitButtonTokens, ISplitButtonStyles>,
-    IBaseProps<ISplitButton> {
+    IBaseProps<ISplitButton>,
+    INativeButtonProps {
   /**
    * Defines whether the first action of the SplitButton is disabled.
    * @defaultvalue false
@@ -98,17 +101,17 @@ export interface ISplitButtonProps
    * Defines the aria label that the screen readers use when focus goes on the second focus stop of the SplitButton.
    */
   secondaryAriaLabel?: string;
+
+  /**
+   * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
+   */
+  onSecondaryActionClick?: (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => void;
 }
 
 /**
  * {@docCategory Button}
  */
-export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'onMenuDismiss' | 'menuTarget'>, ISplitButtonProps {
-  /**
-   * Defines an event callback that is triggered when the secondary action of a SplitButton is clicked.
-   */
-  onSecondaryActionClick?: (ev: React.MouseEvent<HTMLElement>) => void;
-}
+export interface ISplitButtonViewProps extends Pick<IMenuButtonViewProps, 'buttonRef' | 'menuButtonRef'>, ISplitButtonProps {}
 
 /**
  * {@docCategory Button}

@@ -1,23 +1,24 @@
-import { useCallback, useState } from 'react';
+import { useCallback, useRef } from 'react';
 import { useControlledState } from '../../../Foundation';
 import { KeyCodes } from '../../../Utilities';
 import { IMenuButtonComponent, IMenuButtonViewProps } from './MenuButton.types';
 
 export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
-  const [menuTarget, setMenuTarget] = useState<HTMLElement | undefined>(undefined);
+  const menuButtonRef = useRef<HTMLButtonElement | null>(null);
   const [expanded, setExpanded] = useControlledState(props, 'expanded', {
     defaultPropName: 'defaultExpanded',
     defaultPropValue: false
   });
 
-  const _onMenuDismiss = useCallback(() => {
-    setExpanded(false);
-  }, []);
+  const { disabled, onClick, onKeyDown, onMenuDismiss } = props;
 
-  const { disabled, onClick } = props;
+  const _onMenuDismiss = useCallback(() => {
+    onMenuDismiss && onMenuDismiss();
+    setExpanded(false);
+  }, [onMenuDismiss]);
 
   const _onClick = useCallback(
-    (ev: React.MouseEvent<HTMLElement>) => {
+    (ev: React.MouseEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
       if (!disabled) {
         if (onClick) {
           onClick(ev);
@@ -27,20 +28,28 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
           }
         }
         setExpanded(!expanded);
-        setMenuTarget(ev.currentTarget);
       }
     },
-    [expanded, onClick]
+    [disabled, expanded, onClick]
   );
 
   const _onKeyDown = useCallback(
-    (ev: React.KeyboardEvent<HTMLElement>) => {
-      if (!disabled && (ev.altKey || ev.metaKey) && ev.keyCode === KeyCodes.down) {
-        setExpanded(!expanded);
-        setMenuTarget(ev.currentTarget);
+    (ev: React.KeyboardEvent<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>) => {
+      if (!disabled) {
+        if (onKeyDown) {
+          onKeyDown(ev);
+
+          if (ev.defaultPrevented) {
+            return;
+          }
+        }
+
+        if ((ev.altKey || ev.metaKey) && ev.keyCode === KeyCodes.down) {
+          setExpanded(true);
+        }
       }
     },
-    [disabled, expanded]
+    [disabled, expanded, onKeyDown]
   );
 
   const viewProps: IMenuButtonViewProps = {
@@ -49,7 +58,7 @@ export const useMenuButtonState: IMenuButtonComponent['state'] = props => {
     onClick: _onClick,
     onKeyDown: _onKeyDown,
     onMenuDismiss: _onMenuDismiss,
-    menuTarget
+    menuButtonRef
   };
 
   return viewProps;
