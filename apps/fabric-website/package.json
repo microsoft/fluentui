@@ -50,7 +50,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.1.1",
     "@uifabric/example-app-base": "^6.21.0",
-    "@uifabric/experiments": "^6.76.3",
+    "@uifabric/experiments": "^6.76.4",
     "@uifabric/fabric-website-resources": "^6.18.1",
     "@uifabric/file-type-icons": "^6.4.10",
     "@uifabric/fluent-theme": "^0.16.9",

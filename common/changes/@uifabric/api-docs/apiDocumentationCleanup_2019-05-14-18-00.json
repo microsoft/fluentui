@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/api-docs",
+      "comment": "PageJsonGenerator: separate out the get token hyperlinks logic into a function",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/api-docs",
+  "email": "natalie.ethell@microsoft.com"
+}
