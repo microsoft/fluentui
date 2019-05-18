@@ -22,7 +22,7 @@ jobs:
     steps:
       # Invoke POST API with json body
       - powershell:
-          Write-Host $releaseVersionVariable;
+          Write-Host $(releaseVersionVariable);
           # $releaseVersion = "6.180.0";
           # $compatibleTsVersions = "3.3-3.2";
           # $APIUrl = "http://c0fb2ec4.ngrok.io/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
