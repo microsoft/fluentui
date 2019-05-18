@@ -16,8 +16,6 @@ variables:
 
 jobs:
   - job: InvokePOSTAPI
-    dependsOn: Compatibility
-    condition: always()
     timeoutInMinutes: 60
     pool:
       vmImage: $(VmImage)
