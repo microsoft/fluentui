@@ -24,7 +24,7 @@ jobs:
       - powershell:
           Write-Host $(releaseVersionVariable);
           $releaseVersion = "6.180.0";
-          $compatibleTsVersions = "3.3-3.2";
+          $compatibleTsVersions = "3.3-3.2-3.1";
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]";
           $headers.Add("AuthToken", "$(releaseVersionVariable)");
           $APIUrl = "http://c0fb2ec4.ngrok.io/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
