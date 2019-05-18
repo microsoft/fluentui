@@ -26,7 +26,7 @@ jobs:
           $releaseVersion = "6.180.0";
           $compatibleTsVersions = "3.3-3.2";
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]";
-          $headers.Add("AuthToken", $(releaseVersionVariable));
+          $headers.Add("AuthToken", "$(releaseVersionVariable)");
           $APIUrl = "http://c0fb2ec4.ngrok.io/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
           $response = Invoke-RestMethod -Uri $APIUrl -Method Get -Headers $headers;
           Write-Host $response;
