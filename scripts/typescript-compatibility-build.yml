@@ -1,7 +1,7 @@
 trigger:
   branches:
     include:
-      - tsc-compat-debug
+      - master
       - refs/tags/office-ui-fabric-react_v*
 
 variables:
