@@ -164,7 +164,7 @@ jobs:
             if($i -match 1){
             $compatibleTsVersions += $line;  
             } else {
-            $compatibleTsVersions += "-";
+            $compatibleTsVersions += ", ";
             $compatibleTsVersions += $line;
             }
           }
