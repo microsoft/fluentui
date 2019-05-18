@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { withPlatform, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { PlatformContext, Page, IPageProps, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 import { GetStartedPageProps } from './GetStartedPage.doc';
 import { Platforms } from '../../../interfaces/Platforms';
 import { getSubTitle } from '../../../utilities/index';
@@ -63,4 +63,6 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
   }
 }
 
-export const GetStartedPage: React.StatelessComponent<IGetStartedPageProps> = withPlatform<Platforms>(GetStartedPageBase);
+export const GetStartedPage: React.StatelessComponent<IGetStartedPageProps> = (props: IGetStartedPageProps) => (
+  <PlatformContext.Consumer>{(platform: Platforms) => <GetStartedPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+);

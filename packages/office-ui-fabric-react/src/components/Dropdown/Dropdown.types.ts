@@ -16,6 +16,11 @@ export { ResponsiveMode }; // Exported because the type is an optional prop and 
  * {@docCategory Dropdown}
  */
 export interface IDropdown {
+  /**
+   * All selected options
+   */
+  readonly selectedOptions: IDropdownOption[];
+
   focus: (shouldOpenOnFocus?: boolean) => void;
 }
 

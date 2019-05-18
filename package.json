@@ -10,11 +10,11 @@
   "scripts": {
     "_rushInstall": "node common/scripts/install-run-rush.js install --purge",
     "_rushBuild": "node common/scripts/install-run-rush.js build",
-    "_rushBuildToExperiments": "node common/scripts/install-run-rush.js build --to @uifabric/experiments",
+    "_rushBuildToFabricResources": "node common/scripts/install-run-rush.js build --to @uifabric/fabric-website-resources",
     "_rushRebuild": "node common/scripts/install-run-rush.js rebuild --production --verbose --lint",
     "_rushRebuildCi": "node common/scripts/install-run-rush.js rebuild --verbose --lint",
     "_rushRebuildFast": "node common/scripts/install-run-rush.js rebuild",
-    "postinstall": "npm run _rushInstall && npm run _rushBuildToExperiments -- --npm-install-mode",
+    "postinstall": "npm run _rushInstall && npm run _rushBuildToFabricResources -- --npm-install-mode",
     "test": "npm run _rushBuild",
     "vrtest": "cd apps && cd vr-tests && npm run screener",
     "a11ytest": "cd apps && cd a11y-tests && npm run test",
@@ -40,7 +40,8 @@
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "precommit": "node scripts/node_modules/lint-staged/index.js",
     "perf-test": "node scripts/just.js perf-test",
-    "dom-test": "cd apps/dom-tests && node ../../scripts/just.js jest-dom-with-webpack"
+    "dom-test": "cd apps/dom-tests && node ../../scripts/just.js jest-dom-with-webpack",
+    "update-a11y": "cd apps/a11y-tests && npm run update-snapshots"
   },
   "license": "MIT",
   "lint-staged": {
