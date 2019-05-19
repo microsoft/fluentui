@@ -16,11 +16,15 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     thumbsDownQuestion,
     vote,
     isFollowUpVisible,
+    isThanksVisible,
     likeRef,
     dislikeRef,
     onCalloutDismiss,
+    onThanksDismiss,
+    onThanksShow,
     onLikeVote,
     onDislikeVote,
+    thanksText,
     inline
   } = props;
 
@@ -36,7 +40,8 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
     followUpQuestion: Text,
     followUpOptionList: List,
     followUpOption: Button,
-    followUpOptionText: Text
+    followUpOptionText: Text,
+    thanksContainer: Callout
   });
 
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
@@ -46,6 +51,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       onCalloutDismiss();
       if (sendFollowUpIndex && index !== undefined && thumbsUpQuestion) {
         sendFollowUpIndex(thumbsUpQuestion!.id, index);
+        onThanksShow();
       }
     };
 
@@ -61,6 +67,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       onCalloutDismiss();
       if (sendFollowUpIndex && index !== undefined && thumbsDownQuestion) {
         sendFollowUpIndex(thumbsDownQuestion!.id, index);
+        onThanksShow();
       }
     };
 
@@ -113,6 +120,19 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
             <Slots.followUpOptionList items={thumbsDownQuestion.options} onRenderCell={onRenderDislikeCalloutItem} />
           </FocusZone>
         </Slots.followUpContainer>
+      )}
+      {thanksText && isThanksVisible && (
+        <Slots.thanksContainer
+          setInitialFocus={false}
+          target={likeRef.current}
+          gapSpace={0}
+          isBeakVisible={false}
+          onDismiss={onThanksDismiss}
+        >
+          <Slots.followUpOptionText block variant="small">
+            {thanksText}
+          </Slots.followUpOptionText>
+        </Slots.thanksContainer>
       )}
     </Slots.root>
   );

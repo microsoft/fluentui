@@ -4,12 +4,22 @@ import { IMicroFeedbackProps, IMicroFeedbackViewProps, VoteType } from './MicroF
 
 export type IMicroFeedbackState = Pick<
   IMicroFeedbackViewProps,
-  'vote' | 'isFollowUpVisible' | 'likeRef' | 'dislikeRef' | 'onCalloutDismiss' | 'onLikeVote' | 'onDislikeVote'
+  | 'vote'
+  | 'isFollowUpVisible'
+  | 'likeRef'
+  | 'dislikeRef'
+  | 'onCalloutDismiss'
+  | 'onThanksDismiss'
+  | 'onThanksShow'
+  | 'onLikeVote'
+  | 'onDislikeVote'
+  | 'isThanksVisible'
 >;
 
 export class MicroFeedbackState extends BaseState<IMicroFeedbackProps, IMicroFeedbackViewProps, IMicroFeedbackState> {
   private _likeRef = React.createRef<HTMLDivElement>();
   private _dislikeRef = React.createRef<HTMLDivElement>();
+  private _timerHandle?: number;
 
   constructor(props: MicroFeedbackState['props']) {
     super(props, {});
@@ -20,13 +30,21 @@ export class MicroFeedbackState extends BaseState<IMicroFeedbackProps, IMicroFee
       likeRef: this._likeRef,
       dislikeRef: this._dislikeRef,
       onCalloutDismiss: this._onCalloutDismiss,
+      onThanksDismiss: this._onThanksDismiss,
+      onThanksShow: this._onThanksShow,
       onLikeVote: this._onLikeVote,
-      onDislikeVote: this._onDislikeVote
+      onDislikeVote: this._onDislikeVote,
+      isThanksVisible: false
     };
   }
 
   private _onCalloutDismiss = (): void => {
     this.setState({ isFollowUpVisible: false });
+  };
+
+  private _onThanksDismiss = (): void => {
+    clearTimeout(this._timerHandle);
+    this.setState({ isThanksVisible: false });
   };
 
   private _onLikeVote = (): void => {
@@ -35,6 +53,17 @@ export class MicroFeedbackState extends BaseState<IMicroFeedbackProps, IMicroFee
 
   private _onDislikeVote = (): void => {
     this._vote('dislike');
+  };
+
+  private _onThanksShow = (): void => {
+    this.setState({ isThanksVisible: true });
+
+    // Hide the Thanks message after 2 seconds
+    this._timerHandle = setTimeout(this._hideThanksMessage, 2000);
+  };
+
+  private _hideThanksMessage = (): void => {
+    this.setState({ isThanksVisible: false });
   };
 
   private _vote = (newVote: VoteType): void => {

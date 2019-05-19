@@ -71,6 +71,11 @@ export interface IMicroFeedbackSlots {
    * Defines the text that is provided in the options available for the follow up questions.
    */
   followUpOptionText?: ITextSlot;
+
+  /**
+   * Defines the thanks that follows after a vote or followup.
+   */
+  thanksContainer?: ICalloutSlot;
 }
 
 export interface IMicroFeedback {}
@@ -109,7 +114,17 @@ export interface IMicroFeedbackProps
    */
   thumbsDownQuestion?: IMicroFeedbackQuestion;
 
+  /**
+   * Determines if this is a stack or callout followup
+   */
+
   inline?: boolean;
+
+  /**
+   * Determines if a thank you note needs to be shown
+   */
+
+  thanksText?: string;
 }
 
 export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
@@ -126,6 +141,12 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   isFollowUpVisible?: boolean;
 
   /**
+   * Determines if the thank you tooltip is visible or not.
+   * @defaultvalue false
+   */
+  isThanksVisible?: boolean;
+
+  /**
    * Defines a reference for the thumbs up button.
    */
   likeRef: React.RefObject<HTMLDivElement>;
@@ -139,6 +160,16 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
    * Defines a callback that is called when the Callout is dismissed.
    */
   onCalloutDismiss: () => void;
+
+  /**
+   * Defines a callback that is called when the Thanks is dismissed.
+   */
+  onThanksDismiss: () => void;
+
+  /**
+   * Defines a callback that is called when the Thanks is shown.
+   */
+  onThanksShow: () => void;
 
   /**
    * Defines a callback that is called when thumbs up is selected.
