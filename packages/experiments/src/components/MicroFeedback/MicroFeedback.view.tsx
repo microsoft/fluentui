@@ -4,7 +4,7 @@ import { Button } from '../Button/Button';
 import { IButtonTokens } from '../Button/Button.types';
 import { withSlots, getSlots } from '../../Foundation';
 
-import { IMicroFeedbackComponent, IMicroFeedbackProps, IMicroFeedbackSlots } from './MicroFeedback.types';
+import { IMicroFeedbackComponent, IMicroFeedbackProps, IMicroFeedbackSlots, IMicroFeedbackQuestion } from './MicroFeedback.types';
 
 export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const {
@@ -46,35 +46,32 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
 
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
 
-  const onRenderLikeCalloutItem = (item: string, index: number | undefined): JSX.Element => {
-    const listOption = (): void => {
-      onCalloutDismiss();
-      if (sendFollowUpIndex && index !== undefined && thumbsUpQuestion) {
-        sendFollowUpIndex(thumbsUpQuestion!.id, index);
-        onThanksShow();
-      }
+  const onRenderFollowup = (question: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
+    const onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
+      const listOption = (): void => {
+        onCalloutDismiss();
+        if (sendFollowUpIndex && index !== undefined && question) {
+          sendFollowUpIndex(question!.id, index);
+          onThanksShow();
+        }
+      };
+
+      return (
+        <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
+          <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
+        </Slots.followUpOption>
+      );
     };
 
     return (
-      <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
-        <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
-      </Slots.followUpOption>
-    );
-  };
-
-  const onRenderDislikeCalloutItem = (item: string, index: number | undefined): JSX.Element => {
-    const listOption = (): void => {
-      onCalloutDismiss();
-      if (sendFollowUpIndex && index !== undefined && thumbsDownQuestion) {
-        sendFollowUpIndex(thumbsDownQuestion!.id, index);
-        onThanksShow();
-      }
-    };
-
-    return (
-      <Slots.followUpOption data-is-focusable={true} onClick={listOption} tokens={followUpOptionTokens}>
-        <Slots.followUpOptionText>{`${item}`}</Slots.followUpOptionText>
-      </Slots.followUpOption>
+      <Slots.followUpContainer gapSpace={0} onDismiss={onCalloutDismiss} role="alertdialog" setInitialFocus={true} target={targetRef}>
+        <FocusZone direction={FocusZoneDirection.vertical}>
+          <Slots.followUpQuestion block variant="small">
+            {question.question}
+          </Slots.followUpQuestion>
+          <Slots.followUpOptionList items={question.options} onRenderCell={onRenderCalloutItem} />
+        </FocusZone>
+      </Slots.followUpContainer>
     );
   };
 
@@ -89,42 +86,12 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
           <IconButton menuIconProps={{ iconName: dislikeIcon }} title={thumbsDownTitle} onClick={onDislikeVote} />
         </div>
       </Slots.iconContainer>
-      {thumbsUpQuestion && !hideThumbsUpCallout && (
-        <Slots.followUpContainer
-          gapSpace={0}
-          onDismiss={onCalloutDismiss}
-          role="alertdialog"
-          setInitialFocus={true}
-          target={likeRef.current}
-        >
-          <FocusZone direction={FocusZoneDirection.vertical}>
-            <Slots.followUpQuestion block variant="small">
-              {thumbsUpQuestion.question}
-            </Slots.followUpQuestion>
-            <Slots.followUpOptionList items={thumbsUpQuestion.options} onRenderCell={onRenderLikeCalloutItem} />
-          </FocusZone>
-        </Slots.followUpContainer>
-      )}
-      {thumbsDownQuestion && !hideThumbsDownCallout && (
-        <Slots.followUpContainer
-          gapSpace={0}
-          onDismiss={onCalloutDismiss}
-          role="alertdialog"
-          setInitialFocus={true}
-          target={dislikeRef.current}
-        >
-          <FocusZone direction={FocusZoneDirection.vertical}>
-            <Slots.followUpQuestion block variant="small">
-              {thumbsDownQuestion.question}
-            </Slots.followUpQuestion>
-            <Slots.followUpOptionList items={thumbsDownQuestion.options} onRenderCell={onRenderDislikeCalloutItem} />
-          </FocusZone>
-        </Slots.followUpContainer>
-      )}
+      {thumbsUpQuestion && !hideThumbsUpCallout && onRenderFollowup(thumbsUpQuestion, likeRef.current)}
+      {thumbsDownQuestion && !hideThumbsDownCallout && onRenderFollowup(thumbsDownQuestion, dislikeRef.current)}
       {thanksText && isThanksVisible && (
         <Slots.thanksContainer
           setInitialFocus={false}
-          target={likeRef.current}
+          target={vote === 'like' ? likeRef.current : dislikeRef.current}
           gapSpace={0}
           isBeakVisible={false}
           onDismiss={onThanksDismiss}
