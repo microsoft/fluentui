@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/merge-styles",
+      "comment": "Consistently check for navigator.userAgent and fail gracefully if navigator is present but not userAgent",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/merge-styles",
+  "email": "dakhalif@microsoft.com"
+}
