@@ -60,7 +60,7 @@ jobs:
         displayName: Publish Build Artifacts
         inputs:
           pathtoPublish: $(Build.StagingDirectory)
-          artifactName: drop
+          artifactName: compatMapDrop
 
   - job: Compatibility
     dependsOn: Build
@@ -101,7 +101,7 @@ jobs:
       - task: DownloadBuildArtifacts@0
         displayName: 'Download Build Artifacts'
         inputs:
-          artifactName: drop
+          artifactName: compatMapDrop
           downloadPath: $(Build.StagingDirectory)
 
       # Clone repository containing versioned TypeScript sample apps
@@ -117,7 +117,7 @@ jobs:
 
       # Install built package tarball in sample app
       - script: |
-          npm install $(Build.StagingDirectory)/drop/$(PackageName).tgz
+          npm install $(Build.StagingDirectory)/compatMapDrop/$(PackageName).tgz
         displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
 
@@ -129,15 +129,15 @@ jobs:
 
       # Write successful ts versions to compatMap.txt
       - script: |
-          echo $(TypeScriptVersion) >> $(Build.StagingDirectory)/drop/compatMap.txt
+          echo $(TypeScriptVersion) >> $(Build.StagingDirectory)/compatMapDrop/compatMap.txt
         displayName: Write successful ts versions to compatMap.txt
 
       # Publish built library for validation job
       - task: PublishBuildArtifacts@1
         displayName: Publish Build Artifacts
         inputs:
-          pathtoPublish: $(Build.StagingDirectory)/drop
-          artifactName: drop
+          pathtoPublish: $(Build.StagingDirectory)/compatMapDrop
+          artifactName: compatMapDrop
 
   - job: InvokePOSTAPI
     dependsOn: Compatibility
@@ -150,14 +150,14 @@ jobs:
       - task: DownloadBuildArtifacts@0
         displayName: 'Download Build Artifacts'
         inputs:
-          artifactName: drop
+          artifactName: compatMapDrop
           downloadPath: $(Build.StagingDirectory)
 
       # Invoke POST API with json body
       - powershell: $i = 0;
           $releaseVersion = "";
           $compatibleTsVersions = "";
-          $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/drop/compatMap.txt;
+          $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/compatMapDrop/compatMap.txt;
           foreach($line in $compatMapArray) {
           if($i -match 0){
           $releaseVersion = $line;
