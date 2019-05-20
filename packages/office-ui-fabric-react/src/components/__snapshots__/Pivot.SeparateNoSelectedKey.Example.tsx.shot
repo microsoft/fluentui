@@ -85,7 +85,10 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   font-weight: 400;
                   height: 40px;
                   line-height: 40px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
                   margin-right: 8px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -235,7 +238,10 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   font-weight: 400;
                   height: 40px;
                   line-height: 40px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
                   margin-right: 8px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -385,7 +391,10 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
                   font-weight: 400;
                   height: 40px;
                   line-height: 40px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
                   margin-right: 8px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0;
                   padding-left: 8px;
@@ -534,6 +543,10 @@ exports[`Component Examples renders Pivot.SeparateNoSelectedKey.Example.tsx corr
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
