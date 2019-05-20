@@ -55,8 +55,7 @@ describe('warnMutuallyExclusive', () => {
   });
 
   it('does not warn unnecessarily both of them are undefined', () => {
-    // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', { foo: undefined, bar: undefined }, { foo: 'bar' } as any);
+    warnMutuallyExclusive('Foo', { foo: undefined, bar: undefined }, { foo: 'bar' });
     expect(_lastWarning).toEqual(undefined);
   });
 
@@ -67,38 +66,32 @@ describe('warnMutuallyExclusive', () => {
   });
 
   it('does not warn unnecessarily when the matching prop of the exclusive map is implicitly undefined', () => {
-    // tslint:disable-next-line:no-any
     warnMutuallyExclusive('Foo', { foo: 1 }, { foo: 'bar' });
     expect(_lastWarning).toEqual(undefined);
   });
 
   it('does not warn unnecessarily when both of the props are implicitly undefined ', () => {
-    // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', {}, {} as any);
+    warnMutuallyExclusive('Foo', {}, {});
     expect(_lastWarning).toEqual(undefined);
   });
 
   it('can warn on mutual exclusive props', () => {
-    // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' } as any);
+    warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' });
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 
   it('can warn if the exclusive props with the key in the map is null', () => {
-    // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', { foo: null, bar: 1 }, { foo: 'bar' } as any);
+    warnMutuallyExclusive('Foo', { foo: null, bar: 1 }, { foo: 'bar' });
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 
   it('can warn if the matching key in exclusive map is null', () => {
-    // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', { foo: 1, bar: null }, { foo: 'bar' } as any);
+    warnMutuallyExclusive('Foo', { foo: 1, bar: null }, { foo: 'bar' });
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 
   it('can warn if both of the exclusive props are null', () => {
-    // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', { foo: null, bar: null }, { foo: 'bar' } as any);
+    warnMutuallyExclusive('Foo', { foo: null, bar: null }, { foo: 'bar' });
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 });
