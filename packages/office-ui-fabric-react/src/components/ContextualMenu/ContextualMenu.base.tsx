@@ -390,8 +390,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
   }
 
-  private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
-    return <ContextualMenuBase {...subMenuProps} />;
+  private _onRenderSubMenu(subMenuProps: IContextualMenuProps, defaultRenderer: any) {
+    throw Error(
+      'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
+        'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.'
+    );
   }
 
   private _onRenderMenuList = (
