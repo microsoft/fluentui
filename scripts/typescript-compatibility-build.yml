@@ -1,6 +1,7 @@
 trigger:
   branches:
     include:
+      - tsc-compat-debug
       - refs/tags/office-ui-fabric-react_v*
 
 variables:
@@ -151,21 +152,20 @@ jobs:
           downloadPath: $(Build.StagingDirectory)
 
       # Invoke POST API with json body
-      - powershell:
-          $i = 0;
+      - powershell: $i = 0;
           $releaseVersion = "";
           $compatibleTsVersions = "";
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/drop/compatMap.txt;
           foreach($line in $compatMapArray) {
           if($i -match 0){
-            $releaseVersion = $line;
+          $releaseVersion = $line;
           } else {
-            if($i -match 1){
-            $compatibleTsVersions += $line;  
-            } else {
-            $compatibleTsVersions += ", ";
-            $compatibleTsVersions += $line;
-            }
+          if($i -match 1){
+          $compatibleTsVersions += $line;
+          } else {
+          $compatibleTsVersions += ", ";
+          $compatibleTsVersions += $line;
+          }
           }
           $i++;
           }
