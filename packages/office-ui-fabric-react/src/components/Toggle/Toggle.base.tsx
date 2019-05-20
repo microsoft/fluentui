@@ -108,7 +108,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
             {(keytipAttributes: any): JSX.Element => (
               <>
                 <input
-                  className={classNames.input}
+                  className={classNames.hiddenCheckbox}
                   type="checkbox"
                   name={name}
                   checked={checked}

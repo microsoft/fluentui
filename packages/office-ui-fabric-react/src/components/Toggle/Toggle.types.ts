@@ -168,7 +168,7 @@ export interface IToggleStyles {
   /**
    * Input, hidden form control that represents the state of the Toggle.
    */
-  input: IStyle;
+  hiddenCheckbox: IStyle;
 
   /**
    * Pill, rendered as a button.

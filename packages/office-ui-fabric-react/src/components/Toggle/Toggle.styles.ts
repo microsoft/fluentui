@@ -63,7 +63,7 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
       }
     ],
 
-    input: ['ms-Toggle-checkbox', hiddenContentStyle],
+    hiddenCheckbox: [hiddenContentStyle],
 
     pill: [
       'ms-Toggle-background',
