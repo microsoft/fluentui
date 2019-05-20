@@ -2203,6 +2203,7 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
     onFocus?: OnFocusCallback;
     required?: boolean;
     theme?: ITheme;
+    value?: string;
 }
 
 // @public (undocumented)

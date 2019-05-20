@@ -113,6 +113,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               onFocus={[Function]}
               required={true}
               type="radio"
+              value="A"
             />
             <div
               className=""
@@ -409,6 +410,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               onFocus={[Function]}
               required={true}
               type="radio"
+              value="B"
             />
             <label
               className=
@@ -542,6 +544,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               onFocus={[Function]}
               required={true}
               type="radio"
+              value="C"
             />
             <label
               className=
@@ -659,6 +662,7 @@ exports[`Component Examples renders ChoiceGroup.Custom.Example.tsx correctly 1`]
               onFocus={[Function]}
               required={true}
               type="radio"
+              value="D"
             />
             <label
               className=

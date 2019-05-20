@@ -28,6 +28,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
       id,
       styles,
       name,
+      value,
       onRenderField = this._onRenderField,
       ...rest
     } = this.props;
@@ -57,6 +58,7 @@ export class ChoiceGroupOptionBase extends React.Component<IChoiceGroupOptionPro
             disabled={disabled}
             checked={checked}
             required={required}
+            value={value}
             onChange={this._onChange.bind(this, this.props)}
             onFocus={this._onFocus.bind(this, this.props)}
             onBlur={this._onBlur.bind(this, this.props)}

@@ -57,6 +57,11 @@ export interface IChoiceGroupOptionProps extends IChoiceGroupOption {
    * This value is used to group each ChoiceGroupOption into the same logical ChoiceGroup
    */
   name?: string;
+
+  /**
+   * Value is an alias to key that sets a value on the input. Key is unavailable due to being a React protected prop name.
+   */
+  value?: string;
 }
 
 /**

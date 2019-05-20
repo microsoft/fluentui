@@ -117,6 +117,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
                 id: `${this._id}-${option.key}`,
                 labelId: `${this._labelId}-${option.key}`,
                 name: name || this._id,
+                value: option.key,
                 required
               };
 
