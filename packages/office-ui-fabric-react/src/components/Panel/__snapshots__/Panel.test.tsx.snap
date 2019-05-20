@@ -26,13 +26,6 @@ exports[`Panel renders Panel correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-        button {
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow: visible;
-        }
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -204,6 +197,10 @@ exports[`Panel renders Panel correctly 1`] = `
                       font-size: 20px;
                       font-weight: 400;
                       height: auto;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       padding-bottom: 0;
                       padding-left: 4px;
