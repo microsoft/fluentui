@@ -154,26 +154,38 @@ jobs:
           downloadPath: $(Build.StagingDirectory)
 
       # Invoke POST API with json body
+      # The artifact file compatMap.txt which has the TS compatibility folows the below format,
+      # where the first line is the OUFR release and the subsequent lines are the TS versions supported  
+      #  6.182.1
+      #  2.8
+      #  2.9
+      #  3.0
+      #  3.1
+      #  3.2
+      #  3.3
+      #  3.4
+      # It is then concatenated into a format like 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4
+      # and the fabricweb backend API is invoked which writes these entrie to an Azure table
       - powershell: $i = 0;
           $releaseVersion = "";
           $compatibleTsVersions = "";
           $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/compatMapDrop/compatMap.txt;
           foreach($line in $compatMapArray) {
-          if($i -match 0){
-          $releaseVersion = $line;
-          } else {
-          if($i -match 1){
-          $compatibleTsVersions += $line;
-          } else {
-          $compatibleTsVersions += ", ";
-          $compatibleTsVersions += $line;
-          }
-          }
-          $i++;
+            if($i -match 0) {
+              $releaseVersion = $line;
+            } else {
+              if($i -match 1) {
+                $compatibleTsVersions += $line;
+              } else {
+                $compatibleTsVersions += ", ";
+                $compatibleTsVersions += $line;
+              }
+            }
+            $i++;
           }
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;
-
+          
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]";
           $headers.Add("AuthToken", "$(releaseVersionVariable)");
           $APIUrl = "https://fabricweb.azurewebsites.net/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
