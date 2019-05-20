@@ -1,6 +1,5 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { IPoint } from './positioning.types';
-import { IRectangle } from '../../Utilities';
+import { IRectangle, IPoint } from '../../Utilities';
 
 export enum RectangleEdge {
   top = 1,
@@ -99,11 +98,6 @@ export interface IPosition {
   bottom?: number;
   right?: number;
   [key: string]: number | undefined;
-}
-
-export interface IPoint {
-  x: number;
-  y: number;
 }
 
 export interface IPositionDirectionalHintData {

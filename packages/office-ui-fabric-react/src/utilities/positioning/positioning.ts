@@ -1,9 +1,8 @@
 import { DirectionalHint } from '../../common/DirectionalHint';
-import { getScrollbarWidth, getRTL, Rectangle as FullRectangle, IRectangle } from '../../Utilities';
+import { getScrollbarWidth, getRTL, Rectangle as FullRectangle, IRectangle, IPoint } from '../../Utilities';
 import {
   IPositionDirectionalHintData,
   IPositionedData,
-  IPoint,
   ICalloutPositionedInfo,
   ICalloutBeakPositionedInfo,
   IPositionProps,

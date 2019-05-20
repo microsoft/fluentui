@@ -2353,7 +2353,6 @@ export interface ICoachmarkState {
     isMeasured: boolean;
     isMeasuring: boolean;
     isMouseInProximity: boolean;
-    // Warning: (ae-forgotten-export) The symbol "RectangleEdge" needs to be exported by the entry point index.d.ts
     targetAlignment?: RectangleEdge;
     targetPosition?: RectangleEdge;
     transformOrigin?: string;
@@ -8465,6 +8464,18 @@ export enum RatingSize {
     Large = 1,
     // (undocumented)
     Small = 0,
+}
+
+// @public (undocumented)
+export enum RectangleEdge {
+    // (undocumented)
+    bottom = -1,
+    // (undocumented)
+    left = 2,
+    // (undocumented)
+    right = -2,
+    // (undocumented)
+    top = 1,
 }
 
 // @public (undocumented)
