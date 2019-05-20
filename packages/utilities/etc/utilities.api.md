@@ -373,7 +373,7 @@ export function hasVerticalOverflow(element: HTMLElement): boolean;
 export function hoistMethods(destination: any, source: any, exclusions?: string[]): string[];
 
 // @public
-export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
+export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public
 export const htmlElementProperties: string[];
