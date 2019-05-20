@@ -1,6 +1,24 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+
+## 6.21.1
+Mon, 20 May 2019 12:22:33 GMT
+
+### Patches
+
+- ApiReferencesTable: use maps and combine if statements
+
+## 6.21.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Add randomEntry utility
+
+### Patches
+
+- PlatformContext: improve types, add displayName
 
 ## 6.20.1
 Tue, 14 May 2019 07:50:30 GMT

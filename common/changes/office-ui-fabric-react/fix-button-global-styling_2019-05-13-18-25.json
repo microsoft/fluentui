@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Nav respects changes to collapsedByDefault",
+      "comment": "<Fabric> element does not affect global button styling.",
       "type": "minor"
     }
   ],

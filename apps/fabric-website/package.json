@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "6.18.1",
+  "version": "6.18.6",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -12,7 +12,8 @@
   },
   "scripts": {
     "build": "node node_modules/@uifabric/build/just.js build",
-    "create-flight-config": "node node_modules/@uifabric/build/just.js create-flight-config",
+    "create-internal-flight-config": "node node_modules/@uifabric/build/just.js create-internal-flight-config",
+    "create-public-flight-config": "node node_modules/@uifabric/build/just.js create-public-flight-config",
     "just": "node node_modules/@uifabric/build/just.js",
     "clean": "node node_modules/@uifabric/build/just.js clean",
     "code-style": "node node_modules/@uifabric/build/just.js code-style",
@@ -47,11 +48,11 @@
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
-    "@uifabric/api-docs": "^1.1.1",
-    "@uifabric/example-app-base": "^6.20.1",
-    "@uifabric/experiments": "^6.76.2",
+    "@uifabric/api-docs": "^1.1.2",
+    "@uifabric/example-app-base": "^6.21.1",
+    "@uifabric/experiments": "^6.76.4",
     "@uifabric/fabric-website-resources": "^6.18.1",
-    "@uifabric/file-type-icons": "^6.4.9",
+    "@uifabric/file-type-icons": "^6.4.10",
     "@uifabric/fluent-theme": "^0.16.9",
     "@uifabric/icons": "^6.5.2",
     "@uifabric/legacy": "^6.164.5",
@@ -59,7 +60,7 @@
     "@uifabric/theme-samples": "^0.1.6",
     "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^6.181.1",
+    "office-ui-fabric-react": "^6.183.0",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

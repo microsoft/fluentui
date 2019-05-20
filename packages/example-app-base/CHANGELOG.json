@@ -2,6 +2,51 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.21.1",
+      "tag": "@uifabric/example-app-base_v6.21.1",
+      "date": "Mon, 20 May 2019 12:22:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ApiReferencesTable: use maps and combine if statements",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "fca062e407e9e58169d7cf9a475ccefe774985d1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.182.1` to `^6.183.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.0",
+      "tag": "@uifabric/example-app-base_v6.21.0",
+      "date": "Wed, 15 May 2019 12:31:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add randomEntry utility",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "1a7b6c65005dab8fbcc6fe21dbaa42ed042465eb"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "PlatformContext: improve types, add displayName",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3f659bf2800c5a71488ef979baa13f7ad91b9e11"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.181.1` to `^6.182.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.20.1",
       "tag": "@uifabric/example-app-base_v6.20.1",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

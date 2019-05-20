@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2019 05:28:50 GMT and should not be manually modified.
+
+## 6.4.10
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Update README with note about how to use the new Fluent file type icons
 
 ## 6.4.9
 Tue, 14 May 2019 07:50:30 GMT

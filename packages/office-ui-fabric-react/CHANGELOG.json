@@ -2,6 +2,92 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.183.0",
+      "tag": "office-ui-fabric-react_v6.183.0",
+      "date": "Mon, 20 May 2019 12:22:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ColorPicker Hex input",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "446a895056a8b47c3596cc4ae54c6a512fcfb795"
+          },
+          {
+            "comment": "MessageBar: Add `aria-hidden` property for message bar icon",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "c1cd0ce5f7e29d638805623ff2fa74f9b057c6ec"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add selectedOptions to ComboBox and Dropdown",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "f22dbf3c97bd4ca4242d07920dbf02e197579d57"
+          },
+          {
+            "comment": "Add a new prop to enable Slider origin from zero",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "12af1898c7653a39ee47c7f504041f63596f2022"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.182.1",
+      "tag": "office-ui-fabric-react_v6.182.1",
+      "date": "Thu, 16 May 2019 05:28:50 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "[Checkbox] Fix outline on focus.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d0d926c5c415c4df00e3e537297e36cdb5efccdd"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.182.0",
+      "tag": "office-ui-fabric-react_v6.182.0",
+      "date": "Wed, 15 May 2019 12:31:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "added the title attribute for the cancel icon in the panel which is same as aira-label",
+            "author": "shivasai09 <33802398+shivasai09@users.noreply.github.com>",
+            "commit": "4b6c5f67888661c38ec4a1f75a9737a2ecf56dfd"
+          },
+          {
+            "comment": "Add TextField multiple-line errorMessage support",
+            "author": "iamchangming <iamchangming@gmail.com>",
+            "commit": "61a272d0a6795db704cbd2e154889b12edf1a45f"
+          },
+          {
+            "comment": "This latest PR is to ensure Nav link without icon should not be rendered with <i> place-holder",
+            "author": "inateeg <inateeg@microsoft.com>",
+            "commit": "a2dd64cfd3a5540ced0dae0799d282fe574b90e6"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Nav respects changes to collapsedByDefault",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "96b7dc34667f348bcaeb2a5884017438191df998"
+          },
+          {
+            "comment": "Allow custom aria label generation in suggestionStore",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "950f160fea68db673098b9834d5116b6c9d9ce21"
+          },
+          {
+            "comment": "ShimmeredDetailsList: export to the surface missing API items.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "8c3f3b4755122ed5c78a819baf27c57b3805f075"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.181.1",
       "tag": "office-ui-fabric-react_v6.181.1",
       "date": "Tue, 14 May 2019 07:50:31 GMT",

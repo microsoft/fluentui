@@ -34,7 +34,8 @@ azure-pipelines.yml @ecraig12345 @kenotron
 
 #### Apps
 # component-demo/
-fabric-website/ @jordandrako
+fabric-website/ @jordandrako @ecraig12345
+fabric-website-resources/ @ecraig12345
 # ssr-tests/
 # test-bundle-button/ @dzearing
 # todo-app/
@@ -44,10 +45,11 @@ Controls/web.tsx @Vitalius1 @natalieethell
 packages/charting/ @Raghurk @veeray @chankev
 packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
-# packages/example-app-base/
+packages/example-app-base/ @ecraig12345
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
+packages/lists/ @dzearing @KevinTCoughlin @aditima
 # packages/merge-styles/
 # packages/prettier-rules/
 # packages/tslint-rules/
@@ -83,14 +85,14 @@ Checkbox/ @cliffkoh
 ChoiceGroup/ @srideshpande
 CollapsibleSection/ @JasonGore
 ColorPicker/ @ecraig12345
-ComboBox/ @ecraig12345
+ComboBox/ @joschect
 CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
 DatePicker/ @OfficeDev/uifabric-calendar
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
 DocumentCard/ @yiminwu
-Dropdown/ @ecraig12345
+Dropdown/ @joschect
 Fabric/ @dzearing
 FacePile/ @markionium
 FolderCover/ @ThomasMichon
@@ -107,7 +109,7 @@ List/ @KevinTCoughlin
 MarqueeSelection/ @dzearing
 MessageBar/ @ecraig12345
 Modal/ @JasonGore
-Nav/ @jdhuntington
+office-ui-fabric-react/src/components/Nav/ @jdhuntington
 OverflowSet/ @micahgodbolt
 Overlay/ @kkjeer
 Pagination/ @caradong

@@ -656,6 +656,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
     }
 
 // @public (undocumented)
@@ -1061,6 +1062,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     focus(shouldOpenOnFocus?: boolean): void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IDropdownOption[];
     // (undocumented)
     setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
     }
@@ -1258,6 +1260,9 @@ export const FocusZoneTabbableElements: {
 
 // @public (undocumented)
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+
+// @public (undocumented)
+export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -2637,6 +2642,7 @@ export interface IColumnResizeDetails {
 export interface IComboBox {
     dismissMenu: () => void;
     focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 // @public (undocumented)
@@ -4198,6 +4204,7 @@ export interface IDragOptions {
 export interface IDropdown {
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
+    readonly selectedOptions: IDropdownOption[];
 }
 
 // @public
@@ -6541,9 +6548,15 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React_2.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
-    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
     shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
+
+// @public
+export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;
+
+// @public
+export interface IShimmeredDetailsListStyles {
+    root: IStyle;
 }
 
 // @public
@@ -6699,6 +6712,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     min?: number;
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
@@ -6725,26 +6739,17 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISl
 
 // @public (undocumented)
 export interface ISliderStyles {
-    // (undocumented)
     activeSection: IStyle;
-    // (undocumented)
     container: IStyle;
-    // (undocumented)
     inactiveSection: IStyle;
-    // (undocumented)
     line: IStyle;
-    // (undocumented)
     lineContainer: IStyle;
-    // (undocumented)
     root: IStyle;
-    // (undocumented)
     slideBox: IStyle;
-    // (undocumented)
     thumb: IStyle;
-    // (undocumented)
     titleLabel: IStyle;
-    // (undocumented)
     valueLabel: IStyle;
+    zeroTick: IStyle;
 }
 
 // @public (undocumented)
@@ -9296,6 +9301,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 

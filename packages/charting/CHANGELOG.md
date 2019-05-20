@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Thu, 16 May 2019 17:34:08 GMT and should not be manually modified.
+
+## 0.29.0
+Thu, 16 May 2019 17:34:08 GMT
+
+### Minor changes
+
+- Rotated the x-axis text for date values
 
 ## 0.28.14
 Tue, 14 May 2019 07:50:30 GMT

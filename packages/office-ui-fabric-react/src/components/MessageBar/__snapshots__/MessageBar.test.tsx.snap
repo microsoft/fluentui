@@ -48,6 +48,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           }
     >
       <div
+        aria-hidden={true}
         className=
             ms-MessageBar-icon
             {
