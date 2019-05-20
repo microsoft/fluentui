@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Replaced all import specifiers of OUFR to the root to allow commonjs environments",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "kchau@microsoft.com"
+}
