@@ -1,4 +1,4 @@
-import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { IPeoplePickerItemSelectedStyleProps, IPeoplePickerItemSelectedStyles } from 'office-ui-fabric-react';
 
 export const PeoplePickerItemStyles = (props: IPeoplePickerItemSelectedStyleProps): Partial<IPeoplePickerItemSelectedStyles> => {
   const { selected, theme } = props;

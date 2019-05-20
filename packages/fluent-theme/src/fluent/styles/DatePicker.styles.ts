@@ -1,4 +1,4 @@
-import { IDatePickerStyleProps, IDatePickerStyles } from 'office-ui-fabric-react/lib/DatePicker';
+import { IDatePickerStyleProps, IDatePickerStyles } from 'office-ui-fabric-react';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   const { theme } = props;

@@ -1,4 +1,4 @@
-import { IRatingStyleProps, IRatingStyles } from 'office-ui-fabric-react/lib/Rating';
+import { IRatingStyleProps, IRatingStyles } from 'office-ui-fabric-react';
 
 export const RatingStyles = (props: IRatingStyleProps): Partial<IRatingStyles> => {
   const { disabled, readOnly, theme } = props;

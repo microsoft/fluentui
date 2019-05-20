@@ -2,9 +2,9 @@ import {
   IContextualMenuStyleProps,
   IContextualMenuStyles,
   IContextualMenuItemStyleProps,
-  IContextualMenuItemStyles
-} from 'office-ui-fabric-react/lib/ContextualMenu';
-import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
+  IContextualMenuItemStyles,
+  IsFocusVisibleClassName
+} from 'office-ui-fabric-react';
 import { MinimumScreenSelector } from './styleConstants';
 import { FontSizes } from '../FluentType';
 

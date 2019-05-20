@@ -1,4 +1,4 @@
-import { keyframes } from '@uifabric/merge-styles';
+import { keyframes } from 'office-ui-fabric-react';
 
 const fadeInAnimationName: string = keyframes({
   from: { opacity: 0 },

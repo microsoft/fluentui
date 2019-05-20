@@ -1,5 +1,4 @@
-import { IBreadcrumbStyleProps, IBreadcrumbStyles } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
+import { IBreadcrumbStyleProps, IBreadcrumbStyles, FontWeights } from 'office-ui-fabric-react';
 import { FontSizes } from '../FluentType';
 import { MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
 

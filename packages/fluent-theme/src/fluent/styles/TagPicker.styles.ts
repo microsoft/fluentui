@@ -1,4 +1,4 @@
-import { ITagItemStyleProps, ITagItemStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { ITagItemStyleProps, ITagItemStyles } from 'office-ui-fabric-react';
 
 export const TagItemStyles = (props: ITagItemStyleProps): Partial<ITagItemStyles> => {
   const { theme } = props;

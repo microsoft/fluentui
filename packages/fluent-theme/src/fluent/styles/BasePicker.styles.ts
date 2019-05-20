@@ -1,4 +1,4 @@
-import { IBasePickerStyleProps, IBasePickerStyles } from 'office-ui-fabric-react/lib/Pickers';
+import { IBasePickerStyleProps, IBasePickerStyles } from 'office-ui-fabric-react';
 
 export const BasePickerStyles = (props: IBasePickerStyleProps): Partial<IBasePickerStyles> => {
   const { theme } = props;

@@ -1,6 +1,5 @@
-import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
+import { FontWeights, IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react';
 import { FontSizes } from '../FluentType';
-import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
   const { theme } = props;

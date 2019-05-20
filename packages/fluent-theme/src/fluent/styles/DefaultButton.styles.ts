@@ -1,5 +1,4 @@
-import { getFocusStyle } from 'office-ui-fabric-react/lib/Styling';
-import { IButtonStyles, IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { getFocusStyle, IButtonStyles, IButtonProps } from 'office-ui-fabric-react';
 
 export const DefaultButtonStyles = (props: IButtonProps): Partial<IButtonStyles> => {
   const { theme } = props;

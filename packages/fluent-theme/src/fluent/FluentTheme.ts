@@ -1,4 +1,4 @@
-import { createTheme, ITheme } from '@uifabric/styling';
+import { createTheme, ITheme } from 'office-ui-fabric-react';
 import { NeutralColors, SharedColors } from './FluentColors';
 import { Depths } from './FluentDepths';
 

@@ -2,9 +2,9 @@ import {
   IDialogContentStyleProps,
   IDialogContentStyles,
   IDialogFooterStyleProps,
-  IDialogFooterStyles
-} from 'office-ui-fabric-react/lib/Dialog';
-import { FontWeights } from '@uifabric/styling';
+  IDialogFooterStyles,
+  FontWeights
+} from 'office-ui-fabric-react';
 import { FontSizes } from '../FluentType';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {

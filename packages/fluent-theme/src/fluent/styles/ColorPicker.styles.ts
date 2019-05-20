@@ -5,7 +5,7 @@ import {
   IColorRectangleStyles,
   IColorSliderStyleProps,
   IColorSliderStyles
-} from 'office-ui-fabric-react/lib/ColorPicker';
+} from 'office-ui-fabric-react';
 
 export const ColorPickerStyles = (props: IColorPickerStyleProps): Partial<IColorPickerStyles> => {
   return {

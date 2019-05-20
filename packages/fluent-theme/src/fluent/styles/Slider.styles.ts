@@ -1,4 +1,4 @@
-import { ISliderStyleProps, ISliderStyles } from 'office-ui-fabric-react/lib/Slider';
+import { ISliderStyleProps, ISliderStyles } from 'office-ui-fabric-react';
 
 export const SliderStyles = (props: ISliderStyleProps): Partial<ISliderStyles> => {
   const { disabled, theme } = props;

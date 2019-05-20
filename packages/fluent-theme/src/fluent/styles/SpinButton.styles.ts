@@ -1,4 +1,4 @@
-import { ISpinButtonStyles, ISpinButtonProps } from 'office-ui-fabric-react/lib/SpinButton';
+import { ISpinButtonStyles, ISpinButtonProps } from 'office-ui-fabric-react';
 
 export const SpinButtonStyles = (props: ISpinButtonProps): Partial<ISpinButtonStyles> => {
   const SPIN_BUTTON_WIDTH = 23;

@@ -1,9 +1,4 @@
-import {
-  ISuggestionsItemStyleProps,
-  ISuggestionsItemStyles,
-  ISuggestionsStyleProps,
-  ISuggestionsStyles
-} from 'office-ui-fabric-react/lib/Pickers';
+import { ISuggestionsItemStyleProps, ISuggestionsItemStyles, ISuggestionsStyleProps, ISuggestionsStyles } from 'office-ui-fabric-react';
 
 export const SuggestionItemStyles = (props: ISuggestionsItemStyleProps): Partial<ISuggestionsItemStyles> => {
   return {
