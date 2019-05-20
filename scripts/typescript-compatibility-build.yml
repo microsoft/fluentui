@@ -75,6 +75,8 @@ jobs:
           TypeScriptVersion: 2.4
         'TypeScript 2.7':
           TypeScriptVersion: 2.7
+        'TypeScript 2.8':
+          TypeScriptVersion: 2.8
         'TypeScript 2.9':
           TypeScriptVersion: 2.9
         'TypeScript 3.0':
