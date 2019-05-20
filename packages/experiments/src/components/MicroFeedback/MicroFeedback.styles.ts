@@ -4,10 +4,12 @@ const baseTokens: IMicroFeedbackComponent['tokens'] = {
   questionMargin: '20px 12px 6px'
 };
 
-const inlineTokens: IMicroFeedbackComponent['tokens'] = {
-  followUpBackgroundColor: '#F3F2F1',
-  questionMargin: '12px 12px 6px',
-  width: '100%'
+const inlineTokens: IMicroFeedbackComponent['tokens'] = (props, theme) => {
+  return {
+    followUpBackgroundColor: theme.palette.white,
+    questionMargin: '12px 12px 6px',
+    width: '100%'
+  };
 };
 
 export const MicroFeedbackTokens: IMicroFeedbackComponent['tokens'] = (props, theme): IMicroFeedbackTokenReturnType => [

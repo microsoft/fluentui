@@ -26,7 +26,7 @@ export interface IMicroFeedbackQuestion {
   question: string;
 
   /**
-   * Defines a list of options from which to choose as answers to the given question.
+   * Defines a list of options from which to choose as answer to the given question.
    */
   options: string[];
 
@@ -43,7 +43,7 @@ export interface IMicroFeedbackSlots {
   root?: IStackSlot;
 
   /**
-   * Defines the stack container for the like/dislike pair of icons.
+   * Defines the stack container for the Like/Dislike pair of icons.
    */
   iconContainer?: IStackSlot;
 
@@ -85,12 +85,12 @@ export interface IMicroFeedbackProps
     IStyleableComponentProps<IMicroFeedbackProps, IMicroFeedbackTokens, IMicroFeedbackStyles>,
     IBaseProps<IMicroFeedback> {
   /**
-   * Defines a callback that sends the feedback to backend.
+   * Defines a callback that sends the feedback to a potential backend.
    */
   sendFeedback?: (vote: VoteType) => void;
 
   /**
-   * Defines a callback for sending the index of the chosen option for the follow up question to backend.
+   * Defines a callback for sending the index of the chosen option for the follow up question to a potential backend.
    */
   sendFollowUpIndex?: (id: string, index: number) => void;
 
@@ -115,7 +115,7 @@ export interface IMicroFeedbackProps
   dislikeQuestion?: IMicroFeedbackQuestion;
 
   /**
-   * Determines if this is a stack or callout followup
+   * Determines if this is a Stack or Callout followup
    */
 
   inline?: boolean;
@@ -141,7 +141,7 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   isFollowUpVisible?: boolean;
 
   /**
-   * Determines if the thank you tooltip is visible or not.
+   * Determines if the Thanks Callout is visible or not.
    * @defaultvalue false
    */
   isThanksVisible?: boolean;
