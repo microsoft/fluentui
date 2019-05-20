@@ -100,7 +100,7 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
           aria-labelledby="Toggle0-label"
           checked={false}
           className=
-              ms-Toggle-checkbox
+
               {
                 border: 0px;
                 clip: rect(0, 0, 0, 0);

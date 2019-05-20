@@ -7681,7 +7681,7 @@ export interface IToggleStyleProps {
 // @public
 export interface IToggleStyles {
     container: IStyle;
-    input: IStyle;
+    hiddenCheckbox: IStyle;
     label: IStyle;
     pill: IStyle;
     root: IStyle;

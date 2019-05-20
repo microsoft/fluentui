@@ -65,7 +65,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         aria-labelledby="Toggle0-label"
         checked={true}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -266,7 +266,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         aria-labelledby="Toggle1-label"
         checked={false}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -465,7 +465,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         aria-labelledby="Toggle2-label"
         checked={true}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -662,7 +662,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         aria-labelledby="Toggle3-label"
         checked={false}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -856,7 +856,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
         aria-labelledby="Toggle4-label"
         checked={true}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -1121,6 +1121,32 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             position: relative;
           }
     >
+      <input
+        aria-checked={true}
+        aria-labelledby="Toggle5-label"
+        checked={true}
+        className=
+
+            {
+              border: 0px;
+              clip: rect(0, 0, 0, 0);
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
+        data-is-focusable={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
       <button
         aria-checked={true}
         aria-labelledby="Toggle5-label"
@@ -1305,10 +1331,10 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
       <input
         aria-checked={true}
         aria-disabled={true}
-        aria-labelledby="Toggle5-label"
+        aria-labelledby="Toggle7-label"
         checked={true}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -1502,10 +1528,10 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
     >
       <input
         aria-checked={true}
-        aria-labelledby="Toggle6-label"
+        aria-labelledby="Toggle8-label"
         checked={true}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);
@@ -1730,6 +1756,32 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
             position: relative;
           }
     >
+      <input
+        aria-checked={true}
+        aria-labelledby="Toggle9-label"
+        checked={true}
+        className=
+
+            {
+              border: 0px;
+              clip: rect(0, 0, 0, 0);
+              height: 1px;
+              margin-bottom: -1px;
+              margin-left: -1px;
+              margin-right: -1px;
+              margin-top: -1px;
+              overflow: hidden;
+              padding-bottom: 0px;
+              padding-left: 0px;
+              padding-right: 0px;
+              padding-top: 0px;
+              position: absolute;
+              width: 1px;
+            }
+        data-is-focusable={false}
+        onChange={[Function]}
+        type="checkbox"
+      />
       <button
         aria-checked={true}
         aria-labelledby="Toggle9-label"
@@ -1874,10 +1926,10 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
       <input
         aria-checked={true}
         aria-disabled={true}
-        aria-labelledby="Toggle7-label"
+        aria-labelledby="Toggle11-label"
         checked={true}
         className=
-            ms-Toggle-checkbox
+
             {
               border: 0px;
               clip: rect(0, 0, 0, 0);

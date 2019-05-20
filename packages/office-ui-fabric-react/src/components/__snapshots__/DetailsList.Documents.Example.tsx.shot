@@ -90,7 +90,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           aria-labelledby="Toggle0-label"
           checked={false}
           className=
-              ms-Toggle-checkbox
+
               {
                 border: 0px;
                 clip: rect(0, 0, 0, 0);
@@ -287,7 +287,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
           aria-labelledby="Toggle1-label"
           checked={false}
           className=
-              ms-Toggle-checkbox
+
               {
                 border: 0px;
                 clip: rect(0, 0, 0, 0);
