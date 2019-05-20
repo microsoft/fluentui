@@ -111,7 +111,7 @@ exports[`Button renders ActionButton correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
             }
-        id="id__3"
+        id="id__0"
       >
         Button
       </div>
@@ -260,7 +260,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
             }
-        id="id__10"
+        id="id__0"
       >
         Create account
       </div>
@@ -299,8 +299,8 @@ exports[`Button renders CommandBarButton correctly 1`] = `
 
 exports[`Button renders CompoundButton correctly 1`] = `
 <button
-  aria-describedby="id__14"
-  aria-labelledby="id__13"
+  aria-describedby="id__1"
+  aria-labelledby="id__0"
   className=
       ms-Button
       ms-Button--compound
@@ -421,7 +421,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
               margin-right: 0;
               margin-top: 0;
             }
-        id="id__13"
+        id="id__0"
       >
         Create account
       </div>
@@ -437,7 +437,7 @@ exports[`Button renders CompoundButton correctly 1`] = `
               font-weight: 400;
               line-height: 100%;
             }
-        id="id__14"
+        id="id__1"
       >
         You can create a new account here.
       </div>
@@ -795,7 +795,7 @@ exports[`Button renders a DefaultButton with a keytip correctly 1`] = `
               margin-right: 4px;
               margin-top: 0;
             }
-        id="id__6"
+        id="id__0"
       >
         Button
       </div>
