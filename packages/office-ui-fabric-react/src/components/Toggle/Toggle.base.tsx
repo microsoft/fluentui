@@ -56,6 +56,7 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
       disabled,
       keytipProps,
       label,
+      name,
       ariaLabel,
       onAriaLabel,
       offAriaLabel,
@@ -105,25 +106,38 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
         <div className={classNames.container}>
           <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
             {(keytipAttributes: any): JSX.Element => (
-              <button
-                {...toggleNativeProps}
-                {...keytipAttributes}
-                className={classNames.pill}
-                disabled={disabled}
-                id={this._id}
-                type="button"
-                role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
-                ref={this._toggleButton}
-                aria-disabled={disabled}
-                aria-checked={checked}
-                aria-label={ariaLabel ? ariaLabel : badAriaLabel}
-                data-is-focusable={true}
-                onChange={this._noop}
-                onClick={this._onClick}
-                aria-labelledby={labelledById}
-              >
-                <div className={classNames.thumb} />
-              </button>
+              <>
+                <input
+                  className={classNames.input}
+                  type="checkbox"
+                  name={name}
+                  checked={checked}
+                  aria-disabled={disabled}
+                  aria-checked={checked}
+                  data-is-focusable={false}
+                  aria-labelledby={labelledById}
+                  onChange={this._noop}
+                />
+                <button
+                  {...toggleNativeProps}
+                  {...keytipAttributes}
+                  className={classNames.pill}
+                  disabled={disabled}
+                  id={this._id}
+                  type="button"
+                  role="switch" // ARIA 1.1 definition; "checkbox" in ARIA 1.0
+                  ref={this._toggleButton}
+                  aria-disabled={disabled}
+                  aria-checked={checked}
+                  aria-label={ariaLabel ? ariaLabel : badAriaLabel}
+                  data-is-focusable={true}
+                  onChange={this._noop}
+                  onClick={this._onClick}
+                  aria-labelledby={labelledById}
+                >
+                  <div className={classNames.thumb} />
+                </button>
+              </>
             )}
           </KeytipData>
           {stateText && (

@@ -32,6 +32,11 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   label?: string;
 
   /**
+   * A name for the toggle's hidden checkbox input.
+   */
+  name?: string;
+
+  /**
    * Text to display when toggle is ON.
    * Caution: when not providing on/off text user may get confused in differentiating the on/off states of the toggle.
    */
@@ -159,6 +164,11 @@ export interface IToggleStyles {
    * Container for the toggle pill and the text next to it.
    */
   container: IStyle;
+
+  /**
+   * Input, hidden form control that represents the state of the Toggle.
+   */
+  input: IStyle;
 
   /**
    * Pill, rendered as a button.

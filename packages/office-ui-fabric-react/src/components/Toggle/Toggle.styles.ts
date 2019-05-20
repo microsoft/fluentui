@@ -1,4 +1,4 @@
-import { HighContrastSelector, getFocusStyle } from '../../Styling';
+import { HighContrastSelector, getFocusStyle, hiddenContentStyle } from '../../Styling';
 import { IToggleStyleProps, IToggleStyles } from './Toggle.types';
 
 export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
@@ -62,6 +62,8 @@ export const getStyles = (props: IToggleStyleProps): IToggleStyles => {
         position: 'relative'
       }
     ],
+
+    input: ['ms-Toggle-checkbox', hiddenContentStyle],
 
     pill: [
       'ms-Toggle-background',

@@ -740,6 +740,21 @@ export interface IRawStyleBase extends IRawFontStyle {
   clear?: ICSSRule | string;
 
   /**
+   * The clip CSS property defines what portion of an element is visible. The clip
+   * property applies only to absolutely positioned elements, that is elements with
+   * position:absolute or position:fixed.
+   */
+
+  clip?: ICSSRule | string;
+
+  /**
+   * The clip-path CSS property creates a clipping region that sets what part of an
+   * element should be shown. Parts that are inside the region are shown, while those
+   * outside are hidden.
+   */
+  clipPath?: ICSSRule | string;
+
+  /**
    * Clipping crops an graphic, so that only a portion of the graphic is rendered, or
    * filled. This clip-rule property, when used with the clip-path property, defines
    * which clip rule, or algorithm, to use when filling the different parts of a graphics.

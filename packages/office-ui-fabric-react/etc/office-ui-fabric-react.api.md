@@ -7648,6 +7648,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
     label?: string;
+    name?: string;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
@@ -7680,6 +7681,7 @@ export interface IToggleStyleProps {
 // @public
 export interface IToggleStyles {
     container: IStyle;
+    input: IStyle;
     label: IStyle;
     pill: IStyle;
     root: IStyle;
