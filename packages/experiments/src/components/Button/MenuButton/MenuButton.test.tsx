@@ -18,7 +18,7 @@ const menuProps: IMenuButtonProps['menu'] = {
   ]
 };
 
-describe('MenuButton view', () => {
+describe('MenuButton', () => {
   it('renders a MenuButton correctly', () => {
     const component = renderer.create(<MenuButton content="Menu button" menu={menuProps} />);
     const tree = component.toJSON();

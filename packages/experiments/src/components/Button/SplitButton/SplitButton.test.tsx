@@ -17,7 +17,7 @@ const menuProps: ISplitButtonProps['menu'] = {
   ]
 };
 
-describe('SplitButton view', () => {
+describe('SplitButton', () => {
   it('renders a SplitButton correctly', () => {
     const component = renderer.create(<SplitButton icon="Add" content="Default button" menu={menuProps} />);
     const tree = component.toJSON();

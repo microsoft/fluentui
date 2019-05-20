@@ -1,9 +1,9 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button view renders a default Button with content correctly 1`] = `
+exports[`Button renders a default Button with content correctly 1`] = `
 <button
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -73,16 +73,16 @@ exports[`Button view renders a default Button with content correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Icon-47 {
+      &:hover .ms-Button-Icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-47 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-Icon {
         color: Highlight;
       }
-      &:active .ms-Icon-47 {
+      &:active .ms-Button-Icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-47 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-Icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -142,11 +142,11 @@ exports[`Button view renders a default Button with content correctly 1`] = `
 </button>
 `;
 
-exports[`Button view renders a disabled primary Button with content correctly 1`] = `
+exports[`Button renders a disabled primary Button with content correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -223,16 +223,16 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Icon-60 {
+      &:hover .ms-Button-Icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-60 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-Icon {
         color: GrayText;
       }
-      &:active .ms-Icon-60 {
+      &:active .ms-Button-Icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-60 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-Icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -293,10 +293,10 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
 </button>
 `;
 
-exports[`Button view renders a primary Button with content correctly 1`] = `
+exports[`Button renders a primary Button with content correctly 1`] = `
 <button
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
@@ -372,16 +372,16 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Icon-57 {
+      &:hover .ms-Button-Icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-Icon {
         color: Window;
       }
-      &:active .ms-Icon-57 {
+      &:active .ms-Button-Icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-57 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-Icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {

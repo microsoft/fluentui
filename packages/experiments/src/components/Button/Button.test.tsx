@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { CommandBar, Icon, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
 
-describe('Button view', () => {
+describe('Button', () => {
   it('renders a default Button with content correctly', () => {
     const component = renderer.create(<Button content="Default button" />);
     const tree = component.toJSON();
