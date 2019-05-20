@@ -36,11 +36,8 @@ export const MicroFeedbackStyles: IMicroFeedbackComponent['styles'] = (props, th
       paddingBottom: '6px'
     },
     thanksContainer: {
-      backgroundColor: 'transparent',
-      paddingTop: '6px',
-      paddingLeft: '6px',
-      paddingRight: '6px',
-      paddingBottom: '6px'
+      backgroundColor: theme.palette.white,
+      padding: '6px'
     },
     followUpOption: {
       paddingLeft: '12px',

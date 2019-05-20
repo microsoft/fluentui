@@ -2,8 +2,6 @@ import * as React from 'react';
 import { IMicroFeedbackQuestion, VoteType } from '../MicroFeedback.types';
 import { MicroFeedback } from '../MicroFeedback';
 
-// tslint:disable:jsx-no-lambda
-
 export class MicroFeedbackStackExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const followUpOnDislike: IMicroFeedbackQuestion = {

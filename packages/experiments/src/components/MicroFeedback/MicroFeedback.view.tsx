@@ -46,7 +46,7 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
 
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
 
-  const onRenderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
+  const renderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
     const onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
       const listOption = (): void => {
         onCalloutDismiss();
@@ -108,8 +108,8 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
           <IconButton menuIconProps={{ iconName: dislikeIcon }} title={dislikeIconTitle} onClick={dislikeVoteClick} />
         </div>
       </Slots.iconContainer>
-      {likeQuestion && !hideLikeCallout && onRenderFollowup(likeQuestion, likeRef.current)}
-      {dislikeQuestion && !hideDislikeCallout && onRenderFollowup(dislikeQuestion, dislikeRef.current)}
+      {likeQuestion && !hideLikeCallout && renderFollowup(likeQuestion, likeRef.current)}
+      {dislikeQuestion && !hideDislikeCallout && renderFollowup(dislikeQuestion, dislikeRef.current)}
       {thanksText && isThanksVisible && (
         <Slots.thanksContainer
           setInitialFocus={false}
