@@ -1,7 +1,6 @@
 trigger:
   branches:
     include:
-      - master
       - refs/tags/office-ui-fabric-react_v*
 
 variables:
