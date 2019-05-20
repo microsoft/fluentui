@@ -149,6 +149,18 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             @media screen and (-ms-high-contrast: active){&:hover $thumb {
               border-color: Highlight;
             }
+            &:active $zeroTick {
+              background-color: #c7e0f4;
+            }
+            @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+              background-color: Highlight;
+            }
+            &:hover $zeroTick {
+              background-color: #c7e0f4;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+              background-color: Highlight;
+            }
             & $thumb {
               background: #ffffff;
               border-color: #666666;

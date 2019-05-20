@@ -1,6 +1,19 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 16 May 2019 05:28:50 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+
+## 6.183.0
+Mon, 20 May 2019 12:22:33 GMT
+
+### Minor changes
+
+- Add selectedOptions to ComboBox and Dropdown
+- Add a new prop to enable Slider origin from zero
+
+### Patches
+
+- Fix ColorPicker Hex input
+- MessageBar: Add `aria-hidden` property for message bar icon
 
 ## 6.182.1
 Thu, 16 May 2019 05:28:50 GMT
