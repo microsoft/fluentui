@@ -97,7 +97,7 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
-   * (Optional) The nav container aria label.
+   * (Optional) The nav container aria label. If not provided, the aria label will default to the link name.
    */
   expandButtonAriaLabel?: string;
 
