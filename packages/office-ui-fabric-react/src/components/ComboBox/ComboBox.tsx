@@ -937,7 +937,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onResolveOptions = (): void => {
     if (this.props.onResolveOptions) {
       // get the options
-      const newOptions = this.props.onResolveOptions({ ...this.state.currentOptions });
+      const newOptions = this.props.onResolveOptions([...this.state.currentOptions]);
 
       // Check to see if the returned value is an array, if it is update the state
       // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.
