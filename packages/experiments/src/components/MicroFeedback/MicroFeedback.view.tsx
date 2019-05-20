@@ -46,12 +46,12 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
 
   const followUpOptionTokens: IButtonTokens = { contentPadding: '6px 0px' };
 
-  const onRenderFollowup = (question: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
+  const onRenderFollowup = (followUp: IMicroFeedbackQuestion, targetRef: HTMLDivElement | null): JSX.Element => {
     const onRenderCalloutItem = (item: string, index: number | undefined): JSX.Element => {
       const listOption = (): void => {
         onCalloutDismiss();
-        if (sendFollowUpIndex && index !== undefined && question) {
-          sendFollowUpIndex(question!.id, index);
+        if (sendFollowUpIndex && index !== undefined && followUp) {
+          sendFollowUpIndex(followUp!.id, index);
           onThanksShow();
         }
       };
@@ -67,12 +67,34 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       <Slots.followUpContainer gapSpace={0} onDismiss={onCalloutDismiss} role="alertdialog" setInitialFocus={true} target={targetRef}>
         <FocusZone direction={FocusZoneDirection.vertical}>
           <Slots.followUpQuestion block variant="small">
-            {question.question}
+            {followUp.question}
           </Slots.followUpQuestion>
-          <Slots.followUpOptionList items={question.options} onRenderCell={onRenderCalloutItem} />
+          <Slots.followUpOptionList items={followUp.options} onRenderCell={onRenderCalloutItem} />
         </FocusZone>
       </Slots.followUpContainer>
     );
+  };
+
+  const showThanks = (followUp: IMicroFeedbackQuestion | undefined, voteType: string): void => {
+    // If vote while thanks is showing, dismiss
+    if (isThanksVisible) {
+      onThanksDismiss();
+    }
+
+    // Show thanks if there is no follow up question and not  unselecting a vote
+    if (!followUp && vote !== voteType) {
+      onThanksShow();
+    }
+  };
+
+  const likeVoteClick = (): void => {
+    showThanks(thumbsUpQuestion, 'like');
+    onLikeVote();
+  };
+
+  const dislikeVoteClick = (): void => {
+    showThanks(thumbsDownQuestion, 'dislike');
+    onDislikeVote();
   };
 
   return (
@@ -80,10 +102,10 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       <Slots.iconContainer horizontal>
         {children}
         <div ref={likeRef}>
-          <IconButton menuIconProps={{ iconName: likeIcon }} title={thumbsUpTitle} onClick={onLikeVote} />
+          <IconButton menuIconProps={{ iconName: likeIcon }} title={thumbsUpTitle} onClick={likeVoteClick} />
         </div>
         <div ref={dislikeRef}>
-          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={thumbsDownTitle} onClick={onDislikeVote} />
+          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={thumbsDownTitle} onClick={dislikeVoteClick} />
         </div>
       </Slots.iconContainer>
       {thumbsUpQuestion && !hideThumbsUpCallout && onRenderFollowup(thumbsUpQuestion, likeRef.current)}

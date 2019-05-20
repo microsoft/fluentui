@@ -36,7 +36,7 @@ export const MicroFeedbackStyles: IMicroFeedbackComponent['styles'] = (props, th
       paddingBottom: '6px'
     },
     thanksContainer: {
-      backgroundColor: tokens.followUpBackgroundColor,
+      backgroundColor: 'transparent',
       paddingTop: '6px',
       paddingLeft: '6px',
       paddingRight: '6px',

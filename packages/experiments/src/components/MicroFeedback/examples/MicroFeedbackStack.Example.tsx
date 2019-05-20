@@ -35,7 +35,8 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
         thumbsDownTitle="Dislike"
         sendFeedback={sendFeedbackCallback}
         sendFollowUpIndex={sendFollowupIndexCallback}
-        tokens={{ followUpBackgroundColor: 'lightblue' }}
+        thanksText="Thank you!"
+        tokens={{ followUpBackgroundColor: 'lightgrey' }}
       />
     );
   }

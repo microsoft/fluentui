@@ -33,7 +33,7 @@ export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
           thumbsDownTitle="Dislike"
           sendFeedback={sendFeedbackCallback}
           sendFollowUpIndex={sendFollowupIndexCallback}
-          thanksText="Thanks for your feedback!"
+          thanksText="Thank you!"
         />
       </div>
     );
