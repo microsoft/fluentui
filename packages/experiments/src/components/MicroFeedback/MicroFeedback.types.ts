@@ -31,7 +31,7 @@ export interface IMicroFeedbackQuestion {
   options: string[];
 
   /**
-   * Defines an identifier that correlates the question to the thumbs up or thumbs down.
+   * Defines an identifier that correlates the question to the Like or Dislike.
    */
   id: string;
 }
@@ -95,24 +95,24 @@ export interface IMicroFeedbackProps
   sendFollowUpIndex?: (id: string, index: number) => void;
 
   /**
-   * Defines a localized string for the thumbs up icon.
+   * Defines a localized string for the Like icon.
    */
-  thumbsUpTitle?: string;
+  likeIconTitle?: string;
 
   /**
-   * Defines a localized string for the thumbs down icon.
+   * Defines a localized string for the Dislike icon.
    */
-  thumbsDownTitle?: string;
+  dislikeIconTitle?: string;
 
   /**
-   * Defines an optional question that is asked if thumbs up is selected.
+   * Defines an optional question that is asked if Like is selected.
    */
-  thumbsUpQuestion?: IMicroFeedbackQuestion;
+  likeQuestion?: IMicroFeedbackQuestion;
 
   /**
-   * Defines an optional question that is asked if thumbs down is selected.
+   * Defines an optional question that is asked if Dislike is selected.
    */
-  thumbsDownQuestion?: IMicroFeedbackQuestion;
+  dislikeQuestion?: IMicroFeedbackQuestion;
 
   /**
    * Determines if this is a stack or callout followup
@@ -147,12 +147,12 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   isThanksVisible?: boolean;
 
   /**
-   * Defines a reference for the thumbs up button.
+   * Defines a reference for the Like button.
    */
   likeRef: React.RefObject<HTMLDivElement>;
 
   /**
-   * Defines a reference for the thumbs down button.
+   * Defines a reference for the Dislike button.
    */
   dislikeRef: React.RefObject<HTMLDivElement>;
 
@@ -172,12 +172,12 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   onThanksShow: () => void;
 
   /**
-   * Defines a callback that is called when thumbs up is selected.
+   * Defines a callback that is called when Like is selected.
    */
   onLikeVote: () => void;
 
   /**
-   * Defines a callback that is called when thumbs down is selected.
+   * Defines a callback that is called when Dislike is selected.
    */
   onDislikeVote: () => void;
 }

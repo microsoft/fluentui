@@ -6,13 +6,13 @@ import { MicroFeedback } from '../MicroFeedback';
 
 export class MicroFeedbackStackExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const followUpOnThumbsDown: IMicroFeedbackQuestion = {
+    const followUpOnDislike: IMicroFeedbackQuestion = {
       options: ['Translation is incorrect', 'Context is incorrect', 'Language can be better'],
       question: 'Please help us improve',
       id: 'dislike'
     };
 
-    const followUpOnThumbsUp: IMicroFeedbackQuestion = {
+    const followUpOnLike: IMicroFeedbackQuestion = {
       options: ['Translation is great', 'Context is great'],
       question: 'Please help us improve',
       id: 'like'
@@ -29,10 +29,10 @@ export class MicroFeedbackStackExample extends React.Component<{}, {}> {
     return (
       <MicroFeedback
         inline
-        thumbsDownQuestion={followUpOnThumbsDown}
-        thumbsUpQuestion={followUpOnThumbsUp}
-        thumbsUpTitle="Like"
-        thumbsDownTitle="Dislike"
+        dislikeQuestion={followUpOnDislike}
+        likeQuestion={followUpOnLike}
+        likeIconTitle="Like"
+        dislikeIconTitle="Dislike"
         sendFeedback={sendFeedbackCallback}
         sendFollowUpIndex={sendFollowupIndexCallback}
         thanksText="Thank you!"

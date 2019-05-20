@@ -10,10 +10,10 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   const {
     children,
     sendFollowUpIndex,
-    thumbsUpTitle,
-    thumbsDownTitle,
-    thumbsUpQuestion,
-    thumbsDownQuestion,
+    likeIconTitle,
+    dislikeIconTitle,
+    likeQuestion,
+    dislikeQuestion,
     vote,
     isFollowUpVisible,
     isThanksVisible,
@@ -30,8 +30,8 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
 
   const likeIcon = vote === 'like' ? 'LikeSolid' : 'Like';
   const dislikeIcon = vote === 'dislike' ? 'DislikeSolid' : 'Dislike';
-  const hideThumbsDownCallout = vote !== 'dislike' || !isFollowUpVisible;
-  const hideThumbsUpCallout = vote !== 'like' || !isFollowUpVisible;
+  const hideDislikeCallout = vote !== 'dislike' || !isFollowUpVisible;
+  const hideLikeCallout = vote !== 'like' || !isFollowUpVisible;
 
   const Slots = getSlots<IMicroFeedbackProps, IMicroFeedbackSlots>(props, {
     root: Stack,
@@ -88,12 +88,12 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
   };
 
   const likeVoteClick = (): void => {
-    showThanks(thumbsUpQuestion, 'like');
+    showThanks(likeQuestion, 'like');
     onLikeVote();
   };
 
   const dislikeVoteClick = (): void => {
-    showThanks(thumbsDownQuestion, 'dislike');
+    showThanks(dislikeQuestion, 'dislike');
     onDislikeVote();
   };
 
@@ -102,14 +102,14 @@ export const MicroFeedbackView: IMicroFeedbackComponent['view'] = props => {
       <Slots.iconContainer horizontal>
         {children}
         <div ref={likeRef}>
-          <IconButton menuIconProps={{ iconName: likeIcon }} title={thumbsUpTitle} onClick={likeVoteClick} />
+          <IconButton menuIconProps={{ iconName: likeIcon }} title={likeIconTitle} onClick={likeVoteClick} />
         </div>
         <div ref={dislikeRef}>
-          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={thumbsDownTitle} onClick={dislikeVoteClick} />
+          <IconButton menuIconProps={{ iconName: dislikeIcon }} title={dislikeIconTitle} onClick={dislikeVoteClick} />
         </div>
       </Slots.iconContainer>
-      {thumbsUpQuestion && !hideThumbsUpCallout && onRenderFollowup(thumbsUpQuestion, likeRef.current)}
-      {thumbsDownQuestion && !hideThumbsDownCallout && onRenderFollowup(thumbsDownQuestion, dislikeRef.current)}
+      {likeQuestion && !hideLikeCallout && onRenderFollowup(likeQuestion, likeRef.current)}
+      {dislikeQuestion && !hideDislikeCallout && onRenderFollowup(dislikeQuestion, dislikeRef.current)}
       {thanksText && isThanksVisible && (
         <Slots.thanksContainer
           setInitialFocus={false}

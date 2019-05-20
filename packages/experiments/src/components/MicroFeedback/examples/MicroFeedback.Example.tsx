@@ -17,8 +17,8 @@ export class MicroFeedbackExample extends React.Component<{}, {}> {
       <div>
         <MicroFeedback
           styles={microfeedbackStyles}
-          thumbsUpTitle="Like"
-          thumbsDownTitle="Dislike"
+          likeIconTitle="Like"
+          dislikeIconTitle="Dislike"
           thanksText="Thank you!"
           sendFeedback={sendFeedbackCallback}
         />
