@@ -54,7 +54,7 @@ describe('warnMutuallyExclusive', () => {
     expect(_lastWarning).toEqual(undefined);
   });
 
-  it('does not warn unnecessarily both of them are undefined', () => {
+  it('does not warn unnecessarily when both of them are explicitly undefined', () => {
     warnMutuallyExclusive('Foo', { foo: undefined, bar: undefined }, { foo: 'bar' });
     expect(_lastWarning).toEqual(undefined);
   });
@@ -90,7 +90,7 @@ describe('warnMutuallyExclusive', () => {
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 
-  it('can warn if both of the exclusive props are null', () => {
+  it('can warn if both of the props are null', () => {
     warnMutuallyExclusive('Foo', { foo: null, bar: null }, { foo: 'bar' });
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
