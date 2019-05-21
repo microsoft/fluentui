@@ -2,7 +2,7 @@ import * as React from 'react';
 import { registerLanguage, highlightBlock } from 'highlight.js';
 // @ts-ignore
 import * as javascript from 'highlight.js/lib/languages/javascript';
-import { createRef, BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
+import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 registerLanguage('javascript', javascript);
 
@@ -10,7 +10,8 @@ export interface IHighlightProps extends React.HTMLAttributes<HTMLDivElement> {
   componentRef?: () => void;
 }
 
-export class Highlight extends BaseComponent<IHighlightProps, {}> {
+/** @deprecated Use `CodeSnippet` instead */
+export class Highlight extends React.Component<IHighlightProps, {}> {
   private _codeElement = createRef<HTMLElement>();
 
   public render(): JSX.Element {
