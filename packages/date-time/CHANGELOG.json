@@ -2,6 +2,33 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.1.2",
+      "tag": "@uifabric/date-time_v6.1.2",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          },
+          {
+            "comment": "DatePicker: keep validation errors after noop",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "97a5855cdb0f2c99269e6b435231577998bd1621"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.1",
       "tag": "@uifabric/date-time_v6.1.1",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

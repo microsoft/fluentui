@@ -166,6 +166,11 @@ export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | '
   hasError: boolean;
 
   /**
+   * Specifies if the dropdown has label content.
+   */
+  hasLabel: boolean;
+
+  /**
    * Whether the dropdown is in an opened state.
    */
   isOpen: boolean;

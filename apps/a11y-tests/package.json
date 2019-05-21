@@ -12,13 +12,13 @@
     "update-snapshots": "node ./scripts/update-snapshots.js"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^6.18.1",
+    "@uifabric/fabric-website-resources": "^6.18.2",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^1.0.0",
     "concurrently": "^4.1.0",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^6.183.0",
+    "office-ui-fabric-react": "^6.184.0",
     "puppeteer": "^1.13.0",
     "tslib": "^1.7.1",
     "wait-on": "^3.2.0"
