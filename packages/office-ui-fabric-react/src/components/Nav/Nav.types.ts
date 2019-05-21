@@ -102,6 +102,11 @@ export interface INavProps {
   expandButtonAriaLabel?: string;
 
   /**
+   * (Optional) If true, the link name will be prepended to `expandButtonAriaLabel`.
+   */
+  expandButtonAriaLabelUseName?: boolean;
+
+  /**
    * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
    * @deprecated Removed at v1.0.0.
    **/
