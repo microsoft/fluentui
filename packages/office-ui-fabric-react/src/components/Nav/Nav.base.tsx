@@ -149,7 +149,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups
     });
 
-    const submenuArialLabel = expandButtonAriaLabel
+    const expandBtnArialLabel = expandButtonAriaLabel
       ? expandButtonAriaLabelUseName
         ? `${link.name} ${expandButtonAriaLabel}`
         : expandButtonAriaLabel
@@ -161,7 +161,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
           <button
             className={classNames.chevronButton}
             onClick={this._onLinkExpandClicked.bind(this, link)}
-            aria-label={submenuArialLabel || link.name}
+            aria-label={expandBtnArialLabel || link.name}
             aria-expanded={link.isExpanded ? 'true' : 'false'}
           >
             <Icon className={classNames.chevronIcon} iconName="ChevronDown" />
