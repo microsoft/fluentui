@@ -32,7 +32,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
   label?: string | JSX.Element;
 
   /**
-   * A name for the toggle's hidden checkbox input.
+   * A name for the toggle's hidden checkbox input. Required to render the input.
    */
   name?: string;
 

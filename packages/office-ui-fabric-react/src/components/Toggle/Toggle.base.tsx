@@ -107,17 +107,19 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
           <KeytipData keytipProps={keytipProps} ariaDescribedBy={(toggleNativeProps as any)['aria-describedby']} disabled={disabled}>
             {(keytipAttributes: any): JSX.Element => (
               <>
-                <input
-                  className={classNames.hiddenCheckbox}
-                  type="checkbox"
-                  name={name}
-                  checked={checked}
-                  aria-disabled={disabled}
-                  aria-checked={checked}
-                  data-is-focusable={false}
-                  aria-labelledby={labelledById}
-                  onChange={this._noop}
-                />
+                {!!name && (
+                  <input
+                    className={classNames.hiddenCheckbox}
+                    type="checkbox"
+                    name={name}
+                    checked={checked}
+                    aria-disabled={disabled}
+                    aria-checked={checked}
+                    data-is-focusable={false}
+                    aria-labelledby={labelledById}
+                    onChange={this._noop}
+                  />
+                )}
                 <button
                   {...toggleNativeProps}
                   {...keytipAttributes}

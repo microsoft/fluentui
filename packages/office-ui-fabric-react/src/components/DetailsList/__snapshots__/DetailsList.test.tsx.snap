@@ -1031,7 +1031,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -1187,7 +1186,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -1343,7 +1341,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -1499,7 +1496,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -1655,7 +1651,6 @@ exports[`DetailsList renders List correctly with onRenderDivider props 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -3762,7 +3757,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -3921,7 +3915,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -4080,7 +4073,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -4239,7 +4231,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;
@@ -4398,7 +4389,6 @@ exports[`DetailsList renders List with custom icon as column divider 1`] = `
 
                 {
                   border: 0px;
-                  clip: rect(0, 0, 0, 0);
                   height: 1px;
                   margin-bottom: -1px;
                   margin-left: -1px;

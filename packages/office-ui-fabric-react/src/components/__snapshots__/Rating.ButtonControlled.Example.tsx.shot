@@ -101,7 +101,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-Rating-labelText
               {
                 border: 0px;
-                clip: rect(0, 0, 0, 0);
                 height: 1px;
                 margin-bottom: -1px;
                 margin-left: -1px;
@@ -239,7 +238,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-Rating-labelText
               {
                 border: 0px;
-                clip: rect(0, 0, 0, 0);
                 height: 1px;
                 margin-bottom: -1px;
                 margin-left: -1px;
@@ -377,7 +375,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-Rating-labelText
               {
                 border: 0px;
-                clip: rect(0, 0, 0, 0);
                 height: 1px;
                 margin-bottom: -1px;
                 margin-left: -1px;
@@ -515,7 +512,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-Rating-labelText
               {
                 border: 0px;
-                clip: rect(0, 0, 0, 0);
                 height: 1px;
                 margin-bottom: -1px;
                 margin-left: -1px;
@@ -653,7 +649,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               ms-Rating-labelText
               {
                 border: 0px;
-                clip: rect(0, 0, 0, 0);
                 height: 1px;
                 margin-bottom: -1px;
                 margin-left: -1px;

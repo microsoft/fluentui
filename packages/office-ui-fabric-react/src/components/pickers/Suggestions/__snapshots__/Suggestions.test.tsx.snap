@@ -4163,7 +4163,6 @@ exports[`Suggestions renders a list properly with CSS-in-JS styles 1`] = `
         ms-Suggestions-suggestionsAvailable
         {
           border: 0px;
-          clip: rect(0, 0, 0, 0);
           height: 1px;
           margin-bottom: -1px;
           margin-left: -1px;
