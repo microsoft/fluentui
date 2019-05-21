@@ -1,6 +1,3 @@
-const { preset, just } = require('@uifabric/build');
-const { task } = just;
+const { preset } = require('@uifabric/build');
 
 preset();
-
-task('build', 'build:node-lib');

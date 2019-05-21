@@ -1,6 +1,8 @@
 const { preset, just } = require('@uifabric/build');
-const { task } = just;
+const { task, option } = just;
 const { createInternalFlightConfigTask, createPublicFlightConfigTask } = require('./scripts/createFlightConfig');
+
+preset();
 
 option('baseCDNUrl', { default: './dist' });
 

@@ -60,7 +60,7 @@ module.exports = function preset() {
       : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
   });
 
-  task('validate', series('tslint', 'jest'));
+  task('validate', series('tslint', () => (fs.existsSync('jest.setup.js') ? 'jest' : null)));
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
