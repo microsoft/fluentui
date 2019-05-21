@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Added a variant to MicroFeedback and converted to use Slots",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "meher_abidi@hotmail.com"
+}
