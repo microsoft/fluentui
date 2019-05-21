@@ -16,7 +16,8 @@ const GlobalClassNames = {
   inactiveSection: 'ms-Slider-inactive',
   valueLabel: 'ms-Slider-value',
   showValue: 'ms-Slider-showValue',
-  showTransitions: 'ms-Slider-showTransitions'
+  showTransitions: 'ms-Slider-showTransitions',
+  zeroTick: 'ms-Slider-zeroTick'
 };
 
 export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
@@ -46,6 +47,15 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
     selectors: {
       [HighContrastSelector]: {
         borderColor: 'Highlight'
+      }
+    }
+  };
+
+  const slideBoxActiveZeroTickStyles = !props.disabled && {
+    backgroundColor: theme.palette.themeLight,
+    selectors: {
+      [HighContrastSelector]: {
+        backgroundColor: 'Highlight'
       }
     }
   };
@@ -103,6 +113,8 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
           ':hover $inactiveSection': slideBoxInactiveSectionStyles,
           ':active $thumb': slideBoxActiveThumbStyles,
           ':hover $thumb': slideBoxActiveThumbStyles,
+          ':active $zeroTick': slideBoxActiveZeroTickStyles,
+          ':hover $zeroTick': slideBoxActiveZeroTickStyles,
           $thumb: [
             {
               borderWidth: 2,
@@ -230,11 +242,41 @@ export const getStyles = (props: ISliderStyleProps): ISliderStyles => {
         background: theme.palette.neutralLight,
         selectors: {
           [HighContrastSelector]: {
-            backgroundColor: 'GrayText',
             borderColor: 'GrayText'
           }
         }
       }
+    ],
+    zeroTick: [
+      classNames.zeroTick,
+      {
+        position: 'absolute',
+        background: theme.palette.neutralTertiaryAlt,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'WindowText'
+          }
+        }
+      },
+      props.disabled && {
+        background: theme.palette.neutralLight,
+        selectors: {
+          [HighContrastSelector]: {
+            backgroundColor: 'GrayText'
+          }
+        }
+      },
+      props.vertical
+        ? {
+            width: '16px',
+            height: '1px',
+            transform: getRTL() ? 'translateX(6px)' : 'translateX(-6px)'
+          }
+        : {
+            width: '1px',
+            height: '16px',
+            transform: 'translateY(-6px)'
+          }
     ],
     valueLabel: [
       classNames.valueLabel,

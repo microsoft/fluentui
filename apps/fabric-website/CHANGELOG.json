@@ -2,6 +2,55 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.6",
+      "tag": "@uifabric/fabric-website_v6.18.6",
+      "date": "Mon, 20 May 2019 12:22:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix color route",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "a60d39e42fd23b380f2a490c4f54672238ebd9ba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.1` to `^1.1.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.0` to `^6.21.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.182.1` to `^6.183.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.5",
+      "tag": "@uifabric/fabric-website_v6.18.5",
+      "date": "Thu, 16 May 2019 17:34:08 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "fixed the way it creates a flight baseCDNUrl",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "02ba7de7121944eefbb04c7e969d4cc7293939fc"
+          },
+          {
+            "comment": "Fix Button page imports",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "0f6bc5b4a7211078e99d75e079efcdcb28792b16"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.76.2` to `^6.76.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.4",
       "tag": "@uifabric/fabric-website_v6.18.4",
       "date": "Thu, 16 May 2019 12:21:56 GMT",

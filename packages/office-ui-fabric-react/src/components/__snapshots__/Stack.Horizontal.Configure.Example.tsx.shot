@@ -205,6 +205,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
                   }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
+                  }
                   & $thumb {
                     background: #ffffff;
                     border-color: #666666;
@@ -1063,6 +1075,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     @media screen and (-ms-high-contrast: active){&:hover $thumb {
                       border-color: Highlight;
                     }
+                    &:active $zeroTick {
+                      background-color: #c7e0f4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                      background-color: Highlight;
+                    }
+                    &:hover $zeroTick {
+                      background-color: #c7e0f4;
+                    }
+                    @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                      background-color: Highlight;
+                    }
                     & $thumb {
                       background: #ffffff;
                       border-color: #666666;
@@ -1368,6 +1392,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
                   }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
+                  }
                   & $thumb {
                     background: #ffffff;
                     border-color: #666666;
@@ -1612,6 +1648,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   }
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
+                  }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
                   }
                   & $thumb {
                     background: #ffffff;
@@ -1895,6 +1943,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
                   }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
+                  }
                   & $thumb {
                     background: #ffffff;
                     border-color: #666666;
@@ -2139,6 +2199,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   }
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
+                  }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
                   }
                   & $thumb {
                     background: #ffffff;
@@ -2422,6 +2494,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
                   }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
+                  }
                   & $thumb {
                     background: #ffffff;
                     border-color: #666666;
@@ -2666,6 +2750,18 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   }
                   @media screen and (-ms-high-contrast: active){&:hover $thumb {
                     border-color: Highlight;
+                  }
+                  &:active $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                    background-color: Highlight;
+                  }
+                  &:hover $zeroTick {
+                    background-color: #c7e0f4;
+                  }
+                  @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                    background-color: Highlight;
                   }
                   & $thumb {
                     background: #ffffff;

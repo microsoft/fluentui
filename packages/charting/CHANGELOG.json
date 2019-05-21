@@ -2,6 +2,20 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.29.0",
+      "tag": "@uifabric/charting_v0.29.0",
+      "date": "Thu, 16 May 2019 17:34:08 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Rotated the x-axis text for date values",
+            "author": "BalakrishnaReddyPolu <polu.balakrishna96@gmail.com>",
+            "commit": "1d92088ab23b06e116e774ef20fc97306a394e05"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.28.14",
       "tag": "@uifabric/charting_v0.28.14",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

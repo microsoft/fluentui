@@ -479,18 +479,14 @@ export class ApiReferencesTable extends React.Component<IApiReferencesTableProps
             if (token.pageKind === 'References') {
               const referencePage = hash + token.pageKind.toLowerCase() + '/' + token.hyperlinkedPage.toLowerCase();
               href = '#' + referencePage + '#' + token.text;
-              if (cleanedSplit.length > 1) {
-                if (cleanedSplit[1] === referencePage) {
-                  newTab = false;
-                }
+              if (cleanedSplit.length > 1 && cleanedSplit[1] === referencePage) {
+                newTab = false;
               }
             } else {
               const componentPage = hash + token.hyperlinkedPage.toLowerCase();
               href = '#' + componentPage + '#' + token.text;
-              if (cleanedSplit.length > 1) {
-                if (cleanedSplit[1] === componentPage) {
-                  newTab = false;
-                }
+              if (cleanedSplit.length > 1 && cleanedSplit[1] === componentPage) {
+                newTab = false;
               }
             }
 
