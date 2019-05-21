@@ -205,7 +205,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
   const globalClassNames = getGlobalClassNames(
     {
       msButton: 'ms-Button',
-      msButtonIcon: 'ms-Button-Icon'
+      msButtonIcon: 'ms-Button-icon'
     },
     theme
   );

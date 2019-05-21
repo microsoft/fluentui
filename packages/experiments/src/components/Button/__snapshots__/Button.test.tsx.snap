@@ -73,16 +73,16 @@ exports[`Button renders a default Button with content correctly 1`] = `
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Button-Icon {
+      &:hover .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-Icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Button-Icon {
+      &:active .ms-Button-icon {
         color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-Icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -223,16 +223,16 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Button-Icon {
+      &:hover .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-Icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Button-Icon {
+      &:active .ms-Button-icon {
         color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-Icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
       }
       .ms-Fabric--isFocusVisible &:focus {
@@ -372,16 +372,16 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Button-Icon {
+      &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-Icon {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Window;
       }
-      &:active .ms-Button-Icon {
+      &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Button-Icon {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Window;
       }
       .ms-Fabric--isFocusVisible &:focus {
