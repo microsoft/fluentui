@@ -83,17 +83,14 @@ export const controlsPagesIos: INavPage[] = [
   },
   {
     title: 'Progress',
-    url: '#/controls/ios/progressindicator',
+    url: '#/controls/ios/spinner',
     isCategory: true,
     pages: [
       {
-        title: 'Progress Indicator',
-        url: '#/controls/ios/progressindicator',
-        component: () => <LoadingComponent title="Progress Indicator" />,
-        getComponent: cb =>
-          require.ensure([], require =>
-            cb(require<any>('../../../pages/Controls/ProgressIndicatorPage/ProgressIndicatorPage').ProgressIndicatorPage)
-          )
+        title: 'Spinner',
+        url: '#/controls/ios/spinner',
+        component: () => <LoadingComponent title="Spinner" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage))
       }
     ]
   },
