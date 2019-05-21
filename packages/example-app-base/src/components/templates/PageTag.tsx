@@ -37,7 +37,7 @@ export class PageTag extends BaseComponent<IPageTagProps, {}> {
     const classNames: IClassNames<IPageTagStyles> = mergeStyleSets(getDefaultStyles(styleProps));
 
     if (className !== undefined) {
-      return <CodeSnippet {...this.props} />;
+      return <CodeSnippet language={className.replace('lang-', '')} {...this.props} />;
     }
 
     return <span className={classNames.root}>{children}</span>;
