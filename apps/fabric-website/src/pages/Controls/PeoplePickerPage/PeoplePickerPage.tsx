@@ -8,7 +8,9 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const PeoplePickerPage: React.StatelessComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return <ControlsAreaPage {...props} title="PeoplePicker" {...PeoplePickerPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <ControlsAreaPage {...props} title="People Picker" {...PeoplePickerPageProps[platform]} otherSections={_otherSections(platform)} />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {

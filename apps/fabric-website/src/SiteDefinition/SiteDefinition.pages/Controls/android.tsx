@@ -23,7 +23,7 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
-    title: 'Galleries & Pickers',
+    title: 'Pickers',
     url: '#/controls/android/date-time-picker',
     isCategory: true,
     pages: [
@@ -35,9 +35,9 @@ export const controlsPagesAndroid: INavPage[] = [
           require.ensure([], require => cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage))
       },
       {
-        title: 'PeoplePicker',
+        title: 'People Picker',
         url: '#/controls/android/peoplepicker',
-        component: () => <LoadingComponent title="PeoplePicker" />,
+        component: () => <LoadingComponent title="People Picker" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/PeoplePickerPage/PeoplePickerPage').PeoplePickerPage))
       },

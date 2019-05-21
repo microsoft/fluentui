@@ -54,9 +54,9 @@ export const controlsPagesIos: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
       },
       {
-        title: 'ListCells',
+        title: 'List Cells',
         url: '#/controls/ios/listcells',
-        component: () => <LoadingComponent title="ListCells" />,
+        component: () => <LoadingComponent title="List Cells" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage))
       },
@@ -109,9 +109,9 @@ export const controlsPagesIos: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
       },
       {
-        title: 'PopupMenu',
+        title: 'Popup Menu',
         url: '#/controls/ios/popupmenu',
-        component: () => <LoadingComponent title="PopupMenu" />,
+        component: () => <LoadingComponent title="Popup Menu" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
       }

@@ -1,4 +1,4 @@
-AvatarView displays either a photo or the initials of a person, entity, or group on top of a colored circular or square background.
+`AvatarView` displays either a photo or the initials of a person, entity, or group on top of a colored circular or square background.
 
 | Avatar style examples                                                                                                                                                                                            |                                                                                                                                                                                                                  |
 | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
