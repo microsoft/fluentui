@@ -133,7 +133,7 @@ dependencies:
   jscodeshift: 0.5.1
   json-loader: 0.5.7
   just-scripts: 0.14.4
-  just-task: 0.9.9
+  just-task: 0.9.5
   lint-staged: 7.3.0
   loader-utils: 1.2.3
   markdown-to-jsx: 6.6.1
@@ -8867,7 +8867,7 @@ packages:
       fs-extra: 7.0.1
       glob: 7.1.4
       just-scripts-utils: 0.7.3
-      just-task: 0.9.9
+      just-task: 0.9.5
       npm-registry-fetch: 3.9.0
       prompts: 2.0.4
       run-parallel-limit: 1.0.5
@@ -8882,7 +8882,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-M6Ij4pcPG0wm5ypiv5bu4mx9dlCbKPseGsWZdfl7B2OjTfzBr+Iph1oS3ftSXPmgyC4aEZR0cIAwEdOSPK8z9g==
-  /just-task/0.9.9:
+  /just-task/0.9.5:
     dependencies:
       chalk: 2.4.2
       just-task-logger: 0.2.1
@@ -8893,7 +8893,7 @@ packages:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-XEpjhdWdSLY4OtJGBzoxX3GG1mHRIM9TLo5OgFRgY+LWJ58spUTIQSkDJwpEhRcUUKVRpkJ2EAEU2T6lmn7WqQ==
+      integrity: sha512-ftZgvvDrxg5PzcSus17nsOHNZ0OW/ulSjlgRuTR9rMlW8w1WZno2iE9YAi4326zllsfdCjROaAOPQeENdIXeiQ==
   /keycode/2.2.0:
     dev: false
     resolution:
@@ -15490,7 +15490,7 @@ packages:
       jscodeshift: 0.5.1
       json-loader: 0.5.7
       just-scripts: 0.14.4
-      just-task: 0.9.9
+      just-task: 0.9.5
       lint-staged: 7.3.0
       mustache: 2.3.2
       ngrok: 3.1.1
@@ -15524,7 +15524,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-WBh2dVwYMW2sz6DNIUIcr092vewlsCkkv727hI/ey+QOxT/Gj9g5qKoa95k+bytF9ovec/ULtT1xk1v3H7Pa+Q==
+      integrity: sha512-gLC3pcOAqdRwBSH6iyFYeW44MIBsIbtY0E8XMHFWzJ1xrEVO59qDt3nVLA1wEqGArBL0I1Ouc29+sjKKfA0L9g==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -16408,8 +16408,8 @@ specifiers:
   jju: ^1.4.0
   jscodeshift: ^0.5.0
   json-loader: ^0.5.7
-  just-scripts: ~0.14.4
-  just-task: ~0.9.5
+  just-scripts: 0.14.4
+  just-task: 0.9.5
   lint-staged: ^7.0.5
   loader-utils: ^1.1.0
   markdown-to-jsx: 6.6.1
