@@ -1,4 +1,5 @@
 const { logger } = require('just-scripts');
+const path = require('path');
 const ttest = require('ttest');
 
 const componentCount = 1000;
@@ -9,6 +10,8 @@ const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
   : 'http://localhost:4322';
 const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
+
+const outputPath = path.join(__dirname, '../../apps/perf-test/dist');
 
 module.exports = async function getPerfRegressions() {
   const browser = await require('puppeteer').launch({ headless: true });
@@ -46,7 +49,7 @@ module.exports = async function getPerfRegressions() {
   logger.info(`Writing comment to file:\n${comment}`);
 
   // Write results to file
-  require('fs').writeFileSync(require('path').join('apps/perf-test/dist', 'perfCounts.txt'), comment);
+  require('fs').writeFileSync(path.join(outputPath, 'perfCount.txt'), comment);
 
   console.log(`echo ##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
 
