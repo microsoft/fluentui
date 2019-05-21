@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.184.0",
+      "tag": "office-ui-fabric-react_v6.184.0",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixed: ComboBox onResolveOptions should have array not object as argument",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "d39f76a1f000d0fe902c3cc17711b808c70d83eb"
+          },
+          {
+            "comment": "DatePicker: keep validation errors after noop",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "97a5855cdb0f2c99269e6b435231577998bd1621"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "<Fabric> element does not affect global button styling.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "2bbb305599bb49cc5cae7c20fc1201ec64b56542"
+          },
+          {
+            "comment": "Dropdown: Add required visual hint when label is not provided.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "c28d44488fd29c947d5356c297f834a54c416060"
+          },
+          {
+            "comment": "Updated Toggle component to accept JSX Elements. Added screener and snapshot tests for new changes",
+            "author": "Khoa Huynh <35128180+khuynh92@users.noreply.github.com>",
+            "commit": "177ee6ab91e264f4bc89437c5733ea9df8c97a04"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.3` to `^6.17.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.183.0",
       "tag": "office-ui-fabric-react_v6.183.0",
       "date": "Mon, 20 May 2019 12:22:33 GMT",

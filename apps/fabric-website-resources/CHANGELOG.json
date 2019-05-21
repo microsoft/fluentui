@@ -2,6 +2,34 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "6.18.2",
+      "tag": "@uifabric/fabric-website-resources_v6.18.2",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.9` to `^0.16.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.3` to `^6.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.1",
       "tag": "@uifabric/fabric-website-resources_v6.18.1",
       "date": "Tue, 14 May 2019 07:50:30 GMT",
