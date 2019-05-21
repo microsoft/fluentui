@@ -4278,6 +4278,7 @@ export interface IDropdownState {
 // @public
 export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
     hasError: boolean;
+    hasLabel: boolean;
     isOpen: boolean;
     isRenderingPlaceholder: boolean;
     panelClassName?: string;
@@ -7647,7 +7648,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
