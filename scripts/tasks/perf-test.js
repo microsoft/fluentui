@@ -49,7 +49,7 @@ module.exports = async function getPerfRegressions() {
   logger.info(`Writing comment to file:\n${comment}`);
 
   // Write results to file
-  require('fs').writeFileSync(path.join(outputPath, 'perfCount.txt'), comment);
+  require('fs').writeFileSync(path.join(outputPath, 'perfCounts.txt'), comment);
 
   console.log(`echo ##vso[task.setvariable variable=PerfCommentFilePath;]apps/perf-test/dist/perfCounts.txt`);
 
