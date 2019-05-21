@@ -1,21 +1,10 @@
 @import '../../styles/variables';
 @import '../../styles/mixins';
-// @TODO: The following line fails when de-forking because _common.scss is not included in ouifr's npm package.
-// The fix could be one of the 3:
-// 1.) export _common.scss in ouifr
-// 2.) reconstruct a local _common in fabric-website
-// 3.) manually importing the right files here
-// @import '~office-ui-fabric-react/src/common/common';
-
-// TopNav variables
-$TopNav-height: 52px;
-$TopNav-backgroundColor: $ms-color-white;
-$TopNav-height-full-uhf: $TopNav-height * 2;
 
 $linkPadding: 16px;
 
 .topNavWrapper {
-  background: $TopNav-backgroundColor;
+  background: $ms-color-white;
   box-shadow: 0 0 6px 2px rgba(0, 0, 0, 0.06);
   position: relative;
   z-index: 100;
