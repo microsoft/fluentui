@@ -6,6 +6,8 @@ Coming soon
 
 `MSPersonaListView`
 
+`MSPersonaCell`
+
 ### Library
 
 [UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
