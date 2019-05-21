@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Nav: Set link name as default aria-label for chevron",
+      "comment": "Nav: Add expandButtonAriaLabelUseName prop, use link name as default aria label for expand button",
       "type": "minor"
     }
   ],
