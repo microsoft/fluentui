@@ -1,4 +1,4 @@
 module.exports = {
-  preset: require('./just-preset'),
+  preset: require('./just.config'),
   just: require('just-scripts')
 };
