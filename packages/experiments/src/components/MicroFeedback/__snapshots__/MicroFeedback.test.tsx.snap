@@ -67,6 +67,10 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -185,6 +189,10 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -355,6 +363,10 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -473,6 +485,10 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
