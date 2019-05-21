@@ -1,5 +1,5 @@
 import { INavPage } from '../components/Nav/index';
-import { getUrlMinusLastHash } from './getUrlMinusLastHash';
+import { removeAnchorLink } from './removeAnchorLink';
 import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
 
 const doc = getDocument();
@@ -12,23 +12,13 @@ export function isPageActive(componentUrl: string): boolean {
 
   _urlResolver.href = componentUrl || '';
   const target: string = _urlResolver.href;
-  let path = location.href;
 
   const exact = location.protocol + '//' + location.host + location.pathname;
   if (exact === target) {
     return true;
   }
 
-  const hashCount = path.split('#').length - 1;
-  if (hashCount > 1) {
-    path = getUrlMinusLastHash(path);
-  }
-
-  if (path === target) {
-    return true;
-  }
-
-  return false;
+  return removeAnchorLink(location.href) === target;
 }
 
 export function hasActiveChild<TPlatforms extends string = string>(page: INavPage<TPlatforms>, platform?: TPlatforms): boolean {

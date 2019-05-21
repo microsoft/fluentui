@@ -1,8 +1,9 @@
 import * as React from 'react';
 import { css, FocusZone, FocusZoneDirection, Link, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
-import { isPageActive, jumpToAnchor, getUrlMinusLastHash } from '../../utilities/index2';
+import { isPageActive, removeAnchorLink, jumpToAnchor } from '../../utilities/index2';
+import { MarkdownHeader } from '../Markdown/index';
 import { ISideRailProps, ISideRailLink, ISideRailStyles, ISideRailStyleProps } from './SideRail.types';
-import { getStyles, sideRailClassNames } from './SideRail.styles';
+import { getStyles } from './SideRail.styles';
 
 export interface ISideRailState {
   activeLink?: string;
@@ -13,26 +14,29 @@ const getClassNames = classNamesFunction<ISideRailStyleProps, ISideRailStyles>()
 class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   public readonly state: ISideRailState = {};
   private _classNames: IProcessedStyleSet<ISideRailStyles>;
+  private _observer: IntersectionObserver;
 
   public componentDidMount(): void {
     if (typeof IntersectionObserver !== 'undefined') {
       const { observe, jumpLinks } = this.props;
-      if (observe) {
-        const options: IntersectionObserverInit = {
+      if (observe && jumpLinks) {
+        this._observer = new IntersectionObserver(this._handleObserver, {
           threshold: [0.5]
-        };
+        });
 
-        const observer: IntersectionObserver = new IntersectionObserver(this._handleObserver, options);
-
-        if (jumpLinks) {
-          jumpLinks.forEach((jumpLink: ISideRailLink) => {
-            const element = document.getElementById(jumpLink.url);
-            if (element) {
-              observer.observe(element);
-            }
-          });
-        }
+        jumpLinks.forEach((jumpLink: ISideRailLink) => {
+          const element = document.getElementById(jumpLink.url);
+          if (element) {
+            this._observer.observe(element);
+          }
+        });
       }
+    }
+  }
+
+  public componentWillUnmount() {
+    if (this._observer) {
+      this._observer.disconnect();
     }
   }
 
@@ -73,19 +77,24 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       return null;
     }
     const links = jumpLinks.map((jumpLink: ISideRailLink) => (
-      <li
-        key={jumpLink.url}
-        className={css(classNames.link, classNames.jumpLink, jumpLink.url === activeLink && sideRailClassNames.isActive)}
-      >
-        <Link href={this._getPageUrl(jumpLink.url)} data-anchor-url={jumpLink.url} onClick={this._onJumpLinkClick}>
+      <li key={jumpLink.url} className={css(classNames.linkWrapper, classNames.jumpLinkWrapper)}>
+        <Link
+          href={this._getJumpLinkUrl(jumpLink.url)}
+          onClick={this._onJumpLinkClick}
+          styles={{
+            root: [classNames.jumpLink, activeLink === jumpLink.url && classNames.jumpLinkActive]
+          }}
+        >
           {jumpLink.text}
         </Link>
       </li>
     ));
     return (
       <div className={css(classNames.section, classNames.jumpLinkSection)}>
-        <h3 className={classNames.sectionTitle}>On this page</h3>
-        <ul>{links}</ul>
+        <MarkdownHeader as="h3" className={classNames.sectionTitle}>
+          On this page
+        </MarkdownHeader>
+        <ul className={classNames.links}>{links}</ul>
       </div>
     );
   };
@@ -100,9 +109,9 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
       const linksToRender = linksFromProps.filter(link => !isPageActive(link.url));
       if (linksToRender.length) {
         links = (
-          <ul>
+          <ul className={classNames.links}>
             {linksToRender.map(link => (
-              <li key={link.url} className={classNames.link}>
+              <li key={link.url} className={classNames.linkWrapper}>
                 <Link href={link.url}>{link.text}</Link>
               </li>
             ))}
@@ -114,7 +123,9 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
     if (links) {
       return (
         <div className={css(classNames.section)}>
-          <h3 className={classNames.sectionTitle}>{title}</h3>
+          <MarkdownHeader as="h3" className={classNames.sectionTitle}>
+            {title}
+          </MarkdownHeader>
           {links}
         </div>
       );
@@ -125,16 +136,16 @@ class SideRailBase extends React.Component<ISideRailProps, ISideRailState> {
   // tslint:disable-next-line:no-any
   private _onJumpLinkClick = (ev?: React.MouseEvent<any>): void => {
     const target = ev && (ev.target as HTMLAnchorElement);
-    const url = target && target.dataset && target.dataset.anchorUrl;
-    if (url && ev) {
-      ev.preventDefault();
+    if (target && target.href === location.href) {
+      // If this link is already in the URL, scroll back to it on click
+      // (otherwise, scrolling will be handled elsewhere)
+      jumpToAnchor();
     }
-    return jumpToAnchor(url);
   };
 
-  private _getPageUrl(url: string): string {
+  private _getJumpLinkUrl(anchor: string): string {
     // This makes sure that location hash changes don't append
-    return `${url}#${getUrlMinusLastHash(location.hash)}`;
+    return `${removeAnchorLink(location.hash)}#${anchor}`;
   }
 }
 

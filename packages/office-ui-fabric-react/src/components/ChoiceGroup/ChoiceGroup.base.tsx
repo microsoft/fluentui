@@ -1,7 +1,16 @@
 import * as React from 'react';
 
 import { Label } from '../../Label';
-import { initializeComponentRef, warnDeprecations, warnMutuallyExclusive, classNamesFunction, find, getId } from '../../Utilities';
+import {
+  initializeComponentRef,
+  warnDeprecations,
+  warnMutuallyExclusive,
+  classNamesFunction,
+  find,
+  getId,
+  getNativeProps,
+  divProperties
+} from '../../Utilities';
 import { IChoiceGroup, IChoiceGroupOption, IChoiceGroupProps, IChoiceGroupStyleProps, IChoiceGroupStyles } from './ChoiceGroup.types';
 import { ChoiceGroupOption, OnChangeCallback, OnFocusCallback } from './ChoiceGroupOption/index';
 
@@ -14,6 +23,9 @@ export interface IChoiceGroupState {
   keyFocused?: string | number;
 }
 
+/**
+ * {@docCategory ChoiceGroup}
+ */
 export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceGroupState> implements IChoiceGroup {
   public static defaultProps: IChoiceGroupProps = {
     options: []
@@ -73,6 +85,8 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
     const { className, theme, styles, options, label, required, disabled, name, role } = this.props;
     const { keyChecked, keyFocused } = this.state;
 
+    const divProps = getNativeProps(this.props, divProperties, ['onChange', 'className', 'required']);
+
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
@@ -86,7 +100,7 @@ export class ChoiceGroupBase extends React.Component<IChoiceGroupProps, IChoiceG
       : (this.props as any)['aria-labelledby'];
 
     return (
-      <div role={role} className={classNames.applicationRole}>
+      <div role={role} className={classNames.applicationRole} {...divProps}>
         <div className={classNames.root} role="radiogroup" {...ariaLabelledBy && { 'aria-labelledby': ariaLabelledBy }}>
           {label && (
             <Label className={classNames.label} required={required} id={this._id + '-label'}>

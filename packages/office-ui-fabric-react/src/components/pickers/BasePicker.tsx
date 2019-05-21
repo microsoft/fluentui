@@ -29,6 +29,7 @@ export interface IBasePickerState {
 
 /**
  * Aria id's for internal picker components
+ * {@docCategory Pickers}
  */
 export type IPickerAriaIds = {
   /**
@@ -55,6 +56,10 @@ function getStyledSuggestions<T>(suggestionsType: new (props: ISuggestionsProps<
     scope: 'Suggestions'
   });
 }
+
+/**
+ * {@docCategory Pickers}
+ */
 export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<P, IBasePickerState> implements IBasePicker<T> {
   // Refs
   protected root = React.createRef<HTMLDivElement>();

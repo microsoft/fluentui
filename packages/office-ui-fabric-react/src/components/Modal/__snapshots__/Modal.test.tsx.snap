@@ -26,13 +26,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
         & textarea {
           font-family: inherit;
         }
-        button {
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow: visible;
-        }
     onBlur={[Function]}
     onChange={[Function]}
     onClick={[Function]}
@@ -126,7 +119,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
           }
         >
           <div
-            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -153,7 +145,6 @@ exports[`Modal renders Draggable Modal correctly 1`] = `
             Test Content
           </div>
           <div
-            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -196,13 +187,6 @@ exports[`Modal renders Modal correctly 1`] = `
         }
         & textarea {
           font-family: inherit;
-        }
-        button {
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow: visible;
         }
     onBlur={[Function]}
     onChange={[Function]}
@@ -306,7 +290,6 @@ exports[`Modal renders Modal correctly 1`] = `
           onFocusCapture={[Function]}
         >
           <div
-            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -333,7 +316,6 @@ exports[`Modal renders Modal correctly 1`] = `
             Test Content
           </div>
           <div
-            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -376,13 +358,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
         }
         & textarea {
           font-family: inherit;
-        }
-        button {
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
-          overflow: visible;
         }
     onBlur={[Function]}
     onChange={[Function]}
@@ -465,7 +440,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
           onFocusCapture={[Function]}
         >
           <div
-            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={
@@ -492,7 +466,6 @@ exports[`Modal renders Modeless Modal correctly 1`] = `
             Test Content
           </div>
           <div
-            aria-hidden={true}
             data-is-visible={true}
             onFocus={[Function]}
             style={

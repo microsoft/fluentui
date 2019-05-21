@@ -1,5 +1,5 @@
 import * as React from 'react';
-import '../../../pages/Styles/AnimationsPage/AnimationsPage.scss';
+import './AnimationsPage.scss';
 
 export interface IAnimationCellProps {
   data: any;

@@ -15,7 +15,7 @@ export interface IMarkdownProps {
   styles?: IStyleFunctionOrObject<IMarkdownStyleProps, IMarkdownStyles>;
 }
 
-export type IMarkdownStyleProps = {};
+export type IMarkdownStyleProps = Required<Pick<IMarkdownProps, 'theme'>>;
 
 export interface IMarkdownStyles {
   root: IStyle;

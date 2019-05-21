@@ -21,13 +21,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       & textarea {
         font-family: inherit;
       }
-      button {
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: visible;
-      }
       & > * {
         margin-bottom: 20px;
       }
@@ -235,6 +228,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 32px;
                 line-height: 30px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 4px;
@@ -296,6 +293,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                 color: #212121;
               }
           data-is-focusable={false}
+          onBlur={[Function]}
           onClick={[Function]}
           onKeyDown={[Function]}
           onKeyPress={[Function]}
@@ -366,6 +364,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -676,6 +678,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -737,6 +743,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -988,6 +995,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1049,6 +1060,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -1298,6 +1310,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -1359,6 +1375,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -1434,13 +1451,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             & textarea {
               font-family: inherit;
-            }
-            button {
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
-              overflow: visible;
             }
         onBlur={[Function]}
         onChange={[Function]}
@@ -1620,6 +1630,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -1771,6 +1785,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -1915,6 +1933,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -2065,6 +2087,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -2269,6 +2295,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -2421,6 +2451,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -2564,6 +2598,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -2714,6 +2752,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -2864,6 +2906,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -3014,6 +3060,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: auto;
                           line-height: 20px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-height: 32px;
                           outline: transparent;
                           overflow-wrap: break-word;
@@ -3312,6 +3362,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -3373,6 +3427,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -3606,6 +3661,10 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -3663,6 +3722,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
         data-is-focusable={false}
         disabled={true}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

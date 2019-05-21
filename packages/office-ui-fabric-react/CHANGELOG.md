@@ -1,6 +1,127 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 02 May 2019 12:36:35 GMT and should not be manually modified.
+This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+
+## 6.183.0
+Mon, 20 May 2019 12:22:33 GMT
+
+### Minor changes
+
+- Add selectedOptions to ComboBox and Dropdown
+- Add a new prop to enable Slider origin from zero
+
+### Patches
+
+- Fix ColorPicker Hex input
+- MessageBar: Add `aria-hidden` property for message bar icon
+
+## 6.182.1
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- [Checkbox] Fix outline on focus.
+
+## 6.182.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Nav respects changes to collapsedByDefault
+- Allow custom aria label generation in suggestionStore
+- ShimmeredDetailsList: export to the surface missing API items.
+
+### Patches
+
+- added the title attribute for the cancel icon in the panel which is same as aira-label
+- Add TextField multiple-line errorMessage support
+- This latest PR is to ensure Nav link without icon should not be rendered with <i> place-holder
+
+## 6.181.1
+Tue, 14 May 2019 07:50:31 GMT
+
+### Patches
+
+- The FocusZone photos example now correctly renders focus rectangles.
+- Update Fabric assets link
+
+## 6.181.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Dropdown/Combobox: Add prop to allow open on focus
+- DetailsList: Export missing public API symbols
+
+### Patches
+
+- added element id to the ChoiceGroup component
+- In Edge, prevent pickers from showing "ms-clear" icon when typing.
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+- Picker/DocPage: fix IBasePickerProps doc comment and add type alias to DocPage.
+- withViewport: Respect value change of skipViewportMeasures by reassigning appropriate resize listener
+
+## 6.180.0
+Fri, 10 May 2019 12:36:11 GMT
+
+### Minor changes
+
+- Export ResponsiveMode from controls that expect it as a prop.
+
+### Patches
+
+- Fix focus state on ComboBox
+- Fix ARIA issue in Surfaces
+
+## 6.179.0
+Thu, 09 May 2019 12:35:50 GMT
+
+### Minor changes
+
+- Added support for hidden options in dropdown and combo box
+
+### Patches
+
+- Include md files in nested docs folders
+
+## 6.178.0
+Wed, 08 May 2019 12:37:40 GMT
+
+### Minor changes
+
+- Fix return type of onReduceDate in CommandBar
+
+## 6.177.0
+Tue, 07 May 2019 12:34:52 GMT
+
+### Minor changes
+
+- Color card + samples cards of Theming Designer, set up the layout of the whole app, got started implementing the creation of the theme"
+- Theme Designer app: Colors left nav, Samples card, A11y Checker card, Fabric Palette card, Export Panel
+- New feature: Semantic Slots card as well as clean up of layout & css.
+
+### Patches
+
+- Router should error if getComponent doesn't return anything
+- Truncate suggestions in IE11
+- Icon documentation update
+
+## 6.176.3
+Sun, 05 May 2019 19:59:10 GMT
+
+### Patches
+
+- Router: ignore trailing slashes, don't update if hash didn't change
+
+## 6.176.2
+Sat, 04 May 2019 00:01:54 GMT
+
+### Patches
+
+- Properly propagate Esc in DatePicker
+- Add min panel width for small screen sizes
+- Documentation: adds more `docCategory` tags to API items.
+- Doc updates for new website
 
 ## 6.176.0
 Thu, 02 May 2019 12:36:35 GMT

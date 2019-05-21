@@ -15,7 +15,7 @@ export interface IEditSectionProps {
   /**
    * The name of the component
    */
-  title: string;
+  title?: string;
 
   /**
    * The section name this button is used to edit.

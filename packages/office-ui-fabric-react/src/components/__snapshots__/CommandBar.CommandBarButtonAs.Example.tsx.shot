@@ -90,6 +90,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -275,6 +279,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -434,6 +442,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -592,6 +604,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -752,6 +768,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -898,6 +918,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1067,6 +1091,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1213,6 +1241,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1417,6 +1449,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1602,6 +1638,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1761,6 +1801,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1915,13 +1959,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     }
                     & textarea {
                       font-family: inherit;
-                    }
-                    button {
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
-                      overflow: visible;
                     }
                 onBlur={[Function]}
                 onChange={[Function]}
@@ -2119,7 +2156,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                 onFocusCapture={[Function]}
                               >
                                 <div
-                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={
@@ -2250,6 +2286,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                               font-size: 12px;
                                               font-weight: 400;
                                               height: 32px;
+                                              margin-bottom: 0px;
+                                              margin-left: 0px;
+                                              margin-right: 0px;
+                                              margin-top: 0px;
                                               outline: transparent;
                                               padding-bottom: 0;
                                               padding-left: 4px;
@@ -2356,7 +2396,6 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                   </div>
                                 </div>
                                 <div
-                                  aria-hidden={true}
                                   data-is-visible={true}
                                   onFocus={[Function]}
                                   style={
@@ -2405,6 +2444,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2565,6 +2608,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2711,6 +2758,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                     font-size: 14px;
                     font-weight: 400;
                     height: 100%;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2880,6 +2931,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -3026,6 +3081,10 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;

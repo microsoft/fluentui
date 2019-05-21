@@ -163,7 +163,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       calendarAs: CalendarType = Calendar,
       tabIndex
     } = this.props;
-    const { isDatePickerShown, formattedDate, selectedDate, errorMessage } = this.state;
+    const { isDatePickerShown, formattedDate, selectedDate } = this.state;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -192,7 +192,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
             aria-controls={isDatePickerShown ? calloutId : undefined}
             required={isRequired}
             disabled={disabled}
-            errorMessage={errorMessage}
+            errorMessage={this._getErrorMessage()}
             placeholder={placeholder}
             borderless={borderless}
             value={formattedDate}
@@ -383,8 +383,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     if (!this.state.isDatePickerShown) {
       this._preventFocusOpeningPicker = true;
       this.setState({
-        isDatePickerShown: true,
-        errorMessage: ''
+        isDatePickerShown: true
       });
     }
   }
@@ -413,7 +412,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   };
 
   private _handleEscKey = (ev: React.KeyboardEvent<HTMLElement>): void => {
-    ev.stopPropagation();
+    if (this.state.isDatePickerShown) {
+      ev.stopPropagation();
+    }
     this._calendarDismissed();
   };
 
@@ -504,5 +505,12 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   private _isDateOutOfBounds(date: Date, minDate?: Date, maxDate?: Date): boolean {
     return (!!minDate && compareDatePart(minDate!, date) > 0) || (!!maxDate && compareDatePart(maxDate!, date) < 0);
+  }
+
+  private _getErrorMessage(): string | undefined {
+    if (this.state.isDatePickerShown) {
+      return undefined;
+    }
+    return this.state.errorMessage;
   }
 }

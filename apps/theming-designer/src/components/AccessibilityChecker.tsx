@@ -3,7 +3,7 @@ import { AccessibilityDetailsList } from './AccessibilityDetailsList';
 import { BaseSlots, FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
-import { itemWrapper } from '../shared/style';
+import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IAccessibilityCheckerProps {
@@ -43,8 +43,7 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
     // primary color also needs to be accessible, this is also strong variant default
     calculateContrastRatio(FabricSlots.white, FabricSlots.themePrimary);
     calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.neutralLighter); // neutral variant default
-    calculateContrastRatio(FabricSlots.themeDark, FabricSlots.neutralLighter);
-    calculateContrastRatio(FabricSlots.neutralPrimary, FabricSlots.themeLighter); // neutral variant with primary color
+    calculateContrastRatio(FabricSlots.themeDarkAlt, FabricSlots.neutralLighter);
     // these are the text and primary colors on top of the soft variant, whose bg depends on invertedness of original theme
     if (!isDark(props.themeRules![BaseSlots[BaseSlots.backgroundColor]].color!)) {
       // is not inverted
@@ -59,8 +58,8 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
 
   loadAllContrastRatioPairsList();
   return (
-    <div className={itemWrapper}>
-      <h1>Accessibility Checker</h1>
+    <div className={MainPanelInnerContent}>
+      <h1>Accessibility checker</h1>
       <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
     </div>
   );

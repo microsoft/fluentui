@@ -193,10 +193,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       position: relative;
@@ -276,28 +280,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         justify-content: flex-start;
                       }
                 >
-                  <i
-                    className=
-                        ms-Icon-placeHolder
-                        ms-Button-icon
-                        {
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
                   <div
                     className=
                         ms-Nav-linkText
@@ -372,10 +354,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: 36px;
                           line-height: 36px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           overflow: hidden;
                           padding-bottom: 0;
-                          padding-left: 17px;
+                          padding-left: 41px;
                           padding-right: 20px;
                           padding-top: 0;
                           position: relative;
@@ -455,28 +441,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             justify-content: flex-start;
                           }
                     >
-                      <i
-                        className=
-                            ms-Icon-placeHolder
-                            ms-Button-icon
-                            {
-                              color: #106ebe;
-                              display: inline-block;
-                              flex-shrink: 0;
-                              font-size: 16px;
-                              height: 16px;
-                              line-height: 16px;
-                              margin-bottom: 0;
-                              margin-left: 4px;
-                              margin-right: 4px;
-                              margin-top: 0;
-                              text-align: center;
-                              vertical-align: middle;
-                              width: 1em;
-                            }
-                        data-icon-name=""
-                        role="presentation"
-                      />
                       <div
                         className=
                             ms-Nav-linkText
@@ -543,10 +507,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: 36px;
                           line-height: 36px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           overflow: hidden;
                           padding-bottom: 0;
-                          padding-left: 17px;
+                          padding-left: 41px;
                           padding-right: 20px;
                           padding-top: 0;
                           pointer-events: none;
@@ -618,28 +586,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                             justify-content: flex-start;
                           }
                     >
-                      <i
-                        className=
-                            ms-Icon-placeHolder
-                            ms-Button-icon
-                            {
-                              color: inherit;
-                              display: inline-block;
-                              flex-shrink: 0;
-                              font-size: 16px;
-                              height: 16px;
-                              line-height: 16px;
-                              margin-bottom: 0;
-                              margin-left: 4px;
-                              margin-right: 4px;
-                              margin-top: 0;
-                              text-align: center;
-                              vertical-align: middle;
-                              width: 1em;
-                            }
-                        data-icon-name=""
-                        role="presentation"
-                      />
                       <div
                         className=
                             ms-Nav-linkText
@@ -707,10 +653,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       position: relative;
@@ -800,28 +750,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         justify-content: flex-start;
                       }
                 >
-                  <i
-                    className=
-                        ms-Icon-placeHolder
-                        ms-Button-icon
-                        {
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
                   <div
                     className=
                         ms-Nav-linkText
@@ -885,10 +813,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       position: relative;
@@ -968,28 +900,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         justify-content: flex-start;
                       }
                 >
-                  <i
-                    className=
-                        ms-Icon-placeHolder
-                        ms-Button-icon
-                        {
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
                   <div
                     className=
                         ms-Nav-linkText
@@ -1056,10 +966,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       pointer-events: none;
@@ -1131,28 +1045,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         justify-content: flex-start;
                       }
                 >
-                  <i
-                    className=
-                        ms-Icon-placeHolder
-                        ms-Button-icon
-                        {
-                          color: inherit;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
                   <div
                     className=
                         ms-Nav-linkText
@@ -1216,10 +1108,14 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
-                      padding-left: 3px;
+                      padding-left: 27px;
                       padding-right: 20px;
                       padding-top: 0;
                       position: relative;
@@ -1299,28 +1195,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                         justify-content: flex-start;
                       }
                 >
-                  <i
-                    className=
-                        ms-Icon-placeHolder
-                        ms-Button-icon
-                        {
-                          color: #106ebe;
-                          display: inline-block;
-                          flex-shrink: 0;
-                          font-size: 16px;
-                          height: 16px;
-                          line-height: 16px;
-                          margin-bottom: 0;
-                          margin-left: 4px;
-                          margin-right: 4px;
-                          margin-top: 0;
-                          text-align: center;
-                          vertical-align: middle;
-                          width: 1em;
-                        }
-                    data-icon-name=""
-                    role="presentation"
-                  />
                   <div
                     className=
                         ms-Nav-linkText
@@ -1385,6 +1259,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;

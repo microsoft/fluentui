@@ -65,7 +65,10 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 font-weight: 300;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 0px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -232,7 +235,10 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 0px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -392,7 +398,10 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 0px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 10px;
@@ -552,7 +561,10 @@ exports[`Component Examples renders Pivot.OnChange.Example.tsx correctly 1`] = `
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 0px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 10px;

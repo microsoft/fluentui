@@ -3,14 +3,14 @@ import { CommandButton } from 'office-ui-fabric-react/lib/Button';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
 import { IStackComponent, Stack } from 'office-ui-fabric-react/lib/Stack';
-import { styled, classNamesFunction, Customizer, css } from 'office-ui-fabric-react/lib/Utilities';
+import { styled, classNamesFunction, Customizer, css, CustomizerContext } from 'office-ui-fabric-react/lib/Utilities';
 import { ISchemeNames, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 
-import { Highlight } from '../Highlight/Highlight';
 import { AppCustomizationsContext, IAppCustomizations, IExampleCardCustomizations } from '../../utilities/customizations';
 import { CodepenComponent } from '../CodepenComponent/CodepenComponent';
 import { IExampleCardProps, IExampleCardStyleProps, IExampleCardStyles } from './ExampleCard.types';
 import { getStyles } from './ExampleCard.styles';
+import { CodeSnippet } from '../CodeSnippet/index';
 
 export interface IExampleCardState {
   isCodeVisible?: boolean;
@@ -49,13 +49,24 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
   }
 
   public render(): JSX.Element {
-    const { title, code, children, styles, isRightAligned = false, isScrollable = true, codepenJS, theme } = this.props;
+    const {
+      title,
+      code,
+      children,
+      styles,
+      isRightAligned = false,
+      isScrollable = true,
+      codepenJS,
+      theme,
+      codeHighlighter: Highlighter = CodeSnippet,
+      codeHighlighterProps = {}
+    } = this.props;
     const { isCodeVisible, schemeIndex, themeIndex } = this.state;
 
     return (
       <AppCustomizationsContext.Consumer>
         {(context: IAppCustomizations) => {
-          const { exampleCardCustomizations } = context;
+          const { exampleCardCustomizations, hideSchemes } = context;
           const activeCustomizations =
             exampleCardCustomizations && exampleCardCustomizations[themeIndex] && exampleCardCustomizations[themeIndex].customizations;
 
@@ -98,7 +109,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     />
                   )}
 
-                  {exampleCardCustomizations && (
+                  {exampleCardCustomizations && !hideSchemes && (
                     <Dropdown
                       defaultSelectedKey={0}
                       onChange={this._onSchemeChange}
@@ -111,6 +122,7 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                     <CommandButton
                       iconProps={{ iconName: 'Embed' }}
                       onClick={this._onToggleCodeClick}
+                      checked={isCodeVisible}
                       // TODO: fix once button has full styling support
                       styles={typeof codeButtonStyles === 'function' ? codeButtonStyles({}) : codeButtonStyles}
                     >
@@ -120,14 +132,16 @@ export class ExampleCardBase extends React.Component<IExampleCardProps, IExample
                 </div>
               </div>
 
-              <div className={classNames.code}>{isCodeVisible && <Highlight>{code}</Highlight>}</div>
+              <div className={classNames.code}>{isCodeVisible && <Highlighter {...codeHighlighterProps}>{code}</Highlighter>}</div>
 
               {activeCustomizations ? (
-                <Customizer {...activeCustomizations}>
-                  <ThemeProvider scheme={_schemes[schemeIndex]}>
-                    <Stack styles={regionStyles}>{exampleCardContent}</Stack>
-                  </ThemeProvider>
-                </Customizer>
+                <CustomizerContext.Provider value={{ customizations: { settings: {}, scopedSettings: {} } }}>
+                  <Customizer {...activeCustomizations}>
+                    <ThemeProvider scheme={_schemes[schemeIndex]}>
+                      <Stack styles={regionStyles}>{exampleCardContent}</Stack>
+                    </ThemeProvider>
+                  </Customizer>
+                </CustomizerContext.Provider>
               ) : (
                 exampleCardContent
               )}
