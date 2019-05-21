@@ -1,6 +1,17 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 17 May 2019 12:22:31 GMT and should not be manually modified.
+This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+
+## 6.77.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+
+### Patches
+
+- Use shared demo app bootstrapping code
 
 ## 6.76.4
 Fri, 17 May 2019 12:22:31 GMT

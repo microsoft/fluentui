@@ -1,6 +1,20 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+
+## 6.184.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+- Dropdown: Add required visual hint when label is not provided.
+- Updated Toggle component to accept JSX Elements. Added screener and snapshot tests for new changes
+
+### Patches
+
+- Fixed: ComboBox onResolveOptions should have array not object as argument
+- DatePicker: keep validation errors after noop
 
 ## 6.183.0
 Mon, 20 May 2019 12:22:33 GMT

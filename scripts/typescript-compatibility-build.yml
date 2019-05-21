@@ -2,9 +2,7 @@ trigger:
   branches:
     include:
       - tsc-compat-debug
-  tags:
-    include:
-      - office-ui-fabric-react_v*
+      - refs/tags/office-ui-fabric-react_v*
 
 variables:
   - name: PackageName
@@ -46,6 +44,12 @@ jobs:
           npm pack ./packages/$(PackageName)
         displayName: Run npm pack $(PackageName)
 
+      # Save ReleaseId into a txt artifact file
+      - script: |
+          echo *.tgz | grep -oP '(?<=office-ui-fabric-react-).*(?=.tgz)' >> $(Build.StagingDirectory)/compatMap.txt
+        name: setReleaseIdStep
+        displayName: Save ReleaseId into a txt artifact file
+
       # Rename built package tarball to reference later
       - script: |
           mv *.tgz $(Build.StagingDirectory)/$(PackageName).tgz
@@ -56,7 +60,7 @@ jobs:
         displayName: Publish Build Artifacts
         inputs:
           pathtoPublish: $(Build.StagingDirectory)
-          artifactName: drop
+          artifactName: compatMapDrop
 
   - job: Compatibility
     dependsOn: Build
@@ -65,12 +69,14 @@ jobs:
     pool:
       vmImage: $(VmImage)
     strategy:
-      maxParallel: 2
+      maxParallel: 1
       matrix:
         'TypeScript 2.4':
           TypeScriptVersion: 2.4
         'TypeScript 2.7':
           TypeScriptVersion: 2.7
+        'TypeScript 2.8':
+          TypeScriptVersion: 2.8
         'TypeScript 2.9':
           TypeScriptVersion: 2.9
         'TypeScript 3.0':
@@ -95,7 +101,7 @@ jobs:
       - task: DownloadBuildArtifacts@0
         displayName: 'Download Build Artifacts'
         inputs:
-          artifactName: drop
+          artifactName: compatMapDrop
           downloadPath: $(Build.StagingDirectory)
 
       # Clone repository containing versioned TypeScript sample apps
@@ -111,7 +117,7 @@ jobs:
 
       # Install built package tarball in sample app
       - script: |
-          npm install $(Build.StagingDirectory)/drop/$(PackageName).tgz
+          npm install $(Build.StagingDirectory)/compatMapDrop/$(PackageName).tgz
         displayName: Install $(PackageName) in TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__/tests/$(TypeScriptVersion)
 
@@ -120,3 +126,69 @@ jobs:
           node common/scripts/install-run-rush.js test --to $(TypeScriptVersion)-office-ui-fabric-react-test
         displayName: Build TypeScript $(TypeScriptVersion) test app
         workingDirectory: $(Build.StagingDirectory)/__tests__
+
+      # Write successful ts versions to compatMap.txt
+      - script: |
+          echo $(TypeScriptVersion) >> $(Build.StagingDirectory)/compatMapDrop/compatMap.txt
+        displayName: Write successful ts versions to compatMap.txt
+
+      # Publish built library for validation job
+      - task: PublishBuildArtifacts@1
+        displayName: Publish Build Artifacts
+        inputs:
+          pathtoPublish: $(Build.StagingDirectory)/compatMapDrop
+          artifactName: compatMapDrop
+
+  - job: InvokePOSTAPI
+    dependsOn: Compatibility
+    condition: always()
+    timeoutInMinutes: 60
+    pool:
+      vmImage: $(VmImage)
+    steps:
+      # Download build library
+      - task: DownloadBuildArtifacts@0
+        displayName: 'Download Build Artifacts'
+        inputs:
+          artifactName: compatMapDrop
+          downloadPath: $(Build.StagingDirectory)
+
+      # Invoke POST API with json body
+      # The artifact file compatMap.txt which has the TS compatibility folows the below format,
+      # where the first line is the OUFR release and the subsequent lines are the TS versions supported
+      #  6.182.1
+      #  2.8
+      #  2.9
+      #  3.0
+      #  3.1
+      #  3.2
+      #  3.3
+      #  3.4
+      # It is then concatenated into a format like 2.8, 2.9, 3.0, 3.1, 3.2, 3.3, 3.4
+      # and the fabricweb backend API is invoked which writes these entrie to an Azure table
+      - powershell: $i = 0;
+          $releaseVersion = "";
+          $compatibleTsVersions = "";
+          $compatMapArray = Get-Content $env:BUILD_STAGINGDIRECTORY/compatMapDrop/compatMap.txt;
+          foreach($line in $compatMapArray) {
+          if($i -match 0) {
+          $releaseVersion = $line;
+          } else {
+          if($i -match 1) {
+          $compatibleTsVersions += $line;
+          } else {
+          $compatibleTsVersions += ", ";
+          $compatibleTsVersions += $line;
+          }
+          }
+          $i++;
+          }
+          Write-Host $releaseVersion;
+          Write-Host $compatibleTsVersions;
+
+          $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]";
+          $headers.Add("AuthToken", "$(releaseVersionVariable)");
+          $APIUrl = "https://fabricweb.azurewebsites.net/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";
+          $response = Invoke-RestMethod -Uri $APIUrl -Method Get -Headers $headers;
+          Write-Host $response;
+        displayName: Invoke POST API with json body

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+
+## 6.17.4
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
 
 ## 6.17.3
 Tue, 14 May 2019 07:50:30 GMT

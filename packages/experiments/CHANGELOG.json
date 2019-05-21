@@ -2,6 +2,44 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.77.0",
+      "tag": "@uifabric/experiments_v6.77.0",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "<Fabric> element does not affect global button styling.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "2bbb305599bb49cc5cae7c20fc1201ec64b56542"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.29.0` to `^0.29.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.9` to `^0.16.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.3` to `^6.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.76.4",
       "tag": "@uifabric/experiments_v6.76.4",
       "date": "Fri, 17 May 2019 12:22:31 GMT",

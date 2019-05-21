@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+
+## 0.3.3
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
 
 ## 0.3.2
 Tue, 14 May 2019 07:50:30 GMT
