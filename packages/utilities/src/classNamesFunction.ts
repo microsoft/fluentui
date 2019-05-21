@@ -78,13 +78,18 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
       // Mutate the options passed in, that's all we can do.
       options.disableCaching = true;
 
-      if (process.env.NODE_ENV !== 'production') {
-        console.log('Styles are being recalculated far too frequently. Something is mutating the class over and over.');
-        // tslint:disable-next-line:no-console
-        console.trace();
+      // Note: this code is great for debugging problems with styles being recaculated, but I'm commenting it out
+      // to avoid confusing consumers.
+      
+      // if (process.env.NODE_ENV !== 'production') {
+      //  console.log('Styles are being recalculated far too frequently. Something is mutating the class over and over.');
+      //  // tslint:disable-next-line:no-console
+      //  console.trace();
       }
     }
 
+    // Note: the RetVal is an attached property on the Map; not a key in the Map. We use this attached property to
+    // cache the return value for this branch of the graph.
     return (current as any)[RetVal] as IProcessedStyleSet<TStyleSet>;
   };
 
