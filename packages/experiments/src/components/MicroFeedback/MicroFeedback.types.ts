@@ -26,7 +26,7 @@ export interface IMicroFeedbackQuestion {
   question: string;
 
   /**
-   * Defines a list of options from which to choose as answer to the given question.
+   * Defines a list of options from which to choose as an answer to the given question.
    */
   options: string[];
 
@@ -115,7 +115,7 @@ export interface IMicroFeedbackProps
   dislikeQuestion?: IMicroFeedbackQuestion;
 
   /**
-   * Determines if this is a Stack or Callout followup
+   * Determines if this is a Stack or Callout followup.
    */
 
   inline?: boolean;
@@ -141,7 +141,7 @@ export interface IMicroFeedbackViewProps extends IMicroFeedbackProps {
   isFollowUpVisible?: boolean;
 
   /**
-   * Determines if the Thanks Callout is visible or not.
+   * Determines if the Callout with the "thank you" message is visible or not.
    * @defaultvalue false
    */
   isThanksVisible?: boolean;
