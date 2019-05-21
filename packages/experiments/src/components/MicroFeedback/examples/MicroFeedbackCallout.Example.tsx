@@ -17,10 +17,12 @@ export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
     };
 
     const sendFeedbackCallback = (vote: VoteType) => {
+      // can be sent to a backend that collects user feedback
       console.log('Logged vote type:', vote);
     };
 
     const sendFollowupIndexCallback = (id: string, index: number) => {
+      // can be sent to a backend that collects user feedback
       console.log('Logged selection index:', index, 'with id:', id);
     };
 

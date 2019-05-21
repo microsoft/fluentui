@@ -5,6 +5,7 @@ import { VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
 export class MicroFeedbackExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     const sendFeedbackCallback = (vote: VoteType) => {
+      // can be sent to a backend that collects user feedback
       console.log('Logged vote type:', vote);
     };
 
