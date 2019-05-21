@@ -127,7 +127,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
       if (this._activeElement) {
         this._activeElement.focus();
       }
-      console.log('Update sticky refs', { stickyClassName: this.props.stickyClassName });
       scrollablePane.updateStickyRefHeights();
     }
     // horizontal scroll has to be synced only if component is sticky
@@ -206,7 +205,6 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
   public addSticky(stickyContent: HTMLDivElement, isStickyContentTop: boolean): void {
     const placeholderUsedForStickyContent = this._usePlaceHolderForContent(true /** sticky content */, isStickyContentTop);
     if (placeholderUsedForStickyContent && this.nonStickyContent) {
-      console.log('appending to stickyDiv', { stickyClassName: this.props.stickyClassName });
       stickyContent.appendChild(this.nonStickyContent);
     }
   }

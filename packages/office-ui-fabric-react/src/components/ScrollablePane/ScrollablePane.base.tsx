@@ -106,7 +106,16 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public componentDidMount() {
-    const { initialScrollPosition } = this.props;
+    const { initialScrollPosition, scrollbarVisibility } = this.props;
+    if (scrollbarVisibility === ScrollbarVisibility.always) {
+      // after first render, scrollbars are visible
+      const scrollbarHeight = this._getScrollbarHeight();
+      const scrollbarWidth = this._getScrollbarWidth();
+      this.setState({
+        scrollbarHeight: scrollbarHeight,
+        scrollbarWidth: scrollbarWidth
+      });
+    }
     this._events.on(this.contentContainer, 'scroll', this._onScroll);
     this._events.on(window, 'resize', this._onWindowResize);
     if (this.contentContainer && initialScrollPosition) {
@@ -131,22 +140,17 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
         }
 
         // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
-        const { scrollbarVisibility } = this.props;
-        let scrollbarHeight: number = 0;
-        let scrollbarWidth: number = 0;
-        if (scrollbarVisibility === ScrollbarVisibility.always) {
-          scrollbarHeight = this.state.scrollbarHeight;
-          scrollbarWidth = this.state.scrollbarWidth;
-        }
-        scrollbarHeight = scrollbarHeight || this._getScrollbarHeight();
-        scrollbarWidth = scrollbarWidth || this._getScrollbarWidth();
+        if (this.props.scrollbarVisibility !== ScrollbarVisibility.always) {
+          const scrollbarHeight: number = this._getScrollbarHeight();
+          const scrollbarWidth: number = this._getScrollbarWidth();
 
-        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
-        if (scrollbarHeight !== this.state.scrollbarHeight || scrollbarWidth !== this.state.scrollbarWidth) {
-          this.setState({
-            scrollbarHeight: scrollbarHeight,
-            scrollbarWidth: scrollbarWidth
-          });
+          // check if the scroll bar height has changed and update the state so that it's positioned correctly below sticky footer
+          if (scrollbarHeight !== this.state.scrollbarHeight || scrollbarWidth !== this.state.scrollbarWidth) {
+            this.setState({
+              scrollbarHeight: scrollbarHeight,
+              scrollbarWidth: scrollbarWidth
+            });
+          }
         }
 
         // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
@@ -315,10 +319,10 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public sortSticky = (sticky: Sticky, sortAgain?: boolean): void => {
     if (this.stickyAbove && this.stickyBelow) {
-      // Is sorting needed?
+      // When is sorting needed?
       // 1. not a part of stickyContainer & to be added first time
-      // 2. part of stickyContainer and sorted based on order
-      // 3. not stickyPosition 'Both'
+      // 2. part of stickyContainer and not sorted based on order
+      // 3. stickyPosition is 'Both'
       const isPartOfStickyAboveContainer = this._stickyContainerContainsStickyContent(sticky, true);
       const isPartOfStickyBelowContainer = this._stickyContainerContainsStickyContent(sticky, false);
       const { stickyPosition } = sticky.props;
@@ -345,7 +349,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   public updateStickyRefHeights = (): void => {
     // stickyContainers- stickyAbove & stickyBelow heights 've to be updated
     // 1. if placeholder is used, or
-    // 2. if stickyBehavior.type is not 'StickyAlways'
+    // 2. if sticky conatinerBehavior type is not 'StickyAlways'
     const { stickyBelowContainerBehavior, stickyAboveContainerBehavior } = this.props;
     const stickiesTopBehaviorType: StickyContainerBehaviorType | undefined =
       stickyAboveContainerBehavior && stickyAboveContainerBehavior.containerBehavior;
@@ -427,7 +431,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   private _checkStickyStatus(sticky: Sticky): void {
     // this function is called only from updateStickyRefHeights()
-    // console.log('check sticky status', { stickyClassName: sticky.props.stickyClassName });
     const placeholderUsedForStickyContentTop = this.usePlaceholderForSticky(true);
     const placeholderUsedForStickyContentBottom = this.usePlaceholderForSticky(false);
 
@@ -439,7 +442,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           placeholderUsedForStickyContentTop &&
           isStickyTop &&
           sticky.stickyContentTop &&
-          // if placeHolder is used nonStickyContent is to be added to stickyAbove
+          // if placeHolder is used nonStickyContent is to be added to stickyAbove,
           // if current state is sticky
           !this.stickyAbove.contains(sticky.nonStickyContent)
         ) {
@@ -450,7 +453,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           placeholderUsedForStickyContentBottom &&
           isStickyBottom &&
           sticky.stickyContentBottom &&
-          // if placeHolder is used nonStickyContent is to be added to stickyBelow
+          // if placeHolder is used nonStickyContent is to be added to stickyBelow,
           // if current state is sticky
           !this.stickyBelow.contains(sticky.nonStickyContent)
         ) {
@@ -570,12 +573,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     }
     newScrollbarHeight = newScrollbarHeight || this._getScrollbarHeight();
     newScrollbarWidth = newScrollbarWidth || this._getScrollbarWidth();
-    // const { contentContainer } = this;
 
-    // if (contentContainer) {
-    //   this._scrollLeft = contentContainer.scrollLeft;
-    //   this._scrollTop = contentContainer.scrollTop;
-    // }
     this.setState({
       scrollbarHeight: newScrollbarHeight,
       scrollbarWidth: newScrollbarWidth
