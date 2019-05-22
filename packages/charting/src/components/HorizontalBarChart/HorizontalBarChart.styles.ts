@@ -44,6 +44,14 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       paddingRight: '22px',
       paddingTop: '15px',
       paddingBottom: '8px'
+    },
+    triangle: {
+      width: '0',
+      height: '0',
+      borderLeft: '8px solid transparent',
+      borderRight: '8px solid transparent',
+      borderTop: '8px solid',
+      borderTopColor: palette.blue
     }
   };
 };

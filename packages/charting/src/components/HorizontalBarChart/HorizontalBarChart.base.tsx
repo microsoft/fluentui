@@ -1,9 +1,10 @@
-import * as React from 'react';
-import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
-import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
-import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint } from './index';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
 import { IHorizontalBarChartStyleProps } from '@uifabric/charting/lib/components/HorizontalBarChart/HorizontalBarChart.types';
+import { mergeStyles } from 'office-ui-fabric-react';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { IPalette, IProcessedStyleSet, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
+import * as React from 'react';
+import { ChartDataMode, IChartDataPoint, IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles } from './index';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -67,6 +68,9 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             },
             color: palette.neutralTertiaryAlt
           };
+
+          const chartDataText = this._getChartDataText(points!);
+          const benchmark = this._createBenchmark(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
           return (
@@ -79,9 +83,10 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     </div>
                   )}
                   <div>
-                    <strong>{points!.chartData![0].horizontalBarChartdata!.x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</strong>
+                    <strong>{chartDataText}</strong>
                   </div>
                 </div>
+                {benchmark}
                 <svg className={this._classNames.chart}>
                   <g
                     id={keyVal}
@@ -163,6 +168,38 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       color: this.state.lineColor
     });
   };
+
+  private _getChartDataText(data: IChartProps): string {
+    const chartDataMode = this.props.chartDataMode || ChartDataMode.default;
+    const x = data!.chartData![0].horizontalBarChartdata!.x;
+    const y = data!.chartData![0].horizontalBarChartdata!.y;
+
+    switch (chartDataMode) {
+      case ChartDataMode.default:
+        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
+      case ChartDataMode.fraction:
+        return x + '/' + y;
+      case ChartDataMode.percentage:
+        const dataRatio = Math.round((x / y) * 100);
+        return dataRatio + '%';
+    }
+  }
+
+  private _createBenchmark(data: IChartProps): JSX.Element {
+    if (data.chartData![0].data) {
+      const totalData = data.chartData![0].horizontalBarChartdata!.y;
+      const benchmarkData = data.chartData![0].data;
+      const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
+
+      const benchmarkStyles: IStyle = {
+        marginLeft: 'calc(' + benchmarkRatio + '% - 8px)'
+      };
+
+      return <div className={mergeStyles(this._classNames.triangle, benchmarkStyles)} />;
+    }
+
+    return <></>;
+  }
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
     const defaultPalette: string[] = [palette.blueLight, palette.blue, palette.blueMid, palette.red, palette.black];
