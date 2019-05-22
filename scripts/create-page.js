@@ -47,9 +47,6 @@ const markdownFiles = {
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for page`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
 
-// Success strings
-const successPageCreated = `'New page '${newPageName}' successfully created in ${newPagePath} directory! Please add your page to the SiteDefinition.'`;
-
 function handleError(error, errorPrependMessage) {
   if (error) {
     console.error(errorPrependMessage, error);
@@ -86,7 +83,7 @@ function createFiles() {
       .catch(error => handleError(error, errorUnableToOpenTemplate(mustacheTemplateName)));
   });
 
-  console.log(successPageCreated);
+  console.log(`'New page '${newPageName}' successfully created in ${newPagePath} directory! Please add your page to the SiteDefinition.'`);
 }
 
 function handleWriteFile(buffer, filePath, step) {
