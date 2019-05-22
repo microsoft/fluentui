@@ -51,7 +51,7 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.{js,jsx,json,scss,html,yml,md}": [
+      "*.{js,jsx,json,scss,html,md}": [
         "node ./scripts/lint-staged/prettier",
         "git add"
       ]
