@@ -4,7 +4,8 @@
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "scripts": {
-    "build": "node ../../scripts/just.js copy"
+    "build": "npx just-scripts copy",
+    "just": "npx just-scripts"
   },
   "license": "MIT",
   "dependencies": {
@@ -18,5 +19,8 @@
     "test-bundles": "^6.0.0",
     "theming-designer": "^1.0.0",
     "todo-app": "^6.0.0"
+  },
+  "devDependencies": {
+    "@uifabric/build": "*"
   }
 }
