@@ -301,14 +301,21 @@ storiesOf('PeoplePicker', module)
     { rtl: true }
   )
   .addStory('No result', () => (
-    <Fabric>
-      <NormalPeoplePicker
-        onResolveSuggestions={noResult}
-        onEmptyInputFocus={noResult}
-        getTextFromItem={getTextFromItem}
-        className={'ms-PeoplePicker'}
-        pickerSuggestionsProps={suggestionProps}
-        disabled
-      />
-    </Fabric>
+    <Screener
+      steps={new Screener.Steps()
+        .snapshot('default', { cropTo: '.testWrapper' })
+        .setValue('.ms-BasePicker-input', 'z')
+        .snapshot('suggestion: "z"')
+        .end()}
+    >
+      <Fabric>
+        <NormalPeoplePicker
+          onResolveSuggestions={noResult}
+          onEmptyInputFocus={noResult}
+          getTextFromItem={getTextFromItem}
+          className={'ms-PeoplePicker'}
+          pickerSuggestionsProps={suggestionProps}
+        />
+      </Fabric>
+    </Screener>
   ));
