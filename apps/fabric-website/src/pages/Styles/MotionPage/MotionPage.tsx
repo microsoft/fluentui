@@ -306,13 +306,7 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
                 }
               ]}
               // tslint:disable-next-line jsx-no-lambda
-              formatter={(column, row) => {
-                const content = row[column.data];
-                switch (column.title) {
-                  default:
-                    return content;
-                }
-              }}
+              formatter={(column, row) => row[column.data]}
             />
           )
         },
@@ -367,13 +361,10 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
               ]}
               // tslint:disable-next-line jsx-no-lambda
               formatter={(column, row) => {
-                const content = row[column.data];
-                switch (column.title) {
-                  case 'Example':
-                    return <AnimationExample animation={row.class} />;
-                  default:
-                    return content;
+                if (column.title === 'Example') {
+                  return <AnimationExample animation={row.class} />;
                 }
+                return row[column.data];
               }}
             />
           )

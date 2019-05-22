@@ -35,7 +35,7 @@ import { IWithResponsiveModeState } from '../../utilities/decorators/withRespons
 import { KeytipData } from '../../KeytipData';
 import { Panel, IPanelStyleProps, IPanelStyles } from '../../Panel';
 import { ResponsiveMode, withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType, getAllSelectedOptions, ISelectableDroppableTextProps } from '../../utilities/selectableOption/index';
 
 const getClassNames = classNamesFunction<IDropdownStyleProps, IDropdownStyles>();
 
@@ -114,6 +114,16 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       hasFocus: false,
       calloutRenderEdge: undefined
     };
+  }
+
+  /**
+   * All selected options
+   */
+  public get selectedOptions(): IDropdownOption[] {
+    const { options } = this.props;
+    const { selectedIndices } = this.state;
+
+    return getAllSelectedOptions(options, selectedIndices);
   }
 
   public componentWillUnmount() {
@@ -195,7 +205,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { isOpen, selectedIndices, hasFocus, calloutRenderEdge } = this.state;
     const onRenderPlaceholder = props.onRenderPlaceholder || props.onRenderPlaceHolder || this._onRenderPlaceholder;
 
-    const selectedOptions = this._getAllSelectedOptions(options, selectedIndices);
+    const selectedOptions = getAllSelectedOptions(options, selectedIndices);
     const divProps = getNativeProps(props, divProperties);
 
     const disabled = this._isDisabled();
@@ -226,6 +236,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       theme,
       className,
       hasError: !!(errorMessage && errorMessage.length > 0),
+      hasLabel: !!label,
       isOpen,
       required,
       disabled,
@@ -313,6 +324,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const { onChange, onChanged, options, selectedKey, selectedKeys, multiSelect, notifyOnReselect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
+    let newIndexes: number[] = [];
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
@@ -320,11 +332,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       return;
     } else if (!multiSelect && selectedKey === undefined) {
       // Set the selected option if this is an uncontrolled component
-      this.setState({
-        selectedIndices: [index]
-      });
+      newIndexes = [index];
     } else if (multiSelect && selectedKeys === undefined) {
-      const newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
+      newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
       if (checked) {
         const position = newIndexes.indexOf(index);
         if (position > -1) {
@@ -335,25 +345,31 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         // add the new selected index into the existing one
         newIndexes.push(index);
       }
-      this.setState({
+    }
+
+    event.persist();
+    // Call onChange after state is updated
+    this.setState(
+      {
         selectedIndices: newIndexes
-      });
-    }
+      },
+      () => {
+        if (onChange) {
+          // for single-select, option passed in will always be selected.
+          // for multi-select, flip the checked value
+          const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
 
-    if (onChange) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
+          onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
+        }
 
-      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
-    }
-
-    if (onChanged) {
-      // for single-select, option passed in will always be selected.
-      // for multi-select, flip the checked value
-      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-      onChanged(changedOpt, index);
-    }
+        if (onChanged) {
+          // for single-select, option passed in will always be selected.
+          // for multi-select, flip the checked value
+          const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
+          onChanged(changedOpt, index);
+        }
+      }
+    );
   }
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
@@ -434,8 +450,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Render Callout or Panel container and pass in list */
-  private _onRenderContainer = (props: IDropdownProps): JSX.Element => {
-    const { responsiveMode, calloutProps, panelProps, dropdownWidth } = this.props;
+  private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown>): JSX.Element => {
+    const { calloutProps, panelProps } = props;
+    const { responsiveMode, dropdownWidth } = this.props;
 
     const isSmall = responsiveMode! <= ResponsiveMode.medium;
 
@@ -473,7 +490,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Wrap item list in a FocusZone */
-  private _renderFocusableList(props: IDropdownProps): JSX.Element {
+  private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown>): JSX.Element {
     const { onRenderList = this._onRenderList, label } = props;
     const id = this._id;
 
@@ -500,10 +517,10 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   }
 
   /** Render List of items */
-  private _onRenderList = (props: IDropdownProps): JSX.Element => {
-    const { onRenderItem = this._onRenderItem } = this.props;
+  private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown>): JSX.Element => {
+    const { onRenderItem = this._onRenderItem } = props;
 
-    return <>{this.props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
+    return <>{props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;
   };
 
   private _onRenderItem = (item: IDropdownOption): JSX.Element | null => {
@@ -733,20 +750,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       selectedIndex !== -1 && selectedIndices.push(selectedIndex);
     }
     return selectedIndices;
-  }
-
-  /** Get all selected options for multi-select mode */
-  private _getAllSelectedOptions(options: IDropdownOption[], selectedIndices: number[]): IDropdownOption[] {
-    const selectedOptions: IDropdownOption[] = [];
-    for (const index of selectedIndices) {
-      const option = options[index];
-
-      if (option) {
-        selectedOptions.push(option);
-      }
-    }
-
-    return selectedOptions;
   }
 
   private _getAllSelectedIndices(options: IDropdownOption[]): number[] {

@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Chiclet: update examples and use opengraph API",
+      "comment": "update azure-themes version",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "natalie.ethell@microsoft.com"
+  "email": "mgodbolt@microsoft.com"
 }

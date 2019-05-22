@@ -190,17 +190,16 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _generateEnumProperty(table: ITableJson): IApiProperty {
-    const enumMembers: IApiEnumProperty[] = [];
-
     const members: IEnumTableRowJson[] = table.members as IEnumTableRowJson[];
-    for (let k = 0; k < members.length; k++) {
+
+    const enumMembers: IApiEnumProperty[] = members.map((member: IEnumTableRowJson) =>
       // each member within the enum
-      enumMembers.push({
-        description: members[k].description,
-        name: members[k].name,
-        value: members[k].value
-      });
-    }
+      ({
+        description: member.description,
+        name: member.name,
+        value: member.value
+      })
+    );
 
     // the enum
     return {
@@ -225,19 +224,18 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _generateInterfaceProperty(table: ITableJson): IApiProperty {
-    const interfaceMembers: IApiInterfaceProperty[] = [];
-
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    for (let k = 0; k < members.length; k++) {
+
+    const interfaceMembers: IApiInterfaceProperty[] = members.map((member: ITableRowJson) =>
       // each member within the interface
-      interfaceMembers.push({
-        description: members[k].description,
-        name: members[k].name,
-        typeTokens: members[k].typeTokens,
-        deprecated: members[k].deprecated,
-        defaultValue: members[k].defaultValue || ''
-      });
-    }
+      ({
+        description: member.description,
+        name: member.name,
+        typeTokens: member.typeTokens,
+        deprecated: member.deprecated,
+        defaultValue: member.defaultValue || ''
+      })
+    );
 
     // the interface
     return {
@@ -256,23 +254,23 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const classMethods: IMethod[] = [];
 
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    for (let k = 0; k < members.length; k++) {
-      if (members[k].kind === 'Method') {
+    members.forEach((member: ITableRowJson) => {
+      if (member.kind === 'Method') {
         classMethods.push({
-          description: members[k].description,
-          name: members[k].name,
-          typeTokens: members[k].typeTokens
+          description: member.description,
+          name: member.name,
+          typeTokens: member.typeTokens
         });
       } else {
         classMembers.push({
-          description: members[k].description,
-          name: members[k].name,
-          typeTokens: members[k].typeTokens,
-          deprecated: members[k].deprecated,
-          defaultValue: members[k].defaultValue || ''
+          description: member.description,
+          name: member.name,
+          typeTokens: member.typeTokens,
+          deprecated: member.deprecated,
+          defaultValue: member.defaultValue || ''
         });
       }
-    }
+    });
 
     // the class
     return {
