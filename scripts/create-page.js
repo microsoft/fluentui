@@ -1,14 +1,13 @@
+// @ts-check
 // Dependencies
 const mustache = require('mustache');
 const argv = require('yargs').argv;
 const newPageName = argv.name;
 const newPagePath = argv.path;
-const cssModule = argv.cssmodule;
 const fse = require('fs-extra');
 
-// Template Sequences
-const cssInJsSequence = ['Doc', 'Styles', 'Types', 'PageBase', 'Page'];
-const cssModuleSequence = ['Doc', 'Module', 'PageModule'];
+// Template sequences used to define the order of files created.
+const pageSequence = ['Doc', 'Styles', 'Types', 'PageBase', 'Page'];
 const markdownSequence = ['Overview', 'Dos', 'Donts', 'BestPractices', 'Usage', 'Design', 'Contact', 'Custom', 'Markdown', 'Related'];
 
 // Paths/File Names
@@ -21,16 +20,16 @@ const pageDocsPath = pageDocsPathRoot + 'default/';
 
 let templateFolderPath = './scripts/templates/create-page';
 
+// Page file paths
 const outputFiles = {
-  Page: pageNamePrefix + '.ts',
-  PageBase: pageNamePrefix + '.base.tsx',
-  PageModule: pageNamePrefix + '.tsx',
-  Styles: pageNamePrefix + '.styles.ts',
-  Module: pageNamePrefix + '.module.scss',
   Doc: pageNamePrefix + '.doc.ts',
-  Types: pageNamePrefix + '.types.ts'
+  Styles: pageNamePrefix + '.styles.ts',
+  Types: pageNamePrefix + '.types.ts',
+  Page: pageNamePrefix + '.ts',
+  PageBase: pageNamePrefix + '.base.tsx'
 };
 
+// Markdown file paths
 const markdownFiles = {
   Overview: pageDocsPath + newPageName + 'Overview.md',
   Dos: pageDocsPath + newPageName + 'Dos.md',
@@ -45,15 +44,11 @@ const markdownFiles = {
 };
 
 // Error strings
-const errorCreatingPageDir = 'Error creating page directory';
-const errorPageName = 'Please pass in the page name using --name';
-const errorPagePath = 'Please pass in the page path using --path. ie: Overviews, Controls, Styles, etc';
-
 const errorUnableToOpenTemplate = templateFile => `Unable to open mustache template ${templateFile} for page`;
 const errorUnableToWriteFile = step => `Unable to write ${step} file`;
 
 // Success strings
-const successPageCreated = 'New page ' + newPageName + ' successfully created! Please add your page to the SiteDefinition.';
+const successPageCreated = `'New page '${newPageName}' successfully created in ${newPagePath} directory! Please add your page to the SiteDefinition.'`;
 
 function handleError(error, errorPrependMessage) {
   if (error) {
@@ -64,20 +59,18 @@ function handleError(error, errorPrependMessage) {
   }
 }
 
-function createFiles(sequence) {
+function createFiles() {
   fse.mkdirsSync(pageDocsPath);
 
   // Create page files
-  sequence.forEach(step => {
+  pageSequence.forEach(step => {
     const mustacheTemplateName = `Empty${step}.mustache`;
 
     console.log('Creating ' + outputFiles[step] + '...');
 
     fse
       .readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8')
-      .then(results => {
-        handleWriteFile(results, outputFiles[step], step);
-      })
+      .then(results => handleWriteFile(results, outputFiles[step], step))
       .catch(error => handleError(error, errorUnableToOpenTemplate(mustacheTemplateName)));
   });
 
@@ -89,9 +82,7 @@ function createFiles(sequence) {
 
     fse
       .readFile(templateFolderPath + '/' + mustacheTemplateName, 'utf8')
-      .then(results => {
-        handleWriteFile(results, markdownFiles[step], step);
-      })
+      .then(results => handleWriteFile(results, markdownFiles[step], step))
       .catch(error => handleError(error, errorUnableToOpenTemplate(mustacheTemplateName)));
   });
 
@@ -100,30 +91,24 @@ function createFiles(sequence) {
 
 function handleWriteFile(buffer, filePath, step) {
   const fileData = mustache.render(buffer, { pageName: newPageName, pagePath: newPagePath });
-  fse.writeFile(filePath, fileData).catch(error => handleError(error, errorUnableToWriteFile(step)));
+  return fse.writeFile(filePath, fileData).catch(error => handleError(error, errorUnableToWriteFile(step)));
 }
 
 function makePage(error) {
-  if (!handleError(error, errorCreatingPageDir)) {
+  if (!handleError(error, 'Error creating page directory')) {
     return;
   }
 
-  if (cssModule) {
-    console.log('Creating css module page...');
-    createFiles(cssModuleSequence);
-  } else {
-    console.log('Creating css-in-js page... (if you want a css module page, use --cssmodule arg)');
-    createFiles(cssInJsSequence);
-  }
+  console.log('Creating page...');
+  createFiles();
 }
 
 if (newPageName && newPagePath) {
   fse.mkdirs(pageFolderPath, makePage);
-} else {
-  if (!newPageName) {
-    console.error(errorPageName);
-  }
-  if (!newPagePath) {
-    console.error(errorPagePath);
-  }
+}
+if (!newPageName) {
+  console.error('Please pass in the page name using --name');
+}
+if (!newPagePath) {
+  console.error('Please pass in the page path using --path. ie: Overviews, Controls, Styles, etc');
 }
