@@ -36,6 +36,7 @@ export interface IHorizontalBarChartProps {
 
   /**
    * This property tells how to show data text on top right of bar chart.
+   * @default ChartDataMode.default
    */
   chartDataMode?: ChartDataMode;
 
