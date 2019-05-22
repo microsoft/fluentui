@@ -130,6 +130,7 @@ const suggestionProps = {
 const getTextFromItem = (persona: IPersonaProps): string => persona.text as string;
 
 const getPeople = () => people;
+const noResult = () => [];
 
 // Pickers that are 'disabled' are added before the Screener decorator because css classes for suggestion items won't exist
 storiesOf('PeoplePicker', module)
@@ -298,4 +299,16 @@ storiesOf('PeoplePicker', module)
       </Fabric>
     ),
     { rtl: true }
-  );
+  )
+  .addStory('No result', () => (
+    <Fabric>
+      <NormalPeoplePicker
+        onResolveSuggestions={noResult}
+        onEmptyInputFocus={noResult}
+        getTextFromItem={getTextFromItem}
+        className={'ms-PeoplePicker'}
+        pickerSuggestionsProps={suggestionProps}
+        disabled
+      />
+    </Fabric>
+  ));
