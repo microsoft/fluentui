@@ -7408,6 +7408,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    footerContent?: string | JSX.Element;
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;

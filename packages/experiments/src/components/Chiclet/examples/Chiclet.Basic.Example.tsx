@@ -1,11 +1,6 @@
 import * as React from 'react';
-import { Chiclet } from '../Chiclet';
-import { ChicletSize } from '../Chiclet.types';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
-import { Text } from 'office-ui-fabric-react/lib/Text';
-import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { Chiclet, ChicletSize } from '@uifabric/experiments';
+import { createRef, DefaultButton, ITextField, Stack, Text, TextField } from 'office-ui-fabric-react';
 
 export interface IChicletBasicExampleState {
   textFieldValue: string;

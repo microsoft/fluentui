@@ -139,7 +139,7 @@ export class Selection implements ISelection {
     }
 
     if (shouldClear || items.length === 0) {
-      this.setAllSelected(false);
+      this._setAllSelected(false, true);
     }
 
     // Check the exemption list for discrepencies.
@@ -325,7 +325,7 @@ export class Selection implements ISelection {
     if (canSelect) {
       if (isSelected && this.mode === SelectionMode.single) {
         // If this is single-select, the previous selection should be removed.
-        this.setAllSelected(false);
+        this._setAllSelected(false, true);
       }
 
       // Determine if we need to remove the exemption.
@@ -371,7 +371,7 @@ export class Selection implements ISelection {
     this.setChangeEvents(false);
 
     if (clearSelection) {
-      this.setAllSelected(false);
+      this._setAllSelected(false, true);
     }
 
     for (; startIndex <= endIndex; startIndex++) {
@@ -412,7 +412,7 @@ export class Selection implements ISelection {
     this.setChangeEvents(true);
   }
 
-  private _updateCount(): void {
+  private _updateCount(preserveModalState: boolean = false): void {
     const count = this.getSelectedCount();
 
     if (count !== this.count) {
@@ -420,9 +420,33 @@ export class Selection implements ISelection {
       this._change();
     }
 
-    if (!this.count) {
+    if (!this.count && !preserveModalState) {
       this.setModal(false);
     }
+  }
+
+  private _setAllSelected(isAllSelected: boolean, preserveModalState: boolean = false): void {
+    if (isAllSelected && this.mode !== SelectionMode.multiple) {
+      return;
+    }
+
+    const selectableCount = this._items ? this._items.length - this._unselectableCount : 0;
+
+    this.setChangeEvents(false);
+
+    if (selectableCount > 0 && (this._exemptedCount > 0 || isAllSelected !== this._isAllSelected)) {
+      this._exemptedIndices = {};
+
+      if (isAllSelected !== this._isAllSelected || this._exemptedCount > 0) {
+        this._exemptedCount = 0;
+        this._isAllSelected = isAllSelected;
+        this._change();
+      }
+
+      this._updateCount(preserveModalState);
+    }
+
+    this.setChangeEvents(true);
   }
 
   private _change(): void {
