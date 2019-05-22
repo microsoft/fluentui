@@ -97,7 +97,7 @@ export function getStyles(props: ISuggestionsStyleProps): ISuggestionsStyles {
       classNames.noSuggestions,
       {
         textAlign: 'center',
-        color: palette.neutralSecondary,
+        color: palette.neutralPrimaryAlt,
         fontSize: FontSizes.small,
         lineHeight: 30
       }
