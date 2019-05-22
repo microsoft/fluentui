@@ -52,3 +52,10 @@ declare interface SetConstructor {
 }
 /** Partial Set constructor representing what's available in IE 11 */
 declare var Set: SetConstructor;
+
+/** webpack "mode MACROS" */
+declare var process: {
+  env: {
+    NODE_ENV: "development" | "production"
+  }
+}

@@ -90,7 +90,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     this._async = new Async(this);
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('TextField', props, {
         iconClass: 'iconProps',
         addonString: 'prefix',
