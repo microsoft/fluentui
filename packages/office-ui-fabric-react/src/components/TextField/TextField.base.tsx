@@ -7,7 +7,6 @@ import {
   DelayedRender,
   IStyleFunctionOrObject,
   classNamesFunction,
-  createRef,
   getId,
   getNativeProps,
   initializeComponentRef,
@@ -68,7 +67,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   private _lastValidation: number;
   private _latestValue: string | undefined;
   private _latestValidateValue: string | undefined;
-  private _textElement = createRef<HTMLTextAreaElement | HTMLInputElement | null>();
+  private _textElement = React.createRef<HTMLTextAreaElement | HTMLInputElement>();
   private _classNames: IProcessedStyleSet<ITextFieldStyles>;
   private _async: Async;
 
@@ -443,7 +442,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
       <textarea
         id={this._id}
         {...textAreaProps}
-        ref={this._textElement}
+        ref={this._textElement as React.RefObject<HTMLTextAreaElement>}
         value={this.state.value}
         onInput={this._onInputChange}
         onChange={this._onInputChange}
@@ -466,7 +465,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
         type={'text'}
         id={this._id}
         {...inputProps}
-        ref={this._textElement}
+        ref={this._textElement as React.RefObject<HTMLInputElement>}
         value={this.state.value}
         onInput={this._onInputChange}
         onChange={this._onInputChange}

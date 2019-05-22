@@ -5,7 +5,6 @@ import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 export interface IChicletBasicExampleState {
   textFieldValue: string;
@@ -14,7 +13,7 @@ export interface IChicletBasicExampleState {
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
 export class ChicletBasicExample extends React.Component<{}, IChicletBasicExampleState> {
-  private _textField = createRef<ITextField>();
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: {}) {
     super(props);

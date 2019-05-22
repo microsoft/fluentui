@@ -122,9 +122,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
 
-// @public @deprecated (undocumented)
-export function createRef<T>(): RefObject<T>;
-
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 // 
 // @public
@@ -876,7 +873,6 @@ export class Rectangle {
 export type RefObject<T> = {
     (component: T | null): void;
     current: T | null;
-    value: T | null;
 };
 
 // @public
