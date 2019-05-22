@@ -18,7 +18,7 @@ const pageNamePrefix = pageFolderPath + newPageName + 'Page';
 const pageDocsPathRoot = pageFolderPath + 'docs/';
 const pageDocsPath = pageDocsPathRoot + 'default/';
 
-let templateFolderPath = './scripts/templates/create-page';
+const templateFolderPath = './scripts/templates/create-page';
 
 // Page file paths
 const outputFiles = {
