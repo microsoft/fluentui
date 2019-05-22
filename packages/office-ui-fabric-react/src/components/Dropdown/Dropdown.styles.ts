@@ -77,7 +77,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const { palette, semanticColors } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
-    color: palette.neutralDark
+    color: semanticColors.menuItemTextHovered
   };
 
   const rootHoverFocusActiveSelectorBodySubtextMixin: IStyle = {
@@ -133,7 +133,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       normalize,
       {
         ...theme.fonts.medium,
-        color: palette.neutralPrimary,
+        color: semanticColors.menuItemText,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
@@ -145,7 +145,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:focus .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.themePrimary },
+            { borderColor: semanticColors.inputFocusBorderAlt },
             highContrastItemAndTitleStateMixin
           ],
           ['&:active .' + globalClassnames.title]: [
@@ -218,7 +218,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: palette.neutralSecondary, fontSize: FontSizes.small, pointerEvents: 'none' },
+      { color: semanticColors.inputPlaceholderText, fontSize: FontSizes.small, pointerEvents: 'none' },
       disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
@@ -226,7 +226,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       globalClassnames.callout,
       {
         boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${palette.neutralLight}`
+        border: `1px solid ${semanticColors.variantBorder}`
       },
       calloutClassName
     ],
