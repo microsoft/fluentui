@@ -67,6 +67,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const {
     theme,
     hasError,
+    hasLabel,
     className,
     isOpen,
     disabled,
@@ -222,7 +223,26 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       className,
       isOpen && 'is-open',
       disabled && 'is-disabled',
-      required && 'is-required'
+      required && 'is-required',
+      required &&
+        !hasLabel && {
+          selectors: {
+            ':after': {
+              content: `'*'`,
+              color: semanticColors.errorText,
+              position: 'absolute',
+              top: -5,
+              right: -10
+            },
+            [HighContrastSelector]: {
+              selectors: {
+                ':after': {
+                  right: -14 // moving the * 4 pixel to right to alleviate border clipping in HC mode.
+                }
+              }
+            }
+          }
+        }
     ],
     title: [
       globalClassnames.title,

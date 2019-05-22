@@ -4,6 +4,8 @@ import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } f
 import { CompoundButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+
 export class ButtonCompoundExample extends React.Component<IButtonProps> {
   public constructor(props: {}) {
     super(props);
@@ -11,8 +13,6 @@ export class ButtonCompoundExample extends React.Component<IButtonProps> {
 
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles, {});
 
     return (

@@ -1,6 +1,33 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+
+## 6.185.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Addressing a variety of problems related to style recalculations.
+
+### Patches
+
+- SelectableDroppableText: fixes `defaultvalue` tag usage that was causing some errors in using the api.json with @microsoft/api-documenter package.
+- Preserve Selection modal state during single-select
+- Ensure non-selectable items may still be invoked
+
+## 6.184.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+- Dropdown: Add required visual hint when label is not provided.
+- Updated Toggle component to accept JSX Elements. Added screener and snapshot tests for new changes
+
+### Patches
+
+- Fixed: ComboBox onResolveOptions should have array not object as argument
+- DatePicker: keep validation errors after noop
 
 ## 6.183.0
 Mon, 20 May 2019 12:22:33 GMT
