@@ -404,11 +404,9 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
             color: theme.palette.white
           },
 
-          [`
-            &:not(.is-disabled):hover .${classNames.linkText},
-            &:not(.is-disabled):active .${classNames.linkText},
-            &:not(.is-disabled):active:hover .${classNames.linkText}
-          `]: {
+          [`&:not(.is-disabled):hover .${classNames.linkText}, ` +
+          `&:not(.is-disabled):active .${classNames.linkText}, ` +
+          `&:not(.is-disabled):active:hover .${classNames.linkText}`]: {
             borderColor: 'inherit'
           }
         }
