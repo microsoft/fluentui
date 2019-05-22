@@ -138,7 +138,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
 
   private _renderCompositeLink(link: INavLink, linkIndex: number, nestingLevel: number): React.ReactElement<{}> {
     const divProps: React.HTMLProps<HTMLDivElement> = { ...getNativeProps(link, divProperties, ['onClick']) };
-    const { expandButtonAriaLabel, expandButtonAriaLabelUseName, styles, groups, theme } = this.props;
+    const { expandButtonAriaLabel, styles, groups, theme } = this.props;
     const classNames = getClassNames(styles!, {
       theme: theme!,
       isExpanded: !!link.isExpanded,
@@ -149,11 +149,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
       groups
     });
 
-    const expandBtnArialLabel = expandButtonAriaLabel
-      ? expandButtonAriaLabelUseName
-        ? `${link.name} ${expandButtonAriaLabel}`
-        : expandButtonAriaLabel
-      : link.name;
+    const finalExpandBtnAriaLabel = expandButtonAriaLabel ? `${link.name} ${expandButtonAriaLabel}` : link.name;
 
     return (
       <div {...divProps} key={link.key || linkIndex} className={classNames.compositeLink}>
@@ -161,7 +157,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
           <button
             className={classNames.chevronButton}
             onClick={this._onLinkExpandClicked.bind(this, link)}
-            aria-label={expandBtnArialLabel || link.name}
+            aria-label={finalExpandBtnAriaLabel}
             aria-expanded={link.isExpanded ? 'true' : 'false'}
           >
             <Icon className={classNames.chevronIcon} iconName="ChevronDown" />

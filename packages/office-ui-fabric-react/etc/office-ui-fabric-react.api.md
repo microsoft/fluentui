@@ -5377,7 +5377,6 @@ export interface INavProps {
     collapsedStateText?: string;
     componentRef?: IRefObject<INav>;
     expandButtonAriaLabel?: string;
-    expandButtonAriaLabelUseName?: boolean;
     // @deprecated
     expandedStateText?: string;
     groups: INavLinkGroup[] | null;

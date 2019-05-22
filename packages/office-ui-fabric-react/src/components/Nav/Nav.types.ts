@@ -97,14 +97,10 @@ export interface INavProps {
   ariaLabel?: string;
 
   /**
-   * (Optional) The nav container aria label. If not provided, the aria label will default to the link name.
+   * (Optional) The nav container aria label. The link name is prepended to this label.
+   * If not provided, the aria label will default to the link name.
    */
   expandButtonAriaLabel?: string;
-
-  /**
-   * (Optional) If true, the link name will be prepended to `expandButtonAriaLabel`.
-   */
-  expandButtonAriaLabelUseName?: boolean;
 
   /**
    * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
