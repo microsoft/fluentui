@@ -8,4 +8,9 @@ describe('MicroFeedback', () => {
     const tree = renderer.create(<MicroFeedback />).toJSON();
     expect(tree).toMatchSnapshot();
   });
+
+  it('renders correctly with inline prop set', () => {
+    const tree = renderer.create(<MicroFeedback inline />).toJSON();
+    expect(tree).toMatchSnapshot();
+  });
 });

@@ -10,6 +10,7 @@ export interface IHomePageStyleProps {
   theme: ITheme;
   className?: string;
   isMountedOffset: boolean;
+  /** On this page, a *light* background is inverted and a dark background is normal. */
   isInverted?: boolean;
   beforeColor?: string;
   afterColor?: string;
@@ -40,6 +41,7 @@ export interface IHomePageStyles {
   cardListItem: IStyle;
   cardIcon: IStyle;
   link: IStyle;
+  linkDark: IStyle;
   linkIcon: IStyle;
   linkText: IStyle;
   illustration: IStyle;
