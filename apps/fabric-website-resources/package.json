@@ -58,7 +58,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/api-docs": "^1.1.2",
-    "@uifabric/azure-themes": "^0.1.9",
+    "@uifabric/azure-themes": "^6.0.0",
     "@uifabric/example-app-base": "^6.22.0",
     "@uifabric/fluent-theme": "^0.16.10",
     "@uifabric/icons": "^6.5.2",

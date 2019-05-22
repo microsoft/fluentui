@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/azure-themes",
-  "version": "0.1.9",
+  "version": "6.0.0",
   "description": "Azure themes for Office UI Components",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "update azure-themes version",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "mgodbolt@microsoft.com"
+}
