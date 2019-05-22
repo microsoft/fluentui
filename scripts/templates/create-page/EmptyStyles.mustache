@@ -1,17 +1,11 @@
-import { IStyle, getGlobalClassNames } from 'office-ui-fabric-react';
+import { IStyle } from 'office-ui-fabric-react';
 import { I{{pageName}}PageStyleProps, I{{pageName}}PageStyles } from './{{pageName}}Page.types';
-
-const GlobalClassNames: { [key in keyof I{{pageName}}PageStyles]: string } = {
-  root: 'ms-{{pageName}}Page'
-};
 
 export const getStyles = (props: I{{pageName}}PageStyleProps): I{{pageName}}PageStyles => {
   const { theme, className } = props;
-  const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
-      classNames.root,
       {
         // Add your styles here
       },
