@@ -24,23 +24,43 @@ export const controlsPagesAndroid: INavPage[] = [
   },
   {
     title: 'Pickers',
-    url: '#/controls/android/date-time-picker',
+    url: '#/controls/android/calendar',
     isCategory: true,
     pages: [
+      {
+        title: 'Calendar',
+        url: '#/controls/android/calendar',
+        component: () => <LoadingComponent title="Calendar" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/CalendarPage/CalendarPage').CalendarPage))
+      },
       {
         title: 'Date & Time Picker',
         url: '#/controls/android/date-time-picker',
         component: () => <LoadingComponent title="Date & Time Picker" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/DatePickerPage/DatePickerPage').DatePickerPage))
+      },
+      {
+        title: 'People Picker',
+        url: '#/controls/android/peoplepicker',
+        component: () => <LoadingComponent title="People Picker" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PeoplePickerPage/PeoplePickerPage').PeoplePickerPage))
       }
     ]
   },
   {
     title: 'Items & Lists',
-    url: '#/controls/android/chip',
+    url: '#/controls/android/avatar',
     isCategory: true,
     pages: [
+      {
+        title: 'Avatar',
+        url: '#/controls/android/avatar',
+        component: () => <LoadingComponent title="Avatar" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/AvatarPage/AvatarPage').AvatarPage))
+      },
       {
         title: 'Chip',
         url: '#/controls/android/chip',
@@ -52,6 +72,20 @@ export const controlsPagesAndroid: INavPage[] = [
         url: '#/controls/android/persona',
         component: () => <LoadingComponent title="Persona" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PersonaPage/PersonaPage').PersonaPage))
+      }
+    ]
+  },
+  {
+    title: 'Notification & Engagement',
+    url: '#/controls/android/snackbar',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Snackbar',
+        url: '#/controls/android/snackbar',
+        component: () => <LoadingComponent title="Snackbar" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/SnackbarPage/SnackbarPage').SnackbarPage))
       }
     ]
   },

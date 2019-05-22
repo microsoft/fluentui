@@ -5,7 +5,7 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 
 export const ListCellsPageProps: TFabricPlatformPageProps = {
   ios: {
-    title: 'ListCells',
+    title: 'List Cells',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/ListCellsPage/docs/ios/ListCellsOverview.md') as string,
     related,
     componentUrl
