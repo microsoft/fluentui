@@ -218,7 +218,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: semanticColors.inputPlaceholderText, fontSize: FontSizes.small, pointerEvents: 'none' },
+      { color: semanticColors.bodySubtext, fontSize: FontSizes.small, pointerEvents: 'none' },
       disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
