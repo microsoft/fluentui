@@ -110,6 +110,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
@@ -276,6 +277,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
@@ -587,6 +589,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
@@ -1036,6 +1039,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
@@ -1455,6 +1459,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
@@ -1884,6 +1889,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {
@@ -2334,6 +2340,7 @@ exports[`Component Examples renders MessageBar.Styled.Example.tsx correctly 1`] 
               }
         >
           <div
+            aria-hidden={true}
             className=
                 ms-MessageBar-icon
                 {

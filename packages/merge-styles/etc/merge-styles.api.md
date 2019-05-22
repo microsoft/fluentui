@@ -361,6 +361,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     WebkitBackdropFilter?: ICSSRule | string;
     WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
     WebkitOverflowScrolling?: 'auto' | 'touch';
+    WebkitTapHighlightColor?: string;
     whiteSpace?: ICSSRule | string;
     widows?: ICSSRule | number;
     width?: ICSSRule | ICSSPixelUnitRule;

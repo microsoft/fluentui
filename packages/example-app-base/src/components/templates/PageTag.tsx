@@ -1,7 +1,7 @@
 import { BaseComponent, IBaseProps, IClassNames, customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import { TypeScriptSnippet } from './TypeScriptSnippet';
+import { CodeSnippet } from '../CodeSnippet/index';
 
 export interface IPageTagProps extends React.Props<PageTag>, IBaseProps {
   theme?: ITheme;
@@ -37,7 +37,7 @@ export class PageTag extends BaseComponent<IPageTagProps, {}> {
     const classNames: IClassNames<IPageTagStyles> = mergeStyleSets(getDefaultStyles(styleProps));
 
     if (className !== undefined) {
-      return <TypeScriptSnippet {...this.props} />;
+      return <CodeSnippet language={className.replace('lang-', '')} {...this.props} />;
     }
 
     return <span className={classNames.root}>{children}</span>;

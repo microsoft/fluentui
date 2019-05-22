@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.17.4",
+      "tag": "@uifabric/merge-styles_v6.17.4",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.17.3",
       "tag": "@uifabric/merge-styles_v6.17.3",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

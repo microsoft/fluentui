@@ -117,7 +117,7 @@ export const buttonProperties: string[];
 export function calculatePrecision(value: number | string): number;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
@@ -420,6 +420,11 @@ export interface IChangeEventCallback {
 export type IClassNames<T> = {
     [key in keyof T]: string;
 };
+
+// @public (undocumented)
+export interface IClassNamesFunctionOptions {
+    disableCaching?: boolean;
+}
 
 // @public
 export type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
