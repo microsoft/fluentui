@@ -657,6 +657,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
     }
 
 // @public (undocumented)
@@ -1063,6 +1064,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     focus(shouldOpenOnFocus?: boolean): void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IDropdownOption[];
     // (undocumented)
     setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
     }
@@ -1260,6 +1262,9 @@ export const FocusZoneTabbableElements: {
 
 // @public (undocumented)
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
+
+// @public (undocumented)
+export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
 
 // @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -2638,6 +2643,7 @@ export interface IColumnResizeDetails {
 export interface IComboBox {
     dismissMenu: () => void;
     focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 // @public (undocumented)
@@ -4217,6 +4223,7 @@ export interface IDragOptions {
 export interface IDropdown {
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
+    readonly selectedOptions: IDropdownOption[];
 }
 
 // @public
@@ -4271,6 +4278,7 @@ export interface IDropdownState {
 // @public
 export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
     hasError: boolean;
+    hasLabel: boolean;
     isOpen: boolean;
     isRenderingPlaceholder: boolean;
     panelClassName?: string;
@@ -6848,6 +6856,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     min?: number;
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
@@ -6874,26 +6883,17 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISl
 
 // @public (undocumented)
 export interface ISliderStyles {
-    // (undocumented)
     activeSection: IStyle;
-    // (undocumented)
     container: IStyle;
-    // (undocumented)
     inactiveSection: IStyle;
-    // (undocumented)
     line: IStyle;
-    // (undocumented)
     lineContainer: IStyle;
-    // (undocumented)
     root: IStyle;
-    // (undocumented)
     slideBox: IStyle;
-    // (undocumented)
     thumb: IStyle;
-    // (undocumented)
     titleLabel: IStyle;
-    // (undocumented)
     valueLabel: IStyle;
+    zeroTick: IStyle;
 }
 
 // @public (undocumented)
@@ -7408,6 +7408,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    footerContent?: string | JSX.Element;
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7648,7 +7649,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
@@ -9440,6 +9441,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 

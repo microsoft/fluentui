@@ -5,11 +5,11 @@ import { Label } from 'office-ui-fabric-react/lib/Label';
 import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
 
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+
 export class ButtonContextualMenuExample extends React.Component<IButtonProps, {}> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles, {});
 
     return (

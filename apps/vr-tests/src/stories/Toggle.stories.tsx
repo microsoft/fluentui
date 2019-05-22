@@ -29,11 +29,24 @@ storiesOf('Toggle', module)
   .addStory('With inline label', () => (
     <Toggle {...baseProps} defaultChecked={true} disabled={false} inlineLabel={true} />
   ))
+  .addStory('With inline label (JSX Element)', () => (
+    <Toggle
+      label={<p>Toggle label</p>}
+      onText="On"
+      offText="Off"
+      defaultChecked={true}
+      disabled={false}
+      inlineLabel={true}
+    />
+  ))
   .addStory('With inline label disabled', () => (
     <Toggle {...baseProps} defaultChecked={true} disabled={true} inlineLabel={true} />
   ))
   .addStory('With inline label and without onText and offText', () => (
     <Toggle label={'Toggle label'} defaultChecked={true} disabled={false} inlineLabel={true} />
+  ))
+  .addStory('With inline label (JSX Element) and without onText and offText', () => (
+    <Toggle label={<p>Toggle label</p>} defaultChecked={true} disabled={false} inlineLabel={true} />
   ))
   .addStory('With inline label disabled and without onText and offText', () => (
     <Toggle label={'Toggle label'} defaultChecked={true} disabled={true} inlineLabel={true} />

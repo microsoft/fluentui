@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.39.0",
+      "tag": "@uifabric/utilities_v6.39.0",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.)",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cc3ff2379bd7df5fa55800f97ec83d2242d9a11e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.38.3",
       "tag": "@uifabric/utilities_v6.38.3",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

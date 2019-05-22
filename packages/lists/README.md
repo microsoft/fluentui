@@ -1,4 +1,6 @@
-# [@uifabric/lists](http://dev.microsoft.com/fabric)
+# @uifabric/lists
+
+**List components for [Office UI Fabric React](http://dev.microsoft.com/fabric)**
 
 ## Overview
 
@@ -10,7 +12,7 @@ Eventually, this will be a home for _all_ Fabric List controls, migrated in a ba
 - [DetailsList](https://developer.microsoft.com/en-us/fabric#/controls/web/detailslist)
 - [GroupedList](https://developer.microsoft.com/en-us/fabric#/controls/web/groupedlist)
 
-##### Lists components for Office UI Fabric React
+## Usage
 
 These are not production-ready components and **should never be used in product**. This space is useful for testing new components whose APIs might change before final release.
 

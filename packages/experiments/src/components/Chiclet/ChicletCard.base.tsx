@@ -83,24 +83,29 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     }
 
     let src;
+    let icon;
+
     if (itemType !== null) {
       src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
-    }
-    let icon = <img className={this._classNames.icon} src={src} />;
-    switch (
-      itemType // for "hero" apps, we'll use the app icons
-    ) {
-      case 'word':
-      case 'docx':
-        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`} />;
-        break;
-      case 'powerpoint':
-      case 'pptx':
-        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`} />;
-        break;
-      case 'excel':
-        icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`} />;
-        break;
+      icon = <img className={this._classNames.icon} src={src} />;
+      switch (
+        itemType // for "hero" apps, we'll use the app icons
+      ) {
+        case 'word':
+        case 'docx':
+          icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`} />;
+          break;
+        case 'powerpoint':
+        case 'pptx':
+          icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`} />;
+          break;
+        case 'excel':
+          icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`} />;
+          break;
+        default:
+          icon = undefined;
+          break;
+      }
     }
 
     return (
