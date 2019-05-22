@@ -1,5 +1,6 @@
 export * from './components/App/index';
 export * from './components/CodepenComponent/CodepenComponent';
+export * from './components/CodeSnippet/index';
 export * from './components/ComponentPage/index';
 export * from './components/EditSection/index';
 export * from './components/ExampleCard/index';

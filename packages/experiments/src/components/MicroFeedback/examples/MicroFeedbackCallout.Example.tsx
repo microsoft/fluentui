@@ -1,44 +1,41 @@
 import * as React from 'react';
+import { IMicroFeedbackQuestion, VoteType } from '../MicroFeedback.types';
 import { MicroFeedback } from '../MicroFeedback';
-import { IMicroFeedbackQuestion, VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
 
-export class MicroFeedbackBasicExample extends React.Component<{}, {}> {
+export class MicroFeedbackCalloutExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const followUpOnThumbsDown: IMicroFeedbackQuestion = {
+    const followUpOnDislike: IMicroFeedbackQuestion = {
       options: ['Translation is incorrect', 'Context is incorrect', 'Language can be better'],
       question: 'Please help us improve',
       id: 'dislike'
     };
 
-    const followUpOnThumbsUp: IMicroFeedbackQuestion = {
+    const followUpOnLike: IMicroFeedbackQuestion = {
       options: ['Translation is great', 'Context is great'],
       question: 'Please help us improve',
       id: 'like'
     };
 
     const sendFeedbackCallback = (vote: VoteType) => {
+      // can be sent to a backend that collects user feedback
       console.log('Logged vote type:', vote);
     };
 
     const sendFollowupIndexCallback = (id: string, index: number) => {
+      // can be sent to a backend that collects user feedback
       console.log('Logged selection index:', index, 'with id:', id);
     };
 
-    const microfeedbackStyles: IMicroFeedbackStyles = {
-      root: {
-        float: 'left'
-      }
-    };
     return (
       <div>
         <MicroFeedback
-          styles={microfeedbackStyles}
-          thumbsDownQuestion={followUpOnThumbsDown}
-          thumbsUpQuestion={followUpOnThumbsUp}
-          thumbsUpTitle="Like"
-          thumbsDownTitle="Dislike"
+          dislikeQuestion={followUpOnDislike}
+          likeQuestion={followUpOnLike}
+          likeIconTitle="Like"
+          dislikeIconTitle="Dislike"
           sendFeedback={sendFeedbackCallback}
-          sendFollowupIndex={sendFollowupIndexCallback}
+          sendFollowUpIndex={sendFollowupIndexCallback}
+          thanksText="Thank you!"
         />
       </div>
     );

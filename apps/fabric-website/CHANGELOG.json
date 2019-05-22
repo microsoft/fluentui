@@ -2,6 +2,39 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.7",
+      "tag": "@uifabric/fabric-website_v6.18.7",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing unused code and styles",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "1f3959281576eabe8ce6ef0272c5b58f40529d2c"
+          },
+          {
+            "comment": "Fix home page card link color",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "606eb59d4d29773127c4cb97e9ca5de4a9a8e5c6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.22.0` to `^6.23.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.77.0` to `^6.78.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.18.2` to `^6.18.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.184.0` to `^6.185.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.6",
       "tag": "@uifabric/fabric-website_v6.18.6",
       "date": "Mon, 20 May 2019 12:22:33 GMT",

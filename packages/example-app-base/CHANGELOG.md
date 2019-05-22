@@ -1,6 +1,18 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+
+## 6.23.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Addressing a variety of problems related to style recalculations.
+
+### Patches
+
+- Use new fluent styles in ExampleCard; code highlighting cleanup; unused style cleanup
+- Update withPlatform return type
 
 ## 6.22.0
 Tue, 21 May 2019 12:20:44 GMT
