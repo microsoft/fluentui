@@ -48,7 +48,25 @@ Array [
     },
     "ruleId": "label",
   },
+  Object {
+    "level": "error",
+    "message": Object {
+      "richText": "Fix any of the following:
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Form element does not have an implicit (wrapped) &lt;label>
+- Form element does not have an explicit &lt;label>
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "label",
+  },
 ]
 `;
 
-exports[`runs Axe on TextField 2`] = `"Found 3 a11y errors for TextField. Please check 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps"`;
+exports[`runs Axe on TextField 2`] = `"Found 4 a11y errors for TextField. Please check 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps"`;

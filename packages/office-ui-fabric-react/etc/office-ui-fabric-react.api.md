@@ -4278,6 +4278,7 @@ export interface IDropdownState {
 // @public
 export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
     hasError: boolean;
+    hasLabel: boolean;
     isOpen: boolean;
     isRenderingPlaceholder: boolean;
     panelClassName?: string;
@@ -7407,6 +7408,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    footerContent?: string | JSX.Element;
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7647,7 +7649,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;

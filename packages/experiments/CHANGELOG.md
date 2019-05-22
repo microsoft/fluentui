@@ -1,6 +1,29 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 17 May 2019 12:22:31 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+
+## 6.78.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Added a variant to MicroFeedback and converted to use Slots
+
+### Patches
+
+- update azure-themes version
+- Button example updated.
+
+## 6.77.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+
+### Patches
+
+- Use shared demo app bootstrapping code
 
 ## 6.76.4
 Fri, 17 May 2019 12:22:31 GMT

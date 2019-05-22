@@ -2,6 +2,78 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.23.0",
+      "tag": "@uifabric/example-app-base_v6.23.0",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Addressing a variety of problems related to style recalculations.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cc3ff2379bd7df5fa55800f97ec83d2242d9a11e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Use new fluent styles in ExampleCard; code highlighting cleanup; unused style cleanup",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "1f3959281576eabe8ce6ef0272c5b58f40529d2c"
+          },
+          {
+            "comment": "Update withPlatform return type",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "606eb59d4d29773127c4cb97e9ca5de4a9a8e5c6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.184.0` to `^6.185.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.22.0",
+      "tag": "@uifabric/example-app-base_v6.22.0",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add createDemoApp",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.9` to `^0.16.10`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.21.1",
+      "tag": "@uifabric/example-app-base_v6.21.1",
+      "date": "Mon, 20 May 2019 12:22:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "ApiReferencesTable: use maps and combine if statements",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "fca062e407e9e58169d7cf9a475ccefe774985d1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.182.1` to `^6.183.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.21.0",
       "tag": "@uifabric/example-app-base_v6.21.0",
       "date": "Wed, 15 May 2019 12:31:44 GMT",

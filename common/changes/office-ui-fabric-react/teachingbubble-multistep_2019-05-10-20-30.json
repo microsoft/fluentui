@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Add a new prop to enable Slider origin from zero",
+      "comment": "TeachingBubble: Add footerContent prop to render custom footer text",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "anihan@microsoft.com"
+  "email": "erabelle@microsoft.com"
 }
