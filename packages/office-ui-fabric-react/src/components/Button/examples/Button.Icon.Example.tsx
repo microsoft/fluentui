@@ -3,11 +3,11 @@ import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
 import { IconButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
 
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+
 export class ButtonIconExample extends React.Component<IButtonProps> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles, {});
 
     return (

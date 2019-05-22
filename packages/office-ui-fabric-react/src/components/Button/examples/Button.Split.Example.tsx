@@ -9,11 +9,11 @@ const alertClicked = (): void => {
   alert('Clicked');
 };
 
+const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+
 export class ButtonSplitExample extends React.Component<IButtonProps> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-
-    const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
     const classNames = getClassNames(getStyles, {});
 
     return (
