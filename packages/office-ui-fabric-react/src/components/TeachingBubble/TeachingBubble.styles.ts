@@ -55,7 +55,7 @@ const rootStyle = (isWide?: boolean): IStyle[] => {
       boxShadow: 'none !important',
       width: 'calc(100% + 1px)',
       animationName: `${opacityFadeIn}`,
-      animationDuration: '2000ms',
+      animationDuration: '300ms',
       animationTimingFunction: 'linear',
       animationFillMode: 'both'
     },
