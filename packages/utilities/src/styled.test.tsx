@@ -185,6 +185,54 @@ describe('styled', () => {
     });
   });
 
+  it('can wrap components and merge styling objects for both', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { color: 'green' } }, undefined, { scope: 'WrappedTest' });
+    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('can wrap components and merge styling functions for both', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { color: 'green' } }), undefined, {
+      scope: 'WrappedTest'
+    });
+    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives wrapped styles object priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined, { scope: 'WrappedTest' });
+    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives wrapped styles function priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined, {
+      scope: 'WrappedTest'
+    });
+    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives styles object user prop priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined, { scope: 'WrappedTest' });
+    safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives styles function user prop priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined, {
+      scope: 'WrappedTest'
+    });
+    safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
   it('can re-render on customization mutations', () => {
     safeCreate(<Test />, () => {
       expect(_renderCount).toEqual(1);
