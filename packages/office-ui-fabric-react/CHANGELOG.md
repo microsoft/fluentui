@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2019 22:14:40 GMT and should not be manually modified.
+
+## 6.186.0
+Thu, 23 May 2019 22:14:40 GMT
+
+### Minor changes
+
+- TeachingBubble: Add footerContent prop to render custom footer text
+
+### Patches
+
+- Dropdown: Replace some palette slot usage with semantic slots.
+- Examples: Remove relative imports.
 
 ## 6.185.0
 Wed, 22 May 2019 12:21:34 GMT

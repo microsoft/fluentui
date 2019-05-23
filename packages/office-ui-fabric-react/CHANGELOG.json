@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.186.0",
+      "tag": "office-ui-fabric-react_v6.186.0",
+      "date": "Thu, 23 May 2019 22:14:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: Replace some palette slot usage with semantic slots.",
+            "author": "Cliff Koh <cliff.koh@microsoft.com>",
+            "commit": "ebe2615a318c27d08feb67ce08356380eddad03f"
+          },
+          {
+            "comment": "Examples: Remove relative imports.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1b705beb1cad712f93da2954511b7d6a1d583797"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "TeachingBubble: Add footerContent prop to render custom footer text",
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "02e5492d652d7c36af6dc9b40f13c6100f043e70"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.185.0",
       "tag": "office-ui-fabric-react_v6.185.0",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

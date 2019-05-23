@@ -16,7 +16,7 @@
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^1.0.0",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^6.185.0",
+    "office-ui-fabric-react": "^6.186.0",
     "puppeteer": "^1.13.0",
     "tslib": "^1.7.1",
     "react": "^16.8.6",
