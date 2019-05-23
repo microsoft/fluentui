@@ -76,11 +76,8 @@ module.exports = function preset() {
       'clean',
       'copy',
       'sass',
-      parallel(
-        condition('validate', () => !argv().min),
-        condition('lint-imports', () => argv().production && !argv().min),
-        series('ts', condition('webpack', () => !argv().min))
-      )
+      parallel(condition('validate', () => !argv().min), series('ts', condition('webpack', () => !argv().min))),
+      condition('lint-imports', () => argv().production && !argv().min)
     )
   );
 };
