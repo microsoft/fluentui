@@ -8327,8 +8327,6 @@ export const Rating: React_2.StatelessComponent<IRatingProps>;
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     constructor(props: IRatingProps);
     // (undocumented)
-    componentWillReceiveProps(nextProps: IRatingProps): void;
-    // (undocumented)
     static defaultProps: IRatingProps;
     // (undocumented)
     render(): JSX.Element;
