@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, DefaultPalette, Stack } from 'office-ui-fabric-react';
 
 export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

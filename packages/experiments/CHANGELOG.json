@@ -2,6 +2,46 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.0",
+      "tag": "@uifabric/experiments_v6.78.0",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update azure-themes version",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "13890726ff0b82f5145193e1566b3298e1f02f99"
+          },
+          {
+            "comment": "Button example updated.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cc3ff2379bd7df5fa55800f97ec83d2242d9a11e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added a variant to MicroFeedback and converted to use Slots",
+            "author": "memichail <48455735+memichail@users.noreply.github.com>",
+            "commit": "291125117ca335c05e4629b0f945b699855969c7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.0` to `^6.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.3` to `^6.39.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.184.0` to `^6.185.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.22.0` to `^6.23.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.77.0",
       "tag": "@uifabric/experiments_v6.77.0",
       "date": "Tue, 21 May 2019 12:20:44 GMT",

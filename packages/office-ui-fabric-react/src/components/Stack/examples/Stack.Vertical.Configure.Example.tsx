@@ -1,10 +1,5 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import { mergeStyleSets, DefaultPalette, Checkbox, Dropdown, IDropdownOption, Slider, Stack, TextField } from 'office-ui-fabric-react';
 
 export type VerticalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type HorizontalAlignment = 'start' | 'center' | 'end';

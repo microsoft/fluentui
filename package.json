@@ -28,19 +28,19 @@
     "rush-update": "npm run _rushInstall && node common/scripts/install-run-rush.js update",
     "generate": "npm run rush-update",
     "bundlesize": "cd scripts && npm run bundlesize",
-    "bundlesizecollect": "node scripts/just.js bundle-size-collect",
+    "bundlesizecollect": "cd scripts && npx just-scripts bundle-size-collect",
     "create-component": "node scripts/create-component.js",
     "create-package": "node scripts/create-package.js",
     "checkchange": "node common/scripts/install-run-rush.js change -v",
     "update-api": "cd packages/office-ui-fabric-react && npm run update-api",
     "update-snapshots": "cd packages/office-ui-fabric-react && npm run update-snapshots",
-    "check-for-changed-files": "node scripts/just.js check-for-modified-files",
+    "check-for-changed-files": "cd scripts && npx just-scripts check-for-modified-files",
     "prettier": "node scripts/prettier.js",
-    "generate-version-files": "node scripts/just.js generate-version-files",
+    "generate-version-files": "cd scripts && npx just-scripts generate-version-files",
     "codepen": "cd packages/office-ui-fabric-react && node ../../scripts/local-codepen.js",
     "precommit": "node scripts/node_modules/lint-staged/index.js",
-    "perf-test": "node scripts/just.js perf-test",
-    "dom-test": "cd apps/dom-tests && node ../../scripts/just.js jest-dom-with-webpack",
+    "perf-test": "cd apps/perf-test && npx just-scripts perf-test",
+    "dom-test": "cd apps/dom-tests && npx just-scripts jest-dom-with-webpack",
     "update-a11y": "cd apps/a11y-tests && npm run update-snapshots"
   },
   "license": "MIT",
@@ -51,7 +51,7 @@
         "node ./scripts/lint-staged/tslint",
         "git add"
       ],
-      "*.{js,jsx,json,scss,html,yml,md}": [
+      "*.{js,jsx,json,scss,html,md}": [
         "node ./scripts/lint-staged/prettier",
         "git add"
       ]

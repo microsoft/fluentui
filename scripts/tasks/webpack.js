@@ -1,7 +1,6 @@
 // @ts-check
 
-const { argv } = require('just-task');
-const { webpackTask } = require('just-scripts');
+const { webpackTask, argv } = require('just-scripts');
 const path = require('path');
 const fs = require('fs');
 

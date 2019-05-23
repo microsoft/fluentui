@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+
+## 6.18.7
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- Removing unused code and styles
+- Fix home page card link color
 
 ## 6.18.6
 Mon, 20 May 2019 12:22:33 GMT
