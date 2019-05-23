@@ -185,9 +185,10 @@ describe('styled', () => {
     });
   });
 
-  it('can wrap components and merge styling objects for both', () => {
-    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { color: 'green' } }, undefined, { scope: 'WrappedTest' });
-    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+  it('can wrap components and merge styling objects for all', () => {
+    const TestInner = styled<ITestProps, {}, ITestStyles>(Test, { root: { color: 'green' } }, undefined, { scope: 'TestInner' });
+    const TestOuter = styled<ITestProps, {}, ITestStyles>(TestInner, { root: { lineHeight: '19px' } }, undefined, { scope: 'TestOuter' });
+    safeCreate(<TestOuter cool />, (component: renderer.ReactTestRenderer) => {
       expect(component.toJSON()).toMatchSnapshot();
     });
   });

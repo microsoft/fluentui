@@ -52,13 +52,14 @@ exports[`styled can wrap components and merge styling functions for both 1`] = `
 />
 `;
 
-exports[`styled can wrap components and merge styling objects for both 1`] = `
+exports[`styled can wrap components and merge styling objects for all 1`] = `
 <div
   className=
 
       {
         background: blue;
         color: green;
+        line-height: 19px;
       }
 />
 `;
