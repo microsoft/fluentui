@@ -19,7 +19,7 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-3\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
+              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
             },
           },
         ],
