@@ -53,7 +53,17 @@ declare interface SetConstructor {
 /** Partial Set constructor representing what's available in IE 11 */
 declare var Set: SetConstructor;
 
-/** webpack "mode MACROS" */
+/** 
+ * webpack "mode" symbol types
+ * 
+ * By default, webpack will (at compile time) replace instances of `process.env.NODE_ENV`
+ * with either "production" or "development" based on the `mode` property (webpack 4.0+). 
+ *
+ * This is powered by the webpack DefinePlugin. 
+ * 
+ * For `mode` see: https://webpack.js.org/configuration/mode/#usage
+ * For DefinePlugin see: https://webpack.js.org/plugins/define-plugin/#root
+ */
 declare var process: {
   env: {
     NODE_ENV: "development" | "production"
