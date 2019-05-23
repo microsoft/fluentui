@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { MicroFeedback } from '../MicroFeedback';
-import { VoteType, IMicroFeedbackStyles } from '../MicroFeedback.types';
+import { IMicroFeedbackStyles, VoteType, MicroFeedback } from '@uifabric/experiments';
 
 export class MicroFeedbackExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

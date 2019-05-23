@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Webpack configuration fix.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "jagore@microsoft.com"
+}

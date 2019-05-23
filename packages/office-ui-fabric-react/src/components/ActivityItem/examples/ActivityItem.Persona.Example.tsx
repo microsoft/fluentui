@@ -1,15 +1,28 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ActivityItem, IActivityItemProps } from '../../../ActivityItem';
-import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles } from './ActivityItem.Example.styles';
+import { ActivityItem, css, classNamesFunction, IActivityItemProps, IStyle, Link } from 'office-ui-fabric-react';
 import { TestImages } from '../../../common/TestImages';
-import { Link } from '../../../Link';
+
+type IActivityItemExampleStyleProps = {};
+
+interface IActivityItemExampleStyles {
+  exampleRoot?: IStyle;
+  nameText?: IStyle;
+}
+
+const exampleStyles: IActivityItemExampleStyles = {
+  exampleRoot: {
+    marginTop: '20px'
+  },
+  nameText: {
+    fontWeight: 'bold'
+  }
+};
+
+const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ActivityItemPersonaExample extends React.Component<React.ClassAttributes<ActivityItemPersonaExample>, {}> {
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
-
     // tslint:disable:jsx-no-lambda
     const activityItemExamples: (IActivityItemProps & { key: string | number })[] = [
       {

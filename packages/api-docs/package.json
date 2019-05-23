@@ -6,20 +6,12 @@
   "typings": "lib/index.d.ts",
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build && node ./lib-commonjs/generatePageJsonFiles.js",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean"
+    "build": "npx just-scripts build && node ./lib-commonjs/generatePageJsonFiles.js",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean"
   },
-  "disabledTasks": [
-    "copy",
-    "karma",
-    "webpack",
-    "build-codepen-examples",
-    "verify-api-extractor",
-    "update-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
+    "just-scripts": "~0.15.3",
     "@types/node": "^8.10.29",
     "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
     "@uifabric/styling": "^6.47.6",

@@ -155,7 +155,7 @@ jobs:
 
       # Invoke POST API with json body
       # The artifact file compatMap.txt which has the TS compatibility folows the below format,
-      # where the first line is the OUFR release and the subsequent lines are the TS versions supported  
+      # where the first line is the OUFR release and the subsequent lines are the TS versions supported
       #  6.182.1
       #  2.8
       #  2.9
@@ -185,7 +185,7 @@ jobs:
           }
           Write-Host $releaseVersion;
           Write-Host $compatibleTsVersions;
-          
+
           $headers = New-Object "System.Collections.Generic.Dictionary[[String],[String]]";
           $headers.Add("AuthToken", "$(releaseVersionVariable)");
           $APIUrl = "https://fabricweb.azurewebsites.net/oufr/registerNewWithTsCompat?version=$releaseVersion&compatibleTsVersions=$compatibleTsVersions";

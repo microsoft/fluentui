@@ -1,0 +1,101 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`runs Axe on Button (ButtonActionExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonAnchorExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonCommandBarExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonCommandExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonCompoundExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonContextualMenuExample) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\"",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\".",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+      "ruleId": "aria-valid-attr-value",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-valid-attr-value",
+  },
+]
+`;
+
+exports[`runs Axe on Button (ButtonDefaultExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonIconExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonPrimaryExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonScreenReaderExample) 1`] = `Array []`;
+
+exports[`runs Axe on Button (ButtonSplitCustomExample) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
+exports[`runs Axe on Button (ButtonToggleExample) 1`] = `Array []`;

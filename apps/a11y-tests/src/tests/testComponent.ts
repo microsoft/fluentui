@@ -1,28 +1,25 @@
 import { getSarifReport } from '../getSarifReport';
 import { SarifLog } from 'axe-sarif-converter/dist/sarif/sarif-log';
 import { Result } from 'axe-sarif-converter/dist/sarif/sarif-2.0.0';
+import * as fs from 'fs';
+import * as path from 'path';
 
-// Extract interesting info to reduce snapshot size
+// Keep only errors to reduce snapshot size
 function dehydrateSarifReport(report: SarifLog): Result[] {
-  const results = report.runs[0]!.results!.filter(item => item.level === 'error');
-  results.forEach(item => {
-    delete item.locations;
-    delete item.partialFingerprints;
-  });
-  return results;
+  return report.runs[0]!.results!.filter(item => item.level === 'error');
 }
 
-export async function testComponent(component: { name: string; url: string }) {
-  it(`runs Axe on ${component.name}`, async () => {
-    const report = await getSarifReport(component.url);
+/* tslint:disable-next-line:no-any */
+export async function testComponent(component: { name: string; pageName: string; elem: React.ReactElement<any> }) {
+  it(`runs Axe on ${component.name} (${component.pageName})`, async () => {
+    const sarifReport: SarifLog = await getSarifReport(component.elem);
 
-    const errors = dehydrateSarifReport(report);
-    expect(errors).toMatchSnapshot();
+    // Save the report into `dist/reports` folder
+    fs.writeFileSync(path.resolve(__dirname, `../../dist/reports/${component.pageName}.sarif`), JSON.stringify(sarifReport), {
+      encoding: 'utf8'
+    });
 
-    const errorCount = errors.length;
-    const errorCountMessage = `Found ${errorCount} a11y errors for ${
-      component.name
-    }. Please check 'Scan' tab in 'office-ui-fabric-react' on Azure DevOps`;
-    expect(errorCountMessage).toMatchSnapshot();
-  }, 60000);
+    // Match the 'errors' section with snapshot
+    expect(dehydrateSarifReport(sarifReport)).toMatchSnapshot();
+  });
 }
