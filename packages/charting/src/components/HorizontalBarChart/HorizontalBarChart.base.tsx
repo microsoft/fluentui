@@ -1,10 +1,9 @@
-import { IHorizontalBarChartStyleProps } from '@uifabric/charting/lib/components/HorizontalBarChart/HorizontalBarChart.types';
-import { mergeStyles } from 'office-ui-fabric-react';
-import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
-import { IPalette, IProcessedStyleSet, IStyle } from 'office-ui-fabric-react/lib/Styling';
-import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
 import * as React from 'react';
-import { ChartDataMode, IChartDataPoint, IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles } from './index';
+import { classNamesFunction, find } from 'office-ui-fabric-react/lib/Utilities';
+import { IProcessedStyleSet, IPalette } from 'office-ui-fabric-react/lib/Styling';
+import { IChartProps, IHorizontalBarChartProps, IHorizontalBarChartStyles, IChartDataPoint, ChartDataMode } from './index';
+import { Callout, DirectionalHint } from 'office-ui-fabric-react/lib/Callout';
+import { IHorizontalBarChartStyleProps } from '@uifabric/charting/lib/components/HorizontalBarChart/HorizontalBarChart.types';
 
 const getClassNames = classNamesFunction<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>();
 
@@ -191,11 +190,13 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       const benchmarkData = data.chartData![0].data;
       const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
 
-      const benchmarkStyles: IStyle = {
-        marginLeft: 'calc(' + benchmarkRatio + '% - 8px)'
+      const benchmarkStyles = {
+        marginLeft: 'calc(' + benchmarkRatio + '% - 8px)',
+        marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 8px)'
       };
 
-      return <div className={mergeStyles(this._classNames.triangle, benchmarkStyles)} />;
+      // tslint:disable-next-line:jsx-ban-props
+      return <div className={this._classNames.triangle} style={benchmarkStyles} />;
     }
 
     return <></>;
