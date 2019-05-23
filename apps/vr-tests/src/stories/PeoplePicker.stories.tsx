@@ -199,8 +199,8 @@ storiesOf('PeoplePicker', module)
     >
       <Fabric>
         <NormalPeoplePicker
-          onResolveSuggestions={noResult}
-          onEmptyInputFocus={noResult}
+          onResolveSuggestions={getPeople}
+          onEmptyInputFocus={getPeople}
           getTextFromItem={getTextFromItem}
           className={'ms-PeoplePicker'}
           pickerSuggestionsProps={suggestionProps}
