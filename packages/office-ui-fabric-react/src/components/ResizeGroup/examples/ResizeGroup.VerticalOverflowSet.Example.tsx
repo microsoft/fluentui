@@ -1,12 +1,15 @@
 import * as React from 'react';
-import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
-import { CommandBarButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
-import { ResizeGroup } from 'office-ui-fabric-react/lib/ResizeGroup';
-import { OverflowSet } from 'office-ui-fabric-react/lib/OverflowSet';
-import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
-import { ResizeGroupDirection } from '../ResizeGroup.types';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { DirectionalHint } from '../../../common/DirectionalHint';
+import {
+  BaseComponent,
+  mergeStyles,
+  IContextualMenuItem,
+  ResizeGroupDirection,
+  CommandBarButton,
+  ResizeGroup,
+  OverflowSet,
+  IButtonStyles,
+  DirectionalHint
+} from 'office-ui-fabric-react';
 
 export interface IOverflowData {
   primary: IContextualMenuItem[];

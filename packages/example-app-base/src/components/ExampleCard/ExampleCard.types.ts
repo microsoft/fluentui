@@ -21,10 +21,6 @@ export interface IExampleCardProps {
   isScrollable?: boolean;
   /** JS string used in the example card's "Export to CodePen" button */
   codepenJS?: string;
-  /** Code highlighting component to use when showing code (default CodeSnippet) */
-  codeHighlighter?: React.ComponentType;
-  /** Props for the code highlighting component */
-  codeHighlighterProps?: {};
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;

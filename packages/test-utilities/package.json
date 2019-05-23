@@ -14,15 +14,14 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "start": "node ../../scripts/just.js dev",
-    "start-test": "node ../../scripts/just.js jest-watch",
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
+    "start": "npx just-scripts dev",
+    "start-test": "npx just-scripts jest-watch",
     "update-api": "node ../../scripts/update-api.js"
   },
-  "disabledTasks": [],
   "devDependencies": {
     "@types/enzyme": "3.1.13",
     "@types/enzyme-adapter-react-16": "1.0.3",
@@ -40,7 +39,8 @@
     "es6-weak-map": "^2.0.2",
     "react": "~16.6.3",
     "react-dom": "~16.6.3",
-    "react-test-renderer": "^16.3.0"
+    "react-test-renderer": "^16.3.0",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@uifabric/set-version": "^1.1.3"

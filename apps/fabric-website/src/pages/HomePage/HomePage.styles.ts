@@ -30,6 +30,7 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
   cardListItem: 'ms-HomePage-cardListItem',
   cardIcon: 'ms-HomePage-cardIcon',
   link: 'ms-HomePage-link',
+  linkDark: 'ms-HomePage-linkDark',
   linkIcon: 'ms-HomePage-linkIcon',
   linkText: 'ms-HomePage-linkText',
   illustration: 'ms-HomePage-illustration'
@@ -38,6 +39,8 @@ const GlobalClassNames: { [key in keyof IHomePageStyles]: string } = {
 export const monoFont =
   '"Segoe UI Mono",Consolas,"Andale Mono WT","Andale Mono","Lucida Console","Lucida Sans Typewriter","DejaVu Sans Mono",' +
   '"Bitstream Vera Sans Mono","Liberation Mono","Nimbus Mono L",Monaco,"Courier New",Courier,monospace';
+
+const allLinkStatesSelector = '&:hover, &:active, &:active:hover, &:link';
 
 export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
   const { theme, className, isMountedOffset, isInverted, beforeColor, afterColor } = props;
@@ -326,10 +329,6 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         minWidth: 300,
 
         selectors: {
-          'a, a:hover, a:active, p': {
-            color: palette.black
-          },
-
           [mediaQuery.maxLarge]: {
             flex: '1 0 25%'
           }
@@ -395,20 +394,32 @@ export const getStyles = (props: IHomePageStyleProps): IHomePageStyles => {
         fontFamily: monoFont,
         display: 'flex',
         alignItems: 'center',
-        color: 'inherit',
+        color: theme.palette.white,
 
         selectors: {
-          '&:hover, &:active, &:active:hover': {
+          // Override default link styles and UHF styles
+          // (due to UHF styles, we have to use a specific color rather than 'inherit')
+          [allLinkStatesSelector]: {
             textDecoration: 'none',
-            color: 'inherit'
+            color: theme.palette.white
           },
 
-          [`
-            &:not(.is-disabled):hover .${classNames.linkText},
-            &:not(.is-disabled):active .${classNames.linkText},
-            &:not(.is-disabled):active:hover .${classNames.linkText}
-          `]: {
+          [`&:not(.is-disabled):hover .${classNames.linkText}, ` +
+          `&:not(.is-disabled):active .${classNames.linkText}, ` +
+          `&:not(.is-disabled):active:hover .${classNames.linkText}`]: {
             borderColor: 'inherit'
+          }
+        }
+      }
+    ],
+
+    linkDark: [
+      classNames.linkDark,
+      {
+        color: theme.palette.black,
+        selectors: {
+          [allLinkStatesSelector]: {
+            color: theme.palette.black
           }
         }
       }

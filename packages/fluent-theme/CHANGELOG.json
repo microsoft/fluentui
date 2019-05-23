@@ -2,6 +2,28 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "0.16.10",
+      "tag": "@uifabric/fluent-theme_v0.16.10",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "IconButton: change the background color when in diabled state",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "3974eef14189b377c87d60fa7b2cf155a180da58"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.3` to `^6.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.9",
       "tag": "@uifabric/fluent-theme_v0.16.9",
       "date": "Tue, 14 May 2019 07:50:30 GMT",
