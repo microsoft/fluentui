@@ -1,4 +1,4 @@
-import { migration } from '../../migration';
+import { IMigrationOptions, migration, ModResult } from '../../migration';
 import { mod } from 'riceburn';
 import { renameJsxProp } from 'riceburn/lib/mods/renameJsxProp';
 
@@ -14,8 +14,11 @@ import { renameJsxProp } from 'riceburn/lib/mods/renameJsxProp';
  *
  * to assist with Fabric 7.0 migration.
  */
-export default migration('Deprecated DetailsRowCheck.isSelected has been removed. Use DetailsRowCheck.selected instead.', () => {
-  mod('**/*.ts?(x)').asTypescript((node, modder) => {
-    return renameJsxProp('DetailsRowCheck', 'isSelected', 'selected')(node, modder);
-  });
-});
+export default migration(
+  'Deprecated DetailsRowCheck.isSelected has been removed. Use DetailsRowCheck.selected instead.',
+  (opts: IMigrationOptions): ModResult[] => {
+    return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
+      return renameJsxProp('DetailsRowCheck', 'isSelected', 'selected')(node, modder);
+    }).files;
+  }
+);
