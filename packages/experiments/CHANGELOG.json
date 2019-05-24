@@ -2,6 +2,103 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.1",
+      "tag": "@uifabric/experiments_v6.78.1",
+      "date": "Thu, 23 May 2019 22:14:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Examples: Remove relative imports.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1b705beb1cad712f93da2954511b7d6a1d583797"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.185.0` to `^6.186.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.0",
+      "tag": "@uifabric/experiments_v6.78.0",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "update azure-themes version",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "13890726ff0b82f5145193e1566b3298e1f02f99"
+          },
+          {
+            "comment": "Button example updated.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cc3ff2379bd7df5fa55800f97ec83d2242d9a11e"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Added a variant to MicroFeedback and converted to use Slots",
+            "author": "memichail <48455735+memichail@users.noreply.github.com>",
+            "commit": "291125117ca335c05e4629b0f945b699855969c7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.0` to `^6.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.38.3` to `^6.39.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.184.0` to `^6.185.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.22.0` to `^6.23.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.77.0",
+      "tag": "@uifabric/experiments_v6.77.0",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "<Fabric> element does not affect global button styling.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "2bbb305599bb49cc5cae7c20fc1201ec64b56542"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.29.0` to `^0.29.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.9` to `^0.16.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.3` to `^6.17.4`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.76.4",
       "tag": "@uifabric/experiments_v6.76.4",
       "date": "Fri, 17 May 2019 12:22:31 GMT",

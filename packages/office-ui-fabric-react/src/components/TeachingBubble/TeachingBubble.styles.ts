@@ -197,9 +197,10 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.footer,
       {
         display: 'flex',
+        alignItems: 'center',
+        color: palette.white,
         selectors: {
-          // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
-          [`.${classNames.button}:not(:first-child)`]: {
+          '> *:not(:first-child)': {
             marginLeft: '20px'
           }
         }

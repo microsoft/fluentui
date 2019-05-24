@@ -42,8 +42,12 @@ import { IContextualMenuItemStyleProps, IContextualMenuItemStyles } from './Cont
 
 import { getItemStyles } from './ContextualMenu.classNames';
 
-const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>();
-const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>();
+const getClassNames = classNamesFunction<IContextualMenuStyleProps, IContextualMenuStyles>({
+  disableCaching: true
+});
+const getContextualMenuItemClassNames = classNamesFunction<IContextualMenuItemStyleProps, IContextualMenuItemStyles>({
+  disableCaching: true
+});
 
 export interface IContextualMenuState {
   expandedMenuItemKey?: string;

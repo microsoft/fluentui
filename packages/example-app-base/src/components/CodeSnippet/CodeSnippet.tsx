@@ -1,6 +1,7 @@
 import * as React from 'react';
-import { IStyleFunctionOrObject, ITheme, IStyle, IStyleFunction, styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
-import { FontSizes, NeutralColors } from '@uifabric/fluent-theme';
+import { IStyleFunctionOrObject, ITheme, IStyle, styled, classNamesFunction, IRawStyle } from 'office-ui-fabric-react';
+import { NeutralColors } from '@uifabric/fluent-theme';
+import { baseCodeStyle, getStyles } from './CodeSnippet.styles';
 
 // tslint:disable no-any
 const SyntaxHighlighter = require<any>('react-syntax-highlighter/dist/esm/light').default;
@@ -26,10 +27,8 @@ SyntaxHighlighter.registerLanguage('html', xml);
 // Customize imported SyntaxHighlighter styles. Available properties:
 // https://github.com/conorhastings/react-syntax-highlighter/blob/master/src/styles/hljs/github.js
 style.hljs = {
-  fontSize: FontSizes.size14,
+  ...baseCodeStyle,
   padding: 8,
-  background: NeutralColors.gray20,
-  color: NeutralColors.gray160,
   overflowX: 'auto'
 };
 // Darken comment color for accessibility
@@ -38,8 +37,6 @@ style['hljs-comment'] = style['hljs-quote'] = {
   fontStyle: 'italic'
 };
 
-export const codeFontFamily = 'Monaco, Menlo, Consolas, "Droid Sans Mono", "Inconsolata", "Courier New", monospace';
-
 export interface ICodeSnippetProps {
   className?: string;
   language?: string;
@@ -47,29 +44,11 @@ export interface ICodeSnippetProps {
   theme?: ITheme;
 }
 
-export type ICodeSnippetStyleProps = {};
+export type ICodeSnippetStyleProps = Pick<ICodeSnippetProps, 'className'>;
 
 export interface ICodeSnippetStyles {
   root: IStyle;
 }
-
-const getStyles: IStyleFunction<ICodeSnippetStyleProps, ICodeSnippetStyles> = props => {
-  return {
-    root: {
-      overflowY: 'auto',
-      maxHeight: '400px',
-      display: 'flex',
-      margin: '12px 0',
-
-      selectors: {
-        code: {
-          fontFamily: codeFontFamily,
-          lineHeight: '1.6'
-        }
-      }
-    }
-  };
-};
 
 const getClassNames = classNamesFunction<ICodeSnippetStyleProps, ICodeSnippetStyles>();
 
@@ -85,7 +64,7 @@ const languageMapping: { [key: string]: string } = {
 };
 
 const CodeSnippetBase: React.StatelessComponent<ICodeSnippetProps> = props => {
-  const classNames = getClassNames(props.styles, {});
+  const classNames = getClassNames(props.styles, { className: props.className });
   return (
     <SyntaxHighlighter language={languageMapping[props.language!] || props.language || 'text'} className={classNames.root} style={style}>
       {props.children}

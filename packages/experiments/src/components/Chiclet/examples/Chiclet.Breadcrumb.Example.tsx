@@ -1,11 +1,7 @@
 import * as React from 'react';
-import { Chiclet } from '../Chiclet';
-import { ChicletSize } from '../Chiclet.types';
+import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import * as exampleStyles from './Chiclet.Basic.Example.scss';
-import { Icon } from 'office-ui-fabric-react/lib/Icon';
-import { TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react/lib/Tooltip';
-import { Breadcrumb, IBreadcrumbItem } from 'office-ui-fabric-react/lib/Breadcrumb';
-import { getRTL } from 'office-ui-fabric-react/lib/Utilities';
+import { Breadcrumb, getRTL, IBreadcrumbItem, Icon, TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react';
 
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 

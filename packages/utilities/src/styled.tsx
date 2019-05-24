@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flatten } from './array';
 import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
 import { Customizations } from './customizations/Customizations';
 import { CustomizerContext, ICustomizerContext } from './customizations/CustomizerContext';
@@ -65,6 +66,7 @@ export function styled<
 
     private _inCustomizerContext = false;
     private _customizedStyles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
+    private _styles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[];
 
     public render(): JSX.Element {
       return <CustomizerContext.Consumer>{this._renderContent}</CustomizerContext.Consumer>;
@@ -86,47 +88,26 @@ export function styled<
       this._inCustomizerContext = !!context.customizations.inCustomizerContext;
 
       const settings = Customizations.getSettings(fields, scope, context.customizations);
-      const { styles: customizedStyles, ...rest } = settings;
+      const { styles: customizedStyles, dir, ...rest } = settings;
       const additionalProps = getProps ? getProps(this.props) : undefined;
 
-      this._customizedStyles = customizedStyles;
+      this._updateStyles(customizedStyles);
 
-      return <Component {...rest} {...additionalProps} {...this.props} styles={this._resolveClassNames} />;
+      return <Component {...rest} {...additionalProps} {...this.props} styles={this._styles} />;
     };
 
-    private _resolveClassNames = (styleProps: TStyleProps): IConcatenatedStyleSet<TStyleSet> | undefined => {
-      return _resolve(styleProps, baseStyles, this._customizedStyles, this.props.styles);
-    };
+    private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
+      if (!this._styles || customizedStyles !== this._styles[1] || !!this.props.styles) {
+        // Using styled components as the Component arg will result in nested styling arrays.
+        // Use flatten to ensure that the _styles array remains flat when styled components are wrapped.
+        this._styles = flatten([baseStyles, customizedStyles, this.props.styles]);
+      }
+    }
 
-    private _onSettingsChanged = () => this.forceUpdate();
+    private _onSettingsChanged = (): void => this.forceUpdate();
   }
 
   // This preserves backwards compatibility.
   // tslint:disable-next-line:no-any
   return Wrapped as any;
-}
-
-function _resolve<TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(
-  styleProps: TStyleProps,
-  ...allStyles: (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[]
-): IConcatenatedStyleSet<TStyleSet> | undefined {
-  const result: Partial<TStyleSet>[] = [];
-
-  for (const styles of allStyles) {
-    if (styles) {
-      result.push(typeof styles === 'function' ? styles(styleProps) : styles);
-    }
-  }
-  if (result.length === 1) {
-    return result[0] as IConcatenatedStyleSet<TStyleSet>;
-  } else if (result.length) {
-    // cliffkoh: I cannot figure out how to avoid the cast to any here.
-    // It is something to do with the use of Omit in IStyleSet.
-    // It might not be necessary once  Omit becomes part of lib.d.ts (when we remove our own Omit and rely on
-    // the official version).
-    // tslint:disable-next-line:no-any
-    return concatStyleSets(...(result as any)) as IConcatenatedStyleSet<TStyleSet>;
-  }
-
-  return undefined;
 }

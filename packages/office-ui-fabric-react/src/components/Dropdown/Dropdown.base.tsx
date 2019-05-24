@@ -77,7 +77,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     initializeComponentRef(this);
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dropdown', props, {
         isDisabled: 'disabled',
         onChanged: 'onChange',
@@ -236,6 +236,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
       theme,
       className,
       hasError: !!(errorMessage && errorMessage.length > 0),
+      hasLabel: !!label,
       isOpen,
       required,
       disabled,

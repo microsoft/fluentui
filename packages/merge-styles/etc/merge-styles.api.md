@@ -361,6 +361,7 @@ export interface IRawStyleBase extends IRawFontStyle {
     WebkitBackdropFilter?: ICSSRule | string;
     WebkitFontSmoothing?: 'none' | 'antialiased' | 'grayscale' | 'subpixel-antialiased';
     WebkitOverflowScrolling?: 'auto' | 'touch';
+    WebkitTapHighlightColor?: string;
     whiteSpace?: ICSSRule | string;
     widows?: ICSSRule | number;
     width?: ICSSRule | ICSSPixelUnitRule;
@@ -432,7 +433,7 @@ export function mergeStyleSets<TStyleSet1 extends IStyleSet<TStyleSet1>, TStyleS
 export function mergeStyleSets(...styleSets: Array<IStyleSet<any> | undefined | false | null>): IProcessedStyleSet<any>;
 
 // Warning: (ae-forgotten-export) The symbol "Diff" needs to be exported by the entry point index.d.ts
-//
+// 
 // @public (undocumented)
 export type Omit<U, K extends keyof U> = Pick<U, Diff<keyof U, K>>;
 
@@ -459,7 +460,7 @@ export class Stylesheet {
 
 
 // Warnings were encountered during analysis:
-//
+// 
 // lib/IStyleSet.d.ts:48:5 - (ae-forgotten-export) The symbol "__MapToFunctionType" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)

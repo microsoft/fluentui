@@ -1,6 +1,30 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 16 May 2019 17:34:08 GMT and should not be manually modified.
+This log was last generated on Thu, 23 May 2019 22:14:40 GMT and should not be manually modified.
+
+## 6.18.8
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Added new mobiles docs for the website.
+- Hide UHF back to top button
+- Webpack configuration fix.
+
+## 6.18.7
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- Removing unused code and styles
+- Fix home page card link color
+
+## 6.18.6
+Mon, 20 May 2019 12:22:33 GMT
+
+### Patches
+
+- Fix color route
 
 ## 6.18.5
 Thu, 16 May 2019 17:34:08 GMT

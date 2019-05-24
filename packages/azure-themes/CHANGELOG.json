@@ -2,6 +2,25 @@
   "name": "@uifabric/azure-themes",
   "entries": [
     {
+      "version": "6.0.1",
+      "tag": "@uifabric/azure-themes_v6.0.1",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Bumping azure themes to 6.0 release",
+            "author": "Micah Godbolt <micahgodbolt@gmail.com>",
+            "commit": "13890726ff0b82f5145193e1566b3298e1f02f99"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.184.0` to `^6.185.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.9",
       "tag": "@uifabric/azure-themes_v0.1.9",
       "date": "Tue, 14 May 2019 07:50:30 GMT",
