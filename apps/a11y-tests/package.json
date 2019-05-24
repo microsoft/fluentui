@@ -15,6 +15,7 @@
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^1.0.0",
+    "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
     "office-ui-fabric-react": "^6.186.0",
     "puppeteer": "^1.13.0",
@@ -23,6 +24,7 @@
     "react-dom": "^16.8.6"
   },
   "devDependencies": {
+    "@types/glob": "^7.1.1",
     "@types/jest": "23.0.0",
     "@types/node": "^8.10.29",
     "@types/puppeteer": "1.12.3",
