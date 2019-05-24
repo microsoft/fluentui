@@ -13,7 +13,7 @@ function dehydrateSarifReport(report: SarifLog): Result[] {
 
 /* tslint:disable-next-line:no-any */
 async function testComponent(component: { name: string; pageName: string; elem: React.ReactElement<any> }) {
-  it(`runs Axe on ${component.name} (${component.pageName})`, async () => {
+  it(`checks accessibility of ${component.name} (${component.pageName})`, async () => {
     const sarifReport: SarifLog = await getSarifReport(component.elem);
 
     // Save the report into `dist/reports` folder
