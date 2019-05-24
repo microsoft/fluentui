@@ -2675,8 +2675,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
     onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
-    // @deprecated
-    onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
     onItemClick?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
@@ -2691,8 +2689,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     text?: string;
     theme?: ITheme;
     useComboBoxAsMenuWidth?: boolean;
-    // @deprecated
-    value?: string;
 }
 
 // @public (undocumented)
