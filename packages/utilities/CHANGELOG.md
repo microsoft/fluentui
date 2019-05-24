@@ -1,6 +1,21 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Fri, 24 May 2019 14:51:14 GMT and should not be manually modified.
+
+## 6.39.2
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of process
+
+## 6.39.1
+Fri, 24 May 2019 12:21:33 GMT
+
+### Patches
+
+- Fix wrapped styled regression caused by nested style arrays.
+- Mutually exclusive warnings are not displayed if value of the prop is undefined
 
 ## 6.39.0
 Wed, 22 May 2019 12:21:34 GMT
