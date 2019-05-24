@@ -113,5 +113,19 @@ export const controlsPagesIos: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
       }
     ]
+  },
+  {
+    title: 'Utilities',
+    url: '#/controls/ios/separator',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Separator',
+        url: '#/controls/ios/separator',
+        component: () => <LoadingComponent title="Separator" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage))
+      }
+    ]
   }
 ];

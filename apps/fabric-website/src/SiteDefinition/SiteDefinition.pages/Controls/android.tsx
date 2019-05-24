@@ -101,5 +101,19 @@ export const controlsPagesAndroid: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage))
       }
     ]
+  },
+  {
+    title: 'Utilities',
+    url: '#/controls/android/separator',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Separator',
+        url: '#/controls/android/separator',
+        component: () => <LoadingComponent title="Separator" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage))
+      }
+    ]
   }
 ];
