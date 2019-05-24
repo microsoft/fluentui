@@ -1,4 +1,4 @@
-import { CliParser } from './cli';
+import { CliParser } from './../cli/cli';
 
 describe('CLI', () => {
   describe('parsing', () => {
