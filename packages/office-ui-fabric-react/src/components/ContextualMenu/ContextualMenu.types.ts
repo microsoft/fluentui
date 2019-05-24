@@ -147,6 +147,11 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
   shouldFocusOnContainer?: boolean;
 
   /**
+   * Whether to prevent focussing previous active element when menu is closed.
+   */
+  preventFocusOnPreviousActiveElement?: boolean;
+
+  /**
    * Callback when the ContextualMenu tries to close. If dismissAll is true then all
    * submenus will be dismissed.
    */
