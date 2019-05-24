@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TeachingBubble: changed entrance animation. This is still a WIP but need to send to some folks so they can get theireyes on the progress.",
+      "comment": "TeachingBubble: Updated entrance animation for teaching bubble in TeachingBubble.styles.ts. Removed jelly animation and replaced with new motion spec entrance animation.",
       "type": "patch"
     }
   ],
