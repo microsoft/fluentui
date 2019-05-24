@@ -75,9 +75,16 @@ export const controlsPagesIos: INavPage[] = [
     pages: [
       {
         title: 'Pivot',
-        url: '#/controls/ios/Pivot',
+        url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
+      },
+      {
+        title: 'Popup Menu',
+        url: '#/controls/ios/popupmenu',
+        component: () => <LoadingComponent title="Popup Menu" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
       }
     ]
   },
@@ -104,13 +111,6 @@ export const controlsPagesIos: INavPage[] = [
         url: '#/controls/ios/drawer',
         component: () => <LoadingComponent title="Drawer" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
-      },
-      {
-        title: 'Popup Menu',
-        url: '#/controls/ios/popupmenu',
-        component: () => <LoadingComponent title="Popup Menu" />,
-        getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
       }
     ]
   }

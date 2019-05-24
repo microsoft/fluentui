@@ -6,6 +6,14 @@ Coming soon
 
 `MSTableViewCell`
 
+`MSActionsCell`
+
+`MSActivityIndicatorCell`
+
+`MSCenteredLabelCell`
+
+`MSBooleanCell`
+
 ### Library
 
 [UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
