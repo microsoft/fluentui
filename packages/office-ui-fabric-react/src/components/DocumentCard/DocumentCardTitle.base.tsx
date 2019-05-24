@@ -25,7 +25,7 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
   private _titleElement = React.createRef<HTMLDivElement>();
   private _measureTitleElement = React.createRef<HTMLDivElement>();
 
-  private _scrollTimerId: number;
+  private _titleTruncationTimer: number;
   private _classNames: IProcessedStyleSet<IDocumentCardTitleStyles>;
 
   constructor(props: IDocumentCardTitleProps) {
@@ -181,9 +181,9 @@ export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps
       if (this._titleElement.current) {
         const clientWidth: number = this._titleElement.current.clientWidth;
         // Throttle truncation so that it doesn't happen during a window resize
-        clearTimeout(this._scrollTimerId);
+        clearTimeout(this._titleTruncationTimer);
         if (this.state.clientWidth !== clientWidth) {
-          this._scrollTimerId = this._async.setTimeout(
+          this._titleTruncationTimer = this._async.setTimeout(
             () =>
               this.setState({
                 truncatedTitleFirstPiece: undefined,
