@@ -26,8 +26,9 @@ async function testComponent(component: { name: string; pageName: string; elem: 
   });
 }
 
-function getControlName(exampleFilePath: string): string {
-  return exampleFilePath.match(/components\/(.+)\/examples/)![1];
+function getControlAndPageName(exampleFilePath: string): [string, string] {
+  const match = exampleFilePath.match(/components\/(.+)\/examples\/(.+)\.js/)!;
+  return [match[1], match[2]];
 }
 
 // List of controls we expose to a11y tests
@@ -43,13 +44,14 @@ enabledControls.forEach((control: string) => {
 
 files.forEach((componentFile: string) => {
   const componentModule = require(componentFile);
+  const [controlName, pageName] = getControlAndPageName(componentFile);
   Object.keys(componentModule)
     .filter(key => typeof componentModule[key] === 'function')
     .forEach(key => {
       const ComponentUnderTest: React.ComponentClass = componentModule[key];
       testComponent({
-        name: getControlName(componentFile),
-        pageName: ComponentUnderTest.name,
+        name: controlName,
+        pageName: pageName,
         elem: <ComponentUnderTest />
       });
     });

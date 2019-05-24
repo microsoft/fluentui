@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`runs Axe on Button (ButtonActionExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Action.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonAnchorExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Anchor.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonCommandBarExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Command.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonCommandExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.CommandBar.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonCompoundExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Compound.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonContextualMenuExample) 1`] = `
+exports[`runs Axe on Button (Button.ContextualMenu.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -50,55 +50,15 @@ Array [
 ]
 `;
 
-exports[`runs Axe on Button (ButtonDefaultExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Default.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonIconExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Icon.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonPrimaryExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Primary.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonScreenReaderExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.ScreenReader.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (ButtonSplitCustomExample) 1`] = `
-Array [
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".css-10",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix all of the following:
-- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
-      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".css-10",
-      "ruleId": "aria-allowed-attr",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "aria-allowed-attr",
-  },
-]
-`;
-
-exports[`runs Axe on Button (ButtonSplitExample) 1`] = `
+exports[`runs Axe on Button (Button.Split.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -243,9 +203,49 @@ Array [
 ]
 `;
 
-exports[`runs Axe on Button (ButtonToggleExample) 1`] = `Array []`;
+exports[`runs Axe on Button (Button.Split.Example) 2`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
 
-exports[`runs Axe on TextField () 1`] = `
+exports[`runs Axe on Button (Button.Toggle.Example) 1`] = `Array []`;
+
+exports[`runs Axe on TextField (TextField.Basic.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -289,9 +289,94 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField () 2`] = `Array []`;
+exports[`runs Axe on TextField (TextField.Borderless.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField () 3`] = `
+exports[`runs Axe on TextField (TextField.Controlled.Example) 1`] = `Array []`;
+
+exports[`runs Axe on TextField (TextField.CustomRender.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "#TextField2",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Only title used to generate label for form element",
+      "text": "Fix all of the following: Only title used to generate label for form element.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "#TextField2",
+      "ruleId": "label-title-only",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "label-title-only",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "#TextField2",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Form element does not have an implicit (wrapped) &lt;label>
+- Form element does not have an explicit &lt;label>
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "#TextField2",
+      "ruleId": "label",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "label",
+  },
+]
+`;
+
+exports[`runs Axe on TextField (TextField.ErrorMessage.Example) 1`] = `Array []`;
+
+exports[`runs Axe on TextField (TextField.Multiline.Example) 1`] = `Array []`;
+
+exports[`runs Axe on TextField (TextField.PrefixAndSuffix.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -471,89 +556,4 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField () 4`] = `Array []`;
-
-exports[`runs Axe on TextField (TextFieldControlledExample) 1`] = `Array []`;
-
-exports[`runs Axe on TextField (TextFieldCustomRenderExample) 1`] = `
-Array [
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "#TextField2",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix all of the following:
-- Only title used to generate label for form element",
-      "text": "Fix all of the following: Only title used to generate label for form element.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField2",
-      "ruleId": "label-title-only",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "label-title-only",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "#TextField2",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- aria-label attribute does not exist or is empty
-- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
-- Form element does not have an implicit (wrapped) &lt;label>
-- Form element does not have an explicit &lt;label>
-- Element has no title attribute or the title attribute is empty",
-      "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "#TextField2",
-      "ruleId": "label",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "label",
-  },
-]
-`;
-
-exports[`runs Axe on TextField (TextFieldErrorMessageExample) 1`] = `Array []`;
-
-exports[`runs Axe on TextField (TextFieldMultilineExample) 1`] = `Array []`;
+exports[`runs Axe on TextField (TextField.Styled.Example) 1`] = `Array []`;
