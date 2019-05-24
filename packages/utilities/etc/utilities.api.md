@@ -117,7 +117,7 @@ export const buttonProperties: string[];
 export function calculatePrecision(value: number | string): number;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[] | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];

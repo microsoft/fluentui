@@ -42,13 +42,13 @@ export class OverflowSetBase extends BaseComponent<IOverflowSetProps, {}> implem
     if (doNotContainWithinFocusZone) {
       Tag = 'div';
       uniqueComponentProps = {
-        ...getNativeProps(this.props, divProperties),
+        ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
         ref: this._divContainer
       };
     } else {
       Tag = FocusZone;
       uniqueComponentProps = {
-        ...getNativeProps(this.props, divProperties),
+        ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
         ...focusZoneProps,
         componentRef: this._focusZone,
         direction: vertical ? FocusZoneDirection.vertical : FocusZoneDirection.horizontal

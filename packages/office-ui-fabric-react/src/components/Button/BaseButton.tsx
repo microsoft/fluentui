@@ -491,7 +491,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    const containerProps = getNativeProps(buttonProps, [], ['disabled']);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, [], ['disabled']);
     return (
       <KeytipData keytipProps={keytipProps} disabled={disabled}>
         {(keytipAttributes: any): JSX.Element => (

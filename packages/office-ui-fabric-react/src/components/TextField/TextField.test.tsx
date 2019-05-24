@@ -647,8 +647,9 @@ describe('TextField', () => {
     const initialValue = 'initial value';
 
     const onSelect = () => {
-      const selectedText = window.getSelection().toString();
-      expect(selectedText).toEqual(initialValue);
+      const selectedText = window.getSelection();
+      expect(selectedText).toBeDefined();
+      expect(selectedText!.toString()).toEqual(initialValue);
     };
 
     renderIntoDocument(<TextField componentRef={textFieldRef} defaultValue={initialValue} onSelect={onSelect} />);

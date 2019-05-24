@@ -27,7 +27,7 @@ export class FabricBase extends React.Component<
       className,
       isFocusVisible: this.state.isFocusVisible
     });
-    const divProps = getNativeProps(rest, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, divProperties);
 
     return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }

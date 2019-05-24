@@ -32,7 +32,10 @@ export interface IClassNamesFunctionOptions {
  */
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
   options: IClassNamesFunctionOptions = {}
-): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet> {
+): (
+  getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[] | undefined,
+  styleProps?: TStyleProps
+) => IProcessedStyleSet<TStyleSet> {
   // We build a trie where each node is a Map. The map entry key represents an argument
   // value, and the entry value is another node (Map). Each node has a `__retval__`
   // property which is used to hold the cached response.

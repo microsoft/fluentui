@@ -344,7 +344,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
-    const divProps = getNativeProps(this.props, divProperties, ['onChange', 'value']);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'value']);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 

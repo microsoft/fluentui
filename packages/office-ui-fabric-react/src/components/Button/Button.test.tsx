@@ -671,7 +671,7 @@ describe('Button', () => {
         didClick = false;
       });
 
-      function buildRenderButtonWithMenu(callbackMock?: jest.Mock<{}>, persistMenu?: boolean): HTMLElement {
+      function buildRenderButtonWithMenu(callbackMock?: jest.Mock<unknown>, persistMenu?: boolean): HTMLElement {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id="test"

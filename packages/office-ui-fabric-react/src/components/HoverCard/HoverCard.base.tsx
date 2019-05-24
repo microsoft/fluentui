@@ -120,7 +120,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
     // Common props for both card types.
     const commonCardProps = {
-      ...getNativeProps(this.props, divProperties),
+      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
       id: hoverCardId,
       trapFocus: !!trapFocus,
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,
