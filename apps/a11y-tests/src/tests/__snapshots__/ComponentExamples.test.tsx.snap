@@ -1,16 +1,16 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`runs Axe on Button (Button.Action.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Action.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.Anchor.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Anchor.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.Command.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Command.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.CommandBar.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.CommandBar.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.Compound.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Compound.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.ContextualMenu.Example) 1`] = `
+exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -50,15 +50,15 @@ Array [
 ]
 `;
 
-exports[`runs Axe on Button (Button.Default.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Default.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.Icon.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Icon.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.Primary.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Primary.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.ScreenReader.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.ScreenReader.Example) 1`] = `Array []`;
 
-exports[`runs Axe on Button (Button.Split.Example) 1`] = `
+exports[`checks accessibility of Button (Button.Split.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -203,7 +203,7 @@ Array [
 ]
 `;
 
-exports[`runs Axe on Button (Button.Split.Example) 2`] = `
+exports[`checks accessibility of Button (Button.Split.Example) 2`] = `
 Array [
   Object {
     "level": "error",
@@ -243,9 +243,9 @@ Array [
 ]
 `;
 
-exports[`runs Axe on Button (Button.Toggle.Example) 1`] = `Array []`;
+exports[`checks accessibility of Button (Button.Toggle.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextField.Basic.Example) 1`] = `
+exports[`checks accessibility of TextField (TextField.Basic.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -289,11 +289,11 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField (TextField.Borderless.Example) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Borderless.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextField.Controlled.Example) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Controlled.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextField.CustomRender.Example) 1`] = `
+exports[`checks accessibility of TextField (TextField.CustomRender.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -372,11 +372,11 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField (TextField.ErrorMessage.Example) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.ErrorMessage.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextField.Multiline.Example) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Multiline.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextField.PrefixAndSuffix.Example) 1`] = `
+exports[`checks accessibility of TextField (TextField.PrefixAndSuffix.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -556,4 +556,4 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField (TextField.Styled.Example) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Styled.Example) 1`] = `Array []`;
