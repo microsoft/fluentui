@@ -120,6 +120,11 @@ export interface IButtonProps
    * Defines optional keytips for this button.
    */
   keytipProps?: IKeytipProps;
+
+  /**
+   * Defines an unique id to identify the item. Typically a duplicate of key value.
+   */
+  uniqueId?: string | number;
 }
 
 /**
