@@ -2188,7 +2188,7 @@ exports[`Component Examples renders CommandBar.CommandBarButtonAs.Example.tsx co
                                       className=
                                           ms-TeachingBubble-content
                                           {
-                                            animation-duration: 2000ms;
+                                            animation-duration: 300ms;
                                             animation-fill-mode: both;
                                             animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
                                             animation-timing-function: linear;
