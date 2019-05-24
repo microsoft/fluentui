@@ -151,13 +151,6 @@ exports[`Component Examples renders Callout.Basic.Example.tsx correctly 1`] = `
           & textarea {
             font-family: inherit;
           }
-          button {
-            margin-bottom: 0px;
-            margin-left: 0px;
-            margin-right: 0px;
-            margin-top: 0px;
-            overflow: visible;
-          }
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}

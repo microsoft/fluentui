@@ -1,6 +1,13 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+
+## 6.0.1
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- Bumping azure themes to 6.0 release
 
 ## 0.1.9
 Tue, 14 May 2019 07:50:30 GMT

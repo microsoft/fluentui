@@ -297,7 +297,7 @@ export class Nav extends React.Component<INavProps, INavState> {
     }
   };
 
-  private _onSearchQueryChanged = (newValue: string) => {
+  private _onSearchQueryChanged = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string) => {
     this.setState(
       {
         searchQuery: newValue,

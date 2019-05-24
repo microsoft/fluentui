@@ -10,6 +10,19 @@ export const controlsPagesAndroid: INavPage[] = [
     getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage))
   },
   {
+    title: 'Basic Inputs',
+    url: '#/controls/android/button',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Button',
+        url: '#/controls/android/button',
+        component: () => <LoadingComponent title="Button" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage))
+      }
+    ]
+  },
+  {
     title: 'Pickers',
     url: '#/controls/android/date-time-picker',
     isCategory: true,

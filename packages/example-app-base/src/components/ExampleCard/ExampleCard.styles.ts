@@ -3,6 +3,7 @@ import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
+import { NeutralColors } from '@uifabric/fluent-theme';
 
 const globalClassNames = {
   root: 'ExampleCard',
@@ -39,11 +40,14 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
   };
 
   const codeButtonActiveStyles: IRawStyle = {
-    backgroundColor: theme.palette.neutralDark,
-    borderColor: theme.palette.neutralDark,
+    backgroundColor: NeutralColors.gray20,
+    borderColor: NeutralColors.gray90,
     selectors: {
-      '.ms-Button-icon, .ms-Button-label': {
-        color: theme.palette.white
+      '.ms-Button-icon': {
+        color: theme.palette.themePrimary
+      },
+      '.ms-Button-label': {
+        color: NeutralColors.gray160
       }
     }
   };
@@ -101,7 +105,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         position: 'relative'
       },
       isCodeVisible && {
-        borderColor: theme.palette.neutralDark
+        borderColor: NeutralColors.gray90
       },
       globalClassNames.header
     ],
@@ -138,7 +142,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
     ],
     code: [
       {
-        backgroundColor: theme.palette.neutralDark,
+        backgroundColor: NeutralColors.gray20,
         overflow: 'hidden',
         selectors: {
           pre: [
@@ -148,7 +152,11 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
               transition: `all ${AnimationVariables.durationValue3} ${AnimationVariables.easeFunction1}`
             },
             // Collapse code blocks by default
-            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 }
+            isCodeVisible ? { maxHeight: 480, minHeight: 120 } : { maxHeight: 0 },
+            isCodeVisible && {
+              border: '1px solid ' + NeutralColors.gray90,
+              borderTop: 0
+            }
           ],
           code: {
             display: 'block',

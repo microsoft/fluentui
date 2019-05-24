@@ -5,7 +5,7 @@ import { IStyleFunctionOrObject } from '../../Utilities';
 
 /**
  * ShimmeredDetailsList props interface
- * {@docCategory ShimmeredDetailsList}
+ * {@docCategory DetailsList}
  */
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
   /**
@@ -40,13 +40,13 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
 /**
  * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
- * @internal
+ * {@docCategory DetailsList}
  */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;
 
 /**
  * Represents the stylable areas of the control.
- * @internal
+ * {@docCategory DetailsList}
  */
 export interface IShimmeredDetailsListStyles {
   /**

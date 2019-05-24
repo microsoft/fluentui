@@ -117,13 +117,10 @@ export const buttonProperties: string[];
 export function calculatePrecision(value: number | string): number;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
-
-// @public @deprecated (undocumented)
-export function createRef<T>(): RefObject<T>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 // 
@@ -420,6 +417,11 @@ export interface IChangeEventCallback {
 export type IClassNames<T> = {
     [key in keyof T]: string;
 };
+
+// @public (undocumented)
+export interface IClassNamesFunctionOptions {
+    disableCaching?: boolean;
+}
 
 // @public
 export type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
@@ -871,7 +873,6 @@ export class Rectangle {
 export type RefObject<T> = {
     (component: T | null): void;
     current: T | null;
-    value: T | null;
 };
 
 // @public

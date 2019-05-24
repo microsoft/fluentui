@@ -10,6 +10,19 @@ export const controlsPagesIos: INavPage[] = [
     getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Overviews/ControlsPage/ControlsPage').ControlsPage))
   },
   {
+    title: 'Basic Inputs',
+    url: '#/controls/ios/button',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Button',
+        url: '#/controls/ios/button',
+        component: () => <LoadingComponent title="Button" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ButtonPage/ButtonPage').ButtonPage))
+      }
+    ]
+  },
+  {
     title: 'Pickers',
     url: '#/controls/ios/date-time-picker',
     isCategory: true,
