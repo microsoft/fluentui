@@ -1,4 +1,5 @@
 import * as React from 'react';
+import { flatten } from './array';
 import { concatStyleSets, IStyleSet, IStyleFunctionOrObject, IConcatenatedStyleSet } from '@uifabric/merge-styles';
 import { Customizations } from './customizations/Customizations';
 import { CustomizerContext, ICustomizerContext } from './customizations/CustomizerContext';
@@ -97,7 +98,9 @@ export function styled<
 
     private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
       if (!this._styles || customizedStyles !== this._styles[1] || !!this.props.styles) {
-        this._styles = [baseStyles, customizedStyles, this.props.styles];
+        // Using styled components as the Component arg will result in nested styling arrays.
+        // Use flatten to ensure that the _styles array remains flat when styled components are wrapped.
+        this._styles = flatten([baseStyles, customizedStyles, this.props.styles]);
       }
     }
 

@@ -1,6 +1,251 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`runs Axe on TextField (TextFieldBasicExample) 1`] = `
+exports[`checks accessibility of Button (Button.Action.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Anchor.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Command.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.CommandBar.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Compound.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\"",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\".",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+      "ruleId": "aria-valid-attr-value",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-valid-attr-value",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Default.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Icon.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Primary.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.ScreenReader.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Split.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(1) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(1) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(2) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(2) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(3) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(3) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-35\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-35",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-35",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Split.Example) 2`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Toggle.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.Basic.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -44,11 +289,11 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField (TextFieldBorderlessExample) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Borderless.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextFieldControlledExample) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Controlled.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextFieldCustomRenderExample) 1`] = `
+exports[`checks accessibility of TextField (TextField.CustomRender.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -127,11 +372,11 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField (TextFieldErrorMessageExample) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.ErrorMessage.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextFieldMultilineExample) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Multiline.Example) 1`] = `Array []`;
 
-exports[`runs Axe on TextField (TextFieldPrefixAndSuffixExample) 1`] = `
+exports[`checks accessibility of TextField (TextField.PrefixAndSuffix.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -311,4 +556,4 @@ Array [
 ]
 `;
 
-exports[`runs Axe on TextField (TextFieldStyledExample) 1`] = `Array []`;
+exports[`checks accessibility of TextField (TextField.Styled.Example) 1`] = `Array []`;
