@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 24 May 2019 12:21:33 GMT and should not be manually modified.
+This log was last generated on Fri, 24 May 2019 14:51:14 GMT and should not be manually modified.
+
+## 6.39.2
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of process
 
 ## 6.39.1
 Fri, 24 May 2019 12:21:33 GMT

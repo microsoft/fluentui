@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 23 May 2019 22:14:40 GMT and should not be manually modified.
+This log was last generated on Fri, 24 May 2019 14:51:14 GMT and should not be manually modified.
+
+## 6.186.1
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of bare process
 
 ## 6.186.0
 Thu, 23 May 2019 22:14:40 GMT
