@@ -1301,6 +1301,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 };
 
 // @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
