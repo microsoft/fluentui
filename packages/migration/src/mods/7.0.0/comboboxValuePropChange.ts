@@ -5,12 +5,8 @@ import { renameJsxProp } from 'riceburn/lib/mods/renameJsxProp';
 export default migration(
   'remove use of deprecated ComboBox props',
   (opts: IMigrationOptions): ModResult[] => {
-    return mod('**/*.tsx', opts)
-      .asTypescript((node, modder) => {
-        return renameJsxProp('ComboBox', 'value', 'text')(node, modder);
-      })
-      .asTypescript((node, modder) => {
-        return renameJsxProp('ComboBox', 'onChanged', 'onChange')(node, modder);
-      }).files;
+    return mod('**/*.tsx', opts).asTypescript((node, modder) => {
+      return renameJsxProp('ComboBox', 'value', 'text')(node, modder);
+    }).files;
   }
 );

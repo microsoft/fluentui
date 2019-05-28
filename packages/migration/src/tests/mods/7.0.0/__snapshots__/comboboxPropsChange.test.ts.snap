@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`comboboxPropsChange transforms onChanged to onChange, value to text 1`] = `
+exports[`comboboxPropsChange transforms value to text 1`] = `
 "import { ComboBox, Fabric } from 'office-ui-fabric-react';
 
 class ComboBoxControlledExample extends React.Component<{}, {}> {
@@ -13,7 +13,7 @@ class ComboBoxControlledExample extends React.Component<{}, {}> {
           allowFreeform={true}
           autoComplete=\\"on\\"
           options={state.options}
-          onChange={this._onChange}
+          onChanged={this._onChange}
           onResolveOptions={this._getOptions}
           text={state.initialDisplayValue}
         />
