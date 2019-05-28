@@ -125,6 +125,12 @@ export const controlsPagesIos: INavPage[] = [
         component: () => <LoadingComponent title="Separator" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage))
+      },
+      {
+        title: 'Text',
+        url: '#/controls/ios/text',
+        component: () => <LoadingComponent title="Text" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage))
       }
     ]
   }
