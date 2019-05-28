@@ -79,12 +79,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
   onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
 
   /**
-   * Deprecated, use `onChange` instead.
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
-
-  /**
    * Callback issued when the user changes the pending value in ComboBox
    */
   onPendingValueChanged?: (option?: IComboBoxOption, index?: number, value?: string) => void;
@@ -223,13 +217,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
    * Optional keytip for this combo box
    */
   keytipProps?: IKeytipProps;
-
-  /**
-   * Value to show in the input, does not have to map to a combobox option
-   * Deprecated, use `text` instead.
-   * @deprecated Use `text` instead.
-   */
-  value?: string;
 
   /**
    * Menu will not be created or destroyed when opened or closed, instead it
