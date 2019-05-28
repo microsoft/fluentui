@@ -117,7 +117,9 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
       warnDeprecations('FocusZone', props, {
         rootProps: undefined,
         allowTabKey: 'handleTabKey',
-        elementType: 'as'
+        elementType: 'as',
+        ariaDescribedBy: 'aria-describedby',
+        ariaLabelledBy: 'aria-labelledby'
       });
     }
 
@@ -215,6 +217,8 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     return (
       <Tag
         role="presentation"
+        aria-labelledby={ariaLabelledBy}
+        aria-describedby={ariaDescribedBy}
         {...divProps}
         {
           // root props has been deprecated and should get removed.
@@ -228,8 +232,6 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
         className={css(getRootClass(), className)}
         ref={this._root}
         data-focuszone-id={this._id}
-        aria-labelledby={ariaLabelledBy}
-        aria-describedby={ariaDescribedBy}
         onKeyDown={this._onKeyDown}
         onFocus={this._onFocus}
         onMouseDownCapture={this._onMouseDown}
