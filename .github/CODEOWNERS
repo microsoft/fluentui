@@ -42,7 +42,7 @@ fabric-website-resources/ @ecraig12345
 Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
-packages/charting/ @Raghurk @veeray @chankev
+packages/charting/ @Raghurk
 packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
 packages/example-app-base/ @ecraig12345 @jordandrako
@@ -58,7 +58,7 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
-packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
+packages/date-time @OfficeDev/uifabric-calendar
 packages/migration/ @ecraig12345 @kenotron
 
 ### Fabric
@@ -94,7 +94,7 @@ Dialog/ @kkjeer
 DocumentCard/ @yiminwu
 Dropdown/ @joschect
 Fabric/ @dzearing
-FacePile/ @markionium
+FacePile/ @Markionium
 FolderCover/ @ThomasMichon
 FocusTrapZone/ @JasonGore
 FocusZone/ @JasonGore
@@ -114,9 +114,9 @@ OverflowSet/ @micahgodbolt
 Overlay/ @kkjeer
 Pagination/ @caradong
 Panel/ @kkjeer
-Persona/ @markionium
-PersonaCoin/ @mtennoe @jakob101
-Persona/PersonaConsts.tsx @mtennoe @jakob101
+Persona/ @Markionium
+PersonaCoin/ @mtennoe
+Persona/PersonaConsts.tsx @mtennoe
 pickers/  @joschect
 Pivot/ @jdhuntington
 Popup/ @JasonGore
@@ -181,7 +181,7 @@ List/docs/ @KevinTCoughlin
 OverflowSet/docs/  @micahgodbolt
 # Overlay/docs/
 # Panel/docs/
-Persona/docs/ @markionium
+Persona/docs/ @Markionium
 pickers/docs/  @joschect
 # Pivot/docs/
 # Popup/docs/
