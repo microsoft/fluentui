@@ -26,4 +26,6 @@ Coming soon
 
 [UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TypographyActivity.kt)
+[Sample Code in activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TypographyActivity.kt)
+
+[Sample Code in layout](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_typography.xml)
