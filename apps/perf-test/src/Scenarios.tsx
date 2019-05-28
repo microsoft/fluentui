@@ -13,7 +13,7 @@ import {
   createTheme,
   DocumentCardTitle
 } from 'office-ui-fabric-react';
-import { Button as NewButton, SplitButton as NewSplitButton, Toggle as NewToggle } from '@uifabric/experiments';
+import { Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
 
 const defaultTheme = createTheme({});
 
@@ -57,6 +57,7 @@ const menuProps = {
 export const Scenarios: IDropdownOption[] = [
   { key: 'defbutton', text: 'DefaultButton', data: { timing: [], content: <DefaultButton text="I am a button" /> } },
   { key: 'pributton', text: 'PrimaryButton', data: { timing: [], content: <PrimaryButton text="I am a button" /> } },
+  { key: 'menubutton', text: 'MenuButton', data: { timing: [], content: <DefaultButton text="I am a button" menuProps={menuProps} /> } },
   {
     key: 'splitbutton',
     text: 'SplitButton',
@@ -68,10 +69,11 @@ export const Scenarios: IDropdownOption[] = [
   { key: 'basebutton', text: 'BaseButton', data: { timing: [], content: <BaseButton text="I am a button" /> } },
   { key: 'newdefbutton', text: 'NewDefaultButton', data: { timing: [], content: <NewButton content="I am a button" /> } },
   { key: 'newpributton', text: 'NewPrimaryButton', data: { timing: [], content: <NewButton primary content="I am a button" /> } },
+  { key: 'newmenubutton', text: 'NewMenuButton', data: { timing: [], content: <MenuButton content="I am a button" menu={menuProps} /> } },
   {
     key: 'newsplitbutton',
     text: 'NewSplitButton',
-    data: { timing: [], content: <NewSplitButton content="I am a button" menu={menuProps} /> }
+    data: { timing: [], content: <SplitButton content="I am a button" menu={menuProps} /> }
   },
   { key: 'button', text: 'button', data: { timing: [], content: <button>I am a button</button> } },
   {
