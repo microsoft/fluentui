@@ -64,6 +64,9 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
   const { className } = props;
 
   return {
+    root: {
+      display: 'inline-flex'
+    },
     button: [
       {
         backgroundColor: props.expanded ? tokens.backgroundColorExpanded : tokens.backgroundColor,

@@ -65,6 +65,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
     root: {
       borderRadius: tokens.borderRadius,
       boxSizing: 'border-box',
+      display: 'inline-flex',
       zIndex: 1,
 
       selectors: {
