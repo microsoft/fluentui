@@ -184,7 +184,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    this.tryFocusPreviousActiveElement();
+    this._tryFocusPreviousActiveElement();
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -362,7 +362,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onMenuClosed() {
     this._events.off(this._targetWindow, 'resize', this.dismiss);
-    this.tryFocusPreviousActiveElement();
+    this._tryFocusPreviousActiveElement();
 
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
 
@@ -376,7 +376,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     });
   }
 
-  private tryFocusPreviousActiveElement() {
+  private _tryFocusPreviousActiveElement() {
     if (this._isFocusingPreviousElement && !this.props.preventFocusOnPreviousActiveElement && this._previousActiveElement) {
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
