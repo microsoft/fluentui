@@ -43,7 +43,7 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     content: Text,
     menu: ContextualMenu,
     menuIcon: Icon,
-    splitDividerContainer: Stack.Item,
+    splitDividerContainer: Stack,
     splitDivider: 'span'
   });
 
@@ -54,12 +54,15 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     backgroundColor,
     backgroundColorHovered,
     backgroundColorPressed,
+    borderColor,
+    borderColorHovered,
+    borderColorPressed,
     color,
     colorHovered,
     colorPressed,
     ...nonColoredButtonTokens
   } = splitButtonTokens;
-  const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, nonColoredButtonTokens } : tokens;
+  const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens } : tokens;
   const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (

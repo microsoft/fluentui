@@ -105,6 +105,9 @@ const SplitMenuButtonVerticalStyles: ISplitRibbonMenuButtonProps['styles'] = (pr
       borderLeftWidth: tokens.borderWidth,
       borderRightWidth: tokens.borderWidth,
       borderTopWidth: 0
+    },
+    splitDividerContainer: {
+      borderWidth: 0
     }
   };
 };
