@@ -71,7 +71,7 @@
     "tslint": "^5.7.0",
     "tslint-microsoft-contrib": "^5.0.1",
     "ttest": "2.0.0",
-    "typescript": "^3.5.0-rc",
+    "typescript": "3.5.0-dev.20190525",
     "webpack": "4.29.5",
     "webpack-bundle-analyzer": "^3.0.4",
     "webpack-cli": "3.2.3",

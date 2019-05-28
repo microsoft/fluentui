@@ -49,7 +49,7 @@ function readPackage(packageJson, context) {
     packageJson.name === 'tslint-react' ||
     packageJson.name === 'tsutils'
   ) {
-    packageJson.dependencies['typescript'] = '3.5.0-rc';
+    packageJson.dependencies['typescript'] = '3.5.0-dev.20190525';
   }
 
   // Example: Suppose the karma types have a missing dependency on typings from the log4js package.

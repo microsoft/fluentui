@@ -182,7 +182,7 @@ dependencies:
   tslint-microsoft-contrib: 5.2.1
   tslint-react: 3.6.0
   ttest: 2.0.0
-  typescript: 3.5.0-rc
+  typescript: 3.5.0-dev.20190525
   wait-on: 3.2.0
   webpack: 4.29.5
   webpack-bundle-analyzer: 3.3.2
@@ -14357,6 +14357,13 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
+  /typescript/3.5.0-dev.20190525:
+    dev: false
+    engines:
+      node: '>=4.2.0'
+    hasBin: true
+    resolution:
+      integrity: sha512-+EhVvwjYE3bLN3yc5kZHylvyqRB86oqWpO2XrYImi89ErqddhNx28ms50Gt8r3dzK4LUpEUWR9p/bL1I4L8sfw==
   /typescript/3.5.0-rc:
     dev: false
     engines:
@@ -15518,7 +15525,7 @@ packages:
       tslint: 5.16.0
       tslint-microsoft-contrib: /tslint-microsoft-contrib/5.2.1/tslint@5.16.0
       ttest: 2.0.0
-      typescript: 3.5.0-rc
+      typescript: 3.5.0-dev.20190525
       webpack: 4.29.5
       webpack-bundle-analyzer: 3.3.2
       webpack-cli: /webpack-cli/3.2.3/webpack@4.29.5
@@ -15528,7 +15535,7 @@ packages:
     dev: false
     name: '@rush-temp/build'
     resolution:
-      integrity: sha512-f4J8qSObiy6FyfmgAHnY2hcaoBWH9gXSp9vUJPEbcvUsM5Vth3bUhepocYPT4MwI90+LRun4usMDQ82WqmthDg==
+      integrity: sha512-TXQwzc9xQEfHIKpuXjtnAQJbIAW5T5c267FZGeFFLX5XiGonVw3zbaMjmLtsLZEnrWu8rO2QuYqfoyTKg5BgRQ==
       tarball: 'file:projects/build.tgz'
     version: 0.0.0
   'file:projects/charting.tgz':
@@ -15955,11 +15962,11 @@ packages:
       riceburn: 1.2.1
       semver: 5.7.0
       tslib: 1.9.3
-      typescript: 3.5.0-rc
+      typescript: 3.5.0-dev.20190525
     dev: false
     name: '@rush-temp/migration'
     resolution:
-      integrity: sha512-9hkavYdeakw6JDcTeC29ESdlPAWRm2olchcvHut7pk6SVQfMthSJ+TT4d9QFrqY/Ec/jebEpYWyj5JgH5TW5QA==
+      integrity: sha512-jOyPHKpUQRUC2OuwiRrRuMMdjr5ZBAQooECMWSRry/fktIFUhYh4qv57NaWxBkoSP4hFNHWrRLwDvXramJkCHw==
       tarball: 'file:projects/migration.tgz'
     version: 0.0.0
   'file:projects/office-ui-fabric-react.tgz':
@@ -16182,11 +16189,11 @@ packages:
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.9.3
-      typescript: 3.5.0-rc
+      typescript: 3.5.0-dev.20190525
     dev: false
     name: '@rush-temp/theming-designer'
     resolution:
-      integrity: sha512-Ec7rjVjQhc06l3IWoCH2K5+mdHDhnBoQlaSJFf5CMrJuQvF3m4Te08hc2VZvdDcql6jKSgoMUCzsz1FDaWd82A==
+      integrity: sha512-/wyahTMT8HJn/3gEqvjxX2UiKpeUbhkkuaV6Tz5bGlTx9M8tFDDXBf85Ky/hOVUREC6/EwwJ/w4GuSAGfDaMrQ==
       tarball: 'file:projects/theming-designer.tgz'
     version: 0.0.0
   'file:projects/todo-app.tgz':
@@ -16201,11 +16208,11 @@ packages:
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.9.3
-      typescript: 3.5.0-rc
+      typescript: 3.5.0-dev.20190525
     dev: false
     name: '@rush-temp/todo-app'
     resolution:
-      integrity: sha512-Obzg+EspQHVZUSLYw5VX9zMDUpTbQcoU0hdxZUfv5MPNizPBGDzmEwI9LKE07XuccR0GUM0RxbOV/sOGTJGaeQ==
+      integrity: sha512-PNMF5xbmpTlSCCvL9Scsy1tUR4uXF/vnK/FNJxFzFNe3sDTBCBxfreDbFEdsb4mAQWP77g+WVmdgYWo3o6ecMg==
       tarball: 'file:projects/todo-app.tgz'
     version: 0.0.0
   'file:projects/tslint-rules.tgz':
@@ -16277,11 +16284,11 @@ packages:
       storybook-readme: 3.3.0
       style-loader: 0.21.0
       tslib: 1.9.3
-      typescript: 3.5.0-rc
+      typescript: 3.5.0-dev.20190525
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-desKx6M2AIZa7C+NQsh5AQzfslLweLkjtT/pNnbGnyLyyzORWt1UG7J43pHBlwf+pIjSu5WCcu9/tVOCOLUuQw==
+      integrity: sha512-8RFtIlKE4A/XpNiTNWpIS9b7SmnG8f99CyYu+46WSz3y9pwXmLi+AoND4tl8bi0s7Sc/N9BquCd3c/O8JHlKBw==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -16486,7 +16493,7 @@ specifiers:
   tslint-microsoft-contrib: ^5.0.1
   tslint-react: ^3.2.0
   ttest: 2.0.0
-  typescript: ^3.5.0-rc
+  typescript: 3.5.0-dev.20190525
   wait-on: ^3.2.0
   webpack: 4.29.5
   webpack-bundle-analyzer: ^3.0.4
