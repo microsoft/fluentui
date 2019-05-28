@@ -136,7 +136,7 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
       borderRightWidth: 0,
       borderTopWidth: props.primaryActionDisabled ? 0 : tokens.borderWidth,
       boxSizing: 'border-box',
-      height: '100%',
+      height: 'auto',
       width: 'auto',
 
       selectors: {
@@ -154,9 +154,8 @@ export const SplitButtonStyles: ISplitButtonComponent['styles'] = (props, theme,
     },
     splitDivider: {
       backgroundColor: props.primaryActionDisabled ? semanticColors.menuDivider : tokens.dividerColor,
-      boxSizing: 'border-box',
       display: 'inline-block',
-      height: 'calc(100% - 14px)',
+      height: '100%',
       margin: '7px 0px',
       width: '1px'
     },
