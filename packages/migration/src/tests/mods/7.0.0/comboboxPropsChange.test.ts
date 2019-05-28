@@ -4,7 +4,8 @@ import { runMigration } from '../utils';
 
 describe('comboboxPropsChange', () => {
   it('transforms onChanged to onChange, value to text', async () => {
-    const transformedFile = await runMigration(migration, path.join('7.0.0', 'combobox.tsx'));
-    expect(transformedFile).toMatchSnapshot();
+    const result = await runMigration(migration, path.join('7.0.0', 'combobox.tsx'));
+    expect(result.warnings).toEqual([]);
+    expect(result.contents).toMatchSnapshot();
   });
 });

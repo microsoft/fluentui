@@ -42,13 +42,20 @@ function teardown() {
   mockfs.restore();
 }
 
-export async function runMigration(migration: IMigration, filename: string): Promise<string> {
+interface IMigrationResult {
+  contents: string;
+  warnings: string[];
+}
+
+export async function runMigration(migration: IMigration, filename: string): Promise<IMigrationResult> {
   await setup();
+  const result: IMigrationResult = { contents: '', warnings: [] };
   try {
-    migration.step({ dryRun: false });
+    migration.step({ dryRun: false, warn: (msg: string) => result.warnings.push(msg) });
     const contents = await readFileAsync(path.join('_root', filename));
     teardown();
-    return contents.toString();
+    result.contents = contents.toString();
+    return result;
   } catch (e) {
     teardown();
     throw e;

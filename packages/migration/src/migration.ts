@@ -1,5 +1,6 @@
 export interface IMigrationOptions {
   dryRun: boolean;
+  warn: (message: string) => void;
 }
 
 // tslint:disable-next-line: interface-name

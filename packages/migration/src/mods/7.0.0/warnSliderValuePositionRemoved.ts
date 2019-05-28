@@ -1,5 +1,5 @@
 import ts from 'typescript';
-import { IMigrationOptions, migration, ModResult, warn } from '../../migration';
+import { IMigrationOptions, migration, ModResult } from '../../migration';
 import { mod } from 'riceburn';
 
 const typeName = 'ValuePosition';
@@ -12,7 +12,7 @@ export default migration(
         const sourceFile = node.getSourceFile();
         const sourceFileName = sourceFile.fileName;
         const lineAndCharacter = sourceFile.getLineAndCharacterOfPosition(node.getStart());
-        warn(`${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${typeName} no longer available`);
+        opts.warn(`${sourceFileName}:${lineAndCharacter.line}:${lineAndCharacter.character} - ${typeName} no longer available`);
       }
       return undefined;
     }).files;
