@@ -4528,7 +4528,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
+    // @deprecated
     ariaDescribedBy?: string;
+    // @deprecated
     ariaLabelledBy?: string;
     as?: React.ReactType;
     checkForNoWrap?: boolean;
