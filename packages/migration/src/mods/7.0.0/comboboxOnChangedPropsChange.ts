@@ -24,7 +24,7 @@ export default migration(
               `${sourceFileName}:${lineAndCharacter.line}:${
                 lineAndCharacter.character
                 // tslint:disable-next-line: max-line-length
-              } - ${propName} is removed; please use onChange instead (NOTE: the arguments have changed from ${propName} to onChanged; please update accordingly)`
+              } - ${propName} is removed; please use onChange instead (NOTE: the arguments have changed from ${propName} to onChange; please update accordingly)`
             );
           }
         }
