@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 
 import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from './index';
 
-describe('Button view', () => {
+describe('Button Variants', () => {
   it('renders a DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton content="Button" />);
     const tree = component.toJSON();
