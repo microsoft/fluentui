@@ -302,7 +302,7 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-4\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
             },
           },
         ],
@@ -337,7 +337,7 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-4\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
             },
           },
         ],
@@ -391,7 +391,7 @@ Array [
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(1) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .prefix-10.ms-TextField-prefix > span",
+        "fullyQualifiedLogicalName": ".prefix-15 > span",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -401,151 +401,11 @@ Array [
     ],
     "message": Object {
       "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
+- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(1) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .prefix-10.ms-TextField-prefix > span",
-      "ruleId": "color-contrast",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "color-contrast",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<span style=\\"padding-bottom:1px\\">https://</span>",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".prefix-16 > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".prefix-16 > span",
-      "ruleId": "color-contrast",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "color-contrast",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<span style=\\"padding-bottom:1px\\">.com</span>",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(1) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .ms-TextField-suffix.suffix-11 > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(1) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .ms-TextField-suffix.suffix-11 > span",
-      "ruleId": "color-contrast",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "color-contrast",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<span style=\\"padding-bottom:1px\\">https://</span>",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(2) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .prefix-10.ms-TextField-prefix > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(2) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .prefix-10.ms-TextField-prefix > span",
-      "ruleId": "color-contrast",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "color-contrast",
-  },
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<span style=\\"padding-bottom:1px\\">.com</span>",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(2) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .ms-TextField-suffix.suffix-11 > span",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.43 (foreground color: #a6a6a6, background color: #ffffff, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".ms-TextField.root-3:nth-child(2) > .ms-TextField-wrapper.wrapper-4 > .fieldGroup-5.ms-TextField-fieldGroup > .ms-TextField-suffix.suffix-11 > span",
+      "fullyQualifiedLogicalName": ".prefix-15 > span",
       "ruleId": "color-contrast",
     },
     "properties": Object {
