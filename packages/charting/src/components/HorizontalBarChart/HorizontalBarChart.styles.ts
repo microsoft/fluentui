@@ -48,10 +48,11 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
     triangle: {
       width: '0',
       height: '0',
-      borderLeft: '8px solid transparent',
-      borderRight: '8px solid transparent',
+      borderLeft: '4px solid transparent',
+      borderRight: '4px solid transparent',
       borderTop: '8px solid',
-      borderTopColor: palette.blue
+      borderTopColor: palette.blue,
+      marginBottom: '4px'
     }
   };
 };

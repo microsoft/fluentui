@@ -191,8 +191,8 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
       const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
 
       const benchmarkStyles = {
-        marginLeft: 'calc(' + benchmarkRatio + '% - 8px)',
-        marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 8px)'
+        marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
+        marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)'
       };
 
       // tslint:disable-next-line:jsx-ban-props
