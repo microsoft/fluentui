@@ -1,7 +1,3 @@
-### Designs
-
-Coming soon
-
 ### Control name
 
 `MSBadgeView` Individual chip/badge object

@@ -1,7 +1,3 @@
-### Designs
-
-Coming soon
-
 ### Drawable name
 
 `ms_row_divider`

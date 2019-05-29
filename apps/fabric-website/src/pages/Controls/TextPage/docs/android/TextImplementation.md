@@ -1,7 +1,3 @@
-### Designs
-
-Coming soon
-
 ### Style names
 
 `TextAppearance.UIFabric.Headline`
