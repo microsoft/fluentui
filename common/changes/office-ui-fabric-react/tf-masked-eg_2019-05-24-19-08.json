@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Adds an example to TextField with customized masks",
+      "packageName": "office-ui-fabric-react",
+      "type": "minor"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kchau@microsoft.com"
+}
