@@ -240,6 +240,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 word-wrap: break-word;
               }
           htmlFor="TextField1"
+          id="TextFieldLabel3"
         >
           Number of left frozen columns
         </label>
@@ -276,6 +277,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel3"
             className=
                 ms-TextField-field
                 {
@@ -390,7 +392,8 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField3"
+          htmlFor="TextField4"
+          id="TextFieldLabel6"
         >
           Number of right frozen columns
         </label>
@@ -427,6 +430,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel6"
             className=
                 ms-TextField-field
                 {
@@ -479,7 +483,7 @@ exports[`Component Examples renders DetailsList.DragDrop.Example.tsx correctly 1
                   font-weight: 400;
                   opacity: 1;
                 }
-            id="TextField3"
+            id="TextField4"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

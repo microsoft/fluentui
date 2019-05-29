@@ -92,6 +92,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel3"
             className=
                 ms-TextField-field
                 {

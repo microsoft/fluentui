@@ -321,6 +321,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
+                    aria-labelledby="TextFieldLabel2"
                     className=
                         ms-TextField-field
                         {
@@ -468,6 +469,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
+                    aria-labelledby="TextFieldLabel5"
                     className=
                         ms-TextField-field
                         {
@@ -520,7 +522,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField2"
+                    id="TextField3"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -615,6 +617,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
+                    aria-labelledby="TextFieldLabel8"
                     className=
                         ms-TextField-field
                         {
@@ -667,7 +670,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField4"
+                    id="TextField6"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -762,6 +765,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
+                    aria-labelledby="TextFieldLabel11"
                     className=
                         ms-TextField-field
                         {
@@ -814,7 +818,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField6"
+                    id="TextField9"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -909,6 +913,7 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
+                    aria-labelledby="TextFieldLabel14"
                     className=
                         ms-TextField-field
                         {
@@ -961,7 +966,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           font-weight: 400;
                           opacity: 1;
                         }
-                    id="TextField8"
+                    id="TextField12"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}

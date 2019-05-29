@@ -97,6 +97,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             <input
               aria-invalid={false}
               aria-label="Select a date"
+              aria-labelledby="TextFieldLabel3"
               className=
                   ms-TextField-field
                   {
@@ -224,15 +225,15 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown3"
-      id="Dropdown3-label"
+      htmlFor="Dropdown4"
+      id="Dropdown4-label"
     >
       Select the first day of the week
     </label>
     <div
-      aria-describedby="Dropdown3-option"
+      aria-describedby="Dropdown4-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown3-label"
+      aria-labelledby="Dropdown4-label"
       className=
           ms-Dropdown
           {
@@ -319,7 +320,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Dropdown3"
+      id="Dropdown4"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -362,7 +363,7 @@ exports[`Component Examples renders DatePicker.Basic.Example.tsx correctly 1`] =
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown3-option"
+        id="Dropdown4-option"
         role="option"
       >
         <span>

@@ -57,6 +57,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
               word-wrap: break-word;
             }
         htmlFor="TextField0"
+        id="TextFieldLabel2"
       >
         Hover delay (ms)
       </label>
@@ -93,6 +94,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
       >
         <input
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel2"
           className=
               ms-TextField-field
               {
@@ -270,7 +272,7 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__2"
+          id="id__3"
         >
           Click for ContextualMenu
         </div>
