@@ -274,7 +274,20 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    const Content = (
+    const Button = () => (
+      <div className={this._classNames.flexContainer}>
+        {onRenderIcon(props, this._onRenderIcon)}
+        {this._onRenderTextContents()}
+        {onRenderAriaDescription(props, this._onRenderAriaDescription)}
+        {onRenderChildren(props, this._onRenderChildren)}
+        {!this._isSplitButton &&
+          (menuProps || menuIconProps || this.props.onRenderMenuIcon) &&
+          onRenderMenuIcon(this.props, this._onRenderMenuIcon)}
+        {this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu)}
+      </div>
+    );
+
+    const Content = keytipProps ? (
       // If we're making a split button, we won't put the keytip here
       <KeytipData
         keytipProps={!this._isSplitButton ? keytipProps : undefined}
@@ -283,19 +296,14 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       >
         {(keytipAttributes: any): JSX.Element => (
           <Tag {...buttonProps} {...keytipAttributes}>
-            <div className={this._classNames.flexContainer}>
-              {onRenderIcon(props, this._onRenderIcon)}
-              {this._onRenderTextContents()}
-              {onRenderAriaDescription(props, this._onRenderAriaDescription)}
-              {onRenderChildren(props, this._onRenderChildren)}
-              {!this._isSplitButton &&
-                (menuProps || menuIconProps || this.props.onRenderMenuIcon) &&
-                onRenderMenuIcon(this.props, this._onRenderMenuIcon)}
-              {this.state.menuProps && !this.state.menuProps.doNotLayer && onRenderMenu(menuProps, this._onRenderMenu)}
-            </div>
+            <Button />
           </Tag>
         )}
       </KeytipData>
+    ) : (
+      <Tag {...buttonProps}>
+        <Button />
+      </Tag>
     );
 
     if (menuProps && menuProps.doNotLayer) {
