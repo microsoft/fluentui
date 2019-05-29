@@ -1,4 +1,4 @@
-import { BaseComponent, IBaseProps, autobind, customizable } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps, customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle, mergeStyleSets, getFocusStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
 import { CodeSnippet } from '../CodeSnippet/index';
@@ -96,10 +96,9 @@ export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageE
     );
   }
 
-  @autobind
-  private _onToggleCode(): void {
+  private _onToggleCode = () => {
     this.setState({
       expanded: !this.state.expanded
     });
-  }
+  };
 }
