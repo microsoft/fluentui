@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/legacy",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/legacy",
+  "email": "elcraig@microsoft.com"
+}
