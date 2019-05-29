@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from 'office-ui-fabric-react/lib/Utilities';
-import { FloatingSuggestions } from '../../FloatingSuggestions/FloatingSuggestions';
-import { IFloatingSuggestionsProps } from '../../FloatingSuggestions/FloatingSuggestions.types';
+import { FloatingSuggestions } from '../../../FloatingSuggestions/FloatingSuggestions';
+import { IFloatingSuggestionsProps } from '../../../FloatingSuggestions/FloatingSuggestions.types';
+import { EditingItemComponentProps } from '../EditableItem';
 
-import * as styles from './EditingItem.scss';
+import * as styles from '../EditingItem.scss';
 
-export interface IEditingItemProps<TItem> extends React.HTMLAttributes<any> {
+export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**
    * The current item of the EditingItem
    */
@@ -20,14 +21,14 @@ export interface IEditingItemProps<TItem> extends React.HTMLAttributes<any> {
   /**
    * Callback for when the FloatingSuggestions is dismissed
    */
-  onSuggestionsHidden?: () => void;
+  onDismiss?: () => void;
 
   /**
    * Renders the floating suggestions for suggesting the result of the item edit.
    *
    * Not actually optional, since is what is needed to resolve the new item.
    */
-  onRenderFloatingPicker?: React.ComponentType<EditingItemFloatingPickerProps<TItem>>;
+  onRenderFloatingPicker?: React.ComponentType<EditingItemInnerFloatingPickerProps<TItem>>;
 
   /**
    * Callback for when the editing item removes the item from the well
@@ -42,7 +43,7 @@ export interface IEditingItemProps<TItem> extends React.HTMLAttributes<any> {
   getEditingItemText: (item: TItem) => string;
 }
 
-export type EditingItemFloatingPickerProps<T> = Pick<
+export type EditingItemInnerFloatingPickerProps<T> = Pick<
   IFloatingSuggestionsProps<T>,
   'componentRef' | 'onChange' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
 >;
@@ -51,11 +52,11 @@ export type EditingItemFloatingPickerProps<T> = Pick<
  * Wrapper around an item in a selection well that renders an item with a context menu for
  * replacing that item with another item.
  */
-export class EditingItem<TItem> extends React.PureComponent<IEditingItemProps<TItem>> {
+export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefaultEditingItemInnerProps<TItem>> {
   private _editingInput: HTMLInputElement;
   private _editingFloatingPicker = React.createRef<FloatingSuggestions<TItem>>();
 
-  constructor(props: IEditingItemProps<TItem>) {
+  constructor(props: IDefaultEditingItemInnerProps<TItem>) {
     super(props);
   }
 
@@ -101,7 +102,7 @@ export class EditingItem<TItem> extends React.PureComponent<IEditingItemProps<TI
         onChange={this._onSuggestionSelected}
         inputElement={this._editingInput}
         onRemoveSuggestion={this.props.onRemoveItem}
-        onSuggestionsHidden={this.props.onSuggestionsHidden}
+        onSuggestionsHidden={this.props.onDismiss}
       />
     );
   };
@@ -149,3 +150,12 @@ export class EditingItem<TItem> extends React.PureComponent<IEditingItemProps<TI
     this.props.onEditingComplete(this.props.item, item);
   };
 }
+
+type EditingItemProps<T> = Pick<
+  IDefaultEditingItemInnerProps<T>,
+  Exclude<keyof IDefaultEditingItemInnerProps<T>, keyof EditingItemComponentProps<T>>
+>;
+
+export const DefaultEditingItem = <T extends any>(outerProps: EditingItemProps<T>) => (innerProps: EditingItemComponentProps<T>) => (
+  <DefaultEditingItemInner {...outerProps} {...innerProps} />
+);

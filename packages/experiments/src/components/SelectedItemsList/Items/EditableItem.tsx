@@ -1,15 +1,19 @@
 import * as React from 'react';
 import { ISelectedItemProps } from '../SelectedItemsList.types';
-import { EditingItem, EditingItemFloatingPickerProps } from './EditingItem';
 import { ItemCanDispatchTrigger, Item } from './ItemTrigger.types';
+
+export type EditingItemComponentProps<T> = {
+  item: T;
+  onEditingComplete: (oldItem: T, newItem: T) => void;
+  onDismiss?: () => void;
+};
 
 /**
  * Parameters to the EditingItem higher-order component
  */
 export type EditableItemProps<T> = {
   itemComponent: ItemCanDispatchTrigger<T>;
-  onRenderFloatingPicker: React.ComponentType<EditingItemFloatingPickerProps<T>>;
-  getEditingItemText: (item: T) => string;
+  editingItemComponent: React.ComponentType<EditingItemComponentProps<T>>;
 };
 
 // `extends any` to trick the parser into parsing as a type decl instead of a jsx tag
@@ -31,15 +35,10 @@ export const EditableItem = <T extends any>(editableItemProps: EditableItemProps
     );
 
     const ItemComponent = editableItemProps.itemComponent;
+    const EditingItemComponent = editableItemProps.editingItemComponent;
 
     return isEditing ? (
-      <EditingItem
-        item={selectedItemProps.item}
-        onRenderFloatingPicker={editableItemProps.onRenderFloatingPicker}
-        onEditingComplete={onItemEdited}
-        getEditingItemText={editableItemProps.getEditingItemText}
-        onSuggestionsHidden={setEditingFalse}
-      />
+      <EditingItemComponent item={selectedItemProps.item} onEditingComplete={onItemEdited} onDismiss={setEditingFalse} />
     ) : (
       <ItemComponent {...selectedItemProps} onTrigger={setEditingTrue} />
     );

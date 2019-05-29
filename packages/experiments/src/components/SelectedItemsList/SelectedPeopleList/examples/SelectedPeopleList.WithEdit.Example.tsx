@@ -7,9 +7,10 @@ import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { SelectedPersona } from '../Items/SelectedPersona';
 import { EditableItem } from '../../Items/EditableItem';
+import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
-import { EditingItemFloatingPickerProps } from '../../Items/EditingItem';
+import { EditingItemInnerFloatingPickerProps } from '../../Items/subcomponents/DefaultEditingItem';
 import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
@@ -31,10 +32,16 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
    */
   private SelectedItem = EditableItem({
     itemComponent: TriggerOnContextMenu(SelectedPersona),
-    getEditingItemText: persona => persona.text || '',
-    onRenderFloatingPicker: (props: EditingItemFloatingPickerProps<IPersonaProps>) => (
-      <FloatingPeopleSuggestions {...props} suggestionsStore={this.suggestionsStore} onResolveSuggestions={this.model.resolveSuggestions} />
-    )
+    editingItemComponent: DefaultEditingItem({
+      getEditingItemText: persona => persona.text || '',
+      onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
+        <FloatingPeopleSuggestions
+          {...props}
+          suggestionsStore={this.suggestionsStore}
+          onResolveSuggestions={this.model.resolveSuggestions}
+        />
+      )
+    })
   });
 
   public render(): JSX.Element {

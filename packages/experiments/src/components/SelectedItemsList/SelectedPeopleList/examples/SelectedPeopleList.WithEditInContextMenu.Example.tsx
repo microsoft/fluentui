@@ -9,7 +9,8 @@ import { SelectedPersona } from '../Items/SelectedPersona';
 import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
 import { copyToClipboard } from '../../utils/copyToClipboard';
 import { EditableItem } from '../../Items/EditableItem';
-import { EditingItemFloatingPickerProps } from '../../Items/EditingItem';
+import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
+import { EditingItemInnerFloatingPickerProps } from '../../Items/subcomponents/DefaultEditingItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
 import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
@@ -32,10 +33,16 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
    * Build a custom selected item capable of being edited with a dropdown and capable of editing
    */
   private EditableItemWithContextMenu = EditableItem({
-    getEditingItemText: (persona: IPersonaProps) => persona.text || '',
-    onRenderFloatingPicker: (props: EditingItemFloatingPickerProps<IPersonaProps>) => (
-      <FloatingPeopleSuggestions {...props} suggestionsStore={this.suggestionsStore} onResolveSuggestions={this.model.resolveSuggestions} />
-    ),
+    editingItemComponent: DefaultEditingItem({
+      getEditingItemText: (persona: IPersonaProps) => persona.text || '',
+      onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
+        <FloatingPeopleSuggestions
+          {...props}
+          suggestionsStore={this.suggestionsStore}
+          onResolveSuggestions={this.model.resolveSuggestions}
+        />
+      )
+    }),
     itemComponent: ItemWithContextMenu({
       menuItems: (item, onTrigger) => [
         {
