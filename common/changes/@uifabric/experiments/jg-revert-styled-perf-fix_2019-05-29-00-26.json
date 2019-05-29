@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/experiments",
+      "comment": "Revert styled perf fixes temporarily.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/experiments",
+  "email": "jagore@microsoft.com"
+}
