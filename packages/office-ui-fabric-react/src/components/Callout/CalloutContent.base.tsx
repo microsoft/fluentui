@@ -261,7 +261,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _dismissOnScroll = (ev: Event) => {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
-      this._dismissOnClickOrScroll(ev, preventDismissOnScroll);
+      this._dismissOnClickOrScroll(ev);
     }
   };
 
@@ -273,7 +273,10 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnLostFocus = (ev: Event) => {
-    this._dismissOnClickOrScroll(ev, this.props.preventDismissOnLostFocus);
+    const { preventDismissOnLostFocus } = this.props;
+    if (!preventDismissOnLostFocus) {
+      this._dismissOnClickOrScroll(ev);
+    }
   };
 
   protected _setInitialFocus = (): void => {
@@ -294,17 +297,16 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._setHeightOffsetEveryFrame();
   };
 
-  private _dismissOnClickOrScroll(ev: Event, preventDismiss?: boolean) {
+  private _dismissOnClickOrScroll(ev: Event) {
     const target = ev.target as HTMLElement;
     const isEventTargetOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
 
     if (
-      !preventDismiss &&
-      ((!this._target && isEventTargetOutsideCallout) ||
-        (ev.target !== this._targetWindow &&
-          isEventTargetOutsideCallout &&
-          ((this._target as MouseEvent).stopPropagation ||
-            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
+      (!this._target && isEventTargetOutsideCallout) ||
+      (ev.target !== this._targetWindow &&
+        isEventTargetOutsideCallout &&
+        ((this._target as MouseEvent).stopPropagation ||
+          (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target)))))
     ) {
       this.dismiss(ev);
     }
