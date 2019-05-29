@@ -261,7 +261,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   protected _dismissOnScroll = (ev: Event) => {
     const { preventDismissOnScroll } = this.props;
     if (this.state.positions && !preventDismissOnScroll) {
-      this._dismissOnLostFocus(ev);
+      this._dismissOnClickOrScroll(ev, preventDismissOnScroll);
     }
   };
 
@@ -273,20 +273,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   };
 
   protected _dismissOnLostFocus = (ev: Event) => {
-    const target = ev.target as HTMLElement;
-    const clickedOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
-    const { preventDismissOnLostFocus } = this.props;
-
-    if (
-      !preventDismissOnLostFocus &&
-      ((!this._target && clickedOutsideCallout) ||
-        (ev.target !== this._targetWindow &&
-          clickedOutsideCallout &&
-          ((this._target as MouseEvent).stopPropagation ||
-            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
-    ) {
-      this.dismiss(ev);
-    }
+    this._dismissOnClickOrScroll(ev, this.props.preventDismissOnLostFocus);
   };
 
   protected _setInitialFocus = (): void => {
@@ -306,6 +293,22 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     this._updateAsyncPosition();
     this._setHeightOffsetEveryFrame();
   };
+
+  private _dismissOnClickOrScroll(ev: Event, preventDismiss?: boolean) {
+    const target = ev.target as HTMLElement;
+    const isEventTargetOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
+
+    if (
+      !preventDismiss &&
+      ((!this._target && isEventTargetOutsideCallout) ||
+        (ev.target !== this._targetWindow &&
+          isEventTargetOutsideCallout &&
+          ((this._target as MouseEvent).stopPropagation ||
+            (!this._target || (target !== this._target && !elementContains(this._target as HTMLElement, target))))))
+    ) {
+      this.dismiss(ev);
+    }
+  }
 
   private _addListeners() {
     // This is added so the callout will dismiss when the window is scrolled
