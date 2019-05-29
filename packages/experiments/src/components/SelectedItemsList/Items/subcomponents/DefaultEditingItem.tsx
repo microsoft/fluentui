@@ -4,7 +4,7 @@ import { FloatingSuggestions } from '../../../FloatingSuggestions/FloatingSugges
 import { IFloatingSuggestionsProps } from '../../../FloatingSuggestions/FloatingSuggestions.types';
 import { EditingItemComponentProps } from '../EditableItem';
 
-import * as styles from '../EditingItem.scss';
+import * as styles from './DefaultEditingItem.scss';
 
 export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttributes<any> {
   /**
