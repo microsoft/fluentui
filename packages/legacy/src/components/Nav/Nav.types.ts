@@ -100,18 +100,6 @@ export interface INavProps {
    * (Optional) The nav container aria label.
    */
   expandButtonAriaLabel?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   **/
-  expandedStateText?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   **/
-  collapsedStateText?: string;
 }
 
 /**
@@ -192,18 +180,6 @@ export interface INavLink {
   iconProps?: IIconProps;
 
   /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   */
-  engagementName?: string;
-
-  /**
-   * Deprecated at v0.68.1 and will be removed at \>= v1.0.0.
-   * @deprecated Removed at v1.0.0.
-   */
-  altText?: string;
-
-  /**
    * The name to use for functional automation tests
    */
   automationId?: string;
@@ -232,11 +208,6 @@ export interface INavLink {
    * Whether or not the link is disabled.
    */
   disabled?: boolean;
-
-  /**
-   * @deprecated Not used in the Nav control or anywhere else in office-ui-fabric-react.
-   */
-  parentId?: string;
 
   /**
    * (Optional) By default, any link with onClick defined will render as a button.

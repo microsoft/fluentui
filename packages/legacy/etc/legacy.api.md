@@ -24,13 +24,9 @@ export interface INav {
 // @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
-    // @deprecated
-    altText?: string;
     ariaLabel?: string;
     automationId?: string;
     disabled?: boolean;
-    // @deprecated
-    engagementName?: string;
     forceAnchor?: boolean;
     icon?: string;
     // @deprecated
@@ -41,8 +37,6 @@ export interface INavLink {
     links?: INavLink[];
     name: string;
     onClick?: (ev?: React_2.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    // @deprecated (undocumented)
-    parentId?: string;
     target?: string;
     title?: string;
     url: string;
@@ -61,12 +55,8 @@ export interface INavLinkGroup {
 export interface INavProps {
     ariaLabel?: string;
     className?: string;
-    // @deprecated
-    collapsedStateText?: string;
     componentRef?: IRefObject<INav>;
     expandButtonAriaLabel?: string;
-    // @deprecated
-    expandedStateText?: string;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
@@ -129,7 +119,7 @@ export interface INavStyles {
 export function isRelativeUrl(url: string): boolean;
 
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-// 
+//
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
 
