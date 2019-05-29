@@ -71,6 +71,9 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
   );
 
   return {
+    root: {
+      display: 'inline-flex'
+    },
     button: [
       globalClassNames.msMenuButton,
       {

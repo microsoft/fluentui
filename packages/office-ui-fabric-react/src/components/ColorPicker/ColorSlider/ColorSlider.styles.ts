@@ -36,7 +36,7 @@ export const getStyles = (props: IColorSliderStyleProps): IColorSliderStyles => 
         width: 20,
         height: 20,
         background: 'white',
-        border: `1px solid ${palette.neutralTertiary}`,
+        border: `1px solid ${palette.neutralSecondaryAlt}`,
         borderRadius: '50%',
         boxShadow: effects.elevation8,
         transform: 'translate(-50%, -50%)',
