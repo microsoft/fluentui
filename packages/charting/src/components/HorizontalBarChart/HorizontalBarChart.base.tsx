@@ -69,7 +69,6 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
           };
 
           const chartDataText = this._getChartDataText(points!);
-          const benchmark = this._createBenchmark(points!);
           const bars = this._createBars(points!, palette);
           const keyVal = this._uniqLineText + '_' + index;
           return (
@@ -85,7 +84,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                     <strong>{chartDataText}</strong>
                   </div>
                 </div>
-                {benchmark}
+                {points!.chartData![0].data && this._createBenchmark(points!)}
                 <svg className={this._classNames.chart}>
                   <g
                     id={keyVal}
@@ -185,21 +184,17 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
   }
 
   private _createBenchmark(data: IChartProps): JSX.Element {
-    if (data.chartData![0].data) {
-      const totalData = data.chartData![0].horizontalBarChartdata!.y;
-      const benchmarkData = data.chartData![0].data;
-      const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
+    const totalData = data.chartData![0].horizontalBarChartdata!.y;
+    const benchmarkData = data.chartData![0].data;
+    const benchmarkRatio = Math.round(((benchmarkData ? benchmarkData : 0) / totalData) * 100);
 
-      const benchmarkStyles = {
-        marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
-        marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)'
-      };
+    const benchmarkStyles = {
+      marginLeft: 'calc(' + benchmarkRatio + '% - 4px)',
+      marginRight: 'calc(' + (100 - benchmarkRatio) + '% - 4px)'
+    };
 
-      // tslint:disable-next-line:jsx-ban-props
-      return <div className={this._classNames.triangle} style={benchmarkStyles} />;
-    }
-
-    return <></>;
+    // tslint:disable-next-line:jsx-ban-props
+    return <div className={this._classNames.triangle} style={benchmarkStyles} />;
   }
 
   private _createBars(data: IChartProps, palette: IPalette): JSX.Element[] {
