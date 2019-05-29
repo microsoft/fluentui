@@ -374,6 +374,8 @@ Array [
 
 exports[`checks accessibility of TextField (TextField.ErrorMessage.Example) 1`] = `Array []`;
 
+exports[`checks accessibility of TextField (TextField.Masked.Example) 1`] = `Array []`;
+
 exports[`checks accessibility of TextField (TextField.Multiline.Example) 1`] = `Array []`;
 
 exports[`checks accessibility of TextField (TextField.PrefixAndSuffix.Example) 1`] = `
