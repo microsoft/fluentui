@@ -17,7 +17,7 @@ const NavCustomGroupHeadersExampleCodepen = require('!@uifabric/codepen-loader!@
 export const NavPageProps: IDocPageProps = {
   title: 'Nav',
   componentName: 'Nav',
-  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/office-ui-fabric-react/src/components/Nav',
+  componentUrl: 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/packages/legacy/src/components/Nav',
   examples: [
     {
       title: 'Basic nav with sample links',
