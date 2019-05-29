@@ -328,12 +328,14 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
+    // If this is a controlled component then no state change should take place.
+    if (selectedKey !== undefined || selectedKeys !== undefined) {
+      return;
+    }
+
     if (!multiSelect && !notifyOnReselect && index === selectedIndices[0]) {
       return;
-    } else if (!multiSelect && selectedKey === undefined) {
-      // Set the selected option if this is an uncontrolled component
-      newIndexes = [index];
-    } else if (multiSelect && selectedKeys === undefined) {
+    } else if (multiSelect) {
       newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
       if (checked) {
         const position = newIndexes.indexOf(index);
@@ -345,6 +347,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         // add the new selected index into the existing one
         newIndexes.push(index);
       }
+    } else {
+      // Set the selected option if this is an uncontrolled component
+      newIndexes = [index];
     }
 
     event.persist();

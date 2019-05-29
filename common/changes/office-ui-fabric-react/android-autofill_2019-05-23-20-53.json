@@ -2,8 +2,8 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "updates snapshots where checkins slipped through when jest was disabled",
-      "type": "none"
+      "comment": "Autofill: makes sure the fresh input is retrieved at the time of composition end",
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",

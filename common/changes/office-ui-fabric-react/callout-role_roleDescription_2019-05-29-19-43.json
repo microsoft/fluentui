@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Remove extra role attribute from callout root element, support aria-roledescription on callout main where role already resides",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "rpsenski@microsoft.com"
+}

@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: remove unecessary font override for ::placeholder",
+      "comment": "DetailList: only select the first item on keydown from header if there isn't already something selected",
       "type": "patch"
     }
   ],

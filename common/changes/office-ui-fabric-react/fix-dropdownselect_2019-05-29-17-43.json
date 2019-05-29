@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fix aria-label in Dropdown options list",
+      "comment": "Dropdown: fix issue where dropdown did not respect selectedKey(s) prop",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "anihan@microsoft.com"
+  "email": "joschect@microsoft.com"
 }
