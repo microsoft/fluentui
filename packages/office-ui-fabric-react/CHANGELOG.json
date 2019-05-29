@@ -2,6 +2,59 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.187.0",
+      "tag": "office-ui-fabric-react_v6.187.0",
+      "date": "Wed, 29 May 2019 12:21:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix aria-label in Dropdown options list",
+            "author": "Aniket Handa <atneik@users.noreply.github.com>",
+            "commit": "0dde4ac50fcaee5bdfaa9a44c827e8396a16d02d"
+          },
+          {
+            "comment": "Revert styled perf fixes temporarily.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9d0c9173ec62ebbaa43879af9d1cc97d66b2b8c9"
+          },
+          {
+            "comment": "Nav: Prepend link name to aria label for expand button and set it as default if no label is provided",
+            "author": "erichdev <a.erich@gmail.com>",
+            "commit": "4629fd9ff8ddef1b33afb3b01991bf52cffeacad"
+          },
+          {
+            "comment": "TextField: remove unecessary font override for ::placeholder",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "f58b5f1871a5a505b85151cd69fe90f5ff705da4"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Persona: rename and export function to get color",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "88d9b8194c02dcbb04c6d836dd303510034e5adf"
+          },
+          {
+            "comment": "Adds an example to TextField with customized masks",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "bc92fbcdb6ff78f2965d1107a4b1e874eb3f0fc8"
+          }
+        ],
+        "none": [
+          {
+            "comment": "updates snapshots where checkins slipped through when jest was disabled",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "f6cb3e9d8184f717487e55b4027d08fc52999b62"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.39.2` to `^6.39.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.186.1",
       "tag": "office-ui-fabric-react_v6.186.1",
       "date": "Fri, 24 May 2019 14:51:14 GMT",
