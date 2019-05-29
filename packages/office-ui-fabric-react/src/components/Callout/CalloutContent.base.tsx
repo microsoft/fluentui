@@ -45,7 +45,7 @@ const BEAK_ORIGIN_POSITION = { top: 0, left: 0 };
 // filter needs to be added as an additional way to set opacity.
 const OFF_SCREEN_STYLE = { opacity: 0, filter: 'opacity(0)' };
 // role and role description go hand-in-hand. Both would be included by spreading getNativeProps for a basic element
-// This constant array can be used to filter these out of native props spread on calloutRoot and apply them together on
+// This constant array can be used to filter these out of native props spread on callout root and apply them together on
 // calloutMain (the Popup component within the callout)
 const ARIA_ROLE_ATTRIBUTES = ['role', 'aria-roledescription'];
 
