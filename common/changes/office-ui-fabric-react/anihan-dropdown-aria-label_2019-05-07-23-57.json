@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Examples: Remove relative imports.",
+      "comment": "Fix aria-label in Dropdown options list",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "jagore@microsoft.com"
+  "email": "anihan@microsoft.com"
 }

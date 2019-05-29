@@ -60,7 +60,7 @@ module.exports = function preset() {
       : parallel('ts:commonjs', 'ts:esm', condition('ts:amd', () => argv().production && !argv().min));
   });
 
-  task('validate', series('tslint', () => (fs.existsSync('jest.setup.js') ? 'jest' : null)));
+  task('validate', fs.existsSync(path.join(process.cwd(), 'jest.config.js')) ? series('tslint', 'jest') : 'tslint');
   task('code-style', series('prettier', 'tslint'));
   task('update-api', series('clean', 'copy', 'sass', 'ts', 'update-api-extractor'));
   task('dev', series('clean', 'copy', 'sass', 'webpack-dev-server'));
@@ -76,11 +76,8 @@ module.exports = function preset() {
       'clean',
       'copy',
       'sass',
-      parallel(
-        condition('validate', () => !argv().min),
-        condition('lint-imports', () => argv().production && !argv().min),
-        series('ts', condition('webpack', () => !argv().min))
-      )
+      parallel(condition('validate', () => !argv().min), series('ts', condition('webpack', () => !argv().min))),
+      condition('lint-imports', () => argv().production && !argv().min)
     )
   );
 };
