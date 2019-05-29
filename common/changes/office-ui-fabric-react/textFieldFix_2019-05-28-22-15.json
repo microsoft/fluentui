@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TextField: Adds aria-labelledby to inputd",
+      "comment": "TextField: Adds aria-labelledby to input",
       "type": "patch"
     }
   ],
