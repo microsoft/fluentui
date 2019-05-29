@@ -185,21 +185,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField0"
@@ -353,21 +343,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #a6a6a6;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #a6a6a6;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             disabled={true}
@@ -531,21 +511,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField6"
@@ -708,21 +678,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField9"
@@ -867,21 +827,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField12"

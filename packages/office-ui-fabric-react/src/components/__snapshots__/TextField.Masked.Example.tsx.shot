@@ -1,37 +1,31 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] = `
+exports[`Component Examples renders TextField.Masked.Example.tsx correctly 1`] = `
 <div
   className=
-      ms-Fabric
+      ms-Stack
       {
-        -moz-osx-font-smoothing: grayscale;
-        -webkit-font-smoothing: antialiased;
-        color: #333333;
-        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-        font-size: 14px;
-        font-weight: 400;
+        box-sizing: border-box;
+        display: flex;
+        flex-direction: column;
+        flex-wrap: nowrap;
+        height: auto;
+        max-width: 300px;
+        width: auto;
       }
-      & button {
-        font-family: inherit;
+      & > * {
+        text-overflow: ellipsis;
       }
-      & input {
-        font-family: inherit;
+      & > *:not(:first-child) {
+        margin-top: 0px;
       }
-      & textarea {
-        font-family: inherit;
+      & > *:not(.ms-StackItem) {
+        flex-shrink: 1;
       }
 >
-  <div
-    className=
-
-        {
-          display: block;
-          margin-bottom: 10px;
-        }
-  >
-    No items selected
-  </div>
+  <p>
+    The mask has been modified here to allow "_"
+  </p>
   <div
     className=
         ms-TextField
@@ -40,15 +34,13 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
           -webkit-font-smoothing: antialiased;
           box-shadow: none;
           box-sizing: border-box;
-          display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 400;
-          margin-bottom: 10px;
+          margin-bottom: 0px;
           margin-left: 0px;
           margin-right: 0px;
           margin-top: 0px;
-          max-width: 300px;
           padding-bottom: 0px;
           padding-left: 0px;
           padding-right: 0px;
@@ -86,9 +78,8 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
               word-wrap: break-word;
             }
         htmlFor="TextField0"
-        id="TextFieldLabel2"
       >
-        Filter by name:
+        With input mask
       </label>
       <div
         className=
@@ -122,7 +113,6 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
       >
         <input
           aria-invalid={false}
-          aria-labelledby="TextFieldLabel2"
           className=
               ms-TextField-field
               {
@@ -170,29 +160,15 @@ exports[`Component Examples renders DetailsList.Basic.Example.tsx correctly 1`] 
           onChange={[Function]}
           onFocus={[Function]}
           onInput={[Function]}
+          onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
+          onPaste={[Function]}
           type="text"
-          value=""
+          value="mask: ????"
         />
       </div>
     </div>
-  </div>
-  <div
-    className=
-
-        {
-          cursor: default;
-          position: relative;
-        }
-  >
-    <div
-      className="ms-Viewport"
-      style={
-        Object {
-          "minHeight": 1,
-          "minWidth": 1,
-        }
-      }
-    />
   </div>
 </div>
 `;

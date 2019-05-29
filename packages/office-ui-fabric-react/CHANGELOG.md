@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 24 May 2019 14:51:14 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+
+## 6.187.0
+Wed, 29 May 2019 12:21:24 GMT
+
+### Minor changes
+
+- Persona: rename and export function to get color
+- Adds an example to TextField with customized masks
+
+### Patches
+
+- Fix aria-label in Dropdown options list
+- Revert styled perf fixes temporarily.
+- Nav: Prepend link name to aria label for expand button and set it as default if no label is provided
+- TextField: remove unecessary font override for ::placeholder
 
 ## 6.186.1
 Fri, 24 May 2019 14:51:14 GMT
