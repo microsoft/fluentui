@@ -335,9 +335,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 
     if (!multiSelect && !notifyOnReselect && index === selectedIndices[0]) {
       return;
-    } else if (!multiSelect) {
-      // Set the selected option if this is an uncontrolled component
-      newIndexes = [index];
     } else if (multiSelect) {
       newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
       if (checked) {
@@ -350,6 +347,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         // add the new selected index into the existing one
         newIndexes.push(index);
       }
+    } else {
+      // Set the selected option if this is an uncontrolled component
+      newIndexes = [index];
     }
 
     event.persist();
