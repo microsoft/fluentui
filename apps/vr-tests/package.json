@@ -46,7 +46,7 @@
     "react": ">=16.8.0 <17.0.0",
     "react-dom": ">=16.8.0 <17.0.0",
     "tslib": "^1.7.1",
-    "typescript": "3.5.0-dev.20190525",
+    "typescript": "3.5.0-dev.20190529",
   },
   "disabledTasks": [
     "verify-api-extractor"
