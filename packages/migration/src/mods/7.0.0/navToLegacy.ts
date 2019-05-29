@@ -19,7 +19,7 @@ const fromPackage = 'office-ui-fabric-react';
 const toPackage = '@uifabric/legacy';
 
 export default migration(
-  'Nav should come from @uifabric/legacy, not from office-ui-fabric-react',
+  'Nav has moved from office-ui-fabric-react to @uifabric/legacy',
   (opts: IMigrationOptions): ModResult[] => {
     return mod('**/*.ts?(x)', opts).asTypescript((node, modder) => {
       return moveImports(node, modder, fromPackage, toPackage, legacyExports);
