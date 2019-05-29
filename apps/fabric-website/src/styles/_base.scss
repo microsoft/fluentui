@@ -60,4 +60,9 @@
       @include ms-fontSize-16;
     }
   }
+
+  // Feedback section styles
+  .Feedback-button .ms-Button-label { // Feedback button color overridden by UHF
+    @include ms-fontColor-white;
+  }
 }
