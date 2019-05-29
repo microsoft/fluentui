@@ -487,6 +487,20 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('2, 4');
     });
 
+    it("Preserves selected items in controlled case if they don't change", () => {
+      ReactDOM.render(<Dropdown label="testgroup" selectedKey={'1'} options={DEFAULT_OPTIONS} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1');
+      ReactTestUtils.Simulate.click(dropdownRoot);
+
+      const secondItemElement = document.querySelectorAll('.ms-Dropdown-item')[2] as HTMLElement;
+      ReactTestUtils.Simulate.click(secondItemElement);
+
+      expect(titleElement.textContent).toEqual('1');
+    });
+
     it('Can change items in uncontrolled case', () => {
       let dropdownRoot: HTMLElement | undefined;
 
