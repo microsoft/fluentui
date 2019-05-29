@@ -28,7 +28,10 @@ const DEFAULT_STRINGS = {
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close date picker',
+  weekNumberFormatString: 'Week number {0}'
 };
 
 const leftArrow = 'Up';

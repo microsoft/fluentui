@@ -311,9 +311,24 @@ export interface IDatePickerStrings {
   nextYearAriaLabel?: string;
 
   /**
+   * Aria-label for the "previous year range" button in year picker.
+   */
+  prevYearRangeAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year range" button in year picker.
+   */
+  nextYearRangeAriaLabel?: string;
+
+  /**
    * Aria-label for the "close" button.
    */
   closeButtonAriaLabel?: string;
+
+  /**
+   * Aria-label format string for the week number header. Should have 1 string param e.g. "week number `{0}`"
+   */
+  weekNumberFormatString?: string;
 }
 
 /**

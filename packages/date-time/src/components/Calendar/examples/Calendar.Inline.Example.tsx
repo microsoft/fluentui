@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { DefaultButton } from 'office-ui-fabric-react';
-import { addDays, getDateRangeArray } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { addDays, getDateRangeArray } from '../../../utilities/dateMath/DateMath';
 import { Calendar, DateRangeType, DayOfWeek } from '@uifabric/date-time';
 
 import * as styles from './Calendar.Example.scss';
@@ -14,8 +14,11 @@ const DayPickerStrings = {
   weekNumberFormatString: 'Week number {0}',
   prevMonthAriaLabel: 'Previous month',
   nextMonthAriaLabel: 'Next month',
+  prevYearAriaLabel: 'Previous year',
   nextYearAriaLabel: 'Next year',
-  prevYearAriaLabel: 'Previous year'
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close'
 };
 
 export interface ICalendarInlineExampleState {

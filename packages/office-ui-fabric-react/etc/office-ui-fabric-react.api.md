@@ -1994,8 +1994,10 @@ export interface ICalendarStrings {
     months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
     shortDays: string[];
     shortMonths: string[];
     weekNumberFormatString?: string;

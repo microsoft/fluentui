@@ -209,11 +209,12 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
-    const prevRangeAriaLabel = yearStrings.prevRangeAriaLabel || yearStrings.rangeAriaLabel;
+    const prevRangeAriaLabel = yearStrings.prevRangeAriaLabel;
+    const prevRange = { fromYear: this.props.fromYear - CELL_COUNT, toYear: this.props.toYear - CELL_COUNT };
     const prevAriaLabel = prevRangeAriaLabel
       ? typeof prevRangeAriaLabel === 'string'
         ? (prevRangeAriaLabel as string)
-        : (prevRangeAriaLabel as ICalendarYearRangeToString)(this.props)
+        : (prevRangeAriaLabel as ICalendarYearRangeToString)(prevRange)
       : undefined;
     const disabled = this.isDisabled;
 
@@ -262,11 +263,12 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
-    const nextRangeAriaLabel = yearStrings.nextRangeAriaLabel || yearStrings.rangeAriaLabel;
+    const nextRangeAriaLabel = yearStrings.nextRangeAriaLabel;
+    const nextRange = { fromYear: this.props.fromYear + CELL_COUNT, toYear: this.props.toYear + CELL_COUNT };
     const nextAriaLabel = nextRangeAriaLabel
       ? typeof nextRangeAriaLabel === 'string'
         ? (nextRangeAriaLabel as string)
-        : (nextRangeAriaLabel as ICalendarYearRangeToString)(this.props)
+        : (nextRangeAriaLabel as ICalendarYearRangeToString)(nextRange)
       : undefined;
     const disabled = this.isDisabled;
 
@@ -348,6 +350,8 @@ class CalendarYearTitle extends React.Component<ICalendarYearHeaderProps, {}> {
           aria-label={ariaLabel}
           role="button"
           type="button"
+          aria-atomic={true}
+          aria-live="polite"
         >
           {this._onRenderYear(fromYear)} - {this._onRenderYear(toYear)}
         </button>
