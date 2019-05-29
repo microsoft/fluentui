@@ -6,9 +6,7 @@ import { CalendarInlineExample } from './examples/Calendar.Inline.Example';
 import { addMonths, addYears, addWeeks, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/legacy/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
-const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/legacy/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarInlineExampleCode = require('!raw-loader!@uifabric/legacy/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
-const CalendarInlineExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/legacy/src/components/Calendar/examples/Calendar.Inline.Example.tsx') as string;
 
 const today = new Date(Date.now());
 
@@ -28,8 +26,7 @@ export const CalendarPageProps: IDocPageProps = {
           autoNavigateOnSelection={false}
           showGoToToday={true}
         />
-      ),
-      codepenJS: CalendarInlineExampleCodepen
+      )
     },
     {
       title: 'Inline Calendar with overlaid month picker when header is clicked',
@@ -191,8 +188,7 @@ export const CalendarPageProps: IDocPageProps = {
       title: 'Calendar launched from a button',
       code: CalendarButtonExampleCode,
 
-      view: <CalendarButtonExample highlightCurrentMonth={true} />,
-      codepenJS: CalendarButtonExampleCodepen
+      view: <CalendarButtonExample highlightCurrentMonth={true} />
     },
     {
       title: 'Month picker launched from a button',
