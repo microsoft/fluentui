@@ -1,7 +1,7 @@
-import semver from 'semver';
 import fs from 'fs';
 import path from 'path';
-import { applyRegisteredMigrations, registerMigration } from './migration';
+import semver from 'semver';
+import { applyRegisteredMigrations, registerMigration, warn } from './migration';
 import { CliParser, displayHelp } from './cli/cli';
 
 const args = new CliParser().parse(process.argv.slice(2));
@@ -45,7 +45,7 @@ function applyMigrations(): void {
         registerMigration(require(modPath).default);
       });
 
-      applyRegisteredMigrations({ dryRun: !args.writeResults });
+      applyRegisteredMigrations({ dryRun: !args.writeResults, warn: warn });
     }
   } catch (e) {
     console.error(e);

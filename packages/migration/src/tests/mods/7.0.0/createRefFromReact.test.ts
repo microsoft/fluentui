@@ -4,7 +4,8 @@ import { runMigration } from '../utils';
 
 describe('createRefFromReact', () => {
   it('transforms createRef', async () => {
-    const transformedFile = await runMigration(migration, path.join('7.0.0', 'createRef.tsx'));
-    expect(transformedFile).toMatchSnapshot();
+    const result = await runMigration(migration, path.join('7.0.0', 'createRef.tsx'));
+    expect(result.warnings).toEqual([]);
+    expect(result.contents).toMatchSnapshot();
   });
 });
