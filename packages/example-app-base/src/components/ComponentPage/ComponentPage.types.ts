@@ -16,8 +16,6 @@ export interface IComponentPageProps {
   componentName: string;
   /** Component examples **/
   exampleCards?: JSX.Element;
-  /** @deprecated Use `exampleCards` */
-  implementationExampleCards?: JSX.Element;
   /** Component properties table(s) **/
   propertiesTables?: JSX.Element;
   bestPractices?: JSX.Element;
@@ -26,18 +24,12 @@ export interface IComponentPageProps {
   overview?: JSX.Element;
   /**
    * Related link
-   * @deprecated No longer shown
    */
   related?: JSX.Element;
   isHeaderVisible?: boolean;
   areBadgesVisible?: boolean;
   /** className of the component being documented */
   className?: string;
-  /**
-   * Status of the component; e.g. keyboard accessible
-   * @deprecated Still rendered for now but will be removed in >= 7
-   */
-  componentStatus?: JSX.Element;
   /** Pass through other sections for ComponentPage */
   otherSections?: IComponentPageSection[];
   /** Includes the feedback section **/
@@ -103,7 +95,7 @@ export interface IComponentPageProps {
   jsonDocs?: IPageJson;
 }
 
-export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme' | 'componentStatus'>;
+export type IComponentPageStyleProps = Pick<IComponentPageProps, 'theme'>;
 
 export interface IComponentPageStyles {
   root: IStyle;
@@ -129,8 +121,6 @@ export interface IComponentPageStyles {
   variantsTitle: IStyle;
   variantsList: IStyle;
   implementationSection: IStyle;
-  /** @deprecated */
-  implementationExamplesSection: IStyle;
   feedbackSection: IStyle;
   /** Wrapper for best practices, dos, and don'ts */
   bestPracticesSection: IStyle;
@@ -143,5 +133,4 @@ export interface IComponentPageStyles {
   dosLine: IStyle;
   dontsSection: IStyle;
   dontsLine: IStyle;
-  statusSection: IStyle;
 }

@@ -7,11 +7,6 @@ export interface ICodepenProps {
   jsContent: string;
   /** Optional button type */
   buttonAs?: IComponentAs<IButtonProps>;
-  /**
-   * Custom class name for the button.
-   * @deprecated Use `styles`
-   */
-  buttonClassName?: string;
 
   /** Theme provided by higher-order component. */
   theme?: ITheme;

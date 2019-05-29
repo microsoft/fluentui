@@ -11,8 +11,7 @@ import { ButtonScreenReaderExample } from './examples/Button.ScreenReader.Exampl
 import { ButtonSplitExample } from './examples/Button.Split.Example';
 import { ButtonSplitCustomExample } from './examples/Button.CustomSplit.Example';
 import { ButtonToggleExample } from './examples/Button.Toggle.Example';
-import { IDocPageProps, ChecklistStatus } from '../../common/DocPage.types';
-export { ChecklistStatus };
+import { IDocPageProps } from '../../common/DocPage.types';
 
 const ButtonActionExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Action.Example.tsx') as string;
 const ButtonAnchorExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Button/examples/Button.Anchor.Example.tsx') as string;

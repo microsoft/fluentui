@@ -56,11 +56,9 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
         <div className={componentName}>
           {this._getPageHeader()}
           <div className={classNames.body}>
-            {this._getComponentStatusBadges()}
             {this._getOverview()}
             {this._getBestPractices()}
             {this._getVariants()}
-            {this._getImplementationExamples()}
             {this._getPropertiesTable()}
             {this._getFeedback()}
             {otherSections && otherSections.map(section => this._getSection(section))}
@@ -90,7 +88,6 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
       { title: 'Overview' },
       !!(props.bestPractices || (props.dos && props.donts)) && { title: 'Best Practices' },
       props.exampleCards && { title: 'Variants' },
-      props.implementationExampleCards && { title: 'Implementation Examples' },
       props.propertiesTables && { title: 'Implementation' },
       props.isFeedbackVisible && { title: 'Feedback' },
       ...(props.otherSections || [])
@@ -212,27 +209,9 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     }
   }
 
-  private _getImplementationExamples(): JSX.Element | undefined {
-    const { implementationExampleCards } = this.props;
-    if (implementationExampleCards) {
-      return this._getSection({
-        title: 'Implementation Examples',
-        section: implementationExampleCards,
-        wrapperClass: this._styles.implementationExamplesSection
-      });
-    }
-  }
-
   private _getFeedback(): JSX.Element | undefined {
     if (this.props.isFeedbackVisible && this.props.feedback) {
       return this._getSection({ title: 'Feedback', section: this.props.feedback, wrapperClass: this._styles.feedbackSection });
-    }
-  }
-
-  private _getComponentStatusBadges(): JSX.Element | undefined {
-    const classNames = this._styles;
-    if (this.props.componentStatus && this.props.areBadgesVisible) {
-      return <div className={css(classNames.section, classNames.statusSection)}>{this.props.componentStatus}</div>;
     }
   }
 

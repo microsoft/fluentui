@@ -13,8 +13,3 @@ createApp(
   () => <h1 style={{ padding: '40px' }}>Example App Home</h1>,
   'Example App'
 );
-
-// import { createSite, baseDefinition } from './utilities/index2';
-// import { HomePage } from './pages/HomePage/HomePage';
-
-// createSite(baseDefinition, HomePage);
