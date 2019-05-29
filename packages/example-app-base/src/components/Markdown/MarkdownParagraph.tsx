@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { IClassNames, IStyleFunction, classNamesFunction, styled, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { FontSizes } from '@uifabric/fluent-theme';
 
 export interface IMarkdownParagraphProps {
   styles?: IStyleFunctionOrObject<IMarkdownParagraphStyleProps, IMarkdownParagraphStyles>;
@@ -20,8 +21,9 @@ const getStyles: IStyleFunction<IMarkdownParagraphStyleProps, IMarkdownParagraph
   const { theme, isTodo } = props;
   return {
     root: [
-      theme.fonts.medium,
       {
+        fontSize: FontSizes.size16,
+        lineHeight: '1.4', // quotes prevent conversion to px
         marginBottom: 4
       },
       isTodo && {
