@@ -4,17 +4,249 @@
 
 ```ts
 
+import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import * as CSS from 'csstype';
+import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
+import { IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
 import { IComponentAs } from 'office-ui-fabric-react/lib/Utilities';
 import { IIconProps } from 'office-ui-fabric-react/lib/Icon';
 import { IRefObject } from 'office-ui-fabric-react/lib/Utilities';
 import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
+import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
 import * as PropTypes from 'prop-types';
 import * as React_2 from 'react';
+
+// @public (undocumented)
+export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
+    constructor(props: ICalendarProps);
+    // (undocumented)
+    componentDidUpdate(): void;
+    // (undocumented)
+    componentWillReceiveProps(nextProps: ICalendarProps): void;
+    // (undocumented)
+    static defaultProps: ICalendarProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+}
+
+// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
+// 
+// @public
+export const DatePicker: React.StatelessComponent<IDatePickerProps>;
+
+// @public (undocumented)
+export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+    constructor(props: IDatePickerProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
+    // (undocumented)
+    componentWillReceiveProps(nextProps: IDatePickerProps): void;
+    // (undocumented)
+    static defaultProps: IDatePickerProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    reset(): void;
+    }
+
+export { DateRangeType }
+
+export { DayOfWeek }
+
+export { FirstWeekOfYear }
+
+// @public (undocumented)
+export interface ICalendar {
+    focus: () => void;
+}
+
+// @public (undocumented)
+export interface ICalendarFormatDateCallbacks {
+    formatDay: (date: Date) => string;
+    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
+    formatYear: (date: Date) => string;
+}
+
+// @public (undocumented)
+export interface ICalendarIconStrings {
+    closeIcon?: string;
+    leftNavigation?: string;
+    rightNavigation?: string;
+}
+
+// @public (undocumented)
+export interface ICalendarProps extends IBaseProps<ICalendar>, React.HTMLAttributes<HTMLElement> {
+    allFocusable?: boolean;
+    autoNavigateOnSelection?: boolean;
+    className?: string;
+    componentRef?: IRefObject<ICalendar>;
+    dateRangeType?: DateRangeType;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    firstDayOfWeek?: DayOfWeek;
+    firstWeekOfYear?: FirstWeekOfYear;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    maxDate?: Date;
+    minDate?: Date;
+    navigationIcons?: ICalendarIconStrings;
+    onDismiss?: () => void;
+    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
+    restrictedDates?: Date[];
+    selectDateOnClick?: boolean;
+    // @deprecated
+    shouldFocusOnMount?: boolean;
+    showCloseButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showSixWeeksByDefault?: boolean;
+    showWeekNumbers?: boolean;
+    strings: ICalendarStrings | null;
+    today?: Date;
+    value?: Date;
+    workWeekDays?: DayOfWeek[];
+    yearPickerHidden?: boolean;
+}
+
+// @public (undocumented)
+export interface ICalendarState {
+    isDayPickerVisible?: boolean;
+    isMonthPickerVisible?: boolean;
+    navigatedDayDate?: Date;
+    navigatedMonthDate?: Date;
+    selectedDate?: Date;
+}
+
+// @public (undocumented)
+export interface ICalendarStrings {
+    closeButtonAriaLabel?: string;
+    days: string[];
+    goToToday: string;
+    months: string[];
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    shortDays: string[];
+    shortMonths: string[];
+    weekNumberFormatString?: string;
+}
+
+// @public (undocumented)
+export interface IDatePicker {
+    focus(): void;
+    reset(): void;
+}
+
+// @public (undocumented)
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+    allFocusable?: boolean;
+    allowTextInput?: boolean;
+    ariaLabel?: string;
+    borderless?: boolean;
+    calendarAs?: IComponentAs<ICalendarProps>;
+    calendarProps?: ICalendarProps;
+    calloutProps?: ICalloutProps;
+    className?: string;
+    componentRef?: IRefObject<IDatePicker>;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    disableAutoFocus?: boolean;
+    disabled?: boolean;
+    firstDayOfWeek?: DayOfWeek;
+    firstWeekOfYear?: FirstWeekOfYear;
+    formatDate?: (date?: Date) => string;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    initialPickerDate?: Date;
+    isMonthPickerVisible?: boolean;
+    isRequired?: boolean;
+    label?: string;
+    maxDate?: Date;
+    minDate?: Date;
+    onAfterMenuDismiss?: () => void;
+    onSelectDate?: (date: Date | null | undefined) => void;
+    parseDateFromString?: (dateStr: string) => Date | null;
+    pickerAriaLabel?: string;
+    placeholder?: string;
+    showCloseButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showWeekNumbers?: boolean;
+    strings?: IDatePickerStrings;
+    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+    tabIndex?: number;
+    textField?: ITextFieldProps;
+    theme?: ITheme;
+    today?: Date;
+    underlined?: boolean;
+    value?: Date;
+}
+
+// @public (undocumented)
+export interface IDatePickerState {
+    // (undocumented)
+    errorMessage?: string;
+    // (undocumented)
+    formattedDate?: string;
+    // (undocumented)
+    isDatePickerShown?: boolean;
+    // (undocumented)
+    selectedDate?: Date;
+}
+
+// @public (undocumented)
+export interface IDatePickerStrings {
+    closeButtonAriaLabel?: string;
+    days: string[];
+    goToToday: string;
+    invalidInputErrorMessage?: string;
+    isOutOfBoundsErrorMessage?: string;
+    isRequiredErrorMessage?: string;
+    months: string[];
+    nextMonthAriaLabel?: string;
+    nextYearAriaLabel?: string;
+    prevMonthAriaLabel?: string;
+    prevYearAriaLabel?: string;
+    shortDays: string[];
+    shortMonths: string[];
+}
+
+// @public (undocumented)
+export interface IDatePickerStyleProps {
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    isDatePickerShown?: boolean;
+    // (undocumented)
+    label?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDatePickerStyles {
+    // (undocumented)
+    callout: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    root: IStyle;
+    // (undocumented)
+    textField: IStyle;
+}
 
 // @public (undocumented)
 export interface INav {
@@ -118,8 +350,6 @@ export interface INavStyles {
 // @public (undocumented)
 export function isRelativeUrl(url: string): boolean;
 
-// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-//
 // @public (undocumented)
 export const Nav: React.StatelessComponent<INavProps>;
 

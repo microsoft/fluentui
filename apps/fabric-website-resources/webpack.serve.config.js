@@ -15,14 +15,14 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
-      '@uifabric/legacy/src': path.join(__dirname, '../../packages/legacy/src'),
-      '@uifabric/legacy/lib': path.join(__dirname, '../../packages/legacy/src'),
-      '@uifabric/legacy$': path.join(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy$': path.resolve(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy/src': path.resolve(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy/lib': path.resolve(__dirname, '../../packages/legacy/src'),
       'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      '@uifabric/fluent-theme$': path.join(__dirname, '../../packages/fluent-theme/src'),
-      '@uifabric/theme-samples$': path.join(__dirname, '../../packages/theme-samples/src'),
+      '@uifabric/fluent-theme$': path.resolve(__dirname, '../../packages/fluent-theme/src'),
+      '@uifabric/theme-samples$': path.resolve(__dirname, '../../packages/theme-samples/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'
     }

@@ -1,5 +1,5 @@
 import { DayOfWeek, ICalendarProps } from '../../Calendar';
-import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '@uifabric/styling';
 import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '@uifabric/utilities';
