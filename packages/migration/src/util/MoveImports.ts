@@ -1,8 +1,12 @@
+import os from 'os';
 import ts from 'typescript';
 import { Modder, TypescriptMod } from 'riceburn/lib/interfaces';
 
-export function generateImport(packageName: string, namedImports: string[]): string {
-  return `import { ${namedImports.join(', ')} } from '${packageName}'`;
+export function generateImport(packageName: string, namedImports: string[]): string | undefined {
+  if (namedImports.length === 0) {
+    return undefined;
+  }
+  return `import { ${namedImports.join(', ')} } from '${packageName}';`;
 }
 
 export function moveImports(node: ts.Node, modder: Modder, fromPackage: string, toPackage: string, constantNames: string[]): TypescriptMod {
@@ -25,7 +29,9 @@ export function moveImports(node: ts.Node, modder: Modder, fromPackage: string, 
       }
     });
     if (migratedImports.length > 0) {
-      const importStatements = [generateImport(fromPackage, untouchedImports), generateImport(toPackage, migratedImports)].join('\n');
+      const importStatements = [generateImport(fromPackage, untouchedImports), generateImport(toPackage, migratedImports)]
+        .filter(s => s !== undefined)
+        .join(os.EOL);
       return modder.replace(node, importStatements);
     }
   }
