@@ -1,7 +1,7 @@
 import { BaseComponent, IBaseProps, autobind, customizable } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle, mergeStyleSets, getFocusStyle, IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import * as React from 'react';
-import { TypeScriptSnippet } from './TypeScriptSnippet';
+import { CodeSnippet } from '../CodeSnippet/index';
 import { PageHeader } from './PageHeader';
 
 export interface IPageExampleCardStyles {
@@ -90,7 +90,7 @@ export class PageExampleCard extends BaseComponent<IPageExampleCardProps, IPageE
             {expanded ? 'Hide code' : 'Show code'}
           </button>
         </div>
-        {expanded && <TypeScriptSnippet>{code}</TypeScriptSnippet>}
+        {expanded && <CodeSnippet language="tsx">{code}</CodeSnippet>}
         {children}
       </div>
     );

@@ -4,16 +4,47 @@
 
 const fs = require('fs');
 const path = require('path');
-const { argv, logger } = require('@uifabric/build/just-task').just;
+const { argv, logger } = require('@uifabric/build').just;
 
-module.exports = function createFlightConfigTaskFactory() {
-  return function createFlightConfigTask() {
+/**
+ * A Task Function for Fabric Website that Generates a Manifest for Non-UHF "Internal" Site
+ */
+module.exports.createInternalFlightConfigTask = function() {
+  return function() {
     let date = new Date();
 
     // Produces date string of the form yyyyMMdd, e.g. 20180701
     let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
 
     let configsToGenerate = ['fabric-website-internal-prod-config', 'fabric-website-internal-df-config'];
+
+    let configData = {
+      version: process.env.BUILD_BUILDNUMBER || '0',
+      baseCDNUrl: argv().baseCDNUrl,
+      buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
+      createdDate: today
+    };
+
+    logger.info('config data:');
+    logger.info(configData);
+
+    configsToGenerate.forEach(fileName => {
+      generateConfig(fileName, path.resolve(process.cwd(), 'flights'), configData);
+    });
+  };
+};
+
+/**
+ * A Task Function for Fabric Website that Generates a Manifest for UHF Public Site
+ */
+module.exports.createPublicFlightConfigTask = function() {
+  return function() {
+    let date = new Date();
+
+    // Produces date string of the form yyyyMMdd, e.g. 20180701
+    let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
+
+    let configsToGenerate = ['fabric-website-prod', 'fabric-website-df'];
 
     let configData = {
       version: process.env.BUILD_BUILDNUMBER || '0',

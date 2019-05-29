@@ -657,6 +657,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     focus: (shouldOpenOnFocus?: boolean | undefined, useFocusAsync?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
     }
 
 // @public (undocumented)
@@ -1063,6 +1064,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     focus(shouldOpenOnFocus?: boolean): void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IDropdownOption[];
     // (undocumented)
     setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void;
     }
@@ -1262,6 +1264,9 @@ export const FocusZoneTabbableElements: {
 export type FocusZoneTabbableElements = typeof FocusZoneTabbableElements[keyof typeof FocusZoneTabbableElements];
 
 // @public (undocumented)
+export function getAllSelectedOptions(options: ISelectableOption[], selectedIndices: number[]): ISelectableOption[];
+
+// @public (undocumented)
 export function getBackgroundShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public
@@ -1294,6 +1299,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -2640,6 +2648,7 @@ export interface IColumnResizeDetails {
 export interface IComboBox {
     dismissMenu: () => void;
     focus(shouldOpenOnFocus?: boolean, useFocusAsync?: boolean): boolean;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 // @public (undocumented)
@@ -4219,6 +4228,7 @@ export interface IDragOptions {
 export interface IDropdown {
     // (undocumented)
     focus: (shouldOpenOnFocus?: boolean) => void;
+    readonly selectedOptions: IDropdownOption[];
 }
 
 // @public
@@ -4273,6 +4283,7 @@ export interface IDropdownState {
 // @public
 export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
     hasError: boolean;
+    hasLabel: boolean;
     isOpen: boolean;
     isRenderingPlaceholder: boolean;
     panelClassName?: string;
@@ -4519,7 +4530,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
+    // @deprecated
     ariaDescribedBy?: string;
+    // @deprecated
     ariaLabelledBy?: string;
     as?: React.ReactType;
     checkForNoWrap?: boolean;
@@ -5523,7 +5536,7 @@ export interface INavProps {
 // @public (undocumented)
 export interface INavState {
     // (undocumented)
-    isGroupCollapsed?: {
+    isGroupCollapsed: {
         [key: string]: boolean;
     };
     // (undocumented)
@@ -6683,11 +6696,19 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React_2.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
-    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyleProps" needs to be exported by the entry point index.d.ts
-    // Warning: (ae-forgotten-export) The symbol "IShimmeredDetailsListStyles" needs to be exported by the entry point index.d.ts
-    // 
     // @deprecated
     styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+}
+
+// @public
+export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
+    className?: string;
+    enableShimmer?: boolean;
+};
+
+// @public
+export interface IShimmeredDetailsListStyles {
+    root: IStyle;
 }
 
 // @public
@@ -6842,6 +6863,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     min?: number;
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
@@ -6868,26 +6890,17 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISl
 
 // @public (undocumented)
 export interface ISliderStyles {
-    // (undocumented)
     activeSection: IStyle;
-    // (undocumented)
     container: IStyle;
-    // (undocumented)
     inactiveSection: IStyle;
-    // (undocumented)
     line: IStyle;
-    // (undocumented)
     lineContainer: IStyle;
-    // (undocumented)
     root: IStyle;
-    // (undocumented)
     slideBox: IStyle;
-    // (undocumented)
     thumb: IStyle;
-    // (undocumented)
     titleLabel: IStyle;
-    // (undocumented)
     valueLabel: IStyle;
+    zeroTick: IStyle;
 }
 
 // @public (undocumented)
@@ -7402,6 +7415,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    footerContent?: string | JSX.Element;
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7498,7 +7512,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
-    errorMessage?: string;
+    errorMessage?: string | JSX.Element;
     // @deprecated (undocumented)
     iconClass?: string;
     iconProps?: IIconProps;
@@ -7514,8 +7528,8 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
     // @deprecated (undocumented)
     onChanged?: (newValue: any) => void;
-    onGetErrorMessage?: (value: string) => string | PromiseLike<string> | undefined;
-    onNotifyValidationResult?: (errorMessage: string, value: string | undefined) => void;
+    onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
+    onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
     // @deprecated (undocumented)
     onRenderAddon?: IRenderFunction<ITextFieldProps>;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
@@ -7537,7 +7551,7 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
 
 // @public (undocumented)
 export interface ITextFieldState {
-    errorMessage: string;
+    errorMessage: string | JSX.Element;
     isFocused: boolean;
     // (undocumented)
     value: string;
@@ -7642,7 +7656,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
@@ -8061,14 +8075,12 @@ export const Nav: React_2.StatelessComponent<INavProps>;
 export class NavBase extends React.Component<INavProps, INavState> implements INav {
     constructor(props: INavProps);
     // (undocumented)
-    componentWillReceiveProps(newProps: INavProps): void;
-    // (undocumented)
     static defaultProps: INavProps;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
     readonly selectedKey: string | undefined;
-}
+    }
 
 // @public (undocumented)
 export const NormalPeoplePicker: React.StatelessComponent<IPeoplePickerProps>;
@@ -9161,7 +9173,7 @@ export class SuggestionsItem<T> extends BaseComponent<ISuggestionItemProps<T>, {
 
 // @public (undocumented)
 export class SuggestionsStore<T> {
-    constructor();
+    constructor(options?: SuggestionsStoreOptions<T>);
     // (undocumented)
     convertSuggestionsToSuggestionItems(suggestions: Array<ISuggestionModel<T> | T>): ISuggestionModel<T>[];
     // (undocumented)
@@ -9175,6 +9187,11 @@ export class SuggestionsStore<T> {
     // (undocumented)
     updateSuggestions(newSuggestions: T[]): void;
 }
+
+// @public (undocumented)
+export type SuggestionsStoreOptions<T> = {
+    getAriaLabel?: (item: T) => string;
+};
 
 // @public (undocumented)
 export const SwatchColorPicker: React_2.StatelessComponent<ISwatchColorPickerProps>;
@@ -9431,6 +9448,7 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
     protected _onScrollToItem: (itemIndex: number) => void;
     // (undocumented)
     render(): JSX.Element;
+    readonly selectedOptions: IComboBoxOption[];
 }
 
 

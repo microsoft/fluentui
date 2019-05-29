@@ -16,7 +16,7 @@ export function warnConditionallyRequiredProps<P>(
   conditionalPropName: string,
   condition: boolean
 ): void {
-  if (condition === true && typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  if (condition === true && process.env.NODE_ENV !== 'production') {
     for (const requiredPropName of requiredProps) {
       if (!(requiredPropName in props)) {
         warn(`${componentName} property '${requiredPropName}' is required when '${conditionalPropName}' is used.'`);

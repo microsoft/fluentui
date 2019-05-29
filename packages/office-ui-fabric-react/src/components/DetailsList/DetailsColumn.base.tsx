@@ -17,7 +17,7 @@ const TRANSITION_DURATION_DROP = 1500; // ms
 const CLASSNAME_ADD_INTERVAL = 20; // ms
 
 /**
- * Component for rendering columns in a {@link DetailsList}.
+ * Component for rendering columns in a `DetailsList`.
  *
  * {@docCategory DetailsList}
  */

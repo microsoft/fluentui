@@ -15,7 +15,7 @@ const getCellText = (item: any, column: IColumn): string => {
 };
 
 /**
- * Component for rendering a row's cells in a {@link DetailsList}.
+ * Component for rendering a row's cells in a `DetailsList`.
  *
  * {@docCategory DetailsList}
  */

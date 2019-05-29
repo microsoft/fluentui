@@ -5,8 +5,7 @@ import {
   ApiReferencesTableSet,
   PropertiesTableSet,
   PageMarkdown,
-  FeedbackList,
-  Highlight
+  FeedbackList
 } from '@uifabric/example-app-base';
 import * as React from 'react';
 
@@ -32,7 +31,7 @@ export const DemoPage: React.StatelessComponent<IDemoPageProps> = demoPageProps 
         implementationExamples && (
           <div>
             {implementationExamples.map(example => (
-              <ExampleCard title={example.title} code={example.code} key={example.title} codeHighlighter={Highlight}>
+              <ExampleCard title={example.title} code={example.code} key={example.title}>
                 {example.view}
               </ExampleCard>
             ))}

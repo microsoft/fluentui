@@ -285,6 +285,18 @@ describe('SelectionZone - SelectionMode.none', () => {
     expect(_selection.isIndexSelected(0)).toEqual(false);
     expect(_selection.getSelectedCount()).toEqual(0);
   });
+
+  it('still invokes on click', () => {
+    _simulateClick(_invoke0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
+  });
+
+  it('still invokes on double-click', () => {
+    ReactTestUtils.Simulate.doubleClick(_surface0);
+    expect(_onItemInvokeCalled).toEqual(1);
+    expect(_lastItemInvoked.key).toEqual('a');
+  });
 });
 
 function _simulateClick(el: Element, eventData?: ReactTestUtils.SyntheticEventData): void {
