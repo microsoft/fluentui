@@ -145,14 +145,16 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
   props.disabled && disabledTokens
 ];
 
-const GlobalClassNames = {
-  icon: 'ms-Icon'
-};
-
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className, circular } = props;
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme, true);
+  const globalClassNames = getGlobalClassNames(
+    {
+      icon: 'ms-Icon'
+    },
+    theme,
+    true
+  );
 
   return {
     root: [

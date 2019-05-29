@@ -6,7 +6,7 @@ import { getStyles } from './PropertiesTableSet.styles';
 import { styled } from 'office-ui-fabric-react/lib/Utilities';
 
 const PropertiesTableSetBase: React.StatelessComponent<IPropertiesTableSetProps> = props => {
-  const { componentName, componentPath, sources } = props;
+  const { componentName, componentPath, sources, styles } = props;
   let src: string;
   let properties: IProperty[] = [];
 
@@ -34,6 +34,7 @@ const PropertiesTableSetBase: React.StatelessComponent<IPropertiesTableSetProps>
           title={item.name === 'I' + props.componentName ? props.componentName + ' class' : item.propertyName}
           properties={item.property}
           renderAsEnum={item.propertyType === PropertyType.enum}
+          styles={styles}
         />
       ))}
     </div>

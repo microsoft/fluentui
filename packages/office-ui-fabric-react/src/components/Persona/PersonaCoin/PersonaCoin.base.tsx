@@ -12,7 +12,7 @@ import {
   PersonaPresence as PersonaPresenceEnum,
   PersonaSize
 } from '../Persona.types';
-import { initialsColorPropToColorCode } from '../PersonaInitialsColor';
+import { getPersonaInitialsColor } from '../PersonaInitialsColor';
 import { sizeToPixels } from '../PersonaConsts';
 
 const getClassNames = classNamesFunction<IPersonaCoinStyleProps, IPersonaCoinStyles>();
@@ -103,7 +103,7 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
               <div
                 className={mergeStyles(
                   classNames.initials,
-                  !showUnknownPersonaCoin && { backgroundColor: initialsColorPropToColorCode(this.props) }
+                  !showUnknownPersonaCoin && { backgroundColor: getPersonaInitialsColor(this.props) }
                 )}
                 style={coinSizeStyle}
                 aria-hidden="true"
