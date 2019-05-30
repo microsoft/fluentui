@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "PersonaCoin: use renamed persona color function",
+      "comment": "Fix issue where SideBar ignored colors props",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "elcraig@microsoft.com"
+  "email": "ronyl@microsoft.com"
 }

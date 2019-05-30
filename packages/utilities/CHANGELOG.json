@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.39.3",
+      "tag": "@uifabric/utilities_v6.39.3",
+      "date": "Wed, 29 May 2019 12:21:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert styled and classNameFunctions perf improvements temporarily.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9d0c9173ec62ebbaa43879af9d1cc97d66b2b8c9"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.2",
       "tag": "@uifabric/utilities_v6.39.2",
       "date": "Fri, 24 May 2019 14:51:14 GMT",

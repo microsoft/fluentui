@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Fri, 24 May 2019 14:51:14 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+
+## 6.39.3
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled and classNameFunctions perf improvements temporarily.
 
 ## 6.39.2
 Fri, 24 May 2019 14:51:14 GMT
