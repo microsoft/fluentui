@@ -101,7 +101,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       return;
     }
 
-    this._setErrorMessage(true);
+    this._setErrorMessage(true, nextProps);
 
     this._id = nextProps.id || this._id;
 
@@ -262,8 +262,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this.setState(this._getDefaultState());
   }
 
-  private _setErrorMessage(setState: boolean): string | undefined {
-    const { isRequired, strings, value, minDate, maxDate } = this.props;
+  private _setErrorMessage(setState: boolean, nextProps?: IDatePickerProps): string | undefined {
+    const { isRequired, strings, value, minDate, maxDate } = nextProps || this.props;
     let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
     if (!errorMessage && value) {
