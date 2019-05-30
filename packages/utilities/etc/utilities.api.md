@@ -69,13 +69,6 @@ export class Async {
     }): T | (() => void);
     }
 
-// @public @deprecated
-export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
-    set(newValue: any): void;
-} | void;
-
 // @public
 export class AutoScroll {
     constructor(element: HTMLElement);
