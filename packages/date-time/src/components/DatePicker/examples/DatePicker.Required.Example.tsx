@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from '../../../DatePicker';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from '@uifabric/date-time';
 import './DatePicker.Examples.scss';
 
 const DayPickerStrings: IDatePickerStrings = {

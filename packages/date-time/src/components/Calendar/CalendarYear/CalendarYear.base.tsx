@@ -200,7 +200,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
 
 class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className, navigationIcons, strings, onSelectPrev } = this.props;
+    const { styles, theme, className, navigationIcons, strings, onSelectPrev, fromYear, toYear } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -210,7 +210,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
     const prevRangeAriaLabel = yearStrings.prevRangeAriaLabel;
-    const prevRange = { fromYear: this.props.fromYear - CELL_COUNT, toYear: this.props.toYear - CELL_COUNT };
+    const prevRange = { fromYear: fromYear - CELL_COUNT, toYear: toYear - CELL_COUNT };
     const prevAriaLabel = prevRangeAriaLabel
       ? typeof prevRangeAriaLabel === 'string'
         ? (prevRangeAriaLabel as string)
@@ -254,7 +254,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
 
 class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> {
   public render(): JSX.Element {
-    const { styles, theme, className, navigationIcons, strings, onSelectNext } = this.props;
+    const { styles, theme, className, navigationIcons, strings, onSelectNext, fromYear, toYear } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
@@ -264,7 +264,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
     const iconStrings = navigationIcons || DefaultNavigationIcons;
     const yearStrings = strings || DefaultCalendarYearStrings;
     const nextRangeAriaLabel = yearStrings.nextRangeAriaLabel;
-    const nextRange = { fromYear: this.props.fromYear + CELL_COUNT, toYear: this.props.toYear + CELL_COUNT };
+    const nextRange = { fromYear: fromYear + CELL_COUNT, toYear: toYear + CELL_COUNT };
     const nextAriaLabel = nextRangeAriaLabel
       ? typeof nextRangeAriaLabel === 'string'
         ? (nextRangeAriaLabel as string)

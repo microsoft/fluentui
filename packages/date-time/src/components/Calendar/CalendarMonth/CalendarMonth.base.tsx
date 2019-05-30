@@ -9,7 +9,7 @@ import {
   getMonthStart,
   getMonthEnd,
   compareDatePart
-} from '../../../utilities/dateMath/DateMath';
+} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { Icon } from 'office-ui-fabric-react/lib/Icon';
 import { ICalendarMonthProps, ICalendarMonthStyles, ICalendarMonthStyleProps } from './CalendarMonth.types';
 import { getStyles } from './CalendarMonth.styles';

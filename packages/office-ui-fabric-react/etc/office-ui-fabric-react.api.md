@@ -3110,20 +3110,10 @@ export interface IDatePickerState {
 }
 
 // @public (undocumented)
-export interface IDatePickerStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
+export interface IDatePickerStrings extends ICalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
 }
 
 // @public (undocumented)
