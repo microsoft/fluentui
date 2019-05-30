@@ -1,10 +1,7 @@
 import * as React from 'react';
-import { Chiclet } from '../Chiclet';
-import { ChicletSize } from '../Chiclet.types';
-import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
+import { Chiclet, ChicletSize } from '@uifabric/experiments';
+import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
 import * as exampleStyles from './Chiclet.Basic.Example.scss';
-import { IconButton } from 'office-ui-fabric-react/lib/Button';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 

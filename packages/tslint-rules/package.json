@@ -5,12 +5,8 @@
   "main": "tslint.json",
   "scripts": {
     "clean": "",
-    "build": "node -v",
-    "code-style": "node ../../scripts/just.js code-style"
+    "build": "node -v"
   },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ],
   "dependencies": {
     "tslint-react": "^3.2.0"
   },

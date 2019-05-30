@@ -14,16 +14,11 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style"
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style"
   },
-  "disabledTasks": [
-    "sass",
-    "jest",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
     "@types/react": ">=16.8.0 <17.0.0",
     "@types/react-dom": ">=16.8.0 <17.0.0",
@@ -31,7 +26,8 @@
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "react": ">=16.8.0 <17.0.0",
-    "react-dom": ">=16.8.0 <17.0.0"
+    "react-dom": ">=16.8.0 <17.0.0",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@uifabric/styling": "^6.47.6",

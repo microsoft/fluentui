@@ -87,7 +87,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="true"
-                aria-label="Expand or collapse"
+                aria-label="Home Expand or collapse"
                 className=
                     ms-Nav-chevronButton
                     {

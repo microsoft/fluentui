@@ -1,6 +1,51 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Thu, 30 May 2019 12:22:06 GMT and should not be manually modified.
+
+## 6.187.1
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Autofill: makes sure the fresh input is retrieved at the time of composition end
+- Refactor common logic out of _dismissOnLostFocus to a generalized function in order to decouple handling of _dismissOnScroll from _dismissOnLostFocus
+- Remove extra role attribute from callout root element, support aria-roledescription on callout main where role already resides
+- DetailList: only select the first item on keydown from header if there isn't already something selected
+- Dropdown: fix issue where dropdown did not respect selectedKey(s) prop
+
+## 6.187.0
+Wed, 29 May 2019 12:21:24 GMT
+
+### Minor changes
+
+- Persona: rename and export function to get color
+- Adds an example to TextField with customized masks
+
+### Patches
+
+- Fix aria-label in Dropdown options list
+- Revert styled perf fixes temporarily.
+- Nav: Prepend link name to aria label for expand button and set it as default if no label is provided
+- TextField: remove unecessary font override for ::placeholder
+
+## 6.186.1
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of bare process
+
+## 6.186.0
+Thu, 23 May 2019 22:14:40 GMT
+
+### Minor changes
+
+- TeachingBubble: Add footerContent prop to render custom footer text
+
+### Patches
+
+- Dropdown: Replace some palette slot usage with semantic slots.
+- Examples: Remove relative imports.
 
 ## 6.185.0
 Wed, 22 May 2019 12:21:34 GMT

@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { PositioningContainer } from '../PositioningContainer';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
+import { DefaultButton, PositioningContainer } from 'office-ui-fabric-react';
 
 export interface IPositioningContainerBasicExampleState {
   isPositioningContainerVisible?: boolean;

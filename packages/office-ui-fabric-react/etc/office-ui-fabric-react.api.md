@@ -1224,6 +1224,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
 };
 
 // @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
+
+// @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
 
 // @public (undocumented)
@@ -4246,7 +4249,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
+    // @deprecated
     ariaDescribedBy?: string;
+    // @deprecated
     ariaLabelledBy?: string;
     as?: React.ReactType;
     checkForNoWrap?: boolean;

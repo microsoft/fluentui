@@ -53,7 +53,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     const { theme, styles, collapseButtonStyles, className, collapseButtonAriaLabel, footerItems, id, items } = this.props;
 
     this._theme = theme!;
-    this._colors = this.props.colors ? this.props.colors : SidebarColors.Light;
+    this._colors = this.props.colors !== undefined ? this.props.colors : SidebarColors.Light;
     this._buttonStyles = getButtonColoredStyles(theme!, this._colors, this.props.buttonStyles);
 
     this._classNames = getSidebarClassNames(getSidebarStyles(theme!, this._colors, styles), className, this.state.isCollapsed);

@@ -138,6 +138,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     display: none;
                   }
                   &::placeholder {
+<<<<<<< HEAD
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     color: #605e5c;
@@ -153,6 +154,13 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+=======
+                    color: #666666;
+                    opacity: 1;
+                  }
+                  &:-ms-input-placeholder {
+                    color: #666666;
+>>>>>>> upstream/master
                     opacity: 1;
                   }
               id="DatePicker0-label"

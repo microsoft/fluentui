@@ -1,6 +1,23 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Thu, 30 May 2019 12:22:06 GMT and should not be manually modified.
+
+## 6.18.9
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Move fluent theme page to styles
+- Fix more UHF style overrides
+
+## 6.18.8
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Added new mobiles docs for the website.
+- Hide UHF back to top button
+- Webpack configuration fix.
 
 ## 6.18.7
 Wed, 22 May 2019 12:21:34 GMT

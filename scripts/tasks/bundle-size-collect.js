@@ -11,7 +11,7 @@ module.exports = function bundleSizeCollect() {
   const fs = require('fs');
   const path = require('path');
 
-  const distRoot = 'apps/test-bundles/dist';
+  const distRoot = path.join(__dirname, '../../apps/test-bundles/dist');
   const sizes = {};
   const outputFilename = 'bundlesizes.json';
 

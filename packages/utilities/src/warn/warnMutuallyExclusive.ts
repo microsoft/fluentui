@@ -8,11 +8,11 @@ import { ISettingsMap, warn } from './warn';
  * @param exclusiveMap - A map where the key is a parameter, and the value is the other parameter.
  */
 export function warnMutuallyExclusive<P>(componentName: string, props: P, exclusiveMap: ISettingsMap<P>): void {
-  if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+  if (process.env.NODE_ENV !== 'production') {
     for (const propName in exclusiveMap) {
-      if (props && propName in props) {
+      if (props && props[propName] !== undefined) {
         let propInExclusiveMapValue = exclusiveMap[propName];
-        if (propInExclusiveMapValue && propInExclusiveMapValue in props) {
+        if (propInExclusiveMapValue && props[propInExclusiveMapValue as keyof P] !== undefined) {
           warn(`${componentName} property '${propName}' is mutually exclusive with '${exclusiveMap[propName]}'. Use one or the other.`);
         }
       }
