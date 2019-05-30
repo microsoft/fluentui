@@ -11,7 +11,7 @@
     "clean": "npx just-scripts clean"
   },
   "devDependencies": {
-    "just-scripts": "~0.15.3",
+    "just-scripts": "~0.17.0",
     "@types/node": "^8.10.29",
     "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
     "@uifabric/styling": "^6.47.6",

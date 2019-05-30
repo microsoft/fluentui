@@ -21,7 +21,7 @@
     "start": "npx just-scripts dev",
     "start-test": "npx just-scripts jest-watch",
     "update-snapshots": "npx just-scripts jest -u",
-    "update-api": "node ../../scripts/update-api.js"
+    "update-api": "npx just-scripts update-api"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
