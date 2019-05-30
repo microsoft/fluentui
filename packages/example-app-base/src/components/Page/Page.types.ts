@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentAs, Omit } from 'office-ui-fabric-react';
+import { IComponentAs } from 'office-ui-fabric-react';
 import { IExampleCardProps } from '../ExampleCard/index';
 import { ISideRailLink } from '../SideRail/index';
 import { IPageJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
@@ -161,6 +161,11 @@ export interface IPageSectionProps<TPlatforms extends string = string>
 }
 
 /** Version of IPageSectionProps where `sectionName` is required. */
-export type IPageSectionPropsWithSectionName = Required<Pick<IPageSectionProps, 'sectionName'>> & Omit<IPageSectionProps, 'sectionName'>;
+// TODO: I'm not sure the best way to fix this, and the TS watch issue is making it harder to iterate and try fixes.
+//        Equating types with a slight loss in type safety for now.
+export type IPageSectionPropsWithSectionName = IPageSectionProps;
+// export type IPageSectionPropsWithSectionName<TPlatform extends string = string> =
+//   Required<Pick<IPageSectionProps<TPlatform>, 'sectionName'>> & Omit<IPageSectionProps<TPlatform>, 'sectionName'>;
+// export type IPageSectionPropsWithSectionName = Required<Pick<IPageSectionProps, 'sectionName'>> & Omit<IPageSectionProps, 'sectionName'>;
 
 export type TPlatformPageProps<TPlatforms extends string> = { [platform in TPlatforms]?: IPageProps<TPlatforms> };
