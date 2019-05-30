@@ -95,6 +95,16 @@ export interface IHorizontalBarChartStyles {
   chartTitle: IStyle;
 
   /**
+   * Style for the chart data text.
+   */
+  chartDataText: IStyle;
+
+  /**
+   * Style for the chart data text denominator.
+   */
+  chartDataTextDenominator: IStyle;
+
+  /**
    * styles for hover card root
    */
   hoverCardRoot?: IStyle;
@@ -115,19 +125,10 @@ export interface IHorizontalBarChartStyles {
   triangle: IStyle;
 }
 
-export enum ChartDataMode {
-  /**
-   * show the datapoint.x value
-   */
-  default = 0,
-
-  /**
-   * show the fraction of datapoint.x/datapoint.y
-   */
-  fraction = 1,
-
-  /**
-   * show the percentage of (datapoint.x/datapoint.y)%
-   */
-  percentage = 2
-}
+/**
+ * Chart data mode for chart data text
+ * default: show the datapoint.x value
+ * fraction: show the fraction of datapoint.x/datapoint.y
+ * percentage: show the percentage of (datapoint.x/datapoint.y)%
+ */
+export type ChartDataMode = 'default' | 'fraction' | 'percentage';

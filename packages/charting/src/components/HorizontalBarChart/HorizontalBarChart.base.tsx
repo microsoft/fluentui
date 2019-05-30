@@ -80,9 +80,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
                       <strong>{points!.chartTitle}</strong>
                     </div>
                   )}
-                  <div>
-                    <strong>{chartDataText}</strong>
-                  </div>
+                  {chartDataText}
                 </div>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
                 <svg className={this._classNames.chart}>
@@ -167,19 +165,24 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
     });
   };
 
-  private _getChartDataText(data: IChartProps): string {
-    const chartDataMode = this.props.chartDataMode || ChartDataMode.default;
+  private _getChartDataText(data: IChartProps): JSX.Element {
+    const chartDataMode = this.props.chartDataMode || 'default';
     const x = data!.chartData![0].horizontalBarChartdata!.x;
     const y = data!.chartData![0].horizontalBarChartdata!.y;
 
     switch (chartDataMode) {
-      case ChartDataMode.default:
-        return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',');
-      case ChartDataMode.fraction:
-        return x + '/' + y;
-      case ChartDataMode.percentage:
+      case 'default':
+        return <div className={this._classNames.chartDataText}>{x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ',')}</div>;
+      case 'fraction':
+        return (
+          <div>
+            <span className={this._classNames.chartDataText}>{x}</span>
+            <span className={this._classNames.chartDataTextDenominator}>{'/' + y}</span>
+          </div>
+        );
+      case 'percentage':
         const dataRatio = Math.round((x / y) * 100);
-        return dataRatio + '%';
+        return <div className={this._classNames.chartDataText}>{dataRatio + '%'}</div>;
     }
   }
 
