@@ -1,5 +1,6 @@
 const { preset, just } = require('@uifabric/build');
-const { task } = just;
+const { task, series } = just;
 
 preset();
-task('build', 'build:node-lib');
+// TODO remove, fix tests on windows environments
+task('build', series('clean', 'copy', 'ts:commonjs-only'));
