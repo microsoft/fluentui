@@ -1,5 +1,5 @@
 import { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionMode } from './interfaces';
-import { EventGroup } from '../../Utilities';
+import { EventGroup } from '../EventGroup';
 
 /**
  * {@docCategory Selection}
