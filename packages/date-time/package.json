@@ -21,7 +21,7 @@
     "start": "npx just-scripts dev",
     "start-test": "npx just-scripts jest-watch",
     "update-snapshots": "npx just-scripts jest -u",
-    "update-api": "node ../../scripts/update-api.js"
+    "update-api": "npx just-scripts update-api"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",
@@ -51,7 +51,7 @@
     "@uifabric/set-version": "^1.1.3",
     "@uifabric/styling": "^6.47.6",
     "@uifabric/utilities": "^6.39.3",
-    "office-ui-fabric-react": "^6.187.0",
+    "office-ui-fabric-react": "^6.187.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {
