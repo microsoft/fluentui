@@ -2,6 +2,30 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.9",
+      "tag": "@uifabric/fabric-website_v6.18.9",
+      "date": "Thu, 30 May 2019 12:22:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move fluent theme page to styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2922d8bd84c9fc6cea615a0fc4c937a0dde10727"
+          },
+          {
+            "comment": "Fix more UHF style overrides",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "470d284618c469e5317379414f77f60de748bebe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.0` to `^6.187.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.8",
       "tag": "@uifabric/fabric-website_v6.18.8",
       "date": "Thu, 23 May 2019 22:14:40 GMT",
