@@ -237,7 +237,6 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-        case KeyCodes.space:
           callback();
           break;
       }

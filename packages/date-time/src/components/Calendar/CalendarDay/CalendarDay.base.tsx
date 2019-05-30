@@ -425,7 +425,6 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-        case KeyCodes.space:
           callback();
           break;
       }
