@@ -785,8 +785,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     // (undocumented)
     componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
     // (undocumented)
-    componentWillMount(): void;
-    // (undocumented)
     componentWillReceiveProps(nextProps: IDatePickerProps): void;
     // (undocumented)
     static defaultProps: IDatePickerProps;

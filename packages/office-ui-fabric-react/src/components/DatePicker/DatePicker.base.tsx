@@ -87,10 +87,6 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this._preventFocusOpeningPicker = false;
   }
 
-  public componentWillMount(): void {
-    this._setErrorMessage();
-  }
-
   public componentWillReceiveProps(nextProps: IDatePickerProps): void {
     const { formatDate, value } = nextProps;
 
@@ -105,7 +101,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       return;
     }
 
-    this._setErrorMessage();
+    this._setErrorMessage(true);
 
     this._id = nextProps.id || this._id;
 
@@ -266,7 +262,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     this.setState(this._getDefaultState());
   }
 
-  private _setErrorMessage(): void {
+  private _setErrorMessage(setState: boolean): string | undefined {
     const { isRequired, strings, value, minDate, maxDate } = this.props;
     let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
@@ -274,10 +270,13 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
     }
 
-    // Set error message
-    this.setState({
-      errorMessage: errorMessage
-    });
+    if (setState) {
+      this.setState({
+        errorMessage: errorMessage
+      });
+    }
+
+    return errorMessage;
   }
 
   private _onSelectDate = (date: Date): void => {
@@ -508,7 +507,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       selectedDate: props.value || undefined,
       formattedDate: props.formatDate && props.value ? props.formatDate(props.value) : '',
       isDatePickerShown: false,
-      errorMessage: undefined
+      errorMessage: this._setErrorMessage(false)
     };
   }
 
