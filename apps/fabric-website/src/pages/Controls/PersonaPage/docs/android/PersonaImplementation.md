@@ -1,7 +1,3 @@
-### Design
-
-Coming soon
-
 ### Control names
 
 `PersonaView` The row cell design for a single person with 1 or 2 lines of text
