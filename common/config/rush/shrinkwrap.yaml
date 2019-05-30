@@ -1,8 +1,8 @@
 dependencies:
   '@microsoft/api-extractor': 7.0.34
   '@microsoft/api-extractor-model': 7.0.27
-  '@microsoft/load-themed-styles': 1.9.1
-  '@microsoft/loader-load-themed-styles': 1.7.159
+  '@microsoft/load-themed-styles': 1.9.2
+  '@microsoft/loader-load-themed-styles': 1.7.160
   '@microsoft/node-core-library': 3.9.0
   '@microsoft/tsdoc': 0.12.8
   '@rush-temp/a11y-tests': 'file:projects/a11y-tests.tgz'
@@ -110,13 +110,13 @@ dependencies:
   d3-time-format: 2.1.3
   deep-assign: 2.0.0
   enzyme: 3.9.0
-  enzyme-adapter-react-16: 1.13.1
+  enzyme-adapter-react-16: 1.13.2
   enzyme-to-json: 3.3.5
   es6-map: 0.1.5
   es6-promise: 4.2.6
   es6-weak-map: 2.0.2
   expect-puppeteer: 4.1.0
-  express: 4.17.0
+  express: 4.17.1
   file-loader: 0.11.2
   find-free-port: 2.0.0
   fork-ts-checker-webpack-plugin: 0.4.15
@@ -124,7 +124,7 @@ dependencies:
   github: 7.3.2
   glob: 7.1.4
   gzip-size: 3.0.0
-  highlight.js: 9.15.6
+  highlight.js: 9.15.8
   immutability-helper: 2.8.1
   jest: 24.1.0
   jest-cli: 24.1.0
@@ -150,7 +150,7 @@ dependencies:
   postcss-modules: 0.8.0
   prettier: 1.17.1
   prop-types: 15.7.2
-  puppeteer: 1.16.0
+  puppeteer: 1.17.0
   raf: 3.4.1
   raw-loader: 0.5.1
   react: 16.8.6
@@ -165,10 +165,10 @@ dependencies:
   recast: 0.15.5
   resemblejs: 2.2.6
   resolve: 1.11.0
-  riceburn: 1.2.1
+  riceburn: 1.3.0
   rxjs: 6.5.2
   sass-loader: 6.0.7
-  screener-runner: 0.10.32
+  screener-runner: 0.10.34
   screener-storybook: 0.16.12
   semver: 5.7.0
   sinon: 4.5.0
@@ -458,17 +458,17 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-ceucgU81an59N2PjhCBfSN71fZK0YRUiL6T1DoypQOiAPnx0vkYuD56lmc3DLcpATgCu7NL8qgilVUWIoSYtDA==
-  /@microsoft/load-themed-styles/1.9.1:
+  /@microsoft/load-themed-styles/1.9.2:
     dev: false
     resolution:
-      integrity: sha512-IoaTk18QME1M53GJ9RnnGW39eG+uiMzd4iKNQPu4ZoYHeKcZXvi1dMqTTSv9YG324qFjPf9ed1pEIlZeFsfIHA==
-  /@microsoft/loader-load-themed-styles/1.7.159:
+      integrity: sha512-l3lTd1mZe6QsxRE21pV8Z9IvysFE0nPoZTXMkCkaRjmFcT5Byf/2cq9xgCfn5SljtQFmKfcr8gaYDIElgUEAog==
+  /@microsoft/loader-load-themed-styles/1.7.160:
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       loader-utils: 1.1.0
     dev: false
     resolution:
-      integrity: sha512-QW8O4cxICSrpMrVDO3qTVSavKXfTcUwxvCO5hKhvtiOr/PLrVd2iM2qR5Q40pIFVF6Dc4ASKopaVnt0ICNP4hg==
+      integrity: sha512-sjf4GCuajwTNy6C9vEPdOy7J6v3CSHZTpbVd58LjTQDExs5Tl7dooQNkjlOd1SEDx8vBtJ2TUJDdnh3KsfpF1g==
   /@microsoft/node-core-library/3.12.1:
     dependencies:
       '@types/fs-extra': 5.0.4
@@ -716,7 +716,7 @@ packages:
       css-loader: 0.28.11
       dotenv: 5.0.1
       events: 2.1.0
-      express: 4.17.0
+      express: 4.17.1
       file-loader: /file-loader/1.1.11/webpack@3.12.0
       global: 4.3.2
       json-loader: 0.5.7
@@ -751,7 +751,7 @@ packages:
       css-loader: 0.28.11
       dotenv: 5.0.1
       events: 2.1.0
-      express: 4.17.0
+      express: 4.17.1
       file-loader: /file-loader/1.1.11/webpack@3.12.0
       global: 4.3.2
       json-loader: 0.5.7
@@ -884,7 +884,7 @@ packages:
       babel-runtime: 6.26.0
       case-sensitive-paths-webpack-plugin: 2.2.0
       common-tags: 1.8.0
-      core-js: 2.6.8
+      core-js: 2.6.9
       dotenv-webpack: /dotenv-webpack/1.7.0/webpack@3.12.0
       find-cache-dir: 1.0.0
       glamor: 2.20.40
@@ -934,7 +934,7 @@ packages:
       babel-runtime: 6.26.0
       case-sensitive-paths-webpack-plugin: 2.2.0
       common-tags: 1.8.0
-      core-js: 2.6.8
+      core-js: 2.6.9
       dotenv-webpack: /dotenv-webpack/1.7.0/webpack@3.12.0
       find-cache-dir: 1.0.0
       glamor: 2.20.40
@@ -972,7 +972,7 @@ packages:
       babel-runtime: 6.26.0
       deep-equal: 1.0.1
       events: 2.1.0
-      fuse.js: 3.4.4
+      fuse.js: 3.4.5
       global: 4.3.2
       keycode: 2.2.0
       lodash.debounce: 4.0.8
@@ -1001,7 +1001,7 @@ packages:
       babel-runtime: 6.26.0
       deep-equal: 1.0.1
       events: 2.1.0
-      fuse.js: 3.4.4
+      fuse.js: 3.4.5
       global: 4.3.2
       keycode: 2.2.0
       lodash.debounce: 4.0.8
@@ -1519,7 +1519,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-BbzvZhVtZP+Bs1J1HcwrQe8ycfO0wStkSGxuul3He3GkHOIZ6eTqOkPuw9IP1X3+IkOo4wiJmwkobzXYz4wewQ==
-  /acorn-node/1.6.2:
+  /acorn-node/1.7.0:
     dependencies:
       acorn: 6.1.1
       acorn-dynamic-import: /acorn-dynamic-import/4.0.0/acorn@6.1.1
@@ -1527,7 +1527,7 @@ packages:
       xtend: 4.0.1
     dev: false
     resolution:
-      integrity: sha512-rIhNEZuNI8ibQcL7ANm/mGyPukIaZsRNX9psFNQURyJW0nu6k8wjSDld20z6v2mDBWqX13pIEnk9gGZJHIlEXg==
+      integrity: sha512-XhahLSsCB6X6CJbe+uNu3Mn9sJBNFxtBN9NLgAOQovfS6Kh0lDUtmlclhjn9CvEK7A7YyRU13PXlNcpSiLI9Yw==
   /acorn-walk/6.1.1:
     dev: false
     engines:
@@ -1618,7 +1618,7 @@ packages:
       integrity: sha512-pcSQf1+Kx7/0ibRmxj6rmMYc5V8SHlKu+rkQ80h0bjSLDaIxHg/3PiiFJi4A9mDc01CoBHoc8Fls2G/W0/+s5g==
   /airbnb-prop-types/2.13.2:
     dependencies:
-      array.prototype.find: 2.0.4
+      array.prototype.find: 2.1.0
       function.prototype.name: 1.1.0
       has: 1.0.3
       is-regex: 1.0.4
@@ -1635,7 +1635,7 @@ packages:
       integrity: sha512-2FN6DlHr6JCSxPPi25EnqGaXC4OC3/B3k1lCd6MMYrZ51/Gf/1qDfaR+JElzWa+Tl7cY2aYOlsYJGFeQyVHIeQ==
   /airbnb-prop-types/2.13.2/react@16.8.6:
     dependencies:
-      array.prototype.find: 2.0.4
+      array.prototype.find: 2.1.0
       function.prototype.name: 1.1.0
       has: 1.0.3
       is-regex: 1.0.4
@@ -1990,13 +1990,13 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha1-qJS3XUvE9s1nnvMkSp/Y9Gri1Cg=
-  /array.prototype.find/2.0.4:
+  /array.prototype.find/2.1.0:
     dependencies:
       define-properties: 1.1.3
       es-abstract: 1.13.0
     dev: false
     resolution:
-      integrity: sha1-VWpcU2LAhkgyPdrrnenRS8GGTJA=
+      integrity: sha512-Wn41+K1yuO5p7wRZDl7890c3xvv5UBrfVXTVIe28rSQb6LS0fZMDrQB6PAcxQFRFy6vJTLDc3A2+3CjQdzVKRg==
   /array.prototype.flat/1.2.1:
     dependencies:
       define-properties: 1.1.3
@@ -2162,7 +2162,7 @@ packages:
       micromatch: 3.1.10
       mkdirp: 0.5.1
       source-map-support: 0.5.12
-      typescript: 3.4.5
+      typescript: 3.5.1
     dev: false
     resolution:
       integrity: sha512-qzgm9SEvodVkSi9QY7Me1/rujg+YBNMjayNSAyzNghwTEez++gXoPCwMvpbHRG7wrOkDCiF6dquvv9ESmUBAuw==
@@ -2190,10 +2190,10 @@ packages:
       puppeteer: ^1.10.0
     resolution:
       integrity: sha512-hTF3u4mtatgTN7fsLVyVgbRdNc15ngjDcTEuqhn9A7ugqLhLCryJWp9fzqZkNlrW8awPcxugyTwLPR7mRdPZmA==
-  /axe-puppeteer/1.0.0/puppeteer@1.16.0:
+  /axe-puppeteer/1.0.0/puppeteer@1.17.0:
     dependencies:
       axe-core: 3.2.2
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
     dev: false
     engines:
       node: '>=6.4.0'
@@ -3019,7 +3019,7 @@ packages:
   /babel-polyfill/6.23.0:
     dependencies:
       babel-runtime: 6.26.0
-      core-js: 2.6.8
+      core-js: 2.6.9
       regenerator-runtime: 0.10.5
     dev: false
     resolution:
@@ -3186,7 +3186,7 @@ packages:
     dependencies:
       babel-core: 6.26.3
       babel-runtime: 6.26.0
-      core-js: 2.6.8
+      core-js: 2.6.9
       home-or-tmp: 2.0.0
       lodash: 4.17.11
       mkdirp: 0.5.1
@@ -3196,7 +3196,7 @@ packages:
       integrity: sha1-btAhFz4vy0htestFxgCahW9kcHE=
   /babel-runtime/6.26.0:
     dependencies:
-      core-js: 2.6.8
+      core-js: 2.6.9
       regenerator-runtime: 0.11.1
     dev: false
     resolution:
@@ -3300,7 +3300,7 @@ packages:
       integrity: sha1-pDAdOJtqQ/m2f/PKEaP2Y342Dp4=
   /bfj/6.1.1:
     dependencies:
-      bluebird: 3.5.4
+      bluebird: 3.5.5
       check-types: 7.4.0
       hoopy: 0.1.4
       tryer: 1.0.1
@@ -3342,10 +3342,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-9y12C+Cbf3bQjtj66Ysomo0F+rM=
-  /bluebird/3.5.4:
+  /bluebird/3.5.5:
     dev: false
     resolution:
-      integrity: sha512-FG+nFEZChJrbQ9tIccIfZJBz3J7mLrAhxakAbnrJWn8d7aKOC+LWifa0G+p4ZqKp4y13T7juYvdhq9NzKdsrjw==
+      integrity: sha512-5am6HnnfN+urzt4yfg7IgTbotDjIT/u8AJpEt0sIU9FtXfVeezXAPKswrG+xKUCOYAINpSdgZVDU6QFh+cuH3w==
   /bn.js/4.11.8:
     dev: false
     resolution:
@@ -3508,7 +3508,7 @@ packages:
   /browserslist/1.7.7:
     dependencies:
       caniuse-db: 1.0.30000971
-      electron-to-chromium: 1.3.136
+      electron-to-chromium: 1.3.139
     deprecated: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
     dev: false
     hasBin: true
@@ -3517,7 +3517,7 @@ packages:
   /browserslist/2.11.3:
     dependencies:
       caniuse-lite: 1.0.30000971
-      electron-to-chromium: 1.3.136
+      electron-to-chromium: 1.3.139
     deprecated: Browserslist 2 could fail on reading Browserslist >3.0 config used in other tools.
     dev: false
     hasBin: true
@@ -3526,7 +3526,7 @@ packages:
   /browserslist/3.2.8:
     dependencies:
       caniuse-lite: 1.0.30000971
-      electron-to-chromium: 1.3.136
+      electron-to-chromium: 1.3.139
     dev: false
     hasBin: true
     resolution:
@@ -3623,7 +3623,7 @@ packages:
       integrity: sha512-zauLjrfCG+xvoyaqLoV8bLVXXNGC4JqlxFCutSDWA6fJrTo2ZuvLYTqZ7aHBLZSMOopbzwv8f+wZcVzfVTI2Dg==
   /cacache/10.0.4:
     dependencies:
-      bluebird: 3.5.4
+      bluebird: 3.5.5
       chownr: 1.1.1
       glob: 7.1.4
       graceful-fs: 4.1.15
@@ -3641,7 +3641,7 @@ packages:
       integrity: sha512-Dph0MzuH+rTQzGPNT9fAnrPmMmjKfST6trxJeK7NQuHRaVw24VzPRWTmg9MpcwOVQZO0E1FBICUlFeNaKPIfHA==
   /cacache/11.3.2:
     dependencies:
-      bluebird: 3.5.4
+      bluebird: 3.5.5
       chownr: 1.1.1
       figgy-pudding: 3.5.1
       glob: 7.1.4
@@ -3928,14 +3928,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-j38EvO5+LHX84jlo6h4UzmOwi0UgW61WRyPtJz4qaadK5eY3BTS5TY/S1Stc3Uk2lIM6TPevAlULiEJwie860g==
-  /chrome-trace-event/1.0.0:
+  /chrome-trace-event/1.0.2:
     dependencies:
       tslib: 1.9.3
     dev: false
     engines:
       node: '>=6.0'
     resolution:
-      integrity: sha512-xDbVgyfDTT2piup/h8dK/y4QZfJRSa73bw1WZ8b4XM1o7fsFubUVGYcE+1ANtOzJJELGpYoG2961z0Z6OAld9A==
+      integrity: sha512-9e/zx1jw7B4CO+c/RXoCsfg/x1AfUBioy4owYH0bJprEYAx5hRFLRhWBqHAG57D0ZM4H7vxbP7bPe0VwhQRYDQ==
   /ci-env/1.8.0:
     dev: false
     resolution:
@@ -4394,11 +4394,11 @@ packages:
     dev: false
     resolution:
       integrity: sha1-ZSKUwUZR2yj6k70tX/KYOk8IxjY=
-  /core-js/2.6.8:
+  /core-js/2.6.9:
     dev: false
     requiresBuild: true
     resolution:
-      integrity: sha512-RWlREFU74TEkdXzyl1bka66O3kYp8jeTXrvJZDzVVMH8AiHUSOFpL1yfhQJ+wHocAm1m+4971W1PPzfLuCv1vg==
+      integrity: sha512-HOpZf6eXmnl7la+cUdMnLvUxKNqLUzJvgIziQ0DiF3JwSImNphIqdGqzj6hIKyX04MmV0poclQ7+wjWvxQyR2A==
   /core-js/3.0.1:
     dev: false
     resolution:
@@ -5194,10 +5194,10 @@ packages:
       node: '>=0.10.0'
     resolution:
       integrity: sha512-0xy4A/twfrRCnkhfk8ErDi5DqdAsAqeGxht4xkCUrsvhhbQNs7E+4jV0CN7+NKIY0aHE72+XvqtBIXzD31ZbXQ==
-  /electron-to-chromium/1.3.136:
+  /electron-to-chromium/1.3.139:
     dev: false
     resolution:
-      integrity: sha512-xHkYkbEi4kI+2w5v6yBGCQTRXL7N0PWscygTFZu/1bArnPSo2WR9xjdw4m06RR4J5PncrWJcuOVv+MAG2mK5JQ==
+      integrity: sha512-8cR7h6doIC/XLgPdsTM3BXpfWLzqrHS6jWrvWLsdZWZWFvVQQUJTbU/wUZsjRGK33OY5ZIiS1n6JbqowuWrmYg==
   /elegant-spinner/1.0.1:
     dev: false
     engines:
@@ -5276,7 +5276,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-f2LZMYl1Fzu7YSBKg+RoROelpOaNrcGmE9AZubeDfrCEia483oW4MI4VyFd5VNHIgQ/7qm1I0wUHK1eJnn2y2w==
-  /enzyme-adapter-react-16/1.13.1:
+  /enzyme-adapter-react-16/1.13.2:
     dependencies:
       enzyme-adapter-utils: 1.12.0
       has: 1.0.3
@@ -5292,8 +5292,8 @@ packages:
       react: ^16.0.0-0
       react-dom: ^16.0.0-0
     resolution:
-      integrity: sha512-DCKbkiVlfLTbn4SXO8mXDQx1SmmwON5oKXn2QfQSMCt8eTYGwUXy/OBGSuss6KKwY5w5QfK1sQFxhgFOkMCjrw==
-  /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00:
+      integrity: sha512-h0neTuAAFfQUgEZ+PPHVIMDFJ9+CGafI8AjojNlSVh4Fd1pLDgtl2OeVkm4yKF7RSgzrPAwugq4JW8Jjo2iRJA==
+  /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00:
     dependencies:
       enzyme: 3.9.0
       enzyme-adapter-utils: /enzyme-adapter-utils/1.12.0/react@16.8.6
@@ -5307,13 +5307,13 @@ packages:
       react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
       semver: 5.7.0
     dev: false
-    id: registry.npmjs.org/enzyme-adapter-react-16/1.13.1
+    id: registry.npmjs.org/enzyme-adapter-react-16/1.13.2
     peerDependencies:
       enzyme: ^3.0.0
       react: ^16.0.0-0
       react-dom: ^16.0.0-0
     resolution:
-      integrity: sha512-DCKbkiVlfLTbn4SXO8mXDQx1SmmwON5oKXn2QfQSMCt8eTYGwUXy/OBGSuss6KKwY5w5QfK1sQFxhgFOkMCjrw==
+      integrity: sha512-h0neTuAAFfQUgEZ+PPHVIMDFJ9+CGafI8AjojNlSVh4Fd1pLDgtl2OeVkm4yKF7RSgzrPAwugq4JW8Jjo2iRJA==
   /enzyme-adapter-utils/1.12.0:
     dependencies:
       airbnb-prop-types: 2.13.2
@@ -5810,7 +5810,7 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-/zYvP8iMDrzaaxHVa724eJBCKqSHmO0FA7EDkBiRHxg6OipmMn1fN+C8T9L9K8yr7UONkOifu6+LLH+z76CnaA==
-  /express/4.17.0:
+  /express/4.17.1:
     dependencies:
       accepts: 1.3.7
       array-flatten: 1.1.1
@@ -5846,7 +5846,7 @@ packages:
     engines:
       node: '>= 0.10.0'
     resolution:
-      integrity: sha512-1Z7/t3Z5ZnBG252gKUPyItc4xdeaA0X934ca2ewckAsVsw9EG71i++ZHZPYnus8g/s5Bty8IMpSVEuRkmwwPRQ==
+      integrity: sha512-mHJ9O79RqluphRrcw2X/GTh3k9tVv8YcoyY4Kkh4WDMUYKRZUq0h1o0w2rrrxBqM7VoeUVqgb27xlEMXTnYt4g==
   /extend-shallow/2.0.1:
     dependencies:
       is-extendable: 0.1.1
@@ -6227,12 +6227,12 @@ packages:
     dev: false
     resolution:
       integrity: sha1-2uRqnXj74lKSJYzB54CkHZXAN4I=
-  /flow-parser/0.99.0:
+  /flow-parser/0.99.1:
     dev: false
     engines:
       node: '>=0.4.0'
     resolution:
-      integrity: sha512-6opkcL97qs5MhXqP9X/jym0lia6jsqyHpA+Z+6GlJv3bPOfmR45WACEwubJCXv0rMS1ryGF+E5ONzRpxzSoGZQ==
+      integrity: sha512-2JLx9niNlAuqBiU9cTgGpbfjHt1Ow6JeOQKglJZoFHmXcG56aU5VPw096W4pJCJndPhOVdXftRqpA5jJCMKy3Q==
   /flush-write-stream/1.1.1:
     dependencies:
       inherits: 2.0.3
@@ -6303,16 +6303,16 @@ packages:
       minimatch: 3.0.4
       resolve: 1.11.0
       tapable: 1.1.3
-      typescript: 3.5.0-rc
     dev: false
     engines:
       node: '>=6.11.5'
     peerDependencies:
       tslint: ^4.0.0 || ^5.0.0
+      typescript: ^2.1.0 || ^3.0.0
       webpack: ^2.3.0 || ^3.0.0 || ^4.0.0
     resolution:
       integrity: sha512-qNYuygh2GxXehBvQZ5rI5YlQFn+7ZV6kmkyD9Sgs33dWl73NZdUOB5aCp8v0EXJn176AhPrZP8YCMT3h01fs+g==
-  /fork-ts-checker-webpack-plugin/0.4.15/tslint@5.16.0+webpack@4.29.5:
+  /fork-ts-checker-webpack-plugin/0.4.15/41adb244b4ff6610d6d6f34fa678a3bd:
     dependencies:
       babel-code-frame: 6.26.0
       chalk: 2.4.2
@@ -6322,8 +6322,8 @@ packages:
       minimatch: 3.0.4
       resolve: 1.11.0
       tapable: 1.1.3
-      tslint: 5.16.0
-      typescript: 3.5.0-rc
+      tslint: /tslint/5.16.0/typescript@3.5.1
+      typescript: 3.5.1
       webpack: 4.29.5
     dev: false
     engines:
@@ -6331,6 +6331,7 @@ packages:
     id: registry.npmjs.org/fork-ts-checker-webpack-plugin/0.4.15
     peerDependencies:
       tslint: ^4.0.0 || ^5.0.0
+      typescript: ^2.1.0 || ^3.0.0
       webpack: ^2.3.0 || ^3.0.0 || ^4.0.0
     resolution:
       integrity: sha512-qNYuygh2GxXehBvQZ5rI5YlQFn+7ZV6kmkyD9Sgs33dWl73NZdUOB5aCp8v0EXJn176AhPrZP8YCMT3h01fs+g==
@@ -6449,12 +6450,12 @@ packages:
       node: '>= 0.4'
     resolution:
       integrity: sha512-Bs0VRrTz4ghD8pTmbJQD1mZ8A/mN0ur/jGz+A6FBxPDUPkm1tNfF6bhTYPA7i7aF4lZJVr+OXTNNrnnIl58Wfg==
-  /fuse.js/3.4.4:
+  /fuse.js/3.4.5:
     dev: false
     engines:
       node: '>=6'
     resolution:
-      integrity: sha512-pyLQo/1oR5Ywf+a/tY8z4JygnIglmRxVUOiyFAbd11o9keUDpUJSMGRWJngcnkURj30kDHPmhoKY8ChJiz3EpQ==
+      integrity: sha512-s9PGTaQIkT69HaeoTVjwGsLfb8V8ScJLx5XGFcKHg0MqLUH/UZ4EKOtqtXX9k7AFqCGxD1aJmYb8Q5VYDibVRQ==
   /gauge/2.7.4:
     dependencies:
       aproba: 1.2.0
@@ -6783,7 +6784,7 @@ packages:
       node: '>=0.4.7'
     hasBin: true
     optionalDependencies:
-      uglify-js: 3.5.15
+      uglify-js: 3.6.0
     resolution:
       integrity: sha512-nvfrjqvt9xQ8Z/w0ijewdD/vvWDTOweBUm96NTr66Wfvo1mJenBLwcYmPs3TIBP5ruzYGD7Hx/DaM9RmhroGPw==
   /har-schema/2.0.0:
@@ -6911,19 +6912,19 @@ packages:
     dev: false
     resolution:
       integrity: sha512-taOaskGt4z4SOANNseOviYDvjEJinIkRgmp7LbKP2YTTmVxWBl87s/uzK9r+44BclBSp2X7K1hqeNfz9JbBeXA==
-  /hast-util-parse-selector/2.2.1:
+  /hast-util-parse-selector/2.2.2:
     dev: false
     resolution:
-      integrity: sha512-Xyh0v+nHmQvrOqop2Jqd8gOdyQtE8sIP9IQf7mlVDqp924W4w/8Liuguk2L2qei9hARnQSG2m+wAOCxM7npJVw==
-  /hastscript/5.0.0:
+      integrity: sha512-jIMtnzrLTjzqgVEQqPEmwEZV+ea4zHRFTP8Z2Utw0I5HuBOXHzUPPQWr6ouJdJqDKLbFU/OEiYwZ79LalZkmmw==
+  /hastscript/5.1.0:
     dependencies:
       comma-separated-tokens: 1.0.7
-      hast-util-parse-selector: 2.2.1
+      hast-util-parse-selector: 2.2.2
       property-information: 5.1.0
       space-separated-tokens: 1.1.4
     dev: false
     resolution:
-      integrity: sha512-xJtuJ8D42Xtq5yJrnDg/KAIxl2cXBXKoiIJwmWX9XMf8113qHTGl/Bf7jEsxmENJ4w6q4Tfl8s/Y6mEZo8x8qw==
+      integrity: sha512-7mOQX5VfVs/gmrOGlN8/EDfp1GqV6P3gTNVt+KnX4gbYhpASTM8bklFdFQCbFRAadURXAmw0R1QQdBdqp7jswQ==
   /he/1.1.1:
     dev: false
     hasBin: true
@@ -6938,10 +6939,10 @@ packages:
     dev: false
     resolution:
       integrity: sha512-Sc28JNQNDzaH6PORtRLMvif9RSn1mYuOoX3omVjnb0+HbpPygU2ALBI0R/wsiqCb4/fcp07Gdo8g+fhtFrQl6A==
-  /highlight.js/9.15.6:
+  /highlight.js/9.15.8:
     dev: false
     resolution:
-      integrity: sha512-zozTAWM1D6sozHo8kqhfYgsac+B+q0PmsjXeyDrYIHHcBN0zTVT66+s2GW1GZv7DbyaROdLXKdabwS/WqPyIdQ==
+      integrity: sha512-RrapkKQWwE+wKdF73VsOa2RQdIoO3mxwJ4P8mhbI6KYJUraUHRKM5w5zQQKXNk0xNL4UVRdulV9SBJcmzJNzVA==
   /hmac-drbg/1.0.1:
     dependencies:
       hash.js: 1.1.7
@@ -7066,7 +7067,7 @@ packages:
       integrity: sha512-QCOY1/oHmo2BNwsTzuYlW51JLXSxfmMvve+2/9i2cbhxXxT6SuhsUWzcIoMwUi0HZW/NIQBSyJaj7fbcsimoKg==
   /html-webpack-plugin/2.30.1/webpack@3.12.0:
     dependencies:
-      bluebird: 3.5.4
+      bluebird: 3.5.5
       html-minifier: 3.5.21
       loader-utils: 0.2.17
       lodash: 4.17.11
@@ -7086,7 +7087,7 @@ packages:
       domutils: 1.7.0
       entities: 1.1.2
       inherits: 2.0.3
-      readable-stream: 3.3.0
+      readable-stream: 3.4.0
     dev: false
     resolution:
       integrity: sha512-IgieNijUMbkDovyoKObU1DUhm1iwNYE/fuifEoEHfd1oZKZDaONBSkal7Y01shxsM49R4XaMdGez3WnF9UfiCQ==
@@ -7955,7 +7956,7 @@ packages:
       '@babel/traverse': 7.4.5
       '@babel/types': 7.4.4
       istanbul-lib-coverage: 2.0.5
-      semver: 6.1.0
+      semver: 6.1.1
     dev: false
     engines:
       node: '>=6'
@@ -8088,7 +8089,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-ByiTON3Aes60tlO8NojCcPeXCLuN8bpKbh87zbdttp2cQqZR4FoCv9y4IFeTbgHJIg5NJvIDCGmdu05YuHuAYw==
-  /jest-dev-server/4.1.1:
+  /jest-dev-server/4.2.0:
     dependencies:
       chalk: 2.4.2
       cwd: 0.10.0
@@ -8099,7 +8100,7 @@ packages:
       wait-on: 3.2.0
     dev: false
     resolution:
-      integrity: sha512-VB/myFWW1q271FUWWbuTy/tWFTw1bQ8Gs5U/5I0h6p8vNJSs+nBivOJQNiOrc745ijh1ND0WMs1rDSmCCnh5Cg==
+      integrity: sha512-Hy4+Y3awthvT3OI7exmqqXmselI6pvYiAQeob2hkHLtvhpsA2rO7GDPbOwxDMjqAVGUEopQOzQm37WjfB5tWdg==
   /jest-diff/24.8.0:
     dependencies:
       chalk: 2.4.2
@@ -8185,58 +8186,54 @@ packages:
       node: '>= 6'
     resolution:
       integrity: sha512-vIGUEScd1cdDgR6sqn2M08sJTRLQp6Dk/eIkCeO4PFHxZMOgy+uYLPMC4ix3PEfM5Au/x3uQ/5Tl0DpXXZsJ/Q==
-  /jest-environment-puppeteer/3.9.0/puppeteer@1.16.0:
+  /jest-environment-puppeteer/3.9.0/puppeteer@1.17.0:
     dependencies:
       chalk: 2.4.2
       cwd: 0.10.0
       jest-dev-server: 3.9.0
       merge-deep: 3.0.2
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
     dev: false
     id: registry.npmjs.org/jest-environment-puppeteer/3.9.0
     peerDependencies:
       puppeteer: ^1.5.0
     resolution:
       integrity: sha512-bQsSWSYcy6vW8DkkZCxaN2Aa+qL08ay2B895Zd2/aJ2aDMRfNN9SVlMD9KQ4jeYgehjkXt8vhvAHWuXZijFxiA==
-  /jest-environment-puppeteer/3.9.1/puppeteer@1.16.0:
+  /jest-environment-puppeteer/3.9.1/puppeteer@1.17.0:
     dependencies:
       chalk: 2.4.2
       cwd: 0.10.0
       jest-dev-server: 3.9.0
       merge-deep: 3.0.2
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
     dev: false
     id: registry.npmjs.org/jest-environment-puppeteer/3.9.1
     peerDependencies:
       puppeteer: ^1.5.0
     resolution:
       integrity: sha512-QJXZkiUyibd+oTg50CZ7DEX4pGxeL+FVys+Q8/XUZFg5x7HkkxbG+zztK7VtkLmVdApolCeI21y9iRrKPpIWYQ==
-  /jest-environment-puppeteer/4.1.0/puppeteer@1.16.0:
+  /jest-environment-puppeteer/4.1.0/puppeteer@1.17.0:
     dependencies:
       chalk: 2.4.2
       cwd: 0.10.0
-      jest-dev-server: 4.1.1
+      jest-dev-server: 4.2.0
       merge-deep: 3.0.2
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
     dev: false
     id: registry.npmjs.org/jest-environment-puppeteer/4.1.0
     peerDependencies:
       puppeteer: ^1.5.0
     resolution:
       integrity: sha512-Usq/T0W+BcnWZ59Hyrs7KA2917NDJt+navI9hTv96CspEkyLef3TaWtmL84EXmY14C0fBa+r2efwLgtrRwPAcg==
-  /jest-environment-puppeteer/4.1.1/puppeteer@1.16.0:
+  /jest-environment-puppeteer/4.2.0:
     dependencies:
       chalk: 2.4.2
       cwd: 0.10.0
-      jest-dev-server: 4.1.1
+      jest-dev-server: 4.2.0
       merge-deep: 3.0.2
-      puppeteer: 1.16.0
     dev: false
-    id: registry.npmjs.org/jest-environment-puppeteer/4.1.1
-    peerDependencies:
-      puppeteer: ^1.5.0
     resolution:
-      integrity: sha512-H+Wqxq4w9mFb0sBRGcbFIU02T+0YZbf/HKfQhwHvbam4UQqq7/n3kRkF0iYYlf76Jmys/H8rThtdh+HHxFgA5Q==
+      integrity: sha512-i3HC+BsB0l9LR79+wrnyz7ImomZdwgpu1QH/9l1DnOgAuD5tTIwvzbyQp1nX+z5aKUhAVhontDIvHaM4oHRQ0Q==
   /jest-get-type/22.4.3:
     dev: false
     resolution:
@@ -8357,28 +8354,28 @@ packages:
       jest-resolve: '*'
     resolution:
       integrity: sha512-pgFw2tm54fzgYvc/OHrnysABEObZCUNFnhjoRjaVOCN8NYc032/gVjPaHD4Aq6ApkSieWtfKAFQtmDKAmhupnQ==
-  /jest-puppeteer/3.5.1/puppeteer@1.16.0:
+  /jest-puppeteer/3.5.1/puppeteer@1.17.0:
     dependencies:
       expect-puppeteer: 3.5.1
-      jest-environment-puppeteer: /jest-environment-puppeteer/3.9.1/puppeteer@1.16.0
-      puppeteer: 1.16.0
+      jest-environment-puppeteer: /jest-environment-puppeteer/3.9.1/puppeteer@1.17.0
+      puppeteer: 1.17.0
     dev: false
     id: registry.npmjs.org/jest-puppeteer/3.5.1
     peerDependencies:
       puppeteer: ^1.5.0
     resolution:
       integrity: sha512-7foyoPn3C568hfjuHXoiSYWGSRSUo350XWYoJ0h6r0PwCDUBLVm43kkaUhE3dNgdJhxTQpgOqzzhjGHBu5B5Aw==
-  /jest-puppeteer/4.1.1/puppeteer@1.16.0:
+  /jest-puppeteer/4.2.0/puppeteer@1.17.0:
     dependencies:
       expect-puppeteer: 4.1.1
-      jest-environment-puppeteer: /jest-environment-puppeteer/4.1.1/puppeteer@1.16.0
-      puppeteer: 1.16.0
+      jest-environment-puppeteer: 4.2.0
+      puppeteer: 1.17.0
     dev: false
-    id: registry.npmjs.org/jest-puppeteer/4.1.1
+    id: registry.npmjs.org/jest-puppeteer/4.2.0
     peerDependencies:
       puppeteer: ^1.5.0
     resolution:
-      integrity: sha512-nMZ8oUrmzp67UfPKXKmoEU1wLsZfPAhlOlLYHZSCb78eIkHmeP8tqSibhAMxH8BIQUHTsnAfel5z5AsGv2SzGQ==
+      integrity: sha512-vTynE0pLia0SxbE4eRdFMWAVCm75poMTKzPhKQdQ5iS7e+mZOuMtVRNXqErsHppl4+3cRnN/r3u0g6iFSvR/sw==
   /jest-regex-util/24.3.0:
     dev: false
     engines:
@@ -8674,7 +8671,7 @@ packages:
       babel-register: 6.26.0
       babylon: 7.0.0-beta.47
       colors: 1.3.3
-      flow-parser: 0.99.0
+      flow-parser: 0.99.1
       lodash: 4.17.11
       micromatch: 2.3.11
       neo-async: 2.6.1
@@ -8793,9 +8790,14 @@ packages:
     resolution:
       integrity: sha1-Epai1Y/UXxmg9s4B1lcB4sc1tus=
   /json3/3.3.2:
+    deprecated: Please use the native JSON object instead of JSON 3
     dev: false
     resolution:
       integrity: sha1-PAQ0dD35Pi9cQq7nsZvLSDV19OE=
+  /json3/3.3.3:
+    dev: false
+    resolution:
+      integrity: sha512-c7/8mbUsKigAbLkD5B010BK4D9LZm7A1pNItkEwiUZRpIN66exu/e7YQWysGun+TRKaJp8MhemM+VkfWv42aCA==
   /json5/0.5.1:
     dev: false
     hasBin: true
@@ -9320,12 +9322,12 @@ packages:
       node: '>=4'
     resolution:
       integrity: sha1-iDKP19HOeTiykoN0bwsbwSayRwg=
-  /loglevel/1.6.1:
+  /loglevel/1.6.2:
     dev: false
     engines:
       node: '>= 0.6.0'
     resolution:
-      integrity: sha1-4PyVEztu8nbNyIh82vJKpvFW+Po=
+      integrity: sha512-Jt2MHrCNdtIe1W6co3tF5KXGRkzF+TYffiQstfXa04mrss9IKXzAAXYWak8LbZseAQY03sH2GzMCMU0ZOUc9bg==
   /lolex/2.7.5:
     dev: false
     resolution:
@@ -10222,7 +10224,7 @@ packages:
   /npm-registry-fetch/3.9.0:
     dependencies:
       JSONStream: 1.3.5
-      bluebird: 3.5.4
+      bluebird: 3.5.5
       figgy-pudding: 3.5.1
       lru-cache: 4.1.5
       make-fetch-happen: 4.0.1
@@ -11448,10 +11450,10 @@ packages:
     dev: false
     resolution:
       integrity: sha1-8FKijacOYYkX7wqKw0wa5aaChrM=
-  /psl/1.1.31:
+  /psl/1.1.32:
     dev: false
     resolution:
-      integrity: sha512-/6pt4+C+T+wZUieKR620OpzN/LlnNKuWjy1iFLQ/UG35JqHlR/89MP1d96dUfkf6Dne3TuLQzOYEYshJ+Hx8mw==
+      integrity: sha512-MHACAkHpihU/REGGPLj4sEfc/XKW2bheigvHO1dUqjaKigMp1C8+WLQYRGgeKFMsw5PMfegZcaN8IDXK/cD0+g==
   /public-encrypt/4.0.3:
     dependencies:
       bn.js: 4.11.8
@@ -11499,7 +11501,7 @@ packages:
       node: '>=6'
     resolution:
       integrity: sha512-XRsRjdf+j5ml+y/6GKHPZbrF/8p2Yga0JPtdqTIY2Xe5ohJPD9saDJJLPvp9+NSBprVvevdXZybnj2cv8OEd0A==
-  /puppeteer/1.16.0:
+  /puppeteer/1.17.0:
     dependencies:
       debug: 4.1.1
       extract-zip: 1.6.7
@@ -11514,7 +11516,7 @@ packages:
       node: '>=6.4.0'
     requiresBuild: true
     resolution:
-      integrity: sha512-7hcmbUw+6INffSPBdnO8KSjJRg2bLRoI7EeZMf5MHdV5kpyYMeoMR5w8AIiZbKIhYGwrXlbgvO7gFTsXNHShuQ==
+      integrity: sha512-3EXZSximCzxuVKpIHtyec8Wm2dWZn1fc5tQi34qWfiUgubEVYHjUvr0GOJojqf3mifI6oyKnCdrGxaOI+lWReA==
   /q/1.5.1:
     dev: false
     engines:
@@ -11778,7 +11780,7 @@ packages:
     dependencies:
       babel-runtime: 6.26.0
       classnames: 2.2.6
-      fuse.js: 3.4.4
+      fuse.js: 3.4.5
       prop-types: 15.7.2
     dev: false
     peerDependencies:
@@ -11789,7 +11791,7 @@ packages:
     dependencies:
       babel-runtime: 6.26.0
       classnames: 2.2.6
-      fuse.js: 3.4.4
+      fuse.js: 3.4.5
       prop-types: 15.7.2
       react: 16.8.6
     dev: false
@@ -11800,7 +11802,7 @@ packages:
       integrity: sha512-qIZZxaCheb/HhcBi5fABbiCFg85+K5r1TCps1D4uaL0LAMMD/1zm/x1/kNR130Tx7nnY9V7mbFyY0DquPYeLAw==
   /react-highlight/0.10.0:
     dependencies:
-      highlight.js: 9.15.6
+      highlight.js: 9.15.8
       react: 15.6.2
       react-dom: /react-dom/15.6.2/react@15.6.2
     dev: false
@@ -12194,7 +12196,7 @@ packages:
     dev: false
     resolution:
       integrity: sha512-tQtKA9WIAhBF3+VLAseyMqZeBjW0AHJoxOtYqSUZNJxauErmLbVm2FW1y+J/YA9dUrAC39ITejlZWhVIwawkKw==
-  /readable-stream/3.3.0:
+  /readable-stream/3.4.0:
     dependencies:
       inherits: 2.0.3
       string_decoder: 1.2.0
@@ -12203,7 +12205,7 @@ packages:
     engines:
       node: '>= 6'
     resolution:
-      integrity: sha512-EsI+s3k3XsW+fU8fQACLN59ky34AZ14LoeVZpYwmZvldCFo0r0gnelwF2TcMjLor/BTL5aDJVBMkss0dthToPw==
+      integrity: sha512-jItXPLmrSR8jmTRmRWJXCnGJsfy85mB3Wd/uINMXA65yrnFo0cPClFIUWzo2najVNSl+mx7/4W8ttlLWJe99pQ==
   /readdirp/2.2.1:
     dependencies:
       graceful-fs: 4.1.15
@@ -12315,7 +12317,7 @@ packages:
       integrity: sha1-dJrO7H8/34tj+SegSAnpDFwLNGA=
   /refractor/2.9.0:
     dependencies:
-      hastscript: 5.0.0
+      hastscript: 5.1.0
       parse-entities: 1.2.2
       prismjs: 1.16.0
     dev: false
@@ -12637,13 +12639,24 @@ packages:
     dev: false
     resolution:
       integrity: sha1-52OI0heZLCUnUCQdPTlW/tmNj/Q=
-  /riceburn/1.2.1:
+  /riceburn/1.3.0:
     dependencies:
       glob: 7.1.4
-      typescript: 3.5.0-rc
     dev: false
+    peerDependencies:
+      typescript: '>=2.4.0'
     resolution:
-      integrity: sha512-6oBVdEB/sp0exnsJ4utYah2vWVU4NM8rp14Iq38URQmnDZTtyVqrlqFudHshjhlo47GvF8DXwDkUTTsB0Wp0aw==
+      integrity: sha512-xOnjt8kyXOKCCzKtfp6yQRG4wbAF5VCIZMslY+W3KGhVwPQ2rTcYbvEFRIIginuSj6PvhXzwVcz+llO4ANk4Jw==
+  /riceburn/1.3.0/typescript@3.5.1:
+    dependencies:
+      glob: 7.1.4
+      typescript: 3.5.1
+    dev: false
+    id: registry.npmjs.org/riceburn/1.3.0
+    peerDependencies:
+      typescript: '>=2.4.0'
+    resolution:
+      integrity: sha512-xOnjt8kyXOKCCzKtfp6yQRG4wbAF5VCIZMslY+W3KGhVwPQ2rTcYbvEFRIIginuSj6PvhXzwVcz+llO4ANk4Jw==
   /right-align/0.1.3:
     dependencies:
       align-text: 0.1.4
@@ -12869,7 +12882,7 @@ packages:
     requiresBuild: true
     resolution:
       integrity: sha512-yqLrFtaMzcNC0bgkBByiqDgQOLqNtl5N7kE5a7pB/Ubc5FoJOu/tAfEliQ4rZcujSD2G7cVrrqoBUO2rAifmCg==
-  /screener-runner/0.10.32:
+  /screener-runner/0.10.34:
     dependencies:
       bluebird: 3.4.7
       colors: 1.1.2
@@ -12888,7 +12901,7 @@ packages:
       node: '>= 4'
     hasBin: true
     resolution:
-      integrity: sha512-qPqkJk63t7Lvka0CipC0lCnXHCBwezK3zt+GlNowdFmA2G9L+ImkknQnhIQwDBxVyzdhn92hWZxeXqwWkBmqzQ==
+      integrity: sha512-gOI5JICl5otlxzGeswEr2a8/w0QWLef8ymX4PBfaV37q3In7sCadFTDxPjUCy5qX+iByjorA+kQw9v9Jo3CDBg==
   /screener-storybook/0.16.12:
     dependencies:
       '@types/react': 16.8.11
@@ -12904,7 +12917,7 @@ packages:
       react-dom: /react-dom/16.8.6/react@16.8.6
       request: 2.88.0
       requestretry: 1.12.3
-      screener-runner: 0.10.32
+      screener-runner: 0.10.34
       semver: 5.6.0
     dev: false
     engines:
@@ -12958,11 +12971,11 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Ya52jSX2u7QKghxeoFGpLwCtGlt7j0oY9DYb5apt9nPlJ42ID+ulTXESnt/qAQcoSERyZ5sl3LDIOw0nAn/5DA==
-  /semver/6.1.0:
+  /semver/6.1.1:
     dev: false
     hasBin: true
     resolution:
-      integrity: sha512-kCqEOOHoBcFs/2Ccuk4Xarm/KiWRSLEX9CAZF8xkJ6ZPlIoTZ8V5f7J16vYLJqDbR7KrxTJpR2lqjIEm2Qx9cQ==
+      integrity: sha512-rWYq2e5iYW+fFe/oPPtYJxYgjBm8sC4rmoGdUOgBB7VnwKt6HrL793l2voH1UlsyYZpJ4g0wfjnTEO1s1NP2eQ==
   /send/0.17.1:
     dependencies:
       debug: 2.6.9
@@ -13232,7 +13245,7 @@ packages:
       eventsource: 0.1.6
       faye-websocket: 0.11.1
       inherits: 2.0.3
-      json3: 3.3.2
+      json3: 3.3.3
       url-parse: 1.4.7
     dev: false
     resolution:
@@ -13243,7 +13256,7 @@ packages:
       eventsource: 1.0.7
       faye-websocket: 0.11.1
       inherits: 2.0.3
-      json3: 3.3.2
+      json3: 3.3.3
       url-parse: 1.4.7
     dev: false
     resolution:
@@ -13396,7 +13409,7 @@ packages:
       detect-node: 2.0.4
       hpack.js: 2.1.6
       obuf: 1.1.2
-      readable-stream: 3.3.0
+      readable-stream: 3.4.0
       wbuf: 1.7.3
     dev: false
     resolution:
@@ -13483,7 +13496,7 @@ packages:
       integrity: sha1-YICcOcv/VTNyJv1eC1IPNB8ftcY=
   /static-module/3.0.3:
     dependencies:
-      acorn-node: 1.6.2
+      acorn-node: 1.7.0
       concat-stream: 1.6.2
       convert-source-map: 1.6.0
       duplexer2: 0.1.4
@@ -13914,15 +13927,16 @@ packages:
       '0': node >=0.8.0
     resolution:
       integrity: sha1-4Ma8TSa5AxJEEOT+2BEDAU38H1k=
-  /terser-webpack-plugin/1.2.4:
+  /terser-webpack-plugin/1.3.0:
     dependencies:
       cacache: 11.3.2
       find-cache-dir: 2.1.0
       is-wsl: 1.1.0
+      loader-utils: 1.2.3
       schema-utils: 1.0.0
       serialize-javascript: 1.7.0
       source-map: 0.6.1
-      terser: 3.17.0
+      terser: 4.0.0
       webpack-sources: 1.3.0
       worker-farm: 1.7.0
     dev: false
@@ -13931,8 +13945,8 @@ packages:
     peerDependencies:
       webpack: ^4.0.0
     resolution:
-      integrity: sha512-64IiILNQlACWZLzFlpzNaG0bpQ4ytaB7fwOsbpsdIV70AfLUmIGGeuKL0YV2WmtcrURjE2aOvHD4/lrFV3Rg+Q==
-  /terser/3.17.0:
+      integrity: sha512-W2YWmxPjjkUcOWa4pBEv4OP4er1aeQJlSo2UhtCFQCuRXEHjOFscO8VyWHj9JLlA0RzQb8Y2/Ta78XZvT54uGg==
+  /terser/4.0.0:
     dependencies:
       commander: 2.20.0
       source-map: 0.6.1
@@ -13942,7 +13956,7 @@ packages:
       node: '>=6.0.0'
     hasBin: true
     resolution:
-      integrity: sha512-/FQzzPJmCpjAH9Xvk2paiWrFq+5M6aVOf+2KRbwhByISDX/EujxsK+BAvrhb6H+2rtrLCHK9N01wO014vrIwVQ==
+      integrity: sha512-dOapGTU0hETFl1tCo4t56FN+2jffoKyER9qBGoUFyZ6y7WLoKT0bF+lAYi6B6YsILcGF3q1C2FBh8QcKSCgkgA==
   /test-exclude/5.2.3:
     dependencies:
       glob: 7.1.4
@@ -14121,7 +14135,7 @@ packages:
       integrity: sha512-TZ6TTfI5NtZnuyy/Kecv+CnoROnyXn2DN97LontgQpCwsX2XyLYCC0ENhYkehSOwAp8rTQKc/NUIF7BkQ5rKLA==
   /tough-cookie/2.4.3:
     dependencies:
-      psl: 1.1.31
+      psl: 1.1.32
       punycode: 1.4.1
     dev: false
     engines:
@@ -14130,7 +14144,7 @@ packages:
       integrity: sha512-Q5srk/4vDM54WJsJio3XNn6K2sCG+CQ8G5Wz6bZhRZoAe/+TxjWB/GlFAnYEbkYVlON9FMk/fE3h2RLpPXo4lQ==
   /tough-cookie/2.5.0:
     dependencies:
-      psl: 1.1.31
+      psl: 1.1.32
       punycode: 2.1.1
     dev: false
     engines:
@@ -14233,30 +14247,31 @@ packages:
   /tslint-microsoft-contrib/5.2.1:
     dependencies:
       tsutils: 2.28.0
-      typescript: 3.5.0-rc
     dev: false
     peerDependencies:
       tslint: ^5.1.0
+      typescript: ^2.1.0 || ^3.0.0
     resolution:
       integrity: sha512-PDYjvpo0gN9IfMULwKk0KpVOPMhU6cNoT9VwCOLeDl/QS8v8W2yspRpFFuUS7/c5EIH/n8ApMi8TxJAz1tfFUA==
-  /tslint-microsoft-contrib/5.2.1/tslint@5.16.0:
+  /tslint-microsoft-contrib/5.2.1/tslint@5.16.0+typescript@3.5.1:
     dependencies:
-      tslint: 5.16.0
-      tsutils: 2.28.0
-      typescript: 3.5.0-rc
+      tslint: /tslint/5.16.0/typescript@3.5.1
+      tsutils: /tsutils/2.28.0/typescript@3.5.1
+      typescript: 3.5.1
     dev: false
     id: registry.npmjs.org/tslint-microsoft-contrib/5.2.1
     peerDependencies:
       tslint: ^5.1.0
+      typescript: ^2.1.0 || ^3.0.0
     resolution:
       integrity: sha512-PDYjvpo0gN9IfMULwKk0KpVOPMhU6cNoT9VwCOLeDl/QS8v8W2yspRpFFuUS7/c5EIH/n8ApMi8TxJAz1tfFUA==
   /tslint-react/3.6.0:
     dependencies:
       tsutils: 2.29.0
-      typescript: 3.5.0-rc
     dev: false
     peerDependencies:
       tslint: ^5.1.0
+      typescript: '>=2.1.0 || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev'
     resolution:
       integrity: sha512-AIv1QcsSnj7e9pFir6cJ6vIncTqxfqeFF3Lzh8SuuBljueYzEAtByuB6zMaD27BL0xhMEqsZ9s5eHuCONydjBw==
   /tslint/5.16.0:
@@ -14274,25 +14289,73 @@ packages:
       semver: 5.7.0
       tslib: 1.9.3
       tsutils: 2.29.0
-      typescript: 3.5.0-rc
     dev: false
     engines:
       node: '>=4.8.0'
     hasBin: true
+    peerDependencies:
+      typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >= 3.1.0-dev || >= 3.2.0-dev'
+    resolution:
+      integrity: sha512-UxG2yNxJ5pgGwmMzPMYh/CCnCnh0HfPgtlVRDs1ykZklufFBL1ZoTlWFRz2NQjcoEiDoRp+JyT0lhBbbH/obyA==
+  /tslint/5.16.0/typescript@3.5.1:
+    dependencies:
+      '@babel/code-frame': 7.0.0
+      builtin-modules: 1.1.1
+      chalk: 2.4.2
+      commander: 2.20.0
+      diff: 3.5.0
+      glob: 7.1.4
+      js-yaml: 3.13.1
+      minimatch: 3.0.4
+      mkdirp: 0.5.1
+      resolve: 1.11.0
+      semver: 5.7.0
+      tslib: 1.9.3
+      tsutils: /tsutils/2.29.0/typescript@3.5.1
+      typescript: 3.5.1
+    dev: false
+    engines:
+      node: '>=4.8.0'
+    hasBin: true
+    id: registry.npmjs.org/tslint/5.16.0
+    peerDependencies:
+      typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >=3.0.0-dev || >= 3.1.0-dev || >= 3.2.0-dev'
     resolution:
       integrity: sha512-UxG2yNxJ5pgGwmMzPMYh/CCnCnh0HfPgtlVRDs1ykZklufFBL1ZoTlWFRz2NQjcoEiDoRp+JyT0lhBbbH/obyA==
   /tsutils/2.28.0:
     dependencies:
       tslib: 1.9.3
-      typescript: 3.5.0-rc
     dev: false
+    peerDependencies:
+      typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev'
+    resolution:
+      integrity: sha512-bh5nAtW0tuhvOJnx1GLRn5ScraRLICGyJV5wJhtRWOLsxW70Kk5tZtpK3O/hW6LDnqKS9mlUMPZj9fEMJ0gxqA==
+  /tsutils/2.28.0/typescript@3.5.1:
+    dependencies:
+      tslib: 1.9.3
+      typescript: 3.5.1
+    dev: false
+    id: registry.npmjs.org/tsutils/2.28.0
+    peerDependencies:
+      typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev'
     resolution:
       integrity: sha512-bh5nAtW0tuhvOJnx1GLRn5ScraRLICGyJV5wJhtRWOLsxW70Kk5tZtpK3O/hW6LDnqKS9mlUMPZj9fEMJ0gxqA==
   /tsutils/2.29.0:
     dependencies:
       tslib: 1.9.3
-      typescript: 3.5.0-rc
     dev: false
+    peerDependencies:
+      typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev'
+    resolution:
+      integrity: sha512-g5JVHCIJwzfISaXpXE1qvNalca5Jwob6FjI4AoPlqMusJ6ftFE7IkkFoMhVLRgK+4Kx3gkzb8UZK5t5yTTvEmA==
+  /tsutils/2.29.0/typescript@3.5.1:
+    dependencies:
+      tslib: 1.9.3
+      typescript: 3.5.1
+    dev: false
+    id: registry.npmjs.org/tsutils/2.29.0
+    peerDependencies:
+      typescript: '>=2.1.0 || >=2.1.0-dev || >=2.2.0-dev || >=2.3.0-dev || >=2.4.0-dev || >=2.5.0-dev || >=2.6.0-dev || >=2.7.0-dev || >=2.8.0-dev || >=2.9.0-dev || >= 3.0.0-dev || >= 3.1.0-dev'
     resolution:
       integrity: sha512-g5JVHCIJwzfISaXpXE1qvNalca5Jwob6FjI4AoPlqMusJ6ftFE7IkkFoMhVLRgK+4Kx3gkzb8UZK5t5yTTvEmA==
   /ttest/2.0.0:
@@ -14350,20 +14413,6 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-tDMYfVtvpb96msS1lDX9MEdHrW4yOuZ4Kdc4Him9oU796XldPYF/t2+uKoX0BBa0hXXwDlqYQbXY5Rzjzc5hBA==
-  /typescript/3.4.5:
-    dev: false
-    engines:
-      node: '>=4.2.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-YycBxUb49UUhdNMU5aJ7z5Ej2XGmaIBL0x34vZ82fn3hGvD+bgrMrVDpatgz2f7YxUMJxMkbWxJZeAvDxVe7Vw==
-  /typescript/3.5.0-rc:
-    dev: false
-    engines:
-      node: '>=4.2.0'
-    hasBin: true
-    resolution:
-      integrity: sha512-8Os3bqTeHc6bf+bkPFL3O/pb09j8SbDa2LUBxTXWpZlcHUW9ziGuiEFiqMcArkbAjGLqEzshkl4zvxhb0gVPuQ==
   /typescript/3.5.1:
     dev: false
     engines:
@@ -14411,7 +14460,7 @@ packages:
     hasBin: true
     resolution:
       integrity: sha512-Y2VsbPVs0FIshJztycsO2SfPk7/KAF/T72qzv9u5EpQ4kB2hQoHlhNQTsNyy6ul7lQtqJN/AoWeS23OzEiEFxw==
-  /uglify-js/3.5.15:
+  /uglify-js/3.6.0:
     dependencies:
       commander: 2.20.0
       source-map: 0.6.1
@@ -14421,7 +14470,7 @@ packages:
     hasBin: true
     optional: true
     resolution:
-      integrity: sha512-fe7aYFotptIddkwcm6YuA0HmknBZ52ZzOsUxZEdhhkSsz7RfjHDX2QDxwKTiv4JQ5t5NhfmpgAK+J7LiDhKSqg==
+      integrity: sha512-W+jrUHJr3DXKhrsS7NUVxn3zqMOFn0hL/Ei6v0anCIMoKC93TjcflTagwIHLW7SfMFfiQuktQyFVCFHGUE0+yg==
   /uglify-to-browserify/1.0.2:
     dev: false
     optional: true
@@ -14729,7 +14778,7 @@ packages:
       integrity: sha1-gqwr/2PZUOqeMYmlimViX+3xkEU=
   /wait-on/3.2.0:
     dependencies:
-      core-js: 2.6.8
+      core-js: 2.6.9
       joi: 13.7.0
       minimist: 1.2.0
       request: 2.88.0
@@ -14787,7 +14836,7 @@ packages:
       chalk: 2.4.2
       commander: 2.20.0
       ejs: 2.6.1
-      express: 4.17.0
+      express: 4.17.1
       filesize: 3.6.1
       gzip-size: 5.1.1
       lodash: 4.17.11
@@ -14897,14 +14946,14 @@ packages:
       connect-history-api-fallback: 1.6.0
       debug: 3.2.6
       del: 3.0.0
-      express: 4.17.0
+      express: 4.17.1
       html-entities: 1.2.1
       http-proxy-middleware: 0.18.0
       import-local: 2.0.0
       internal-ip: 3.0.1
       ip: 1.1.5
       killable: 1.0.1
-      loglevel: 1.6.1
+      loglevel: 1.6.2
       opn: 5.5.0
       portfinder: 1.0.20
       schema-utils: 1.0.0
@@ -14937,14 +14986,14 @@ packages:
       connect-history-api-fallback: 1.6.0
       debug: 3.2.6
       del: 3.0.0
-      express: 4.17.0
+      express: 4.17.1
       html-entities: 1.2.1
       http-proxy-middleware: 0.18.0
       import-local: 2.0.0
       internal-ip: 3.0.1
       ip: 1.1.5
       killable: 1.0.1
-      loglevel: 1.6.1
+      loglevel: 1.6.2
       opn: 5.5.0
       portfinder: 1.0.20
       schema-utils: 1.0.0
@@ -15050,7 +15099,7 @@ packages:
       acorn-dynamic-import: /acorn-dynamic-import/4.0.0/acorn@6.1.1
       ajv: 6.10.0
       ajv-keywords: /ajv-keywords/3.4.0/ajv@6.10.0
-      chrome-trace-event: 1.0.0
+      chrome-trace-event: 1.0.2
       enhanced-resolve: 4.1.0
       eslint-scope: 4.0.3
       json-parse-better-errors: 1.0.2
@@ -15063,7 +15112,7 @@ packages:
       node-libs-browser: 2.2.0
       schema-utils: 1.0.0
       tapable: 1.1.3
-      terser-webpack-plugin: 1.2.4
+      terser-webpack-plugin: 1.3.0
       watchpack: 1.6.0
       webpack-sources: 1.3.0
     dev: false
@@ -15218,14 +15267,14 @@ packages:
     dev: false
     resolution:
       integrity: sha512-TGHFeZEZMnv+gBFRfjAcxL5bPHrsGKtnb4qsFAws7/vlh+QfwAaySIw4AXP9ZskTTh5GWu3FLuJhsWVdiJPGvg==
-  /write-file-atomic/2.4.2:
+  /write-file-atomic/2.4.3:
     dependencies:
       graceful-fs: 4.1.15
       imurmurhash: 0.1.4
       signal-exit: 3.0.2
     dev: false
     resolution:
-      integrity: sha512-s0b6vB3xIVRLWywa6X9TOMA7k9zio0TMOsl9ZnDkliA/cfJlpHXAscj0gbHVJiTdIuAYpIyqS5GW91fqm6gG5g==
+      integrity: sha512-GaETH5wwsX+GcnzhPgKcKjJ6M2Cq3/iZp1WyY/X1CSqrW+jVNM9Y7D8EC2sM4ZG/V8wZlSniJnCKWPmBYAucRQ==
   /write-file-webpack-plugin/4.5.0:
     dependencies:
       chalk: 2.4.2
@@ -15234,7 +15283,7 @@ packages:
       lodash: 4.17.11
       mkdirp: 0.5.1
       moment: 2.24.0
-      write-file-atomic: 2.4.2
+      write-file-atomic: 2.4.3
     dev: false
     engines:
       node: '>=4'
@@ -15439,11 +15488,11 @@ packages:
       '@types/jest': 23.0.0
       '@types/puppeteer': 1.12.3
       axe-core: 3.2.2
-      axe-puppeteer: /axe-puppeteer/1.0.0/puppeteer@1.16.0
+      axe-puppeteer: /axe-puppeteer/1.0.0/puppeteer@1.17.0
       axe-sarif-converter: 1.3.1
       concurrently: 4.1.0
       mkdirp: 0.5.1
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
       tslib: 1.9.3
       wait-on: 3.2.0
     dev: false
@@ -15477,8 +15526,8 @@ packages:
   'file:projects/build.tgz':
     dependencies:
       '@microsoft/api-extractor': 7.0.34
-      '@microsoft/load-themed-styles': 1.9.1
-      '@microsoft/loader-load-themed-styles': 1.7.159
+      '@microsoft/load-themed-styles': 1.9.2
+      '@microsoft/loader-load-themed-styles': 1.7.160
       async: 2.6.2
       autoprefixer: 7.2.6
       babylon: 7.0.0-beta.47
@@ -15489,7 +15538,7 @@ packages:
       cpx: 1.5.0
       css-loader: 0.28.11
       find-free-port: 2.0.0
-      fork-ts-checker-webpack-plugin: /fork-ts-checker-webpack-plugin/0.4.15/tslint@5.16.0+webpack@4.29.5
+      fork-ts-checker-webpack-plugin: /fork-ts-checker-webpack-plugin/0.4.15/41adb244b4ff6610d6d6f34fa678a3bd
       fs-extra: 7.0.1
       github: 7.3.2
       glob: 7.1.4
@@ -15511,7 +15560,7 @@ packages:
       postcss-loader: 2.1.6
       postcss-modules: 0.8.0
       prettier: 1.17.1
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
       raf: 3.4.1
       raw-loader: 0.5.1
       recast: 0.15.5
@@ -15522,8 +15571,8 @@ packages:
       style-loader: 0.21.0
       ts-jest: /ts-jest/24.0.1/jest@24.1.0
       ts-loader: 4.5.0
-      tslint: 5.16.0
-      tslint-microsoft-contrib: /tslint-microsoft-contrib/5.2.1/tslint@5.16.0
+      tslint: /tslint/5.16.0/typescript@3.5.1
+      tslint-microsoft-contrib: /tslint-microsoft-contrib/5.2.1/tslint@5.16.0+typescript@3.5.1
       ttest: 2.0.0
       typescript: 3.5.1
       webpack: 4.29.5
@@ -15540,7 +15589,7 @@ packages:
     version: 0.0.0
   'file:projects/charting.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/d3-array': 1.2.1
       '@types/d3-axis': 1.0.10
       '@types/d3-scale': 2.0.0
@@ -15566,7 +15615,7 @@ packages:
       d3-shape: 1.3.5
       d3-time-format: 2.1.3
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       prop-types: 15.7.2
       react: 16.8.6
@@ -15604,7 +15653,7 @@ packages:
     version: 0.0.0
   'file:projects/date-time.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -15615,7 +15664,7 @@ packages:
       '@types/react-test-renderer': 16.8.1
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
@@ -15629,7 +15678,7 @@ packages:
     version: 0.0.0
   'file:projects/dom-tests.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/jest': 23.0.0
       '@types/puppeteer': 1.12.3
@@ -15640,9 +15689,9 @@ packages:
       expect-puppeteer: 4.1.0
       immutability-helper: 2.8.1
       jest-environment-node: 23.4.0
-      jest-environment-puppeteer: /jest-environment-puppeteer/3.9.0/puppeteer@1.16.0
-      jest-puppeteer: /jest-puppeteer/3.5.1/puppeteer@1.16.0
-      puppeteer: 1.16.0
+      jest-environment-puppeteer: /jest-environment-puppeteer/3.9.0/puppeteer@1.17.0
+      jest-puppeteer: /jest-puppeteer/3.5.1/puppeteer@1.17.0
+      puppeteer: 1.17.0
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.9.3
@@ -15654,7 +15703,7 @@ packages:
     version: 0.0.0
   'file:projects/example-app-base.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/color-check': 0.0.0
       '@types/es6-promise': 0.0.32
       '@types/highlight.js': 9.12.2
@@ -15668,7 +15717,7 @@ packages:
       es6-map: 0.1.5
       es6-promise: 4.2.6
       es6-weak-map: 2.0.2
-      highlight.js: 9.15.6
+      highlight.js: 9.15.8
       markdown-to-jsx: /markdown-to-jsx/6.6.1/react@16.8.6
       office-ui-fabric-core: 10.0.0
       react: 16.8.6
@@ -15684,7 +15733,7 @@ packages:
     version: 0.0.0
   'file:projects/experiments.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/deep-assign': 0.1.1
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
@@ -15700,7 +15749,7 @@ packages:
       '@types/webpack-env': 1.13.9
       deep-assign: 2.0.0
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       prop-types: 15.7.2
       react: 16.8.6
@@ -15718,7 +15767,7 @@ packages:
     version: 0.0.0
   'file:projects/fabric-website-resources.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -15732,19 +15781,19 @@ packages:
       '@types/sinon': 2.2.2
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       enzyme-to-json: /enzyme-to-json/3.3.5/enzyme@3.9.0
       es6-map: 0.1.5
       es6-promise: 4.2.6
       es6-weak-map: 2.0.2
       expect-puppeteer: 4.1.0
-      highlight.js: 9.15.6
+      highlight.js: 9.15.8
       jest-environment-node: 24.5.0
-      jest-environment-puppeteer: /jest-environment-puppeteer/4.1.0/puppeteer@1.16.0
-      jest-puppeteer: /jest-puppeteer/4.1.1/puppeteer@1.16.0
+      jest-environment-puppeteer: /jest-environment-puppeteer/4.1.0/puppeteer@1.17.0
+      jest-puppeteer: /jest-puppeteer/4.2.0/puppeteer@1.17.0
       office-ui-fabric-core: 9.6.1
       prop-types: 15.7.2
-      puppeteer: 1.16.0
+      puppeteer: 1.17.0
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-highlight: 0.10.0
@@ -15760,7 +15809,7 @@ packages:
     version: 0.0.0
   'file:projects/fabric-website.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/node': 8.10.48
       '@types/react': 16.8.11
@@ -15769,7 +15818,7 @@ packages:
       '@types/webpack-env': 1.13.9
       es6-promise: 4.2.6
       es6-weak-map: 2.0.2
-      highlight.js: 9.15.6
+      highlight.js: 9.15.8
       json-loader: 0.5.7
       office-ui-fabric-core: 10.0.0
       react: 16.8.6
@@ -15811,7 +15860,7 @@ packages:
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -15821,7 +15870,7 @@ packages:
       '@types/react-test-renderer': 16.8.1
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
@@ -15843,7 +15892,7 @@ packages:
       '@types/react-test-renderer': 16.8.1
       '@types/sinon': 2.2.2
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       react-hooks-testing-library: /react-hooks-testing-library/0.5.0/4ca4b340b5593909f11580174eacf0b7
@@ -15882,7 +15931,7 @@ packages:
     version: 0.0.0
   'file:projects/legacy.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -15897,13 +15946,13 @@ packages:
       '@types/sinon': 2.2.2
       '@types/webpack-env': 1.13.0
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       enzyme-to-json: /enzyme-to-json/3.3.5/enzyme@3.9.0
       es6-map: 0.1.5
       es6-promise: 4.2.6
       es6-weak-map: 2.0.2
       glob: 7.1.4
-      highlight.js: 9.15.6
+      highlight.js: 9.15.8
       jest-snapshot: 24.1.0
       office-ui-fabric-core: 9.6.1
       prop-types: 15.7.2
@@ -15922,7 +15971,7 @@ packages:
     version: 0.0.0
   'file:projects/lists.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -15932,7 +15981,7 @@ packages:
       '@types/react-test-renderer': 16.8.1
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
@@ -15959,7 +16008,7 @@ packages:
       '@types/jest': 23.0.0
       '@types/node': 8.10.48
       '@types/semver': 5.5.0
-      riceburn: 1.2.1
+      riceburn: /riceburn/1.3.0/typescript@3.5.1
       semver: 5.7.0
       tslib: 1.9.3
       typescript: 3.5.1
@@ -15971,7 +16020,7 @@ packages:
     version: 0.0.0
   'file:projects/office-ui-fabric-react.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -15986,13 +16035,13 @@ packages:
       '@types/sinon': 2.2.2
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       enzyme-to-json: /enzyme-to-json/3.3.5/enzyme@3.9.0
       es6-map: 0.1.5
       es6-promise: 4.2.6
       es6-weak-map: 2.0.2
       glob: 7.1.4
-      highlight.js: 9.15.6
+      highlight.js: 9.15.8
       jest-snapshot: 24.1.0
       office-ui-fabric-core: 9.6.1
       prop-types: 15.7.2
@@ -16011,7 +16060,7 @@ packages:
     version: 0.0.0
   'file:projects/perf-test.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/react': 16.8.11
       '@types/react-dom': 16.8.4
@@ -16043,7 +16092,7 @@ packages:
     version: 0.0.0
   'file:projects/react-cards.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/enzyme': 3.1.13
       '@types/enzyme-adapter-react-16': 1.0.3
       '@types/es6-promise': 0.0.32
@@ -16054,7 +16103,7 @@ packages:
       '@types/resemblejs': 1.3.28
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
@@ -16068,14 +16117,14 @@ packages:
     version: 0.0.0
   'file:projects/server-rendered-app.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/react': 16.8.11
       '@types/react-dom': 16.8.4
       '@types/webpack-env': 1.13.9
       compression: 1.7.4
       es6-promise: 4.2.6
-      express: 4.17.0
+      express: 4.17.1
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
       tslib: 1.9.3
@@ -16097,7 +16146,7 @@ packages:
     version: 0.0.0
   'file:projects/ssr-tests.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/mocha': 2.2.39
       '@types/webpack-env': 1.13.9
@@ -16116,7 +16165,7 @@ packages:
     version: 0.0.0
   'file:projects/styling.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/jest': 23.0.0
       '@types/react': 16.8.11
       '@types/webpack-env': 1.13.9
@@ -16156,7 +16205,7 @@ packages:
       '@types/react-test-renderer': 16.8.1
       '@types/webpack-env': 1.13.9
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       es6-weak-map: 2.0.2
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
@@ -16179,7 +16228,7 @@ packages:
     version: 0.0.0
   'file:projects/theming-designer.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/react': 16.8.11
       '@types/react-dom': 16.8.4
@@ -16198,7 +16247,7 @@ packages:
     version: 0.0.0
   'file:projects/todo-app.tgz':
     dependencies:
-      '@microsoft/load-themed-styles': 1.9.1
+      '@microsoft/load-themed-styles': 1.9.2
       '@types/es6-promise': 0.0.32
       '@types/react': 16.8.11
       '@types/react-dom': 16.8.4
@@ -16236,7 +16285,7 @@ packages:
       '@types/react-test-renderer': 16.8.1
       '@types/sinon': 2.2.2
       enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.1/ee2efeb9ba09e3479f87e6d53c5a2c00
+      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.13.2/ee2efeb9ba09e3479f87e6d53c5a2c00
       prop-types: 15.7.2
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
@@ -16279,7 +16328,7 @@ packages:
       raw-loader: 0.5.1
       react: 16.8.6
       react-dom: /react-dom/16.8.6/react@16.8.6
-      screener-runner: 0.10.32
+      screener-runner: 0.10.34
       screener-storybook: 0.16.12
       storybook-readme: 3.3.0
       style-loader: 0.21.0

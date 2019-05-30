@@ -40,18 +40,6 @@ function readPackage(packageJson, context) {
     packageJson.dependencies['typescript'] = '^2 || ^3';
   }
 
-  // TODO: temporary changes to test 3.5.0-rc. delete before fabric 7 release!
-  if (
-    packageJson.name === 'fork-ts-checker-webpack-plugin' ||
-    packageJson.name === 'riceburn' ||
-    packageJson.name === 'tslint-microsoft-contrib' ||
-    packageJson.name === 'tslint' ||
-    packageJson.name === 'tslint-react' ||
-    packageJson.name === 'tsutils'
-  ) {
-    packageJson.dependencies['typescript'] = '3.5.0-dev.20190525';
-  }
-
   // Example: Suppose the karma types have a missing dependency on typings from the log4js package.
   // if (packageJson.name === '@types/karma') {
   //   context.log('Fixed up dependencies for @types/karma');
