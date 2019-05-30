@@ -50,6 +50,46 @@ Array [
 ]
 `;
 
+exports[`checks accessibility of Button (Button.CustomSplit.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
 exports[`checks accessibility of Button (Button.Default.Example) 1`] = `Array []`;
 
 exports[`checks accessibility of Button (Button.Icon.Example) 1`] = `Array []`;
@@ -172,11 +212,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-35\\" tabindex=\\"0\\">",
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-34\\" tabindex=\\"0\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".css-35",
+        "fullyQualifiedLogicalName": ".css-34",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -190,7 +230,7 @@ Array [
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".css-35",
+      "fullyQualifiedLogicalName": ".css-34",
       "ruleId": "aria-allowed-attr",
     },
     "properties": Object {
@@ -401,8 +441,8 @@ Array [
     ],
     "message": Object {
       "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
+- Element has insufficient color contrast of 2.35 (foreground color: #a19f9d, background color: #f3f2f1, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.35 (foreground color: #a19f9d, background color: #f3f2f1, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
     },
     "partialFingerprints": Object {
       "fullyQualifiedLogicalName": ".prefix-15 > span",
