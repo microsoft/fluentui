@@ -1,0 +1,30 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Nav package move moves import statements 1`] = `
+"// prettier-ignore
+import { Nav, INavLink } from '@uifabric/legacy';
+// prettier-ignore
+import { Nav } from '@uifabric/legacy';
+// prettier-ignore
+// tslint:disable-next-line: quotemark
+import { Nav } from '@uifabric/legacy';
+// prettier-ignore
+import { INav, INavLink, INavLinkGroup, INavProps, INavState, INavStyleProps, INavStyles, isRelativeUrl, Nav, NavBase } from '@uifabric/legacy';
+// prettier-ignore
+import { Foo, Bar } from 'office-ui-fabric-react';
+import { INav, INavLink, INavLinkGroup, INavProps, INavState, INavStyleProps, INavStyles, isRelativeUrl, Nav, NavBase } from '@uifabric/legacy';
+// prettier-ignore
+import {
+  INav,
+  INavLink,
+  INavLinkGroup,
+  INavProps,
+  INavState,
+  INavStyleProps,
+  INavStyles,
+  isRelativeUrl,
+  Nav,
+  NavBase
+} from 'somewhereelse';
+"
+`;
