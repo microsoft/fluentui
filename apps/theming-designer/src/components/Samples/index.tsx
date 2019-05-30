@@ -45,9 +45,6 @@ const sampleColumn = mergeStyles({
 const iconButtonStyles = mergeStyles({
   color: '#0078D4'
 });
-const storiesTextStyles = mergeStyles({
-  color: '#ffffff'
-});
 
 const commandBarItems = [
   {
