@@ -97,7 +97,6 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             <input
               aria-invalid={false}
               aria-label="Select a date"
-              aria-labelledby="TextFieldLabel3"
               className=
                   ms-TextField-field
                   {

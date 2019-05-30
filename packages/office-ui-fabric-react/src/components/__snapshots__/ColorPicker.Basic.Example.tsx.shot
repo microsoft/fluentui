@@ -328,7 +328,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Hex"
-                      aria-labelledby="TextFieldLabel2"
                       className=
                           ms-TextField-field
                           {
@@ -466,7 +465,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Red"
-                      aria-labelledby="TextFieldLabel5"
                       className=
                           ms-TextField-field
                           {
@@ -604,7 +602,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Green"
-                      aria-labelledby="TextFieldLabel8"
                       className=
                           ms-TextField-field
                           {
@@ -742,7 +739,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Blue"
-                      aria-labelledby="TextFieldLabel11"
                       className=
                           ms-TextField-field
                           {
@@ -880,7 +876,6 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                     <input
                       aria-invalid={false}
                       aria-label="Alpha"
-                      aria-labelledby="TextFieldLabel14"
                       className=
                           ms-TextField-field
                           {

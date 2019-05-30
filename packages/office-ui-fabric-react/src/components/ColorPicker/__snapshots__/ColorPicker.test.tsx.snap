@@ -321,7 +321,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Hex"
-                    aria-labelledby="TextFieldLabel2"
                     className=
                         ms-TextField-field
                         {
@@ -459,7 +458,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Red"
-                    aria-labelledby="TextFieldLabel5"
                     className=
                         ms-TextField-field
                         {
@@ -597,7 +595,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Green"
-                    aria-labelledby="TextFieldLabel8"
                     className=
                         ms-TextField-field
                         {
@@ -735,7 +732,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Blue"
-                    aria-labelledby="TextFieldLabel11"
                     className=
                         ms-TextField-field
                         {
@@ -873,7 +869,6 @@ exports[`ColorPicker renders correctly 1`] = `
                   <input
                     aria-invalid={false}
                     aria-label="Alpha"
-                    aria-labelledby="TextFieldLabel14"
                     className=
                         ms-TextField-field
                         {

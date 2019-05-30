@@ -462,11 +462,13 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
-
+    let labelForAria = this.props['aria-labelledby'] ? this.props['aria-labelledby'] : undefined;
+    labelForAria = !labelForAria && this.props.label ? this._labelId : labelForAria;
     return (
       <input
         type={'text'}
         id={this._id}
+        aria-labelledby={labelForAria}
         {...inputProps}
         ref={this._textElement}
         value={this.state.value}
@@ -474,7 +476,6 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
         onChange={this._onInputChange}
         className={this._classNames.field}
         aria-label={this.props.ariaLabel}
-        aria-labelledby={this._labelId}
         aria-describedby={this._isDescriptionAvailable ? this._descriptionId : this.props['aria-describedby']}
         aria-invalid={!!this._errorMessage}
         readOnly={this.props.readOnly}

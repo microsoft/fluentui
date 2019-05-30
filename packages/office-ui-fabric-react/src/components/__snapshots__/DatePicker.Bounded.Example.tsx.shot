@@ -102,7 +102,6 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
             <input
               aria-invalid={false}
               aria-label="Select a date"
-              aria-labelledby="TextFieldLabel3"
               className=
                   ms-TextField-field
                   {

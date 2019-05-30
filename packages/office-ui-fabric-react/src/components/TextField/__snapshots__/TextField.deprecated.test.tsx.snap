@@ -87,7 +87,6 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
       </div>
       <input
         aria-invalid={false}
-        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
