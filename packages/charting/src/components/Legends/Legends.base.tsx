@@ -236,7 +236,7 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
         onMouseOut={onMouseOut}
         onFocus={onHoverHandler}
         onBlur={onMouseOut}
-        data-is-focusable={'true'}
+        data-is-focusable={true}
       >
         <div className={classNames.rect} />
         <div className={classNames.text}>{legend.title}</div>
