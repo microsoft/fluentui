@@ -30,7 +30,7 @@ export const AllComponentsStatus: IComponentStatusState = {
   List: require<any>('office-ui-fabric-react/lib/components/List/List.checklist').ListStatus,
   MessageBar: require<any>('office-ui-fabric-react/lib/components/MessageBar/MessageBar.checklist').MessageBarStatus,
   Modal: require<any>('office-ui-fabric-react/lib/components/Modal/Modal.checklist').ModalStatus,
-  Nav: require<any>('@uifabric/legacy/lib/components/Nav/Nav.checklist').NavStatus,
+  Nav: require<any>('office-ui-fabric-react/lib/components/Nav/Nav.checklist').NavStatus,
   Overlay: require<any>('office-ui-fabric-react/lib/components/Overlay/Overlay.checklist').OverlayStatus,
   OverflowSet: require<any>('office-ui-fabric-react/lib/components/OverflowSet/OverflowSet.checklist').OverflowSetStatus,
   Panel: require<any>('office-ui-fabric-react/lib/components/Panel/Panel.checklist').PanelStatus,

@@ -26,7 +26,6 @@
     "@uifabric/build": "*"
   },
   "dependencies": {
-    "@uifabric/legacy": "^6.164.5",
     "@uifabric/merge-styles": "^6.17.4",
     "@uifabric/set-version": "^1.1.3",
     "@uifabric/styling": "^6.47.6",
