@@ -12,7 +12,7 @@ const styles: any = stylesImport;
  * (e.g. is a valid react key).
  */
 function hasKey<T>(i: T): i is T & { key: string | number } {
-  if (!(i instanceof Object) || !i.hasOwnProperty('key')) {
+  if (!(i instanceof Object) || !(i as Object).hasOwnProperty('key')) {
     return false;
   }
   const keyType = typeof (i as T & { key: any }).key;
