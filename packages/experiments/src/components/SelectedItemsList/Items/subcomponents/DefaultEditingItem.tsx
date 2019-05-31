@@ -70,7 +70,7 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
 
   public render(): JSX.Element {
     const itemId = getId();
-    const nativeProps = getNativeProps(this.props, inputProperties);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     return (
       <span aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
         <input

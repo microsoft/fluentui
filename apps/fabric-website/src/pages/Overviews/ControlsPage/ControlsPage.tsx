@@ -15,7 +15,7 @@ const ControlsPageBase: React.StatelessComponent<IPageProps<Platforms>> = props 
       title="Controls"
       platform={platform}
       subTitle={getSubTitle(platform)}
-      otherSections={_otherSections(platform)}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
       showSideRail={false}
       {...ControlsPageProps[platform]}
     />

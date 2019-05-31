@@ -53,7 +53,7 @@ export class ButtonPage extends React.Component<
         title="Button"
         {...buttonPageProps[this.props.platform]}
         exampleKnobs={this.renderKnobs()}
-        otherSections={this._otherSections(this.props.platform)}
+        otherSections={this._otherSections(this.props.platform) as IPageSectionProps[]}
       />
     );
   }

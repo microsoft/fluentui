@@ -88,7 +88,9 @@ export interface IPageProps<TPlatforms extends string = string> {
   hideImplementationTitle?: boolean;
 
   /** (8) Array of custom sections. */
+  // TODO: TPlatforms generic should be forwarded to otherSections. Requires resolving TODO in Page.tsx.
   otherSections?: IPageSectionProps[];
+  // otherSections?: IPageSectionProps<TPlatforms>[];
 
   /** (9) If true, render the feedback section with GitHub issues. **/
   isFeedbackVisible?: boolean;
