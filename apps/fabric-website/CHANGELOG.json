@@ -2,6 +2,62 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.9",
+      "tag": "@uifabric/fabric-website_v6.18.9",
+      "date": "Thu, 30 May 2019 12:22:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Move fluent theme page to styles",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "2922d8bd84c9fc6cea615a0fc4c937a0dde10727"
+          },
+          {
+            "comment": "Fix more UHF style overrides",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "470d284618c469e5317379414f77f60de748bebe"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.0` to `^6.187.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.8",
+      "tag": "@uifabric/fabric-website_v6.18.8",
+      "date": "Thu, 23 May 2019 22:14:40 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added new mobiles docs for the website.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "824dd47b425d09a98b916a0a693d5d4b0a1ff575"
+          },
+          {
+            "comment": "Hide UHF back to top button",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "b963136494c4840eeabb594736e05bed298f1cd1"
+          },
+          {
+            "comment": "Webpack configuration fix.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "1b705beb1cad712f93da2954511b7d6a1d583797"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.0` to `^6.78.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.185.0` to `^6.186.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.7",
       "tag": "@uifabric/fabric-website_v6.18.7",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

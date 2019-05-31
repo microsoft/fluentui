@@ -142,7 +142,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       this.setState({
         value: ''
       });
-      this._callOnChange('');
+      this._callOnChange(undefined, '');
       ev.stopPropagation();
       ev.preventDefault();
 
@@ -230,10 +230,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     this._latestValue = value;
 
     this.setState({ value });
-    this._callOnChange(value);
+    this._callOnChange(ev, value);
   };
 
-  private _callOnChange(newValue: string): void {
+  private _callOnChange(ev?: React.ChangeEvent<HTMLInputElement>, newValue?: string): void {
     const { onChange, onChanged } = this.props;
 
     // Call @deprecated method.
@@ -242,7 +242,7 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
     }
 
     if (onChange) {
-      onChange(newValue);
+      onChange(ev, newValue);
     }
   }
 }

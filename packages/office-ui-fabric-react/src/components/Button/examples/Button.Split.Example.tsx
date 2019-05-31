@@ -1,19 +1,62 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { getStyles, IButtonBasicExampleStyleProps, IButtonBasicExampleStyles } from './Button.Basic.Example.styles';
-import { DefaultButton, IButtonProps } from 'office-ui-fabric-react/lib/Button';
-import { Label } from 'office-ui-fabric-react/lib/Label';
+import {
+  css,
+  classNamesFunction,
+  DefaultButton,
+  HighContrastSelector,
+  IButtonProps,
+  IButtonStyles,
+  IconButton,
+  IStyle,
+  Label
+} from 'office-ui-fabric-react';
+
+type IButtonBasicExampleStyleProps = {};
+
+interface IButtonBasicExampleStyles {
+  twoup?: IStyle;
+}
+
+const exampleStyles: IButtonBasicExampleStyles = {
+  twoup: [
+    'ms-BasicButtonsTwoUp',
+    {
+      display: 'flex',
+      selectors: {
+        '& > *': {
+          flexGrow: 1
+        },
+        '.ms-Label': {
+          marginBottom: '10px'
+        }
+      }
+    }
+  ]
+};
+
+const customSplitButtonStyles: IButtonStyles = {
+  splitButtonMenuButton: { backgroundColor: 'white', width: '10px' },
+  splitButtonMenuIcon: { fontSize: '7px' },
+  splitButtonDivider: { borderLeft: '1px solid #c8c8c8', right: 17 },
+  splitButtonContainer: {
+    selectors: {
+      [HighContrastSelector]: {
+        border: 'none'
+      }
+    }
+  }
+};
 
 const alertClicked = (): void => {
   alert('Clicked');
 };
 
 const getClassNames = classNamesFunction<IButtonBasicExampleStyleProps, IButtonBasicExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ButtonSplitExample extends React.Component<IButtonProps> {
   public render(): JSX.Element {
     const { disabled, checked } = this.props;
-    const classNames = getClassNames(getStyles, {});
 
     return (
       <div className={css(classNames.twoup)}>
@@ -136,6 +179,43 @@ export class ButtonSplitExample extends React.Component<IButtonProps> {
             }}
           />
         </div>
+      </div>
+    );
+  }
+}
+
+export class ButtonSplitCustomExample extends React.Component<IButtonProps> {
+  public render(): JSX.Element {
+    const { disabled, checked } = this.props;
+
+    return (
+      <div>
+        <Label>Split button with icon and custom styles</Label>
+        <IconButton
+          data-automation-id="test"
+          disabled={disabled}
+          checked={checked}
+          iconProps={{ iconName: 'Upload' }}
+          text="Create account"
+          onClick={alertClicked}
+          split={true}
+          aria-roledescription={'split button'}
+          styles={customSplitButtonStyles}
+          menuProps={{
+            items: [
+              {
+                key: 'emailMessage',
+                text: 'Email message',
+                iconProps: { iconName: 'Mail' }
+              },
+              {
+                key: 'calendarEvent',
+                text: 'Calendar event',
+                iconProps: { iconName: 'Calendar' }
+              }
+            ]
+          }}
+        />
       </div>
     );
   }

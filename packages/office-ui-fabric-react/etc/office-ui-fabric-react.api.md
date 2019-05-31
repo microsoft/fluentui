@@ -472,21 +472,6 @@ export enum ButtonType {
     primary = 1
 }
 
-// @public (undocumented)
-export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> implements ICalendar {
-    constructor(props: ICalendarProps);
-    // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillReceiveProps(nextProps: ICalendarProps): void;
-    // (undocumented)
-    static defaultProps: ICalendarProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-}
-
 // Warning: (ae-forgotten-export) The symbol "ICalloutState" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
@@ -774,56 +759,6 @@ export function createItem(name: string, isValid: boolean): ISuggestionModel<IPe
 
 // @public
 export function cssColor(color?: string): IRGB | undefined;
-
-// @public
-export const DatePicker: React_2.StatelessComponent<IDatePickerProps>;
-
-// @public (undocumented)
-export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
-    constructor(props: IDatePickerProps);
-    // (undocumented)
-    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
-    // (undocumented)
-    componentWillReceiveProps(nextProps: IDatePickerProps): void;
-    // (undocumented)
-    static defaultProps: IDatePickerProps;
-    // (undocumented)
-    focus(): void;
-    // (undocumented)
-    render(): JSX.Element;
-    // (undocumented)
-    reset(): void;
-    }
-
-// @public
-export enum DateRangeType {
-    // (undocumented)
-    Day = 0,
-    // (undocumented)
-    Month = 2,
-    // (undocumented)
-    Week = 1,
-    // (undocumented)
-    WorkWeek = 3
-}
-
-// @public
-export enum DayOfWeek {
-    // (undocumented)
-    Friday = 5,
-    // (undocumented)
-    Monday = 1,
-    // (undocumented)
-    Saturday = 6,
-    // (undocumented)
-    Sunday = 0,
-    // (undocumented)
-    Thursday = 4,
-    // (undocumented)
-    Tuesday = 2,
-    // (undocumented)
-    Wednesday = 3
-}
 
 // @public (undocumented)
 export const DEFAULT_MASK_CHAR = "_";
@@ -1190,16 +1125,6 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     render(): JSX.Element;
     }
 
-// @public
-export enum FirstWeekOfYear {
-    // (undocumented)
-    FirstDay = 0,
-    // (undocumented)
-    FirstFourDayWeek = 2,
-    // (undocumented)
-    FirstFullWeek = 1
-}
-
 // @public (undocumented)
 export class FloatingPeoplePicker extends BaseFloatingPeoplePicker {
     // (undocumented)
@@ -1297,6 +1222,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -1924,85 +1852,6 @@ export interface IButtonStyles {
     splitButtonMenuIcon?: IStyle;
     splitButtonMenuIconDisabled?: IStyle;
     textContainer?: IStyle;
-}
-
-// @public (undocumented)
-export interface ICalendar {
-    focus: () => void;
-}
-
-// @public (undocumented)
-export interface ICalendarFormatDateCallbacks {
-    formatDay: (date: Date) => string;
-    formatMonthDayYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatMonthYear: (date: Date, strings?: ICalendarStrings) => string;
-    formatYear: (date: Date) => string;
-}
-
-// @public (undocumented)
-export interface ICalendarIconStrings {
-    closeIcon?: string;
-    leftNavigation?: string;
-    rightNavigation?: string;
-}
-
-// @public (undocumented)
-export interface ICalendarProps extends IBaseProps<ICalendar>, React_2.HTMLAttributes<HTMLElement> {
-    allFocusable?: boolean;
-    autoNavigateOnSelection?: boolean;
-    className?: string;
-    componentRef?: IRefObject<ICalendar>;
-    dateRangeType?: DateRangeType;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    maxDate?: Date;
-    minDate?: Date;
-    navigationIcons?: ICalendarIconStrings;
-    onDismiss?: () => void;
-    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
-    restrictedDates?: Date[];
-    selectDateOnClick?: boolean;
-    // @deprecated
-    shouldFocusOnMount?: boolean;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showSixWeeksByDefault?: boolean;
-    showWeekNumbers?: boolean;
-    strings: ICalendarStrings | null;
-    today?: Date;
-    value?: Date;
-    workWeekDays?: DayOfWeek[];
-    yearPickerHidden?: boolean;
-}
-
-// @public (undocumented)
-export interface ICalendarState {
-    isDayPickerVisible?: boolean;
-    isMonthPickerVisible?: boolean;
-    navigatedDayDate?: Date;
-    navigatedMonthDate?: Date;
-    selectedDate?: Date;
-}
-
-// @public (undocumented)
-export interface ICalendarStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
-    weekNumberFormatString?: string;
 }
 
 // @public (undocumented)
@@ -2675,8 +2524,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
     onChange?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
-    // @deprecated
-    onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
     onItemClick?: (event: React_2.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
@@ -2691,8 +2538,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox,
     text?: string;
     theme?: ITheme;
     useComboBoxAsMenuWidth?: boolean;
-    // @deprecated
-    value?: string;
 }
 
 // @public (undocumented)
@@ -3039,108 +2884,6 @@ export enum IconType {
     // @deprecated
     Image = 100001,
     image = 1
-}
-
-// @public (undocumented)
-export interface IDatePicker {
-    focus(): void;
-    reset(): void;
-}
-
-// @public (undocumented)
-export interface IDatePickerProps extends IBaseProps<IDatePicker>, React_2.HTMLAttributes<HTMLElement> {
-    allFocusable?: boolean;
-    allowTextInput?: boolean;
-    ariaLabel?: string;
-    borderless?: boolean;
-    calendarAs?: IComponentAs<ICalendarProps>;
-    calendarProps?: ICalendarProps;
-    calloutProps?: ICalloutProps;
-    className?: string;
-    componentRef?: IRefObject<IDatePicker>;
-    dateTimeFormatter?: ICalendarFormatDateCallbacks;
-    disableAutoFocus?: boolean;
-    disabled?: boolean;
-    firstDayOfWeek?: DayOfWeek;
-    firstWeekOfYear?: FirstWeekOfYear;
-    formatDate?: (date?: Date) => string;
-    highlightCurrentMonth?: boolean;
-    highlightSelectedMonth?: boolean;
-    initialPickerDate?: Date;
-    isMonthPickerVisible?: boolean;
-    isRequired?: boolean;
-    label?: string;
-    maxDate?: Date;
-    minDate?: Date;
-    onAfterMenuDismiss?: () => void;
-    onSelectDate?: (date: Date | null | undefined) => void;
-    parseDateFromString?: (dateStr: string) => Date | null;
-    pickerAriaLabel?: string;
-    placeholder?: string;
-    showCloseButton?: boolean;
-    showGoToToday?: boolean;
-    showMonthPickerAsOverlay?: boolean;
-    showWeekNumbers?: boolean;
-    strings?: IDatePickerStrings;
-    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
-    tabIndex?: number;
-    textField?: ITextFieldProps;
-    theme?: ITheme;
-    today?: Date;
-    underlined?: boolean;
-    value?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerState {
-    // (undocumented)
-    errorMessage?: string;
-    // (undocumented)
-    formattedDate?: string;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    selectedDate?: Date;
-}
-
-// @public (undocumented)
-export interface IDatePickerStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
-    invalidInputErrorMessage?: string;
-    isOutOfBoundsErrorMessage?: string;
-    isRequiredErrorMessage?: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
-}
-
-// @public (undocumented)
-export interface IDatePickerStyleProps {
-    className?: string;
-    // (undocumented)
-    disabled?: boolean;
-    // (undocumented)
-    isDatePickerShown?: boolean;
-    // (undocumented)
-    label?: boolean;
-    theme: ITheme;
-}
-
-// @public (undocumented)
-export interface IDatePickerStyles {
-    // (undocumented)
-    callout: IStyle;
-    // (undocumented)
-    icon: IStyle;
-    root: IStyle;
-    // (undocumented)
-    textField: IStyle;
 }
 
 // @public (undocumented)
@@ -4506,7 +4249,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
+    // @deprecated
     ariaDescribedBy?: string;
+    // @deprecated
     ariaLabelledBy?: string;
     as?: React.ReactType;
     checkForNoWrap?: boolean;
@@ -6274,7 +6019,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
     // @deprecated
     labelText?: string;
-    onChange?: (newValue: any) => void;
+    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
     // @deprecated
     onChanged?: (newValue: any) => void;
     onClear?: (ev?: any) => void;
@@ -8326,8 +8071,6 @@ export const Rating: React_2.StatelessComponent<IRatingProps>;
 // @public (undocumented)
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     constructor(props: IRatingProps);
-    // (undocumented)
-    componentWillReceiveProps(nextProps: IRatingProps): void;
     // (undocumented)
     static defaultProps: IRatingProps;
     // (undocumented)

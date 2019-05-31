@@ -22,7 +22,6 @@ export * from './aria';
 export * from './array';
 export * from './asAsync';
 export * from './assertNever';
-export * from './autobind';
 export * from './classNamesFunction';
 export * from './createRef';
 export * from './css';

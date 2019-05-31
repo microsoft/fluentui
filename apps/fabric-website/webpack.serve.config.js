@@ -24,14 +24,15 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
-      '@uifabric/legacy$': path.join(__dirname, '../../packages/legacy/src'),
-      '@uifabric/legacy/lib': path.join(__dirname, '../../packages/legacy/src'),
-      '@uifabric/legacy/src': path.join(__dirname, '../../packages/legacy/src'),
-      'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
-      'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+      '@uifabric/legacy$': path.resolve(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy/lib': path.resolve(__dirname, '../../packages/legacy/src'),
+      '@uifabric/legacy/src': path.resolve(__dirname, '../../packages/legacy/src'),
       '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
       '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+      '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
+      'office-ui-fabric-react$': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
+      'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
       '@uifabric/example-app-base$': path.join(__dirname, '../../packages/example-app-base/src'),
       'Props.ts.js': 'Props',
       'Example.tsx.js': 'Example'

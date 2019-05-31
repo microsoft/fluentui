@@ -3,7 +3,7 @@ import { Link } from 'office-ui-fabric-react/lib/Link';
 import { DetailsList, IGroup, IGroupDividerProps } from 'office-ui-fabric-react/lib/DetailsList';
 import { createListItems, createGroups, IExampleItem } from 'office-ui-fabric-react/lib/utilities/exampleData';
 import { getTheme, mergeStyleSets } from 'office-ui-fabric-react/lib/Styling';
-import { DEFAULT_ROW_HEIGHTS } from '../DetailsRow.styles';
+import { DEFAULT_ROW_HEIGHTS } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsRow.styles';
 
 const { rowHeight: ROW_HEIGHT } = DEFAULT_ROW_HEIGHTS;
 const GROUP_HEADER_AND_FOOTER_SPACING: number = 8;

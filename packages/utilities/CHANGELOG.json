@@ -2,6 +2,53 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.39.3",
+      "tag": "@uifabric/utilities_v6.39.3",
+      "date": "Wed, 29 May 2019 12:21:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert styled and classNameFunctions perf improvements temporarily.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9d0c9173ec62ebbaa43879af9d1cc97d66b2b8c9"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.2",
+      "tag": "@uifabric/utilities_v6.39.2",
+      "date": "Fri, 24 May 2019 14:51:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove usage of process",
+            "author": "Sean Larkin <sean.larkin@cuw.edu>",
+            "commit": "a9245feee547762f0c8c9935cbf39d737b86c519"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.1",
+      "tag": "@uifabric/utilities_v6.39.1",
+      "date": "Fri, 24 May 2019 12:21:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix wrapped styled regression caused by nested style arrays.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "cd598ed485941821f4d8c3bbf42c7dae6fcc1cd3"
+          },
+          {
+            "comment": "Mutually exclusive warnings are not displayed if value of the prop is undefined",
+            "author": "canmenekse <42455391+canmenekse@users.noreply.github.com>",
+            "commit": "923f3358e78b21a80a2cb9400422136e94998de0"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.0",
       "tag": "@uifabric/utilities_v6.39.0",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

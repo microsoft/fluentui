@@ -581,7 +581,11 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (ev.which === KeyCodes.down) {
       if (this._focusZone.current && this._focusZone.current.focus()) {
         // select the first item in list after down arrow key event
-        this._selection.setIndexSelected(0, true, false);
+        // only if nothing was selected; otherwise start with the already-selected item
+        if (this._selection.getSelectedIndices().length === 0) {
+          this._selection.setIndexSelected(0, true, false);
+        }
+
         ev.preventDefault();
         ev.stopPropagation();
       }

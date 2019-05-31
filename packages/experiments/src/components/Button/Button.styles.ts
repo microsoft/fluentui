@@ -200,16 +200,18 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
 ];
 
 const GlobalClassNames = {
-  icon: 'ms-Icon'
+  msButton: 'ms-Button',
+  msButtonIcon: 'ms-Button-icon'
 };
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className, circular } = props;
 
-  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme, true);
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
+      globalClassNames.msButton,
       !circular && getFocusStyle(theme, { inset: 1, outlineColor: tokens.outlineColor }),
       circular && {
         selectors: {
@@ -279,7 +281,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          [`:hover .${globalClassNames.icon}`]: {
+          [`:hover .${globalClassNames.msButtonIcon}`]: {
             color: tokens.iconColorHovered,
 
             selectors: {
@@ -288,7 +290,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          [`:active .${globalClassNames.icon}`]: {
+          [`:active .${globalClassNames.msButtonIcon}`]: {
             color: tokens.iconColorPressed,
 
             selectors: {
@@ -317,6 +319,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
       height: '100%'
     },
     icon: [
+      globalClassNames.msButtonIcon,
       {
         display: 'flex',
         fontSize: tokens.iconSize,
@@ -330,8 +333,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
             color: tokens.highContrastIconColor
           }
         }
-      },
-      globalClassNames.icon
+      }
     ],
     content: {
       overflow: 'visible',

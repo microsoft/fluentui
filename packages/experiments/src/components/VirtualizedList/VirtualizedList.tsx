@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IVirtualizedListProps } from './VirtualizedList.types';
 import { IScrollContainerContext, ScrollContainerContextTypes } from '../../utilities/scrolling/ScrollContainer';
 import { IObjectWithKey } from 'office-ui-fabric-react/lib/Selection';
-import { BaseComponent, getParent, css, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, getParent, css } from 'office-ui-fabric-react/lib/Utilities';
 
 interface IRange {
   /** Start of range */
@@ -26,7 +26,7 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   public static contextTypes: typeof ScrollContainerContextTypes = ScrollContainerContextTypes;
   public context: IScrollContainerContext;
 
-  private _root = createRef<HTMLDivElement>();
+  private _root = React.createRef<HTMLDivElement>();
 
   private _spacerElements: { [key: string]: HTMLElement } = {};
 
@@ -48,7 +48,9 @@ export class VirtualizedList<TItem extends IObjectWithKey> extends BaseComponent
   }
 
   public componentDidMount(): void {
-    this._events.on(this._root, 'focus', this._onFocus, true);
+    if (this._root.current) {
+      this._events.on(this._root.current, 'focus', this._onFocus, true);
+    }
 
     this.context.scrollContainer.registerVisibleCallback((scrollTop: number) => {
       this._render(scrollTop);

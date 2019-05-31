@@ -152,7 +152,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
 
   public updateSuggestionWithZeroState(): void {
     if (this.props.onZeroQuerySuggestion) {
-      const suggestions: TItem[] | PromiseLike<TItem[]> | null = this.props.onZeroQuerySuggestion(this.props.selectedItems);
+      const suggestions: TItem[] | PromiseLike<TItem[]> | null = this.props.onZeroQuerySuggestion();
       this.updateSuggestionsList(suggestions || []);
     } else {
       this.hidePicker();
@@ -301,7 +301,7 @@ export class FloatingSuggestions<TItem> extends BaseComponent<IFloatingSuggestio
   }
 
   private _onResolveSuggestions(updatedValue: string): void {
-    const suggestions: TItem[] | PromiseLike<TItem[]> | null = this.props.onResolveSuggestions(updatedValue, this.props.selectedItems);
+    const suggestions: TItem[] | PromiseLike<TItem[]> | null = this.props.onResolveSuggestions(updatedValue);
 
     this._updateSuggestionsVisible(true /*shouldShow*/);
     if (suggestions !== null) {

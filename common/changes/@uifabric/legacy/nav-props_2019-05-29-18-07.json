@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/legacy",
+      "comment": "Remove deprecated unused Nav props",
+      "type": "major"
+    }
+  ],
+  "packageName": "@uifabric/legacy",
+  "email": "elcraig@microsoft.com"
+}

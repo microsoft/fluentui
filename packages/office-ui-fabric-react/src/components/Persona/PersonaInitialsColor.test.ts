@@ -1,4 +1,4 @@
-import { initialsColorPropToColorCode } from './PersonaInitialsColor';
+import { getPersonaInitialsColor, initialsColorPropToColorCode } from './PersonaInitialsColor';
 import { PersonaInitialsColor } from './Persona.types';
 
 describe('PersonaInitialsColor tests', () => {
@@ -16,7 +16,7 @@ describe('PersonaInitialsColor tests', () => {
   });
 
   it('uses provided string initialsColor if one was specified', () => {
-    const colorCode = initialsColorPropToColorCode({ text: 'Christian Gonzalez', initialsColor: 'violet' });
+    const colorCode = getPersonaInitialsColor({ text: 'Christian Gonzalez', initialsColor: 'violet' });
     expect(colorCode).toEqual('violet');
   });
 });

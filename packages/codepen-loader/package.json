@@ -11,19 +11,15 @@
   },
   "license": "MIT",
   "scripts": {
-    "build": "node ../../scripts/just.js build --commonjs",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
-    "just": "node ../../scripts/just.js",
-    "start-test": "node ../../scripts/just.js jest-watch",
-    "update-snapshots": "node ../../scripts/just.js jest -u"
+    "build": "npx just-scripts build --commonjs",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
+    "just": "npx just-scripts",
+    "start-test": "npx just-scripts jest-watch",
+    "update-snapshots": "npx just-scripts jest -u"
   },
-  "disabledTasks": [
-    "webpack",
-    "build-codepen-examples",
-    "verify-api-extractor"
-  ],
   "devDependencies": {
+    "just-scripts": "~0.15.3",
     "@types/babylon": "^6.16.5",
     "@types/jest": "23.0.0",
     "@types/loader-utils": "1.1.3",

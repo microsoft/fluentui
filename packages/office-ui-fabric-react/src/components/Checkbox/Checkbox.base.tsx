@@ -40,7 +40,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
 
     initializeComponentRef(this);
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive('Checkbox', props, {
         checked: 'defaultChecked'
       });

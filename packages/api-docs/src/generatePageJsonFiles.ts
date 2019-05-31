@@ -1,7 +1,7 @@
 import * as path from 'path';
 import { generateJson } from './PageJsonGenerator';
 
-// Generate JSON for office-ui-fabric-react, styling, utilities, and merge-styles
+// Generate JSON for office-ui-fabric-react, styling, utilities, merge-styles, and legacy
 
 generateJson([
   {
@@ -15,7 +15,10 @@ generateJson([
     kind: 'References'
   },
   {
-    apiJsonPaths: [path.resolve(__dirname, '../../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json')],
+    apiJsonPaths: [
+      path.resolve(__dirname, '../../../packages/office-ui-fabric-react/dist/office-ui-fabric-react.api.json'),
+      path.resolve(__dirname, '../../../packages/legacy/dist/legacy.api.json')
+    ],
     pageJsonFolderPath: path.resolve(__dirname, '../lib/pages/office-ui-fabric-react'),
     pageNames: [
       'ActivityItem',

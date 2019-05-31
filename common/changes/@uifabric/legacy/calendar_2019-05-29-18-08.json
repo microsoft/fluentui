@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/legacy",
+      "comment": "Move Calendar and DatePicker to legacy package",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/legacy",
+  "email": "elcraig@microsoft.com"
+}

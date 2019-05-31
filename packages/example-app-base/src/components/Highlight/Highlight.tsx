@@ -2,7 +2,6 @@ import * as React from 'react';
 import { registerLanguage, highlightBlock } from 'highlight.js';
 // @ts-ignore
 import * as javascript from 'highlight.js/lib/languages/javascript';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { NeutralColors } from '@uifabric/fluent-theme';
 
@@ -77,7 +76,7 @@ const rootClass = mergeStyles({
 });
 
 export class Highlight extends React.Component<IHighlightProps, {}> {
-  private _codeElement = createRef<HTMLElement>();
+  private _codeElement = React.createRef<HTMLElement>();
 
   public render(): JSX.Element {
     return (

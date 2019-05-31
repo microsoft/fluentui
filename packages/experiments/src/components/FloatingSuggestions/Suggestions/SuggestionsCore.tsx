@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, css, autobind } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { ISuggestionModel } from 'office-ui-fabric-react/lib/Pickers';
 import { SuggestionsItem } from './SuggestionsItem';
 import { ISuggestionsCoreProps } from './Suggestions.types';
@@ -180,19 +180,17 @@ export class SuggestionsCore<T> extends BaseComponent<ISuggestionsCoreProps<T>, 
     }
   }
 
-  @autobind
-  private _onClickTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onClickTypedSuggestionsItem = (item: T, index: number): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       this.props.onSuggestionClick(ev, item, index);
     };
-  }
+  };
 
-  @autobind
-  private _onRemoveTypedSuggestionsItem(item: T, index: number): (ev: React.MouseEvent<HTMLElement>) => void {
+  private _onRemoveTypedSuggestionsItem = (item: T, index: number): ((ev: React.MouseEvent<HTMLElement>) => void) => {
     return (ev: React.MouseEvent<HTMLElement>): void => {
       const onSuggestionRemove = this.props.onSuggestionRemove!;
       onSuggestionRemove(ev, item, index);
       ev.stopPropagation();
     };
-  }
+  };
 }
