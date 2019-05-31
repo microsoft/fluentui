@@ -406,6 +406,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'kb',
       'ldt',
       'lrprev',
+      'pkpass',
       'ppa',
       'ppam',
       'pdb',
