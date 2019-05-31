@@ -1,1 +1,1 @@
-export * from '@uifabric/utilities/lib/selection/interfaces';
+export { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionDirection, SelectionMode } from '@uifabric/utilities';

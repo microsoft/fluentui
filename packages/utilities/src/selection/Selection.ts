@@ -1,4 +1,4 @@
-import { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionMode } from './interfaces';
+import { IObjectWithKey, ISelection, SELECTION_CHANGE, SelectionMode } from './Selection.types';
 import { EventGroup } from '../EventGroup';
 
 /**

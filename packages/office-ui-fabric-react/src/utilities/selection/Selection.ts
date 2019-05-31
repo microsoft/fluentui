@@ -1,1 +1,1 @@
-export * from '@uifabric/utilities/lib/selection/Selection';
+export { ISelectionOptions, Selection } from '@uifabric/utilities';
