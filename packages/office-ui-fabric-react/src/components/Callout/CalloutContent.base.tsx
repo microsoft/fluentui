@@ -323,8 +323,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._disposables.push(
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
-        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
-        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
+        on(this._targetWindow.document.documentElement as any, 'focus', this._dismissOnLostFocus, true), // FABRIC7TODO remove any
+        on(this._targetWindow.document.documentElement as any, 'click', this._dismissOnLostFocus, true) // FABRIC7TODO remove any
       );
       this._hasListeners = true;
     }, 0);

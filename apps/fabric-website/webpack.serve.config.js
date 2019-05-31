@@ -24,9 +24,6 @@ module.exports = resources.createServeConfig({
 
   resolve: {
     alias: {
-      '@uifabric/legacy$': path.resolve(__dirname, '../../packages/legacy/src'),
-      '@uifabric/legacy/lib': path.resolve(__dirname, '../../packages/legacy/src'),
-      '@uifabric/legacy/src': path.resolve(__dirname, '../../packages/legacy/src'),
       '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
       '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
       '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
