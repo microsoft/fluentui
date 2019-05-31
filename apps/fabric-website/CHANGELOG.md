@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 30 May 2019 12:22:06 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+
+## 6.18.10
+Fri, 31 May 2019 12:21:27 GMT
+
+### Patches
+
+- Added Text and Separator docs for mobile, plus doc bug fixes.
 
 ## 6.18.9
 Thu, 30 May 2019 12:22:06 GMT

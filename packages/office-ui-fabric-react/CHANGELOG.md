@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 30 May 2019 12:22:06 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+
+## 6.187.2
+Fri, 31 May 2019 12:21:27 GMT
+
+### Patches
+
+- TeachingBubble: Updated entrance animation for teaching bubble in TeachingBubble.styles.ts. Removed jelly animation and replaced with new motion spec entrance animation.
 
 ## 6.187.1
 Thu, 30 May 2019 12:22:06 GMT

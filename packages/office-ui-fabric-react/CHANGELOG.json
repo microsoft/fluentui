@@ -2,6 +2,20 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.187.2",
+      "tag": "office-ui-fabric-react_v6.187.2",
+      "date": "Fri, 31 May 2019 12:21:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Updated entrance animation for teaching bubble in TeachingBubble.styles.ts. Removed jelly animation and replaced with new motion spec entrance animation.",
+            "author": "Mary <38991459+marygans@users.noreply.github.com>",
+            "commit": "9a08f2de52341e1d3c9a8df99b2a80d6276e26ec"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.187.1",
       "tag": "office-ui-fabric-react_v6.187.1",
       "date": "Thu, 30 May 2019 12:22:06 GMT",
