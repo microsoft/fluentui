@@ -2964,7 +2964,6 @@ export interface IContextualMenuProps extends IBaseProps<IContextualMenu>, IWith
     onMenuOpened?: (contextualMenu?: IContextualMenuProps) => void;
     onRenderMenuList?: IRenderFunction<IContextualMenuListProps>;
     onRenderSubMenu?: IRenderFunction<IContextualMenuProps>;
-    preventFocusOnPreviousActiveElement?: boolean;
     shouldFocusOnContainer?: boolean;
     shouldFocusOnMount?: boolean;
     styles?: IStyleFunctionOrObject<IContextualMenuStyleProps, IContextualMenuStyles>;
