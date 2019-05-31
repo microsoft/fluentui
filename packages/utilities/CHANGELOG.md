@@ -1,6 +1,84 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Tue, 23 Apr 2019 12:32:00 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+
+## 6.39.3
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled and classNameFunctions perf improvements temporarily.
+
+## 6.39.2
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of process
+
+## 6.39.1
+Fri, 24 May 2019 12:21:33 GMT
+
+### Patches
+
+- Fix wrapped styled regression caused by nested style arrays.
+- Mutually exclusive warnings are not displayed if value of the prop is undefined
+
+## 6.39.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.)
+
+## 6.38.3
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 6.38.2
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+
+## 6.38.1
+Thu, 02 May 2019 12:36:35 GMT
+
+### Patches
+
+- a new line is added to the end of the api-extractor.json file
+
+## 6.38.0
+Wed, 01 May 2019 12:34:24 GMT
+
+### Minor changes
+
+- Export Omit from utilities
+
+## 6.37.1
+Tue, 30 Apr 2019 12:31:36 GMT
+
+### Patches
+
+- Adds pointer events to baseElementProperties
+
+## 6.37.0
+Sat, 27 Apr 2019 00:04:47 GMT
+
+### Minor changes
+
+- The `styled` helper can now take in a pure flag to create pure components. Note that in a future release we'd like to match the `styled` contracts of other libraries which can take in a View and an options property bag, but for now to make this non-breaking we'll add another argument.
+
+## 6.36.0
+Fri, 26 Apr 2019 12:35:24 GMT
+
+### Minor changes
+
+- Make isFocusVisible toggleable by user.
 
 ## 6.35.7
 Tue, 23 Apr 2019 12:32:00 GMT

@@ -45,7 +45,7 @@ export class TeachingBubbleIllustrationExample extends React.Component<{}, ITeac
           <div>
             <TeachingBubble
               illustrationImage={exampleImageProps}
-              targetElement={this._menuButtonElement}
+              target={this._menuButtonElement}
               primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}
               onDismiss={this._onDismiss}

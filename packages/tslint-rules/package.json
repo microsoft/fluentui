@@ -1,20 +1,16 @@
 {
   "name": "@uifabric/tslint-rules",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared TSLint rules for UI Fabric projects",
   "main": "tslint.json",
   "scripts": {
     "clean": "",
-    "build": "node -v",
-    "code-style": "node ../../scripts/just.js code-style"
+    "build": "node -v"
   },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ],
   "dependencies": {
     "tslint-react": "^3.2.0"
   },
   "devDependencies": {
-    "@uifabric/prettier-rules": "^1.0.1"
+    "@uifabric/prettier-rules": "^1.0.2"
   }
 }

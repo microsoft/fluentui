@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { mergeStyleSets, IStyleSet, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, IStyleSet, DefaultPalette, Slider, Stack } from 'office-ui-fabric-react';
 
 export interface IExampleState {
   stackWidth: number;

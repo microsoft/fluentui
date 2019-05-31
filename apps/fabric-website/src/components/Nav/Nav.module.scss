@@ -1,49 +1,86 @@
 @import '../../styles/variables';
-$nav-group-header-height: 40px;
+@import '../../styles/mixins';
+
+$nav-group-header-height: 32px;
+
+.navWrapper {
+  max-height: 100%;
+  padding-bottom: 20px;
+}
+
 .nav {
-  padding-top: 20px;
-  @include ms-padding-right(12px);
-  padding-bottom: 60px;
+  padding-top: 8px;
+  overflow-y: hidden;
+}
+
+.links {
+  margin: 0;
+  padding: 0;
 }
 
 .link {
-  font-size: $ms-font-size-l;
-  font-weight: $ms-font-weight-light;
-  line-height: 1.5;
+  display: block;
+
   a {
-    color: $ms-color-neutralTertiary;
+    color: $ms-color-neutralPrimary;
+    font-weight: $ms-font-weight-semibold;
+    font-size: $ms-font-size-m;
+    line-height: 1.5;
     display: block;
-    margin-bottom: 12px;
-    &:hover {
-      color: $ms-color-white;
+    position: relative;
+    padding: 8px;
+    @include ms-padding-left($App-padding-md);
+    @include focus-outline(1px);
+
+    &:hover,
+    &:active,
+    &:focus {
+      color: $ms-color-neutralPrimary;
     }
   }
+
   &.isActive:not(.isHomePage),
-  &:hover:not(.isHomePage),
-  &.hasActiveChild {
-    color: $ms-color-white;
-    position: relative;
-  } // Closed by default
-  .links {
-    display: none;
-  } // Open when immediate parent or one of the children is active
-  &.isActive,
   &.hasActiveChild {
     a {
-      color: $ms-color-white;
+      background: $ms-color-neutralLighter;
     }
+  }
+
+  &:hover:not(.isActive):not(.hasActiveChild):not(.isHomePage) {
+    a {
+      background: $ms-color-neutralLighterAlt;
+    }
+  }
+
+  // Closed by default
+  .links {
+    display: none;
+  }
+
+  // Open when immediate parent or one of the children is active
+  &.isActive,
+  &.hasActiveChild {
     > .links {
       display: block;
-      @include ms-margin-left(8px);
+      @include ms-margin-left(16px);
     }
   }
 }
 
-.searchBox {
+.links .links {
+  @include ms-padding-left(16px);
+}
+
+.searchBoxWrapper {
   display: flex;
-  &.isHomePage {
-    display: none;
-  }
+  margin-bottom: 12px;
+  position: relative;
+}
+
+.searchBox {
+  flex: 1;
+  @include ms-padding-left(0);
+  @include ms-padding-right(32px);
 }
 
 // The home page link
@@ -58,27 +95,31 @@ $nav-group-header-height: 40px;
 .isSubMenu {
   .link {
     a {
-      color: $ms-color-neutralTertiary;
-      font-size: $ms-font-size-m;
+      font-size: $ms-font-size-s;
       font-weight: $ms-font-weight-regular;
+
       &:hover {
-        color: $ms-color-white;
+        background: $ms-color-neutralLight;
       }
     }
+
     &.isActive,
     &:hover {
       > a:first-child {
-        color: $ms-color-white;
-      } // Hide the line indicators on submenus
+        background: $ms-color-neutralLight;
+      }
+
+      // Hide the line indicators on submenus
       &::before {
         display: none;
       }
     }
+
     &.hasActiveChild {
       > a:first-child {
-        color: $ms-color-white;
         font-weight: $ms-font-weight-semibold;
       }
+
       &::before {
         display: none;
       }
@@ -87,5 +128,80 @@ $nav-group-header-height: 40px;
 }
 
 .matchesFilter {
-  color: $ms-color-white;
+  font-weight: $ms-font-weight-bold;
+}
+
+.filterButton {
+  position: absolute;
+  @include ms-right(0);
+  bottom: 1px;
+}
+
+.externalIcon {
+  @include ms-fontColor-themePrimary;
+  @include ms-fontSize-16;
+  @include ms-margin-left(8px);
+  position: absolute;
+  top: 5px;
+}
+
+.section {
+  display: flex;
+  min-height: $nav-group-header-height;
+
+  .link a {
+    font-weight: $ms-font-weight-regular;
+  }
+
+  :global(.ms-CollapsibleSection) {
+    width: 100%;
+
+    button {
+      cursor: pointer;
+      padding: 8px 0;
+      @include ms-text-align(left);
+      height: auto;
+      align-items: center;
+      line-height: normal;
+
+      span {
+        color: $ms-color-neutralPrimary;
+        font-size: $ms-font-size-m;
+        font-weight: $ms-font-weight-semibold;
+      }
+
+      i {
+        @include ms-margin-right(16px);
+        @include ms-margin-left(8px);
+        color: $ms-color-neutralSecondary;
+        font-size: 16px;
+        font-weight: 600;
+      }
+
+      &:hover {
+        background: transparent;
+
+        span {
+          color: $ms-color-neutralDark;
+        }
+      }
+    }
+
+    .section {
+      :global(.ms-CollapsibleSection) {
+        button {
+          span {
+            font-weight: $ms-font-weight-regular;
+          }
+
+          i {
+            margin-top: 3px;
+            @include ms-margin-right(18px);
+            font-size: 14px;
+            font-weight: 400;
+          }
+        }
+      }
+    }
+  }
 }

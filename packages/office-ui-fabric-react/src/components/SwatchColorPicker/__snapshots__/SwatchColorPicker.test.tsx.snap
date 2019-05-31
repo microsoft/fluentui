@@ -5,6 +5,9 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
   className=
       ms-FocusZone
       ms-swatchColorPickerBodyContainer
+      &:focus {
+        outline: none;
+      }
       {
         clear: both;
         display: block;
@@ -72,6 +75,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -235,6 +242,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -398,6 +409,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -561,6 +576,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -728,6 +747,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -891,6 +914,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1054,6 +1081,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1217,6 +1248,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1384,6 +1419,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1547,6 +1586,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;
@@ -1710,6 +1753,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 1px;
                   padding-left: 1px;
@@ -1873,6 +1920,10 @@ exports[`SwatchColorPicker renders SwatchColorPicker correctly 1`] = `
                   font-size: 14px;
                   font-weight: 400;
                   height: 20px;
+                  margin-bottom: 0px;
+                  margin-left: 0px;
+                  margin-right: 0px;
+                  margin-top: 0px;
                   outline: transparent;
                   padding-bottom: 0px;
                   padding-left: 0px;

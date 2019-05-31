@@ -1,7 +1,22 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctly 1`] = `
-<div>
+<div
+  onBlur={[Function]}
+  onFocus={[Function]}
+  onFocusCapture={[Function]}
+>
+  <div
+    data-is-visible={true}
+    onFocus={[Function]}
+    style={
+      Object {
+        "pointerEvents": "none",
+        "position": "fixed",
+      }
+    }
+    tabIndex={-1}
+  />
   <div
     className=
         ms-Stack
@@ -197,7 +212,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </div>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone1"
       data-is-visible={true}
       onFocus={[Function]}
@@ -249,6 +268,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -363,6 +386,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -477,6 +504,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -593,6 +624,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -690,7 +725,11 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </button>
     <div
-      className="ms-FocusZone"
+      className=
+          ms-FocusZone
+          &:focus {
+            outline: none;
+          }
       data-focuszone-id="FocusZone14"
       data-is-visible={true}
       onFocus={[Function]}
@@ -742,6 +781,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -856,6 +899,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -970,6 +1017,10 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
                 font-size: 14px;
                 font-weight: 400;
                 height: 32px;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 min-width: 80px;
                 outline: transparent;
                 padding-bottom: 0;
@@ -1069,5 +1120,16 @@ exports[`Component Examples renders FocusTrapZone.FocusZone.Example.tsx correctl
       </div>
     </div>
   </div>
+  <div
+    data-is-visible={true}
+    onFocus={[Function]}
+    style={
+      Object {
+        "pointerEvents": "none",
+        "position": "fixed",
+      }
+    }
+    tabIndex={-1}
+  />
 </div>
 `;

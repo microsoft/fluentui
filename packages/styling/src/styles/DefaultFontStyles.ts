@@ -1,7 +1,7 @@
 import { fontFace, IFontWeight } from '@uifabric/merge-styles';
 import { IFontStyles } from '../interfaces/index';
 import { createFontStyles, FontWeights, LocalizedFontFamilies, LocalizedFontNames } from './fonts';
-import { getLanguage } from '@uifabric/utilities';
+import { getLanguage, getWindow } from '@uifabric/utilities';
 import { IFabricConfig } from '../interfaces/IFabricConfig';
 
 // Default urls.
@@ -67,7 +67,7 @@ export function registerDefaultFontFaces(baseUrl: string): void {
  * Reads the fontBaseUrl from window.FabricConfig.fontBaseUrl or falls back to a default.
  */
 function _getFontBaseUrl(): string {
-  let win = typeof window !== 'undefined' ? window : undefined;
+  let win = getWindow();
 
   // tslint:disable-next-line:no-string-literal no-any
   let fabricConfig: IFabricConfig = win ? win['FabricConfig'] : undefined;

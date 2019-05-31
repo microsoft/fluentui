@@ -7,13 +7,18 @@ import { ILayerProps } from '../../Layer';
 /**
  * {@docCategory Callout}
  */
+export type Target = Element | string | MouseEvent | IPoint | null;
+
+/**
+ * {@docCategory Callout}
+ */
 export interface ICalloutProps extends React.HTMLAttributes<HTMLDivElement> {
   /**
    * The target that the Callout should try to position itself based on.
    * It can be either an Element a querySelector string of a valid Element
    * or a MouseEvent. If MouseEvent is given then the origin point of the event will be used.
    */
-  target?: Element | string | MouseEvent | IPoint | null;
+  target?: Target;
 
   /**
    * How the element should be positioned

@@ -34,6 +34,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--large
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -856,6 +859,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -1678,6 +1684,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -3269,6 +3278,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -3845,6 +3857,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -4571,6 +4586,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -5303,6 +5321,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }

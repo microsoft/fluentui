@@ -39,7 +39,7 @@ export const getStyles = memoizeFunction(
 
     return {
       root: [
-        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
         theme.fonts.medium,
         {
           boxSizing: 'border-box',
@@ -52,7 +52,7 @@ export const getStyles = memoizeFunction(
           verticalAlign: 'top',
           padding: '0 16px',
           borderRadius: 0,
-
+          margin: 0,
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.
             ':active > *': {
@@ -65,7 +65,7 @@ export const getStyles = memoizeFunction(
       ],
 
       rootDisabled: [
-        getFocusStyle(theme, -1, 'relative', buttonHighContrastFocus),
+        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
         {
           backgroundColor: disabledBackground,
           color: disabledText,

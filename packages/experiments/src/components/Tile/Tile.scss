@@ -26,10 +26,20 @@
 
   &.selected {
     background-color: $ms-color-neutralLight;
+
+    &.isFluentStyling {
+      .name {
+        font-weight: $ms-font-weight-semibold;
+      }
+    }
   }
 
   @include focus(true) {
     background-color: $ms-color-neutralLighter;
+
+    &.isFluentStyling {
+      background-color: transparent;
+    }
 
     &.selected {
       background-color: $ms-color-neutralQuaternaryAlt; // Todo need a color variable.
@@ -41,6 +51,10 @@
 
     &.selected {
       outline: 1px solid $ms-color-themePrimary;
+
+      &.isFluentStyling {
+        outline: 1px solid $ms-color-neutralSecondary;
+      }
     }
   }
 
@@ -105,7 +119,6 @@
   flex-direction: column;
   align-items: stretch;
   align-content: stretch;
-  text-decoration: none;
 
   pointer-events: none;
 }
@@ -263,6 +276,10 @@
 
     .link:hover & {
       text-decoration: underline;
+
+      .isFluentStyling & {
+        text-decoration: none;
+      }
     }
   }
 
@@ -338,7 +355,7 @@
   justify-content: center;
   font-weight: $ms-font-weight-regular;
   font-size: $ms-font-size-s;
-  color: #767676;
+  color: $ms-color-neutralSecondary;
   white-space: nowrap;
   overflow: hidden;
   text-overflow: ellipsis;

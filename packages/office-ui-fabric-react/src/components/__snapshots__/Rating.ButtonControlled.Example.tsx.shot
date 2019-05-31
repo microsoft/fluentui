@@ -27,6 +27,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           ms-FocusZone
           ms-Rating-focuszone
           ms-RatingStar-root--small
+          &:focus {
+            outline: none;
+          }
           {
             display: inline-block;
           }
@@ -746,6 +749,10 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;

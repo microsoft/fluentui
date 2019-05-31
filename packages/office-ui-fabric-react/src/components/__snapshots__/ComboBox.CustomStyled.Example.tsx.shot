@@ -21,13 +21,6 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
-      button {
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: visible;
-      }
       & > * {
         margin-bottom: 20px;
       }
@@ -236,6 +229,10 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -297,6 +294,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}
@@ -546,6 +544,10 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               font-weight: 400;
               height: 32px;
               line-height: 30px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -607,6 +609,7 @@ exports[`Component Examples renders ComboBox.CustomStyled.Example.tsx correctly 
               color: #212121;
             }
         data-is-focusable={false}
+        onBlur={[Function]}
         onClick={[Function]}
         onKeyDown={[Function]}
         onKeyPress={[Function]}

@@ -63,6 +63,34 @@ describe('styled', () => {
     Stylesheet.getInstance().reset();
   });
 
+  it('can create pure components', () => {
+    let renderCount = 0;
+    const render = () => {
+      renderCount++;
+      return <div />;
+    };
+    const styles = () => ({});
+    const Comp = styled(render, styles);
+    const PureComp = styled(render, styles, undefined, undefined, true);
+    const App = () => {
+      return (
+        <div>
+          <Comp />
+          <PureComp />
+        </div>
+      );
+    };
+    const appWrapper = mount(<App />);
+
+    try {
+      expect(renderCount).toEqual(2);
+      appWrapper.setProps({ 'data-foo': '1' });
+      expect(renderCount).toEqual(3);
+    } finally {
+      appWrapper.unmount();
+    }
+  });
+
   it('renders base styles (background red)', () => {
     safeCreate(<Test />, (component: renderer.ReactTestRenderer) => {
       // Test that defaults are the base styles (red).
@@ -153,6 +181,50 @@ describe('styled', () => {
 
   it('can process style props (background blue)', () => {
     safeCreate(<Test cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('can wrap components and merge styling objects for all', () => {
+    const TestInner = styled<ITestProps, {}, ITestStyles>(Test, { root: { color: 'green' } }, undefined);
+    const TestOuter = styled<ITestProps, {}, ITestStyles>(TestInner, { root: { lineHeight: '19px' } }, undefined);
+    safeCreate(<TestOuter cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('can wrap components and merge styling functions for all', () => {
+    const TestInner = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { color: 'green' } }), undefined);
+    const TestOuter = styled<ITestProps, {}, ITestStyles>(TestInner, () => ({ root: { lineHeight: '29px' } }), undefined);
+    safeCreate(<TestOuter cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives wrapped styles object priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined);
+    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives wrapped styles function priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined);
+    safeCreate(<TestWrapped cool />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives styles object user prop priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, { root: { background: 'grey' } }, undefined);
+    safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('gives styles function user prop priority', () => {
+    const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined);
+    safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (component: renderer.ReactTestRenderer) => {
       expect(component.toJSON()).toMatchSnapshot();
     });
   });

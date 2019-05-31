@@ -28,6 +28,9 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
           className=
               ms-FocusZone
               ms-OverflowSet
+              &:focus {
+                outline: none;
+              }
               {
                 display: flex;
                 flex-wrap: nowrap;
@@ -66,6 +69,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -219,6 +226,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -372,6 +383,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -525,6 +540,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -678,6 +697,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -831,6 +854,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -984,6 +1011,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1137,6 +1168,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1290,6 +1325,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1443,6 +1482,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1596,6 +1639,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1749,6 +1796,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1902,6 +1953,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2055,6 +2110,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2208,6 +2267,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2361,6 +2424,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2514,6 +2581,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2667,6 +2738,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2820,6 +2895,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2973,6 +3052,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -3113,28 +3196,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             display: flex;
             position: relative;
           }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
     >
       <input
         checked={false}
@@ -3145,11 +3206,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-61"
@@ -3174,14 +3235,27 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               text-align: left;
               user-select: none;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-61"
       >
@@ -3252,28 +3326,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             display: flex;
             position: relative;
           }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
     >
       <input
         checked={false}
@@ -3284,11 +3336,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-62"
@@ -3313,14 +3365,27 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               text-align: left;
               user-select: none;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-62"
       >
@@ -3391,28 +3456,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
             display: flex;
             position: relative;
           }
-          &:hover .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
-            border-color: Highlight;
-          }
-          &:focus .ms-Checkbox-checkbox {
-            border-color: #333333;
-          }
-          &:hover .ms-Checkbox-checkmark {
-            color: #a6a6a6;
-            opacity: 1;
-          }
-          @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
-            color: Highlight;
-          }
-          &:hover .ms-Checkbox-text {
-            color: #333333;
-          }
-          &:focus .ms-Checkbox-text {
-            color: #333333;
-          }
     >
       <input
         checked={false}
@@ -3423,11 +3466,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-63"
@@ -3452,14 +3495,27 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               text-align: left;
               user-select: none;
             }
-            &::before {
-              bottom: 0px;
-              content: "";
-              left: 0px;
-              pointer-events: none;
-              position: absolute;
-              right: 0px;
-              top: 0px;
+            &:hover .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkbox {
+              border-color: Highlight;
+            }
+            &:focus .ms-Checkbox-checkbox {
+              border-color: #333333;
+            }
+            &:hover .ms-Checkbox-checkmark {
+              color: #a6a6a6;
+              opacity: 1;
+            }
+            @media screen and (-ms-high-contrast: active){&:hover .ms-Checkbox-checkmark {
+              color: Highlight;
+            }
+            &:hover .ms-Checkbox-text {
+              color: #333333;
+            }
+            &:focus .ms-Checkbox-text {
+              color: #333333;
             }
         htmlFor="checkbox-63"
       >

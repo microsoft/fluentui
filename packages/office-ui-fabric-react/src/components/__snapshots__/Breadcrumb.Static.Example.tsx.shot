@@ -43,7 +43,11 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
           role="navigation"
         >
           <div
-            className="ms-FocusZone"
+            className=
+                ms-FocusZone
+                &:focus {
+                  outline: none;
+                }
             data-focuszone-id="FocusZone0"
             onFocus={[Function]}
             onKeyDown={[Function]}
@@ -99,6 +103,10 @@ exports[`Component Examples renders Breadcrumb.Static.Example.tsx correctly 1`] 
                         font-size: 16px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         outline: transparent;
                         overflow: hidden;
                         padding-bottom: 0;

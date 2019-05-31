@@ -9,6 +9,9 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
     className=
         ms-FocusZone
         ms-OverflowSet
+        &:focus {
+          outline: none;
+        }
         {
           display: flex;
           flex-wrap: nowrap;
@@ -47,6 +50,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 40px;
               outline: transparent;
               padding-bottom: 10px;
@@ -175,6 +182,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 40px;
               outline: transparent;
               padding-bottom: 10px;
@@ -303,6 +314,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 40px;
               outline: transparent;
               padding-bottom: 10px;
@@ -434,6 +449,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 40px;
               outline: transparent;
               padding-bottom: 0;
@@ -562,6 +581,10 @@ exports[`Component Examples renders Keytips.Overflow.Example.tsx correctly 1`] =
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;

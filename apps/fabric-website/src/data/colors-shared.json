@@ -1,0 +1,250 @@
+[
+  {
+    "name": "PinkRed10",
+    "hex": "#750b1c",
+    "code": {
+      "core": "$ms-color-sharedPinkRed10",
+      "react": "SharedColors.pinkRed10"
+    }
+  },
+  {
+    "name": "Red20",
+    "hex": "#a4262c",
+    "code": {
+      "core": "$ms-color-sharedRed20",
+      "react": "SharedColors.red20"
+    }
+  },
+  {
+    "name": "Red10",
+    "hex": "#d13438",
+    "code": {
+      "core": "$ms-color-sharedRed10",
+      "react": "SharedColors.red10"
+    }
+  },
+  {
+    "name": "RedOrange10",
+    "hex": "#da3b01",
+    "code": {
+      "core": "$ms-color-sharedRedOrange10",
+      "react": "SharedColors.redOrange10"
+    }
+  },
+  {
+    "name": "Orange30",
+    "hex": "#8e562e",
+    "code": {
+      "core": "$ms-color-sharedOrange30",
+      "react": "SharedColors.orange30"
+    }
+  },
+  {
+    "name": "Orange20",
+    "hex": "#ca5010",
+    "code": {
+      "core": "$ms-color-sharedOrange20",
+      "react": "SharedColors.orange20"
+    }
+  },
+  {
+    "name": "Orange10",
+    "hex": "#ffaa44",
+    "code": {
+      "core": "$ms-color-sharedOrange10",
+      "react": "SharedColors.orange10"
+    }
+  },
+  {
+    "name": "Yellow10",
+    "hex": "#fce100",
+    "code": {
+      "core": "$ms-color-sharedYellow10",
+      "react": "SharedColors.yellow10"
+    }
+  },
+  {
+    "name": "OrangeYellow20",
+    "hex": "#986f0b",
+    "code": {
+      "core": "$ms-color-sharedOrangeYellow20",
+      "react": "SharedColors.orangeYellow20"
+    }
+  },
+  {
+    "name": "OrangeYellow10",
+    "hex": "#c19c00",
+    "code": {
+      "core": "$ms-color-sharedOrangeYellow10",
+      "react": "SharedColors.orangeYellow10"
+    }
+  },
+  {
+    "name": "YellowGreen10",
+    "hex": "#8cbd18",
+    "code": {
+      "core": "$ms-color-sharedYellowGreen10",
+      "react": "SharedColors.yellowGreen10"
+    }
+  },
+  {
+    "name": "Green20",
+    "hex": "#0b6a0b",
+    "code": {
+      "core": "$ms-color-sharedGreen20",
+      "react": "SharedColors.green20"
+    }
+  },
+  {
+    "name": "Green10",
+    "hex": "#498205",
+    "code": {
+      "core": "$ms-color-sharedGreen10",
+      "react": "SharedColors.green10"
+    }
+  },
+  {
+    "name": "GreenCyan10",
+    "hex": "#00ad56",
+    "code": {
+      "core": "$ms-color-sharedGreenCyan10",
+      "react": "SharedColors.greenCyan10"
+    }
+  },
+  {
+    "name": "Cyan30",
+    "hex": "#005b70",
+    "code": {
+      "core": "$ms-color-sharedCyan30",
+      "react": "SharedColors.cyan30"
+    }
+  },
+  {
+    "name": "Cyan20",
+    "hex": "#038387",
+    "code": {
+      "core": "$ms-color-sharedCyan20",
+      "react": "SharedColors.cyan20"
+    }
+  },
+  {
+    "name": "Cyan10",
+    "hex": "#00b7c3",
+    "code": {
+      "core": "$ms-color-sharedCyan10",
+      "react": "SharedColors.cyan10"
+    }
+  },
+  {
+    "name": "CyanBlue20",
+    "hex": "#004e8c",
+    "code": {
+      "core": "$ms-color-sharedCyanBlue20",
+      "react": "SharedColors.cyanBlue20"
+    }
+  },
+  {
+    "name": "CyanBlue10",
+    "hex": "#0078d4",
+    "code": {
+      "core": "$ms-color-sharedCyanBlue10",
+      "react": "SharedColors.cyanBlue10"
+    }
+  },
+  {
+    "name": "Blue10",
+    "hex": "#4f6bed",
+    "code": {
+      "core": "$ms-color-sharedBlue10",
+      "react": "SharedColors.blue10"
+    }
+  },
+  {
+    "name": "BlueMagenta30",
+    "hex": "#5c2e91",
+    "code": {
+      "core": "$ms-color-sharedBlueMagenta30",
+      "react": "SharedColors.blueMagenta30"
+    }
+  },
+  {
+    "name": "BlueMagenta20",
+    "hex": "#8764b8",
+    "code": {
+      "core": "$ms-color-sharedBlueMagenta20",
+      "react": "SharedColors.blueMagenta20"
+    }
+  },
+  {
+    "name": "BlueMagenta10",
+    "hex": "#8378de",
+    "code": {
+      "core": "$ms-color-sharedBlueMagenta10",
+      "react": "SharedColors.blueMagenta10"
+    }
+  },
+  {
+    "name": "Magenta20",
+    "hex": "#881798",
+    "code": {
+      "core": "$ms-color-sharedMagenta20",
+      "react": "SharedColors.magenta20"
+    }
+  },
+  {
+    "name": "Magenta10",
+    "hex": "#c239b3",
+    "code": {
+      "core": "$ms-color-sharedMagenta10",
+      "react": "SharedColors.magenta10"
+    }
+  },
+  {
+    "name": "MagentaPink20",
+    "hex": "#9b0062",
+    "code": {
+      "core": "$ms-color-sharedMagentaPink20",
+      "react": "SharedColors.magentaPink20"
+    }
+  },
+  {
+    "name": "MagentaPink10",
+    "hex": "#e3008c",
+    "code": {
+      "core": "$ms-color-sharedMagentaPink10",
+      "react": "SharedColors.magentaPink10"
+    }
+  },
+  {
+    "name": "Gray40",
+    "hex": "#393939",
+    "code": {
+      "core": "$ms-color-sharedGray40",
+      "react": "SharedColors.gray40"
+    }
+  },
+  {
+    "name": "Gray30",
+    "hex": "#7a7574",
+    "code": {
+      "core": "$ms-color-sharedGray30",
+      "react": "SharedColors.gray30"
+    }
+  },
+  {
+    "name": "Gray20",
+    "hex": "#69797e",
+    "code": {
+      "core": "$ms-color-sharedGray20",
+      "react": "SharedColors.gray20"
+    }
+  },
+  {
+    "name": "Gray10",
+    "hex": "#a0aeb2",
+    "code": {
+      "core": "$ms-color-sharedGray10",
+      "react": "SharedColors.gray10"
+    }
+  }
+]

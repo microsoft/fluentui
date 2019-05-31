@@ -14,7 +14,7 @@ export const getStyles = memoizeFunction(
 
     const splitButtonStyles: IButtonStyles = {
       splitButtonContainer: [
-        getFocusStyle(theme, 0, 'relative', buttonHighContrastFocus),
+        getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus }),
         {
           display: 'inline-flex'
         }
@@ -36,7 +36,10 @@ export const getStyles = memoizeFunction(
         cursor: 'pointer',
         verticalAlign: 'top',
         width: 32,
-        marginLeft: -1
+        marginLeft: -1,
+        marginTop: 0,
+        marginRight: 0,
+        marginBottom: 0
       },
 
       splitButtonDivider: {

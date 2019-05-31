@@ -9,6 +9,9 @@ export interface IAutofillState {
 const SELECTION_FORWARD = 'forward';
 const SELECTION_BACKWARD = 'backward';
 
+/**
+ * {@docCategory Autofill}
+ */
 export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> implements IAutofill {
   public static defaultProps = {
     enableAutofillOnKeyPress: [KeyCodes.down, KeyCodes.up] as KeyCodes[]
@@ -156,7 +159,8 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
     const isKorean = (ev.nativeEvent as any).locale === 'ko';
     // Due to timing, this needs to be async, otherwise no text will be selected.
     this._async.setTimeout(() => {
-      const updatedInputValue = isKorean ? this.value : inputValue;
+      // Call getCurrentInputValue here again since there can be a race condition where this value has changed during the async call
+      const updatedInputValue = isKorean ? this.value : this._getCurrentInputValue();
       this._updateValue(updatedInputValue);
     }, 0);
   };
@@ -295,5 +299,6 @@ export class Autofill extends BaseComponent<IAutofillProps, IAutofillState> impl
 
 /**
  *  @deprecated do not use.
+ * {@docCategory Autofill}
  */
 export class BaseAutoFill extends Autofill {}

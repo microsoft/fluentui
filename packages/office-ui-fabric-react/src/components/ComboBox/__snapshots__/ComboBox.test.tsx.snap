@@ -168,6 +168,10 @@ exports[`ComboBox Renders correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -229,6 +233,7 @@ exports[`ComboBox Renders correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}
@@ -454,6 +459,10 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             font-weight: 400;
             height: 32px;
             line-height: 30px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             outline: transparent;
             padding-bottom: 0;
             padding-left: 4px;
@@ -515,6 +524,7 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
             color: #212121;
           }
       data-is-focusable={false}
+      onBlur={[Function]}
       onClick={[Function]}
       onKeyDown={[Function]}
       onKeyPress={[Function]}

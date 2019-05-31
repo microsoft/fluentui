@@ -1,8 +1,10 @@
 pr:
   - master
+  - website-update
 
 trigger:
   - master
+  - website-update
 
 variables:
   - group: fabric-variables
@@ -60,9 +62,8 @@ steps:
       githubTargetLink: 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/$(Build.SourceBranch)/'
 
   - script: |
-      cd ./apps/a11y-tests
-      npm run generate-reports
-    displayName: generate sarif a11y reports
+      npm run a11ytest
+    displayName: run a11y tests
 
   - task: PublishBuildArtifacts@1
     inputs:

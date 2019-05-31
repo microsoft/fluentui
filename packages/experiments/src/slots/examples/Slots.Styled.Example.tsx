@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Button, IButtonComponent } from '@uifabric/experiments';
-import { Customizer, Stack } from 'office-ui-fabric-react';
-import { stackProps } from './SlotExampleUtils';
+import { Customizer, IStackProps, Stack } from 'office-ui-fabric-react';
+
+const stackProps: IStackProps = { tokens: { childrenGap: 16 }, padding: 8, maxWidth: 400 };
 
 const ButtonTheme = {
   scopedSettings: {
