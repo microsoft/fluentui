@@ -462,13 +462,12 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
-    let labelForAria = this.props['aria-labelledby'] ? this.props['aria-labelledby'] : undefined;
-    labelForAria = !labelForAria && this.props.label ? this._labelId : labelForAria;
+    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <input
         type={'text'}
         id={this._id}
-        aria-labelledby={labelForAria}
+        aria-labelledby={ariaLabelledBy}
         {...inputProps}
         ref={this._textElement}
         value={this.state.value}
