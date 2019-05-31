@@ -373,7 +373,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
   }
 
   private _tryFocusPreviousActiveElement() {
-    if (this._isFocusingPreviousElement && !this.props.preventFocusOnPreviousActiveElement && this._previousActiveElement) {
+    if (this._isFocusingPreviousElement && this._previousActiveElement) {
       // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
       // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
       // to reset the focus back to the thing it thinks should have been focused.
