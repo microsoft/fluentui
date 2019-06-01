@@ -136,8 +136,8 @@ export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
 // @public (undocumented)
 export interface ICalendarProps extends IBaseProps<ICalendar> {
     allFocusable?: boolean;
-    calendarDayProps?: ICalendarDayProps;
-    calendarMonthProps?: ICalendarMonthProps;
+    calendarDayProps?: Partial<ICalendarDayProps>;
+    calendarMonthProps?: Partial<ICalendarMonthProps>;
     className?: string;
     componentRef?: IRefObject<ICalendar>;
     dateRangeType?: DateRangeType;

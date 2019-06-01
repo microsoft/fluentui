@@ -160,7 +160,9 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
       allFocusable,
       styles,
       showWeekNumbers,
-      theme
+      theme,
+      calendarDayProps,
+      calendarMonthProps
     } = this.props;
     const { selectedDate, navigatedDayDate, navigatedMonthDate, isMonthPickerVisible, isDayPickerVisible } = this.state;
     const onHeaderSelect = showMonthPickerAsOverlay ? this._onHeaderSelect : undefined;
@@ -205,6 +207,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
             componentRef={this._dayPicker}
             showCloseButton={showCloseButton}
             allFocusable={allFocusable}
+            {...calendarDayProps} // at end of list so consumer's custom functions take precedence
           />
         )}
         {isDayPickerVisible && isMonthPickerVisible && <div className={classes.divider} />}
@@ -224,6 +227,7 @@ export class CalendarBase extends BaseComponent<ICalendarProps, ICalendarState> 
               minDate={minDate}
               maxDate={maxDate}
               componentRef={this._monthPicker}
+              {...calendarMonthProps} // at end of list so consumer's custom functions take precedence
             />
             {this._renderGoToTodayButton(classes)}
           </div>

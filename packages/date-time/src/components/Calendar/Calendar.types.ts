@@ -26,12 +26,12 @@ export interface ICalendarProps extends IBaseProps<ICalendar> {
   /**
    * Customized props for the calendar day
    */
-  calendarDayProps?: ICalendarDayProps;
+  calendarDayProps?: Partial<ICalendarDayProps>;
 
   /**
    * Customized props for the calendar month
    */
-  calendarMonthProps?: ICalendarMonthProps;
+  calendarMonthProps?: Partial<ICalendarMonthProps>;
 
   /**
    * Theme provided by High-Order Component.

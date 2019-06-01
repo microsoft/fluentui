@@ -54,7 +54,8 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         padding: '0 4px 0 10px',
         border: 'none',
         backgroundColor: 'transparent',
-        borderRadius: 2
+        borderRadius: 2,
+        lineHeight: 0
       },
       headerIsClickable && {
         selectors: {
