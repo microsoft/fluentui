@@ -1,6 +1,24 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+
+## 6.187.2
+Fri, 31 May 2019 12:21:27 GMT
+
+### Patches
+
+- TeachingBubble: Updated entrance animation for teaching bubble in TeachingBubble.styles.ts. Removed jelly animation and replaced with new motion spec entrance animation.
+
+## 6.187.1
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Autofill: makes sure the fresh input is retrieved at the time of composition end
+- Refactor common logic out of _dismissOnLostFocus to a generalized function in order to decouple handling of _dismissOnScroll from _dismissOnLostFocus
+- Remove extra role attribute from callout root element, support aria-roledescription on callout main where role already resides
+- DetailList: only select the first item on keydown from header if there isn't already something selected
+- Dropdown: fix issue where dropdown did not respect selectedKey(s) prop
 
 ## 6.187.0
 Wed, 29 May 2019 12:21:24 GMT

@@ -104,7 +104,9 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
           selectedYear={currentSelectedDate}
           onRenderYear={this._onRenderYear}
           strings={{
-            rangeAriaLabel: this._yearRangeToString
+            rangeAriaLabel: this._yearRangeToString,
+            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
           }}
           ref={this._onCalendarYearRef}
         />
@@ -128,6 +130,8 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
               onKeyDown={this._onHeaderKeyDown}
               aria-label={dateTimeFormatter.formatYear(navigatedDate)}
               role="button"
+              aria-atomic={true}
+              aria-live="polite"
               tabIndex={0}
             >
               {dateTimeFormatter.formatYear(navigatedDate)}
@@ -274,6 +278,16 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
 
   private _yearRangeToString = (yearRange: ICalendarYearRange) => {
     return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  };
+
+  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+  };
+
+  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
   };
 
   private _onRenderYear = (year: number) => {
