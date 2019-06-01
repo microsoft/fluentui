@@ -1,3 +1,4 @@
+import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IHorizontalBarChartStyleProps, IHorizontalBarChartStyles } from './HorizontalBarChart.types';
 
 export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps): IHorizontalBarChartStyles => {
@@ -29,10 +30,10 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       fontSize: '12px'
     },
     chartDataText: {
-      fontWeight: 'bold'
+      fontWeight: FontWeights.bold
     },
     chartDataTextDenominator: {
-      fontWeight: '600'
+      fontWeight: FontWeights.semibold
     },
     hoverCardTextStyles: {
       ...theme.fonts.medium,
