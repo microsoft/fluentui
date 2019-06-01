@@ -104,7 +104,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
           selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
           onRenderYear={this._onRenderYear}
           strings={{
-            rangeAriaLabel: this._yearRangeToString
+            rangeAriaLabel: this._yearRangeToString,
+            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
           }}
           componentRef={this._calendarYearRef}
           styles={styles}
@@ -130,6 +132,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             data-is-focusable={!!onHeaderSelect}
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
             type="button"
+            aria-atomic={true}
+            aria-live="polite"
           >
             {dateFormatter.formatYear(navigatedDate)}
           </button>
@@ -233,7 +237,6 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-        case KeyCodes.space:
           callback();
           break;
       }
@@ -319,5 +322,15 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
   private _yearRangeToString = (yearRange: ICalendarYearRange) => {
     return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  };
+
+  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+  };
+
+  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
   };
 }
