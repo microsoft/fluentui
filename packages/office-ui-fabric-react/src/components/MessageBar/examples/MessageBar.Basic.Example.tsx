@@ -13,7 +13,9 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
       <Label>Info/Default MessageBar</Label>
       <MessageBar>
         Info lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -21,7 +23,9 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
       <Label>Error MessageBar - single line, with dismiss button</Label>
       <MessageBar messageBarType={MessageBarType.error} isMultiline={false} onDismiss={log('test')} dismissButtonAriaLabel="Close">
         Error lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -43,7 +47,9 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
         porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo
         odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce
         massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -59,7 +65,9 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
         }
       >
         Severe warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -75,7 +83,10 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
         messageBarType={MessageBarType.success}
         isMultiline={false}
       >
-        Success lorem ipsum dolor sit amet. <Link href="www.bing.com">Visit our website.</Link>
+        Success lorem ipsum dolor sit amet.{' '}
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -93,7 +104,9 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
         }
       >
         Warning lorem ipsum dolor sit amet, a elit sem interdum consectetur adipiscing elit.{' '}
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
 
@@ -116,7 +129,9 @@ export const MessageBarBasicExample: React.StatelessComponent = () => (
         porttitor et sed lacus. Vivamus ac efficitur leo. Cras faucibus mauris libero, ac placerat erat euismod et. Donec pulvinar commodo
         odio sit amet faucibus. In hac habitasse platea dictumst. Duis eu ante commodo, condimentum nibh pellentesque, laoreet enim. Fusce
         massa lorem, ultrices eu mi a, fermentum suscipit magna. Integer porta purus pulvinar, hendrerit felis eget, condimentum mauris.
-        <Link href="www.bing.com">Visit our website.</Link>
+        <Link href="www.bing.com" target="_blank">
+          Visit our website.
+        </Link>
       </MessageBar>
     </StackItem>
   </Stack>
