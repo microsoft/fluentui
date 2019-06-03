@@ -24,9 +24,6 @@ module.exports = [
 
     resolve: {
       alias: {
-        '@uifabric/legacy$': path.resolve(__dirname, '../../packages/legacy/lib'),
-        '@uifabric/legacy/src': path.resolve(__dirname, '../../packages/legacy/src'),
-        '@uifabric/legacy/lib': path.resolve(__dirname, '../../packages/legacy/lib'),
         'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),
         'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
         'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/lib'),

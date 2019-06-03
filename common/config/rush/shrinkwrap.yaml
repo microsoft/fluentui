@@ -23,7 +23,6 @@ dependencies:
   '@rush-temp/foundation-scenarios': 'file:projects/foundation-scenarios.tgz'
   '@rush-temp/icons': 'file:projects/icons.tgz'
   '@rush-temp/jest-serializer-merge-styles': 'file:projects/jest-serializer-merge-styles.tgz'
-  '@rush-temp/legacy': 'file:projects/legacy.tgz'
   '@rush-temp/lists': 'file:projects/lists.tgz'
   '@rush-temp/merge-styles': 'file:projects/merge-styles.tgz'
   '@rush-temp/migration': 'file:projects/migration.tgz'
@@ -15866,7 +15865,7 @@ packages:
     dev: false
     name: '@rush-temp/api-docs'
     resolution:
-      integrity: sha512-lIzx/HBPI8df1B3dLa4KxUE+1U/KiX7TGOmwu9rAFrO+E7S2KmTSHVZzfFFce/wmTGOj8j9XUqtoF9They0aMw==
+      integrity: sha512-QnUZX/xUSB/0RRVpJNgyjKZItP3kjsSTqcO25Bj0KpTR72H1ju6ybZtAIC73u29vryiPRsfsa0pkZexLKAuAZg==
       tarball: 'file:projects/api-docs.tgz'
     version: 0.0.0
   'file:projects/azure-themes.tgz':
@@ -15876,7 +15875,7 @@ packages:
     dev: false
     name: '@rush-temp/azure-themes'
     resolution:
-      integrity: sha512-OPShFsEz1U4ezVk1abpgdXGVf3m+Bdfml+XlhlHtyrtvSvJxNFuhrxqW/Vn3xNwmjxV2h5yJnU1FaLuumTPofA==
+      integrity: sha512-ewQrxlui0dxQ6XT+gkX2wV16xlGOjlBWeAISiHhqzeEh4ZpN6GFq/2ZTe7OjOLSAN+2ullkRDEIGw0lQWinDww==
       tarball: 'file:projects/azure-themes.tgz'
     version: 0.0.0
   'file:projects/build.tgz':
@@ -16086,7 +16085,7 @@ packages:
     dev: false
     name: '@rush-temp/example-app-base'
     resolution:
-      integrity: sha512-rA/9lePmqoDy2rsCGZDMEeV73wZZSGs3HgR5xodFcaaRqX+y4xSKdaofhQNzH9SKJANdtFwSSk2vgMEQSppqNg==
+      integrity: sha512-cGOLpUPFfWH7XBR/w84p5h1p1/VFz/RyKpoeXDEENm7Z4Xxnvb8jQoyk66ytHo72Cl6qDvtXbas7ttMoUV2pZw==
       tarball: 'file:projects/example-app-base.tgz'
     version: 0.0.0
   'file:projects/experiments.tgz':
@@ -16162,7 +16161,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website-resources'
     resolution:
-      integrity: sha512-UgihTKc50f1O8WXlN1VODGze7/iHAHgceo5Q2pOmR1if1YBVw4gk3qkT8p+0JiVYEXYr1psQsxqKkZw2dDZJOA==
+      integrity: sha512-cdJarQueFJJsUEd1woulRqQ6jVzCQps6UujJ8u3XkFHKAtasjI2M7kGbWTpY6O/r6X+aN+EYVUaHGTnHLnw/Xw==
       tarball: 'file:projects/fabric-website-resources.tgz'
     version: 0.0.0
   'file:projects/fabric-website.tgz':
@@ -16190,7 +16189,7 @@ packages:
     dev: false
     name: '@rush-temp/fabric-website'
     resolution:
-      integrity: sha512-STxKNRcfAd2J4atRV4+1p/Cq5bYbrZtbxLY9/o3ro3Yj8magrSvfDbhVdVreTdOqM7lkVhH9WwmXDh31oTSU5Q==
+      integrity: sha512-KNZUfeULkHtbRdBOX0YAlEdnU9RuCPdXNqC4BUdJeIQlnO4ly+21vwSy9ZGi1rtde9hyXctnLkBhn7E9ejLr6A==
       tarball: 'file:projects/fabric-website.tgz'
     version: 0.0.0
   'file:projects/file-type-icons.tgz':
@@ -16214,7 +16213,7 @@ packages:
     dev: false
     name: '@rush-temp/fluent-theme'
     resolution:
-      integrity: sha512-C5Xm8YQSh/PQ8y73BGOSDfYLR2aH/w0ud+JDnMd09D9rUCADJucnxnxEVTpziarJ909G0BoUq3fv1kz9IDdHSQ==
+      integrity: sha512-KBcen1Y4pnOyM5F4m2152AGw3Ywb6kmiiGkAQygfhNzcZBHyvErbUS3IT8/lxfGeEq3o5qLfflEiTXYeYV9Cog==
       tarball: 'file:projects/fluent-theme.tgz'
     version: 0.0.0
   'file:projects/foundation-scenarios.tgz':
@@ -16287,46 +16286,6 @@ packages:
     resolution:
       integrity: sha512-xJdHdj/CW7NH7oIvugVSIoclo3NbgysSY+MevvnR9Hr2KwZ0uocmeyGgWE9ZS6Exzy1BqTEkfH8NUHQkp4ceYg==
       tarball: 'file:projects/jest-serializer-merge-styles.tgz'
-    version: 0.0.0
-  'file:projects/legacy.tgz':
-    dependencies:
-      '@microsoft/load-themed-styles': 1.8.86
-      '@types/enzyme': 3.1.13
-      '@types/enzyme-adapter-react-16': 1.0.3
-      '@types/es6-promise': 0.0.32
-      '@types/glob': 7.1.1
-      '@types/jest': 23.0.0
-      '@types/node': 8.10.48
-      '@types/prop-types': 15.5.9
-      '@types/react': 16.8.11
-      '@types/react-dom': 16.8.4
-      '@types/react-test-renderer': 16.8.1
-      '@types/resemblejs': 1.3.28
-      '@types/sinon': 2.2.2
-      '@types/webpack-env': 1.13.0
-      enzyme: 3.9.0
-      enzyme-adapter-react-16: /enzyme-adapter-react-16/1.12.1/ee2efeb9ba09e3479f87e6d53c5a2c00
-      enzyme-to-json: /enzyme-to-json/3.3.5/enzyme@3.9.0
-      es6-map: 0.1.5
-      es6-promise: 4.2.6
-      es6-weak-map: 2.0.2
-      glob: 7.1.3
-      highlight.js: 9.15.6
-      jest-snapshot: 24.1.0
-      office-ui-fabric-core: 9.6.1
-      prop-types: 15.7.2
-      react: 16.8.6
-      react-dom: /react-dom/16.8.6/react@16.8.6
-      react-highlight: 0.10.0
-      react-test-renderer: /react-test-renderer/16.8.6/react@16.8.6
-      resemblejs: 2.2.6
-      sinon: 4.5.0
-      tslib: 1.9.3
-    dev: false
-    name: '@rush-temp/legacy'
-    resolution:
-      integrity: sha512-djPU/KbXmi6ciQucOyB0pQowWEil/fpU9kkJ+Kb2Hyoyf976dteOVFsTSYdXxfrrDV77R/uTs8IRUmJtIz+5lA==
-      tarball: 'file:projects/legacy.tgz'
     version: 0.0.0
   'file:projects/lists.tgz':
     dependencies:
@@ -16523,7 +16482,7 @@ packages:
     dev: false
     name: '@rush-temp/ssr-tests'
     resolution:
-      integrity: sha512-CMSlSqtOE3bdDfFB2htfrjgB5O0t1xV5AOXTi2E9hWUyzmiQeLLQi+O4F1TK8D7BiXRS7qlzZE1QdgE+lkshdQ==
+      integrity: sha512-UQgJOJfMSAsBvDZgtyDgEYmlsRsQZcZQQdFVXY6yxocpLXah5cYY6+JkBq9zfFQdZwXs3Zti5EKHINe0QVaZHw==
       tarball: 'file:projects/ssr-tests.tgz'
     version: 0.0.0
   'file:projects/styling.tgz':
@@ -16701,7 +16660,7 @@ packages:
     dev: false
     name: '@rush-temp/vr-tests'
     resolution:
-      integrity: sha512-3wVDP95KHK/SbRRuJ0IA5H9pn7f8kDaVx8eSBdgy/oNS1YvBQbUWeTmBV4iQP3H+Bgt0xozelVh0S9vG/QUWlQ==
+      integrity: sha512-NkFK0FIIJBYVTCujI9eBbi4qsJ3SmFv8ai/zIzmodw08Od2x/ySpqTFkMGHZBUStdYDWMs0z/alUAZNM6HnkCQ==
       tarball: 'file:projects/vr-tests.tgz'
     version: 0.0.0
   'file:projects/webpack-utils.tgz':
@@ -16747,7 +16706,6 @@ specifiers:
   '@rush-temp/foundation-scenarios': 'file:./projects/foundation-scenarios.tgz'
   '@rush-temp/icons': 'file:./projects/icons.tgz'
   '@rush-temp/jest-serializer-merge-styles': 'file:./projects/jest-serializer-merge-styles.tgz'
-  '@rush-temp/legacy': 'file:./projects/legacy.tgz'
   '@rush-temp/lists': 'file:./projects/lists.tgz'
   '@rush-temp/merge-styles': 'file:./projects/merge-styles.tgz'
   '@rush-temp/migration': 'file:./projects/migration.tgz'

@@ -1,6 +1,6 @@
 import { FontSizes } from '../AzureType';
 import * as StyleConstants from '../Constants';
-import { IDatePickerStyles, IDatePickerStyleProps } from '@uifabric/legacy/lib/DatePicker';
+import { IDatePickerStyles, IDatePickerStyleProps } from 'office-ui-fabric-react/lib/DatePicker';
 
 export const DatePickerStyles = (props: IDatePickerStyleProps): Partial<IDatePickerStyles> => {
   const { disabled, theme } = props;
