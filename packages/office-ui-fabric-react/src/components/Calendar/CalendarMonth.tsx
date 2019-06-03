@@ -151,7 +151,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1))
                     : undefined
                 }
-                title={strings.prevYearAriaLabel ? strings.prevYearAriaLabel : undefined}
+                title={strings.prevYearAriaLabel}
                 role="button"
                 type="button"
               >
@@ -169,7 +169,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                     ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1))
                     : undefined
                 }
-                title={strings.nextYearAriaLabel ? strings.nextYearAriaLabel : undefined}
+                title={strings.nextYearAriaLabel}
                 role="button"
                 type="button"
               >
