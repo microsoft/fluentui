@@ -205,7 +205,10 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     } = this.state;
 
     // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
-    const deafultColor = color || theme!.semanticColors.primaryButtonBackground;
+    let defaultColor = color;
+    if (!defaultColor && theme) {
+      defaultColor = theme.semanticColors.primaryButtonBackground;
+    }
 
     const classNames = getClassNames(styles, {
       theme,
@@ -213,7 +216,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       isCollapsed,
       isBeaconAnimating,
       isMeasuring,
-      color: deafultColor,
+      color: defaultColor,
       transformOrigin,
       isMeasured,
       entityHostHeight: `${entityInnerHostRect.height}px`,
@@ -252,7 +255,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
                     right={beakRight}
                     bottom={beakBottom}
                     direction={this._beakDirection}
-                    color={deafultColor}
+                    color={defaultColor}
                   />
                 )}
                 <div
