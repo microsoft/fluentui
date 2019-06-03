@@ -427,7 +427,9 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
                             onMouseEnter={[Function]}
                             onMouseLeave={[Function]}
                             onMouseMove={[Function]}
+                            rel="nofollow noopener noreferrer"
                             role="menuitem"
+                            target="_blank"
                           >
                             <div
                               className=
