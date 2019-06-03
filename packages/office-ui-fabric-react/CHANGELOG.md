@@ -1,6 +1,14 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jun 2019 12:23:18 GMT and should not be manually modified.
+
+## 6.188.0
+Mon, 03 Jun 2019 12:23:18 GMT
+
+### Minor changes
+
+- Updating DatePicker and Calendar accessibility
+- Fixed SplitButton styling for menu icon and dividers in disabled state
 
 ## 6.187.2
 Fri, 31 May 2019 12:21:27 GMT
