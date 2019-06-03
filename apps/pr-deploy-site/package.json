@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/pr-deploy-site",
-  "version": "0.0.1",
+  "version": "7.0.0-alpha030",
   "description": "A site to be deployed as a static site to view what is built during PR",
   "main": "index.js",
   "scripts": {
@@ -9,18 +9,18 @@
   },
   "license": "MIT",
   "dependencies": {
-    "@uifabric/charting": "^0.29.2",
-    "@uifabric/date-time": "6.1.2",
-    "@uifabric/experiments": "^6.78.2",
-    "@uifabric/fabric-website-resources": "^6.18.3",
-    "@uifabric/fabric-website": "^6.18.9",
-    "@uifabric/foundation-scenarios": "^0.1.0",
-    "perf-test": "^6.0.0",
-    "test-bundles": "^6.0.0",
-    "theming-designer": "^1.0.0",
-    "todo-app": "^6.0.0"
+    "@uifabric/charting": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/date-time": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/experiments": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/fabric-website-resources": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/fabric-website": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/foundation-scenarios": ">=7.0.0-0 <8.0.0-0",
+    "perf-test": ">=7.0.0-0 <8.0.0-0",
+    "test-bundles": ">=7.0.0-0 <8.0.0-0",
+    "theming-designer": ">=7.0.0-0 <8.0.0-0",
+    "todo-app": ">=7.0.0-0 <8.0.0-0"
   },
   "devDependencies": {
-    "@uifabric/build": "*"
+    "@uifabric/build": ">=7.0.0-0 <8.0.0-0"
   }
 }
