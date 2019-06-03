@@ -5,7 +5,7 @@ import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.type
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getStyles } from './App.styles';
 import { Header } from '../Header/Header';
-import { INavLink, Nav } from '@uifabric/legacy/lib/Nav';
+import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';

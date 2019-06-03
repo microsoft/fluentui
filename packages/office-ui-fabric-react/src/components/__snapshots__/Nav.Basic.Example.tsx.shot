@@ -193,10 +193,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -354,10 +350,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: 36px;
                           line-height: 36px;
-                          margin-bottom: 0px;
-                          margin-left: 0px;
-                          margin-right: 0px;
-                          margin-top: 0px;
                           outline: transparent;
                           overflow: hidden;
                           padding-bottom: 0;
@@ -508,10 +500,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: 36px;
                           line-height: 36px;
-                          margin-bottom: 0px;
-                          margin-left: 0px;
-                          margin-right: 0px;
-                          margin-top: 0px;
                           outline: transparent;
                           overflow: hidden;
                           padding-bottom: 0;
@@ -654,10 +642,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -814,10 +798,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -968,10 +948,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1110,10 +1086,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1261,10 +1233,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
-                      margin-bottom: 0px;
-                      margin-left: 0px;
-                      margin-right: 0px;
-                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
