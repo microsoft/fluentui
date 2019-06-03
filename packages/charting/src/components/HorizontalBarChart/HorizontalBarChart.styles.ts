@@ -43,7 +43,7 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       color: color !== '' ? `${color}` : palette.black,
       fontSize: '28px',
       fontFamily: 'Segoe UI',
-      fontWeight: 'bold',
+      fontWeight: FontWeights.bold,
       lineHeight: '31px'
     },
     hoverCardRoot: {

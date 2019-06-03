@@ -75,11 +75,7 @@ export class HorizontalBarChartBase extends React.Component<IHorizontalBarChartP
             <div key={index} className={this._classNames.items}>
               <div className={this._classNames.items}>
                 <div className={this._classNames.chartTitle}>
-                  {points!.chartTitle && (
-                    <div>
-                      <strong>{points!.chartTitle}</strong>
-                    </div>
-                  )}
+                  {points!.chartTitle && <div className={this._classNames.chartDataText}>{points!.chartTitle}</div>}
                   {chartDataText}
                 </div>
                 {points!.chartData![0].data && this._createBenchmark(points!)}
