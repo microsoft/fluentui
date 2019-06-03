@@ -4,6 +4,7 @@ import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } fro
 import { IButtonVariantProps } from './ButtonVariants.types';
 import { HighContrastSelector } from '../../Styling';
 import { Text } from 'office-ui-fabric-react';
+import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
 
 export interface ICompoundButtonProps extends IButtonVariantProps {
   secondaryText?: string;
@@ -62,9 +63,24 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
   const { disabled, primary } = props;
   const { semanticColors } = theme;
 
+  const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
+
   return {
     root: {
-      lineHeight: '100%'
+      alignItems: 'flex-start',
+      flexDirection: 'column',
+      lineHeight: '100%',
+
+      selectors: {
+        '> *': {
+          marginLeft: 0,
+          marginTop: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`
+        },
+        '> *:not(:first-child)': {
+          marginLeft: 0,
+          marginTop: `${rowGap.value}${rowGap.unit}`
+        }
+      }
     },
     content: {
       color: disabled ? semanticColors.buttonTextDisabled : primary ? semanticColors.primaryButtonText : semanticColors.buttonText,
@@ -94,7 +110,7 @@ const CompoundButtonStyles: IButtonComponent['styles'] = (props, theme, tokens):
 export const CompoundButton: CompoundButtonType = props => {
   const { text, iconProps, secondaryText, ...rest } = props;
 
-  const stackTokens = { childrenGap: 5 };
+  // const stackTokens = { childrenGap: 5 };
   const secondaryTextStyles = {
     root: {
       height: 12
@@ -102,14 +118,7 @@ export const CompoundButton: CompoundButtonType = props => {
   };
 
   return (
-    <Button
-      stack={{ as: 'span', horizontal: false, horizontalAlign: 'start', tokens: stackTokens }}
-      content={text}
-      icon={iconProps}
-      styles={CompoundButtonStyles}
-      tokens={CompoundButtonTokens}
-      {...rest}
-    >
+    <Button content={text} icon={iconProps} styles={CompoundButtonStyles} tokens={CompoundButtonTokens} {...rest}>
       <Text variant="xSmall" styles={secondaryTextStyles}>
         {secondaryText}
       </Text>

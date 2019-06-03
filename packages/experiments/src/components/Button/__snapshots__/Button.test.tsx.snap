@@ -7,6 +7,7 @@ exports[`Button renders a default Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #ffffff;
         border-color: #8a8886;
         border-radius: 2px;
@@ -15,7 +16,8 @@ exports[`Button renders a default Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #323130;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -29,8 +31,8 @@ exports[`Button renders a default Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -51,6 +53,13 @@ exports[`Button renders a default Button with content correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         border-width: 1px;
@@ -95,49 +104,21 @@ exports[`Button renders a default Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Default button
-    </span>
+    Default button
   </span>
 </button>
 `;
@@ -150,6 +131,7 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #f3f2f1;
         border-color: #f3f2f1;
         border-radius: 2px;
@@ -158,7 +140,8 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #a19f9d;
         cursor: default;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -173,8 +156,8 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -195,6 +178,13 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -246,49 +236,21 @@ exports[`Button renders a disabled primary Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Disabled primary button
-    </span>
+    Disabled primary button
   </span>
 </button>
 `;
@@ -300,6 +262,7 @@ exports[`Button renders a primary Button with content correctly 1`] = `
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
+        align-items: center;
         background-color: #0078d4;
         border-color: #8a8886;
         border-radius: 2px;
@@ -308,7 +271,8 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
-        display: inline-block;
+        display: inline-flex;
+        flex-direction: row;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
         font-weight: 600;
@@ -323,8 +287,8 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
-        padding-left: 0px;
-        padding-right: 0px;
+        padding-left: 20px;
+        padding-right: 20px;
         padding-top: 0px;
         position: relative;
         text-align: center;
@@ -345,6 +309,13 @@ exports[`Button renders a primary Button with content correctly 1`] = `
         right: 2px;
         top: 2px;
         z-index: 1;
+      }
+      & > * {
+        margin-left: 4px 4px;
+        text-overflow: ellipsis;
+      }
+      & > *:not(:first-child) {
+        margin-left: 8px;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
@@ -395,49 +366,21 @@ exports[`Button renders a primary Button with content correctly 1`] = `
 >
   <span
     className=
-        ms-Stack
+
         {
-          align-items: center;
-          box-sizing: border-box;
-          display: flex;
-          flex-direction: row;
-          flex-wrap: nowrap;
-          height: 100%;
-          justify-content: center;
-          padding-bottom: 0px;
-          padding-left: 20px;
-          padding-right: 20px;
-          padding-top: 0px;
-          width: auto;
-        }
-        & > * {
-          text-overflow: ellipsis;
-        }
-        & > *:not(:first-child) {
-          margin-left: 8px;
-        }
-        & > *:not(.ms-StackItem) {
-          flex-shrink: 1;
+          -moz-osx-font-smoothing: grayscale;
+          -webkit-font-smoothing: antialiased;
+          color: inherit;
+          display: inline;
+          font-family: inherit;
+          font-size: 14px;
+          font-weight: 600;
+          moz-osx-font-smoothing: grayscale;
+          overflow: visible;
+          webkit-font-smoothing: antialiased;
         }
   >
-    <span
-      className=
-
-          {
-            -moz-osx-font-smoothing: grayscale;
-            -webkit-font-smoothing: antialiased;
-            color: inherit;
-            display: inline;
-            font-family: inherit;
-            font-size: 14px;
-            font-weight: 600;
-            moz-osx-font-smoothing: grayscale;
-            overflow: visible;
-            webkit-font-smoothing: antialiased;
-          }
-    >
-      Primary button
-    </span>
+    Primary button
   </span>
 </button>
 `;

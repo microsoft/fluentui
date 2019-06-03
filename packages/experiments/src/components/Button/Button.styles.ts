@@ -1,6 +1,7 @@
 import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } from './Button.types';
 import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
+import { parseGap } from 'office-ui-fabric-react/lib/components/Stack/StackUtils';
 
 const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
   const { effects } = theme;
@@ -10,6 +11,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenRetur
     borderStyle: 'solid',
     borderStyleFocused: 'solid',
     borderWidth: 1,
+    childrenGap: 8,
     cursor: 'pointer',
     minWidth: 100,
     minHeight: 32,
@@ -207,6 +209,8 @@ const GlobalClassNames = {
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className, circular } = props;
 
+  const { rowGap, columnGap } = parseGap(tokens.childrenGap, theme);
+
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
@@ -222,6 +226,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
       },
       theme.fonts.small,
       {
+        alignItems: 'center',
         backgroundColor: tokens.backgroundColor,
         borderColor: tokens.borderColor,
         borderRadius: tokens.borderRadius,
@@ -230,7 +235,8 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         boxSizing: 'border-box',
         color: tokens.color,
         cursor: tokens.cursor,
-        display: 'inline-block',
+        display: 'inline-flex',
+        flexDirection: 'row',
         fontSize: tokens.textSize,
         fontWeight: tokens.textWeight,
         height: tokens.height,
@@ -239,7 +245,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         minWidth: tokens.minWidth,
         minHeight: tokens.minHeight,
         overflow: 'hidden',
-        padding: 0,
+        padding: tokens.contentPadding,
         textDecoration: 'none',
         textAlign: 'center',
         userSelect: 'none',
@@ -248,6 +254,13 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         outlineColor: tokens.outlineColor,
 
         selectors: {
+          '> *': {
+            marginLeft: `${0.5 * rowGap.value}${rowGap.unit} ${0.5 * columnGap.value}${columnGap.unit}`,
+            textOverflow: 'ellipsis'
+          },
+          '> *:not(:first-child)': {
+            marginLeft: `${columnGap.value}${columnGap.unit}`
+          },
           [HighContrastSelector]: {
             backgroundColor: tokens.highContrastBackgroundColor,
             borderColor: tokens.highContrastBorderColor,
@@ -314,10 +327,6 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
       },
       className
     ],
-    stack: {
-      padding: tokens.contentPadding,
-      height: '100%'
-    },
     icon: [
       globalClassNames.msButtonIcon,
       {

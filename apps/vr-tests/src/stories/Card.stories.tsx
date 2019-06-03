@@ -87,15 +87,13 @@ const actionButtonStyles: IButtonStyles = {
     height: 'auto',
     minHeight: 0,
     minWidth: 0,
+    padding: 0,
 
     selectors: {
       ':hover': {
         color: '#0078D4'
       }
     }
-  },
-  stack: {
-    padding: 0
   },
   content: {
     fontSize: 12,

@@ -38,7 +38,6 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     root: Stack,
     button: Button,
     menuButton: MenuButton,
-    stack: Stack,
     icon: Icon,
     content: Text,
     menu: ContextualMenu,

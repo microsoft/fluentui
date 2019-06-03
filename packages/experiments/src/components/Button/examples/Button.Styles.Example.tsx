@@ -61,10 +61,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Styles Object: Red Text (root)" styles={{ root: { color: '#E20000' } }} />
-                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (stack)" styles={{ stack: { color: '#E20000' } }} />
-              </ButtonStack>
-              <ButtonStack>
-                <Button icon="PeopleAdd" content="Stack Styles Object: Red Text" stack={{ styles: { root: { color: '#E20000' } } }} />
+                <Button icon="PeopleAdd" content="Button Styles Object: Red Text (content)" styles={{ content: { color: '#E20000' } }} />
               </ButtonStack>
               <ButtonStack>
                 <Button icon="PeopleAdd" content="Button Styles Object: Pink Icon" styles={{ icon: { color: 'pink ' } }} />

@@ -31,6 +31,7 @@ const RibbonMenuButtonTokens = {
   backgroundColorExpandedHovered: '#C8C6C4',
   backgroundColorPressed: '#C8C6C4',
   backgroundColorExpandedPressed: '#C8C6C4',
+  childrenGap: 0,
   height: '100%'
 };
 
@@ -43,6 +44,9 @@ const RibbonMenuButtonVerticalTokens = {
 };
 
 const RibbonMenuButtonVerticalStyles = {
+  root: {
+    flexDirection: 'column' as 'column'
+  },
   icon: {
     marginBottom: 4,
     padding: 4
@@ -56,16 +60,9 @@ const RibbonMenuButtonVerticalStyles = {
 };
 
 export const RibbonMenuButton: React.SFC<IRibbonMenuButtonProps> = props => {
-  const stackProps: IStackProps = {
-    horizontal: false,
-    tokens: { childrenGap: 0 },
-    verticalFill: true
-  };
-
   const mergedProps: IMenuButtonProps = props.vertical
     ? {
         ...props,
-        stack: stackProps,
         menuIcon: 'ChevronDownSmall',
         styles: RibbonMenuButtonVerticalStyles,
         tokens: RibbonMenuButtonVerticalTokens
