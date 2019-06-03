@@ -97,7 +97,7 @@ export class PersonaBase extends BaseComponent<IPersonaProps, {}> {
       size
     });
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
     const personaDetails = (
       <div className={classNames.details}>
         {this._renderElement(classNames.primaryText, onRenderPrimaryText, _onRenderPrimaryText)}

@@ -110,8 +110,7 @@ _selection.setItems(_items);
 
 const _columnReorderProps = {
   frozenColumnCountFromStart: 1,
-  frozenColumnCountFromEnd: 1,
-  handleColumnReorder: this._dummyFunction
+  frozenColumnCountFromEnd: 1
 };
 
 storiesOf('DetailsHeader', module)

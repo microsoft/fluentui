@@ -9,7 +9,7 @@ const sharedColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib/data/
 
 export const ColorsSharedPage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...ColorsSharedPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return <StylesAreaPage {...props} {...ColorsSharedPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />;
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {

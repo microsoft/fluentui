@@ -10,7 +10,9 @@ const personaGroupColors = require<IColorSwatch[]>('@uifabric/fabric-website/lib
 
 export const ColorsPersonasPage: React.StatelessComponent<IStylesPageProps> = props => {
   const { platform } = props;
-  return <StylesAreaPage {...props} {...ColorsPersonasPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <StylesAreaPage {...props} {...ColorsPersonasPageProps[platform]} otherSections={_otherSections(platform) as IPageSectionProps[]} />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {

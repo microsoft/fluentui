@@ -436,7 +436,9 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
   }
 
   private _renderTextArea(): React.ReactElement<React.HTMLAttributes<HTMLAreaElement>> {
-    const textAreaProps = getNativeProps(this.props, textAreaProperties, ['defaultValue']);
+    const textAreaProps = getNativeProps<React.TextareaHTMLAttributes<HTMLTextAreaElement>>(this.props, textAreaProperties, [
+      'defaultValue'
+    ]);
 
     return (
       <textarea

@@ -33,7 +33,7 @@ export const AnimationStyles: IAnimationStyles;
 export const AnimationVariables: IAnimationVariables;
 
 // @public
-export function buildClassMap<T>(styles: T): {
+export function buildClassMap<T extends Object>(styles: T): {
     [key in keyof T]?: string;
 };
 

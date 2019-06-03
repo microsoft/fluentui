@@ -141,7 +141,7 @@ export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
       );
     }
 
-    const nativeProps = getNativeProps(this.props, htmlElementProperties, ['className']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties, ['className']);
 
     return (
       <div className={this._classNames.root} role="navigation" aria-label={ariaLabel} {...nativeProps}>

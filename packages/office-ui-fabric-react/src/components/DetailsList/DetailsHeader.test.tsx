@@ -214,14 +214,12 @@ const columns1: IColumn[] = [
 ];
 
 const _columnReorderProps = {
-  frozenColumnCountFromStart: 1,
-  handleColumnReorder: this._dummyFunction
+  frozenColumnCountFromStart: 1
 };
 
 const _columnReorderProps2 = {
   frozenColumnCountFromStart: 1,
-  frozenColumnCountFromEnd: 1,
-  handleColumnReorder: this._dummyFunction
+  frozenColumnCountFromEnd: 1
 };
 
 _selection.setItems(_items);

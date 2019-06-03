@@ -7229,7 +7229,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     searchingText?: string;
     showForceResolve?: () => boolean;
     showRemoveButtons?: boolean;
-    styles?: IStyleFunctionOrObject<{}, {}>;
+    styles?: IStyleFunctionOrObject<any, any>;
     suggestions: ISuggestionModel<T>[];
     suggestionsAvailableAlertText?: string;
     suggestionsClassName?: string;

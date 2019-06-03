@@ -141,7 +141,6 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                   menu={menuProps}
                   styles={{
                     root: 'root-classname',
-                    stack: 'stack-classname',
                     content: 'content-classname',
                     icon: 'icon-classname',
                     menu: 'menu-classname',

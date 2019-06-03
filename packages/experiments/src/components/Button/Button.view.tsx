@@ -28,27 +28,31 @@ export const ButtonView: IButtonComponent['view'] = props => {
     }
   };
 
-  return (
+  const Button = (keytipAttributes?: any): JSX.Element => (
+    <Slots.root
+      type="button" // stack doesn't take in native button props
+      role="button"
+      onClick={_onClick}
+      {...buttonProps}
+      {...keytipAttributes}
+      disabled={disabled && !allowDisabledFocus}
+      aria-disabled={disabled}
+      tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
+      aria-label={ariaLabel}
+      ref={buttonRef}
+    >
+      <Slots.icon />
+      <Slots.content />
+      {children}
+    </Slots.root>
+  );
+
+  return keytipProps ? (
     <KeytipData keytipProps={keytipProps} disabled={disabled && !allowDisabledFocus}>
-      {(keytipAttributes: any): JSX.Element => (
-        <Slots.root
-          type="button" // stack doesn't take in native button props
-          role="button"
-          onClick={_onClick}
-          {...buttonProps}
-          {...keytipAttributes}
-          disabled={disabled && !allowDisabledFocus}
-          aria-disabled={disabled}
-          tabIndex={!disabled || allowDisabledFocus ? 0 : undefined}
-          aria-label={ariaLabel}
-          ref={buttonRef}
-        >
-          <Slots.icon />
-          <Slots.content />
-          {children}
-        </Slots.root>
-      )}
+      {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
     </KeytipData>
+  ) : (
+    Button()
   );
 };
 

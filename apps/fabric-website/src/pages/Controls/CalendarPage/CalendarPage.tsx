@@ -8,7 +8,14 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const CalendarPage: React.StatelessComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return <ControlsAreaPage {...props} title="Calendar" {...CalendarPageProps[props.platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <ControlsAreaPage
+      {...props}
+      title="Calendar"
+      {...CalendarPageProps[props.platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {

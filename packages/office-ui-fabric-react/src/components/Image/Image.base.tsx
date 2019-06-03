@@ -50,7 +50,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
   }
 
   public render(): JSX.Element {
-    const imageProps = getNativeProps(this.props, imageProperties, ['width', 'height']);
+    const imageProps = getNativeProps<React.ImgHTMLAttributes<HTMLImageElement>>(this.props, imageProperties, ['width', 'height']);
     const {
       src,
       alt,

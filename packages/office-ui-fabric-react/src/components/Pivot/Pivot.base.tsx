@@ -84,7 +84,7 @@ export class PivotBase extends BaseComponent<IPivotProps, IPivotState> {
     const linkCollection = this._getPivotLinks(this.props);
     const selectedKey = this._getSelectedKey(linkCollection);
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     this._classNames = this._getClassNames(this.props);
 

@@ -110,7 +110,7 @@ export const buttonProperties: string[];
 export function calculatePrecision(value: number | string): number;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[] | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
@@ -363,7 +363,7 @@ export function hasVerticalOverflow(element: HTMLElement): boolean;
 export function hoistMethods(destination: any, source: any, exclusions?: string[]): string[];
 
 // @public
-export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
+export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public
 export const htmlElementProperties: string[];
