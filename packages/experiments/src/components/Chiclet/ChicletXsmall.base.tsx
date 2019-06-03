@@ -47,7 +47,7 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>{preview}</div>
         <div className={this._classNames.info}>
-          <div className={this._classNames.title}>{title ? title : null}</div>
+          <div className={this._classNames.title}>{title ? title : 'test'}</div>
           {footer}
         </div>
       </div>

@@ -40,7 +40,7 @@ export class ChicletFooterExample extends React.Component<{}, IChicletFooterExam
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} size={ChicletSize.medium} footer={footer} />
+        <Chiclet url={TEST_URL} size={ChicletSize.xSmall} footer={footer} />
       </Stack>
     );
   }
