@@ -32,6 +32,9 @@ module.exports = function bundleSizeCollect() {
   }
 
   function getComponentName(fileName) {
+    if (fileName.startsWith('experiments-')) {
+      return path.basename(fileName, '.min.js');
+    }
     return fileName.match('office-ui-fabric-react-(.*).min.js')[1];
   }
 };
