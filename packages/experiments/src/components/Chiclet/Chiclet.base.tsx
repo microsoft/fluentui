@@ -32,6 +32,8 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
       case ChicletSize.medium:
         return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
       // @todo: handle other types of chiclets
+      case ChicletSize.xSmall:
+        return <ChicletCard title="sample" />;
       default:
         return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
     }
