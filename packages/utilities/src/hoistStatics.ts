@@ -9,7 +9,7 @@
  * @returns The dest object with methods added
  */
 
-export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest {
+export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest {
   for (const name in source) {
     if (source.hasOwnProperty(name)) {
       // tslint:disable-next-line:no-any

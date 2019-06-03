@@ -7,7 +7,13 @@ import { Platforms } from '../../../interfaces/Platforms';
 const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/Controls/TooltipPage/';
 
 export const TooltipPage: React.StatelessComponent<IControlsPageProps> = props => {
-  return <ControlsAreaPage {...props} {...TooltipPageProps[props.platform]} otherSections={_otherSections(props.platform)} />;
+  return (
+    <ControlsAreaPage
+      {...props}
+      {...TooltipPageProps[props.platform]}
+      otherSections={_otherSections(props.platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform?: Platforms): IPageSectionProps<Platforms>[] | undefined {

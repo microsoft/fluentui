@@ -17,7 +17,7 @@ export const CardView: ICardComponent['view'] = props => {
 
   const { children, styles, tokens, compact, ...rest } = props;
 
-  const nativeProps = getNativeProps(rest, htmlElementProperties);
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
   const CardItemType = (<CardItem /> as React.ReactElement<ICardItemProps>).type;
   const CardSectionType = (<CardSection /> as React.ReactElement<ICardSectionProps>).type;

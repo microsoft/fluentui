@@ -495,7 +495,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       };
     }
 
-    const containerProps = getNativeProps(buttonProps, [], ['disabled']);
+    const containerProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, [], ['disabled']);
 
     const SplitButton = (keytipAttributes?: any): JSX.Element => (
       <div

@@ -15,7 +15,10 @@ export interface IClassNamesFunctionOptions {
  */
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
   options: IClassNamesFunctionOptions = {}
-): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet> {
+): (
+    getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[] | undefined,
+    styleProps?: TStyleProps
+  ) => IProcessedStyleSet<TStyleSet> {
   // TODO: memoize.
 
   const getClassNames = (

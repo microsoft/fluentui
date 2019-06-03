@@ -41,7 +41,7 @@ const StackView: IStackComponent['view'] = props => {
     }
   );
 
-  const nativeProps = getNativeProps(rest, htmlElementProperties);
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
   const Slots = getSlots<IStackProps, IStackSlots>(props, {
     root: RootType,

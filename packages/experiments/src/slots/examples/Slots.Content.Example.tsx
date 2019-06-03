@@ -14,7 +14,7 @@ export class SlotsContentExample extends React.Component<{}, {}> {
           <p>Content: Integer</p>
         </Button>
         <Button content="Content: String" />
-        <Button content={{ weight: 'bold', children: 'Content: Props, weight: bold' }} />
+        <Button content={{ children: 'Content: Props' }} />
         <Button slots={{ content: { render: () => <Spinner /> } }}>
           <p>Content: Function, Spinner</p>
         </Button>

@@ -10,7 +10,7 @@ export class FabricBase extends React.Component<
   {
     isFocusVisible: boolean;
   }
-> {
+  > {
   private _rootElement = React.createRef<HTMLDivElement>();
   private _disposables: (() => void)[] = [];
 
@@ -24,7 +24,7 @@ export class FabricBase extends React.Component<
       ...(this.props as IFabricStyleProps),
       ...this.state
     });
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }

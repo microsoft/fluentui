@@ -3,6 +3,7 @@ import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponent
 import { IPersonaPresenceSlot } from '../../utilities/factoryComponents.types';
 import { IPersonaCoinImageSlot } from './PersonaCoinImage/PersonaCoinImage.types';
 import { IPersonaCoinSize10Slot } from './PersonaCoinSize10/PersonaCoinSize10';
+import { IPersonaCoinInitialsSlot } from './PersonaCoinInitials/PersonaCoinInitials';
 
 export type IPersonaCoinComponent = IComponent<IPersonaCoinProps, IPersonaCoinTokens, IPersonaCoinStyles, IPersonaCoinViewProps>;
 
@@ -29,7 +30,7 @@ export interface IPersonaCoinSlots {
   /**
    * Slot for the initials element
    */
-  initials?: IPersonaCoinSlot;
+  initials?: IPersonaCoinInitialsSlot;
 
   /**
    * Slot for the presence element

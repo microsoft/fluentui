@@ -75,7 +75,7 @@ export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implem
       showValue,
       theme: theme!
     });
-    const divButtonProps = buttonProps ? getNativeProps(buttonProps, divProperties) : undefined;
+    const divButtonProps = buttonProps ? getNativeProps<React.HTMLAttributes<HTMLDivElement>>(buttonProps, divProperties) : undefined;
 
     return (
       <div className={classNames.root}>
