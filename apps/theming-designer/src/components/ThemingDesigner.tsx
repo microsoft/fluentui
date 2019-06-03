@@ -29,7 +29,7 @@ const outerMostStack = mergeStyles({
 });
 
 const sidebarStyles = mergeStyles({
-  marginTop: '35px',
+  marginTop: '45px',
   width: '300px'
 });
 
@@ -45,7 +45,7 @@ const sidebarContentStyles = mergeStyles({
 
 const cardsBlockStyles = mergeStyles({
   minWidth: MainPanelWidth,
-  marginTop: '35px'
+  marginTop: '45px'
 });
 
 let colorChangeTimeout: number;

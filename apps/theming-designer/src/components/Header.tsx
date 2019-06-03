@@ -67,7 +67,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     return (
       <Card
         styles={{
-          root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', left: '0', top: '0', zIndex: 600 }
+          root: { backgroundColor: 'white', minWidth: '99%', height: '55px', position: 'fixed', left: '0', top: '0', zIndex: 600 }
         }}
       >
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
