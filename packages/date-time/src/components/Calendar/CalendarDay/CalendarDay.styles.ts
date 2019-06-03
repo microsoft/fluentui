@@ -48,14 +48,18 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         alignItems: 'center',
         fontSize: FontSizes.medium,
         color: palette.neutralPrimary,
-        display: 'inline-flex',
+        display: 'inline-block',
         flexGrow: 1,
         fontWeight: FontWeights.semibold,
         padding: '0 4px 0 10px',
         border: 'none',
         backgroundColor: 'transparent',
         borderRadius: 2,
-        lineHeight: 0
+        lineHeight: 28,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textAlign: 'start',
+        textOverflow: 'ellipsis'
       },
       headerIsClickable && {
         selectors: {
