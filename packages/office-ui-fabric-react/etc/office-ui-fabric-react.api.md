@@ -711,7 +711,7 @@ export enum ConstrainMode {
 }
 
 // @public
-export const ContextualMenu: React_2.StatelessComponent<IContextualMenuProps>;
+export const ContextualMenu: React.StatelessComponent<IContextualMenuProps>;
 
 // @public (undocumented)
 export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
