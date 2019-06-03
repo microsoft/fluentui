@@ -21,7 +21,6 @@ import { DirectionalHint } from '../../common/DirectionalHint';
 import { ICoachmark, ICoachmarkProps, ICoachmarkStyles, ICoachmarkStyleProps } from './Coachmark.types';
 import { COACHMARK_HEIGHT, COACHMARK_WIDTH } from './Coachmark.styles';
 import { FocusTrapZone } from '../../FocusTrapZone';
-import { DefaultPalette } from '../../../../styling/lib';
 
 const getClassNames = classNamesFunction<ICoachmarkStyleProps, ICoachmarkStyles>();
 
@@ -205,7 +204,8 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
       isMeasured
     } = this.state;
 
-    const deafultColor = color || theme!.palette.themePrimary;
+    // Defaulting the main background before passing it to the styles because it is used for `Beak` too.
+    const deafultColor = color || theme!.semanticColors.primaryButtonBackground;
 
     const classNames = getClassNames(styles, {
       theme,
