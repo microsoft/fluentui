@@ -52,7 +52,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   return keytipProps ? (
     <KeytipData keytipProps={keytipProps} disabled={disabled && !allowDisabledFocus}>
-      {(keytipAttributes: any): JSX.Element => <Button keytipAttributes={keytipAttributes} />}
+      {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
     </KeytipData>
   ) : (
     <Button />
