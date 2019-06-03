@@ -29,7 +29,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
     }
   };
 
-  const Button = (keytipAttributes: any): JSX.Element => (
+  const Button = (keytipAttributes?: any): JSX.Element => (
     <Slots.root
       type="button" // stack doesn't take in native button props
       role="button"
@@ -55,7 +55,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
       {(keytipAttributes: any): JSX.Element => Button(keytipAttributes)}
     </KeytipData>
   ) : (
-    <Button />
+    Button()
   );
 };
 
