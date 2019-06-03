@@ -83,7 +83,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'csproj',
       'css',
       'ctp',
-      'cvs',
       'cxx',
       'd',
       'ddl',
@@ -291,6 +290,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'glb',
       'gltf',
       'holo',
+      'layer',
       'layout',
       'max',
       'mtl',
@@ -405,7 +405,6 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
       'ithmb',
       'jar',
       'kb',
-      'layer',
       'ldt',
       'lrprev',
       'pkpass',
@@ -430,6 +429,7 @@ export const FileTypeIconMap: { [key: string]: { extensions?: string[] } } = {
   vector: {
     extensions: [
       'ai',
+      'cvs',
       'dgn',
       'gdraw',
       'pd',
