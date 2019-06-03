@@ -3,7 +3,7 @@ import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IDropdownStyles } from 'office-ui-fabric-react/lib/Dropdown';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { IExampleCardStyles, IExampleCardStyleProps } from './ExampleCard.types';
-import { NeutralColors } from '@uifabric/fluent-theme';
+import { NeutralColors, FontSizes } from '@uifabric/fluent-theme';
 
 const globalClassNames = {
   root: 'ExampleCard',
@@ -110,16 +110,16 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
       globalClassNames.header
     ],
     title: [
-      theme.fonts.medium,
       {
+        fontSize: FontSizes.size14,
         marginBottom: 10,
         display: 'inline-block'
       },
       globalClassNames.title
     ],
     toggleButtons: [
-      theme.fonts.medium,
       {
+        fontSize: FontSizes.size14,
         display: 'flex',
         float: 'right'
       },
@@ -183,7 +183,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         display: 'inline-block',
         marginRight: 50,
         selectors: {
-          h4: [theme.fonts.medium, { color: '#177d3e' }]
+          h4: { fontSize: FontSizes.size14, color: '#177d3e' }
         }
       },
       globalClassNames.dos
@@ -193,7 +193,7 @@ export const getStyles: IStyleFunction<IExampleCardStyleProps, IExampleCardStyle
         width: 'calc(50%)',
         display: 'inline-block',
         selectors: {
-          h4: [theme.fonts.medium, { color: '#a61e22' }]
+          h4: { fontSize: FontSizes.size14, color: '#a61e22' }
         }
       },
       globalClassNames.donts
