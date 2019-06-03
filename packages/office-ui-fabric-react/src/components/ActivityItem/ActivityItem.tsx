@@ -1,6 +1,3 @@
-// Adding a few comments here to see
-// if change to build definition helps
-// improve Size Auditor wensite performance.
 import * as React from 'react';
 import { BaseComponent } from '../../Utilities';
 import { IActivityItemProps } from './ActivityItem.types';
