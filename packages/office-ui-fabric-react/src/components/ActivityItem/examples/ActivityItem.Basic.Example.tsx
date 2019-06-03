@@ -1,15 +1,27 @@
 import * as React from 'react';
-import { css, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { ActivityItem } from '../ActivityItem';
-import { getStyles, IActivityItemExampleStyleProps, IActivityItemExampleStyles } from './ActivityItem.Example.styles';
-import { Icon } from '../../../Icon';
-import { Link } from '../../../Link';
+import { ActivityItem, css, classNamesFunction, Icon, IStyle, Link } from 'office-ui-fabric-react';
+
+type IActivityItemExampleStyleProps = {};
+
+interface IActivityItemExampleStyles {
+  exampleRoot?: IStyle;
+  nameText?: IStyle;
+}
+
+const exampleStyles: IActivityItemExampleStyles = {
+  exampleRoot: {
+    marginTop: '20px'
+  },
+  nameText: {
+    fontWeight: 'bold'
+  }
+};
+
+const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
+const classNames = getClassNames(exampleStyles, {});
 
 export class ActivityItemBasicExample extends React.Component<React.ClassAttributes<ActivityItemBasicExample>, {}> {
   public render(): JSX.Element {
-    const getClassNames = classNamesFunction<IActivityItemExampleStyleProps, IActivityItemExampleStyles>();
-    const classNames = getClassNames(getStyles, {});
-
     // tslint:disable:jsx-no-lambda
     const activityItemExamples = [
       {

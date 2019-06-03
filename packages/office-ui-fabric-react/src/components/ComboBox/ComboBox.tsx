@@ -25,7 +25,7 @@ import { getClassNames, getComboBoxOptionClassNames, IComboBoxClassNames } from 
 import { IComboBoxOption, IComboBoxOptionStyles, IComboBoxProps } from './ComboBox.types';
 import { KeytipData } from '../../KeytipData';
 import { Label } from '../../Label';
-import { SelectableOptionMenuItemType } from '../../utilities/selectableOption/SelectableOption.types';
+import { SelectableOptionMenuItemType, getAllSelectedOptions } from '../../utilities/selectableOption/index';
 import { BaseButton, Button } from '../Button/index';
 
 export interface IComboBoxState {
@@ -204,6 +204,15 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       currentPendingValue: undefined,
       currentPendingValueValidIndexOnHover: HoverStatus.default
     };
+  }
+
+  /**
+   * All selected options
+   */
+  public get selectedOptions(): IComboBoxOption[] {
+    const { currentOptions, selectedIndices } = this.state;
+
+    return getAllSelectedOptions(currentOptions, selectedIndices!);
   }
 
   public componentDidMount(): void {
@@ -832,7 +841,11 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @param index - the index to set (or the index to set from if a search direction is provided)
    * @param searchDirection - the direction to search along the options from the given index
    */
-  private _setSelectedIndex(index: number, submitPendingValueEvent: any, searchDirection: SearchDirection = SearchDirection.none): void {
+  private _setSelectedIndex(
+    index: number,
+    submitPendingValueEvent: React.SyntheticEvent<any>,
+    searchDirection: SearchDirection = SearchDirection.none
+  ): void {
     const { onChange, onChanged, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
@@ -869,24 +882,28 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         selectedIndices[0] = index;
       }
 
-      // Set the selected option
-      this.setState({
-        selectedIndices: selectedIndices
-      });
+      submitPendingValueEvent.persist();
+      // Call onChange after state is updated
+      this.setState(
+        {
+          selectedIndices: selectedIndices
+        },
+        () => {
+          // If ComboBox value is changed, revert preview first
+          if (this._hasPendingValue && onPendingValueChanged) {
+            onPendingValueChanged();
+            this._hasPendingValue = false;
+          }
 
-      // If ComboBox value is changed, revert preview first
-      if (this._hasPendingValue && onPendingValueChanged) {
-        onPendingValueChanged();
-        this._hasPendingValue = false;
-      }
+          if (onChange) {
+            onChange(submitPendingValueEvent, option, index, undefined);
+          }
 
-      if (onChange) {
-        onChange(submitPendingValueEvent, option, index, undefined);
-      }
-
-      if (onChanged) {
-        onChanged(option, index, undefined, submitPendingValueEvent);
-      }
+          if (onChanged) {
+            onChanged(option, index, undefined, submitPendingValueEvent);
+          }
+        }
+      );
     }
 
     // clear all of the pending info
@@ -903,7 +920,12 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     }
 
     if (!this.state.focused) {
-      this.setState({ focused: true });
+      const state: Pick<IComboBoxState, 'focused'> | Pick<IComboBoxState, 'focused' | 'isOpen'> = { focused: true };
+
+      if (this.props.openOnKeyboardFocus && !this.state.isOpen && !this.props.disabled) {
+        (state as Pick<IComboBoxState, 'focused' | 'isOpen'>).isOpen = true;
+      }
+      this.setState(state);
     }
   };
 
@@ -915,7 +937,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   private _onResolveOptions = (): void => {
     if (this.props.onResolveOptions) {
       // get the options
-      const newOptions = this.props.onResolveOptions({ ...this.state.currentOptions });
+      const newOptions = this.props.onResolveOptions([...this.state.currentOptions]);
 
       // Check to see if the returned value is an array, if it is update the state
       // If the returned value is not an array then check to see if it's a promise or PromiseLike. If it is then resolve it asynchronously.

@@ -1088,7 +1088,9 @@ exports[`Calendar Test rendering simplest calendar Renders simple calendar corre
               className="ms-DatePicker-header"
             >
               <div
+                aria-atomic={true}
                 aria-label="2000"
+                aria-live="polite"
                 className="ms-DatePicker-currentYear js-showYearPicker"
                 onClick={[Function]}
                 onKeyDown={[Function]}

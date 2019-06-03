@@ -1,6 +1,28 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Tue, 07 May 2019 12:34:52 GMT and should not be manually modified.
+This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+
+## 6.18.3
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- update azure-themes version
+- Use CodeSnippet for example code
+
+## 6.18.2
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
+
+## 6.18.1
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
 
 ## 6.18.0
 Tue, 07 May 2019 12:34:52 GMT

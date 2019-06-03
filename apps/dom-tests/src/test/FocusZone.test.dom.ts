@@ -1,7 +1,7 @@
 import * as puppeteer from 'puppeteer';
 
 describe('FocusZone', () => {
-  let browser: any;
+  let browser: puppeteer.Browser;
 
   beforeAll(async () => {
     browser = await puppeteer.launch({ headless: true });
@@ -19,9 +19,9 @@ describe('FocusZone', () => {
     // Act
     // 'Nesting FocusZons in list rows'
     const focusZone = await page.$('#fz');
-    await focusZone.focus();
+    await focusZone!.focus();
 
     // Assert
-    expect(await page.$eval('#a', (button: any) => document.activeElement === button));
+    expect(await page.$eval('#a', (button: Element) => document.activeElement === button));
   });
 });

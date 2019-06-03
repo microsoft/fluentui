@@ -1,10 +1,6 @@
-### Design
-
-Coming soon
-
 ### Control name
 
-Coming soon
+`Tooltip`
 
 ### Library
 

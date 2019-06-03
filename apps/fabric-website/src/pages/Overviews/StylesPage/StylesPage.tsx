@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Link, Icon } from 'office-ui-fabric-react';
-import { withPlatform, Page, IPageProps, IPageSectionProps, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
+import { PlatformContext, Page, IPageProps, IPageSectionProps, MarkdownHeader } from '@uifabric/example-app-base/lib/index2';
 import { getSubTitle } from '../../../utilities/index';
 import * as styles from './StylesPage.module.scss';
 import { Platforms } from '../../../interfaces/Platforms';
@@ -126,4 +126,6 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
   }
 }
 
-export const StylesPage: React.StatelessComponent<IPageProps<Platforms>> = withPlatform<Platforms>(StylesPageBase);
+export const StylesPage: React.StatelessComponent<IPageProps<Platforms>> = (props: IPageProps<Platforms>) => (
+  <PlatformContext.Consumer>{(platform: Platforms) => <StylesPageBase platform={platform} {...props} />}</PlatformContext.Consumer>
+);

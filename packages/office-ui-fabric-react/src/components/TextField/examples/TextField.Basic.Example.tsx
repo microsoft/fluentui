@@ -16,6 +16,7 @@ export const TextFieldBasicExample: React.StatelessComponent = () => {
         <TextField label="Disabled" disabled defaultValue="I am disabled" />
         <TextField label="Read-only" readOnly defaultValue="I am read-only" />
         <TextField label="Required " required />
+        <TextField required />
         <TextField label="With error message" errorMessage="Error message" />
       </Stack>
 

@@ -128,21 +128,11 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
                 display: none;
               }
               &::placeholder {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
                 color: #666666;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
                 color: #666666;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
                 opacity: 1;
               }
           id="TextField0"
@@ -177,6 +167,10 @@ exports[`Component Examples renders ContextualMenu.Submenu.Example.tsx correctly
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;

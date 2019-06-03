@@ -1,0 +1,421 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`checks accessibility of Button (Button.Action.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Anchor.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Command.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.CommandBar.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Compound.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\"",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\".",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+      "ruleId": "aria-valid-attr-value",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-valid-attr-value",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Default.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Icon.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Primary.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.ScreenReader.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.Split.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(1) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(1) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(2) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(2) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(3) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(3) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"]",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-35\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-35",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-35",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Split.Example) 2`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "aria-allowed-attr",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-allowed-attr",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Toggle.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.Basic.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<input type=\\"text\\" id=\\"TextField8\\" required=\\"\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-invalid=\\"false\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "#TextField8",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Form element does not have an implicit (wrapped) &lt;label>
+- Form element does not have an explicit &lt;label>
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "#TextField8",
+      "ruleId": "label",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "label",
+  },
+]
+`;
+
+exports[`checks accessibility of TextField (TextField.Borderless.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.Controlled.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.CustomRender.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-4\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "#TextField2",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Only title used to generate label for form element",
+      "text": "Fix all of the following: Only title used to generate label for form element.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "#TextField2",
+      "ruleId": "label-title-only",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "label-title-only",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-4\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "#TextField2",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Form element does not have an implicit (wrapped) &lt;label>
+- Form element does not have an explicit &lt;label>
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Form element does not have an implicit (wrapped) <label>. Form element does not have an explicit <label>. Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "#TextField2",
+      "ruleId": "label",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "label",
+  },
+]
+`;
+
+exports[`checks accessibility of TextField (TextField.ErrorMessage.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.Masked.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.Multiline.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of TextField (TextField.PrefixAndSuffix.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<span style=\\"padding-bottom:1px\\">https://</span>",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".prefix-15 > span",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".prefix-15 > span",
+      "ruleId": "color-contrast",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "color-contrast",
+  },
+]
+`;
+
+exports[`checks accessibility of TextField (TextField.Styled.Example) 1`] = `Array []`;

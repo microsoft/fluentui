@@ -1,13 +1,12 @@
 import { Stylesheet } from '@uifabric/merge-styles';
+import { getWindow } from './dom/getWindow';
 
 // Initialize global window id.
 const CURRENT_ID_PROPERTY = '__currentId__';
 const DEFAULT_ID_STRING = 'id__';
 
-declare const process: {};
-
 // tslint:disable-next-line:no-any
-let _global: any = (typeof window !== 'undefined' && window) || process;
+let _global: any = getWindow() || {};
 
 if (_global[CURRENT_ID_PROPERTY] === undefined) {
   _global[CURRENT_ID_PROPERTY] = 0;

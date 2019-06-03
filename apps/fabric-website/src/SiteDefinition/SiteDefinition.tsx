@@ -54,7 +54,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/themegenerator', to: '#/styles/web' },
     { from: '#/styles/typography', to: '#/styles/web/typography' },
     { from: '#/styles/utilities', to: '#/styles/web' },
-    { from: new RegExp('#/get-started$'), to: '#/get-started/web' }
+    { from: '#/controls/web/fluent-theme', to: '#/styles/web/fluent-theme' }
   ],
   messageBars: [
     {
@@ -62,7 +62,7 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
       exclude: 'fluent-theme',
       text: 'You can now implement the new Fluent styles in Fabric Web controls.',
       linkText: 'Learn more',
-      linkUrl: '#/controls/web/fluent-theme',
+      linkUrl: '#/styles/web/fluent-theme',
       sessionStoragePrefix: 'WebFluentUpdates'
     },
     {

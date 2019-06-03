@@ -1,6 +1,27 @@
 # Change Log - @uifabric/fluent-theme
 
-This log was last generated on Tue, 30 Apr 2019 12:31:36 GMT and should not be manually modified.
+This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+
+## 0.16.10
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- IconButton: change the background color when in diabled state
+
+## 0.16.9
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
+
+## 0.16.8
+Tue, 14 May 2019 01:56:43 GMT
+
+### Patches
+
+- Update border colors during rest state for certain components
 
 ## 0.16.7
 Tue, 30 Apr 2019 12:31:36 GMT
