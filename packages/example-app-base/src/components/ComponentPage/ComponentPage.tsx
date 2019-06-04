@@ -49,21 +49,23 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   public render() {
     const { componentName, className, otherSections, styles, theme } = this.props;
 
+    const showOnlyExamples = location.hash.indexOf('docsExample=true') > -1;
+
     const classNames = (this._styles = getClassNames(styles, { theme }));
 
     return (
       <div className={css(classNames.root, className)}>
         <div className={componentName}>
-          {this._getPageHeader()}
+          {!showOnlyExamples && this._getPageHeader()}
           <div className={classNames.body}>
-            {this._getComponentStatusBadges()}
-            {this._getOverview()}
-            {this._getBestPractices()}
+            {!showOnlyExamples && this._getComponentStatusBadges()}
+            {!showOnlyExamples && this._getOverview()}
+            {!showOnlyExamples && this._getBestPractices()}
             {this._getVariants()}
-            {this._getImplementationExamples()}
-            {this._getPropertiesTable()}
-            {this._getFeedback()}
-            {otherSections && otherSections.map(section => this._getSection(section))}
+            {!showOnlyExamples && this._getImplementationExamples()}
+            {!showOnlyExamples && this._getPropertiesTable()}
+            {!showOnlyExamples && this._getFeedback()}
+            {!showOnlyExamples && otherSections && otherSections.map(section => this._getSection(section))}
           </div>
         </div>
       </div>

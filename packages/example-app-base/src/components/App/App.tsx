@@ -27,7 +27,9 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme }));
+    const showOnlyExamples = location.hash.indexOf('docsExample=true') > -1;
+
+    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples }));
 
     const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
@@ -42,18 +44,20 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
     const app = (
       <Fabric className={classNames.root}>
-        <div className={classNames.headerContainer}>
-          <Header
-            isLargeDown={isLargeDown}
-            title={appDefinition.appTitle}
-            sideLinks={appDefinition.headerLinks}
-            isMenuVisible={isMenuVisible}
-            onIsMenuVisibleChanged={this._onIsMenuVisibleChanged}
-            styles={classNames.subComponentStyles.header}
-          />
-        </div>
+        {!showOnlyExamples && (
+          <div className={classNames.headerContainer}>
+            <Header
+              isLargeDown={isLargeDown}
+              title={appDefinition.appTitle}
+              sideLinks={appDefinition.headerLinks}
+              isMenuVisible={isMenuVisible}
+              onIsMenuVisibleChanged={this._onIsMenuVisibleChanged}
+              styles={classNames.subComponentStyles.header}
+            />
+          </div>
+        )}
 
-        {!isLargeDown && <div className={classNames.leftNavContainer}>{nav}</div>}
+        {!isLargeDown && !showOnlyExamples && <div className={classNames.leftNavContainer}>{nav}</div>}
 
         <div className={classNames.content} data-is-scrollable="true">
           {this.props.children}
