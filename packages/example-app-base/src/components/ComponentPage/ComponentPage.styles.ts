@@ -1,5 +1,6 @@
 import { ScreenWidthMinUhfMobile, getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { FontSizes } from '@uifabric/fluent-theme';
 import { IComponentPageStyleProps, IComponentPageStyles } from './ComponentPage.types';
 
 const globalClassNames = {
@@ -19,15 +20,13 @@ const globalClassNames = {
   variantsTitle: 'ComponentPage-variantsTitle',
   variantsList: 'ComponentPage-variantsList',
   implementationSection: 'ComponentPage-implementationSection',
-  implementationExamplesSection: 'ComponentPage-implementationExamplesSection',
   feedbackSection: 'ComponentPage-feedbackSection',
   bestPracticesSection: 'ComponentPage-bestPracticesSection',
   doSections: 'ComponentPage-doSections',
   dosDontsSection: 'ComponentPage-doSection',
   dosDontsHeading: 'ComponentPage-doSectionHeader',
   dosDontsLine: 'ComponentPage-doSectionLine',
-  dontsSection: 'ComponentPage-doSection--dont',
-  statusSection: 'ComponentPage-componentStatusSection'
+  dontsSection: 'ComponentPage-doSection--dont'
 };
 
 const componentPageColor = '#0f8387';
@@ -35,7 +34,7 @@ const componentPagePadding = 50;
 const ulLeftPadding = 18;
 
 export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageStyles> = props => {
-  const { theme = getTheme(), componentStatus } = props;
+  const { theme = getTheme() } = props;
   return {
     body: globalClassNames.body,
     root: [
@@ -55,8 +54,8 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.header
     ],
     headerLink: [
-      theme.fonts.medium,
       {
+        fontSize: FontSizes.size14,
         color: theme.palette.white,
         textDecoration: 'none',
         selectors: { '&:hover': { color: theme.palette.neutralLight } }
@@ -64,7 +63,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.headerLink
     ],
     title: [
-      theme.fonts.xLarge,
       {
         fontSize: 82,
         lineHeight: 94,
@@ -85,7 +83,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
         marginBottom: 24,
         selectors: {
           // Set font here to be more specific
-          h2: [theme.fonts.xLarge, { fontSize: 36, margin: 0 }]
+          h2: { fontSize: 36, margin: 0 }
         }
       },
       globalClassNames.subHeading
@@ -97,12 +95,11 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       {
         maxWidth: '60em'
       },
-      !!componentStatus && { paddingTop: 15 },
       globalClassNames.overviewSection
     ],
     overviewText: [
       {
-        fontSize: theme.fonts.small.fontSize,
+        fontSize: FontSizes.size12,
         // This is meant to be a ratio, so it has to be in quotes so it's not interpreted as pixels
         lineHeight: '1.5',
         marginBottom: -6, // Trim padding off last paragraph
@@ -112,12 +109,10 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
             padding: '16px 0'
           },
           ul: { paddingLeft: ulLeftPadding },
-          li: [
-            theme.fonts.small,
-            {
-              marginBottom: 16
-            }
-          ],
+          li: {
+            fontSize: FontSizes.size12,
+            marginBottom: 16
+          },
           'ul li': { listStyle: 'disc' }
         }
       },
@@ -154,7 +149,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.variantsList
     ],
     implementationSection: globalClassNames.implementationSection,
-    implementationExamplesSection: globalClassNames.implementationExamplesSection,
     feedbackSection: globalClassNames.feedbackSection,
     bestPracticesSection: [
       {
@@ -194,7 +188,7 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     dosDontsHeading: [
       {
         selectors: {
-          h3: [theme.fonts.mediumPlus, { margin: 0 }]
+          h3: { fontSize: '15px', margin: 0 }
         }
       },
       globalClassNames.dosDontsHeading
@@ -215,12 +209,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     dontsLine: {
       backgroundColor: '#e74856'
     },
-    dontsSection: globalClassNames.dontsSection,
-    statusSection: [
-      {
-        paddingBottom: 0
-      },
-      globalClassNames.statusSection
-    ]
+    dontsSection: globalClassNames.dontsSection
   };
 };

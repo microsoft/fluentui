@@ -1,9 +1,7 @@
-import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IPropertiesTableSetStyleProps, IPropertiesTableSetStyles } from './PropertiesTableSet.types';
 
-export const getStyles: IStyleFunction<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles> = props => {
-  const { theme = getTheme() } = props;
+export const getStyles: IStyleFunction<IPropertiesTableSetStyleProps, IPropertiesTableSetStyles> = () => {
   return {
     tableRoot: [
       {
@@ -13,6 +11,8 @@ export const getStyles: IStyleFunction<IPropertiesTableSetStyleProps, IPropertie
       },
       'PropertiesTable'
     ],
-    tableHeader: theme.fonts.mediumPlus
+    tableHeader: {
+      fontSize: '15px'
+    }
   };
 };

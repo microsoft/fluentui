@@ -2,6 +2,7 @@ import { IRawStyle, getTheme, getFocusStyle } from 'office-ui-fabric-react/lib/S
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { IHeaderStyleProps, IHeaderStyles } from './Header.types';
 import { IIconStyles } from 'office-ui-fabric-react';
+import { FontSizes } from '@uifabric/fluent-theme';
 
 const globalClassNames = {
   root: 'Header',
@@ -38,8 +39,9 @@ export const getStyles: IStyleFunction<IHeaderStyleProps, IHeaderStyles> = props
     ],
     title: [
       commonStyles,
-      theme.fonts.medium,
+
       {
+        fontSize: FontSizes.size14,
         lineHeight: 48
       },
       globalClassNames.title
