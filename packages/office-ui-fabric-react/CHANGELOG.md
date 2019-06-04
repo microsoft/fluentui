@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 03 Jun 2019 23:04:02 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jun 2019 12:22:18 GMT and should not be manually modified.
+
+## 6.188.2
+Tue, 04 Jun 2019 12:22:18 GMT
+
+### Patches
+
+- Coachmark: fix default colors assignment to pull from the theme object.
 
 ## 6.188.1
 Mon, 03 Jun 2019 23:04:02 GMT
