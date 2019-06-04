@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps, DelayedRender } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
 import { Callout } from '../../Callout';
@@ -47,24 +47,26 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     });
 
     return (
-      <Callout
-        target={targetElement}
-        directionalHint={directionalHint}
-        directionalHintForRTL={directionalHintForRTL}
-        {...calloutProps}
-        {...getNativeProps(this.props, divProperties, ['id'])} // omitting ID due to it being used in the div below
-        className={this._classNames.root}
-      >
-        <div
-          className={this._classNames.content}
-          id={id}
-          role="tooltip"
-          onMouseEnter={this.props.onMouseEnter}
-          onMouseLeave={this.props.onMouseLeave}
+      <DelayedRender delay={delay}>
+        <Callout
+          target={targetElement}
+          directionalHint={directionalHint}
+          directionalHintForRTL={directionalHintForRTL}
+          {...calloutProps}
+          {...getNativeProps(this.props, divProperties, ['id'])} // omitting ID due to it being used in the div below
+          className={this._classNames.root}
         >
-          {onRenderContent(this.props, this._onRenderContent)}
-        </div>
-      </Callout>
+          <div
+            className={this._classNames.content}
+            id={id}
+            role="tooltip"
+            onMouseEnter={this.props.onMouseEnter}
+            onMouseLeave={this.props.onMouseLeave}
+          >
+            {onRenderContent(this.props, this._onRenderContent)}
+          </div>
+        </Callout>
+      </DelayedRender>
     );
   }
 
