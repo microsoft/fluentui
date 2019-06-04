@@ -39,7 +39,10 @@ const opacityFadeIn: string = keyframes({
     animationTimingFunction: AnimationVariables.easeFunction1,
     transform: 'scale3d(.90,.90,.90)'
   },
-  '100%': { opacity: 1, transform: 'scale3d(1,1,1)' }
+  '100%': {
+    opacity: 1,
+    transform: 'scale3d(1,1,1)'
+  }
 });
 
 const rootStyle = (isWide?: boolean): IStyle[] => {

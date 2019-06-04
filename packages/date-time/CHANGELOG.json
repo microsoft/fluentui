@@ -2,6 +2,32 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.2.0",
+      "tag": "@uifabric/date-time_v6.2.0",
+      "date": "Mon, 03 Jun 2019 12:23:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating DatePicker and Calendar accessibility",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "2c587d46a192ed40adb633d6dd54941bf697a8ff"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "passing through props as the api expects them to be",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "999d6478e31bc32f1880e03bd38823eb36e513ef"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.2` to `^6.188.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "@uifabric/date-time_v6.1.2",
       "date": "Tue, 21 May 2019 12:20:44 GMT",

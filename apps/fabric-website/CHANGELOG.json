@@ -2,6 +2,28 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.10",
+      "tag": "@uifabric/fabric-website_v6.18.10",
+      "date": "Fri, 31 May 2019 12:21:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added Text and Separator docs for mobile, plus doc bug fixes.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "ae2fa7b5f138773ed13a5ab07f5bc09f11784c78"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.2` to `^6.78.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.1` to `^6.187.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.9",
       "tag": "@uifabric/fabric-website_v6.18.9",
       "date": "Thu, 30 May 2019 12:22:06 GMT",
