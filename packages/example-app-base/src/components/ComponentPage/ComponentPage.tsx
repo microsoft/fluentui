@@ -49,7 +49,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   public render() {
     const { componentName, className, otherSections, styles, theme } = this.props;
 
-    const showOnlyExamples = location && location.hash.indexOf('docsExample=true') > -1;
+    const showOnlyExamples = this._baseUrl && this._baseUrl.indexOf('docsExample=true') > -1;
 
     const classNames = (this._styles = getClassNames(styles, { theme }));
 

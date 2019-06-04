@@ -3,7 +3,7 @@ import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { css, styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { css, styled, classNamesFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 
 import { AppCustomizationsContext } from '../../utilities/customizations';
@@ -27,7 +27,9 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const showOnlyExamples = location && location.hash.indexOf('docsExample=true') > -1;
+    const doc = getDocument();
+    const baseUrl = doc ? doc.location.href : '';
+    const showOnlyExamples = baseUrl.indexOf('docsExample=true') > -1;
 
     const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples }));
 
