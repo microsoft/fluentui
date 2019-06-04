@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/date-time",
+      "packageName": "@uifabric/codepen-loader",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/date-time",
+  "packageName": "@uifabric/codepen-loader",
   "email": "kchau@microsoft.com"
 }

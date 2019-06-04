@@ -18,6 +18,7 @@ import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
 
 export interface ISamplesProps {
   backgroundColor: string;
+  textColor: string;
 }
 
 export interface ISamplesState {
@@ -170,9 +171,13 @@ export class Samples extends React.Component<ISamplesProps, ISamplesState> {
               <Stack.Item className={sampleColumn} grow={1}>
                 <Stack gap={32}>
                   <Stack gap={20}>
-                    <Text variant="small">STORIES</Text>
-                    <Text variant="xxLarge">Make an impression</Text>
-                    <Text variant="medium">
+                    <Text variant="small" styles={{ root: { color: this.props.textColor } }}>
+                      STORIES
+                    </Text>
+                    <Text variant="xxLarge" styles={{ root: { color: this.props.textColor } }}>
+                      Make an impression
+                    </Text>
+                    <Text variant="medium" styles={{ root: { color: this.props.textColor } }}>
                       Make a big impression with this clean, modern, and mobile-friendly site. Use it to communicate information to people
                       inside or outisde your team. Share your ideas, results, and more in this visually compelling format.
                     </Text>

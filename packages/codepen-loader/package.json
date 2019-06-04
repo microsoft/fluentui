@@ -19,7 +19,7 @@
     "update-snapshots": "npx just-scripts jest -u"
   },
   "devDependencies": {
-    "just-scripts": "~0.15.3",
+    "just-scripts": "~0.17.0",
     "@types/babylon": "^6.16.5",
     "@types/jest": "23.0.0",
     "@types/loader-utils": "1.1.3",

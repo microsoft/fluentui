@@ -1,6 +1,17 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jun 2019 12:23:18 GMT and should not be manually modified.
+
+## 6.2.0
+Mon, 03 Jun 2019 12:23:18 GMT
+
+### Minor changes
+
+- Updating DatePicker and Calendar accessibility
+
+### Patches
+
+- passing through props as the api expects them to be
 
 ## 6.1.2
 Tue, 21 May 2019 12:20:44 GMT

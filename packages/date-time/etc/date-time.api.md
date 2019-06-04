@@ -4,17 +4,22 @@
 
 ```ts
 
+import { BaseComponent } from '@uifabric/utilities';
 import * as CSS from 'csstype';
 import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { DayOfWeek } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { IBaseProps } from '@uifabric/utilities';
 import { IBaseProps as IBaseProps_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { ICalloutProps } from 'office-ui-fabric-react/lib/Callout';
+import { IComponentAs } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
 import { IRefObject as IRefObject_2 } from 'office-ui-fabric-react/lib/Utilities';
 import { IStyle } from '@uifabric/styling';
+import { IStyleFunction } from '@uifabric/utilities';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleFunctionOrObject as IStyleFunctionOrObject_2 } from 'office-ui-fabric-react/lib/Utilities';
+import { ITextFieldProps } from 'office-ui-fabric-react/lib/TextField';
 import { ITheme } from '@uifabric/styling';
 import * as PropTypes from 'prop-types';
 
@@ -22,6 +27,26 @@ import * as PropTypes from 'prop-types';
 // 
 // @public
 export const Calendar: React.FunctionComponent<ICalendarProps>;
+
+// @public
+export const DatePicker: React.FunctionComponent<IDatePickerProps>;
+
+// @public (undocumented)
+export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
+    constructor(props: IDatePickerProps);
+    // (undocumented)
+    componentDidUpdate(prevProps: IDatePickerProps, prevState: IDatePickerState): void;
+    // (undocumented)
+    componentWillReceiveProps(nextProps: IDatePickerProps): void;
+    // (undocumented)
+    static defaultProps: IDatePickerProps;
+    // (undocumented)
+    focus(): void;
+    // (undocumented)
+    render(): JSX.Element;
+    // (undocumented)
+    reset(): void;
+    }
 
 export { DateRangeType }
 
@@ -112,8 +137,8 @@ export interface ICalendarMonthProps extends IBaseProps_2<ICalendarMonth> {
 // @public (undocumented)
 export interface ICalendarProps extends IBaseProps<ICalendar> {
     allFocusable?: boolean;
-    calendarDayProps?: ICalendarDayProps;
-    calendarMonthProps?: ICalendarMonthProps;
+    calendarDayProps?: Partial<ICalendarDayProps>;
+    calendarMonthProps?: Partial<ICalendarMonthProps>;
     className?: string;
     componentRef?: IRefObject<ICalendar>;
     dateRangeType?: DateRangeType;
@@ -151,8 +176,10 @@ export interface ICalendarStrings {
     months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
     shortDays: string[];
     shortMonths: string[];
     weekNumberFormatString?: string;
@@ -182,6 +209,101 @@ export interface ICalendarStyles {
     root: IStyle;
 }
 
+// @public (undocumented)
+export interface IDatePicker {
+    focus(): void;
+    reset(): void;
+}
+
+// @public (undocumented)
+export interface IDatePickerProps extends IBaseProps<IDatePicker>, React.HTMLAttributes<HTMLElement> {
+    allFocusable?: boolean;
+    allowTextInput?: boolean;
+    ariaLabel?: string;
+    borderless?: boolean;
+    calendarAs?: IComponentAs<ICalendarProps>;
+    calendarProps?: ICalendarProps;
+    calloutProps?: ICalloutProps;
+    className?: string;
+    componentRef?: IRefObject<IDatePicker>;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    disableAutoFocus?: boolean;
+    disabled?: boolean;
+    firstDayOfWeek?: DayOfWeek;
+    firstWeekOfYear?: FirstWeekOfYear;
+    formatDate?: (date?: Date) => string;
+    highlightCurrentMonth?: boolean;
+    highlightSelectedMonth?: boolean;
+    initialPickerDate?: Date;
+    isMonthPickerVisible?: boolean;
+    isRequired?: boolean;
+    label?: string;
+    maxDate?: Date;
+    minDate?: Date;
+    onAfterMenuDismiss?: () => void;
+    onSelectDate?: (date: Date | null | undefined) => void;
+    parseDateFromString?: (dateStr: string) => Date | null;
+    pickerAriaLabel?: string;
+    placeholder?: string;
+    showCloseButton?: boolean;
+    showGoToToday?: boolean;
+    showMonthPickerAsOverlay?: boolean;
+    showWeekNumbers?: boolean;
+    strings?: IDatePickerStrings;
+    styles?: IStyleFunction<IDatePickerStyleProps, IDatePickerStyles>;
+    tabIndex?: number;
+    textField?: ITextFieldProps;
+    theme?: ITheme;
+    today?: Date;
+    underlined?: boolean;
+    value?: Date;
+}
+
+// @public (undocumented)
+export interface IDatePickerState {
+    // (undocumented)
+    errorMessage?: string;
+    // (undocumented)
+    formattedDate?: string;
+    // (undocumented)
+    isDatePickerShown?: boolean;
+    // (undocumented)
+    selectedDate?: Date;
+}
+
+// @public (undocumented)
+export interface IDatePickerStrings extends ICalendarStrings {
+    invalidInputErrorMessage?: string;
+    isOutOfBoundsErrorMessage?: string;
+    isRequiredErrorMessage?: string;
+}
+
+// @public (undocumented)
+export interface IDatePickerStyleProps {
+    className?: string;
+    // (undocumented)
+    disabled?: boolean;
+    // (undocumented)
+    isDatePickerShown?: boolean;
+    // (undocumented)
+    label?: boolean;
+    theme: ITheme;
+}
+
+// @public (undocumented)
+export interface IDatePickerStyles {
+    // (undocumented)
+    callout: IStyle;
+    // (undocumented)
+    icon: IStyle;
+    root: IStyle;
+    // (undocumented)
+    textField: IStyle;
+}
+
+
+export * from "office-ui-fabric-react/lib/utilities/dateMath/DateMath";
+export * from "office-ui-fabric-react/lib/utilities/dateValues/DateValues";
 
 // (No @packageDocumentation comment for this package)
 

@@ -194,8 +194,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       case KeyCodes.enter:
         if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
+          break;
         }
-        break;
+        // if we don't handle the enter press then we shouldn't prevent default
+        return;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);

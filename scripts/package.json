@@ -10,7 +10,7 @@
     "build": "node -v",
     "bundlesize": "bundlesize --debug",
     "clean": "",
-    "code-style": "node ./just.js code-style",
+    "code-style": "npx just-scripts code-style",
     "test": "jest"
   },
   "devDependencies": {
@@ -40,7 +40,7 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "~0.15.3",
+    "just-scripts": "^0.17.0",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",

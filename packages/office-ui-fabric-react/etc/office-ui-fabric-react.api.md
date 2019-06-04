@@ -710,7 +710,7 @@ export enum ConstrainMode {
 }
 
 // @public
-export const ContextualMenu: React_2.StatelessComponent<IContextualMenuProps>;
+export const ContextualMenu: React.StatelessComponent<IContextualMenuProps>;
 
 // @public (undocumented)
 export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -1919,6 +1919,7 @@ export interface IButtonStyles {
     splitButtonContainerFocused?: IStyle;
     splitButtonContainerHovered?: IStyle;
     splitButtonDivider?: IStyle;
+    splitButtonDividerDisabled?: IStyle;
     splitButtonFlexContainer?: IStyle;
     splitButtonMenuButton?: IStyle;
     splitButtonMenuButtonChecked?: IStyle;
@@ -2001,8 +2002,10 @@ export interface ICalendarStrings {
     months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
     shortDays: string[];
     shortMonths: string[];
     weekNumberFormatString?: string;
@@ -3103,20 +3106,10 @@ export interface IDatePickerState {
 }
 
 // @public (undocumented)
-export interface IDatePickerStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
+export interface IDatePickerStrings extends ICalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
 }
 
 // @public (undocumented)

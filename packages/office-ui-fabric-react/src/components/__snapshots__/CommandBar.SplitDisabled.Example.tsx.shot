@@ -719,7 +719,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #a19f9d;
+                              color: #605e5c;
                               display: inline-block;
                               flex-shrink: 0;
                               font-family: "FabricMDL2Icons";

@@ -955,7 +955,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a19f9d;
+                    color: #ffffff;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";

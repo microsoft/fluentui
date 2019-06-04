@@ -20,7 +20,7 @@
     "code-style": "npx just-scripts code-style",
     "start": "npx just-scripts dev",
     "start-test": "npx just-scripts jest-watch",
-    "update-api": "node ../../scripts/update-api.js"
+    "update-api": "npx just-scripts update-api"
   },
   "devDependencies": {
     "@types/enzyme": "3.1.13",

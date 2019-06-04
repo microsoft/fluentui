@@ -2,6 +2,45 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.4",
+      "tag": "@uifabric/experiments_v6.78.4",
+      "date": "Mon, 03 Jun 2019 23:04:02 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.29.2` to `^0.30.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.0` to `^6.188.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.3",
+      "tag": "@uifabric/experiments_v6.78.3",
+      "date": "Fri, 31 May 2019 12:21:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix issue where SideBar ignored colors props",
+            "author": "Rony Liderman <ronyl@microsoft.com>",
+            "commit": "3033364ff4d9ce7f6637a820eb40ed47b02e62d1"
+          },
+          {
+            "comment": "and updated snapshots.",
+            "author": "Mary <38991459+marygans@users.noreply.github.com>",
+            "commit": "9a08f2de52341e1d3c9a8df99b2a80d6276e26ec"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.1` to `^6.187.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.2",
       "tag": "@uifabric/experiments_v6.78.2",
       "date": "Wed, 29 May 2019 12:21:24 GMT",

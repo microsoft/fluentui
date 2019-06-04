@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Fix issue where SideBar ignored colors props",
+      "comment": "Added a signal to wrap an icon for republising reminder",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/experiments",
-  "email": "ronyl@microsoft.com"
+  "email": "fishibru@microsoft.com"
 }

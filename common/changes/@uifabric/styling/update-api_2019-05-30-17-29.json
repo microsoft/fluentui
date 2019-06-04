@@ -2,10 +2,10 @@
   "changes": [
     {
       "comment": "",
-      "packageName": "@uifabric/date-time",
+      "packageName": "@uifabric/styling",
       "type": "none"
     }
   ],
-  "packageName": "@uifabric/date-time",
+  "packageName": "@uifabric/styling",
   "email": "kchau@microsoft.com"
 }
