@@ -374,6 +374,7 @@ exports[`Panel renders Panel correctly 1`] = `
                     height: 768px;
                   }
               data-is-scrollable={true}
+              tabIndex={-1}
             >
               <div
                 className=

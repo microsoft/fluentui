@@ -179,7 +179,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
               </div>
               <div className={_classNames.contentInner}>
                 {header}
-                <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true}>
+                <div ref={this._allowScrollOnPanel} className={_classNames.scrollableContent} data-is-scrollable={true} tabIndex={-1}>
                   {onRenderBody(this.props, this._onRenderBody)}
                 </div>
                 {onRenderFooter(this.props, this._onRenderFooter)}

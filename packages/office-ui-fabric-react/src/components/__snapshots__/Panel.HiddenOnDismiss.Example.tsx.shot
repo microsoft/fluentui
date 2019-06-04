@@ -471,6 +471,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                       height: 768px;
                     }
                 data-is-scrollable={true}
+                tabIndex={-1}
               >
                 <div
                   className=
