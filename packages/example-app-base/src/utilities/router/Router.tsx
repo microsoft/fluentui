@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { initializeComponentRef, on } from '../../Utilities';
+import { initializeComponentRef, on } from 'office-ui-fabric-react/lib/Utilities';
 import { IRouteProps } from './Route';
 
 export interface IRouterProps {
@@ -67,6 +67,7 @@ export class Router extends React.Component<IRouterProps, IRouterState> {
     return _normalizePath(path);
   }
 
+  // tslint:disable-next-line:no-any
   private _resolveRoute(children?: React.ReactNode): React.ReactElement<any> | null {
     const { path } = this.state;
     children = children || this.props.children;
