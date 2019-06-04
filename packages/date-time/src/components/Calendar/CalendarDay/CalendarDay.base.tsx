@@ -155,7 +155,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           onClick={prevMonthInBounds ? this._onSelectPrevMonth : undefined}
           onKeyDown={prevMonthInBounds ? this._onButtonKeyDown(this._onSelectPrevMonth) : undefined}
           aria-controls={dayPickerId}
-          aria-label={
+          title={
             strings.prevMonthAriaLabel
               ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
               : undefined
@@ -173,7 +173,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
           onClick={nextMonthInBounds ? this._onSelectNextMonth : undefined}
           onKeyDown={nextMonthInBounds ? this._onButtonKeyDown(this._onSelectNextMonth) : undefined}
           aria-controls={dayPickerId}
-          aria-label={
+          title={
             strings.nextMonthAriaLabel
               ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
               : undefined
@@ -187,7 +187,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             className={css(classNames.headerIconButton)}
             onClick={this._onClose}
             onKeyDown={this._onButtonKeyDown(this._onClose)}
-            aria-label={strings.closeButtonAriaLabel}
+            title={strings.closeButtonAriaLabel}
             type="button"
           >
             <Icon iconName={closeNavigationIcon} />

@@ -150,7 +150,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                 disabled={!isPrevYearInBounds}
                 onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
                 onKeyDown={isPrevYearInBounds ? this._onSelectPrevYearKeyDown : undefined}
-                aria-label={
+                title={
                   strings.prevYearAriaLabel
                     ? strings.prevYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, -1))
                     : undefined
@@ -167,7 +167,7 @@ export class CalendarMonth extends BaseComponent<ICalendarMonthProps, ICalendarM
                 disabled={!isNextYearInBounds}
                 onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
                 onKeyDown={isNextYearInBounds ? this._onSelectNextYearKeyDown : undefined}
-                aria-label={
+                title={
                   strings.nextYearAriaLabel
                     ? strings.nextYearAriaLabel + ' ' + dateTimeFormatter.formatYear(addYears(navigatedDate, 1))
                     : undefined
