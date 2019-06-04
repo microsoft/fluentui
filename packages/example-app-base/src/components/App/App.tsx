@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppCustomizationsContext } from '../../utilities/customizations';
-import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, css, styled, getDocument } from 'office-ui-fabric-react/lib/Utilities';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getStyles } from './App.styles';
@@ -26,7 +26,9 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const showOnlyExamples = location.hash.indexOf('docsExample=true') > -1;
+    const doc = getDocument();
+    const baseUrl = doc ? doc.location.href : '';
+    const showOnlyExamples = baseUrl.indexOf('docsExample=true') > -1;
 
     const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples }));
 
