@@ -64,11 +64,13 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
           // reasons in order :active borderColor to work.
           ['&:hover .ms-Dropdown-title']: {
             color: palette.neutralDark,
-            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary
+            borderColor: palette.black
           },
           ['&:focus .ms-Dropdown-title']: {
             color: palette.neutralDark,
-            borderColor: !isOpen ? palette.neutralPrimary : palette.themePrimary
+            borderColor: palette.themePrimary,
+            borderWidth: '2px',
+            borderStyle: 'solid'
           },
           ['&:active .ms-Dropdown-title']: {
             color: palette.neutralDark,

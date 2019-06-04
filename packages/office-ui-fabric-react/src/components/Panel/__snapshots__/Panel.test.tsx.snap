@@ -119,7 +119,7 @@ exports[`Panel renders Panel correctly 1`] = `
                 -webkit-overflow-scrolling: touch;
                 background-color: #ffffff;
                 bottom: 0px;
-                box-shadow: 0px 0px 30px 0px rgba(0,0,0,0.2);
+                box-shadow: 0px 25.6px 57.6px 0px rgba(0, 0, 0, 0.22), 0px 4.8px 14.4px 0px rgba(0, 0, 0, 0.18);
                 display: flex;
                 flex-direction: column;
                 left: auto;
@@ -329,15 +329,15 @@ exports[`Panel renders Panel correctly 1`] = `
                     padding-right: 16px;
                   }
                   @media screen and (min-width: 640px){& {
-                    padding-left: 32px;
-                    padding-right: 32px;
+                    padding-left: 15px;
+                    padding-right: 20px;
                   }
                   @media screen and (min-width: 1366px){& {
                     padding-left: 40px;
                     padding-right: 40px;
                   }
                   @media (min-width: 1024px){& {
-                    margin-top: 30px;
+                    margin-top: 0;
                   }
             >
               <p
@@ -385,8 +385,8 @@ exports[`Panel renders Panel correctly 1`] = `
                       padding-right: 16px;
                     }
                     @media screen and (min-width: 640px){& {
-                      padding-left: 32px;
-                      padding-right: 32px;
+                      padding-left: 15px;
+                      padding-right: 20px;
                     }
                     @media screen and (min-width: 1366px){& {
                       padding-left: 40px;

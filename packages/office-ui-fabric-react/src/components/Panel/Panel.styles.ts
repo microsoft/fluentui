@@ -159,8 +159,8 @@ const sharedPaddingStyles = {
   paddingRight: '16px',
   selectors: {
     [`@media screen and (min-width: ${ScreenWidthMinLarge}px)`]: {
-      paddingLeft: '32px',
-      paddingRight: '32px'
+      paddingLeft: '15px',
+      paddingRight: '20px'
     },
     [`@media screen and (min-width: ${ScreenWidthMinXXLarge}px)`]: {
       paddingLeft: '40px',
@@ -243,7 +243,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       classNames.main,
       {
         backgroundColor: palette.white,
-        boxShadow: '0px 0px 30px 0px rgba(0,0,0,0.2)',
+        boxShadow: '0px 25.6px 57.6px 0px rgba(0, 0, 0, 0.22), 0px 4.8px 14.4px 0px rgba(0, 0, 0, 0.18)',
         pointerEvents: 'auto',
         position: 'absolute',
         display: 'flex',
@@ -341,7 +341,7 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
         flexGrow: 0,
         selectors: {
           [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
-            marginTop: '30px'
+            marginTop: '0'
           }
         }
       }
@@ -394,7 +394,9 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
       sharedPaddingStyles,
       {
         paddingBottom: '20px',
-        paddingTop: '20px'
+        paddingTop: '20px',
+        paddingRight: '0',
+        textAlign: 'right'
       }
     ]
     // subComponentStyles: {
