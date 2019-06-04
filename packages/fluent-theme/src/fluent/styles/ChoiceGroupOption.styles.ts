@@ -3,7 +3,6 @@ import { IChoiceGroupOptionStyleProps, IChoiceGroupOptionStyles } from 'office-u
 export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Partial<IChoiceGroupOptionStyles> => {
   const { checked, disabled, theme, hasIcon, hasImage } = props;
   const { semanticColors, palette } = theme;
-  const labelWrapperLineHeight = 15;
 
   return {
     field: [
@@ -65,9 +64,6 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           ]
         }
       },
-      (hasIcon || hasImage) && {
-        paddingTop: 23
-      },
       (hasIcon || hasImage) &&
         !disabled && {
           selectors: {
@@ -91,17 +87,7 @@ export const ChoiceGroupOptionStyles = (props: IChoiceGroupOptionStyleProps): Pa
           borderColor: palette.neutralLighter
         }
     ],
-    innerField: [
-      (hasIcon || hasImage) && {
-        paddingLeft: 31,
-        paddingRight: 31
-      }
-    ],
-    labelWrapper: [
-      (hasIcon || hasImage) && {
-        height: labelWrapperLineHeight * 2 + 1
-      }
-    ],
+    innerField: [{ margin: 1 }],
     choiceFieldWrapper: {
       selectors: {
         '&.is-inFocus': {
