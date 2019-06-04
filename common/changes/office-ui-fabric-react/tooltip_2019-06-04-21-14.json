@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area.\"",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com"
+}
