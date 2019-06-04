@@ -54,7 +54,8 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/styles/themegenerator', to: '#/styles/web' },
     { from: '#/styles/typography', to: '#/styles/web/typography' },
     { from: '#/styles/utilities', to: '#/styles/web' },
-    { from: '#/controls/web/fluent-theme', to: '#/styles/web/fluent-theme' }
+    { from: '#/controls/web/fluent-theme', to: '#/styles/web/fluent-theme' },
+    { from: '#/examples', to: '#/controls/web' }
   ],
   messageBars: [
     {

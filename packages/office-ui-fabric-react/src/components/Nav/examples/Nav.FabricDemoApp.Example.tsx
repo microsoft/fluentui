@@ -13,20 +13,17 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
             {
               key: 'ActivityItem',
               name: 'ActivityItem',
-              url: '#/examples/activityitem',
-              target: '_blank'
+              url: '#/examples/activityitem'
             },
             {
               key: 'Breadcrumb',
               name: 'Breadcrumb',
-              url: '#/examples/breadcrumb',
-              target: '_blank'
+              url: '#/examples/breadcrumb'
             },
             {
               key: 'Button',
               name: 'Button',
-              url: '#/examples/button',
-              target: '_blank'
+              url: '#/examples/button'
             }
           ]
         },
@@ -36,20 +33,17 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
             {
               key: 'ColorPicker',
               name: 'ColorPicker',
-              url: '#/examples/colorpicker',
-              target: '_blank'
+              url: '#/examples/colorpicker'
             },
             {
               key: 'ExtendedPeoplePicker',
               name: 'ExtendedPeoplePicker',
-              url: '#examples/extendedpeoplepicker',
-              target: '_blank'
+              url: '#/examples/extendedpeoplepicker'
             },
             {
               key: 'GroupedList',
               name: 'GroupedList',
-              url: '#examples/groupedlist',
-              target: '_blank'
+              url: '#/examples/groupedlist'
             }
           ]
         },
@@ -59,20 +53,17 @@ export const NavFabricDemoAppExample: React.StatelessComponent = () => {
             {
               key: 'FocusTrapZone',
               name: 'FocusTrapZone',
-              url: '#examples/focustrapzone',
-              target: '_blank'
+              url: '#/examples/focustrapzone'
             },
             {
               key: 'FocusZone',
               name: 'FocusZone',
-              url: '#examples/focuszone',
-              target: '_blank'
+              url: '#/examples/focuszone'
             },
             {
               key: 'MarqueeSelection',
               name: 'MarqueeSelection',
-              url: '#examples/marqueeselection',
-              target: '_blank'
+              url: '#/examples/marqueeselection'
             }
           ]
         }
