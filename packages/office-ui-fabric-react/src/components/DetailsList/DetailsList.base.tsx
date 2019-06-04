@@ -736,10 +736,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     const lastWidth = this.state ? this.state.lastWidth : -1;
     const lastSelectionMode = this.state ? this.state.lastSelectionMode : undefined;
 
-    if (viewportWidth !== undefined) {
-      if (!forceUpdate && lastWidth === viewportWidth && lastSelectionMode === selectionMode && (!columns || newColumns === columns)) {
-        return [];
-      }
+    if (!forceUpdate && lastWidth === viewportWidth && lastSelectionMode === selectionMode && (!columns || newColumns === columns)) {
+      return [];
     }
 
     newColumns = newColumns || buildColumns(newItems, true);
