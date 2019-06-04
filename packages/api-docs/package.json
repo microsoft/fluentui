@@ -11,13 +11,13 @@
     "clean": "npx just-scripts clean"
   },
   "devDependencies": {
-    "just-scripts": "~0.15.3",
+    "just-scripts": "~0.17.0",
     "@types/node": "^8.10.29",
     "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
     "@uifabric/styling": "^6.47.6",
     "@uifabric/merge-styles": "^6.17.4",
     "@uifabric/utilities": "^6.39.3",
-    "office-ui-fabric-react": "^6.187.0"
+    "office-ui-fabric-react": "^6.188.2"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.8",

@@ -13,7 +13,7 @@ import {
   getWeekNumbersInMonth,
   getMonthStart,
   getMonthEnd
-} from '../../../utilities/dateMath/DateMath';
+} from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { ICalendarDayProps, ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { IProcessedStyleSet } from '@uifabric/styling';
 import { DateRangeType } from '../Calendar.types';
@@ -425,7 +425,6 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-        case KeyCodes.space:
           callback();
           break;
       }

@@ -161,7 +161,8 @@ $nav-group-header-height: 32px;
       padding: 8px 0;
       @include ms-text-align(left);
       height: auto;
-      align-items: flex-start;
+      align-items: center;
+      line-height: normal;
 
       span {
         color: $ms-color-neutralPrimary;
@@ -170,8 +171,6 @@ $nav-group-header-height: 32px;
       }
 
       i {
-        margin-top: 2px;
-        margin-bottom: 0;
         @include ms-margin-right(16px);
         @include ms-margin-left(8px);
         color: $ms-color-neutralSecondary;

@@ -14,8 +14,11 @@ const DayPickerStrings = {
   weekNumberFormatString: 'Week number {0}',
   prevMonthAriaLabel: 'Previous month',
   nextMonthAriaLabel: 'Next month',
+  prevYearAriaLabel: 'Previous year',
   nextYearAriaLabel: 'Next year',
-  prevYearAriaLabel: 'Previous year'
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close'
 };
 
 export interface ICalendarInlineExampleState {

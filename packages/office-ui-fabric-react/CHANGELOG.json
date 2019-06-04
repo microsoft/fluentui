@@ -2,6 +2,111 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.188.2",
+      "tag": "office-ui-fabric-react_v6.188.2",
+      "date": "Tue, 04 Jun 2019 12:22:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Coachmark: fix default colors assignment to pull from the theme object.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "6516eaf81f56f2c48898f1b3751b35ee19b9af7c"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.188.1",
+      "tag": "office-ui-fabric-react_v6.188.1",
+      "date": "Mon, 03 Jun 2019 23:04:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix issue where onchange wasnt called",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "50c334ccae034993dccd11d59b55abe7212af0c4"
+          },
+          {
+            "comment": "Remove circular imports in ContextualMenu.tsx",
+            "author": "Xinyan Chen <xinychen@microsoft.com>",
+            "commit": "cd633193faab666bdc23280bf0484feddb1d62a9"
+          },
+          {
+            "comment": "Searchbox: Stop preventing default if we don't handle the keypress\"",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "500648481e3699b03b8497969abf52d6195d07b8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.188.0",
+      "tag": "office-ui-fabric-react_v6.188.0",
+      "date": "Mon, 03 Jun 2019 12:23:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating DatePicker and Calendar accessibility",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "2c587d46a192ed40adb633d6dd54941bf697a8ff"
+          },
+          {
+            "comment": "Fixed SplitButton styling for menu icon and dividers in disabled state",
+            "author": "Maxwell Rediker <GitHubMaxwell@users.noreply.github.com>",
+            "commit": "4ac2f2bacea133918bc0b3d2e781131b768147f1"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.187.2",
+      "tag": "office-ui-fabric-react_v6.187.2",
+      "date": "Fri, 31 May 2019 12:21:27 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "TeachingBubble: Updated entrance animation for teaching bubble in TeachingBubble.styles.ts. Removed jelly animation and replaced with new motion spec entrance animation.",
+            "author": "Mary <38991459+marygans@users.noreply.github.com>",
+            "commit": "9a08f2de52341e1d3c9a8df99b2a80d6276e26ec"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.187.1",
+      "tag": "office-ui-fabric-react_v6.187.1",
+      "date": "Thu, 30 May 2019 12:22:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Autofill: makes sure the fresh input is retrieved at the time of composition end",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "5ab1afea096b64447e30f51f5d0044d74b49d6ba"
+          },
+          {
+            "comment": "Refactor common logic out of _dismissOnLostFocus to a generalized function in order to decouple handling of _dismissOnScroll from _dismissOnLostFocus",
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "54e65765eae8f4ac8abd7b243baa91720f566aff"
+          },
+          {
+            "comment": "Remove extra role attribute from callout root element, support aria-roledescription on callout main where role already resides",
+            "author": "Ryan Psenski <rpsenski@microsoft.com>",
+            "commit": "ad9193054e3542ca04f265821fca34c51e68b9ff"
+          },
+          {
+            "comment": "DetailList: only select the first item on keydown from header if there isn't already something selected",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "ab6fc4495e0947053f343c89580497dc008affec"
+          },
+          {
+            "comment": "Dropdown: fix issue where dropdown did not respect selectedKey(s) prop",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "b5c948c84fd5138fca3534e22e6c523edc05e3a4"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.187.0",
       "tag": "office-ui-fabric-react_v6.187.0",
       "date": "Wed, 29 May 2019 12:21:24 GMT",
