@@ -6,3 +6,4 @@ export * from './data';
 export * from './debugging';
 export * from './examplesOf';
 export * from './extractAnchorLink';
+export * from './router/index';
