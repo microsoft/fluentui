@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fluent-theme",
+      "comment": "Fixed ChoiceGroup default dimensions that were affected when the border was changed from 2px to the fluent spec 1px",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fluent-theme",
+  "email": "v-mare@microsoft.com"
+}
