@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Removed a line of code from the ExpandingCard.base.tsx that was making the hovercard jump when expanding",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "esteban.230@hotmail.com"
+}
