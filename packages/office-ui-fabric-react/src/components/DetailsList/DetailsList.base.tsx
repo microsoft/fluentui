@@ -238,7 +238,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width ||
+      (newProps.viewport && newProps.viewport.width) !== (viewport && viewport.width) ||
       newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
@@ -712,7 +712,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
-    const { width: viewportWidth } = this.props.viewport!;
+    const { viewport } = this.props;
+    const viewportWidth = viewport && viewport.width ? viewport.width : 0;
 
     if (adjustedColumns) {
       this.setState(
@@ -727,9 +728,9 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): IColumn[] {
-    const { items: newItems, layoutMode, selectionMode } = newProps;
+    const { items: newItems, layoutMode, selectionMode, viewport } = newProps;
+    const viewportWidth = viewport === undefined ? 0 : viewport.width;
     let { columns: newColumns } = newProps;
-    let { width: viewportWidth } = newProps.viewport!;
 
     const columns = this.props ? this.props.columns : [];
     const lastWidth = this.state ? this.state.lastWidth : -1;
@@ -739,8 +740,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       if (!forceUpdate && lastWidth === viewportWidth && lastSelectionMode === selectionMode && (!columns || newColumns === columns)) {
         return [];
       }
-    } else {
-      viewportWidth = this.props.viewport!.width;
     }
 
     newColumns = newColumns || buildColumns(newItems, true);
