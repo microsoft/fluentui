@@ -139,7 +139,8 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
       classNames.content,
       {
         display: 'flex',
-        width: '100%'
+        width: '100%',
+        lineHeight: 'normal'
       }
     ],
     iconContainer: [

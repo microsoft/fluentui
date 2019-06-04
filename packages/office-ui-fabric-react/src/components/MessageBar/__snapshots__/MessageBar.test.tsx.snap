@@ -44,6 +44,7 @@ exports[`MessageBar renders MessageBar correctly 1`] = `
           ms-MessageBar-content
           {
             display: flex;
+            line-height: normal;
             width: 100%;
           }
     >
