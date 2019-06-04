@@ -104,7 +104,7 @@ export class CalendarDayBase extends BaseComponent<ICalendarDayProps, ICalendarD
             onKeyDown={this._onButtonKeyDown(this._onHeaderSelect)}
             type="button"
           >
-            <span>{dateTimeFormatter.formatMonthYear(navigatedDate, strings)}</span>
+            {dateTimeFormatter.formatMonthYear(navigatedDate, strings)}
           </button>
           {this.renderMonthNavigationButtons(classNames, dayPickerId)}
         </div>
