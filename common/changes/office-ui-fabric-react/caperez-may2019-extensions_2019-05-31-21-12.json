@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed SplitButton styling for menu icon and dividers in disabled state",
+      "comment": "adding missing filetype mappings to support LPC and other partners",
       "type": "minor"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "v-mare@microsoft.com"
+  "email": "caperez@microsoft.com"
 }

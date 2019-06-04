@@ -1,6 +1,30 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jun 2019 12:22:18 GMT and should not be manually modified.
+
+## 6.188.2
+Tue, 04 Jun 2019 12:22:18 GMT
+
+### Patches
+
+- Coachmark: fix default colors assignment to pull from the theme object.
+
+## 6.188.1
+Mon, 03 Jun 2019 23:04:02 GMT
+
+### Patches
+
+- Dropdown: fix issue where onchange wasnt called
+- Remove circular imports in ContextualMenu.tsx
+- Searchbox: Stop preventing default if we don't handle the keypress"
+
+## 6.188.0
+Mon, 03 Jun 2019 12:23:18 GMT
+
+### Minor changes
+
+- Updating DatePicker and Calendar accessibility
+- Fixed SplitButton styling for menu icon and dividers in disabled state
 
 ## 6.187.2
 Fri, 31 May 2019 12:21:27 GMT

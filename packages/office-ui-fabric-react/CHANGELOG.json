@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.188.2",
+      "tag": "office-ui-fabric-react_v6.188.2",
+      "date": "Tue, 04 Jun 2019 12:22:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Coachmark: fix default colors assignment to pull from the theme object.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "6516eaf81f56f2c48898f1b3751b35ee19b9af7c"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.188.1",
+      "tag": "office-ui-fabric-react_v6.188.1",
+      "date": "Mon, 03 Jun 2019 23:04:02 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Dropdown: fix issue where onchange wasnt called",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "50c334ccae034993dccd11d59b55abe7212af0c4"
+          },
+          {
+            "comment": "Remove circular imports in ContextualMenu.tsx",
+            "author": "Xinyan Chen <xinychen@microsoft.com>",
+            "commit": "cd633193faab666bdc23280bf0484feddb1d62a9"
+          },
+          {
+            "comment": "Searchbox: Stop preventing default if we don't handle the keypress\"",
+            "author": "Jon Schectman <joschect@microsoft.com>",
+            "commit": "500648481e3699b03b8497969abf52d6195d07b8"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.188.0",
+      "tag": "office-ui-fabric-react_v6.188.0",
+      "date": "Mon, 03 Jun 2019 12:23:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating DatePicker and Calendar accessibility",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "2c587d46a192ed40adb633d6dd54941bf697a8ff"
+          },
+          {
+            "comment": "Fixed SplitButton styling for menu icon and dividers in disabled state",
+            "author": "Maxwell Rediker <GitHubMaxwell@users.noreply.github.com>",
+            "commit": "4ac2f2bacea133918bc0b3d2e781131b768147f1"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.187.2",
       "tag": "office-ui-fabric-react_v6.187.2",
       "date": "Fri, 31 May 2019 12:21:27 GMT",
