@@ -57,7 +57,7 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     ],
     title: [
       {
-        padding: '9px 26px 5px 11px',
+        padding: '9px 26px 5px 100px',
         fontSize: 14,
         fontWeight: 'normal',
         fontStyle: 'normal',

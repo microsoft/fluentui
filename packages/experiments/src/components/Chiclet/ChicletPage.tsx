@@ -22,7 +22,7 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Medium-sized Chiclet with Breadcrumb" isOptIn={true} code={ChicletBreadcrumbExampleCode}>
               <ChicletBreadcrumbExample />
             </ExampleCard>
-            <ExampleCard title="Medium-sized Chiclet with Footer" isOptIn={true} code={ChicletFooterExampleCode}>
+            <ExampleCard title="Xsmall Chiclet" isOptIn={true} code={ChicletFooterExampleCode}>
               <ChicletFooterExample />
             </ExampleCard>
           </div>
