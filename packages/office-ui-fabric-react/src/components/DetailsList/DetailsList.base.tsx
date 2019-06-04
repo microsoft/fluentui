@@ -729,7 +729,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): IColumn[] {
     const { items: newItems, layoutMode, selectionMode, viewport } = newProps;
-    const viewportWidth = viewport === undefined ? 0 : viewport.width;
+    const viewportWidth = viewport && viewport.width ? viewport.width : 0;
     let { columns: newColumns } = newProps;
 
     const columns = this.props ? this.props.columns : [];
