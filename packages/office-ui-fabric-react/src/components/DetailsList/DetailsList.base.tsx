@@ -215,7 +215,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       dragDropEvents
     } = this.props;
     const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
-
+    const newViewportWidth = newProps.viewport && newProps.viewport.width ? newProps.viewport.width : 0;
+    const oldViewportWidth = viewport && viewport.width ? viewport.width : 0;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -238,7 +239,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      (newProps.viewport && newProps.viewport.width) !== (viewport && viewport.width) ||
+      newViewportWidth !== oldViewportWidth ||
       newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
