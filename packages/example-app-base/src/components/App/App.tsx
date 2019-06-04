@@ -27,7 +27,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const showOnlyExamples = location.hash.indexOf('docsExample=true') > -1;
+    const showOnlyExamples = location && location.hash.indexOf('docsExample=true') > -1;
 
     const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples }));
 
