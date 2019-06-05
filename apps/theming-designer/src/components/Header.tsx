@@ -50,7 +50,9 @@ const microsoftLogo = mergeStyles({
 const pipeFabricStyles = (p: ILinkStyleProps): ILinkStyles => ({
   root: {
     textDecoration: 'none',
-    color: p.theme.semanticColors.bodyText
+    color: p.theme.semanticColors.bodyText,
+    fontWeight: '600',
+    fontSize: p.theme.fonts.medium.fontSize
   }
 });
 

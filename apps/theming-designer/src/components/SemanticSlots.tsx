@@ -462,7 +462,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   return (
     <div className={MainPanelInnerContent}>
-      <Text variant="xxLarge">Semantic slots</Text>
       <SemanticSlotsDetailsList
         slotNames={slotNames}
         noneSlots={noneSlots}

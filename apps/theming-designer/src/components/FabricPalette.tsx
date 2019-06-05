@@ -18,9 +18,13 @@ const tableClassName = mergeStyles({
       padding: 80,
       textAlign: 'left'
     },
+    th: {
+      display: 'table-cell'
+    },
     td: {
       padding: 10,
-      textAlign: 'left'
+      textAlign: 'left',
+      display: 'table-cell'
     }
   }
 });
@@ -56,182 +60,79 @@ export const FabricPalette: React.StatelessComponent<IFabricPaletteProps> = (pro
 
   return (
     <div className={MainPanelInnerContent}>
-      <Text variant="xxLarge">Fabric palette</Text>
       <table className={tableClassName}>
         <thead>
           <tr>
-            <th>
-              <Text> Primary</Text>
-            </th>
-            <th>
-              <Text> Hex</Text>
-            </th>
-            <th>
-              <Text> Foreground</Text>
-            </th>
-            <th>
-              <Text> Hex</Text>
-            </th>
-            <th>
-              <Text> Background</Text>
-            </th>
-            <th>
-              <Text> Hex</Text>
-            </th>
+            <Text as="th"> Primary</Text>
+            <Text as="th"> Hex</Text>
+            <Text as="th"> Foreground</Text>
+            <Text as="th"> Hex</Text>
+            <Text as="th"> Background</Text>
+            <Text as="th"> Hex</Text>
           </tr>
         </thead>
         <tbody>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeDarker)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeDarker]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.black)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.black]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralTertiaryAlt)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralTertiaryAlt]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeDarker)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeDarker]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.black)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.black]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralTertiaryAlt)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralTertiaryAlt]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeDark)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeDark]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralDark)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralDark]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralQuaternary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralQuaternary]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeDark)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeDark]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralDark)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralDark]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralQuaternary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralQuaternary]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeDarkAlt)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeDarkAlt]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralPrimary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralPrimary]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralQuaternaryAlt)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralQuaternaryAlt]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeDarkAlt)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeDarkAlt]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralPrimary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralPrimary]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralQuaternaryAlt)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralQuaternaryAlt]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themePrimary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themePrimary]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralPrimaryAlt)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralPrimaryAlt]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralLight)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralLight]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themePrimary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themePrimary]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralPrimaryAlt)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralPrimaryAlt]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralLight)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralLight]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeSecondary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeSecondary]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralSecondary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralSecondary]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralLighter)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralLighter]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeSecondary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeSecondary]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralSecondary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralSecondary]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralLighter)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralLighter]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeTertiary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeTertiary]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralTertiary)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralTertiaryAlt]].color!.str}</Text>
-            </td>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.neutralLighterAlt)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.neutralLighterAlt]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeTertiary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeTertiary]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralTertiary)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralTertiaryAlt]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.neutralLighterAlt)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.neutralLighterAlt]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeLight)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeLight]].color!.str}</Text>
-            </td>
-            <td />
-            <td />
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.white)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.white]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeLight)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeLight]].color!.str}</Text>
+            <Text as="td">{fabricSlotWidget(FabricSlots.white)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.white]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeLighter)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeLighter]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeLighter)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeLighter]].color!.str}</Text>
           </tr>
           <tr>
-            <td>
-              <Text>{fabricSlotWidget(FabricSlots.themeLighterAlt)}</Text>
-            </td>
-            <td>
-              <Text>{props.themeRules![FabricSlots[FabricSlots.themeLighterAlt]].color!.str}</Text>
-            </td>
+            <Text as="td">{fabricSlotWidget(FabricSlots.themeLighterAlt)}</Text>
+            <Text as="td">{props.themeRules![FabricSlots[FabricSlots.themeLighterAlt]].color!.str}</Text>
           </tr>
         </tbody>
       </table>

@@ -13,8 +13,9 @@ import { Samples } from './Samples/index';
 import { SemanticSlots } from './SemanticSlots';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { ThemeProvider, Text } from 'office-ui-fabric-react';
+import { ThemeProvider, Text, Pivot, PivotItem } from 'office-ui-fabric-react';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
+import { TitleText } from '../shared/Typography';
 
 export interface IThemingDesignerState {
   primaryColor: IColor;
@@ -84,11 +85,11 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
         <Header themeRules={this.state.themeRules} />
         <Content>
           <Sidebar>
-            <Text variant={'xxLarge'}>
+            <Text variant={'xLarge'} styles={{ root: { fontWeight: 600, marginLeft: 20 } }}>
               <IconButton
                 disabled={false}
                 checked={false}
-                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
+                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px', marginRight: 12 } } }}
                 title="Colors"
                 ariaLabel="Colors"
               />
@@ -112,8 +113,15 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
             </ThemeProvider>
             <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
-            <FabricPalette themeRules={this.state.themeRules} />
-            <SemanticSlots theme={this.state.theme} />;
+            <TitleText>Theme Slots</TitleText>
+            <Pivot>
+              <PivotItem headerText="Fabric palette slots">
+                <FabricPalette themeRules={this.state.themeRules} />
+              </PivotItem>
+              <PivotItem headerText="Semantic slots">
+                <SemanticSlots theme={this.state.theme} />
+              </PivotItem>
+            </Pivot>
           </Main>
         </Content>
       </Page>
