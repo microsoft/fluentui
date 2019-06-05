@@ -3612,6 +3612,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
             htmlFor="TextField15"
+            id="TextFieldLabel17"
           >
             Enter a space-separated list of empty children (e.g. 1 2 3):
           </label>
@@ -3648,6 +3649,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           >
             <input
               aria-invalid={false}
+              aria-labelledby="TextFieldLabel17"
               className=
                   ms-TextField-field
                   {

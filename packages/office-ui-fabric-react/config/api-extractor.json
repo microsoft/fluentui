@@ -17,6 +17,11 @@
       "tsdoc-undefined-tag": {
         "logLevel": "none"
       }
+    },
+    "extractorMessageReporting": {
+      "ae-unresolved-link": {
+        "logLevel": "none"
+      }
     }
   }
 }

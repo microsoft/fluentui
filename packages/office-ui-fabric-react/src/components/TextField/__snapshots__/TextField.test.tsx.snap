@@ -54,6 +54,7 @@ exports[`TextField renders TextField correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       Label
     </label>
@@ -90,6 +91,7 @@ exports[`TextField renders TextField correctly 1`] = `
     >
       <input
         aria-invalid={false}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             testInputClassName
@@ -210,6 +212,7 @@ exports[`TextField renders TextField multiline resizable correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       Label
     </label>
@@ -369,6 +372,7 @@ exports[`TextField renders TextField multiline unresizable correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       Label
     </label>
@@ -544,6 +548,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       Label
     </label>
@@ -614,6 +619,7 @@ exports[`TextField renders multiline TextField correctly with errorMessage 1`] =
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
@@ -782,6 +788,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       Label
     </label>
@@ -852,6 +859,7 @@ exports[`TextField renders multiline TextField correctly with props affecting st
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
@@ -1022,6 +1030,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       Label
     </label>
@@ -1092,6 +1101,7 @@ exports[`TextField should resepect user component and subcomponent styling 1`] =
       <input
         aria-describedby="TextFieldDescription1"
         aria-invalid={true}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {

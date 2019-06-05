@@ -55,6 +55,7 @@ export * from './rtl';
 export * from './safeRequestAnimationFrame';
 export * from './safeSetTimeout';
 export * from './scroll';
+export * from './selection';
 export * from './string';
 export * from './styled';
 export * from './warn';

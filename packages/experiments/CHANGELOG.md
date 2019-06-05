@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Mon, 03 Jun 2019 23:04:02 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jun 2019 12:22:17 GMT and should not be manually modified.
+
+## 6.78.5
+Tue, 04 Jun 2019 12:22:17 GMT
+
+### Patches
+
+- Added a signal to wrap an icon for republising reminder
 
 ## 6.78.4
 Mon, 03 Jun 2019 23:04:02 GMT

@@ -62,6 +62,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _id: string;
   private _descriptionId: string;
+  private _labelId: string;
   private _delayedValidate: (value: string | undefined) => void;
   private _isMounted: boolean;
   private _lastValidation: number;
@@ -104,6 +105,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     this._id = props.id || getId('TextField');
     this._descriptionId = getId('TextFieldDescription');
+    this._labelId = getId('TextFieldLabel');
 
     if (props.value !== undefined) {
       this._latestValue = props.value;
@@ -386,7 +388,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
     if (label) {
       return (
-        <Label required={required} htmlFor={this._id} styles={labelStyles} disabled={props.disabled}>
+        <Label required={required} htmlFor={this._id} styles={labelStyles} disabled={props.disabled} id={this._labelId}>
           {props.label}
         </Label>
       );
@@ -461,11 +463,12 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
 
   private _renderInput(): React.ReactElement<React.HTMLAttributes<HTMLInputElement>> {
     const inputProps = getNativeProps<React.HTMLAttributes<HTMLInputElement>>(this.props, inputProperties, ['defaultValue']);
-
+    const ariaLabelledBy = this.props['aria-labelledby'] || (this.props.label ? this._labelId : undefined);
     return (
       <input
         type={'text'}
         id={this._id}
+        aria-labelledby={ariaLabelledBy}
         {...inputProps}
         ref={this._textElement as React.RefObject<HTMLInputElement>}
         value={this.state.value}

@@ -284,7 +284,8 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
                 }
-            htmlFor="DatePicker3-label"
+            htmlFor="DatePicker4-label"
+            id="TextFieldLabel7"
             required={false}
           >
             Disabled (with label)
@@ -322,6 +323,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             <input
               aria-invalid={false}
               aria-label="Select a date"
+              aria-labelledby="TextFieldLabel7"
               className=
                   ms-TextField-field
                   {
@@ -376,7 +378,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     opacity: 1;
                   }
               disabled={true}
-              id="DatePicker3-label"
+              id="DatePicker4-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}

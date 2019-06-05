@@ -87,7 +87,11 @@ export namespace FontSizes {
     const // (undocumented)
     xLarge: string;
     const // (undocumented)
+    xLargePlus: string;
+    const // (undocumented)
     xxLarge: string;
+    const // (undocumented)
+    xxLargePlus: string;
     const // (undocumented)
     superLarge: string;
     const // (undocumented)
@@ -298,10 +302,14 @@ export interface IFontStyles {
     tiny: IRawStyle;
     // (undocumented)
     xLarge: IRawStyle;
+    // @deprecated (undocumented)
+    xLargePlus: IRawStyle;
     // (undocumented)
     xSmall: IRawStyle;
     // (undocumented)
     xxLarge: IRawStyle;
+    // @deprecated (undocumented)
+    xxLargePlus: IRawStyle;
 }
 
 export { IFontWeight }
