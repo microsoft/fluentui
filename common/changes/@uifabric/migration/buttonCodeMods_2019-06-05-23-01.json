@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "Button: Migration for text, iconProps, menuProps and split deprecated props.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "Humberto.Morimoto@microsoft.com"
+}
