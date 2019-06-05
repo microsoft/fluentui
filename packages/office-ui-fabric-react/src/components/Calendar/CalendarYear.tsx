@@ -201,6 +201,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, any>
         type="button"
         tabIndex={0}
         aria-label={prevAriaLabel}
+        title={prevAriaLabel}
         disabled={disabled}
       >
         <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
@@ -248,6 +249,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, any>
         type="button"
         tabIndex={0}
         aria-label={nextAriaLabel}
+        title={nextAriaLabel}
         disabled={this.isDisabled}
       >
         <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />
