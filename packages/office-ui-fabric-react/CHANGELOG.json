@@ -2,6 +2,63 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.189.0",
+      "tag": "office-ui-fabric-react_v6.189.0",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding missing filetype mappings to support LPC and other partners",
+            "author": "Kosta Tachtevrenidis <tachtevrenidis@hotmail.com>",
+            "commit": "a0608b576f996ce322b524d2fb11541df9f7e390"
+          },
+          {
+            "comment": "Fix TS 3.5 typing issues.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "6199feabe374c1d5b0ff9b3384f786634939cb07"
+          },
+          {
+            "comment": "Consume Selection from Utilities",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "495d5291eed73e6578a8b62129b032bed61fc9b3"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "BaseButton: Render placeholder icon if iconName is empty string",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "5ccbdfe8e053457d26d122508c9925e73d24cda5"
+          },
+          {
+            "comment": "ContextualMenu: When menus are rendered with the `persistMenu` flag, the scrollbar now renders correctly in Edge.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "f59b94720bd4f216b50783e1b2038255ef4296ec"
+          },
+          {
+            "comment": "add tooltips to Calendar buttons without text",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "d069e8b786d2e32251a5b6160d6ebbb8a051ceba"
+          },
+          {
+            "comment": "TextField: Adds aria-labelledby to input",
+            "author": "staciecarroll <42977041+staciecarroll@users.noreply.github.com>",
+            "commit": "24e90baf27358385fa92df6ae70048183663fd89"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.4` to `^6.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.6` to `^6.48.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.39.3` to `^6.40.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.188.2",
       "tag": "office-ui-fabric-react_v6.188.2",
       "date": "Tue, 04 Jun 2019 12:22:18 GMT",

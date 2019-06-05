@@ -37,5 +37,9 @@ export type IConcatenatedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = {
  * into a class name. Additionally, all subComponentStyles are style functions.
  */
 export type IProcessedStyleSet<TStyleSet extends IStyleSet<TStyleSet>> = { [P in keyof Omit<TStyleSet, 'subComponentStyles'>]: string } & {
-  subComponentStyles: { [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<TStyleSet['subComponentStyles'][P]> };
+  subComponentStyles: {
+    [P in keyof TStyleSet['subComponentStyles']]: __MapToFunctionType<
+      TStyleSet['subComponentStyles'] extends infer J ? (P extends keyof J ? J[P] : never) : never
+    >
+  };
 };

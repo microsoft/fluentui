@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "BaseButton: Render placeholder icon if iconName is empty string",
+      "comment": "Update documentation to add target _blank to external links",
       "type": "patch"
     }
   ],

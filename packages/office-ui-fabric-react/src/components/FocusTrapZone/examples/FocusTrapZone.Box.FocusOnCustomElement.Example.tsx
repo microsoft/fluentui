@@ -49,7 +49,7 @@ export class FocusTrapZoneBoxCustomElementExample extends React.Component<{}, IF
               offText="Off"
             />
             <TextField label="Input inside trap zone" styles={{ root: { width: 300 } }} />
-            <Link href="https://bing.com" className={_focusClassName}>
+            <Link href="https://bing.com" className={_focusClassName} target="_blank">
               Hyperlink which will receive initial focus when trap zone is activated
             </Link>
           </Stack>
