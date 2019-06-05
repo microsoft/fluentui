@@ -58,6 +58,13 @@ export const stylesPagesWeb: INavPage[] = [
         component: () => <LoadingComponent title="Messaging" />,
         getComponent: cb =>
           require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/MessagingPage').ColorsMessagingPage))
+      },
+      {
+        title: 'Theme Slots',
+        url: '#/styles/web/colors/theme-slots',
+        component: () => <LoadingComponent title="Theme Slots" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/ThemeSlotsPage/ThemeSlotsPage').ThemeSlotsPage))
       }
     ]
   },
