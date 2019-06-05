@@ -500,7 +500,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: #666666;
                           opacity: 1;
                         }
-                    id="TextField2"
+                    id="TextField3"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -637,7 +637,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: #666666;
                           opacity: 1;
                         }
-                    id="TextField4"
+                    id="TextField6"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -774,7 +774,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: #666666;
                           opacity: 1;
                         }
-                    id="TextField6"
+                    id="TextField9"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}
@@ -911,7 +911,7 @@ exports[`ColorPicker renders correctly 1`] = `
                           color: #666666;
                           opacity: 1;
                         }
-                    id="TextField8"
+                    id="TextField12"
                     onBlur={[Function]}
                     onChange={[Function]}
                     onFocus={[Function]}

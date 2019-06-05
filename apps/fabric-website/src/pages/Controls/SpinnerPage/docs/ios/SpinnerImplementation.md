@@ -1,7 +1,3 @@
-### Design
-
-Coming soon
-
 ### Control Name
 
 `MSActivityIndicatorView` The spinning element.

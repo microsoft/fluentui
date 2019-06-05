@@ -95,7 +95,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
           <Stack.Item grow={1} disableShrink className={cardsBlockStyles}>
             <Stack>
               <ThemeProvider theme={this.state.theme}>
-                <Samples backgroundColor={this.state.backgroundColor.str} />
+                <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
               </ThemeProvider>
               <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
               <FabricPalette themeRules={this.state.themeRules} />
