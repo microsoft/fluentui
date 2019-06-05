@@ -1,0 +1,17 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`buttonPropsChange transforms deprecated props to the corresponding non-deprecated ones 1`] = `
+"import { Button } from '@uifabric/experiments';
+import { Fabric } from 'office-ui-fabric-react';
+
+class ButtonExample extends React.Component<{}, {}> {
+  public render(): JSX.Element {
+    return (
+      <Fabric className={wrapperClassName}>
+        <Button content=\\"This is a button\\" icon={{ iconName: 'Emoji2' }} />
+      </Fabric>
+    );
+  }
+}
+"
+`;

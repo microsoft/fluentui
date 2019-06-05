@@ -47,11 +47,17 @@ interface IMigrationResult {
   warnings: string[];
 }
 
-export async function runMigration(migration: IMigration, filename: string): Promise<IMigrationResult> {
+export async function runMigration(migration: IMigration | IMigration[], filename: string): Promise<IMigrationResult> {
   await setup();
   const result: IMigrationResult = { contents: '', warnings: [] };
   try {
-    migration.step({ dryRun: false, warn: (msg: string) => result.warnings.push(msg) });
+    if (Array.isArray(migration)) {
+      for (const mig of migration) {
+        mig.step({ dryRun: false, warn: (msg: string) => result.warnings.push(msg) });
+      }
+    } else {
+      migration.step({ dryRun: false, warn: (msg: string) => result.warnings.push(msg) });
+    }
     const contents = await readFileAsync(path.join('_root', filename));
     teardown();
     result.contents = contents.toString();
