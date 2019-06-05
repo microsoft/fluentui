@@ -171,7 +171,7 @@ export class KeytipTree {
   /**
    * Gets all nodes from their IDs
    *
-   * @param ids List of keytip IDs
+   * @param ids - List of keytip IDs
    * @returns Array of nodes that match the given IDs, can be empty
    */
   public getNodes(ids: string[]): IKeytipTreeNode[] {

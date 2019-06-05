@@ -20,8 +20,8 @@
     "office-ui-fabric-react": "^6.188.0"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.8",
-    "@microsoft/api-extractor-model": "7.0.27",
+    "@microsoft/tsdoc": "0.12.9",
+    "@microsoft/api-extractor-model": "7.1.1",
     "@microsoft/node-core-library": "~3.9.0"
   }
 }
