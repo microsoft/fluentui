@@ -2,13 +2,30 @@
 
 exports[`buttonPropsChange transforms deprecated props to the corresponding non-deprecated ones 1`] = `
 "import { Button } from '@uifabric/experiments';
+import { MenuButton } from '@uifabric/experiments';
+import { SplitButton } from '@uifabric/experiments';
 import { Fabric } from 'office-ui-fabric-react';
+
+const menuProps = {
+  items: [
+    {
+      key: 'a',
+      name: 'Item a'
+    },
+    {
+      key: 'b',
+      name: 'Item b'
+    }
+  ]
+};
 
 class ButtonExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
     return (
       <Fabric className={wrapperClassName}>
         <Button content=\\"This is a button\\" icon={{ iconName: 'Emoji2' }} />
+        <MenuButton content=\\"This is a button\\" icon={{ iconName: 'Emoji2' }} menu={menuProps} />
+        <SplitButton content=\\"This is a button\\" icon={{ iconName: 'Emoji2' }} menu={menuProps} />
       </Fabric>
     );
   }
