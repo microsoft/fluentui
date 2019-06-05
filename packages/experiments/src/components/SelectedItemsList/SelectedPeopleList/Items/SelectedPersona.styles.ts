@@ -108,7 +108,7 @@ export const getStyles = (props: ISelectedPersonaStyleProps): ISelectedPersonaSt
             : isSelected
             ? palette.white
             : palette.themeDark,
-          fontSize: FontSizes.small,
+          fontSize: FontSizes.medium,
           selectors: {
             [HighContrastSelector]: {
               color: 'HighlightText'
