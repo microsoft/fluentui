@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Card } from '@uifabric/react-cards';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, Text } from 'office-ui-fabric-react';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { Pivot, PivotItem } from 'office-ui-fabric-react/lib/Pivot';
@@ -25,7 +25,7 @@ const outputPanelClassName = mergeStyles({
 
 const textAreaClassName = mergeStyles({
   height: 350,
-  width: 280,
+  width: '100%',
   marginRight: 28,
   backgroundColor: 'white',
   color: '#333'
@@ -67,7 +67,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
     return (
       <Card
         styles={{
-          root: { backgroundColor: 'white', minWidth: '99%', height: '35px', position: 'fixed', left: '0', top: '0', zIndex: 600 }
+          root: { flexGrow: 0, backgroundColor: 'white', maxWidth: 'none', height: 'auto' }
         }}
       >
         <Stack horizontal tokens={{ childrenGap: 1200 }}>
@@ -81,7 +81,7 @@ export class Header extends React.Component<IHeaderProps, IHeaderState> {
               aria-label="Microsoft Fabric Theme Designer page"
               className={pipeFabricClassName}
             >
-              <span> | UI Fabric Theme Designer </span>
+              <Text> | UI Fabric Theme Designer </Text>
             </a>
           </Stack>
           <Stack horizontal styles={{ root: { position: 'absolute', right: '25px' } }}>
