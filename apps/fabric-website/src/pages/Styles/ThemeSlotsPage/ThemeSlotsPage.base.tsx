@@ -30,7 +30,7 @@ export const ThemeSlotsPageBase: React.StatelessComponent<IThemeSlotsPageProps> 
             // Pass all the props to the Page component.
             {...props}
             // Set default page title
-            title="ThemeSlots"
+            title="Theme Slots"
             // Use the platform specific props from the doc.ts file.
             {...ThemeSlotsPageProps[platform]}
             // Use the getSubTitle helper function to get the page header subtitle from the active platform.
