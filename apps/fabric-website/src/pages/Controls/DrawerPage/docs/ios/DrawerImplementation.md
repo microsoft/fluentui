@@ -1,12 +1,6 @@
-### Designs
-
-Coming soon
-
 ### Control name
 
-`MSDrawerController` Lightweight alternative to a full-screen view.
-
-<!-- `MSPopupMenuController` Implements a drawer or action sheet for commands or options. -->
+`MSDrawerController`
 
 ### Library
 

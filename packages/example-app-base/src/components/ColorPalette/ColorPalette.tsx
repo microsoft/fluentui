@@ -1,21 +1,25 @@
 import * as React from 'react';
-import { css, Icon, TooltipHost, FocusZone, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
+import { css, Icon, TooltipHost, TooltipDelay, FocusZone, IProcessedStyleSet, classNamesFunction, styled } from 'office-ui-fabric-react';
 import * as colorCheck from 'color-check';
-import { IColorPaletteProps, IColor, IColorCode, IColorPaletteStyleProps, IColorPaletteStyles } from './ColorPalette.types';
+import { IColorPaletteProps, IColorSwatch, IColorPaletteStyleProps, IColorPaletteStyles, IColorSwatchCode } from './ColorPalette.types';
 import { getStyles } from './ColorPalette.styles';
 
 const getClassNames = classNamesFunction<IColorPaletteStyleProps, IColorPaletteStyles>();
 
 export interface IColorPaletteState {
-  selectedColor?: IColor;
+  selectedColor: IColorSwatch;
 }
 
 class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPaletteState> {
-  public readonly state = {
-    selectedColor: this.props.colors[0]
-  };
-
   private _classNames: IProcessedStyleSet<IColorPaletteStyles>;
+
+  public constructor(props: IColorPaletteProps) {
+    super(props);
+
+    this.state = {
+      selectedColor: props.colors[0]
+    };
+  }
 
   public componentDidMount(): void {
     this._selectColor(this.props.colors[0]);
@@ -28,10 +32,10 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
   }
 
   public render(): JSX.Element {
-    const { colors, isCondensed, styles, theme } = this.props;
+    const { colors, isCondensed, styles, theme, className } = this.props;
     const { selectedColor } = this.state;
 
-    this._classNames = getClassNames(styles, { isCondensed, theme: theme! });
+    this._classNames = getClassNames(styles, { isCondensed, theme: theme!, className });
 
     return (
       <div className={this._classNames.root}>
@@ -41,10 +45,10 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     );
   }
 
-  private _renderGrid = (colors: IColor[]) => {
+  private _renderGrid = (colors: IColorSwatch[]) => {
     return (
       <FocusZone as="ul" className={this._classNames.grid}>
-        {colors.map((color: IColor) => {
+        {colors.map((color: IColorSwatch) => {
           return this._renderSwatch(color);
         })}
       </FocusZone>
@@ -52,11 +56,24 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
   };
 
   // @todo: Use Fabric Core classes instead of inline styles.
-  private _renderSwatch = (color: IColor) => {
-    const { hex, icon } = color;
+  private _renderSwatch = (color: IColorSwatch) => {
+    const { hex, icon, code } = color;
+    let themeSlot;
+    if (code) {
+      themeSlot = code.themeSlot;
+    }
     const { name = hex } = color;
     const classNames = this._classNames;
     const isSelected = JSON.stringify(this.state.selectedColor) === JSON.stringify(color);
+
+    const swatchContent = (
+      <div className={css(classNames.swatchContent, isSelected && classNames.swatchContentSelected)}>
+        <span className={classNames.swatchName} title={name}>
+          {name}
+        </span>
+        {icon && <Icon className={classNames.swatchIcon} iconName={icon} />}
+      </div>
+    );
 
     return (
       <li
@@ -69,17 +86,18 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
         style={{ backgroundColor: color.hex }}
         data-is-focusable={true}
       >
-        <div className={css(classNames.swatchContent, isSelected && classNames.swatchContentSelected)}>
-          <span className={classNames.swatchName} title={name}>
-            {name}
-          </span>
-          {icon && <Icon className={classNames.swatchIcon} iconName={icon} />}
-        </div>
+        {themeSlot ? (
+          <TooltipHost hostClassName={classNames.swatchTooltip} delay={TooltipDelay.long} content={`Theme slot: ${themeSlot}.`}>
+            {swatchContent}
+          </TooltipHost>
+        ) : (
+          swatchContent
+        )}
       </li>
     );
   };
 
-  private _renderDetail = (color: IColor): JSX.Element => {
+  private _renderDetail = (color: IColorSwatch): JSX.Element => {
     const { hex, code } = color;
     const { name = hex } = color;
     const textColor = colorCheck.colorBrightnessDifference('#ffffff', hex) ? '#ffffff' : '#000000';
@@ -113,16 +131,18 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
     );
   };
 
-  private _getCodeAriaLabel(code: IColorCode): string | undefined {
-    const { core, react } = code;
-    if (core || react) {
-      return (core ? `Fabric Core: ${core}. ` : '') + (react ? `Fabric React: ${react}` : '');
+  private _getCodeAriaLabel(code: IColorSwatchCode): string | undefined {
+    const { core, react, themeSlot } = code;
+    if (core || react || themeSlot) {
+      return (
+        (core ? `Fabric Core: ${core}. ` : '') + (react ? `Fabric React: ${react}. ` : '') + (themeSlot ? `Theme slot: ${themeSlot}.` : '')
+      );
     }
   }
 
-  private _renderCodeDetails = (code: IColorCode): JSX.Element | null => {
-    const { core, react } = code;
-    if (core || react) {
+  private _renderCodeDetails = (code: IColorSwatchCode): JSX.Element | null => {
+    const { core, react, themeSlot } = code;
+    if (core || react || themeSlot) {
       return (
         <div>
           {core && (
@@ -135,13 +155,18 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
               Fabric React: <code>{react}</code>
             </p>
           )}
+          {themeSlot && (
+            <p>
+              Theme slot: <code>{themeSlot}</code>
+            </p>
+          )}
         </div>
       );
     }
     return null;
   };
 
-  private _selectColor = (color: IColor): void => {
+  private _selectColor = (color: IColorSwatch): void => {
     this.setState({
       selectedColor: color
     });

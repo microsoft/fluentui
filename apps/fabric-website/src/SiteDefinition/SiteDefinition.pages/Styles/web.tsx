@@ -13,10 +13,15 @@ export const stylesPagesWeb: INavPage[] = [
     title: 'Colors',
     url: '#/styles/web/colors',
     isCategory: true,
-    // workaround to show the Products page if someone goes directly to #/styles/web/colors
-    component: () => <LoadingComponent title="Products" />,
-    getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/ProductsPage').ColorsProductsPage)),
     pages: [
+      {
+        // workaround to show the Products page if someone goes directly to #/styles/web/colors
+        title: 'Colors',
+        url: '#/styles/web/colors',
+        isHiddenFromMainNav: true,
+        component: () => <LoadingComponent title="Products" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/ProductsPage').ColorsProductsPage))
+      },
       {
         title: 'Products',
         url: '#/styles/web/colors/products',
@@ -121,6 +126,13 @@ export const stylesPagesWeb: INavPage[] = [
     component: () => <LoadingComponent title="Localization" />,
     getComponent: cb =>
       require.ensure([], require => cb(require<any>('../../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
+  },
+  {
+    title: 'Fluent Theme',
+    url: '#/styles/web/fluent-theme',
+    component: () => <LoadingComponent title="Fluent Theme" />,
+    getComponent: cb =>
+      require.ensure([], require => cb(require<any>('../../../pages/Styles/FluentThemePage/FluentThemePage').FluentThemePage))
   },
   {
     title: 'Theme Designer',

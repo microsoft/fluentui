@@ -86,6 +86,10 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;
@@ -446,6 +450,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                   word-wrap: break-word;
                 }
             htmlFor="TextField4"
+            id="TextFieldLabel6"
           >
             Input inside trap zone
           </label>
@@ -481,6 +486,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
           >
             <input
               aria-invalid={false}
+              aria-labelledby="TextFieldLabel6"
               className=
                   ms-TextField-field
                   {
@@ -516,21 +522,11 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
                     display: none;
                   }
                   &::placeholder {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
                     color: #666666;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
                     color: #666666;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     opacity: 1;
                   }
               id="TextField4"

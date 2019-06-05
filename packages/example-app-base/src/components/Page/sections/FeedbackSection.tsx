@@ -6,7 +6,6 @@ import * as styles from '../Page.module.scss';
 
 export const FeedbackSection: React.StatelessComponent<IPageSectionPropsWithSectionName> = props => {
   const { className, sectionName, readableSectionName, style, title, id } = props;
-  const feedbackList = <FeedbackList title={title!} />;
 
   return (
     <div className={css(styles.feedbackSection, className)} style={style}>
@@ -15,7 +14,9 @@ export const FeedbackSection: React.StatelessComponent<IPageSectionPropsWithSect
           {readableSectionName || sectionName}
         </h2>
       </div>
-      <div className={styles.feedbackList}>{feedbackList}</div>
+      <div className={styles.feedbackList}>
+        <FeedbackList title={title!} />
+      </div>
     </div>
   );
 };

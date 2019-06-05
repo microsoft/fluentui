@@ -7,6 +7,14 @@ Get started with React and learn how to build your first projects.
   <li class="mdut--full">[Fabric React tutorial](https://github.com/OfficeDev/office-ui-fabric-react/wiki/Getting-Started-with-UI-Fabric)</li>
 </ul>
 
+### Release notes and demos
+
+View Fabric React's versioned release notes and component demos.
+
+<ul class="md-list--flex">
+  <li class="mdut--full">[Release notes and demos](https://aka.ms/FabricDemo)</li>
+</ul>
+
 <h3 id="sharepoint-framework-dev">SharePoint Framework</h3>
 
 SharePoint uses Fabric, so if you’re building on top of or within a SharePoint experience, you can be sure that your UI will blend in.

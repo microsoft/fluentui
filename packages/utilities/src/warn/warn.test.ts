@@ -44,9 +44,54 @@ describe('warnMutuallyExclusive', () => {
     expect(_lastWarning).toEqual(undefined);
   });
 
-  it('can warn on mutual exlusive props', () => {
+  it('does not warn unnecessarily when the key of the exclusive map is explicitly undefined', () => {
+    warnMutuallyExclusive('Foo', { foo: undefined, bar: 1 }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('does not warn unnecessarily when the matching prop of the exclusive map key is explicitly undefined', () => {
+    warnMutuallyExclusive('Foo', { foo: 1, bar: undefined }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('does not warn unnecessarily when both of them are explicitly undefined', () => {
+    warnMutuallyExclusive('Foo', { foo: undefined, bar: undefined }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('does not warn unnecessarily when the key of the exclusive map is implicitly undefined', () => {
     // tslint:disable-next-line:no-any
-    warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' } as any);
+    warnMutuallyExclusive('Foo', { bar: 1 }, { foo: 'bar' } as any);
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('does not warn unnecessarily when the matching prop of the exclusive map is implicitly undefined', () => {
+    warnMutuallyExclusive('Foo', { foo: 1 }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('does not warn unnecessarily when both of the props are implicitly undefined ', () => {
+    warnMutuallyExclusive('Foo', {}, {});
+    expect(_lastWarning).toEqual(undefined);
+  });
+
+  it('can warn on mutual exclusive props', () => {
+    warnMutuallyExclusive('Foo', { foo: 1, bar: 1 }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+  });
+
+  it('can warn if the exclusive props with the key in the map is null', () => {
+    warnMutuallyExclusive('Foo', { foo: null, bar: 1 }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+  });
+
+  it('can warn if the matching key in exclusive map is null', () => {
+    warnMutuallyExclusive('Foo', { foo: 1, bar: null }, { foo: 'bar' });
+    expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
+  });
+
+  it('can warn if both of the props are null', () => {
+    warnMutuallyExclusive('Foo', { foo: null, bar: null }, { foo: 'bar' });
     expect(_lastWarning).toEqual(`Foo property 'foo' is mutually exclusive with 'bar'. Use one or the other.`);
   });
 });

@@ -1,6 +1,6 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { normalize, FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
-import { DateRangeType } from '../../../utilities/dateValues/DateValues';
+import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
@@ -48,13 +48,18 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         alignItems: 'center',
         fontSize: FontSizes.medium,
         color: palette.neutralPrimary,
-        display: 'inline-flex',
+        display: 'inline-block',
         flexGrow: 1,
         fontWeight: FontWeights.semibold,
         padding: '0 4px 0 10px',
         border: 'none',
         backgroundColor: 'transparent',
-        borderRadius: 2
+        borderRadius: 2,
+        lineHeight: 28,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textAlign: 'start',
+        textOverflow: 'ellipsis'
       },
       headerIsClickable && {
         selectors: {

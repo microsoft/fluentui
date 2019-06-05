@@ -1,7 +1,9 @@
 import { IStyleFunctionOrObject, IStyleFunction, classNamesFunction, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { ITheme, IStyle } from 'office-ui-fabric-react/lib/Styling';
+import { NeutralColors } from '@uifabric/fluent-theme';
 import * as React from 'react';
-import { CodeSnippet, codeFontFamily } from '../CodeSnippet/index';
+import { CodeSnippet } from '../CodeSnippet/index';
+import { baseCodeStyle } from '../CodeSnippet/CodeSnippet.styles';
 
 export interface IMarkdownCodeProps {
   className?: string;
@@ -14,18 +16,14 @@ export interface IMarkdownCodeStyles {
   root: IStyle;
 }
 
-export type IMarkdownCodeStyleProps = Required<Pick<IMarkdownCodeProps, 'theme'>>;
+export type IMarkdownCodeStyleProps = {};
 
-const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = props => {
-  const { theme } = props;
+const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = () => {
   return {
     root: {
-      fontFamily: codeFontFamily,
-      fontSize: '14px',
+      ...baseCodeStyle,
       padding: '0 4px',
-      background: theme.palette.neutralLighter,
-      border: '1px solid',
-      borderColor: theme.palette.neutralLight,
+      border: '1px solid ' + NeutralColors.gray30,
       borderRadius: 3
     }
   };
@@ -34,8 +32,8 @@ const getStyles: IStyleFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles> = 
 const getClassNames = classNamesFunction<IMarkdownCodeStyleProps, IMarkdownCodeStyles>();
 
 const MarkdownCodeBase: React.StatelessComponent<IMarkdownCodeProps> = props => {
-  const { theme, className, styles, ...rest } = props;
-  const classNames = getClassNames(styles, { theme: theme! });
+  const { className, styles, ...rest } = props;
+  const classNames = getClassNames(styles);
 
   const language = (className || '').replace('lang-', '');
   if (language || (typeof props.children === 'string' && props.children.indexOf('\n') !== -1)) {

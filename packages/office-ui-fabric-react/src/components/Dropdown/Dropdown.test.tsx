@@ -24,8 +24,17 @@ const DEFAULT_OPTIONS: IDropdownOption[] = [
 ];
 
 describe('Dropdown', () => {
+  let container: HTMLElement;
   beforeEach(() => {
     resetIds();
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    if (container) {
+      ReactDOM.unmountComponentAtNode(container);
+    }
   });
 
   describe('single-select', () => {
@@ -36,7 +45,6 @@ describe('Dropdown', () => {
     });
 
     it('Can flip between enabled and disabled.', () => {
-      const container = document.createElement('div');
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
@@ -50,8 +58,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders no selected item in default case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -60,8 +66,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(
         <Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} />,
         container
@@ -73,8 +77,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -83,8 +85,6 @@ describe('Dropdown', () => {
     });
 
     it('does not change the selected item in when defaultKey changes', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -96,8 +96,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item in controlled case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" selectedKey="1" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -106,8 +104,6 @@ describe('Dropdown', () => {
     });
 
     it('does change the selected item in when selectedKey changes', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" selectedKey="1" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -129,13 +125,11 @@ describe('Dropdown', () => {
       });
 
       expect(wrapper.find('.ms-Dropdown-title').text()).toEqual('');
+      wrapper.unmount();
     });
 
     it('Can change items in uncontrolled case', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
-
-      document.body.appendChild(container);
 
       try {
         ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKey="1" options={DEFAULT_OPTIONS} />, container);
@@ -154,10 +148,7 @@ describe('Dropdown', () => {
     });
 
     it('issues the onChange callback when the selected item is different', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
-
-      document.body.appendChild(container);
 
       const onChangeSpy = jest.fn();
 
@@ -179,10 +170,7 @@ describe('Dropdown', () => {
     });
 
     it('issues the onChange callback when the selected item is the same if notifyOnReselect is true', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
-
-      document.body.appendChild(container);
 
       const onChangeSpy = jest.fn();
 
@@ -203,10 +191,7 @@ describe('Dropdown', () => {
     });
 
     it('issues the onDismiss callback when dismissing options callout', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
-
-      document.body.appendChild(container);
 
       const onDismissSpy = jest.fn();
 
@@ -241,6 +226,7 @@ describe('Dropdown', () => {
       wrapper.update();
 
       expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([selectedKey]);
+      wrapper.unmount();
     });
 
     it('selectedIndices should not contains -1 even when selectedKey is not in options', () => {
@@ -259,13 +245,11 @@ describe('Dropdown', () => {
       wrapper.update();
 
       expect((dropdown.current as DropdownBase).state.selectedIndices).toEqual([]);
+      wrapper.unmount();
     });
 
     it('does not issue the onChange callback when the selected item is not different', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
-
-      document.body.appendChild(container);
 
       const onChangeSpy = jest.fn();
 
@@ -283,7 +267,6 @@ describe('Dropdown', () => {
     });
 
     it('Keypresses on a disabled dropdown has no effect.', () => {
-      const container = document.createElement('div');
       const options = [...DEFAULT_OPTIONS];
       options[3] = { key: 3, text: '3', selected: true };
       ReactDOM.render(<Dropdown label="testgroup" disabled options={options} />, container);
@@ -298,7 +281,6 @@ describe('Dropdown', () => {
     });
 
     it('Keypresses on a normal dropdown selects the right, valid items.', () => {
-      const container = document.createElement('div');
       const options = [...DEFAULT_OPTIONS];
       options[3] = { key: 3, text: '3', selected: true };
       ReactDOM.render(<Dropdown label="testgroup" options={options} />, container);
@@ -315,8 +297,6 @@ describe('Dropdown', () => {
     });
 
     it('Will select the first valid item on focus', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.focus(dropdownRoot);
@@ -326,8 +306,6 @@ describe('Dropdown', () => {
     });
 
     it('Will select the first valid item on Home keypress', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
@@ -337,8 +315,6 @@ describe('Dropdown', () => {
     });
 
     it('Will select the last valid item on End keypress', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
@@ -348,11 +324,9 @@ describe('Dropdown', () => {
     });
 
     it('Will skip over headers and separators on keypress', () => {
-      const container = document.createElement('div');
       let dropdownRoot;
       let titleElement;
 
-      document.body.appendChild(container);
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
 
@@ -368,10 +342,7 @@ describe('Dropdown', () => {
     });
 
     it('Shows correct tooltip with and without title prop specified', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
-
-      document.body.appendChild(container);
 
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} />, container);
       dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
@@ -387,6 +358,17 @@ describe('Dropdown', () => {
       const thirdItemElement = document.querySelector('.ms-Dropdown-item[data-index="3"]') as HTMLElement;
       expect(thirdItemElement.getAttribute('title')).toEqual('3');
     });
+
+    it('opens on focus if openOnKeyboardFocus is true', () => {
+      let dropdownRoot: HTMLElement | undefined;
+
+      ReactDOM.render(<Dropdown key={'asdf'} openOnKeyboardFocus label="testgroup" options={DEFAULT_OPTIONS} />, container);
+      dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      ReactTestUtils.Simulate.focus(dropdownRoot);
+
+      const secondItemElement = document.querySelector('.ms-Dropdown-item[data-index="2"]') as HTMLElement;
+      expect(!!secondItemElement).toEqual(true);
+    });
   });
 
   describe('multi-select', () => {
@@ -397,8 +379,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders no selected item in default case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -407,8 +387,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item if option specifies selected', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(
         <Dropdown label="testgroup" options={[{ key: '1', text: '1', selected: true }, { key: '2', text: '2' }]} multiSelect />,
         container
@@ -434,6 +412,7 @@ describe('Dropdown', () => {
       wrapper.update();
       state = (dropdown.current as DropdownBase).state.selectedIndices;
       expect(state).toEqual(selectedKeys);
+      wrapper.unmount();
     });
 
     it('selectedIndices should not contains -1 even when selectedKeys item is not in options', () => {
@@ -455,8 +434,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders multiple selected items if multiple options specify selected', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(
         <Dropdown
           label="testgroup"
@@ -472,8 +449,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders a selected item in uncontrolled case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -482,8 +457,6 @@ describe('Dropdown', () => {
     });
 
     it('does not change the selected items when defaultSelectedKeys changes', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" defaultSelectedKeys={['1', '2']} multiSelect options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -496,8 +469,6 @@ describe('Dropdown', () => {
     });
 
     it('Renders selected items in controlled case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -506,8 +477,6 @@ describe('Dropdown', () => {
     });
 
     it('changes selected items in controlled case', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" selectedKeys={['1', '3']} multiSelect options={DEFAULT_OPTIONS} />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
@@ -518,8 +487,21 @@ describe('Dropdown', () => {
       expect(titleElement.textContent).toEqual('2, 4');
     });
 
+    it("Preserves selected items in controlled case if they don't change", () => {
+      ReactDOM.render(<Dropdown label="testgroup" selectedKey={'1'} options={DEFAULT_OPTIONS} />, container);
+      const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
+      const titleElement = dropdownRoot.querySelector('.ms-Dropdown-title') as HTMLElement;
+
+      expect(titleElement.textContent).toEqual('1');
+      ReactTestUtils.Simulate.click(dropdownRoot);
+
+      const secondItemElement = document.querySelectorAll('.ms-Dropdown-item')[2] as HTMLElement;
+      ReactTestUtils.Simulate.click(secondItemElement);
+
+      expect(titleElement.textContent).toEqual('1');
+    });
+
     it('Can change items in uncontrolled case', () => {
-      const container = document.createElement('div');
       let dropdownRoot: HTMLElement | undefined;
 
       document.body.appendChild(container);
@@ -605,8 +587,6 @@ describe('Dropdown', () => {
     */
 
     it('Will not select the first valid item on keypress', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.down });
@@ -616,8 +596,6 @@ describe('Dropdown', () => {
     });
 
     it('Will not select the first valid item on Home keypress', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.home });
@@ -627,8 +605,6 @@ describe('Dropdown', () => {
     });
 
     it('Will not select the last valid item on End keypress', () => {
-      const container = document.createElement('div');
-
       ReactDOM.render(<Dropdown label="testgroup" options={DEFAULT_OPTIONS} multiSelect />, container);
       const dropdownRoot = container.querySelector('.ms-Dropdown') as HTMLElement;
       ReactTestUtils.Simulate.keyDown(dropdownRoot, { which: KeyCodes.end });
@@ -638,7 +614,6 @@ describe('Dropdown', () => {
     });
 
     it('Will skip disabled items on keydown', () => {
-      const container = document.createElement('div');
       const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
 
       ReactDOM.render(<Dropdown label="testgroup" options={options} />, container);
@@ -655,7 +630,6 @@ describe('Dropdown', () => {
 
   describe('Aria attributes', () => {
     it('does not apply aria-labelledby if no label is provided', () => {
-      const container = document.createElement('div');
       const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
 
       ReactDOM.render(<Dropdown options={options} />, container);
@@ -665,7 +639,6 @@ describe('Dropdown', () => {
     });
 
     it('does not apply aria-labelledby if an empty label is provided', () => {
-      const container = document.createElement('div');
       const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
 
       ReactDOM.render(<Dropdown label="" options={options} />, container);
@@ -675,7 +648,6 @@ describe('Dropdown', () => {
     });
 
     it('applies aria-labelledby if a non-empty label is provided', () => {
-      const container = document.createElement('div');
       const options = [{ key: 0, text: '1' }, { key: 1, text: '2', disabled: true }, { key: 2, text: '3' }];
 
       ReactDOM.render(<Dropdown label="Test label" options={options} />, container);
@@ -722,7 +694,6 @@ describe('Dropdown', () => {
     }
 
     it('defaultSelectedKey value is respected if Dropdown options change for single-select Dropdown.', () => {
-      const container = document.createElement('div');
       ReactDOM.render(<DropdownWithChangingProps multi={false} />, container);
       const dropdownOptionText = container.querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
 
@@ -730,7 +701,6 @@ describe('Dropdown', () => {
     });
 
     it('defaultSelectedKeys value is respected if Dropdown options change for multi-select Dropdown.', () => {
-      const container = document.createElement('div');
       ReactDOM.render(<DropdownWithChangingProps multi={true} />, container);
       const dropdownOptionText = container.querySelector('.ms-Dropdown-title>span') as HTMLSpanElement;
 

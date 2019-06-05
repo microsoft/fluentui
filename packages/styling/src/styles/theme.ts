@@ -1,4 +1,4 @@
-import { Customizations, merge } from '@uifabric/utilities';
+import { Customizations, merge, getWindow } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
@@ -18,7 +18,7 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  let win = typeof window !== 'undefined' ? window : undefined;
+  const win = getWindow();
 
   // tslint:disable:no-string-literal no-any
   if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {

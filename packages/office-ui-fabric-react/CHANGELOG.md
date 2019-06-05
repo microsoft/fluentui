@@ -1,6 +1,184 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 10 May 2019 12:36:11 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+
+## 6.189.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- adding missing filetype mappings to support LPC and other partners
+- Fix TS 3.5 typing issues.
+- Consume Selection from Utilities
+
+### Patches
+
+- BaseButton: Render placeholder icon if iconName is empty string
+- ContextualMenu: When menus are rendered with the `persistMenu` flag, the scrollbar now renders correctly in Edge.
+- add tooltips to Calendar buttons without text
+- TextField: Adds aria-labelledby to input
+
+## 6.188.2
+Tue, 04 Jun 2019 12:22:18 GMT
+
+### Patches
+
+- Coachmark: fix default colors assignment to pull from the theme object.
+
+## 6.188.1
+Mon, 03 Jun 2019 23:04:02 GMT
+
+### Patches
+
+- Dropdown: fix issue where onchange wasnt called
+- Remove circular imports in ContextualMenu.tsx
+- Searchbox: Stop preventing default if we don't handle the keypress"
+
+## 6.188.0
+Mon, 03 Jun 2019 12:23:18 GMT
+
+### Minor changes
+
+- Updating DatePicker and Calendar accessibility
+- Fixed SplitButton styling for menu icon and dividers in disabled state
+
+## 6.187.2
+Fri, 31 May 2019 12:21:27 GMT
+
+### Patches
+
+- TeachingBubble: Updated entrance animation for teaching bubble in TeachingBubble.styles.ts. Removed jelly animation and replaced with new motion spec entrance animation.
+
+## 6.187.1
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Autofill: makes sure the fresh input is retrieved at the time of composition end
+- Refactor common logic out of _dismissOnLostFocus to a generalized function in order to decouple handling of _dismissOnScroll from _dismissOnLostFocus
+- Remove extra role attribute from callout root element, support aria-roledescription on callout main where role already resides
+- DetailList: only select the first item on keydown from header if there isn't already something selected
+- Dropdown: fix issue where dropdown did not respect selectedKey(s) prop
+
+## 6.187.0
+Wed, 29 May 2019 12:21:24 GMT
+
+### Minor changes
+
+- Persona: rename and export function to get color
+- Adds an example to TextField with customized masks
+
+### Patches
+
+- Fix aria-label in Dropdown options list
+- Revert styled perf fixes temporarily.
+- Nav: Prepend link name to aria label for expand button and set it as default if no label is provided
+- TextField: remove unecessary font override for ::placeholder
+
+## 6.186.1
+Fri, 24 May 2019 14:51:14 GMT
+
+### Patches
+
+- remove usage of bare process
+
+## 6.186.0
+Thu, 23 May 2019 22:14:40 GMT
+
+### Minor changes
+
+- TeachingBubble: Add footerContent prop to render custom footer text
+
+### Patches
+
+- Dropdown: Replace some palette slot usage with semantic slots.
+- Examples: Remove relative imports.
+
+## 6.185.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Addressing a variety of problems related to style recalculations.
+
+### Patches
+
+- SelectableDroppableText: fixes `defaultvalue` tag usage that was causing some errors in using the api.json with @microsoft/api-documenter package.
+- Preserve Selection modal state during single-select
+- Ensure non-selectable items may still be invoked
+
+## 6.184.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+- Dropdown: Add required visual hint when label is not provided.
+- Updated Toggle component to accept JSX Elements. Added screener and snapshot tests for new changes
+
+### Patches
+
+- Fixed: ComboBox onResolveOptions should have array not object as argument
+- DatePicker: keep validation errors after noop
+
+## 6.183.0
+Mon, 20 May 2019 12:22:33 GMT
+
+### Minor changes
+
+- Add selectedOptions to ComboBox and Dropdown
+- Add a new prop to enable Slider origin from zero
+
+### Patches
+
+- Fix ColorPicker Hex input
+- MessageBar: Add `aria-hidden` property for message bar icon
+
+## 6.182.1
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- [Checkbox] Fix outline on focus.
+
+## 6.182.0
+Wed, 15 May 2019 12:31:44 GMT
+
+### Minor changes
+
+- Nav respects changes to collapsedByDefault
+- Allow custom aria label generation in suggestionStore
+- ShimmeredDetailsList: export to the surface missing API items.
+
+### Patches
+
+- added the title attribute for the cancel icon in the panel which is same as aira-label
+- Add TextField multiple-line errorMessage support
+- This latest PR is to ensure Nav link without icon should not be rendered with <i> place-holder
+
+## 6.181.1
+Tue, 14 May 2019 07:50:31 GMT
+
+### Patches
+
+- The FocusZone photos example now correctly renders focus rectangles.
+- Update Fabric assets link
+
+## 6.181.0
+Tue, 14 May 2019 01:56:43 GMT
+
+### Minor changes
+
+- Dropdown/Combobox: Add prop to allow open on focus
+- DetailsList: Export missing public API symbols
+
+### Patches
+
+- added element id to the ChoiceGroup component
+- In Edge, prevent pickers from showing "ms-clear" icon when typing.
+- Removed a few more `typeof window` references to avoid memory leaks with IE11.
+- Picker/DocPage: fix IBasePickerProps doc comment and add type alias to DocPage.
+- withViewport: Respect value change of skipViewportMeasures by reassigning appropriate resize listener
 
 ## 6.180.0
 Fri, 10 May 2019 12:36:11 GMT
