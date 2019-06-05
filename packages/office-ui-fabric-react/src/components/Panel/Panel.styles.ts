@@ -344,6 +344,13 @@ export const getStyles = (props: IPanelStyleProps): IPanelStyles => {
             marginTop: '0'
           }
         }
+      },
+      !hasCloseButton && {
+        selectors: {
+          [`@media (min-width: ${ScreenWidthMinXLarge}px)`]: {
+            marginTop: '25px'
+          }
+        }
       }
     ],
     headerText: [
