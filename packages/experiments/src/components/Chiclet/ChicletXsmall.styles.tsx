@@ -29,9 +29,11 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     icon: [
       {
         height: 30.32,
-        left: 10,
-        bottom: 10,
-        position: 'absolute'
+        left: 3,
+        bottom: 36,
+        padding: '17px',
+        position: 'absolute',
+        backgroundColor: '	#DCDCDC'
       }
     ],
     /*preview: [
@@ -45,19 +47,9 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
         padding: '2px 0px 2px 2px'
       }
     ],*/
-    info: [
-      {
-        position: 'relative',
-        display: 'block',
-        height: '100%',
-        overflow: 'hidden',
-        wordWrap: 'break-word',
-        width: 400
-      }
-    ],
     title: [
       {
-        padding: '9px 26px 5px 100px',
+        padding: '9px 26px 5px 80px',
         fontSize: 14,
         fontWeight: 'normal',
         fontStyle: 'normal',
@@ -70,6 +62,14 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
+      }
+    ],
+    line: [
+      {
+        height: '1px',
+        marginLeft: '75px',
+        marginRight: '5px',
+        marginTop: '13px'
       }
     ]
   };

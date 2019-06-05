@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
-import * as exampleStyles from './Chiclet.Basic.Example.scss';
+import * as exampleStyles from './Chiclet.Xsmall.Example.scss';
 
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
@@ -11,17 +11,17 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 
   public render(): JSX.Element {
-    const { buttonProps, activities } = this.props;
+    const { buttonProps, attachProp, size } = this.props;
 
-    return _renderFooter(buttonProps, activities);
+    return _renderFooter(buttonProps, attachProp, size);
   }
 }
 
-export interface IChicletFooterExampleState {
+export interface IChicletXsmallExampleState {
   textFieldValue: string;
 }
 
-export class ChicletFooterExample extends React.Component<{}, IChicletFooterExampleState> {
+export class ChicletXsmallExample extends React.Component<{}, IChicletXsmallExampleState> {
   constructor(props: {}) {
     super(props);
 
@@ -31,16 +31,15 @@ export class ChicletFooterExample extends React.Component<{}, IChicletFooterExam
   }
 
   public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [
-      { iconProps: { iconName: 'More' } },
-      { iconProps: { iconName: 'Save' } },
-      { iconProps: { iconName: 'Share' } }
-    ];
-    const footer = <FooterComponent buttonProps={footerButtonProps} activities="10 Comments  16 Shares  87 Views" />;
+    const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
+
+    const attachButtonProp: IButtonProps = { iconProps: { iconName: 'Attach' } };
+
+    const footer = <FooterComponent buttonProps={footerButtonProps} attachProp={attachButtonProp} size="" />;
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} size={ChicletSize.medium} footer={footer} />
+        <Chiclet url={TEST_URL} size={ChicletSize.xSmall} footer={footer} />
       </Stack>
     );
   }
@@ -48,13 +47,17 @@ export class ChicletFooterExample extends React.Component<{}, IChicletFooterExam
 
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
-  activities: string;
+  attachProp: IButtonProps;
+  size: string;
 }
 
-function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
+function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps, size: string): React.ReactElement<HTMLDivElement> {
   return (
-    <div className={exampleStyles.footer}>
-      <div className={exampleStyles.activities}>{activities ? activities : null}</div>
+    <div className={exampleStyles.samp}>
+      <div className={exampleStyles.attach}>
+        <IconButton {...attachProp} />
+      </div>
+      <div className={exampleStyles.size}>{size ? size : 'samp'}</div>
       <div className={exampleStyles.actions}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {

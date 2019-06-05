@@ -7,6 +7,8 @@ import { ChicletBreadcrumbExample } from './examples/Chiclet.Breadcrumb.Example'
 const ChicletBreadcrumbExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Breadcrumb.Example.tsx') as string;
 import { ChicletFooterExample } from './examples/Chiclet.Footer.Example';
 const ChicletFooterExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Footer.Example.tsx') as string;
+import { ChicletXsmallExample } from './examples/Chiclet.Xsmall.Example';
+const ChicletXsmallExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Xsmall.Example.tsx') as string;
 
 export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -22,8 +24,11 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             <ExampleCard title="Medium-sized Chiclet with Breadcrumb" isOptIn={true} code={ChicletBreadcrumbExampleCode}>
               <ChicletBreadcrumbExample />
             </ExampleCard>
-            <ExampleCard title="Xsmall Chiclet" isOptIn={true} code={ChicletFooterExampleCode}>
+            <ExampleCard title="Medium-sized Chiclet with Footer" isOptIn={true} code={ChicletFooterExampleCode}>
               <ChicletFooterExample />
+            </ExampleCard>
+            <ExampleCard title="xSmall-sized Chiclet" isOptIn={true} code={ChicletXsmallExampleCode}>
+              <ChicletXsmallExample />
             </ExampleCard>
           </div>
         }

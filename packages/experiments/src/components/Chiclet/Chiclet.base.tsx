@@ -7,6 +7,8 @@ import { IChicletProps, ChicletSize } from './Chiclet.types';
 import { PropertiesTable } from '../../../../example-app-base/lib';
 import { IChicletCardProps } from './ChicletCard.types';
 import { IChicletXsmallProps } from './ChicletXsmall.types';
+import { FooterComponent } from './examples/Chiclet.Footer.Example';
+import { IButtonProps } from 'office-ui-fabric-react';
 
 export interface IChicletState {
   chicletCardProps?: IChicletCardProps;
@@ -18,6 +20,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
     super(props);
 
     const chicletCardProps = getOpenGraphProperties(this.props.url);
+    const chicletXsmallProps = getOpenGraphProperties(this.props.url);
     this.state = { chicletCardProps: chicletCardProps };
   }
 
@@ -38,7 +41,7 @@ export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
         return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
       // @todo: handle other types of chiclets
       case ChicletSize.xSmall:
-        return <ChicletXsmall title="Sample Title" />;
+        return <ChicletXsmall {...chicletXsmallProps} title="Contuso 2018 Financial Planning" itemType="pptx" footer={footer} />;
       default:
         return <ChicletCard {...chicletCardProps} onClick={this._onClick} footer={footer} description={description} />;
     }

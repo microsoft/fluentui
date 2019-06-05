@@ -31,7 +31,8 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
       className,
       footer,
       theme,
-      styles
+      styles,
+      size
     } = this.props;
     const actionable = onClick ? true : false;
 
@@ -45,7 +46,9 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
+        <div className={this._classNames.preview}>{preview}</div>
         <div className={this._classNames.title}>{title ? title : 'test'}</div>
+        <hr className={this._classNames.line} />
         {footer}
       </div>
     );
@@ -103,12 +106,7 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
       }
     }
 
-    return (
-      <div>
-        {image}
-        {icon}
-      </div>
-    );
+    return <div>{icon}</div>;
   }
 
   private _onClick = (ev: React.MouseEvent<HTMLElement>): void => {

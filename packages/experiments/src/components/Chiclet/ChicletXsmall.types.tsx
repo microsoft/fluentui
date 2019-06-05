@@ -35,6 +35,11 @@ export interface IChicletXsmallStyles {
    * Style for the dile description, which could be a link, description, etc.
    */
   description?: IStyle;
+
+  /**
+   * Style for the line
+   */
+  line?: IStyle;
 }
 
 export interface IChicletXsmallProps extends React.Props<ChicletXsmallBase> {
@@ -97,6 +102,11 @@ export interface IChicletXsmallProps extends React.Props<ChicletXsmallBase> {
   imageType?: string;
   imageAlt?: string;
   url?: string;
+
+  /**
+   * The size of file.
+   */
+  size?: string;
 }
 
 export interface IChicletXsmallStyleProps {
