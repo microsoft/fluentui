@@ -1,6 +1,64 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 17 May 2019 12:22:31 GMT and should not be manually modified.
+This log was last generated on Tue, 04 Jun 2019 12:22:17 GMT and should not be manually modified.
+
+## 6.78.5
+Tue, 04 Jun 2019 12:22:17 GMT
+
+### Patches
+
+- Added a signal to wrap an icon for republising reminder
+
+## 6.78.4
+Mon, 03 Jun 2019 23:04:02 GMT
+
+*Version update only*
+
+## 6.78.3
+Fri, 31 May 2019 12:21:26 GMT
+
+### Patches
+
+- Fix issue where SideBar ignored colors props
+- and updated snapshots.
+
+## 6.78.2
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled perf fixes temporarily.
+- PersonaCoin: use renamed persona color function
+
+## 6.78.1
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Examples: Remove relative imports.
+
+## 6.78.0
+Wed, 22 May 2019 12:21:34 GMT
+
+### Minor changes
+
+- Added a variant to MicroFeedback and converted to use Slots
+
+### Patches
+
+- update azure-themes version
+- Button example updated.
+
+## 6.77.0
+Tue, 21 May 2019 12:20:44 GMT
+
+### Minor changes
+
+- <Fabric> element does not affect global button styling.
+
+### Patches
+
+- Use shared demo app bootstrapping code
 
 ## 6.76.4
 Fri, 17 May 2019 12:22:31 GMT

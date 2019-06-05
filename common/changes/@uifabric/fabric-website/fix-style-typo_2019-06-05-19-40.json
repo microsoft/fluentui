@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Fix uhf style override className.",
+      "packageName": "@uifabric/fabric-website",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "v-jojanz@microsoft.com"
+}

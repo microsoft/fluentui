@@ -7,17 +7,12 @@
     "lib/version.js"
   ],
   "scripts": {
-    "build": "node ../../scripts/just.js build",
-    "just": "node ../../scripts/just.js",
-    "clean": "node ../../scripts/just.js clean",
-    "code-style": "node ../../scripts/just.js code-style",
+    "build": "npx just-scripts build",
+    "just": "npx just-scripts",
+    "clean": "npx just-scripts clean",
+    "code-style": "npx just-scripts code-style",
     "start": "node ./server/index.js"
   },
-  "disabledTasks": [
-    "tslint",
-    "verify-api-extractor",
-    "jest"
-  ],
   "devDependencies": {
     "@types/es6-promise": "0.0.32",
     "@types/react": "16.3.16",
@@ -26,15 +21,16 @@
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "express": "^4.16.3",
-    "compression": "^1.7.2"
+    "compression": "^1.7.2",
+    "@uifabric/build": "*"
   },
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/icons": "^6.5.2",
-    "@uifabric/merge-styles": "^6.17.3",
+    "@uifabric/merge-styles": "^6.18.0",
     "@uifabric/set-version": "^1.1.3",
     "es6-promise": "^4.1.0",
-    "office-ui-fabric-react": "^6.182.1",
+    "office-ui-fabric-react": "^6.189.0",
     "react-dom": "~16.6.3",
     "react": "~16.6.3",
     "tslib": "^1.7.1"

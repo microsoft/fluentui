@@ -1,6 +1,13 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Thu, 16 May 2019 05:28:50 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+
+## 6.5.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- added new extensions to icon groups to support LPC and Outlook mobile
 
 ## 6.4.10
 Thu, 16 May 2019 05:28:50 GMT

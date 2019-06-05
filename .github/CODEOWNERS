@@ -34,7 +34,7 @@ azure-pipelines.yml @ecraig12345 @kenotron
 
 #### Apps
 # component-demo/
-fabric-website/ @jordandrako @ecraig12345
+fabric-website/ @jordandrako @ecraig12345 @Jahnp
 fabric-website-resources/ @ecraig12345
 # ssr-tests/
 # test-bundle-button/ @dzearing
@@ -42,10 +42,10 @@ fabric-website-resources/ @ecraig12345
 Controls/web.tsx @Vitalius1 @natalieethell
 
 #### Packages
-packages/charting/ @Raghurk @veeray @chankev
+packages/charting/ @Raghurk
 packages/codepen-loader/ @ecraig12345 @kenotron
 packages/foundation/ @JasonGore
-packages/example-app-base/ @ecraig12345
+packages/example-app-base/ @ecraig12345 @jordandrako
 packages/file-type-icons/  @KatherineThayerMicrosoft @jahnp @bigbadcapers
 # packages/icons/
 # packages/jest-serializer-merge-styles/
@@ -58,7 +58,7 @@ packages/styling/src/interfaces/ @phkuo
 packages/styling/src/styles/ @phkuo
 # packages/utilities/
 packages/utilities/positioning/ @joschect
-packages/date-time @OfficeDev/uifabric-calendar @jh2he @evlevy
+packages/date-time @OfficeDev/uifabric-calendar @lorejoh @evlevy
 packages/migration/ @ecraig12345 @kenotron
 
 ### Fabric
@@ -68,8 +68,8 @@ common/_themeOverrides.scss @phkuo
 common/_common.scss @phkuo
 
 ### Utilities
-dateMath/     @OfficeDev/uifabric-calendar
-dateValues/   @OfficeDev/uifabric-calendar
+dateMath/     @OfficeDev/uifabric-calendar @lorejoh
+dateValues/   @OfficeDev/uifabric-calendar @lorejoh
 
 ## Components
 Accordion/ @JasonGore
@@ -77,7 +77,7 @@ ActivityItem/ @jdhuntington
 Announced/ @natalieethell
 Breadcrumb/ @jdhuntington
 Button/ @khmakoto
-Calendar/ @OfficeDev/uifabric-calendar
+Calendar/ @OfficeDev/uifabric-calendar @lorejoh
 Callout/ @joschect
 react-cards/Card/  @khmakoto
 Check/ @KevinTCoughlin
@@ -88,7 +88,7 @@ ColorPicker/ @ecraig12345
 ComboBox/ @joschect
 CommandBar/ @micahgodbolt @joschect
 ContextualMenu/ @joschect
-DatePicker/ @OfficeDev/uifabric-calendar
+DatePicker/ @OfficeDev/uifabric-calendar @lorejoh
 DetailsList/ @KevinTCoughlin
 Dialog/ @kkjeer
 DocumentCard/ @yiminwu
@@ -115,8 +115,8 @@ Overlay/ @kkjeer
 Pagination/ @caradong
 Panel/ @kkjeer
 Persona/ @markionium
-PersonaCoin/ @mtennoe @jakob101
-Persona/PersonaConsts.tsx @mtennoe @jakob101
+PersonaCoin/ @mtennoe
+Persona/PersonaConsts.tsx @mtennoe
 pickers/  @joschect
 Pivot/ @jdhuntington
 Popup/ @JasonGore
@@ -147,7 +147,7 @@ Tooltip/ @micahgodbolt
 Announced/docs/ @natalieethell
 # Breadcrumb/docs/
 Button/docs/  @khmakoto
-Calendar/docs/   @OfficeDev/uifabric-calendar
+Calendar/docs/   @OfficeDev/uifabric-calendar @lorejoh
 Callout/docs/  @joschect
 react-cards/Card/docs/  @khmakoto
 # Check/docs/
@@ -157,7 +157,7 @@ ChoiceGroup/docs/   @srideshpande
 # ComboBox/docs/
 CommandBar/docs/   @micahgodbolt
 ContextualMenu/docs/  @joschect
-DatePicker/docs/   @OfficeDev/uifabric-calendar
+DatePicker/docs/   @OfficeDev/uifabric-calendar @lorejoh
 DetailsList/docs/ @KevinTCoughlin
 # Dialog/docs/
 DocumentCard/docs/ @yiminwu

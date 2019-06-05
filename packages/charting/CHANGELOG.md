@@ -1,6 +1,27 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 16 May 2019 17:34:08 GMT and should not be manually modified.
+This log was last generated on Mon, 03 Jun 2019 23:04:02 GMT and should not be manually modified.
+
+## 0.30.0
+Mon, 03 Jun 2019 23:04:02 GMT
+
+### Minor changes
+
+- Add benchmark triangle for HorizontalBarChart
+
+## 0.29.2
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Fix charting build
+
+## 0.29.1
+Tue, 21 May 2019 12:20:44 GMT
+
+### Patches
+
+- Use shared demo app bootstrapping code
 
 ## 0.29.0
 Thu, 16 May 2019 17:34:08 GMT

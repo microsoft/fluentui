@@ -1,6 +1,5 @@
 import * as React from 'react';
-import { Toggle } from '../index';
-import { IToggleTokens } from '../Toggle.types';
+import { IToggleTokens, Toggle } from '@uifabric/experiments';
 
 const tokens1: IToggleTokens = {
   pillHoveredBackground: 'black',

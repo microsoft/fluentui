@@ -15,12 +15,15 @@ import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
+import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderComponent } from '@uifabric/utilities';
 import { IRenderFunction } from '@uifabric/utilities';
+import { ISelection } from '@uifabric/utilities';
+import { ISelectionOptions } from '@uifabric/utilities';
 import { ISlotProp } from '@uifabric/foundation';
 import { IStyle } from '@uifabric/styling';
 import { IStyleableComponentProps } from '@uifabric/foundation';
@@ -29,8 +32,13 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { Omit } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { Selection } from '@uifabric/utilities';
+import { SELECTION_CHANGE } from '@uifabric/utilities';
+import { SelectionDirection } from '@uifabric/utilities';
+import { SelectionMode } from '@uifabric/utilities';
 
 // @public (undocumented)
 export class ActionButton extends BaseComponent<IButtonProps, {}> {
@@ -711,7 +719,7 @@ export enum ConstrainMode {
 }
 
 // @public
-export const ContextualMenu: React_2.StatelessComponent<IContextualMenuProps>;
+export const ContextualMenu: React.StatelessComponent<IContextualMenuProps>;
 
 // @public (undocumented)
 export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -1299,6 +1307,9 @@ export const getNextResizeGroupStateProvider: (measurementCache?: {
     shouldRenderDataForMeasurement: (dataToMeasure: any) => boolean;
     getInitialResizeGroupState: (data: any) => IResizeGroupState;
 };
+
+// @public
+export function getPersonaInitialsColor(props: Pick<IPersonaProps, 'primaryText' | 'text' | 'initialsColor'>): string;
 
 // @public
 export function getShade(color: IColor, shade: Shade, isInverted?: boolean): IColor | null;
@@ -1917,6 +1928,7 @@ export interface IButtonStyles {
     splitButtonContainerFocused?: IStyle;
     splitButtonContainerHovered?: IStyle;
     splitButtonDivider?: IStyle;
+    splitButtonDividerDisabled?: IStyle;
     splitButtonFlexContainer?: IStyle;
     splitButtonMenuButton?: IStyle;
     splitButtonMenuButtonChecked?: IStyle;
@@ -1999,8 +2011,10 @@ export interface ICalendarStrings {
     months: string[];
     nextMonthAriaLabel?: string;
     nextYearAriaLabel?: string;
+    nextYearRangeAriaLabel?: string;
     prevMonthAriaLabel?: string;
     prevYearAriaLabel?: string;
+    prevYearRangeAriaLabel?: string;
     shortDays: string[];
     shortMonths: string[];
     weekNumberFormatString?: string;
@@ -3105,20 +3119,10 @@ export interface IDatePickerState {
 }
 
 // @public (undocumented)
-export interface IDatePickerStrings {
-    closeButtonAriaLabel?: string;
-    days: string[];
-    goToToday: string;
+export interface IDatePickerStrings extends ICalendarStrings {
     invalidInputErrorMessage?: string;
     isOutOfBoundsErrorMessage?: string;
     isRequiredErrorMessage?: string;
-    months: string[];
-    nextMonthAriaLabel?: string;
-    nextYearAriaLabel?: string;
-    prevMonthAriaLabel?: string;
-    prevYearAriaLabel?: string;
-    shortDays: string[];
-    shortMonths: string[];
 }
 
 // @public (undocumented)
@@ -4278,6 +4282,7 @@ export interface IDropdownState {
 // @public
 export type IDropdownStyleProps = Pick<IDropdownProps, 'theme' | 'className' | 'disabled' | 'required'> & {
     hasError: boolean;
+    hasLabel: boolean;
     isOpen: boolean;
     isRenderingPlaceholder: boolean;
     panelClassName?: string;
@@ -4524,7 +4529,9 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     allowFocusRoot?: boolean;
     // @deprecated
     allowTabKey?: boolean;
+    // @deprecated
     ariaDescribedBy?: string;
+    // @deprecated
     ariaLabelledBy?: string;
     as?: React.ReactType;
     checkForNoWrap?: boolean;
@@ -5570,11 +5577,7 @@ export interface INavStyles {
     root: IStyle;
 }
 
-// @public (undocumented)
-export interface IObjectWithKey {
-    // (undocumented)
-    key?: string | number;
-}
+export { IObjectWithKey }
 
 // @public (undocumented)
 export interface IOverflowSet {
@@ -6527,69 +6530,9 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
     removeMenuItemText?: string;
 }
 
-// @public (undocumented)
-export interface ISelection {
-    // (undocumented)
-    canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    count: number;
-    // (undocumented)
-    getItems(): IObjectWithKey[];
-    // (undocumented)
-    getSelectedCount(): number;
-    // (undocumented)
-    getSelectedIndices(): number[];
-    // (undocumented)
-    getSelection(): IObjectWithKey[];
-    // (undocumented)
-    isAllSelected(): boolean;
-    // (undocumented)
-    isIndexSelected(index: number): boolean;
-    // (undocumented)
-    isKeySelected(key: string): boolean;
-    // (undocumented)
-    isModal?(): boolean;
-    // (undocumented)
-    isRangeSelected(fromIndex: number, count: number): boolean;
-    // (undocumented)
-    mode: SelectionMode;
-    // (undocumented)
-    selectToIndex(index: number, clearSelection?: boolean): void;
-    // (undocumented)
-    selectToKey(key: string, clearSelection?: boolean): void;
-    // (undocumented)
-    setAllSelected(isAllSelected: boolean): void;
-    // (undocumented)
-    setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
-    // (undocumented)
-    setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    // (undocumented)
-    setItems(items: IObjectWithKey[], shouldClear: boolean): void;
-    // (undocumented)
-    setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
-    // (undocumented)
-    setModal?(isModal: boolean): void;
-    // (undocumented)
-    toggleAllSelected(): void;
-    // (undocumented)
-    toggleIndexSelected(index: number): void;
-    // (undocumented)
-    toggleKeySelected(key: string): void;
-    // (undocumented)
-    toggleRangeSelected(fromIndex: number, count: number): void;
-}
+export { ISelection }
 
-// @public (undocumented)
-export interface ISelectionOptions {
-    // (undocumented)
-    canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    getKey?: (item: IObjectWithKey, index?: number) => string | number;
-    // (undocumented)
-    onSelectionChanged?: () => void;
-    // (undocumented)
-    selectionMode?: SelectionMode;
-}
+export { ISelectionOptions }
 
 // @public (undocumented)
 export interface ISelectionZone {
@@ -6681,7 +6624,7 @@ export interface IShimmerColors {
 }
 
 // @public
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
     // @deprecated
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
@@ -6855,6 +6798,7 @@ export interface ISliderProps extends React.ClassAttributes<SliderBase> {
     min?: number;
     onChange?: (value: number) => void;
     onChanged?: (event: MouseEvent | TouchEvent, value: number) => void;
+    originFromZero?: boolean;
     showValue?: boolean;
     step?: number;
     styles?: IStyleFunctionOrObject<ISliderStyleProps, ISliderStyles>;
@@ -6881,26 +6825,17 @@ export type ISliderStyleProps = Required<Pick<ISliderProps, 'theme'>> & Pick<ISl
 
 // @public (undocumented)
 export interface ISliderStyles {
-    // (undocumented)
     activeSection: IStyle;
-    // (undocumented)
     container: IStyle;
-    // (undocumented)
     inactiveSection: IStyle;
-    // (undocumented)
     line: IStyle;
-    // (undocumented)
     lineContainer: IStyle;
-    // (undocumented)
     root: IStyle;
-    // (undocumented)
     slideBox: IStyle;
-    // (undocumented)
     thumb: IStyle;
-    // (undocumented)
     titleLabel: IStyle;
-    // (undocumented)
     valueLabel: IStyle;
+    zeroTick: IStyle;
 }
 
 // @public (undocumented)
@@ -7415,6 +7350,7 @@ export interface ITeachingBubbleProps extends React.ClassAttributes<TeachingBubb
     ariaLabelledBy?: string;
     calloutProps?: ICalloutProps;
     componentRef?: IRefObject<ITeachingBubble>;
+    footerContent?: string | JSX.Element;
     hasCloseIcon?: boolean;
     hasCondensedHeadline?: boolean;
     hasSmallHeadline?: boolean;
@@ -7655,7 +7591,7 @@ export interface IToggleProps extends React.HTMLAttributes<HTMLElement> {
     disabled?: boolean;
     inlineLabel?: boolean;
     keytipProps?: IKeytipProps;
-    label?: string;
+    label?: string | JSX.Element;
     // @deprecated (undocumented)
     offAriaLabel?: string;
     offText?: string;
@@ -8643,80 +8579,13 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     protected renderItems: () => JSX.Element[];
 }
 
-// @public (undocumented)
-export class Selection implements ISelection {
-    constructor(options?: ISelectionOptions);
-    // (undocumented)
-    canSelectItem(item: IObjectWithKey, index?: number): boolean;
-    // (undocumented)
-    count: number;
-    // (undocumented)
-    getItems(): IObjectWithKey[];
-    // (undocumented)
-    getKey(item: IObjectWithKey, index?: number): string;
-    // (undocumented)
-    getSelectedCount(): number;
-    // (undocumented)
-    getSelectedIndices(): number[];
-    // (undocumented)
-    getSelection(): IObjectWithKey[];
-    // (undocumented)
-    isAllSelected(): boolean;
-    // (undocumented)
-    isIndexSelected(index: number): boolean;
-    // (undocumented)
-    isKeySelected(key: string): boolean;
-    // (undocumented)
-    isModal(): boolean;
-    // (undocumented)
-    isRangeSelected(fromIndex: number, count: number): boolean;
-    // (undocumented)
-    readonly mode: SelectionMode;
-    // (undocumented)
-    selectToIndex(index: number, clearSelection?: boolean): void;
-    // (undocumented)
-    selectToKey(key: string, clearSelection?: boolean): void;
-    // (undocumented)
-    setAllSelected(isAllSelected: boolean): void;
-    // (undocumented)
-    setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
-    // (undocumented)
-    setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    setItems(items: IObjectWithKey[], shouldClear?: boolean): void;
-    // (undocumented)
-    setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
-    // (undocumented)
-    setModal(isModal: boolean): void;
-    // (undocumented)
-    toggleAllSelected(): void;
-    // (undocumented)
-    toggleIndexSelected(index: number): void;
-    // (undocumented)
-    toggleKeySelected(key: string): void;
-    // (undocumented)
-    toggleRangeSelected(fromIndex: number, count: number): void;
-    }
+export { Selection }
 
-// @public (undocumented)
-export const SELECTION_CHANGE = "change";
+export { SELECTION_CHANGE }
 
-// @public (undocumented)
-export enum SelectionDirection {
-    // (undocumented)
-    horizontal = 0,
-    // (undocumented)
-    vertical = 1,
-}
+export { SelectionDirection }
 
-// @public (undocumented)
-export enum SelectionMode {
-    // (undocumented)
-    multiple = 2,
-    // (undocumented)
-    none = 0,
-    // (undocumented)
-    single = 1,
-}
+export { SelectionMode }
 
 // @public (undocumented)
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {

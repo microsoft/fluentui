@@ -34,7 +34,6 @@ import {
 import { hasSubmenu, getIsChecked, isItemDisabled } from '../../utilities/contextualMenu/index';
 import { withResponsiveMode, ResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 import { Callout, ICalloutContentStyleProps, ICalloutContentStyles } from '../../Callout';
-import { ContextualMenu } from './ContextualMenu';
 import { ContextualMenuItem } from './ContextualMenuItem';
 import { ContextualMenuSplitButton, ContextualMenuButton, ContextualMenuAnchor } from './ContextualMenuItemWrapper/index';
 import { IProcessedStyleSet, mergeStyleSets } from '../../Styling';
@@ -391,8 +390,11 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     return focusZoneProps && focusZoneProps.direction !== undefined ? focusZoneProps.direction : FocusZoneDirection.vertical;
   }
 
-  private _onRenderSubMenu(subMenuProps: IContextualMenuProps) {
-    return <ContextualMenu {...subMenuProps} />;
+  private _onRenderSubMenu(subMenuProps: IContextualMenuProps, defaultRender?: IRenderFunction<IContextualMenuProps>): JSX.Element {
+    throw Error(
+      'ContextualMenuBase: onRenderSubMenu callback is null or undefined. ' +
+        'Please ensure to set `onRenderSubMenu` property either manually or with `styled` helper.'
+    );
   }
 
   private _onRenderMenuList = (

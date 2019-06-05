@@ -87,7 +87,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="true"
-                aria-label="Expand or collapse"
+                aria-label="Home Expand or collapse"
                 className=
                     ms-Nav-chevronButton
                     {
@@ -193,6 +193,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -350,6 +354,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: 36px;
                           line-height: 36px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           overflow: hidden;
                           padding-bottom: 0;
@@ -420,6 +428,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                     onKeyUp={[Function]}
                     onMouseDown={[Function]}
                     onMouseUp={[Function]}
+                    target="_blank"
                     title="Activity"
                   >
                     <div
@@ -499,6 +508,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                           font-weight: 400;
                           height: 36px;
                           line-height: 36px;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           overflow: hidden;
                           padding-bottom: 0;
@@ -641,6 +654,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -721,6 +738,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Documents"
               >
                 <div
@@ -797,6 +815,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -867,6 +889,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Pages"
               >
                 <div
@@ -946,6 +969,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1084,6 +1111,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1154,6 +1185,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Communication and Media"
               >
                 <div
@@ -1231,6 +1263,10 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -1301,6 +1337,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="News"
               >
                 <div

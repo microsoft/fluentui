@@ -2,6 +2,66 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.30.0",
+      "tag": "@uifabric/charting_v0.30.0",
+      "date": "Mon, 03 Jun 2019 23:04:02 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add benchmark triangle for HorizontalBarChart",
+            "author": "luckyrass <luckyrass@163.com>",
+            "commit": "ab4ce86f9936aa28d8351c362c8c20a542e6341f"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.0` to `^6.188.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.29.2",
+      "tag": "@uifabric/charting_v0.29.2",
+      "date": "Thu, 30 May 2019 12:22:06 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix charting build",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "0c51f3d0187279e5a86f011281035db51a7e56ef"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.0` to `^6.187.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.29.1",
+      "tag": "@uifabric/charting_v0.29.1",
+      "date": "Tue, 21 May 2019 12:20:44 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Use shared demo app bootstrapping code",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3d93653335bbd66e7faec628e64b4c380dbfe82d"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.183.0` to `^6.184.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.21.1` to `^6.22.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.29.0",
       "tag": "@uifabric/charting_v0.29.0",
       "date": "Thu, 16 May 2019 17:34:08 GMT",

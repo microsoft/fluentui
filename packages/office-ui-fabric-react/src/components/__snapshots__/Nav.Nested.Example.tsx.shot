@@ -82,7 +82,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                aria-label="Expand or collapse"
+                aria-label="Parent link 1 Expand or collapse"
                 className=
                     ms-Nav-chevronButton
                     {
@@ -187,6 +187,10 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -257,6 +261,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Parent link 1"
               >
                 <div
@@ -314,7 +319,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
             >
               <button
                 aria-expanded="false"
-                aria-label="Expand or collapse"
+                aria-label="Parent link 2 Expand or collapse"
                 className=
                     ms-Nav-chevronButton
                     {
@@ -419,6 +424,10 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                       font-weight: 400;
                       height: 36px;
                       line-height: 36px;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       outline: transparent;
                       overflow: hidden;
                       padding-bottom: 0;
@@ -489,6 +498,7 @@ exports[`Component Examples renders Nav.Nested.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Parent link 2"
               >
                 <div

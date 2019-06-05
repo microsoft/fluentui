@@ -363,21 +363,11 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
                       id="TextField0"
@@ -510,24 +500,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
-                      id="TextField2"
+                      id="TextField3"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -657,24 +637,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
-                      id="TextField4"
+                      id="TextField6"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -804,24 +774,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
-                      id="TextField6"
+                      id="TextField9"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -951,24 +911,14 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             display: none;
                           }
                           &::placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
                           &:-ms-input-placeholder {
-                            -moz-osx-font-smoothing: grayscale;
-                            -webkit-font-smoothing: antialiased;
                             color: #666666;
-                            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                            font-size: 14px;
-                            font-weight: 400;
                             opacity: 1;
                           }
-                      id="TextField8"
+                      id="TextField12"
                       onBlur={[Function]}
                       onChange={[Function]}
                       onFocus={[Function]}
@@ -1052,8 +1002,8 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="Toggle10"
-        id="Toggle10-label"
+        htmlFor="Toggle15"
+        id="Toggle15-label"
       >
         Hide alpha slider
       </label>
@@ -1067,7 +1017,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
       >
         <button
           aria-checked={false}
-          aria-labelledby="Toggle10-label"
+          aria-labelledby="Toggle15-label"
           checked={false}
           className=
               ms-Toggle-background
@@ -1116,7 +1066,7 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                 border-color: Highlight;
               }
           data-is-focusable={true}
-          id="Toggle10"
+          id="Toggle15"
           onChange={[Function]}
           onClick={[Function]}
           role="switch"

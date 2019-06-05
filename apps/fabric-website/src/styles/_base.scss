@@ -60,4 +60,21 @@
       @include ms-fontSize-16;
     }
   }
+
+  // Feedback section styles
+  .FeedbackList-button .ms-Button-label { // Feedback button color overridden by UHF
+    @include ms-fontColor-white;
+  }
+
+  @media screen and (min-width: $uhf-screen-min-mobile) {
+    // Align logo with left nav
+    .c-uhfh > div {
+      padding: 0 $App-padding-right-sm 0 $App-padding-left-sm;
+    }
+
+    #uhfLogo {
+      padding: 16px 6px 16px 0;
+      width: 125px;
+    }
+  }
 }
