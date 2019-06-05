@@ -160,7 +160,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         width: 24,
         height: 24,
         lineHeight: 24,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         borderRadius: 2,
         border: 'none',
         padding: 0,
