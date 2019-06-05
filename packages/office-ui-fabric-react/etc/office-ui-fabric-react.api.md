@@ -15,12 +15,15 @@ import { ICSSPixelUnitRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ICSSRule } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { IFontStyles } from '@uifabric/styling';
 import { IHTMLSlot } from '@uifabric/foundation';
+import { IObjectWithKey } from '@uifabric/utilities';
 import { IPoint } from '@uifabric/utilities';
 import { IRawStyle } from '@uifabric/styling';
 import { IRectangle } from '@uifabric/utilities';
 import { IRefObject } from '@uifabric/utilities';
 import { IRenderComponent } from '@uifabric/utilities';
 import { IRenderFunction } from '@uifabric/utilities';
+import { ISelection } from '@uifabric/utilities';
+import { ISelectionOptions } from '@uifabric/utilities';
 import { ISlotProp } from '@uifabric/foundation';
 import { IStyle } from '@uifabric/styling';
 import { IStyleableComponentProps } from '@uifabric/foundation';
@@ -29,8 +32,13 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { Omit } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
+import { Selection } from '@uifabric/utilities';
+import { SELECTION_CHANGE } from '@uifabric/utilities';
+import { SelectionDirection } from '@uifabric/utilities';
+import { SelectionMode } from '@uifabric/utilities';
 
 // @public (undocumented)
 export class ActionButton extends BaseComponent<IButtonProps, {}> {
@@ -711,7 +719,7 @@ export enum ConstrainMode {
 }
 
 // @public
-export const ContextualMenu: React_2.StatelessComponent<IContextualMenuProps>;
+export const ContextualMenu: React.StatelessComponent<IContextualMenuProps>;
 
 // @public (undocumented)
 export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, IContextualMenuState> {
@@ -5569,11 +5577,7 @@ export interface INavStyles {
     root: IStyle;
 }
 
-// @public (undocumented)
-export interface IObjectWithKey {
-    // (undocumented)
-    key?: string | number;
-}
+export { IObjectWithKey }
 
 // @public (undocumented)
 export interface IOverflowSet {
@@ -6526,69 +6530,9 @@ export interface ISelectedPeopleProps extends IBaseSelectedItemsListProps<IExten
     removeMenuItemText?: string;
 }
 
-// @public (undocumented)
-export interface ISelection {
-    // (undocumented)
-    canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    count: number;
-    // (undocumented)
-    getItems(): IObjectWithKey[];
-    // (undocumented)
-    getSelectedCount(): number;
-    // (undocumented)
-    getSelectedIndices(): number[];
-    // (undocumented)
-    getSelection(): IObjectWithKey[];
-    // (undocumented)
-    isAllSelected(): boolean;
-    // (undocumented)
-    isIndexSelected(index: number): boolean;
-    // (undocumented)
-    isKeySelected(key: string): boolean;
-    // (undocumented)
-    isModal?(): boolean;
-    // (undocumented)
-    isRangeSelected(fromIndex: number, count: number): boolean;
-    // (undocumented)
-    mode: SelectionMode;
-    // (undocumented)
-    selectToIndex(index: number, clearSelection?: boolean): void;
-    // (undocumented)
-    selectToKey(key: string, clearSelection?: boolean): void;
-    // (undocumented)
-    setAllSelected(isAllSelected: boolean): void;
-    // (undocumented)
-    setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
-    // (undocumented)
-    setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    // (undocumented)
-    setItems(items: IObjectWithKey[], shouldClear: boolean): void;
-    // (undocumented)
-    setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
-    // (undocumented)
-    setModal?(isModal: boolean): void;
-    // (undocumented)
-    toggleAllSelected(): void;
-    // (undocumented)
-    toggleIndexSelected(index: number): void;
-    // (undocumented)
-    toggleKeySelected(key: string): void;
-    // (undocumented)
-    toggleRangeSelected(fromIndex: number, count: number): void;
-}
+export { ISelection }
 
-// @public (undocumented)
-export interface ISelectionOptions {
-    // (undocumented)
-    canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
-    // (undocumented)
-    getKey?: (item: IObjectWithKey, index?: number) => string | number;
-    // (undocumented)
-    onSelectionChanged?: () => void;
-    // (undocumented)
-    selectionMode?: SelectionMode;
-}
+export { ISelectionOptions }
 
 // @public (undocumented)
 export interface ISelectionZone {
@@ -6680,7 +6624,7 @@ export interface IShimmerColors {
 }
 
 // @public
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
     // @deprecated
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
@@ -8635,80 +8579,13 @@ export class SelectedPeopleList extends BasePeopleSelectedItemsList {
     protected renderItems: () => JSX.Element[];
 }
 
-// @public (undocumented)
-export class Selection implements ISelection {
-    constructor(options?: ISelectionOptions);
-    // (undocumented)
-    canSelectItem(item: IObjectWithKey, index?: number): boolean;
-    // (undocumented)
-    count: number;
-    // (undocumented)
-    getItems(): IObjectWithKey[];
-    // (undocumented)
-    getKey(item: IObjectWithKey, index?: number): string;
-    // (undocumented)
-    getSelectedCount(): number;
-    // (undocumented)
-    getSelectedIndices(): number[];
-    // (undocumented)
-    getSelection(): IObjectWithKey[];
-    // (undocumented)
-    isAllSelected(): boolean;
-    // (undocumented)
-    isIndexSelected(index: number): boolean;
-    // (undocumented)
-    isKeySelected(key: string): boolean;
-    // (undocumented)
-    isModal(): boolean;
-    // (undocumented)
-    isRangeSelected(fromIndex: number, count: number): boolean;
-    // (undocumented)
-    readonly mode: SelectionMode;
-    // (undocumented)
-    selectToIndex(index: number, clearSelection?: boolean): void;
-    // (undocumented)
-    selectToKey(key: string, clearSelection?: boolean): void;
-    // (undocumented)
-    setAllSelected(isAllSelected: boolean): void;
-    // (undocumented)
-    setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
-    // (undocumented)
-    setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
-    setItems(items: IObjectWithKey[], shouldClear?: boolean): void;
-    // (undocumented)
-    setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
-    // (undocumented)
-    setModal(isModal: boolean): void;
-    // (undocumented)
-    toggleAllSelected(): void;
-    // (undocumented)
-    toggleIndexSelected(index: number): void;
-    // (undocumented)
-    toggleKeySelected(key: string): void;
-    // (undocumented)
-    toggleRangeSelected(fromIndex: number, count: number): void;
-    }
+export { Selection }
 
-// @public (undocumented)
-export const SELECTION_CHANGE = "change";
+export { SELECTION_CHANGE }
 
-// @public (undocumented)
-export enum SelectionDirection {
-    // (undocumented)
-    horizontal = 0,
-    // (undocumented)
-    vertical = 1,
-}
+export { SelectionDirection }
 
-// @public (undocumented)
-export enum SelectionMode {
-    // (undocumented)
-    multiple = 2,
-    // (undocumented)
-    none = 0,
-    // (undocumented)
-    single = 1,
-}
+export { SelectionMode }
 
 // @public (undocumented)
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {

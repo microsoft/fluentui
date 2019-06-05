@@ -110,6 +110,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 word-wrap: break-word;
               }
           htmlFor="TextField0"
+          id="TextFieldLabel2"
         >
           Standard:
         </label>
@@ -147,6 +148,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel2"
             className=
                 ms-TextField-field
                 {
@@ -265,7 +267,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               @media screen and (-ms-high-contrast: active){& {
                 color: GrayText;
               }
-          htmlFor="TextField2"
+          htmlFor="TextField3"
+          id="TextFieldLabel5"
         >
           Disabled:
         </label>
@@ -302,6 +305,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel5"
             className=
                 ms-TextField-field
                 {
@@ -347,7 +351,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   opacity: 1;
                 }
             disabled={true}
-            id="TextField2"
+            id="TextField3"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -430,7 +434,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 content: ' *';
                 padding-right: 12px;
               }
-          htmlFor="TextField4"
+          htmlFor="TextField6"
+          id="TextFieldLabel8"
           required={true}
         >
           Required:
@@ -469,6 +474,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel8"
             className=
                 ms-TextField-field
                 {
@@ -512,7 +518,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField4"
+            id="TextField6"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -599,7 +605,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField6"
+          htmlFor="TextField9"
+          id="TextFieldLabel11"
         >
           Borderless single-line TextField
         </label>
@@ -635,6 +642,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel11"
             className=
                 ms-TextField-field
                 {
@@ -677,7 +685,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField6"
+            id="TextField9"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -742,7 +750,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField8"
+          htmlFor="TextField12"
+          id="TextFieldLabel14"
         >
           Borderless multi-line TextField
         </label>
@@ -825,7 +834,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField8"
+            id="TextField12"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
