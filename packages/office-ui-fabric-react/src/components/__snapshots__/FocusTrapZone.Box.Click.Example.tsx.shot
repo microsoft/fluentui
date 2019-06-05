@@ -387,6 +387,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
       href="https://bing.com"
       onClick={[Function]}
+      target="_blank"
     >
       Hyperlink inside trap zone
     </a>
