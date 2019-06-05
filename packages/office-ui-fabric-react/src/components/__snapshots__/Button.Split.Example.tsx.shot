@@ -632,7 +632,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
 
               {
-                background-color: #ffffff;
+                background-color: #deecf9;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
@@ -917,7 +917,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #ffffff;
+                    color: #a6a6a6;
                     display: inline-block;
                     flex-shrink: 0;
                     font-family: "FabricMDL2Icons";
@@ -945,7 +945,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #deecf9;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;
@@ -1262,7 +1262,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           className=
 
               {
-                background-color: #c8c8c8;
+                background-color: #deecf9;
                 bottom: 8px;
                 position: absolute;
                 right: 31px;

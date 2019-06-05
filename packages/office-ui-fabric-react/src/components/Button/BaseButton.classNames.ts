@@ -102,6 +102,7 @@ export const getBaseButtonClassNames = memoizeFunction(
         menuIconClassName,
         styles.menuIcon,
         checked && styles.menuIconChecked,
+        disabled && styles.menuIconDisabled,
         !disabled &&
           !isExpanded &&
           !checked && {

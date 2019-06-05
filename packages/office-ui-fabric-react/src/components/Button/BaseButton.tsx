@@ -477,7 +477,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
 
     const classNames = getSplitButtonClassNames
       ? getSplitButtonClassNames(!!disabled, this._isExpanded, !!checked, !!allowDisabledFocus)
-      : styles && getBaseSplitButtonClassNames(styles!, !!disabled, this._isExpanded, !!checked, !!primaryDisabled);
+      : styles && getBaseSplitButtonClassNames(styles!, !!disabled, this._isExpanded, !!checked);
 
     assign(buttonProps, {
       onClick: undefined,

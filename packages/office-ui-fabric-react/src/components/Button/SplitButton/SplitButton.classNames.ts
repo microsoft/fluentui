@@ -9,8 +9,9 @@ export interface ISplitButtonClassNames {
   flexContainer?: string;
   divider?: string;
 }
+
 export const getClassNames = memoizeFunction(
-  (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean, primaryDisabled: boolean): ISplitButtonClassNames => {
+  (styles: IButtonStyles, disabled: boolean, expanded: boolean, checked: boolean): ISplitButtonClassNames => {
     return {
       root: mergeStyles(
         styles.splitButtonMenuButton,
@@ -46,7 +47,7 @@ export const getClassNames = memoizeFunction(
 
       flexContainer: mergeStyles(styles.splitButtonFlexContainer),
 
-      divider: mergeStyles(styles.splitButtonDivider, (primaryDisabled || disabled) && styles.splitButtonDividerDisabled)
+      divider: mergeStyles(styles.splitButtonDivider)
     };
   }
 );
