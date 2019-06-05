@@ -1,6 +1,6 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`MaskedTextField renders TextField correctly 1`] = `
+exports[`MaskedTextField renders correctly 1`] = `
 <div
   className=
       ms-TextField
