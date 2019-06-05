@@ -220,7 +220,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
           }
         }
       },
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         backgroundColor: tokens.backgroundColor,
         borderColor: tokens.borderColor,

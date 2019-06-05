@@ -46,10 +46,10 @@ export const styles = (props: ICalendarStyleProps): ICalendarStyles => {
         padding: '0 4px',
         alignSelf: 'flex-end',
         marginRight: 16,
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         selectors: {
           '& div': {
-            fontSize: FontSizes.xSmall
+            fontSize: FontSizes.small
           },
           '&:hover': {
             color: palette.themePrimary,

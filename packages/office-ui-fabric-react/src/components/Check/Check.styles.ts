@@ -30,7 +30,7 @@ export const getStyles = (props: ICheckStyleProps): ICheckStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         // lineHeight currently needs to be a string to output without 'px'
         lineHeight: '1',

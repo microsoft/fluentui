@@ -5,7 +5,7 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
   const { palette, fonts } = theme!;
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         display: 'flex',
         width: '100%',
@@ -59,14 +59,14 @@ export const getStyles = (props: ILineChartStyleProps): ILineChartStyles => {
     ],
     calloutContentX: [
       {
-        ...fonts.small,
+        ...fonts.medium,
         lineHeight: '14px'
       }
     ],
     calloutContentY: [
       {
         color: color === '' ? palette.black : color,
-        ...fonts.xLarge,
+        ...fonts.xxLarge,
         fontWeight: 'bold',
         lineHeight: '31px'
       }

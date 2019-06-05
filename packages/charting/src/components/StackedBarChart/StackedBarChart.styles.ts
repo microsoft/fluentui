@@ -5,7 +5,7 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
   const { className, width, barHeight, legendColor, shouldHighlight, theme, href } = props;
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       'ms-StackedBarChart',
       {
         width: width ? width : '100%',
@@ -23,18 +23,18 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       display: 'flex',
       justifyContent: 'space-between',
       marginBottom: '5px',
-      fontSize: FontSizes.xSmall
+      fontSize: FontSizes.small
     },
     legendContainer: {
       paddingTop: '4px'
     },
     hoverCardTextStyles: {
-      ...theme.fonts.small,
+      ...theme.fonts.medium,
       lineHeight: '14px'
     },
     hoverCardDataStyles: {
       color: legendColor === '' ? theme.palette.black : legendColor,
-      fontSize: FontSizes.xLarge,
+      fontSize: FontSizes.xxLarge,
       fontFamily: 'Segoe UI',
       fontWeight: FontWeights.bold,
       lineHeight: '31px'
@@ -52,12 +52,12 @@ export const getStyles = (props: IStackedBarChartStyleProps): IStackedBarChartSt
       strokeWidth: 2
     },
     ratioNumerator: {
-      fontSize: FontSizes.xSmall,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.semibold,
       color: theme.palette.black
     },
     ratioDenominator: {
-      fontSize: FontSizes.xSmall,
+      fontSize: FontSizes.small,
       color: theme.palette.black,
       opacity: '0.6'
     }

@@ -66,7 +66,7 @@ storiesOf('Button', module)
       <Button icon="Share">
         <Stack as="span" horizontalAlign="start" tokens={{ padding: '8px 0px' }}>
           <Text>Compound multiline button</Text>
-          <Text variant="small">Caption</Text>
+          <Text variant="medium">Caption</Text>
         </Stack>
       </Button>
     ),

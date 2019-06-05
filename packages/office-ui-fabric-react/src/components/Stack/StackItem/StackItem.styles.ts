@@ -17,7 +17,7 @@ export const StackItemStyles: IStackItemComponent['styles'] = (props, theme, tok
 
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       classNames.root,
       {
         margin: tokens.margin,

@@ -101,7 +101,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
   const classNames = getGlobalClassNames(globalClassNames, theme);
 
   return {
-    root: [classNames.root, theme.fonts.small, calloutClassName],
+    root: [classNames.root, theme.fonts.medium, calloutClassName],
     body: [
       classNames.body,
       {
@@ -129,7 +129,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         top: 0,
         borderRadius: 0,
         color: palette.white,
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         selectors: {
           ':hover': {
             background: palette.themeDarkAlt,
@@ -167,7 +167,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.header,
       ...headerStyle(classNames, hasCondensedHeadline, hasSmallHeadline),
       (hasCondensedHeadline || hasSmallHeadline) && [
-        DefaultFontStyles.small,
+        DefaultFontStyles.medium,
         {
           marginRight: 10,
           fontWeight: FontWeights.semibold
@@ -207,7 +207,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
-            DefaultFontStyles.small,
+            DefaultFontStyles.medium,
             {
               color: palette.themePrimary
             }
@@ -237,7 +237,7 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
         selectors: {
           // TODO: global class name usage should be converted to a button styles function once Button supports JS styling
           [`.${classNames.buttonLabel}`]: [
-            DefaultFontStyles.small,
+            DefaultFontStyles.medium,
             {
               color: palette.white
             }
@@ -257,14 +257,14 @@ export const getStyles = (props: ITeachingBubbleStyleProps): ITeachingBubbleStyl
       classNames.subText,
       {
         margin: 0,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         color: palette.white,
         fontWeight: FontWeights.semilight
       }
     ],
     subComponentStyles: {
       callout: {
-        root: [...rootStyle(isWide), theme.fonts.small],
+        root: [...rootStyle(isWide), theme.fonts.medium],
         beak: [
           {
             background: palette.themePrimary

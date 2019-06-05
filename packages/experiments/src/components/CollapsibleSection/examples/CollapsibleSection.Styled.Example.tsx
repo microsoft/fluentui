@@ -18,7 +18,7 @@ const getPropStyles: ICollapsibleSectionComponent['styles'] = (props, theme): IC
     }
   ],
   body: [
-    theme.fonts.xSmall,
+    theme.fonts.small,
     {
       background: theme.semanticColors.disabledBackground
     }
@@ -34,7 +34,7 @@ const getCustomizerStyles: ICollapsibleSectionComponent['styles'] = (props, them
 });
 
 const getPropTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({
-  text: [theme.fonts.medium]
+  text: [theme.fonts.large]
 });
 
 const getCustomizerTitleStyles: ICollapsibleSectionTitleComponent['styles'] = (props, theme): ICollapsibleSectionTitleStylesReturnType => ({

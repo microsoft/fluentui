@@ -110,7 +110,7 @@ export const CompoundButton: CompoundButtonType = props => {
       tokens={CompoundButtonTokens}
       {...rest}
     >
-      <Text variant="xSmall" styles={secondaryTextStyles}>
+      <Text variant="small" styles={secondaryTextStyles}>
         {secondaryText}
       </Text>
     </Button>

@@ -103,7 +103,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.medium,
       messageBarType === MessageBarType.error && classNames.error,
       messageBarType === MessageBarType.blocked && classNames.blocked,
       messageBarType === MessageBarType.severeWarning && classNames.severeWarning,
@@ -122,7 +122,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         selectors: {
           '& .ms-Link': {
             color: palette.themeDark,
-            ...fonts.xSmall
+            ...fonts.small
           },
           [HighContrastSelector]: {
             background: 'WindowText',
@@ -170,7 +170,7 @@ export const getStyles = (props: IMessageBarStyleProps): IMessageBarStyles => {
         display: 'flex',
         flexGrow: 1,
         margin: 8,
-        ...fonts.xSmall,
+        ...fonts.small,
         selectors: {
           [HighContrastSelector]: {
             MsHighContrastAdjust: 'none'

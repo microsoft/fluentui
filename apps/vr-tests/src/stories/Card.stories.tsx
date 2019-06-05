@@ -215,13 +215,13 @@ storiesOf('Card', module)
           <Image src="https://placehold.it/256x144" width="100%" alt="Placeholder image." />
         </Card.Item>
         <Card.Section>
-          <Text variant="small" styles={siteTextStyles}>
+          <Text variant="medium" styles={siteTextStyles}>
             Contoso
           </Text>
           <Text styles={descriptionTextStyles}>
             Contoso Denver expansion design marketing hero guidelines
           </Text>
-          <Text variant="small" styles={helpfulTextStyles}>
+          <Text variant="medium" styles={helpfulTextStyles}>
             Is this recommendation helpful?
           </Text>
         </Card.Section>
@@ -245,7 +245,7 @@ storiesOf('Card', module)
           styles={backgroundImageCardSectionStyles}
           tokens={backgroundImageCardSectionTokens}
         >
-          <Text variant="large" styles={dateTextStyles}>
+          <Text variant="xLarge" styles={dateTextStyles}>
             NOVEMBER
           </Text>
           <Text variant="superLarge" styles={dateTextStyles}>
@@ -253,7 +253,7 @@ storiesOf('Card', module)
           </Text>
         </Card.Section>
         <Card.Section>
-          <Text variant="small" styles={subduedTextStyles}>
+          <Text variant="medium" styles={subduedTextStyles}>
             Category
           </Text>
           <Text styles={descriptionTextStyles}>
@@ -261,10 +261,10 @@ storiesOf('Card', module)
           </Text>
         </Card.Section>
         <Card.Section tokens={agendaCardSectionTokens}>
-          <Text variant="small" styles={descriptionTextStyles}>
+          <Text variant="medium" styles={descriptionTextStyles}>
             Tuesday 2:00-4:30 pm
           </Text>
-          <Text variant="small" styles={subduedTextStyles}>
+          <Text variant="medium" styles={subduedTextStyles}>
             Conf Room 34/1301
           </Text>
         </Card.Section>
@@ -307,13 +307,13 @@ storiesOf('Card', module)
           <Image src="https://placehold.it/180x135" alt="Placeholder image." />
         </Card.Item>
         <Card.Section>
-          <Text variant="small" styles={siteTextStyles}>
+          <Text variant="medium" styles={siteTextStyles}>
             Contoso
           </Text>
           <Text styles={descriptionTextStyles}>
             Contoso Denver expansion design marketing hero guidelines
           </Text>
-          <Text variant="small" styles={helpfulTextStyles}>
+          <Text variant="medium" styles={helpfulTextStyles}>
             Is this recommendation helpful?
           </Text>
         </Card.Section>

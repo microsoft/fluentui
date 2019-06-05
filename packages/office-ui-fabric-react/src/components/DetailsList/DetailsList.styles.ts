@@ -19,10 +19,10 @@ export const getStyles = (props: IDetailsListStyleProps): IDetailsListStyles => 
   return {
     root: [
       classNames.root,
-      theme.fonts.xSmall,
+      theme.fonts.small,
       {
         position: 'relative',
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         background: semanticColors.listBackground,
         color: semanticColors.listText,
         selectors: {
