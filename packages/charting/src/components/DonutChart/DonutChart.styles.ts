@@ -4,7 +4,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
   const { className, width, height, theme, color } = props;
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       'ms-DonutChart',
       {
         alignItems: 'center',
@@ -27,7 +27,7 @@ export const getStyles = (props: IDonutChartStyleProps): IDonutChartStyles => {
       width: `${width}px`
     },
     hoverCardTextStyles: {
-      ...theme.fonts.small,
+      ...theme.fonts.medium,
       lineHeight: '14px'
     },
     hoverCardDataStyles: {

@@ -15,14 +15,14 @@ export const getStyles = (props: IGroupShowAllStyleProps): IGroupShowAllStyles =
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         position: 'relative',
         padding: '10px 84px',
         cursor: 'pointer',
         selectors: {
           [`.${classNames.link}`]: {
-            fontSize: FontSizes.xSmall
+            fontSize: FontSizes.small
           }
         }
       }

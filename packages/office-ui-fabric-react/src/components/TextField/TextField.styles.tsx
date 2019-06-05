@@ -32,7 +32,7 @@ function getLabelStyles(props: ITextFieldStyleProps): IStyleFunctionOrObject<ILa
           color: props.theme.palette.neutralTertiary
         },
       underlined && {
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         marginRight: 8,
         paddingLeft: 12,
         paddingRight: 0,
@@ -88,7 +88,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.medium,
       required && classNames.required,
       disabled && classNames.disabled,
       focused && classNames.active,
@@ -258,11 +258,11 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         }
     ],
     field: [
-      theme.fonts.small,
+      theme.fonts.medium,
       classNames.field,
       normalize,
       {
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         borderRadius: 0,
         border: 'none',
         background: 'none',
@@ -279,14 +279,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             display: 'none'
           },
           '::placeholder': [
-            theme.fonts.small,
+            theme.fonts.medium,
             {
               color: semanticColors.inputPlaceholderText,
               opacity: 1
             }
           ],
           ':-ms-input-placeholder': [
-            theme.fonts.small,
+            theme.fonts.medium,
             {
               color: semanticColors.inputPlaceholderText,
               opacity: 1
@@ -381,13 +381,13 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       classNames.description,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.mini
+        fontSize: FontSizes.xSmall
       }
     ],
     errorMessage: [
       classNames.errorMessage,
       AnimationClassNames.slideDownIn20,
-      theme.fonts.xSmall,
+      theme.fonts.small,
       {
         color: semanticColors.errorText,
         margin: 0,

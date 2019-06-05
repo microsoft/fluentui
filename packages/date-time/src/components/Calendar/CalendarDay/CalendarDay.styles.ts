@@ -46,7 +46,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       getFocusStyle(theme, { inset: -1 }),
       {
         alignItems: 'center',
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         color: palette.neutralPrimary,
         display: 'inline-flex',
         flexGrow: 1,
@@ -93,7 +93,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         display: 'block',
         textAlign: 'center',
         lineHeight: 28,
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         color: palette.neutralPrimary,
         borderRadius: 2,
         position: 'relative',
@@ -116,7 +116,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       width: 28,
       height: 28,
       lineHeight: 28,
-      fontSize: FontSizes.xSmall,
+      fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
       selectors: {

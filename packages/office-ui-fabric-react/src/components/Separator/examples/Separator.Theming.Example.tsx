@@ -6,7 +6,7 @@ import { Text } from 'office-ui-fabric-react/lib/Text';
 
 const theme: ITheme = createTheme({
   fonts: {
-    small: {
+    medium: {
       fontFamily: 'Monaco, Menlo, Consolas',
       fontSize: '30px'
     }

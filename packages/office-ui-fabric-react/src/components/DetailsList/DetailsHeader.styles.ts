@@ -96,7 +96,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
   return {
     root: [
       classNames.root,
-      theme.fonts.xSmall,
+      theme.fonts.small,
       {
         display: 'inline-block',
         background: colors.headerBackgroundColor,
@@ -174,7 +174,7 @@ export const getStyles = (props: IDetailsHeaderStyleProps): IDetailsHeaderStyles
         display: 'inline-flex',
         alignItems: 'center',
         justifyContent: 'center',
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         padding: 0,
         border: 'none',
         width: GROUP_EXPANDER_WIDTH, // align with GroupedList's first expandIcon cell width.

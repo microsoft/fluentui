@@ -53,7 +53,7 @@ export const getStyles = (props: IGroupHeaderStyleProps): IGroupHeaderStyles => 
     root: [
       classNames.root,
       getFocusStyle(theme),
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         borderBottom: `1px solid ${semanticColors.listBackground}`, // keep the border for height but color it so it's invisible.
         cursor: 'default',

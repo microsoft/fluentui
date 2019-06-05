@@ -15,7 +15,7 @@ export const getStyles = (props: IDocumentCardLocationStyleProps): IDocumentCard
     root: [
       classNames.root,
       {
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         color: palette.neutralPrimary,
         display: 'block',
         padding: '8px 16px',

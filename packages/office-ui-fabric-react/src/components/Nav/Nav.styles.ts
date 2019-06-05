@@ -61,7 +61,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
     root: [
       classNames.root,
       className,
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         overflowY: 'auto',
         userSelect: 'none',
@@ -154,7 +154,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
       {
         display: 'block',
         fontWeight: FontWeights.regular,
-        fontSize: FontSizes.xSmall,
+        fontSize: FontSizes.small,
         textAlign: 'left',
         lineHeight: `${navHeight}px`,
         margin: '5px 0',
@@ -186,7 +186,7 @@ export const getStyles = (props: INavStyleProps): INavStyles => {
           height: `${navHeight}px`,
           borderBottom: `1px solid ${semanticColors.bodyDivider}`
         },
-        DefaultFontStyles.medium
+        DefaultFontStyles.large
       ],
       isLink && [
         {

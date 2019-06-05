@@ -11,7 +11,7 @@ export const getStyles = (props: IDialogStyleProps): IDialogStyles => {
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    root: [classNames.root, theme.fonts.small, className],
+    root: [classNames.root, theme.fonts.medium, className],
 
     main: [
       {

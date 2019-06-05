@@ -12,8 +12,8 @@ const headerAndFooterStyles: IRawStyle = {
   paddingLeft: 16
 };
 const classNames = mergeStyleSets({
-  header: [headerAndFooterStyles, theme.fonts.mediumPlus],
-  footer: [headerAndFooterStyles, theme.fonts.medium],
+  header: [headerAndFooterStyles, theme.fonts.xLarge],
+  footer: [headerAndFooterStyles, theme.fonts.large],
   name: {
     display: 'inline-block',
     overflow: 'hidden',

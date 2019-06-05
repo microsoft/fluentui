@@ -81,7 +81,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon="PeopleAdd"
                   content="Button Styles Function: Purple Icon via Button Theme"
-                  styles={(props, theme) => ({ icon: { color: theme.fonts.small.color } })}
+                  styles={(props, theme) => ({ icon: { color: theme.fonts.medium.color } })}
                   theme={testTheme}
                 />
               </ButtonStack>
