@@ -264,6 +264,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 word-wrap: break-word;
               }
           htmlFor="TextField1"
+          id="TextFieldLabel3"
         >
           Input inside trap zone
         </label>
@@ -299,6 +300,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel3"
             className=
                 ms-TextField-field
                 {

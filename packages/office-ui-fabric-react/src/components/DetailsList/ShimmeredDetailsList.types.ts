@@ -1,13 +1,13 @@
 import { IDetailsListProps } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, Omit } from '../../Utilities';
 
 /**
  * ShimmeredDetailsList props interface
  * {@docCategory DetailsList}
  */
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
   /**
    * DetailsList `styles` to pass through.
    * Due to ShimmeredDetailsList overriding the extended `styles` prop with its own one

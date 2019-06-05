@@ -563,6 +563,12 @@ export function initializeFocusRects(window?: Window): void;
 // @public
 export const inputProperties: string[];
 
+// @public (undocumented)
+export interface IObjectWithKey {
+    // (undocumented)
+    key?: string | number;
+}
+
 // Warning: (ae-internal-missing-underscore) The name IPerfData should be prefixed with an underscore because the declaration is marked as "@internal"
 // 
 // @internal
@@ -639,6 +645,70 @@ export interface IRenderFunction<P> {
 
 // @public
 export function isDirectionalKeyCode(which: number): boolean;
+
+// @public (undocumented)
+export interface ISelection {
+    // (undocumented)
+    canSelectItem: (item: IObjectWithKey, index?: number) => boolean;
+    // (undocumented)
+    count: number;
+    // (undocumented)
+    getItems(): IObjectWithKey[];
+    // (undocumented)
+    getSelectedCount(): number;
+    // (undocumented)
+    getSelectedIndices(): number[];
+    // (undocumented)
+    getSelection(): IObjectWithKey[];
+    // (undocumented)
+    isAllSelected(): boolean;
+    // (undocumented)
+    isIndexSelected(index: number): boolean;
+    // (undocumented)
+    isKeySelected(key: string): boolean;
+    // (undocumented)
+    isModal?(): boolean;
+    // (undocumented)
+    isRangeSelected(fromIndex: number, count: number): boolean;
+    // (undocumented)
+    mode: SelectionMode;
+    // (undocumented)
+    selectToIndex(index: number, clearSelection?: boolean): void;
+    // (undocumented)
+    selectToKey(key: string, clearSelection?: boolean): void;
+    // (undocumented)
+    setAllSelected(isAllSelected: boolean): void;
+    // (undocumented)
+    setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
+    // (undocumented)
+    setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
+    // (undocumented)
+    setItems(items: IObjectWithKey[], shouldClear: boolean): void;
+    // (undocumented)
+    setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
+    // (undocumented)
+    setModal?(isModal: boolean): void;
+    // (undocumented)
+    toggleAllSelected(): void;
+    // (undocumented)
+    toggleIndexSelected(index: number): void;
+    // (undocumented)
+    toggleKeySelected(key: string): void;
+    // (undocumented)
+    toggleRangeSelected(fromIndex: number, count: number): void;
+}
+
+// @public (undocumented)
+export interface ISelectionOptions {
+    // (undocumented)
+    canSelectItem?: (item: IObjectWithKey, index?: number) => boolean;
+    // (undocumented)
+    getKey?: (item: IObjectWithKey, index?: number) => string | number;
+    // (undocumented)
+    onSelectionChanged?: () => void;
+    // (undocumented)
+    selectionMode?: SelectionMode;
+}
 
 // @public
 export function isElementFocusSubZone(element?: HTMLElement): boolean;
@@ -899,6 +969,81 @@ export const safeRequestAnimationFrame: (component: React.Component<{}, {}, any>
 
 // @public
 export const safeSetTimeout: (component: React.Component<{}, {}, any>) => (cb: Function, duration: number) => void;
+
+// @public (undocumented)
+export class Selection implements ISelection {
+    constructor(options?: ISelectionOptions);
+    // (undocumented)
+    canSelectItem(item: IObjectWithKey, index?: number): boolean;
+    // (undocumented)
+    count: number;
+    // (undocumented)
+    getItems(): IObjectWithKey[];
+    // (undocumented)
+    getKey(item: IObjectWithKey, index?: number): string;
+    // (undocumented)
+    getSelectedCount(): number;
+    // (undocumented)
+    getSelectedIndices(): number[];
+    // (undocumented)
+    getSelection(): IObjectWithKey[];
+    // (undocumented)
+    isAllSelected(): boolean;
+    // (undocumented)
+    isIndexSelected(index: number): boolean;
+    // (undocumented)
+    isKeySelected(key: string): boolean;
+    // (undocumented)
+    isModal(): boolean;
+    // (undocumented)
+    isRangeSelected(fromIndex: number, count: number): boolean;
+    // (undocumented)
+    readonly mode: SelectionMode;
+    // (undocumented)
+    selectToIndex(index: number, clearSelection?: boolean): void;
+    // (undocumented)
+    selectToKey(key: string, clearSelection?: boolean): void;
+    // (undocumented)
+    setAllSelected(isAllSelected: boolean): void;
+    // (undocumented)
+    setChangeEvents(isEnabled: boolean, suppressChange?: boolean): void;
+    // (undocumented)
+    setIndexSelected(index: number, isSelected: boolean, shouldAnchor: boolean): void;
+    setItems(items: IObjectWithKey[], shouldClear?: boolean): void;
+    // (undocumented)
+    setKeySelected(key: string, isSelected: boolean, shouldAnchor: boolean): void;
+    // (undocumented)
+    setModal(isModal: boolean): void;
+    // (undocumented)
+    toggleAllSelected(): void;
+    // (undocumented)
+    toggleIndexSelected(index: number): void;
+    // (undocumented)
+    toggleKeySelected(key: string): void;
+    // (undocumented)
+    toggleRangeSelected(fromIndex: number, count: number): void;
+    }
+
+// @public (undocumented)
+export const SELECTION_CHANGE = "change";
+
+// @public (undocumented)
+export enum SelectionDirection {
+    // (undocumented)
+    horizontal = 0,
+    // (undocumented)
+    vertical = 1,
+}
+
+// @public (undocumented)
+export enum SelectionMode {
+    // (undocumented)
+    multiple = 2,
+    // (undocumented)
+    none = 0,
+    // (undocumented)
+    single = 1,
+}
 
 // @public
 export function setBaseUrl(baseUrl: string): void;

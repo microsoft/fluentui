@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.40.0",
+      "tag": "@uifabric/utilities_v6.40.0",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Migrate Selection to Utilities",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "495d5291eed73e6578a8b62129b032bed61fc9b3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.4` to `^6.18.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.39.3",
       "tag": "@uifabric/utilities_v6.39.3",
       "date": "Wed, 29 May 2019 12:21:24 GMT",
