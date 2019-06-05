@@ -10,45 +10,7 @@ exports[`checks accessibility of Button (Button.CommandBar.Example) 1`] = `Array
 
 exports[`checks accessibility of Button (Button.Compound.Example) 1`] = `Array []`;
 
-exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `
-Array [
-  Object {
-    "level": "error",
-    "locations": Array [
-      Object {
-        "annotations": Array [
-          Object {
-            "snippet": Object {
-              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
-            },
-          },
-        ],
-        "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
-        "physicalLocation": Object {
-          "fileLocation": Object {
-            "uri": "about:blank",
-          },
-        },
-      },
-    ],
-    "message": Object {
-      "richText": "Fix all of the following:
-- Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\"",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\".",
-    },
-    "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
-      "ruleId": "aria-valid-attr-value",
-    },
-    "properties": Object {
-      "tags": Array [
-        "Accessibility",
-      ],
-    },
-    "ruleId": "aria-valid-attr-value",
-  },
-]
-`;
+exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `Array []`;
 
 exports[`checks accessibility of Button (Button.Default.Example) 1`] = `Array []`;
 
