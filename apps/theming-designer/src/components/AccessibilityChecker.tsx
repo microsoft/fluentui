@@ -60,7 +60,7 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   loadAllContrastRatioPairsList();
   return (
     <div className={MainPanelInnerContent}>
-      <Text variant={'xxLarge'}>Accessibility checker</Text>
+      <TitleText>Accessibility checker</TitleText>
       <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
     </div>
   );
