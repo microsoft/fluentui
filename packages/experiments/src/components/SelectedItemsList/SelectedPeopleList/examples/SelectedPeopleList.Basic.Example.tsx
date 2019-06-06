@@ -44,7 +44,7 @@ export class SelectedPeopleListBasicExample extends React.Component<{}, IPeopleS
     return (
       <div>
         <SelectedPeopleList
-          ref={this._setComponentRef}
+          componentRef={this._setComponentRef}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}

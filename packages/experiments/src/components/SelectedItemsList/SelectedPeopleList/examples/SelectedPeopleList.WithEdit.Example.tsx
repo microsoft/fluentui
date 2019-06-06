@@ -10,7 +10,7 @@ import { EditableItem } from '../../Items/EditableItem';
 import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
 import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
-import { EditingItemInnerFloatingPickerProps } from '../../Items/subcomponents/DefaultEditingItem';
+import { EditingItemInnerFloatingSuggestionsProps } from '../../Items/subcomponents/DefaultEditingItem';
 import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
@@ -33,8 +33,9 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
   private SelectedItem = EditableItem({
     itemComponent: TriggerOnContextMenu(SelectedPersona),
     editingItemComponent: DefaultEditingItem({
+      onRemoveItem: persona => this._selectionList.removeItems([persona]),
       getEditingItemText: persona => persona.text || '',
-      onRenderFloatingPicker: (props: EditingItemInnerFloatingPickerProps<IPersonaProps>) => (
+      onRenderFloatingSuggestions: (props: EditingItemInnerFloatingSuggestionsProps<IPersonaProps>) => (
         <FloatingPeopleSuggestions
           {...props}
           suggestionsStore={this.suggestionsStore}
@@ -60,7 +61,7 @@ export class SelectedPeopleListWithEditExample extends React.Component<{}, IPeop
       <div>
         <SelectedPeopleList
           key={'normal'}
-          ref={this._setComponentRef}
+          componentRef={this._setComponentRef}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
           selection={this.selection}

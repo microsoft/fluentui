@@ -1,7 +1,6 @@
 import * as React from 'react';
 import { KeyCodes, getId, getNativeProps, inputProperties, css } from 'office-ui-fabric-react/lib/Utilities';
-import { FloatingSuggestions } from '../../../FloatingSuggestions/FloatingSuggestions';
-import { IFloatingSuggestionsProps } from '../../../FloatingSuggestions/FloatingSuggestions.types';
+import { IFloatingSuggestionsProps, IFloatingSuggestions } from '../../../FloatingSuggestions/FloatingSuggestions.types';
 import { EditingItemComponentProps } from '../EditableItem';
 
 import * as styles from './DefaultEditingItem.scss';
@@ -14,7 +13,7 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
 
   /**
    * Callback for when the edited item's new value has been selected.
-   * Invoked indirectly by the picker mounted by onRenderFloatingPicker.
+   * Invoked indirectly by the picker mounted by onRenderFloatingSuggestions.
    */
   onEditingComplete: (oldItem: TItem, newItem: TItem) => void;
 
@@ -28,7 +27,7 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
    *
    * Not actually optional, since is what is needed to resolve the new item.
    */
-  onRenderFloatingPicker?: React.ComponentType<EditingItemInnerFloatingPickerProps<TItem>>;
+  onRenderFloatingSuggestions?: React.ComponentType<EditingItemInnerFloatingSuggestionsProps<TItem>>;
 
   /**
    * Callback for when the editing item removes the item from the well
@@ -43,9 +42,9 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
   getEditingItemText: (item: TItem) => string;
 }
 
-export type EditingItemInnerFloatingPickerProps<T> = Pick<
+export type EditingItemInnerFloatingSuggestionsProps<T> = Pick<
   IFloatingSuggestionsProps<T>,
-  'componentRef' | 'onChange' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
+  'onSuggestionSelected' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden' | 'componentRef'
 >;
 
 /**
@@ -54,7 +53,7 @@ export type EditingItemInnerFloatingPickerProps<T> = Pick<
  */
 export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefaultEditingItemInnerProps<TItem>> {
   private _editingInput: HTMLInputElement;
-  private _editingFloatingPicker = React.createRef<FloatingSuggestions<TItem>>();
+  private _editingFloatingSuggestions = React.createRef<IFloatingSuggestions<TItem>>();
 
   constructor(props: IDefaultEditingItemInnerProps<TItem>) {
     super(props);
@@ -63,7 +62,8 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
   public componentDidMount(): void {
     const itemText: string = this.props.getEditingItemText(this.props.item);
 
-    this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(itemText);
+    this._editingFloatingSuggestions.current && this._editingFloatingSuggestions.current.showPicker();
+    this._editingFloatingSuggestions.current && this._editingFloatingSuggestions.current.onQueryStringChanged(itemText);
     this._editingInput.value = itemText;
     this._editingInput.focus();
   }
@@ -92,18 +92,20 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
   }
 
   private _renderEditingSuggestions = (): JSX.Element => {
-    const FloatingPicker = this.props.onRenderFloatingPicker;
-    if (!FloatingPicker) {
+    const FloatingSuggestions = this.props.onRenderFloatingSuggestions;
+    if (!FloatingSuggestions) {
       return <></>;
     }
     return (
-      <FloatingPicker
-        componentRef={this._editingFloatingPicker}
-        onChange={this._onSuggestionSelected}
-        inputElement={this._editingInput}
-        onRemoveSuggestion={this.props.onRemoveItem}
-        onSuggestionsHidden={this.props.onDismiss}
-      />
+      this._editingInput && (
+        <FloatingSuggestions
+          componentRef={this._editingFloatingSuggestions}
+          onSuggestionSelected={this._onSuggestionSelected}
+          inputElement={this._editingInput}
+          onRemoveSuggestion={this.props.onRemoveItem}
+          onSuggestionsHidden={this.props.onDismiss}
+        />
+      )
     );
   };
 
@@ -116,14 +118,14 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
   };
 
   private _onInputClick = (): void => {
-    this._editingFloatingPicker.current && this._editingFloatingPicker.current.showPicker(true /*updatevalue*/);
+    this._editingFloatingSuggestions.current && this._editingFloatingSuggestions.current.showPicker(true /*updatevalue*/);
   };
 
   private _onInputBlur = (ev: React.FocusEvent<HTMLElement>): void => {
-    if (this._editingFloatingPicker.current && ev.relatedTarget !== null) {
+    if (this._editingFloatingSuggestions.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
       if (target.className.indexOf('ms-Suggestions-itemButton') === -1 && target.className.indexOf('ms-Suggestions-sectionButton') === -1) {
-        this._editingFloatingPicker.current.forceResolveSuggestion();
+        this._editingFloatingSuggestions.current.forceResolveSuggestion();
       }
     }
   };
@@ -134,9 +136,10 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
     if (value === '') {
       if (this.props.onRemoveItem) {
         this.props.onRemoveItem(this.props.item);
+        this._editingFloatingSuggestions.current && this._editingFloatingSuggestions.current.hidePicker();
       }
     } else {
-      this._editingFloatingPicker.current && this._editingFloatingPicker.current.onQueryStringChanged(value);
+      this._editingFloatingSuggestions.current && this._editingFloatingSuggestions.current.onQueryStringChanged(value);
     }
   };
 

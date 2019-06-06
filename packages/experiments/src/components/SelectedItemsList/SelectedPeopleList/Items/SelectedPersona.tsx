@@ -60,6 +60,7 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
 
   const onRemoveClicked = React.useCallback(
     ev => {
+      console.log('remove clicked!', onRemoveItem);
       ev.stopPropagation();
       ev.preventDefault();
       onRemoveItem && onRemoveItem();

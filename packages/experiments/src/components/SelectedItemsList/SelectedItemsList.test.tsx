@@ -32,7 +32,7 @@ describe('SelectedItemsList', () => {
       const listRef = React.createRef<ISelectedItemsList<ISimple>>();
       create(
         <SelectedItemsList<ISimple>
-          ref={listRef}
+          componentRef={listRef}
           onRenderItem={basicItemRenderer}
           selectedItems={[{ key: '1', name: 'a' }, { key: '2', name: 'b' }]}
           onChange={onChange}
@@ -52,7 +52,7 @@ describe('SelectedItemsList', () => {
 
     it('can add items', () => {
       const listRef = React.createRef<ISelectedItemsList<ISimple>>();
-      create(<SelectedItemsList<ISimple> ref={listRef} onRenderItem={basicItemRenderer} />);
+      create(<SelectedItemsList<ISimple> componentRef={listRef} onRenderItem={basicItemRenderer} />);
 
       const items: ISimple[] = [{ key: '1', name: 'a' }, { key: '2', name: 'b' }];
       if (!listRef.current) {

@@ -7,15 +7,10 @@ import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { SelectedPersona } from '../Items/SelectedPersona';
 import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
-import { copyToClipboard } from '../../utils/copyToClipboard';
+import { copyToClipboard } from '../../../../utilities/copyToClipboard';
 import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
 
-export interface IPeopleSelectedItemsListExampleState {
-  currentSelectedItems: IPersonaProps[];
-  controlledComponent: boolean;
-}
-
-export class SelectedPeopleListWithContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
+export class SelectedPeopleListWithContextMenuExample extends React.Component<{}> {
   private _selectionList: ISelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
@@ -58,7 +53,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
-          ref={this._setComponentRef}
+          componentRef={this._setComponentRef}
           selection={this.selection}
           onRenderItem={this.SelectedItem}
         />

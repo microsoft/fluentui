@@ -6,7 +6,7 @@ import { SelectedPeopleList, ISelectedPeopleList } from './SelectedPeopleList';
 describe('SelectedPeopleList', () => {
   it('renders personas that are passed in', () => {
     const pickerRef: React.RefObject<ISelectedPeopleList> = React.createRef();
-    const rendered = create(<SelectedPeopleList ref={pickerRef} />);
+    const rendered = create(<SelectedPeopleList componentRef={pickerRef} />);
     act(() => {
       pickerRef.current &&
         pickerRef.current.addItems([

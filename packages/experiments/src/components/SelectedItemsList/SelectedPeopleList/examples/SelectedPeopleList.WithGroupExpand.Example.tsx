@@ -43,7 +43,7 @@ export class SelectedPeopleListWithGroupExpandExample extends React.Component<{}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
-          ref={this._setComponentRef}
+          componentRef={this._setComponentRef}
           selection={this.selection}
           onRenderItem={this.SelectedItem}
         />
