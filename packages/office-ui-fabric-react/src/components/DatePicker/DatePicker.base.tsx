@@ -262,8 +262,8 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   }
 
   private _setErrorMessage(setState: boolean, nextProps?: IDatePickerProps): string | undefined {
-    const { isRequired, strings, value, minDate, maxDate } = nextProps || this.props;
-    let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
+    const { isRequired, strings, value, minDate, maxDate, initialPickerDate } = nextProps || this.props;
+    let errorMessage = !initialPickerDate && isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
 
     if (!errorMessage && value) {
       errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
