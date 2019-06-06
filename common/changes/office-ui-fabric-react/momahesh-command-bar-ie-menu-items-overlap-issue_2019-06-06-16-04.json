@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": " Changed commandBar cacheKey creation logic for farItems to include the Name along with the key while creating the cacheKey",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "momahesh@microsoft.com"
+}
