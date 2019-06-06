@@ -1341,7 +1341,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
+              font-size: 18px;
               font-weight: 600;
               height: 44px;
               line-height: 44px;
@@ -1500,7 +1500,7 @@ exports[`Pivot renders large link Pivot correctly 1`] = `
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
+              font-size: 18px;
               font-weight: 400;
               height: 44px;
               line-height: 44px;
@@ -1702,7 +1702,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
+              font-size: 18px;
               font-weight: 400;
               height: 44px;
               line-height: 44px;
@@ -1870,7 +1870,7 @@ exports[`Pivot renders large tabbed Pivot correctly 1`] = `
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
+              font-size: 18px;
               font-weight: 400;
               height: 44px;
               line-height: 44px;

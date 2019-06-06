@@ -303,7 +303,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             ms-TextField-description
             {
               color: #605e5c;
-              font-size: 11px;
+              font-size: 10px;
             }
       >
         Click the (i) icon!
