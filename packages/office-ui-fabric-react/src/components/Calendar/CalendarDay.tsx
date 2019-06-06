@@ -172,7 +172,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     ? strings.prevMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, -1).getMonth()]
                     : undefined
                 }
-                title={strings.prevMonthAriaLabel}
                 role="button"
                 type="button"
               >
@@ -192,7 +191,6 @@ export class CalendarDay extends BaseComponent<ICalendarDayProps, ICalendarDaySt
                     ? strings.nextMonthAriaLabel + ' ' + strings.months[addMonths(navigatedDate, 1).getMonth()]
                     : undefined
                 }
-                title={strings.nextMonthAriaLabel}
                 role="button"
                 type="button"
               >
