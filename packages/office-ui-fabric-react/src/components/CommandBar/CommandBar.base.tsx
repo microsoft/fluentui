@@ -201,7 +201,7 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     // of the container. Thus we are keeping the name as part of cacheKey creation.
     const returnFarItemsKey = (acc: string, current: ICommandBarItemProps): string => {
       const { displayText = current.name || current.text } = current;
-      return returnKey(acc, current) + displayText.replace(/\s/g, '');
+      return returnKey(acc, current) + displayText ? displayText.replace(/\s/g, '') : '';
     };
 
     const primaryKey = primaryItems.reduce(returnKey, '');
