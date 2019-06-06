@@ -196,8 +196,16 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
       return acc + cacheKey;
     };
 
+    // This will handle the case when only the name of the farItems got changed and key remains the same
+    // In this case we should invalidate the cache as farItems name is contributing to the width
+    // of the container. Thus we are keeping the name as part of cacheKey creation.
+    const returnFarItemsKey = (acc: string, current: ICommandBarItemProps): string => {
+      const { displayText = current.name || current.text } = current;
+      return returnKey(acc, current) + displayText.replace(/\s/g, '');
+    };
+
     const primaryKey = primaryItems.reduce(returnKey, '');
-    const farKey = farItems.reduce(returnKey, '');
+    const farKey = farItems.reduce(returnFarItemsKey, '');
     const overflowKey = !!overflowItems.length ? 'overflow' : '';
 
     return [primaryKey, farKey, overflowKey].join(' ');
