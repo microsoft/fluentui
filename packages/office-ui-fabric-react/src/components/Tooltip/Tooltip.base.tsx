@@ -42,12 +42,20 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
-      delay: delay!,
       maxWidth: maxWidth!
     });
 
+    let renderDelay;
+    if (delay === TooltipDelay.zero) {
+      renderDelay = 0;
+    } else if (delay === TooltipDelay.medium) {
+      renderDelay = 300;
+    } else if (delay === TooltipDelay.long) {
+      renderDelay = 500;
+    }
+
     return (
-      <DelayedRender delay={delay}>
+      <DelayedRender delay={renderDelay}>
         <Callout
           target={targetElement}
           directionalHint={directionalHint}
