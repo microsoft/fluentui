@@ -1,0 +1,106 @@
+[
+  {
+    "name": "black",
+    "hex": "#000000",
+    "code": {
+      "core": "$ms-color-black",
+      "react": "theme.palette.black"
+    }
+  },
+  {
+    "name": "neutralDark",
+    "hex": "#212121",
+    "code": {
+      "core": "$ms-color-neutralDark",
+      "react": "theme.palette.neutralDark"
+    }
+  },
+  {
+    "name": "neutralPrimary",
+    "hex": "#333333",
+    "code": {
+      "core": "$ms-color-neutralPrimary",
+      "react": "theme.palette.neutralPrimary"
+    }
+  },
+  {
+    "name": "neutralPrimaryAlt",
+    "hex": "#3c3c3c",
+    "code": {
+      "core": "$ms-color-neutralPrimaryAlt",
+      "react": "theme.palette.neutralPrimaryAlt"
+    }
+  },
+  {
+    "name": "neutralSecondary",
+    "hex": "#666666",
+    "code": {
+      "core": "$ms-color-neutralSecondary",
+      "react": "theme.palette.neutralSecondary"
+    }
+  },
+  {
+    "name": "neutralTertiary",
+    "hex": "#a6a6a6",
+    "code": {
+      "core": "$ms-color-neutralTertiary",
+      "react": "theme.palette.neutralTertiary"
+    }
+  },
+  {
+    "name": "neutralTertiaryAlt",
+    "hex": "#c8c8c8",
+    "code": {
+      "core": "$ms-color-neutralTertiaryAlt",
+      "react": "theme.palette.neutralTertiaryAlt"
+    }
+  },
+  {
+    "name": "neutralQuaternary",
+    "hex": "#d0d0d0",
+    "code": {
+      "core": "$ms-color-neutralQuaternary",
+      "react": "theme.palette.neutralQuaternary"
+    }
+  },
+  {
+    "name": "neutralQuaternaryAlt",
+    "hex": "#dadada",
+    "code": {
+      "core": "$ms-color-neutralQuaternaryAlt",
+      "react": "theme.palette.neutralQuaternaryAlt"
+    }
+  },
+  {
+    "name": "neutralLight",
+    "hex": "#eaeaea",
+    "code": {
+      "core": "$ms-color-neutralLight",
+      "react": "theme.palette.neutralLight"
+    }
+  },
+  {
+    "name": "neutralLighter",
+    "hex": "#f4f4f4",
+    "code": {
+      "core": "$ms-color-neutralLighter",
+      "react": "theme.palette.neutralLighter"
+    }
+  },
+  {
+    "name": "neutralLighterAlt",
+    "hex": "#f8f8f8",
+    "code": {
+      "core": "$ms-color-neutralLighterAlt",
+      "react": "theme.palette.neutralLighterAlt"
+    }
+  },
+  {
+    "name": "white",
+    "hex": "#ffffff",
+    "code": {
+      "core": "$ms-color-white",
+      "react": "theme.palette.white"
+    }
+  }
+]
