@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/api-docs",
+      "comment": "upgrade to api-extractor 7.1.6",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/api-docs",
+  "email": "naethell@microsoft.com"
+}
