@@ -20,3 +20,4 @@ export * from './getColorFromString';
 export * from './updateA';
 export * from './correctRGB';
 export * from './correctHSV';
+export * from './correctHex';
