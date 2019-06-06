@@ -54,7 +54,10 @@ export const ControlledSelectedItemsList = <TItem extends BaseSelectedItem>(prop
     () =>
       // create callbacks ahead of time with memo.
       // (hooks have to be called in the same order)
-      props.selectedItems.map((item: TItem) => () => props.onItemsRemoved([item])),
+      props.selectedItems.map((item: TItem) =>
+        // do not generate callbacks for items that cannot be removed
+        !props.canRemoveItem || props.canRemoveItem(item) ? () => props.onItemsRemoved([item]) : undefined
+      ),
     [props.selectedItems]
   );
 
