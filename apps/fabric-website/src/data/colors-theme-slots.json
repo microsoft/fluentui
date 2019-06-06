@@ -48,22 +48,6 @@
     }
   },
   {
-    "name": "themeTertiaryAlt",
-    "hex": "#71afe5",
-    "code": {
-      "core": "$ms-color-themeTertiaryAlt",
-      "react": "theme.palette.themeTertiaryAlt"
-    }
-  },
-  {
-    "name": "themeQuaternary",
-    "hex": "#71afe5",
-    "code": {
-      "core": "$ms-color-themeQuaternary",
-      "react": "theme.palette.themeQuaternary"
-    }
-  },
-  {
     "name": "themeLight",
     "hex": "#c7e0f4",
     "code": {
