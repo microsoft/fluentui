@@ -42,7 +42,6 @@ if (!isProduction) {
 }
 
 let rootElement: HTMLElement;
-let scrollDistance: number;
 
 export function createSite<TPlatforms extends string>(
   siteDefinition: ISiteDefinition<TPlatforms>,
@@ -57,7 +56,6 @@ export function createSite<TPlatforms extends string>(
 
   function _getBreakpoint(): void {
     const currentBreakpoint = currentFabricBreakpoint();
-    scrollDistance = currentBreakpoint === 'lg' ? 240 : 200;
   }
 
   function _createRoutes(pages: INavPage<TPlatforms>[]): JSX.Element[] {

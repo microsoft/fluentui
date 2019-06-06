@@ -1,7 +1,5 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { IStackTokens } from '../Stack.types';
-import { mergeStyleSets, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { mergeStyleSets, DefaultPalette, IStackTokens, Stack } from 'office-ui-fabric-react';
 
 export class HorizontalStackHorizontalAlignExample extends React.Component<{}, {}> {
   public render(): JSX.Element {

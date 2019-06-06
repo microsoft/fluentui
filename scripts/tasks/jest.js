@@ -1,7 +1,6 @@
 // @ts-check
 
-const { argv } = require('just-task');
-const { jestTask } = require('just-scripts');
+const { jestTask, argv } = require('just-scripts');
 const path = require('path');
 
 exports.jest = () =>

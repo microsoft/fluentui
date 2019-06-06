@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { DatePicker, DayOfWeek, IDatePickerStrings } from 'office-ui-fabric-react/lib/DatePicker';
+import { DatePicker, DayOfWeek, IDatePickerStrings } from '@uifabric/date-time';
 import { addMonths, addYears } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import './DatePicker.Examples.scss';
 
@@ -12,24 +12,21 @@ ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`;
 
 const DayPickerStrings: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
   goToToday: 'Go to today',
-  prevMonthAriaLabel: 'Go to previous month',
-  nextMonthAriaLabel: 'Go to next month',
-  prevYearAriaLabel: 'Go to previous year',
-  nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker',
+  weekNumberFormatString: 'Week number {0}',
+  prevMonthAriaLabel: 'Previous month',
+  nextMonthAriaLabel: 'Next month',
+  prevYearAriaLabel: 'Previous year',
+  nextYearAriaLabel: 'Next year',
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close',
 
   isRequiredErrorMessage: 'Field is required.',
-
   invalidInputErrorMessage: 'Invalid date format.',
-
   isOutOfBoundsErrorMessage: `Date must be between ${minDate.toLocaleDateString()}-${maxDate.toLocaleDateString()}`
 };
 

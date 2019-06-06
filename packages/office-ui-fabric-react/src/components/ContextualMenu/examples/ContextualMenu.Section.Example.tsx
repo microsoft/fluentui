@@ -60,7 +60,8 @@ export class ContextualMenuSectionExample extends React.Component<any, any> {
                     {
                       key: 'Bing',
                       text: 'Go to Bing',
-                      href: 'http://www.bing.com'
+                      href: 'http://www.bing.com',
+                      target: '_blank'
                     }
                   ]
                 }

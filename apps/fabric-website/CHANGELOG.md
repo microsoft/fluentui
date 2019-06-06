@@ -1,6 +1,75 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Wed, 15 May 2019 12:31:44 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2019 12:22:24 GMT and should not be manually modified.
+
+## 6.18.11
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Add redirects to new website
+- Fix uhf style override className.
+
+## 6.18.10
+Fri, 31 May 2019 12:21:27 GMT
+
+### Patches
+
+- Added Text and Separator docs for mobile, plus doc bug fixes.
+
+## 6.18.9
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Move fluent theme page to styles
+- Fix more UHF style overrides
+
+## 6.18.8
+Thu, 23 May 2019 22:14:40 GMT
+
+### Patches
+
+- Added new mobiles docs for the website.
+- Hide UHF back to top button
+- Webpack configuration fix.
+
+## 6.18.7
+Wed, 22 May 2019 12:21:34 GMT
+
+### Patches
+
+- Removing unused code and styles
+- Fix home page card link color
+
+## 6.18.6
+Mon, 20 May 2019 12:22:33 GMT
+
+### Patches
+
+- Fix color route
+
+## 6.18.5
+Thu, 16 May 2019 17:34:08 GMT
+
+### Patches
+
+- fixed the way it creates a flight baseCDNUrl
+- Fix Button page imports
+
+## 6.18.4
+Thu, 16 May 2019 12:21:56 GMT
+
+### Patches
+
+- Add versioned release notes and demo section
+
+## 6.18.3
+Thu, 16 May 2019 05:28:50 GMT
+
+### Patches
+
+- Adding mobile examples and docs for Button.
 
 ## 6.18.2
 Wed, 15 May 2019 12:31:44 GMT

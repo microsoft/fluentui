@@ -1,10 +1,6 @@
-### Design
-
-Coming soon
-
 ### Control name
 
-`MSDateTimePicker`
+`DateTimePickerDialog`
 
 ### Library
 

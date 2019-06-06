@@ -21,13 +21,6 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
       & textarea {
         font-family: inherit;
       }
-      button {
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: visible;
-      }
 >
   <div
     className=
@@ -432,6 +425,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                 word-wrap: break-word;
               }
           htmlFor="TextField2"
+          id="TextFieldLabel4"
         >
           Filter by name:
         </label>
@@ -467,6 +461,7 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel4"
             className=
                 ms-TextField-field
                 {
@@ -502,21 +497,11 @@ exports[`Component Examples renders DetailsList.Documents.Example.tsx correctly 
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField2"

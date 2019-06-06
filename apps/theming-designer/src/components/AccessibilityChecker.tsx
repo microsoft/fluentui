@@ -1,10 +1,11 @@
 import * as React from 'react';
 import { AccessibilityDetailsList } from './AccessibilityDetailsList';
-import { BaseSlots, FabricSlots, IThemeRules } from 'office-ui-fabric-react/lib/ThemeGenerator';
+import { BaseSlots, FabricSlots, IThemeRules, Text, ITextProps } from 'office-ui-fabric-react';
 import { getContrastRatio, isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { IColor } from 'office-ui-fabric-react/lib/utilities/color/interfaces';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
+import { TitleText } from '../shared/Typography';
 
 export interface IAccessibilityCheckerProps {
   theme?: ITheme;
@@ -59,7 +60,7 @@ export const AccessibilityChecker: React.StatelessComponent<IAccessibilityChecke
   loadAllContrastRatioPairsList();
   return (
     <div className={MainPanelInnerContent}>
-      <h1>Accessibility checker</h1>
+      <TitleText>Accessibility checker</TitleText>
       <AccessibilityDetailsList theme={props.theme!} accessiblePairs={accessiblePairs} nonAccessiblePairs={nonAccessiblePairs} />
     </div>
   );

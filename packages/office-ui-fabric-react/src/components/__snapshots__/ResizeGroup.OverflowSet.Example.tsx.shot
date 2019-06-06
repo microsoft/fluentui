@@ -69,6 +69,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -223,6 +227,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -377,6 +385,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -531,6 +543,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -685,6 +701,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -839,6 +859,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -993,6 +1017,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1147,6 +1175,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1301,6 +1333,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1455,6 +1491,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1609,6 +1649,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1763,6 +1807,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -1917,6 +1965,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2071,6 +2123,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2225,6 +2281,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2379,6 +2439,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2533,6 +2597,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2687,6 +2755,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2841,6 +2913,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -2995,6 +3071,10 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     min-width: 40px;
                     outline: transparent;
                     padding-bottom: 0;
@@ -3146,11 +3226,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-61"
@@ -3277,11 +3357,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-62"
@@ -3408,11 +3488,11 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-63"

@@ -46,6 +46,7 @@ export class TeachingBubbleBasicExample extends React.Component<{}, ITeachingBub
               primaryButtonProps={examplePrimaryButton}
               secondaryButtonProps={exampleSecondaryButtonProps}
               onDismiss={this._onDismiss}
+              footerContent="1 of 2"
               headline="Discover what’s trending around you"
             >
               Lorem ipsum dolor sit amet, consectetur adipisicing elit. Facere, nulla, ipsum? Molestiae quis aliquam magni harum non?

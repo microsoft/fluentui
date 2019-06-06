@@ -1,6 +1,8 @@
 import * as React from 'react';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-
+import { Link } from 'office-ui-fabric-react/lib/Link';
+import { Icon } from 'office-ui-fabric-react/lib/Icon';
+import { TooltipHost } from 'office-ui-fabric-react/lib/Tooltip';
 export class ToggleBasicExample extends React.Component {
   public render(): JSX.Element {
     // tslint:disable:jsx-no-lambda
@@ -54,6 +56,25 @@ export class ToggleBasicExample extends React.Component {
         />
         <Toggle
           defaultChecked={true}
+          label={
+            <div>
+              <Link href="https://bing.com" target="_blank">
+                Learn More
+              </Link>
+              <TooltipHost content="JSX Element Label">
+                <Icon iconName="Info" />
+              </TooltipHost>
+            </div>
+          }
+          inlineLabel={true}
+          onText="On"
+          offText="Off"
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onChange={this._onChange}
+        />
+        <Toggle
+          defaultChecked={true}
           disabled={true}
           label="Disabled with inline label"
           inlineLabel={true}
@@ -65,6 +86,23 @@ export class ToggleBasicExample extends React.Component {
         <Toggle
           defaultChecked={true}
           label="With inline label and without onText and offText"
+          inlineLabel={true}
+          onFocus={() => console.log('onFocus called')}
+          onBlur={() => console.log('onBlur called')}
+          onChange={this._onChange}
+        />
+        <Toggle
+          defaultChecked={true}
+          label={
+            <div>
+              <Link href="https://bing.com" target="_blank">
+                Learn More
+              </Link>
+              <TooltipHost content="JSX Element Label">
+                <Icon iconName="Info" />
+              </TooltipHost>
+            </div>
+          }
           inlineLabel={true}
           onFocus={() => console.log('onFocus called')}
           onBlur={() => console.log('onBlur called')}

@@ -1,0 +1,95 @@
+import * as React from 'react';
+import { classNamesFunction } from 'office-ui-fabric-react';
+import { Page, PlatformContext, IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
+import { Platforms } from '../../../interfaces/Platforms';
+import { getSubTitle } from '../../../utilities/index';
+import { I{{pageName}}PageProps, I{{pageName}}PageStyles, I{{pageName}}PageStyleProps } from './{{pageName}}Page.types';
+import { {{pageName}}PageProps } from './{{pageName}}Page.doc';
+
+const getClassNames = classNamesFunction<I{{pageName}}PageStyleProps, I{{pageName}}PageStyles>();
+const baseUrl =
+  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/{{pagePath}}/';
+
+export const {{pageName}}PageBase: React.StatelessComponent<I{{pageName}}PageProps> = props => {
+  return (
+    <PlatformContext.Consumer>
+      {(platform: Platforms) => {
+        const { theme, styles, className } = props;
+
+        const classNames = getClassNames(styles, { theme, className });
+
+        return (
+          <Page
+            // Pass all the props to the Page component.
+            {...props}
+            // Set default page title
+            title="{{pageName}}"
+            // Use the platform specific props from the doc.ts file.
+            {...{{pageName}}PageProps[platform]}
+            // Use the getSubTitle helper function to get the page header subtitle from the active platform.
+            subTitle={getSubTitle(platform)}
+            // You can define custom sections using the `otherSections` prop. Here it is using a method that takes the platform as an argument to return the correct array of section props.
+            otherSections={_otherSections(platform)}
+            // You can pass a custom className to the page wrapper if needed.
+            className={classNames.root}
+
+            // You can hide the side rail by setting `showSideRail` to false.
+            // showSideRail={false}
+          />
+        );
+      }}
+    </PlatformContext.Consumer>
+  );
+};
+
+// Method that returns array of sections. Renders in the order defined.
+function _otherSections(platform: Platforms): IPageSectionProps[] {
+  // Use a switch statement to define the sections for each platform.
+  switch (platform) {
+    case 'web':
+      return [];
+
+    case 'ios':
+      return [];
+
+    case 'android':
+      return [];
+
+    default:
+      return [
+        // Custom section with content from markdown file.
+        {
+          // Optionally define the name of the section.
+          sectionName: 'Custom markdown section',
+
+          // If the content of the section is markdown, define the editUrl to enable the edit button as the file's hosted location.
+          editUrl: baseUrl + 'docs/default/{{pageName}}Custom.md',
+
+          // Define the content of the page using the `Markdown` component.
+          // Use raw-loader to point the markdown file you want to use for the section.
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/{{pagePath}}/{{pageName}}Page/docs/default/{{pageName}}Custom.md') as string
+        },
+
+        // Custom section with JSX content.
+        {
+          // Optionally define the name of the section.
+          sectionName: 'Custom JSX section',
+
+          // Since there won't be a markdown file to edit online, don't define the editUrl.
+          // editUrl: undefined,
+
+          // Define the content using any React node you want. If you use a plain string, it will converted to markdown automatically.
+          content: (
+            <div>
+              <p>
+                This can be any React node you want.
+              </p>
+            </div>
+          ),
+
+          // Optionally wrap the section with a className.
+          className: 'customClassName'
+        }
+      ];
+  }
+}

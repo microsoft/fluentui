@@ -26,11 +26,11 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               opacity: 0;
               position: absolute;
             }
-            .ms-Fabric--isFocusVisible &:focus + label::before {
+            .ms-Fabric--isFocusVisible &:focus + label {
               outline-offset: 2px;
               outline: 1px solid #666666;
             }
-            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label::before {
+            @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus + label {
               outline: 1px solid ActiveBorder;
             }
         id="checkbox-0"
@@ -279,6 +279,18 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               @media screen and (-ms-high-contrast: active){&:hover $thumb {
                 border-color: Highlight;
               }
+              &:active $zeroTick {
+                background-color: #c7e0f4;
+              }
+              @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                background-color: Highlight;
+              }
+              &:hover $zeroTick {
+                background-color: #c7e0f4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                background-color: Highlight;
+              }
               & $thumb {
                 background: #ffffff;
                 border-color: #666666;
@@ -523,6 +535,18 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
               }
               @media screen and (-ms-high-contrast: active){&:hover $thumb {
                 border-color: Highlight;
+              }
+              &:active $zeroTick {
+                background-color: #c7e0f4;
+              }
+              @media screen and (-ms-high-contrast: active){&:active $zeroTick {
+                background-color: Highlight;
+              }
+              &:hover $zeroTick {
+                background-color: #c7e0f4;
+              }
+              @media screen and (-ms-high-contrast: active){&:hover $zeroTick {
+                background-color: Highlight;
               }
               & $thumb {
                 background: #ffffff;
@@ -876,6 +900,10 @@ exports[`Component Examples renders Callout.Directional.Example.tsx correctly 1`
             font-size: 14px;
             font-weight: 400;
             height: 32px;
+            margin-bottom: 0px;
+            margin-left: 0px;
+            margin-right: 0px;
+            margin-top: 0px;
             min-width: 80px;
             outline: transparent;
             padding-bottom: 0;

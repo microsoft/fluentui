@@ -264,6 +264,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                 word-wrap: break-word;
               }
           htmlFor="TextField1"
+          id="TextFieldLabel3"
         >
           Input inside trap zone
         </label>
@@ -299,6 +300,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
         >
           <input
             aria-invalid={false}
+            aria-labelledby="TextFieldLabel3"
             className=
                 ms-TextField-field
                 {
@@ -334,21 +336,11 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
                   display: none;
                 }
                 &::placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  -moz-osx-font-smoothing: grayscale;
-                  -webkit-font-smoothing: antialiased;
                   color: #666666;
-                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                  font-size: 14px;
-                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField1"
@@ -395,6 +387,7 @@ exports[`Component Examples renders FocusTrapZone.Box.Click.Example.tsx correctl
           }
       href="https://bing.com"
       onClick={[Function]}
+      target="_blank"
     >
       Hyperlink inside trap zone
     </a>

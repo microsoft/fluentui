@@ -2,6 +2,100 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.40.1",
+      "tag": "@uifabric/utilities_v6.40.1",
+      "date": "Thu, 06 Jun 2019 12:22:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ./index import from selection",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "7556082a0512910995750251df06f6fec7a34ca6"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.40.0",
+      "tag": "@uifabric/utilities_v6.40.0",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Migrate Selection to Utilities",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "495d5291eed73e6578a8b62129b032bed61fc9b3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.4` to `^6.18.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.3",
+      "tag": "@uifabric/utilities_v6.39.3",
+      "date": "Wed, 29 May 2019 12:21:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert styled and classNameFunctions perf improvements temporarily.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9d0c9173ec62ebbaa43879af9d1cc97d66b2b8c9"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.2",
+      "tag": "@uifabric/utilities_v6.39.2",
+      "date": "Fri, 24 May 2019 14:51:14 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "remove usage of process",
+            "author": "Sean Larkin <sean.larkin@cuw.edu>",
+            "commit": "a9245feee547762f0c8c9935cbf39d737b86c519"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.1",
+      "tag": "@uifabric/utilities_v6.39.1",
+      "date": "Fri, 24 May 2019 12:21:33 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix wrapped styled regression caused by nested style arrays.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "cd598ed485941821f4d8c3bbf42c7dae6fcc1cd3"
+          },
+          {
+            "comment": "Mutually exclusive warnings are not displayed if value of the prop is undefined",
+            "author": "canmenekse <42455391+canmenekse@users.noreply.github.com>",
+            "commit": "923f3358e78b21a80a2cb9400422136e94998de0"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.39.0",
+      "tag": "@uifabric/utilities_v6.39.0",
+      "date": "Wed, 22 May 2019 12:21:34 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.)",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "cc3ff2379bd7df5fa55800f97ec83d2242d9a11e"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.38.3",
       "tag": "@uifabric/utilities_v6.38.3",
       "date": "Tue, 14 May 2019 07:50:30 GMT",
