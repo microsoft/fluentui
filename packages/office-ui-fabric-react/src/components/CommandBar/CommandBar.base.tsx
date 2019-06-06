@@ -200,8 +200,9 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     // In this case we should invalidate the cache as farItems name is contributing to the width
     // of the container. Thus we are keeping the name as part of cacheKey creation.
     const returnFarItemsKey = (acc: string, current: ICommandBarItemProps): string => {
-      const { displayText = current.name || current.text } = current;
-      return returnKey(acc, current) + displayText ? displayText.replace(/\s/g, '') : '';
+      const { cacheKey = current.key, displayText = current.name || current.text } = current;
+      const displayTextKey = displayText ? displayText.replace(/\s/g, '') : '';
+      return acc + cacheKey + displayTextKey;
     };
 
     const primaryKey = primaryItems.reduce(returnKey, '');
