@@ -35,7 +35,8 @@ export const items = [
       iconName: 'Upload'
     },
     href: 'https://dev.office.com/fabric',
-    ['data-automation-id']: 'uploadButton'
+    'data-automation-id': 'uploadButton',
+    target: '_blank'
   },
   {
     key: 'share',

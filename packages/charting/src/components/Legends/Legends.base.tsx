@@ -228,7 +228,16 @@ export class LegendsBase extends React.Component<ILegendsProps, ILegendState> {
       this._onLeave(legend);
     };
     return (
-      <div key={index} className={classNames.legend} onClick={onClickHandler} onMouseOver={onHoverHandler} onMouseOut={onMouseOut}>
+      <div
+        key={index}
+        className={classNames.legend}
+        onClick={onClickHandler}
+        onMouseOver={onHoverHandler}
+        onMouseOut={onMouseOut}
+        onFocus={onHoverHandler}
+        onBlur={onMouseOut}
+        data-is-focusable={true}
+      >
         <div className={classNames.rect} />
         <div className={classNames.text}>{legend.title}</div>
       </div>

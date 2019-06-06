@@ -58,7 +58,9 @@ export class ToggleBasicExample extends React.Component {
           defaultChecked={true}
           label={
             <div>
-              <Link href="https://bing.com">Learn More</Link>
+              <Link href="https://bing.com" target="_blank">
+                Learn More
+              </Link>
               <TooltipHost content="JSX Element Label">
                 <Icon iconName="Info" />
               </TooltipHost>
@@ -93,7 +95,9 @@ export class ToggleBasicExample extends React.Component {
           defaultChecked={true}
           label={
             <div>
-              <Link href="https://bing.com">Learn More</Link>
+              <Link href="https://bing.com" target="_blank">
+                Learn More
+              </Link>
               <TooltipHost content="JSX Element Label">
                 <Icon iconName="Info" />
               </TooltipHost>
