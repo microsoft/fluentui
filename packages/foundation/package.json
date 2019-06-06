@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/foundation",
-  "version": "0.7.6",
+  "version": "7.0.0-alpha034",
   "description": "Foundation library for building Fabric components.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -30,9 +30,9 @@
     "@types/react-dom": ">=16.8.0 <17.0.0",
     "@types/react-test-renderer": "^16.0.0",
     "@types/sinon": "2.2.2",
-    "@uifabric/jest-serializer-merge-styles": "^6.0.9",
-    "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2",
+    "@uifabric/jest-serializer-merge-styles": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/prettier-rules": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/tslint-rules": ">=7.0.0-0 <8.0.0-0",
     "enzyme": "^3.4.1",
     "enzyme-adapter-react-16": "^1.2.0",
     "react": ">=16.8.0 <17.0.0",
@@ -40,12 +40,12 @@
     "react-hooks-testing-library": "^0.5.0",
     "react-test-renderer": "^16.3.0",
     "sinon": "^4.1.3",
-    "@uifabric/build": "*"
+    "@uifabric/build": ">=7.0.0-0 <8.0.0-0"
   },
   "dependencies": {
-    "@uifabric/set-version": "^1.1.3",
-    "@uifabric/styling": "^6.48.0",
-    "@uifabric/utilities": "^6.40.1",
+    "@uifabric/set-version": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/styling": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/utilities": ">=7.0.0-0 <8.0.0-0",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

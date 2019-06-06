@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/build",
-  "version": "6.0.0",
+  "version": "7.0.0-alpha034",
   "private": true,
   "main": "./index.js",
   "bin": {
@@ -17,8 +17,8 @@
     "@microsoft/api-extractor": "7.0.34",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
-    "@uifabric/codepen-loader": "^0.1.2",
-    "@uifabric/prettier-rules": "^1.0.2",
+    "@uifabric/codepen-loader": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/prettier-rules": ">=7.0.0-0 <8.0.0-0",
     "async": "^2.6.1",
     "autoprefixer": "^7.1.5",
     "babylon": "^7.0.0-beta.47",

@@ -1,6 +1,6 @@
 {
   "name": "a11y-tests",
-  "version": "1.0.0",
+  "version": "7.0.0-alpha034",
   "private": true,
   "description": "A11y Tests for Office UI Fabric React",
   "scripts": {
@@ -11,13 +11,13 @@
     "update-snapshots": "npx just-scripts jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^6.18.3",
+    "@uifabric/fabric-website-resources": ">=7.0.0-0 <8.0.0-0",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^1.0.0",
     "glob": "^7.1.2",
     "mkdirp": "^0.5.1",
-    "office-ui-fabric-react": "^6.189.1",
+    "office-ui-fabric-react": ">=7.0.0-0 <8.0.0-0",
     "puppeteer": "^1.13.0",
     "tslib": "^1.7.1",
     "react": "^16.8.6",
@@ -30,8 +30,8 @@
     "@types/puppeteer": "1.12.3",
     "@types/react": ">=16.8.0 <17.0.0",
     "@types/react-dom": ">=16.8.0 <17.0.0",
-    "@uifabric/build": "*",
-    "@uifabric/icons": "^6.5.2",
-    "@uifabric/tslint-rules": "^1.0.2"
+    "@uifabric/build": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/icons": ">=7.0.0-0 <8.0.0-0",
+    "@uifabric/tslint-rules": ">=7.0.0-0 <8.0.0-0"
   }
 }
