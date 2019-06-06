@@ -553,7 +553,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 2 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1350,7 +1350,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 4 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1748,7 +1748,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 5 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
@@ -1972,7 +1972,7 @@ exports[`Breadcrumb basic rendering renders breadcumb correctly 6 1`] = `
                       padding-top: 4px;
                     }
                     @media only screen and (min-width: 480px) and (max-width: 639px){& {
-                      font-size: 15px;
+                      font-size: 16px;
                     }
                 data-is-focusable={true}
                 onClick={[Function]}
