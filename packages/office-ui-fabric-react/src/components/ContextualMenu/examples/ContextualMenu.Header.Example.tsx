@@ -83,7 +83,8 @@ export class ContextualMenuHeaderExample extends React.Component<{}, {}> {
             {
               key: 'Bing',
               text: 'Go to Bing',
-              href: 'http://www.bing.com'
+              href: 'http://www.bing.com',
+              target: '_blank'
             }
           ]
         }}

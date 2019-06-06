@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Dropdown: fix issue where onchange wasnt called",
+      "comment": "Update documentation to add target _blank to external links",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "joschect@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

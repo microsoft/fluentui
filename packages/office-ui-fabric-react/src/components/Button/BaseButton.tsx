@@ -64,6 +64,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _classNames: IButtonClassNames;
   private _processingTouch: boolean;
   private _lastTouchTimeoutId: number | undefined;
+  private _renderedPersistentMenu: boolean = false;
 
   constructor(props: IBaseButtonProps, rootClassName: string) {
     super(props);
@@ -78,13 +79,9 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     this._labelId = getId();
     this._descriptionId = getId();
     this._ariaDescriptionId = getId();
-    let menuProps = null;
-    if (props.persistMenu && props.menuProps) {
-      // Clone props so we don't mutate them.
-      menuProps = { ...props.menuProps, hidden: true };
-    }
+
     this.state = {
-      menuProps: menuProps
+      menuProps: null
     };
   }
 
@@ -313,7 +310,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
   private _onRenderIcon = (buttonProps?: IButtonProps, defaultRender?: IRenderFunction<IButtonProps>): JSX.Element | null => {
     const { iconProps } = this.props;
 
-    if (iconProps && (iconProps.iconName || iconProps.imageProps)) {
+    if (iconProps && (iconProps.iconName !== undefined || iconProps.imageProps)) {
       const { className, ...rest } = iconProps;
 
       return <Icon className={css(this._classNames.icon, className)} {...rest} />;
@@ -450,6 +447,7 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
     if (this.props.menuProps) {
       const menuProps = { ...this.props.menuProps, shouldFocusOnContainer, shouldFocusOnMount };
       if (this.props.persistMenu) {
+        this._renderedPersistentMenu = true;
         menuProps.hidden = false;
       }
       this.setState({ menuProps: menuProps });
@@ -463,7 +461,11 @@ export class BaseButton extends BaseComponent<IBaseButtonProps, IBaseButtonState
       shouldFocusOnMount = false;
     }
     if (this.props.persistMenu) {
-      currentMenuProps && currentMenuProps.hidden ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount) : this._dismissMenu();
+      // _renderedPersistentMenu ensures that the first rendering of
+      // the menu happens on-screen, as edge's scrollbar calcuations are off if done while hidden.
+      !this._renderedPersistentMenu || (currentMenuProps && currentMenuProps.hidden)
+        ? this._openMenu(shouldFocusOnContainer, shouldFocusOnMount)
+        : this._dismissMenu();
     } else {
       currentMenuProps ? this._dismissMenu() : this._openMenu(shouldFocusOnContainer, shouldFocusOnMount);
     }

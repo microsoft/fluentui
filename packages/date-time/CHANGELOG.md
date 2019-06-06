@@ -1,6 +1,14 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 03 Jun 2019 12:23:18 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+
+## 6.2.1
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Patches
+
+- add tooltips to Calendar buttons without text and fix text overflow bug in calendar header button with long names
+- TextField: adds aria-labelledby to input
 
 ## 6.2.0
 Mon, 03 Jun 2019 12:23:18 GMT

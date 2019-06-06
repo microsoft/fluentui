@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/utilities",
-      "type": "none"
+      "comment": "Fix ./index import from selection",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/utilities",
-  "email": "kchau@microsoft.com"
+  "email": "tmichon@microsoft.com"
 }
