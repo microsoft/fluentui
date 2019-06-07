@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/file-type-icons",
+      "comment": "adding missing filetype mappings to support LPC and other partners",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/file-type-icons",
+  "email": "caperez@microsoft.com"
+}
