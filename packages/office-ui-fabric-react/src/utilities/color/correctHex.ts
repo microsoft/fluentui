@@ -7,7 +7,7 @@ export function correctHex(hex: string): string {
   if (!hex || hex.length < 3) {
     return 'ffffff'; // not a valid color--default to white
   }
-  if (hex.length > 6) {
+  if (hex.length >= 6) {
     return hex.substring(0, 6);
   }
   return hex.substring(0, 3);
