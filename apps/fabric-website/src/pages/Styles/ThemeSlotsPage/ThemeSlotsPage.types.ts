@@ -19,11 +19,8 @@ export interface IThemeSlotsPageProps extends IPageProps<Platforms> {
   className?: string;
 }
 
-export interface IThemeSlotsPageStyleProps extends Pick<IThemeSlotsPageProps, 'theme' | 'className'> {
-  // Define other style props here.
-}
+export interface IThemeSlotsPageStyleProps extends Pick<IThemeSlotsPageProps, 'theme' | 'className'> {}
 
 export interface IThemeSlotsPageStyles {
   root: IStyle;
-  // Define other classNames here.
 }
