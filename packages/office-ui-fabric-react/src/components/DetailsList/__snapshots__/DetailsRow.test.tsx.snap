@@ -1824,6 +1824,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           }
 
       data-automationid="DetailsRowCheck"
+      data-is-focusable={true}
       data-selection-toggle={true}
       role="checkbox"
     >
