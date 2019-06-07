@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/charting",
+      "comment": "Resolved the issue of the legends repeating even with same color and legend",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/charting",
+  "email": "v-dhnand@microsoft.com"
+}
