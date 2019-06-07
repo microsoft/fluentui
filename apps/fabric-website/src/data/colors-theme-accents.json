@@ -4,7 +4,7 @@
     "hex": "#d29200",
     "code": {
       "core": "$ms-color-yellowDark",
-      "react": "theme.palette.yellowDark"
+      "themeSlot": "yellowDark"
     }
   },
   {
@@ -12,7 +12,7 @@
     "hex": "#ffb900",
     "code": {
       "core": "$ms-color-yellow",
-      "react": "theme.palette.yellow"
+      "themeSlot": "yellow"
     }
   },
   {
@@ -20,7 +20,7 @@
     "hex": "#fff100",
     "code": {
       "core": "$ms-color-yellowLight",
-      "react": "theme.palette.yellowLight"
+      "themeSlot": "yellowLight"
     }
   },
   {
@@ -28,7 +28,7 @@
     "hex": "#d83b01",
     "code": {
       "core": "$ms-color-orange",
-      "react": "theme.palette.orange"
+      "themeSlot": "orange"
     }
   },
   {
@@ -36,7 +36,7 @@
     "hex": "#ea4300",
     "code": {
       "core": "$ms-color-orangeLight",
-      "react": "theme.palette.orangeLight"
+      "themeSlot": "orangeLight"
     }
   },
   {
@@ -44,7 +44,7 @@
     "hex": "#ff8c00",
     "code": {
       "core": "$ms-color-orangeLighter",
-      "react": "theme.palette.orangeLighter"
+      "themeSlot": "orangeLighter"
     }
   },
   {
@@ -52,7 +52,7 @@
     "hex": "#a4262c",
     "code": {
       "core": "$ms-color-redDark",
-      "react": "theme.palette.redDark"
+      "themeSlot": "redDark"
     }
   },
   {
@@ -60,7 +60,7 @@
     "hex": "#d13438",
     "code": {
       "core": "$ms-color-red",
-      "react": "theme.palette.red"
+      "themeSlot": "red"
     }
   },
   {
@@ -68,7 +68,7 @@
     "hex": "#5c005c",
     "code": {
       "core": "$ms-color-magentaDark",
-      "react": "theme.palette.magentaDark"
+      "themeSlot": "magentaDark"
     }
   },
   {
@@ -76,7 +76,7 @@
     "hex": "#b4009e",
     "code": {
       "core": "$ms-color-magenta",
-      "react": "theme.palette.magenta"
+      "themeSlot": "magenta"
     }
   },
   {
@@ -84,7 +84,7 @@
     "hex": "#e3008c",
     "code": {
       "core": "$ms-color-magentaLight",
-      "react": "theme.palette.magentaLight"
+      "themeSlot": "magentaLight"
     }
   },
   {
@@ -92,7 +92,7 @@
     "hex": "#32145a",
     "code": {
       "core": "$ms-color-purpleDark",
-      "react": "theme.palette.purpleDark"
+      "themeSlot": "purpleDark"
     }
   },
   {
@@ -100,7 +100,7 @@
     "hex": "#5c2d91",
     "code": {
       "core": "$ms-color-purple",
-      "react": "theme.palette.purple"
+      "themeSlot": "purple"
     }
   },
   {
@@ -108,7 +108,7 @@
     "hex": "#b4a0ff",
     "code": {
       "core": "$ms-color-purpleLight",
-      "react": "theme.palette.purpleLight"
+      "themeSlot": "purpleLight"
     }
   },
   {
@@ -116,7 +116,7 @@
     "hex": "#002050",
     "code": {
       "core": "$ms-color-blueDark",
-      "react": "theme.palette.blueDark"
+      "themeSlot": "blueDark"
     }
   },
   {
@@ -124,7 +124,7 @@
     "hex": "#00188f",
     "code": {
       "core": "$ms-color-blueMid",
-      "react": "theme.palette.blueMid"
+      "themeSlot": "blueMid"
     }
   },
   {
@@ -132,7 +132,7 @@
     "hex": "#0078d4",
     "code": {
       "core": "$ms-color-blue",
-      "react": "theme.palette.blue"
+      "themeSlot": "blue"
     }
   },
   {
@@ -140,7 +140,7 @@
     "hex": "#00bcf2",
     "code": {
       "core": "$ms-color-blueLight",
-      "react": "theme.palette.blueLight"
+      "themeSlot": "blueLight"
     }
   },
   {
@@ -148,7 +148,7 @@
     "hex": "#004b50",
     "code": {
       "core": "$ms-color-tealDark",
-      "react": "theme.palette.tealDark"
+      "themeSlot": "tealDark"
     }
   },
   {
@@ -156,7 +156,7 @@
     "hex": "#008272",
     "code": {
       "core": "$ms-color-teal",
-      "react": "theme.palette.teal"
+      "themeSlot": "teal"
     }
   },
   {
@@ -164,7 +164,7 @@
     "hex": "#00B294",
     "code": {
       "core": "$ms-color-tealLight",
-      "react": "theme.palette.tealLight"
+      "themeSlot": "tealLight"
     }
   },
   {
@@ -172,7 +172,7 @@
     "hex": "#004b1c",
     "code": {
       "core": "$ms-color-greenDark",
-      "react": "theme.palette.greenDark"
+      "themeSlot": "greenDark"
     }
   },
   {
@@ -180,7 +180,7 @@
     "hex": "#107c10",
     "code": {
       "core": "$ms-color-green",
-      "react": "theme.palette.green"
+      "themeSlot": "green"
     }
   },
   {
@@ -188,7 +188,7 @@
     "hex": "#bad80a",
     "code": {
       "core": "$ms-color-greenLight",
-      "react": "theme.palette.greenLight"
+      "themeSlot": "greenLight"
     }
   }
 ]

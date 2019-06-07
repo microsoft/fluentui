@@ -4,7 +4,8 @@
     "hex": "#000000",
     "code": {
       "core": "$ms-color-black",
-      "react": "theme.palette.black"
+      "react": "NeutralColors.black",
+      "themeSlot": "black"
     }
   },
   {
@@ -12,7 +13,8 @@
     "hex": "#201f1e",
     "code": {
       "core": "$ms-color-neutralDark",
-      "react": "theme.palette.neutralDark"
+      "react": "NeutralColors.gray190",
+      "themeSlot": "neutralDark"
     }
   },
   {
@@ -20,7 +22,8 @@
     "hex": "#323130",
     "code": {
       "core": "$ms-color-neutralPrimary",
-      "react": "theme.palette.neutralPrimary"
+      "react": "NeutralColors.gray160",
+      "themeSlot": "neutralPrimary"
     }
   },
   {
@@ -28,7 +31,8 @@
     "hex": "#3b3a39",
     "code": {
       "core": "$ms-color-neutralPrimaryAlt",
-      "react": "theme.palette.neutralPrimaryAlt"
+      "react": "NeutralColors.gray150",
+      "themeSlot": "neutralPrimaryAlt"
     }
   },
   {
@@ -36,7 +40,8 @@
     "hex": "#605e5c",
     "code": {
       "core": "$ms-color-neutralSecondary",
-      "react": "theme.palette.neutralSecondary"
+      "react": "NeutralColors.gray130",
+      "themeSlot": "neutralSecondary"
     }
   },
   {
@@ -44,7 +49,8 @@
     "hex": "#8a8886",
     "code": {
       "core": "$ms-color-neutralSecondaryAlt",
-      "react": "theme.palette.neutralSecondaryAlt"
+      "react": "NeutralColors.gray110",
+      "themeSlot": "neutralSecondaryAlt"
     }
   },
   {
@@ -52,7 +58,8 @@
     "hex": "#a19f9d",
     "code": {
       "core": "$ms-color-neutralTertiary",
-      "react": "theme.palette.neutralTertiary"
+      "react": "NeutralColors.gray90",
+      "themeSlot": "neutralTertiary"
     }
   },
   {
@@ -60,7 +67,8 @@
     "hex": "#c8c6c4",
     "code": {
       "core": "$ms-color-neutralTertiaryAlt",
-      "react": "theme.palette.neutralTertiaryAlt"
+      "react": "NeutralColors.gray60",
+      "themeSlot": "neutralTertiaryAlt"
     }
   },
   {
@@ -68,7 +76,8 @@
     "hex": "#d2d0ce",
     "code": {
       "core": "$ms-color-neutralQuaternary",
-      "react": "theme.palette.neutralQuaternary"
+      "react": "NeutralColors.gray50",
+      "themeSlot": "neutralQuaternary"
     }
   },
   {
@@ -76,7 +85,8 @@
     "hex": "#e1dfdd",
     "code": {
       "core": "$ms-color-neutralQuaternaryAlt",
-      "react": "theme.palette.neutralQuaternaryAlt"
+      "react": "NeutralColors.gray40",
+      "themeSlot": "neutralQuaternaryAlt"
     }
   },
   {
@@ -84,7 +94,8 @@
     "hex": "#edebe9",
     "code": {
       "core": "$ms-color-neutralLight",
-      "react": "theme.palette.neutralLight"
+      "react": "NeutralColors.gray30",
+      "themeSlot": "neutralLight"
     }
   },
   {
@@ -92,7 +103,8 @@
     "hex": "#f3f2f1",
     "code": {
       "core": "$ms-color-neutralLighter",
-      "react": "theme.palette.neutralLighter"
+      "react": "NeutralColors.gray20",
+      "themeSlot": "neutralLighter"
     }
   },
   {
@@ -100,7 +112,8 @@
     "hex": "#faf9f8",
     "code": {
       "core": "$ms-color-neutralLighterAlt",
-      "react": "theme.palette.neutralLighterAlt"
+      "react": "NeutralColors.gray10",
+      "themeSlot": "neutralLighterAlt"
     }
   },
   {
@@ -108,7 +121,8 @@
     "hex": "#ffffff",
     "code": {
       "core": "$ms-color-white",
-      "react": "theme.palette.white"
+      "react": "NeutralColors.white",
+      "themeSlot": "white"
     }
   }
 ]

@@ -4,7 +4,7 @@
     "hex": "#004578",
     "code": {
       "core": "$ms-color-themeDarker",
-      "react": "theme.palette.themeDarker"
+      "themeSlot": "themeDarker"
     }
   },
   {
@@ -12,7 +12,7 @@
     "hex": "#005a9e",
     "code": {
       "core": "$ms-color-themeDark",
-      "react": "theme.palette.themeDark"
+      "themeSlot": "themeDark"
     }
   },
   {
@@ -20,7 +20,7 @@
     "hex": "#106ebe",
     "code": {
       "core": "$ms-color-themeDarkAlt",
-      "react": "theme.palette.themeDarkAlt"
+      "themeSlot": "themeDarkAlt"
     }
   },
   {
@@ -28,7 +28,7 @@
     "hex": "#0078d4",
     "code": {
       "core": "$ms-color-themePrimary",
-      "react": "theme.palette.themePrimary"
+      "themeSlot": "themePrimary"
     }
   },
   {
@@ -36,7 +36,7 @@
     "hex": "#2b88d8",
     "code": {
       "core": "$ms-color-themeSecondary",
-      "react": "theme.palette.themeSecondary"
+      "themeSlot": "themeSecondary"
     }
   },
   {
@@ -44,7 +44,7 @@
     "hex": "#71afe5",
     "code": {
       "core": "$ms-color-themeTertiary",
-      "react": "theme.palette.themeTertiary"
+      "themeSlot": "themeTertiary"
     }
   },
   {
@@ -52,7 +52,7 @@
     "hex": "#c7e0f4",
     "code": {
       "core": "$ms-color-themeLight",
-      "react": "theme.palette.themeLight"
+      "themeSlot": "themeLight"
     }
   },
   {
@@ -60,7 +60,7 @@
     "hex": "#deecf9",
     "code": {
       "core": "$ms-color-themeLighter",
-      "react": "theme.palette.themeLighter"
+      "themeSlot": "themeLighter"
     }
   },
   {
@@ -68,7 +68,7 @@
     "hex": "#eff6fc",
     "code": {
       "core": "$ms-color-themeLighterAlt",
-      "react": "theme.palette.themeLighterAlt"
+      "themeSlot": "themeLighterAlt"
     }
   }
 ]
