@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { IPoint, IRectangle, IStyleFunctionOrObject } from '../../Utilities';

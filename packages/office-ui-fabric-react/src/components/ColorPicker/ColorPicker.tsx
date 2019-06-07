@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { ColorPickerBase } from './ColorPicker.base';
 import { getStyles } from './ColorPicker.styles';

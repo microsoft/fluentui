@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { DocumentCardTitleBase } from './DocumentCardTitle.base';
 import { getStyles } from './DocumentCardTitle.styles';

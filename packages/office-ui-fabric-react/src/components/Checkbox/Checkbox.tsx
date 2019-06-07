@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { CheckboxBase } from './Checkbox.base';
 import { getStyles } from './Checkbox.styles';

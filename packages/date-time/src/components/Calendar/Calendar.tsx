@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '@uifabric/utilities';
 import { ICalendarProps, ICalendarStyleProps, ICalendarStyles } from './Calendar.types';
 import { CalendarBase } from './Calendar.base';

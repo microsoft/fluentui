@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.

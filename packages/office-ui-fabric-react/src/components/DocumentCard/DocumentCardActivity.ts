@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { DocumentCardActivityBase } from './DocumentCardActivity.base';
 import { getStyles } from './DocumentCardActivity.styles';

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
 
 /**

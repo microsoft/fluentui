@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogBase } from './Dialog.base';

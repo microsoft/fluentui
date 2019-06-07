@@ -4,7 +4,6 @@
 
 ```ts
 
-import * as CSS from 'csstype';
 import { IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
@@ -224,10 +223,8 @@ export class EventGroup {
     static stopPropagation(event: any): void;
     }
 
-// Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
-// 
 // @public
-export function extendComponent<T extends React_2.Component>(parent: T, methods: {
+export function extendComponent<T extends React.Component>(parent: T, methods: {
     [key in keyof T]?: T[key];
 }): void;
 
@@ -427,11 +424,11 @@ export interface IClassNamesFunctionOptions {
 }
 
 // @public
-export type IComponentAs<T> = React_2.ComponentType<IComponentAsProps<T>>;
+export type IComponentAs<T> = React.ComponentType<IComponentAsProps<T>>;
 
 // @public
 export type IComponentAsProps<T> = T & {
-    defaultRender?: React_2.ComponentType<T>;
+    defaultRender?: React.ComponentType<T>;
 };
 
 // Warning: (ae-internal-missing-underscore) The name "ICssInput" should be prefixed with an underscore because the declaration is marked as @internal
@@ -555,7 +552,7 @@ export interface IFitContentToBoundsOptions {
 export const imageProperties: string[];
 
 // @public
-export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React_2.Component<TProps, TState>): void;
+export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
 
 // @public
 export function initializeFocusRects(window?: Window): void;

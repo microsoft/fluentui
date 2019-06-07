@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from 'office-ui-fabric-react/lib/Utilities';
 import { ICalendarIconStrings } from '../Calendar.types';
 import { ITheme } from '@uifabric/styling';

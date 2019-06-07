@@ -1,3 +1,5 @@
+import * as React from 'react';
+
 const _layersByHostId: { [hostId: string]: React.Component[] } = {};
 
 let _defaultHostSelector: string | undefined;

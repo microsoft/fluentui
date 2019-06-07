@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../../Utilities';
 import { getStyles } from './ShimmerCircle.styles';
 import { IShimmerCircleProps, IShimmerCircleStyleProps, IShimmerCircleStyles } from './ShimmerCircle.types';
