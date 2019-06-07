@@ -147,6 +147,7 @@ exports[`DatePicker renders default DatePicker correctly 1`] = `
             value=""
           />
           <i
+            aria-hidden={true}
             className=
                 ms-DatePicker-event--without-label
                 msDatePickerDisabled
