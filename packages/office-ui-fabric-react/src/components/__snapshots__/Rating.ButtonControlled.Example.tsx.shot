@@ -21,6 +21,9 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           height: 32px;
         }
     id="Rating0"
+    max={5}
+    min={1}
+    readOnly={true}
   >
     <div
       className=

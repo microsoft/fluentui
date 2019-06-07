@@ -28,6 +28,12 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 36px;
         }
     id="Rating0"
+    max={5}
+    min={1}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
+    size={1}
   >
     <div
       className=
@@ -853,6 +859,11 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating3"
+    max={5}
+    min={1}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
   >
     <div
       className=
@@ -1678,6 +1689,11 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating6"
+    max={10}
+    min={1}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
   >
     <div
       className=
@@ -3272,6 +3288,10 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating9"
+    max={5}
+    min={1}
+    onBlur={[Function]}
+    onFocus={[Function]}
   >
     <div
       className=
@@ -3851,6 +3871,9 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating12"
+    max={5}
+    min={1}
+    readOnly={true}
   >
     <div
       className=
@@ -4579,7 +4602,11 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
         {
           height: 32px;
         }
+    icon="StarburstSolid"
     id="Rating15"
+    max={5}
+    min={1}
+    readOnly={true}
   >
     <div
       className=
@@ -5315,6 +5342,11 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
           height: 32px;
         }
     id="Rating18"
+    max={5}
+    min={1}
+    onBlur={[Function]}
+    onChange={[Function]}
+    onFocus={[Function]}
   >
     <div
       className=

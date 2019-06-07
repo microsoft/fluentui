@@ -24,6 +24,8 @@ exports[`Rating Renders Rating correctly 1`] = `
         height: 32px;
       }
   id="Rating0"
+  max={5}
+  min={1}
 >
   <div
     className=

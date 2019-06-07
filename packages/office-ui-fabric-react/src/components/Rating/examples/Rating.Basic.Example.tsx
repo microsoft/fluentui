@@ -43,7 +43,6 @@ export class RatingBasicExample extends React.Component<
           getAriaLabel={this._getRatingComponentAriaLabel}
           onChange={this._onLargeStarChange}
           onFocus={this._onFocus}
-          onMouseOver={this._onMouseOver}
           onBlur={this._onBlur}
           ariaLabelFormat={'{0} of {1} stars selected'}
         />
@@ -125,9 +124,6 @@ export class RatingBasicExample extends React.Component<
 
   private _onLargeStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
     this.setState({ largeStarRating: rating });
-  };
-  private _onMouseOver = (ev: React.MouseEvent<HTMLElement>): void => {
-    console.log('onMouseOver called');
   };
 
   private _onSmallStarChange = (ev: React.FocusEvent<HTMLElement>, rating: number): void => {
