@@ -3,6 +3,7 @@
 exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
 <div>
   <i
+    aria-hidden={true}
     className=
         ms-IconExample
         {
@@ -35,6 +36,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
+    aria-hidden={true}
     className=
         ms-IconExample
         {
@@ -72,6 +74,7 @@ exports[`Component Examples renders Icon.Svg.Example.tsx correctly 1`] = `
     </svg>
   </i>
   <i
+    aria-hidden={true}
     className=
         ms-IconExample
         {

@@ -366,6 +366,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
