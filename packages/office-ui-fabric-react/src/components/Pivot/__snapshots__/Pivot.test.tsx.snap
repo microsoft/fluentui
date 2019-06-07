@@ -1250,6 +1250,7 @@ exports[`Pivot renders Pivot correctly with icon, text and count 1`] = `
                   }
             >
               <i
+                aria-hidden={true}
                 className=
 
                     {

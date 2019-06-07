@@ -269,6 +269,7 @@ exports[`Panel renders Panel correctly 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {

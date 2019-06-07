@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Improved Calendar A11Y",
+      "comment": "Icon: Set aria-hidden if imageProps.alt or imageProps.aria-labelledby is undefined",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "chsheets@microsoft.com"
+  "email": "edwl@microsoft.com"
 }

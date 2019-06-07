@@ -571,6 +571,7 @@ exports[`PeoplePicker renders correctly with preselected items 1`] = `
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {

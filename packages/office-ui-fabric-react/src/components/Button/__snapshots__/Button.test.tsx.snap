@@ -223,6 +223,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
         }
   >
     <i
+      aria-hidden={true}
       className=
           ms-Button-icon
           {
@@ -274,6 +275,7 @@ exports[`Button renders CommandBarButton correctly 1`] = `
       </div>
     </div>
     <i
+      aria-hidden={true}
       className=
           ms-Button-menuIcon
           {
@@ -674,6 +676,7 @@ exports[`Button renders IconButton correctly 1`] = `
         }
   >
     <i
+      aria-hidden={true}
       className=
           ms-Button-icon
           {

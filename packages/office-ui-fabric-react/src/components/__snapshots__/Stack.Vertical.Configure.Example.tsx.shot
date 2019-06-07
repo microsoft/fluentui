@@ -450,6 +450,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -580,6 +581,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -710,6 +712,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -839,6 +842,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -1232,6 +1236,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
                     {
@@ -1812,6 +1817,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Dropdown-caretDown
                         {
@@ -2039,6 +2045,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Dropdown-caretDown
                         {
@@ -2168,6 +2175,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Checkbox-checkmark
                         {

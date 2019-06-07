@@ -109,6 +109,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -235,6 +236,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -907,6 +909,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {
@@ -1040,6 +1043,7 @@ exports[`Pagination render buttons Pagination correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1187,6 +1191,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {
@@ -1313,6 +1318,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {
@@ -1603,6 +1609,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1726,6 +1733,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {
@@ -1847,6 +1855,7 @@ exports[`Pagination render comboBox Pagination correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Button-icon
             {

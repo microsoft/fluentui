@@ -256,6 +256,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {

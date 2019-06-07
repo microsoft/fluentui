@@ -170,6 +170,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
