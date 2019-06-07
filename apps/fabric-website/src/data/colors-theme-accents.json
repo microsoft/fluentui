@@ -1,0 +1,194 @@
+[
+  {
+    "name": "yellowDark",
+    "hex": "#d29200",
+    "code": {
+      "core": "$ms-color-yellowDark",
+      "react": "theme.palette.yellowDark"
+    }
+  },
+  {
+    "name": "yellow",
+    "hex": "#ffb900",
+    "code": {
+      "core": "$ms-color-yellow",
+      "react": "theme.palette.yellow"
+    }
+  },
+  {
+    "name": "yellowLight",
+    "hex": "#fff100",
+    "code": {
+      "core": "$ms-color-yellowLight",
+      "react": "theme.palette.yellowLight"
+    }
+  },
+  {
+    "name": "orange",
+    "hex": "#d83b01",
+    "code": {
+      "core": "$ms-color-orange",
+      "react": "theme.palette.orange"
+    }
+  },
+  {
+    "name": "orangeLight",
+    "hex": "#ea4300",
+    "code": {
+      "core": "$ms-color-orangeLight",
+      "react": "theme.palette.orangeLight"
+    }
+  },
+  {
+    "name": "orangeLighter",
+    "hex": "#ff8c00",
+    "code": {
+      "core": "$ms-color-orangeLighter",
+      "react": "theme.palette.orangeLighter"
+    }
+  },
+  {
+    "name": "redDark",
+    "hex": "#a4262c",
+    "code": {
+      "core": "$ms-color-redDark",
+      "react": "theme.palette.redDark"
+    }
+  },
+  {
+    "name": "red",
+    "hex": "#d13438",
+    "code": {
+      "core": "$ms-color-red",
+      "react": "theme.palette.red"
+    }
+  },
+  {
+    "name": "magentaDark",
+    "hex": "#5c005c",
+    "code": {
+      "core": "$ms-color-magentaDark",
+      "react": "theme.palette.magentaDark"
+    }
+  },
+  {
+    "name": "magenta",
+    "hex": "#b4009e",
+    "code": {
+      "core": "$ms-color-magenta",
+      "react": "theme.palette.magenta"
+    }
+  },
+  {
+    "name": "magentaLight",
+    "hex": "#e3008c",
+    "code": {
+      "core": "$ms-color-magentaLight",
+      "react": "theme.palette.magentaLight"
+    }
+  },
+  {
+    "name": "purpleDark",
+    "hex": "#32145a",
+    "code": {
+      "core": "$ms-color-purpleDark",
+      "react": "theme.palette.purpleDark"
+    }
+  },
+  {
+    "name": "purple",
+    "hex": "#5c2d91",
+    "code": {
+      "core": "$ms-color-purple",
+      "react": "theme.palette.purple"
+    }
+  },
+  {
+    "name": "purpleLight",
+    "hex": "#b4a0ff",
+    "code": {
+      "core": "$ms-color-purpleLight",
+      "react": "theme.palette.purpleLight"
+    }
+  },
+  {
+    "name": "blueDark",
+    "hex": "#002050",
+    "code": {
+      "core": "$ms-color-blueDark",
+      "react": "theme.palette.blueDark"
+    }
+  },
+  {
+    "name": "blueMid",
+    "hex": "#00188f",
+    "code": {
+      "core": "$ms-color-blueMid",
+      "react": "theme.palette.blueMid"
+    }
+  },
+  {
+    "name": "blue",
+    "hex": "#0078d4",
+    "code": {
+      "core": "$ms-color-blue",
+      "react": "theme.palette.blue"
+    }
+  },
+  {
+    "name": "blueLight",
+    "hex": "#00bcf2",
+    "code": {
+      "core": "$ms-color-blueLight",
+      "react": "theme.palette.blueLight"
+    }
+  },
+  {
+    "name": "tealDark",
+    "hex": "#004b50",
+    "code": {
+      "core": "$ms-color-tealDark",
+      "react": "theme.palette.tealDark"
+    }
+  },
+  {
+    "name": "teal",
+    "hex": "#008272",
+    "code": {
+      "core": "$ms-color-teal",
+      "react": "theme.palette.teal"
+    }
+  },
+  {
+    "name": "tealLight",
+    "hex": "#00B294",
+    "code": {
+      "core": "$ms-color-tealLight",
+      "react": "theme.palette.tealLight"
+    }
+  },
+  {
+    "name": "greenDark",
+    "hex": "#004b1c",
+    "code": {
+      "core": "$ms-color-greenDark",
+      "react": "theme.palette.greenDark"
+    }
+  },
+  {
+    "name": "green",
+    "hex": "#107c10",
+    "code": {
+      "core": "$ms-color-green",
+      "react": "theme.palette.green"
+    }
+  },
+  {
+    "name": "greenLight",
+    "hex": "#bad80a",
+    "code": {
+      "core": "$ms-color-greenLight",
+      "react": "theme.palette.greenLight"
+    }
+  }
+]
