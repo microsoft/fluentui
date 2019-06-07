@@ -54,7 +54,7 @@
   "dependencies": {
     "@microsoft/load-themed-styles": "^1.7.13",
     "@uifabric/azure-themes": "^6.0.1",
-    "@uifabric/charting": "^0.30.0",
+    "@uifabric/charting": "^0.30.1",
     "@uifabric/file-type-icons": "^6.5.0",
     "@uifabric/fluent-theme": "^0.16.10",
     "@uifabric/foundation": "^0.7.6",
@@ -66,7 +66,7 @@
     "@uifabric/utilities": "^6.40.1",
     "@uifabric/variants": "^6.14.2",
     "deep-assign": "^2.0.0",
-    "office-ui-fabric-react": "^6.189.1",
+    "office-ui-fabric-react": "^6.189.2",
     "prop-types": "^15.5.10",
     "tslib": "^1.7.1"
   },

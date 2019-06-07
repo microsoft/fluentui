@@ -291,6 +291,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   ms-Button-menuIcon
@@ -322,6 +323,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
@@ -623,6 +625,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   ms-Button-menuIcon
@@ -654,6 +657,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
@@ -949,6 +953,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   ms-Button-menuIcon
@@ -980,6 +985,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
@@ -1279,6 +1285,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   ms-Button-menuIcon
@@ -1310,6 +1317,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 1`] = `
           </div>
         </button>
         <span
+          aria-hidden={true}
           className=
 
               {
@@ -1515,6 +1523,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -1603,6 +1612,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 ms-Button-menuIcon
@@ -1633,6 +1643,7 @@ exports[`Component Examples renders Button.Split.Example.tsx correctly 2`] = `
         </div>
       </button>
       <span
+        aria-hidden={true}
         className=
 
             {

@@ -667,6 +667,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -806,6 +807,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -945,6 +947,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -983,6 +986,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {

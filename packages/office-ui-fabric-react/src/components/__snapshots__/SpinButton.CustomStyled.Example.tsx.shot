@@ -244,6 +244,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -377,6 +378,7 @@ exports[`Component Examples renders SpinButton.CustomStyled.Example.tsx correctl
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

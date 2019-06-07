@@ -2,6 +2,25 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/date-time_v6.3.0",
+      "date": "Fri, 07 Jun 2019 12:21:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "styling updates for datetime calendar",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "e5b8518175fe378ccc6a16e2674af4bccbdd4a16"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.1` to `^6.189.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.2.1",
       "tag": "@uifabric/date-time_v6.2.1",
       "date": "Wed, 05 Jun 2019 12:22:30 GMT",

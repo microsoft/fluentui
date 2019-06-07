@@ -139,6 +139,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-menuIcon
                 {
@@ -259,6 +260,7 @@ exports[`MicroFeedback renders correctly with inline prop set 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-menuIcon
                 {
@@ -431,6 +433,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-menuIcon
                 {
@@ -551,6 +554,7 @@ exports[`MicroFeedback renders correctly with no props 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-menuIcon
                 {

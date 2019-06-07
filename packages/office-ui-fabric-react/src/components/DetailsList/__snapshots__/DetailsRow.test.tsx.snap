@@ -241,6 +241,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -270,6 +271,7 @@ exports[`DetailsRow renders details list row correctly 1`] = `
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1062,6 +1064,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -1091,6 +1094,7 @@ exports[`DetailsRow renders details list row with all rows selected correctly 1`
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -1863,6 +1867,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Check-circle
               {
@@ -1892,6 +1897,7 @@ exports[`DetailsRow renders details list row with checkbox visible always correc
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-Check-check
               {
@@ -2365,6 +2371,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -2394,6 +2401,7 @@ exports[`DetailsRow renders details list row with multiple selections correctly 
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
@@ -3186,6 +3194,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -3215,6 +3224,7 @@ exports[`DetailsRow renders details list row with one row selected correctly 1`]
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {

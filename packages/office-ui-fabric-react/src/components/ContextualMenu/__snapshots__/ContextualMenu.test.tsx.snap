@@ -94,6 +94,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
         }
   >
     <i
+      aria-hidden={true}
       className=
           ms-Button-menuIcon
           {
@@ -421,6 +422,7 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                             Test1
                           </span>
                           <i
+                            aria-hidden={true}
                             className=
                                 ms-ContextualMenu-submenuIcon
                                 {

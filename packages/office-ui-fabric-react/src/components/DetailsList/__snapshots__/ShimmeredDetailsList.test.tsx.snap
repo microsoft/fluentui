@@ -250,6 +250,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-circle
                         {
@@ -279,6 +280,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
                     
                   </i>
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Check-check
                         {
