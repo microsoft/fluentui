@@ -9,7 +9,7 @@
   },
   {
     "name": "neutralDark",
-    "hex": "#212121",
+    "hex": "#201f1e",
     "code": {
       "core": "$ms-color-neutralDark",
       "react": "theme.palette.neutralDark"
@@ -17,7 +17,7 @@
   },
   {
     "name": "neutralPrimary",
-    "hex": "#333333",
+    "hex": "#323130",
     "code": {
       "core": "$ms-color-neutralPrimary",
       "react": "theme.palette.neutralPrimary"
@@ -25,7 +25,7 @@
   },
   {
     "name": "neutralPrimaryAlt",
-    "hex": "#3c3c3c",
+    "hex": "#3b3a39",
     "code": {
       "core": "$ms-color-neutralPrimaryAlt",
       "react": "theme.palette.neutralPrimaryAlt"
@@ -33,15 +33,23 @@
   },
   {
     "name": "neutralSecondary",
-    "hex": "#666666",
+    "hex": "#605e5c",
     "code": {
       "core": "$ms-color-neutralSecondary",
       "react": "theme.palette.neutralSecondary"
     }
   },
   {
+    "name": "neutralSecondaryAlt",
+    "hex": "#8a8886",
+    "code": {
+      "core": "$ms-color-neutralSecondaryAlt",
+      "react": "theme.palette.neutralSecondaryAlt"
+    }
+  },
+  {
     "name": "neutralTertiary",
-    "hex": "#a6a6a6",
+    "hex": "#a19f9d",
     "code": {
       "core": "$ms-color-neutralTertiary",
       "react": "theme.palette.neutralTertiary"
@@ -49,7 +57,7 @@
   },
   {
     "name": "neutralTertiaryAlt",
-    "hex": "#c8c8c8",
+    "hex": "#c8c6c4",
     "code": {
       "core": "$ms-color-neutralTertiaryAlt",
       "react": "theme.palette.neutralTertiaryAlt"
@@ -57,7 +65,7 @@
   },
   {
     "name": "neutralQuaternary",
-    "hex": "#d0d0d0",
+    "hex": "#d2d0ce",
     "code": {
       "core": "$ms-color-neutralQuaternary",
       "react": "theme.palette.neutralQuaternary"
@@ -65,7 +73,7 @@
   },
   {
     "name": "neutralQuaternaryAlt",
-    "hex": "#dadada",
+    "hex": "#e1dfdd",
     "code": {
       "core": "$ms-color-neutralQuaternaryAlt",
       "react": "theme.palette.neutralQuaternaryAlt"
@@ -73,7 +81,7 @@
   },
   {
     "name": "neutralLight",
-    "hex": "#eaeaea",
+    "hex": "#edebe9",
     "code": {
       "core": "$ms-color-neutralLight",
       "react": "theme.palette.neutralLight"
@@ -81,7 +89,7 @@
   },
   {
     "name": "neutralLighter",
-    "hex": "#f4f4f4",
+    "hex": "#f3f2f1",
     "code": {
       "core": "$ms-color-neutralLighter",
       "react": "theme.palette.neutralLighter"
@@ -89,7 +97,7 @@
   },
   {
     "name": "neutralLighterAlt",
-    "hex": "#f8f8f8",
+    "hex": "#faf9f8",
     "code": {
       "core": "$ms-color-neutralLighterAlt",
       "react": "theme.palette.neutralLighterAlt"
