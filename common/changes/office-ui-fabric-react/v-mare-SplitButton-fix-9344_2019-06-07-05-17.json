@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Fixed issue where the menu icon in the SplitButton component would take on a disabled appearance with only the primary action disabled. New screener tests were written to accommodate these changes. The CommandBarButton that is in the SplitButton configuration also took on these menu icon changes.",
+      "comment": "Fixes issue when the menu icon in the second button of the `SplitButton` gets disabled styles when only the primary action is disabled.",
       "type": "patch"
     }
   ],
