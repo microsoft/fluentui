@@ -3,6 +3,7 @@ import { IComponent, IComponentStyles, IHTMLSlot, ISlotProp, ISlottableProps, IS
 import { IBaseProps } from '../../../Utilities';
 import { INativeButtonProps } from '../Button.types';
 import {
+  IMenuButton,
   IMenuButtonProps,
   IMenuButtonSlot,
   IMenuButtonSlots,
@@ -61,12 +62,7 @@ export interface ISplitButtonSlots extends IMenuButtonSlots {
 /**
  * {@docCategory Button}
  */
-export interface ISplitButton {
-  /**
-   * Sets focus to the first focus stop of the SplitButton.
-   */
-  focus: () => void;
-}
+export interface ISplitButton extends IMenuButton {}
 
 /**
  * {@docCategory Button}
@@ -84,6 +80,7 @@ export interface ISplitButtonProps
       | 'allowDisabledFocus'
       | 'ariaLabel'
       | 'keytipProps'
+      | 'uniqueId'
       | 'defaultExpanded'
       | 'expanded'
       | 'onMenuDismiss'

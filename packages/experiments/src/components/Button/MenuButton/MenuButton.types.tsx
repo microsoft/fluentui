@@ -1,7 +1,7 @@
-import { IComponent, IComponentStyles, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
+import { IComponent, IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 import { IContextualMenuSlot, IIconSlot } from '../../../utilities/factoryComponents.types';
 import { IBaseProps } from '../../../Utilities';
-import { IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
+import { IButton, IButtonProps, IButtonSlot, IButtonSlots, IButtonTokens, IButtonViewProps, INativeButtonProps } from '../Button.types';
 
 /**
  * {@docCategory Button}
@@ -48,19 +48,14 @@ export interface IMenuButtonSlots extends IButtonSlots {
 /**
  * {@docCategory Button}
  */
-export interface IMenuButton {
-  /**
-   * Sets focus to the MenuButton.
-   */
-  focus: () => void;
-}
+export interface IMenuButton extends IButton {}
 
 /**
  * {@docCategory Button}
  */
 export interface IMenuButtonProps
-  extends IMenuButtonSlots,
-    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps'>,
+  extends ISlottableProps<IMenuButtonSlots>,
+    Pick<IButtonProps, 'href' | 'primary' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
     IStyleableComponentProps<IMenuButtonProps, IMenuButtonTokens, IMenuButtonStyles>,
     IBaseProps<IMenuButton>,
     INativeButtonProps {
