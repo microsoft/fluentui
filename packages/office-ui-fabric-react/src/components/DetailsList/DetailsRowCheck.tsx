@@ -62,6 +62,7 @@ const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
       className={css(classNames.root, classNames.check, checkClassNames.checkHost)}
       aria-checked={isPressed}
       data-selection-toggle={true}
+      data-is-focusable={true}
       data-automationid="DetailsRowCheck"
     >
       {onRenderDetailsCheckbox
