@@ -165,6 +165,9 @@ storiesOf('Button Split', module)
   ))
   .addStory('Root', () => <DefaultButton {...commandProps} split={true} />, { rtl: true })
   .addStory('Disabled', () => <DefaultButton {...commandProps} disabled={true} split={true} />)
+  .addStory('Default with Primary Action Disabled', () => (
+    <DefaultButton {...commandProps} primaryDisabled={true} split={true} />
+  ))
   .addStory('Checked', () => <DefaultButton {...commandProps} checked={true} split={true} />)
   .addStory('Primary', () => <DefaultButton {...commandProps} primary={true} split={true} />)
   .addStory('Primary Disabled', () => (
