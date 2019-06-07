@@ -145,7 +145,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
               disabled={!allFocusable && !isPrevYearInBounds}
               onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
               onKeyDown={isPrevYearInBounds ? this._onButtonKeyDown(this._onSelectPrevYear) : undefined}
-              aria-label={
+              title={
                 strings.prevYearAriaLabel
                   ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
                   : undefined
@@ -161,7 +161,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
               disabled={!allFocusable && !isNextYearInBounds}
               onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
               onKeyDown={isNextYearInBounds ? this._onButtonKeyDown(this._onSelectNextYear) : undefined}
-              aria-label={
+              title={
                 strings.nextYearAriaLabel
                   ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
                   : undefined
@@ -177,7 +177,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             {rowIndexes.map((rowNum: number) => {
               const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (
-                <div key={'monthRow_' + rowNum} role="row">
+                <div key={'monthRow_' + rowNum} role="row" className={classNames.buttonRow}>
                   {monthsForRow.map((month: string, index: number) => {
                     const monthIndex = rowNum * MONTHS_PER_ROW + index;
                     const indexedMonth = setMonth(navigatedDate, monthIndex);

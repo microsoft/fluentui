@@ -1,6 +1,38 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 04 Jun 2019 12:22:18 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jun 2019 12:21:48 GMT and should not be manually modified.
+
+## 6.189.2
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Panel: use windowHeight for all devices rather than only for iOS
+- Improved Calendar A11Y
+
+## 6.189.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Update documentation to add target _blank to external links
+- Fixing some bugs for the persisted ContextualMenu
+
+## 6.189.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- adding missing filetype mappings to support LPC and other partners
+- Fix TS 3.5 typing issues.
+- Consume Selection from Utilities
+
+### Patches
+
+- BaseButton: Render placeholder icon if iconName is empty string
+- ContextualMenu: When menus are rendered with the `persistMenu` flag, the scrollbar now renders correctly in Edge.
+- add tooltips to Calendar buttons without text
+- TextField: Adds aria-labelledby to input
 
 ## 6.188.2
 Tue, 04 Jun 2019 12:22:18 GMT

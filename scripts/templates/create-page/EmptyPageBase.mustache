@@ -8,7 +8,7 @@ import { {{pageName}}PageProps } from './{{pageName}}Page.doc';
 
 const getClassNames = classNamesFunction<I{{pageName}}PageStyleProps, I{{pageName}}PageStyles>();
 const baseUrl =
-  'https://onedrive.visualstudio.com/Design/_git/ui-fabric-website-internal?path=/apps/fabric-website-internal/src/pages/{{pagePath}}/';
+  'https://github.com/OfficeDev/office-ui-fabric-react/tree/master/apps/fabric-website/src/pages/{{pagePath}}/';
 
 export const {{pageName}}PageBase: React.StatelessComponent<I{{pageName}}PageProps> = props => {
   return (
@@ -67,7 +67,7 @@ function _otherSections(platform: Platforms): IPageSectionProps[] {
 
           // Define the content of the page using the `Markdown` component.
           // Use raw-loader to point the markdown file you want to use for the section.
-          content: require('!raw-loader!@uifabric/fabric-website-internal/src/pages/{{pagePath}}/{{pageName}}Page/docs/default/{{pageName}}Custom.md') as string
+          content: require('!raw-loader!@uifabric/fabric-website/src/pages/{{pagePath}}/{{pageName}}Page/docs/default/{{pageName}}Custom.md') as string
         },
 
         // Custom section with JSX content.

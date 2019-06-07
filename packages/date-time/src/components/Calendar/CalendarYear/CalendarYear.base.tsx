@@ -158,7 +158,7 @@ class CalendarYearGrid extends React.Component<ICalendarYearGridProps, {}> imple
         <div className={classNames.gridContainer} role="grid">
           {cells.map((cellRow: React.ReactNode[], index: number) => {
             return (
-              <div key={'yearPickerRow_' + index} role="row">
+              <div key={'yearPickerRow_' + index} role="row" className={classNames.buttonRow}>
                 {...cellRow}
               </div>
             );
@@ -226,7 +226,7 @@ class CalendarYearNavPrev extends React.Component<ICalendarYearHeaderProps, {}> 
         onClick={!disabled && onSelectPrev ? this._onSelectPrev : undefined}
         onKeyDown={!disabled && onSelectPrev ? this._onKeyDown : undefined}
         type="button"
-        aria-label={prevAriaLabel}
+        title={prevAriaLabel}
         disabled={disabled}
       >
         <Icon iconName={getRTL() ? iconStrings.rightNavigation : iconStrings.leftNavigation} />
@@ -280,7 +280,7 @@ class CalendarYearNavNext extends React.Component<ICalendarYearHeaderProps, {}> 
         onClick={!disabled && onSelectNext ? this._onSelectNext : undefined}
         onKeyDown={!disabled && onSelectNext ? this._onKeyDown : undefined}
         type="button"
-        aria-label={nextAriaLabel}
+        title={nextAriaLabel}
         disabled={this.isDisabled}
       >
         <Icon iconName={getRTL() ? iconStrings.leftNavigation : iconStrings.rightNavigation} />

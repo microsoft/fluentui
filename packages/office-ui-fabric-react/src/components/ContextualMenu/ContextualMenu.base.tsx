@@ -10,7 +10,7 @@ import {
 import { DirectionalHint } from '../../common/DirectionalHint';
 import { FocusZone, FocusZoneDirection, IFocusZoneProps, FocusZoneTabbableElements } from '../../FocusZone';
 import { IMenuItemClassNames, IContextualMenuClassNames } from './ContextualMenu.classNames';
-import { divProperties, getNativeProps } from '../../Utilities';
+import { divProperties, getNativeProps, shallowCompare } from '../../Utilities';
 
 import {
   assign,
@@ -137,6 +137,15 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     }
   };
 
+  public shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean {
+    if (this.props.hidden && newProps.hidden) {
+      // Do not update when hidden.
+      return false;
+    }
+
+    return !shallowCompare(this.props, newProps) || !shallowCompare(this.state, newState);
+  }
+
   public componentWillUpdate(newProps: IContextualMenuProps): void {
     if (newProps.target !== this.props.target) {
       const newTarget = newProps.target;
@@ -179,15 +188,7 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   // Invoked immediately before a component is unmounted from the DOM.
   public componentWillUnmount() {
-    if (this._isFocusingPreviousElement && this._previousActiveElement) {
-      // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
-      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
-      // to reset the focus back to the thing it thinks should have been focused.
-      // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
-      setTimeout(() => {
-        this._previousActiveElement && this._previousActiveElement!.focus();
-      }, 0);
-    }
+    this._tryFocusPreviousActiveElement();
 
     if (this.props.onMenuDismissed) {
       this.props.onMenuDismissed(this.props);
@@ -365,10 +366,12 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
 
   private _onMenuClosed() {
     this._events.off(this._targetWindow, 'resize', this.dismiss);
-    this._previousActiveElement &&
-      this._async.setTimeout(() => {
-        this._previousActiveElement && this._previousActiveElement!.focus();
-      }, 0);
+    this._tryFocusPreviousActiveElement();
+
+    if (this.props.onMenuDismissed) {
+      this.props.onMenuDismissed(this.props);
+    }
+
     this._shouldUpdateFocusOnMouseEvent = !this.props.delayUpdateFocusOnHover;
 
     // We need to dismiss any submenu related state properties,
@@ -379,6 +382,18 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
       expandedMenuItemKey: undefined,
       submenuTarget: undefined
     });
+  }
+
+  private _tryFocusPreviousActiveElement() {
+    if (this._isFocusingPreviousElement && this._previousActiveElement) {
+      // This slight delay is required so that we can unwind the stack, const react try to mess with focus, and then
+      // apply the correct focus. Without the setTimeout, we end up focusing the correct thing, and then React wants
+      // to reset the focus back to the thing it thinks should have been focused.
+      // Note: Cannot be replaced by this._async.setTimout because those will be removed by the time this is called.
+      setTimeout(() => {
+        this._previousActiveElement && this._previousActiveElement!.focus();
+      }, 0);
+    }
   }
 
   /**
