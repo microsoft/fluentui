@@ -109,7 +109,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 {
                   align-items: stretch;
                   background: #ffffff;
-                  border-color: #a80000;
                   border: 1px solid #a6a6a6;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -133,13 +132,9 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
-                &:focus, &:hover {
-                  border-color: #a80000;
-                }
           >
             <input
-              aria-describedby="TextFieldDescription2"
-              aria-invalid={true}
+              aria-invalid={false}
               aria-label="Select a date"
               aria-labelledby="TextFieldLabel3"
               className=
@@ -226,13 +221,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
             </i>
           </div>
         </div>
-        <span
-          id="TextFieldDescription2"
-        >
-          <div
-            role="alert"
-          />
-        </span>
       </div>
     </div>
   </div>
@@ -303,7 +291,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 {
                   align-items: stretch;
                   background: #ffffff;
-                  border-color: #a80000;
                   border: 1px solid #a6a6a6;
                   box-shadow: none;
                   box-sizing: border-box;
@@ -327,9 +314,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 @media screen and (-ms-high-contrast: active){&:hover {
                   border-color: Highlight;
                 }
-                &:focus, &:hover {
-                  border-color: #a80000;
-                }
                 &:after {
                   color: #a80000;
                   content: '*';
@@ -342,8 +326,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                 }
           >
             <input
-              aria-describedby="TextFieldDescription6"
-              aria-invalid={true}
+              aria-invalid={false}
               aria-label="Select a date"
               className=
                   ms-TextField-field
@@ -429,13 +412,6 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
             </i>
           </div>
         </div>
-        <span
-          id="TextFieldDescription6"
-        >
-          <div
-            role="alert"
-          />
-        </span>
       </div>
     </div>
   </div>
