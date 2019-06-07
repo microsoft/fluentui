@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, Text } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { SemanticSlotsDetailsList } from './SemanticSlotsDetailsList';
 import { MainPanelInnerContent } from '../shared/MainPanelStyles';
@@ -462,7 +462,6 @@ export const SemanticSlots: React.StatelessComponent<ISemanticSlotsProps> = (pro
 
   return (
     <div className={MainPanelInnerContent}>
-      <h1>Semantic slots</h1>
       <SemanticSlotsDetailsList
         slotNames={slotNames}
         noneSlots={noneSlots}

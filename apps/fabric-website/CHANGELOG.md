@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 31 May 2019 12:21:27 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2019 12:22:24 GMT and should not be manually modified.
+
+## 6.18.11
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Add redirects to new website
+- Fix uhf style override className.
 
 ## 6.18.10
 Fri, 31 May 2019 12:21:27 GMT

@@ -153,6 +153,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   msDatePickerDisabled
@@ -214,15 +215,15 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             padding-top: 5px;
             word-wrap: break-word;
           }
-      htmlFor="Dropdown3"
-      id="Dropdown3-label"
+      htmlFor="Dropdown4"
+      id="Dropdown4-label"
     >
       Select the first day of the week
     </label>
     <div
-      aria-describedby="Dropdown3-option"
+      aria-describedby="Dropdown4-option"
       aria-expanded="false"
-      aria-labelledby="Dropdown3-label"
+      aria-labelledby="Dropdown4-label"
       className=
           ms-Dropdown
           {
@@ -309,7 +310,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             border-color: #a80000;
           }
       data-is-focusable={true}
-      id="Dropdown3"
+      id="Dropdown4"
       onBlur={[Function]}
       onChange={[Function]}
       onClick={[Function]}
@@ -352,7 +353,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
               text-overflow: ellipsis;
               white-space: nowrap;
             }
-        id="Dropdown3-option"
+        id="Dropdown4-option"
         role="option"
       >
         <span>
@@ -372,6 +373,7 @@ exports[`Component Examples renders DatePicker.WeekNumbers.Example.tsx correctly
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {

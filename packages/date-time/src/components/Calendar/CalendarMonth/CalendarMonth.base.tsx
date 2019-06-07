@@ -104,7 +104,9 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
           selectedYear={selectedDate ? selectedDate.getFullYear() : navigatedDate ? navigatedDate.getFullYear() : undefined}
           onRenderYear={this._onRenderYear}
           strings={{
-            rangeAriaLabel: this._yearRangeToString
+            rangeAriaLabel: this._yearRangeToString,
+            prevRangeAriaLabel: this._yearRangeToPrevDecadeLabel,
+            nextRangeAriaLabel: this._yearRangeToNextDecadeLabel
           }}
           componentRef={this._calendarYearRef}
           styles={styles}
@@ -130,6 +132,8 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             data-is-focusable={!!onHeaderSelect}
             tabIndex={!!onHeaderSelect ? 0 : -1} // prevent focus if there's no action for the button
             type="button"
+            aria-atomic={true}
+            aria-live="polite"
           >
             {dateFormatter.formatYear(navigatedDate)}
           </button>
@@ -141,7 +145,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
               disabled={!allFocusable && !isPrevYearInBounds}
               onClick={isPrevYearInBounds ? this._onSelectPrevYear : undefined}
               onKeyDown={isPrevYearInBounds ? this._onButtonKeyDown(this._onSelectPrevYear) : undefined}
-              aria-label={
+              title={
                 strings.prevYearAriaLabel
                   ? strings.prevYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, -1))
                   : undefined
@@ -157,7 +161,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
               disabled={!allFocusable && !isNextYearInBounds}
               onClick={isNextYearInBounds ? this._onSelectNextYear : undefined}
               onKeyDown={isNextYearInBounds ? this._onButtonKeyDown(this._onSelectNextYear) : undefined}
-              aria-label={
+              title={
                 strings.nextYearAriaLabel
                   ? strings.nextYearAriaLabel + ' ' + dateFormatter.formatYear(addYears(navigatedDate, 1))
                   : undefined
@@ -173,7 +177,7 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
             {rowIndexes.map((rowNum: number) => {
               const monthsForRow = strings.shortMonths.slice(rowNum * MONTHS_PER_ROW, (rowNum + 1) * MONTHS_PER_ROW);
               return (
-                <div key={'monthRow_' + rowNum} role="row">
+                <div key={'monthRow_' + rowNum} role="row" className={classNames.buttonRow}>
                   {monthsForRow.map((month: string, index: number) => {
                     const monthIndex = rowNum * MONTHS_PER_ROW + index;
                     const indexedMonth = setMonth(navigatedDate, monthIndex);
@@ -233,7 +237,6 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
     return (ev: React.KeyboardEvent<HTMLButtonElement>) => {
       switch (ev.which) {
         case KeyCodes.enter:
-        case KeyCodes.space:
           callback();
           break;
       }
@@ -319,5 +322,15 @@ export class CalendarMonthBase extends BaseComponent<ICalendarMonthProps, ICalen
 
   private _yearRangeToString = (yearRange: ICalendarYearRange) => {
     return `${this._yearToString(yearRange.fromYear)} - ${this._yearToString(yearRange.toYear)}`;
+  };
+
+  private _yearRangeToNextDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.nextYearRangeAriaLabel ? `${strings.nextYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
+  };
+
+  private _yearRangeToPrevDecadeLabel = (yearRange: ICalendarYearRange) => {
+    const { strings } = this.props;
+    return strings.prevYearRangeAriaLabel ? `${strings.prevYearRangeAriaLabel} ${this._yearRangeToString(yearRange)}` : '';
   };
 }

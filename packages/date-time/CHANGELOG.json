@@ -2,6 +2,81 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.3.0",
+      "tag": "@uifabric/date-time_v6.3.0",
+      "date": "Fri, 07 Jun 2019 12:21:48 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "styling updates for datetime calendar",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "e5b8518175fe378ccc6a16e2674af4bccbdd4a16"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.1` to `^6.189.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.1",
+      "tag": "@uifabric/date-time_v6.2.1",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "add tooltips to Calendar buttons without text and fix text overflow bug in calendar header button with long names",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "d069e8b786d2e32251a5b6160d6ebbb8a051ceba"
+          },
+          {
+            "comment": "TextField: adds aria-labelledby to input",
+            "author": "staciecarroll <42977041+staciecarroll@users.noreply.github.com>",
+            "commit": "24e90baf27358385fa92df6ae70048183663fd89"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.47.6` to `^6.48.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.39.3` to `^6.40.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.2` to `^6.189.0`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.2.0",
+      "tag": "@uifabric/date-time_v6.2.0",
+      "date": "Mon, 03 Jun 2019 12:23:18 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Updating DatePicker and Calendar accessibility",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "2c587d46a192ed40adb633d6dd54941bf697a8ff"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "passing through props as the api expects them to be",
+            "author": "John Lorenz <jolore@microsoft.com>",
+            "commit": "999d6478e31bc32f1880e03bd38823eb36e513ef"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.187.2` to `^6.188.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.1.2",
       "tag": "@uifabric/date-time_v6.1.2",
       "date": "Tue, 21 May 2019 12:20:44 GMT",

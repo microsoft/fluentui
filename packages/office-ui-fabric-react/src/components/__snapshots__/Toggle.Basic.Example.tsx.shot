@@ -947,6 +947,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               }
           href="https://bing.com"
           onClick={[Function]}
+          target="_blank"
         >
           Learn More
         </a>
@@ -962,6 +963,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
           onMouseLeave={[Function]}
         >
           <i
+            aria-hidden={true}
             className=
 
                 {
@@ -1503,6 +1505,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
               }
           href="https://bing.com"
           onClick={[Function]}
+          target="_blank"
         >
           Learn More
         </a>
@@ -1518,6 +1521,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
           onMouseLeave={[Function]}
         >
           <i
+            aria-hidden={true}
             className=
 
                 {

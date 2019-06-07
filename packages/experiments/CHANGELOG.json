@@ -2,6 +2,40 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.5",
+      "tag": "@uifabric/experiments_v6.78.5",
+      "date": "Tue, 04 Jun 2019 12:22:17 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Added a signal to wrap an icon for republising reminder",
+            "author": "fishibru <51141774+fishibru@users.noreply.github.com>",
+            "commit": "bd59e4c38d4641f0277528f39b12f2f7601993ba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.1` to `^6.188.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.4",
+      "tag": "@uifabric/experiments_v6.78.4",
+      "date": "Mon, 03 Jun 2019 23:04:02 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.29.2` to `^0.30.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.188.0` to `^6.188.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.3",
       "tag": "@uifabric/experiments_v6.78.3",
       "date": "Fri, 31 May 2019 12:21:26 GMT",

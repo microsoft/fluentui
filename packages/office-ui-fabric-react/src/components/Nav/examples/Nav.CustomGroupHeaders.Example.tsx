@@ -10,16 +10,16 @@ export const NavCustomGroupHeadersExample: React.StatelessComponent = () => {
           name: 'Pages',
           links: [
             // prettier-ignore
-            { name: 'Activity', url: 'http://msn.com', key: 'key1' },
-            { name: 'News', url: 'http://msn.com', key: 'key2' }
+            { name: 'Activity', url: 'http://msn.com', key: 'key1', target: '_blank' },
+            { name: 'News', url: 'http://msn.com', key: 'key2', target: '_blank' }
           ]
         },
         {
           name: 'More pages',
           links: [
             // prettier-ignore
-            { name: 'Settings', url: 'http://msn.com', key: 'key3' },
-            { name: 'Notes', url: 'http://msn.com', key: 'key4' }
+            { name: 'Settings', url: 'http://msn.com', key: 'key3', target: '_blank' },
+            { name: 'Notes', url: 'http://msn.com', key: 'key4', target: '_blank' }
           ]
         }
       ]}

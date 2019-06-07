@@ -98,6 +98,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                   padding-right: 12px;
                 }
             htmlFor="DatePicker0-label"
+            id="TextFieldLabel3"
             required={true}
           >
             Date required (with label)
@@ -135,6 +136,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
             <input
               aria-invalid={false}
               aria-label="Select a date"
+              aria-labelledby="TextFieldLabel3"
               className=
                   ms-TextField-field
                   {
@@ -191,6 +193,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--with-label
                   msDatePickerDisabled
@@ -368,7 +371,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
                     color: #666666;
                     opacity: 1;
                   }
-              id="DatePicker3-label"
+              id="DatePicker4-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -382,6 +385,7 @@ exports[`Component Examples renders DatePicker.Required.Example.tsx correctly 1`
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   msDatePickerDisabled
