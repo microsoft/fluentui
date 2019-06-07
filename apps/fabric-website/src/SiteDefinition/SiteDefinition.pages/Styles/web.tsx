@@ -20,7 +20,8 @@ export const stylesPagesWeb: INavPage[] = [
         url: '#/styles/web/colors',
         isHiddenFromMainNav: true,
         component: () => <LoadingComponent title="Products" />,
-        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Styles/Colors/ProductsPage').ColorsProductsPage))
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Styles/ThemeSlotsPage/ThemeSlotsPage').ThemeSlotsPage))
       },
       {
         title: 'Products',
