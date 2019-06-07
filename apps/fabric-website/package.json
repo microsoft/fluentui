@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/fabric-website",
-  "version": "6.18.10",
+  "version": "6.18.11",
   "description": "Reusable React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -55,7 +55,7 @@
     "@uifabric/theme-samples": "^0.1.6",
     "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
-    "office-ui-fabric-react": "^6.189.0",
+    "office-ui-fabric-react": "^6.189.1",
     "tslib": "^1.7.1",
     "whatwg-fetch": "2.0.4"
   }

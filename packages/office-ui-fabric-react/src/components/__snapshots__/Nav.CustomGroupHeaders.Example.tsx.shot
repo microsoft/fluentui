@@ -178,6 +178,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Activity"
               >
                 <div
@@ -328,6 +329,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="News"
               >
                 <div
@@ -514,6 +516,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Settings"
               >
                 <div
@@ -664,6 +667,7 @@ exports[`Component Examples renders Nav.CustomGroupHeaders.Example.tsx correctly
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Notes"
               >
                 <div
