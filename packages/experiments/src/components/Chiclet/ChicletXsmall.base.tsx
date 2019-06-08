@@ -19,21 +19,7 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
   private _classNames: { [key in keyof IChicletXsmallStyles]: string };
 
   public render(): JSX.Element {
-    const {
-      title,
-      itemType,
-      image,
-      imageWidth,
-      imageHeight,
-      imageAlt,
-      // url,
-      onClick,
-      className,
-      footer,
-      theme,
-      styles,
-      size
-    } = this.props;
+    const { title, itemType, image, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, styles } = this.props;
     const actionable = onClick ? true : false;
 
     this._classNames = getClassNames(styles, { theme: theme!, className });
@@ -47,9 +33,11 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>{preview}</div>
-        <div className={this._classNames.title}>{title ? title : 'test'}</div>
-        <hr className={this._classNames.line} />
-        {footer}
+        <div className={this._classNames.info}>
+          <div className={this._classNames.title}>{title ? title : 'test'}</div>
+          <hr className={this._classNames.line} />
+          {footer}
+        </div>
       </div>
     );
   }
@@ -61,25 +49,6 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
     itemType?: string,
     imageAlt?: string
   ): React.ReactElement<React.HTMLAttributes<HTMLDivElement>> {
-    let image;
-    if (imageUrl) {
-      image = <Image width={imageWidth} height={imageHeight} src={imageUrl} role="presentation" alt={imageAlt ? imageAlt : undefined} />;
-    } else {
-      image = (
-        <Image
-          width={PREVIEW_IMAGE_WIDTH}
-          height={PREVIEW_IMAGE_HEIGHT}
-          src={
-            itemType
-              ? `${ASSET_CDN_BASE_URL}/brand-icons/document/svg/` + itemType + `_48x1.svg`
-              : undefined /* @todo: this will be replaced by something built by the design team */
-          }
-          role="presentation"
-          alt={imageAlt ? imageAlt : undefined}
-        />
-      );
-    }
-
     let src;
     let icon;
 

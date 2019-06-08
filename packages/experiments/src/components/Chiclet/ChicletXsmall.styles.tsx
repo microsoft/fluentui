@@ -29,9 +29,10 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     icon: [
       {
         height: 30.32,
+        width: 28.64,
         left: 3,
         bottom: 36,
-        padding: '17px',
+        padding: '17.44px',
         position: 'absolute',
         backgroundColor: '	#DCDCDC'
       }
@@ -66,7 +67,6 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     ],
     line: [
       {
-        height: '1px',
         marginLeft: '75px',
         marginRight: '5px',
         marginTop: '13px'

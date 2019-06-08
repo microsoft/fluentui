@@ -11,9 +11,9 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 
   public render(): JSX.Element {
-    const { buttonProps, attachProp, size } = this.props;
+    const { buttonProps, attachProp } = this.props;
 
-    return _renderFooter(buttonProps, attachProp, size);
+    return _renderFooter(buttonProps, attachProp);
   }
 }
 
@@ -35,7 +35,7 @@ export class ChicletXsmallExample extends React.Component<{}, IChicletXsmallExam
 
     const attachButtonProp: IButtonProps = { iconProps: { iconName: 'Attach' } };
 
-    const footer = <FooterComponent buttonProps={footerButtonProps} attachProp={attachButtonProp} size="" />;
+    const footer = <FooterComponent buttonProps={footerButtonProps} attachProp={attachButtonProp} />;
 
     return (
       <Stack tokens={{ childrenGap: 16 }}>
@@ -48,16 +48,17 @@ export class ChicletXsmallExample extends React.Component<{}, IChicletXsmallExam
 export interface IFooterComponent extends React.Props<FooterComponent> {
   buttonProps: IButtonProps[];
   attachProp: IButtonProps;
-  size: string;
 }
 
-function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps, size: string): React.ReactElement<HTMLDivElement> {
+function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps): React.ReactElement<HTMLDivElement> {
   return (
-    <div className={exampleStyles.samp}>
-      <div className={exampleStyles.attach}>
-        <IconButton {...attachProp} />
+    <div className={exampleStyles.footer}>
+      <div className={exampleStyles.actions}>
+        <div className={exampleStyles.attach}>
+          <IconButton {...attachProp} />
+        </div>
       </div>
-      <div className={exampleStyles.size}>{size ? size : 'samp'}</div>
+      <div className={exampleStyles.size}>{'samp'}</div>
       <div className={exampleStyles.actions}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {

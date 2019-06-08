@@ -1,33 +1,32 @@
 .footer {
   height: 36px;
   padding-left: 11px;
-  padding-right: 0px;
 }
 
 .actions {
   padding-left: 0px;
   position: relative;
-  padding-bottom: 20px;
+  padding-bottom: 0px;
 }
 
 .action {
   float: right;
   cursor: pointer;
+  padding-top: 0px;
   width: 30px;
-  height: 36px;
+  height: 20px;
   background-color: white;
   color: #0078d7;
-  padding-bottom: 25px;
 }
 
 .attach {
-  width: 3px;
-  height: 20px;
   float: left;
+  width: 30px;
+  height: 20px;
+  padding-top: 0px;
   cursor: pointer;
   background-color: white;
   color: #0078d7;
-  padding-bottom: 25px;
 }
 
 .size {
@@ -39,7 +38,6 @@
   font-stretch: normal;
   line-height: 1.83;
   letter-spacing: normal;
-  padding-left: 25px;
 }
 
 :global {
