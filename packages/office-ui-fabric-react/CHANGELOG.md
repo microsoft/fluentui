@@ -1,6 +1,22 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jun 2019 12:21:48 GMT and should not be manually modified.
+
+## 6.189.2
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Panel: use windowHeight for all devices rather than only for iOS
+- Improved Calendar A11Y
+
+## 6.189.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Update documentation to add target _blank to external links
+- Fixing some bugs for the persisted ContextualMenu
 
 ## 6.189.0
 Wed, 05 Jun 2019 12:22:30 GMT

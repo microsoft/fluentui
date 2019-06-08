@@ -735,6 +735,8 @@ export class ContextualMenuBase extends BaseComponent<IContextualMenuProps, ICon
     dismiss: (ev?: any, dismissAll?: boolean | undefined) => void;
     // (undocumented)
     render(): JSX.Element | null;
+    // (undocumented)
+    shouldComponentUpdate(newProps: IContextualMenuProps, newState: IContextualMenuState): boolean;
     }
 
 // @public
