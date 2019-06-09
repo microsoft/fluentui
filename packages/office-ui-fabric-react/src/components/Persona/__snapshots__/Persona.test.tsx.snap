@@ -34,7 +34,6 @@ exports[`Persona renders Persona children correctly 1`] = `
       &:hover $primaryText {
         color: #212121;
       }
-  size={13}
 >
   <div
     className=
@@ -47,7 +46,6 @@ exports[`Persona renders Persona children correctly 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -212,7 +210,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
       &:hover $primaryText {
         color: #212121;
       }
-  size={13}
 >
   <div
     className=
@@ -225,7 +222,6 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -402,7 +398,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
       &:hover $primaryText {
         color: #212121;
       }
-  size={13}
 >
   <div
     className=
@@ -415,7 +410,6 @@ exports[`Persona renders Persona correctly with image 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -604,7 +598,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
       &:hover $primaryText {
         color: #212121;
       }
-  size={13}
 >
   <div
     className=
@@ -617,7 +610,6 @@ exports[`Persona renders Persona correctly with initials 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -779,7 +771,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
       &:hover $primaryText {
         color: #212121;
       }
-  size={13}
 >
   <div
     className=
@@ -792,7 +783,6 @@ exports[`Persona renders Persona correctly with no props 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={13}
   >
     <div
       className=
@@ -956,7 +946,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
       &:hover $primaryText {
         color: #212121;
       }
-  size={15}
 >
   <div
     className=
@@ -969,7 +958,6 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
           font-size: 14px;
           font-weight: 400;
         }
-    size={15}
   >
     <div
       className=
@@ -1253,7 +1241,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
       &:hover $primaryText {
         color: #212121;
       }
-  size={15}
 >
   <div
     className=
@@ -1266,7 +1253,6 @@ exports[`Persona renders correctly with onRender callback 1`] = `
           font-size: 14px;
           font-weight: 400;
         }
-    size={15}
   >
     <div
       className=

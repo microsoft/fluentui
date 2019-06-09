@@ -534,7 +534,6 @@ exports[`Component Examples renders TextField.Basic.Example.tsx correctly 1`] = 
               }
           htmlFor="TextField9"
           id="TextFieldLabel11"
-          required={true}
         >
           Required 
         </label>

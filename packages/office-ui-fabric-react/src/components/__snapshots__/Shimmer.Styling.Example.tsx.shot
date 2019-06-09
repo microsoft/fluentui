@@ -718,7 +718,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width={300}
     >
       <div
         className=
@@ -1138,7 +1137,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width={300}
     >
       <div
         className=
@@ -1550,7 +1548,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width="75%"
     >
       <div
         className=
@@ -1718,7 +1715,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width="75%"
     >
       <div
         className=
@@ -1886,7 +1882,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width="75%"
     >
       <div
         className=
@@ -2054,7 +2049,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width="75%"
     >
       <div
         className=
@@ -2222,7 +2216,6 @@ Array [
             height: auto;
             position: relative;
           }
-      width="75%"
     >
       <div
         className=

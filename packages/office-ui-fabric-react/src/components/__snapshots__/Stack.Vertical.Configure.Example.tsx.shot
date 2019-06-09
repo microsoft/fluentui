@@ -1760,7 +1760,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
-                placeholder="Select Vertical Alignment"
                 role="listbox"
                 tabIndex={0}
               >
@@ -1988,7 +1987,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
-                placeholder="Select Horizontal Alignment"
                 role="listbox"
                 tabIndex={0}
               >

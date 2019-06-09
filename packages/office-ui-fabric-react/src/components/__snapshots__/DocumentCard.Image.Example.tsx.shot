@@ -219,7 +219,6 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -297,7 +296,6 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=
@@ -592,7 +590,6 @@ exports[`Component Examples renders DocumentCard.Image.Example.tsx correctly 1`]
                   font-weight: 400;
                 }
             role="presentation"
-            size={11}
           >
             <div
               className=

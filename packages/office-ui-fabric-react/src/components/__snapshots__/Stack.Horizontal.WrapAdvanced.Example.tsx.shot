@@ -758,7 +758,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Horizontal Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -986,7 +985,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Vertical Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -1214,7 +1212,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Overflow"
           role="listbox"
           tabIndex={0}
         >

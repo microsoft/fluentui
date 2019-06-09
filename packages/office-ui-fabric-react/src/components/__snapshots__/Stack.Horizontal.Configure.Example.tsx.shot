@@ -3056,7 +3056,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Horizontal Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -3283,7 +3282,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Vertical Alignment"
           role="listbox"
           tabIndex={0}
         >

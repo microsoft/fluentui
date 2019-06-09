@@ -436,7 +436,6 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
                 font-weight: 400;
               }
           role="presentation"
-          size={11}
         >
           <div
             className=

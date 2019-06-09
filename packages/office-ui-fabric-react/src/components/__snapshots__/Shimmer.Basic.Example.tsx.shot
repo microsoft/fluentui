@@ -210,7 +210,6 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           height: auto;
           position: relative;
         }
-    width="75%"
   >
     <div
       className=
@@ -376,7 +375,6 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           height: auto;
           position: relative;
         }
-    width="50%"
   >
     <div
       className=
@@ -1392,7 +1390,6 @@ exports[`Component Examples renders Shimmer.Basic.Example.tsx correctly 1`] = `
           height: auto;
           position: relative;
         }
-    width="70%"
   >
     <div
       className=

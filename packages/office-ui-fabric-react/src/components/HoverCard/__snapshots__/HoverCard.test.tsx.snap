@@ -85,24 +85,6 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
             &::-moz-focus-inner {
               border: 0px;
             }
-        content={
-          <div
-            onKeyDown={[Function]}
-          >
-            <div>
-              <div>
-                TEST
-              </div>
-            </div>
-            <div>
-              <div>
-                <div>
-                  TEST
-                </div>
-              </div>
-            </div>
-          </div>
-        }
         style={
           Object {
             "filter": "opacity(0)",
@@ -265,22 +247,6 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
             &::-moz-focus-inner {
               border: 0px;
             }
-        content={
-          <div
-            onKeyDown={[Function]}
-          >
-            <div
-              style={
-                Object {
-                  "height": "500px",
-                  "width": "200px",
-                }
-              }
-            >
-              TEST
-            </div>
-          </div>
-        }
         style={
           Object {
             "filter": "opacity(0)",

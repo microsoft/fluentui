@@ -134,7 +134,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    placeholder="Select options"
     tabIndex={0}
   >
     <span

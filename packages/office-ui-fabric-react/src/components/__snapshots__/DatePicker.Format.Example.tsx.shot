@@ -92,7 +92,6 @@ exports[`Component Examples renders DatePicker.Format.Example.tsx correctly 1`] 
                 }
             htmlFor="DatePicker0-label"
             id="TextFieldLabel3"
-            required={false}
           >
             Start date
           </label>

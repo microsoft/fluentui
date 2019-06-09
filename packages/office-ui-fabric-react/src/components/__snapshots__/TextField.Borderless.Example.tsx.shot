@@ -436,7 +436,6 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               }
           htmlFor="TextField6"
           id="TextFieldLabel8"
-          required={true}
         >
           Required:
         </label>
@@ -839,7 +838,6 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
             onChange={[Function]}
             onFocus={[Function]}
             onInput={[Function]}
-            placeholder="No borders here, folks."
             value=""
           />
         </div>
