@@ -197,7 +197,7 @@ export class DelayedRender extends React.Component<IDelayedRenderProps, IDelayed
 // @public
 export function disableBodyScroll(): void;
 
-// @public @deprecated (undocumented)
+// @public
 export const divProperties: string[];
 
 // @public

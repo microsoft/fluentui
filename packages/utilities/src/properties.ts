@@ -369,7 +369,9 @@ export const imgProperties = htmlElementProperties.concat([
 export const imageProperties = imgProperties;
 
 /**
- * @deprecated Use htmlElementProperties for div and span elements.
+ * An array of DIV tag properties and events.
+ *
+ * @public
  */
 export const divProperties = htmlElementProperties;
 
