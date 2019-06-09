@@ -227,6 +227,7 @@ export const inputProperties = buttonProperties.concat([
   'required', // input, select, textarea
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'step', // input
+  'size', // input
   'type', // a, button, input, link, menu, object, script, source, style
   'value', // button, input, li, option, meter, progress, param
   'width' // canvas, embed, iframe, img, input, object, video
