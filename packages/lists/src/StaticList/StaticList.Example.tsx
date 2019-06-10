@@ -7,6 +7,24 @@ const StaticListExample = () => {
   return <StaticList items={ITEMS}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>;
 };
 
+let APPEND_EXAMPLE_ITEMS = [...ITEMS];
+
+function appendItems(): void {
+  APPEND_EXAMPLE_ITEMS = [...APPEND_EXAMPLE_ITEMS, ...new Array(10).fill(0)];
+}
+
+const StaticListAppendItemsExample = () => {
+  return (
+    <>
+      <h1>Append items example</h1>
+      <button value="Append" onClick={appendItems}>
+        Append item
+      </button>
+      <StaticList items={APPEND_EXAMPLE_ITEMS}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
+    </>
+  );
+};
+
 const StaticListTableExample = () => {
   return (
     <table border="1">
@@ -17,7 +35,7 @@ const StaticListTableExample = () => {
       </thead>
       <StaticList as="tbody" items={ITEMS}>
         {(_item: number, index: number) => (
-          <tr>
+          <tr key={index}>
             <td>{`Item #${index}`}</td>
           </tr>
         )}
@@ -31,4 +49,4 @@ const StaticListTableExample = () => {
   );
 };
 
-export { StaticListExample, StaticListTableExample };
+export { StaticListExample, StaticListAppendItemsExample, StaticListTableExample };
