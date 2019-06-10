@@ -191,6 +191,7 @@ describe('ColorPicker', () => {
 
     const alphaInput = inputs[4];
     ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
+    expect(onChange).toHaveBeenCalledTimes(2); // onChange not called until blur
     ReactTestUtils.Simulate.blur(alphaInput);
     validateChange({ calls: 3, prop: 'str', value: 'rgba(0, 255, 0, 0.5)' });
     validateChange({ calls: 3, prop: 'a', value: 50, input: alphaInput, inputValue: '50.0' });
@@ -295,6 +296,116 @@ describe('ColorPicker', () => {
     // invalid new value too long "pasted" => use substring but don't call onChange
     ReactTestUtils.Simulate.input(redInput, mockEvent('4567'));
     validateChange({ calls: 2, prop: 'r', value: 100, input: redInput, inputValue: '456' });
+  });
+
+  it('allows variations of alpha input', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const alphaInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[4] as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('5'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '5' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 1, prop: 'a', value: 5, input: alphaInput, inputValue: '5.0' });
+
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('50'));
+    validateChange({ calls: 1, prop: 'a', value: 5, input: alphaInput, inputValue: '50' });
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('50.'));
+    validateChange({ calls: 1, prop: 'a', value: 5, input: alphaInput, inputValue: '50.' });
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('50.8'));
+    validateChange({ calls: 1, prop: 'a', value: 5, input: alphaInput, inputValue: '50.8' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 2, prop: 'a', value: 50.8 });
+
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('.'));
+    validateChange({ calls: 2, prop: 'a', value: 50.8, input: alphaInput, inputValue: '.' });
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('.9'));
+    validateChange({ calls: 2, prop: 'a', value: 50.8, input: alphaInput, inputValue: '.9' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 3, prop: 'a', value: 0.9 });
+  });
+
+  it('corrects alpha input on blur', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const alphaInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[4] as HTMLInputElement;
+
+    // empty string isn't a number, so revert it on blur
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent(''));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '100.0' });
+
+    // . isn't a number, so revert it on blur
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('.'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '.' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '100.0' });
+  });
+
+  it('prevents invalid alpha input', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const alphaInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[4] as HTMLInputElement;
+
+    // letters not accepted
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('x'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '100.0' });
+
+    // pasting input with numbers and letters not accepted
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('12x'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '100.0' });
+
+    // second decimal point trimmed off
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('1.2.3'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '1.2' });
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('4.56.7'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '4.5' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 1, prop: 'a', value: 4.5 });
+
+    // valid input followed by letter => preserve valid part
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('12'));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(alphaInput.value).toBe('12');
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('12x'));
+    expect(onChange).toHaveBeenCalledTimes(1);
+    expect(alphaInput.value).toBe('12');
+  });
+
+  it('prevents alpha input too long', () => {
+    wrapper = mount(<ColorPicker onChange={onChange} color="#000000" componentRef={colorPickerRef} />);
+
+    const alphaInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[4] as HTMLInputElement;
+
+    // too many numbers before decimal not accepted
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('1234'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '100.0' });
+
+    // technically not valid but accepted as an intermediate value
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('123'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '123' });
+    // extra digit not accepted
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('1234'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '123' });
+
+    // too many numbers after decimal not accepted
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('12.0'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '12.0' });
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('12.09'));
+    validateChange({ calls: 0, prop: 'a', value: 100, input: alphaInput, inputValue: '12.0' });
+  });
+
+  it('corrects alpha input on blur', () => {
+    // start this input at alpha=50
+    wrapper = mount(<ColorPicker onChange={onChange} color="rgba(0,0,0,0.5)" componentRef={colorPickerRef} />);
+
+    const alphaInput = wrapper.getDOMNode().querySelectorAll('.ms-ColorPicker-input input')[4] as HTMLInputElement;
+
+    ReactTestUtils.Simulate.input(alphaInput, mockEvent('255'));
+    validateChange({ calls: 0, prop: 'a', value: 50, input: alphaInput, inputValue: '255' });
+    ReactTestUtils.Simulate.blur(alphaInput);
+    validateChange({ calls: 1, prop: 'a', value: 100, input: alphaInput, inputValue: '100.0' });
   });
 
   it('handles 3-char hex value', () => {
