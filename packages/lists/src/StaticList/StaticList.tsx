@@ -3,7 +3,7 @@ import * as React from 'react';
 interface IStaticListProps<T> {
   as?: keyof JSX.IntrinsicElements;
   items?: T[];
-  children: (item: T, index: number) => React.ReactNode;
+  children?: (item: T, index: number) => React.ReactNode;
 }
 
 function defaultRowRenderer<T>(item: T, index: number): JSX.Element {
