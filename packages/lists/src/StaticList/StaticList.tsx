@@ -2,19 +2,14 @@ import * as React from 'react';
 
 interface IList<T> {
   items?: T[];
+  children: (item: T, index: number) => React.ReactNode;
 }
 
 class StaticList<T> extends React.PureComponent<IList<T>> {
   public render = () => {
-    const { items = [] } = this.props;
+    const { items = [], children } = this.props;
 
-    return (
-      <ul>
-        {items.map((_value: T, index: number) => {
-          return <li key={index}>{`Item #${index}`}</li>;
-        })}
-      </ul>
-    );
+    return <ul>{items.map((item: T, index: number) => children(item, index))}</ul>;
   };
 }
 

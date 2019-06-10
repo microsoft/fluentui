@@ -13,7 +13,7 @@ class StaticListExample extends React.PureComponent<{}, { items: number[] }> {
   public render(): JSX.Element {
     const { items } = this.state;
 
-    return <StaticList items={items} />;
+    return <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>;
   }
 }
 
