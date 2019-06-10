@@ -1,6 +1,7 @@
 import * as React from 'react';
 import { StaticList } from './StaticList';
 import { shallow } from 'enzyme';
+import * as renderer from 'react-test-renderer';
 
 const COUNT = 50;
 let items: number[] = [];
@@ -8,6 +9,14 @@ let items: number[] = [];
 describe('StaticList', () => {
   beforeEach(() => {
     items = new Array(COUNT).fill(0);
+  });
+
+  it('renders empty list correctly', () => {
+    const mockRenderFunction = jest.fn();
+    const component = renderer.create(<StaticList>{mockRenderFunction}</StaticList>);
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
   });
 
   it('renders no children if no items provided', () => {
