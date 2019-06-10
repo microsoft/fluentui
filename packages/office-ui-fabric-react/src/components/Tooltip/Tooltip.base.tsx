@@ -76,28 +76,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     );
 
     return delay === TooltipDelay.zero ? RenderedCallout : <DelayedRender delay={renderDelay}> {RenderedCallout} </DelayedRender>;
-    // return (
-    //   <DelayedRender delay={renderDelay}>
-    //     <Callout
-    //       target={targetElement}
-    //       directionalHint={directionalHint}
-    //       directionalHintForRTL={directionalHintForRTL}
-    //       {...calloutProps}
-    //       {...getNativeProps(this.props, divProperties, ['id'])} // omitting ID due to it being used in the div below
-    //       className={this._classNames.root}
-    //     >
-    //       <div
-    //         className={this._classNames.content}
-    //         id={id}
-    //         role="tooltip"
-    //         onMouseEnter={this.props.onMouseEnter}
-    //         onMouseLeave={this.props.onMouseLeave}
-    //       >
-    //         {onRenderContent(this.props, this._onRenderContent)}
-    //       </div>
-    //     </Callout>
-    //   </DelayedRender>
-    // );
   }
 
   private _onRenderContent = (props: ITooltipProps): JSX.Element => {
