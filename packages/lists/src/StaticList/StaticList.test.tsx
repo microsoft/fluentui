@@ -27,6 +27,18 @@ describe('StaticList', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders ordered-list correctly', () => {
+    const mockRenderFunction = (_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>;
+    const component = renderer.create(
+      <StaticList items={items} as={'ol'}>
+        {mockRenderFunction}
+      </StaticList>
+    );
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders no children if no items provided', () => {
     const mockRenderFunction = jest.fn();
     const wrapper = shallow(<StaticList>{mockRenderFunction}</StaticList>);
