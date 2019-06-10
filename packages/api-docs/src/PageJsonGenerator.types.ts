@@ -45,7 +45,7 @@ export interface IEnumTableRowJson {
 }
 
 export interface ITableJson {
-  kind: 'interface' | 'enum' | 'class';
+  kind: 'interface' | 'enum' | 'class' | 'typeAlias';
   name: string;
   description: string;
   extendsTokens: ITokenJson[];

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Fixes issue when the menu icon in the second button of the `SplitButton` gets disabled styles when only the primary action is disabled.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "v-mare@microsoft.com"
+}

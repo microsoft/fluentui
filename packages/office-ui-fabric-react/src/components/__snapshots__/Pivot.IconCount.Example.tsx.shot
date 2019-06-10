@@ -63,7 +63,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 font-weight: 600;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 8px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
@@ -189,6 +192,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
 
                       {
@@ -255,7 +259,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 8px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
@@ -376,6 +383,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
 
                       {
@@ -431,7 +439,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 8px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
@@ -552,6 +563,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
 
                       {
@@ -594,7 +606,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 8px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
@@ -716,6 +731,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
 
                       {
@@ -782,7 +798,10 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 font-weight: 400;
                 height: 40px;
                 line-height: 40px;
+                margin-bottom: 0px;
+                margin-left: 0px;
                 margin-right: 8px;
+                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 8px;
@@ -905,6 +924,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
 
                         {
@@ -948,6 +968,7 @@ exports[`Component Examples renders Pivot.IconCount.Example.tsx correctly 1`] = 
                 </span>
               </span>
               <i
+                aria-hidden={true}
                 className=
 
                     {

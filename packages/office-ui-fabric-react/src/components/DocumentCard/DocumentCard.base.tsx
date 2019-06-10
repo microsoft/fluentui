@@ -5,6 +5,9 @@ import { DocumentCardType, IDocumentCard, IDocumentCardProps, IDocumentCardStyle
 
 const getClassNames = classNamesFunction<IDocumentCardStyleProps, IDocumentCardStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardBase extends BaseComponent<IDocumentCardProps, any> implements IDocumentCard {
   public static defaultProps: IDocumentCardProps = {
     type: DocumentCardType.normal

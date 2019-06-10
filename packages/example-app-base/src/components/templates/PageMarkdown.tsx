@@ -125,6 +125,7 @@ export interface IPageMarkdownProps {
   children: string;
 }
 
+/** @deprecated Use `Markdown` */
 export class PageMarkdown extends React.PureComponent<IPageMarkdownProps> {
   public static displayName = 'PageMarkdown';
 

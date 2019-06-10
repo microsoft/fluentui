@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "edwl@microsoft.com"
+}

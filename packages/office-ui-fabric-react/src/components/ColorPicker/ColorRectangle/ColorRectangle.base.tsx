@@ -13,6 +13,9 @@ export interface IColorRectangleState {
   color: IColor;
 }
 
+/**
+ * {@docCategory ColorPicker}
+ */
 export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, IColorRectangleState> implements IColorRectangle {
   public static defaultProps = {
     minSize: 220

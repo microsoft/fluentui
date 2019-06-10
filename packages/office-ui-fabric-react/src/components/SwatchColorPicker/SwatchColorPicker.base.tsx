@@ -40,7 +40,7 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
 
     this._id = props.id || getId('swatchColorPicker');
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnMutuallyExclusive('SwatchColorPicker', this.props, {
         focusOnHover: 'onHover'
       });

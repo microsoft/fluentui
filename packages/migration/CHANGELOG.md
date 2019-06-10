@@ -1,6 +1,13 @@
 # Change Log - @uifabric/migration
 
-This log was last generated on Tue, 02 Apr 2019 00:38:15 GMT and should not be manually modified.
+This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+
+## 0.2.2
+Tue, 14 May 2019 07:50:30 GMT
+
+### Patches
+
+- Update Fabric assets link
 
 ## 0.2.1
 Tue, 02 Apr 2019 00:38:15 GMT

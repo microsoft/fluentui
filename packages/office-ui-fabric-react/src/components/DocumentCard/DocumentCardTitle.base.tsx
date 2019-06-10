@@ -21,6 +21,9 @@ export interface IDocumentCardTitleState {
 
 const TRUNCATION_VERTICAL_OVERFLOW_THRESHOLD = 5;
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardTitleBase extends BaseComponent<IDocumentCardTitleProps, IDocumentCardTitleState> {
   private _titleElement = React.createRef<HTMLDivElement>();
   private _measureTitleElement = React.createRef<HTMLDivElement>();

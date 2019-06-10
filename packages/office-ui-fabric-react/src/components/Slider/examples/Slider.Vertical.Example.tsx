@@ -44,6 +44,16 @@ export const SliderVerticalExample: React.StatelessComponent = () => {
         showValue
         vertical
       />
+      <Slider // prettier-ignore
+        label="Origin from zero"
+        min={-5}
+        max={15}
+        step={1}
+        defaultValue={5}
+        showValue
+        vertical
+        originFromZero
+      />
     </Stack>
   );
 };

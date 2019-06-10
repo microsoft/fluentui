@@ -11,7 +11,7 @@ module.exports = function bundleSizeCollect() {
   const fs = require('fs');
   const path = require('path');
 
-  const distRoot = 'apps/test-bundles/dist';
+  const distRoot = path.join(__dirname, '../../apps/test-bundles/dist');
   const sizes = {};
   const outputFilename = 'bundlesizes.json';
 
@@ -32,6 +32,9 @@ module.exports = function bundleSizeCollect() {
   }
 
   function getComponentName(fileName) {
+    if (fileName.startsWith('experiments-')) {
+      return path.basename(fileName, '.min.js');
+    }
     return fileName.match('office-ui-fabric-react-(.*).min.js')[1];
   }
 };

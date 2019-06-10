@@ -78,7 +78,9 @@ export namespace FontSizes {
   export const icon: string = '16px';
   export const large: string = '17px';
   export const xLarge: string = '21px';
+  export const xLargePlus: string = '21px';
   export const xxLarge: string = '28px';
+  export const xxLargePlus: string = '28px';
   export const superLarge: string = '42px';
   export const mega: string = '72px';
 }
@@ -123,7 +125,9 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
     mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamilyWithFallback),
     large: _createFont(FontSizes.large, FontWeights.semilight, semilightFontFamilyWithFallback),
     xLarge: _createFont(FontSizes.xLarge, FontWeights.light, fontFamilyWithFallback),
+    xLargePlus: _createFont(FontSizes.xLargePlus, FontWeights.light, fontFamilyWithFallback),
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.light, fontFamilyWithFallback),
+    xxLargePlus: _createFont(FontSizes.xxLargePlus, FontWeights.light, fontFamilyWithFallback),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.light, fontFamilyWithFallback),
     mega: _createFont(FontSizes.mega, FontWeights.light, fontFamilyWithFallback)
   };

@@ -9,7 +9,8 @@ import {
   Toggle,
   Selection,
   SelectionMode,
-  createTheme
+  createTheme,
+  DocumentCardTitle
 } from 'office-ui-fabric-react';
 import { Button as NewButton, Toggle as NewToggle } from '@uifabric/experiments';
 
@@ -65,5 +66,13 @@ export const Scenarios: IDropdownOption[] = [
     }
   },
   { key: 'toggles', text: 'Toggles', data: { timing: [], content: <Toggle checked /> } },
-  { key: 'newtoggles', text: 'NewToggle', data: { timing: [], content: <NewToggle checked /> } }
+  { key: 'newtoggles', text: 'NewToggle', data: { timing: [], content: <NewToggle checked /> } },
+  {
+    key: 'documentcardtitle',
+    text: 'DocumentCardTitle with truncation',
+    data: {
+      timing: [],
+      content: <DocumentCardTitle title="This is the Title of a Very Interesting Document That Everyone Wnats to Read" shouldTruncate />
+    }
+  }
 ];

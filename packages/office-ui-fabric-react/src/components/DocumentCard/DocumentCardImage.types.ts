@@ -3,8 +3,14 @@ import { ImageFit } from '../../Image';
 import { IStyle, ITheme } from '../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardImage {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardImageProps extends IBaseProps<{}> {
   /**
    * Gets the component ref.
@@ -53,8 +59,14 @@ export interface IDocumentCardImageProps extends IBaseProps<{}> {
   imageFit?: ImageFit;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardImageStyleProps extends IDocumentCardImageProps {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardImageStyles {
   root: IStyle;
   cornerIcon: IStyle;

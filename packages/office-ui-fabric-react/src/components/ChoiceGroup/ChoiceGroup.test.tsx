@@ -174,4 +174,9 @@ describe('ChoiceGroup', () => {
     expect(choiceGroupRef.current!.checkedOption).toBeDefined();
     expect(choiceGroupRef.current!.checkedOption).toEqual(TEST_OPTIONS[0]);
   });
+
+  it('can render element id', () => {
+    const choiceGroup = mount(<ChoiceGroup defaultSelectedKey="1" id="foo" options={TEST_OPTIONS} />);
+    expect(choiceGroup.getDOMNode().getAttribute('id')).toBe('foo');
+  });
 });

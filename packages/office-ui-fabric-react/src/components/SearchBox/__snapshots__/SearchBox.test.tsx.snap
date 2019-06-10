@@ -62,6 +62,7 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
     onClick={[Function]}
   >
     <i
+      aria-hidden={true}
       className=
           ms-SearchBox-icon
           {
@@ -187,6 +188,7 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
     onClick={[Function]}
   >
     <i
+      aria-hidden={true}
       className=
           ms-SearchBox-icon
           {

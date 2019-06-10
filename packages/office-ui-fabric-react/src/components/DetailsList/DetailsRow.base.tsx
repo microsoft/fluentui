@@ -257,7 +257,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         componentRef={this._focusZone}
         role="row"
         aria-label={ariaLabel}
-        ariaDescribedBy={ariaDescribedBy}
+        aria-describedby={ariaDescribedBy}
         className={this._classNames.root}
         data-is-focusable={true}
         data-selection-index={itemIndex}

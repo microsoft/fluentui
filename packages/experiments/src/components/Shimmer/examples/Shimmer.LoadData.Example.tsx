@@ -7,7 +7,15 @@ import {
 } from '@uifabric/experiments/lib/Shimmer';
 import { Persona, PersonaSize, PersonaPresence, IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import { PersonaDetails } from './ExampleHelper';
+
+const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+
+const PersonaDetails = {
+  imageUrl: baseProductionCdnUrl + 'persona-female.png',
+  imageInitials: 'AL',
+  primaryText: 'Annie Lindqvist',
+  secondaryText: 'Software Engineer'
+};
 
 export interface IShimmerLoadDataExampleState {
   isDataLoadedOne?: boolean;

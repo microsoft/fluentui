@@ -35,14 +35,16 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
       title,
       type,
       styles,
-      theme
+      theme,
+      draggableHeaderClassName
     } = this.props;
 
     const classNames = getClassNames(styles!, {
       theme: theme!,
       className,
       isLargeHeader: type === DialogType.largeHeader,
-      isClose: type === DialogType.close
+      isClose: type === DialogType.close,
+      draggableHeaderClassName
     });
 
     const groupings = this._groupChildren();

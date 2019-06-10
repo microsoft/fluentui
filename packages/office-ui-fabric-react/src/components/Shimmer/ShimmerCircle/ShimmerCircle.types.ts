@@ -2,10 +2,14 @@ import * as React from 'react';
 import { IStyle, ITheme, IRawStyle } from '../../../Styling';
 import { IStyleFunctionOrObject, IRefObject } from '../../../Utilities';
 
+/**
+ * {@docCategory Shimmer}
+ */
 export interface IShimmerCircle {}
 
 /**
  * ShimmerCircle component props.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement> {
   /**
@@ -39,6 +43,7 @@ export interface IShimmerCircleProps extends React.AllHTMLAttributes<HTMLElement
 
 /**
  * Props needed to construct styles.
+ * {@docCategory Shimmer}
  */
 export type IShimmerCircleStyleProps = {
   /**
@@ -60,6 +65,7 @@ export type IShimmerCircleStyleProps = {
 
 /**
  * Represents the stylable areas of the control.
+ * {@docCategory Shimmer}
  */
 export interface IShimmerCircleStyles {
   /**

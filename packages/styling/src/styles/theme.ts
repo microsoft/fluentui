@@ -1,4 +1,4 @@
-import { Customizations, merge } from '@uifabric/utilities';
+import { Customizations, merge, getWindow } from '@uifabric/utilities';
 import { IPalette, ISemanticColors, ITheme, IPartialTheme, IFontStyles } from '../interfaces/index';
 import { DefaultFontStyles } from './DefaultFontStyles';
 import { DefaultPalette } from './DefaultPalette';
@@ -18,7 +18,7 @@ let _onThemeChangeCallbacks: Array<(theme: ITheme) => void> = [];
 export const ThemeSettingName = 'theme';
 
 if (!Customizations.getSettings([ThemeSettingName]).theme) {
-  let win = typeof window !== 'undefined' ? window : undefined;
+  const win = getWindow();
 
   // tslint:disable:no-string-literal no-any
   if (win && (win as any)['FabricConfig'] && (win as any)['FabricConfig'].theme) {
@@ -74,7 +74,7 @@ export function loadTheme(theme: IPartialTheme, depComments: boolean = false): I
   _theme = createTheme(theme, depComments);
 
   // Invoke the legacy method of theming the page as well.
-  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._loadFonts(_theme) });
+  legacyLoadTheme({ ..._theme.palette, ..._theme.semanticColors, ..._theme.effects, ..._loadFonts(_theme) });
 
   Customizations.applySettings({ [ThemeSettingName]: _theme });
 

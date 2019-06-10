@@ -1,5 +1,6 @@
 import * as React from 'react';
-import { BaseComponent } from '../../Utilities';
+import { initializeComponentRef, on } from '../../Utilities';
+import { IRouteProps } from './Route';
 
 export interface IRouterProps {
   /**
@@ -8,16 +9,43 @@ export interface IRouterProps {
   componentRef?: () => void;
 
   replaceState?: boolean;
-  children?: any;
+  children?: React.ReactNode;
   onNewRouteLoaded?: () => void;
 }
 
-export class Router extends BaseComponent<IRouterProps, {}> {
-  public componentDidMount(): void {
-    this._events.on(window, 'hashchange', () => this.forceUpdate());
+export interface IRouterState {
+  path: string;
+}
+
+export class Router extends React.Component<IRouterProps, IRouterState> {
+  private _disposables: Function[];
+
+  constructor(props: IRouterProps) {
+    super(props);
+    this._disposables = [];
+    initializeComponentRef(this);
+    this.state = {
+      path: this._getPath()
+    };
   }
 
-  public render(): JSX.Element | null {
+  public componentDidMount(): void {
+    this._disposables.push(
+      on(window, 'hashchange', () => {
+        // Don't update unless the route itself (not an anchor link) actually changed
+        const path = this._getPath();
+        if (path !== this.state.path) {
+          this.setState({ path });
+        }
+      })
+    );
+  }
+
+  public componentWillUnmount(): void {
+    this._disposables.forEach(dispose => dispose());
+  }
+
+  public render() {
     return this._resolveRoute();
   }
 
@@ -31,33 +59,46 @@ export class Router extends BaseComponent<IRouterProps, {}> {
       path = path.substr(0, questionMarkIndex);
     }
 
+    // If the hash has a second # (for an anchor), strip that out since it's not used for routing
     if (hashIndex > 0) {
       path = path.substr(0, hashIndex);
     }
 
-    return path;
+    return _normalizePath(path);
   }
 
-  private _resolveRoute(path?: string, children?: React.ReactNode): React.DOMElement<any, Element> | null {
-    path = path || this._getPath();
+  private _resolveRoute(children?: React.ReactNode): React.ReactElement<any> | null {
+    const { path } = this.state;
     children = children || this.props.children;
 
-    const routes = React.Children.toArray(children);
+    // The children are supposed to be Route elements, but we verify this below.
+    const routes = React.Children.toArray(children) as React.ReactElement<IRouteProps>[];
 
-    for (let i = 0; i < routes.length; i++) {
-      const route: any = routes[i];
-
-      if (_match(path, route)) {
-        const { getComponent } = route.props;
+    for (const route of routes) {
+      if (!route.props) {
+        continue; // probably some other child type, not a route
+      }
+      // Use this route if it has no path, or if the path matches the current path (from the hash)
+      const routePath = _normalizePath(route.props.path);
+      if (!routePath || routePath === path) {
         let { component } = route.props;
 
+        // The loaded component is stored as a prop on the loader function...because obviously
+        const getComponent: Required<IRouteProps>['getComponent'] & { component?: React.ComponentType } = route.props.getComponent!;
         if (getComponent) {
           let asynchronouslyResolved = false;
 
           if (getComponent.component) {
             component = getComponent.component;
           } else {
-            getComponent((resolved: any) => {
+            getComponent((resolved: React.ComponentType) => {
+              if (!resolved) {
+                throw new Error(
+                  `Router: Calling getComponent for the route with path ${route.props.path} ` +
+                    `returned ${resolved}, not a component. Check your getComponent implementation ` +
+                    `(including the name of the module member you're attempting to return).`
+                );
+              }
               component = getComponent.component = resolved;
 
               if (asynchronouslyResolved) {
@@ -70,13 +111,8 @@ export class Router extends BaseComponent<IRouterProps, {}> {
         }
 
         if (component) {
-          const componentChildren = this._resolveRoute(path, route.props.children || []);
-
-          if (componentChildren) {
-            return React.createElement(component, { key: route.key }, componentChildren) as React.DOMElement<any, any>;
-          } else {
-            return React.createElement(component, { key: route.key }) as React.DOMElement<any, any>;
-          }
+          const componentChildren = this._resolveRoute(route.props.children || []);
+          return React.createElement(component, { key: route.key! }, componentChildren);
         } else if (getComponent) {
           // We are asynchronously fetching this component.
           return null;
@@ -88,15 +124,10 @@ export class Router extends BaseComponent<IRouterProps, {}> {
   }
 }
 
-function _match(currentPath: string, child: any): boolean {
-  if (child.props) {
-    let { path } = child.props;
-
-    path = path || '';
-    currentPath = currentPath || '';
-
-    return !path || path.toLowerCase() === currentPath.toLowerCase();
+/** Normalize path for comparison: strip any trailing slash and convert to lowercase */
+function _normalizePath(path?: string): string {
+  if (path && path.slice(-1) === '/') {
+    path = path.slice(0, -1);
   }
-
-  return false;
+  return (path || '').toLowerCase();
 }

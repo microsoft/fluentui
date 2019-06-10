@@ -11,6 +11,9 @@ export interface IDocumentCardImageState {
 
 const getClassNames = classNamesFunction<IDocumentCardImageStyleProps, IDocumentCardImageStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardImageBase extends BaseComponent<IDocumentCardImageProps, IDocumentCardImageState> {
   private _classNames: IProcessedStyleSet<IDocumentCardImageStyles>;
 

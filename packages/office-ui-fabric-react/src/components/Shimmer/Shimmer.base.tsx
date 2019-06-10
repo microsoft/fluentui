@@ -14,6 +14,9 @@ const TRANSITION_ANIMATION_INTERVAL = 200; /* ms */
 
 const getClassNames = classNamesFunction<IShimmerStyleProps, IShimmerStyles>();
 
+/**
+ * {@docCategory Shimmer}
+ */
 export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
   public static defaultProps: IShimmerProps = {
     isDataLoaded: false

@@ -1,14 +1,12 @@
 {
   "name": "@uifabric/prettier-rules",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Shared Prettier rules for UI Fabric projects",
   "main": "prettier.config.js",
   "scripts": {
     "clean": "",
     "build": "node -v",
-    "code-style": "node ../../scripts/just.js code-style"
-  },
-  "disabledTasks": [
-    "verify-api-extractor"
-  ]
+    "code-style": "node ../../scripts/bin/just-scripts.js code-style",
+    "just": "node ../../scripts/bin/just-scripts.js"
+  }
 }

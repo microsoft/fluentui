@@ -36,6 +36,7 @@ const getDefaultStyles = (props: IPageImageSetStyleProps): IStyleSet<IPageImageS
   }
 });
 
+/** @deprecated Use `MarkdownImageSet` */
 @customizable('PageImageSet', ['theme', 'styles'])
 export class PageImageSet extends BaseComponent<IPageImageSetProps, {}> {
   public render(): JSX.Element {

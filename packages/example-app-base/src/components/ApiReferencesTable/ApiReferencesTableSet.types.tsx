@@ -9,6 +9,15 @@ export interface IApiReferencesTableSetProps extends React.HTMLAttributes<HTMLEl
    * A json object to populate the table
    */
   jsonDocs?: IPageJson;
+
+  /**
+   * If true (the default), listen for hash changes and if the hash includes an API element
+   * rendered by this component, jump to it (expanding the "see more" section if needed).
+   * If false, the component will still listen to hash changes and expand the "see more"
+   * section if needed, but it won't jump.
+   * @defaultvalue true
+   */
+  jumpToAnchors?: boolean;
 }
 
 /**

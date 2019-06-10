@@ -1,10 +1,10 @@
 One common usage of Announced is for small operations like text editing or item deletion that are short enough to not require a status during progress.
 
-# Examples
+### Examples
 
 Editing text, deletion
 
-# Scenarios
+### Scenarios
 
 1. **User renames a file**: When the file is successfully renamed, use the Announced component to immediately announce the result.
 

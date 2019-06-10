@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/prettier-rules",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/prettier-rules",
+  "email": "kchau@microsoft.com"
+}

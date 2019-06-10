@@ -44,7 +44,7 @@ export const getStyles = (props: ICheckboxStyleProps): ICheckboxStyles => {
 
         opacity: 0,
         selectors: {
-          [`.${IsFocusVisibleClassName} &:focus + label::before`]: {
+          [`.${IsFocusVisibleClassName} &:focus + label`]: {
             outline: '1px solid ' + theme.palette.neutralSecondary,
             outlineOffset: '2px',
             selectors: {

@@ -14,6 +14,9 @@ import {
 const LIST_ITEM_COUNT = 3;
 const getClassNames = classNamesFunction<IDocumentCardPreviewStyleProps, IDocumentCardPreviewStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardPreviewBase extends BaseComponent<IDocumentCardPreviewProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardPreviewStyles>;
 

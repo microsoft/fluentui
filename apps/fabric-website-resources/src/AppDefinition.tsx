@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { App as AppBase, IAppDefinition, IAppProps, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
+import { IAppDefinition, IAppLink, ApiReferencesTableSet } from '@uifabric/example-app-base';
 import { DetailsListBasicExample } from 'office-ui-fabric-react/lib/components/DetailsList/examples/DetailsList.Basic.Example';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 import { AppCustomizations } from './customizations/customizations';
@@ -14,19 +14,17 @@ const propertiesTableMargins = mergeStyles({
 });
 
 function loadReferences(): IAppLink[] {
-  const pageList: IReferencesList = require('@uifabric/api-docs/lib/pages/references/list.json');
+  const requireContext = require.context('@uifabric/api-docs/lib/pages/references', false, /\w+\.page\.json$/);
 
-  return pageList.pages.map(pageName => ({
-    component: () => (
-      <ApiReferencesTableSet
-        className={propertiesTableMargins}
-        jsonDocs={require('@uifabric/api-docs/lib/pages/references/' + pageName + '.page.json')}
-      />
-    ),
-    key: pageName,
-    name: pageName,
-    url: '#/examples/references/' + pageName.toLowerCase()
-  }));
+  return requireContext.keys().map(pagePath => {
+    const pageName = pagePath.match(/(\w+)\.page\.json/)![1];
+    return {
+      component: () => <ApiReferencesTableSet className={propertiesTableMargins} jsonDocs={requireContext(pagePath)} />,
+      key: pageName,
+      name: pageName,
+      url: '#/examples/references/' + pageName.toLowerCase()
+    };
+  });
 }
 
 export const AppDefinition: IAppDefinition = {
@@ -573,5 +571,3 @@ export const AppDefinition: IAppDefinition = {
     }
   ]
 };
-
-export const App = (props: IAppProps) => <AppBase appDefinition={AppDefinition} {...props} />;

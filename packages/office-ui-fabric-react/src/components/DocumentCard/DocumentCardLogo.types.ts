@@ -2,8 +2,14 @@ import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
 import { DocumentCardLogoBase } from './DocumentCardLogo.base';
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLogo {}
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCardLogoBase> {
   /**
    * Gets the component ref.
@@ -35,6 +41,9 @@ export interface IDocumentCardLogoProps extends React.ClassAttributes<DocumentCa
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLogoStyleProps {
   /**
    * Accept theme prop.
@@ -47,6 +56,9 @@ export interface IDocumentCardLogoStyleProps {
   className?: string;
 }
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export interface IDocumentCardLogoStyles {
   root: IStyle;
 }

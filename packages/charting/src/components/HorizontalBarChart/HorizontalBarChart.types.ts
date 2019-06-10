@@ -35,6 +35,12 @@ export interface IHorizontalBarChartProps {
   hideRatio?: boolean[];
 
   /**
+   * This property tells how to show data text on top right of bar chart.
+   * @default 'default'
+   */
+  chartDataMode?: ChartDataMode;
+
+  /**
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IHorizontalBarChartStyleProps, IHorizontalBarChartStyles>;
@@ -89,6 +95,16 @@ export interface IHorizontalBarChartStyles {
   chartTitle: IStyle;
 
   /**
+   * Style for the chart data text.
+   */
+  chartDataText: IStyle;
+
+  /**
+   * Style for the chart data text denominator.
+   */
+  chartDataTextDenominator: IStyle;
+
+  /**
    * styles for hover card root
    */
   hoverCardRoot?: IStyle;
@@ -102,4 +118,17 @@ export interface IHorizontalBarChartStyles {
    * styles for hover card data
    */
   hoverCardDataStyles?: IStyle;
+
+  /**
+   * Style for the benchmark triangle
+   */
+  triangle: IStyle;
 }
+
+/**
+ * Chart data mode for chart data text
+ * default: show the datapoint.x value
+ * fraction: show the fraction of datapoint.x/datapoint.y
+ * percentage: show the percentage of (datapoint.x/datapoint.y)%
+ */
+export type ChartDataMode = 'default' | 'fraction' | 'percentage';

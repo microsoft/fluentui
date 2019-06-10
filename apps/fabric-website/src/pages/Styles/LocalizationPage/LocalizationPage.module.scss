@@ -3,6 +3,10 @@
 .directionalIcons {
   display: flex;
   flex-wrap: wrap;
+
+  &.directionalIcons {
+    @include ms-padding-left(0);
+  }
 }
 
 .directionalIconPair {

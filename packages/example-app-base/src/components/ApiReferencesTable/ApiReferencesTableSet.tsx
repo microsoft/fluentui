@@ -2,26 +2,25 @@ import * as React from 'react';
 import { ActionButton, IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { Text } from 'office-ui-fabric-react/lib/Text';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { css } from 'office-ui-fabric-react/lib/Utilities';
 import { ApiReferencesTable, MEDIUM_GAP_SIZE, LARGE_GAP_SIZE } from './ApiReferencesTable';
 import { IApiProperty, IApiInterfaceProperty, IApiEnumProperty, IMethod, IApiReferencesTableSetProps } from './ApiReferencesTableSet.types';
 import { IEnumTableRowJson, ITableRowJson, ITableJson } from 'office-ui-fabric-react/lib/common/DocPage.types';
 import { PropertyType } from '../../utilities/parser/index';
 import { extractAnchorLink } from '../../utilities/extractAnchorLink';
+import { jumpToAnchor } from '../../utilities/index2';
 
 export interface IApiReferencesTableSetState {
   properties: Array<IApiProperty>;
   showSeeMore: boolean;
 }
 
-const apiReferencesTableTopMargin = mergeStyles({
-  marginTop: '40px'
-});
-
 const TITLE_LINE_HEIGHT = 31.5;
 
 export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSetProps, IApiReferencesTableSetState> {
+  public static defaultProps: Partial<IApiReferencesTableSetProps> = {
+    jumpToAnchors: true
+  };
+
   constructor(props: IApiReferencesTableSetProps) {
     super(props);
 
@@ -34,7 +33,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   public render(): JSX.Element {
     const { className } = this.props;
     return (
-      <Stack gap={LARGE_GAP_SIZE} className={css(apiReferencesTableTopMargin, className)}>
+      <Stack gap={LARGE_GAP_SIZE} className={className}>
         {this._renderFirst()}
         {this._renderEach()}
       </Stack>
@@ -44,10 +43,10 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   public componentDidMount(): void {
     window.addEventListener('hashchange', this._onHashChange);
 
-    const hash = extractAnchorLink(window.location.hash);
+    const anchor = extractAnchorLink(window.location.hash);
 
-    if (!this.state.showSeeMore) {
-      const section = this.state.properties.filter(x => x.propertyName === hash)[0];
+    if (anchor && !this.state.showSeeMore) {
+      const section = this.state.properties.filter(x => x.propertyName === anchor)[0];
       if (section) {
         this.setState({
           showSeeMore: true
@@ -61,14 +60,8 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   public componentDidUpdate(prevProps: IApiReferencesTableSetProps, prevState: IApiReferencesTableSetState): void {
-    if (prevState.showSeeMore === false && this.state.showSeeMore === true) {
-      const hash = extractAnchorLink(window.location.hash);
-      const el = document.getElementById(hash);
-
-      if (el) {
-        // update scroll position
-        window.scrollTo({ top: el.offsetTop - TITLE_LINE_HEIGHT /* title */, behavior: 'smooth' });
-      }
+    if (prevState.showSeeMore === false && this.state.showSeeMore === true && this.props.jumpToAnchors) {
+      jumpToAnchor(undefined, TITLE_LINE_HEIGHT);
     }
   }
 
@@ -122,6 +115,7 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
         methods={item.methods}
         renderAsEnum={item.propertyType === PropertyType.enum}
         renderAsClass={item.propertyType === PropertyType.class}
+        renderAsTypeAlias={item.propertyType === PropertyType.typeAlias}
       />
     );
   }
@@ -129,20 +123,17 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   private _onHashChange = (): void => {
     const { properties, showSeeMore } = this.state;
 
-    const hash = extractAnchorLink(window.location.hash);
-    const el = document.getElementById(hash);
+    const anchor = extractAnchorLink(window.location.hash);
+    if (anchor) {
+      this.props.jumpToAnchors && jumpToAnchor(anchor, TITLE_LINE_HEIGHT);
 
-    if (el) {
-      // update scroll position
-      window.scrollTo({ top: el.offsetTop - TITLE_LINE_HEIGHT /* title */, behavior: 'smooth' });
-    }
-
-    if (!showSeeMore) {
-      const section = properties.filter(x => x.propertyName === hash)[0];
-      if (section) {
-        this.setState({
-          showSeeMore: true
-        });
+      if (!showSeeMore) {
+        const section = properties.filter(x => x.propertyName === anchor)[0];
+        if (section) {
+          this.setState({
+            showSeeMore: true
+          });
+        }
       }
     }
   };
@@ -187,6 +178,10 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
             preResults.push(this._generateClassProperty(jsonDocs.tables[j]));
             break;
           }
+          case 'typeAlias': {
+            preResults.push(this._generateTypeAliasProperty(jsonDocs.tables[j]));
+            break;
+          }
         }
       }
     }
@@ -195,17 +190,16 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
   }
 
   private _generateEnumProperty(table: ITableJson): IApiProperty {
-    const enumMembers: IApiEnumProperty[] = [];
-
     const members: IEnumTableRowJson[] = table.members as IEnumTableRowJson[];
-    for (let k = 0; k < members.length; k++) {
+
+    const enumMembers: IApiEnumProperty[] = members.map((member: IEnumTableRowJson) =>
       // each member within the enum
-      enumMembers.push({
-        description: members[k].description,
-        name: members[k].name,
-        value: members[k].value
-      });
-    }
+      ({
+        description: member.description,
+        name: member.name,
+        value: member.value
+      })
+    );
 
     // the enum
     return {
@@ -217,20 +211,31 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     };
   }
 
-  private _generateInterfaceProperty(table: ITableJson): IApiProperty {
-    const interfaceMembers: IApiInterfaceProperty[] = [];
+  private _generateTypeAliasProperty(table: ITableJson): IApiProperty {
+    // the type alias
+    return {
+      propertyName: table.name,
+      extendsTokens: table.extendsTokens,
+      description: table.description,
+      title: table.name,
+      propertyType: PropertyType.typeAlias,
+      property: []
+    };
+  }
 
+  private _generateInterfaceProperty(table: ITableJson): IApiProperty {
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    for (let k = 0; k < members.length; k++) {
+
+    const interfaceMembers: IApiInterfaceProperty[] = members.map((member: ITableRowJson) =>
       // each member within the interface
-      interfaceMembers.push({
-        description: members[k].description,
-        name: members[k].name,
-        typeTokens: members[k].typeTokens,
-        deprecated: members[k].deprecated,
-        defaultValue: members[k].defaultValue || ''
-      });
-    }
+      ({
+        description: member.description,
+        name: member.name,
+        typeTokens: member.typeTokens,
+        deprecated: member.deprecated,
+        defaultValue: member.defaultValue || ''
+      })
+    );
 
     // the interface
     return {
@@ -249,23 +254,23 @@ export class ApiReferencesTableSet extends React.Component<IApiReferencesTableSe
     const classMethods: IMethod[] = [];
 
     const members: ITableRowJson[] = table.members as ITableRowJson[];
-    for (let k = 0; k < members.length; k++) {
-      if (members[k].kind === 'Method') {
+    members.forEach((member: ITableRowJson) => {
+      if (member.kind === 'Method') {
         classMethods.push({
-          description: members[k].description,
-          name: members[k].name,
-          typeTokens: members[k].typeTokens
+          description: member.description,
+          name: member.name,
+          typeTokens: member.typeTokens
         });
       } else {
         classMembers.push({
-          description: members[k].description,
-          name: members[k].name,
-          typeTokens: members[k].typeTokens,
-          deprecated: members[k].deprecated,
-          defaultValue: members[k].defaultValue || ''
+          description: member.description,
+          name: member.name,
+          typeTokens: member.typeTokens,
+          deprecated: member.deprecated,
+          defaultValue: member.defaultValue || ''
         });
       }
-    }
+    });
 
     // the class
     return {

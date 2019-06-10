@@ -1,6 +1,6 @@
 import { ICalendarDayStyleProps, ICalendarDayStyles } from './CalendarDay.types';
 import { normalize, FontSizes, FontWeights, getFocusStyle, getGlobalClassNames } from '@uifabric/styling';
-import { DateRangeType } from '../../../utilities/dateValues/DateValues';
+import { DateRangeType } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 
 const GlobalClassNames = {
   hoverStyle: 'ms-CalendarDay-hoverStyle',
@@ -48,13 +48,18 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         alignItems: 'center',
         fontSize: FontSizes.medium,
         color: palette.neutralPrimary,
-        display: 'inline-flex',
+        display: 'inline-block',
         flexGrow: 1,
         fontWeight: FontWeights.semibold,
         padding: '0 4px 0 10px',
         border: 'none',
         backgroundColor: 'transparent',
-        borderRadius: 2
+        borderRadius: 2,
+        lineHeight: 28,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textAlign: 'start',
+        textOverflow: 'ellipsis'
       },
       headerIsClickable && {
         selectors: {
@@ -114,44 +119,42 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       padding: 0,
       width: 28,
       height: 28,
-      lineHeight: 28,
       fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
-      boxSizing: 'border-box',
-      justifyContent: 'center',
-      alignItems: 'center',
+      cursor: 'pointer',
       selectors: {
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLight
         },
         ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.themeLight
+          backgroundColor: palette.themeLight,
+          fontWeight: FontWeights.semibold
         }
       }
     },
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.themeLight,
+        fontWeight: FontWeights.semibold,
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
-            backgroundColor: palette.themeLight
+            backgroundColor: palette.themeLight,
+            fontWeight: FontWeights.semibold
           }
         }
       }
     ],
     weekNumberCell: {
+      margin: 0,
+      padding: 0,
       borderRight: '1px solid',
       borderColor: palette.neutralLight,
       boxSizing: 'border-box',
       width: 28,
       height: 28,
-      lineHeight: 28,
-      margin: 0,
       fontWeight: FontWeights.regular,
-      padding: 0,
-      justifyContent: 'center',
-      alignItems: 'center'
+      fontSize: FontSizes.small
     },
     disabledStyle: disabledStyle,
     dayOutsideBounds: disabledStyle,
@@ -165,12 +168,13 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         width: 24,
         height: 24,
         lineHeight: 24,
+        fontSize: FontSizes.small,
+        fontWeight: 'inherit',
         borderRadius: 2,
-        alignItems: 'center',
-        justifyContent: 'center',
         border: 'none',
         padding: 0,
         backgroundColor: 'transparent',
+        cursor: 'pointer',
         selectors: {
           span: {
             height: 'inherit',

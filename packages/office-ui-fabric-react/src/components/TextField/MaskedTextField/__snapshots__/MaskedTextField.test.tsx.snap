@@ -53,6 +53,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
             word-wrap: break-word;
           }
       htmlFor="TextField0"
+      id="TextFieldLabel2"
     >
       With input mask
     </label>
@@ -88,6 +89,7 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
     >
       <input
         aria-invalid={false}
+        aria-labelledby="TextFieldLabel2"
         className=
             ms-TextField-field
             {
@@ -123,21 +125,11 @@ exports[`MaskedTextField renders TextField correctly 1`] = `
               display: none;
             }
             &::placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #666666;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
             &:-ms-input-placeholder {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #666666;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 14px;
-              font-weight: 400;
               opacity: 1;
             }
         id="TextField0"

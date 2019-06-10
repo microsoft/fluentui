@@ -1,5 +1,6 @@
 import { beep } from './beep';
 
+/** @deprecated */
 // tslint:disable-next-line:no-any
 export function instrumentMethod(target: any, methodName: string): void {
   const originalMethod = target[methodName];
@@ -24,6 +25,7 @@ export function instrumentMethod(target: any, methodName: string): void {
   };
 }
 
+/** @deprecated */
 export function getStackTrace(): string {
   const obj = {
     stack: ''

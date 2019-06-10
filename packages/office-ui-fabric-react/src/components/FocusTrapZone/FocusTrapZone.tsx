@@ -62,7 +62,12 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
   }
 
   public componentWillUnmount(): void {
-    if (!this.props.disabled) {
+    // don't handle return focus unless forceFocusInsideTrap is true or focus is still within FocusTrapZone
+    if (
+      !this.props.disabled ||
+      this.props.forceFocusInsideTrap ||
+      !elementContains(this._root.current, document.activeElement as HTMLElement)
+    ) {
       this._returnFocusToInitiator();
     }
   }
@@ -77,7 +82,6 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
         position: 'fixed' // 'fixed' prevents browsers from scrolling to bumpers when viewport does not contain them
       },
       tabIndex: disabled ? -1 : 0, // make bumpers tabbable only when enabled
-      'aria-hidden': true,
       'data-is-visible': true
     } as React.HTMLAttributes<HTMLDivElement>;
 

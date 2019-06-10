@@ -13,6 +13,11 @@ import { IAutofillProps } from '../pickers/AutoFill/BaseAutoFill.types';
  */
 export interface IComboBox {
   /**
+   * All selected options
+   */
+  readonly selectedOptions: IComboBoxOption[];
+
+  /**
    * If there is a menu open this will dismiss the menu
    */
   dismissMenu: () => void;

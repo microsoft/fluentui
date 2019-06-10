@@ -277,6 +277,7 @@ export class PanelBase extends BaseComponent<IPanelProps, IPanelState> implement
           className={this._classNames.closeButton}
           onClick={this._onPanelClick}
           ariaLabel={closeButtonAriaLabel}
+          title={closeButtonAriaLabel}
           data-is-visible={true}
           iconProps={{ iconName: 'Cancel' }}
         />

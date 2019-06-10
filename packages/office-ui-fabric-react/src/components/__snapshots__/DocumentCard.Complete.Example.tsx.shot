@@ -601,6 +601,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -671,6 +675,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -738,6 +743,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -808,6 +817,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -875,6 +885,10 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -945,6 +959,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -983,6 +998,7 @@ exports[`Component Examples renders DocumentCard.Complete.Example.tsx correctly 
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
