@@ -14,7 +14,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "@microsoft/api-extractor": "7.0.34",
+    "@microsoft/api-extractor": "7.1.6",
     "@microsoft/load-themed-styles": "^1.7.13",
     "@microsoft/loader-load-themed-styles": "^1.6.0",
     "@uifabric/codepen-loader": "^0.1.2",
@@ -40,7 +40,7 @@
     "jju": "^1.4.0",
     "jscodeshift": "^0.5.0",
     "json-loader": "^0.5.7",
-    "just-scripts": "^0.17.0",
+    "just-scripts": "^0.20.0",
     "lint-staged": "^7.0.5",
     "mustache": "^2.3.0",
     "ngrok": "^3.0.1",
