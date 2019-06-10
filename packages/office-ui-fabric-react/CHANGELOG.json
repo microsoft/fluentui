@@ -2,6 +2,30 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.189.3",
+      "tag": "office-ui-fabric-react_v6.189.3",
+      "date": "Mon, 10 Jun 2019 12:24:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Icon: Set aria-hidden if imageProps.alt or imageProps.aria-labelledby is undefined",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8e4f91a21866140b041266f6840af828b491600c"
+          },
+          {
+            "comment": "DatePicker: Check out of bounds on initial render",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "131c028a3b3ba75f1349cc83c662c65d5cb1d216"
+          },
+          {
+            "comment": "Fixes issue when the menu icon in the second button of the `SplitButton` gets disabled styles when only the primary action is disabled.",
+            "author": "Maxwell Rediker <GitHubMaxwell@users.noreply.github.com>",
+            "commit": "b8e86567912e16b9f2e025f945d844e93cad9012"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.189.2",
       "tag": "office-ui-fabric-react_v6.189.2",
       "date": "Fri, 07 Jun 2019 12:21:48 GMT",

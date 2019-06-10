@@ -57,6 +57,9 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
 // @public
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
+// @public
+export const ALPHA_REGEX: RegExp;
+
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
@@ -600,7 +603,7 @@ export enum CollapseAllVisibility {
 export const ColorPicker: React_2.StatelessComponent<IColorPickerProps>;
 
 // @public (undocumented)
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
+export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
     constructor(props: IColorPickerProps);
     // (undocumented)
     readonly color: IColor;
@@ -766,6 +769,9 @@ export enum ContextualMenuItemType {
     // (undocumented)
     Section = 3
 }
+
+// @public
+export function correctHex(hex: string): string;
 
 // @public
 export function correctHSV(color: IHSV): IHSV;
@@ -1380,6 +1386,9 @@ export const GroupSpacer: React.SFC<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
+
+// @public
+export const HEX_REGEX: RegExp;
 
 // @public (undocumented)
 export const HoverCard: React_2.StatelessComponent<IHoverCardProps>;
@@ -2474,7 +2483,7 @@ export interface IColorPickerGridCellStyles {
 }
 
 // @public (undocumented)
-export interface IColorPickerProps extends IBaseProps<IColorPicker> {
+export interface IColorPickerProps {
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
     blueLabel?: string;
@@ -2484,8 +2493,6 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
     greenLabel?: string;
     hexLabel?: string;
     onChange?: (ev: React_2.SyntheticEvent<HTMLElement>, color: IColor) => void;
-    // @deprecated
-    onColorChanged?: (color: string, colorObject: IColor) => void;
     redLabel?: string;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
@@ -2495,6 +2502,11 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
 export interface IColorPickerState {
     // (undocumented)
     color: IColor;
+    // (undocumented)
+    editingColor?: {
+        component: keyof IRGBHex;
+        value: string;
+    };
 }
 
 // @public (undocumented)
@@ -2519,14 +2531,12 @@ export interface IColorRectangle {
 }
 
 // @public (undocumented)
-export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+export interface IColorRectangleProps {
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
     minSize?: number;
     onChange?: (ev: React_2.MouseEvent<HTMLElement>, color: IColor) => void;
-    // @deprecated
-    onSVChanged?: (s: number, v: number) => void;
     styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
     theme?: ITheme;
 }
@@ -2550,15 +2560,13 @@ export interface IColorSlider {
 }
 
 // @public (undocumented)
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
     maxValue?: number;
     minValue?: number;
     onChange?: (event: React_2.MouseEvent<HTMLElement>, newValue?: number) => void;
-    // @deprecated
-    onChanged?: (newValue: number) => void;
     overlayStyle?: any;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;
@@ -7910,6 +7918,12 @@ export const MAX_COLOR_SATURATION = 100;
 // @public (undocumented)
 export const MAX_COLOR_VALUE = 100;
 
+// @public
+export const MAX_HEX_LENGTH = 6;
+
+// @public
+export const MAX_RGB_LENGTH = 3;
+
 // @public (undocumented)
 export const MeasuredContext: React.Context<{
     isMeasured: boolean;
@@ -7948,6 +7962,12 @@ export enum MessageBarType {
     success = 4,
     warning = 5
 }
+
+// @public
+export const MIN_HEX_LENGTH = 3;
+
+// @public
+export const MIN_RGB_LENGTH = 1;
 
 // @public (undocumented)
 export const Modal: React_2.StatelessComponent<IModalProps>;
@@ -8442,6 +8462,9 @@ export function rgb2hex(r: number, g: number, b: number): string;
 
 // @public
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
+
+// @public
+export const RGB_REGEX: RegExp;
 
 // @public (undocumented)
 export const ScrollablePane: React_2.StatelessComponent<IScrollablePaneProps>;
@@ -9296,6 +9319,10 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
+
+// Warnings were encountered during analysis:
+// 
+// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 
