@@ -122,6 +122,7 @@ exports[`Component Examples renders ContextualMenu.ScrollBar.Example.tsx correct
         </div>
       </div>
       <i
+        aria-hidden={true}
         className=
             ms-Button-menuIcon
             {

@@ -2,6 +2,30 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.18.11",
+      "tag": "@uifabric/fabric-website_v6.18.11",
+      "date": "Thu, 06 Jun 2019 12:22:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add redirects to new website",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "b49a0013f2fe21404d01b7147e1c9acef571195e"
+          },
+          {
+            "comment": "Fix uhf style override className.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "d7150d59e62a7490f86836fbbdec004504ae26d1"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.0` to `^6.189.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.10",
       "tag": "@uifabric/fabric-website_v6.18.10",
       "date": "Fri, 31 May 2019 12:21:27 GMT",

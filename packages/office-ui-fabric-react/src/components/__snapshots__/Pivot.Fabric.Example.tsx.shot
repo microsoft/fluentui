@@ -847,6 +847,7 @@ exports[`Component Examples renders Pivot.Fabric.Example.tsx correctly 1`] = `
                               }
                           href="http://microsoft.com"
                           onClick={[Function]}
+                          target="_blank"
                         >
                           Go to microsoft
                         </a>

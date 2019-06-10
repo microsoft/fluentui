@@ -47,6 +47,7 @@ exports[`PersonaCoin renders correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {

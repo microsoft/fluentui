@@ -1,6 +1,20 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jun 2019 12:23:59 GMT and should not be manually modified.
+
+## 6.3.1
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
+
+## 6.3.0
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Minor changes
+
+- styling updates for datetime calendar
 
 ## 6.2.1
 Wed, 05 Jun 2019 12:22:30 GMT
