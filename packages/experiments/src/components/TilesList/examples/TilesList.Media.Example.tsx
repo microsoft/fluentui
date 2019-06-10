@@ -7,6 +7,8 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { IExampleGroup, IExampleItem, createGroup, createMediaItems, getTileCells } from './ExampleHelpers';
 import * as TilesListExampleStylesModule from './TilesList.Example.scss';
+import { lorem } from '@uifabric/example-app-base';
+import { SignalField, SharedSignal, CommentsSignal } from '../../signals/Signals';
 
 // tslint:disable-next-line:no-any
 const TilesListExampleStyles = TilesListExampleStylesModule as any;
@@ -37,6 +39,7 @@ const TilesListType: typeof TilesListClass = TilesList;
 
 export interface ITilesListMediaExampleState {
   isModalSelection: boolean;
+  nameplateOnlyOnHover: boolean;
   cells: (ITilesGridItem<IExampleItem> | ITilesGridSegment<IExampleItem>)[];
 }
 
@@ -55,6 +58,7 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
 
     this.state = {
       isModalSelection: this._selection.isModal(),
+      nameplateOnlyOnHover: false,
       cells: getTileCells(GROUPS, {
         onRenderCell: this._onRenderMediaCell,
         onRenderHeader: this._onRenderHeader
@@ -73,6 +77,13 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
           onText="Modal"
           offText="Normal"
         />
+        <Toggle
+          label="Hide Nameplates Until Hovered"
+          checked={this.state.nameplateOnlyOnHover}
+          onChange={this._onToggleNameplateOnlyOnHover}
+          onText="Shown on hover"
+          offText="Always shown"
+        />
         <MarqueeSelection selection={this._selection}>
           <SelectionZone selection={this._selection} onItemInvoked={this._onItemInvoked} enterModalOnTouch={true}>
             <TilesListType role="list" items={this.state.cells} />
@@ -84,6 +95,16 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
 
   private _onToggleIsModalSelection = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
     this._selection.setModal(checked);
+  };
+
+  private _onToggleNameplateOnlyOnHover = (event: React.MouseEvent<HTMLElement>, checked: boolean): void => {
+    this.setState({
+      nameplateOnlyOnHover: checked,
+      cells: getTileCells(GROUPS, {
+        onRenderCell: this._onRenderMediaCell,
+        onRenderHeader: this._onRenderHeader
+      })
+    });
   };
 
   private _onSelectionChange = (): void => {
@@ -100,6 +121,9 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
   };
 
   private _onRenderMediaCell = (item: IExampleItem, finalSize: ITileSize): JSX.Element => {
+    const pixelWidth = Math.round(finalSize.width);
+    const pixelHeight = Math.round(finalSize.height);
+
     const tile = (
       <Tile
         role="listitem"
@@ -115,7 +139,24 @@ export class TilesListMediaExample extends React.Component<{}, ITilesListMediaEx
         }
         showBackgroundFrame={true}
         itemName={item.name}
-        itemActivity={item.key}
+        itemActivity={
+          <>
+            <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>
+              {pixelWidth}&#x205F;&times;&#x205F;{pixelHeight}&ensp;&middot;&ensp;3.14&nbsp;MB
+            </div>
+            <SignalField
+              before={
+                <>
+                  <SharedSignal key={1} />
+                  <CommentsSignal key={2} />
+                </>
+              }
+            >
+              {lorem(7)}
+            </SignalField>
+          </>
+        }
+        nameplateOnlyOnHover={this.state.nameplateOnlyOnHover}
       />
     );
 
