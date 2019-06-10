@@ -14,4 +14,4 @@ class StaticList<T> extends React.PureComponent<IList<T>> {
   };
 }
 
-export { StaticList };
+export { StaticList, IList };
