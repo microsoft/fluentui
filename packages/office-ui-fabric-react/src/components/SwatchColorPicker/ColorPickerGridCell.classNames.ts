@@ -1,7 +1,7 @@
 import { ITheme, mergeStyleSets } from '../../Styling';
 import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
 import { IButtonClassNames } from '../Button/BaseButton.classNames';
-import { memoizeFunction } from 'office-ui-fabric-react/lib/Utilities';
+import { memoizeFunction } from '../../Utilities';
 
 /**
  * Function to override the getClassNames func in a button.
