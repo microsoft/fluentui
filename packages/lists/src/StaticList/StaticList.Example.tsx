@@ -17,4 +17,30 @@ class StaticListExample extends React.PureComponent<{}, { items: number[] }> {
   }
 }
 
-export { StaticListExample };
+const StaticListTableExample = () => {
+  const items = new Array(25).fill(0);
+
+  return (
+    <table border="1">
+      <thead>
+        <tr>
+          <th>Item</th>
+        </tr>
+      </thead>
+      <StaticList as="tbody" items={items}>
+        {(_item: number, index: number) => (
+          <tr>
+            <td>{`Item #${index}`}</td>
+          </tr>
+        )}
+      </StaticList>
+      <tfoot>
+        <tr>
+          <td>{`Total count: ${items.length}`}</td>
+        </tr>
+      </tfoot>
+    </table>
+  );
+};
+
+export { StaticListExample, StaticListTableExample };
