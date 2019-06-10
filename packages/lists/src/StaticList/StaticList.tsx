@@ -1,12 +1,12 @@
 import * as React from 'react';
 
-interface IList<T> {
+interface IStaticListProps<T> {
   as?: keyof JSX.IntrinsicElements;
   items?: T[];
   children: (item: T, index: number) => React.ReactNode;
 }
 
-class StaticList<T> extends React.PureComponent<IList<T>> {
+class StaticList<T> extends React.PureComponent<IStaticListProps<T>> {
   public render = () => {
     const { items = [], as: RootTag = 'ul', children } = this.props;
 
@@ -14,4 +14,4 @@ class StaticList<T> extends React.PureComponent<IList<T>> {
   };
 }
 
-export { StaticList, IList };
+export { StaticList, IStaticListProps as IList };
