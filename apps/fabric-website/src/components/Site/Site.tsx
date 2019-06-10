@@ -81,10 +81,22 @@ export class Site<TPlatforms extends string = string> extends React.Component<IS
     }
 
     const navData = this._getNavData(activePlatforms);
+    let platform = 'default' as TPlatforms;
+
+    // If current page doesn't have pages for the active platform, switch to its first platform.
+    if (Object.keys(navData.pagePlatforms).length > 0 && navData.activePages.length === 0) {
+      const firstPlatform = getPageFirstPlatform(getSiteArea(siteDefinition.pages), siteDefinition);
+      const currentPage = getSiteArea(siteDefinition.pages);
+      platform = firstPlatform;
+      activePlatforms = {
+        ...activePlatforms,
+        [currentPage]: firstPlatform
+      };
+    }
 
     this.state = {
-      activePlatforms: activePlatforms,
-      platform: 'default' as TPlatforms,
+      activePlatforms,
+      platform,
       ...navData
     };
   }
