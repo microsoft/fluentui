@@ -1,10 +1,18 @@
 import * as React from 'react';
-import { BaseComponent, IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { DefaultButton } from 'office-ui-fabric-react/lib/Button';
-import { IDetailsList, DetailsList, IColumn, IGroup, IDetailsHeaderProps } from 'office-ui-fabric-react/lib/DetailsList';
-import { Toggle, IToggleStyles } from 'office-ui-fabric-react/lib/Toggle';
-import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
-import { DetailsHeader } from '../DetailsHeader';
+import {
+  BaseComponent,
+  DefaultButton,
+  DetailsHeader,
+  DetailsList,
+  IColumn,
+  IDetailsHeaderProps,
+  IDetailsList,
+  IGroup,
+  IRenderFunction,
+  IToggleStyles,
+  mergeStyles,
+  Toggle
+} from 'office-ui-fabric-react';
 
 const margin = '0 20px 20px 0';
 const controlWrapperClass = mergeStyles({

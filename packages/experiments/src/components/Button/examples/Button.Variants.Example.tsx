@@ -8,7 +8,7 @@ import {
   IconButton,
   MessageBarButton,
   PrimaryButton
-} from '../index';
+} from '@uifabric/experiments';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {

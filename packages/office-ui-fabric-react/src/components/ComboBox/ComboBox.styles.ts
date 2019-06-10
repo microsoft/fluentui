@@ -48,7 +48,8 @@ export const getOptionStyles = memoizeFunction(
     theme: ITheme,
     customStylesForAllOptions?: Partial<IComboBoxOptionStyles>,
     customOptionStylesForCurrentOption?: Partial<IComboBoxOptionStyles>,
-    isPending?: boolean
+    isPending?: boolean,
+    isHidden?: boolean
   ): Partial<IComboBoxOptionStyles> => {
     const { semanticColors, palette } = theme;
 
@@ -65,7 +66,7 @@ export const getOptionStyles = memoizeFunction(
           backgroundColor: isPending ? ComboBoxOptionBackgroundHovered : 'transparent',
           boxSizing: 'border-box',
           cursor: 'pointer',
-          display: 'block',
+          display: isHidden ? 'none' : 'block',
           width: '100%',
           height: 'auto',
           minHeight: ComboBoxOptionHeight,
@@ -97,7 +98,7 @@ export const getOptionStyles = memoizeFunction(
           backgroundColor: ComboBoxOptionBackgroundHovered,
           color: ComboBoxOptionTextColorSelected
         },
-        getFocusStyle(theme, undefined, undefined, undefined, undefined, undefined, false),
+        getFocusStyle(theme, { isFocusedOnly: false }),
         getListOptionHighContrastStyles(theme)
       ],
       rootDisabled: {

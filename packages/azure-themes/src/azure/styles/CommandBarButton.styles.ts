@@ -14,7 +14,7 @@ export const CommandBarButtonStyles = (theme: ITheme): Partial<IButtonStyles> =>
       color: semanticColors.bodyText
     },
     root: {
-      ...getFocusStyle(theme, 2),
+      ...getFocusStyle(theme, { inset: 2 }),
       fontSize: FontSizes.size12,
       backgroundColor: semanticColors.bodyBackground,
       color: semanticColors.bodyText

@@ -244,6 +244,16 @@ export interface ICalendarStrings {
   nextYearAriaLabel?: string;
 
   /**
+   * Aria-label for the "previous year range" button.
+   */
+  prevYearRangeAriaLabel?: string;
+
+  /**
+   * Aria-label for the "next year range" button.
+   */
+  nextYearRangeAriaLabel?: string;
+
+  /**
    * Aria-label for the "close" button.
    */
   closeButtonAriaLabel?: string;

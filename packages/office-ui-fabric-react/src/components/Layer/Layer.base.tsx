@@ -38,7 +38,7 @@ export class LayerBase extends React.Component<ILayerProps, ILayerBaseState> {
       hasMounted: false
     };
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Layer', props, {
         onLayerMounted: 'onLayerDidMount'
       });

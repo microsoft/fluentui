@@ -150,6 +150,7 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
       descriptionAriaLabel,
       href,
       onClick,
+      isFluentStyling,
       ...divProps
     } = this.props;
 
@@ -219,7 +220,8 @@ export class Tile extends BaseComponent<ITileProps, ITileState> {
           [`ms-Tile--invokable ${TileStyles.invokable}`]: isInvokable,
           [`ms-Tile--uninvokable ${TileStyles.uninvokable}`]: !isInvokable,
           [`ms-Tile--isDisabled ${TileStyles.disabled}`]: !isSelectable && !isInvokable,
-          [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal
+          [`ms-Tile--showCheck ${TileStyles.showCheck}`]: isModal,
+          [`ms-Tile--isFluentStyling ${TileStyles.isFluentStyling}`]: isFluentStyling
         })}
         data-is-focusable={true}
         data-is-sub-focuszone={true}

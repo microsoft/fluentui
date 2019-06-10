@@ -9,6 +9,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -76,6 +79,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -239,6 +246,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -402,6 +413,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -565,6 +580,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -728,6 +747,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 1px;
                     padding-left: 1px;
@@ -870,6 +893,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -937,6 +963,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1089,6 +1119,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1241,6 +1275,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1393,6 +1431,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1545,6 +1587,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 1px;
                     padding-left: 1px;
@@ -1676,6 +1722,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -1743,6 +1792,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1895,6 +1948,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2047,6 +2104,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2199,6 +2260,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2351,6 +2416,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 1px;
                     padding-left: 1px;
@@ -2492,6 +2561,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -2559,6 +2631,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2722,6 +2798,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2885,6 +2965,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3048,6 +3132,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3215,6 +3303,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3378,6 +3470,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3541,6 +3637,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3704,6 +3804,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3871,6 +3975,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4034,6 +4142,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4197,6 +4309,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4360,6 +4476,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4502,6 +4622,9 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
     className=
         ms-FocusZone
         ms-swatchColorPickerBodyContainer
+        &:focus {
+          outline: none;
+        }
         {
           clear: both;
           display: block;
@@ -4572,6 +4695,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -4739,6 +4866,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -4906,6 +5037,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -5073,6 +5208,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -5240,6 +5379,10 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
+                    margin-bottom: 0px;
+                    margin-left: 0px;
+                    margin-right: 0px;
+                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 1px;

@@ -1,0 +1,1 @@
+Patterns are combinations of Basic Animations. They leverage the set of Basic Animation to address more complex interactions. For example, when new elements are introduced into a view, the older elements can react in response.

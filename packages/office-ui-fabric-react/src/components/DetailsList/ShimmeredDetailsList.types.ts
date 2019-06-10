@@ -1,13 +1,13 @@
 import { IDetailsListProps } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle } from '../../Styling';
-import { IStyleFunctionOrObject } from '../../Utilities';
+import { IStyleFunctionOrObject, Omit } from '../../Utilities';
 
 /**
  * ShimmeredDetailsList props interface
- * {@docCategory ShimmeredDetailsList}
+ * {@docCategory DetailsList}
  */
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
   /**
    * DetailsList `styles` to pass through.
    * Due to ShimmeredDetailsList overriding the extended `styles` prop with its own one
@@ -50,7 +50,7 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
 /**
  * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
- * @internal
+ * {@docCategory DetailsList}
  */
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
   /**
@@ -68,7 +68,7 @@ export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsLis
 
 /**
  * Represents the stylable areas of the control.
- * @internal
+ * {@docCategory DetailsList}
  */
 export interface IShimmeredDetailsListStyles {
   /**

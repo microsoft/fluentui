@@ -46,6 +46,7 @@ const getDefaultStyles = (props: IPageTitleStyleProps): IPageTitleStyles => ({
   ]
 });
 
+/** @deprecated */
 @customizable('PageTitle', ['theme', 'styles'])
 export class PageTitle extends BaseComponent<IPageTitleProps, {}> {
   public render(): JSX.Element {

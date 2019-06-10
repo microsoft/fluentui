@@ -278,14 +278,12 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
             display: 'none'
           },
           '::placeholder': [
-            theme.fonts.medium,
             {
               color: semanticColors.inputPlaceholderText,
               opacity: 1
             }
           ],
           ':-ms-input-placeholder': [
-            theme.fonts.medium,
             {
               color: semanticColors.inputPlaceholderText,
               opacity: 1

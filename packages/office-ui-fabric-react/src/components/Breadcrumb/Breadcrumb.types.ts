@@ -1,9 +1,17 @@
 import * as React from 'react';
-import { IBreadCrumbData } from './Breadcrumb.base';
 import { IIconProps } from '../../Icon';
 import { IRefObject, IRenderFunction, IComponentAs, IStyleFunctionOrObject } from '../../Utilities';
 import { ITheme, IStyle } from '../../Styling';
 import { IFocusZoneProps } from '../../FocusZone';
+
+/**
+ * {@docCategory Breadcrumb}
+ */
+export interface IBreadcrumbData {
+  props: IBreadcrumbProps;
+  renderedItems: IBreadcrumbItem[];
+  renderedOverflowItems: IBreadcrumbItem[];
+}
 
 /**
  * {@docCategory Breadcrumb}
@@ -54,7 +62,7 @@ export interface IBreadcrumbProps extends React.HTMLAttributes<HTMLElement> {
    * Method to call when reducing the length of the breadcrumb.
    * Return undefined to never reduce breadcrumb length
    */
-  onReduceData?: (data: IBreadCrumbData) => IBreadCrumbData | undefined;
+  onReduceData?: (data: IBreadcrumbData) => IBreadcrumbData | undefined;
 
   /**
    * Aria label to place on the navigation landmark for breadcrumb

@@ -25,13 +25,6 @@ exports[`Component Examples renders Shimmer.CustomElements.Example.tsx correctly
       & textarea {
         font-family: inherit;
       }
-      button {
-        margin-bottom: 0px;
-        margin-left: 0px;
-        margin-right: 0px;
-        margin-top: 0px;
-        overflow: visible;
-      }
       & > * {
         margin-bottom: 10px;
         margin-left: 0;

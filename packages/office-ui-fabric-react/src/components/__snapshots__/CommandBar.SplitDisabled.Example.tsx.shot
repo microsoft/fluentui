@@ -24,6 +24,9 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
           className=
               ms-FocusZone
               ms-CommandBar
+              &:focus {
+                outline: none;
+              }
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
@@ -138,6 +141,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           font-size: 14px;
                           font-weight: 400;
                           height: 100%;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-width: 40px;
                           outline: transparent;
                           padding-bottom: 0;
@@ -214,6 +221,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             {
@@ -281,7 +289,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           cursor: pointer;
                           display: inline-block;
                           height: auto;
+                          margin-bottom: 0px;
                           margin-left: -1px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           padding-bottom: 6px;
                           padding-left: 6px;
@@ -322,6 +333,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             ms-Button-menuIcon
@@ -353,6 +365,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     </div>
                   </button>
                   <span
+                    aria-hidden={true}
                     className=
 
                         {
@@ -449,6 +462,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           font-size: 14px;
                           font-weight: 400;
                           height: 100%;
+                          margin-bottom: 0px;
+                          margin-left: 0px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           min-width: 40px;
                           outline: transparent;
                           padding-bottom: 0;
@@ -525,6 +542,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             {
@@ -594,7 +612,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           cursor: pointer;
                           display: inline-block;
                           height: auto;
+                          margin-bottom: 0px;
                           margin-left: -1px;
+                          margin-right: 0px;
+                          margin-top: 0px;
                           outline: transparent;
                           padding-bottom: 6px;
                           padding-left: 6px;
@@ -638,13 +659,14 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Button-icon
                             ms-Button-menuIcon
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #a6a6a6;
+                              color: #666666;
                               display: inline-block;
                               flex-shrink: 0;
                               font-family: "FabricMDL2Icons";
@@ -669,6 +691,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                     </div>
                   </button>
                   <span
+                    aria-hidden={true}
                     className=
 
                         {
@@ -714,6 +737,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -789,6 +816,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -883,6 +911,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         font-size: 14px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         min-width: 40px;
                         outline: transparent;
                         padding-bottom: 0;
@@ -958,6 +990,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1019,6 +1052,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
                       font-weight: 400;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1093,6 +1130,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-menuIcon
                         {
@@ -1165,6 +1203,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       font-size: 14px;
                       font-weight: 400;
                       height: 100%;
+                      margin-bottom: 0px;
+                      margin-left: 0px;
+                      margin-right: 0px;
+                      margin-top: 0px;
                       min-width: 40px;
                       outline: transparent;
                       padding-bottom: 0;
@@ -1241,6 +1283,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {
@@ -1334,6 +1377,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         font-size: 14px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         min-width: 40px;
                         outline: transparent;
                         padding-bottom: 0;
@@ -1410,6 +1457,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -1480,6 +1528,10 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         font-size: 14px;
                         font-weight: 400;
                         height: 100%;
+                        margin-bottom: 0px;
+                        margin-left: 0px;
+                        margin-right: 0px;
+                        margin-top: 0px;
                         min-width: 40px;
                         outline: transparent;
                         padding-bottom: 0;
@@ -1556,6 +1608,7 @@ exports[`Component Examples renders CommandBar.SplitDisabled.Example.tsx correct
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {

@@ -57,6 +57,10 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;
@@ -233,7 +237,11 @@ exports[`Component Examples renders Announced.LazyLoading.Example.tsx correctly 
     </div>
   </div>
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone3"
     onFocus={[Function]}
     onKeyDown={[Function]}

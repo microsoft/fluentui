@@ -6,6 +6,9 @@ import { IProcessedStyleSet } from '../../Styling';
 
 const getClassNames = classNamesFunction<IDocumentCardDetailsStyleProps, IDocumentCardDetailsStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardDetailsBase extends BaseComponent<IDocumentCardDetailsProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardDetailsStyles>;
 

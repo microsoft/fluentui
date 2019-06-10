@@ -26,6 +26,7 @@ const getClassNames = classNamesFunction<IFeedbackListStyleProps, IFeedbackListS
 
 export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedbackListState, IListItem> {
   private _classNames: IProcessedStyleSet<IFeedbackListStyles>;
+  private _isMounted: boolean;
 
   constructor(props: IFeedbackListProps) {
     super(props);
@@ -36,6 +37,7 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
   }
 
   public async componentDidMount(): Promise<void> {
+    this._isMounted = true;
     const githubUrl =
       'https://api.github.com/search/issues?q=type:issue%20repo:OfficeDev/office-ui-fabric-react%20label:%22Component:%20' +
       this.props.title;
@@ -43,29 +45,15 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
     const openIssuesURL = githubUrl + '%22%20is:open';
     const closedIssuesURL = githubUrl + '%22%20is:closed';
 
-    const results = await Promise.all([this.getIssues(openIssuesURL), this.getIssues(closedIssuesURL)]);
+    const results = await Promise.all([this._getIssues(openIssuesURL), this._getIssues(closedIssuesURL)]);
 
-    this.setState({ openIssues: results[0], closedIssues: results[1] });
+    if (this._isMounted) {
+      this.setState({ openIssues: results[0], closedIssues: results[1] });
+    }
   }
 
-  public async getIssues(url: string): Promise<IListItem[]> {
-    const response = await fetch(url);
-    const responseText = await response.text();
-
-    const { items = [] } = JSON.parse(responseText);
-
-    // Intentionally render the first 30 issues until pagination support is added for
-    // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
-    return items.map((item: { created_at: string; title: string; number: number }) => {
-      const dateCreated = new Date(item.created_at);
-      const openedOn = relativeDates(dateCreated, new Date());
-
-      return {
-        issueTitle: item.title,
-        issueNum: item.number,
-        issueCreated: openedOn
-      };
-    });
+  public componentWillUnmount() {
+    this._isMounted = false;
   }
 
   public render(): JSX.Element | null {
@@ -98,6 +86,26 @@ export class FeedbackListBase extends React.Component<IFeedbackListProps, IFeedb
         )}
       </div>
     );
+  }
+
+  private async _getIssues(url: string): Promise<IListItem[]> {
+    const response = await fetch(url);
+    const responseText = await response.text();
+
+    const { items = [] } = JSON.parse(responseText);
+
+    // Intentionally render the first 30 issues until pagination support is added for
+    // https://github.com/OfficeDev/office-ui-fabric-react/issues/8284
+    return items.map((item: { created_at: string; title: string; number: number }) => {
+      const dateCreated = new Date(item.created_at);
+      const openedOn = relativeDates(dateCreated, new Date());
+
+      return {
+        issueTitle: item.title,
+        issueNum: item.number,
+        issueCreated: openedOn
+      };
+    });
   }
 
   private _onRenderCell = (item: IListItem): JSX.Element => {

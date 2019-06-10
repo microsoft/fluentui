@@ -36,7 +36,9 @@ export class FocusTrapZoneBoxClickExample extends React.Component<{}, IFocusTrap
             offText="Off"
           />
           <TextField label="Input inside trap zone" styles={{ root: { width: 300 } }} />
-          <Link href="https://bing.com">Hyperlink inside trap zone</Link>
+          <Link href="https://bing.com" target="_blank">
+            Hyperlink inside trap zone
+          </Link>
         </Stack>
       </FocusTrapZone>
     );

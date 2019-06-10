@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as ReactDOM from 'react-dom';
+import * as renderer from 'react-test-renderer';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import { setRTL, KeyCodes } from '../../Utilities';
 import { FocusZone } from './FocusZone';
@@ -53,6 +54,18 @@ describe('FocusZone', () => {
 
   beforeEach(() => {
     lastFocusedElement = undefined;
+  });
+
+  it('renders FocusZone correctly with no props', () => {
+    const component = renderer.create(<FocusZone />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
+  });
+
+  it('renders FocusZone correctly with aria-describedby and aria-labelledby', () => {
+    const component = renderer.create(<FocusZone aria-describedby="customDescribedBy" aria-labelledby="customLabelledBy" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot();
   });
 
   it('can use arrows vertically', () => {

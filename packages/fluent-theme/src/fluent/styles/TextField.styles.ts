@@ -6,7 +6,10 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
 
   return {
     fieldGroup: [
-      { borderRadius: effects.roundedCorner2 },
+      {
+        borderRadius: effects.roundedCorner2,
+        borderColor: palette.neutralSecondaryAlt
+      },
       hasErrorMessage && [
         {
           borderColor: palette.red,
@@ -33,6 +36,9 @@ export const TextFieldStyles = (props: ITextFieldStyleProps): Partial<ITextField
         }
       }
     ],
+    wrapper: {
+      borderColor: palette.neutralSecondaryAlt // For underlined and borderless TextFields
+    },
     errorMessage: {
       color: palette.redDark
     }

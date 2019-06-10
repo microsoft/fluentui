@@ -35,7 +35,16 @@ export const getStyles = (props: IMarkdownTableStyleProps): IMarkdownTableStyles
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
-    root: [classNames.root, className],
+    root: [
+      classNames.root,
+      className,
+      {
+        width: '100%',
+        overflowX: 'auto',
+        marginBottom: 20
+        // TODO: add background gradient styles (see Page.module.scss)
+      }
+    ],
 
     table: [
       classNames.root,

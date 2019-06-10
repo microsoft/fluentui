@@ -165,6 +165,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: none;
               padding-bottom: 0;
               padding-left: 0;
@@ -243,6 +247,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -291,6 +296,10 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: none;
               padding-bottom: 0;
               padding-left: 0;
@@ -369,6 +378,7 @@ exports[`SpinButton renders SpinButton correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -568,6 +578,10 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: none;
               padding-bottom: 0;
               padding-left: 0;
@@ -646,6 +660,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -694,6 +709,10 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               font-size: 14px;
               font-weight: 400;
               height: 50%;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               outline: none;
               padding-bottom: 0;
               padding-left: 0;
@@ -772,6 +791,7 @@ exports[`SpinButton renders SpinButton correctly with values that the user passe
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

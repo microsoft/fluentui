@@ -8,7 +8,9 @@ import {
   IStyle,
   getGlobalClassNames,
   normalize,
-  HighContrastSelectorWhite
+  HighContrastSelectorWhite,
+  getScreenSelector,
+  ScreenWidthMinMedium
 } from '../../Styling';
 
 const GlobalClassNames = {
@@ -62,8 +64,21 @@ const highContrastBorderState: IRawStyle = {
   }
 };
 
+const MinimumScreenSelector = getScreenSelector(0, ScreenWidthMinMedium);
+
 export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = props => {
-  const { theme, hasError, className, isOpen, disabled, required, isRenderingPlaceholder, panelClassName, calloutClassName } = props;
+  const {
+    theme,
+    hasError,
+    hasLabel,
+    className,
+    isOpen,
+    disabled,
+    required,
+    isRenderingPlaceholder,
+    panelClassName,
+    calloutClassName
+  } = props;
 
   if (!theme) {
     throw new Error('theme is undefined or null in base Dropdown getStyles function.');
@@ -73,7 +88,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
   const { palette, semanticColors } = theme;
 
   const rootHoverFocusActiveSelectorNeutralDarkMixin: IStyle = {
-    color: palette.neutralDark
+    color: semanticColors.menuItemTextHovered
   };
 
   const rootHoverFocusActiveSelectorBodySubtextMixin: IStyle = {
@@ -129,7 +144,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       normalize,
       {
         ...theme.fonts.medium,
-        color: palette.neutralPrimary,
+        color: semanticColors.menuItemText,
         position: 'relative',
         outline: 0,
         userSelect: 'none',
@@ -141,7 +156,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ],
           ['&:focus .' + globalClassnames.title]: [
             !disabled && rootHoverFocusActiveSelectorNeutralDarkMixin,
-            { borderColor: palette.themePrimary },
+            {
+              borderColor:
+                palette.themePrimary /* see https://github.com/OfficeDev/office-ui-fabric-react/pull/9182 for semantic color disc */
+            },
             highContrastItemAndTitleStateMixin
           ],
           ['&:active .' + globalClassnames.title]: [
@@ -169,7 +187,26 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       className,
       isOpen && 'is-open',
       disabled && 'is-disabled',
-      required && 'is-required'
+      required && 'is-required',
+      required &&
+        !hasLabel && {
+          selectors: {
+            ':after': {
+              content: `'*'`,
+              color: semanticColors.errorText,
+              position: 'absolute',
+              top: -5,
+              right: -10
+            },
+            [HighContrastSelector]: {
+              selectors: {
+                ':after': {
+                  right: -14 // moving the * 4 pixel to right to alleviate border clipping in HC mode.
+                }
+              }
+            }
+          }
+        }
     ],
     title: [
       globalClassnames.title,
@@ -214,7 +251,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: palette.neutralSecondary, fontSize: FontSizes.small, pointerEvents: 'none' },
+      { color: semanticColors.bodySubtext, fontSize: FontSizes.small, pointerEvents: 'none' },
       disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
     errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
@@ -222,7 +259,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       globalClassnames.callout,
       {
         boxShadow: '0 0 2px 0 rgba(0,0,0,0.2)',
-        border: `1px solid ${palette.neutralLight}`
+        border: `1px solid ${semanticColors.variantBorder}`
       },
       calloutClassName
     ],
@@ -251,6 +288,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemSelected: dropdownItemSelected,
     dropdownItemDisabled: dropdownItemDisabled,
     dropdownItemSelectedAndDisabled: [dropdownItemSelected, dropdownItemDisabled, { backgroundColor: 'transparent' }],
+    dropdownItemHidden: [...dropdownItemStyle, { display: 'none' }],
     dropdownDivider: [globalClassnames.dropdownDivider, { height: 1, backgroundColor: semanticColors.bodyDivider }],
     dropdownOptionText: [
       globalClassnames.dropdownOptionText,
@@ -288,7 +326,14 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
         root: [panelClassName],
         main: {
           // Force drop shadow even under medium breakpoint
-          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)'
+          boxShadow: '-30px 0px 30px -30px rgba(0,0,0,0.2)',
+          selectors: {
+            // In case of extra small screen sizes
+            [MinimumScreenSelector]: {
+              // panelWidth xs
+              width: 272
+            }
+          }
         },
         contentInner: { padding: '0 0 20px' }
       }

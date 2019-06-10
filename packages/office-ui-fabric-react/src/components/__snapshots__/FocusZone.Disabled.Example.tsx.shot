@@ -24,7 +24,11 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
       }
 >
   <div
-    className="ms-FocusZone"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
     data-focuszone-id="FocusZone0"
     onFocus={[Function]}
     onKeyDown={[Function]}
@@ -73,6 +77,10 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -187,6 +195,10 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -378,21 +390,11 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
                     display: none;
                   }
                   &::placeholder {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
                     color: #666666;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    -moz-osx-font-smoothing: grayscale;
-                    -webkit-font-smoothing: antialiased;
                     color: #666666;
-                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                    font-size: 14px;
-                    font-weight: 400;
                     opacity: 1;
                   }
               id="TextField7"
@@ -424,6 +426,10 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -513,7 +519,7 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__9"
+              id="id__10"
             >
               Button 3
             </div>
@@ -540,6 +546,10 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;
@@ -629,7 +639,7 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
                 margin-right: 4px;
                 margin-top: 0;
               }
-          id="id__12"
+          id="id__13"
         >
           Tabbable Element 1
         </div>
@@ -637,8 +647,12 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
     </div>
   </button>
   <div
-    className="ms-FocusZone"
-    data-focuszone-id="FocusZone15"
+    className=
+        ms-FocusZone
+        &:focus {
+          outline: none;
+        }
+    data-focuszone-id="FocusZone16"
     onFocus={[Function]}
     onKeyDown={[Function]}
     onMouseDownCapture={[Function]}
@@ -686,6 +700,10 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -775,7 +793,7 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__16"
+              id="id__17"
             >
               Button 1
             </div>
@@ -800,6 +818,10 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
               font-size: 14px;
               font-weight: 400;
               height: 32px;
+              margin-bottom: 0px;
+              margin-left: 0px;
+              margin-right: 0px;
+              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -889,7 +911,7 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
                     margin-right: 4px;
                     margin-top: 0;
                   }
-              id="id__19"
+              id="id__20"
             >
               Button 2
             </div>
@@ -992,24 +1014,14 @@ exports[`Component Examples renders FocusZone.Disabled.Example.tsx correctly 1`]
                 display: none;
               }
               &::placeholder {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
                 color: #666666;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                -moz-osx-font-smoothing: grayscale;
-                -webkit-font-smoothing: antialiased;
                 color: #666666;
-                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-                font-size: 14px;
-                font-weight: 400;
                 opacity: 1;
               }
-          id="TextField22"
+          id="TextField23"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}

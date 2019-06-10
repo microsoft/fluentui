@@ -28,6 +28,7 @@ import { PersonaStyles } from './styles/Persona.styles';
 import { PivotStyles } from './styles/Pivot.styles';
 import { PrimaryButtonStyles } from './styles/PrimaryButton.styles';
 import { RatingStyles } from './styles/Rating.styles';
+import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { SuggestionItemStyles, SuggestionsStyles } from './styles/PickerSuggestions.styles';
@@ -152,6 +153,9 @@ export const FluentStyles: any = {
   },
   Rating: {
     styles: RatingStyles
+  },
+  SearchBox: {
+    styles: SearchBoxStyles
   },
   Slider: {
     styles: SliderStyles

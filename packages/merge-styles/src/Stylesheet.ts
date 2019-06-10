@@ -65,7 +65,15 @@ export interface IStyleSheetConfig {
 const STYLESHEET_SETTING = '__stylesheet__';
 
 // tslint:disable-next-line:no-any
-const _fileScopedGlobal: { [key: string]: any } = {};
+let _global: { [key: string]: any } = {};
+
+// Grab window.
+try {
+  _global = window;
+} catch {
+  /* leave as blank object */
+}
+
 let _stylesheet: Stylesheet;
 
 /**
@@ -94,14 +102,13 @@ export class Stylesheet {
    */
   public static getInstance(): Stylesheet {
     // tslint:disable-next-line:no-any
-    const global: any = typeof window !== 'undefined' ? window : _fileScopedGlobal;
-    _stylesheet = global[STYLESHEET_SETTING] as Stylesheet;
+    _stylesheet = _global[STYLESHEET_SETTING] as Stylesheet;
 
     if (!_stylesheet || (_stylesheet._lastStyleElement && _stylesheet._lastStyleElement.ownerDocument !== document)) {
       // tslint:disable-next-line:no-string-literal
-      const fabricConfig = (global && global['FabricConfig']) || {};
+      const fabricConfig = (_global && _global['FabricConfig']) || {};
 
-      _stylesheet = global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
+      _stylesheet = _global[STYLESHEET_SETTING] = new Stylesheet(fabricConfig.mergeStyles);
     }
 
     return _stylesheet;

@@ -182,6 +182,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0;
@@ -258,6 +262,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -310,6 +315,10 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 font-size: 14px;
                 font-weight: 400;
                 height: 50%;
+                margin-bottom: 0px;
+                margin-left: 0px;
+                margin-right: 0px;
+                margin-top: 0px;
                 opacity: 0.5;
                 outline: transparent;
                 padding-bottom: 0;
@@ -386,6 +395,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

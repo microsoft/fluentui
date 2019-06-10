@@ -1,5 +1,5 @@
 import { IButtonStyles } from '../Button.types';
-import { ITheme, concatStyleSets, getFocusStyle } from '../../../Styling';
+import { ITheme, concatStyleSets, getFocusStyle, IStyle } from '../../../Styling';
 import { memoizeFunction } from '../../../Utilities';
 
 export const getStyles = memoizeFunction(
@@ -12,9 +12,17 @@ export const getStyles = memoizeFunction(
       border: 'none'
     };
 
+    const splitButtonDivider: IStyle = {
+      position: 'absolute',
+      width: 1,
+      right: 31,
+      top: 8,
+      bottom: 8
+    };
+
     const splitButtonStyles: IButtonStyles = {
       splitButtonContainer: [
-        getFocusStyle(theme, 0, 'relative', buttonHighContrastFocus),
+        getFocusStyle(theme, { highContrastStyle: buttonHighContrastFocus }),
         {
           display: 'inline-flex'
         }
@@ -36,17 +44,14 @@ export const getStyles = memoizeFunction(
         cursor: 'pointer',
         verticalAlign: 'top',
         width: 32,
-        marginLeft: -1
+        marginLeft: -1,
+        marginTop: 0,
+        marginRight: 0,
+        marginBottom: 0
       },
 
-      splitButtonDivider: {
-        position: 'absolute',
-        width: 1,
-        right: 31,
-        top: 8,
-        bottom: 8
-      },
-
+      splitButtonDivider: splitButtonDivider,
+      splitButtonDividerDisabled: splitButtonDivider,
       splitButtonMenuButtonDisabled: {
         pointerEvents: 'none',
         selectors: {

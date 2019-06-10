@@ -74,7 +74,17 @@ export const baseElementEvents = [
   'onTouchMove',
   'onTouchStart',
   'onScroll',
-  'onWheel'
+  'onWheel',
+  'onPointerCancel',
+  'onPointerDown',
+  'onPointerEnter',
+  'onPointerLeave',
+  'onPointerMove',
+  'onPointerOut',
+  'onPointerOver',
+  'onPointerUp',
+  'onGotPointerCapture',
+  'onLostPointerCapture'
 ];
 
 /**

@@ -30,14 +30,14 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
         // Temporary workaround for https://github.com/OfficeDev/office-ui-fabric-react/issues/6782.
         selectors: {
           '&a:link, &a:hover, &a:focus, &a:visited': {
-            color: theme.palette.white
+            color: theme.palette.white + ' !important'
           }
         }
       },
       globalClassNames.button
     ],
     itemCell: [
-      getFocusStyle(theme, -1),
+      getFocusStyle(theme, { inset: -1 }),
       {
         minHeight: 54,
         padding: 10,

@@ -31,6 +31,11 @@ const imagePropsFitCover: IImageProps = {
   imageFit: ImageFit.cover
 };
 
+const imagePropsFitCenterContain: IImageProps = {
+  src: 'http://placehold.it/400x400',
+  imageFit: ImageFit.centerContain
+};
+
 const imagePropsFitCenterCover: IImageProps = {
   src: 'http://placehold.it/400x400',
   imageFit: ImageFit.centerCover
@@ -41,6 +46,8 @@ const imagePropsMaximizeFrame: IImageProps = {
   imageFit: ImageFit.cover,
   maximizeFrame: true
 };
+
+const border = 'solid 1px black';
 
 // tslint:disable:jsx-ban-props
 
@@ -154,19 +161,64 @@ storiesOf('Image', module)
       <Image {...imagePropsFitCover} width={250} height={150} />
     </div>
   ))
+  .addStory('Fit: CenterContain, image smaller', () => (
+    <div>
+      <Label>
+        The image is smaller than the frame, so the image is centered with empty space within the
+        frame.
+      </Label>
+      <div style={{ width: 500, height: 500, border }}>
+        <Image {...imagePropsFitCenterContain} width={500} height={500} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: CenterContain, image larger', () => (
+    <div>
+      <Label>The image is larger than the frame, so the image behaves as "contain".</Label>
+      <div style={{ width: 350, height: 250, border }}>
+        <Image {...imagePropsFitCenterContain} width={350} height={250} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: CenterContain, image wider', () => (
+    <div>
+      <Label>
+        The image has a wider aspect ratio (more landscape) than the frame, so the image is
+        contained.
+      </Label>
+      <div style={{ width: 300, height: 500, border }}>
+        <Image {...imagePropsFitCenterContain} width={300} height={500} />
+      </div>
+    </div>
+  ))
+  .addStory('Fit: CenterContain, image taller', () => (
+    <div>
+      <Label>
+        The image has a taller aspect ratio (more portrait) than the frame, so the image is
+        contained.
+      </Label>
+      <div style={{ width: 500, height: 300, border }}>
+        <Image {...imagePropsFitCenterContain} width={500} height={300} />
+      </div>
+    </div>
+  ))
   .addStory('Fit: centerCover, image smaller', () => (
     <div>
       <Label>
         The image is smaller than the frame, so the image is centered with empty space within the
         frame.
       </Label>
-      <Image {...imagePropsFitCenterCover} width={500} height={500} />
+      <div style={{ width: 500, height: 500, border }}>
+        <Image {...imagePropsFitCenterCover} width={500} height={500} />
+      </div>
     </div>
   ))
   .addStory('Fit: centerCover, image larger', () => (
     <div>
       <Label>The image is larger than the frame, so the image behaves as "cover".</Label>
-      <Image {...imagePropsFitCenterCover} width={350} height={250} />
+      <div style={{ width: 350, height: 250, border }}>
+        <Image {...imagePropsFitCenterCover} width={350} height={250} />
+      </div>
     </div>
   ))
   .addStory('Fit: centerCover, image wider', () => (
@@ -175,7 +227,9 @@ storiesOf('Image', module)
         The image has a wider aspect ratio (more landscape) than the frame, so the sides are cropped
         evenly.
       </Label>
-      <Image {...imagePropsFitCenterCover} width={300} height={500} />
+      <div style={{ width: 300, height: 500, border }}>
+        <Image {...imagePropsFitCenterCover} width={300} height={500} />
+      </div>
     </div>
   ))
   .addStory('Fit: centerCover, image taller', () => (
@@ -184,7 +238,9 @@ storiesOf('Image', module)
         The image has a taller aspect ratio (more portrait) than the frame, so the top and bottom
         are cropped evenly.
       </Label>
-      <Image {...imagePropsFitCenterCover} width={500} height={300} />
+      <div style={{ width: 500, height: 300, border }}>
+        <Image {...imagePropsFitCenterCover} width={500} height={300} />
+      </div>
     </div>
   ))
   .addStory('Maximize frame, landscape container', () => (

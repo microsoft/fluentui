@@ -90,7 +90,12 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         flexGrow: 1,
         outline: 'none',
         padding: '0 6px 0',
-        alignSelf: 'flex-end'
+        alignSelf: 'flex-end',
+        selectors: {
+          '::-ms-clear': {
+            display: 'none'
+          }
+        }
       },
       inputClassName
     ],

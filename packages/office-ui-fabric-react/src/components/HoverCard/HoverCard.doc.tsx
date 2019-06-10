@@ -46,12 +46,6 @@ export const HoverCardPageProps: IDocPageProps = {
       view: <HoverCardInstantDismissExample />
     }
   ],
-  propertiesTablesSources: [
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/HoverCard.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/BaseCard.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/PlainCard/PlainCard.types.ts'),
-    require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/ExpandingCard.types.ts')
-  ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardOverview.md'),
   bestPractices: '',
   dos: require<string>('!raw-loader!office-ui-fabric-react/src/components/HoverCard/docs/HoverCardDos.md'),

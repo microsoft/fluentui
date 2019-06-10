@@ -6,6 +6,9 @@ import { IDocumentCardLogoProps, IDocumentCardLogoStyleProps, IDocumentCardLogoS
 
 const getClassNames = classNamesFunction<IDocumentCardLogoStyleProps, IDocumentCardLogoStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardLogoBase extends BaseComponent<IDocumentCardLogoProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardLogoStyles>;
 

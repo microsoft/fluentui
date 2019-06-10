@@ -2,7 +2,7 @@ import * as React from 'react';
 import { warnDeprecations, classNamesFunction, getId } from '../../Utilities';
 import { IDialogProps, IDialogStyleProps, IDialogStyles } from './Dialog.types';
 import { DialogType, IDialogContentProps } from './DialogContent.types';
-import { Modal, IModalProps } from '../../Modal';
+import { Modal, IModalProps, IDragOptions } from '../../Modal';
 import { ILayerProps } from '../../Layer';
 import { withResponsiveMode } from '../../utilities/decorators/withResponsiveMode';
 
@@ -41,7 +41,7 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
     this._defaultTitleTextId = this._id + '-title';
     this._defaultSubTextId = this._id + '-subText';
 
-    if (typeof process !== 'undefined' && process.env.NODE_ENV !== 'production') {
+    if (process.env.NODE_ENV !== 'production') {
       warnDeprecations('Dialog', props, {
         isOpen: 'hidden',
         type: 'dialogContentProps.type',
@@ -96,15 +96,32 @@ export class DialogBase extends React.Component<IDialogProps, {}> {
       mergedLayerProps.onLayerDidMount = onLayerDidMount;
     }
 
+    let dialogDraggableClassName: string | undefined;
+    let dragOptions: IDragOptions | undefined;
+
+    // if we are draggable, make sure we are using the correct
+    // draggable classname and selectors
+    if (modalProps && modalProps.dragOptions && !modalProps.dragOptions.dragHandleSelector) {
+      dialogDraggableClassName = 'ms-Dialog-draggable-header';
+      dragOptions = {
+        ...modalProps.dragOptions,
+        dragHandleSelector: `.${dialogDraggableClassName}`
+      };
+    } else {
+      dragOptions = modalProps && modalProps.dragOptions;
+    }
+
     const mergedModalProps = {
       ...DefaultModalProps,
       ...modalProps,
-      layerProps: mergedLayerProps
+      layerProps: mergedLayerProps,
+      dragOptions
     };
 
     const dialogContentProps: IDialogContentProps = {
       ...DefaultDialogContentProps,
-      ...this.props.dialogContentProps
+      ...this.props.dialogContentProps,
+      draggableHeaderClassName: dialogDraggableClassName
     };
 
     const classNames = getClassNames(styles!, {

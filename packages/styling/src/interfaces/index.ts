@@ -1,4 +1,5 @@
 export { IAnimationStyles, IAnimationVariables } from './IAnimationStyles';
+export { IGetFocusStylesOptions } from './IGetFocusStyles';
 export { IFontStyles } from './IFontStyles';
 export { IPalette } from './IPalette';
 export { ISemanticColors } from './ISemanticColors';

@@ -87,6 +87,10 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       backgroundColor: theme.palette.neutralTertiaryAlt
     },
 
+    splitButtonDividerDisabled: {
+      backgroundColor: theme.palette.neutralTertiaryAlt
+    },
+
     splitButtonMenuButtonChecked: {
       backgroundColor: theme.palette.themePrimary
     },
@@ -177,7 +181,11 @@ export function primaryStyles(theme: ITheme): IButtonStyles {
     },
 
     splitButtonDivider: {
-      backgroundColor: theme.palette.themeLighter
+      backgroundColor: theme.palette.white
+    },
+
+    splitButtonDividerDisabled: {
+      backgroundColor: theme.palette.neutralTertiaryAlt
     },
 
     splitButtonMenuButton: {

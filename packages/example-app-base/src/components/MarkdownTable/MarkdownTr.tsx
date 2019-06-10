@@ -5,7 +5,7 @@ import { getStyles } from './MarkdownTable.styles';
 
 const getClassNames = classNamesFunction<IMarkdownTableStyleProps, IMarkdownTableStyles>();
 
-export class MarkdownTrBase extends React.Component<IMarkdownTableProps> {
+export class MarkdownTrBase extends React.PureComponent<IMarkdownTableProps> {
   public render(): JSX.Element {
     const { children, styles, theme } = this.props;
 
@@ -25,5 +25,5 @@ export const MarkdownTr = styled<IMarkdownTableProps, IMarkdownTableStyleProps, 
   MarkdownTrBase,
   getStyles,
   undefined,
-  { scope: 'MarkdownTr' }
+  { scope: 'MarkdownTable' }
 );

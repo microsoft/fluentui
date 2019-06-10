@@ -22,6 +22,10 @@ exports[`Component Examples renders Panel.Navigation.Example.tsx correctly 1`] =
           font-size: 14px;
           font-weight: 400;
           height: 32px;
+          margin-bottom: 0px;
+          margin-left: 0px;
+          margin-right: 0px;
+          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;

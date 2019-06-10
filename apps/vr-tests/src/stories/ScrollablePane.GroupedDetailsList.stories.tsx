@@ -138,7 +138,7 @@ class ScrollablePaneDetailsListStory extends React.Component<{}, {}> {
 
   public render(): JSX.Element {
     return (
-      <div className={classNames.wrapper} >
+      <div className={classNames.wrapper}>
         <Fabric>
           <ScrollablePane
             scrollbarVisibility={ScrollbarVisibility.auto}
@@ -178,7 +178,11 @@ function onRenderDetailsHeader(
   defaultRender?: IRenderFunction<IDetailsHeaderProps>
 ): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Header} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
+    <Sticky
+      stickyPosition={StickyPositionType.Header}
+      isScrollSynced={true}
+      stickyClassName={classNames.detailsListContent}
+    >
       {defaultRender!({
         ...props,
         onRenderColumnHeaderTooltip: (tooltipHostProps: ITooltipHostProps) => (
@@ -191,7 +195,11 @@ function onRenderDetailsHeader(
 
 function onRenderDetailsFooter(props: IDetailsFooterProps): JSX.Element {
   return (
-    <Sticky stickyPosition={StickyPositionType.Footer} isScrollSynced={true} stickyClassName={classNames.detailsListContent}>
+    <Sticky
+      stickyPosition={StickyPositionType.Footer}
+      isScrollSynced={true}
+      stickyClassName={classNames.detailsListContent}
+    >
       <div className={classNames.footerDetailsRow}>
         <DetailsRow
           columns={props.columns}
@@ -220,13 +228,7 @@ function _onRenderCheckForFooterRow(
   props: IDetailsRowCheckProps,
   DefaultRender: React.ComponentType<IDetailsRowCheckProps> = DetailsRowCheck
 ): JSX.Element {
-  return (
-    <DefaultRender
-      {...props}
-      style={{ visibility: 'hidden' }}
-      selected={true}
-    />
-  );
+  return <DefaultRender {...props} style={{ visibility: 'hidden' }} selected={true} />;
 }
 
 const getElement = "document.getElementsByClassName('ms-ScrollablePane--contentContainer')[0]";
@@ -260,10 +262,7 @@ storiesOf('ScrollablePane Grouped Details List', module)
         )
         .executeScript(`${getElement}.scrollLeft = 0`)
         .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[0].click()`)
-        .snapshot(
-          'On expanding a group, horizontal scrollbar should be visible',
-          cropTo
-        )
+        .snapshot('On expanding a group, horizontal scrollbar should be visible', cropTo)
         .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[1].click()`)
         .executeScript(`document.getElementsByClassName('ms-GroupHeader-expand')[2].click()`)
         .executeScript(`${getElement}.scrollTop = 50`)

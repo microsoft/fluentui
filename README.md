@@ -130,7 +130,7 @@ rush build --to office-ui-fabric-react
 
 All files on the Office UI Fabric React GitHub repository are subject to the MIT license. Please read the License file at the root of the project.
 
-Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](http://aka.ms/fabric-assets-license).
+Usage of the fonts and icons referenced in Office UI Fabric is subject to the terms of the [assets license agreement](https://aka.ms/fabric-assets-license).
 
 ## Changelog
 

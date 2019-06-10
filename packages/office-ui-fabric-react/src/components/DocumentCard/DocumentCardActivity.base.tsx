@@ -12,6 +12,9 @@ import { PersonaCoin } from '../../PersonaCoin';
 
 const getClassNames = classNamesFunction<IDocumentCardActivityStyleProps, IDocumentCardActivityStyles>();
 
+/**
+ * {@docCategory DocumentCard}
+ */
 export class DocumentCardActivityBase extends BaseComponent<IDocumentCardActivityProps, any> {
   private _classNames: IProcessedStyleSet<IDocumentCardActivityStyles>;
 
