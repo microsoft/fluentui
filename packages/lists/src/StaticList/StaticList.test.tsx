@@ -2,16 +2,23 @@ import * as React from 'react';
 import { StaticList } from './StaticList';
 import { shallow } from 'enzyme';
 
-describe('StaticList', () => {
-  it('renders no children if no items provided', () => {
-    const wrapper = shallow(<StaticList>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>);
+const COUNT = 50;
+let items: number[] = [];
 
+describe('StaticList', () => {
+  beforeEach(() => {
+    items = new Array(COUNT).fill(0);
+  });
+
+  it('renders no children if no items provided', () => {
+    const mockRenderFunction = jest.fn();
+    const wrapper = shallow(<StaticList>{mockRenderFunction}</StaticList>);
+
+    expect(mockRenderFunction).not.toHaveBeenCalled();
     expect(wrapper.children().length).toBe(0);
   });
 
   it('invokes render function per item provided', () => {
-    const COUNT = 50;
-    const items = new Array(COUNT).fill(0);
     const mockRenderFunction = jest.fn();
 
     shallow(<StaticList items={items}>{mockRenderFunction}</StaticList>);
@@ -20,8 +27,6 @@ describe('StaticList', () => {
   });
 
   it('renders custom root tag if provided', () => {
-    const COUNT = 50;
-    const items = new Array(COUNT).fill(0);
     const mockRenderFunction = jest.fn();
 
     const wrapper = shallow(
@@ -34,9 +39,6 @@ describe('StaticList', () => {
   });
 
   it('renders child render function per item provided', () => {
-    const COUNT = 50;
-    const items = new Array(COUNT).fill(0);
-
     const wrapper = shallow(
       <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
     );
@@ -45,9 +47,6 @@ describe('StaticList', () => {
   });
 
   it('re-renders when items array mutates', () => {
-    const COUNT = 50;
-    const items = new Array(COUNT).fill(0);
-
     const wrapper = shallow(
       <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
     );
