@@ -8,10 +8,8 @@ import {
 import { getColorFromString } from '../../utilities/color/getColorFromString';
 import { GridCell } from '../../utilities/grid/GridCell';
 import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { IButtonClassNames } from '../Button/BaseButton.classNames';
-import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
-import { mergeStyleSets, ITheme } from '../../Styling';
 import { classNamesFunction } from '../../Utilities';
+import { getColorPickerGridCellButtonClassNames as getCustomClassNamesForColorPickerButton } from './ColorPickerGridCell.classNames';
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
@@ -74,7 +72,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         onFocus={onFocus}
         label={item.label}
         className={this._classNames.colorCell}
-        getClassNames={this._getClassNames}
+        getClassNames={getCustomClassNamesForColorPickerButton}
         index={item.index}
         onMouseEnter={onMouseEnter}
         onMouseMove={onMouseMove}
@@ -107,48 +105,4 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
     const color = getColorFromString(inputColor!);
     return color!.hex === 'ffffff';
   }
-
-  /**
-   * Method to override the getClassNames func in a button.
-   */
-  private _getClassNames = (
-    theme: ITheme,
-    className: string,
-    variantClassName: string,
-    iconClassName: string | undefined,
-    menuIconClassName: string | undefined,
-    disabled: boolean,
-    checked: boolean,
-    expanded: boolean,
-    isSplit: boolean | undefined
-  ): IButtonClassNames => {
-    const styles = getActionButtonStyles(theme);
-    return mergeStyleSets(this._classNames as {}, {
-      root: [
-        'ms-Button',
-        styles.root,
-        variantClassName,
-        className,
-        checked && ['is-checked', styles.rootChecked],
-        disabled && ['is-disabled', styles.rootDisabled],
-        !disabled &&
-          !checked && {
-            selectors: {
-              ':hover': styles.rootHovered,
-              ':focus': styles.rootFocused,
-              ':active': styles.rootPressed
-            }
-          },
-        disabled && checked && [styles.rootCheckedDisabled],
-        !disabled &&
-          checked && {
-            selectors: {
-              ':hover': styles.rootCheckedHovered,
-              ':active': styles.rootCheckedPressed
-            }
-          }
-      ],
-      flexContainer: ['ms-Button-flexContainer', styles.flexContainer]
-    });
-  };
 }
