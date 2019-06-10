@@ -1,6 +1,13 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Mon, 03 Jun 2019 23:04:02 GMT and should not be manually modified.
+This log was last generated on Fri, 07 Jun 2019 12:21:48 GMT and should not be manually modified.
+
+## 0.30.1
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Data Viz 'Legends' is not accessible using keyboard tab navigation 
 
 ## 0.30.0
 Mon, 03 Jun 2019 23:04:02 GMT

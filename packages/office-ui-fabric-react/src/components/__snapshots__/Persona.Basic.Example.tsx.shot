@@ -119,6 +119,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Checkbox-checkmark
                 {
@@ -233,6 +234,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
       size={17}
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -1367,6 +1369,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -1686,6 +1689,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon
@@ -1997,6 +2001,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -2314,6 +2319,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {
@@ -2664,6 +2670,7 @@ exports[`Component Examples renders Persona.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Icon-placeHolder
                 ms-Persona-presenceIcon

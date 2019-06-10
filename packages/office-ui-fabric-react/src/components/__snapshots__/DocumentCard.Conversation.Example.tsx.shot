@@ -56,6 +56,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -88,9 +89,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -147,6 +148,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -478,6 +480,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -510,9 +513,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -569,6 +572,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -900,6 +904,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -932,9 +937,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;

@@ -1,7 +1,6 @@
 import { IStyleFunction } from 'office-ui-fabric-react/lib/Utilities';
 import { getFocusStyle, getTheme, FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { IPivotStyles } from 'office-ui-fabric-react/lib/Pivot';
-import { FontSizes } from '@uifabric/fluent-theme';
 import { IFeedbackListStyleProps, IFeedbackListStyles } from './FeedbackList.types';
 
 const globalClassNames = {
@@ -50,20 +49,22 @@ export const getStyles: IStyleFunction<IFeedbackListStyleProps, IFeedbackListSty
         }
       }
     ],
-    itemName: {
-      fontSize: '15px',
-      whiteSpace: 'nowrap',
-      overflow: 'hidden',
-      textOverflow: 'ellipsis'
-    },
+    itemName: [
+      theme.fonts.mediumPlus,
+      {
+        whiteSpace: 'nowrap',
+        overflow: 'hidden',
+        textOverflow: 'ellipsis'
+      }
+    ],
     itemLabel: [
       {
-        fontSize: FontSizes.size12,
+        fontSize: theme.fonts.small.fontSize,
         fontWeight: FontWeights.bold
       },
       globalClassNames.listElement
     ],
-    timeStamp: [{ fontSize: FontSizes.size12 }, globalClassNames.timeStamp],
+    timeStamp: [{ fontSize: theme.fonts.small.fontSize }, globalClassNames.timeStamp],
     subComponentStyles: {
       pivot: pivotStyles
     }

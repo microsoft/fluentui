@@ -324,6 +324,7 @@ export class Calendar extends BaseComponent<ICalendarProps, ICalendarState> impl
     }
 
     this._navigateDayPickerDay(today!);
+    this._focusOnUpdate = true;
   };
 
   private _onGotoTodayClick = (ev: React.MouseEvent<HTMLElement>): void => {

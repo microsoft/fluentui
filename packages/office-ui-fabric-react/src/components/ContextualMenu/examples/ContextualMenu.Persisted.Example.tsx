@@ -38,7 +38,8 @@ export class ContextualMenuPersistedExample extends React.Component {
                   ]
                 },
                 href: 'https://bing.com',
-                text: 'New'
+                text: 'New',
+                target: '_blank'
               },
               {
                 key: 'divider_1',
