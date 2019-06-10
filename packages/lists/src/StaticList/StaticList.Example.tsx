@@ -1,25 +1,13 @@
 import * as React from 'react';
 import { StaticList } from './StaticList';
 
-class StaticListExample extends React.PureComponent<{}, { items: number[] }> {
-  constructor(props: {}) {
-    super(props);
+const ITEMS = new Array(25).fill(0);
 
-    this.state = {
-      items: new Array(25).fill(0)
-    };
-  }
-
-  public render(): JSX.Element {
-    const { items } = this.state;
-
-    return <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>;
-  }
-}
+const StaticListExample = () => {
+  return <StaticList items={ITEMS}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>;
+};
 
 const StaticListTableExample = () => {
-  const items = new Array(25).fill(0);
-
   return (
     <table border="1">
       <thead>
@@ -27,7 +15,7 @@ const StaticListTableExample = () => {
           <th>Item</th>
         </tr>
       </thead>
-      <StaticList as="tbody" items={items}>
+      <StaticList as="tbody" items={ITEMS}>
         {(_item: number, index: number) => (
           <tr>
             <td>{`Item #${index}`}</td>
@@ -36,7 +24,7 @@ const StaticListTableExample = () => {
       </StaticList>
       <tfoot>
         <tr>
-          <td>{`Total count: ${items.length}`}</td>
+          <td>{`Total count: ${ITEMS.length}`}</td>
         </tr>
       </tfoot>
     </table>
