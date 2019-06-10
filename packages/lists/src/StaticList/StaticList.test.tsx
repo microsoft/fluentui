@@ -3,7 +3,7 @@ import { StaticList } from './StaticList';
 import { shallow } from 'enzyme';
 import * as renderer from 'react-test-renderer';
 
-const COUNT = 50;
+const COUNT: number = 50;
 let items: number[] = [];
 
 describe('StaticList', () => {
