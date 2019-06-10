@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IBaseProps } from './BaseComponent.types';
 import { extendComponent } from './extendComponent';
 

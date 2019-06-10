@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IStyle, ITheme } from '../../Styling';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';

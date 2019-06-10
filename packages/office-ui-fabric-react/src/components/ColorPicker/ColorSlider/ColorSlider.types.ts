@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
 import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
