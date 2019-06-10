@@ -1,12 +1,26 @@
 .footer {
   height: 36px;
-  padding-left: 11px;
+  padding-left: 0px;
+}
+
+.activities {
+  width: 184px;
+  height: 10px;
+  font-size: 12px;
+  font-weight: normal;
+  font-style: normal;
+  font-stretch: normal;
+  line-height: 1.83;
+  letter-spacing: normal;
+  float: right;
+  padding-right: 8px;
+  padding-top: 0px;
+  padding-bottom: 0px;
 }
 
 .actions {
-  padding-left: 0px;
+  padding-top: 5px;
   position: relative;
-  padding-bottom: 0px;
 }
 
 .action {
@@ -21,18 +35,24 @@
 
 .attach {
   float: left;
-  width: 30px;
+  width: 25px;
   height: 20px;
-  padding-top: 0px;
+  padding-right: 0px;
+  padding-top: 5px;
+  padding-bottom: 0px;
   cursor: pointer;
   background-color: white;
   color: #0078d7;
 }
 
 .size {
-  width: 184px;
+  float: left;
+  width: 18px;
   height: 1px;
   font-size: 12px;
+  padding-left: 0px;
+  padding-top: 10.5px;
+  padding-bottom: 0px;
   font-weight: normal;
   font-style: normal;
   font-stretch: normal;

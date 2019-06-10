@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
-import { IChicletXsmallStyles, IChicletXsmallStyleProps, IChicletXsmallProps } from './ChicletXsmall.types';
-import { Image } from 'office-ui-fabric-react/lib/Image';
+import { IChicletXsmallStyles, IChicletXsmallStyleProps } from './ChicletXsmall.types';
+import { IChicletCardProps } from './ChicletCard.types';
 
 const getClassNames = classNamesFunction<IChicletXsmallStyleProps, IChicletXsmallStyles>();
 
@@ -10,8 +10,8 @@ const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/as
 const PREVIEW_IMAGE_WIDTH = '198px';
 const PREVIEW_IMAGE_HEIGHT = '122px';
 
-export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
-  public static defaultProps: IChicletXsmallProps = {
+export class ChicletXsmallBase extends BaseComponent<IChicletCardProps, {}> {
+  public static defaultProps: IChicletCardProps = {
     imageWidth: PREVIEW_IMAGE_WIDTH,
     imageHeight: PREVIEW_IMAGE_HEIGHT
   };
@@ -19,7 +19,7 @@ export class ChicletXsmallBase extends BaseComponent<IChicletXsmallProps, {}> {
   private _classNames: { [key in keyof IChicletXsmallStyles]: string };
 
   public render(): JSX.Element {
-    const { title, itemType, image, imageWidth, imageHeight, imageAlt, url, onClick, className, footer, theme, styles } = this.props;
+    const { title, itemType, image, imageWidth, imageHeight, imageAlt, onClick, className, footer, theme, styles } = this.props;
     const actionable = onClick ? true : false;
 
     this._classNames = getClassNames(styles, { theme: theme!, className });

@@ -50,7 +50,7 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     ],*/
     title: [
       {
-        padding: '9px 26px 5px 80px',
+        padding: '9px 2px 0px 76px',
         fontSize: 14,
         fontWeight: 'normal',
         fontStyle: 'normal',
@@ -61,6 +61,7 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
         height: 37, // Two lines of text, making sure the third line is hidden
         width: 150,
         lineHeight: '1.25',
+        textOverflow: 'ellipsis',
         overflow: 'hidden',
         wordWrap: 'break-word'
       }
@@ -69,7 +70,8 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
       {
         marginLeft: '75px',
         marginRight: '5px',
-        marginTop: '13px'
+        marginTop: '13px',
+        marginBottom: '0px'
       }
     ]
   };
