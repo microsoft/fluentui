@@ -3,154 +3,154 @@
 exports[`StaticList renders default unordered-list correctly 1`] = `
 <ul>
   <li>
-    Item #0
+    0
   </li>
   <li>
-    Item #1
+    0
   </li>
   <li>
-    Item #2
+    0
   </li>
   <li>
-    Item #3
+    0
   </li>
   <li>
-    Item #4
+    0
   </li>
   <li>
-    Item #5
+    0
   </li>
   <li>
-    Item #6
+    0
   </li>
   <li>
-    Item #7
+    0
   </li>
   <li>
-    Item #8
+    0
   </li>
   <li>
-    Item #9
+    0
   </li>
   <li>
-    Item #10
+    0
   </li>
   <li>
-    Item #11
+    0
   </li>
   <li>
-    Item #12
+    0
   </li>
   <li>
-    Item #13
+    0
   </li>
   <li>
-    Item #14
+    0
   </li>
   <li>
-    Item #15
+    0
   </li>
   <li>
-    Item #16
+    0
   </li>
   <li>
-    Item #17
+    0
   </li>
   <li>
-    Item #18
+    0
   </li>
   <li>
-    Item #19
+    0
   </li>
   <li>
-    Item #20
+    0
   </li>
   <li>
-    Item #21
+    0
   </li>
   <li>
-    Item #22
+    0
   </li>
   <li>
-    Item #23
+    0
   </li>
   <li>
-    Item #24
+    0
   </li>
   <li>
-    Item #25
+    0
   </li>
   <li>
-    Item #26
+    0
   </li>
   <li>
-    Item #27
+    0
   </li>
   <li>
-    Item #28
+    0
   </li>
   <li>
-    Item #29
+    0
   </li>
   <li>
-    Item #30
+    0
   </li>
   <li>
-    Item #31
+    0
   </li>
   <li>
-    Item #32
+    0
   </li>
   <li>
-    Item #33
+    0
   </li>
   <li>
-    Item #34
+    0
   </li>
   <li>
-    Item #35
+    0
   </li>
   <li>
-    Item #36
+    0
   </li>
   <li>
-    Item #37
+    0
   </li>
   <li>
-    Item #38
+    0
   </li>
   <li>
-    Item #39
+    0
   </li>
   <li>
-    Item #40
+    0
   </li>
   <li>
-    Item #41
+    0
   </li>
   <li>
-    Item #42
+    0
   </li>
   <li>
-    Item #43
+    0
   </li>
   <li>
-    Item #44
+    0
   </li>
   <li>
-    Item #45
+    0
   </li>
   <li>
-    Item #46
+    0
   </li>
   <li>
-    Item #47
+    0
   </li>
   <li>
-    Item #48
+    0
   </li>
   <li>
-    Item #49
+    0
   </li>
 </ul>
 `;
