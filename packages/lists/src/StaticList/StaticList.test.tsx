@@ -27,6 +27,14 @@ describe('StaticList', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders default unordered-list correctly', () => {
+    const mockRenderFunction = (_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>;
+    const component = renderer.create(<StaticList items={items}>{mockRenderFunction}</StaticList>);
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders ordered-list correctly', () => {
     const mockRenderFunction = (_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>;
     const component = renderer.create(
