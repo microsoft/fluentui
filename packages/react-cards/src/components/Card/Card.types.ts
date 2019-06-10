@@ -19,7 +19,11 @@ export interface ICardSlots {
   root?: IStackSlot;
 }
 
-export interface ICardProps extends ICardSlots, IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>, IBaseProps<ICard> {
+export interface ICardProps
+  extends ICardSlots,
+    IStyleableComponentProps<ICardProps, ICardTokens, ICardStyles>,
+    IBaseProps<ICard>,
+    React.AllHTMLAttributes<HTMLElement> {
   /**
    * Defines whether to render a regular or a compact Card.
    * @defaultvalue false
