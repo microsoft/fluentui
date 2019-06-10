@@ -1,7 +1,7 @@
 import * as React from 'react';
 
 interface IList<T> {
-  items: T[];
+  items?: T[];
 }
 
 class StaticList<T> extends React.PureComponent<IList<T>> {
