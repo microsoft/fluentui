@@ -465,6 +465,7 @@ exports[`Persona renders Persona correctly with no props 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {

@@ -131,6 +131,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -460,6 +461,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -628,6 +630,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {
@@ -957,6 +960,7 @@ Array [
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

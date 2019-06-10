@@ -285,6 +285,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -420,6 +421,7 @@ exports[`Component Examples renders SpinButton.BasicWithIconDisabled.Example.tsx
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

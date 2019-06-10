@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.30.1",
+      "tag": "@uifabric/charting_v0.30.1",
+      "date": "Fri, 07 Jun 2019 12:21:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Data Viz 'Legends' is not accessible using keyboard tab navigation ",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "ec4799ef7abfdd47b21ed025c7c80fa65f2d8263"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.1` to `^6.189.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.0",
       "tag": "@uifabric/charting_v0.30.0",
       "date": "Mon, 03 Jun 2019 23:04:02 GMT",

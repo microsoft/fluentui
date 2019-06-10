@@ -56,6 +56,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -147,6 +148,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -478,6 +480,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -569,6 +572,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -900,6 +904,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {

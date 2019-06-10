@@ -74,6 +74,14 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
     gridContainer: {
       marginTop: 4
     },
+    buttonRow: {
+      marginBottom: 16,
+      selectors: {
+        '&:nth-child(n + 3)': {
+          marginBottom: 0
+        }
+      }
+    },
     itemButton: [
       getFocusStyle(theme, { inset: -1 }),
       {
@@ -83,6 +91,7 @@ export const getStyles = (props: ICalendarPickerStyleProps): ICalendarPickerStyl
         minHeight: 40,
         lineHeight: 40,
         fontSize: FontSizes.small,
+        padding: 0,
         margin: '0 12px 16px 0',
         color: palette.neutralPrimary,
         backgroundColor: 'transparent',

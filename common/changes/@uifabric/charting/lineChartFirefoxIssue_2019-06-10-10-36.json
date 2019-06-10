@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/charting",
-      "comment": "Data Viz 'Legends' is not accessible using keyboard tab navigation ",
+      "comment": "Fix LineChart does not display properly in FireFox browser",
       "type": "patch"
     }
   ],

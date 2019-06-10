@@ -118,6 +118,7 @@ exports[`Component Examples renders ContextualMenu.Persisted.Example.tsx correct
         </div>
       </div>
       <i
+        aria-hidden={true}
         className=
             ms-Button-menuIcon
             {

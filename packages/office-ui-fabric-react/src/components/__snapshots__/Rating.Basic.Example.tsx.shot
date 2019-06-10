@@ -154,6 +154,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -173,6 +174,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -309,6 +311,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -328,6 +331,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -464,6 +468,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -483,6 +488,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -619,6 +625,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -638,6 +645,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -774,6 +782,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -793,6 +802,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -978,6 +988,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -997,6 +1008,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -1133,6 +1145,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -1152,6 +1165,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -1289,6 +1303,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -1308,6 +1323,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -1444,6 +1460,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -1463,6 +1480,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -1599,6 +1617,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -1618,6 +1637,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -1804,6 +1824,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -1823,6 +1844,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -1959,6 +1981,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -1978,6 +2001,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -2114,6 +2138,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -2133,6 +2158,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -2269,6 +2295,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -2288,6 +2315,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -2424,6 +2452,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -2443,6 +2472,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -2579,6 +2609,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -2598,6 +2629,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -2734,6 +2766,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -2753,6 +2786,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -2889,6 +2923,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -2908,6 +2943,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -3044,6 +3080,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3063,6 +3100,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -3199,6 +3237,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3218,6 +3257,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -3380,6 +3420,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3487,6 +3528,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3594,6 +3636,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3701,6 +3744,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3808,6 +3852,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3958,6 +4003,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -3977,6 +4023,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4095,6 +4142,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4114,6 +4162,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4233,6 +4282,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4252,6 +4302,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4370,6 +4421,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4389,6 +4441,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4507,6 +4560,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4526,6 +4580,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4687,6 +4742,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4706,6 +4762,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4824,6 +4881,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4843,6 +4901,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -4962,6 +5021,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -4981,6 +5041,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -5099,6 +5160,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -5118,6 +5180,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -5236,6 +5299,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -5255,6 +5319,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -5441,6 +5506,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -5460,6 +5526,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -5596,6 +5663,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -5615,6 +5683,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -5751,6 +5820,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -5770,6 +5840,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -5906,6 +5977,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -5925,6 +5997,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {
@@ -6061,6 +6134,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-back
                 {
@@ -6080,6 +6154,7 @@ exports[`Component Examples renders Rating.Basic.Example.tsx correctly 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-RatingStar-front
                 {

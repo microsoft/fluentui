@@ -832,6 +832,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -1060,6 +1061,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -1286,6 +1288,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
@@ -1488,6 +1491,7 @@ exports[`ChoiceGroupOption renders ChoiceGroup correctly 1`] = `
                 }
           >
             <i
+              aria-hidden={true}
               className=
 
                   {
