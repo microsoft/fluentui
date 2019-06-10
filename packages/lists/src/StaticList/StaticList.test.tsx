@@ -19,6 +19,14 @@ describe('StaticList', () => {
     expect(tree).toMatchSnapshot();
   });
 
+  it('renders empty list with custom root tag correctly', () => {
+    const mockRenderFunction = jest.fn();
+    const component = renderer.create(<StaticList as={'ol'}>{mockRenderFunction}</StaticList>);
+    const tree = component.toJSON();
+
+    expect(tree).toMatchSnapshot();
+  });
+
   it('renders no children if no items provided', () => {
     const mockRenderFunction = jest.fn();
     const wrapper = shallow(<StaticList>{mockRenderFunction}</StaticList>);

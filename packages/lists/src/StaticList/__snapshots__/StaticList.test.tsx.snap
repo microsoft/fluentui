@@ -1,3 +1,5 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
 exports[`StaticList renders empty list correctly 1`] = `<ul />`;
+
+exports[`StaticList renders empty list with custom root tag correctly 1`] = `<ol />`;
