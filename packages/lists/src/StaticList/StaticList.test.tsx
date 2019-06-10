@@ -43,4 +43,17 @@ describe('StaticList', () => {
 
     expect(wrapper.children().length).toBe(COUNT);
   });
+
+  it('re-renders when items array mutates', () => {
+    const COUNT = 50;
+    const items = new Array(COUNT).fill(0);
+
+    const wrapper = shallow(
+      <StaticList items={items}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
+    );
+
+    wrapper.setProps<'items'>({ items: [...items, ...items] });
+
+    expect(wrapper.children().length).toBe(100);
+  });
 });
