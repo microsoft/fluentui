@@ -13,12 +13,7 @@ function start(): void {
     _rootDiv = document.createElement('div');
     document.body.appendChild(_rootDiv);
   }
-  ReactDOM.render(
-    <Fabric>
-      <ThemingDesigner />
-    </Fabric>,
-    _rootDiv
-  );
+  ReactDOM.render(<ThemingDesigner />, _rootDiv);
 }
 
 // Start the application.

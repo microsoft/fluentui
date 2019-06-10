@@ -2,6 +2,20 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.40.1",
+      "tag": "@uifabric/utilities_v6.40.1",
+      "date": "Thu, 06 Jun 2019 12:22:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix ./index import from selection",
+            "author": "Thomas Michon <tmichon@microsoft.com>",
+            "commit": "7556082a0512910995750251df06f6fec7a34ca6"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.40.0",
       "tag": "@uifabric/utilities_v6.40.0",
       "date": "Wed, 05 Jun 2019 12:22:30 GMT",

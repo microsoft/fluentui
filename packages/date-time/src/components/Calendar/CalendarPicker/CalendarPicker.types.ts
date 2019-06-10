@@ -43,6 +43,8 @@ export interface ICalendarPickerStyles {
 
   gridContainer: IStyle;
 
+  buttonRow: IStyle;
+
   itemButton: IStyle;
 
   current: IStyle;

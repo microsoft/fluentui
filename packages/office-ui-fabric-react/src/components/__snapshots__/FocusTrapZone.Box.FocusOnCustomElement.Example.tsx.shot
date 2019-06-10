@@ -574,6 +574,7 @@ exports[`Component Examples renders FocusTrapZone.Box.FocusOnCustomElement.Examp
             }
         href="https://bing.com"
         onClick={[Function]}
+        target="_blank"
       >
         Hyperlink which will receive initial focus when trap zone is activated
       </a>
