@@ -56,6 +56,9 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
 // @public
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
+// @public
+export const ALPHA_REGEX: RegExp;
+
 // @public (undocumented)
 export const Announced: React.StatelessComponent<IAnnouncedProps>;
 
@@ -762,6 +765,9 @@ export enum ContextualMenuItemType {
 }
 
 // @public
+export function correctHex(hex: string): string;
+
+// @public
 export function correctHSV(color: IHSV): IHSV;
 
 // @public
@@ -1392,6 +1398,9 @@ export const GroupSpacer: React.SFC<IGroupSpacerProps>;
 
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
+
+// @public
+export const HEX_REGEX: RegExp;
 
 // @public (undocumented)
 export const HoverCard: React.StatelessComponent<IHoverCardProps>;
@@ -2513,6 +2522,11 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
 export interface IColorPickerState {
     // (undocumented)
     color: IColor;
+    // (undocumented)
+    editingColor?: {
+        component: keyof IRGBHex;
+        value: string;
+    };
 }
 
 // @public (undocumented)
@@ -6387,6 +6401,9 @@ export interface IRGB {
 }
 
 // @public (undocumented)
+export type IRGBHex = Pick<IColor, 'r' | 'g' | 'b' | 'a' | 'hex'>;
+
+// @public (undocumented)
 export interface IScrollablePane {
     forceLayoutUpdate(): void;
     getScrollPosition(): number;
@@ -8015,6 +8032,12 @@ export const MAX_COLOR_SATURATION = 100;
 // @public (undocumented)
 export const MAX_COLOR_VALUE = 100;
 
+// @public
+export const MAX_HEX_LENGTH = 6;
+
+// @public
+export const MAX_RGB_LENGTH = 3;
+
 // @public (undocumented)
 export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {
 }
@@ -8048,6 +8071,12 @@ export enum MessageBarType {
     success = 4,
     warning = 5,
 }
+
+// @public
+export const MIN_HEX_LENGTH = 3;
+
+// @public
+export const MIN_RGB_LENGTH = 1;
 
 // @public (undocumented)
 export const Modal: React.StatelessComponent<IModalProps>;
@@ -8525,6 +8554,9 @@ export function rgb2hex(r: number, g: number, b: number): string;
 
 // @public
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
+
+// @public
+export const RGB_REGEX: RegExp;
 
 // @public (undocumented)
 export const ScrollablePane: React.StatelessComponent<IScrollablePaneProps>;

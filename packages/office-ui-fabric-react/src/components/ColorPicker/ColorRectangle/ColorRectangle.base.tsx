@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, classNamesFunction } from '../../../Utilities';
+import { BaseComponent, classNamesFunction, EventGroup, initializeComponentRef, warnDeprecations } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 import { MAX_COLOR_SATURATION, MAX_COLOR_VALUE } from '../../../utilities/color/consts';
 import { getFullColorString } from '../../../utilities/color/getFullColorString';
@@ -21,12 +21,16 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     minSize: 220
   };
 
+  private _eventsGroup: EventGroup;
   private _root = React.createRef<HTMLDivElement>();
 
   constructor(props: IColorRectangleProps) {
     super(props);
 
-    this._warnDeprecations({
+    initializeComponentRef(this);
+    this._eventsGroup = new EventGroup(this);
+
+    warnDeprecations('ColorRectangle', props, {
       onSVChanged: 'onChange'
     });
 
@@ -47,6 +51,10 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
     this.setState({
       color: color
     });
+  }
+
+  public componentWillUnmount() {
+    this._eventsGroup.dispose();
   }
 
   public render(): JSX.Element {
@@ -76,8 +84,8 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   }
 
   private _onMouseDown = (ev: React.MouseEvent<HTMLElement>): void => {
-    this._events.on(window, 'mousemove', this._onMouseMove, true);
-    this._events.on(window, 'mouseup', this._disableEvents, true);
+    this._eventsGroup.on(window, 'mousemove', this._onMouseMove, true);
+    this._eventsGroup.on(window, 'mouseup', this._disableEvents, true);
 
     this._onMouseMove(ev);
   };
@@ -117,7 +125,7 @@ export class ColorRectangleBase extends BaseComponent<IColorRectangleProps, ICol
   };
 
   private _disableEvents = (): void => {
-    this._events.off();
+    this._eventsGroup.off();
   };
 }
 
