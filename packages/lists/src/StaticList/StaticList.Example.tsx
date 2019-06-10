@@ -4,7 +4,12 @@ import { StaticList } from './StaticList';
 const ITEMS = new Array(25).fill(0);
 
 const StaticListExample = () => {
-  return <StaticList items={ITEMS}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>;
+  return (
+    <>
+      <h1>Default example</h1>
+      <StaticList items={ITEMS}>{(_item: number, index: number) => <li key={index}>{`Item #${index}`}</li>}</StaticList>
+    </>
+  );
 };
 
 let APPEND_EXAMPLE_ITEMS = [...ITEMS];
@@ -27,25 +32,28 @@ const StaticListAppendItemsExample = () => {
 
 const StaticListTableExample = () => {
   return (
-    <table border="1">
-      <thead>
-        <tr>
-          <th>Item</th>
-        </tr>
-      </thead>
-      <StaticList as="tbody" items={ITEMS}>
-        {(_item: number, index: number) => (
-          <tr key={index}>
-            <td>{`Item #${index}`}</td>
+    <>
+      <h1>Table example</h1>
+      <table border="1">
+        <thead>
+          <tr>
+            <th>Item</th>
           </tr>
-        )}
-      </StaticList>
-      <tfoot>
-        <tr>
-          <td>{`Total count: ${ITEMS.length}`}</td>
-        </tr>
-      </tfoot>
-    </table>
+        </thead>
+        <StaticList as="tbody" items={ITEMS}>
+          {(_item: number, index: number) => (
+            <tr key={index}>
+              <td>{`Item #${index}`}</td>
+            </tr>
+          )}
+        </StaticList>
+        <tfoot>
+          <tr>
+            <td>{`Total count: ${ITEMS.length}`}</td>
+          </tr>
+        </tfoot>
+      </table>
+    </>
   );
 };
 
