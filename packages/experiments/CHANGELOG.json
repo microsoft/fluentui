@@ -2,6 +2,25 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.6",
+      "tag": "@uifabric/experiments_v6.78.6",
+      "date": "Mon, 10 Jun 2019 12:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8e4f91a21866140b041266f6840af828b491600c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.2` to `^6.189.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.5",
       "tag": "@uifabric/experiments_v6.78.5",
       "date": "Tue, 04 Jun 2019 12:22:17 GMT",

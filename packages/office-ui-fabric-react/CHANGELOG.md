@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 07 Jun 2019 12:21:48 GMT and should not be manually modified.
+This log was last generated on Mon, 10 Jun 2019 12:24:00 GMT and should not be manually modified.
+
+## 6.189.3
+Mon, 10 Jun 2019 12:24:00 GMT
+
+### Patches
+
+- Icon: Set aria-hidden if imageProps.alt or imageProps.aria-labelledby is undefined
+- DatePicker: Check out of bounds on initial render
+- Fixes issue when the menu icon in the second button of the `SplitButton` gets disabled styles when only the primary action is disabled.
 
 ## 6.189.2
 Fri, 07 Jun 2019 12:21:48 GMT
