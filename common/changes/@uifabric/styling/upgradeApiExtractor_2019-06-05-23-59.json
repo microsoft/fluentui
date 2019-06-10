@@ -1,11 +1,11 @@
 {
   "changes": [
     {
-      "comment": "",
       "packageName": "@uifabric/styling",
-      "type": "none"
+      "comment": "upgrade to api-extractor 7.1.6",
+      "type": "patch"
     }
   ],
   "packageName": "@uifabric/styling",
-  "email": "v-jojanz@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

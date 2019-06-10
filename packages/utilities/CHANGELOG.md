@@ -1,6 +1,20 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+This log was last generated on Thu, 06 Jun 2019 12:22:24 GMT and should not be manually modified.
+
+## 6.40.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Fix ./index import from selection
+
+## 6.40.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Migrate Selection to Utilities
 
 ## 6.39.3
 Wed, 29 May 2019 12:21:24 GMT

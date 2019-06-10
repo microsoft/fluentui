@@ -1,7 +1,3 @@
-### Design
-
-Coming soon
-
 ### Control name
 
 `AvatarView`

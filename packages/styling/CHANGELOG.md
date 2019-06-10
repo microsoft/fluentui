@@ -1,6 +1,13 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Tue, 14 May 2019 07:50:30 GMT and should not be manually modified.
+This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+
+## 6.48.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Add font steps so that Fabric 7's Fluent theme will be backwards compatible
 
 ## 6.47.6
 Tue, 14 May 2019 07:50:30 GMT

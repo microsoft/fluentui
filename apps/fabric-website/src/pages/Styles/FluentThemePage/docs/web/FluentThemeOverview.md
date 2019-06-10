@@ -12,6 +12,10 @@ We’re updating Fabric to include a new set of Web Fluent design styles, which 
 
 We're tracking updates to the Fabric React components in [this GitHub project](https://github.com/OfficeDev/office-ui-fabric-react/projects/23). Fluent styles for components will continue to be added to the `@uifabric/fluent-theme` package for Fabric React 6. They will become the default styles for Fabric React components in v7, which we aim to release by end of May 2019.
 
+You can view the new Fluent web controls in the implementation section on the control pages. Click the tab dropdown to toggle between our current and future Fluent controls.
+
+![screenshot of theme dropdown on control examples](https://static2.sharepointonline.com/files/fabric/fabric-website/images/control-fluent-dropdown.png)
+
 ### Can I preview the changes in my app?
 
 Yes! We're actively seeking feedback from developers and designers. Please try the new styles in your app using the instructions that follow, and reach out to us by opening a [GitHub issue](https://github.com/OfficeDev/office-ui-fabric-react/issues/new/choose) if you have suggestions or encounter and difficulties.

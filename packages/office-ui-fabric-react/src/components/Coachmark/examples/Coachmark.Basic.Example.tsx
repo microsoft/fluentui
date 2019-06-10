@@ -15,6 +15,7 @@ import {
 export interface ICoachmarkBasicExampleState {
   isCoachmarkVisible?: boolean;
   coachmarkPosition: DirectionalHint;
+  dropdownSelectedOptionKey: string | number;
 }
 
 export interface ICoachmarkBasicExampleStyles {
@@ -42,12 +43,13 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
     this.state = {
       isCoachmarkVisible: false,
-      coachmarkPosition: DirectionalHint.bottomAutoEdge
+      coachmarkPosition: DirectionalHint.bottomAutoEdge,
+      dropdownSelectedOptionKey: 'H'
     };
   }
 
   public render(): JSX.Element {
-    const { isCoachmarkVisible } = this.state;
+    const { isCoachmarkVisible, dropdownSelectedOptionKey } = this.state;
 
     const getClassNames = classNamesFunction<{}, ICoachmarkBasicExampleStyles>();
     const classNames = getClassNames(() => {
@@ -75,7 +77,7 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
         <div className={classNames.dropdownContainer}>
           <Dropdown
             label="Coachmark position"
-            defaultSelectedKey="H"
+            selectedKey={dropdownSelectedOptionKey}
             onFocus={this._onDismiss}
             options={[
               { key: 'A', text: 'Top Left Edge', data: DirectionalHint.topLeftEdge },
@@ -139,7 +141,8 @@ export class CoachmarkBasicExample extends BaseComponent<{}, ICoachmarkBasicExam
 
   private _onDropdownChange = (event: React.FormEvent<HTMLDivElement>, option: IDropdownOption): void => {
     this.setState({
-      coachmarkPosition: option.data
+      coachmarkPosition: option.data,
+      dropdownSelectedOptionKey: option.key
     });
   };
 

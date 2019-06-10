@@ -18,7 +18,8 @@ import {
   ReadOnlySignal,
   SharedSignal,
   EmailedSignal,
-  RecordSignal
+  RecordSignal,
+  NeedsRepublishingSignal
 } from '@uifabric/experiments';
 import { Checkbox, ChoiceGroup, IChoiceGroupOption, css } from 'office-ui-fabric-react';
 import { lorem } from '@uifabric/example-app-base';
@@ -119,6 +120,7 @@ export class SignalsBasicExample extends React.Component<{}, ISignalsBasicExampl
           <SignalExample name="Record" signal={<RecordSignal />} />
           <SignalExample name="Read-only" signal={<ReadOnlySignal />} />
           <SignalExample name="Shared" signal={<SharedSignal />} />
+          <SignalExample name="Needs Republishing" signal={<NeedsRepublishingSignal />} />
         </div>
       </div>
     );

@@ -279,6 +279,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {
@@ -588,6 +589,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Button-icon
                       {

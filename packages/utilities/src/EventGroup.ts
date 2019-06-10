@@ -83,7 +83,7 @@ export class EventGroup {
     let retVal;
 
     if (EventGroup._isElement(target)) {
-      if (document.createEvent) {
+      if (typeof document !== 'undefined' && document.createEvent) {
         let ev = document.createEvent('HTMLEvents');
 
         ev.initEvent(eventName, bubbleEvent || false, true);
@@ -92,7 +92,7 @@ export class EventGroup {
 
         retVal = target.dispatchEvent(ev);
         // tslint:disable-next-line:no-any
-      } else if ((document as any)['createEventObject']) {
+      } else if (typeof document !== 'undefined' && (document as any)['createEventObject']) {
         // IE8
         // tslint:disable-next-line:no-any
         let evObj = (document as any)['createEventObject'](eventArgs);

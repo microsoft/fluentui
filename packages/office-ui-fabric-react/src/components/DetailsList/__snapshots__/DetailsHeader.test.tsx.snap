@@ -195,6 +195,7 @@ exports[`DetailsHeader can render 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -224,6 +225,7 @@ exports[`DetailsHeader can render 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -579,6 +581,7 @@ exports[`DetailsHeader can render 1`] = `
           b
         </span>
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -1353,6 +1356,7 @@ exports[`DetailsHeader can render a hidden select all checkbox in single selecti
           b
         </span>
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -1841,6 +1845,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Check-circle
                 {
@@ -1870,6 +1875,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
             
           </i>
           <i
+            aria-hidden={true}
             className=
                 ms-Check-check
                 {
@@ -2226,6 +2232,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           b
         </span>
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -2462,6 +2469,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           c
         </span>
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -2482,6 +2490,7 @@ exports[`DetailsHeader renders accessible labels 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
 
               {

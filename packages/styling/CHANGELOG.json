@@ -2,6 +2,28 @@
   "name": "@uifabric/styling",
   "entries": [
     {
+      "version": "6.48.0",
+      "tag": "@uifabric/styling_v6.48.0",
+      "date": "Wed, 05 Jun 2019 12:22:30 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Add font steps so that Fabric 7's Fluent theme will be backwards compatible",
+            "author": "Philip Kuo <phkuo@microsoft.com>",
+            "commit": "f3020abafd2364e8186974a3fa43225e40243bd2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.17.4` to `^6.18.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.39.3` to `^6.40.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.47.6",
       "tag": "@uifabric/styling_v6.47.6",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

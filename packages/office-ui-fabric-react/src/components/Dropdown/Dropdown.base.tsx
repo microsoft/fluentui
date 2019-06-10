@@ -321,19 +321,22 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   }
 
   public setSelectedIndex(event: React.FormEvent<HTMLDivElement>, index: number): void {
-    const { onChange, onChanged, options, selectedKey, selectedKeys, multiSelect, notifyOnReselect } = this.props;
+    const { options, selectedKey, selectedKeys, multiSelect, notifyOnReselect } = this.props;
     const { selectedIndices = [] } = this.state;
     const checked: boolean = selectedIndices ? selectedIndices.indexOf(index) > -1 : false;
     let newIndexes: number[] = [];
 
     index = Math.max(0, Math.min(options.length - 1, index));
 
+    // If this is a controlled component then no state change should take place.
+    if (selectedKey !== undefined || selectedKeys !== undefined) {
+      this._onChange(event, options, index, checked, multiSelect);
+      return;
+    }
+
     if (!multiSelect && !notifyOnReselect && index === selectedIndices[0]) {
       return;
-    } else if (!multiSelect && selectedKey === undefined) {
-      // Set the selected option if this is an uncontrolled component
-      newIndexes = [index];
-    } else if (multiSelect && selectedKeys === undefined) {
+    } else if (multiSelect) {
       newIndexes = selectedIndices ? this._copyArray(selectedIndices) : [];
       if (checked) {
         const position = newIndexes.indexOf(index);
@@ -345,6 +348,9 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         // add the new selected index into the existing one
         newIndexes.push(index);
       }
+    } else {
+      // Set the selected option if this is an uncontrolled component
+      newIndexes = [index];
     }
 
     event.persist();
@@ -354,23 +360,34 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
         selectedIndices: newIndexes
       },
       () => {
-        if (onChange) {
-          // for single-select, option passed in will always be selected.
-          // for multi-select, flip the checked value
-          const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-
-          onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
-        }
-
-        if (onChanged) {
-          // for single-select, option passed in will always be selected.
-          // for multi-select, flip the checked value
-          const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
-          onChanged(changedOpt, index);
-        }
+        this._onChange(event, options, index, checked, multiSelect);
       }
     );
   }
+
+  private _onChange = (
+    event: React.FormEvent<HTMLDivElement>,
+    options: IDropdownOption[],
+    index: number,
+    checked?: boolean,
+    multiSelect?: boolean
+  ) => {
+    const { onChange, onChanged } = this.props;
+    if (onChange) {
+      // for single-select, option passed in will always be selected.
+      // for multi-select, flip the checked value
+      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
+
+      onChange({ ...event, target: this._dropDown.current as EventTarget }, changedOpt, index);
+    }
+
+    if (onChanged) {
+      // for single-select, option passed in will always be selected.
+      // for multi-select, flip the checked value
+      const changedOpt = multiSelect ? { ...options[index], selected: !checked } : options[index];
+      onChanged(changedOpt, index);
+    }
+  };
 
   /** Get either props.placeholder (new name) or props.placeHolder (old name) */
   private get _placeholder(): string | undefined {

@@ -138,6 +138,7 @@ exports[`TextField deprecated renders with deprecated props affecting styling 1`
         value=""
       />
       <i
+        aria-hidden={true}
         className=
             test-iconClass
             {

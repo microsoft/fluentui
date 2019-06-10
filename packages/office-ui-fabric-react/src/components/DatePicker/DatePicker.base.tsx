@@ -20,19 +20,18 @@ export interface IDatePickerState {
 
 const DEFAULT_STRINGS: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close date picker',
+  weekNumberFormatString: 'Week number {0}'
 };
 
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {
@@ -88,7 +87,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
   }
 
   public componentWillReceiveProps(nextProps: IDatePickerProps): void {
-    const { formatDate, isRequired, strings, value, minDate, maxDate } = nextProps;
+    const { formatDate, value } = nextProps;
 
     if (
       compareDates(this.props.minDate!, nextProps.minDate!) &&
@@ -101,18 +100,9 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       return;
     }
 
-    let errorMessage = isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
-
-    if (!errorMessage && value) {
-      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
-    }
+    this._setErrorMessage(true, nextProps);
 
     this._id = nextProps.id || this._id;
-
-    // Set error message
-    this.setState({
-      errorMessage: errorMessage
-    });
 
     // Issue# 1274: Check if the date value changed from old value, i.e., if indeed a new date is being
     // passed in or if the formatting function was modified. We only update the selected date if either of these
@@ -269,6 +259,23 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
 
   public reset(): void {
     this.setState(this._getDefaultState());
+  }
+
+  private _setErrorMessage(setState: boolean, nextProps?: IDatePickerProps): string | undefined {
+    const { isRequired, strings, value, minDate, maxDate, initialPickerDate } = nextProps || this.props;
+    let errorMessage = !initialPickerDate && isRequired && !value ? strings!.isRequiredErrorMessage || ' ' : undefined;
+
+    if (!errorMessage && value) {
+      errorMessage = this._isDateOutOfBounds(value!, minDate, maxDate) ? strings!.isOutOfBoundsErrorMessage || ' ' : undefined;
+    }
+
+    if (setState) {
+      this.setState({
+        errorMessage: errorMessage
+      });
+    }
+
+    return errorMessage;
   }
 
   private _onSelectDate = (date: Date): void => {
@@ -499,7 +506,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
       selectedDate: props.value || undefined,
       formattedDate: props.formatDate && props.value ? props.formatDate(props.value) : '',
       isDatePickerShown: false,
-      errorMessage: undefined
+      errorMessage: this._setErrorMessage(false)
     };
   }
 
