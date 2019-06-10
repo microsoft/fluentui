@@ -70,6 +70,7 @@ describe('Tooltip', () => {
           return null;
         }}
         targetElement={targetElement}
+        delay={0}
       />
     );
 
