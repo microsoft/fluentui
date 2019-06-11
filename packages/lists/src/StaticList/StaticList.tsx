@@ -14,7 +14,7 @@ class StaticList<T> extends React.PureComponent<IStaticListProps<T>> {
   public render = () => {
     const { items = [], as: RootTag = 'ul', children = defaultRowRenderer } = this.props;
 
-    return <RootTag>{items.map((item: T, index: number) => children(item, index))}</RootTag>;
+    return <RootTag>{items.map(children)}</RootTag>;
   };
 }
 
