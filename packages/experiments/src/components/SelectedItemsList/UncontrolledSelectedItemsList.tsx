@@ -2,7 +2,7 @@ import * as React from 'react';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 
 import {
-  ISelectedItemsList,
+  IUncontrolledSelectedItemsList,
   IControlledSelectedItemsList,
   IUncontrolledSelectedItemListProps,
   BaseSelectedItem
@@ -85,7 +85,7 @@ export const UncontrolledSelectedItemsList = <TItem extends BaseSelectedItem>(pr
   // For usage as a controlled component with a ref
   React.useImperativeHandle(
     props.componentRef,
-    (): ISelectedItemsList<TItem> => ({
+    (): IUncontrolledSelectedItemsList<TItem> => ({
       items: selectedItems,
       addItems: appendSelectedItems,
       removeItems: removeSelectedItems,

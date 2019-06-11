@@ -5,7 +5,7 @@ import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
 import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
 import {
   SelectedPeopleList,
-  ISelectedPeopleList
+  IUncontrolledSelectedPeopleList
 } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
@@ -17,7 +17,8 @@ import { EditingItemInnerFloatingSuggestionsProps } from '@uifabric/experiments/
 // tslint:disable-next-line:max-line-length : move FloatingPeopleSuggestions up a level
 import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/components/FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
 import { SuggestionsStore } from '@uifabric/experiments/lib/components/FloatingSuggestions/Suggestions/SuggestionsStore';
-import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
+// tslint:disable-next-line:max-line-length : move people example data up the tree
+import { ExampleSuggestionsModel } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/ExampleSuggestionsModel';
 import { TriggerOnContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/TriggerOnContextMenu';
 import { copyToClipboard } from '@uifabric/experiments/lib/utilities/copyToClipboard';
 
@@ -27,7 +28,7 @@ export interface IPeopleSelectedItemsListExampleState {
 }
 
 export class SelectedPeopleListWithEditInContextMenuExample extends React.Component<{}, IPeopleSelectedItemsListExampleState> {
-  private _selectionList: ISelectedPeopleList;
+  private _selectionList: IUncontrolledSelectedPeopleList;
   private selection: Selection = new Selection({ onSelectionChanged: () => this._onSelectionChange() });
 
   // Used to resolve suggestions on the editableItem
@@ -87,6 +88,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     return (
       <div>
         <SelectedPeopleList
+          isControlled={false}
           key={'normal'}
           removeButtonAriaLabel={'Remove'}
           defaultSelectedItems={[people[40]]}
@@ -98,7 +100,7 @@ export class SelectedPeopleListWithEditInContextMenuExample extends React.Compon
     );
   }
 
-  private _setComponentRef = (component: ISelectedPeopleList): void => {
+  private _setComponentRef = (component: IUncontrolledSelectedPeopleList): void => {
     this._selectionList = component;
   };
 

@@ -4,10 +4,10 @@ import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
 import {
   SelectedPeopleList,
-  ISelectedPeopleList
+  IUncontrolledSelectedPeopleList
 } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 export class SelectedPeopleListUncontrolledExample extends React.Component<{}> {
-  private _selectionList: ISelectedPeopleList;
+  private _selectionList: IUncontrolledSelectedPeopleList;
 
   public render(): JSX.Element {
     return (
@@ -17,6 +17,7 @@ export class SelectedPeopleListUncontrolledExample extends React.Component<{}> {
         <PrimaryButton text="Add another item" onClick={this._onAddItemButtonClicked} />
         <div>
           <SelectedPeopleList
+            isControlled={false}
             key={'normal'}
             removeButtonAriaLabel={'Remove'}
             defaultSelectedItems={[people[40]]}
@@ -27,7 +28,7 @@ export class SelectedPeopleListUncontrolledExample extends React.Component<{}> {
     );
   }
 
-  private _setComponentRef = (component: ISelectedPeopleList): void => {
+  private _setComponentRef = (component: IUncontrolledSelectedPeopleList): void => {
     this._selectionList = component;
   };
 

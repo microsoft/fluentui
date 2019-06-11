@@ -7,12 +7,12 @@ import { Selection } from 'office-ui-fabric-react/lib/Selection';
 import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
 import { IControlledSelectedItemsList } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedItemsList.types';
 
-export interface ISelectedPeopleListControlledExampleState {
+export interface IUncontrolledSelectedPeopleListControlledExampleState {
   currentSelectedItems: IExtendedPersonaProps[];
   nextPersonIndex: number;
 }
 
-export class SelectedPeopleListControlledExample extends React.Component<{}, ISelectedPeopleListControlledExampleState> {
+export class SelectedPeopleListControlledExample extends React.Component<{}, IUncontrolledSelectedPeopleListControlledExampleState> {
   private _selectionList = React.createRef<IControlledSelectedItemsList>();
   private _selection: Selection;
 
@@ -36,6 +36,7 @@ export class SelectedPeopleListControlledExample extends React.Component<{}, ISe
           styles={{ root: { display: 'block', marginBottom: 20 } }}
         />
         <SelectedPeopleList
+          isControlled={true}
           key="normal"
           selectedItems={this.state.currentSelectedItems}
           componentRef={this._selectionList}

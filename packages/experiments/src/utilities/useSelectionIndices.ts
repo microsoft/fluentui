@@ -6,10 +6,13 @@ import { EventGroup } from '@uifabric/utilities/lib/EventGroup';
  * Uses selection indices as a hook
  * @param selection the selection to get the indices of as state.
  */
-export const useSelectionIndices = (selection: Selection): number[] => {
-  const [selectedIndices, setSelectedIndices] = React.useState(selection.getSelectedIndices());
+export const useSelectionIndices = (selection: Selection | undefined): number[] => {
+  const [selectedIndices, setSelectedIndices] = React.useState(selection ? selection.getSelectedIndices() : []);
 
   React.useEffect(() => {
+    if (!selection) {
+      return;
+    }
     const eventGroup = new EventGroup(null);
     eventGroup.on(selection, SELECTION_CHANGE, () => {
       setSelectedIndices(selection.getSelectedIndices());

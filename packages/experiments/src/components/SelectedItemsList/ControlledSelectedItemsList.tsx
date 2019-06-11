@@ -8,10 +8,15 @@ import { useSelectionIndices } from '../../utilities/useSelectionIndices';
  * An externally-managed selected item list.
  */
 export const ControlledSelectedItemsList = <TItem extends BaseSelectedItem>(props: IControlledSelectedItemListProps<TItem>) => {
-  const selectedIndices = useSelectionIndices(props.selection);
+  const selection = React.useMemo(() => props.selection, [props.selection]);
+  const selectedIndices = useSelectionIndices(selection);
   // Synchronize the selection against the items in the selection
   React.useEffect(() => {
-    props.selection.setItems(props.selectedItems);
+    selection &&
+      selection.setItems(
+        props.selectedItems,
+        false // shouldClear
+      );
   });
 
   const onRemoveItemCallbacks = React.useMemo(
@@ -22,7 +27,7 @@ export const ControlledSelectedItemsList = <TItem extends BaseSelectedItem>(prop
         // do not generate callbacks for items that cannot be removed
         !props.canRemoveItem || props.canRemoveItem(item) ? () => props.onItemsRemoved([item]) : undefined
       ),
-    [props.selectedItems]
+    [props.selectedItems, props.canRemoveItem, props.onItemsRemoved]
   );
 
   // only used in the imperative handle

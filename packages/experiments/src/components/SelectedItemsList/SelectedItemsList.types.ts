@@ -1,11 +1,12 @@
 import * as React from 'react';
 import { IPickerItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
+import { MaybeControlled } from './MaybeControlled';
 
 /**
  * Ref type of the UncontrolledSelectedItemList
  */
-export interface ISelectedItemsList<T> {
+export interface IUncontrolledSelectedItemsList<T> {
   /**
    * Current value of the input
    */
@@ -110,7 +111,7 @@ export interface IControlledSelectedItemListProps<T> extends ICommonSelectedItem
  * Legal props for the selected items list when used as an uncontrolled (self-managing) component
  */
 export interface IUncontrolledSelectedItemListProps<T> extends ICommonSelectedItemListProps<T> {
-  componentRef?: React.Ref<ISelectedItemsList<T>>;
+  componentRef?: React.Ref<IUncontrolledSelectedItemsList<T>>;
   /**
    * The selection
    */
@@ -125,4 +126,4 @@ export interface IUncontrolledSelectedItemListProps<T> extends ICommonSelectedIt
   onChange?: (items?: T[]) => void;
 }
 
-export type ISelectedItemsListProps<T> = IUncontrolledSelectedItemListProps<T> | IControlledSelectedItemListProps<T>;
+export type ISelectedItemsListProps<T> = MaybeControlled<IControlledSelectedItemListProps<T>, IUncontrolledSelectedItemListProps<T>>;

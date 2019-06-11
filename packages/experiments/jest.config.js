@@ -6,6 +6,7 @@ const config = createConfig({
 
   moduleNameMapper: {
     'office-ui-fabric-react/lib/(.*)$': 'office-ui-fabric-react/lib-commonjs/$1',
+    '@uifabric/utilities/lib/(.*)': '@uifabric/utilities/lib-commonjs/$1',
     '@uifabric/experiments/lib/(.*)': '<rootDir>/src/$1'
   },
 
