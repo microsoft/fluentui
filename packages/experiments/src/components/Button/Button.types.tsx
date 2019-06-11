@@ -29,11 +29,6 @@ export type IButtonSlot = ISlotProp<IButtonProps>;
 /**
  * {@docCategory Button}
  */
-export type IButtonRootElements = 'a' | 'button' | 'div';
-
-/**
- * {@docCategory Button}
- */
 export interface IButtonSlots extends IBaseButtonSlots {
   /**
    * Defines the text that is displayed inside the Button.
