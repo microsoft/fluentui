@@ -450,6 +450,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -580,6 +581,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -710,6 +712,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -839,6 +842,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -1232,6 +1236,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Checkbox-checkmark
                     {
@@ -1755,7 +1760,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
-                placeholder="Select Vertical Alignment"
                 role="listbox"
                 tabIndex={0}
               >
@@ -1812,6 +1816,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Dropdown-caretDown
                         {
@@ -1982,7 +1987,6 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                 onFocus={[Function]}
                 onKeyDown={[Function]}
                 onKeyUp={[Function]}
-                placeholder="Select Horizontal Alignment"
                 role="listbox"
                 tabIndex={0}
               >
@@ -2039,6 +2043,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Dropdown-caretDown
                         {
@@ -2168,6 +2173,7 @@ exports[`Component Examples renders Stack.Vertical.Configure.Example.tsx correct
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Checkbox-checkmark
                         {

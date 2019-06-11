@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.18.1",
+      "tag": "@uifabric/merge-styles_v6.18.1",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.0",
       "tag": "@uifabric/merge-styles_v6.18.0",
       "date": "Wed, 05 Jun 2019 12:22:30 GMT",

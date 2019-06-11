@@ -41,7 +41,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
         &:hover $primaryText {
           color: #212121;
         }
-    size={14}
     style={
       Object {
         "height": 72,
@@ -60,7 +59,6 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
             font-size: 14px;
             font-weight: 400;
           }
-      size={14}
     >
       <div
         className=
@@ -119,6 +117,7 @@ exports[`Component Examples renders Persona.CustomCoinRender.Example.tsx correct
           }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Persona-presenceIcon
                 {

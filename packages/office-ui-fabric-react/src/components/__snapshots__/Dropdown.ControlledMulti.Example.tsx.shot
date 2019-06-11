@@ -134,7 +134,6 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
     onFocus={[Function]}
     onKeyDown={[Function]}
     onKeyUp={[Function]}
-    placeholder="Select options"
     tabIndex={0}
   >
     <span
@@ -188,6 +187,7 @@ exports[`Component Examples renders Dropdown.ControlledMulti.Example.tsx correct
           }
     >
       <i
+        aria-hidden={true}
         className=
             ms-Dropdown-caretDown
             {

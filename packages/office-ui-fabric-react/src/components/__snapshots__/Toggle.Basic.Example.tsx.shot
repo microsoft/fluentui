@@ -963,6 +963,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
           onMouseLeave={[Function]}
         >
           <i
+            aria-hidden={true}
             className=
 
                 {
@@ -1520,6 +1521,7 @@ exports[`Component Examples renders Toggle.Basic.Example.tsx correctly 1`] = `
           onMouseLeave={[Function]}
         >
           <i
+            aria-hidden={true}
             className=
 
                 {

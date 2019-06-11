@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ICalendarMonthProps, ICalendarMonthStyleProps, ICalendarMonthStyles } from './CalendarMonth.types';
 import { CalendarMonthBase } from './CalendarMonth.base';
 import { getStyles } from './CalendarMonth.styles';

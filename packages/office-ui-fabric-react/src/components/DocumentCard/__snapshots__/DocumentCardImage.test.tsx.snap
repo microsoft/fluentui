@@ -71,6 +71,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
@@ -159,6 +160,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
@@ -210,6 +212,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
@@ -251,6 +254,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {

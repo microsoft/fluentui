@@ -2,6 +2,40 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.4.0",
+      "tag": "@uifabric/react-cards_v0.4.0",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Card: Extending HTMLElement attributes in ICardProps.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "9a05f105a586a36cb9d882914a76cf030dffd68e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.6` to `^6.78.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.6` to `^0.7.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.3.4",
       "tag": "@uifabric/react-cards_v0.3.4",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

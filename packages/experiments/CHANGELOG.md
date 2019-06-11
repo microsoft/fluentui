@@ -1,6 +1,20 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 04 Jun 2019 12:22:17 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 6.78.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+
+## 6.78.6
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
 
 ## 6.78.5
 Tue, 04 Jun 2019 12:22:17 GMT

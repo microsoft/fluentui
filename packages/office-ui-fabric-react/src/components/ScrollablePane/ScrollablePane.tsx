@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IScrollablePaneProps, IScrollablePaneStyleProps, IScrollablePaneStyles } from './ScrollablePane.types';
 import { ScrollablePaneBase } from './ScrollablePane.base';

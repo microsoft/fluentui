@@ -758,7 +758,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Horizontal Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -815,6 +814,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -985,7 +985,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Vertical Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -1042,6 +1041,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -1212,7 +1212,6 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Overflow"
           role="listbox"
           tabIndex={0}
         >
@@ -1269,6 +1268,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {

@@ -152,6 +152,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
@@ -171,6 +172,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
@@ -307,6 +309,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
@@ -326,6 +329,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
@@ -462,6 +466,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
@@ -481,6 +486,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
@@ -617,6 +623,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
@@ -636,6 +643,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {
@@ -772,6 +780,7 @@ exports[`Rating Renders Rating correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-back
               {
@@ -791,6 +800,7 @@ exports[`Rating Renders Rating correctly 1`] = `
           
         </i>
         <i
+          aria-hidden={true}
           className=
               ms-RatingStar-front
               {

@@ -504,7 +504,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
           height: auto;
           position: relative;
         }
-    width={300}
   >
     <div
       className=
@@ -932,7 +931,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
             &:hover $primaryText {
               color: #212121;
             }
-        size={12}
       >
         <div
           className=
@@ -945,7 +943,6 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                 font-size: 14px;
                 font-weight: 400;
               }
-          size={12}
         >
           <div
             className=
@@ -980,6 +977,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   }
             >
               <i
+                aria-hidden={true}
                 className=
 
                     {
@@ -1021,6 +1019,7 @@ exports[`Component Examples renders Shimmer.LoadData.Example.tsx correctly 1`] =
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Persona-presenceIcon
                     {

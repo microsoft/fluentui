@@ -2,6 +2,25 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "6.5.1",
+      "tag": "@uifabric/file-type-icons_v6.5.1",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "adding missing filetype mappings to support LPC and other partners",
+            "author": "bigbadcapers <caperez@microsoft.com>",
+            "commit": "85d388a422847f65745b0e49f4a8eabd46553796"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.0",
       "tag": "@uifabric/file-type-icons_v6.5.0",
       "date": "Wed, 05 Jun 2019 12:22:30 GMT",

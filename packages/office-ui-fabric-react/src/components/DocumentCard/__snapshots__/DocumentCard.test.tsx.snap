@@ -106,7 +106,6 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                 font-weight: 400;
               }
           role="presentation"
-          size={11}
         >
           <div
             className=
@@ -141,6 +140,7 @@ exports[`DocumentCard renders DocumentCard correctly 1`] = `
                   }
             >
               <i
+                aria-hidden={true}
                 className=
 
                     {

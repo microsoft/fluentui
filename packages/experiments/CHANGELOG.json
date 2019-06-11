@@ -2,6 +2,62 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.7",
+      "tag": "@uifabric/experiments_v6.78.7",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a10a485dfa2f9d69b29c69e1ec1593c3a573ab8"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.30.1` to `^0.30.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.0` to `^6.5.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.6` to `^0.7.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.78.6",
+      "tag": "@uifabric/experiments_v6.78.6",
+      "date": "Mon, 10 Jun 2019 12:23:59 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "8e4f91a21866140b041266f6840af828b491600c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.2` to `^6.189.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.5",
       "tag": "@uifabric/experiments_v6.78.5",
       "date": "Tue, 04 Jun 2019 12:22:17 GMT",
