@@ -52,7 +52,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -210,7 +209,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -368,7 +366,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -526,7 +523,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -684,7 +680,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -842,7 +837,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1000,7 +994,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1158,7 +1151,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1316,7 +1308,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1474,7 +1465,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1632,7 +1622,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1790,7 +1779,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -1948,7 +1936,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2106,7 +2093,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2264,7 +2250,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2422,7 +2407,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2580,7 +2564,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2738,7 +2721,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -2896,7 +2878,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar
@@ -3054,7 +3035,6 @@ exports[`Component Examples renders ResizeGroup.OverflowSet.Example.tsx correctl
                 }
           >
             <button
-              checked={false}
               className=
                   ms-Button
                   ms-Button--commandBar

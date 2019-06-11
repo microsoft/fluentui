@@ -30,7 +30,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
 >
   <div>
     <div
-      autoComplete="on"
       className="ms-ComboBox-container "
       onBlur={[Function]}
       onFocus={[Function]}
@@ -208,7 +207,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
         />
         <button
           aria-hidden={true}
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -483,7 +481,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     </button>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -659,7 +656,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -799,9 +795,7 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
-    placeholder="Select or type an option"
   >
     <label
       className=
@@ -977,7 +971,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -1117,7 +1110,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -1293,7 +1285,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -1610,7 +1601,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option A"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -1764,7 +1754,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option B"
                     aria-selected="true"
-                    checked={true}
                     className=
                         ms-Button
                         ms-Button--action
@@ -1913,7 +1902,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option C"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -2067,7 +2055,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option D"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -2275,7 +2262,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option E"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -2430,7 +2416,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                     aria-disabled={true}
                     aria-label="Option F"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -2578,7 +2563,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option G"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -2732,7 +2716,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option H"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -2886,7 +2869,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option I"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -3040,7 +3022,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                   <button
                     aria-label="Option J"
                     aria-selected="false"
-                    checked={false}
                     className=
                         ms-Button
                         ms-Button--action
@@ -3200,7 +3181,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     </span>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -3346,7 +3326,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -3495,7 +3474,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
     </div>
   </div>
   <div
-    autoComplete="on"
     className="ms-ComboBox-container "
   >
     <label
@@ -3644,7 +3622,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
       <button
         aria-disabled={true}
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon

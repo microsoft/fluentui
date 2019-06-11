@@ -207,7 +207,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 right: 0px;
                 top: 0px;
               }
-          type={1}
         >
           <div
             className=

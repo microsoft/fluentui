@@ -2,7 +2,6 @@
 
 exports[`ComboBox Renders correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -148,7 +147,6 @@ exports[`ComboBox Renders correctly 1`] = `
     />
     <button
       aria-hidden={true}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -291,7 +289,6 @@ exports[`ComboBox Renders correctly 1`] = `
 
 exports[`ComboBox renders with a Keytip correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -440,7 +437,6 @@ exports[`ComboBox renders with a Keytip correctly 1`] = `
     />
     <button
       aria-hidden={true}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon

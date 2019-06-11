@@ -68,6 +68,9 @@ export class Async {
     }): T | (() => void);
     }
 
+// @public
+export const audioProperties: string[];
+
 // @public @deprecated
 export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
     configurable: boolean;
@@ -117,6 +120,12 @@ export function calculatePrecision(value: number | string): number;
 
 // @public
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+
+// @public (undocumented)
+export const colGroupProperties: string[];
+
+// @public (undocumented)
+export const colProperties: string[];
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
@@ -275,6 +284,9 @@ export function focusFirstChild(rootElement: HTMLElement): boolean;
 
 // @public
 export function format(s: string, ...values: any[]): string;
+
+// @public
+export const formProperties: string[];
 
 // @public
 export function getChildren(parent: HTMLElement, allowVirtualChildren?: boolean): HTMLElement[];
@@ -549,7 +561,13 @@ export interface IFitContentToBoundsOptions {
 }
 
 // @public
+export const iframeProperties: string[];
+
+// @public @deprecated (undocumented)
 export const imageProperties: string[];
+
+// @public
+export const imgProperties: string[];
 
 // @public
 export function initializeComponentRef<TProps extends IBaseProps, TState>(obj: React.Component<TProps, TState>): void;
@@ -879,6 +897,12 @@ export const KeyCodes: {
 // @public (undocumented)
 export type KeyCodes = number;
 
+// @public
+export const labelProperties: string[];
+
+// @public
+export const liProperties: string[];
+
 // @public (undocumented)
 export function mapEnumByName<T>(theEnum: any, callback: (name?: string, value?: string | number) => T | undefined): (T | undefined)[] | undefined;
 
@@ -909,10 +933,16 @@ export function mergeSettings(oldSettings?: ISettings, newSettings?: ISettings |
 // @public
 export function nullRender(): JSX.Element | null;
 
+// @public
+export const olProperties: string[];
+
 export { Omit }
 
 // @public (undocumented)
 export function on(element: Element | Window, eventName: string, callback: (ev: Event) => void, options?: boolean): () => void;
+
+// @public (undocumented)
+export const optionProperties: string[];
 
 // @public
 export function portalContainsElement(target: HTMLElement, parent?: HTMLElement): boolean;
@@ -1043,6 +1073,9 @@ export enum SelectionMode {
 }
 
 // @public
+export const selectProperties: string[];
+
+// @public
 export function setBaseUrl(baseUrl: string): void;
 
 // @public
@@ -1087,16 +1120,31 @@ export function shouldWrapFocus(element: HTMLElement, noWrapDataAttribute: 'data
 export function styled<TComponentProps extends IPropsWithStyles<TStyleProps, TStyleSet>, TStyleProps, TStyleSet extends IStyleSet<TStyleSet>>(Component: React.ComponentClass<TComponentProps> | React.StatelessComponent<TComponentProps>, baseStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>, getProps?: (props: TComponentProps) => Partial<TComponentProps>, customizable?: ICustomizableProps, pure?: boolean): React.StatelessComponent<TComponentProps>;
 
 // @public
+export const tableProperties: string[];
+
+// @public
+export const tdProperties: string[];
+
+// @public
 export const textAreaProperties: string[];
 
 // @public
+export const thProperties: string[];
+
+// @public
 export function toMatrix<T>(items: T[], columnCount: number): T[][];
+
+// @public
+export const trProperties: string[];
 
 // @public
 export function unhoistMethods(source: any, methodNames: string[]): void;
 
 // @public
 export function values<T>(obj: any): T[];
+
+// @public
+export const videoProperties: string[];
 
 // @public
 export function warn(message: string): void;
