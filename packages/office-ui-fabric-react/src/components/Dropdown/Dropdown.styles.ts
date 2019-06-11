@@ -175,7 +175,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       : `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`;
 
   return {
-    root: globalClassnames.root,
+    root: [globalClassnames.root, className],
     label: globalClassnames.label,
     dropdown: [
       globalClassnames.dropdown,
@@ -223,7 +223,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:focus .' + globalClassnames.titleHasError]: borderColorError
         }
       },
-      className,
       isOpen && 'is-open',
       disabled && 'is-disabled',
       required && 'is-required',
