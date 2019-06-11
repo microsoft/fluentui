@@ -101,6 +101,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Conversation about annual report: it has a very very long name which should be truncated."
       >
         Conversation about annual report: it has a very very long name which should be truncated.
@@ -125,6 +130,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="This is the email content preview which is very very long. The email also has some more content. The content continues. This is the last."
       >
         This is the email content preview which is very very long. The email also has some more content. The content continues. This is the last.
@@ -943,6 +953,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Conversation about annual report"
       >
         Conversation about annual report
@@ -967,6 +982,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="This is the email content preview. It has a second line."
       >
         This is the email content preview. It has a second line.
