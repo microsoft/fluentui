@@ -20,14 +20,11 @@ export class FabricBase extends React.Component<
   }
 
   public render() {
-    const { className, ...rest } = this.props;
-
     const classNames = getClassNames(getStyles, {
-      theme: this.props.theme!,
-      className,
-      isFocusVisible: this.state.isFocusVisible
+      ...(this.props as IFabricStyleProps),
+      ...this.state
     });
-    const divProps = getNativeProps(rest, divProperties);
+    const divProps = getNativeProps(this.props, divProperties);
 
     return <div {...divProps} className={classNames.root} ref={this._rootElement} />;
   }

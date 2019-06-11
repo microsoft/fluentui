@@ -1,6 +1,20 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 6.18.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 6.18.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Fix TS 3.5 typing issues.
 
 ## 6.17.4
 Tue, 21 May 2019 12:20:44 GMT

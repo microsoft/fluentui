@@ -3,10 +3,7 @@ import { divProperties, getNativeProps } from '../../Utilities';
 import { classNamesFunction } from '../../Utilities';
 import { ILabelProps, ILabelStyleProps, ILabelStyles } from './Label.types';
 
-const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>({
-  disableCaching: true
-});
-
+const getClassNames = classNamesFunction<ILabelStyleProps, ILabelStyles>();
 export class LabelBase extends React.Component<ILabelProps, {}> {
   public render(): JSX.Element {
     const { as: RootType = 'label', children, className, disabled, styles, required, theme } = this.props;

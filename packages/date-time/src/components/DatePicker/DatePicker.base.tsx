@@ -2,11 +2,11 @@ import * as React from 'react';
 import { IDatePicker, IDatePickerProps, IDatePickerStrings, IDatePickerStyleProps, IDatePickerStyles } from './DatePicker.types';
 import { BaseComponent, KeyCodes, classNamesFunction, getId, getNativeProps, divProperties, css } from '@uifabric/utilities';
 import { Calendar, ICalendar, DayOfWeek } from '../../Calendar';
-import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
+import { FirstWeekOfYear } from 'office-ui-fabric-react/lib/utilities/dateValues/DateValues';
 import { Callout } from 'office-ui-fabric-react/lib/Callout';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { compareDates, compareDatePart } from '../../utilities/dateMath/DateMath';
+import { compareDates, compareDatePart } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 import { FocusTrapZone } from 'office-ui-fabric-react/lib/FocusTrapZone';
 
 const getClassNames = classNamesFunction<IDatePickerStyleProps, IDatePickerStyles>();
@@ -20,19 +20,18 @@ export interface IDatePickerState {
 
 const DEFAULT_STRINGS: IDatePickerStrings = {
   months: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],
-
   shortMonths: ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'],
-
   days: ['Sunday', 'Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday', 'Saturday'],
-
   shortDays: ['S', 'M', 'T', 'W', 'T', 'F', 'S'],
-
   goToToday: 'Go to today',
   prevMonthAriaLabel: 'Go to previous month',
   nextMonthAriaLabel: 'Go to next month',
   prevYearAriaLabel: 'Go to previous year',
   nextYearAriaLabel: 'Go to next year',
-  closeButtonAriaLabel: 'Close date picker'
+  prevYearRangeAriaLabel: 'Previous year range',
+  nextYearRangeAriaLabel: 'Next year range',
+  closeButtonAriaLabel: 'Close date picker',
+  weekNumberFormatString: 'Week number {0}'
 };
 
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {

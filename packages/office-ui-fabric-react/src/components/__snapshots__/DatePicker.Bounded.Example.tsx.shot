@@ -29,7 +29,6 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
           padding-right: 0px;
           padding-top: 0px;
         }
-    placeholder="Select a date..."
   >
     <div
       aria-expanded={false}
@@ -158,6 +157,7 @@ Wed, 06 Dec 2017 04:41:20 GMT-Wed, 06 Dec 2017 04:41:20 GMT
               value=""
             />
             <i
+              aria-hidden={true}
               className=
                   ms-DatePicker-event--without-label
                   msDatePickerDisabled

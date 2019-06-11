@@ -128,6 +128,13 @@ export const stylesPagesWeb: INavPage[] = [
       require.ensure([], require => cb(require<any>('../../../pages/Styles/LocalizationPage/LocalizationPage').LocalizationPage))
   },
   {
+    title: 'Fluent Theme',
+    url: '#/styles/web/fluent-theme',
+    component: () => <LoadingComponent title="Fluent Theme" />,
+    getComponent: cb =>
+      require.ensure([], require => cb(require<any>('../../../pages/Styles/FluentThemePage/FluentThemePage').FluentThemePage))
+  },
+  {
     title: 'Theme Designer',
     url: 'https://aka.ms/themedesigner',
     isExternal: true

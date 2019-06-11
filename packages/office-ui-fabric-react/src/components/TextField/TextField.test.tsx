@@ -139,6 +139,20 @@ describe('TextField', () => {
     expect(suffixDOM.textContent).toEqual(exampleSuffix);
   });
 
+  it('should not give an aria-labelledby if no label is provided', () => {
+    const textField = mount(<TextField />);
+
+    expect(textField.getDOMNode().getAttribute('aria-labelledby')).toBeNull();
+  });
+
+  it('should use explicitly defined aria-labelledby prop if one is given', () => {
+    const sampleAriaLabelledby = 'sample for aria-labelledby';
+    const textField = mount(<TextField label="text-field-label" aria-labelledby={sampleAriaLabelledby} />);
+
+    const inputDOM = textField.getDOMNode().querySelector('input');
+    expect(inputDOM!.getAttribute('aria-labelledby')).toEqual(sampleAriaLabelledby);
+  });
+
   it('should render multiline as text area element', () => {
     const testText = 'This\nIs\nMultiline\nText\n';
     const textField = mount(<TextField value={testText} multiline />);

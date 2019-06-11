@@ -1,10 +1,14 @@
-### Designs
-
-Coming soon
-
 ### Control name
 
 `MSTableViewCell`
+
+`MSActionsCell`
+
+`MSActivityIndicatorCell`
+
+`MSCenteredLabelCell`
+
+`MSBooleanCell`
 
 ### Library
 

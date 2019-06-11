@@ -17,18 +17,17 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
     const styles = mergeStyleSets({
       root: {
         background: DefaultPalette.themeTertiary,
-        width: `${this.state.stackWidth}%`,
-        selectors: {
-          '& span': {
-            width: 50,
-            height: 50,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'center',
-            background: DefaultPalette.themePrimary,
-            color: DefaultPalette.white
-          }
-        }
+        width: `${this.state.stackWidth}%`
+      },
+
+      item: {
+        width: 50,
+        height: 50,
+        display: 'flex',
+        alignItems: 'center',
+        justifyContent: 'center',
+        background: DefaultPalette.themePrimary,
+        color: DefaultPalette.white
       }
     });
 
@@ -54,16 +53,16 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
         />
 
         <Stack horizontal wrap tokens={tokens.wrapStack} className={styles.root}>
-          <span>1</span>
-          <span>2</span>
-          <span>3</span>
-          <span>4</span>
-          <span>5</span>
-          <span>6</span>
-          <span>7</span>
-          <span>8</span>
-          <span>9</span>
-          <span>10</span>
+          <span className={styles.item}>1</span>
+          <span className={styles.item}>2</span>
+          <span className={styles.item}>3</span>
+          <span className={styles.item}>4</span>
+          <span className={styles.item}>5</span>
+          <span className={styles.item}>6</span>
+          <span className={styles.item}>7</span>
+          <span className={styles.item}>8</span>
+          <span className={styles.item}>9</span>
+          <span className={styles.item}>10</span>
         </Stack>
       </Stack>
     );

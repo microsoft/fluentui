@@ -2,7 +2,6 @@
 
 exports[`ComboBox Renders ComboBox correctly 1`] = `
 <div
-  autoComplete="on"
   className="ms-ComboBox-container "
 >
   <div
@@ -148,7 +147,6 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
     />
     <button
       aria-hidden={true}
-      checked={false}
       className=
           ms-Button
           ms-Button--icon
@@ -256,6 +254,7 @@ exports[`ComboBox Renders ComboBox correctly 1`] = `
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Button-icon
               {

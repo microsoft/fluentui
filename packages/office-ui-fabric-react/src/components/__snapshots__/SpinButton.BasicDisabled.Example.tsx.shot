@@ -162,7 +162,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         <button
           aria-disabled={true}
           aria-label="Increase value by 1"
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -262,6 +261,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -294,7 +294,6 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
         <button
           aria-disabled={true}
           aria-label="Decrease value by 1"
-          checked={false}
           className=
               ms-Button
               ms-Button--icon
@@ -394,6 +393,7 @@ exports[`Component Examples renders SpinButton.BasicDisabled.Example.tsx correct
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {

@@ -147,6 +147,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onClick={[Function]}
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Nav-chevron
                       {
@@ -428,6 +429,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                     onKeyUp={[Function]}
                     onMouseDown={[Function]}
                     onMouseUp={[Function]}
+                    target="_blank"
                     title="Activity"
                   >
                     <div
@@ -737,6 +739,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Documents"
               >
                 <div
@@ -887,6 +890,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Pages"
               >
                 <div
@@ -1182,6 +1186,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="Communication and Media"
               >
                 <div
@@ -1235,7 +1240,6 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                     display: block;
                     position: relative;
                   }
-              icon="News"
               name="News"
             >
               <a
@@ -1333,6 +1337,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                 onKeyUp={[Function]}
                 onMouseDown={[Function]}
                 onMouseUp={[Function]}
+                target="_blank"
                 title="News"
               >
                 <div
@@ -1347,6 +1352,7 @@ exports[`Component Examples renders Nav.Basic.Example.tsx correctly 1`] = `
                       }
                 >
                   <i
+                    aria-hidden={true}
                     className=
                         ms-Button-icon
                         {

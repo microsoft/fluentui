@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IIconProps, IIconStyleProps, IIconStyles } from './Icon.types';
 import { IconBase } from './Icon.base';

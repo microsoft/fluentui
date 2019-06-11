@@ -5,7 +5,7 @@ import * as ReactDOM from 'react-dom';
 import { Router, Route } from 'office-ui-fabric-react/lib/utilities/router/index';
 import { setBaseUrl } from 'office-ui-fabric-react/lib/Utilities';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { IRouteProps } from '../../../packages/office-ui-fabric-react/lib/utilities/router/Route';
+import { IRouteProps } from 'office-ui-fabric-react/lib/utilities/router/Route';
 
 setBaseUrl('./dist/');
 

@@ -30,7 +30,6 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
       }
 >
   <div
-    autoComplete="off"
     className="ms-ComboBox-container "
   >
     <label
@@ -206,7 +205,6 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
       />
       <button
         aria-hidden={true}
-        checked={false}
         className=
             ms-Button
             ms-Button--icon
@@ -314,6 +312,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Button-icon
                 {

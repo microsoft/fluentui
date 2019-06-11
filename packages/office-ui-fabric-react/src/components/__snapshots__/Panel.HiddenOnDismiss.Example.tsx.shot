@@ -207,7 +207,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 right: 0px;
                 top: 0px;
               }
-          type={1}
         >
           <div
             className=
@@ -220,7 +219,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   display: flex;
                   flex-direction: column;
                   left: auto;
-                  max-height: 100%;
+                  max-height: 768px;
                   overflow-x: hidden;
                   overflow-y: auto;
                   pointer-events: auto;
@@ -228,9 +227,6 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                   right: 0px;
                   top: 0px;
                   width: 100%;
-                }
-                @supports (-webkit-overflow-scrolling: touch){& {
-                  max-height: 768px;
                 }
                 @media screen and (-ms-high-contrast: active){& {
                   border-left: 3px solid #eaeaea;
@@ -369,6 +365,7 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                         }
                   >
                     <i
+                      aria-hidden={true}
                       className=
                           ms-Button-icon
                           {
@@ -406,11 +403,8 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                     display: flex;
                     flex-direction: column;
                     flex-grow: 1;
-                    max-height: 100%;
-                    overflow-y: hidden;
-                  }
-                  @supports (-webkit-overflow-scrolling: touch){& {
                     max-height: 768px;
+                    overflow-y: hidden;
                   }
             >
               <div
@@ -464,11 +458,8 @@ exports[`Component Examples renders Panel.HiddenOnDismiss.Example.tsx correctly 
                 className=
                     ms-Panel-scrollableContent
                     {
-                      height: 100%;
-                      overflow-y: auto;
-                    }
-                    @supports (-webkit-overflow-scrolling: touch){& {
                       height: 768px;
+                      overflow-y: auto;
                     }
                 data-is-scrollable={true}
               >

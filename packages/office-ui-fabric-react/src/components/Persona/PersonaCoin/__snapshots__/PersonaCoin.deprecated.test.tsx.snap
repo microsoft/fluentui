@@ -12,7 +12,6 @@ exports[`PersonaCoin renders correctly 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
-  size={13}
 >
   <div
     className=
@@ -47,6 +46,7 @@ exports[`PersonaCoin renders correctly 1`] = `
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -80,7 +80,6 @@ exports[`PersonaCoin renders correctly with image 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
-  size={13}
 >
   <div
     className=
@@ -161,7 +160,6 @@ exports[`PersonaCoin renders correctly with provided initials 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
-  size={13}
 >
   <div
     className=
@@ -215,7 +213,6 @@ exports[`PersonaCoin renders correctly with text 1`] = `
         font-size: 14px;
         font-weight: 400;
       }
-  size={13}
 >
   <div
     className=

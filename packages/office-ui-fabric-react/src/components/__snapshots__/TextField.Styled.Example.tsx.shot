@@ -98,7 +98,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
               padding-right: 12px;
             }
         htmlFor="TextField0"
-        required={true}
+        id="TextFieldLabel2"
       >
         Theme Primary Label, Red Top Border (JS):
       </label>
@@ -136,6 +136,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
       >
         <input
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel2"
           className=
               ms-TextField-field
               {
@@ -248,8 +249,8 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
               content: ' *';
               padding-right: 12px;
             }
-        htmlFor="TextField2"
-        required={true}
+        htmlFor="TextField3"
+        id="TextFieldLabel5"
       >
         Theme Primary Label, Red Top Border (CSS):
       </label>
@@ -285,6 +286,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
       >
         <input
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel5"
           className=
               ms-TextField-field
               {
@@ -327,7 +329,7 @@ exports[`Component Examples renders TextField.Styled.Example.tsx correctly 1`] =
                 color: #666666;
                 opacity: 1;
               }
-          id="TextField2"
+          id="TextField3"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}

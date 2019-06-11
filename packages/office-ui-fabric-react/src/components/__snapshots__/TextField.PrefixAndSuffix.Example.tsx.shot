@@ -95,6 +95,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 word-wrap: break-word;
               }
           htmlFor="TextField0"
+          id="TextFieldLabel2"
         >
           With prefix
         </label>
@@ -158,6 +159,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with https:// prefix"
+            aria-labelledby="TextFieldLabel2"
             className=
                 ms-TextField-field
                 {
@@ -266,7 +268,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               @media screen and (-ms-high-contrast: active){& {
                 color: GrayText;
               }
-          htmlFor="TextField2"
+          htmlFor="TextField3"
+          id="TextFieldLabel5"
         >
           Disabled with prefix
         </label>
@@ -329,6 +332,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with https:// prefix"
+            aria-labelledby="TextFieldLabel5"
             className=
                 ms-TextField-field
                 {
@@ -373,7 +377,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   opacity: 1;
                 }
             disabled={true}
-            id="TextField2"
+            id="TextField3"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -457,7 +461,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField4"
+          htmlFor="TextField6"
+          id="TextFieldLabel8"
         >
           With suffix
         </label>
@@ -494,6 +499,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with .com suffix"
+            aria-labelledby="TextFieldLabel8"
             className=
                 ms-TextField-field
                 {
@@ -536,7 +542,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField4"
+            id="TextField6"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}
@@ -625,7 +631,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 padding-top: 5px;
                 word-wrap: break-word;
               }
-          htmlFor="TextField6"
+          htmlFor="TextField9"
+          id="TextFieldLabel11"
         >
           With prefix and suffix
         </label>
@@ -689,6 +696,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
           <input
             aria-invalid={false}
             aria-label="Example text field with https:// prefix and .com suffix"
+            aria-labelledby="TextFieldLabel11"
             className=
                 ms-TextField-field
                 {
@@ -731,7 +739,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   color: #666666;
                   opacity: 1;
                 }
-            id="TextField6"
+            id="TextField9"
             onBlur={[Function]}
             onChange={[Function]}
             onFocus={[Function]}

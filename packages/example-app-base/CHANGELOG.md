@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+
+## 6.23.1
+Wed, 29 May 2019 12:21:24 GMT
+
+### Patches
+
+- Revert styled perf fixes temporarily.
 
 ## 6.23.0
 Wed, 22 May 2019 12:21:34 GMT

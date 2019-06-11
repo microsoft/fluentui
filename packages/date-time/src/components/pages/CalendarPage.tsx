@@ -3,7 +3,7 @@ import { ExampleCard, ComponentPage, PropertiesTableSet, PageMarkdown } from '@u
 import { DateRangeType, DayOfWeek } from '../Calendar/Calendar.types';
 import { CalendarButtonExample } from '../Calendar/examples/Calendar.Button.Example';
 import { CalendarInlineExample } from '../Calendar/examples/Calendar.Inline.Example';
-import { addMonths, addYears, addDays } from '../../utilities/dateMath/DateMath';
+import { addMonths, addYears, addDays } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
 
 const CalendarButtonExampleCode = require('!raw-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;
 const CalendarButtonExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/Calendar/examples/Calendar.Button.Example.tsx') as string;

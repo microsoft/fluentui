@@ -1,6 +1,34 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Tue, 21 May 2019 12:20:44 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 0.30.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Fix LineChart does not display properly in FireFox browser
+
+## 0.30.1
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Patches
+
+- Data Viz 'Legends' is not accessible using keyboard tab navigation 
+
+## 0.30.0
+Mon, 03 Jun 2019 23:04:02 GMT
+
+### Minor changes
+
+- Add benchmark triangle for HorizontalBarChart
+
+## 0.29.2
+Thu, 30 May 2019 12:22:06 GMT
+
+### Patches
+
+- Fix charting build
 
 ## 0.29.1
 Tue, 21 May 2019 12:20:44 GMT

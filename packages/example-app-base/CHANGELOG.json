@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "6.23.1",
+      "tag": "@uifabric/example-app-base_v6.23.1",
+      "date": "Wed, 29 May 2019 12:21:24 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert styled perf fixes temporarily.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "9d0c9173ec62ebbaa43879af9d1cc97d66b2b8c9"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.186.1` to `^6.187.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.0",
       "tag": "@uifabric/example-app-base_v6.23.0",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

@@ -82,7 +82,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             }
         htmlFor="Dropdown0"
         id="Dropdown0-label"
-        required={true}
       >
         Required dropdown example
       </label>
@@ -185,8 +184,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
         onFocus={[Function]}
         onKeyDown={[Function]}
         onKeyUp={[Function]}
-        placeholder="Select an option"
-        required={true}
         role="listbox"
         tabIndex={0}
       >
@@ -243,6 +240,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
               }
         >
           <i
+            aria-hidden={true}
             className=
                 ms-Dropdown-caretDown
                 {
@@ -507,8 +505,6 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
       onFocus={[Function]}
       onKeyDown={[Function]}
       onKeyUp={[Function]}
-      placeholder="Required with no label"
-      required={true}
       role="listbox"
       tabIndex={0}
     >
@@ -565,6 +561,7 @@ exports[`Component Examples renders Dropdown.Required.Example.tsx correctly 1`] 
             }
       >
         <i
+          aria-hidden={true}
           className=
               ms-Dropdown-caretDown
               {

@@ -8,12 +8,8 @@ import { getStyles } from './DetailsRowCheck.styles';
 import { IDetailsRowCheckStyleProps, IDetailsRowCheckStyles } from './DetailsRowCheck.types';
 import { classNamesFunction } from '../../Utilities';
 
-const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>({
-  disableCaching: true
-});
-const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>({
-  disableCaching: true
-});
+const getCheckClassNames = classNamesFunction<ICheckStyleProps, ICheckStyles>();
+const getClassNames = classNamesFunction<IDetailsRowCheckStyleProps, IDetailsRowCheckStyles>();
 
 const DetailsRowCheckBase = (props: IDetailsRowCheckProps) => {
   const {

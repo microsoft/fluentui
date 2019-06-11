@@ -1,6 +1,13 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 0.4.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Card: Extending HTMLElement attributes in ICardProps.
 
 ## 0.3.4
 Wed, 22 May 2019 12:21:34 GMT
