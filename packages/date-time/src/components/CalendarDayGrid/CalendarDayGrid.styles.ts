@@ -108,7 +108,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
     dayIsToday: {
       backgroundColor: palette.themePrimary + '!important',
       color: palette.white + '!important',
-      fontWeight: ((FontWeights.semibold + '!important') as unknown) as undefined
+      fontWeight: (FontWeights.semibold + '!important') as 'initial'
     },
     topRightCornerDate: {
       borderTopRightRadius: '2px'
