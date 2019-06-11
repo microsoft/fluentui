@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "DatePicker: Check out of bounds on initial render",
+      "comment": "upgrade to api-extractor 7.1.6",
       "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
-  "email": "edwl@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

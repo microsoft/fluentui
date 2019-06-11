@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/date-time",
-      "comment": "Snapshot updates to components for adding aria-hidden to icon component conditionally",
+      "comment": "upgrade to api-extractor 7.1.6",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/date-time",
-  "email": "edwl@microsoft.com"
+  "email": "naethell@microsoft.com"
 }

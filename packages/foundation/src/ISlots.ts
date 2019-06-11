@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle } from '@uifabric/styling';
 import { IComponentStyles, IPropsWithChildren } from './IComponent';
 
