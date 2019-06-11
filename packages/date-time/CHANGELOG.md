@@ -1,6 +1,13 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Mon, 10 Jun 2019 12:23:59 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 6.3.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 6.3.1
 Mon, 10 Jun 2019 12:23:59 GMT

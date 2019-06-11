@@ -2,6 +2,25 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.30.2",
+      "tag": "@uifabric/charting_v0.30.2",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fix LineChart does not display properly in FireFox browser",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "f3a33d6ca11d8c3ba21486e0b5037f260fa398d7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.1",
       "tag": "@uifabric/charting_v0.30.1",
       "date": "Fri, 07 Jun 2019 12:21:48 GMT",

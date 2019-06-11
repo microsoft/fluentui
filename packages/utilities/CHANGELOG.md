@@ -1,6 +1,18 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Thu, 06 Jun 2019 12:22:24 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 6.41.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.
+
+### Patches
+
+- Setting the styles props only when either of defaultProps or componentProps have it defined
+- upgrade to api-extractor 7.1.6
 
 ## 6.40.1
 Thu, 06 Jun 2019 12:22:24 GMT

@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.189.4",
+      "tag": "office-ui-fabric-react_v6.189.4",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "5a10a485dfa2f9d69b29c69e1ec1593c3a573ab8"
+          },
+          {
+            "comment": "Improve performance of documentcardtitle",
+            "author": "Qiang Huang <nif_tony@outlook.com>",
+            "commit": "865fe29340020b5385d9beb414dc639cbc5cab61"
+          },
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.6` to `^0.7.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.0` to `^6.18.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.6` to `^0.7.7`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.189.3",
       "tag": "office-ui-fabric-react_v6.189.3",
       "date": "Mon, 10 Jun 2019 12:24:00 GMT",

@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 10 Jun 2019 12:24:00 GMT and should not be manually modified.
+This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+
+## 6.189.4
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+- Improve performance of documentcardtitle
+- upgrade to api-extractor 7.1.6
 
 ## 6.189.3
 Mon, 10 Jun 2019 12:24:00 GMT
