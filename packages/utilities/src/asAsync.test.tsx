@@ -30,7 +30,7 @@ describe('asAsync', () => {
       _loadCalled = false;
 
       // Test cached case.
-      const anotherWrapper = mount(<AsyncThing />);
+      mount(<AsyncThing />);
       expect(_loadCalled).toBe(false);
       expect(wrapper.text()).toEqual('thing');
       done();

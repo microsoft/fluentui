@@ -180,9 +180,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     // Ignore what the user typed if it contains invalid characters
     const validCharsRegex = isHex ? HEX_REGEX : RGBA_REGEX;
     if (!validCharsRegex.test(newValue)) {
-      // Reset the value
-      // TODO: once TextField controlled mode works properly, just return without setting state
-      this.setState({ color: color });
       return;
     }
 
@@ -212,9 +209,6 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
       // a new valid value), we should clear the intermediate value.
       if (this.state.editingColor) {
         this.setState({ editingColor: undefined });
-      } else {
-        // TODO: remove once TextField is properly controlled
-        this.setState({ color: color });
       }
     } else {
       // Should be a valid color. Update the value.

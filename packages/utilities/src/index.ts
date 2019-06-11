@@ -23,6 +23,7 @@ export * from './array';
 export * from './asAsync';
 export * from './assertNever';
 export * from './classNamesFunction';
+export * from './controlled';
 export * from './createRef';
 export * from './css';
 export * from './customizations/Customizations';

@@ -634,6 +634,9 @@ export interface IRenderFunction<P> {
 }
 
 // @public
+export function isControlled<P>(props: P, valueProp: keyof P): boolean;
+
+// @public
 export function isDirectionalKeyCode(which: number): boolean;
 
 // @public (undocumented)
@@ -764,6 +767,18 @@ export interface IVirtualElement extends HTMLElement {
         parent?: IVirtualElement;
         children: IVirtualElement[];
     };
+}
+
+// @public (undocumented)
+export interface IWarnControlledUsageParams<P> {
+    componentId: string;
+    componentName: string;
+    defaultValueProp: keyof P;
+    oldProps?: P;
+    onChangeProp: keyof P;
+    props: P;
+    readOnlyProp?: keyof P;
+    valueProp: keyof P;
 }
 
 // @public
@@ -945,6 +960,9 @@ export function removeIndex<T>(array: T[], index: number): T[];
 export function replaceElement<T>(array: T[], newElement: T, index: number): T[];
 
 // @public
+export function resetControlledWarnings(): void;
+
+// @public
 export function resetIds(counter?: number): void;
 
 // @public
@@ -1092,6 +1110,9 @@ export function warn(message: string): void;
 
 // @public
 export function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
+
+// @public
+export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): void;
 
 // @public
 export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;

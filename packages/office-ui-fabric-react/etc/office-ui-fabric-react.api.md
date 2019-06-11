@@ -7400,23 +7400,17 @@ export interface ITextField {
 
 // @public
 export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
-    // @deprecated (undocumented)
-    addonString?: string;
     ariaLabel?: string;
     autoAdjustHeight?: boolean;
     autoComplete?: string;
     borderless?: boolean;
     className?: string;
-    // @deprecated (undocumented)
-    componentId?: string;
     componentRef?: IRefObject<ITextField>;
     defaultValue?: string;
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
     errorMessage?: string | JSX.Element;
-    // @deprecated (undocumented)
-    iconClass?: string;
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
@@ -7426,14 +7420,9 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
         [key: string]: RegExp;
     };
     multiline?: boolean;
-    onBeforeChange?: (newValue?: string) => void;
     onChange?: (event: React_2.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
-    // @deprecated (undocumented)
-    onChanged?: (newValue: any) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
-    // @deprecated (undocumented)
-    onRenderAddon?: IRenderFunction<ITextFieldProps>;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
@@ -7451,16 +7440,24 @@ export interface ITextFieldProps extends React_2.AllHTMLAttributes<HTMLInputElem
     value?: string;
 }
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name ITextFieldSnapshot should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
+// @internal (undocumented)
+export interface ITextFieldSnapshot {
+    selection?: [number | null, number | null];
+}
+
+// Warning: (ae-internal-missing-underscore) The name ITextFieldState should be prefixed with an underscore because the declaration is marked as "@internal"
+// 
+// @internal (undocumented)
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
-    isFocused: boolean;
-    // (undocumented)
-    value: string;
+    isFocused?: boolean;
+    uncontrolledValue: string | undefined;
 }
 
 // @public (undocumented)
-export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'iconClass' | 'autoAdjustHeight'> & {
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'> & {
     hasErrorMessage?: boolean;
     hasIcon?: boolean;
     hasLabel?: boolean;
@@ -9162,21 +9159,24 @@ export const Text: React.StatelessComponent<ITextProps>;
 // @public (undocumented)
 export const TextField: React_2.StatelessComponent<ITextFieldProps>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
+// 
 // @public (undocumented)
-export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState> implements ITextField {
+export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot> implements ITextField {
     constructor(props: ITextFieldProps);
     blur(): void;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillReceiveProps(newProps: ITextFieldProps): void;
+    componentDidUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState, snapshot: ITextFieldSnapshot): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: ITextFieldProps;
     focus(): void;
+    // (undocumented)
+    getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null;
     // (undocumented)
     render(): JSX.Element;
     select(): void;
@@ -9186,7 +9186,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     setSelectionRange(start: number, end: number): void;
     setSelectionStart(value: number): void;
     readonly value: string | undefined;
-}
+    }
 
 // @public (undocumented)
 export const TextStyles: ITextComponent['styles'];
