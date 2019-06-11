@@ -340,8 +340,8 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     return this.props.id || this._fallbackId;
   }
 
-  private get _isControlled(): boolean | undefined {
-    return isControlled(this.props, 'value', 'defaultValue');
+  private get _isControlled(): boolean {
+    return isControlled(this.props, 'value');
   }
 
   private _onFocus = (ev: React.FocusEvent<HTMLInputElement | HTMLTextAreaElement>): void => {

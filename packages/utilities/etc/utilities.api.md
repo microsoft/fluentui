@@ -634,7 +634,7 @@ export interface IRenderFunction<P> {
 }
 
 // @public
-export function isControlled<P>(props: P, valueProp: keyof P, defaultValueProp: keyof P): boolean | undefined;
+export function isControlled<P>(props: P, valueProp: keyof P): boolean;
 
 // @public
 export function isDirectionalKeyCode(which: number): boolean;

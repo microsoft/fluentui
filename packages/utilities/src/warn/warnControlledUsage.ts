@@ -8,15 +8,13 @@ let warningsMap: {
   valueDefaultValue: WarningMap;
   controlledToUncontrolled: WarningMap;
   uncontrolledToControlled: WarningMap;
-  nullValue: WarningMap;
 };
 if (process.env.NODE_ENV !== 'production') {
   warningsMap = {
     valueOnChange: {},
     valueDefaultValue: {},
     controlledToUncontrolled: {},
-    uncontrolledToControlled: {},
-    nullValue: {}
+    uncontrolledToControlled: {}
   };
 }
 
@@ -27,7 +25,6 @@ export function resetControlledWarnings(): void {
     warningsMap.valueDefaultValue = {};
     warningsMap.controlledToUncontrolled = {};
     warningsMap.uncontrolledToControlled = {};
-    warningsMap.nullValue = {};
   }
 }
 
@@ -67,8 +64,8 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
 
     // This warning logic closely follows what React does for native <input> elements.
 
-    const oldIsControlled = oldProps ? checkIsControlled(oldProps, valueProp, defaultValueProp) : undefined;
-    const newIsControlled = checkIsControlled(props, valueProp, defaultValueProp);
+    const oldIsControlled = oldProps ? checkIsControlled(oldProps, valueProp) : undefined;
+    const newIsControlled = checkIsControlled(props, valueProp);
 
     if (newIsControlled) {
       // onChange (or readOnly) must be provided if value is provided
@@ -98,7 +95,7 @@ export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): v
 
     // Warn if switching between uncontrolled and controlled. (One difference between this implementation
     // and React's <input> is that if oldIsControlled is indeterminate and newIsControlled true, we don't warn.)
-    if (oldIsControlled !== undefined && !!newIsControlled !== !!oldIsControlled) {
+    if (oldProps && newIsControlled !== oldIsControlled) {
       const oldType = oldIsControlled ? 'a controlled' : 'an uncontrolled';
       const newType = oldIsControlled ? 'uncontrolled' : 'controlled';
       const warnMap = oldIsControlled ? warningsMap.controlledToUncontrolled : warningsMap.uncontrolledToControlled;

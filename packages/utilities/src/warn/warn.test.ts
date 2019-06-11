@@ -2,7 +2,6 @@ import { setWarningCallback } from './warn';
 import { warnConditionallyRequiredProps } from './warnConditionallyRequiredProps';
 import { warnMutuallyExclusive } from './warnMutuallyExclusive';
 import { warnDeprecations } from './warnDeprecations';
-import { warnControlledUsage, resetControlledWarnings } from './warnControlledUsage';
 
 const warningCallback = jest.fn();
 
@@ -117,14 +116,5 @@ describe('warnConditionallyRequiredProps', () => {
     warnConditionallyRequiredProps('Foo', { Foo: 1, bar: 1 }, ['Foo', 'Bar'], 'Foo', 'foo' === 'foo');
     expect(warningCallback).toHaveBeenCalledTimes(1);
     expect(warningCallback).toHaveBeenLastCalledWith(`Foo property 'Bar' is required when 'Foo' is used.'`);
-  });
-});
-
-describe('warnControlledUsage', () => {
-  beforeEach(sharedBeforeEach);
-
-  afterEach(() => {
-    sharedAfterEach();
-    resetControlledWarnings();
   });
 });

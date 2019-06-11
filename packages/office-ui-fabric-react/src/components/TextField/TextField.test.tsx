@@ -598,13 +598,13 @@ describe('TextField controlled vs uncontrolled usage', () => {
     verifyWarningsAndValue(0, '');
   });
 
-  it('respects update and does not warn if value goes from undefined to provided', () => {
+  it('respects update and warns if value goes from undefined to provided', () => {
     // React's <input> warns in this case, but we don't
     wrapper = mount(<TextField onChange={noOp} componentRef={textFieldRef} />);
     expect(warnFn).toHaveBeenCalledTimes(0);
 
     wrapper.setProps({ value: value1, onChange: noOp });
-    verifyWarningsAndValue(0, value1);
+    verifyWarningsAndValue(1, value1);
   });
 
   it('respects update and warns if value goes from provided to undefined', () => {

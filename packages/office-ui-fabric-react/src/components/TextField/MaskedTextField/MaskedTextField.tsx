@@ -121,7 +121,7 @@ export class MaskedTextField extends React.Component<ITextFieldProps, IMaskedTex
         onChange={this._onInputChange}
         onKeyDown={this._onKeyDown}
         onPaste={this._onPaste}
-        value={this.state.displayValue}
+        value={this.state.displayValue || ''}
         componentRef={this._textField}
       />
     );
