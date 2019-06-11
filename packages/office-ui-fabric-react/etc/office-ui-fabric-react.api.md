@@ -7763,7 +7763,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
