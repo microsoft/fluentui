@@ -10,12 +10,11 @@ import {
   MAX_COLOR_HUE,
   MAX_COLOR_RGB,
   MAX_HEX_LENGTH,
-  MAX_RGB_LENGTH,
+  MAX_RGBA_LENGTH,
   MIN_HEX_LENGTH,
-  MIN_RGB_LENGTH,
-  ALPHA_REGEX,
+  MIN_RGBA_LENGTH,
   HEX_REGEX,
-  RGB_REGEX
+  RGBA_REGEX
 } from '../../utilities/color/consts';
 import { IColor, IRGB } from '../../utilities/color/interfaces';
 import { getColorFromString } from '../../utilities/color/getColorFromString';
@@ -157,10 +156,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     if (editingColor && editingColor.component === component) {
       return editingColor.value;
     }
-    if (typeof color[component] === 'number') {
-      return String(component === 'a' ? color.a!.toFixed(1) : color[component]);
-    }
-    return (color[component] as string) || '';
+    return String(color[component] || '');
   }
 
   private _onSVChanged = (ev: React.MouseEvent<HTMLElement>, color: IColor): void => {
@@ -172,24 +168,17 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
   };
 
   private _onAChanged = (ev: React.MouseEvent<HTMLElement>, a: number): void => {
-    this._updateColor(ev, updateA(this.state.color, a));
+    this._updateColor(ev, updateA(this.state.color, Math.round(a)));
   };
 
   private _onTextChange(component: keyof IRGBHex, event: React.FormEvent<HTMLInputElement>, newValue?: string): void {
     const color = this.state.color;
     const isHex = component === 'hex';
     const isAlpha = component === 'a';
-    newValue = newValue || '';
-    // Trim values that are too long
-    if (isAlpha) {
-      // For alpha values, this means remove any decimal places beyond the first
-      newValue = newValue.replace(/(\.\d)(.*)/, '$1');
-    } else {
-      newValue = newValue.substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGB_LENGTH);
-    }
+    newValue = (newValue || '').substr(0, isHex ? MAX_HEX_LENGTH : MAX_RGBA_LENGTH);
 
     // Ignore what the user typed if it contains invalid characters
-    const validCharsRegex = isHex ? HEX_REGEX : isAlpha ? ALPHA_REGEX : RGB_REGEX;
+    const validCharsRegex = isHex ? HEX_REGEX : RGBA_REGEX;
     if (!validCharsRegex.test(newValue)) {
       // Reset the value
       // TODO: once TextField controlled mode works properly, just return without setting state
@@ -199,15 +188,16 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
 
     // Determine if the entry is valid (different methods for hex, alpha, and RGB)
     let isValid: boolean;
-    if (newValue === '' || isAlpha) {
-      // Empty string is obviously not valid. We also consider alpha values invalid until blur
-      // to avoid messing with decimal places until the user is done typing.
+    if (newValue === '') {
+      // Empty string is obviously not valid
       isValid = false;
     } else if (isHex) {
       // Technically hex values of length 3 are also valid, but committing the value here would
       // cause it to be automatically converted to a value of length 6, which may not be what the
       // user wanted if they're not finished typing. (Values of length 3 will be committed on blur.)
       isValid = newValue.length === MAX_HEX_LENGTH;
+    } else if (isAlpha) {
+      isValid = Number(newValue) <= MAX_COLOR_ALPHA;
     } else {
       isValid = Number(newValue) <= MAX_COLOR_RGB;
     }
@@ -248,7 +238,7 @@ export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPi
     // If there was an intermediate incorrect value (such as too large or empty), correct it.
     const { value, component } = editingColor;
     const isHex = component === 'hex';
-    const minLength = isHex ? MIN_HEX_LENGTH : MIN_RGB_LENGTH;
+    const minLength = isHex ? MIN_HEX_LENGTH : MIN_RGBA_LENGTH;
     if (value.length >= minLength && (isHex || !isNaN(Number(value)))) {
       // Real value. Clamp to appropriate length (hex) or range (rgba).
       let newColor: IColor | undefined;
