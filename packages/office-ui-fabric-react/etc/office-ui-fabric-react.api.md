@@ -57,9 +57,6 @@ export class ActivityItem extends React.Component<IActivityItemProps, {}> {
 // @public
 export type Alignment = 'start' | 'end' | 'center' | 'space-between' | 'space-around' | 'space-evenly' | 'baseline' | 'stretch';
 
-// @public
-export const ALPHA_REGEX: RegExp;
-
 // Warning: (ae-forgotten-export) The symbol "React" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
@@ -7922,7 +7919,7 @@ export const MAX_COLOR_VALUE = 100;
 export const MAX_HEX_LENGTH = 6;
 
 // @public
-export const MAX_RGB_LENGTH = 3;
+export const MAX_RGBA_LENGTH = 3;
 
 // @public (undocumented)
 export const MeasuredContext: React.Context<{
@@ -7967,7 +7964,7 @@ export enum MessageBarType {
 export const MIN_HEX_LENGTH = 3;
 
 // @public
-export const MIN_RGB_LENGTH = 1;
+export const MIN_RGBA_LENGTH = 1;
 
 // @public (undocumented)
 export const Modal: React_2.StatelessComponent<IModalProps>;
@@ -8464,7 +8461,7 @@ export function rgb2hex(r: number, g: number, b: number): string;
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
 
 // @public
-export const RGB_REGEX: RegExp;
+export const RGBA_REGEX: RegExp;
 
 // @public (undocumented)
 export const ScrollablePane: React_2.StatelessComponent<IScrollablePaneProps>;
