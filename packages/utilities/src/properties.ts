@@ -342,7 +342,6 @@ export const iframeProperties = htmlElementProperties.concat([
   'importance', // iframe
   'referrerPolicy', // iframe
   'sandbox', // iframe
-  'sandbox', // iframe
   'src', // audio, embed, iframe, img, input, script, source, track, video
   'srcDoc', // iframe
   'width' // canvas, embed, iframe, img, input, object, video,
