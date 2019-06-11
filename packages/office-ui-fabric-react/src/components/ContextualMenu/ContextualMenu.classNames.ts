@@ -37,7 +37,7 @@ export interface IMenuItemClassNames {
   linkContentMenu: string;
 }
 
-const CONTEXTUAL_SPLIT_MENU_MINWIDTH = '28px';
+const CONTEXTUAL_SPLIT_MENU_WIDTH = '28px';
 
 const MediumScreenSelector = getScreenSelector(0, ScreenWidthMaxMedium);
 
@@ -132,7 +132,7 @@ export const getItemClassNames = memoizeFunction(
       splitPrimary: [
         styles.root,
         {
-          width: `calc(100% - ${CONTEXTUAL_SPLIT_MENU_MINWIDTH})`
+          width: `calc(100% - ${CONTEXTUAL_SPLIT_MENU_WIDTH})`
         },
         checked && ['is-checked', styles.rootChecked],
         (disabled || primaryDisabled) && ['is-disabled', styles.rootDisabled],
@@ -154,7 +154,7 @@ export const getItemClassNames = memoizeFunction(
         {
           flexBasis: '0',
           padding: '0 8px',
-          minWidth: CONTEXTUAL_SPLIT_MENU_MINWIDTH
+          minWidth: CONTEXTUAL_SPLIT_MENU_WIDTH
         },
         expanded && ['is-expanded', styles.rootExpanded],
         disabled && ['is-disabled', styles.rootDisabled],
