@@ -13,7 +13,7 @@ export interface ISelectedItemsList<T> {
   /**
    * The items that are in the selection -- either the one passed in
    * via props, or the internal selection maintained by the component
-   * when no seleciton is provided in the props
+   * when no selection is provided in the props
    */
   itemsInSelection: T[] | undefined;
   /*
@@ -23,7 +23,7 @@ export interface ISelectedItemsList<T> {
   /*
    * Removes all items from the selection.
    * If called with a selection passed in, this will mutate the
-   * seelection in props. Prefer to update the selection yourself.
+   * selection in props. Prefer to update the selection yourself.
    */
   unselectAll: () => void;
   /**
@@ -71,7 +71,7 @@ export interface ICommonSelectedItemListProps<T> {
   onRenderItem: React.ComponentType<ISelectedItemProps<T>>;
   /**
    * Aria label for the 'X' button in the selected item component.
-   * @defaultvalue ''
+   * @defaultValue ''
    */
   removeButtonAriaLabel?: string;
 
@@ -82,7 +82,7 @@ export interface ICommonSelectedItemListProps<T> {
 }
 
 /**
- * Legal props for the selecte items list hwen used as a controlled (managed) component.
+ * Legal props for the selected items list when used as a controlled (managed) component.
  */
 export interface IControlledSelectedItemListProps<T> extends ICommonSelectedItemListProps<T> {
   componentRef?: React.Ref<IControlledSelectedItemsList>;
@@ -93,6 +93,7 @@ export interface IControlledSelectedItemListProps<T> extends ICommonSelectedItem
   /**
    * The items that the base picker should currently display as selected.
    * controlled component.
+   *
    */
   selectedItems: T[];
   /**

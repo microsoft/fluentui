@@ -44,7 +44,7 @@ export interface IDefaultEditingItemInnerProps<TItem> extends React.HTMLAttribut
 
 export type EditingItemInnerFloatingSuggestionsProps<T> = Pick<
   IFloatingSuggestionsProps<T>,
-  'onSuggestionSelected' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden' | 'componentRef'
+  'componentRef' | 'onChange' | 'inputElement' | 'onRemoveSuggestion' | 'onSuggestionsHidden'
 >;
 
 /**
@@ -100,7 +100,7 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
       this._editingInput && (
         <FloatingSuggestions
           componentRef={this._editingFloatingSuggestions}
-          onSuggestionSelected={this._onSuggestionSelected}
+          onChange={this._onSuggestionSelected}
           inputElement={this._editingInput}
           onRemoveSuggestion={this.props.onRemoveItem}
           onSuggestionsHidden={this.props.onDismiss}
@@ -125,7 +125,7 @@ export class DefaultEditingItemInner<TItem> extends React.PureComponent<IDefault
     if (this._editingFloatingSuggestions.current && ev.relatedTarget !== null) {
       const target = ev.relatedTarget as HTMLElement;
       if (target.className.indexOf('ms-Suggestions-itemButton') === -1 && target.className.indexOf('ms-Suggestions-sectionButton') === -1) {
-        this._editingFloatingSuggestions.current.forceResolveSuggestion();
+        this._editingFloatingSuggestions.current.tryForceResolveSuggestion();
       }
     }
   };

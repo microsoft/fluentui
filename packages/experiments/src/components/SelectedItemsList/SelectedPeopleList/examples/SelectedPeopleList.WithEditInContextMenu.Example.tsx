@@ -2,18 +2,23 @@ import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
+import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
-import { EditableItem } from '../../Items/EditableItem';
-import { DefaultEditingItem } from '../../Items/subcomponents/DefaultEditingItem';
-import { EditingItemInnerFloatingSuggestionsProps } from '../../Items/subcomponents/DefaultEditingItem';
-import { FloatingPeopleSuggestions } from '../../../FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
-import { SuggestionsStore } from '../../../FloatingSuggestions/Suggestions/SuggestionsStore';
+import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
+import { ItemWithContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/ItemWithContextMenu';
+import { EditableItem } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/EditableItem';
+import { DefaultEditingItem } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/subcomponents/DefaultEditingItem';
+// tslint:disable-next-line:max-line-length : Export item subcomponents in a way that doesn't inflate the bundle
+import { EditingItemInnerFloatingSuggestionsProps } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/subcomponents/DefaultEditingItem';
+// tslint:disable-next-line:max-line-length : move FloatingPeopleSuggestions up a level
+import { FloatingPeopleSuggestions } from '@uifabric/experiments/lib/components/FloatingSuggestions/FloatingPeopleSuggestions/FloatingPeopleSuggestions';
+import { SuggestionsStore } from '@uifabric/experiments/lib/components/FloatingSuggestions/Suggestions/SuggestionsStore';
 import { ExampleSuggestionsModel } from './ExampleSuggestionsModel';
-import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
+import { TriggerOnContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/TriggerOnContextMenu';
 import { copyToClipboard } from '@uifabric/experiments/lib/utilities/copyToClipboard';
 
 export interface IPeopleSelectedItemsListExampleState {

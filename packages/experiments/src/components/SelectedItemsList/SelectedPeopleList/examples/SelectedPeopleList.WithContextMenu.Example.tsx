@@ -2,13 +2,16 @@ import * as React from 'react';
 
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { IPersonaProps } from 'office-ui-fabric-react/lib/Persona';
-import { people } from './PeopleExampleData';
-import { SelectedPeopleList, ISelectedPeopleList } from '../SelectedPeopleList';
+import { people } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/examples/PeopleExampleData';
+import {
+  SelectedPeopleList,
+  ISelectedPeopleList
+} from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/SelectedPeopleList';
 import { Selection } from 'office-ui-fabric-react/lib/Selection';
-import { SelectedPersona } from '../Items/SelectedPersona';
-import { ItemWithContextMenu } from '../../Items/ItemWithContextMenu';
-import { copyToClipboard } from '../../../../utilities/copyToClipboard';
-import { TriggerOnContextMenu } from '../../Items/TriggerOnContextMenu';
+import { SelectedPersona } from '@uifabric/experiments/lib/components/SelectedItemsList/SelectedPeopleList/Items/SelectedPersona';
+import { ItemWithContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/ItemWithContextMenu';
+import { copyToClipboard } from '@uifabric/experiments/lib/utilities/copyToClipboard';
+import { TriggerOnContextMenu } from '@uifabric/experiments/lib/components/SelectedItemsList/Items/TriggerOnContextMenu';
 
 export class SelectedPeopleListWithContextMenuExample extends React.Component<{}> {
   private _selectionList: ISelectedPeopleList;
@@ -16,7 +19,7 @@ export class SelectedPeopleListWithContextMenuExample extends React.Component<{}
 
   /**
    * Build a custom selected item capable of being edited with a dropdown and
-   * capable of eidting
+   * capable of editing
    */
   private SelectedItem = ItemWithContextMenu({
     menuItems: item => [
