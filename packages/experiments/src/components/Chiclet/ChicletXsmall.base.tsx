@@ -34,7 +34,7 @@ export class ChicletXsmallBase extends BaseComponent<IChicletCardProps, {}> {
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>{preview}</div>
         <div className={this._classNames.info}>
-          <div className={this._classNames.title}>{title ? title : 'test'}</div>
+          <div title={title ? title : undefined} className={this._classNames.title} />
           <hr className={this._classNames.line} />
           {footer}
         </div>

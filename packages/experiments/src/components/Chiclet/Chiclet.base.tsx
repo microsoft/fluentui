@@ -4,10 +4,7 @@ import { ChicletCard } from './ChicletCard';
 import { ChicletXsmall } from './ChicletXsmall';
 import { getOpenGraphProperties } from './OpenGraph';
 import { IChicletProps, ChicletSize } from './Chiclet.types';
-// import { PropertiesTable } from '../../../../example-app-base/lib';
 import { IChicletCardProps } from './ChicletCard.types';
-// import { FooterComponent } from './examples/Chiclet.Footer.Example';
-// import { IButtonProps } from 'office-ui-fabric-react';
 
 export interface IChicletState {
   chicletCardProps?: IChicletCardProps;

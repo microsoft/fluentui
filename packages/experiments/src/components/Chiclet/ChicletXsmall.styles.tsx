@@ -37,17 +37,6 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
         backgroundColor: '	#DCDCDC'
       }
     ],
-    /*preview: [
-      {
-        float: 'left',
-        height: 122,
-        width: 198,
-        position: 'relative',
-        backgroundColor: palette.white,
-        display: 'block',
-        padding: '2px 0px 2px 2px'
-      }
-    ],*/
     title: [
       {
         padding: '9px 2px 0px 76px',
