@@ -107,7 +107,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
-  private _surfaceRect: IRectangle;
+  private _surfaceRect: IRectangle | undefined;
 
   // The visible rect that we're required to render given the current list state.
   private _requiredRect: IRectangle | null;
