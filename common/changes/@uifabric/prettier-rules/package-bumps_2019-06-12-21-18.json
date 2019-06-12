@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/prettier-rules",
+      "comment": "Initial release of Fabric 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/prettier-rules",
+  "email": "elcraig@microsoft.com"
+}

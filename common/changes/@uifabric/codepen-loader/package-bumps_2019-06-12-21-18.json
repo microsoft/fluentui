@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/codepen-loader",
+      "comment": "Update just-scripts",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/codepen-loader",
+  "email": "elcraig@microsoft.com"
+}

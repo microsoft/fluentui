@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/jest-serializer-merge-styles",
+      "comment": "Initial release of Fabric 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/jest-serializer-merge-styles",
+  "email": "elcraig@microsoft.com"
+}

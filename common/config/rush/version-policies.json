@@ -35,7 +35,7 @@
      * inappropriately.  The minor/patch version parts will be bumped independently according
      * to the types of changes made to each project, according to the "rush change" command.
      */
-    "lockedMajor": 6
+    "lockedMajor": 7
 
     //   /**
     //    * (Required) The current version.  All packages belonging to the set should have this version
