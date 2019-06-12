@@ -32,7 +32,7 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
             top: 0,
             minWidth: '100%',
             minHeight: '100%',
-            '-webkit-tap-highlight-color': 'transparent'
+            WebkitTapHighlightColor: 'transparent'
           }
         }
       },

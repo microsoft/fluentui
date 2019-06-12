@@ -134,6 +134,10 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
 export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any> {
   const mergedSet: IConcatenatedStyleSet<any> = {};
 
+  if (styleSets && styleSets.length === 1 && !!styleSets[0]) {
+    return styleSets[0] as IConcatenatedStyleSet<any>;
+  }
+
   // We process sub component styles in two phases. First we collect them, then we combine them into 1 style function.
   const workingSubcomponentStyles: { [key: string]: Array<IStyleFunctionOrObject<any, any>> } = {};
 
