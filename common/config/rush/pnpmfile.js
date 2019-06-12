@@ -35,6 +35,11 @@ function readPackage(packageJson, context) {
     delete packageJson.peerDependencies['canvas'];
   }
 
+  if (packageJson.name === 'awesome-typescript-loader') {
+    console.log(packageJson);
+    packageJson.dependencies['typescript'] = '^2 || ^3';
+  }
+
   // Example: Suppose the karma types have a missing dependency on typings from the log4js package.
   // if (packageJson.name === '@types/karma') {
   //   context.log('Fixed up dependencies for @types/karma');

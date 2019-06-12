@@ -38,7 +38,7 @@ export const getClassNames = memoizeFunction(
             }
           },
           isFocused && {
-            // This is to increase the specifity of the focus styles
+            // This is to increase the specificity of the focus styles
             // and make it equal to that of the hover styles.
             selectors: {
               '&&': styles.spinButtonWrapperFocused

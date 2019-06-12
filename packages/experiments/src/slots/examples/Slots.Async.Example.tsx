@@ -1,11 +1,7 @@
 import * as React from 'react';
-import {
-  CollapsibleSection,
-  ICollapsibleSectionProps,
-  ICollapsibleSectionTitleProps,
-  ICollapsibleSectionTitleStylesReturnType
-} from '@uifabric/experiments';
-import { Label, Spinner } from 'office-ui-fabric-react';
+import { CollapsibleSection, ICollapsibleSectionTitleProps, ICollapsibleSectionTitleStylesReturnType } from '@uifabric/experiments';
+import { ITextProps, Label, Spinner } from 'office-ui-fabric-react';
+import { ISlotRender, IHTMLSlot } from '@uifabric/foundation';
 
 // Mock async data container component
 interface IAsyncDataProps {
@@ -40,32 +36,28 @@ const titleTextStyles: ICollapsibleSectionTitleProps['styles'] = (props, theme):
   ]
 });
 
-const titleTextRender: ICollapsibleSectionTitleProps['text'] = render =>
-  render(
-    (ComponentType, props) => (
-      <AsyncData
-        data="done"
-        // tslint:disable-next-line:jsx-no-lambda
-        render={data => (data ? <ComponentType {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />)}
-      />
-    ),
-    'Title loaded'
-  );
+// TODO: use extendsComponent to create variants and clean up these examples
+const titleTextRender: ISlotRender<ITextProps> = (props, DefaultComponent) => (
+  <AsyncData
+    data="done"
+    // tslint:disable-next-line:jsx-no-lambda
+    render={data => (data ? <DefaultComponent {...props} /> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />)}
+  />
+);
 
-const bodyRender: ICollapsibleSectionProps['body'] = render =>
-  render((ComponentType, props) => (
-    <AsyncData
-      data="done"
-      // tslint:disable-next-line:jsx-no-lambda
-      render={data => (
-        <div style={{ border: '1px solid black' }}>
-          <ComponentType {...props}>
-            {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
-          </ComponentType>
-        </div>
-      )}
-    />
-  ));
+const bodyRender: ISlotRender<IHTMLSlot> = (props, DefaultComponent) => (
+  <AsyncData
+    data="done"
+    // tslint:disable-next-line:jsx-no-lambda
+    render={data => (
+      <div style={{ border: '1px solid black' }}>
+        <DefaultComponent {...props}>
+          {data ? <Label>{props.children}</Label> : <Spinner styles={{ root: { alignItems: 'flex-start' } }} />}
+        </DefaultComponent>
+      </div>
+    )}
+  />
+);
 
 export class SlotsAsyncExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
@@ -76,20 +68,18 @@ export class SlotsAsyncExample extends React.Component<{}, {}> {
           defaultCollapsed={true}
           title={{
             styles: titleTextStyles,
-            text: titleTextRender
+            text: { children: 'Title Text' },
+            slots: {
+              text: {
+                render: titleTextRender
+              }
+            }
           }}
-          body={bodyRender}
-        >
-          Data loaded
-        </CollapsibleSection>
-        <CollapsibleSection
-          key={1}
-          defaultCollapsed={true}
-          title={{
-            styles: titleTextStyles,
-            text: titleTextRender
+          slots={{
+            body: {
+              render: bodyRender
+            }
           }}
-          body={bodyRender}
         >
           Data loaded
         </CollapsibleSection>

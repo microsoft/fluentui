@@ -8,5 +8,15 @@ module.exports = resources.createServeConfig({
   output: {
     filename: 'perf-test.js'
   },
-  mode: 'production'
+  mode: 'production',
+  resolve: {
+    alias: {
+      '@uifabric/experiments/src': path.resolve(__dirname, '../../packages/experiments/src'),
+      '@uifabric/experiments/lib': path.resolve(__dirname, '../../packages/experiments/src'),
+      '@uifabric/experiments': path.resolve(__dirname, '../../packages/experiments/src'),
+      'office-ui-fabric-react$': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/lib': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src'),
+      'office-ui-fabric-react/src': path.resolve(__dirname, '../../packages/office-ui-fabric-react/src')
+    }
+  }
 });

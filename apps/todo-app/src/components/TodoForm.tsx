@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { BaseComponent, IBaseProps, createRef } from 'office-ui-fabric-react/lib/Utilities';
+import { BaseComponent, IBaseProps } from 'office-ui-fabric-react/lib/Utilities';
 import { PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
 import * as stylesImport from './Todo.scss';
@@ -42,7 +42,7 @@ export interface ITodoFormState {
  * Button: https://fabricreact.azurewebsites.net/fabric-react/master/#/examples/button
  */
 export default class TodoForm extends BaseComponent<ITodoFormProps, ITodoFormState> {
-  private _textField = createRef<ITextField>();
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: ITodoFormProps) {
     super(props);

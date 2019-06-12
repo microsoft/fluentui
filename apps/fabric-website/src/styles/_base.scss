@@ -62,7 +62,7 @@
   }
 
   // Feedback section styles
-  .Feedback-button .ms-Button-label { // Feedback button color overridden by UHF
+  .FeedbackList-button .ms-Button-label { // Feedback button color overridden by UHF
     @include ms-fontColor-white;
   }
 

@@ -30,7 +30,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
           height: 108px;
@@ -43,11 +43,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -58,7 +58,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -70,7 +70,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -84,8 +84,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
             overflow: hidden;
             position: relative;
           }
@@ -186,11 +186,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -200,6 +200,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Revenue stream proposal fiscal year 2016 version02.pptx"
       >
         Revenue stream proposal fiscal year 2016 version02.pptx
@@ -257,7 +262,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -275,11 +279,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #00ABA9;
+                        background-color: #0B6A0B;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         height: 32px;
                         line-height: 32px;
                       }
@@ -289,6 +293,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
                       }
                 >
                   <span>
@@ -314,7 +321,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -331,7 +338,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -355,7 +362,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
           height: 108px;
@@ -368,11 +375,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -383,7 +390,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -395,7 +402,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -410,7 +417,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           ms-DocumentCardPreview
           {
             background-color: #ffffff;
-            border-bottom: 1px solid #eaeaea;
+            border-bottom: 1px solid #edebe9;
             overflow: hidden;
             position: relative;
           }
@@ -441,7 +448,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                 white-space: nowrap;
               }
               & a {
-                color: #212121;
+                color: #201f1e;
                 font-size: 12px;
                 text-decoration: none;
               }
@@ -504,7 +511,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -514,8 +521,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -582,7 +587,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -592,8 +597,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -660,7 +663,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     text-decoration: none;
                   }
                   .ms-Fabric--isFocusVisible &:focus {
-                    box-shadow: 0 0 0 1px #666666 inset;
+                    box-shadow: 0 0 0 1px #605e5c inset;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus {
                     outline: 1px solid WindowText;
@@ -670,8 +673,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   }
                   &:active, &:hover, &:active:hover {
                     color: #004578;
-                  }
-                  @media screen and (-ms-high-contrast: active){&:active, &:hover, &:active:hover {
                     text-decoration: underline;
                   }
                   &:focus {
@@ -717,11 +718,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -731,6 +732,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="4 files were uploaded"
       >
         4 files were uploaded
@@ -788,7 +794,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -872,7 +877,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -889,7 +894,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -913,7 +918,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
           height: 108px;
@@ -926,11 +931,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -941,7 +946,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -953,7 +958,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -967,8 +972,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
             overflow: hidden;
             position: relative;
           }
@@ -991,6 +996,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
@@ -1028,11 +1034,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -1042,6 +1048,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="View and share files"
       >
         View and share files
@@ -1099,7 +1110,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -1183,7 +1193,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -1200,7 +1210,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;
@@ -1224,7 +1234,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: flex;
           height: 108px;
@@ -1237,11 +1247,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -1252,7 +1262,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
         & .ms-DocumentCardPreview {
           border-bottom: 0px;
-          border-right: 1px solid #eaeaea;
+          border-right: 1px solid #edebe9;
           max-height: 106px;
           max-width: 144px;
         }
@@ -1264,7 +1274,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
           padding-bottom: 12px;
         }
         & .ms-DocumentCardTitle {
-          font-size: 15px;
+          font-size: 16px;
           line-height: 16px;
           padding-bottom: 12px 16px 8px 16px;
         }
@@ -1278,8 +1288,8 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
       className=
           ms-DocumentCardPreview
           {
-            background-color: #f8f8f8;
-            border-bottom: 1px solid #eaeaea;
+            background-color: #faf9f8;
+            border-bottom: 1px solid #edebe9;
             overflow: hidden;
             position: relative;
           }
@@ -1289,7 +1299,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             ms-DocumentCardPreview-iconContainer
             {
               align-items: center;
-              background-color: #f8f8f8;
+              background-color: #faf9f8;
               display: flex;
               height: 100%;
               justify-content: center;
@@ -1302,12 +1312,13 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
         }
       >
         <i
+          aria-hidden={true}
           className=
 
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
-                background-color: #f8f8f8;
+                background-color: #faf9f8;
                 color: #0078d7;
                 display: inline-block;
                 font-family: "FabricMDL2Icons-9";
@@ -1340,11 +1351,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -1354,6 +1365,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
               padding-top: 8px;
               word-wrap: break-word;
             }
+        style={
+          Object {
+            "whiteSpace": "nowrap",
+          }
+        }
         title="Conversation about takeaways from annual SharePoint conference"
       >
         Conversation about takeaways from annual SharePoint conference
@@ -1411,7 +1427,6 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                     font-weight: 400;
                   }
               role="presentation"
-              size={11}
             >
               <div
                 className=
@@ -1429,11 +1444,11 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                   className=
                       ms-Persona-initials
                       {
-                        background-color: #7E3878;
+                        background-color: #A4262C;
                         border-radius: 50%;
                         color: #ffffff;
                         font-size: 14px;
-                        font-weight: 400;
+                        font-weight: 600;
                         height: 32px;
                         line-height: 32px;
                       }
@@ -1443,6 +1458,9 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
                         border: 1px solid WindowText;
                         box-sizing: border-box;
                         color: WindowText;
+                      }
+                      & i {
+                        font-weight: 600;
                       }
                 >
                   <span>
@@ -1468,7 +1486,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-name
                 {
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   font-size: 12px;
                   font-weight: 600;
@@ -1485,7 +1503,7 @@ exports[`Component Examples renders DocumentCard.Compact.Example.tsx correctly 1
             className=
                 ms-DocumentCardActivity-activity
                 {
-                  color: #666666;
+                  color: #605e5c;
                   display: block;
                   font-size: 12px;
                   height: 15px;

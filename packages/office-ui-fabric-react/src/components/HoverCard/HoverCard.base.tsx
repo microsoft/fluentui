@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, createRef, classNamesFunction } from '../../Utilities';
+import { BaseComponent, divProperties, getNativeProps, getId, KeyCodes, getDocument, classNamesFunction } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps, OpenCardMode, HoverCardType, IHoverCard } from './HoverCard.types';
 import { ExpandingCard } from './ExpandingCard';
 import { ExpandingCardMode, IExpandingCardProps } from './ExpandingCard.types';
@@ -27,7 +27,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
   };
 
   // The wrapping div that gets the hover events
-  private _hoverCard = createRef<HTMLDivElement>();
+  private _hoverCard = React.createRef<HTMLDivElement>();
   private _dismissTimerId: number;
   private _openTimerId: number;
   private _currentMouseTarget: EventTarget | null;
@@ -120,7 +120,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 
     // Common props for both card types.
     const commonCardProps = {
-      ...getNativeProps(this.props, divProperties),
+      ...getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties),
       id: hoverCardId,
       trapFocus: !!trapFocus,
       firstFocus: setInitialFocus || openMode === OpenCardMode.hotKey,

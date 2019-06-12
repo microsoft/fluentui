@@ -92,7 +92,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
               </p>
             </div>
             <div className="ms-CalloutExample-actions">
-              <Link className="ms-CalloutExample-link" href="http://microsoft.com">
+              <Link className="ms-CalloutExample-link" href="http://microsoft.com" target="_blank">
                 Go to microsoft
               </Link>
             </div>

@@ -362,7 +362,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     const { className, role = 'list' } = this.props;
     const { pages = [] } = this.state;
     const pageElements: JSX.Element[] = [];
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLSpanElement>>(this.props, divProperties);
 
     for (const page of pages) {
       pageElements.push(this._renderPage(page));

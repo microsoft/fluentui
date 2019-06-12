@@ -503,12 +503,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Defines the shape of the border of the bottom-left corner.
    */
-  borderBottomLeftRadius?: ICSSRule | string;
+  borderBottomLeftRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Defines the shape of the border of the bottom-right corner.
    */
-  borderBottomRightRadius?: ICSSRule | string;
+  borderBottomRightRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the line style of the bottom border of a box.
@@ -663,12 +663,12 @@ export interface IRawStyleBase extends IRawFontStyle {
   /**
    * Sets the rounding of the top-left corner of the element.
    */
-  borderTopLeftRadius?: ICSSRule | string;
+  borderTopLeftRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the rounding of the top-right corner of the element.
    */
-  borderTopRightRadius?: ICSSRule | string;
+  borderTopRightRadius?: ICSSRule | ICSSPixelUnitRule;
 
   /**
    * Sets the style of an element's top border. To set all four borders, use the

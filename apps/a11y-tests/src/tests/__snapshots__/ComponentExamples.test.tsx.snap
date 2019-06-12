@@ -6,11 +6,7 @@ exports[`checks accessibility of Button (Button.Anchor.Example) 1`] = `Array []`
 
 exports[`checks accessibility of Button (Button.Command.Example) 1`] = `Array []`;
 
-exports[`checks accessibility of Button (Button.CommandBar.Example) 1`] = `Array []`;
-
-exports[`checks accessibility of Button (Button.Compound.Example) 1`] = `Array []`;
-
-exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `
+exports[`checks accessibility of Button (Button.CommandBar.Example) 1`] = `
 Array [
   Object {
     "level": "error",
@@ -19,11 +15,62 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" class=\\"ms-Button ms-Button--default root-1\\" data-is-focusable=\\"true\\" aria-expanded=\\"false\\" aria-owns=\\"id__3-menu\\" aria-haspopup=\\"true\\">",
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-16\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
+        "fullyQualifiedLogicalName": ".root-16",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".root-16",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+]
+`;
+
+exports[`checks accessibility of Button (Button.Compound.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.ContextualMenu.Example) 1`] = `Array []`;
+
+exports[`checks accessibility of Button (Button.CustomSplit.Example) 1`] = `
+Array [
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -33,19 +80,148 @@ Array [
     ],
     "message": Object {
       "richText": "Fix all of the following:
-- Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\"",
-      "text": "Fix all of the following: Invalid ARIA attribute value: aria-owns=\\"id__3-menu\\".",
+- ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription",
+      "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": "button[aria-owns=\\"id__3-menu\\"]",
-      "ruleId": "aria-valid-attr-value",
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "aria-allowed-attr",
     },
     "properties": Object {
       "tags": Array [
         "Accessibility",
       ],
     },
-    "ruleId": "aria-valid-attr-value",
+    "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Element is in tab order and does not have accessible text
+
+Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" class=\\"ms-Button ms-Button--icon root-1\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".ms-Button--icon",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".ms-Button--icon",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-16\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".root-16",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".root-16",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
   },
 ]
 `;
@@ -172,11 +348,11 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-35\\" tabindex=\\"0\\">",
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" aria-disabled=\\"true\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-34\\" tabindex=\\"0\\">",
             },
           },
         ],
-        "fullyQualifiedLogicalName": ".css-35",
+        "fullyQualifiedLogicalName": ".css-34",
         "physicalLocation": Object {
           "fileLocation": Object {
             "uri": "about:blank",
@@ -190,7 +366,7 @@ Array [
       "text": "Fix all of the following: ARIA attribute is not widely supported in screen readers and assistive technologies:  aria-roledescription.",
     },
     "partialFingerprints": Object {
-      "fullyQualifiedLogicalName": ".css-35",
+      "fullyQualifiedLogicalName": ".css-34",
       "ruleId": "aria-allowed-attr",
     },
     "properties": Object {
@@ -199,6 +375,132 @@ Array [
       ],
     },
     "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-25\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(2) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"] > span > .root-25",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(2) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"] > span > .root-25",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-25\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "div:nth-child(3) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"] > span > .root-25",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "div:nth-child(3) > .css-10[data-is-focusable=\\"true\\"][role=\\"button\\"] > span > .root-25",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button is-disabled root-36\\" aria-disabled=\\"true\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".root-36",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".root-36",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
   },
 ]
 `;
@@ -239,6 +541,135 @@ Array [
       ],
     },
     "ruleId": "aria-allowed-attr",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<div data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" data-is-focusable=\\"true\\" role=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" class=\\"css-10\\" tabindex=\\"0\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".css-10",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Element is in tab order and does not have accessible text
+
+Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix all of the following: Element is in tab order and does not have accessible text. Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".css-10",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" data-automation-id=\\"test\\" aria-roledescription=\\"split button\\" class=\\"ms-Button ms-Button--icon root-1\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".ms-Button--icon",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".ms-Button--icon",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<button type=\\"button\\" aria-haspopup=\\"true\\" aria-expanded=\\"false\\" data-is-focusable=\\"false\\" tabindex=\\"-1\\" class=\\"ms-Button root-16\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": ".root-16",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix any of the following:
+- Element has a value attribute and the value attribute is empty
+- Element has no value attribute or the value attribute is empty
+- Element does not have inner text that is visible to screen readers
+- aria-label attribute does not exist or is empty
+- aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty
+- Element's default semantics were not overridden with role=\\"presentation\\"
+- Element's default semantics were not overridden with role=\\"none\\"
+- Element has no title attribute or the title attribute is empty",
+      "text": "Fix any of the following: Element has a value attribute and the value attribute is empty. Element has no value attribute or the value attribute is empty. Element does not have inner text that is visible to screen readers. aria-label attribute does not exist or is empty. aria-labelledby attribute does not exist, references elements that do not exist or references elements that are empty. Element's default semantics were not overridden with role=\\"presentation\\". Element's default semantics were not overridden with role=\\"none\\". Element has no title attribute or the title attribute is empty.",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": ".root-16",
+      "ruleId": "button-name",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "button-name",
   },
 ]
 `;
@@ -436,8 +867,8 @@ Array [
     ],
     "message": Object {
       "richText": "Fix any of the following:
-- Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
-      "text": "Fix any of the following: Element has insufficient color contrast of 2.21 (foreground color: #a6a6a6, background color: #f4f4f4, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
+- Element has insufficient color contrast of 2.35 (foreground color: #a19f9d, background color: #f3f2f1, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1",
+      "text": "Fix any of the following: Element has insufficient color contrast of 2.35 (foreground color: #a19f9d, background color: #f3f2f1, font size: 10.5pt, font weight: normal). Expected contrast ratio of 4.5:1.",
     },
     "partialFingerprints": Object {
       "fullyQualifiedLogicalName": ".prefix-15 > span",

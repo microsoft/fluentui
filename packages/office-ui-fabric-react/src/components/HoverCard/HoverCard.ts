@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IHoverCardProps, IHoverCardStyles, IHoverCardStyleProps } from './HoverCard.types';
 import { getStyles } from './HoverCard.styles';

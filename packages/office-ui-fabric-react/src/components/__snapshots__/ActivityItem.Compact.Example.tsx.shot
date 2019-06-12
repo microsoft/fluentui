@@ -10,7 +10,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -79,7 +79,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                 overflow: visible;
                 width: 8px;
               }
-          size={8}
           style={
             Object {
               "display": "inline-block",
@@ -200,7 +199,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -269,7 +268,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                 overflow: visible;
                 width: 8px;
               }
-          size={8}
           style={
             Object {
               "display": "inline-block",
@@ -295,11 +293,11 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #00A300;
+                    background-color: #5C2E91;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
+                    font-size: 10px;
+                    font-weight: 600;
                     height: 16px;
                     line-height: 16px;
                   }
@@ -309,6 +307,9 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <span>
@@ -333,7 +334,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                 overflow: visible;
                 width: 8px;
               }
-          size={8}
           style={
             Object {
               "display": "inline-block",
@@ -424,7 +424,6 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                 overflow: visible;
                 width: 8px;
               }
-          size={8}
           style={
             Object {
               "display": "inline-block",
@@ -450,11 +449,11 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
               className=
                   ms-Persona-initials
                   {
-                    background-color: #603CBA;
+                    background-color: #0B6A0B;
                     border-radius: 50%;
                     color: #ffffff;
-                    font-size: 11px;
-                    font-weight: 400;
+                    font-size: 10px;
+                    font-weight: 600;
                     height: 16px;
                     line-height: 16px;
                   }
@@ -464,6 +463,9 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
                     border: 1px solid WindowText;
                     box-sizing: border-box;
                     color: WindowText;
+                  }
+                  & i {
+                    font-weight: 600;
                   }
             >
               <span>
@@ -528,7 +530,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -569,6 +571,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {
@@ -630,7 +633,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           -webkit-font-smoothing: antialiased;
           align-items: center;
           box-sizing: border-box;
-          color: #666666;
+          color: #605e5c;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 12px;
@@ -671,6 +674,7 @@ exports[`Component Examples renders ActivityItem.Compact.Example.tsx correctly 1
           }
     >
       <i
+        aria-hidden={true}
         className=
 
             {

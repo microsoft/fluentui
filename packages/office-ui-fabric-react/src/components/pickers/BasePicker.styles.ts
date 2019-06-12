@@ -14,7 +14,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
   if (!theme) {
     throw new Error('theme is undefined or null in base BasePicker getStyles function.');
   }
-  const { semanticColors } = theme;
+  const { semanticColors, effects } = theme;
   const { inputBorder, inputBorderHovered, inputFocusBorderAlt } = semanticColors;
 
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
@@ -37,7 +37,8 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         boxSizing: 'border-box',
         minWidth: 180,
         minHeight: 30,
-        border: `1px solid ${inputBorder}`
+        border: `1px solid ${inputBorder}`,
+        borderRadius: effects.roundedCorner2
       },
       !isFocused &&
         !disabled && {
@@ -91,11 +92,7 @@ export function getStyles(props: IBasePickerStyleProps): IBasePickerStyles {
         outline: 'none',
         padding: '0 6px 0',
         alignSelf: 'flex-end',
-        selectors: {
-          '::-ms-clear': {
-            display: 'none'
-          }
-        }
+        borderRadius: effects.roundedCorner2
       },
       inputClassName
     ],

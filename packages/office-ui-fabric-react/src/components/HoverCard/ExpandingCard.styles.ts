@@ -18,10 +18,8 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
     root: [
       classNames.root,
       {
-        width: '340px',
+        width: 320,
         pointerEvents: 'none',
-        boxShadow: '0 0 20px rgba(0, 0, 0, .2)',
-        border: 'none',
         selectors: {
           [HighContrastSelector]: {
             border: '1px solid WindowText'
@@ -41,7 +39,7 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
     expandedCard: [
       classNames.expandedCard,
       {
-        height: '1px',
+        height: 1,
         overflowY: 'hidden',
         pointerEvents: 'auto',
         transition: 'height 0.467s cubic-bezier(0.5, 0, 0, 1)',
@@ -50,10 +48,10 @@ export function getStyles(props: IExpandingCardStyleProps): IExpandingCardStyles
             content: '""',
             position: 'relative',
             display: 'block',
-            top: '0',
-            left: '24px',
-            width: '292px',
-            height: '1px',
+            top: 0,
+            left: 24,
+            width: 272,
+            height: 1,
             backgroundColor: palette.neutralLighter
           }
         }
