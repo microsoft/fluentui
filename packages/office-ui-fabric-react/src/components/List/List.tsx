@@ -52,7 +52,7 @@ const EMPTY_RECT = {
 };
 
 // Naming expensive measures so that they're named in profiles.
-const _measurePageRect = (element: HTMLElement) => element.getBoundingClientRect();
+const _measurePageRect = (element?: HTMLElement) => (element ? element.getBoundingClientRect() : { ...EMPTY_RECT });
 const _measureSurfaceRect = _measurePageRect;
 const _measureScrollRect = _measurePageRect;
 
@@ -107,7 +107,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
   private _hasCompletedFirstRender: boolean;
 
   // surface rect relative to window
-  private _surfaceRect: IRectangle;
+  private _surfaceRect: IRectangle | undefined;
 
   // The visible rect that we're required to render given the current list state.
   private _requiredRect: IRectangle | null;
