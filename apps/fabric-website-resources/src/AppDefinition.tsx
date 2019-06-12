@@ -234,13 +234,13 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('./components/pages/FloatingPeoplePickerPage').FloatingPeoplePickerPage,
           key: 'FloatingPeoplePicker',
           name: 'FloatingPeoplePicker',
-          url: '#examples/floatingpeoplepicker'
+          url: '#/examples/floatingpeoplepicker'
         },
         {
           component: require<any>('./components/pages/GroupedListPage').GroupedListPage,
           key: 'GroupedList',
           name: 'GroupedList',
-          url: '#examples/groupedlist'
+          url: '#/examples/groupedlist'
         },
         {
           component: require<any>('./components/pages/HoverCardPage').HoverCardPage,
@@ -384,13 +384,13 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('./components/pages/SelectedPeopleListPage').SelectedPeopleListPage,
           key: 'SelectedPeopleList',
           name: 'SelectedPeopleList',
-          url: '#examples/selectedpeoplelist'
+          url: '#/examples/selectedpeoplelist'
         },
         {
           component: require<any>('./components/pages/SeparatorPage').SeparatorPage,
           key: 'Separator',
           name: 'Separator',
-          url: '#examples/separator'
+          url: '#/examples/separator'
         },
         {
           component: require<any>('./components/pages/ShimmerPage').ShimmerPage,
@@ -467,7 +467,7 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('./components/pages/ExtendedPeoplePickerPage').ExtendedPeoplePickerPage,
           key: 'ExtendedPeoplePicker',
           name: 'ExtendedPeoplePicker',
-          url: '#examples/extendedpeoplepicker'
+          url: '#/examples/extendedpeoplepicker'
         }
       ]
     },
@@ -478,37 +478,37 @@ export const AppDefinition: IAppDefinition = {
           component: require<any>('./components/pages/FocusTrapZonePage').FocusTrapZonePage,
           key: 'FocusTrapZone',
           name: 'FocusTrapZone',
-          url: '#examples/focustrapzone'
+          url: '#/examples/focustrapzone'
         },
         {
           component: require<any>('./components/pages/FocusZonePage').FocusZonePage,
           key: 'FocusZone',
           name: 'FocusZone',
-          url: '#examples/focuszone'
+          url: '#/examples/focuszone'
         },
         {
           component: require<any>('./components/pages/MarqueeSelectionPage').MarqueeSelectionPage,
           key: 'MarqueeSelection',
           name: 'MarqueeSelection',
-          url: '#examples/marqueeselection'
+          url: '#/examples/marqueeselection'
         },
         {
           component: require<any>('./components/pages/SelectionPage').SelectionPage,
           key: 'Selection',
           name: 'Selection',
-          url: '#examples/selection'
+          url: '#/examples/selection'
         },
         {
           component: require<any>('./components/pages/ThemePage').ThemePage,
           key: 'Theme',
           name: 'Themes',
-          url: '#examples/themes'
+          url: '#/examples/themes'
         },
         {
           component: require<any>('./components/pages/ColorsPage').ColorsPage,
           key: 'Colors',
           name: 'Colors',
-          url: '#examples/themegenerator'
+          url: '#/examples/themegenerator'
         }
       ]
     },
