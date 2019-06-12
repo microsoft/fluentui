@@ -920,7 +920,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
       return;
     }
 
-    let surfaceRect = this._surfaceRect || { top: 0, right: 0, bottom: 0, left: 0, width: 0 };
+    let surfaceRect = this._surfaceRect || { ...EMPTY_RECT };
     const scrollHeight = this._scrollElement && this._scrollElement.scrollHeight;
     const scrollTop = this._scrollElement ? this._scrollElement.scrollTop : 0;
 
