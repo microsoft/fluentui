@@ -11,7 +11,7 @@
     "update-snapshots": "npx just-scripts jest -u"
   },
   "dependencies": {
-    "@uifabric/fabric-website-resources": "^6.18.3",
+    "@uifabric/fabric-website-resources": "^6.18.4",
     "axe-core": "^3.2.2",
     "axe-puppeteer": "^1.0.0",
     "axe-sarif-converter": "^1.0.0",

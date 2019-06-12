@@ -33,7 +33,7 @@
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
     "@uifabric/example-app-base": "^6.23.1",
-    "@uifabric/jest-serializer-merge-styles": "^6.0.9",
+    "@uifabric/jest-serializer-merge-styles": "^6.0.10",
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "enzyme": "^3.4.1",
