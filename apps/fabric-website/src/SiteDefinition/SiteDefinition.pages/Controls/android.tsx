@@ -68,6 +68,13 @@ export const controlsPagesAndroid: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
       },
       {
+        title: 'List Cells',
+        url: '#/controls/android/listcells',
+        component: () => <LoadingComponent title="List Cells" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage))
+      },
+      {
         title: 'Persona',
         url: '#/controls/android/persona',
         component: () => <LoadingComponent title="Persona" />,
