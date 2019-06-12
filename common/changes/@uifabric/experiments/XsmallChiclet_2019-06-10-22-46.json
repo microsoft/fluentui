@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "chiclet: adds Xsmall chiclet",
+      "comment": "Chiclet: Add x-small variant",
       "type": "minor"
     }
   ],
