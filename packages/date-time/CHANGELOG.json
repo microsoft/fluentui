@@ -2,6 +2,31 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "6.3.2",
+      "tag": "@uifabric/date-time_v6.3.2",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.3` to `^6.189.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.3.1",
       "tag": "@uifabric/date-time_v6.3.1",
       "date": "Mon, 10 Jun 2019 12:23:59 GMT",

@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { IOverlayProps, IOverlayStyleProps, IOverlayStyles } from './Overlay.types';
 import { OverlayBase } from './Overlay.base';

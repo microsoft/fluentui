@@ -687,7 +687,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                     }
               >
                 <button
-                  checked={false}
                   className=
                       ms-Button
                       ms-Button--icon
@@ -820,7 +819,6 @@ exports[`Component Examples renders Keytips.Basic.Example.tsx correctly 1`] = `
                   </div>
                 </button>
                 <button
-                  checked={false}
                   className=
                       ms-Button
                       ms-Button--icon

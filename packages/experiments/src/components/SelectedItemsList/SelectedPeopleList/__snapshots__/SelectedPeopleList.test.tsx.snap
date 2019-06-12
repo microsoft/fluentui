@@ -221,7 +221,6 @@ Array [
               &:hover $primaryText {
                 color: #201f1e;
               }
-          size={11}
         >
           <div
             className=
@@ -234,7 +233,6 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
-            size={11}
           >
             <div
               className=
@@ -720,7 +718,6 @@ Array [
               &:hover $primaryText {
                 color: #201f1e;
               }
-          size={11}
         >
           <div
             className=
@@ -733,7 +730,6 @@ Array [
                   font-size: 14px;
                   font-weight: 400;
                 }
-            size={11}
           >
             <div
               className=

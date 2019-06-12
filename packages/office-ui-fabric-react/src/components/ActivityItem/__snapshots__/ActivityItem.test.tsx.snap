@@ -77,7 +77,6 @@ exports[`ActivityItem renders compact with a single persona correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
         style={
           Object {
             "display": "inline-block",
@@ -354,7 +353,6 @@ exports[`ActivityItem renders compact with animation correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
         style={
           Object {
             "display": "inline-block",
@@ -516,7 +514,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
         style={
           Object {
             "display": "inline-block",
@@ -583,7 +580,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
         style={
           Object {
             "display": "inline-block",
@@ -674,7 +670,6 @@ exports[`ActivityItem renders compact with multiple personas correctly 1`] = `
               overflow: visible;
               width: 8px;
             }
-        size={8}
         style={
           Object {
             "display": "inline-block",
@@ -807,7 +802,6 @@ exports[`ActivityItem renders with a single persona correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={11}
       >
         <div
           className=
@@ -1049,7 +1043,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
       >
         <div
           className=
@@ -1105,7 +1098,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
       >
         <div
           className=
@@ -1185,7 +1177,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
       >
         <div
           className=
@@ -1241,7 +1232,6 @@ exports[`ActivityItem renders with multiple personas correctly 1`] = `
               font-size: 14px;
               font-weight: 400;
             }
-        size={8}
       >
         <div
           className=

@@ -87,7 +87,6 @@ exports[`Panel renders Panel correctly 1`] = `
               right: 0px;
               top: 0px;
             }
-        type={1}
       >
         <div
           className=

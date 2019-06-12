@@ -2,6 +2,28 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "0.7.7",
+      "tag": "@uifabric/foundation_v0.7.7",
+      "date": "Tue, 11 Jun 2019 12:21:35 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "upgrade to api-extractor 7.1.6",
+            "author": "Natalie Ethell <naethell@microsoft.com>",
+            "commit": "a5bbc76367eb01e993f20796955569f422a538b2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.0` to `^6.48.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.40.1` to `^6.41.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.7.6",
       "tag": "@uifabric/foundation_v0.7.6",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

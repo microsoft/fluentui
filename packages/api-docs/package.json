@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/api-docs",
-  "version": "1.1.2",
+  "version": "1.1.3",
   "description": "A package that transforms .api.json files into page.json files",
   "main": "lib-commonjs/index.js",
   "typings": "lib/index.d.ts",
@@ -13,15 +13,15 @@
   "devDependencies": {
     "just-scripts": "~0.17.0",
     "@types/node": "^8.10.29",
-    "@uifabric/merge-styles": "^6.18.0",
-    "@uifabric/styling": "^6.48.0",
+    "@uifabric/merge-styles": "^6.18.1",
+    "@uifabric/styling": "^6.48.1",
     "@uifabric/tslint-rules": ">=1.0.2 <2.0.0",
-    "@uifabric/utilities": "^6.40.1",
-    "office-ui-fabric-react": "^6.189.3"
+    "@uifabric/utilities": "^6.41.0",
+    "office-ui-fabric-react": "^6.189.4"
   },
   "dependencies": {
-    "@microsoft/tsdoc": "0.12.8",
-    "@microsoft/api-extractor-model": "7.0.27",
+    "@microsoft/tsdoc": "0.12.9",
+    "@microsoft/api-extractor-model": "7.1.1",
     "@microsoft/node-core-library": "~3.9.0"
   }
 }
