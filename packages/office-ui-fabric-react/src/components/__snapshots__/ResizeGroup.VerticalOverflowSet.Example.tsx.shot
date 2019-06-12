@@ -54,27 +54,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -92,14 +87,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -119,15 +114,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -156,7 +163,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -213,27 +220,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -251,14 +253,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -278,15 +280,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -315,7 +329,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -372,27 +386,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -410,14 +419,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -437,15 +446,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -474,7 +495,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -531,27 +552,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -569,14 +585,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -596,15 +612,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -633,7 +661,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -690,27 +718,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -728,14 +751,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -755,15 +778,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -792,7 +827,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -849,27 +884,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -887,14 +917,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -914,15 +944,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -951,7 +993,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1008,27 +1050,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -1046,14 +1083,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1073,15 +1110,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -1110,7 +1159,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1167,27 +1216,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -1205,14 +1249,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1232,15 +1276,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -1269,7 +1325,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1326,27 +1382,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -1364,14 +1415,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1391,15 +1442,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -1428,7 +1491,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1485,27 +1548,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -1523,14 +1581,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1550,15 +1608,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -1587,7 +1657,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1644,27 +1714,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -1682,14 +1747,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1709,15 +1774,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -1746,7 +1823,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1803,27 +1880,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -1841,14 +1913,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -1868,15 +1940,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -1905,7 +1989,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -1962,27 +2046,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2000,14 +2079,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2027,15 +2106,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2064,7 +2155,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -2121,27 +2212,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2159,14 +2245,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2186,15 +2272,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2223,7 +2321,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -2280,27 +2378,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2318,14 +2411,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2345,15 +2438,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2382,7 +2487,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -2439,27 +2544,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2477,14 +2577,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2504,15 +2604,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2541,7 +2653,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -2598,27 +2710,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2636,14 +2743,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2663,15 +2770,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2700,7 +2819,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -2757,27 +2876,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2795,14 +2909,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2822,15 +2936,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -2859,7 +2985,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -2916,27 +3042,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -2954,14 +3075,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -2981,15 +3102,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -3018,7 +3151,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";
@@ -3075,27 +3208,22 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  background-color: #f4f4f4;
+                  background-color: #ffffff;
                   border-radius: 0px;
-                  border: 1px solid transparent;
+                  border: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   cursor: pointer;
                   display: inline-block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
-                  margin-bottom: 0px;
-                  margin-left: 0px;
-                  margin-right: 0px;
-                  margin-top: 0px;
                   min-width: 40px;
                   outline: transparent;
                   padding-bottom: 10px;
@@ -3113,14 +3241,14 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: 0;
                 }
                 .ms-Fabric--isFocusVisible &:focus:after {
-                  border: 1px solid #ffffff;
-                  bottom: 0px;
+                  border: 1px solid transparent;
+                  bottom: 3px;
                   content: "";
-                  left: 0px;
-                  outline: 1px solid #666666;
+                  left: 3px;
+                  outline: 1px solid #605e5c;
                   position: absolute;
-                  right: 0px;
-                  top: 0px;
+                  right: 3px;
+                  top: 3px;
                   z-index: 1;
                 }
                 @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -3140,15 +3268,27 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   border: none;
                 }
                 &:hover {
-                  background-color: #eaeaea;
-                  color: #212121;
+                  background-color: #f3f2f1;
+                  color: #201f1e;
                 }
                 @media screen and (-ms-high-contrast: active){&:hover {
                   color: Highlight;
                 }
+                &:hover .ms-Button-icon {
+                  color: #106ebe;
+                }
+                &:hover .ms-Button-menuIcon {
+                  color: #323130;
+                }
                 &:active {
-                  background-color: #dadada;
-                  color: #000000;
+                  background-color: #edebe9;
+                  color: #201f1e;
+                }
+                &:active .ms-Button-icon {
+                  color: #005a9e;
+                }
+                &:active .ms-Button-menuIcon {
+                  color: #323130;
                 }
             data-is-focusable={true}
             onClick={[Function]}
@@ -3177,7 +3317,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                     {
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
-                      color: #106ebe;
+                      color: #0078d4;
                       display: inline-block;
                       flex-shrink: 0;
                       font-family: "FabricMDL2Icons";

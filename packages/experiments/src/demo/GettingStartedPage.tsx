@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { PageMarkdown } from '@uifabric/example-app-base';
+import { Markdown } from '@uifabric/example-app-base';
 import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 const rootClass = mergeStyles({
@@ -10,8 +10,7 @@ const rootClass = mergeStyles({
 export const GettingStartedPage: React.StatelessComponent = () => {
   return (
     <div className={rootClass}>
-      {/* tslint:disable-next-line:deprecation */}
-      <PageMarkdown>{require<string>('!raw-loader!../../README.md')}</PageMarkdown>
+      <Markdown>{require<string>('!raw-loader!../../README.md')}</Markdown>
     </div>
   );
 };

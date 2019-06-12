@@ -74,7 +74,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
   public render(): JSX.Element {
     const { className, disabled = false, ariaLabelledBy } = this.props;
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
       style: {
@@ -118,7 +118,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
     const focusSelector =
       typeof firstFocusableSelector === 'string' ? firstFocusableSelector : firstFocusableSelector && firstFocusableSelector();
 
-    let _firstFocusableChild;
+    let _firstFocusableChild: HTMLElement | null = null;
 
     if (this._root.current) {
       if (focusSelector) {

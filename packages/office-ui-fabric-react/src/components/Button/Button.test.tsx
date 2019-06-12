@@ -98,7 +98,7 @@ describe('Button', () => {
           Hello
         </DefaultButton>
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('A');
     });
 
@@ -109,7 +109,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
@@ -123,7 +123,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toEqual('ButtonLabel');
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
@@ -136,7 +136,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toEqual('MyLabel');
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
@@ -149,7 +149,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-labelledby')).toEqual('someid');
         expect(renderedDOM.getAttribute('aria-describedby')).toBeNull();
@@ -159,7 +159,7 @@ describe('Button', () => {
         const button: any = ReactTestUtils.renderIntoDocument<any>(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-describedby="someid" />
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-labelledby')).toBeNull();
         expect(renderedDOM.getAttribute('aria-describedby')).toEqual('someid');
@@ -176,7 +176,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
 
@@ -195,7 +195,7 @@ describe('Button', () => {
             styles={{ screenReaderText: 'some-screenreader-class' }}
           />
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
 
@@ -216,7 +216,7 @@ describe('Button', () => {
             And this is the label
           </CompoundButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
 
@@ -231,7 +231,7 @@ describe('Button', () => {
         const button: any = ReactTestUtils.renderIntoDocument<any>(
           <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-label')).toBeNull();
 
@@ -255,7 +255,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
       });
@@ -279,7 +279,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
       });
@@ -301,7 +301,7 @@ describe('Button', () => {
           </DefaultButton>
         );
 
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
         expect(renderedDOM).toBeTruthy();
         expect(menuProps.hidden).toEqual(false);
       });
@@ -326,7 +326,7 @@ describe('Button', () => {
             Hello
           </DefaultButton>
         );
-        const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
+        const renderedDOM: any = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-pressed')).toEqual('true');
       });
@@ -397,7 +397,7 @@ describe('Button', () => {
           }}
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).not.toEqual('DIV');
     });
 
@@ -426,7 +426,7 @@ describe('Button', () => {
         />
       );
 
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const menuButtonDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM, { which: KeyCodes.enter });
 
@@ -459,7 +459,7 @@ describe('Button', () => {
           }}
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
       const primaryButtonDOM: HTMLDivElement = renderedDOM.getElementsByTagName('div')[0] as HTMLDivElement;
 
       ReactTestUtils.Simulate.keyDown(primaryButtonDOM, { which: KeyCodes.enter });
@@ -490,7 +490,7 @@ describe('Button', () => {
           }}
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('DIV');
     });
 
@@ -517,7 +517,7 @@ describe('Button', () => {
           }}
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
       ReactTestUtils.Simulate.click(menuButtonDOM);
       expect(renderedDOM.getAttribute('aria-expanded')).toEqual('true');
@@ -546,7 +546,7 @@ describe('Button', () => {
           }}
         />
       );
-      const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const renderedDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
       const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
 
       // in a normal scenario, when we do a touchstart we would also cause a
@@ -579,7 +579,7 @@ describe('Button', () => {
           }}
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const menuButtonDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
         which: KeyCodes.down
@@ -609,7 +609,7 @@ describe('Button', () => {
           }}
         />
       );
-      const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
+      const menuButtonDOM = ReactDOM.findDOMNode((button as unknown) as React.ReactInstance) as Element;
 
       ReactTestUtils.Simulate.keyDown(menuButtonDOM, {
         which: KeyCodes.down
@@ -632,7 +632,7 @@ describe('Button', () => {
         didClick = false;
       });
 
-      function buildRenderButtonWithMenu(callbackMock?: jest.Mock<{}>, persistMenu?: boolean): HTMLElement {
+      function buildRenderButtonWithMenu(callbackMock?: jest.Mock<unknown>, persistMenu?: boolean): HTMLElement {
         const renderedDOM: HTMLElement = renderIntoDocument(
           <DefaultButton
             data-automation-id="test"
@@ -931,7 +931,7 @@ describe('Button', () => {
         const menuId = renderedDOM.getAttribute('aria-owns');
         expect(menuId).toBeDefined();
 
-        const menuDOM = renderedDOM.ownerDocument.getElementById(menuId as string);
+        const menuDOM = renderedDOM.ownerDocument!.getElementById(menuId as string);
         expect(menuDOM).toBeDefined();
 
         return menuDOM as HTMLElement;

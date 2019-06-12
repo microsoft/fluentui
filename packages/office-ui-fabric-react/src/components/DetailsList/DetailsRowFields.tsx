@@ -24,7 +24,6 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
     const {
       columns,
       columnStartIndex,
-      shimmer,
       rowClassNames,
       cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
       item,
@@ -48,7 +47,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
           const cellContentsRender =
             cellsByColumn && column.key in cellsByColumn
               ? cellsByColumn[column.key]
-              : onRender && !shimmer
+              : onRender
               ? onRender(item, itemIndex, column)
               : getCellText(item, column);
 
@@ -61,8 +60,6 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
                 column.className,
                 column.isMultiline && rowClassNames.isMultiline,
                 column.isRowHeader && rowClassNames.isRowHeader,
-                column.isIconOnly && shimmer && rowClassNames.shimmerIconPlaceholder,
-                shimmer && rowClassNames.shimmer,
                 rowClassNames.cell,
                 column.isPadded ? rowClassNames.cellPadded : rowClassNames.cellUnpadded
               )}

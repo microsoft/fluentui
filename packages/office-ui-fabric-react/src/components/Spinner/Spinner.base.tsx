@@ -14,7 +14,7 @@ export class SpinnerBase extends BaseComponent<ISpinnerProps, any> {
   public render() {
     const { type, size, ariaLabel, ariaLive, styles, label, theme, className, labelPosition } = this.props;
     const statusMessage = ariaLabel;
-    const nativeProps = getNativeProps(this.props, divProperties, ['size']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['size']);
 
     // SpinnerType is deprecated. If someone is still using this property, rather than putting the SpinnerType into the ISpinnerStyleProps,
     // we'll map SpinnerType to its equivalent SpinnerSize and pass that in. Once SpinnerType finally goes away we should delete this.

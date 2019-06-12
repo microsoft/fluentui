@@ -41,7 +41,7 @@ export function getStyles(props: IRatingStyleProps): IRatingStyles {
   const ratingStarUncheckedColor = palette.neutralTertiary;
   const ratingStarUncheckedHoverColor = palette.themePrimary;
   const ratingStarUncheckedHoverSelectedColor = palette.themeDark;
-  const ratingStarCheckedColor = semanticColors.bodyTextChecked;
+  const ratingStarCheckedColor = palette.neutralPrimary;
   const ratingStarDisabledColor = semanticColors.disabledBodySubtext;
 
   return {

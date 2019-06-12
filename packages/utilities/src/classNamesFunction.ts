@@ -1,4 +1,4 @@
-import { mergeStyleSets, IStyle, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
+import { mergeStyleSets, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 
 // TODO: deprecate disableCaching option if not used by classNamesFunction for optimization.
@@ -15,7 +15,10 @@ export interface IClassNamesFunctionOptions {
  */
 export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(
   options: IClassNamesFunctionOptions = {}
-): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet> {
+): (
+  getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[] | undefined,
+  styleProps?: TStyleProps
+) => IProcessedStyleSet<TStyleSet> {
   // TODO: memoize.
 
   const getClassNames = (

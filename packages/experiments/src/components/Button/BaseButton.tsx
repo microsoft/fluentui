@@ -8,20 +8,30 @@ const baseTokens: IButtonComponent['tokens'] = {
   backgroundColorHovered: undefined,
   backgroundColorPressed: undefined,
   borderColor: undefined,
+  borderColorFocused: undefined,
   borderColorHovered: undefined,
   borderColorPressed: undefined,
   borderRadius: undefined,
-  borderWidth: 2,
+  borderWidth: undefined,
   color: undefined,
   colorHovered: undefined,
   colorPressed: undefined,
-  contentPadding: 0,
-  cursor: 'default',
+  contentPadding: '1px 6px',
+  contentPaddingFocused: undefined,
+  cursor: undefined,
+  height: undefined,
+  iconColor: undefined,
+  iconColorHovered: undefined,
+  iconColorPressed: undefined,
+  iconSize: undefined,
+  iconWeight: undefined,
+  lineHeight: undefined,
   minHeight: undefined,
   minWidth: undefined,
-  textFamily: 'Arial',
-  textSize: 13.3333,
-  textWeight: 400
+  textFamily: undefined,
+  textSize: 13.333,
+  textWeight: undefined,
+  width: undefined
 };
 
 const disabledTokens: IButtonComponent['tokens'] = {
@@ -42,7 +52,6 @@ const BaseButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IBu
     root: {
       borderStyle: 'outset',
       overflow: 'visible',
-      padding: '1px 6px',
 
       selectors: {
         ':active': {

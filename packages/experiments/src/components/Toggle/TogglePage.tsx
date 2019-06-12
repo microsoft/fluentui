@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, Markdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { ToggleExample } from './examples/Toggle.Example';
 const ToggleExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Toggle/examples/Toggle.Example.tsx') as string;
@@ -32,14 +32,10 @@ export class TogglePage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/experiments/src/components/Toggle/Toggle.types.ts')]} />
         }
-        overview={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md')}</PageMarkdown>
-        }
+        overview={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleOverview.md')}</Markdown>}
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md')}</PageMarkdown>}
-        donts={
-          <PageMarkdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md')}</PageMarkdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!office-ui-fabric-react/src/components/Toggle/docs/ToggleDonts.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

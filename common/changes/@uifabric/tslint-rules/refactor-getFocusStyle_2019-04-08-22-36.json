@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "",
+      "packageName": "@uifabric/tslint-rules",
+      "type": "none"
+    }
+  ],
+  "packageName": "@uifabric/tslint-rules",
+  "email": "v-jojanz@microsoft.com"
+}

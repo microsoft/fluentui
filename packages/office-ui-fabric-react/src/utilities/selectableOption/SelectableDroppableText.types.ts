@@ -8,7 +8,7 @@ import { ISelectableOption } from '../../utilities/selectableOption/SelectableOp
  * TComponent - Component used for reference properties, such as componentRef
  * TListenerElement - Listener element associated with HTML event callbacks. Optional. If not provided, TComponent is assumed.
  */
-export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponent> extends React.HTMLAttributes<TListenerElement> {
+export interface ISelectableDroppableTextProps<TComponent, TListenerElement> extends React.HTMLAttributes<TListenerElement> {
   /**
    * Optional callback to access the ISelectableDroppableText interface. Use this instead of ref for accessing
    * the public methods and properties of the component.
@@ -55,12 +55,12 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
   /**
    * Optional custom renderer for the ISelectableDroppableText container
    */
-  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
 
   /**
    * Optional custom renderer for the ISelectableDroppableText list
    */
-  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+  onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
 
   /**
    * Optional custom renderer for the ISelectableDroppableText options

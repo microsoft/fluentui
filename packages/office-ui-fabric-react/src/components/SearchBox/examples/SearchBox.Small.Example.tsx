@@ -14,7 +14,7 @@ export class SearchBoxSmallExample extends React.Component<any, any> {
         onClear={ev => {
           console.log('Custom onClear Called');
         }}
-        onChange={newValue => console.log('SearchBox onChange fired: ' + newValue)}
+        onChange={(_, newValue) => console.log('SearchBox onChange fired: ' + newValue)}
         onSearch={newValue => console.log('SearchBox onSearch fired: ' + newValue)}
         onFocus={() => console.log('onFocus called')}
         onBlur={() => console.log('onBlur called')}

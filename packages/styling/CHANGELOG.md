@@ -1,6 +1,25 @@
 # Change Log - @uifabric/styling
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 6.49.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Remap existing font variables to new values.
+- Extend `getFocusStyle` to include named parameters.
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 6.48.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 6.48.0
 Wed, 05 Jun 2019 12:22:30 GMT

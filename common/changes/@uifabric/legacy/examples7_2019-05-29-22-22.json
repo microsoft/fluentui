@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/legacy",
+      "comment": "Delete unneeded Nav.checklist.ts",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/legacy",
+  "email": "elcraig@microsoft.com"
+}
