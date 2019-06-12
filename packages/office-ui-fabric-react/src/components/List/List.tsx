@@ -52,7 +52,7 @@ const EMPTY_RECT = {
 };
 
 // Naming expensive measures so that they're named in profiles.
-const _measurePageRect = (element?: HTMLElement) => (element ? element.getBoundingClientRect() : { ...EMPTY_RECT });
+const _measurePageRect = (element: HTMLElement) => element.getBoundingClientRect();
 const _measureSurfaceRect = _measurePageRect;
 const _measureScrollRect = _measurePageRect;
 
