@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "jolore@microsoft.com"
+}
