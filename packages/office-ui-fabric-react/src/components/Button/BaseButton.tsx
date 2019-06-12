@@ -20,7 +20,7 @@ import { IButtonClassNames, getBaseButtonClassNames } from './BaseButton.classNa
 import { getClassNames as getBaseSplitButtonClassNames, ISplitButtonClassNames } from './SplitButton/SplitButton.classNames';
 import { KeytipData } from '../../KeytipData';
 import { memoizeFunction } from '@uifabric/utilities';
-import { IKeytipProps } from '../Keytip';
+import { IKeytipProps } from '../Keytip/Keytip.types';
 
 /**
  * {@docCategory Button}
