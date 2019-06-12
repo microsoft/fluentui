@@ -1,15 +1,23 @@
-import { HighContrastSelector } from '../../Styling';
+import { HighContrastSelector, FontWeights } from '../../Styling';
 import { ILabelStyleProps, ILabelStyles } from './Label.types';
 
 export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
   const { theme, className, disabled, required } = props;
+  const { semanticColors } = theme;
+
+  // Tokens
+  const labelFontWeight = FontWeights.semibold;
+  const labelColor = semanticColors.bodyText;
+  const labelDisabledColor = semanticColors.disabledBodyText;
+  const labelRequiredStarColor = semanticColors.errorText;
 
   return {
     root: [
       'ms-Label',
       theme.fonts.medium,
       {
-        color: theme.semanticColors.bodyText,
+        fontWeight: labelFontWeight,
+        color: labelColor,
         boxSizing: 'border-box',
         boxShadow: 'none',
         margin: 0,
@@ -19,7 +27,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         overflowWrap: 'break-word'
       },
       disabled && {
-        color: theme.semanticColors.disabledBodyText,
+        color: labelDisabledColor,
         selectors: {
           [HighContrastSelector]: {
             color: 'GrayText'
@@ -30,7 +38,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
         selectors: {
           '::after': {
             content: `' *'`,
-            color: theme.semanticColors.errorText,
+            color: labelRequiredStarColor,
             paddingRight: 12
           }
         }

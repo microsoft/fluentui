@@ -116,7 +116,7 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
       className=
 
           {
-            color: #333333;
+            color: #323130;
             font-size: 16px;
             font-stretch: normal;
             font-style: normal;

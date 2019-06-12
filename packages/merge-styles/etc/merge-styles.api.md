@@ -137,8 +137,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     border?: ICSSRule | 0 | string;
     borderBottom?: ICSSRule | ICSSPixelUnitRule;
     borderBottomColor?: ICSSRule | string;
-    borderBottomLeftRadius?: ICSSRule | string;
-    borderBottomRightRadius?: ICSSRule | string;
+    borderBottomLeftRadius?: ICSSRule | ICSSPixelUnitRule;
+    borderBottomRightRadius?: ICSSRule | ICSSPixelUnitRule;
     borderBottomStyle?: ICSSRule | string;
     borderBottomWidth?: ICSSRule | ICSSPixelUnitRule;
     borderCollapse?: ICSSRule | string;
@@ -159,8 +159,8 @@ export interface IRawStyleBase extends IRawFontStyle {
     borderStyle?: ICSSRule | string;
     borderTop?: ICSSRule | ICSSPixelUnitRule;
     borderTopColor?: ICSSRule | string;
-    borderTopLeftRadius?: ICSSRule | string;
-    borderTopRightRadius?: ICSSRule | string;
+    borderTopLeftRadius?: ICSSRule | ICSSPixelUnitRule;
+    borderTopRightRadius?: ICSSRule | ICSSPixelUnitRule;
     borderTopStyle?: ICSSRule | string;
     borderTopWidth?: ICSSRule | ICSSPixelUnitRule;
     borderWidth?: ICSSRule | ICSSPixelUnitRule;

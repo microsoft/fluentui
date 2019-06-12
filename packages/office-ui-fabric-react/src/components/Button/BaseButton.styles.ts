@@ -23,7 +23,7 @@ const iconStyle = {
  */
 export const getStyles = memoizeFunction(
   (theme: ITheme): IButtonStyles => {
-    const { semanticColors } = theme;
+    const { semanticColors, effects } = theme;
 
     const border = semanticColors.buttonBorder;
     const disabledBackground = semanticColors.disabledBackground;
@@ -39,7 +39,7 @@ export const getStyles = memoizeFunction(
 
     return {
       root: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         theme.fonts.medium,
         {
           boxSizing: 'border-box',
@@ -51,8 +51,8 @@ export const getStyles = memoizeFunction(
           cursor: 'pointer',
           verticalAlign: 'top',
           padding: '0 16px',
-          borderRadius: 0,
-          margin: 0,
+          borderRadius: effects.roundedCorner2,
+
           selectors: {
             // IE11 workaround for preventing shift of child elements of a button when active.
             ':active > *': {
@@ -65,9 +65,10 @@ export const getStyles = memoizeFunction(
       ],
 
       rootDisabled: [
-        getFocusStyle(theme, { inset: -1, highContrastStyle: buttonHighContrastFocus }),
+        getFocusStyle(theme, { inset: 1, highContrastStyle: buttonHighContrastFocus, borderColor: 'transparent' }),
         {
           backgroundColor: disabledBackground,
+          borderColor: disabledBackground,
           color: disabledText,
           cursor: 'default',
           pointerEvents: 'none',
@@ -76,7 +77,7 @@ export const getStyles = memoizeFunction(
             ':focus': noOutline,
             [HighContrastSelector]: {
               color: 'grayText',
-              bordercolor: 'grayText'
+              borderColor: 'grayText'
             }
           }
         }

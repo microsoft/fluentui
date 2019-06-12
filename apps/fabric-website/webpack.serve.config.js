@@ -26,6 +26,7 @@ module.exports = resources.createServeConfig({
     alias: {
       '@uifabric/fabric-website/src': path.join(__dirname, 'src'),
       '@uifabric/fabric-website/lib': path.join(__dirname, 'lib'),
+      '@uifabric/example-app-base$': path.resolve(__dirname, '../../packages/example-app-base/src'),
       'office-ui-fabric-react$': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),
       'office-ui-fabric-react/src': path.join(__dirname, 'node_modules/office-ui-fabric-react/src'),
       'office-ui-fabric-react/lib': path.join(__dirname, 'node_modules/office-ui-fabric-react/lib'),

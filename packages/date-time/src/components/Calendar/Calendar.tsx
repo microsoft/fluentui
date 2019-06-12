@@ -7,7 +7,7 @@ import { styles } from './Calendar.styles';
 /**
  * Calendar description
  */
-export const Calendar: React.StatelessComponent<ICalendarProps> = styled<ICalendarProps, ICalendarStyleProps, ICalendarStyles>(
+export const Calendar: React.FunctionComponent<ICalendarProps> = styled<ICalendarProps, ICalendarStyleProps, ICalendarStyles>(
   CalendarBase,
   styles,
   undefined,

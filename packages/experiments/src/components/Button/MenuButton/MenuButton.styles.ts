@@ -1,9 +1,9 @@
 import { IMenuButtonComponent, IMenuButtonStylesReturnType, IMenuButtonTokenReturnType } from './MenuButton.types';
-import { HighContrastSelector } from '../../../Styling';
+import { getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 
 const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   return {
-    contentPadding: '0px 10px',
+    menuIconSize: 12,
     minWidth: 0
   };
 };
@@ -11,9 +11,13 @@ const baseTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTo
 const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.buttonBackgroundPressed,
-    backgroundColorHovered: semanticColors.buttonBackgroundPressed,
-    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+    backgroundColorExpanded: semanticColors.buttonBackgroundPressed,
+    backgroundColorExpandedHovered: semanticColors.buttonBackgroundPressed,
+    backgroundColorExpandedPressed: semanticColors.buttonBackgroundPressed,
+
+    borderColor: semanticColors.buttonBorder,
+    borderColorHovered: semanticColors.buttonBorder,
+    borderColorPressed: semanticColors.buttonBorder,
 
     color: semanticColors.buttonTextPressed,
     colorHovered: semanticColors.buttonTextPressed,
@@ -32,9 +36,9 @@ const expandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButt
 const primaryExpandedTokens: IMenuButtonComponent['tokens'] = (props, theme): IMenuButtonTokenReturnType => {
   const { semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.primaryButtonBackgroundPressed,
-    backgroundColorHovered: semanticColors.primaryButtonBackgroundPressed,
-    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorExpanded: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorExpandedHovered: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorExpandedPressed: semanticColors.primaryButtonBackgroundPressed,
 
     highContrastBackgroundColor: 'Highlight',
     highContrastBackgroundColorHovered: 'Highlight',
@@ -59,10 +63,22 @@ export const MenuButtonTokens: IMenuButtonComponent['tokens'] = (props, theme): 
 export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, tokens): IMenuButtonStylesReturnType => {
   const { className } = props;
 
+  const globalClassNames = getGlobalClassNames(
+    {
+      msMenuButton: 'ms-MenuButton'
+    },
+    theme
+  );
+
   return {
+    root: {
+      display: 'inline-flex'
+    },
     button: [
+      globalClassNames.msMenuButton,
       {
-        backgroundColor: tokens.backgroundColor,
+        backgroundColor: props.expanded ? tokens.backgroundColorExpanded : tokens.backgroundColor,
+        borderColor: tokens.borderColor,
         color: tokens.color,
         minWidth: tokens.minWidth,
 
@@ -73,7 +89,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
             borderColor: tokens.highContrastBorderColor
           },
           ':hover': {
-            backgroundColor: tokens.backgroundColorHovered,
+            backgroundColor: props.expanded ? tokens.backgroundColorExpandedHovered : tokens.backgroundColorHovered,
             color: tokens.colorHovered,
 
             selectors: {
@@ -85,7 +101,7 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
             }
           },
           ':hover:active': {
-            backgroundColor: tokens.backgroundColorPressed,
+            backgroundColor: props.expanded ? tokens.backgroundColorExpandedPressed : tokens.backgroundColorPressed,
             color: tokens.colorPressed,
 
             selectors: {
@@ -95,16 +111,14 @@ export const MenuButtonStyles: IMenuButtonComponent['styles'] = (props, theme, t
                 borderColor: tokens.highContrastBorderColorPressed
               }
             }
-          },
-          '> *': {
-            padding: tokens.contentPadding
           }
         }
       },
       className
     ],
     menuIcon: {
-      paddingTop: '3px'
+      fontSize: tokens.menuIconSize,
+      paddingTop: '5px'
     }
   };
 };

@@ -3,7 +3,7 @@
  */
 
 import * as Enzyme from 'enzyme';
-import { createRef, getTheme } from 'office-ui-fabric-react';
+import { getTheme } from 'office-ui-fabric-react';
 import { CommandBarButton } from 'office-ui-fabric-react/lib/Button';
 import * as React from 'react';
 import { ISidebar, ISidebarProps, Sidebar, SidebarButton } from './index';
@@ -91,11 +91,11 @@ describe('Sidebar', () => {
   });
 
   it('should render the component with context menu when collapsed', () => {
-    const sidebar = createRef<ISidebar>();
+    const sidebar = React.createRef<ISidebar>();
 
     const wrapper = Enzyme.shallow(<Sidebar componentRef={sidebar} {...sidebarAccordionExampleProps} />);
 
-    sidebar.value && sidebar.value.setCollapsed(true);
+    sidebar.current && sidebar.current.setCollapsed(true);
     wrapper.update();
 
     expect(wrapper.find('.ba-SidebarContextualMenuButton').length).toBe(2);

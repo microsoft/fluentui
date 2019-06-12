@@ -23,10 +23,10 @@ import { ITheme } from '@uifabric/styling';
 import * as React from 'react';
 
 // @public
-export const Calendar: React.StatelessComponent<ICalendarProps>;
+export const Calendar: React.FunctionComponent<ICalendarProps>;
 
 // @public
-export const DatePicker: React.StatelessComponent<IDatePickerProps>;
+export const DatePicker: React.FunctionComponent<IDatePickerProps>;
 
 // @public (undocumented)
 export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerState> implements IDatePicker {

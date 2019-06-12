@@ -20,11 +20,9 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           animation-fill-mode: both;
           animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
           animation-timing-function: linear;
-          border-color: #eaeaea;
-          border-style: solid;
-          border-width: 1px;
+          border-radius: 2px;
           border: 0px;
-          box-shadow: none !important;
+          box-shadow: 0 6.4px 14.4px 0 rgba(0, 0, 0, 0.132), 0 1.2px 3.6px 0 rgba(0, 0, 0, 0.108);
           box-sizing: border-box;
           display: block;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -57,6 +55,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
           {
             background-color: #ffffff;
             background: #0078d4;
+            border-radius: 2px;
             overflow-x: hidden;
             overflow-y: hidden;
             position: relative;
@@ -64,7 +63,7 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
       onKeyDown={[Function]}
       style={
         Object {
-          "maxHeight": 750,
+          "maxHeight": 752,
           "outline": "none",
           "overflowY": "hidden",
         }
@@ -80,7 +79,6 @@ exports[`TeachingBubble renders TeachingBubble correctly 1`] = `
                 animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
                 animation-timing-function: linear;
                 border: 0px;
-                box-shadow: none !important;
                 display: flex;
                 max-width: 456px;
                 outline: transparent;
@@ -142,7 +140,6 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -174,12 +171,9 @@ exports[`TeachingBubble renders TeachingBubbleContent correctly 1`] = `
         className=
             ms-TeachingBubble-headline
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 28px;
-              font-weight: 100;
+              font-size: 20px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -226,7 +220,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -258,12 +251,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
         className=
             ms-TeachingBubble-headline
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 28px;
-              font-weight: 100;
+              font-size: 20px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -304,8 +294,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             color: #ffffff;
             display: flex;
           }
-          & > *:not(:first-child) {
-            margin-left: 20px;
+          & .ms-Button:not(:first-child) {
+            margin-left: 16px;
           }
     >
       <button
@@ -319,8 +309,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               -webkit-font-smoothing: antialiased;
               background-color: #ffffff;
               border-color: #ffffff;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              border-radius: 2px;
+              border: none;
               box-sizing: border-box;
               color: #ffffff;
               cursor: pointer;
@@ -329,10 +319,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -350,14 +336,15 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border-color: #ffffff;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: none;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -465,20 +452,16 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               -webkit-font-smoothing: antialiased;
               background-color: #0078d4;
               border-color: #ffffff;
-              border-radius: 0px;
-              border: 1px solid transparent;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               cursor: pointer;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
               height: 32px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               min-width: 80px;
               outline: transparent;
               padding-bottom: 0;
@@ -496,14 +479,14 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -520,8 +503,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
               top: 0px;
             }
             &:hover {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -530,7 +513,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
             &:active {
               background-color: #0078d4;
               border-color: #ffffff;
-              color: #212121;
+              color: #201f1e;
             }
             & .ms-Button-label {
               -moz-osx-font-smoothing: grayscale;
@@ -610,10 +593,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           font-size: 12px;
           font-weight: 400;
           height: 32px;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           outline: transparent;
           padding-bottom: 0;
           padding-left: 4px;
@@ -632,14 +611,14 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: 1px solid #605e5c;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -656,15 +635,18 @@ exports[`TeachingBubble renders TeachingBubbleContent with buttons correctly 1`]
           top: 0px;
         }
         &:hover {
-          background: transparent;
-          color: #212121;
+          background-color: #f3f2f1;
+          background: #106ebe;
+          color: #ffffff;
         }
         @media screen and (-ms-high-contrast: active){&:hover {
           border-color: Highlight;
           color: Highlight;
         }
         &:active {
-          color: #0078d4;
+          background-color: #edebe9;
+          background: #005a9e;
+          color: #ffffff;
         }
     data-is-focusable={true}
     onClick={[Function]}
@@ -729,7 +711,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -767,6 +748,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with condensed headline co
             ms-TeachingBubble-headline
             {
               color: #ffffff;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -813,7 +795,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -864,8 +845,8 @@ exports[`TeachingBubble renders TeachingBubbleContent with custom footer text 1`
             color: #ffffff;
             display: flex;
           }
-          & > *:not(:first-child) {
-            margin-left: 20px;
+          & .ms-Button:not(:first-child) {
+            margin-left: 16px;
           }
     >
       <span>
@@ -886,7 +867,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -958,12 +938,9 @@ exports[`TeachingBubble renders TeachingBubbleContent with image correctly 1`] =
         className=
             ms-TeachingBubble-headline
             {
-              -moz-osx-font-smoothing: grayscale;
-              -webkit-font-smoothing: antialiased;
               color: #ffffff;
-              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 28px;
-              font-weight: 100;
+              font-size: 20px;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -1010,7 +987,6 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
         animation-name: keyframes 0%{opacity:0;animation-timing-function:cubic-bezier(.1,.9,.2,1);transform:scale3d(.90,.90,.90);}100%{opacity:1;transform:scale3d(1,1,1);};
         animation-timing-function: linear;
         border: 0px;
-        box-shadow: none !important;
         display: block;
         max-width: 364px;
         outline: transparent;
@@ -1051,6 +1027,7 @@ exports[`TeachingBubble renders TeachingBubbleContent with small headline correc
             ms-TeachingBubble-headline
             {
               color: #ffffff;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;

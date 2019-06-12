@@ -2,6 +2,25 @@
   "name": "@uifabric/jest-serializer-merge-styles",
   "entries": [
     {
+      "version": "6.0.10",
+      "tag": "@uifabric/jest-serializer-merge-styles_v6.0.10",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.0.9",
       "tag": "@uifabric/jest-serializer-merge-styles_v6.0.9",
       "date": "Tue, 14 May 2019 07:50:30 GMT",
