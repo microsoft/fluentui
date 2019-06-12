@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "Tweaks to make build pass.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "dzearing@microsoft.com"
+}
