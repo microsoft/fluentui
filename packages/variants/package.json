@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/variants",
-  "version": "6.14.2",
+  "version": "6.14.3",
   "description": "Office UI Fabric subtheme generator.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",

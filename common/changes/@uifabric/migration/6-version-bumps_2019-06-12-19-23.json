@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/migration",
+      "comment": "Package bump to resolve conflicts.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/migration",
+  "email": "jdh@microsoft.com"
+}

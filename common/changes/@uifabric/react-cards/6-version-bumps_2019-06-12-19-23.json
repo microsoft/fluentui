@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Package bump to resolve conflicts.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "jdh@microsoft.com"
+}

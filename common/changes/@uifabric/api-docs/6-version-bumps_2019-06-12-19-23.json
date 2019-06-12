@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/api-docs",
+      "comment": "Package bump to resolve conflicts.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/api-docs",
+  "email": "jdh@microsoft.com"
+}

@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/charting",
-  "version": "0.30.2",
+  "version": "0.30.3",
   "description": "Experimental React components for building experiences for Office 365.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -36,7 +36,7 @@
     "@types/sinon": "2.2.2",
     "@types/webpack-env": "1.13.9",
     "@uifabric/example-app-base": "^6.23.1",
-    "@uifabric/jest-serializer-merge-styles": "^6.0.9",
+    "@uifabric/jest-serializer-merge-styles": "^6.0.10",
     "@uifabric/prettier-rules": "^1.0.2",
     "@uifabric/tslint-rules": "^1.0.2",
     "enzyme": "^3.4.1",
