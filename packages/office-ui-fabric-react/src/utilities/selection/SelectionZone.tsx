@@ -10,6 +10,7 @@ import {
   isElementTabbable
 } from '../../Utilities';
 import { ISelection, SelectionMode, IObjectWithKey } from './interfaces';
+export { ISelection, SelectionMode, IObjectWithKey };
 
 // Selection definitions:
 //
@@ -37,6 +38,9 @@ const SELECTION_SELECT_ATTRIBUTE_NAME = 'data-selection-select';
  * {@docCategory Selection}
  */
 export interface ISelectionZone {
+  /**
+   * Method to ignore subsequent focus.
+   */
   ignoreNextFocus: () => void;
 }
 
@@ -44,18 +48,52 @@ export interface ISelectionZone {
  * {@docCategory Selection}
  */
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
+  /**
+   * Reference to the component interface.
+   */
   componentRef?: () => void;
+  /**
+   * Required {@link ISelection} instance bound to the {@link SelectionZone}.
+   */
   selection: ISelection;
   /**
-   * @deprecated No longer in use, focus is now managed by FocusZone
+   * @deprecated No longer in use, focus is now managed by {@link FocusZone}.
    */
   layout?: {};
+  /**
+   * The mode of Selection, where the value is one of
+   * 'none', 'single', or 'multiple'.
+   *
+   * @defaultvalue {@link SelectionMode.multiple}
+   */
   selectionMode?: SelectionMode;
+  /**
+   * If true, selection is preserved on outer click.
+   */
   selectionPreservedOnEmptyClick?: boolean;
+  /**
+   * If true, disables automatic selection on input elements.
+   */
   disableAutoSelectOnInputElements?: boolean;
+  /**
+   * If true, modal selection is enabled on touch event.
+   */
   enterModalOnTouch?: boolean;
+  /**
+   * Determines if an item is selected on focus.
+   *
+   * @defaultvalue true
+   */
   isSelectedOnFocus?: boolean;
+  /**
+   * Optional callback for when an item is
+   * invoked via ENTER or double-click.
+   */
   onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
+  /**
+   * Optional callback for when an
+   * item's contextual menu action occurs.
+   */
   onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
 }
 
@@ -64,7 +102,6 @@ export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone
  */
 export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
   public static defaultProps = {
-    isMultiSelectEnabled: true,
     isSelectedOnFocus: true,
     selectionMode: SelectionMode.multiple
   };
@@ -101,10 +138,8 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
         role="presentation"
         onDoubleClick={this._onDoubleClick}
         onContextMenu={this._onContextMenu}
-        {...{
-          onMouseDownCapture: this._onMouseDownCapture,
-          onFocusCapture: this._onFocus
-        }}
+        onMouseDownCapture={this._onMouseDownCapture}
+        onFocusCapture={this._onFocus}
       >
         {this.props.children}
       </div>
@@ -121,17 +156,17 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     this._handleNextFocus(false);
   };
 
-  private _onMouseDownCapture = (ev: any): void => {
-    if (document.activeElement !== ev.target && !elementContains(document.activeElement as HTMLElement, ev.target)) {
+  private _onMouseDownCapture = (ev: React.MouseEvent<HTMLElement>): void => {
+    let target = ev.target as HTMLElement;
+
+    if (document.activeElement !== target && !elementContains(document.activeElement as HTMLElement, target)) {
       this.ignoreNextFocus();
       return;
     }
 
-    if (!elementContains(ev.target, this._root.current)) {
+    if (!elementContains(target, this._root.current)) {
       return;
     }
-
-    let target = ev.target as HTMLElement;
 
     while (target !== this._root.current) {
       if (this._hasAttribute(target, SELECTION_INVOKE_ATTRIBUTE_NAME)) {

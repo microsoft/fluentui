@@ -17,11 +17,11 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
   const presence = presenceBoolean(props.presence as PersonaPresence);
 
   // Presence colors
-  const presenceColorAvailable = '#7FBA00';
-  const presenceColorAway = '#FCD116';
-  const presenceColorBusy = '#D93B3B';
-  const presenceColorDnd = '#E81123';
-  const presenceColorOffline = '#93ABBD';
+  const presenceColorAvailable = '#6BB700';
+  const presenceColorAway = '#FFAA44';
+  const presenceColorBusy = '#C43148';
+  const presenceColorDnd = '#C50F1F';
+  const presenceColorOffline = '#8A8886';
 
   return {
     presence: [
@@ -48,7 +48,7 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         }
       },
 
-      size.isSize10 && {
+      (size.isSize8 || size.isSize10) && {
         right: 'auto',
         top: '7px',
         left: 0,
@@ -62,15 +62,25 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
         }
       },
 
-      (size.isSize10 || size.isSize24 || size.isSize28 || size.isSize32) && {
+      (size.isSize8 || size.isSize10 || size.isSize24 || size.isSize28 || size.isSize32) && {
         height: personaPresenceSize.size8,
         width: personaPresenceSize.size8
+      },
+
+      (size.isSize40 || size.isSize48) && {
+        height: personaPresenceSize.size12,
+        width: personaPresenceSize.size12
       },
 
       size.isSize16 && {
         height: personaPresenceSize.size6,
         width: personaPresenceSize.size6,
         borderWidth: '1.5px'
+      },
+
+      size.isSize56 && {
+        height: personaPresenceSize.size16,
+        width: personaPresenceSize.size16
       },
 
       size.isSize72 && {
@@ -178,6 +188,11 @@ export const getStyles = (props: IPersonaPresenceStyleProps): IPersonaPresenceSt
             color: 'Window'
           }
         }
+      },
+
+      size.isSize56 && {
+        fontSize: '8px',
+        lineHeight: personaPresenceSize.size16
       },
 
       size.isSize72 && {

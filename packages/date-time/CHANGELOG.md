@@ -1,6 +1,36 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 6.3.3
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Re-export shared date utilities rather than duplicating
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
+
+## 6.3.2
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
+
+## 6.3.1
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
+
+## 6.3.0
+Fri, 07 Jun 2019 12:21:48 GMT
+
+### Minor changes
+
+- styling updates for datetime calendar
 
 ## 6.2.1
 Wed, 05 Jun 2019 12:22:30 GMT

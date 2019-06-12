@@ -1,19 +1,19 @@
 // Jest Snapshot v1, https://goo.gl/fbAQLP
 
-exports[`Button view renders a default Button with content correctly 1`] = `
+exports[`Button renders a default Button with content correctly 1`] = `
 <button
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
-        border-radius: 0px;
+        background-color: #ffffff;
+        border-color: #8a8886;
+        border-radius: 2px;
         border-style: solid;
         border-width: 1px;
         box-sizing: border-box;
-        color: #333333;
+        color: #323130;
         cursor: pointer;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -43,47 +43,54 @@ exports[`Button view renders a default Button with content correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
-        outline: 1px solid #666666;
+        left: 2px;
+        outline: 1px solid #605e5c;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
+      @media screen and (-ms-high-contrast: active){& {
+        border-width: 1px;
+      }
       &:hover {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+        background-color: #f3f2f1;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         border-color: Highlight;
         color: Highlight;
       }
       &:active {
-        background-color: #eaeaea;
-        border-color: transparent;
-        color: #212121;
+        background-color: #edebe9;
+        border-color: #8a8886;
+        color: #201f1e;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         border-color: Highlight;
         color: Highlight;
       }
-      &:hover .ms-Icon-46 {
-        color: #212121;
+      &:hover .ms-Button-icon {
+        color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-46 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Highlight;
       }
-      &:active .ms-Icon-46 {
-        color: #212121;
+      &:active .ms-Button-icon {
+        color: #201f1e;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-46 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Highlight;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span
@@ -98,8 +105,8 @@ exports[`Button view renders a default Button with content correctly 1`] = `
           height: 100%;
           justify-content: center;
           padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 0px;
           width: auto;
         }
@@ -135,21 +142,21 @@ exports[`Button view renders a default Button with content correctly 1`] = `
 </button>
 `;
 
-exports[`Button view renders a disabled primary Button with content correctly 1`] = `
+exports[`Button renders a disabled primary Button with content correctly 1`] = `
 <button
   aria-disabled={true}
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        background-color: #f4f4f4;
-        border-color: transparent;
-        border-radius: 0px;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        border-radius: 2px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 0px;
         box-sizing: border-box;
-        color: #a6a6a6;
+        color: #a19f9d;
         cursor: default;
         display: inline-block;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -162,6 +169,7 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -179,25 +187,26 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
-        outline: 1px solid #666666;
+        left: 2px;
+        outline: 1px solid transparent;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
         background-color: Window;
         border-color: GrayText;
+        border-width: 1px;
         color: GrayText;
       }
       &:hover {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
         background-color: Window;
@@ -205,26 +214,30 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
         color: GrayText;
       }
       &:active {
-        background-color: #f4f4f4;
-        border-color: transparent;
-        color: #a6a6a6;
+        background-color: #f3f2f1;
+        border-color: #f3f2f1;
+        color: #a19f9d;
       }
       @media screen and (-ms-high-contrast: active){&:active {
         background-color: Window;
         border-color: GrayText;
         color: GrayText;
       }
-      &:hover .ms-Icon-56 {
-        color: #a6a6a6;
+      &:hover .ms-Button-icon {
+        color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-56 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: GrayText;
       }
-      &:active .ms-Icon-56 {
-        color: #a6a6a6;
+      &:active .ms-Button-icon {
+        color: #a19f9d;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-56 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: GrayText;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
+        outline-color: transparent;
       }
   disabled={true}
   onClick={[Function]}
@@ -243,8 +256,8 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
           height: 100%;
           justify-content: center;
           padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 0px;
           width: auto;
         }
@@ -280,18 +293,18 @@ exports[`Button view renders a disabled primary Button with content correctly 1`
 </button>
 `;
 
-exports[`Button view renders a primary Button with content correctly 1`] = `
+exports[`Button renders a primary Button with content correctly 1`] = `
 <button
   className=
-
+      ms-Button
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
         background-color: #0078d4;
-        border-color: transparent;
-        border-radius: 0px;
+        border-color: #8a8886;
+        border-radius: 2px;
         border-style: solid;
-        border-width: 1px;
+        border-width: 0px;
         box-sizing: border-box;
         color: #ffffff;
         cursor: pointer;
@@ -306,6 +319,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         margin-top: 0px;
         min-height: 32px;
         min-width: 100px;
+        outline-color: transparent;
         outline: transparent;
         overflow: hidden;
         padding-bottom: 0px;
@@ -323,23 +337,24 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       .ms-Fabric--isFocusVisible &:focus:after {
         border: 1px solid #ffffff;
-        bottom: 1px;
+        bottom: 2px;
         content: "";
-        left: 1px;
-        outline: 1px solid #666666;
+        left: 2px;
+        outline: 1px solid transparent;
         position: absolute;
-        right: 1px;
-        top: 1px;
+        right: 2px;
+        top: 2px;
         z-index: 1;
       }
       @media screen and (-ms-high-contrast: active){& {
         -ms-high-contrast-adjust: none;
         background-color: WindowText;
+        border-width: 1px;
         color: Window;
       }
       &:hover {
         background-color: #106ebe;
-        border-color: transparent;
+        border-color: #8a8886;
         color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:hover {
@@ -349,7 +364,7 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
       }
       &:active {
         background-color: #005a9e;
-        border-color: transparent;
+        border-color: #8a8886;
         color: #ffffff;
       }
       @media screen and (-ms-high-contrast: active){&:active {
@@ -357,20 +372,25 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
         border-color: Highlight;
         color: Window;
       }
-      &:hover .ms-Icon-54 {
+      &:hover .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:hover .ms-Icon-54 {
+      @media screen and (-ms-high-contrast: active){&:hover .ms-Button-icon {
         color: Window;
       }
-      &:active .ms-Icon-54 {
+      &:active .ms-Button-icon {
         color: #ffffff;
       }
-      @media screen and (-ms-high-contrast: active){&:active .ms-Icon-54 {
+      @media screen and (-ms-high-contrast: active){&:active .ms-Button-icon {
         color: Window;
+      }
+      .ms-Fabric--isFocusVisible &:focus {
+        border-style: solid;
+        outline-color: transparent;
       }
   onClick={[Function]}
   role="button"
+  tabIndex={0}
   type="button"
 >
   <span
@@ -385,8 +405,8 @@ exports[`Button view renders a primary Button with content correctly 1`] = `
           height: 100%;
           justify-content: center;
           padding-bottom: 0px;
-          padding-left: 16px;
-          padding-right: 16px;
+          padding-left: 20px;
+          padding-right: 20px;
           padding-top: 0px;
           width: auto;
         }

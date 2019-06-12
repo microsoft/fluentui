@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IColumn } from './DetailsList.types';
 import { DetailsColumnBase } from './DetailsColumn.base';
 import { IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';

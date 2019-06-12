@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, IStyleSet, ITheme } from '@uifabric/styling';
 
 // TODO: Known TypeScript issue is widening return type checks when using function type declarations.
@@ -76,30 +77,17 @@ export type ICustomizationProps<TViewProps, TTokens, TStyleSet extends IStyleSet
   Required<Pick<IStyleableComponentProps<TViewProps, TTokens, TStyleSet>, 'theme'>>;
 
 /**
- * Enforce props contract on state components, including the view prop and its shape.
+ * Defines the contract for state components.
  */
-export type IStateComponentProps<TComponentProps, TViewProps> = TComponentProps & {
-  renderView: IViewRenderer<TViewProps>;
-};
+export type IStateComponentType<TComponentProps, TViewProps> = (props: Readonly<TComponentProps>) => TViewProps;
 
 /**
- * Imposed state component props contract with styling props as well as a renderView
- * prop that the StateComponent should make use of in its render output (and should be its only render output.)
+ * Defines the contract for view components.
  */
-export type IStateComponentType<TComponentProps, TViewProps> = React.ComponentType<IStateComponentProps<TComponentProps, TViewProps>>;
+export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => ReturnType<React.FunctionComponent>;
 
 /**
- * Defines a view component.
- */
-export type IViewComponent<TViewProps> = (props: IPropsWithChildren<TViewProps>) => JSX.Element | null;
-
-/**
- * Handles rendering view component.
- */
-export type IViewRenderer<TViewProps> = (props?: TViewProps) => JSX.Element | null;
-
-/**
- * Component used by foundation to tie elements together.
+ * Component options used by foundation to tie elements together.
  *
  * * TComponentProps: A styleable props interface for the created component.
  * * TTokens: The type for tokens props.
@@ -108,11 +96,17 @@ export type IViewRenderer<TViewProps> = (props?: TViewProps) => JSX.Element | nu
  * component is not provided, TComponentProps is the same as TViewProps.
  * * TStatics: Static type for statics applied to created component object.
  */
-export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>, TViewProps = TComponentProps, TStatics = {}> {
+export interface IComponentOptions<
+  TComponentProps,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps = TComponentProps,
+  TStatics = {}
+> {
   /**
-   * Display name to identify component in React hierarchy.
+   * Display name to identify component in React hierarchy. This parameter is required for targeted component styling via theming.
    */
-  displayName: string;
+  displayName?: string;
   /**
    * List of fields which can be customized.
    */
@@ -121,10 +115,6 @@ export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSe
    * Styles prop to pass into component.
    */
   styles?: IStylesFunctionOrObject<TViewProps, TTokens, TStyleSet>;
-  /**
-   * React view component.
-   */
-  view: IViewComponent<TViewProps>;
   /**
    * Optional state component that processes TComponentProps into TViewProps.
    */
@@ -142,6 +132,22 @@ export interface IComponent<TComponentProps, TTokens, TStyleSet extends IStyleSe
    */
   factoryOptions?: IFactoryOptions<TComponentProps>;
 }
+
+/**
+ * Component helper that defines options as required for ease of use by component consumers.
+ */
+export type IComponent<
+  TComponentProps,
+  TTokens,
+  TStyleSet extends IStyleSet<TStyleSet>,
+  TViewProps = TComponentProps,
+  TStatics = {}
+> = Required<IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>> & {
+  /**
+   * Component that generates view output.
+   */
+  view: IViewComponent<TViewProps>;
+};
 
 /**
  * Factory options for creating component.
