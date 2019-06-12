@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website-resources",
+      "comment": "AppDefinition: fixes urls to align to the ones on the website.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website-resources",
+  "email": "vibraga@microsoft.com"
+}
