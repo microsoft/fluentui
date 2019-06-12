@@ -27,7 +27,7 @@ const horizontalGapStackTokens: IStackTokens = {
   childrenGap: 10,
   padding: 10
 };
-const itemAlignmentStackTokens: IStackTokens = {
+const itemAlignmentsStackTokens: IStackTokens = {
   childrenGap: 5,
   padding: 10
 };
@@ -67,7 +67,7 @@ export class HorizontalStackBasicExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Item alignments</span>
-        <Stack horizontal disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentStackTokens}>
+        <Stack horizontal disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
           <Stack.Item align="auto" styles={stackItemStyles}>
             <span>Auto-aligned item</span>
           </Stack.Item>

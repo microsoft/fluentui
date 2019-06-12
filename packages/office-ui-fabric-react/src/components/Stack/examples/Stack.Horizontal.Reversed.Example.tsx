@@ -14,7 +14,7 @@ const stackItemStyles: IStackItemStyles = {
     padding: 5
   }
 };
-const itemAlignmentStackStyles: IStackStyles = {
+const itemAlignmentsStackStyles: IStackStyles = {
   root: {
     background: DefaultPalette.themeTertiary,
     height: 100
@@ -27,7 +27,7 @@ const horizontalGapStackTokens: IStackTokens = {
   childrenGap: 10,
   padding: 10
 };
-const itemAlignmentStackTokens: IStackTokens = {
+const itemAlignmentsStackTokens: IStackTokens = {
   childrenGap: 5,
   padding: 10
 };
@@ -54,7 +54,7 @@ export class HorizontalStackReversedExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Item alignments</span>
-        <Stack horizontal reversed disableShrink styles={itemAlignmentStackStyles} tokens={itemAlignmentStackTokens}>
+        <Stack horizontal reversed disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
           <Stack.Item align="auto" styles={stackItemStyles}>
             <span>Auto-aligned item</span>
           </Stack.Item>
