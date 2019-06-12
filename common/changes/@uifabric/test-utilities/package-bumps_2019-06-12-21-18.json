@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/test-utilities",
+      "comment": "Initial release of Fabric 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/test-utilities",
+  "email": "elcraig@microsoft.com"
+}

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Initial release of Fabric 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com"
+}
