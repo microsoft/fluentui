@@ -994,7 +994,7 @@ exports[`ColorPicker renders correctly 1`] = `
                     onInput={[Function]}
                     spellCheck={false}
                     type="text"
-                    value="100.0"
+                    value="100"
                   />
                 </div>
               </div>

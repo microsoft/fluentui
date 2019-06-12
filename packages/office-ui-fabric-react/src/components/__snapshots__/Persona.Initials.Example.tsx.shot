@@ -37,7 +37,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={10}
   >
     <div
       className=
@@ -50,7 +49,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={10}
     >
       <div
         className=
@@ -255,7 +253,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={10}
   >
     <div
       className=
@@ -268,7 +265,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={10}
     >
       <div
         className=
@@ -473,7 +469,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={11}
   >
     <div
       className=
@@ -486,7 +481,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={11}
     >
       <div
         className=
@@ -691,7 +685,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={11}
   >
     <div
       className=
@@ -704,7 +697,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={11}
     >
       <div
         className=
@@ -909,7 +901,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={12}
   >
     <div
       className=
@@ -922,7 +913,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={12}
     >
       <div
         className=
@@ -1126,7 +1116,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={12}
   >
     <div
       className=
@@ -1139,7 +1128,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={12}
     >
       <div
         className=
@@ -1358,7 +1346,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={13}
   >
     <div
       className=
@@ -1371,7 +1358,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
     >
       <div
         className=
@@ -1575,7 +1561,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={13}
   >
     <div
       className=
@@ -1588,7 +1573,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
     >
       <div
         className=
@@ -1807,7 +1791,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={16}
   >
     <div
       className=
@@ -1820,7 +1803,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={16}
     >
       <div
         className=
@@ -2039,7 +2021,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={16}
   >
     <div
       className=
@@ -2052,7 +2033,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={16}
     >
       <div
         className=
@@ -2271,7 +2251,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={14}
   >
     <div
       className=
@@ -2284,7 +2263,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={14}
     >
       <div
         className=
@@ -2488,7 +2466,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={15}
   >
     <div
       className=
@@ -2501,7 +2478,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={15}
     >
       <div
         className=
@@ -2705,7 +2681,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={13}
     style={
       Object {
         "height": 150,
@@ -2724,7 +2699,6 @@ exports[`Component Examples renders Persona.Initials.Example.tsx correctly 1`] =
             font-size: 14px;
             font-weight: 400;
           }
-      size={13}
     >
       <div
         className=

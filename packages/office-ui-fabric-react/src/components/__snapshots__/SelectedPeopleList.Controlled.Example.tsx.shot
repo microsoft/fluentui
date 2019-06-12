@@ -350,7 +350,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     &:hover $primaryText {
                       color: #201f1e;
                     }
-                size={11}
               >
                 <div
                   className=
@@ -363,7 +362,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         font-size: 14px;
                         font-weight: 400;
                       }
-                  size={11}
                 >
                   <div
                     className=

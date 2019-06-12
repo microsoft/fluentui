@@ -180,7 +180,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       renameDialogOpen: true,
       dialogContent: (
         <>
-          <TextField componentRef={this._textField} label="Rename" value={item.name} />
+          <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
           <DialogFooter>
             <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
           </DialogFooter>

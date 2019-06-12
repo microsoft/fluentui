@@ -37,7 +37,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={12}
   >
     <div
       className=
@@ -50,7 +49,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
           }
-      size={12}
     >
       <div
         className=
@@ -241,7 +239,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         &:hover $primaryText {
           color: #201f1e;
         }
-    size={14}
   >
     <div
       className=
@@ -254,7 +251,6 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             font-size: 14px;
             font-weight: 400;
           }
-      size={14}
     >
       <div
         className=
