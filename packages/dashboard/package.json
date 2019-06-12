@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/dashboard",
-  "version": "0.58.2",
+  "version": "0.59.0",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
   "typings": "lib/index.d.ts",
@@ -40,7 +40,7 @@
     "style-loader": "^0.21.0"
   },
   "dependencies": {
-    "@uifabric/charting": "^0.28.12",
+    "@uifabric/charting": "^0.31.0",
     "@uifabric/experiments": "^6.67.1",
     "@uifabric/fluent-theme": "^0.16.4",
     "@uifabric/set-version": "^1.1.3",
