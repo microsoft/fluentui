@@ -1,12 +1,8 @@
 pr:
-  - fabric-7
   - master
-  - website-update
 
 trigger:
-  - fabric-7
   - master
-  - website-update
 
 variables:
   - group: fabric-variables
@@ -23,6 +19,10 @@ steps:
   - script: |
       node common/scripts/install-run-rush.js install --bypass-policy
     displayName: rush install
+
+  - script: |
+      npm run checkchange
+    displayName: check change
 
   - script: |
       npm run buildci
