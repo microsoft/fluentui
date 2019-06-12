@@ -2,6 +2,7 @@ import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
 import { Image } from 'office-ui-fabric-react/lib/Image';
+import { renderIcon } from './ChicletGeneral';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
@@ -82,36 +83,10 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
       );
     }
 
-    let src;
-    let icon;
-
-    if (itemType !== null) {
-      src = `${ASSET_CDN_BASE_URL}/brand-icons/product/svg/` + itemType + `_16x1_5.svg`;
-      icon = <img className={this._classNames.icon} src={src} />;
-      switch (
-        itemType // for "hero" apps, we'll use the app icons
-      ) {
-        case 'word':
-        case 'docx':
-          icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/word_16x1_5.svg`} />;
-          break;
-        case 'powerpoint':
-        case 'pptx':
-          icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/powerpoint_16x1_5.svg`} />;
-          break;
-        case 'excel':
-          icon = <img className={this._classNames.icon} src={`${ASSET_CDN_BASE_URL}/brand-icons/product/svg/excel_16x1_5.svg`} />;
-          break;
-        default:
-          icon = undefined;
-          break;
-      }
-    }
-
     return (
       <div>
         {image}
-        {icon}
+        {renderIcon(itemType, this._classNames.icon)}
       </div>
     );
   }

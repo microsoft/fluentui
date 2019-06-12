@@ -35,6 +35,11 @@ export interface IChicletCardStyles {
    * Style for the dile description, which could be a link, description, etc.
    */
   description?: IStyle;
+
+  /**
+   * Style for the line
+   */
+  line?: IStyle;
 }
 
 export interface IChicletCardProps extends React.Props<ChicletCardBase> {
