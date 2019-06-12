@@ -34,3 +34,9 @@ export function renderIcon(itemType?: string, style?: string): React.ReactElemen
   }
   return icon;
 }
+
+export function onClick(click: string, ev: React.MouseEvent<HTMLElement>): void {
+  if (click) {
+    click(ev);
+  }
+}

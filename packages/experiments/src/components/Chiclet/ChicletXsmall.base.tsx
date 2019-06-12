@@ -6,13 +6,11 @@ import { renderIcon } from './ChicletGeneral';
 
 const getClassNames = classNamesFunction<IChicletXsmallStyleProps, IChicletXsmallStyles>();
 
-// const ASSET_CDN_BASE_URL = 'https://static2.sharepointonline.com/files/fabric/assets';
-
 export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletXsmallStyles]: string };
 
   public render(): JSX.Element {
-    const { title, itemType, onClick, className, footer, theme, styles } = this.props;
+    const { onClick, title, itemType, className, footer, theme, styles } = this.props;
 
     this._classNames = getClassNames(styles, { theme: theme!, className });
 
