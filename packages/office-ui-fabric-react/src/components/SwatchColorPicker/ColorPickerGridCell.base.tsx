@@ -1,15 +1,60 @@
 import * as React from 'react';
+import { ITheme, mergeStyleSets } from '../../Styling';
+import { classNamesFunction, memoizeFunction } from '../../Utilities';
+import { getColorFromString } from '../../utilities/color/getColorFromString';
+import { GridCell } from '../../utilities/grid/GridCell';
+import { IGridCellProps } from '../../utilities/grid/GridCell.types';
+import { getStyles as getActionButtonStyles } from '../Button/ActionButton/ActionButton.styles';
+import { IButtonClassNames } from '../Button/BaseButton.classNames';
 import {
   IColorCellProps,
   IColorPickerGridCellProps,
   IColorPickerGridCellStyleProps,
   IColorPickerGridCellStyles
 } from './ColorPickerGridCell.types';
-import { getColorFromString } from '../../utilities/color/getColorFromString';
-import { GridCell } from '../../utilities/grid/GridCell';
-import { IGridCellProps } from '../../utilities/grid/GridCell.types';
-import { classNamesFunction } from '../../Utilities';
-import { getColorPickerGridCellButtonClassNames as getCustomClassNamesForColorPickerButton } from './ColorPickerGridCell.classNames';
+
+const getColorPickerGridCellButtonClassNames = memoizeFunction(
+  (
+    theme: ITheme,
+    className: string,
+    variantClassName: string,
+    iconClassName: string | undefined,
+    menuIconClassName: string | undefined,
+    disabled: boolean,
+    checked: boolean,
+    expanded: boolean,
+    isSplit: boolean | undefined
+  ): IButtonClassNames => {
+    const styles = getActionButtonStyles(theme);
+    return mergeStyleSets({
+      root: [
+        'ms-Button',
+        styles.root,
+        variantClassName,
+        className,
+        checked && ['is-checked', styles.rootChecked],
+        disabled && ['is-disabled', styles.rootDisabled],
+        !disabled &&
+          !checked && {
+            selectors: {
+              ':hover': styles.rootHovered,
+              ':focus': styles.rootFocused,
+              ':active': styles.rootPressed
+            }
+          },
+        disabled && checked && [styles.rootCheckedDisabled],
+        !disabled &&
+          checked && {
+            selectors: {
+              ':hover': styles.rootCheckedHovered,
+              ':active': styles.rootCheckedPressed
+            }
+          }
+      ],
+      flexContainer: ['ms-Button-flexContainer', styles.flexContainer]
+    });
+  }
+);
 
 const getClassNames = classNamesFunction<IColorPickerGridCellStyleProps, IColorPickerGridCellStyles>();
 
@@ -72,7 +117,7 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
         onFocus={onFocus}
         label={item.label}
         className={this._classNames.colorCell}
-        getClassNames={getCustomClassNamesForColorPickerButton}
+        getClassNames={getColorPickerGridCellButtonClassNames}
         index={item.index}
         onMouseEnter={onMouseEnter}
         onMouseMove={onMouseMove}
