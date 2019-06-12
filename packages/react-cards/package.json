@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/react-cards",
-  "version": "0.6.0",
+  "version": "0.106.0",
   "description": "Card container components to help build experiences with the use of Fabric.",
   "main": "lib-commonjs/index.js",
   "module": "lib/index.js",
@@ -50,7 +50,7 @@
     "@uifabric/experiments": "^7.0.1",
     "@uifabric/file-type-icons": "^7.0.1",
     "@uifabric/fluent-theme": "^7.0.0",
-    "@uifabric/foundation": "^0.9.0",
+    "@uifabric/foundation": "^0.109.0",
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/styling": "^7.0.0",
     "@uifabric/theme-samples": "^7.0.0",

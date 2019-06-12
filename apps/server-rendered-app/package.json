@@ -1,7 +1,7 @@
 {
   "name": "server-rendered-app",
   "description": "Sample server-rendered todo app using office-ui-fabric-react.",
-  "version": "7.0.0",
+  "version": "0.0.1",
   "private": true,
   "sideEffects": [
     "lib/version.js"
