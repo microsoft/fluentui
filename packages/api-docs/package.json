@@ -16,8 +16,8 @@
     "@uifabric/merge-styles": "^7.0.0",
     "@uifabric/styling": "^7.0.0",
     "@uifabric/tslint-rules": "^7.0.0",
-    "@uifabric/utilities": "^7.0.0",
-    "office-ui-fabric-react": "^7.0.0"
+    "@uifabric/utilities": "^7.0.1",
+    "office-ui-fabric-react": "^7.0.1"
   },
   "dependencies": {
     "@microsoft/tsdoc": "0.12.9",
