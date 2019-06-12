@@ -249,7 +249,6 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
     const labelStyles = this._classNames.subComponentStyles
       ? (this._classNames.subComponentStyles.label as IStyleFunctionOrObject<ILabelStyleProps, ILabelStyles>)
       : undefined;
-
     return (
       <div className={this._classNames.root}>
         {label && (
@@ -467,7 +466,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Render Callout or Panel container and pass in list */
-  private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown>): JSX.Element => {
+  private _onRenderContainer = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { calloutProps, panelProps } = props;
     const { responsiveMode, dropdownWidth } = this.props;
 
@@ -507,7 +506,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   };
 
   /** Wrap item list in a FocusZone */
-  private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown>): JSX.Element {
+  private _renderFocusableList(props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element {
     const { onRenderList = this._onRenderList, label, ariaLabel } = props;
     const id = this._id;
 
@@ -535,7 +534,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
   }
 
   /** Render List of items */
-  private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown>): JSX.Element => {
+  private _onRenderList = (props: ISelectableDroppableTextProps<IDropdown, HTMLDivElement>): JSX.Element => {
     const { onRenderItem = this._onRenderItem } = props;
 
     return <>{props.options.map((item: any, index: number) => onRenderItem({ ...item, index }, this._onRenderItem))}</>;

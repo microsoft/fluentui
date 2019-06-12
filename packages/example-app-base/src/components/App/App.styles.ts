@@ -128,6 +128,9 @@ export const getStyles: IStyleFunction<IAppStyleProps, IAppStyles> = props => {
           left: 0,
           right: 0,
           bottom: 0
+        },
+        groupContent: {
+          marginBottom: 20
         }
       },
       navPanel: { root: { top: headerHeight } }

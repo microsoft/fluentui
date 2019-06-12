@@ -70,7 +70,7 @@ describe('Pickers', () => {
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      const picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = (ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
@@ -79,7 +79,7 @@ describe('Pickers', () => {
           inputElement={input}
         />,
         root
-      ) as TypedBaseFloatingPicker;
+      ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'a';
       picker.onQueryStringChanged('a');
@@ -98,7 +98,7 @@ describe('Pickers', () => {
       document.body.appendChild(input);
       document.body.appendChild(root);
 
-      const picker: TypedBaseFloatingPicker = ReactDOM.render(
+      const picker: TypedBaseFloatingPicker = (ReactDOM.render(
         <BaseFloatingPickerWithType
           onResolveSuggestions={onResolveSuggestions}
           onRenderSuggestionsItem={basicSuggestionRenderer}
@@ -106,7 +106,7 @@ describe('Pickers', () => {
           inputElement={input}
         />,
         root
-      ) as TypedBaseFloatingPicker;
+      ) as unknown) as TypedBaseFloatingPicker;
 
       input.value = 'b';
       picker.onQueryStringChanged('b');

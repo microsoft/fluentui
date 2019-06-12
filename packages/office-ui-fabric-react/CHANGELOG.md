@@ -1,6 +1,50 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Move Calendar and DatePicker to legacy package
+- ColorPicker: remove deprecated props, better error handling, fix TextField usage
+- ComboBox: *Breaking Change* deprecated props `value` and `onChanged` removed
+- Dropdown className should be applied to the root
+- Remove deprecated doc page props
+- SearchBox: pass event to onChange
+- Rating: *Breaking change* is `rating` prop is passed, control will reflect value always.
+- Remove use of deprecated @autobind decorator
+- DetailsList, DetailsRow, DetailsRowFields: remove deprecated props, logic and styles related to `Shimmer`.
+- Move Router to example-app-base
+- ShimmerDetailsList: remove deprecated props and style props.
+- TextField: remove deprecated props, fix controlled/uncontrolled behavior
+
+### Minor changes
+
+- Stack: Adding relevant Stack and StackItem tokens.
+- Do not export Foundation package.
+- Support slots API changes.
+- Changes to support slots API refactoring.
+- Persona: remap existing persona initial colors to new fluent values and add some new ones.
+
+### Patches
+
+- Fixing the order of switching sides in RTL context, so the order has to start with the right then left. Issue sample #9029
+- Button: Conditionally rendering KeytipData.
+- ColorPicker: remove decimals from alpha value
+- Update CommandBar/CommandBarButton styles
+- Update Layer examples to use modern context API
+- Improved CSS in Stack sample code for performance.
+- Update and dedupe React deps.
+- Support changes to createComponent API.
+- Remove unused and not exported ListPage prototype component
+- SelectionZone: Document exported interfaces, remove any type usage, consolidate ev.target access
+- Rating: Added getNativeProps to component for event usage
+- Update instances of `getFocusStyle` to use named parameters.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+- Stack: Adding documentation to tokens.
+- Suggestions: add itemProps type of onRenderSuggestedItem
 
 ## 6.189.4
 Tue, 11 Jun 2019 12:21:35 GMT

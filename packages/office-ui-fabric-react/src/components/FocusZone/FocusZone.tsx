@@ -139,7 +139,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
     _allInstances[this._id] = this;
 
     if (root) {
-      const windowElement = root.ownerDocument!.defaultView;
+      const windowElement = root.ownerDocument!.defaultView!;
 
       let parentElement = getParent(root, ALLOW_VIRTUAL_ELEMENTS);
 

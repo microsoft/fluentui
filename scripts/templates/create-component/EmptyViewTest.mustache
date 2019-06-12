@@ -15,7 +15,7 @@ describe('{{componentName}}View', () => {
   it('renders status view prop correctly', () => {
     const tree = renderer
       .create(
-        <{{componentName}}View status="statusProp" />
+        <{{componentName}}View clicks={12} />
       )
       .toJSON();
     expect(tree).toMatchSnapshot();

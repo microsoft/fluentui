@@ -1,5 +1,5 @@
 import { IDetailsColumnStyleProps, IDetailsColumnStyles } from './DetailsColumn.types';
-import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle } from '../../Styling';
+import { getFocusStyle, getGlobalClassNames, hiddenContentStyle, IStyle, FontWeights } from '../../Styling';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
 import { getCellStyles } from './DetailsHeader.styles';
 
@@ -138,8 +138,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       classNames.filterChevron,
       {
         color: colors.dropdownChevronForegroundColor,
-        paddingLeft: 4,
-        verticalAlign: 'middle'
+        paddingLeft: 6,
+        verticalAlign: 'middle',
+        fontSize: 12 // TODO needs to be updated after type ramp reconcile
       }
     ],
 
@@ -169,7 +170,9 @@ export const getStyles = (props: IDetailsColumnStyleProps): IDetailsColumnStyles
       {
         flex: '0 1 auto',
         overflow: 'hidden',
-        textOverflow: 'ellipsis'
+        textOverflow: 'ellipsis',
+        fontWeight: FontWeights.semibold,
+        fontSize: 14
       },
       isIconOnly && {
         selectors: {

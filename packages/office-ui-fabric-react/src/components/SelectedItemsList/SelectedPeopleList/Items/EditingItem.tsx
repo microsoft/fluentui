@@ -41,7 +41,7 @@ export class EditingItem extends BaseComponent<IEditingSelectedPeopleItemProps, 
 
   public render(): JSX.Element {
     const itemId = getId();
-    const nativeProps = getNativeProps(this.props, inputProperties);
+    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties);
     return (
       <div aria-labelledby={'editingItemPersona-' + itemId} className={css('ms-EditingItem', styles.editingContainer)}>
         <input

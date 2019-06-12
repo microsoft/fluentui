@@ -14,7 +14,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -35,7 +35,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
   >
     <div
@@ -69,8 +69,8 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 background-color: rgb(234, 234, 234);
                 border-radius: 50%;
                 color: rgb(168, 0, 0);
-                font-size: 14px;
-                font-weight: 400;
+                font-size: 16px;
+                font-weight: 600;
                 height: 40px;
                 line-height: 40px;
               }
@@ -80,6 +80,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <i
@@ -112,8 +115,8 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
             justify-content: space-around;
             min-width: 0px;
             padding-bottom: 0;
-            padding-left: 16px;
-            padding-right: 24px;
+            padding-left: 12px;
+            padding-right: 12px;
             padding-top: 0;
             text-align: left;
             width: 100%;
@@ -123,7 +126,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
+              color: #323130;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -150,7 +153,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 12px;
               font-weight: 400;
               overflow: hidden;
@@ -177,9 +180,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -191,9 +194,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -213,7 +216,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           align-items: center;
           box-shadow: none;
           box-sizing: border-box;
-          color: #333333;
+          color: #323130;
           display: flex;
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
@@ -234,7 +237,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
           display: none;
         }
         &:hover $primaryText {
-          color: #212121;
+          color: #201f1e;
         }
   >
     <div
@@ -269,7 +272,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 border-radius: 50%;
                 color: rgb(168, 0, 0);
                 font-size: 28px;
-                font-weight: 400;
+                font-weight: 600;
                 height: 72px;
                 line-height: 72px;
               }
@@ -279,6 +282,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
                 border: 1px solid WindowText;
                 box-sizing: border-box;
                 color: WindowText;
+              }
+              & i {
+                font-weight: 600;
               }
         >
           <i
@@ -322,8 +328,8 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-primaryText
             {
-              color: #333333;
-              font-size: 21px;
+              color: #323130;
+              font-size: 20px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -349,7 +355,7 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-secondaryText
             {
-              color: #666666;
+              color: #605e5c;
               font-size: 14px;
               font-weight: 400;
               overflow: hidden;
@@ -376,9 +382,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-tertiaryText
             {
-              color: #666666;
+              color: #605e5c;
               display: block;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;
@@ -404,9 +410,9 @@ exports[`Component Examples renders Persona.UnknownPersona.Example.tsx correctly
         className=
             ms-Persona-optionalText
             {
-              color: #666666;
+              color: #605e5c;
               display: none;
-              font-size: 12px;
+              font-size: 14px;
               font-weight: 400;
               overflow: hidden;
               text-overflow: ellipsis;

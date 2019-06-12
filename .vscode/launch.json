@@ -8,13 +8,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i"],
+      "args": ["-i", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "console": "integratedTerminal"
     },
     {
       "name": "Debug current open test",
@@ -23,14 +25,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}"],
+      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
       "sourceMaps": true,
-      "outputCapture": "std"
+      "outputCapture": "std",
+      "console": "integratedTerminal"
     },
     {
       "name": "Run server",

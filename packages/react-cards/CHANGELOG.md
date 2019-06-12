@@ -1,6 +1,20 @@
 # Change Log - @uifabric/react-cards
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 0.5.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Card: Improving CardItem and adding CardSection to allow Card children to fill the Card's margins.
+
+### Patches
+
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
+- Support changes to createComponent API.
+- Card: Adding documentation to tokens.
 
 ## 0.4.0
 Tue, 11 Jun 2019 12:21:35 GMT

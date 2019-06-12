@@ -72,17 +72,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -103,7 +99,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -123,7 +119,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -136,7 +132,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -150,7 +146,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -239,17 +235,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -270,7 +262,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -290,7 +282,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -303,7 +295,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -317,7 +309,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -406,17 +398,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -437,7 +425,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -457,7 +445,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -470,7 +458,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -484,7 +472,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -573,17 +561,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -604,7 +588,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -624,7 +608,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -637,7 +621,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -651,7 +635,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -736,21 +720,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #eaeaea;
+                    background-color: #edebe9;
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 1px;
                     padding-left: 1px;
@@ -771,7 +751,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -791,7 +771,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -804,7 +784,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -818,7 +798,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -956,17 +936,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -987,7 +963,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1011,7 +987,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1025,7 +1001,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1112,17 +1088,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1143,7 +1115,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1167,7 +1139,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1181,7 +1153,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1268,17 +1240,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1299,7 +1267,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1323,7 +1291,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1337,7 +1305,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1424,17 +1392,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1455,7 +1419,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1479,7 +1443,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1493,7 +1457,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1576,21 +1540,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #eaeaea;
+                    background-color: #edebe9;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 1px;
                     padding-left: 1px;
@@ -1611,7 +1571,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1635,7 +1595,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1649,7 +1609,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1785,17 +1745,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1816,7 +1772,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1840,7 +1796,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 4px solid #eaeaea;
+                    border: 4px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1854,7 +1810,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -1941,17 +1897,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -1972,7 +1924,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -1996,7 +1948,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 4px solid #eaeaea;
+                    border: 4px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2010,7 +1962,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2097,17 +2049,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2128,7 +2076,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -2152,7 +2100,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 4px solid #eaeaea;
+                    border: 4px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2166,7 +2114,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2253,17 +2201,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2284,7 +2228,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -2308,7 +2252,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 4px solid #eaeaea;
+                    border: 4px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2322,7 +2266,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2405,21 +2349,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    background-color: #eaeaea;
+                    background-color: #edebe9;
                     border-radius: 0px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 1px;
                     padding-left: 1px;
@@ -2440,7 +2380,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -2464,7 +2404,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 4px solid #eaeaea;
+                    border: 4px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2478,7 +2418,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2624,17 +2564,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2655,7 +2591,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -2675,7 +2611,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -2688,7 +2624,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2702,7 +2638,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2791,17 +2727,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2822,7 +2754,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -2842,7 +2774,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -2855,7 +2787,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2869,7 +2801,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -2958,17 +2890,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -2989,7 +2917,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -3009,7 +2937,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -3022,7 +2950,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3036,7 +2964,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3125,17 +3053,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3156,7 +3080,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -3176,7 +3100,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -3189,7 +3113,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3203,7 +3127,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3296,17 +3220,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3327,7 +3247,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -3347,7 +3267,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -3360,7 +3280,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3374,7 +3294,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3463,17 +3383,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3494,7 +3410,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -3514,7 +3430,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -3527,7 +3443,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3541,7 +3457,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3630,17 +3546,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3661,7 +3573,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -3681,7 +3593,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -3694,7 +3606,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3708,7 +3620,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3797,17 +3709,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3828,7 +3736,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -3848,7 +3756,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -3861,7 +3769,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3875,7 +3783,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -3968,17 +3876,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -3999,7 +3903,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -4019,7 +3923,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -4032,7 +3936,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4046,7 +3950,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4135,17 +4039,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4166,7 +4066,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -4186,7 +4086,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -4199,7 +4099,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4213,7 +4113,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4302,17 +4202,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4333,7 +4229,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -4353,7 +4249,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -4366,7 +4262,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4380,7 +4276,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4469,17 +4365,13 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #323130;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 35px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0px;
                     padding-left: 0px;
@@ -4500,7 +4392,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     bottom: 0px;
                     content: "";
                     left: 0px;
-                    outline: 1px solid #666666;
+                    outline: 1px solid #605e5c;
                     position: absolute;
                     right: 0px;
                     top: 0px;
@@ -4520,7 +4412,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -3px;
                     left: -3px;
@@ -4533,7 +4425,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 3px solid #eaeaea;
+                    border: 3px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4547,7 +4439,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4685,20 +4577,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
+                    border-color: transparent;
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -4717,14 +4606,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4741,7 +4630,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -4754,7 +4643,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4769,7 +4658,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4779,7 +4668,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    bordercolor: grayText;
+                    border-color: grayText;
                     color: grayText;
                   }
               data-index={0}
@@ -4856,20 +4745,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
+                    border-color: transparent;
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -4888,14 +4774,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -4912,7 +4798,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -4925,7 +4811,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4940,7 +4826,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -4950,7 +4836,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    bordercolor: grayText;
+                    border-color: grayText;
                     color: grayText;
                   }
               data-index={1}
@@ -5027,20 +4913,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
+                    border-color: transparent;
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -5059,14 +4942,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5083,7 +4966,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -5096,7 +4979,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -5111,7 +4994,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -5121,7 +5004,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    bordercolor: grayText;
+                    border-color: grayText;
                     color: grayText;
                   }
               data-index={2}
@@ -5198,20 +5081,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
+                    border-color: transparent;
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 0px;
@@ -5230,14 +5110,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5254,7 +5134,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -5267,7 +5147,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -5282,7 +5162,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -5292,7 +5172,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    bordercolor: grayText;
+                    border-color: grayText;
                     color: grayText;
                   }
               data-index={3}
@@ -5369,20 +5249,17 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
+                    border-color: transparent;
                     border-radius: 50%;
                     border: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 20px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     opacity: 0.3;
                     outline: transparent;
                     padding-bottom: 1px;
@@ -5401,14 +5278,14 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -5425,7 +5302,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     top: 0px;
                   }
                   .ms-Fabric--isFocusVisible &:focus::after {
-                    border-color: #666666;
+                    border-color: #605e5c;
                     border-radius: 50%;
                     bottom: -2px;
                     left: -2px;
@@ -5438,7 +5315,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                   }
                   &:hover, &:active, &:focus {
                     background-color: #ffffff;
-                    border: 2px solid #eaeaea;
+                    border: 2px solid #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -5453,7 +5330,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     padding-top: 0px;
                   }
                   &:focus:hover {
-                    border-color: #eaeaea;
+                    border-color: #edebe9;
                     padding-bottom: 2px;
                     padding-left: 2px;
                     padding-right: 2px;
@@ -5463,7 +5340,7 @@ exports[`Component Examples renders SwatchColorPicker.Basic.Example.tsx correctl
                     outline: 0px;
                   }
                   @media screen and (-ms-high-contrast: active){& {
-                    bordercolor: grayText;
+                    border-color: grayText;
                     color: grayText;
                   }
               data-index={4}

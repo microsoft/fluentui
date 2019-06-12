@@ -69,10 +69,11 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 ms-TextField-fieldGroup
                 {
                   align-items: stretch;
-                  background-color: #f4f4f4;
+                  background-color: #f3f2f1;
                   background: #ffffff;
-                  border-color: #f4f4f4;
-                  border: 1px solid #a6a6a6;
+                  border-color: #f3f2f1;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: default;
@@ -108,7 +109,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -119,7 +120,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;
@@ -132,11 +133,21 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     display: none;
                   }
                   &::placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
               disabled={true}
@@ -160,7 +171,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
@@ -253,11 +264,11 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: block;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   margin-bottom: 0px;
                   margin-left: 0px;
                   margin-right: 0px;
@@ -272,8 +283,8 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 @media screen and (-ms-high-contrast: active){& {
                   color: GrayText;
                 }
-            htmlFor="DatePicker4-label"
-            id="TextFieldLabel7"
+            htmlFor="DatePicker5-label"
+            id="TextFieldLabel9"
           >
             Disabled (with label)
           </label>
@@ -282,10 +293,11 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                 ms-TextField-fieldGroup
                 {
                   align-items: stretch;
-                  background-color: #f4f4f4;
+                  background-color: #f3f2f1;
                   background: #ffffff;
-                  border-color: #f4f4f4;
-                  border: 1px solid #a6a6a6;
+                  border-color: #f3f2f1;
+                  border-radius: 2px;
+                  border: 1px solid #8a8886;
                   box-shadow: none;
                   box-sizing: border-box;
                   cursor: default;
@@ -309,7 +321,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
             <input
               aria-invalid={false}
               aria-label="Select a date"
-              aria-labelledby="TextFieldLabel7"
+              aria-labelledby="TextFieldLabel9"
               className=
                   ms-TextField-field
                   {
@@ -322,7 +334,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     border: none;
                     box-shadow: none;
                     box-sizing: border-box;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
@@ -333,7 +345,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     min-width: 0px;
                     outline: 0px;
                     padding-bottom: 0;
-                    padding-left: 12px;
+                    padding-left: 8px;
                     padding-right: 24px;
                     padding-top: 0;
                     text-overflow: ellipsis;
@@ -346,15 +358,25 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     display: none;
                   }
                   &::placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
                   &:-ms-input-placeholder {
-                    color: #a6a6a6;
+                    -moz-osx-font-smoothing: grayscale;
+                    -webkit-font-smoothing: antialiased;
+                    color: #a19f9d;
+                    font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                    font-size: 14px;
+                    font-weight: 400;
                     opacity: 1;
                   }
               disabled={true}
-              id="DatePicker4-label"
+              id="DatePicker5-label"
               onBlur={[Function]}
               onChange={[Function]}
               onClick={[Function]}
@@ -375,7 +397,7 @@ exports[`Component Examples renders DatePicker.Disabled.Example.tsx correctly 1`
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     bottom: 5px;
-                    color: #a6a6a6;
+                    color: #a19f9d;
                     cursor: default;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";

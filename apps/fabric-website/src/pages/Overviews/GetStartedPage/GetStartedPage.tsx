@@ -18,7 +18,7 @@ const GetStartedPageBase: React.StatelessComponent<IGetStartedPageProps> = props
       subTitle={getSubTitle(platform)}
       {...props}
       {...GetStartedPageProps[platform]}
-      otherSections={_otherSections(platform)}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
     />
   );
 };

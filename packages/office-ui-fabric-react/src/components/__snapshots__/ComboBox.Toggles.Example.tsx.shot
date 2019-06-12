@@ -7,7 +7,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
       {
         -moz-osx-font-smoothing: grayscale;
         -webkit-font-smoothing: antialiased;
-        color: #333333;
+        color: #323130;
         display: flex;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 14px;
@@ -40,11 +40,11 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -68,12 +68,13 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             -moz-osx-font-smoothing: grayscale;
             -webkit-font-smoothing: antialiased;
             background-color: #ffffff;
-            border-color: #a6a6a6;
+            border-color: #8a8886;
+            border-radius: 2px;
             border-style: solid;
             border-width: 1px;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             cursor: text;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -84,7 +85,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             outline: 0;
             overflow: hidden;
             padding-bottom: 1px;
-            padding-left: 12px;
+            padding-left: 8px;
             padding-right: 32px;
             padding-top: 1px;
             position: relative;
@@ -98,6 +99,12 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
           }
           & input::-ms-clear {
             display: none;
+          }
+          & input::placeholder {
+            color: #605e5c;
+          }
+          & input:-ms-input-placeholder {
+            color: #605e5c;
           }
           &.is-open {
             border-color: #0078d4;
@@ -117,7 +124,16 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             top: -2px;
           }
           &:hover {
-            border-color: #333333;
+            border-color: #323130;
+          }
+          &:hover .ms-ComboBox-Input {
+            color: #201f1e;
+          }
+          &:hover .ms-ComboBox-Input::placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #323130;
           }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
@@ -173,7 +189,7 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               background-color: #ffffff;
               border-style: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               font: inherit;
               height: 28px;
               outline: none;
@@ -213,10 +229,10 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
               background-color: transparent;
-              border-radius: 0px;
+              border-radius: 2px;
               border: none;
               box-sizing: border-box;
-              color: #666666;
+              color: #605e5c;
               cursor: default;
               display: inline-block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -224,10 +240,6 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               font-weight: 400;
               height: 32px;
               line-height: 30px;
-              margin-bottom: 0px;
-              margin-left: 0px;
-              margin-right: 0px;
-              margin-top: 0px;
               outline: transparent;
               padding-bottom: 0;
               padding-left: 4px;
@@ -246,14 +258,14 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               border: 0;
             }
             .ms-Fabric--isFocusVisible &:focus:after {
-              border: 1px solid #ffffff;
-              bottom: 0px;
+              border: 1px solid transparent;
+              bottom: 2px;
               content: "";
-              left: 0px;
-              outline: 1px solid #666666;
+              left: 2px;
+              outline: 1px solid #605e5c;
               position: absolute;
-              right: 0px;
-              top: 0px;
+              right: 2px;
+              top: 2px;
               z-index: 1;
             }
             @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -276,8 +288,8 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               color: ButtonText;
             }
             &:hover {
-              background-color: #f4f4f4;
-              color: #212121;
+              background-color: #f3f2f1;
+              color: #201f1e;
               cursor: pointer;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -285,8 +297,8 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               color: Highlight;
             }
             &:active {
-              background-color: #eaeaea;
-              color: #212121;
+              background-color: #edebe9;
+              color: #201f1e;
             }
         data-is-focusable={false}
         onBlur={[Function]}
@@ -366,11 +378,11 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -405,23 +417,22 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               align-items: center;
               background: #0078d4;
               border-color: transparent;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               cursor: pointer;
               display: flex;
               font-size: 20px;
-              height: 1em;
+              height: 20px;
               justify-content: flex-end;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
+              padding-left: 3px;
+              padding-right: 3px;
               padding-top: 0;
               position: relative;
               transition: all 0.1s ease;
-              width: 2.2em;
+              width: 40px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -431,14 +442,14 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              background-color: #106ebe;
+              background-color: #005a9e;
               border-color: transparent;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
@@ -461,13 +472,13 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               {
                 background-color: #ffffff;
                 border-color: transparent;
-                border-radius: .5em;
+                border-radius: 50%;
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
-                height: .5em;
+                height: 12px;
                 transition: all 0.1s ease;
-                width: .5em;
+                width: 12px;
               }
               @media screen and (-ms-high-contrast: active){& {
                 background-color: Window;
@@ -499,11 +510,11 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -537,23 +548,21 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
             {
               align-items: center;
               background: #ffffff;
-              border-color: #666666;
-              border-radius: 1em;
-              border-style: solid;
-              border-width: 1px;
+              border-radius: 10px;
+              border: 1px solid #605e5c;
               box-sizing: border-box;
               cursor: pointer;
               display: flex;
               font-size: 20px;
-              height: 1em;
+              height: 20px;
               outline: transparent;
               padding-bottom: 0;
-              padding-left: .2em;
-              padding-right: .2em;
+              padding-left: 3px;
+              padding-right: 3px;
               padding-top: 0;
               position: relative;
               transition: all 0.1s ease;
-              width: 2.2em;
+              width: 40px;
             }
             &::-moz-focus-inner {
               border: 0;
@@ -563,14 +572,17 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
               bottom: -2px;
               content: "";
               left: -2px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: -2px;
               top: -2px;
               z-index: 1;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
+            }
+            &:hover .ms-Toggle-thumb {
+              background-color: #201f1e;
             }
             @media screen and (-ms-high-contrast: active){&:hover .ms-Toggle-thumb {
               border-color: Highlight;
@@ -589,15 +601,15 @@ exports[`Component Examples renders ComboBox.Toggles.Example.tsx correctly 1`] =
           className=
               ms-Toggle-thumb
               {
-                background-color: #333333;
+                background-color: #605e5c;
                 border-color: transparent;
-                border-radius: .5em;
+                border-radius: 50%;
                 border-style: solid;
                 border-width: .28em;
                 box-sizing: border-box;
-                height: .5em;
+                height: 12px;
                 transition: all 0.1s ease;
-                width: .5em;
+                width: 12px;
               }
         />
       </button>

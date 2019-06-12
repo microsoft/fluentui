@@ -174,14 +174,8 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     this._warnMutuallyExclusive({
       defaultSelectedKey: 'selectedKey',
       text: 'defaultSelectedKey',
-      value: 'defaultSelectedKey',
       selectedKey: 'value',
       dropdownWidth: 'useComboBoxAsMenuWidth'
-    });
-
-    this._warnDeprecations({
-      value: 'text',
-      onChanged: 'onChange'
     });
 
     this._id = props.id || getId('ComboBox');
@@ -231,12 +225,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   public componentWillReceiveProps(newProps: IComboBoxProps): void {
     // Update the selectedIndex and currentOptions state if
     // the selectedKey, value, or options have changed
-    if (
-      newProps.selectedKey !== this.props.selectedKey ||
-      newProps.text !== this.props.text ||
-      newProps.value !== this.props.value ||
-      newProps.options !== this.props.options
-    ) {
+    if (newProps.selectedKey !== this.props.selectedKey || newProps.text !== this.props.text || newProps.options !== this.props.options) {
       const selectedKeys: string[] | number[] = this._buildSelectedKeys(newProps.selectedKey);
       const indices: number[] = this._getSelectedIndices(newProps.options, selectedKeys);
 
@@ -248,7 +237,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
   }
 
   public componentDidUpdate(prevProps: IComboBoxProps, prevState: IComboBoxState) {
-    const { allowFreeform, text, value, onMenuOpen, onMenuDismissed } = this.props;
+    const { allowFreeform, text, onMenuOpen, onMenuDismissed } = this.props;
     const { isOpen, focused, selectedIndices, currentPendingValueValidIndex } = this.state;
 
     // If we are newly open or are open and the pending valid index changed,
@@ -290,8 +279,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
             selectedIndices &&
             prevState.selectedIndices[0] !== selectedIndices[0]) ||
             !allowFreeform ||
-            text !== prevProps.text ||
-            value !== prevProps.value)))
+            text !== prevProps.text)))
     ) {
       this._select();
     }
@@ -344,7 +332,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     const { isOpen, focused, suggestedDisplayValue } = this.state;
     this._currentVisibleValue = this._getVisibleValue();
 
-    const divProps = getNativeProps(this.props, divProperties, ['onChange', 'value']);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['onChange', 'value']);
 
     const hasErrorMessage = errorMessage && errorMessage.length > 0 ? true : false;
 
@@ -518,7 +506,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * @returns the value to pass to the input
    */
   private _getVisibleValue = (): string | undefined => {
-    const { text, value, allowFreeform, autoComplete } = this.props;
+    const { text, allowFreeform, autoComplete } = this.props;
     const {
       selectedIndices,
       currentPendingValueValidIndex,
@@ -535,10 +523,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     // unless we are open and have a valid current pending index
     if (!(isOpen && currentPendingIndexValid) && (text && (currentPendingValue === null || currentPendingValue === undefined))) {
       return text;
-    }
-
-    if (!(isOpen && currentPendingIndexValid) && (value && (currentPendingValue === null || currentPendingValue === undefined))) {
-      return value;
     }
 
     // Values to display in the BaseAutoFill area
@@ -846,7 +830,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
     submitPendingValueEvent: React.SyntheticEvent<any>,
     searchDirection: SearchDirection = SearchDirection.none
   ): void {
-    const { onChange, onChanged, onPendingValueChanged } = this.props;
+    const { onChange, onPendingValueChanged } = this.props;
     const { currentOptions } = this.state;
     let { selectedIndices } = this.state;
 
@@ -897,10 +881,6 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
 
           if (onChange) {
             onChange(submitPendingValueEvent, option, index, undefined);
-          }
-
-          if (onChanged) {
-            onChanged(option, index, undefined, submitPendingValueEvent);
           }
         }
       );
@@ -1007,7 +987,7 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
    * Submit a pending value if there is one
    */
   private _submitPendingValue(submitPendingValueEvent: any): void {
-    const { onChange, onChanged, allowFreeform, autoComplete } = this.props;
+    const { onChange, allowFreeform, autoComplete } = this.props;
     const { currentPendingValue, currentPendingValueValidIndex, currentOptions, currentPendingValueValidIndexOnHover } = this.state;
     let { selectedIndices } = this.state;
 
@@ -1057,14 +1037,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
         }
       }
 
-      if (onChange || onChanged) {
+      if (onChange) {
         if (onChange) {
           // trigger onChange to clear value
           onChange(submitPendingValueEvent, undefined, undefined, currentPendingValue);
-        }
-        if (onChanged) {
-          // trigger onChanged to clear value
-          onChanged(undefined, undefined, currentPendingValue, submitPendingValueEvent);
         }
       } else {
         // If we are not controlled, create a new option
@@ -1477,10 +1453,10 @@ export class ComboBox extends BaseComponent<IComboBoxProps, IComboBoxState> {
       this.setState({
         suggestedDisplayValue: currentOptions[selectedIndex].text
       });
-    } else if (this.props.text || this.props.value) {
+    } else if (this.props.text) {
       // If we had a value initially, restore it
       this.setState({
-        suggestedDisplayValue: this.props.text || this.props.value
+        suggestedDisplayValue: this.props.text
       });
     }
   }

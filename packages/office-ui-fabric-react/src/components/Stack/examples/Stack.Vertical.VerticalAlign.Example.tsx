@@ -1,90 +1,87 @@
 import * as React from 'react';
-import { mergeStyleSets, DefaultPalette, Stack } from 'office-ui-fabric-react';
+import { Stack } from '../Stack';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export class VerticalStackVerticalAlignExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
-        height: 250
-      },
-
-      item: {
-        width: 50,
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      headingStack: {
-        childrenGap: 30
+        height: 250,
+        selectors: {
+          '> *': {
+            alignItems: 'center',
+            background: DefaultPalette.themePrimary,
+            color: DefaultPalette.white,
+            display: 'flex',
+            height: 50,
+            justifyContent: 'center',
+            width: 50
+          }
+        }
       }
     };
 
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const headingStackTokens: IStackTokens = { childrenGap: 30 };
+
     return (
-      <Stack tokens={tokens.sectionStack}>
-        <Stack horizontal disableShrink tokens={tokens.headingStack} horizontalAlign="space-between">
+      <Stack tokens={sectionStackTokens}>
+        <Stack horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>
           <Stack grow>
             <span>Top-aligned</span>
-            <Stack verticalAlign="start" className={styles.root}>
-              <span className={styles.item}>1</span>
-              <span className={styles.item}>2</span>
-              <span className={styles.item}>3</span>
+            <Stack verticalAlign="start" styles={stackStyles}>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
             </Stack>
           </Stack>
 
           <Stack grow>
             <span>Vertically centered</span>
-            <Stack verticalAlign="center" className={styles.root}>
-              <span className={styles.item}>1</span>
-              <span className={styles.item}>2</span>
-              <span className={styles.item}>3</span>
+            <Stack verticalAlign="center" styles={stackStyles}>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
             </Stack>
           </Stack>
 
           <Stack grow>
             <span>Bottom-aligned</span>
-            <Stack verticalAlign="end" className={styles.root}>
-              <span className={styles.item}>1</span>
-              <span className={styles.item}>2</span>
-              <span className={styles.item}>3</span>
+            <Stack verticalAlign="end" styles={stackStyles}>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
             </Stack>
           </Stack>
         </Stack>
 
-        <Stack horizontal disableShrink tokens={tokens.headingStack} horizontalAlign="space-between">
+        <Stack horizontal disableShrink horizontalAlign="space-between" tokens={headingStackTokens}>
           <Stack grow>
             <span>Vertical space around items</span>
-            <Stack verticalAlign="space-around" className={styles.root}>
-              <span className={styles.item}>1</span>
-              <span className={styles.item}>2</span>
-              <span className={styles.item}>3</span>
+            <Stack verticalAlign="space-around" styles={stackStyles}>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
             </Stack>
           </Stack>
 
           <Stack grow>
             <span>Vertical space between items</span>
-            <Stack verticalAlign="space-between" className={styles.root}>
-              <span className={styles.item}>1</span>
-              <span className={styles.item}>2</span>
-              <span className={styles.item}>3</span>
+            <Stack verticalAlign="space-between" styles={stackStyles}>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
             </Stack>
           </Stack>
 
           <Stack grow>
             <span>Items vertically evenly spaced</span>
-            <Stack verticalAlign="space-evenly" className={styles.root}>
-              <span className={styles.item}>1</span>
-              <span className={styles.item}>2</span>
-              <span className={styles.item}>3</span>
+            <Stack verticalAlign="space-evenly" styles={stackStyles}>
+              <span>1</span>
+              <span>2</span>
+              <span>3</span>
             </Stack>
           </Stack>
         </Stack>

@@ -11,7 +11,7 @@ class AsComponent extends React.Component<React.HTMLAttributes<HTMLElement>, {}>
 }
 
 const AsComponentSFC: React.StatelessComponent<React.HTMLAttributes<HTMLElement>> = props => {
-  return <div {...this.props} />;
+  return <div {...props} />;
 };
 
 // tslint:disable:jsx-no-lambda
@@ -25,12 +25,16 @@ export class SlotsStackExample extends React.Component<{}, {}> {
         <Button icon="share" content="Stack: Props, as: 'div'" stack={{ as: 'div' }} />
         <Button icon="share" content="Stack: Props, as: 'span'" stack={{ as: 'span' }} />
         <Button icon="share" stack={{ horizontalAlign: 'start' }} content="Stack: Object, horizontalAlign: left" />
-        <Button icon="share" stack={render => render((StackType, props) => <StackType {...props} />)} content="Stack: Function" />
+        <Button
+          icon="share"
+          content="Stack: Render Function"
+          slots={{ stack: { render: (props, DefaultComponent) => <DefaultComponent {...props} /> } }}
+        />
         <Button
           icon="share"
           content="Stack: Function, VerticalStack"
           // Have to override component's default horizontal prop value
-          stack={render => render((StackType, props) => <Stack {...props as any} horizontal={false} />)}
+          slots={{ stack: { render: props => <Stack {...props as any} horizontal={false} /> } }}
         />
       </Stack>
     );

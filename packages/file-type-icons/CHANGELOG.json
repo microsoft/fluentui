@@ -2,6 +2,42 @@
   "name": "@uifabric/file-type-icons",
   "entries": [
     {
+      "version": "7.0.0",
+      "tag": "@uifabric/file-type-icons_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "major": [
+          {
+            "comment": "Update file type icons to use new Fluent assets by default",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "5e46b402ec5ecc8326451b06cf07a0ab95246f45"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "fix mapping for OneNote notebook filetype icon",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "5ffde2d052c19c1b06407f3606bd766e34a1b6e2"
+          },
+          {
+            "comment": "updating getFileTypeIconProps to make reference to correct sharepoint… ",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "5ffde2d052c19c1b06407f3606bd766e34a1b6e2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.5.1",
       "tag": "@uifabric/file-type-icons_v6.5.1",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

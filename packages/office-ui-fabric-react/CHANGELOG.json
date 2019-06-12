@@ -2,6 +2,219 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.0.0",
+      "tag": "office-ui-fabric-react_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Fixing the order of switching sides in RTL context, so the order has to start with the right then left. Issue sample #9029",
+            "author": "Abdullah Salem <abdullahsalem@outlook.com>",
+            "commit": "7bf9230359ef74b9540810e13ef771b513434957"
+          },
+          {
+            "comment": "Button: Conditionally rendering KeytipData.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "5da0db91c88aca852eb416ed8930a0508f08cb1a"
+          },
+          {
+            "comment": "ColorPicker: remove decimals from alpha value",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "3587689af9f840523a2f93c70595eaa748dbb160"
+          },
+          {
+            "comment": "Update CommandBar/CommandBarButton styles",
+            "author": "Eddie Liu <leddie24@gmail.com>",
+            "commit": "e63e2f87e17171bb229489ceb2fb3b9111cc98c0"
+          },
+          {
+            "comment": "Update Layer examples to use modern context API",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "a2ab3ac62ce0afa42522e0bdbee56beb3fc12b9e"
+          },
+          {
+            "comment": "Improved CSS in Stack sample code for performance.",
+            "author": "Rajeev-K <Rajeev-K@users.noreply.github.com>",
+            "commit": "f883425ef5c79f269e214fc88939195e348d0cb1"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Support changes to createComponent API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "20b09cc417500b205e6007538cb6f04ffee208eb"
+          },
+          {
+            "comment": "Remove unused and not exported ListPage prototype component",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "5ffde2d052c19c1b06407f3606bd766e34a1b6e2"
+          },
+          {
+            "comment": "SelectionZone: Document exported interfaces, remove any type usage, consolidate ev.target access",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "231f7659133e886827ab9d59da96225983c05409"
+          },
+          {
+            "comment": "Rating: Added getNativeProps to component for event usage",
+            "author": "Mary <38991459+marygans@users.noreply.github.com>",
+            "commit": "b00937df18947ac8414e16d83a5157a0a4e0dbba"
+          },
+          {
+            "comment": "Update instances of `getFocusStyle` to use named parameters.",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "73f2ff26c052d1833fe49590660edf78a4cdf634"
+          },
+          {
+            "comment": "Nav, Calendar, and DatePicker move into office-ui-fabric-react",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          },
+          {
+            "comment": "Stack: Adding documentation to tokens.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2c553b0947be860aa28cb877ae3816cfea461c7a"
+          },
+          {
+            "comment": "Suggestions: add itemProps type of onRenderSuggestedItem",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "55d9eaa52001727bd39185b733bc6e8e407d6eb2"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Move Calendar and DatePicker to legacy package",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
+          },
+          {
+            "comment": "ColorPicker: remove deprecated props, better error handling, fix TextField usage",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5f1923d49028686b99f98cbf59d04545ad85a843"
+          },
+          {
+            "comment": "ComboBox: *Breaking Change* deprecated props `value` and `onChanged` removed",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "ff162559fc3d8e8a7eedc3101ae6f9f2eb283b68"
+          },
+          {
+            "comment": "Dropdown className should be applied to the root",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "e8d3f0bb9cb643aa71585eb252e7ed2a7d38d6a7"
+          },
+          {
+            "comment": "Remove deprecated doc page props",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "SearchBox: pass event to onChange",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "a41bd0018eb07f1713a2a533ef16f8219cba00ed"
+          },
+          {
+            "comment": "Rating: *Breaking change* is `rating` prop is passed, control will reflect value always.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "2ffdd290a40c70017cb23cea55818c266720c2ec"
+          },
+          {
+            "comment": "Remove use of deprecated @autobind decorator",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "DetailsList, DetailsRow, DetailsRowFields: remove deprecated props, logic and styles related to `Shimmer`.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "bf302f58aee3db20249f23e94a9e4418a5a01a55"
+          },
+          {
+            "comment": "Move Router to example-app-base",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d908c018268568b386fdad27899dcb00c5f0806e"
+          },
+          {
+            "comment": "ShimmerDetailsList: remove deprecated props and style props.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "bf302f58aee3db20249f23e94a9e4418a5a01a55"
+          },
+          {
+            "comment": "TextField: remove deprecated props, fix controlled/uncontrolled behavior",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "04983f31fedbf04c33f7cfd2395e58b5a9a7d03a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Stack: Adding relevant Stack and StackItem tokens.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "77a91958ee5e37fb6c2991fd22275ec379f4c914"
+          },
+          {
+            "comment": "Do not export Foundation package.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5cfbccb1d6a8f130b4c40c5ceeb20d2e7490a201"
+          },
+          {
+            "comment": "Support slots API changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "37a52465422d2622d52b7339ac2f9b2f234300da"
+          },
+          {
+            "comment": "Changes to support slots API refactoring.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0"
+          },
+          {
+            "comment": "Persona: remap existing persona initial colors to new fluent values and add some new ones.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "bf302f58aee3db20249f23e94a9e4418a5a01a55"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Allow Panel to be controlled, prevent from closing when isOpen == true",
+            "author": "JD Huntington <jdhuntington@gmail.com>",
+            "commit": "e80dc318f2cad32f21931f99c39fa42821bdb79e"
+          },
+          {
+            "comment": "Remove outdated *.api.ts generated files",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "23c112c024e7e6c3e2b99f9f9b5a32081f09f5b9"
+          },
+          {
+            "comment": "Remove deprecated DetailsRowCheck.isSelected in favor of 'selected'",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "1b578736ac4b80058d6b8b60d8b81f16109aed20"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.7` to `^0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.7` to `^0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.4` to `^6.0.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.189.4",
       "tag": "office-ui-fabric-react_v6.189.4",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

@@ -15,7 +15,7 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
   const { className, theme } = props;
   const classNames = getGlobalClassNames(GlobalClassNames, theme);
 
-  const { palette, fonts, semanticColors } = theme;
+  const { palette, fonts, semanticColors, effects } = theme;
 
   return {
     root: [
@@ -73,6 +73,13 @@ export const getStyles = (props: IContextualMenuStyleProps): IContextualMenuStyl
         backgroundColor: palette.neutralLight
       }
     ],
-    subComponentStyles: { callout: {}, menuItem: {} }
+    subComponentStyles: {
+      callout: {
+        root: {
+          boxShadow: effects.elevation8
+        }
+      },
+      menuItem: {}
+    }
   };
 };

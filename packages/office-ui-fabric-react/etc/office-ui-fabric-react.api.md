@@ -24,6 +24,7 @@ import { IRenderFunction } from '@uifabric/utilities';
 import { ISelection } from '@uifabric/utilities';
 import { ISelectionOptions } from '@uifabric/utilities';
 import { ISlotProp } from '@uifabric/foundation';
+import { ISlottableProps } from '@uifabric/foundation';
 import { IStyle } from '@uifabric/styling';
 import { IStyleableComponentProps } from '@uifabric/foundation';
 import { IStyleFunction } from '@uifabric/utilities';
@@ -31,7 +32,6 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
-import { Omit } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -157,7 +157,7 @@ export class BaseExtendedPicker<T, P extends IBaseExtendedPickerProps<T>> extend
     // (undocumented)
     protected onInputChange: (value: string) => void;
     // (undocumented)
-    protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill>) => void;
+    protected onInputClick: (ev: React.MouseEvent<HTMLInputElement | Autofill, MouseEvent>) => void;
     // (undocumented)
     protected onInputFocus: (ev: React.FocusEvent<HTMLInputElement | Autofill>) => void;
     // (undocumented)
@@ -224,9 +224,9 @@ export class BaseFloatingPicker<T, P extends IBaseFloatingPickerProps<T>> extend
     // (undocumented)
     protected onSelectionChange(): void;
     // (undocumented)
-    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
+    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
     // (undocumented)
-    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
+    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
@@ -327,9 +327,9 @@ export class BasePicker<T, P extends IBasePickerProps<T>> extends BaseComponent<
     // (undocumented)
     protected onSelectionChange(): void;
     // (undocumented)
-    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement>, item: any, index: number) => void;
+    protected onSuggestionClick: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: any, index: number) => void;
     // (undocumented)
-    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement>, item: T, index: number) => void;
+    protected onSuggestionRemove: (ev: React.MouseEvent<HTMLElement, MouseEvent>, item: T, index: number) => void;
     // (undocumented)
     protected onSuggestionSelect(): void;
     // (undocumented)
@@ -431,7 +431,7 @@ export enum BaseSlots {
     // (undocumented)
     foregroundColor = 2,
     // (undocumented)
-    primaryColor = 0,
+    primaryColor = 0
 }
 
 // @public (undocumented)
@@ -440,8 +440,6 @@ export const Breadcrumb: React.StatelessComponent<IBreadcrumbProps>;
 // @public (undocumented)
 export class BreadcrumbBase extends BaseComponent<IBreadcrumbProps, any> {
     constructor(props: IBreadcrumbProps);
-    // (undocumented)
-    componentWillReceiveProps(nextProps: IBreadcrumbProps): void;
     // (undocumented)
     static defaultProps: IBreadcrumbProps;
     focus(): void;
@@ -475,7 +473,7 @@ export enum ButtonType {
     // (undocumented)
     normal = 0,
     // (undocumented)
-    primary = 1,
+    primary = 1
 }
 
 // @public (undocumented)
@@ -524,11 +522,11 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
     // (undocumented)
     readonly checked: boolean;
     // (undocumented)
-    componentWillReceiveProps(newProps: ICheckboxProps): void;
-    // (undocumented)
     static defaultProps: ICheckboxProps;
     // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: ICheckboxProps, state: ICheckboxState): ICheckboxState;
     render(): JSX.Element;
 }
 
@@ -536,7 +534,7 @@ export class CheckboxBase extends React.Component<ICheckboxProps, ICheckboxState
 export enum CheckboxVisibility {
     always = 1,
     hidden = 2,
-    onHover = 0,
+    onHover = 0
 }
 
 // @public (undocumented)
@@ -580,7 +578,7 @@ export class CoachmarkBase extends BaseComponent<ICoachmarkProps, ICoachmarkStat
     // (undocumented)
     static defaultProps: Partial<ICoachmarkProps>;
     // (undocumented)
-    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
     // (undocumented)
     render(): JSX.Element;
     // (undocumented)
@@ -592,14 +590,14 @@ export enum CollapseAllVisibility {
     // (undocumented)
     hidden = 0,
     // (undocumented)
-    visible = 1,
+    visible = 1
 }
 
 // @public (undocumented)
 export const ColorPicker: React.StatelessComponent<IColorPickerProps>;
 
 // @public (undocumented)
-export class ColorPickerBase extends BaseComponent<IColorPickerProps, IColorPickerState> implements IColorPicker {
+export class ColorPickerBase extends React.Component<IColorPickerProps, IColorPickerState> implements IColorPicker {
     constructor(props: IColorPickerProps);
     // (undocumented)
     readonly color: IColor;
@@ -632,14 +630,14 @@ export class ColorPickerGridCellBase extends React.Component<IColorPickerGridCel
 export enum ColumnActionsMode {
     clickable = 1,
     disabled = 0,
-    hasDropdown = 2,
+    hasDropdown = 2
 }
 
 // @public
 export enum ColumnDragEndLocation {
     header = 2,
     outside = 0,
-    surface = 1,
+    surface = 1
 }
 
 // @public (undocumented)
@@ -691,7 +689,7 @@ export class CommandBarButton extends BaseComponent<IButtonProps, {}> {
 export const CommandButton: typeof ActionButton;
 
 // @public (undocumented)
-export const CompactPeoplePicker: React.StatelessComponent<IPeoplePickerProps>;
+export const CompactPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 
 // @public
 export class CompactPeoplePickerBase extends BasePeoplePicker {
@@ -712,7 +710,7 @@ export class CompoundButton extends BaseComponent<IButtonProps, {}> {
 // @public (undocumented)
 export enum ConstrainMode {
     horizontalConstrained = 1,
-    unconstrained = 0,
+    unconstrained = 0
 }
 
 // @public
@@ -763,8 +761,11 @@ export enum ContextualMenuItemType {
     // (undocumented)
     Normal = 0,
     // (undocumented)
-    Section = 3,
+    Section = 3
 }
+
+// @public
+export function correctHex(hex: string): string;
 
 // @public
 export function correctHSV(color: IHSV): IHSV;
@@ -812,7 +813,7 @@ export enum DateRangeType {
     // (undocumented)
     Week = 1,
     // (undocumented)
-    WorkWeek = 3,
+    WorkWeek = 3
 }
 
 // @public
@@ -830,7 +831,7 @@ export enum DayOfWeek {
     // (undocumented)
     Tuesday = 2,
     // (undocumented)
-    Wednesday = 3,
+    Wednesday = 3
 }
 
 // @public (undocumented)
@@ -903,7 +904,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         constrainMode: ConstrainMode;
         checkboxVisibility: CheckboxVisibility;
         isHeaderVisible: boolean;
-        enableShimmer: boolean;
         compact: boolean;
     };
     // (undocumented)
@@ -923,7 +923,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 // @public (undocumented)
 export enum DetailsListLayoutMode {
     fixedColumns = 0,
-    justified = 1,
+    justified = 1
 }
 
 // @public (undocumented)
@@ -952,7 +952,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     }
 
 // @public (undocumented)
-export const DetailsRowCheck: React.StatelessComponent<IDetailsRowCheckProps>;
+export const DetailsRowCheck: React.FunctionComponent<IDetailsRowCheckProps>;
 
 // @public (undocumented)
 export const Dialog: React.StatelessComponent<IDialogProps>;
@@ -991,7 +991,7 @@ export class DialogFooterBase extends BaseComponent<IDialogFooterProps, {}> {
 export enum DialogType {
     close = 2,
     largeHeader = 1,
-    normal = 0,
+    normal = 0
 }
 
 // @public (undocumented)
@@ -1048,7 +1048,7 @@ export const DocumentCardTitle: React.StatelessComponent<IDocumentCardTitleProps
 // @public (undocumented)
 export enum DocumentCardType {
     compact = 1,
-    normal = 0,
+    normal = 0
 }
 
 // @public (undocumented)
@@ -1079,7 +1079,7 @@ export class DropdownBase extends React.Component<IDropdownInternalProps, IDropd
 // @public (undocumented)
 export enum ElementType {
     anchor = 1,
-    button = 0,
+    button = 0
 }
 
 // @public (undocumented)
@@ -1105,7 +1105,7 @@ export class ExpandingCardBase extends BaseComponent<IExpandingCardProps, IExpan
 // @public (undocumented)
 export enum ExpandingCardMode {
     compact = 0,
-    expanded = 1,
+    expanded = 1
 }
 
 // @public (undocumented)
@@ -1182,7 +1182,7 @@ export enum FabricSlots {
     // (undocumented)
     themeTertiary = 4,
     // (undocumented)
-    white = 21,
+    white = 21
 }
 
 // @public
@@ -1206,7 +1206,7 @@ export enum FirstWeekOfYear {
     // (undocumented)
     FirstFourDayWeek = 2,
     // (undocumented)
-    FirstFullWeek = 1,
+    FirstFullWeek = 1
 }
 
 // @public (undocumented)
@@ -1257,7 +1257,7 @@ export class FocusZone extends React.Component<IFocusZoneProps, {}> implements I
 export enum FocusZoneDirection {
     bidirectional = 2,
     horizontal = 1,
-    vertical = 0,
+    vertical = 0
 }
 
 // @public (undocumented)
@@ -1381,6 +1381,9 @@ export const GroupSpacer: React.SFC<IGroupSpacerProps>;
 // @public (undocumented)
 export const groupTwo: IExtendedPersonaProps[];
 
+// @public
+export const HEX_REGEX: RegExp;
+
 // @public (undocumented)
 export const HoverCard: React.StatelessComponent<IHoverCardProps>;
 
@@ -1410,7 +1413,7 @@ export class HoverCardBase extends BaseComponent<IHoverCardProps, IHoverCardStat
 // @public (undocumented)
 export enum HoverCardType {
     expanding = "ExpandingCard",
-    plain = "PlainCard",
+    plain = "PlainCard"
 }
 
 // @public
@@ -1599,7 +1602,7 @@ export interface IBaseFloatingPickerProps<T> extends React.ClassAttributes<any> 
     onChange?: (item: T) => void;
     onInputChanged?: (filter: string) => void;
     onRemoveSuggestion?: (item: T) => void;
-    onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
+    onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
     onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]> | null;
     onSuggestionsHidden?: () => void;
     onSuggestionsShown?: () => void;
@@ -1657,7 +1660,7 @@ export interface IBasePickerProps<T> extends React.Props<any> {
     onItemSelected?: (selectedItem?: T) => T | PromiseLike<T> | null;
     onRemoveSuggestion?: (item: T) => void;
     onRenderItem?: (props: IPickerItemProps<T>) => JSX.Element;
-    onRenderSuggestionsItem?: (props: T, itemProps: any) => JSX.Element;
+    onRenderSuggestionsItem?: (props: T, itemProps: ISuggestionItemProps<T>) => JSX.Element;
     onResolveSuggestions: (filter: string, selectedItems?: T[]) => T[] | PromiseLike<T[]>;
     onValidateInput?: (input: string) => ValidationState;
     pickerCalloutProps?: ICalloutProps;
@@ -1840,6 +1843,7 @@ export interface IButtonProps extends React.AllHTMLAttributes<HTMLAnchorElement 
     className?: string;
     componentRef?: IRefObject<IButton>;
     data?: any;
+    defaultRender?: any;
     // @deprecated
     description?: IStyle;
     disabled?: boolean;
@@ -2473,7 +2477,7 @@ export interface IColorPickerGridCellStyles {
 }
 
 // @public (undocumented)
-export interface IColorPickerProps extends IBaseProps<IColorPicker> {
+export interface IColorPickerProps {
     alphaLabel?: string;
     alphaSliderHidden?: boolean;
     blueLabel?: string;
@@ -2483,8 +2487,6 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
     greenLabel?: string;
     hexLabel?: string;
     onChange?: (ev: React.SyntheticEvent<HTMLElement>, color: IColor) => void;
-    // @deprecated
-    onColorChanged?: (color: string, colorObject: IColor) => void;
     redLabel?: string;
     styles?: IStyleFunctionOrObject<IColorPickerStyleProps, IColorPickerStyles>;
     theme?: ITheme;
@@ -2494,6 +2496,11 @@ export interface IColorPickerProps extends IBaseProps<IColorPicker> {
 export interface IColorPickerState {
     // (undocumented)
     color: IColor;
+    // (undocumented)
+    editingColor?: {
+        component: keyof IRGBHex;
+        value: string;
+    };
 }
 
 // @public (undocumented)
@@ -2518,14 +2525,12 @@ export interface IColorRectangle {
 }
 
 // @public (undocumented)
-export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+export interface IColorRectangleProps {
     className?: string;
     color: IColor;
     componentRef?: IRefObject<IColorRectangle>;
     minSize?: number;
     onChange?: (ev: React.MouseEvent<HTMLElement>, color: IColor) => void;
-    // @deprecated
-    onSVChanged?: (s: number, v: number) => void;
     styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
     theme?: ITheme;
 }
@@ -2549,15 +2554,13 @@ export interface IColorSlider {
 }
 
 // @public (undocumented)
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
     className?: string;
     componentRef?: IRefObject<IColorSlider>;
     isAlpha?: boolean;
     maxValue?: number;
     minValue?: number;
     onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-    // @deprecated
-    onChanged?: (newValue: number) => void;
     overlayStyle?: any;
     styles?: IStyleFunctionOrObject<IColorSliderStyleProps, IColorSliderStyles>;
     theme?: ITheme;
@@ -2672,7 +2675,7 @@ export interface IComboBoxOptionStyles extends IButtonStyles {
 }
 
 // @public (undocumented)
-export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox> {
+export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox, IComboBox> {
     allowFreeform?: boolean;
     ariaDescribedBy?: string;
     autoComplete?: 'on' | 'off';
@@ -2689,8 +2692,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     keytipProps?: IKeytipProps;
     multiSelect?: boolean;
     onChange?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number, value?: string) => void;
-    // @deprecated
-    onChanged?: (option?: IComboBoxOption, index?: number, value?: string, submitPendingValueEvent?: any) => void;
     onItemClick?: (event: React.FormEvent<IComboBox>, option?: IComboBoxOption, index?: number) => void;
     onMenuDismissed?: () => void;
     onMenuOpen?: () => void;
@@ -2705,8 +2706,6 @@ export interface IComboBoxProps extends ISelectableDroppableTextProps<IComboBox>
     text?: string;
     theme?: ITheme;
     useComboBoxAsMenuWidth?: boolean;
-    // @deprecated
-    value?: string;
 }
 
 // @public (undocumented)
@@ -3052,7 +3051,7 @@ export enum IconType {
     default = 0,
     // @deprecated
     Image = 100001,
-    image = 1,
+    image = 1
 }
 
 // @public (undocumented)
@@ -3379,8 +3378,6 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     constrainMode?: ConstrainMode;
     disableSelectionZone?: boolean;
     dragDropEvents?: IDragDropEvents;
-    // @deprecated
-    enableShimmer?: boolean;
     enterModalSelectionOnTouch?: boolean;
     getGroupHeight?: IGroupedListProps['getGroupHeight'];
     getKey?: (item: any, index?: number) => string;
@@ -3497,8 +3494,6 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     onWillUnmount?: (row?: DetailsRowBase) => void;
     rowFieldsAs?: React.StatelessComponent<IDetailsRowFieldsProps> | React.ComponentClass<IDetailsRowFieldsProps>;
-    // @deprecated
-    shimmer?: boolean;
     styles?: IStyleFunctionOrObject<IDetailsRowStyleProps, IDetailsRowStyles>;
     theme?: ITheme;
     useReducedRowRenderer?: boolean;
@@ -3512,8 +3507,6 @@ export interface IDetailsRowCheckProps extends React.HTMLAttributes<HTMLElement>
     className?: string;
     compact?: boolean;
     isHeader?: boolean;
-    // @deprecated
-    isSelected?: boolean;
     isVisible?: boolean;
     onRenderDetailsCheckbox?: IRenderFunction<IDetailsCheckboxProps>;
     selected?: boolean;
@@ -3547,15 +3540,11 @@ export interface IDetailsRowFieldsProps extends IOverrideColumnRenderProps {
     rowClassNames: {
         isMultiline: string;
         isRowHeader: string;
-        shimmerIconPlaceholder: string;
-        shimmer: string;
         cell: string;
         cellPadded: string;
         cellUnpadded: string;
         fields: string;
     };
-    // @deprecated
-    shimmer?: boolean;
 }
 
 // @public (undocumented)
@@ -3627,14 +3616,6 @@ export interface IDetailsRowStyles {
     isRowHeader: IStyle;
     // (undocumented)
     root: IStyle;
-    // @deprecated (undocumented)
-    shimmer: IStyle;
-    // @deprecated (undocumented)
-    shimmerBottomBorder: IStyle;
-    // @deprecated (undocumented)
-    shimmerIconPlaceholder: IStyle;
-    // @deprecated (undocumented)
-    shimmerLeftBorder: IStyle;
 }
 
 // @public (undocumented)
@@ -4541,7 +4522,7 @@ export interface IFocusZoneProps extends React.HTMLAttributes<HTMLElement | Focu
     disabled?: boolean;
     doNotAllowFocusEventToPropagate?: boolean;
     // @deprecated
-    elementType?: keyof React.ReactHTML;
+    elementType?: any;
     handleTabKey?: FocusZoneTabbableElements;
     isCircularNavigation?: boolean;
     isInnerZoneKeystroke?: (ev: React.KeyboardEvent<HTMLElement>) => boolean;
@@ -5279,7 +5260,7 @@ export class ImageBase extends React.Component<IImageProps, IImageState> {
 // @public
 export enum ImageCoverStyle {
     landscape = 0,
-    portrait = 1,
+    portrait = 1
 }
 
 // @public
@@ -5289,7 +5270,7 @@ export enum ImageFit {
     centerCover = 4,
     contain = 1,
     cover = 2,
-    none = 3,
+    none = 3
 }
 
 // @public (undocumented)
@@ -5298,7 +5279,7 @@ export enum ImageLoadState {
     // @deprecated
     errorLoaded = 3,
     loaded = 1,
-    notLoaded = 0,
+    notLoaded = 0
 }
 
 // @public (undocumented)
@@ -5475,13 +5456,9 @@ export interface INav {
 // @public (undocumented)
 export interface INavLink {
     [propertyName: string]: any;
-    // @deprecated
-    altText?: string;
     ariaLabel?: string;
     automationId?: string;
     disabled?: boolean;
-    // @deprecated
-    engagementName?: string;
     forceAnchor?: boolean;
     icon?: string;
     // @deprecated
@@ -5492,8 +5469,6 @@ export interface INavLink {
     links?: INavLink[];
     name: string;
     onClick?: (ev?: React.MouseEvent<HTMLElement>, item?: INavLink) => void;
-    // @deprecated (undocumented)
-    parentId?: string;
     target?: string;
     title?: string;
     url: string;
@@ -5512,12 +5487,8 @@ export interface INavLinkGroup {
 export interface INavProps {
     ariaLabel?: string;
     className?: string;
-    // @deprecated
-    collapsedStateText?: string;
     componentRef?: IRefObject<INav>;
     expandButtonAriaLabel?: string;
-    // @deprecated
-    expandedStateText?: string;
     groups: INavLinkGroup[] | null;
     initialSelectedKey?: string;
     isOnTop?: boolean;
@@ -6403,7 +6374,7 @@ export interface ISearchBoxProps extends React.InputHTMLAttributes<HTMLInputElem
     iconProps?: Pick<IIconProps, Exclude<keyof IIconProps, 'className'>>;
     // @deprecated
     labelText?: string;
-    onChange?: (newValue: any) => void;
+    onChange?: (event?: React.ChangeEvent<HTMLInputElement>, newValue?: string) => void;
     // @deprecated
     onChanged?: (newValue: any) => void;
     onClear?: (ev?: any) => void;
@@ -6459,7 +6430,7 @@ export interface ISearchBoxStyles {
 }
 
 // @public
-export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TComponent> extends React.HTMLAttributes<TListenerElement> {
+export interface ISelectableDroppableTextProps<TComponent, TListenerElement> extends React.HTMLAttributes<TListenerElement> {
     ariaLabel?: string;
     calloutProps?: ICalloutProps;
     className?: string;
@@ -6469,9 +6440,9 @@ export interface ISelectableDroppableTextProps<TComponent, TListenerElement = TC
     errorMessage?: string;
     id?: string;
     label?: string;
-    onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+    onRenderContainer?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderItem?: IRenderFunction<ISelectableOption>;
-    onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent>>;
+    onRenderList?: IRenderFunction<ISelectableDroppableTextProps<TComponent, TListenerElement>>;
     onRenderOption?: IRenderFunction<ISelectableOption>;
     openOnKeyboardFocus?: boolean;
     options?: any;
@@ -6535,31 +6506,21 @@ export { ISelectionOptions }
 
 // @public (undocumented)
 export interface ISelectionZone {
-    // (undocumented)
     ignoreNextFocus: () => void;
 }
 
 // @public (undocumented)
 export interface ISelectionZoneProps extends React.ClassAttributes<SelectionZone> {
-    // (undocumented)
     componentRef?: () => void;
-    // (undocumented)
     disableAutoSelectOnInputElements?: boolean;
-    // (undocumented)
     enterModalOnTouch?: boolean;
-    // (undocumented)
     isSelectedOnFocus?: boolean;
     // @deprecated (undocumented)
     layout?: {};
-    // (undocumented)
     onItemContextMenu?: (item?: any, index?: number, ev?: Event) => void | boolean;
-    // (undocumented)
     onItemInvoked?: (item?: IObjectWithKey, index?: number, ev?: Event) => void;
-    // (undocumented)
     selection: ISelection;
-    // (undocumented)
     selectionMode?: SelectionMode;
-    // (undocumented)
     selectionPreservedOnEmptyClick?: boolean;
 }
 
@@ -6623,22 +6584,16 @@ export interface IShimmerColors {
 }
 
 // @public
-export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
-    // @deprecated
-    detailsListStyles?: IDetailsListProps['styles'];
+export interface IShimmeredDetailsListProps extends IDetailsListProps {
     enableShimmer?: boolean;
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
     removeFadingOverlay?: boolean;
     shimmerLines?: number;
-    // @deprecated
-    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+    shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 }
 
 // @public
-export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>> & {
-    className?: string;
-    enableShimmer?: boolean;
-};
+export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;
 
 // @public
 export interface IShimmeredDetailsListStyles {
@@ -6772,6 +6727,7 @@ export interface IShimmerStyles {
     dataWrapper?: IStyle;
     root?: IStyle;
     screenReaderText?: IStyle;
+    shimmerGradient?: IStyle;
     shimmerWrapper?: IStyle;
 }
 
@@ -6973,6 +6929,9 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
 }
 
 // @public (undocumented)
+export type IStackItemSlot = ISlotProp<IStackItemProps>;
+
+// @public (undocumented)
 export interface IStackItemSlots {
     // (undocumented)
     root?: IHTMLSlot;
@@ -6989,20 +6948,24 @@ export type IStackItemTokenReturnType = ReturnType<Extract<IStackItemComponent['
 
 // @public (undocumented)
 export interface IStackItemTokens {
-    // (undocumented)
     margin?: number | string;
+    padding?: number | string;
 }
 
 // @public (undocumented)
-export interface IStackProps extends IStackSlots, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React.HTMLAttributes<HTMLElement> {
+export interface IStackProps extends ISlottableProps<IStackSlots>, IStyleableComponentProps<IStackProps, IStackTokens, IStackStyles>, React.HTMLAttributes<HTMLElement> {
     as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
     disableShrink?: boolean;
+    // @deprecated
     gap?: number | string;
     grow?: boolean | number | 'inherit' | 'initial' | 'unset';
     horizontal?: boolean;
     horizontalAlign?: Alignment;
+    // @deprecated
     maxHeight?: number | string;
+    // @deprecated
     maxWidth?: number | string;
+    // @deprecated
     padding?: number | string;
     reversed?: boolean;
     verticalAlign?: Alignment;
@@ -7030,8 +6993,10 @@ export type IStackTokenReturnType = ReturnType<Extract<IStackComponent['tokens']
 
 // @public (undocumented)
 export interface IStackTokens {
-    // (undocumented)
     childrenGap?: number | string;
+    maxHeight?: number | string;
+    maxWidth?: number | string;
+    padding?: number | string;
 }
 
 // @public (undocumented)
@@ -7068,7 +7033,7 @@ export interface ISuggestionItemProps<T> {
     onClick: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     onRemoveItem: (ev: React.MouseEvent<HTMLButtonElement>) => void;
     removeButtonAriaLabel?: string;
-    RenderSuggestion: (item: T, suggestionItemProps?: ISuggestionItemProps<T>) => JSX.Element;
+    RenderSuggestion: (item: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
     showRemoveButton?: boolean;
     styles?: IStyleFunctionOrObject<ISuggestionsItemStyleProps, ISuggestionsItemStyles>;
     suggestionModel: ISuggestionModel<T>;
@@ -7117,7 +7082,7 @@ export interface ISuggestionsControlState<T> {
 // @public (undocumented)
 export interface ISuggestionsCoreProps<T> extends React.ClassAttributes<any> {
     componentRef?: IRefObject<{}>;
-    onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
+    onRenderSuggestion?: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
     onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
     onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: IPersonaProps, index?: number) => void;
     resultsMaximumNumber?: number;
@@ -7191,7 +7156,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     noResultsFoundText?: string;
     onGetMoreResults?: () => void;
     onRenderNoResultFound?: IRenderFunction<void>;
-    onRenderSuggestion?: (props: T, suggestionItemProps: T) => JSX.Element;
+    onRenderSuggestion: (props: T, suggestionItemProps: ISuggestionItemProps<T>) => JSX.Element;
     onSuggestionClick: (ev?: React.MouseEvent<HTMLElement>, item?: any, index?: number) => void;
     onSuggestionRemove?: (ev?: React.MouseEvent<HTMLElement>, item?: T | IPersonaProps, index?: number) => void;
     refocusSuggestions?: (keyCode: KeyCodes) => void;
@@ -7204,7 +7169,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
     searchingText?: string;
     showForceResolve?: () => boolean;
     showRemoveButtons?: boolean;
-    styles?: IStyleFunctionOrObject<{}, {}>;
+    styles?: IStyleFunctionOrObject<any, any>;
     suggestions: ISuggestionModel<T>[];
     suggestionsAvailableAlertText?: string;
     suggestionsClassName?: string;
@@ -7432,23 +7397,17 @@ export interface ITextField {
 
 // @public
 export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElement | HTMLTextAreaElement> {
-    // @deprecated (undocumented)
-    addonString?: string;
     ariaLabel?: string;
     autoAdjustHeight?: boolean;
     autoComplete?: string;
     borderless?: boolean;
     className?: string;
-    // @deprecated (undocumented)
-    componentId?: string;
     componentRef?: IRefObject<ITextField>;
     defaultValue?: string;
     deferredValidationTime?: number;
     description?: string;
     disabled?: boolean;
     errorMessage?: string | JSX.Element;
-    // @deprecated (undocumented)
-    iconClass?: string;
     iconProps?: IIconProps;
     inputClassName?: string;
     label?: string;
@@ -7458,14 +7417,9 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
         [key: string]: RegExp;
     };
     multiline?: boolean;
-    onBeforeChange?: (newValue?: string) => void;
     onChange?: (event: React.FormEvent<HTMLInputElement | HTMLTextAreaElement>, newValue?: string) => void;
-    // @deprecated (undocumented)
-    onChanged?: (newValue: any) => void;
     onGetErrorMessage?: (value: string) => string | JSX.Element | PromiseLike<string | JSX.Element> | undefined;
     onNotifyValidationResult?: (errorMessage: string | JSX.Element, value: string | undefined) => void;
-    // @deprecated (undocumented)
-    onRenderAddon?: IRenderFunction<ITextFieldProps>;
     onRenderDescription?: IRenderFunction<ITextFieldProps>;
     onRenderLabel?: IRenderFunction<ITextFieldProps>;
     onRenderPrefix?: IRenderFunction<ITextFieldProps>;
@@ -7483,16 +7437,24 @@ export interface ITextFieldProps extends React.AllHTMLAttributes<HTMLInputElemen
     value?: string;
 }
 
-// @public (undocumented)
+// Warning: (ae-internal-missing-underscore) The name "ITextFieldSnapshot" should be prefixed with an underscore because the declaration is marked as @internal
+// 
+// @internal (undocumented)
+export interface ITextFieldSnapshot {
+    selection?: [number | null, number | null];
+}
+
+// Warning: (ae-internal-missing-underscore) The name "ITextFieldState" should be prefixed with an underscore because the declaration is marked as @internal
+// 
+// @internal (undocumented)
 export interface ITextFieldState {
     errorMessage: string | JSX.Element;
-    isFocused: boolean;
-    // (undocumented)
-    value: string;
+    isFocused?: boolean;
+    uncontrolledValue: string | undefined;
 }
 
 // @public (undocumented)
-export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'iconClass' | 'autoAdjustHeight'> & {
+export type ITextFieldStyleProps = Required<Pick<ITextFieldProps, 'theme'>> & Pick<ITextFieldProps, 'className' | 'disabled' | 'inputClassName' | 'required' | 'multiline' | 'borderless' | 'resizable' | 'underlined' | 'autoAdjustHeight'> & {
     hasErrorMessage?: boolean;
     hasIcon?: boolean;
     hasLabel?: boolean;
@@ -7519,7 +7481,7 @@ export interface ITextFieldSubComponentStyles {
 }
 
 // @public
-export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React.HTMLAttributes<HTMLElement> {
+export interface ITextProps extends ISlottableProps<ITextSlots>, IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>, React.HTMLAttributes<HTMLElement> {
     as?: React.ReactType<React.HTMLAttributes<HTMLElement>>;
     block?: boolean;
     nowrap?: boolean;
@@ -7527,7 +7489,7 @@ export interface ITextProps extends ITextSlots, IStyleableComponentProps<ITextPr
 }
 
 // @public (undocumented)
-export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
+export type ITextSlot = ISlotProp<ITextProps, string>;
 
 // @public (undocumented)
 export interface ITextSlots {
@@ -7747,7 +7709,7 @@ export enum KeyboardSpinDirection {
     // (undocumented)
     notSpinning = 0,
     // (undocumented)
-    up = 1,
+    up = 1
 }
 
 // @public
@@ -7881,7 +7843,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     }
 
 // @public (undocumented)
-export const ListPeoplePicker: React.StatelessComponent<IPeoplePickerProps>;
+export const ListPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 
 // @public
 export class ListPeoplePickerBase extends MemberListPeoplePicker {
@@ -7947,6 +7909,17 @@ export const MAX_COLOR_SATURATION = 100;
 // @public (undocumented)
 export const MAX_COLOR_VALUE = 100;
 
+// @public
+export const MAX_HEX_LENGTH = 6;
+
+// @public
+export const MAX_RGBA_LENGTH = 3;
+
+// @public (undocumented)
+export const MeasuredContext: React.Context<{
+    isMeasured: boolean;
+}>;
+
 // @public (undocumented)
 export class MemberListPeoplePicker extends BasePickerListBelow<IPersonaProps, IPeoplePickerProps> {
 }
@@ -7978,8 +7951,14 @@ export enum MessageBarType {
     remove = 90000,
     severeWarning = 3,
     success = 4,
-    warning = 5,
+    warning = 5
 }
+
+// @public
+export const MIN_HEX_LENGTH = 3;
+
+// @public
+export const MIN_RGBA_LENGTH = 1;
 
 // @public (undocumented)
 export const Modal: React.StatelessComponent<IModalProps>;
@@ -8017,7 +7996,7 @@ export class NavBase extends React.Component<INavProps, INavState> implements IN
     }
 
 // @public (undocumented)
-export const NormalPeoplePicker: React.StatelessComponent<IPeoplePickerProps>;
+export const NormalPeoplePicker: React.FunctionComponent<IPeoplePickerProps>;
 
 // @public
 export class NormalPeoplePickerBase extends BasePeoplePicker {
@@ -8037,7 +8016,7 @@ export type OnFocusCallback = (ev?: React.FocusEvent<HTMLElement | HTMLInputElem
 // @public (undocumented)
 export enum OpenCardMode {
     hotKey = 1,
-    hover = 0,
+    hover = 0
 }
 
 // @public (undocumented)
@@ -8045,7 +8024,7 @@ export enum OverflowButtonType {
     descriptive = 1,
     downArrow = 3,
     more = 2,
-    none = 0,
+    none = 0
 }
 
 // @public (undocumented)
@@ -8096,7 +8075,7 @@ export enum PanelType {
     medium = 3,
     smallFixedFar = 1,
     smallFixedNear = 2,
-    smallFluid = 0,
+    smallFluid = 0
 }
 
 // @public (undocumented)
@@ -8105,13 +8084,13 @@ export const people: (IExtendedPersonaProps & {
 })[];
 
 // @public (undocumented)
-export const PeoplePickerItem: React.StatelessComponent<IPeoplePickerItemSelectedProps>;
+export const PeoplePickerItem: React.FunctionComponent<IPeoplePickerItemSelectedProps>;
 
 // @public (undocumented)
 export const PeoplePickerItemBase: (props: IPeoplePickerItemSelectedProps) => JSX.Element;
 
 // @public (undocumented)
-export const PeoplePickerItemSuggestion: React.StatelessComponent<IPeoplePickerItemSuggestionProps>;
+export const PeoplePickerItemSuggestion: React.FunctionComponent<IPeoplePickerItemSuggestionProps>;
 
 // @public (undocumented)
 export const PeoplePickerItemSuggestionBase: (props: IPeoplePickerItemSuggestionProps) => JSX.Element;
@@ -8144,15 +8123,25 @@ export class PersonaCoinBase extends BaseComponent<IPersonaCoinProps, IPersonaSt
 
 // @public (undocumented)
 export enum PersonaInitialsColor {
+    // @deprecated
     black = 11,
     // (undocumented)
     blue = 1,
+    // (undocumented)
+    burgundy = 19,
+    // (undocumented)
+    coolGray = 21,
+    // (undocumented)
+    cyan = 23,
     // (undocumented)
     darkBlue = 2,
     // (undocumented)
     darkGreen = 6,
     // (undocumented)
     darkRed = 14,
+    // (undocumented)
+    gold = 18,
+    gray = 22,
     // (undocumented)
     green = 5,
     // (undocumented)
@@ -8162,6 +8151,8 @@ export enum PersonaInitialsColor {
     // (undocumented)
     lightPink = 7,
     // (undocumented)
+    lightRed = 17,
+    // (undocumented)
     magenta = 9,
     // (undocumented)
     orange = 12,
@@ -8169,12 +8160,17 @@ export enum PersonaInitialsColor {
     pink = 8,
     // (undocumented)
     purple = 10,
+    // @deprecated
     red = 13,
+    // (undocumented)
+    rust = 24,
     // (undocumented)
     teal = 3,
     transparent = 15,
     // (undocumented)
     violet = 16,
+    // (undocumented)
+    warmGray = 20
 }
 
 // @public (undocumented)
@@ -8192,7 +8188,7 @@ export enum PersonaPresence {
     // (undocumented)
     offline = 1,
     // (undocumented)
-    online = 2,
+    online = 2
 }
 
 // @public (undocumented)
@@ -8203,6 +8199,8 @@ export namespace personaPresenceSize {
     size8 = "8px";
     const // (undocumented)
     size12 = "12px";
+    const // (undocumented)
+    size16 = "16px";
     const // (undocumented)
     size20 = "20px";
     const // (undocumented)
@@ -8223,32 +8221,30 @@ export enum PersonaSize {
     large = 5,
     // @deprecated
     regular = 4,
-    // (undocumented)
+    // @deprecated
     size10 = 9,
-    // (undocumented)
     size100 = 15,
-    // (undocumented)
+    // @deprecated
     size16 = 8,
-    // (undocumented)
     size24 = 10,
-    // (undocumented)
+    // @deprecated
     size28 = 7,
-    // (undocumented)
     size32 = 11,
-    // (undocumented)
     size40 = 12,
-    // (undocumented)
     size48 = 13,
-    // (undocumented)
+    size56 = 16,
     size72 = 14,
+    size8 = 17,
     // @deprecated
     small = 3,
     // @deprecated
-    tiny = 0,
+    tiny = 0
 }
 
 // @public (undocumented)
 export namespace personaSize {
+    const // (undocumented)
+    size8 = "20px";
     const // (undocumented)
     size10 = "20px";
     const // (undocumented)
@@ -8263,6 +8259,8 @@ export namespace personaSize {
     size40 = "40px";
     const // (undocumented)
     size48 = "48px";
+    const // (undocumented)
+    size56 = "56px";
     const // (undocumented)
     size72 = "72px";
     const // (undocumented)
@@ -8290,13 +8288,13 @@ export class PivotItem extends BaseComponent<IPivotItemProps, {}> {
 // @public (undocumented)
 export enum PivotLinkFormat {
     links = 0,
-    tabs = 1,
+    tabs = 1
 }
 
 // @public (undocumented)
 export enum PivotLinkSize {
     large = 1,
-    normal = 0,
+    normal = 0
 }
 
 // @public (undocumented)
@@ -8341,7 +8339,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     // (undocumented)
     static defaultProps: IPositioningContainerProps;
     // @deprecated
-    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+    dismiss: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
     // (undocumented)
     protected _dismissOnLostFocus(ev: Event): void;
     // (undocumented)
@@ -8349,7 +8347,7 @@ export class PositioningContainer extends BaseComponent<IPositioningContainerPro
     // (undocumented)
     protected _onComponentDidMount: () => void;
     // (undocumented)
-    onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement> | undefined) => void;
+    onResize: (ev?: Event | React.KeyboardEvent<HTMLElement> | React.MouseEvent<HTMLElement, MouseEvent> | undefined) => void;
     // (undocumented)
     render(): JSX.Element | null;
     // (undocumented)
@@ -8395,8 +8393,6 @@ export const Rating: React.StatelessComponent<IRatingProps>;
 export class RatingBase extends BaseComponent<IRatingProps, IRatingState> {
     constructor(props: IRatingProps);
     // (undocumented)
-    componentWillReceiveProps(nextProps: IRatingProps): void;
-    // (undocumented)
     static defaultProps: IRatingProps;
     // (undocumented)
     render(): JSX.Element;
@@ -8407,7 +8403,7 @@ export enum RatingSize {
     // (undocumented)
     Large = 1,
     // (undocumented)
-    Small = 0,
+    Small = 0
 }
 
 // @public (undocumented)
@@ -8433,7 +8429,7 @@ export enum ResizeGroupDirection {
     // (undocumented)
     horizontal = 0,
     // (undocumented)
-    vertical = 1,
+    vertical = 1
 }
 
 // @public (undocumented)
@@ -8449,7 +8445,7 @@ export enum ResponsiveMode {
     // (undocumented)
     xxLarge = 4,
     // (undocumented)
-    xxxLarge = 5,
+    xxxLarge = 5
 }
 
 // @public
@@ -8457,6 +8453,9 @@ export function rgb2hex(r: number, g: number, b: number): string;
 
 // @public
 export function rgb2hsv(r: number, g: number, b: number): IHSV;
+
+// @public
+export const RGBA_REGEX: RegExp;
 
 // @public (undocumented)
 export const ScrollablePane: React.StatelessComponent<IScrollablePaneProps>;
@@ -8467,8 +8466,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     addSticky: (sticky: Sticky) => void;
     // (undocumented)
-    static childContextTypes: React.ValidationMap<IScrollablePaneContext>;
-    // (undocumented)
     componentDidMount(): void;
     // (undocumented)
     componentDidUpdate(prevProps: IScrollablePaneProps, prevState: IScrollablePaneState): void;
@@ -8478,8 +8475,6 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     readonly contentContainer: HTMLDivElement | null;
     // (undocumented)
     forceLayoutUpdate(): void;
-    // (undocumented)
-    getChildContext(): IScrollablePaneContext;
     // (undocumented)
     getScrollPosition: () => number;
     // (undocumented)
@@ -8509,6 +8504,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     updateStickyRefHeights: () => void;
 }
+
+// @public (undocumented)
+export const ScrollablePaneContext: React.Context<IScrollablePaneContext>;
 
 // @public (undocumented)
 export const ScrollbarVisibility: {
@@ -8553,7 +8551,7 @@ enum SelectableOptionMenuItemType {
     // (undocumented)
     Header = 2,
     // (undocumented)
-    Normal = 0,
+    Normal = 0
 }
 
 export { SelectableOptionMenuItemType as DropdownMenuItemType }
@@ -8567,7 +8565,7 @@ export enum SelectAllVisibility {
     // (undocumented)
     none = 0,
     // (undocumented)
-    visible = 2,
+    visible = 2
 }
 
 // @public
@@ -8592,7 +8590,6 @@ export class SelectionZone extends BaseComponent<ISelectionZoneProps, {}> {
     componentDidMount(): void;
     // (undocumented)
     static defaultProps: {
-        isMultiSelectEnabled: boolean;
         isSelectedOnFocus: boolean;
         selectionMode: SelectionMode;
     };
@@ -8610,7 +8607,7 @@ export enum SemanticColorSlots {
     // (undocumented)
     disabledBackground = 2,
     // (undocumented)
-    disabledText = 3,
+    disabledText = 3
 }
 
 // @public (undocumented)
@@ -8638,7 +8635,7 @@ export enum Shade {
     // (undocumented)
     Shade8 = 8,
     // (undocumented)
-    Unshaded = 0,
+    Unshaded = 0
 }
 
 // @public (undocumented)
@@ -8679,7 +8676,7 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
 export enum ShimmerElementsDefaultHeights {
     circle = 24,
     gap = 16,
-    line = 16,
+    line = 16
 }
 
 // @public (undocumented)
@@ -8698,7 +8695,7 @@ export class ShimmerElementsGroupBase extends BaseComponent<IShimmerElementsGrou
 export enum ShimmerElementType {
     circle = 2,
     gap = 3,
-    line = 1,
+    line = 1
 }
 
 // @public (undocumented)
@@ -8723,6 +8720,7 @@ export class ShimmerLineBase extends BaseComponent<IShimmerLineProps, {}> {
 
 // @public (undocumented)
 export const sizeBoolean: (size: PersonaSize) => {
+    isSize8: boolean;
     isSize10: boolean;
     isSize16: boolean;
     isSize24: boolean;
@@ -8730,6 +8728,7 @@ export const sizeBoolean: (size: PersonaSize) => {
     isSize32: boolean;
     isSize40: boolean;
     isSize48: boolean;
+    isSize56: boolean;
     isSize72: boolean;
     isSize100: boolean;
 };
@@ -8745,7 +8744,6 @@ export const Slider: React.StatelessComponent<ISliderProps>;
 // @public (undocumented)
 export class SliderBase extends BaseComponent<ISliderProps, ISliderState> implements ISlider {
     constructor(props: ISliderProps);
-    componentWillReceiveProps(newProps: ISliderProps): void;
     // (undocumented)
     static defaultProps: ISliderProps;
     // (undocumented)
@@ -8788,7 +8786,7 @@ export enum SpinnerSize {
     large = 3,
     medium = 2,
     small = 1,
-    xSmall = 0,
+    xSmall = 0
 }
 
 // @public @deprecated
@@ -8796,7 +8794,7 @@ export enum SpinnerType {
     // @deprecated
     large = 1,
     // @deprecated
-    normal = 0,
+    normal = 0
 }
 
 // @public (undocumented)
@@ -8823,9 +8821,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
-    context: IScrollablePaneContext;
-    // (undocumented)
-    static contextTypes: IStickyContext;
+    static contextType: React.Context<IScrollablePaneContext>;
     // (undocumented)
     static defaultProps: IStickyProps;
     // (undocumented)
@@ -8857,14 +8853,14 @@ export enum StickyPositionType {
     // (undocumented)
     Footer = 2,
     // (undocumented)
-    Header = 1,
+    Header = 1
 }
 
 // @public
 export enum SuggestionActionType {
     forceResolve = 1,
     none = 0,
-    searchMore = 2,
+    searchMore = 2
 }
 
 // @public (undocumented)
@@ -8874,7 +8870,7 @@ export enum SuggestionItemType {
     // (undocumented)
     header = 0,
     // (undocumented)
-    suggestion = 1,
+    suggestion = 1
 }
 
 // @public (undocumented)
@@ -9077,19 +9073,19 @@ export class SwatchColorPickerBase extends React.Component<ISwatchColorPickerPro
     }
 
 // @public (undocumented)
-export const TagItem: React.StatelessComponent<ITagItemProps>;
+export const TagItem: React.FunctionComponent<ITagItemProps>;
 
 // @public (undocumented)
 export const TagItemBase: (props: ITagItemProps) => JSX.Element;
 
 // @public (undocumented)
-export const TagItemSuggestion: React.StatelessComponent<ITagItemSuggestionProps>;
+export const TagItemSuggestion: React.FunctionComponent<ITagItemSuggestionProps>;
 
 // @public (undocumented)
 export const TagItemSuggestionBase: (props: ITagItemSuggestionProps) => JSX.Element;
 
 // @public (undocumented)
-export const TagPicker: React.StatelessComponent<ITagPickerProps>;
+export const TagPicker: React.FunctionComponent<ITagPickerProps>;
 
 // @public (undocumented)
 export class TagPickerBase extends BasePicker<ITag, ITagPickerProps> {
@@ -9160,21 +9156,24 @@ export const Text: React.StatelessComponent<ITextProps>;
 // @public (undocumented)
 export const TextField: React.StatelessComponent<ITextFieldProps>;
 
+// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldState" which is marked as @internal
+// Warning: (ae-incompatible-release-tags) The symbol "TextFieldBase" is marked as @public, but its signature references "ITextFieldSnapshot" which is marked as @internal
+// 
 // @public (undocumented)
-export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState> implements ITextField {
+export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldState, ITextFieldSnapshot> implements ITextField {
     constructor(props: ITextFieldProps);
     blur(): void;
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
-    // (undocumented)
-    componentWillReceiveProps(newProps: ITextFieldProps): void;
+    componentDidUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState, snapshot: ITextFieldSnapshot): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
     static defaultProps: ITextFieldProps;
     focus(): void;
+    // (undocumented)
+    getSnapshotBeforeUpdate(prevProps: ITextFieldProps, prevState: ITextFieldState): ITextFieldSnapshot | null;
     // (undocumented)
     render(): JSX.Element;
     select(): void;
@@ -9184,7 +9183,7 @@ export class TextFieldBase extends React.Component<ITextFieldProps, ITextFieldSt
     setSelectionRange(start: number, end: number): void;
     setSelectionStart(value: number): void;
     readonly value: string | undefined;
-}
+    }
 
 // @public (undocumented)
 export const TextStyles: ITextComponent['styles'];
@@ -9219,9 +9218,9 @@ export class ToggleBase extends BaseComponent<IToggleProps, IToggleState> implem
     constructor(props: IToggleProps);
     readonly checked: boolean;
     // (undocumented)
-    componentWillReceiveProps(newProps: IToggleProps): void;
-    // (undocumented)
     focus(): void;
+    // (undocumented)
+    static getDerivedStateFromProps(props: IToggleProps, state: IToggleState): IToggleState;
     // (undocumented)
     render(): JSX.Element;
     }
@@ -9244,7 +9243,7 @@ export enum TooltipDelay {
     // (undocumented)
     medium = 1,
     // (undocumented)
-    zero = 0,
+    zero = 0
 }
 
 // @public (undocumented)
@@ -9270,7 +9269,7 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
 // @public (undocumented)
 export enum TooltipOverflowMode {
     Parent = 0,
-    Self = 1,
+    Self = 1
 }
 
 // @public
@@ -9289,15 +9288,7 @@ export function updateSV(color: IColor, s: number, v: number): IColor;
 export enum ValidationState {
     invalid = 2,
     valid = 0,
-    warning = 1,
-}
-
-// @public @deprecated (undocumented)
-export enum ValuePosition {
-    // (undocumented)
-    Next = 1,
-    // (undocumented)
-    Previous = 0,
+    warning = 1
 }
 
 // @public (undocumented)
@@ -9319,10 +9310,13 @@ export class VirtualizedComboBox extends BaseComponent<IComboBoxProps, {}> imple
 }
 
 
-export * from "@uifabric/foundation";
 export * from "@uifabric/icons";
 export * from "@uifabric/styling";
 export * from "@uifabric/utilities";
+
+// Warnings were encountered during analysis:
+// 
+// lib/components/ColorPicker/ColorPicker.base.d.ts:8:9 - (ae-forgotten-export) The symbol "IRGBHex" needs to be exported by the entry point index.d.ts
 
 // (No @packageDocumentation comment for this package)
 

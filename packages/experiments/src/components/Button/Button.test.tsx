@@ -4,7 +4,7 @@ import * as renderer from 'react-test-renderer';
 import { CommandBar, Icon, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
 
-describe('Button view', () => {
+describe('Button', () => {
   it('renders a default Button with content correctly', () => {
     const component = renderer.create(<Button content="Default button" />);
     const tree = component.toJSON();
@@ -72,6 +72,30 @@ describe('Button view', () => {
 
   it('renders a Button inside a CommandBar correctly', () => {
     const component = renderer.create(<CommandBar items={[{ key: '0', text: 'Button 1', iconProps: { iconName: 'Upload' } }]} />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a default checked Button correctly', () => {
+    const component = renderer.create(<Button checked content="Button" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a primary checked Button correctly', () => {
+    const component = renderer.create(<Button primary checked content="Button" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a default circular checked Button correctly', () => {
+    const component = renderer.create(<Button checked circular icon="Volume3" />);
+    const tree = component.toJSON();
+    expect(tree).toMatchSnapshot;
+  });
+
+  it('renders a primary circular checked Button correctly', () => {
+    const component = renderer.create(<Button primary checked circular icon="Volume3" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
   });

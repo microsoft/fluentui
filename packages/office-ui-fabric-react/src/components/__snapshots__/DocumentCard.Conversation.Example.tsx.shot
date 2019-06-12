@@ -9,7 +9,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
@@ -23,11 +23,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -87,11 +87,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -116,7 +116,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -145,8 +145,8 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              color: #333333;
+              background-color: #f3f2f1;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -256,11 +256,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #00ABA9;
+                      background-color: #0B6A0B;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       height: 32px;
                       line-height: 32px;
                     }
@@ -270,6 +270,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                    }
+                    & i {
+                      font-weight: 600;
                     }
               >
                 <span>
@@ -399,7 +402,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -416,7 +419,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -438,7 +441,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
@@ -452,11 +455,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -516,11 +519,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -540,7 +543,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -564,8 +567,8 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              background-color: #f4f4f4;
-              color: #333333;
+              background-color: #f3f2f1;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
               font-weight: 400;
@@ -779,11 +782,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #7E3878;
+                      background-color: #A4262C;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       height: 32px;
                       line-height: 32px;
                     }
@@ -793,6 +796,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                    }
+                    & i {
+                      font-weight: 600;
                     }
               >
                 <span>
@@ -818,7 +824,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -835,7 +841,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;
@@ -857,7 +863,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
         {
           -webkit-font-smoothing: antialiased;
           background-color: #ffffff;
-          border: 1px solid #eaeaea;
+          border: 1px solid #edebe9;
           box-sizing: border-box;
           display: inline-block;
           margin-right: 20px;
@@ -871,11 +877,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           padding-top: 4px;
         }
         &:hover {
-          border-color: #c8c8c8;
+          border-color: #c8c6c4;
           cursor: pointer;
         }
         &:hover:after {
-          border: 1px solid #c8c8c8;
+          border: 1px solid #c8c6c4;
           bottom: 0px;
           content: " ";
           left: 0px;
@@ -935,11 +941,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #333333;
+              color: #323130;
               display: block;
-              font-family: 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
-              font-size: 17px;
-              font-weight: 300;
+              font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+              font-size: 18px;
+              font-weight: 400;
               height: 38px;
               line-height: 21px;
               overflow: hidden;
@@ -964,7 +970,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
             {
               -moz-osx-font-smoothing: grayscale;
               -webkit-font-smoothing: antialiased;
-              color: #666666;
+              color: #605e5c;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
@@ -1166,11 +1172,11 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                 className=
                     ms-Persona-initials
                     {
-                      background-color: #6BA5E7;
+                      background-color: #005B70;
                       border-radius: 50%;
                       color: #ffffff;
                       font-size: 14px;
-                      font-weight: 400;
+                      font-weight: 600;
                       height: 32px;
                       line-height: 32px;
                     }
@@ -1180,6 +1186,9 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
                       border: 1px solid WindowText;
                       box-sizing: border-box;
                       color: WindowText;
+                    }
+                    & i {
+                      font-weight: 600;
                     }
               >
                 <span>
@@ -1205,7 +1214,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           className=
               ms-DocumentCardActivity-name
               {
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-size: 12px;
                 font-weight: 600;
@@ -1222,7 +1231,7 @@ exports[`Component Examples renders DocumentCard.Conversation.Example.tsx correc
           className=
               ms-DocumentCardActivity-activity
               {
-                color: #666666;
+                color: #605e5c;
                 display: block;
                 font-size: 12px;
                 height: 15px;

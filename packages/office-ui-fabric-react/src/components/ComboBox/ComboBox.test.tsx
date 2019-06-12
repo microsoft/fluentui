@@ -429,7 +429,9 @@ describe.only('ComboBox', () => {
       baseNode
     );
 
-    const input = (ReactDOM.findDOMNode(component as React.ReactInstance) as Element).querySelector('input') as HTMLInputElement;
+    const input = (ReactDOM.findDOMNode((component as unknown) as React.ReactInstance) as Element).querySelector(
+      'input'
+    ) as HTMLInputElement;
     if (input === null) {
       throw 'ComboBox input element is null';
     }

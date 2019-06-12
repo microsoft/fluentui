@@ -1,5 +1,9 @@
 import * as React from 'react';
-import { mergeStyleSets, DefaultPalette, Dropdown, IDropdownOption, Slider, Stack } from 'office-ui-fabric-react';
+import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -28,42 +32,32 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
-    const styles = mergeStyleSets({
+    const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         width: `${stackWidth}%`,
-        overflow
-      },
-
-      item: {
-        width: 50,
-        height: 50,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white
-      },
-
-      container: {
-        height: containerHeight
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      configureStack: {
-        childrenGap: 20
-      },
-      wrapStack: {
-        childrenGap: 30
+        overflow,
+        selectors: {
+          '& span': {
+            width: 50,
+            height: 50,
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            background: DefaultPalette.themePrimary,
+            color: DefaultPalette.white
+          }
+        }
       }
     };
+    const containerStyles = mergeStyles({ height: containerHeight });
+
+    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+    const configureStackTokens: IStackTokens = { childrenGap: 20 };
+    const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Stack horizontal>
           <Stack.Item grow>
             <Slider label="Stack width:" min={1} max={100} step={1} defaultValue={100} showValue={true} onChange={this._onWidthChange} />
@@ -81,7 +75,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           </Stack.Item>
         </Stack>
 
-        <Stack horizontal tokens={tokens.configureStack}>
+        <Stack horizontal tokens={configureStackTokens}>
           <Stack.Item grow>
             <Dropdown
               selectedKey={horizontalAlignment}
@@ -118,26 +112,26 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
           </Stack.Item>
         </Stack>
 
-        <div className={styles.container}>
+        <div className={containerStyles}>
           <Stack
             horizontal
             verticalFill
             wrap
-            tokens={tokens.wrapStack}
             horizontalAlign={horizontalAlignment}
             verticalAlign={verticalAlignment}
-            className={styles.root}
+            styles={stackStyles}
+            tokens={wrapStackTokens}
           >
-            <span className={styles.item}>1</span>
-            <span className={styles.item}>2</span>
-            <span className={styles.item}>3</span>
-            <span className={styles.item}>4</span>
-            <span className={styles.item}>5</span>
-            <span className={styles.item}>6</span>
-            <span className={styles.item}>7</span>
-            <span className={styles.item}>8</span>
-            <span className={styles.item}>9</span>
-            <span className={styles.item}>10</span>
+            <span>1</span>
+            <span>2</span>
+            <span>3</span>
+            <span>4</span>
+            <span>5</span>
+            <span>6</span>
+            <span>7</span>
+            <span>8</span>
+            <span>9</span>
+            <span>10</span>
           </Stack>
         </div>
       </Stack>

@@ -98,7 +98,7 @@ export class DialogContentBase extends BaseComponent<IDialogContentProps, {}> {
     };
 
     React.Children.map(this.props.children, child => {
-      if (typeof child === 'object' && child !== null && child.type === DialogFooterType) {
+      if (typeof child === 'object' && child !== null && (child as any).type === DialogFooterType) {
         groupings.footers.push(child);
       } else {
         groupings.contents.push(child);
