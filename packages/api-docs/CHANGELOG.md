@@ -1,6 +1,14 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 1.1.4
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Generate API docs for legacy controls
+- Remove reference to legacy package
 
 ## 1.1.3
 Tue, 11 Jun 2019 12:21:35 GMT

@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changin borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius and borderTopRightRadius to be of type ICSSPixelUnitRule, like borderRadius, instead of type string.
 
 ## 6.18.1
 Tue, 11 Jun 2019 12:21:35 GMT

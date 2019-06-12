@@ -1,6 +1,15 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 6.3.3
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Re-export shared date utilities rather than duplicating
+- Render demo app with Markdown instead of PageMarkdown
+- Update and dedupe React deps.
 
 ## 6.3.2
 Tue, 11 Jun 2019 12:21:35 GMT

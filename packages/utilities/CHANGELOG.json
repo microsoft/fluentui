@@ -2,6 +2,57 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "7.0.0",
+      "tag": "@uifabric/utilities_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          }
+        ],
+        "none": [
+          {
+            "comment": "Remove outdated *.api.ts generated files",
+            "author": "Kevin Coughlin <kevintcoughlin@gmail.com>",
+            "commit": "23c112c024e7e6c3e2b99f9f9b5a32081f09f5b9"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Remove deprecated `autobind` decorator.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "createRef: removed (use React.createRef instead)",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dff286902cc947fceba7048150e76927143fdb"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Add utility for checking controlled/uncontrolled prop usage",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "04983f31fedbf04c33f7cfd2395e58b5a9a7d03a"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.4` to `^6.0.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.0",
       "tag": "@uifabric/utilities_v6.41.0",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

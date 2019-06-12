@@ -2,6 +2,77 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.5.0",
+      "tag": "@uifabric/react-cards_v0.5.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Render demo app with Markdown instead of PageMarkdown",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Support changes to createComponent API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "20b09cc417500b205e6007538cb6f04ffee208eb"
+          },
+          {
+            "comment": "Card: Adding documentation to tokens.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2c553b0947be860aa28cb877ae3816cfea461c7a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Card: Improving CardItem and adding CardSection to allow Card children to fill the Card's margins.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "77a91958ee5e37fb6c2991fd22275ec379f4c914"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.1` to `^6.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.7` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.7` to `^0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.4.0",
       "tag": "@uifabric/react-cards_v0.4.0",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",
