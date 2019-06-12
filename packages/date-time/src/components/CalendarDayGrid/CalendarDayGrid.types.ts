@@ -142,6 +142,12 @@ export interface ICalendarDayGridProps extends IBaseProps<ICalendarDayGrid> {
    * The ID of the control that labels this one
    */
   labelledBy?: string;
+
+  /**
+   * Whether to show days outside the selected month with lighter styles
+   * @defaultvalue true
+   */
+  lightenDaysOutsideNavigatedMonth?: boolean;
 }
 
 export interface ICalendarDayGridStyleProps {
@@ -175,48 +181,48 @@ export interface ICalendarDayGridStyles {
   /**
    * The style for the table containing the grid
    */
-  table: IStyle;
+  table?: IStyle;
 
   /**
    * The style to apply to the grid cells for days
    */
-  dayCell: IStyle;
+  dayCell?: IStyle;
 
   /**
    * The style to apply to grid cells for days in the selected range
    */
-  daySelected: IStyle;
+  daySelected?: IStyle;
 
   /**
    * The style to apply to grid cells for week numbers
    */
-  weekNumberCell: IStyle;
+  weekNumberCell?: IStyle;
 
   /**
    * The style to apply to individual days that are outside the min/max date range
    */
-  dayOutsideBounds: IStyle;
+  dayOutsideBounds?: IStyle;
 
   /**
    * The style to apply to individual days that are outside the current month
    */
-  dayOutsideNavigatedMonth: IStyle;
+  dayOutsideNavigatedMonth?: IStyle;
 
   /**
    * The style to apply to the button element within the day cells
    */
-  dayButton: IStyle;
+  dayButton?: IStyle;
 
   /**
    * The style to apply to the individual button element that matches the "today" parameter
    */
-  dayIsToday: IStyle;
+  dayIsToday?: IStyle;
 
   /**
    * The styles to apply to days for rounded corners. Can apply multiple to round multiple corners
    */
-  topRightCornerDate: IStyle;
-  topLeftCornerDate: IStyle;
-  bottomRightCornerDate: IStyle;
-  bottomLeftCornerDate: IStyle;
+  topRightCornerDate?: IStyle;
+  topLeftCornerDate?: IStyle;
+  bottomRightCornerDate?: IStyle;
+  bottomLeftCornerDate?: IStyle;
 }

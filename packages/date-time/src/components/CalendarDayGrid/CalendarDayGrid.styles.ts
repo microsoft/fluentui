@@ -42,6 +42,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
       padding: 0,
       width: 28,
       height: 28,
+      lineHeight: 28,
       fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
@@ -95,6 +96,7 @@ export const styles = (props: ICalendarDayGridStyleProps): ICalendarDayGridStyle
         borderRadius: 2,
         border: 'none',
         padding: 0,
+        color: 'inherit',
         backgroundColor: 'transparent',
         cursor: 'pointer',
         selectors: {

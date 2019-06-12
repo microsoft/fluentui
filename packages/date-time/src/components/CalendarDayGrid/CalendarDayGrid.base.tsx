@@ -61,13 +61,14 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
 
   public render(): JSX.Element {
     const { activeDescendantId, weeks } = this.state;
-    const { styles, theme, className, dateRangeType, showWeekNumbers, labelledBy } = this.props;
+    const { styles, theme, className, dateRangeType, showWeekNumbers, labelledBy, lightenDaysOutsideNavigatedMonth } = this.props;
 
     const classNames = getClassNames(styles, {
       theme: theme!,
       className: className,
       dateRangeType: dateRangeType,
-      showWeekNumbers: showWeekNumbers
+      showWeekNumbers: showWeekNumbers,
+      lightenDaysOutsideNavigatedMonth: lightenDaysOutsideNavigatedMonth === undefined ? true : lightenDaysOutsideNavigatedMonth
     });
 
     return (

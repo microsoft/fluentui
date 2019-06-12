@@ -115,6 +115,7 @@ export class WeeklyDayPickerBase extends BaseComponent<IWeeklyDayPickerProps, IW
           onSelectDate={this._onSelectDate}
           onNavigateDate={this._onNavigateDate}
           today={today}
+          lightenDaysOutsideNavigatedMonth={false}
         />
         {this.renderNextWeekNavigationButton(classNames)}
       </div>
