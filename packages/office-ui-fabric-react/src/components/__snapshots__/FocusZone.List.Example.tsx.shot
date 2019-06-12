@@ -159,6 +159,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -229,6 +235,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -335,6 +347,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -627,6 +645,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -697,6 +721,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -803,6 +833,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -1095,6 +1131,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1165,6 +1207,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -1271,6 +1319,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -1563,6 +1617,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -1633,6 +1693,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -1739,6 +1805,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -2031,6 +2103,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2101,6 +2179,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -2207,6 +2291,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -2499,6 +2589,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -2569,6 +2665,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -2675,6 +2777,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -2967,6 +3075,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3037,6 +3151,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -3143,6 +3263,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -3435,6 +3561,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3505,6 +3637,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -3611,6 +3749,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -3903,6 +4047,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -3973,6 +4123,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -4079,6 +4235,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -4371,6 +4533,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             {
               padding-right: 8px;
             }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
+            }
         data-automation-key="name"
         data-automationid="DetailsRowCell"
         role="gridcell"
@@ -4441,6 +4609,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"
@@ -4547,6 +4721,12 @@ exports[`Component Examples renders FocusZone.List.Example.tsx correctly 1`] = `
             }
             {
               padding-right: 8px;
+            }
+            {
+              animation-duration: 0.367s;
+              animation-fill-mode: both;
+              animation-name: keyframes from{opacity:0;}to{opacity:1;} keyframes from{transform:translate3d(40px,0,0);}to{transform:translate3d(0,0,0);};
+              animation-timing-function: cubic-bezier(.1,.9,.2,1);
             }
         data-automation-key="link"
         data-automationid="DetailsRowCell"

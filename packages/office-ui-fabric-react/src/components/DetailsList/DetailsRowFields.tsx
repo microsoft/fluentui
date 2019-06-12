@@ -65,7 +65,7 @@ export class DetailsRowFields extends React.PureComponent<IDetailsRowFieldsProps
 
           return (
             <div
-              key={cellContentsRender} /// should it be: key={key} from phillips PR
+              key={key}
               role={column.isRowHeader ? 'rowheader' : 'gridcell'}
               aria-colindex={columnIndex + columnStartIndex + 1}
               className={css(
