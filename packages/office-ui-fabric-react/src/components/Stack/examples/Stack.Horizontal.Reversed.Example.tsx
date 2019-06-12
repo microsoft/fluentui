@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react';
 
-// Styles definitions
+// Styles definition
 const stackStyles: IStackStyles = {
   root: {
     background: DefaultPalette.themeTertiary
@@ -21,7 +21,7 @@ const itemAlignmentStackStyles: IStackStyles = {
   }
 };
 
-// Tokens definitions
+// Tokens definition
 const containerStackTokens: IStackTokens = { childrenGap: 5 };
 const horizontalGapStackTokens: IStackTokens = {
   childrenGap: 10,

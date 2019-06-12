@@ -60,7 +60,7 @@ export class HorizontalStackWrapNestedExample extends React.Component<{}, IExamp
   public render(): JSX.Element {
     const { stackWidth } = this.state;
 
-    // Styles definition
+    // Mutating styles definition
     const containerStackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,

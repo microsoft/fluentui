@@ -5,7 +5,7 @@ export interface IExampleState {
   stackWidth: number;
 }
 
-// Styles definitions
+// Non-mutating styles definition
 const stackItemStyles: IStackItemStyles = {
   root: {
     alignItems: 'center',
@@ -30,7 +30,7 @@ const nonShrinkingStackItemStyles: IStackItemStyles = {
   }
 };
 
-// Tokens definitions
+// Tokens definition
 const outerStackTokens: IStackTokens = { childrenGap: 5 };
 const innerStackTokens: IStackTokens = {
   childrenGap: 5,
@@ -46,7 +46,7 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
   }
 
   public render(): JSX.Element {
-    // Styles definitions
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,

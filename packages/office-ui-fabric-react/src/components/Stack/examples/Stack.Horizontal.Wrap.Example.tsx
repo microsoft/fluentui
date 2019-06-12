@@ -29,7 +29,7 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
   }
 
   public render(): JSX.Element {
-    // Styles definition
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,

@@ -48,7 +48,7 @@ export class HorizontalStackWrapAdvancedExample extends React.Component<{}, IExa
   public render(): JSX.Element {
     const { stackWidth, containerHeight, overflow, horizontalAlignment, verticalAlignment } = this.state;
 
-    // Styles definition
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,

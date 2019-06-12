@@ -62,7 +62,7 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
   public render(): JSX.Element {
     const { stackHeight } = this.state;
 
-    // Styles definition
+    // Mutating styles definition
     const containerStackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
