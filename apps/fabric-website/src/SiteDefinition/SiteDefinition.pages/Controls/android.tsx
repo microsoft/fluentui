@@ -97,6 +97,19 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
+    title: 'Progress',
+    url: '#/controls/android/spinner',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Spinner',
+        url: '#/controls/android/spinner',
+        component: () => <LoadingComponent title="Spinner" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage))
+      }
+    ]
+  },
+  {
     title: 'Surfaces',
     url: '#/controls/android/drawer',
     isCategory: true,
