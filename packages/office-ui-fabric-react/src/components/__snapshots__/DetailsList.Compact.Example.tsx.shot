@@ -215,7 +215,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
               -webkit-font-smoothing: antialiased;
               -webkit-overflow-scrolling: touch;
               background: #ffffff;
-              color: #333333;
+              color: #323130;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 12px;
               font-weight: 400;
@@ -254,15 +254,15 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background: #ffffff;
-                    border-bottom: 1px solid #eaeaea;
+                    border-bottom: 1px solid #edebe9;
                     box-sizing: content-box;
                     cursor: default;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 12px;
                     font-weight: 400;
-                    height: 32px;
-                    line-height: 32px;
+                    height: 42px;
+                    line-height: 42px;
                     min-width: 100%;
                     padding-bottom: 1px;
                     padding-top: 1px;
@@ -300,9 +300,9 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       align-items: center;
                       border: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: inline-flex;
-                      height: 32px;
+                      height: 42px;
                       line-height: inherit;
                       margin-bottom: 0px;
                       margin-left: 0px;
@@ -327,7 +327,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
@@ -349,7 +349,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         ms-DetailsRow-check
                         ms-DetailsRow-check--isHeader
                         {
-                          height: 32px;
+                          height: 42px;
                         }
                         .ms-Fabric--isFocusVisible &:focus {
                           opacity: 1;
@@ -367,7 +367,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                           font-size: 12px;
                           font-weight: 400;
-                          height: 32px;
+                          height: 42px;
                           justify-content: center;
                           margin-bottom: 0px;
                           margin-left: 0px;
@@ -381,7 +381,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           padding-top: 0px;
                           position: relative;
                           vertical-align: top;
-                          width: 40px;
+                          width: 48px;
                         }
                         &::-moz-focus-inner {
                           border: 0;
@@ -391,7 +391,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           bottom: 1px;
                           content: "";
                           left: 1px;
-                          outline: 1px solid #666666;
+                          outline: 1px solid #605e5c;
                           position: absolute;
                           right: 1px;
                           top: 1px;
@@ -439,12 +439,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           }
                     >
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Check-circle
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #c8c8c8;
+                              color: #605e5c;
                               display: inline-block;
                               font-family: "FabricMDL2Icons";
                               font-size: 18px;
@@ -468,12 +469,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                         
                       </i>
                       <i
+                        aria-hidden={true}
                         className=
                             ms-Check-check
                             {
                               -moz-osx-font-smoothing: grayscale;
                               -webkit-font-smoothing: antialiased;
-                              color: #c8c8c8;
+                              color: #605e5c;
                               display: inline-block;
                               font-family: "FabricMDL2Icons";
                               font-size: 16px;
@@ -536,12 +538,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       line-height: inherit;
                       margin-bottom: 0;
                       margin-left: 0;
@@ -566,18 +568,18 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
                     &:hover {
-                      background: #f4f4f4;
-                      color: #333333;
+                      background: #f3f2f1;
+                      color: #323130;
                     }
                     &:active {
-                      background: #eaeaea;
+                      background: #edebe9;
                     }
                     &:hover i[data-icon-name="GripperBarVertical"] {
                       display: block;
@@ -632,7 +634,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           bottom: 1px;
                           content: "";
                           left: 1px;
-                          outline: 1px solid #666666;
+                          outline: 1px solid #605e5c;
                           position: absolute;
                           right: 1px;
                           top: 1px;
@@ -648,6 +650,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           ms-DetailsHeader-cellName
                           {
                             flex: 0 1 auto;
+                            font-size: 14px;
+                            font-weight: 600;
                             overflow: hidden;
                             text-overflow: ellipsis;
                           }
@@ -679,7 +683,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       border: 0px;
                     }
                     &:after {
-                      background: #c8c8c8;
+                      background: #c8c6c4;
                       bottom: 0px;
                       content: "";
                       left: 50%;
@@ -724,12 +728,12 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       -moz-osx-font-smoothing: grayscale;
                       -webkit-font-smoothing: antialiased;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: inline-block;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 12px;
                       font-weight: 400;
-                      height: 32px;
+                      height: 42px;
                       line-height: inherit;
                       margin-bottom: 0;
                       margin-left: 0;
@@ -754,18 +758,18 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       bottom: 1px;
                       content: "";
                       left: 1px;
-                      outline: 1px solid #666666;
+                      outline: 1px solid #605e5c;
                       position: absolute;
                       right: 1px;
                       top: 1px;
                       z-index: 1;
                     }
                     &:hover {
-                      background: #f4f4f4;
-                      color: #333333;
+                      background: #f3f2f1;
+                      color: #323130;
                     }
                     &:active {
-                      background: #eaeaea;
+                      background: #edebe9;
                     }
                     &:hover i[data-icon-name="GripperBarVertical"] {
                       display: block;
@@ -820,7 +824,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           bottom: 1px;
                           content: "";
                           left: 1px;
-                          outline: 1px solid #666666;
+                          outline: 1px solid #605e5c;
                           position: absolute;
                           right: 1px;
                           top: 1px;
@@ -836,6 +840,8 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                           ms-DetailsHeader-cellName
                           {
                             flex: 0 1 auto;
+                            font-size: 14px;
+                            font-weight: 600;
                             overflow: hidden;
                             text-overflow: ellipsis;
                           }
@@ -867,7 +873,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                       border: 0px;
                     }
                     &:after {
-                      background: #c8c8c8;
+                      background: #c8c6c4;
                       bottom: 0px;
                       content: "";
                       left: 50%;
@@ -978,10 +984,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1004,7 +1010,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -1014,13 +1020,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -1066,7 +1079,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -1085,21 +1098,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -1136,7 +1134,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -1146,7 +1144,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -1192,12 +1190,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -1221,12 +1220,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -1288,7 +1288,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -1307,21 +1307,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -1359,7 +1344,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -1378,21 +1363,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -1450,10 +1420,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1476,7 +1446,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -1486,13 +1456,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -1538,7 +1515,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -1557,21 +1534,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -1608,7 +1570,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -1618,7 +1580,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -1664,12 +1626,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -1693,12 +1656,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -1760,7 +1724,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -1779,21 +1743,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -1831,7 +1780,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -1850,21 +1799,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -1922,10 +1856,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -1948,7 +1882,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -1958,13 +1892,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -2010,7 +1951,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -2029,21 +1970,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -2080,7 +2006,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -2090,7 +2016,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -2136,12 +2062,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -2165,12 +2092,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -2232,7 +2160,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -2251,21 +2179,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -2303,7 +2216,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -2322,21 +2235,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -2394,10 +2292,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2420,7 +2318,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -2430,13 +2328,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -2482,7 +2387,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -2501,21 +2406,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -2552,7 +2442,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -2562,7 +2452,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -2608,12 +2498,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -2637,12 +2528,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -2704,7 +2596,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -2723,21 +2615,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -2775,7 +2652,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -2794,21 +2671,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -2866,10 +2728,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -2892,7 +2754,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -2902,13 +2764,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -2954,7 +2823,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -2973,21 +2842,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -3024,7 +2878,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -3034,7 +2888,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -3080,12 +2934,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -3109,12 +2964,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -3176,7 +3032,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -3195,21 +3051,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -3247,7 +3088,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -3266,21 +3107,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -3338,10 +3164,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3364,7 +3190,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -3374,13 +3200,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -3426,7 +3259,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -3445,21 +3278,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -3496,7 +3314,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -3506,7 +3324,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -3552,12 +3370,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -3581,12 +3400,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -3648,7 +3468,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -3667,21 +3487,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -3719,7 +3524,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -3738,21 +3543,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -3810,10 +3600,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -3836,7 +3626,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -3846,13 +3636,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -3898,7 +3695,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -3917,21 +3714,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -3968,7 +3750,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -3978,7 +3760,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -4024,12 +3806,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -4053,12 +3836,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -4120,7 +3904,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -4139,21 +3923,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -4191,7 +3960,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -4210,21 +3979,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -4282,10 +4036,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4308,7 +4062,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -4318,13 +4072,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -4370,7 +4131,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -4389,21 +4150,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -4440,7 +4186,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -4450,7 +4196,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -4496,12 +4242,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -4525,12 +4272,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -4592,7 +4340,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -4611,21 +4359,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -4663,7 +4396,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -4682,21 +4415,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -4754,10 +4472,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -4780,7 +4498,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -4790,13 +4508,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -4842,7 +4567,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -4861,21 +4586,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -4912,7 +4622,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -4922,7 +4632,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -4968,12 +4678,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -4997,12 +4708,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -5064,7 +4776,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -5083,21 +4795,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -5135,7 +4832,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -5154,21 +4851,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -5226,10 +4908,10 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 animation-name: keyframes from{opacity:0;}to{opacity:1;};
                                 animation-timing-function: cubic-bezier(.1,.25,.75,.9);
                                 background: #ffffff;
-                                border-bottom: 1px solid #f4f4f4;
+                                border-bottom: 1px solid #f3f2f1;
                                 border: 0px;
                                 box-sizing: border-box;
-                                color: #666666;
+                                color: #605e5c;
                                 cursor: default;
                                 display: inline-flex;
                                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -5252,7 +4934,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 border: 0;
                               }
                               .ms-Fabric--isFocusVisible &:focus:after {
-                                border: 1px solid #666666;
+                                border: 1px solid #605e5c;
                                 bottom: 1px;
                                 content: "";
                                 left: 1px;
@@ -5262,13 +4944,20 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 top: 1px;
                                 z-index: 1;
                               }
-                              ms-List-cell:first-child &:before {
+                              .ms-List-cell:first-child &:before {
                                 display: none;
                               }
                               &:hover {
-                                background: #f4f4f4;
+                                background: #f3f2f1;
+                                color: #323130;
+                              }
+                              &:hover .is-row-header {
+                                color: #201f1e;
                               }
                               &:hover $check {
+                                opacity: 1;
+                              }
+                              .ms-Fabric--isFocusVisible &:focus $check {
                                 opacity: 1;
                               }
                           data-automationid="DetailsRow"
@@ -5314,7 +5003,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   border: 0;
                                 }
                                 .ms-Fabric--isFocusVisible &:focus:after {
-                                  border: 1px solid #666666;
+                                  border: 1px solid #605e5c;
                                   bottom: 0px;
                                   content: "";
                                   left: 0px;
@@ -5333,21 +5022,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                 }
                                 & [data-is-focusable='true']::-moz-focus-inner {
                                   border: 0;
-                                }
-                                &$shimmer {
-                                  border-bottom: 12.5px solid #ffffff;
-                                  border-left: 12px solid #ffffff;
-                                  border-right: 32px solid #ffffff;
-                                  border-top: 12.5px solid #ffffff;
-                                  padding-bottom: 0px;
-                                  padding-left: 0px;
-                                  padding-right: 0px;
-                                  padding-top: 0px;
-                                }
-                                &$shimmerIconPlaceholder {
-                                  border-bottom: 8px solid #ffffff;
-                                  border-right: 8px solid #ffffff;
-                                  border-top: 8px solid #ffffff;
                                 }
                             data-selection-toggle={true}
                             role="gridcell"
@@ -5384,7 +5058,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     padding-top: 0px;
                                     position: relative;
                                     vertical-align: top;
-                                    width: 40px;
+                                    width: 48px;
                                   }
                                   &::-moz-focus-inner {
                                     border: 0;
@@ -5394,7 +5068,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     bottom: 1px;
                                     content: "";
                                     left: 1px;
-                                    outline: 1px solid #666666;
+                                    outline: 1px solid #605e5c;
                                     position: absolute;
                                     right: 1px;
                                     top: 1px;
@@ -5440,12 +5114,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     }
                               >
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-circle
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 18px;
@@ -5469,12 +5144,13 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   
                                 </i>
                                 <i
+                                  aria-hidden={true}
                                   className=
                                       ms-Check-check
                                       {
                                         -moz-osx-font-smoothing: grayscale;
                                         -webkit-font-smoothing: antialiased;
-                                        color: #c8c8c8;
+                                        color: #605e5c;
                                         display: inline-block;
                                         font-family: "FabricMDL2Icons";
                                         font-size: 16px;
@@ -5536,7 +5212,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -5555,21 +5231,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
@@ -5607,7 +5268,7 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                     border: 0;
                                   }
                                   .ms-Fabric--isFocusVisible &:focus:after {
-                                    border: 1px solid #666666;
+                                    border: 1px solid #605e5c;
                                     bottom: 0px;
                                     content: "";
                                     left: 0px;
@@ -5626,21 +5287,6 @@ exports[`Component Examples renders DetailsList.Compact.Example.tsx correctly 1`
                                   }
                                   & [data-is-focusable='true']::-moz-focus-inner {
                                     border: 0;
-                                  }
-                                  &$shimmer {
-                                    border-bottom: 12.5px solid #ffffff;
-                                    border-left: 12px solid #ffffff;
-                                    border-right: 32px solid #ffffff;
-                                    border-top: 12.5px solid #ffffff;
-                                    padding-bottom: 0px;
-                                    padding-left: 0px;
-                                    padding-right: 0px;
-                                    padding-top: 0px;
-                                  }
-                                  &$shimmerIconPlaceholder {
-                                    border-bottom: 8px solid #ffffff;
-                                    border-right: 8px solid #ffffff;
-                                    border-top: 8px solid #ffffff;
                                   }
                                   {
                                     padding-right: 8px;
