@@ -7,7 +7,7 @@ import { styled } from 'office-ui-fabric-react/lib/Utilities';
 /**
  * CalendarDay description
  */
-export const CalendarDay: React.StatelessComponent<ICalendarDayProps> = styled<
+export const CalendarDay: React.FunctionComponent<ICalendarDayProps> = styled<
   ICalendarDayProps,
   ICalendarDayStyleProps,
   ICalendarDayStyles

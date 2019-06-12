@@ -35,7 +35,7 @@ export class IconBase extends React.Component<IIconProps, IIconState> {
     });
 
     const RootType = isImage ? 'div' : 'i';
-    const nativeProps = getNativeProps(this.props, htmlElementProperties);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, htmlElementProperties);
     const { imageLoadError } = this.state;
     const imageProps: IImageProps = {
       ...this.props.imageProps,

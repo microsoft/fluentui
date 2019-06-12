@@ -13,7 +13,6 @@ import { MarqueeSelection } from 'office-ui-fabric-react/lib/MarqueeSelection';
 import { IconButton, PrimaryButton } from 'office-ui-fabric-react/lib/Button';
 import { Dialog, DialogFooter } from 'office-ui-fabric-react/lib/Dialog';
 import { TextField, ITextField } from 'office-ui-fabric-react/lib/TextField';
-import { createRef } from 'office-ui-fabric-react/lib/Utilities';
 
 const _items: IAnnouncedQuickActionsExampleItem[] = [];
 
@@ -61,8 +60,8 @@ export interface IAnnouncedQuickActionsExampleState {
 
 export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnouncedQuickActionsExampleState> {
   private _selection: Selection;
-  private _detailsList = createRef<IDetailsList>();
-  private _textField = createRef<ITextField>();
+  private _detailsList = React.createRef<IDetailsList>();
+  private _textField = React.createRef<ITextField>();
 
   constructor(props: {}) {
     super(props);
@@ -181,7 +180,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       renameDialogOpen: true,
       dialogContent: (
         <>
-          <TextField componentRef={this._textField} label="Rename" value={item.name} />
+          <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
           <DialogFooter>
             <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
           </DialogFooter>

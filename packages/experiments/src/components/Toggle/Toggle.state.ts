@@ -1,51 +1,51 @@
-import * as React from 'react';
-import { IToggle, IToggleProps, IToggleViewProps } from './Toggle.types';
-import { BaseState } from '../../utilities/BaseState';
+import { useCallback, useImperativeHandle, useRef } from 'react';
+import { getControlledDerivedProps, useControlledState } from '../../Foundation';
+import { IToggleComponent, IToggleViewProps } from './Toggle.types';
 
-export type IToggleState = Pick<IToggleViewProps, 'checked' | 'onChange' | 'onClick' | 'text' | 'toggleButtonRef'>;
+export const useToggleState: IToggleComponent['state'] = props => {
+  const toggleButtonRef = useRef<HTMLButtonElement | null>(null);
 
-export class ToggleState extends BaseState<IToggleProps, IToggleViewProps, IToggleState> implements IToggle {
-  private _toggleButtonRef = React.createRef<HTMLButtonElement>();
+  const [checked, setChecked] = useControlledState(props, 'checked', { defaultPropName: 'defaultChecked', defaultPropValue: false });
 
-  constructor(props: ToggleState['props']) {
-    super(props, {
-      controlledProps: ['checked', 'text'],
-      transformViewProps: (newProps: IToggleViewProps) => {
-        newProps.text = newProps.checked ? props.onText : props.offText;
-        return newProps;
-      }
-    });
-
-    this.state = {
-      checked: !!props.defaultChecked,
-      text: !!props.defaultChecked ? props.onText : props.offText,
-      onChange: this._noop,
-      onClick: this._onClick,
-      toggleButtonRef: this._toggleButtonRef
-    };
-  }
-
-  public focus = () => {
-    if (this._toggleButtonRef.current) {
-      this._toggleButtonRef.current.focus();
+  useImperativeHandle(props.componentRef, () => ({
+    focus: () => {
+      toggleButtonRef.current && toggleButtonRef.current.focus();
     }
+  }));
+
+  const { disabled, onChange } = props;
+
+  const _onClick = useCallback(
+    (ev: React.MouseEvent<HTMLElement>) => {
+      if (!disabled) {
+        // Only update the state if the user hasn't provided it.
+        setChecked(!checked);
+
+        if (onChange) {
+          onChange(ev, !checked);
+        }
+      }
+    },
+    [checked, disabled, onChange]
+  );
+
+  // TODO: can this be structured with helpers to reduce changes for bugs? (overriding controlled props in output, etc.)
+  // TODO: easy ways to minimize unnecessary recreations of viewProps? memoize helper for updating props?
+  const viewProps: IToggleViewProps = {
+    ...props,
+    checked,
+    toggleButtonRef,
+    onClick: _onClick
   };
 
-  private _onClick = (ev: React.MouseEvent<HTMLElement>) => {
-    const { disabled, onChange } = this.props;
-    const { checked } = this.state;
+  // Derived state should be performed on otherwise finalized viewProps.
+  // TODO: Uses of propsTransform must be called after viewProps it depends on are finalized.
+  //       Are there any helper ways of doing this to reduce changes of bugs?
+  //       Something that would let state functions safely write whatever they want into viewProps without fear:
+  //         Return array from here including list of controlled props?
+  //         List of controlled props as createComponent option?
+  //         updateViewProps functional arg that takes in partial view props and optional controlled prop list?
+  viewProps.text = getControlledDerivedProps(viewProps, 'text', viewProps.checked ? viewProps.onText : viewProps.offText);
 
-    if (!disabled) {
-      // Only update the state if the user hasn't provided it.
-      this.setState({ checked: !checked });
-
-      if (onChange) {
-        onChange(ev, !checked);
-      }
-    }
-  };
-
-  private _noop(): void {
-    /* no-op */
-  }
-}
+  return viewProps;
+};

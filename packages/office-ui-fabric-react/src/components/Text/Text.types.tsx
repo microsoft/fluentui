@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps } from '../../Foundation';
+import { IComponentStyles, IHTMLSlot, ISlotProp, IComponent, IStyleableComponentProps, ISlottableProps } from '../../Foundation';
 import { IFontStyles } from '../../Styling';
 
 /**
@@ -24,7 +24,7 @@ export type ITextStylesReturnType = ReturnType<Extract<ITextComponent['styles'],
 /**
  * {@docCategory Text}
  */
-export type ITextSlot = ISlotProp<ITextProps, React.ReactNode>;
+export type ITextSlot = ISlotProp<ITextProps, string>;
 
 /**
  * {@docCategory Text}
@@ -38,7 +38,7 @@ export interface ITextSlots {
  * {@docCategory Text}
  */
 export interface ITextProps
-  extends ITextSlots,
+  extends ISlottableProps<ITextSlots>,
     IStyleableComponentProps<ITextProps, ITextTokens, ITextStyles>,
     React.HTMLAttributes<HTMLElement> {
   /**

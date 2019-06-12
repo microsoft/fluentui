@@ -9,7 +9,6 @@ import { IStyleFunction } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 import { IStyleSet } from '@uifabric/merge-styles';
 import { Omit } from '@uifabric/merge-styles';
-import * as PropTypes from 'prop-types';
 import * as React from 'react';
 
 // @public
@@ -31,9 +30,9 @@ export function appendFunction(parent: any, ...functions: (any)[]): () => void;
 export function arraysEqual<T>(array1: T[], array2: T[]): boolean;
 
 // @public
-export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ComponentType<TProps & {
+export function asAsync<TProps>(options: IAsAsyncOptions<TProps>): React.ForwardRefExoticComponent<React.PropsWithoutRef<TProps & {
     asyncPlaceholder?: React.ReactType;
-}>;
+}>>;
 
 // @public
 export function assertNever(x: never): never;
@@ -70,13 +69,6 @@ export class Async {
 
 // @public
 export const audioProperties: string[];
-
-// @public @deprecated
-export function autobind<T extends Function>(target: any, key: string, descriptor: TypedPropertyDescriptor<T>): {
-    configurable: boolean;
-    get(): T;
-    set(newValue: any): void;
-} | void;
 
 // @public
 export class AutoScroll {
@@ -119,7 +111,7 @@ export const buttonProperties: string[];
 export function calculatePrecision(value: number | string): number;
 
 // @public
-export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
+export function classNamesFunction<TStyleProps extends {}, TStyleSet extends IStyleSet<TStyleSet>>(options?: IClassNamesFunctionOptions): (getStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet> | (IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined)[] | undefined, styleProps?: TStyleProps) => IProcessedStyleSet<TStyleSet>;
 
 // @public (undocumented)
 export const colGroupProperties: string[];
@@ -129,9 +121,6 @@ export const colProperties: string[];
 
 // @public
 export function createArray<T>(size: number, getItem: (index: number) => T): T[];
-
-// @public @deprecated (undocumented)
-export function createRef<T>(): RefObject<T>;
 
 // Warning: (ae-incompatible-release-tags) The symbol "css" is marked as @public, but its signature references "ICssInput" which is marked as @internal
 // 
@@ -382,7 +371,7 @@ export function hasVerticalOverflow(element: HTMLElement): boolean;
 export function hoistMethods(destination: any, source: any, exclusions?: string[]): string[];
 
 // @public
-export function hoistStatics<TSource, TDest>(source: TSource, dest: TDest): TDest;
+export function hoistStatics<TSource extends Object, TDest>(source: TSource, dest: TDest): TDest;
 
 // @public
 export const htmlElementProperties: string[];
@@ -659,6 +648,9 @@ export interface IRenderFunction<P> {
 }
 
 // @public
+export function isControlled<P>(props: P, valueProp: keyof P): boolean;
+
+// @public
 export function isDirectionalKeyCode(which: number): boolean;
 
 // @public (undocumented)
@@ -789,6 +781,18 @@ export interface IVirtualElement extends HTMLElement {
         parent?: IVirtualElement;
         children: IVirtualElement[];
     };
+}
+
+// @public (undocumented)
+export interface IWarnControlledUsageParams<P> {
+    componentId: string;
+    componentName: string;
+    defaultValueProp: keyof P;
+    oldProps?: P;
+    onChangeProp: keyof P;
+    props: P;
+    readOnlyProp?: keyof P;
+    valueProp: keyof P;
 }
 
 // @public
@@ -950,9 +954,6 @@ export function portalContainsElement(target: HTMLElement, parent?: HTMLElement)
 // @public
 export function precisionRound(value: number, precision: number, base?: number): number;
 
-// @public @deprecated (undocumented)
-export function provideContext<TContext, TProps>(contextTypes: PropTypes.ValidationMap<TContext>, mapPropsToContext: (props: TProps) => TContext): React.ComponentType<TProps>;
-
 // @public
 export function raiseClick(target: Element): void;
 
@@ -976,7 +977,6 @@ export class Rectangle {
 export type RefObject<T> = {
     (component: T | null): void;
     current: T | null;
-    value: T | null;
 };
 
 // @public
@@ -984,6 +984,9 @@ export function removeIndex<T>(array: T[], index: number): T[];
 
 // @public
 export function replaceElement<T>(array: T[], newElement: T, index: number): T[];
+
+// @public
+export function resetControlledWarnings(): void;
 
 // @public
 export function resetIds(counter?: number): void;
@@ -1059,7 +1062,7 @@ export enum SelectionDirection {
     // (undocumented)
     horizontal = 0,
     // (undocumented)
-    vertical = 1,
+    vertical = 1
 }
 
 // @public (undocumented)
@@ -1069,7 +1072,7 @@ export enum SelectionMode {
     // (undocumented)
     none = 0,
     // (undocumented)
-    single = 1,
+    single = 1
 }
 
 // @public
@@ -1151,6 +1154,9 @@ export function warn(message: string): void;
 
 // @public
 export function warnConditionallyRequiredProps<P>(componentName: string, props: P, requiredProps: string[], conditionalPropName: string, condition: boolean): void;
+
+// @public
+export function warnControlledUsage<P>(params: IWarnControlledUsageParams<P>): void;
 
 // @public
 export function warnDeprecations<P>(componentName: string, props: P, deprecationMap: ISettingsMap<P>): void;

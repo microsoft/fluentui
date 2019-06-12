@@ -2,6 +2,20 @@
   "name": "@uifabric/merge-styles",
   "entries": [
     {
+      "version": "6.19.0",
+      "tag": "@uifabric/merge-styles_v6.19.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Changin borderBottomLeftRadius, borderBottomRightRadius, borderTopLeftRadius and borderTopRightRadius to be of type ICSSPixelUnitRule, like borderRadius, instead of type string.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2faffcc51ec77341b3f1d796ea8d9e7440ecf0f7"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.1",
       "tag": "@uifabric/merge-styles_v6.18.1",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

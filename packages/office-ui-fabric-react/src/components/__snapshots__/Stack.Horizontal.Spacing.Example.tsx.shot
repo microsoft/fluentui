@@ -85,7 +85,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 10px;
@@ -94,49 +101,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>
@@ -182,7 +153,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 10%;
@@ -191,49 +169,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>
@@ -302,7 +244,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 4px;
@@ -311,49 +260,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>
@@ -399,7 +312,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 8px;
@@ -408,49 +328,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>
@@ -496,7 +380,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 16px;
@@ -505,49 +396,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>
@@ -616,7 +471,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 20px;
@@ -625,49 +487,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>
@@ -713,7 +539,14 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               width: 300px;
             }
             & > * {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
               text-overflow: ellipsis;
+              width: 50px;
             }
             & > *:not(:first-child) {
               margin-left: 32px;
@@ -722,49 +555,13 @@ exports[`Component Examples renders Stack.Horizontal.Spacing.Example.tsx correct
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
       </div>

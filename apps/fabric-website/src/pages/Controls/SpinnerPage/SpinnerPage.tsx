@@ -6,7 +6,14 @@ import { IPageSectionProps } from '@uifabric/example-app-base/lib/index2';
 
 export const SpinnerPage: React.StatelessComponent<IControlsPageProps> = props => {
   const { platform } = props;
-  return <ControlsAreaPage {...props} title="Spinner" {...SpinnerPageProps[platform]} otherSections={_otherSections(platform)} />;
+  return (
+    <ControlsAreaPage
+      {...props}
+      title="Spinner"
+      {...SpinnerPageProps[platform]}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
+    />
+  );
 };
 
 function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {

@@ -14,7 +14,7 @@ export const FocusZoneDisabledExample: React.StatelessComponent = () => {
           <span>Enabled FocusZone: </span>
           <DefaultButton>Button 1</DefaultButton>
           <DefaultButton>Button 2</DefaultButton>
-          <TextField value="FocusZone TextField" styles={{ root: { width: 200 } }} />
+          <TextField defaultValue="FocusZone TextField" styles={{ root: { width: 200 } }} />
           <DefaultButton>Button 3</DefaultButton>
         </Stack>
       </FocusZone>
@@ -26,7 +26,7 @@ export const FocusZoneDisabledExample: React.StatelessComponent = () => {
           <DefaultButton>Button 2</DefaultButton>
         </Stack>
       </FocusZone>
-      <TextField value="Tabbable Element 2" />
+      <TextField defaultValue="Tabbable Element 2" />
     </Stack>
   );
 };

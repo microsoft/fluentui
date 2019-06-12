@@ -70,14 +70,14 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom-color: #a6a6a6;
+              border-bottom-color: #8a8886;
               border-bottom-style: solid;
               border-bottom-width: 1px;
               display: flex;
               width: 100%;
             }
             &:hover {
-              border-bottom-color: #333333;
+              border-bottom-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-bottom-color: Highlight;
@@ -91,11 +91,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 height: 32px;
                 line-height: 22px;
                 margin-bottom: 0px;
@@ -120,6 +120,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -140,7 +141,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 text-align: left;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -160,7 +161,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -171,8 +172,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -185,11 +186,21 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField0"
@@ -231,7 +242,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom-color: #f4f4f4;
+              border-bottom-color: #f3f2f1;
               border-bottom-style: solid;
               border-bottom-width: 1px;
               display: flex;
@@ -246,11 +257,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 height: 32px;
                 line-height: 22px;
                 margin-bottom: 0px;
@@ -279,7 +290,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 align-items: stretch;
                 background-color: transparent;
                 background: #ffffff;
-                border-color: #f4f4f4;
+                border-color: #f3f2f1;
+                border-radius: 2px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -318,7 +330,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -329,8 +341,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -343,11 +355,21 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  color: #a6a6a6;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #a6a6a6;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             disabled={true}
@@ -390,14 +412,14 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
         className=
             ms-TextField-wrapper
             {
-              border-bottom-color: #a6a6a6;
+              border-bottom-color: #8a8886;
               border-bottom-style: solid;
               border-bottom-width: 1px;
               display: flex;
               width: 100%;
             }
             &:hover {
-              border-bottom-color: #333333;
+              border-bottom-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-bottom-color: Highlight;
@@ -411,11 +433,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 height: 32px;
                 line-height: 22px;
                 margin-bottom: 0px;
@@ -430,7 +452,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 word-wrap: break-word;
               }
               &::after {
-                color: #a80000;
+                color: #a4262c;
                 content: ' *';
                 padding-right: 12px;
               }
@@ -445,6 +467,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -465,7 +488,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 text-align: left;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -485,7 +508,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -496,8 +519,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-align: left;
                   text-overflow: ellipsis;
@@ -510,11 +533,21 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField6"
@@ -588,11 +621,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -615,6 +648,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -633,7 +667,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -653,7 +687,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -664,8 +698,8 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -677,11 +711,21 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField9"
@@ -733,11 +777,11 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -760,6 +804,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
               {
                 align-items: stretch;
                 background: #ffffff;
+                border-radius: 2px;
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
@@ -779,7 +824,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -798,7 +843,7 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   flex-grow: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
@@ -812,9 +857,9 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   min-width: 0px;
                   outline: 0px;
                   overflow: auto;
-                  padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-bottom: 6px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 6px;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -826,11 +871,21 @@ exports[`Component Examples renders TextField.Borderless.Example.tsx correctly 1
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField12"

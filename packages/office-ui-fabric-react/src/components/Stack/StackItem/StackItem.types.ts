@@ -1,9 +1,14 @@
-import { IComponentStyles, IHTMLSlot, IComponent, IStyleableComponentProps } from '../../../Foundation';
+import { IComponentStyles, IHTMLSlot, IComponent, ISlotProp, IStyleableComponentProps } from '../../../Foundation';
 
 /**
  * {@docCategory Stack}
  */
 export type IStackItemComponent = IComponent<IStackItemProps, IStackItemTokens, IStackItemStyles>;
+
+/**
+ * {@docCategory Stack}
+ */
+export type IStackItemSlot = ISlotProp<IStackItemProps>;
 
 /**
  * {@docCategory Stack}
@@ -74,7 +79,15 @@ export interface IStackItemProps extends IStackItemSlots, IStyleableComponentPro
  * {@docCategory Stack}
  */
 export interface IStackItemTokens {
+  /**
+   * Defines the margin to be applied to the StackItem relative to its container.
+   */
   margin?: number | string;
+
+  /**
+   * Defines the padding to be applied to the StackItem contents relative to its border.
+   */
+  padding?: number | string;
 }
 
 /**

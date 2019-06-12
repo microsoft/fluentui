@@ -79,7 +79,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       {
         fontSize: fonts.small.fontSize,
         color: palette.neutralSecondary,
-        backgroundColor: palette.neutralLight,
+        backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
       }
     ],
@@ -120,7 +120,7 @@ export const styles = (props: IFacepileStyleProps): IFacepileStyles => {
       {
         fontSize: fonts.medium.fontSize,
         color: palette.neutralSecondary,
-        backgroundColor: palette.neutralLight,
+        backgroundColor: palette.neutralLighter,
         marginLeft: `${spacingAroundItemButton * 2}px`
       }
     ],

@@ -44,11 +44,11 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             -webkit-font-smoothing: antialiased;
             box-shadow: none;
             box-sizing: border-box;
-            color: #333333;
+            color: #323130;
             display: block;
             font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
             font-size: 14px;
-            font-weight: 400;
+            font-weight: 600;
             margin-bottom: 0px;
             margin-left: 0px;
             margin-right: 0px;
@@ -107,7 +107,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -163,7 +163,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
             }
             & $thumb {
               background: #ffffff;
-              border-color: #666666;
+              border-color: #605e5c;
               border-radius: 10px;
               border-style: solid;
               border-width: 2px;
@@ -214,7 +214,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 ms-Slider-active
 
                 {
-                  background: #666666;
+                  background: #605e5c;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -231,7 +231,7 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 ms-Slider-inactive
 
                 {
-                  background: #c8c8c8;
+                  background: #c8c6c4;
                   transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                 }
                 @media screen and (-ms-high-contrast: active){& {
@@ -254,12 +254,12 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               flex-shrink: 1;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               line-height: 1;
               margin-bottom: 0;
               margin-left: 8px;
@@ -324,12 +324,21 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         className=
             ms-Stack
             {
-              background: #a6a6a6;
+              background: #a19f9d;
               display: flex;
               flex-wrap: wrap;
               height: 100%;
               overflow: visible;
               width: auto;
+            }
+            & span {
+              align-items: center;
+              background: #0078d4;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
             }
       >
         <div
@@ -361,109 +370,25 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 flex-shrink: 1;
               }
         >
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             1
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             2
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             3
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             4
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             5
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             6
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #0078d4;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             7
           </span>
         </div>
@@ -472,12 +397,21 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         className=
             ms-Stack
             {
-              background: #666666;
+              background: #605e5c;
               display: flex;
               flex-wrap: wrap;
               height: 100%;
               overflow: visible;
               width: auto;
+            }
+            & span {
+              align-items: center;
+              background: #005a9e;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
             }
       >
         <div
@@ -509,49 +443,13 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 flex-shrink: 1;
               }
         >
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #005a9e;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             1
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #005a9e;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             2
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #005a9e;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             3
           </span>
         </div>
@@ -560,12 +458,21 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
         className=
             ms-Stack
             {
-              background: #333333;
+              background: #323130;
               display: flex;
               flex-wrap: wrap;
               height: 100%;
               overflow: visible;
               width: auto;
+            }
+            & span {
+              align-items: center;
+              background: #004578;
+              color: #ffffff;
+              display: flex;
+              height: 50px;
+              justify-content: center;
+              width: 50px;
             }
       >
         <div
@@ -597,154 +504,34 @@ exports[`Component Examples renders Stack.Vertical.WrapNested.Example.tsx correc
                 flex-shrink: 1;
               }
         >
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             1
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             2
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             3
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             4
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             5
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             6
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             7
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             8
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             9
           </span>
-          <span
-            className=
-
-                {
-                  align-items: center;
-                  background: #004578;
-                  color: #ffffff;
-                  display: flex;
-                  height: 50px;
-                  justify-content: center;
-                  width: 50px;
-                }
-          >
+          <span>
             10
           </span>
         </div>

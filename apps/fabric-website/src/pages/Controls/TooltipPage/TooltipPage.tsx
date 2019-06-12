@@ -8,7 +8,12 @@ const baseUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/master
 
 export const TooltipPage: React.StatelessComponent<IControlsPageProps> = props => {
   return (
-    <ControlsAreaPage {...props} title="Tooltip" {...TooltipPageProps[props.platform]} otherSections={_otherSections(props.platform)} />
+    <ControlsAreaPage
+      {...props}
+      title="Tooltip"
+      {...TooltipPageProps[props.platform]}
+      otherSections={_otherSections(props.platform) as IPageSectionProps[]}
+    />
   );
 };
 

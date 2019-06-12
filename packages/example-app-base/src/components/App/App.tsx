@@ -1,15 +1,14 @@
 import * as React from 'react';
-import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
-import { Nav, INavLink } from 'office-ui-fabric-react/lib/Nav';
-import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
-import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
-import { css, styled, classNamesFunction } from 'office-ui-fabric-react/lib/Utilities';
-import { withResponsiveMode, ResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-
 import { AppCustomizationsContext } from '../../utilities/customizations';
-import { Header } from '../Header/Header';
-import { IAppProps, IAppStyleProps, IAppStyles, ExampleStatus } from './App.types';
+import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
+import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
+import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getStyles } from './App.styles';
+import { Header } from '../Header/Header';
+import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
+import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
+import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
+import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
 
 export interface IAppState {
   isMenuVisible: boolean;

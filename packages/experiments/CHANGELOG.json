@@ -2,6 +2,180 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "7.0.0",
+      "tag": "@uifabric/experiments_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Button: Adding allowDisabledFocus prop and adding @docCategory tags on exports.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "44be390505c024b84f6031eb9f564102736b9fa0"
+          },
+          {
+            "comment": "Button: Changing style of all variants to be Fluent by default and removing use of palette in favor of semantic slots.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2faffcc51ec77341b3f1d796ea8d9e7440ecf0f7"
+          },
+          {
+            "comment": "Button: Adding keytips to new Button.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "c4507e4bfb50076f51febafb4c6d238465b4c8b6"
+          },
+          {
+            "comment": "Button: Making all MenuButton props optional.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "8d6c7c460cf9f9fa5e7985205fc9b602a678dd7f"
+          },
+          {
+            "comment": "Button: Adding uniqueId prop.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "88152626b21e2f8c5ebf3f1c0750fbc6ac6917b8"
+          },
+          {
+            "comment": "Convert foundation components that have state to hooks.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "5f4051fd8cad5ebd5f5b88c418093b879efbec9a"
+          },
+          {
+            "comment": "Support slots API changes.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "37a52465422d2622d52b7339ac2f9b2f234300da"
+          },
+          {
+            "comment": "Changes to support slots API refactoring.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "14b1d77fc97fffb1c333a3601d62c3e30c4cf3b0"
+          },
+          {
+            "comment": "SplitButton: Improving screenreader narration for secondary action and fixing styling in fabric 7 branch.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f81572376bc29b57a53a34f359b799e1be519844"
+          },
+          {
+            "comment": "SplitButton: Adding ability to use Alt+Down key combination from first focus stop and cleaning up API.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "3e3bc89d8de0580dce51dc285c54010635ba1710"
+          },
+          {
+            "comment": "Button: Adding toggle/checked functionality to Button.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "65d3dece099cf1ae247de1d761992f8265e23294"
+          },
+          {
+            "comment": "Add FloatingSuggestions (FloatingPeoplePicker without inheritence)",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "47173727698850e1a13820d3ad14a0ac40203f20"
+          },
+          {
+            "comment": "SelectedItemsList: Add reworked Selected Items (no inheritence + hooks)",
+            "author": "Max <mhuan13@gmail.com>",
+            "commit": "69ea4ba3a0a3f50ad54e3b187be4dbc7014d7353"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Button: Fixing SplitButton so that `root` and `button` slot props do not propagate to inner slots.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "b1c6ed2faf2b1b4fc0e4d436c2ce833023fb5879"
+          },
+          {
+            "comment": "Button: Conditionally rendering KeytipData.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "5da0db91c88aca852eb416ed8930a0508f08cb1a"
+          },
+          {
+            "comment": "Button: Fixing some className assignments in styling.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "bb3eb04b10512a12c160c0784bae4fcc9f1ed455"
+          },
+          {
+            "comment": "Render demo app with Markdown instead of PageMarkdown",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "Revert unintended change to Button example.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "f97b56f0a62e4c99e4ed26b8df588e5fc8d5e9bb"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Support changes to createComponent API.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "20b09cc417500b205e6007538cb6f04ffee208eb"
+          },
+          {
+            "comment": "Remove use of deprecated @autobind decorator",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "SplitButton: Fixing some styling bugs related to the divider.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "1b8b476e1fbbae857d6f6f99bf0ceca0314896cd"
+          },
+          {
+            "comment": "Button: Adding documentation to tokens.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "2c553b0947be860aa28cb877ae3816cfea461c7a"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Experiments package: remove Shimmer component",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "bf302f58aee3db20249f23e94a9e4418a5a01a55"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.1` to `^6.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.30.2` to `^0.30.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.7.7` to `^0.8.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.7",
       "tag": "@uifabric/experiments_v6.78.7",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

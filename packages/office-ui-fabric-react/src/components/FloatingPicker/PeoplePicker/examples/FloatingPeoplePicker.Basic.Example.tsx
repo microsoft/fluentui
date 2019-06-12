@@ -85,7 +85,7 @@ export class FloatingPeoplePickerTypesExample extends React.Component<{}, IPeopl
     }
   };
 
-  private _onSearchChange = (newValue: string): void => {
+  private _onSearchChange = (ev: React.ChangeEvent<HTMLInputElement>, newValue: string): void => {
     if (newValue !== this.state.searchValue && this._picker.current) {
       this.setState({ searchValue: newValue });
       this._picker.current.onQueryStringChanged(newValue);
