@@ -413,9 +413,10 @@ describe('TextField with error message', () => {
         onChange={noOp}
         onGetErrorMessage={validatorSpy}
         validateOnLoad={false}
-        deferredValidationTime={5}
+        deferredValidationTime={0}
       />
     );
+    runEverythingAsync();
     expect(validationCallCount).toEqual(0);
     assertErrorMessage(wrapper.getDOMNode(), false);
 
@@ -442,9 +443,10 @@ describe('TextField with error message', () => {
         onChange={noOp}
         onGetErrorMessage={validatorSpy}
         validateOnLoad={false}
-        deferredValidationTime={5}
+        deferredValidationTime={0}
       />
     );
+    runEverythingAsync();
     expect(validationCallCount).toEqual(0);
     assertErrorMessage(wrapper.getDOMNode(), false);
 
