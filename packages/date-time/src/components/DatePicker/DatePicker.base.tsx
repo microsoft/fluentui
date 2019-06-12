@@ -178,7 +178,7 @@ export class DatePickerBase extends BaseComponent<IDatePickerProps, IDatePickerS
     });
 
     const calloutId = getId('DatePicker-Callout');
-    const nativeProps = getNativeProps(this.props, divProperties, ['value']);
+    const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['value']);
     const iconProps = textFieldProps && textFieldProps.iconProps;
 
     return (

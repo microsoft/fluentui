@@ -1,5 +1,5 @@
 import { IRefObject } from '../../Utilities';
-import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, IStyleableComponentProps } from '../../Foundation';
+import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../Foundation';
 import { ITextSlot } from 'office-ui-fabric-react';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 
@@ -25,7 +25,7 @@ export interface ICollapsibleSectionTitleSlots {
 }
 
 export interface ICollapsibleSectionTitleProps
-  extends ICollapsibleSectionTitleSlots,
+  extends ISlottableProps<ICollapsibleSectionTitleSlots>,
     IStyleableComponentProps<ICollapsibleSectionTitleProps, ICollapsibleSectionTitleTokens, ICollapsibleSectionTitleStyles>,
     React.ButtonHTMLAttributes<HTMLButtonElement> {
   focusElementRef?: IRefObject<HTMLButtonElement>;

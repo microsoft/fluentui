@@ -119,24 +119,29 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       padding: 0,
       width: 28,
       height: 28,
+      lineHeight: 28,
       fontSize: FontSizes.small,
       fontWeight: FontWeights.regular,
       color: palette.neutralPrimary,
+      cursor: 'pointer',
       selectors: {
         ['&.' + classNames.hoverStyle]: {
           backgroundColor: palette.neutralLight
         },
         ['&.' + classNames.pressedStyle]: {
-          backgroundColor: palette.themeLight
+          backgroundColor: palette.themeLight,
+          fontWeight: FontWeights.semibold
         }
       }
     },
     daySelected: [
       dateRangeType !== DateRangeType.Month && {
         backgroundColor: palette.themeLight,
+        fontWeight: FontWeights.semibold,
         selectors: {
           ['&:hover, &.' + classNames.hoverStyle + ', &.' + classNames.pressedStyle]: {
-            backgroundColor: palette.themeLight
+            backgroundColor: palette.themeLight,
+            fontWeight: FontWeights.semibold
           }
         }
       }
@@ -149,7 +154,8 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
       boxSizing: 'border-box',
       width: 28,
       height: 28,
-      fontWeight: FontWeights.regular
+      fontWeight: FontWeights.regular,
+      fontSize: FontSizes.small
     },
     disabledStyle: disabledStyle,
     dayOutsideBounds: disabledStyle,
@@ -163,11 +169,12 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         width: 24,
         height: 24,
         lineHeight: 24,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         borderRadius: 2,
         border: 'none',
         padding: 0,
         backgroundColor: 'transparent',
+        cursor: 'pointer',
         selectors: {
           span: {
             height: 'inherit',

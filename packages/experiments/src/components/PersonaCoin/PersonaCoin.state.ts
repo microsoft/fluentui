@@ -1,28 +1,30 @@
+import { useCallback, useState } from 'react';
 import { ImageLoadState } from 'office-ui-fabric-react';
-import { IPersonaCoinProps, IPersonaCoinViewProps } from './PersonaCoin.types';
-import { BaseState } from '../../utilities/BaseState';
+import { IPersonaCoinViewProps, IPersonaCoinComponent } from './PersonaCoin.types';
 
-export type IPersonaCoinState = Pick<IPersonaCoinViewProps, 'isPictureLoaded' | 'onPhotoLoadingStateChange'>;
+export const usePersonaCoinState: IPersonaCoinComponent['state'] = props => {
+  // TODO: isPictureLoaded was controlled, does it need to be? it's not exposed through component props...
+  //       For now use useState.
+  const [isPictureLoaded, setIsPictureLoaded] = useState(false);
 
-export class PersonaCoinState extends BaseState<IPersonaCoinProps, IPersonaCoinViewProps, IPersonaCoinState> {
-  constructor(props: PersonaCoinState['props']) {
-    super(props, {
-      controlledProps: ['isPictureLoaded']
-    });
+  const { onPhotoLoadingStateChange } = props;
 
-    this.state = {
-      isPictureLoaded: false,
-      onPhotoLoadingStateChange: this._onPhotoLoadingStateChange
-    };
-  }
+  const _onPhotoLoadingStateChange = useCallback(
+    (newImageLoadState: ImageLoadState): void => {
+      if (onPhotoLoadingStateChange) {
+        onPhotoLoadingStateChange(newImageLoadState);
+      }
 
-  private _onPhotoLoadingStateChange = (newImageLoadState: ImageLoadState): void => {
-    if (this.props.onPhotoLoadingStateChange) {
-      this.props.onPhotoLoadingStateChange(newImageLoadState);
-    }
+      setIsPictureLoaded(newImageLoadState === ImageLoadState.loaded);
+    },
+    [onPhotoLoadingStateChange]
+  );
 
-    this.setState({
-      isPictureLoaded: newImageLoadState === ImageLoadState.loaded
-    });
+  const viewProps: IPersonaCoinViewProps = {
+    ...props,
+    isPictureLoaded,
+    onPhotoLoadingStateChange: _onPhotoLoadingStateChange
   };
-}
+
+  return viewProps;
+};

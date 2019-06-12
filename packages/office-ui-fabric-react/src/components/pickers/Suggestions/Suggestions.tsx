@@ -357,7 +357,7 @@ export class Suggestions<T> extends BaseComponent<ISuggestionsProps<T>, ISuggest
           >
             <StyledTypedSuggestionsItem
               suggestionModel={suggestion}
-              RenderSuggestion={onRenderSuggestion as any}
+              RenderSuggestion={onRenderSuggestion}
               onClick={this._onClickTypedSuggestionsItem(suggestion.item, index)}
               className={suggestionsItemClassName}
               showRemoveButton={showRemoveButtons}

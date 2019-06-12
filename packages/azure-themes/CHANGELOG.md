@@ -1,6 +1,14 @@
 # Change Log - @uifabric/azure-themes
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 6.0.2
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update DatePicker import path
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
 
 ## 6.0.1
 Wed, 22 May 2019 12:21:34 GMT

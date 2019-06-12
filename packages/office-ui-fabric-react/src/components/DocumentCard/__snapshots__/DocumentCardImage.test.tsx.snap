@@ -5,8 +5,8 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
   className=
 
       {
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #eaeaea;
+        background-color: #faf9f8;
+        border-bottom: 1px solid #edebe9;
         height: 100px;
         overflow: hidden;
         position: relative;
@@ -71,6 +71,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with a valid image 1`]
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
@@ -100,8 +101,8 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
   className=
 
       {
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #eaeaea;
+        background-color: #faf9f8;
+        border-bottom: 1px solid #edebe9;
         height: 150px;
         overflow: hidden;
         position: relative;
@@ -159,6 +160,7 @@ exports[`DocumentCard renders DocumentCardImage correctly with an invalid image 
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
@@ -188,8 +190,8 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
   className=
 
       {
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #eaeaea;
+        background-color: #faf9f8;
+        border-bottom: 1px solid #edebe9;
         height: 100px;
         overflow: hidden;
         position: relative;
@@ -210,6 +212,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image or ic
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {
@@ -229,8 +232,8 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
   className=
 
       {
-        background-color: #f8f8f8;
-        border-bottom: 1px solid #eaeaea;
+        background-color: #faf9f8;
+        border-bottom: 1px solid #edebe9;
         height: 150px;
         overflow: hidden;
         position: relative;
@@ -251,6 +254,7 @@ exports[`DocumentCard renders DocumentCardImage correctly without an image provi
         }
   >
     <i
+      aria-hidden={true}
       className=
 
           {

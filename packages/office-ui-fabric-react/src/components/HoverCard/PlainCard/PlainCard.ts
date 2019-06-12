@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../../Utilities';
 import { IPlainCardProps, IPlainCardStyles, IPlainCardStyleProps } from './PlainCard.types';
 import { getStyles } from './PlainCard.styles';

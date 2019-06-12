@@ -18,7 +18,7 @@ const baseTokens: IButtonComponent['tokens'] = (props, theme) => {
     color: palette.neutralSecondary,
     colorHovered: palette.neutralDark,
     colorPressed: 'inherit',
-    contentPadding: 20,
+    contentPadding: '16px 12px',
     iconColor: palette.neutralSecondary,
     iconColorHovered: palette.neutralDark,
     iconColorPressed: 'inherit',

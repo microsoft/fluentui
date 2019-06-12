@@ -24,7 +24,7 @@ export const styles = (props: IDatePickerStyleProps): IDatePickerStyles => {
   };
 
   return {
-    root: [classNames.root, theme.fonts.medium, isDatePickerShown && 'is-open', normalize, className],
+    root: [classNames.root, theme.fonts.large, isDatePickerShown && 'is-open', normalize, className],
     textField: [
       {
         position: 'relative',

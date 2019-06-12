@@ -1,6 +1,6 @@
 import * as React from 'react';
 
-import { BaseComponent, classNamesFunction } from '../../Utilities';
+import { BaseComponent, classNamesFunction, css } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { SelectionMode } from '../../utilities/selection/interfaces';
 import { DetailsList } from './DetailsList';
@@ -29,14 +29,13 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
 
   public render(): JSX.Element {
     const {
-      detailsListStyles,
       enableShimmer,
       items,
       listProps,
       onRenderCustomPlaceholder,
       removeFadingOverlay,
       shimmerLines,
-      styles,
+      shimmerOverlayStyles: styles,
       theme,
       ...restProps
     } = this.props;
@@ -44,15 +43,13 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
     const listClassName = listProps && listProps.className;
 
     this._classNames = getClassNames(styles, {
-      theme: theme!,
-      className: listClassName,
-      enableShimmer
+      theme: theme!
     });
 
     const newListProps = {
       ...listProps,
-      // Adds to the optional listProp className a fading out overlay className only when shimmer enabled.
-      className: enableShimmer && !removeFadingOverlay ? this._classNames.root : listClassName
+      // Adds to the optional listProp className a fading out overlay className only when shimmer enabled and not disabled.
+      className: enableShimmer && !removeFadingOverlay ? css(this._classNames.root, listClassName) : undefined
     };
 
     return (
@@ -61,7 +58,6 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
         items={enableShimmer ? this._shimmerItems : items}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
         listProps={newListProps}
-        styles={detailsListStyles}
       />
     );
   }

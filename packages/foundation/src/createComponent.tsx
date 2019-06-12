@@ -4,8 +4,16 @@ import { Customizations, CustomizerContext, ICustomizerContext } from '@uifabric
 import { createFactory } from './slots';
 import { assign } from './utilities';
 
-import { IComponent, ICustomizationProps, IStyleableComponentProps, IStylesFunctionOrObject, IToken, IViewRenderer } from './IComponent';
-import { IDefaultSlotProps, ISlotCreator } from './ISlots';
+import {
+  IComponentOptions,
+  ICustomizationProps,
+  IStyleableComponentProps,
+  IStylesFunctionOrObject,
+  IToken,
+  ITokenFunction,
+  IViewComponent
+} from './IComponent';
+import { IDefaultSlotProps, ISlotCreator, ValidProps } from './ISlots';
 
 /**
  * Assembles a higher order component based on the following: styles, theme, view, and state.
@@ -20,83 +28,68 @@ import { IDefaultSlotProps, ISlotCreator } from './ISlots';
  * Views should simply be stateless pure functions that receive all props needed for rendering their output.
  * State component is optional. If state is not provided, created component is essentially a functional stateless component.
  *
- * @param component - component Component options. See IComponent for more detail.
+ * @param options - component Component options. See IComponentOptions for more detail.
  */
 export function createComponent<
-  TComponentProps,
+  TComponentProps extends ValidProps,
   TTokens,
   TStyleSet extends IStyleSet<TStyleSet>,
-  TViewProps = TComponentProps,
+  TViewProps extends TComponentProps = TComponentProps,
   TStatics = {}
->(component: IComponent<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics>): React.StatelessComponent<TComponentProps> & TStatics {
-  const { factoryOptions = {} } = component;
+>(
+  view: IViewComponent<TViewProps>,
+  options: IComponentOptions<TComponentProps, TTokens, TStyleSet, TViewProps, TStatics> = {}
+): React.FunctionComponent<TComponentProps> & TStatics {
+  const { factoryOptions = {} } = options;
   const { defaultProp } = factoryOptions;
 
-  const result: React.StatelessComponent<TComponentProps> = (componentProps: TComponentProps) => {
-    return (
-      // TODO: createComponent is also affected by https://github.com/OfficeDev/office-ui-fabric-react/issues/6603
-      <CustomizerContext.Consumer>
-        {(context: ICustomizerContext) => {
-          // TODO: this next line is basically saying 'theme' prop will ALWAYS be available from getCustomizations
-          //        via ICustomizationProps cast. Is there mechanism that guarantees theme and other request fields will be defined?
-          //        is there a static init that guarantees theme will be provided?
-          //        what happens if createTheme/loadTheme is not called?
-          //        if so, convey through getCustomizations typing keying off fields. can we convey this
-          //          all the way from Customizations with something like { { K in fields }: object}? hmm
-          //        if not, how does existing "theme!" styles code work without risk of failing (assuming it doesn't fail)?
-          // For now cast return value as if theme is always available.
-          const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
-            component.displayName,
-            context,
-            component.fields
-          );
-
-          const renderView: IViewRenderer<TViewProps> = viewProps => {
-            // The approach here is to allow state components to provide only the props they care about, automatically
-            //    merging user props and state props together. This ensures all props are passed properly to view,
-            //    including children and styles.
-            // TODO: for full 'fields' support, 'rest' props from customizations need to pass onto view.
-            //        however, customized props like theme will break snapshots. how is styled not showing theme output in snapshots?
-            const mergedProps: TViewProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet> = viewProps
-              ? {
-                  ...(componentProps as any),
-                  ...(viewProps as any)
-                }
-              : componentProps;
-
-            const theme = mergedProps.theme || settings.theme;
-
-            const tokens = _resolveTokens(mergedProps, theme, component.tokens, settings.tokens, mergedProps.tokens);
-            const styles = _resolveStyles(mergedProps, theme, tokens, component.styles, settings.styles, mergedProps.styles);
-
-            const viewComponentProps: typeof mergedProps & IDefaultSlotProps<any> = {
-              ...(mergedProps as any),
-              styles,
-              tokens,
-              _defaultStyles: styles
-            };
-
-            return component.view(viewComponentProps);
-          };
-          return component.state ? <component.state {...componentProps} renderView={renderView} /> : renderView();
-        }}
-      </CustomizerContext.Consumer>
+  const result: React.FunctionComponent<TComponentProps> = (
+    componentProps: TComponentProps & IStyleableComponentProps<TViewProps, TTokens, TStyleSet>
+  ) => {
+    const settings: ICustomizationProps<TViewProps, TTokens, TStyleSet> = _getCustomizations(
+      options.displayName,
+      React.useContext(CustomizerContext),
+      options.fields
     );
+
+    const useState = options.state;
+
+    if (useState) {
+      // Don't assume state will return all props, so spread useState result over component props.
+      componentProps = {
+        ...componentProps,
+        ...useState(componentProps)
+      };
+    }
+
+    const theme = componentProps.theme || settings.theme;
+
+    const tokens = _resolveTokens(componentProps, theme, options.tokens, settings.tokens, componentProps.tokens);
+    const styles = _resolveStyles(componentProps, theme, tokens, options.styles, settings.styles, componentProps.styles);
+
+    const viewProps = {
+      ...componentProps,
+      styles,
+      tokens,
+      _defaultStyles: styles
+    } as TViewProps & IDefaultSlotProps<any>;
+
+    return view(viewProps);
   };
 
-  result.displayName = component.displayName;
+  result.displayName = options.displayName || view.name;
 
   // If a shorthand prop is defined, create a factory for the component.
   // TODO: This shouldn't be a concern of createComponent.. factoryOptions should just be forwarded.
-  //       Need to weigh creating default factories on component creation vs. memozing them on use in slots.tsx.
+  //       Need to weigh creating default factories on component creation vs. memoizing them on use in slots.tsx.
   if (defaultProp) {
-    (result as ISlotCreator<TComponentProps>).create = createFactory(result, { defaultProp });
+    (result as ISlotCreator<TComponentProps, any>).create = createFactory(result, { defaultProp });
   }
 
-  assign(result, component.statics);
+  assign(result, options.statics);
 
   // Later versions of TypeSript should allow us to merge objects in a type safe way and avoid this cast.
-  return result as React.StatelessComponent<TComponentProps> & TStatics;
+  return result as React.FunctionComponent<TComponentProps> & TStatics;
 }
 
 /**
@@ -127,7 +120,9 @@ function _resolveTokens<TViewProps, TTokens>(
 
   for (let currentTokens of allTokens) {
     if (currentTokens) {
-      currentTokens = typeof currentTokens === 'function' ? currentTokens(props, theme) : currentTokens;
+      // TODO: why is this cast needed? TS seems to think there is a (TToken | Function) union from somewhere.
+      currentTokens =
+        typeof currentTokens === 'function' ? (currentTokens as ITokenFunction<TViewProps, TTokens>)(props, theme) : currentTokens;
 
       if (Array.isArray(currentTokens)) {
         currentTokens = _resolveTokens(props, theme, ...currentTokens);
@@ -148,13 +143,13 @@ function _resolveTokens<TViewProps, TTokens>(
  * @param fields Optional list of properties to grab from global store and context.
  */
 function _getCustomizations<TViewProps, TTokens, TStyleSet extends IStyleSet<TStyleSet>>(
-  displayName: string,
+  displayName: string | undefined,
   context: ICustomizerContext,
   fields?: string[]
 ): ICustomizationProps<TViewProps, TTokens, TStyleSet> {
   // TODO: do we want field props? should fields be part of IComponent and used here?
   // TODO: should we centrally define DefaultFields? (not exported from styling)
-  // TOOD: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
+  // TODO: tie this array to ICustomizationProps, such that each array element is keyof ICustomizationProps
   const DefaultFields = ['theme', 'styles', 'tokens'];
   return Customizations.getSettings(fields || DefaultFields, displayName, context.customizations);
 }
