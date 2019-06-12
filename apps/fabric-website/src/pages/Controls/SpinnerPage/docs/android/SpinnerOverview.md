@@ -1,4 +1,4 @@
-When you've exhausted all technical avenues for making a user flow faster, a progress indicator should be used to give user feedback that the system is busy. Use these feedback animations when you expect the user will have to wait for 2 seconds or more.
+When you've exhausted all technical avenues for making a user flow faster, a progress indicator should be used to give the user feedback that the system is busy. Use these feedback animations when you expect the user will have to wait for 2 seconds or more.
 
 For pauses between 2 sec and 400ms, adding animations may actually make the experience feel more chaotic. Under 400ms, most delays in loading new content are perceived as fast, and no feedback is needed.
 
