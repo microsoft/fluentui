@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Updated DetailsList example code to provide getKey prop, needed to make seelction work correctly when sorting and filtering are enabled.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "rajeevk@microsoft.com"
+}

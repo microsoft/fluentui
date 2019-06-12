@@ -227,7 +227,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     }
   }
 
-  private _getKey(item: any): void {
+  private _getKey(item: any, index?: number): string {
     return item.key;
   }
 
@@ -302,7 +302,7 @@ function _generateDocuments() {
       .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
       .join(' ');
     items.push({
-      key: i,
+      key: i.toString(),
       name: fileName,
       value: fileName,
       iconName: randomFileType.url,
