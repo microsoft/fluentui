@@ -102,6 +102,12 @@ export const controlsPagesAndroid: INavPage[] = [
     isCategory: true,
     pages: [
       {
+        title: 'Drawer',
+        url: '#/controls/android/drawer',
+        component: () => <LoadingComponent title="Drawer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
+      },
+      {
         title: 'Tooltip',
         url: '#/controls/android/tooltip',
         component: () => <LoadingComponent title="Tooltip" />,
