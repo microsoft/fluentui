@@ -1,6 +1,15 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+
+## 6.189.5
+Wed, 12 Jun 2019 22:15:55 GMT
+
+### Patches
+
+- Package bump to resolve conflicts.
+- Improved CSS in Stack sample code for performance.
+- Rating: Added getNativeProps to component for event usage
 
 ## 6.189.4
 Tue, 11 Jun 2019 12:21:35 GMT

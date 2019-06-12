@@ -2,6 +2,25 @@
   "name": "@uifabric/variants",
   "entries": [
     {
+      "version": "6.14.4",
+      "tag": "@uifabric/variants_v6.14.4",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^6.189.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.14.2",
       "tag": "@uifabric/variants_v6.14.2",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

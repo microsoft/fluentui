@@ -2,6 +2,56 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "6.189.5",
+      "tag": "office-ui-fabric-react_v6.189.5",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          },
+          {
+            "comment": "Improved CSS in Stack sample code for performance.",
+            "author": "Rajeev-K <Rajeev-K@users.noreply.github.com>",
+            "commit": "f883425ef5c79f269e214fc88939195e348d0cb1"
+          },
+          {
+            "comment": "Rating: Added getNativeProps to component for event usage",
+            "author": "Mary <38991459+marygans@users.noreply.github.com>",
+            "commit": "b00937df18947ac8414e16d83a5157a0a4e0dbba"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.8.0` to `^0.8.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.2` to `^6.5.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.0` to `^6.19.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.49.0` to `^6.49.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^6.41.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^0.8.0` to `^0.8.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.10` to `^6.0.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/test-utilities\" from `^6.0.5` to `^6.0.6`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.189.4",
       "tag": "office-ui-fabric-react_v6.189.4",
       "date": "Tue, 11 Jun 2019 12:21:35 GMT",

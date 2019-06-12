@@ -2,6 +2,49 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "6.19.1",
+      "tag": "@uifabric/fabric-website_v6.19.1",
+      "date": "Wed, 12 Jun 2019 22:15:55 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Package bump to resolve conflicts.",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "840c5e171e41a53b1d87339f81bb16bbd73414ed"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.4` to `^1.1.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^6.23.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^6.78.7` to `^6.78.8`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^6.18.4` to `^6.18.5`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^6.5.1` to `^6.5.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.11` to `^0.16.12`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^6.5.2` to `^6.5.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.7` to `^0.1.8`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^6.189.5`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.11",
       "tag": "@uifabric/fabric-website_v6.18.11",
       "date": "Thu, 06 Jun 2019 12:22:24 GMT",
