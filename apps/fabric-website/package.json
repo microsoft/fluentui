@@ -52,7 +52,7 @@
     "@uifabric/fluent-theme": "^7.0.0",
     "@uifabric/icons": "^7.0.0",
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/theme-samples": "^0.1.7",
+    "@uifabric/theme-samples": "^7.0.0",
     "react-app-polyfill": "~1.0.1",
     "json-loader": "^0.5.7",
     "office-ui-fabric-react": "^7.0.0",
