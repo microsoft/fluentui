@@ -22,17 +22,14 @@ export const useTimer = () => {
     }
   };
 
-  React.useEffect(
-    () => {
-      if (isRunning) {
-        setIsRunning(false);
-        setTimeout(() => {
-          setVisible(false);
-        }, 5000);
-      }
-    },
-    [isRunning]
-  );
+  React.useEffect(() => {
+    if (isRunning) {
+      setIsRunning(false);
+      setTimeout(() => {
+        setVisible(false);
+      }, 5000);
+    }
+  }, [isRunning]);
 
   return {
     duration,

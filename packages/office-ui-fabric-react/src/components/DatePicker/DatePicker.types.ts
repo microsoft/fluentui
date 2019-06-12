@@ -4,7 +4,7 @@ import { FirstWeekOfYear } from '../../utilities/dateValues/DateValues';
 import { ICalendarFormatDateCallbacks, ICalendarStrings } from '../Calendar/Calendar.types';
 import { IStyle, ITheme } from '../../Styling';
 import { IRefObject, IBaseProps, IStyleFunction, IComponentAs } from '../../Utilities';
-import { ICalloutProps } from '../../Callout';
+import { ICalloutProps } from '../Callout/Callout.types';
 import { ITextFieldProps } from '../TextField/TextField.types';
 
 /**

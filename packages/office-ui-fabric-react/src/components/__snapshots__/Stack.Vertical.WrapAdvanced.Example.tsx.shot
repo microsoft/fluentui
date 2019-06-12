@@ -80,11 +80,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -143,7 +143,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -199,7 +199,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 }
                 & $thumb {
                   background: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 10px;
                   border-style: solid;
                   border-width: 2px;
@@ -250,7 +250,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     ms-Slider-active
 
                     {
-                      background: #666666;
+                      background: #605e5c;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -267,7 +267,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     ms-Slider-inactive
 
                     {
-                      background: #c8c8c8;
+                      background: #c8c6c4;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -290,12 +290,12 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   flex-shrink: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   line-height: 1;
                   margin-bottom: 0;
                   margin-left: 8px;
@@ -353,11 +353,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -416,7 +416,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   bottom: 1px;
                   content: "";
                   left: 1px;
-                  outline: 1px solid #666666;
+                  outline: 1px solid #605e5c;
                   position: absolute;
                   right: 1px;
                   top: 1px;
@@ -472,7 +472,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 }
                 & $thumb {
                   background: #ffffff;
-                  border-color: #666666;
+                  border-color: #605e5c;
                   border-radius: 10px;
                   border-style: solid;
                   border-width: 2px;
@@ -523,7 +523,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     ms-Slider-active
 
                     {
-                      background: #666666;
+                      background: #605e5c;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -540,7 +540,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                     ms-Slider-inactive
 
                     {
-                      background: #c8c8c8;
+                      background: #c8c6c4;
                       transition: width 0.367s cubic-bezier(.1,.9,.2,1);
                     }
                     @media screen and (-ms-high-contrast: active){& {
@@ -563,12 +563,12 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   -webkit-font-smoothing: antialiased;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   display: block;
                   flex-shrink: 1;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
-                  font-weight: 400;
+                  font-weight: 600;
                   line-height: 1;
                   margin-bottom: 0;
                   margin-left: 8px;
@@ -640,11 +640,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -670,9 +670,10 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                border-color: #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -689,15 +690,15 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 user-select: none;
               }
               &:hover .ms-Dropdown-title {
-                border-color: #212121;
-                color: #212121;
+                border-color: #323130;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -711,17 +712,17 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-title {
-                border-color: #005a9e;
-                color: #212121;
+                border-color: #0078d4;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               &:focus .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                 color: HighlightText;
@@ -730,25 +731,25 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               &:hover .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:focus .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:active .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:hover .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:focus .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
           data-is-focusable={true}
           id="Dropdown2"
@@ -772,7 +773,8 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a6a6a6;
+                  border-color: #8a8886;
+                  border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
                   box-shadow: none;
@@ -787,8 +789,8 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   margin-top: 0px;
                   overflow: hidden;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 32px;
+                  padding-left: 8px;
+                  padding-right: 28px;
                   padding-top: 0;
                   position: relative;
                   text-overflow: ellipsis;
@@ -809,7 +811,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   height: 32px;
                   line-height: 30px;
                   position: absolute;
-                  right: 12px;
+                  right: 8px;
                   top: 1px;
                 }
           >
@@ -820,7 +822,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 12px;
@@ -867,11 +869,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -897,9 +899,10 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                border-color: #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -916,15 +919,15 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 user-select: none;
               }
               &:hover .ms-Dropdown-title {
-                border-color: #212121;
-                color: #212121;
+                border-color: #323130;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -938,17 +941,17 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-title {
-                border-color: #005a9e;
-                color: #212121;
+                border-color: #0078d4;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               &:focus .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                 color: HighlightText;
@@ -957,25 +960,25 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               &:hover .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:focus .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:active .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:hover .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:focus .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
           data-is-focusable={true}
           id="Dropdown3"
@@ -999,7 +1002,8 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a6a6a6;
+                  border-color: #8a8886;
+                  border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
                   box-shadow: none;
@@ -1014,8 +1018,8 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   margin-top: 0px;
                   overflow: hidden;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 32px;
+                  padding-left: 8px;
+                  padding-right: 28px;
                   padding-top: 0;
                   position: relative;
                   text-overflow: ellipsis;
@@ -1036,7 +1040,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   height: 32px;
                   line-height: 30px;
                   position: absolute;
-                  right: 12px;
+                  right: 8px;
                   top: 1px;
                 }
           >
@@ -1047,7 +1051,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 12px;
@@ -1094,11 +1098,11 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -1124,9 +1128,10 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               {
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
+                border-color: #605e5c;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -1143,15 +1148,15 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 user-select: none;
               }
               &:hover .ms-Dropdown-title {
-                border-color: #212121;
-                color: #212121;
+                border-color: #323130;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:hover .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:focus .ms-Dropdown-title {
                 border-color: #0078d4;
-                color: #212121;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-title {
                 background-color: Highlight;
@@ -1165,17 +1170,17 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-title {
-                border-color: #005a9e;
-                color: #212121;
+                border-color: #0078d4;
+                color: #201f1e;
               }
               @media screen and (-ms-high-contrast: active){&:active .ms-Dropdown-title {
                 border-color: Highlight;
               }
               &:hover .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               &:focus .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:focus .ms-Dropdown-caretDown {
                 color: HighlightText;
@@ -1184,25 +1189,25 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 -ms-high-contrast-adjust: none;
               }
               &:active .ms-Dropdown-caretDown {
-                color: #212121;
+                color: #323130;
               }
               &:hover .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:focus .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:active .ms-Dropdown-titleIsPlaceHolder {
-                color: #666666;
+                color: #323130;
               }
               &:hover .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:active .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
               &:focus .ms-Dropdown-title--hasError {
-                border-color: #a80000;
+                border-color: #a4262c;
               }
           data-is-focusable={true}
           id="Dropdown4"
@@ -1226,7 +1231,8 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                 ms-Dropdown-title
                 {
                   background-color: #ffffff;
-                  border-color: #a6a6a6;
+                  border-color: #8a8886;
+                  border-radius: 2px;
                   border-style: solid;
                   border-width: 1px;
                   box-shadow: none;
@@ -1241,8 +1247,8 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   margin-top: 0px;
                   overflow: hidden;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 32px;
+                  padding-left: 8px;
+                  padding-right: 28px;
                   padding-top: 0;
                   position: relative;
                   text-overflow: ellipsis;
@@ -1263,7 +1269,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   height: 32px;
                   line-height: 30px;
                   position: absolute;
-                  right: 12px;
+                  right: 8px;
                   top: 1px;
                 }
           >
@@ -1274,7 +1280,7 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
                   {
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
-                    color: #666666;
+                    color: #605e5c;
                     display: inline-block;
                     font-family: "FabricMDL2Icons";
                     font-size: 12px;
@@ -1313,6 +1319,15 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
             overflow: visible;
             width: 100%;
           }
+          & span {
+            align-items: center;
+            background: #0078d4;
+            color: #ffffff;
+            display: flex;
+            height: 50px;
+            justify-content: center;
+            width: 50px;
+          }
     >
       <div
         className=
@@ -1345,79 +1360,19 @@ exports[`Component Examples renders Stack.Vertical.WrapAdvanced.Example.tsx corr
               flex-shrink: 1;
             }
       >
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           1
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           2
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           3
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           4
         </span>
-        <span
-          className=
-
-              {
-                align-items: center;
-                background: #0078d4;
-                color: #ffffff;
-                display: flex;
-                height: 50px;
-                justify-content: center;
-                width: 50px;
-              }
-        >
+        <span>
           5
         </span>
       </div>

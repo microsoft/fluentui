@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IChartDataPoint, MultiStackedBarChart, IChartProps } from '@uifabric/charting';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
-export const MultiStackedBarChartExample: React.SFC<{}> = () => {
+export const MultiStackedBarChartExample: React.FunctionComponent<{}> = () => {
   const firstChartPoints: IChartDataPoint[] = [
     { legend: 'Debit card numbers (EU and USA)', data: 40, color: DefaultPalette.red },
     { legend: 'Passport numbers (USA)', data: 23, color: DefaultPalette.green },

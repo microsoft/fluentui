@@ -6,13 +6,6 @@ export interface IExampleState {
 }
 
 // Styles definitions
-const stackStyles: IStackStyles = {
-  root: {
-    background: DefaultPalette.themeTertiary,
-    overflow: 'hidden',
-    width: `${this.state.stackWidth}%`
-  }
-};
 const stackItemStyles: IStackItemStyles = {
   root: {
     alignItems: 'center',
@@ -53,6 +46,15 @@ export class HorizontalStackShrinkExample extends React.Component<{}, IExampleSt
   }
 
   public render(): JSX.Element {
+    // Styles definitions
+    const stackStyles: IStackStyles = {
+      root: {
+        background: DefaultPalette.themeTertiary,
+        overflow: 'hidden',
+        width: `${this.state.stackWidth}%`
+      }
+    };
+
     return (
       <Stack tokens={outerStackTokens}>
         <Slider

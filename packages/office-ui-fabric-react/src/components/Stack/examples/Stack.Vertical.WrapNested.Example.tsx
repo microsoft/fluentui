@@ -1,9 +1,55 @@
 import * as React from 'react';
-import { mergeStyleSets, IStyleSet, DefaultPalette, Slider, Stack } from 'office-ui-fabric-react';
+import { Slider } from 'office-ui-fabric-react/lib/Slider';
+import { Stack } from '../Stack';
+import { IStackStyles, IStackTokens } from '../Stack.types';
+import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IExampleState {
   stackHeight: number;
 }
+
+// Non-mutating styles definition
+const textStyles: React.CSSProperties = {
+  width: 50,
+  height: 50,
+  display: 'flex',
+  alignItems: 'center',
+  justifyContent: 'center',
+  color: DefaultPalette.white
+};
+const firstStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralTertiary
+  }
+};
+const firstStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themePrimary
+};
+const secondStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralSecondary
+  }
+};
+const secondStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themeDark
+};
+const thirdStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.neutralPrimary
+  }
+};
+const thirdStackItemStyles: React.CSSProperties = {
+  ...textStyles,
+  background: DefaultPalette.themeDarker
+};
+
+// Tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const wrapStackTokens: IStackTokens = { childrenGap: '30 40' };
+const firstStackTokens: IStackTokens = { childrenGap: '10 30' };
+const secondStackTokens: IStackTokens = { childrenGap: '20 50' };
 
 export class VerticalStackWrapNestedExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
@@ -14,68 +60,18 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
   }
 
   public render(): JSX.Element {
-    const textStyles = {
-      width: 50,
-      height: 50,
-      display: 'flex',
-      alignItems: 'center',
-      justifyContent: 'center',
-      color: DefaultPalette.white
-    } as IStyleSet<{}>;
-
     const { stackHeight } = this.state;
 
-    const styles = mergeStyleSets({
+    // Styles definition
+    const containerStackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: stackHeight
-      },
-
-      stackOne: {
-        background: DefaultPalette.neutralTertiary
-      },
-
-      stackOneItem: {
-        ...textStyles,
-        background: DefaultPalette.themePrimary
-      },
-
-      stackTwo: {
-        background: DefaultPalette.neutralSecondary
-      },
-
-      stackTwoItem: {
-        ...textStyles,
-        background: DefaultPalette.themeDark
-      },
-
-      stackThree: {
-        background: DefaultPalette.neutralPrimary
-      },
-
-      stackThreeItem: {
-        ...textStyles,
-        background: DefaultPalette.themeDarker
-      }
-    });
-
-    const tokens = {
-      sectionStack: {
-        childrenGap: 10
-      },
-      wrapStack: {
-        childrenGap: '30 40'
-      },
-      firstStack: {
-        childrenGap: '10 30'
-      },
-      secondStack: {
-        childrenGap: '20 50'
       }
     };
 
     return (
-      <Stack tokens={tokens.sectionStack}>
+      <Stack tokens={sectionStackTokens}>
         <Slider
           label="Change the stack height to see how child items wrap onto multiple columns:"
           min={1}
@@ -86,34 +82,34 @@ export class VerticalStackWrapNestedExample extends React.Component<{}, IExample
           onChange={this._onHeightChange}
         />
 
-        <Stack wrap tokens={tokens.wrapStack} className={styles.root}>
-          <Stack wrap tokens={tokens.firstStack} className={styles.stackOne}>
-            <span className={styles.stackOneItem}>1</span>
-            <span className={styles.stackOneItem}>2</span>
-            <span className={styles.stackOneItem}>3</span>
-            <span className={styles.stackOneItem}>4</span>
-            <span className={styles.stackOneItem}>5</span>
-            <span className={styles.stackOneItem}>6</span>
-            <span className={styles.stackOneItem}>7</span>
+        <Stack wrap styles={containerStackStyles} tokens={wrapStackTokens}>
+          <Stack wrap styles={firstStackStyles} tokens={firstStackTokens}>
+            <span style={firstStackItemStyles}>1</span>
+            <span style={firstStackItemStyles}>2</span>
+            <span style={firstStackItemStyles}>3</span>
+            <span style={firstStackItemStyles}>4</span>
+            <span style={firstStackItemStyles}>5</span>
+            <span style={firstStackItemStyles}>6</span>
+            <span style={firstStackItemStyles}>7</span>
           </Stack>
 
-          <Stack wrap tokens={tokens.secondStack} className={styles.stackTwo}>
-            <span className={styles.stackTwoItem}>1</span>
-            <span className={styles.stackTwoItem}>2</span>
-            <span className={styles.stackTwoItem}>3</span>
+          <Stack wrap styles={secondStackStyles} tokens={secondStackTokens}>
+            <span style={secondStackItemStyles}>1</span>
+            <span style={secondStackItemStyles}>2</span>
+            <span style={secondStackItemStyles}>3</span>
           </Stack>
 
-          <Stack wrap className={styles.stackThree}>
-            <span className={styles.stackThreeItem}>1</span>
-            <span className={styles.stackThreeItem}>2</span>
-            <span className={styles.stackThreeItem}>3</span>
-            <span className={styles.stackThreeItem}>4</span>
-            <span className={styles.stackThreeItem}>5</span>
-            <span className={styles.stackThreeItem}>6</span>
-            <span className={styles.stackThreeItem}>7</span>
-            <span className={styles.stackThreeItem}>8</span>
-            <span className={styles.stackThreeItem}>9</span>
-            <span className={styles.stackThreeItem}>10</span>
+          <Stack wrap styles={thirdStackStyles}>
+            <span style={thirdStackItemStyles}>1</span>
+            <span style={thirdStackItemStyles}>2</span>
+            <span style={thirdStackItemStyles}>3</span>
+            <span style={thirdStackItemStyles}>4</span>
+            <span style={thirdStackItemStyles}>5</span>
+            <span style={thirdStackItemStyles}>6</span>
+            <span style={thirdStackItemStyles}>7</span>
+            <span style={thirdStackItemStyles}>8</span>
+            <span style={thirdStackItemStyles}>9</span>
+            <span style={thirdStackItemStyles}>10</span>
           </Stack>
         </Stack>
 

@@ -3,6 +3,12 @@ import { FontSizes, IRawStyle, ITheme, concatStyleSets, HighContrastSelector } f
 import { IButtonStyles } from '../../Button';
 import { ISpinButtonStyles } from './SpinButton.types';
 import { memoizeFunction } from '../../Utilities';
+import { IconFontSizes } from '../../Styling';
+
+const ARROW_BUTTON_WIDTH = 23;
+const ARROW_BUTTON_ICON_SIZE = 8;
+const DEFAULT_HEIGHT = 32;
+const LABEL_MARGIN = 10;
 
 const _getDisabledStyles = memoizeFunction(
   (theme: ITheme): IRawStyle => {
@@ -28,26 +34,35 @@ const _getDisabledStyles = memoizeFunction(
 
 export const getArrowButtonStyles = memoizeFunction(
   (theme: ITheme, isUpArrow: boolean, customSpecificArrowStyles?: Partial<IButtonStyles>): IButtonStyles => {
-    const { semanticColors } = theme;
+    const { palette, effects } = theme;
 
-    const ArrowButtonTextColor = semanticColors.buttonText;
-    const ArrowButtonTextColorHovered = semanticColors.buttonTextHovered;
-    const ArrowButtonTextColorPressed = semanticColors.buttonTextChecked;
+    // TODO: after updating the semanticColor slots all this need to be reevaluated.
+    const ArrowButtonTextColor = palette.neutralSecondary;
+    const ArrowButtonTextColorHovered = palette.neutralPrimary;
+    const ArrowButtonTextColorPressed = palette.neutralPrimary;
 
-    const ArrowButtonBackgroundHovered = semanticColors.buttonBackgroundHovered;
-    const ArrowButtonBackgroundPressed = semanticColors.buttonBackgroundChecked;
+    const ArrowButtonBackgroundHovered = palette.neutralLighter;
+    const ArrowButtonBackgroundPressed = palette.neutralLight;
 
     const defaultArrowButtonStyles: IButtonStyles = {
       root: {
         outline: 'none',
         display: 'block',
         height: '50%',
-        width: '14px',
-        padding: '0',
+        width: ARROW_BUTTON_WIDTH,
+        padding: 0,
         backgroundColor: 'transparent',
         textAlign: 'center',
         cursor: 'default',
-        color: ArrowButtonTextColor
+        color: ArrowButtonTextColor,
+        selectors: {
+          '&.ms-DownButton': {
+            borderRadius: `0 0 ${effects.roundedCorner2} 0`
+          },
+          '&.ms-UpButton': {
+            borderRadius: `0 ${effects.roundedCorner2} 0 0`
+          }
+        }
       },
       rootHovered: {
         backgroundColor: ArrowButtonBackgroundHovered,
@@ -83,11 +98,11 @@ export const getArrowButtonStyles = memoizeFunction(
         }
       },
       icon: {
-        fontSize: '6px',
-        marginTop: '0',
-        marginRight: '0',
-        marginBottom: '0',
-        marginLeft: '0'
+        fontSize: ARROW_BUTTON_ICON_SIZE,
+        marginTop: 0,
+        marginRight: 0,
+        marginBottom: 0,
+        marginLeft: 0
       }
     };
 
@@ -106,7 +121,7 @@ export const getArrowButtonStyles = memoizeFunction(
 
 export const getStyles = memoizeFunction(
   (theme: ITheme, customStyles?: Partial<ISpinButtonStyles>): ISpinButtonStyles => {
-    const { palette, semanticColors } = theme;
+    const { palette, semanticColors, effects } = theme;
 
     const SpinButtonRootBorderColor = semanticColors.inputBorder;
     const SpinButtonRootBorderColorHovered = semanticColors.inputBorderHovered;
@@ -124,35 +139,41 @@ export const getStyles = memoizeFunction(
         outline: 'none',
         fontSize: FontSizes.medium,
         width: '100%',
-        minWidth: '86px'
+        minWidth: 86
       },
       labelWrapper: {
         display: 'inline-flex'
       },
       labelWrapperStart: {
+        height: DEFAULT_HEIGHT,
+        alignItems: 'center',
         float: 'left',
-        marginRight: '10px'
+        marginRight: LABEL_MARGIN
       },
       labelWrapperEnd: {
+        height: DEFAULT_HEIGHT,
+        alignItems: 'center',
         float: 'right',
-        marginLeft: '10px'
+        marginLeft: LABEL_MARGIN
       },
       labelWrapperTop: {
-        marginBottom: '10px'
+        marginBottom: LABEL_MARGIN
       },
       labelWrapperBottom: {
-        marginTop: '10px'
+        marginTop: LABEL_MARGIN
       },
       icon: {
-        padding: '2px 5px',
-        fontSize: '20px'
+        padding: '0 5px',
+        fontSize: IconFontSizes.large
       },
       iconDisabled: {
         color: SpinButtonIconDisabledColor
       },
       label: {
         pointerEvents: 'none',
-        padding: '2px 0'
+        padding: 0,
+        // centering the label with the icon by forcing the exact same height as the icon.
+        lineHeight: IconFontSizes.large
       },
       labelDisabled: {
         cursor: 'default',
@@ -166,32 +187,27 @@ export const getStyles = memoizeFunction(
       spinButtonWrapper: {
         display: 'flex',
         boxSizing: 'border-box',
-        height: '32px',
-        minWidth: '86px',
-        borderWidth: '1px',
-        borderStyle: 'solid',
-        borderColor: SpinButtonRootBorderColor
+        height: DEFAULT_HEIGHT,
+        minWidth: 86,
+        border: `1px solid ${SpinButtonRootBorderColor}`,
+        borderRadius: effects.roundedCorner2
       },
       spinButtonWrapperTopBottom: {
         width: '100%'
       },
       spinButtonWrapperHovered: {
         borderColor: SpinButtonRootBorderColorHovered,
-        outline: '2px dashed transparent',
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Highlight',
-            outline: 'none'
+            borderColor: 'Highlight'
           }
         }
       },
       spinButtonWrapperFocused: {
         borderColor: SpinButtonRootBorderColorFocused,
-        outline: '2px dashed transparent',
         selectors: {
           [HighContrastSelector]: {
-            borderColor: 'Highlight',
-            outline: 'none'
+            borderColor: 'Highlight'
           }
         }
       },
@@ -200,23 +216,21 @@ export const getStyles = memoizeFunction(
         boxSizing: 'border-box',
         boxShadow: 'none',
         borderStyle: 'none',
-        marginTop: '0',
-        marginRight: '0',
-        marginBottom: '0',
-        marginLeft: '0',
+        flex: 1,
+        margin: 0,
         fontSize: FontSizes.medium,
         color: SpinButtonInputTextColor,
         height: '100%',
-        padding: '0 12px',
-        outline: '0',
-        textOverflow: 'ellipsis',
+        padding: '0 8px',
+        outline: 0,
         display: 'block',
-        float: 'left',
-        width: 'calc(100% - 14px)',
-        minWidth: '72px',
+        minWidth: 72,
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis',
         overflow: 'hidden',
         cursor: 'text',
-        userSelect: 'text'
+        userSelect: 'text',
+        borderRadius: `${effects.roundedCorner2} 0 0 ${effects.roundedCorner2}`
       },
       inputTextSelected: {
         backgroundColor: SpinButtonInputBackgroundColorSelected,
@@ -231,14 +245,9 @@ export const getStyles = memoizeFunction(
       },
       inputDisabled: _getDisabledStyles(theme),
       arrowButtonsContainer: {
-        outline: 'none',
-        fontSize: '12px',
         display: 'block',
-        float: 'left',
         height: '100%',
-        cursor: 'default',
-        padding: '0',
-        boxSizing: 'border-box'
+        cursor: 'default'
       },
       arrowButtonsContainerDisabled: _getDisabledStyles(theme)
     };

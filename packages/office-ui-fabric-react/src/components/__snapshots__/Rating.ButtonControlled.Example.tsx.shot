@@ -72,7 +72,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -134,7 +134,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -154,7 +154,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -211,7 +211,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -273,7 +273,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -293,7 +293,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -350,7 +350,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -412,7 +412,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -432,7 +432,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -489,7 +489,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -551,7 +551,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -571,7 +571,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -628,7 +628,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
               bottom: 1px;
               content: "";
               left: 1px;
-              outline: 1px solid #666666;
+              outline: 1px solid #605e5c;
               position: absolute;
               right: 1px;
               top: 1px;
@@ -690,7 +690,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -710,7 +710,7 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
                 {
                   -moz-osx-font-smoothing: grayscale;
                   -webkit-font-smoothing: antialiased;
-                  color: #000000;
+                  color: #323130;
                   display: inline-block;
                   font-family: "FabricMDL2Icons";
                   font-style: normal;
@@ -749,8 +749,8 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          border-radius: 2px;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -759,10 +759,6 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           font-size: 14px;
           font-weight: 400;
           height: 32px;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;
@@ -779,14 +775,15 @@ exports[`Component Examples renders Rating.ButtonControlled.Example.tsx correctl
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border-color: #ffffff;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {

@@ -7,8 +7,8 @@ import { mount } from 'enzyme';
 
 import { Calendar } from './Calendar';
 import { DateRangeType, DayOfWeek } from './Calendar.types';
-import { addDays, compareDates } from '../../utilities/dateMath/DateMath';
-import { resetIds } from '../../Utilities';
+import { addDays, compareDates } from 'office-ui-fabric-react/lib/utilities/dateMath/DateMath';
+import { resetIds } from 'office-ui-fabric-react/lib/Utilities';
 
 describe('Calendar', () => {
   const dayPickerStrings = {
@@ -49,9 +49,9 @@ describe('Calendar', () => {
     let renderedComponent: Calendar;
 
     beforeAll(() => {
-      renderedComponent = ReactTestUtils.renderIntoDocument(
+      renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar strings={dayPickerStrings} isMonthPickerVisible={false} />
-      ) as Calendar;
+      ) as unknown) as Calendar;
     });
 
     it('Renders simple calendar correctly', () => {
@@ -118,7 +118,7 @@ describe('Calendar', () => {
         };
       };
 
-      renderedComponent = ReactTestUtils.renderIntoDocument(
+      renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={dayPickerStrings}
           isMonthPickerVisible={true}
@@ -129,7 +129,7 @@ describe('Calendar', () => {
           onSelectDate={onSelectDate()}
           className="CalendarTestClass"
         />
-      ) as Calendar;
+      ) as unknown) as Calendar;
     });
 
     it('Verify day picker header', () => {
@@ -220,7 +220,7 @@ describe('Calendar', () => {
       const defaultDate = new Date('Mar 16 2017');
       const minDate = new Date('Mar 6 2017');
       const maxDate = new Date('Mar 24 2017');
-      const renderedComponent = ReactTestUtils.renderIntoDocument(
+      const renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={dayPickerStrings}
           value={defaultDate}
@@ -229,7 +229,7 @@ describe('Calendar', () => {
           minDate={minDate}
           maxDate={maxDate}
         />
-      ) as Calendar;
+      ) as unknown) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
 
@@ -248,7 +248,7 @@ describe('Calendar', () => {
           lastSelectedDateRange = dateRangeArray;
         };
       };
-      const renderedComponent = ReactTestUtils.renderIntoDocument(
+      const renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar
           strings={dayPickerStrings}
           value={defaultDate}
@@ -258,7 +258,7 @@ describe('Calendar', () => {
           maxDate={maxDate}
           onSelectDate={onSelectDate()}
         />
-      ) as Calendar;
+      ) as unknown) as Calendar;
 
       const days = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-day-button');
       ReactTestUtils.Simulate.click(days[18]);
@@ -271,7 +271,7 @@ describe('Calendar', () => {
     const defaultDate = new Date('Mar 15 2017');
     const minDate = new Date('Mar 1 2017');
     const maxDate = new Date('Mar 31 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
+    const renderedComponent = (ReactTestUtils.renderIntoDocument(
       <Calendar
         strings={dayPickerStrings}
         value={defaultDate}
@@ -280,7 +280,7 @@ describe('Calendar', () => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    ) as Calendar;
+    ) as unknown) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevMonth');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextMonth');
@@ -293,7 +293,7 @@ describe('Calendar', () => {
     const defaultDate = new Date('Mar 15 2017');
     const minDate = new Date('Mar 1 2017');
     const maxDate = new Date('Oct 1 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
+    const renderedComponent = (ReactTestUtils.renderIntoDocument(
       <Calendar
         strings={dayPickerStrings}
         value={defaultDate}
@@ -302,7 +302,7 @@ describe('Calendar', () => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    ) as Calendar;
+    ) as unknown) as Calendar;
 
     const months = ReactTestUtils.scryRenderedDOMComponentsWithClass(renderedComponent, 'ms-DatePicker-monthOption');
 
@@ -315,7 +315,7 @@ describe('Calendar', () => {
     const defaultDate = new Date('Mar 15 2017');
     const minDate = new Date('Jan 1 2017');
     const maxDate = new Date('Dec 31 2017');
-    const renderedComponent = ReactTestUtils.renderIntoDocument(
+    const renderedComponent = (ReactTestUtils.renderIntoDocument(
       <Calendar
         strings={dayPickerStrings}
         value={defaultDate}
@@ -324,7 +324,7 @@ describe('Calendar', () => {
         minDate={minDate}
         maxDate={maxDate}
       />
-    ) as Calendar;
+    ) as unknown) as Calendar;
 
     const prevMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-prevYear');
     const nextMonth = ReactTestUtils.findRenderedDOMComponentWithClass(renderedComponent, 'ms-DatePicker-nextYear');
@@ -338,9 +338,9 @@ describe('Calendar', () => {
     let defaultDate: Date;
     beforeAll(() => {
       defaultDate = new Date(2017, 2, 16);
-      renderedComponent = ReactTestUtils.renderIntoDocument(
+      renderedComponent = (ReactTestUtils.renderIntoDocument(
         <Calendar strings={dayPickerStrings} isMonthPickerVisible={true} value={defaultDate} />
-      ) as Calendar;
+      ) as unknown) as Calendar;
     });
 
     it('month header should have button role', () => {

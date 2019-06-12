@@ -5,14 +5,7 @@ export interface IExampleState {
   stackWidth: number;
 }
 
-// Styles definition
-const stackStyles: IStackStyles = {
-  root: {
-    background: DefaultPalette.themeTertiary,
-    width: `${this.state.stackWidth}%`
-  }
-};
-// Tokens definition
+// Non-mutating styles definition
 const itemStyles: React.CSSProperties = {
   alignItems: 'center',
   background: DefaultPalette.themePrimary,
@@ -23,6 +16,7 @@ const itemStyles: React.CSSProperties = {
   width: 50
 };
 
+// Tokens definition
 const sectionStackTokens: IStackTokens = { childrenGap: 10 };
 const wrapStackTokens: IStackTokens = { childrenGap: 30 };
 
@@ -35,6 +29,14 @@ export class HorizontalStackWrapExample extends React.Component<{}, IExampleStat
   }
 
   public render(): JSX.Element {
+    // Styles definition
+    const stackStyles: IStackStyles = {
+      root: {
+        background: DefaultPalette.themeTertiary,
+        width: `${this.state.stackWidth}%`
+      }
+    };
+
     return (
       <Stack tokens={sectionStackTokens}>
         <Slider

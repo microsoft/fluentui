@@ -5,23 +5,32 @@ import { Icon } from '../../../utilities/factoryComponents';
 
 import { Button } from '../Button';
 import { MenuButton } from '../MenuButton/MenuButton';
-import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots } from './SplitButton.types';
+import { ISplitButtonComponent, ISplitButtonProps, ISplitButtonSlots, ISplitButtonTokens } from './SplitButton.types';
 
 export const SplitButtonView: ISplitButtonComponent['view'] = props => {
   const {
     styles,
+    tokens,
     children,
+    content,
     primary,
     disabled,
     onClick,
+    onKeyDown,
+    allowDisabledFocus,
     ariaLabel,
+    keytipProps,
+    defaultExpanded,
     expanded,
-    menu: Menu,
-    primaryActionDisabled,
-    buttonRef,
     onMenuDismiss,
-    menuTarget,
+    primaryActionDisabled,
+    secondaryAriaLabel,
     onSecondaryActionClick,
+    root,
+    button,
+    menu,
+    buttonRef,
+    menuButtonRef,
     ...rest
   } = props;
 
@@ -34,33 +43,63 @@ export const SplitButtonView: ISplitButtonComponent['view'] = props => {
     content: Text,
     menu: ContextualMenu,
     menuIcon: Icon,
+    splitDividerContainer: Stack,
     splitDivider: 'span'
   });
+
+  const menuButtonAriaLabel = secondaryAriaLabel ? secondaryAriaLabel : ariaLabel ? ariaLabel : (content as string);
+
+  const { contentPadding, contentPaddingFocused, secondaryPadding, ...splitButtonTokens } = tokens as ISplitButtonTokens;
+  const {
+    backgroundColor,
+    backgroundColorHovered,
+    backgroundColorPressed,
+    borderColor,
+    borderColorHovered,
+    borderColorPressed,
+    color,
+    colorHovered,
+    colorPressed,
+    ...nonColoredButtonTokens
+  } = splitButtonTokens;
+  const buttonTokens = primaryActionDisabled ? { contentPadding, contentPaddingFocused, ...nonColoredButtonTokens } : tokens;
+  const menuButtonTokens = { contentPadding: secondaryPadding, ...splitButtonTokens };
 
   return (
     <Slots.root horizontal as="span" verticalAlign="stretch">
       <Slots.button
         primary={primary}
         disabled={primaryActionDisabled || disabled}
-        aria-disabled={primaryActionDisabled || disabled}
-        aria-label={ariaLabel}
+        allowDisabledFocus={allowDisabledFocus}
+        ariaLabel={ariaLabel}
         onClick={onClick}
         componentRef={buttonRef}
+        content={content}
+        onKeyDown={onKeyDown}
+        tokens={buttonTokens}
         {...rest}
       >
         {children}
       </Slots.button>
 
-      <Slots.splitDivider />
+      <Slots.splitDividerContainer>
+        <Slots.splitDivider />
+      </Slots.splitDividerContainer>
 
       <Slots.menuButton
         primary={primary}
         disabled={disabled}
+        defaultExpanded={defaultExpanded}
         expanded={expanded}
-        aria-disabled={disabled}
-        aria-label={ariaLabel}
+        allowDisabledFocus={allowDisabledFocus}
+        ariaLabel={menuButtonAriaLabel}
         onClick={onSecondaryActionClick}
-        menu={Menu}
+        componentRef={menuButtonRef}
+        keytipProps={keytipProps}
+        menu={menu}
+        onKeyDown={onKeyDown}
+        onMenuDismiss={onMenuDismiss}
+        tokens={menuButtonTokens}
       />
     </Slots.root>
   );

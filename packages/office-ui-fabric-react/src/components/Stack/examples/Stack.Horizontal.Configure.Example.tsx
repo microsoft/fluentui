@@ -102,8 +102,8 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
         boxShadow: showBoxShadow ? `0px 0px 10px 5px ${DefaultPalette.themeDarker}` : '',
         color: DefaultPalette.white,
         display: 'flex',
-        justifyContent: 'center',
         height: 50,
+        justifyContent: 'center',
         width: 50
       }
     };

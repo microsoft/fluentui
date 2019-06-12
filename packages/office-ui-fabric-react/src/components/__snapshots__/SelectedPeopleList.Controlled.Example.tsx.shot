@@ -10,8 +10,8 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           -moz-osx-font-smoothing: grayscale;
           -webkit-font-smoothing: antialiased;
           background-color: #0078d4;
-          border-radius: 0px;
-          border: 1px solid transparent;
+          border-radius: 2px;
+          border: none;
           box-sizing: border-box;
           color: #ffffff;
           cursor: pointer;
@@ -21,9 +21,6 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           font-weight: 400;
           height: 32px;
           margin-bottom: 20px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
           min-width: 80px;
           outline: transparent;
           padding-bottom: 0;
@@ -40,14 +37,15 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
           border: 0;
         }
         .ms-Fabric--isFocusVisible &:focus:after {
-          border: 1px solid #ffffff;
-          bottom: 0px;
+          border-color: #ffffff;
+          border: 1px solid transparent;
+          bottom: 2px;
           content: "";
-          left: 0px;
-          outline: 1px solid #666666;
+          left: 2px;
+          outline: none;
           position: absolute;
-          right: 0px;
-          top: 0px;
+          right: 2px;
+          top: 2px;
           z-index: 1;
         }
         @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -195,20 +193,16 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
-                    border-radius: 0px;
+                    border-radius: 2px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #0078d4;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 4px;
@@ -225,14 +219,14 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -249,14 +243,16 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     top: 0px;
                   }
                   &:hover {
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #106ebe;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: #edebe9;
+                    color: #005a9e;
                   }
               data-is-focusable={true}
               onClick={[Function]}
@@ -331,7 +327,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       align-items: center;
                       box-shadow: none;
                       box-sizing: border-box;
-                      color: #333333;
+                      color: #323130;
                       display: flex;
                       font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                       font-size: 14px;
@@ -352,7 +348,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       display: none;
                     }
                     &:hover $primaryText {
-                      color: #212121;
+                      color: #201f1e;
                     }
               >
                 <div
@@ -383,11 +379,11 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                       className=
                           ms-Persona-initials
                           {
-                            background-color: #603CBA;
+                            background-color: #E3008C;
                             border-radius: 50%;
                             color: #ffffff;
                             font-size: 14px;
-                            font-weight: 400;
+                            font-weight: 600;
                             height: 32px;
                             line-height: 32px;
                           }
@@ -397,6 +393,9 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                             border: 1px solid WindowText;
                             box-sizing: border-box;
                             color: WindowText;
+                          }
+                          & i {
+                            font-weight: 600;
                           }
                     >
                       <span>
@@ -414,8 +413,8 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                         justify-content: space-around;
                         min-width: 0px;
                         padding-bottom: 0;
-                        padding-left: 16px;
-                        padding-right: 24px;
+                        padding-left: 8px;
+                        padding-right: 8px;
                         padding-top: 0;
                         text-align: left;
                         width: 100%;
@@ -425,7 +424,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     className=
                         ms-Persona-primaryText
                         {
-                          color: #333333;
+                          color: #323130;
                           font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
@@ -452,7 +451,7 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     className=
                         ms-Persona-secondaryText
                         {
-                          color: #666666;
+                          color: #605e5c;
                           display: none;
                           font-size: 12px;
                           font-weight: 400;
@@ -466,9 +465,9 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     className=
                         ms-Persona-tertiaryText
                         {
-                          color: #666666;
+                          color: #605e5c;
                           display: none;
-                          font-size: 12px;
+                          font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
                           text-overflow: ellipsis;
@@ -480,9 +479,9 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     className=
                         ms-Persona-optionalText
                         {
-                          color: #666666;
+                          color: #605e5c;
                           display: none;
-                          font-size: 12px;
+                          font-size: 14px;
                           font-weight: 400;
                           overflow: hidden;
                           text-overflow: ellipsis;
@@ -503,20 +502,16 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     -moz-osx-font-smoothing: grayscale;
                     -webkit-font-smoothing: antialiased;
                     background-color: transparent;
-                    border-radius: 0px;
+                    border-radius: 2px;
                     border: none;
                     box-sizing: border-box;
-                    color: #333333;
+                    color: #0078d4;
                     cursor: pointer;
                     display: inline-block;
                     font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                     font-size: 14px;
                     font-weight: 400;
                     height: 32px;
-                    margin-bottom: 0px;
-                    margin-left: 0px;
-                    margin-right: 0px;
-                    margin-top: 0px;
                     outline: transparent;
                     padding-bottom: 0;
                     padding-left: 4px;
@@ -533,14 +528,14 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     border: 0;
                   }
                   .ms-Fabric--isFocusVisible &:focus:after {
-                    border: 1px solid #ffffff;
-                    bottom: 0px;
+                    border: 1px solid transparent;
+                    bottom: 2px;
                     content: "";
-                    left: 0px;
-                    outline: 1px solid #666666;
+                    left: 2px;
+                    outline: 1px solid #605e5c;
                     position: absolute;
-                    right: 0px;
-                    top: 0px;
+                    right: 2px;
+                    top: 2px;
                     z-index: 1;
                   }
                   @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -557,14 +552,16 @@ exports[`Component Examples renders SelectedPeopleList.Controlled.Example.tsx co
                     top: 0px;
                   }
                   &:hover {
-                    color: #212121;
+                    background-color: #f3f2f1;
+                    color: #106ebe;
                   }
                   @media screen and (-ms-high-contrast: active){&:hover {
                     border-color: Highlight;
                     color: Highlight;
                   }
                   &:active {
-                    color: #0078d4;
+                    background-color: #edebe9;
+                    color: #005a9e;
                   }
               data-is-focusable={true}
               onClick={[Function]}

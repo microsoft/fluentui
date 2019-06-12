@@ -1,6 +1,5 @@
 import { ITextSlot } from 'office-ui-fabric-react/lib/Text';
 import { IComponent, IComponentStyles, IHTMLSlot, IStyleableComponentProps } from '../../Foundation';
-import { IBaseProps } from '../../Utilities';
 
 export type I{{componentName}}Component =
   IComponent<I{{componentName}}Props, I{{componentName}}Tokens, I{{componentName}}Styles, I{{componentName}}ViewProps>;
@@ -32,8 +31,7 @@ export interface I{{componentName}}Slots {
 // If you don't want these props to be included in your component, just remove this extension.
 export interface I{{componentName}}Props extends
   I{{componentName}}Slots,
-  IStyleableComponentProps<I{{componentName}}ViewProps, I{{componentName}}Tokens, I{{componentName}}Styles>,
-  IBaseProps<I{{componentName}}> {
+  IStyleableComponentProps<I{{componentName}}ViewProps, I{{componentName}}Tokens, I{{componentName}}Styles> {
   // All props for your component are to be defined here.
   /**
    * Component sample default prop for use if component is uncontrolled.
@@ -48,10 +46,11 @@ export interface I{{componentName}}Props extends
 export interface I{{componentName}}ViewProps extends I{{componentName}}Props {
   // You can define view only props here.
   /**
-  * Sample prop internal to component. These types of props aren't exposed
+  * Sample props internal to component. These types of props aren't exposed
   *   externally to consumers and their values are typically determined by component state.
   */
-  status: string;
+  clicks: number;
+  onClick?: (ev?: React.MouseEvent<HTMLElement>) => void;
 }
 
 export interface I{{componentName}}Tokens {

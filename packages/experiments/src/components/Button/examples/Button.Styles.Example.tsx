@@ -18,7 +18,8 @@ const tokens = {
     childrenGap: 32
   },
   headingStack: {
-    childrenGap: 16
+    childrenGap: 16,
+    padding: 8
   },
   buttonStack: {
     childrenGap: 12
@@ -51,7 +52,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
 
     return (
       <Stack tokens={tokens.sectionStack}>
-        <Stack tokens={tokens.headingStack} padding={8}>
+        <Stack tokens={tokens.headingStack}>
           <div>
             <Stack tokens={tokens.buttonStack}>
               <ButtonStack>
@@ -107,7 +108,7 @@ export class ButtonStylesExample extends React.Component<{}, {}> {
                 <Button
                   icon={{
                     iconName: 'PeopleAdd',
-                    styles: props => ({ root: { color: '#8F6800' } })
+                    styles: () => ({ root: { color: '#8F6800' } })
                   }}
                   content="Icon Styles Function: Golden Brown Icon"
                 />

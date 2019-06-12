@@ -1,6 +1,22 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Tue, 11 Jun 2019 12:21:35 GMT and should not be manually modified.
+This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+
+## 0.8.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Updating IComponent typings for ease of use in tests.
+- Evolve create component API to separate out view and make options bag optional.
+- Enable API verification and export legacy styled.
+- Foundation: Convert state components to hooks.
+- Slots: Move slot options from individual props to new slots prop object.
+- Slots: Refactor API and add slot options object.
+
+### Patches
+
+- Update and dedupe React deps.
 
 ## 0.7.7
 Tue, 11 Jun 2019 12:21:35 GMT

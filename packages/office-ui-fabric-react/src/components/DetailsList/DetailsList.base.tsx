@@ -29,6 +29,7 @@ import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 
@@ -46,13 +47,9 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 40;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
-
-const SHIMMER_INITIAL_ITEMS = 10;
-const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
 
 @withViewport
 export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
@@ -62,7 +59,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    enableShimmer: false,
     compact: false
   };
 
@@ -310,7 +306,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer,
       viewport,
       minimumPixelsForDrag,
       getGroupHeight,
@@ -384,7 +379,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       <List
         ref={this._list}
         role="presentation"
-        items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+        items={items}
         onRenderCell={this._onRenderListCell(0)}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}

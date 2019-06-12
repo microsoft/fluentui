@@ -1,14 +1,15 @@
-import semver from 'semver';
 import fs from 'fs';
 import path from 'path';
-import { applyRegisteredMigrations, registerMigration } from './migration';
+import semver from 'semver';
+import { applyRegisteredMigrations, registerMigration, warn } from './migration';
+import { CliParser, displayHelp } from './cli/cli';
 
-if (process.argv.length <= 2) {
-  console.error('Please specify a target version (e.g. 7)');
+const args = new CliParser().parse(process.argv.slice(2));
+
+if (args.help) {
+  displayHelp();
   process.exit(1);
 }
-
-let target = process.argv.slice(2).join();
 
 const modsBasePath = path.join(__dirname, 'mods');
 
@@ -24,9 +25,9 @@ function findMigrationPaths(): string[] | null {
     .reverse();
 
   // let's find the biggest one that fits the range passed in from argv[2]
-  const range = new semver.Range(target);
+  const range = new semver.Range(args.version);
   const latestVersion = modsPaths.find(version => range.test(version));
-  target = latestVersion || target;
+  const target = latestVersion || args.version;
 
   return fs
     .readdirSync(path.join(modsBasePath, target))
@@ -44,7 +45,7 @@ function applyMigrations(): void {
         registerMigration(require(modPath).default);
       });
 
-      applyRegisteredMigrations();
+      applyRegisteredMigrations({ dryRun: !args.writeResults, warn: warn });
     }
   } catch (e) {
     console.error(e);
