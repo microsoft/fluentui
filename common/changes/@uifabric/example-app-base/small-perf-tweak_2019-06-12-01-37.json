@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "comment": "Minor styling changes.",
+      "packageName": "@uifabric/example-app-base",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "dzearing@microsoft.com"
+}
