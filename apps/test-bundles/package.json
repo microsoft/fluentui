@@ -22,8 +22,8 @@
     "start": "npx just-scripts dev"
   },
   "devDependencies": {
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
     "@uifabric/prettier-rules": "^7.0.0",
     "@uifabric/tslint-rules": "^7.0.0",

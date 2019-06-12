@@ -29,8 +29,8 @@
     "@types/es6-promise": "0.0.32",
     "@types/jest": "23.0.0",
     "@types/prop-types": "15.5.9",
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@types/webpack-env": "1.13.9",
     "@uifabric/codepen-loader": "^7.0.0",
@@ -51,7 +51,7 @@
     "@uifabric/set-version": "^7.0.0",
     "@uifabric/styling": "^7.0.0",
     "@uifabric/utilities": "^7.0.1",
-    "office-ui-fabric-react": "^7.0.0",
+    "office-ui-fabric-react": "^7.0.1",
     "tslib": "^1.7.1"
   },
   "peerDependencies": {

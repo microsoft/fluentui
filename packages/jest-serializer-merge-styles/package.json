@@ -22,8 +22,8 @@
   },
   "devDependencies": {
     "@types/jest": "23.0.0",
-    "@types/react": ">=16.8.0 <17.0.0",
-    "@types/react-dom": ">=16.8.0 <17.0.0",
+    "@types/react": "16.8.19",
+    "@types/react-dom": "16.8.4",
     "@types/react-test-renderer": "^16.0.0",
     "@uifabric/prettier-rules": "^7.0.0",
     "@uifabric/tslint-rules": "^7.0.0",
