@@ -1,5 +1,13 @@
 import { IDetailsRowStyleProps, IDetailsRowStyles, ICellStyleProps } from './DetailsRow.types';
-import { AnimationClassNames, FontSizes, HighContrastSelector, IStyle, getFocusStyle, getGlobalClassNames } from '../../Styling';
+import {
+  AnimationClassNames,
+  AnimationStyles,
+  FontSizes,
+  HighContrastSelector,
+  IStyle,
+  getFocusStyle,
+  getGlobalClassNames
+} from '../../Styling';
 
 const GlobalClassNames = {
   root: 'ms-DetailsRow',
@@ -58,7 +66,8 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
     checkboxCellClassName,
     compact,
     className,
-    cellStyleProps = DEFAULT_CELL_STYLE_PROPS
+    cellStyleProps = DEFAULT_CELL_STYLE_PROPS,
+    enableUpdateAnimations
   } = props;
 
   const { neutralPrimary, white, neutralSecondary, neutralLighter, neutralLight, neutralDark, neutralQuaternaryAlt, black } = theme.palette;
@@ -325,7 +334,7 @@ export const getStyles = (props: IDetailsRowStyleProps): IDetailsRowStyles => {
       }
     ],
 
-    cell: defaultCellStyles,
+    cell: [defaultCellStyles, enableUpdateAnimations && AnimationStyles.slideLeftIn40],
 
     cellMeasurer: [
       classNames.cellMeasurer,

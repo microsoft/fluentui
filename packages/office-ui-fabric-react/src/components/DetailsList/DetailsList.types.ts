@@ -312,6 +312,11 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
    * Whether or not to disable the built-in SelectionZone, so the host component can provide its own.
    */
   disableSelectionZone?: boolean;
+
+  /**
+   * Whether to animate updates
+   */
+  enableUpdateAnimations?: boolean;
 }
 
 /**

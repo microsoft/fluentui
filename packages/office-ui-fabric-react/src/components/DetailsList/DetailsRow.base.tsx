@@ -178,6 +178,7 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       selection,
       indentWidth,
       shimmer,
+      enableUpdateAnimations,
       compact,
       theme,
       styles,
@@ -204,7 +205,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         checkboxCellClassName,
         droppingClassName,
         className,
-        compact
+        compact,
+        enableUpdateAnimations
       })
     };
 

@@ -170,6 +170,9 @@ export interface IDetailsRowBaseProps extends Pick<IDetailsListProps, 'onRenderI
    */
   shimmer?: boolean;
 
+  /** Whether to animate updates */
+  enableUpdateAnimations?: boolean;
+
   /**
    * Rerender DetailsRow only when props changed. Might cause regression when depending on external updates.
    * @defaultvalue false
@@ -235,6 +238,9 @@ export type IDetailsRowStyleProps = Required<Pick<IDetailsRowProps, 'theme'>> & 
   compact?: boolean;
 
   cellStyleProps?: ICellStyleProps;
+
+  /** Whether to animate updates */
+  enableUpdateAnimations?: boolean;
 };
 
 /**
