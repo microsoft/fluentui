@@ -63,7 +63,7 @@ export const PersonaPageProps: IDocPageProps = {
     },
     {
       title: 'Persona Presence',
-      code: UnknownPersonaExampleCode,
+      code: PersonaPresenceExampleCode,
       view: <PersonaPresenceExample />
     }
   ],
