@@ -168,7 +168,6 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
     this._estimatedPageHeight = 0;
     this._focusedIndex = -1;
     this._pageCache = {};
-    this.refs = {};
   }
 
   /**
@@ -307,10 +306,6 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
       this._events.on(this._scrollElement, 'scroll', this._onScroll);
       this._events.on(this._scrollElement, 'scroll', this._onAsyncScroll);
     }
-  }
-
-  public componentWillUnmount(): void {
-    this._events.dispose();
   }
 
   public componentWillReceiveProps(newProps: IListProps<T>): void {

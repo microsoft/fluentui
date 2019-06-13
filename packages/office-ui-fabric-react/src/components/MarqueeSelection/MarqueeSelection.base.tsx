@@ -75,10 +75,6 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     if (this._autoScroll) {
       this._autoScroll.dispose();
     }
-    if (this._evaluateSelection) {
-      delete this._evaluateSelection;
-    }
-    this._events.dispose();
   }
 
   public render(): JSX.Element {

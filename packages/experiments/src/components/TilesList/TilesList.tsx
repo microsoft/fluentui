@@ -382,7 +382,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const endIndex = Math.min(
       cells.length,
-      this.props.cellsPerPage && this.props.cellsPerPage > 0 ? startIndex! + this.props.cellsPerPage : startIndex! + CELLS_PER_PAGE
+      this.props.cellsPerPage && this.props.cellsPerPage > 0 ? startIndex + this.props.cellsPerPage : startIndex + CELLS_PER_PAGE
     );
 
     let rowWidth = 0;
