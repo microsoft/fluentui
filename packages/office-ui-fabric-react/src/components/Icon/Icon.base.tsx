@@ -10,7 +10,9 @@ export interface IIconState {
   imageLoadError: boolean;
 }
 
-const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>();
+const getClassNames = classNamesFunction<IIconStyleProps, IIconStyles>({
+  disableCaching: true
+});
 
 export class IconBase extends React.Component<IIconProps, IIconState> {
   constructor(props: IIconProps) {

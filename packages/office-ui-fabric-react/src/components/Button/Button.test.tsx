@@ -9,7 +9,7 @@ import { IconButton } from './IconButton/IconButton';
 import { ActionButton } from './ActionButton/ActionButton';
 import { CommandBarButton } from './CommandBarButton/CommandBarButton';
 import { CompoundButton } from './CompoundButton/CompoundButton';
-import { KeyCodes } from '../../Utilities';
+import { KeyCodes, resetIds } from '../../Utilities';
 import { renderIntoDocument } from '../../common/testUtilities';
 import { IContextualMenuProps } from '../ContextualMenu/index';
 
@@ -18,6 +18,21 @@ const alertClicked = (): void => {
 };
 
 describe('Button', () => {
+  let container: HTMLElement;
+
+  beforeEach(() => {
+    resetIds();
+    container = document.createElement('div');
+    document.body.appendChild(container);
+  });
+
+  afterEach(() => {
+    if (container) {
+      ReactDOM.unmountComponentAtNode(container);
+    }
+    document.body.innerHTML = '';
+  });
+
   it('renders DefaultButton correctly', () => {
     const component = renderer.create(<DefaultButton text="Button" />);
     const tree = component.toJSON();
@@ -79,7 +94,7 @@ describe('Button', () => {
 
   describe('DefaultButton', () => {
     it('can render without an onClick.', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(<DefaultButton>Hello</DefaultButton>);
+      const button = ReactDOM.render(<DefaultButton>Hello</DefaultButton>, container);
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
@@ -87,16 +102,17 @@ describe('Button', () => {
     it('can render with an onClick.', () => {
       const onClick: () => null = () => null;
 
-      const button = ReactTestUtils.renderIntoDocument<any>(<DefaultButton onClick={onClick}>Hello</DefaultButton>);
+      const button = ReactDOM.render(<DefaultButton onClick={onClick}>Hello</DefaultButton>, container);
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('BUTTON');
     });
 
     it('can render with an href', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton href="http://www.microsoft.com" target="_blank">
           Hello
-        </DefaultButton>
+        </DefaultButton>,
+        container
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('A');
@@ -104,10 +120,11 @@ describe('Button', () => {
 
     describe('aria attributes', () => {
       it('does not apply aria attributes that are not passed in', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton href="http://www.microsoft.com" target="_blank">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -118,10 +135,11 @@ describe('Button', () => {
       });
 
       it('overrides native aria-label with Button ariaLabel', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="NativeLabel" ariaLabel="ButtonLabel">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -131,10 +149,11 @@ describe('Button', () => {
       });
 
       it('applies aria-label', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-label="MyLabel">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -144,10 +163,11 @@ describe('Button', () => {
       });
 
       it('applies aria-labelledby', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton href="http://www.microsoft.com" target="_blank" aria-labelledby="someid">
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -156,8 +176,9 @@ describe('Button', () => {
       });
 
       it('does not apply aria-labelledby to a button with no text', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-describedby="someid" />
+        const button: any = ReactDOM.render(
+          <DefaultButton href="http://www.microsoft.com" target="_blank" aria-describedby="someid" />,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -166,7 +187,7 @@ describe('Button', () => {
       });
 
       it('applies aria-labelledby and aria-describedby', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton
             href="http://www.microsoft.com"
             target="_blank"
@@ -174,7 +195,8 @@ describe('Button', () => {
             styles={{ screenReaderText: 'some-screenreader-class' }}
           >
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -188,12 +210,13 @@ describe('Button', () => {
       });
 
       it('applies aria-describedby to an IconButton', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <IconButton
             iconProps={{ iconName: 'Emoji2' }}
             ariaDescription="Description on icon button"
             styles={{ screenReaderText: 'some-screenreader-class' }}
-          />
+          />,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -207,14 +230,15 @@ describe('Button', () => {
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with ariaDescription', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <CompoundButton
             secondaryText="Some awesome description"
             ariaDescription="Description on icon button"
             styles={{ screenReaderText: 'some-screenreader-class' }}
           >
             And this is the label
-          </CompoundButton>
+          </CompoundButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -228,8 +252,9 @@ describe('Button', () => {
       });
 
       it('applies aria-labelledby and aria-describedby to a CompoundButton with secondaryText and no ariaDescription', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
-          <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>
+        const button: any = ReactDOM.render(
+          <CompoundButton secondaryText="Some awesome description">And this is the label</CompoundButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -243,17 +268,18 @@ describe('Button', () => {
       });
 
       it('does not apply aria-pressed to an unchecked button', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(<DefaultButton toggle={true}>Hello</DefaultButton>);
+        const button: any = ReactDOM.render(<DefaultButton toggle={true}>Hello</DefaultButton>, container);
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
         expect(renderedDOM.getAttribute('aria-pressed')).toEqual('false');
       });
 
       it('applies aria-pressed to a checked button', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton toggle={true} checked={true}>
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -261,7 +287,7 @@ describe('Button', () => {
       });
 
       it('does not apply aria-pressed to an unchecked split button', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton
             toggle={true}
             split={true}
@@ -277,7 +303,8 @@ describe('Button', () => {
             }}
           >
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -295,10 +322,11 @@ describe('Button', () => {
             }
           ]
         };
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton toggle={true} split={true} onClick={alertClicked} persistMenu={true} menuProps={menuProps}>
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
 
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
@@ -307,7 +335,7 @@ describe('Button', () => {
       });
 
       it('applies aria-pressed to a checked split button', () => {
-        const button: any = ReactTestUtils.renderIntoDocument<any>(
+        const button: any = ReactDOM.render(
           <DefaultButton
             toggle={true}
             checked={true}
@@ -324,7 +352,8 @@ describe('Button', () => {
             }}
           >
             Hello
-          </DefaultButton>
+          </DefaultButton>,
+          container
         );
         const renderedDOM: any = ReactDOM.findDOMNode(button as React.ReactInstance);
 
@@ -336,8 +365,9 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>Hello</DefaultButton>
+        const wrapper = ReactDOM.render(
+          <DefaultButton menuProps={{ items: [{ key: 'item', text: 'Item' }] }}>Hello</DefaultButton>,
+          container
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -351,7 +381,7 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactTestUtils.renderIntoDocument<any>(<DefaultButton>Hello</DefaultButton>) as DefaultButton;
+        const wrapper = ReactDOM.render(<DefaultButton>Hello</DefaultButton>, container) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
 
@@ -364,8 +394,9 @@ describe('Button', () => {
       let button: Element;
 
       beforeAll(() => {
-        const wrapper = ReactTestUtils.renderIntoDocument<any>(
-          <DefaultButton menuIconProps={{ iconName: 'fontColor' }}>Hello</DefaultButton>
+        const wrapper = ReactDOM.render(
+          <DefaultButton menuIconProps={{ iconName: 'fontColor' }}>Hello</DefaultButton>,
+          container
         ) as DefaultButton;
         button = ReactTestUtils.findRenderedDOMComponentWithTag(wrapper, 'button');
       });
@@ -376,7 +407,7 @@ describe('Button', () => {
     });
 
     it('Providing onClick and menuProps does not render a SplitButton', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -395,7 +426,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).not.toEqual('DIV');
@@ -404,7 +436,7 @@ describe('Button', () => {
     it('Providing onKeyDown and menuProps still fires provided onKeyDown', () => {
       const keyDownSpy = jest.fn();
 
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -423,7 +455,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
 
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
@@ -436,7 +469,7 @@ describe('Button', () => {
     it('Providing onKeyDown, menuProps and setting splitButton to true fires provided onKeyDown on both buttons', () => {
       const keyDownSpy = jest.fn();
 
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -457,7 +490,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const primaryButtonDOM: HTMLDivElement = renderedDOM.getElementsByTagName('div')[0] as HTMLDivElement;
@@ -468,7 +502,7 @@ describe('Button', () => {
     });
 
     it('Providing onClick, menuProps and setting splitButton to true renders a SplitButton', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -488,14 +522,15 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       expect(renderedDOM.tagName).toEqual('DIV');
     });
 
     it('Tapping menu button of SplitButton expands menu', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -515,7 +550,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const menuButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[1] as HTMLButtonElement;
@@ -524,7 +560,7 @@ describe('Button', () => {
     });
 
     it('Touch Start on primary button of SplitButton expands menu', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -544,7 +580,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const renderedDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
       const primaryButtonDOM: HTMLButtonElement = renderedDOM.getElementsByTagName('button')[0] as HTMLButtonElement;
@@ -558,7 +595,7 @@ describe('Button', () => {
     });
 
     it('If menu trigger is disabled, pressing down does not trigger menu', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -577,7 +614,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
@@ -588,7 +626,7 @@ describe('Button', () => {
     });
 
     it('If menu trigger is specified, default key is overridden', () => {
-      const button = ReactTestUtils.renderIntoDocument<any>(
+      const button = ReactDOM.render(
         <DefaultButton
           data-automation-id="test"
           text="Create account"
@@ -607,7 +645,8 @@ describe('Button', () => {
               }
             ]
           }}
-        />
+        />,
+        container
       );
       const menuButtonDOM = ReactDOM.findDOMNode(button as React.ReactInstance) as Element;
 
@@ -921,7 +960,9 @@ describe('Button', () => {
           </DefaultButton>
         );
 
-        const button = ReactTestUtils.renderIntoDocument<any>(element) as React.ReactInstance;
+        ReactDOM.render(element, container);
+
+        const button = ReactDOM.render(element, container) as React.ReactInstance;
         const renderedDOM = ReactDOM.findDOMNode(button) as HTMLElement;
 
         expect(renderedDOM).toBeDefined();

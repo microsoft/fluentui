@@ -2,7 +2,7 @@ import * as React from 'react';
 import { styled } from './styled';
 import * as renderer from 'react-test-renderer';
 import { Customizer } from './customizations/Customizer';
-import { IStyle, Stylesheet, InjectionMode, IStyleFunctionOrObject } from '@uifabric/merge-styles';
+import { IStyle, Stylesheet, InjectionMode, IStyleFunction, IStyleFunctionOrObject, mergeStyles } from '@uifabric/merge-styles';
 import { classNamesFunction } from './classNamesFunction';
 import { Customizations } from './customizations/Customizations';
 import { safeCreate } from '@uifabric/test-utilities';
@@ -225,6 +225,52 @@ describe('styled', () => {
   it('gives styles function user prop priority', () => {
     const TestWrapped = styled<ITestProps, {}, ITestStyles>(Test, () => ({ root: { background: 'grey' } }), undefined);
     safeCreate(<TestWrapped cool styles={{ root: { background: 'purple' } }} />, (component: renderer.ReactTestRenderer) => {
+      expect(component.toJSON()).toMatchSnapshot();
+    });
+  });
+
+  it('respects styles arg', () => {
+    const defaultStyles = () =>
+      mergeStyles({
+        backgroundColor: 'red'
+      });
+
+    const greenStyles = () =>
+      mergeStyles({
+        backgroundColor: 'green'
+      });
+
+    const DefaultPanel = (props: ITestProps) => {
+      const { styles = defaultStyles } = props;
+      const className = (styles as IStyleFunction<{}, {}>)(props) as string;
+      return <div className={className}>{props.children}</div>;
+    };
+
+    const StyledPanel = styled<{}, {}, {}>(DefaultPanel, greenStyles);
+
+    safeCreate(
+      <div>
+        <DefaultPanel>Panel1</DefaultPanel>
+        <StyledPanel>Panel2</StyledPanel>
+      </div>,
+      (component: renderer.ReactTestRenderer) => {
+        expect(component.toJSON()).toMatchSnapshot();
+      }
+    );
+  });
+
+  it('respects styles type', (done: () => undefined) => {
+    const defaultStyles = { backgroundColor: 'red' };
+
+    const Component = (props: ITestProps) => {
+      expect((props.styles as IStyleFunction<{}, {}>)(props)).toEqual(defaultStyles);
+      done();
+      return null;
+    };
+
+    const StyledComponent = styled(Component, defaultStyles);
+
+    safeCreate(<StyledComponent />, (component: renderer.ReactTestRenderer) => {
       expect(component.toJSON()).toMatchSnapshot();
     });
   });
