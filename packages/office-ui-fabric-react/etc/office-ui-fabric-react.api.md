@@ -5861,6 +5861,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 // @public (undocumented)
 export interface IPersonaPresenceStyleProps {
     className?: string;
+    isOutOfOffice: boolean;
     presence?: PersonaPresence;
     size?: PersonaSize;
     theme: ITheme;
@@ -5897,6 +5898,7 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
     imageShouldStartVisible?: boolean;
     imageUrl?: string;
     initialsColor?: PersonaInitialsColor | string;
+    isOutOfOffice?: boolean;
     onPhotoLoadingStateChange?: (newImageLoadState: ImageLoadState) => void;
     onRenderCoin?: IRenderFunction<IPersonaSharedProps>;
     onRenderInitials?: IRenderFunction<IPersonaSharedProps>;
