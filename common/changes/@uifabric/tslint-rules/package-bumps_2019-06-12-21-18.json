@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/tslint-rules",
+      "comment": "Initial release of Fabric 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/tslint-rules",
+  "email": "elcraig@microsoft.com"
+}
