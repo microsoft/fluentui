@@ -2,6 +2,27 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "office-ui-fabric-react_v7.1.0",
+      "date": "Thu, 13 Jun 2019 12:20:34 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "withViewport: Render composed component regardless of viewport height and width",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "9d04ee0e194e929349fcabd49a26180cedf4666c"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "HoverCard: Handle target being null in the case of unset ref",
+            "author": "Kevin Coughlin <706967+KevinTCoughlin@users.noreply.github.com>",
+            "commit": "9d04ee0e194e929349fcabd49a26180cedf4666c"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "office-ui-fabric-react_v7.0.2",
       "date": "Thu, 13 Jun 2019 00:24:48 GMT",
