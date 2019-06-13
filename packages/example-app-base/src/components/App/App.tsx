@@ -9,6 +9,7 @@ import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { ShowOnlyExamplesContext } from '../../utilities/showOnlyExamples';
 
 export interface IAppState {
   isMenuVisible: boolean;
@@ -20,15 +21,21 @@ const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 export class AppBase extends React.Component<IAppProps, IAppState> {
   public state: IAppState = { isMenuVisible: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
+  private _baseUrl: string;
+
+  constructor(props: IAppProps) {
+    super(props);
+
+    const doc = getDocument();
+    this._baseUrl = doc ? document.location.href : '';
+  }
 
   public render(): JSX.Element {
     const { appDefinition, styles, responsiveMode = ResponsiveMode.xLarge, theme } = this.props;
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const doc = getDocument();
-    const baseUrl = doc ? doc.location.href : '';
-    const showOnlyExamples = baseUrl.indexOf('docsExample=true') > -1;
+    const showOnlyExamples = this._baseUrl.indexOf('docsExample=true') > -1;
 
     const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples }));
 
@@ -61,7 +68,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
         {!isLargeDown && !showOnlyExamples && <div className={classNames.leftNavContainer}>{nav}</div>}
 
         <div className={classNames.content} data-is-scrollable="true">
-          {this.props.children}
+          <ShowOnlyExamplesContext.Provider value={{ showOnlyExamples }}>{this.props.children}</ShowOnlyExamplesContext.Provider>
         </div>
 
         {isLargeDown && (

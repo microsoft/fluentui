@@ -7,6 +7,7 @@ import { MessageBar } from 'office-ui-fabric-react/lib/MessageBar';
 import { EditSection } from '../EditSection/index';
 import { IComponentPageProps, IComponentPageStyleProps, IComponentPageStyles, IComponentPageSection } from './ComponentPage.types';
 import { getStyles } from './ComponentPage.styles';
+import { ShowOnlyExamplesContext } from '../../utilities/showOnlyExamples';
 
 const getClassNames = classNamesFunction<IComponentPageStyleProps, IComponentPageStyles>();
 
@@ -36,6 +37,8 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
     areBadgesVisible: false
   };
 
+  public static contextType = ShowOnlyExamplesContext;
+
   private _baseUrl: string;
   private _styles: IProcessedStyleSet<IComponentPageStyles>;
 
@@ -49,7 +52,7 @@ export class ComponentPageBase extends React.PureComponent<IComponentPageProps> 
   public render() {
     const { componentName, className, otherSections, styles, theme } = this.props;
 
-    const showOnlyExamples = this._baseUrl && this._baseUrl.indexOf('docsExample=true') > -1;
+    const { showOnlyExamples } = this.context;
 
     const classNames = (this._styles = getClassNames(styles, { theme }));
 
