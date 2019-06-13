@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Fix export to codepen in fabric 7",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "elcraig@microsoft.com"
+}
