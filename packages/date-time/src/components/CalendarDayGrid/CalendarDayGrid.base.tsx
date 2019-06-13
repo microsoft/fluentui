@@ -153,11 +153,13 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
     return (
       <td
         key={day.key}
-        className={css(classNames.dayCell, this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex), {
-          [classNames.daySelected]: day.isSelected,
-          [classNames.dayOutsideBounds]: !day.isInBounds,
-          [classNames.dayOutsideNavigatedMonth]: !day.isInMonth
-        })}
+        className={css(
+          classNames.dayCell,
+          this._getHighlightedCornerStyle(weekCorners, dayIndex, weekIndex),
+          day.isSelected && classNames.daySelected,
+          !day.isInBounds && classNames.dayOutsideBounds,
+          !day.isInMonth && classNames.dayOutsideNavigatedMonth
+        )}
         ref={(element: HTMLTableCellElement) => this._setDayCellRef(element, day, isNavigatedDate)}
         onMouseOver={this.onMouseOverDay(day)}
         onMouseDown={this.onMouseDownDay(day)}
@@ -166,9 +168,7 @@ export class CalendarDayGridBase extends BaseComponent<ICalendarDayGridProps, IC
       >
         <button
           key={day.key + 'button'}
-          className={css(classNames.dayButton, {
-            [classNames.dayIsToday]: day.isToday
-          })}
+          className={css(classNames.dayButton, day.isToday && classNames.dayIsToday)}
           onKeyDown={this._onDayKeyDown(day.originalDate, weekIndex, dayIndex)}
           onClick={day.isInBounds ? day.onSelected : undefined}
           aria-label={dateTimeFormatter.formatMonthDayYear(day.originalDate, strings)}

@@ -341,7 +341,7 @@ export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> 
 }
 
 // @public
-export const WeeklyDayPicker: React.StatelessComponent<IWeeklyDayPickerProps>;
+export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
 
 
 export * from "office-ui-fabric-react/lib/utilities/dateMath/DateMath";
