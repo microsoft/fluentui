@@ -1,10 +1,9 @@
 import * as React from 'react';
-import { css, getId } from 'office-ui-fabric-react/lib/Utilities';
-import { Dropdown, IDropdownOption, DropdownMenuItemType } from 'office-ui-fabric-react/lib/Dropdown';
+import { css } from 'office-ui-fabric-react/lib/Utilities';
 import * as stylesImport from './HomePage.module.scss';
 import { getParameterByName, updateUrlParameter } from '../../utilities/location';
 import { ActionButton } from 'office-ui-fabric-react/lib/Button';
-import { IContextualMenuItem, IContextualMenuStyles } from 'office-ui-fabric-react/lib/ContextualMenu';
+import { IContextualMenuItem } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
 
 const styles: any = stylesImport;
@@ -12,10 +11,13 @@ const styles: any = stylesImport;
 const corePackageData = require('../../../node_modules/office-ui-fabric-core/package.json');
 const reactPackageData = require('../../../node_modules/office-ui-fabric-react/package.json');
 
-const versionLinkId = getId('versionLink');
-
 // Update as new Fabric versions are released
 const fabricVersionOptions: IContextualMenuItem[] = [
+  {
+    key: 'C',
+    name: 'Fabric 7',
+    data: '7'
+  },
   {
     key: 'A',
     name: 'Fabric 6',
@@ -24,7 +26,8 @@ const fabricVersionOptions: IContextualMenuItem[] = [
   {
     key: 'B',
     name: 'Fabric 5',
-    data: '5'
+    data: '5',
+    checked: true
   }
 ];
 
