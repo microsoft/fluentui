@@ -10,6 +10,11 @@ import {
 export const StaticListPage = (props: { isHeaderVisible: boolean }) => (
   <DemoPage
     title="StaticList"
-    examples={[StaticListExample, StaticOrderedListExample, StaticListTableExample, StaticListAppendItemsExample]}
+    examples={[
+      { view: <StaticListExample /> },
+      { view: <StaticOrderedListExample /> },
+      { view: <StaticListTableExample /> },
+      StaticListAppendItemsExample
+    ]}
   />
 );
