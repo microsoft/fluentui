@@ -2,7 +2,7 @@ import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Label } from 'office-ui-fabric-react/lib/Label';
 import { TestImages } from '../../../common/TestImages';
-import { Stack } from '../../Stack';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 
 const examplePersona: IPersonaSharedProps = {
   imageUrl: TestImages.personaFemale,
