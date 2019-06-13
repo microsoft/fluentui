@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/api-docs",
+      "comment": "Fix missing assets in production build.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/api-docs",
+  "email": "jdh@microsoft.com"
+}

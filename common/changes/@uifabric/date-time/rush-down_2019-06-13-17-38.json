@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/date-time",
+      "comment": "Fix missing assets in production build.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/date-time",
+  "email": "jdh@microsoft.com"
+}

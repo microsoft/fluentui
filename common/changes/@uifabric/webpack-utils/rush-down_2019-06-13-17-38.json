@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/webpack-utils",
+      "comment": "Fix missing assets in production build.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/webpack-utils",
+  "email": "jdh@microsoft.com"
+}
