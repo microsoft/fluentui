@@ -18,15 +18,14 @@ export interface IChicletXsmallStyles {
    */
   info?: IStyle;
 
+  preview?: IStyle;
+
+  titleBox?: IStyle;
+
   /**
    * Style for the title of the file.
    */
   title?: IStyle;
-
-  /**
-   * Style for the line
-   */
-  line?: IStyle;
 }
 
 export interface IChicletXsmallStyleProps {

@@ -21,8 +21,9 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
         {renderIcon(itemType, this._classNames.icon)}
-        <div className={this._classNames.title}>{title ? title : null}</div>
-        <hr className={this._classNames.line} />
+        <div className={this._classNames.titleBox}>
+          <div className={this._classNames.title}>{title ? title : null}</div>
+        </div>
         {footer}
       </div>
     );

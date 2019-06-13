@@ -17,6 +17,7 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
         width: 250,
         height: 103,
         userSelect: 'none',
+        overflow: 'hidden',
         position: 'relative',
         selectors: {
           ':hover': {
@@ -28,35 +29,33 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     ],
     icon: [
       {
+        float: 'left',
         height: 30.32,
-        width: 28.64,
-        left: 3,
-        bottom: 36,
         padding: '17.44px',
-        position: 'absolute',
         backgroundColor: '	#DCDCDC'
+      }
+    ],
+    titleBox: [
+      {
+        float: 'left',
+        marginLeft: 4,
+        borderBottom: '1px solid gray',
+        height: 63,
+        width: 170
       }
     ],
     title: [
       {
-        padding: '9px 2px 0px 76px',
+        float: 'left',
         fontSize: theme.fonts.medium.fontSize,
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
         height: 37, // Two lines of text, making sure the third line is hidden
-        width: 150,
+        width: 170,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'
-      }
-    ],
-    line: [
-      {
-        marginLeft: '75px',
-        marginRight: '5px',
-        marginTop: '13px',
-        marginBottom: '0px'
       }
     ]
   };
