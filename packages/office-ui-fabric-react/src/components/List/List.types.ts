@@ -39,6 +39,11 @@ export interface IList {
   forceUpdate: () => void;
 
   /**
+   * Get the current height the list and it's pages.
+   */
+  getTotalListHeight?: () => number;
+
+  /**
    * Scroll to the given index. By default will bring the page the specified item is on into the view. If a callback
    * to measure the height of an individual item is specified, will only scroll to bring the specific item into view.
    *
@@ -122,7 +127,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * in pixels, which has been seen to cause browser performance issues.
    * In general, use `getPageSpecification` instead.
    */
-  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle) => number;
+  getPageHeight?: (itemIndex?: number, itemCount?: number, visibleRect?: IRectangle) => number;
 
   /**
    * Method called by the list to derive the page style object. For spacer pages, the list will derive
@@ -154,6 +159,13 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * @defaultvalue false
    */
   usePageCache?: boolean;
+
+  /**
+   * Boolean to disable the onAsyncIdle call. Recommended to use when doing jumping through the list.
+   * As the user is moving through the list very quickly, creating lookaheads is heavy and unneccessary.
+   * @defaultvalue false
+   */
+  disableLookAhead?: boolean;
 
   /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
@@ -189,6 +201,7 @@ export interface IPage<T = any> {
   height: number;
   data?: any;
   isSpacer?: boolean;
+  isVisible?: boolean;
 }
 
 /**

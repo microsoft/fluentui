@@ -45,6 +45,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
   private _selectedIndicies: { [key: string]: boolean } | undefined;
   private _preservedIndicies: number[] | undefined;
   private _itemRectCache: { [key: string]: IRectangle } | undefined;
+  private _allSelectedIndices: { [key: string]: boolean } | undefined;
   private _scrollableParent: HTMLElement;
   private _scrollableSurface: HTMLElement;
   private _scrollTop: number;
@@ -74,6 +75,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
     if (this._autoScroll) {
       this._autoScroll.dispose();
     }
+    if (this._evaluateSelection) {
+      delete this._evaluateSelection;
+    }
+    this._events.dispose();
   }
 
   public render(): JSX.Element {
@@ -216,22 +221,46 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
           this._preservedIndicies = selection && selection.getSelectedIndices && selection.getSelectedIndices();
         }
+
         // We need to constrain the current point to the rootRect boundaries.
-        const constrainedPoint = this.props.isDraggingConstrainedToRoot
-          ? {
-              x: Math.max(0, Math.min(rootRect.width, this._lastMouseEvent!.clientX - rootRect.left)),
-              y: Math.max(0, Math.min(rootRect.height, this._lastMouseEvent!.clientY - rootRect.top))
-            }
-          : {
-              x: this._lastMouseEvent!.clientX - rootRect.left,
-              y: this._lastMouseEvent!.clientY - rootRect.top
-            };
+        // and constrain dragRect within viewport
+        const constrainedPoint = {
+          x: this._lastMouseEvent!.clientX - rootRect.left,
+          y: this._lastMouseEvent!.clientY - rootRect.top
+        };
+
+        let rectLeft = Math.min(this._dragOrigin.x, constrainedPoint.x);
+        let rectTop = Math.min(this._dragOrigin.y, constrainedPoint.y);
+
+        let rectWidth = Math.abs(constrainedPoint.x - this._dragOrigin.x);
+        let rectHeight = Math.abs(constrainedPoint.y - this._dragOrigin.y);
+
+        if (rectLeft < 0) {
+          rectLeft = 0;
+          rectWidth = this._dragOrigin.x;
+        }
+
+        if (rectTop < 0) {
+          rectTop = 0;
+          rectHeight = this._dragOrigin.y;
+        }
+
+        if (rectTop + rectHeight > rootRect.height) {
+          rectHeight = rootRect.height - rectTop;
+        }
+
+        // since we don't have a width pass down to the element, we use the _scrollableSurface width
+        // to constraint the marquee rect to not falls out the right boundary
+        const viewportWidth = rootRect.width > 0 ? rootRect.width : this._scrollableSurface!.clientWidth;
+        if (rectLeft + rectWidth > viewportWidth) {
+          rectWidth = viewportWidth - rectLeft;
+        }
 
         const dragRect = {
-          left: Math.min(this._dragOrigin.x, constrainedPoint.x),
-          top: Math.min(this._dragOrigin.y, constrainedPoint.y),
-          width: Math.abs(constrainedPoint.x - this._dragOrigin.x),
-          height: Math.abs(constrainedPoint.y - this._dragOrigin.y)
+          left: rectLeft,
+          top: rectTop,
+          width: rectWidth,
+          height: rectHeight
         };
 
         this._evaluateSelection(dragRect, rootRect);
@@ -360,16 +389,51 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       }
     }
 
+    // set previousSelectedIndices to be all of the selected indices from last time
+    const previousSelectedIndices = this._allSelectedIndices;
+    this._allSelectedIndices = {};
+
+    // set all indices that is supposed to be selected in _allSelectedIndices
     for (const index in this._selectedIndicies!) {
       if (this._selectedIndicies!.hasOwnProperty(index)) {
-        selection.setIndexSelected(Number(index), true, false);
+        this._allSelectedIndices![index] = true;
       }
     }
 
-    if (this._preservedIndicies) {
-      for (const index of this._preservedIndicies) {
-        selection.setIndexSelected(index, true, false);
+    for (const index of this._preservedIndicies!) {
+      this._allSelectedIndices![index] = true;
+    }
+
+    // check if needs to update selection, only when current _allSelectedIndices
+    // is different than previousSelectedIndices
+    let needToUpdate = false;
+    for (const index in this._allSelectedIndices!) {
+      if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
+        needToUpdate = true;
+        break;
       }
+    }
+
+    if (!needToUpdate) {
+      for (const index in previousSelectedIndices!) {
+        if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
+          needToUpdate = true;
+          break;
+        }
+      }
+    }
+
+    // only update selection when needed
+    if (needToUpdate) {
+      // Stop change events, clear selection to re-populate.
+      selection.setChangeEvents(false);
+      selection.setAllSelected(false);
+
+      for (const index of Object.keys(this._allSelectedIndices!)) {
+        selection.setIndexSelected(Number(index), true, false);
+      }
+
+      selection.setChangeEvents(true);
     }
 
     selection.setChangeEvents(true);

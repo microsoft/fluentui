@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { ITilesListProps, ITilesGridItem, ITilesGridSegment, TilesGridMode, ITileSize } from './TilesList.types';
-import { List, IPageProps } from 'office-ui-fabric-react/lib/List';
+import { List, IPageProps, ScrollToMode } from 'office-ui-fabric-react/lib/List';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { css, IRenderFunction, IRectangle } from 'office-ui-fabric-react/lib/Utilities';
 import * as TilesListStylesModule from './TilesList.scss';
@@ -78,10 +78,13 @@ interface IPageSpecificationCache<TItem> {
  */
 export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, ITilesListState<TItem>> {
   private _pageSpecificationCache: IPageSpecificationCache<TItem> | undefined;
+  private listRef: React.RefObject<List>;
 
   // tslint:disable-next-line:no-any
   constructor(props: ITilesListProps<TItem>, context: any) {
     super(props, context);
+
+    this.listRef = React.createRef();
 
     this.state = {
       cells: this._getCells(props.items)
@@ -105,13 +108,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   public render(): JSX.Element {
     const { cells } = this.state;
 
-    const { className, onActiveElementChanged, items, cellsPerPage, ref, role, focusZoneComponentRef, ...divProps } = this.props;
+    const { className, onActiveElementChanged, items, cellsPerPage, role, focusZoneComponentRef, ...divProps } = this.props;
 
     return (
       <FocusZone
         role={role}
         {...divProps}
-        ref={ref as ((element: FocusZone | null) => void)}
+        ref={focusZoneComponentRef as ((element: FocusZone | null) => void)}
         componentRef={focusZoneComponentRef}
         className={css('ms-TilesList', className)}
         direction={FocusZoneDirection.bidirectional}
@@ -122,9 +125,35 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
           role={role ? 'presentation' : undefined}
           getPageSpecification={this._getPageSpecification}
           onRenderPage={this._onRenderPage}
+          ref={this.listRef}
+          usePageCache={true}
+          {...this.props.listProps}
         />
       </FocusZone>
     );
+  }
+
+  public scrollToIndex(index: number, mode: ScrollToMode = ScrollToMode.auto): void {
+    if (this.listRef && this.listRef.current) {
+      this.listRef.current.scrollToIndex(
+        index,
+        (itemIndex: number) => {
+          let cellHeight = 0;
+          if (this.props.getItemHeight) {
+            cellHeight = this.props.getItemHeight(itemIndex);
+          }
+          return cellHeight;
+        },
+        mode
+      );
+    }
+  }
+
+  public getTotalListHeight(): number {
+    if (this.listRef && this.listRef.current && this.listRef.current.getTotalListHeight) {
+      return this.listRef.current.getTotalListHeight();
+    }
+    return 0; // Stub
   }
 
   private _onRenderCell(item: ITileCell<TItem>, finalSize: ITileSize): JSX.Element {
@@ -351,7 +380,10 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
 
     const { cells } = this.state;
 
-    const endIndex = Math.min(cells.length, startIndex + CELLS_PER_PAGE);
+    const endIndex = Math.min(
+      cells.length,
+      this.props.cellsPerPage && this.props.cellsPerPage > 0 ? startIndex! + this.props.cellsPerPage : startIndex! + CELLS_PER_PAGE
+    );
 
     let rowWidth = 0;
     let rowStart = 0;
