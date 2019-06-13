@@ -108,13 +108,13 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   public render(): JSX.Element {
     const { cells } = this.state;
 
-    const { className, onActiveElementChanged, items, cellsPerPage, role, focusZoneComponentRef, ...divProps } = this.props;
+    const { className, onActiveElementChanged, items, cellsPerPage, ref, role, focusZoneComponentRef, ...divProps } = this.props;
 
     return (
       <FocusZone
         role={role}
         {...divProps}
-        ref={focusZoneComponentRef as ((element: FocusZone | null) => void)}
+        ref={ref as ((element: FocusZone | null) => void)}
         componentRef={focusZoneComponentRef}
         className={css('ms-TilesList', className)}
         direction={FocusZoneDirection.bidirectional}
@@ -134,7 +134,7 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 
   public scrollToIndex(index: number, mode: ScrollToMode = ScrollToMode.auto): void {
-    if (this.listRef && this.listRef.current) {
+    if (this.listRef.current) {
       this.listRef.current.scrollToIndex(
         index,
         (itemIndex: number) => {
