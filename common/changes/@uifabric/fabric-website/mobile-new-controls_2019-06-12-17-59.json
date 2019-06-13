@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Clean up Site component life-cycle",
+      "comment": "Add more mobile docs, update screenshots.",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "v-jojanz@microsoft.com"
+  "email": "lynam.emily@gmail.com"
 }

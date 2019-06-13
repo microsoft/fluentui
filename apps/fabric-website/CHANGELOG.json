@@ -2,6 +2,67 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "@uifabric/fabric-website_v7.1.0",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Clean up Site component life-cycle",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "3a09a87c2d904ed636d32c0d0bced56626f48a75"
+          },
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Bundles react with the site to prevent version mismatch issues",
+            "author": "Kenneth Chau <kenotron@users.noreply.github.com>",
+            "commit": "8af04c0dfaf4cf2c3510b9af2bf3b1e5d98328c2"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/file-type-icons\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.19.0",
       "tag": "@uifabric/fabric-website_v6.19.0",
       "date": "Wed, 12 Jun 2019 00:42:26 GMT",

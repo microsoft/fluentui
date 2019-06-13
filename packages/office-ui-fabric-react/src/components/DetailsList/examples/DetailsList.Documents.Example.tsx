@@ -58,6 +58,7 @@ export interface IDetailsListDocumentsExampleState {
 }
 
 export interface IDocument {
+  key: string;
   name: string;
   value: string;
   iconName: string;
@@ -204,6 +205,7 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
             compact={isCompactMode}
             columns={columns}
             selectionMode={isModalSelection ? SelectionMode.multiple : SelectionMode.none}
+            getKey={this._getKey}
             setKey="set"
             layoutMode={DetailsListLayoutMode.justified}
             isHeaderVisible={true}
@@ -223,6 +225,10 @@ export class DetailsListDocumentsExample extends React.Component<{}, IDetailsLis
     if (previousState.isModalSelection !== this.state.isModalSelection && !this.state.isModalSelection) {
       this._selection.setAllSelected(false);
     }
+  }
+
+  private _getKey(item: any, index?: number): string {
+    return item.key;
   }
 
   private _onChangeCompactMode = (ev: React.MouseEvent<HTMLElement>, checked: boolean): void => {
@@ -296,6 +302,7 @@ function _generateDocuments() {
       .map((name: string) => name.charAt(0).toUpperCase() + name.slice(1))
       .join(' ');
     items.push({
+      key: i.toString(),
       name: fileName,
       value: fileName,
       iconName: randomFileType.url,
