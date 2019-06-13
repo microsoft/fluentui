@@ -45,6 +45,10 @@ export class ButtonExample extends React.Component<{}, {}> {
               <Button icon="Attach" circular primary disabled />
             </ButtonStack>
             <ButtonStack>
+              <Button content="Button as an anchor: Go to Bing" href="http://bing.com" target="_blank" title="Let us bing!" />
+              <Button primary content="Button as an anchor: Go to Bing" href="http://bing.com" target="_blank" title="Let us bing!" />
+            </ButtonStack>
+            <ButtonStack>
               <Button icon="Upload" content="Button with string icon" />
               <Button icon={{ iconName: 'Share' }} content="Button with iconProps" />
               <Button content="Button with icon render function" slots={{ icon: { render: () => <Icon iconName="Download" /> } }} />

@@ -1,7 +1,7 @@
 /** @jsx withSlots */
 import { Stack, Text, KeytipData } from 'office-ui-fabric-react';
 import { withSlots, getSlots } from '../../Foundation';
-import { getNativeProps, buttonProperties } from '../../Utilities';
+import { getNativeProps, anchorProperties, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
 
 import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IButtonViewProps } from './Button.types';
@@ -9,11 +9,15 @@ import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IBut
 export const ButtonView: IButtonComponent['view'] = props => {
   const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
+  const rootType = _deriveRootType(props);
+  const htmlType = rootType === 'a' ? 'link' : 'button';
+  const propertiesType = rootType === 'a' ? anchorProperties : buttonProperties;
+
   // TODO: 'href' is anchor property... consider getNativeProps by root type
-  const buttonProps = { ...getNativeProps(rest, buttonProperties) };
+  const buttonProps = { ...getNativeProps(rest, propertiesType) };
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
-    root: _deriveRootType(props),
+    root: rootType,
     stack: Stack,
     icon: Icon,
     content: Text
@@ -31,7 +35,7 @@ export const ButtonView: IButtonComponent['view'] = props => {
 
   const Button = (keytipAttributes?: any): JSX.Element => (
     <Slots.root
-      type="button" // stack doesn't take in native button props
+      type={htmlType}
       role="button"
       onClick={_onClick}
       {...buttonProps}
