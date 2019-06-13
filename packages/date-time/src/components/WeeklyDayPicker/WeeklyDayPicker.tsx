@@ -7,7 +7,7 @@ import { styled } from 'office-ui-fabric-react/lib/Utilities';
 /**
  * WeeklyDayPicker description
  */
-export const WeeklyDayPicker: React.StatelessComponent<IWeeklyDayPickerProps> = styled<
+export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps> = styled<
   IWeeklyDayPickerProps,
   IWeeklyDayPickerStyleProps,
   IWeeklyDayPickerStyles

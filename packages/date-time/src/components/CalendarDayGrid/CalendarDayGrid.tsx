@@ -7,7 +7,7 @@ import { styled } from 'office-ui-fabric-react/lib/Utilities';
 /**
  * CalendarDayGrid description
  */
-export const CalendarDayGrid: React.StatelessComponent<ICalendarDayGridProps> = styled<
+export const CalendarDayGrid: React.FunctionComponent<ICalendarDayGridProps> = styled<
   ICalendarDayGridProps,
   ICalendarDayGridStyleProps,
   ICalendarDayGridStyles
