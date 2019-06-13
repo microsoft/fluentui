@@ -564,7 +564,42 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" aria-labelledby=\\"TextFieldLabel4\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+            },
+          },
+        ],
+        "fullyQualifiedLogicalName": "#TextField2",
+        "physicalLocation": Object {
+          "fileLocation": Object {
+            "uri": "about:blank",
+          },
+        },
+      },
+    ],
+    "message": Object {
+      "richText": "Fix all of the following:
+- Invalid ARIA attribute value: aria-labelledby=\\"TextFieldLabel4\\"",
+      "text": "Fix all of the following: Invalid ARIA attribute value: aria-labelledby=\\"TextFieldLabel4\\".",
+    },
+    "partialFingerprints": Object {
+      "fullyQualifiedLogicalName": "#TextField2",
+      "ruleId": "aria-valid-attr-value",
+    },
+    "properties": Object {
+      "tags": Array [
+        "Accessibility",
+      ],
+    },
+    "ruleId": "aria-valid-attr-value",
+  },
+  Object {
+    "level": "error",
+    "locations": Array [
+      Object {
+        "annotations": Array [
+          Object {
+            "snippet": Object {
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" aria-labelledby=\\"TextFieldLabel4\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
             },
           },
         ],
@@ -599,7 +634,7 @@ Array [
         "annotations": Array [
           Object {
             "snippet": Object {
-              "text": "<input type=\\"text\\" id=\\"TextField2\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
+              "text": "<input type=\\"text\\" id=\\"TextField2\\" aria-labelledby=\\"TextFieldLabel4\\" value=\\"\\" class=\\"ms-TextField-field field-6\\" aria-describedby=\\"TextFieldDescription3\\" aria-invalid=\\"false\\">",
             },
           },
         ],
