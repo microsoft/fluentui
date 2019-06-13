@@ -1,7 +1,10 @@
-import { mergeStyleSets, IStyleSet, IProcessedStyleSet } from '@uifabric/merge-styles';
+import { mergeStyleSets, IStyleSet, IProcessedStyleSet, Stylesheet } from '@uifabric/merge-styles';
 import { IStyleFunctionOrObject } from '@uifabric/merge-styles';
 
 const MAX_CACHE_COUNT = 50;
+let _memoizedClassNames = 0;
+
+Stylesheet.getInstance().onReset(() => _memoizedClassNames++);
 
 // Note that because of the caching nature within the classNames memoization,
 // I've disabled this rule to simply be able to work with any types.
@@ -42,6 +45,7 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   // we call the `getStyles` api to evaluate, cache on the property, and return that.
   let map: IRecursiveMemoNode = new Map();
   let resultCount = 0;
+  let currentMemoizedClassNames = _memoizedClassNames;
 
   const getClassNames = (
     styleFunctionOrObject: IStyleFunctionOrObject<TStyleProps, TStyleSet> | undefined,
@@ -49,6 +53,13 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
   ): IProcessedStyleSet<TStyleSet> => {
     let current: Map<any, any> = map;
     const disableCaching = options.disableCaching;
+
+    // On reset of our stylesheet, reset memoized cache.
+    if (currentMemoizedClassNames !== _memoizedClassNames) {
+      currentMemoizedClassNames = _memoizedClassNames;
+      map = new Map();
+      resultCount = 0;
+    }
 
     if (!options.disableCaching) {
       current = _traverseMap(map, styleFunctionOrObject as any);
@@ -109,6 +120,9 @@ function _traverseEdge(current: Map<any, any>, value: any): Map<any, any> {
 }
 
 function _traverseMap(current: Map<any, any>, inputs: any[] | Object): Map<any, any> {
+  // The styled helper will generate the styles function and will attach the cached
+  // inputs (consisting of the default styles, customzied styles, and user provided styles.)
+  // These should be used as cache keys for deriving the memoized value.
   if (typeof inputs === 'function' && (inputs as any).__cachedInputs__) {
     for (const input of (inputs as any).__cachedInputs__) {
       current = _traverseEdge(current, input);

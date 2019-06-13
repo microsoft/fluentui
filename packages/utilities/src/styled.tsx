@@ -65,7 +65,6 @@ export function styled<
     public static displayName = `Styled${Component.displayName || (Component as any).name}`;
 
     private _inCustomizerContext = false;
-    private _customizedStyles?: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
     private _styles: IStyleFunctionOrObject<TStyleProps, TStyleSet>;
 
     public render(): JSX.Element {
@@ -97,9 +96,16 @@ export function styled<
     };
 
     private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
-      if (!this._styles || customizedStyles !== this._customizedStyles || !!this.props.styles) {
+      // tslint:disable-next-line:no-any
+      if (!this._styles || customizedStyles !== (this._styles as any).__cachedInputs__[1] || !!this.props.styles) {
+        // Cache the customized styles.
+        // this._customizedStyles = customizedStyles;
+
         // Using styled components as the Component arg will result in nested styling arrays.
         this._styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
+
+        // The __cachedInputs__ array is attached to the function and consumed by the
+        // classNamesFunction as a list of keys to include for memoizing classnames.
 
         // tslint:disable-next-line:no-any
         (this._styles as any).__cachedInputs__ = [baseStyles, customizedStyles, this.props.styles];
