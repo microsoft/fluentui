@@ -58,8 +58,6 @@ export function classNamesFunction<TStyleProps extends {}, TStyleSet extends ISt
     if (disableCaching || !(current as any)[RetVal]) {
       if (styleFunctionOrObject === undefined) {
         (current as any)[RetVal] = {} as IProcessedStyleSet<TStyleSet>;
-      } else if (Array.isArray(styleFunctionOrObject)) {
-        (current as any)[RetVal] = mergeStyleSets(...(styleFunctionOrObject as any).map(_derive, styleProps));
       } else {
         (current as any)[RetVal] = mergeStyleSets(
           typeof styleFunctionOrObject === 'function' ? styleFunctionOrObject(styleProps) : styleFunctionOrObject
@@ -111,9 +109,9 @@ function _traverseEdge(current: Map<any, any>, value: any): Map<any, any> {
 }
 
 function _traverseMap(current: Map<any, any>, inputs: any[] | Object): Map<any, any> {
-  if (Array.isArray(inputs)) {
-    for (let i = 0; i < inputs.length; i++) {
-      current = _traverseEdge(current, inputs[i]);
+  if (typeof inputs === 'function' && (inputs as any).__cachedInputs__) {
+    for (const input of (inputs as any).__cachedInputs__) {
+      current = _traverseEdge(current, input);
     }
   } else if (typeof inputs === 'object') {
     for (const propName in inputs) {

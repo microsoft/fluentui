@@ -99,8 +99,10 @@ export function styled<
     private _updateStyles(customizedStyles: IStyleFunctionOrObject<TStyleProps, TStyleSet>): void {
       if (!this._styles || customizedStyles !== this._customizedStyles || !!this.props.styles) {
         // Using styled components as the Component arg will result in nested styling arrays.
-        // Use flatten to ensure that the _styles array remains flat when styled components are wrapped.
         this._styles = (styleProps: TStyleProps) => _resolve(styleProps, baseStyles, customizedStyles, this.props.styles);
+
+        // tslint:disable-next-line:no-any
+        (this._styles as any).__cachedInputs__ = [baseStyles, customizedStyles, this.props.styles];
       }
     }
 

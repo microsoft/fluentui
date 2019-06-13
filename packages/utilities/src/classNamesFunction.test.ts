@@ -1,5 +1,5 @@
 import { classNamesFunction } from './classNamesFunction';
-import { Stylesheet } from '@uifabric/merge-styles';
+import { Stylesheet, IStyle } from '@uifabric/merge-styles';
 
 describe('classNamesFunction', () => {
   let lastRule: string;
@@ -20,17 +20,13 @@ describe('classNamesFunction', () => {
 
   it('can cache rules', () => {
     let styleFunctionCalled = false;
-    const getClassNames = classNamesFunction();
-    const getStyles = [
-      (props: { a: number }) => {
-        styleFunctionCalled = true;
-        return {
-          root: { width: props.a }
-        };
-      },
-      undefined,
-      undefined
-    ];
+    const getClassNames = classNamesFunction<{ a: number; b: string }, { root: IStyle }>();
+    const getStyles = (props: { a: number; b: string }) => {
+      styleFunctionCalled = true;
+      return {
+        root: { width: props.a }
+      };
+    };
 
     const classNames = getClassNames(getStyles, { a: 1, b: 'test' });
     expect(styleFunctionCalled).toEqual(true);
