@@ -1,16 +1,15 @@
 import * as React from 'react';
 import { createComponent } from '../../../Foundation';
-import { ButtonState as state } from '../Button.state';
+import { useSplitButtonState as state } from './SplitButton.state';
 import { SplitButtonStyles as styles, SplitButtonTokens as tokens } from './SplitButton.styles';
 import { ISplitButtonProps } from './SplitButton.types';
-import { SplitButtonView as view } from './SplitButton.view';
+import { SplitButtonView } from './SplitButton.view';
 
-export const SplitButton: React.StatelessComponent<ISplitButtonProps> = createComponent({
+export const SplitButton: React.StatelessComponent<ISplitButtonProps> = createComponent(SplitButtonView, {
   displayName: 'SplitButton',
   state,
   styles,
-  tokens,
-  view
+  tokens
 });
 
 export default SplitButton;

@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Coachmark: Bottom position coachmarks shouldn't be hidden/cut off by other elements on the page.",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "aneeshak@microsoft.com"
+}

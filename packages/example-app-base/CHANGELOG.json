@@ -2,6 +2,85 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "7.0.2",
+      "tag": "@uifabric/example-app-base_v7.0.2",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "7.0.0",
+      "tag": "@uifabric/example-app-base_v7.0.0",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Revert example-app-base font changes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5345509dcc21722d17f2fa3cc96152d72fb97565"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Remove use of deprecated @autobind decorator",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "d7dd09998172855cfd005aa2ec901a575b838619"
+          },
+          {
+            "comment": "Nav, Calendar, and DatePicker move into office-ui-fabric-react",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          }
+        ],
+        "major": [
+          {
+            "comment": "Remove deprecated components; some styling fixes",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "Move Router to example-app-base",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d908c018268568b386fdad27899dcb00c5f0806e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.23.1",
       "tag": "@uifabric/example-app-base_v6.23.1",
       "date": "Wed, 29 May 2019 12:21:24 GMT",

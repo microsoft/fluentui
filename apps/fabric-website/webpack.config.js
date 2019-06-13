@@ -31,15 +31,6 @@ module.exports = function(env) {
         chunkFilename: `${entryPointName}-${version}-[name]-${now}${minFileNamePart}.js`
       },
 
-      externals: [
-        {
-          react: 'React'
-        },
-        {
-          'react-dom': 'ReactDOM'
-        }
-      ],
-
       resolve: {
         alias: {
           '@uifabric/fabric-website/src': path.join(__dirname, 'src'),

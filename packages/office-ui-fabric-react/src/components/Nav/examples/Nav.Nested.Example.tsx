@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { Nav } from 'office-ui-fabric-react/lib/Nav';
+import { Nav } from '../index';
 
 export const NavNestedExample: React.StatelessComponent = () => {
   return (

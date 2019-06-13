@@ -2,7 +2,6 @@
  * Copyright (C) Microsoft Corporation. All rights reserved.
  */
 
-import { autobind } from 'office-ui-fabric-react';
 import { FocusZone, FocusZoneDirection } from 'office-ui-fabric-react/lib/FocusZone';
 import { IButtonStyles } from 'office-ui-fabric-react/lib/Button';
 import { DirectionalHint } from 'office-ui-fabric-react/lib/common/DirectionalHint';
@@ -95,8 +94,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     );
   }
 
-  @autobind
-  public toggleCollapsed(): void {
+  public toggleCollapsed = () => {
     this.setState((prevState: ISidebarState) => {
       return { isCollapsed: !this.state.isCollapsed };
     });
@@ -104,7 +102,7 @@ export class Sidebar extends BaseComponent<ISidebarProps, ISidebarState> impleme
     if (this.props.onCollapseChanged) {
       this.props.onCollapseChanged();
     }
-  }
+  };
 
   public setCollapsed(newValue: boolean): void {
     this.setState((prevState: ISidebarState) => {

@@ -12,7 +12,7 @@ const StylesPageBase: React.StatelessComponent<IPageProps<Platforms>> = props =>
       title="Styles"
       platform={platform}
       subTitle={getSubTitle(platform)}
-      otherSections={_otherSections(platform)}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
       showSideRail={false}
       sectionWrapperClassName={styles.cardWrapper}
     />

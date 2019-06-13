@@ -177,7 +177,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
       rowFieldsAs: RowFields = DetailsRowFields,
       selection,
       indentWidth,
-      shimmer,
       compact,
       theme,
       styles,
@@ -211,8 +210,6 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
     const rowClassNames: IDetailsRowFieldsProps['rowClassNames'] = {
       isMultiline: this._classNames.isMultiline,
       isRowHeader: this._classNames.isRowHeader,
-      shimmerIconPlaceholder: this._classNames.shimmerIconPlaceholder,
-      shimmer: this._classNames.shimmer,
       cell: this._classNames.cell,
       cellPadded: this._classNames.cellPadded,
       cellUnpadded: this._classNames.cellUnpadded,
@@ -236,18 +233,8 @@ export class DetailsRowBase extends BaseComponent<IDetailsRowBaseProps, IDetails
         itemIndex={itemIndex}
         columnStartIndex={showCheckbox ? 1 : 0}
         onRenderItemColumn={onRenderItemColumn}
-        shimmer={shimmer}
       />
     );
-
-    // Rendering Shimmer Animation outside the focus zone
-    if (shimmer) {
-      return (
-        <div className={css(showCheckbox && this._classNames.shimmerLeftBorder, !compact && this._classNames.shimmerBottomBorder)}>
-          {rowFields}
-        </div>
-      );
-    }
 
     return (
       <FocusZone

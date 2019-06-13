@@ -1,6 +1,6 @@
 {
   "name": "@uifabric/migration",
-  "version": "0.2.2",
+  "version": "7.0.1",
   "description": "Migration scripts for UI Fabric",
   "main": "lib/index.js",
   "bin": {
@@ -22,17 +22,21 @@
     "just": "npx just-scripts"
   },
   "devDependencies": {
-    "@types/node": "^8.10.29",
     "@types/jest": "23.0.0",
+    "@types/glob": "^7.1.1",
+    "@types/mock-fs": "3.6.30",
+    "@types/node": "^8.10.29",
     "@types/semver": "^5.5.0",
-    "@uifabric/prettier-rules": "^1.0.2",
-    "@uifabric/tslint-rules": "^1.0.2",
-    "@uifabric/build": "*"
+    "@uifabric/prettier-rules": "^7.0.1",
+    "@uifabric/tslint-rules": "^7.0.1",
+    "glob": "^7.1.2",
+    "mock-fs": "4.10.0",
+    "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
     "semver": "^5.6.0",
     "tslib": "^1.7.1",
-    "riceburn": "^1.2.0",
-    "typescript": "2.8.4"
+    "riceburn": "1.3.1",
+    "typescript": "3.5.1"
   }
 }

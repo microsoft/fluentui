@@ -102,7 +102,6 @@ const classNameSelectors: { [key: string]: string } = {
   Callout: 'ms-Callout',
   ContextualMenu: 'ms-ContextualMenu',
   DetailsList: 'ms-DetailsList',
-  Dropdown: 'ms-Dropdown',
   ExpandingCard: 'ms-Callout',
   Modal: 'ms-Modal',
   Nav: 'ms-Nav',

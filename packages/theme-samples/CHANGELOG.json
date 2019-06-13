@@ -2,6 +2,49 @@
   "name": "@uifabric/theme-samples",
   "entries": [
     {
+      "version": "7.0.1",
+      "tag": "@uifabric/theme-samples_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.1.7",
+      "tag": "@uifabric/theme-samples_v0.1.7",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.1.6",
       "tag": "@uifabric/theme-samples_v0.1.6",
       "date": "Tue, 14 May 2019 07:50:30 GMT",

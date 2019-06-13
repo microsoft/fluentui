@@ -82,6 +82,11 @@ export function generateJson(options: IPageJsonOptions[]): void {
     console.log('Deleting contents of ' + option.pageJsonFolderPath);
     FileSystem.ensureEmptyFolder(option.pageJsonFolderPath);
 
+    // Store the data for each page in a map
+    for (const pageName of option.pageNames) {
+      collectedData.pageDataByPageName.set(pageName, new PageData(pageName, option.kind));
+    }
+
     for (const apiJsonPath of option.apiJsonPaths) {
       console.log('Loading ' + apiJsonPath);
 
@@ -92,11 +97,6 @@ export function generateJson(options: IPageJsonOptions[]): void {
       console.log('Successfully loaded ' + apiJsonPath);
 
       const apiEntryPoint: ApiEntryPoint = apiPackage.entryPoints[0]; // assume there is only one entry point
-
-      // Store the data for each page in a map
-      for (const pageName of option.pageNames) {
-        collectedData.pageDataByPageName.set(pageName, new PageData(pageName, option.kind));
-      }
 
       collectPageData(collectedData, apiEntryPoint, option.kind);
     }

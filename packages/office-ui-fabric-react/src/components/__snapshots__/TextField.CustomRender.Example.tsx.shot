@@ -84,10 +84,10 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 -moz-osx-font-smoothing: grayscale;
                 -webkit-font-smoothing: antialiased;
                 background-color: transparent;
-                border-radius: 0px;
+                border-radius: 2px;
                 border: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #0078d4;
                 cursor: pointer;
                 display: inline-block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
@@ -95,9 +95,6 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 height: 32px;
                 margin-bottom: -3px;
-                margin-left: 0px;
-                margin-right: 0px;
-                margin-top: 0px;
                 outline: transparent;
                 padding-bottom: 0;
                 padding-left: 4px;
@@ -114,14 +111,14 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 border: 0;
               }
               .ms-Fabric--isFocusVisible &:focus:after {
-                border: 1px solid #ffffff;
-                bottom: 0px;
+                border: 1px solid transparent;
+                bottom: 2px;
                 content: "";
-                left: 0px;
-                outline: 1px solid #666666;
+                left: 2px;
+                outline: 1px solid #605e5c;
                 position: absolute;
-                right: 0px;
-                top: 0px;
+                right: 2px;
+                top: 2px;
                 z-index: 1;
               }
               @media screen and (-ms-high-contrast: active){.ms-Fabric--isFocusVisible &:focus:after {
@@ -138,14 +135,16 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 top: 0px;
               }
               &:hover {
-                color: #212121;
+                background-color: #f3f2f1;
+                color: #106ebe;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
                 color: Highlight;
               }
               &:active {
-                color: #0078d4;
+                background-color: #edebe9;
+                color: #005a9e;
               }
           data-is-focusable={true}
           id="iconButton1"
@@ -206,7 +205,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -224,7 +224,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -245,7 +245,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -256,8 +256,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -269,11 +269,21 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           id="TextField2"
@@ -293,8 +303,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         className=
             ms-TextField-description
             {
-              color: #666666;
-              font-size: 11px;
+              color: #605e5c;
+              font-size: 10px;
             }
       >
         Click the (i) icon!
@@ -337,11 +347,11 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               -webkit-font-smoothing: antialiased;
               box-shadow: none;
               box-sizing: border-box;
-              color: #333333;
+              color: #323130;
               display: block;
               font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
               font-size: 14px;
-              font-weight: 400;
+              font-weight: 600;
               margin-bottom: 0px;
               margin-left: 0px;
               margin-right: 0px;
@@ -364,7 +374,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             {
               align-items: stretch;
               background: #ffffff;
-              border: 1px solid #a6a6a6;
+              border-radius: 2px;
+              border: 1px solid #8a8886;
               box-shadow: none;
               box-sizing: border-box;
               cursor: text;
@@ -382,7 +393,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               position: relative;
             }
             &:hover {
-              border-color: #333333;
+              border-color: #323130;
             }
             @media screen and (-ms-high-contrast: active){&:hover {
               border-color: Highlight;
@@ -403,7 +414,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 border: none;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
                 font-weight: 400;
@@ -414,8 +425,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 min-width: 0px;
                 outline: 0px;
                 padding-bottom: 0;
-                padding-left: 12px;
-                padding-right: 12px;
+                padding-left: 8px;
+                padding-right: 8px;
                 padding-top: 0;
                 text-overflow: ellipsis;
                 width: 100%;
@@ -427,11 +438,21 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 display: none;
               }
               &::placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
               &:-ms-input-placeholder {
-                color: #666666;
+                -moz-osx-font-smoothing: grayscale;
+                -webkit-font-smoothing: antialiased;
+                color: #605e5c;
+                font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                font-size: 14px;
+                font-weight: 400;
                 opacity: 1;
               }
           id="TextField8"

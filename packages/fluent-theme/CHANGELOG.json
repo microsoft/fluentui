@@ -2,6 +2,73 @@
   "name": "@uifabric/fluent-theme",
   "entries": [
     {
+      "version": "7.0.1",
+      "tag": "@uifabric/fluent-theme_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "0.16.11",
+      "tag": "@uifabric/fluent-theme_v0.16.11",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update DatePicker import path",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
+          },
+          {
+            "comment": "Nav, Calendar, and DatePicker move into office-ui-fabric-react",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.16.10",
       "tag": "@uifabric/fluent-theme_v0.16.10",
       "date": "Tue, 21 May 2019 12:20:44 GMT",

@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IGroupSpacerProps } from './GroupSpacer.types';
 
-export const SPACER_WIDTH = 32;
+export const SPACER_WIDTH = 36;
 
 export const GroupSpacer: React.SFC<IGroupSpacerProps> = (props: IGroupSpacerProps): ReturnType<React.SFC<IGroupSpacerProps>> => {
   const { count, indentWidth = SPACER_WIDTH } = props;

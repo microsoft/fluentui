@@ -2,6 +2,128 @@
   "name": "@uifabric/fabric-website-resources",
   "entries": [
     {
+      "version": "7.0.1",
+      "tag": "@uifabric/fabric-website-resources_v7.0.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          }
+        ]
+      }
+    },
+    {
+      "version": "6.18.4",
+      "tag": "@uifabric/fabric-website-resources_v6.18.4",
+      "date": "Wed, 12 Jun 2019 00:42:26 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Update Calendar and DatePicker import paths",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "5e4f160e47e77f4ccdb0457160b22d321b25d4fc"
+          },
+          {
+            "comment": "Move legacy components to separate section, and DetailsList examples to sub-section",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "d7047fc795ab94f49a9e14649b2f5fc4ae082f43"
+          },
+          {
+            "comment": "Update and dedupe React deps.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "affa33fd7a25c857ad8d209349cb9e4ecc352ec6"
+          },
+          {
+            "comment": "Nav, Calendar, and DatePicker move into office-ui-fabric-react",
+            "author": "JD Huntington <jdh@microsoft.com>",
+            "commit": "1226e0857e0fc16a9884d7d011ce0e738cfeb04e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/api-docs\" from `^1.1.3` to `^1.1.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/azure-themes\" from `^6.0.1` to `^6.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.1` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fluent-theme\" from `^0.16.10` to `^0.16.11`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.18.1` to `^6.19.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/styling\" from `^6.48.1` to `^6.49.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/theme-samples\" from `^0.1.6` to `^0.1.7`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.0` to `^7.0.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/variants\" from `^6.14.2` to `^6.14.3`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^6.0.9` to `^6.0.10`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.4` to `^7.0.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.18.3",
       "tag": "@uifabric/fabric-website-resources_v6.18.3",
       "date": "Wed, 22 May 2019 12:21:34 GMT",

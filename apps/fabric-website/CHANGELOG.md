@@ -1,6 +1,33 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Thu, 06 Jun 2019 12:22:24 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+
+## 7.1.0
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Minor changes
+
+- Bundles react with the site to prevent version mismatch issues
+
+### Patches
+
+- Clean up Site component life-cycle
+- Initial release of Fabric 7
+
+## 6.19.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Minor changes
+
+- Changes to support slots API refactoring
+
+### Patches
+
+- Update Calendar and DatePicker import paths
+- Update and dedupe React deps.
+- Support slots API changes.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
+- Update Router imports
 
 ## 6.18.11
 Thu, 06 Jun 2019 12:22:24 GMT

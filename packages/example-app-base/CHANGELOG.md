@@ -1,6 +1,31 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated components; some styling fixes
+
+### Minor changes
+
+- Move Router to example-app-base
+
+### Patches
+
+- Revert example-app-base font changes
+- Update and dedupe React deps.
+- Remove use of deprecated @autobind decorator
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
 
 ## 6.23.1
 Wed, 29 May 2019 12:21:24 GMT

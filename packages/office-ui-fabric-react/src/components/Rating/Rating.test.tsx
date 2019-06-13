@@ -13,21 +13,21 @@ describe('Rating', () => {
   });
 
   it('Can change rating.', () => {
-    const rating = mount(<Rating rating={2} />);
+    const rating = mount(<Rating />);
 
     _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '100%');
+    _checkState(rating, 2, '0%');
     _checkState(rating, 3, '0%');
     _checkState(rating, 4, '0%');
     _checkState(rating, 5, '0%');
 
     rating
       .find('.ms-Rating-button')
-      .at(0)
+      .at(1)
       .simulate('focus');
 
     _checkState(rating, 1, '100%');
-    _checkState(rating, 2, '0%');
+    _checkState(rating, 2, '100%');
     _checkState(rating, 3, '0%');
     _checkState(rating, 4, '0%');
     _checkState(rating, 5, '0%');

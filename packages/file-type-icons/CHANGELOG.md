@@ -1,6 +1,33 @@
 # Change Log - @uifabric/file-type-icons
 
-This log was last generated on Wed, 05 Jun 2019 12:22:30 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Update file type icons to use new Fluent assets by default
+
+### Patches
+
+- Update and dedupe React deps.
+- fix mapping for OneNote notebook filetype icon
+- updating getFileTypeIconProps to make reference to correct sharepoint… 
+
+## 6.5.1
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- adding missing filetype mappings to support LPC and other partners
 
 ## 6.5.0
 Wed, 05 Jun 2019 12:22:30 GMT

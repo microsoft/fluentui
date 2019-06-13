@@ -13,7 +13,8 @@ import { Samples } from './Samples/index';
 import { SemanticSlots } from './SemanticSlots';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { ThemeProvider, Text, Pivot, PivotItem } from 'office-ui-fabric-react';
+import { Text, Pivot, PivotItem } from 'office-ui-fabric-react';
+import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
 import { TitleText } from '../shared/Typography';
 

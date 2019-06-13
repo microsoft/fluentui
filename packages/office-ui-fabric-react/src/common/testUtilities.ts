@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { ReactWrapper, mount } from 'enzyme';
 import { Component } from 'react';
 import * as ReactDOM from 'react-dom';

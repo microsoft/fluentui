@@ -1,6 +1,28 @@
 # Change Log - @uifabric/api-docs
 
-This log was last generated on Mon, 20 May 2019 12:22:33 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Update dependencies
+
+## 1.1.4
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Generate API docs for legacy controls
+- Remove reference to legacy package
+
+## 1.1.3
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- upgrade to api-extractor 7.1.6
 
 ## 1.1.2
 Mon, 20 May 2019 12:22:33 GMT

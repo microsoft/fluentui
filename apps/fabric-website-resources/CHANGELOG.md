@@ -1,6 +1,23 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Wed, 22 May 2019 12:21:34 GMT and should not be manually modified.
+This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 6.18.4
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Patches
+
+- Update Calendar and DatePicker import paths
+- Move legacy components to separate section, and DetailsList examples to sub-section
+- Update and dedupe React deps.
+- Nav, Calendar, and DatePicker move into office-ui-fabric-react
 
 ## 6.18.3
 Wed, 22 May 2019 12:21:34 GMT

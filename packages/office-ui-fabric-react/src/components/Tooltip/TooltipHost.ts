@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { styled } from '../../Utilities';
 import { TooltipHostBase } from './TooltipHost.base';
 import { ITooltipHostProps, ITooltipHostStyleProps, ITooltipHostStyles } from './TooltipHost.types';

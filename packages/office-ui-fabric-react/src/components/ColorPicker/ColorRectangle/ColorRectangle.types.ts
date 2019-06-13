@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 import { IColor } from '../../../utilities/color/interfaces';
 
 /**
@@ -13,7 +14,7 @@ export interface IColorRectangle {
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
+export interface IColorRectangleProps {
   /**
    * Gets the component ref.
    */
@@ -43,12 +44,6 @@ export interface IColorRectangleProps extends IBaseProps<IColorRectangle> {
    * Call to provide customized styling that will layer on top of the variant rules.
    */
   styles?: IStyleFunctionOrObject<IColorRectangleStyleProps, IColorRectangleStyles>;
-
-  /**
-   * Callback for when the color changes.
-   * @deprecated Use `onChange`
-   */
-  onSVChanged?: (s: number, v: number) => void;
 
   /**
    * Callback for when the color changes.

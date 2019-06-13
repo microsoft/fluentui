@@ -68,6 +68,13 @@ export const controlsPagesAndroid: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/ChipPage/ChipPage').ChipPage))
       },
       {
+        title: 'List Cells',
+        url: '#/controls/android/listcells',
+        component: () => <LoadingComponent title="List Cells" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/ListCellsPage/ListCellsPage').ListCellsPage))
+      },
+      {
         title: 'Persona',
         url: '#/controls/android/persona',
         component: () => <LoadingComponent title="Persona" />,
@@ -90,10 +97,29 @@ export const controlsPagesAndroid: INavPage[] = [
     ]
   },
   {
+    title: 'Progress',
+    url: '#/controls/android/spinner',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Spinner',
+        url: '#/controls/android/spinner',
+        component: () => <LoadingComponent title="Spinner" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/SpinnerPage/SpinnerPage').SpinnerPage))
+      }
+    ]
+  },
+  {
     title: 'Surfaces',
     url: '#/controls/android/drawer',
     isCategory: true,
     pages: [
+      {
+        title: 'Drawer',
+        url: '#/controls/android/drawer',
+        component: () => <LoadingComponent title="Drawer" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
+      },
       {
         title: 'Tooltip',
         url: '#/controls/android/tooltip',

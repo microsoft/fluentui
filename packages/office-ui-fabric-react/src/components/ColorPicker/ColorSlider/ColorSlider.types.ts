@@ -1,5 +1,6 @@
+import * as React from 'react';
 import { ITheme, IStyle } from '../../../Styling';
-import { IBaseProps, IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
+import { IRefObject, IStyleFunctionOrObject } from '../../../Utilities';
 
 /**
  * {@docCategory ColorPicker}
@@ -9,7 +10,7 @@ export interface IColorSlider {}
 /**
  * {@docCategory ColorPicker}
  */
-export interface IColorSliderProps extends IBaseProps<IColorSlider> {
+export interface IColorSliderProps {
   /**
    * Gets the component ref.
    */
@@ -44,12 +45,6 @@ export interface IColorSliderProps extends IBaseProps<IColorSlider> {
    * Callback issued when the value changes.
    */
   onChange?: (event: React.MouseEvent<HTMLElement>, newValue?: number) => void;
-
-  /**
-   * Deprecated, use `onChange` instead.
-   * @deprecated Use `onChange` instead.
-   */
-  onChanged?: (newValue: number) => void;
 
   /**
    * If true, the slider represents an alpha slider.
