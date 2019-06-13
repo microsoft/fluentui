@@ -3,7 +3,7 @@ import { DemoPage } from '../DemoPage';
 import {
   StaticListExample,
   StaticOrderedListExample,
-  StaticListAppendItemsExample,
+  // StaticListAppendItemsExample,
   StaticListTableExample
 } from '../../StaticList/StaticList.Example';
 
@@ -13,8 +13,8 @@ export const StaticListPage = (props: { isHeaderVisible: boolean }) => (
     examples={[
       { view: <StaticListExample /> },
       { view: <StaticOrderedListExample /> },
-      { view: <StaticListTableExample /> },
-      StaticListAppendItemsExample
+      { view: <StaticListTableExample /> }
+      // StaticListAppendItemsExample
     ]}
   />
 );
