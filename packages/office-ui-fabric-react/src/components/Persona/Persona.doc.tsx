@@ -8,6 +8,7 @@ import { PersonaColorsExample } from './examples/Persona.Colors.Example';
 import { PersonaCustomRenderExample } from './examples/Persona.CustomRender.Example';
 import { PersonaCustomCoinRenderExample } from './examples/Persona.CustomCoinRender.Example';
 import { UnknownPersonaExample } from './examples/Persona.UnknownPersona.Example';
+import { PersonaPresenceExample } from './examples/Persona.Presence.Example';
 
 const PersonaInitialsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Initials.Example.tsx') as string;
 const PersonaBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Basic.Example.tsx') as string;
@@ -16,6 +17,7 @@ const PersonaColorsExampleCode = require('!raw-loader!office-ui-fabric-react/src
 const PersonaCustomRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomRender.Example.tsx') as string;
 const PersonaCustomCoinRenderExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.CustomCoinRender.Example.tsx') as string;
 const UnknownPersonaExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.UnknownPersona.Example.tsx') as string;
+const PersonaPresenceExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Persona/examples/Persona.Presence.Example.tsx') as string;
 
 export const PersonaPageProps: IDocPageProps = {
   title: 'Persona',
@@ -58,6 +60,11 @@ export const PersonaPageProps: IDocPageProps = {
       title: 'Rendering unknown persona coin',
       code: UnknownPersonaExampleCode,
       view: <UnknownPersonaExample />
+    },
+    {
+      title: 'Persona Presence',
+      code: UnknownPersonaExampleCode,
+      view: <PersonaPresenceExample />
     }
   ],
   overview: require<string>('!raw-loader!office-ui-fabric-react/src/components/Persona/docs/PersonaOverview.md'),

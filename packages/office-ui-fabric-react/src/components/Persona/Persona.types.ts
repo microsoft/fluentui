@@ -89,6 +89,12 @@ export interface IPersonaSharedProps extends React.HTMLAttributes<PersonaBase | 
   presence?: PersonaPresence;
 
   /**
+   * This flag can be used to signal the persona is out of office.
+   * This will change the way the presence icon looks for statuses that support dual-presence.
+   */
+  isOutOfOffice?: boolean;
+
+  /**
    * Secondary text to display, usually the role of the user.
    */
   secondaryText?: string;
@@ -336,6 +342,12 @@ export interface IPersonaPresenceStyleProps {
    * @defaultvalue PersonaPresence.none
    */
   presence?: PersonaPresence;
+
+  /**
+   * This flag can be used to signal the persona is out of office.
+   * This will change the way the presence icon looks for statuses that support dual-presence.
+   */
+  isOutOfOffice: boolean;
 
   /**
    * Decides the size of the control.
