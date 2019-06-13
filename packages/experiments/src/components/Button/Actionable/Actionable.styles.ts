@@ -1,8 +1,8 @@
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
 import { IsFocusVisibleClassName } from '../../../Utilities';
-import { IBaseButtonComponent, IBaseButtonStylesReturnType } from './BaseButton.types';
+import { IActionableComponent, IActionableStylesReturnType } from './Actionable.types';
 
-export const ButtonTokens: IBaseButtonComponent['tokens'] = {
+export const ButtonTokens: IActionableComponent['tokens'] = {
   contentPadding: '1px 6px',
   textSize: 13.333
 };
@@ -11,7 +11,7 @@ const GlobalClassNames = {
   msButton: 'ms-Button'
 };
 
-export const ButtonStyles: IBaseButtonComponent['styles'] = (props, theme, tokens): IBaseButtonStylesReturnType => {
+export const ButtonStyles: IActionableComponent['styles'] = (props, theme, tokens): IActionableStylesReturnType => {
   const { className, circular } = props;
 
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);

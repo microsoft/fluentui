@@ -2,7 +2,7 @@ import { ITextSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
 import { IBaseProps, Omit } from '../../Utilities';
-import { IBaseButton, IBaseButtonProps, IBaseButtonSlots, IBaseButtonTokens, IBaseButtonViewProps } from './BaseButton/BaseButton.types';
+import { IActionable, IActionableProps, IActionableSlots, IActionableTokens, IActionableViewProps } from './Actionable/Actionable.types';
 
 /**
  * {@docCategory Button}
@@ -29,7 +29,7 @@ export type IButtonSlot = ISlotProp<IButtonProps>;
 /**
  * {@docCategory Button}
  */
-export interface IButtonSlots extends IBaseButtonSlots {
+export interface IButtonSlots extends IActionableSlots {
   /**
    * Defines the text that is displayed inside the Button.
    */
@@ -44,7 +44,7 @@ export interface IButtonSlots extends IBaseButtonSlots {
 /**
  * {@docCategory Button}
  */
-export interface IButton extends IBaseButton {}
+export interface IButton extends IActionable {}
 
 export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement>, 'content'>;
 
@@ -54,7 +54,7 @@ export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement 
 export interface IButtonProps
   extends ISlottableProps<IButtonSlots>,
     Pick<
-      IBaseButtonProps,
+      IActionableProps,
       'href' | 'primary' | 'circular' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'
     >,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
@@ -64,12 +64,12 @@ export interface IButtonProps
 /**
  * {@docCategory Button}
  */
-export interface IButtonViewProps extends Pick<IBaseButtonViewProps, 'buttonRef'>, IButtonProps {}
+export interface IButtonViewProps extends Pick<IActionableViewProps, 'buttonRef'>, IButtonProps {}
 
 /**
  * {@docCategory Button}
  */
-export interface IButtonTokens extends IBaseButtonTokens {
+export interface IButtonTokens extends IActionableTokens {
   /**
    * Defines the icon color of the Button when in high contrast mode.
    */

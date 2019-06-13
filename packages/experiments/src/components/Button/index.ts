@@ -3,9 +3,9 @@ export * from './Button';
 export * from './Button.types';
 export * from './ButtonVariants.types';
 
-// BaseButton
-export * from './BaseButton/BaseButton';
-export * from './BaseButton/BaseButton.types';
+// Actionable
+export * from './Actionable/Actionable';
+export * from './Actionable/Actionable.types';
 
 // Button variants
 export * from './ActionButton';

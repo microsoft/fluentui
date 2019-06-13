@@ -4,40 +4,40 @@ import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottablePr
 import { IBaseProps } from '../../../Utilities';
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export type IBaseButtonComponent = IComponent<IBaseButtonProps, IBaseButtonTokens, IBaseButtonStyles, IBaseButtonViewProps>;
+export type IActionableComponent = IComponent<IActionableProps, IActionableTokens, IActionableStyles, IActionableViewProps>;
 
-// These types are redundant with IBaseButtonComponent but are needed until TS function return widening issue is resolved:
+// These types are redundant with IActionableComponent but are needed until TS function return widening issue is resolved:
 // https://github.com/Microsoft/TypeScript/issues/241
 // For now, these helper types can be used to provide return type safety when specifying tokens and styles functions.
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export type IBaseButtonTokenReturnType = ReturnType<Extract<IBaseButtonComponent['tokens'], Function>>;
+export type IActionableTokenReturnType = ReturnType<Extract<IActionableComponent['tokens'], Function>>;
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export type IBaseButtonStylesReturnType = ReturnType<Extract<IBaseButtonComponent['styles'], Function>>;
+export type IActionableStylesReturnType = ReturnType<Extract<IActionableComponent['styles'], Function>>;
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export type IBaseButtonSlot = ISlotProp<IBaseButtonProps>;
+export type IActionableSlot = ISlotProp<IActionableProps>;
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export type IBaseButtonRootElements = 'a' | 'button' | 'div';
+export type IActionableRootElements = 'a' | 'button' | 'div';
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export interface IBaseButtonSlots {
+export interface IActionableSlots {
   /**
    * Defines the root slot of the component.
    */
-  root?: IHTMLElementSlot<IBaseButtonRootElements>;
+  root?: IHTMLElementSlot<IActionableRootElements>;
 
   /**
    * Defines the horizontal stack used for specifying the inner layout of the Button.
@@ -46,9 +46,9 @@ export interface IBaseButtonSlots {
 }
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export interface IBaseButton {
+export interface IActionable {
   /**
    * Sets focus to the Button.
    */
@@ -56,12 +56,12 @@ export interface IBaseButton {
 }
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export interface IBaseButtonProps
-  extends ISlottableProps<IBaseButtonSlots>,
-    IStyleableComponentProps<IBaseButtonProps, IBaseButtonTokens, IBaseButtonStyles>,
-    IBaseProps<IBaseButton>,
+export interface IActionableProps
+  extends ISlottableProps<IActionableSlots>,
+    IStyleableComponentProps<IActionableProps, IActionableTokens, IActionableStyles>,
+    IBaseProps<IActionable>,
     React.AllHTMLAttributes<HTMLAnchorElement | HTMLButtonElement | HTMLDivElement> {
   /**
    * Defines an href reference that, if provided, will make this component render as an anchor.
@@ -115,9 +115,9 @@ export interface IBaseButtonProps
 }
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export interface IBaseButtonViewProps extends IBaseButtonProps {
+export interface IActionableViewProps extends IActionableProps {
   /**
    * Defines a reference to the inner Button.
    */
@@ -125,9 +125,9 @@ export interface IBaseButtonViewProps extends IBaseButtonProps {
 }
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export interface IBaseButtonTokens {
+export interface IActionableTokens {
   /**
    * Defines how far should the background extend within the Button.
    */
@@ -320,6 +320,6 @@ export interface IBaseButtonTokens {
 }
 
 /**
- * {@docCategory BaseButton}
+ * {@docCategory Actionable}
  */
-export type IBaseButtonStyles = IComponentStyles<IBaseButtonSlots>;
+export type IActionableStyles = IComponentStyles<IActionableSlots>;

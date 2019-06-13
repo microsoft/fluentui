@@ -13,7 +13,7 @@ import {
   createTheme,
   DocumentCardTitle
 } from 'office-ui-fabric-react';
-import { BaseButton as NewBaseButton, Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
+import { Actionable as NewBaseButton, Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
 
 const defaultTheme = createTheme({});
 

@@ -5,7 +5,7 @@ import { getNativeProps, buttonProperties } from '../../Utilities';
 import { Icon } from '../../utilities/factoryComponents';
 
 import { IButtonComponent, IButtonProps, IButtonSlots, IButtonViewProps } from './Button.types';
-import { IBaseButtonRootElements } from './BaseButton/BaseButton.types';
+import { IActionableRootElements } from './Actionable/Actionable.types';
 
 export const ButtonView: IButtonComponent['view'] = props => {
   const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
@@ -60,6 +60,6 @@ export const ButtonView: IButtonComponent['view'] = props => {
   );
 };
 
-function _deriveRootType(props: IButtonViewProps): IBaseButtonRootElements {
+function _deriveRootType(props: IButtonViewProps): IActionableRootElements {
   return !!props.href ? 'a' : 'button';
 }

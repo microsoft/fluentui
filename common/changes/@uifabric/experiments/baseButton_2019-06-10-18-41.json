@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "@uifabric/experiments",
-      "comment": "Button: Extending Button from BaseButton and removing content and icon from BaseButton types.",
+      "comment": "Button: Renaming BaseButton to Actionable, extending Button from Actionable and removing content and icon from Actionable types.",
       "type": "minor"
     }
   ],
