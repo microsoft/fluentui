@@ -50,7 +50,7 @@ export const styles = (props: ICalendarDayStyleProps): ICalendarDayStyles => {
         lineHeight: 28,
         overflow: 'hidden',
         whiteSpace: 'nowrap',
-        textAlign: 'start',
+        textAlign: 'left',
         textOverflow: 'ellipsis'
       },
       headerIsClickable && {
