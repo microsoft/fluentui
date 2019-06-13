@@ -46,6 +46,13 @@ function mockEvent(targetValue: string = ''): ReactTestUtils.SyntheticEventData 
   return { target };
 }
 
+/** Sledgehammer to try and run all pending stuff */
+function runEverythingAsync() {
+  jest.runAllImmediates();
+  jest.runAllTicks();
+  jest.runAllTimers();
+}
+
 describe('TextField snapshots', () => {
   beforeEach(sharedBeforeEach);
 
@@ -283,13 +290,15 @@ describe('TextField with error message', () => {
       return value.length > 3 ? errorMessage : '';
     }
 
+    jest.useFakeTimers();
     wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />);
+    runEverythingAsync();
 
     const inputDOM = wrapper.getDOMNode().querySelector('input');
     ReactTestUtils.Simulate.change(inputDOM!, mockEvent('the input value'));
+    runEverythingAsync();
 
-    // Validation is delayed, so we must wait to check the error message
-    return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
+    assertErrorMessage(wrapper!.getDOMNode(), errorMessage);
   });
 
   it('should render error message when onGetErrorMessage returns a JSX.Element', () => {
@@ -297,13 +306,15 @@ describe('TextField with error message', () => {
       return value.length > 3 ? errorMessageJSX : '';
     }
 
+    jest.useFakeTimers();
     wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={validator} deferredValidationTime={5} />);
+    runEverythingAsync();
 
     const inputDOM = wrapper.getDOMNode().querySelector('input');
     ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
+    runEverythingAsync();
 
-    // The value is delayed to validate, so it must to query error message after a while.
-    return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessageJSX));
+    assertErrorMessage(wrapper!.getDOMNode(), errorMessageJSX);
   });
 
   it('should render error message when onGetErrorMessage returns a Promise<string>', () => {
@@ -316,7 +327,7 @@ describe('TextField with error message', () => {
     const inputDOM = wrapper.getDOMNode().querySelector('input');
     ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
-    // Validation is delayed, so we must wait to check the error message
+    // TODO: make this work with fake timers not real timers
     return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
   });
 
@@ -330,35 +341,41 @@ describe('TextField with error message', () => {
     const inputDOM = wrapper.getDOMNode().querySelector('input');
     ReactTestUtils.Simulate.change(inputDOM as Element, mockEvent('the input value'));
 
-    // The value is delayed to validate, so it must to query error message after a while.
+    // TODO: make this work with fake timers not real timers
     return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessageJSX));
   });
 
   it('should render error message on first render when onGetErrorMessage returns a string', () => {
+    jest.useFakeTimers();
     wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={() => errorMessage} />);
+    runEverythingAsync();
 
-    return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
+    assertErrorMessage(wrapper!.getDOMNode(), errorMessage);
   });
 
   it('should render error message on first render when onGetErrorMessage returns a Promise<string>', () => {
     wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={() => Promise.resolve(errorMessage)} />);
 
-    // The Promise based validation need to assert with async pattern.
+    // TODO: make this work with fake timers not real timers
     return delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), errorMessage));
   });
 
   it('should not render error message when onGetErrorMessage return an empty string', () => {
+    jest.useFakeTimers();
     wrapper = mount(<TextField defaultValue="whatever value" onGetErrorMessage={() => ''} />);
+    runEverythingAsync();
 
-    delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), /* exist */ false));
+    assertErrorMessage(wrapper!.getDOMNode(), /* exist */ false);
   });
 
   it('should not render error message when no value is provided', () => {
     let actualValue: string | undefined = undefined;
 
+    jest.useFakeTimers();
     wrapper = mount(<TextField onGetErrorMessage={(value: string) => (actualValue = value)} />);
+    runEverythingAsync();
 
-    delay(20).then(() => assertErrorMessage(wrapper!.getDOMNode(), /* exist */ false));
+    assertErrorMessage(wrapper!.getDOMNode(), /* exist */ false);
     expect(actualValue).toEqual('');
   });
 
@@ -371,11 +388,11 @@ describe('TextField with error message', () => {
 
     wrapper = mount(<TextField value="initial value" onChange={noOp} onGetErrorMessage={validator} />);
 
-    jest.runOnlyPendingTimers();
+    runEverythingAsync();
     assertErrorMessage(wrapper.getDOMNode(), errorMessage);
 
     wrapper.setProps({ value: '' });
-    jest.runOnlyPendingTimers();
+    runEverythingAsync();
 
     assertErrorMessage(wrapper.getDOMNode(), /* exist */ false);
   });
@@ -399,11 +416,12 @@ describe('TextField with error message', () => {
         deferredValidationTime={0}
       />
     );
+    runEverythingAsync();
     expect(validationCallCount).toEqual(0);
     assertErrorMessage(wrapper.getDOMNode(), false);
 
     wrapper.setProps({ value: 'failValidationValue' });
-    jest.runOnlyPendingTimers();
+    runEverythingAsync();
 
     expect(validationCallCount).toEqual(0);
     assertErrorMessage(wrapper.getDOMNode(), false);
@@ -428,11 +446,12 @@ describe('TextField with error message', () => {
         deferredValidationTime={0}
       />
     );
+    runEverythingAsync();
     expect(validationCallCount).toEqual(0);
     assertErrorMessage(wrapper.getDOMNode(), false);
 
     wrapper.setProps({ value: 'failValidationValue' });
-    jest.runOnlyPendingTimers();
+    runEverythingAsync();
 
     expect(validationCallCount).toEqual(0);
     assertErrorMessage(wrapper.getDOMNode(), false);

@@ -2,6 +2,45 @@
   "name": "@uifabric/charting",
   "entries": [
     {
+      "version": "0.131.1",
+      "tag": "@uifabric/charting_v0.131.1",
+      "date": "Thu, 13 Jun 2019 00:24:48 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Initial release of Fabric 7",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "9bc84498f2a95e5e822178214edce2a947adac38"
+          },
+          {
+            "comment": "Fix verticalBarChart x-axis description cut off issue",
+            "author": "Rajesh Goriga <gorigarajesh@gmail.com>",
+            "commit": "3915f2371c77664cff44ae93e551ef2d9963edc7"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/icons\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.1` to `^7.0.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/jest-serializer-merge-styles\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/prettier-rules\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/tslint-rules\" from `^7.0.0` to `^7.0.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.30.3",
       "tag": "@uifabric/charting_v0.30.3",
       "date": "Wed, 12 Jun 2019 00:42:26 GMT",

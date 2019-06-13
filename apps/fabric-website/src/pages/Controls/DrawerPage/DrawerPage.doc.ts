@@ -5,8 +5,12 @@ const componentUrl = 'https://github.com/OfficeDev/office-ui-fabric-react/tree/m
 
 export const DrawerPageProps: TFabricPlatformPageProps = {
   ios: {
-    title: 'Drawer',
     overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/ios/DrawerOverview.md') as string,
+    related,
+    componentUrl
+  },
+  android: {
+    overview: require('!raw-loader!@uifabric/fabric-website/src/pages/Controls/DrawerPage/docs/android/DrawerOverview.md') as string,
     related,
     componentUrl
   }
