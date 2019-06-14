@@ -15,8 +15,8 @@
     "@types/react": "16.8.11",
     "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
-    "@uifabric/prettier-rules": "^7.0.1",
-    "@uifabric/tslint-rules": "^7.0.1",
+    "@uifabric/prettier-rules": "^7.0.2",
+    "@uifabric/tslint-rules": "^7.0.2",
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
@@ -24,7 +24,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.1.0",
+    "office-ui-fabric-react": "^7.1.1",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "typescript": "3.5.1",
