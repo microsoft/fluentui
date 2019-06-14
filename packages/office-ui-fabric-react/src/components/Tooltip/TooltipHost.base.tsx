@@ -94,12 +94,10 @@ export class TooltipHostBase extends BaseComponent<ITooltipHostProps, ITooltipHo
             directionalHintForRTL={directionalHintForRTL}
             calloutProps={assign({}, calloutProps, {
               onMouseEnter: this._onTooltipMouseEnter,
-              onMouseLeave: this._onTooltipMouseLeave,
-              onKeyDown: this._onTooltipKeyDown
+              onMouseLeave: this._onTooltipMouseLeave
             })}
             onMouseEnter={this._onTooltipMouseEnter}
             onMouseLeave={this._onTooltipMouseLeave}
-            onKeyDown={this._onTooltipKeyDown}
             {...getNativeProps(this.props, divProperties)}
             {...tooltipProps}
           />

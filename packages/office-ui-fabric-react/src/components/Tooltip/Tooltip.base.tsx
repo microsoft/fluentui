@@ -61,7 +61,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
           role="tooltip"
           onMouseEnter={this.props.onMouseEnter}
           onMouseLeave={this.props.onMouseLeave}
-          onKeyDown={this.props.onKeyDown}
         >
           {onRenderContent(this.props, this._onRenderContent)}
         </div>
