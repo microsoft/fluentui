@@ -57,7 +57,7 @@
     "@uifabric/charting": "^0.131.2",
     "@uifabric/file-type-icons": "^7.0.3",
     "@uifabric/fluent-theme": "^7.0.2",
-    "@uifabric/foundation": "^0.109.2",
+    "@uifabric/foundation": "^7.0.0",
     "@uifabric/icons": "^7.0.2",
     "@uifabric/merge-styles": "^7.0.2",
     "@uifabric/set-version": "^7.0.0",
