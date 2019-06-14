@@ -19,6 +19,12 @@ export const AppDefinition: IAppDefinition = {
           key: 'DatePicker',
           name: 'DatePicker',
           url: '#/examples/datepicker'
+        },
+        {
+          component: require<any>('../components/pages/WeeklyDayPickerPage').WeeklyDayPickerPage,
+          key: 'WeeklyDayPicker',
+          name: 'WeeklyDayPicker',
+          url: '#/examples/weeklydaypicker'
         }
       ]
     }
