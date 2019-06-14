@@ -2,6 +2,25 @@
   "name": "@uifabric/utilities",
   "entries": [
     {
+      "version": "6.41.2",
+      "tag": "@uifabric/utilities_v6.41.2",
+      "date": "Fri, 14 Jun 2019 03:04:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2591368b43ad42b1fe422ca8b12354abbf560c1e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.1` to `^6.19.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.41.1",
       "tag": "@uifabric/utilities_v6.41.1",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",
