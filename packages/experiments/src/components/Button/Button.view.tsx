@@ -9,15 +9,13 @@ import { IButtonComponent, IButtonProps, IButtonRootElements, IButtonSlots, IBut
 export const ButtonView: IButtonComponent['view'] = props => {
   const { icon, content, children, disabled, onClick, allowDisabledFocus, ariaLabel, keytipProps, buttonRef, ...rest } = props;
 
-  const rootType = _deriveRootType(props);
-  const htmlType = rootType === 'a' ? 'link' : 'button';
-  const propertiesType = rootType === 'a' ? anchorProperties : buttonProperties;
+  const { slotType, htmlType, propertiesType } = _deriveRootType(props);
 
   // TODO: 'href' is anchor property... consider getNativeProps by root type
   const buttonProps = { ...getNativeProps(rest, propertiesType) };
 
   const Slots = getSlots<IButtonProps, IButtonSlots>(props, {
-    root: rootType,
+    root: slotType,
     stack: Stack,
     icon: Icon,
     content: Text
@@ -63,6 +61,14 @@ export const ButtonView: IButtonComponent['view'] = props => {
   );
 };
 
-function _deriveRootType(props: IButtonViewProps): IButtonRootElements {
-  return !!props.href ? 'a' : 'button';
+interface IButtonRootType {
+  slotType: IButtonRootElements;
+  htmlType: 'link' | 'button';
+  propertiesType: string[];
+}
+
+function _deriveRootType(props: IButtonViewProps): IButtonRootType {
+  return !!props.href
+    ? { slotType: 'a', htmlType: 'link', propertiesType: anchorProperties }
+    : { slotType: 'button', htmlType: 'button', propertiesType: buttonProperties };
 }
