@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
+import { IDetailsListProps } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle } from '../../Styling';
 import { IStyleFunctionOrObject, Omit } from '../../Utilities';
@@ -8,11 +8,11 @@ import { IStyleFunctionOrObject, Omit } from '../../Utilities';
  * ShimmeredDetailsList props interface
  * {@docCategory DetailsList}
  */
-export type IShimmeredDetailsListProps = Omit<IDetailsListProps, 'styles'> & {
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
   /**
    * DetailsList styles to pass through.
    */
-  detailsListStyles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
+  detailsListStyles?: IDetailsListProps['styles'];
 
   /**
    * Boolean flag to control when to render placeholders vs real items.
@@ -48,7 +48,7 @@ export type IShimmeredDetailsListProps = Omit<IDetailsListProps, 'styles'> & {
    * @defaultvalue 10
    */
   shimmerLines?: number;
-};
+}
 
 /**
  * Defines props needed to construct styles. This represents the simplified set of immutable things which control the class names.
