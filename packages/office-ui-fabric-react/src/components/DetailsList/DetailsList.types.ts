@@ -230,7 +230,10 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** Optional callback to get the aria-describedby IDs (space separated strings) of the elements that describe the item. */
   getRowAriaDescribedBy?: (item: any) => string;
 
-  /** Optional callback to get the item key, to be used in the selection and on render. */
+  /**
+   * Optional callback to get the item key, to be used in the selection and on render.
+   * Must be provided if sorting or filtering is enabled.
+   */
   getKey?: (item: any, index?: number) => string;
 
   /** A text summary of the table set via aria-label. */

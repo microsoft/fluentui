@@ -4840,7 +4840,7 @@ export interface IHoverCardProps extends React.HTMLAttributes<HTMLDivElement> {
     shouldBlockHoverCard?: () => void;
     sticky?: boolean;
     styles?: IStyleFunctionOrObject<IHoverCardStyleProps, IHoverCardStyles>;
-    target?: HTMLElement | string;
+    target?: HTMLElement | string | null;
     theme?: ITheme;
     trapFocus?: boolean;
     type?: HoverCardType;
