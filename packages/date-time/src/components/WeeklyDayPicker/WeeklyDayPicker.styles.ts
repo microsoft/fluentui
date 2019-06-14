@@ -16,7 +16,7 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
       classNames.root,
       normalize,
       {
-        width: 196,
+        width: 220,
         padding: 12,
         boxSizing: 'content-box',
         display: 'flex',
@@ -46,12 +46,19 @@ export const styles = (props: IWeeklyDayPickerStyleProps): IWeeklyDayPickerStyle
         backgroundColor: palette.neutralLighter,
         fontSize: FontSizes.small,
         selectors: {
-          [`.${classNames.root}:hover &, .${classNames.root}:focus-within &, .${classNames.root}:focus &`]: {
+          [`.${classNames.root}:hover &, .${classNames.root}:focus &, &:focus`]: {
+            height: 53,
+            minHeight: 12,
+            overflow: 'initial'
+          },
+          [`.${classNames.root}:focus-within &`]: {
+            // edge does not recognize focus-within, so separate it out
             height: 53,
             minHeight: 12,
             overflow: 'initial'
           },
           '&:hover': {
+            cursor: 'pointer',
             backgroundColor: palette.neutralLight
           },
           '&:active': {
