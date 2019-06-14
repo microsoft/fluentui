@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IDetailsListProps } from './DetailsList.types';
+import { IDetailsListProps, IDetailsListStyleProps, IDetailsListStyles } from './DetailsList.types';
 import { IDetailsRowProps } from './DetailsRow.types';
 import { IStyle } from '../../Styling';
 import { IStyleFunctionOrObject } from '../../Utilities';
@@ -9,6 +9,11 @@ import { IStyleFunctionOrObject } from '../../Utilities';
  * {@docCategory DetailsList}
  */
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
+  /**
+   * DetailsList styles to pass through.
+   */
+  detailsListStyles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
+
   /**
    * Boolean flag to control when to render placeholders vs real items.
    * It's up to the consumer app to know when fetching of the data is done to toggle this prop.
@@ -29,8 +34,14 @@ export interface IShimmeredDetailsListProps extends IDetailsListProps {
 
   /**
    * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
+   * @deprecated Use `styles` prop instead
    */
   shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+
+  /**
+   * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
+   */
+  styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 
   /**
    * Number of shimmer placeholder lines to render.
