@@ -2,6 +2,31 @@
   "name": "@uifabric/react-cards",
   "entries": [
     {
+      "version": "0.107.0",
+      "tag": "@uifabric/react-cards_v0.107.0",
+      "date": "Fri, 14 Jun 2019 15:54:00 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Major bumping the foundation package.",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ef4b1d9bc7a63a9479cbf3d846a35d45627d7209"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.0.3` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/foundation\" from `^7.0.0` to `^7.0.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.1.1` to `^7.2.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.106.2",
       "tag": "@uifabric/react-cards_v0.106.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

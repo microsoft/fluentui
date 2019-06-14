@@ -1,6 +1,13 @@
 # Change Log - @uifabric/foundation
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 15:54:00 GMT and should not be manually modified.
+
+## 7.0.1
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Patches
+
+- Major bumping the foundation package. (Though the tooling will report this as a patch.)
 
 ## 0.109.2
 Fri, 14 Jun 2019 12:26:30 GMT

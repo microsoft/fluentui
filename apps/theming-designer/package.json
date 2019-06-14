@@ -20,7 +20,7 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/react-cards": "^0.106.2",
+    "@uifabric/react-cards": "^0.107.0",
     "@uifabric/merge-styles": "^7.0.2",
     "@uifabric/example-app-base": "^7.0.3",
     "@uifabric/variants": "^7.0.2",
@@ -29,7 +29,7 @@
     "@microsoft/load-themed-styles": "^1.7.13",
     "es6-promise": "^4.1.0",
     "immutability-helper": "~2.8.1",
-    "office-ui-fabric-react": "^7.1.1",
+    "office-ui-fabric-react": "^7.2.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1"

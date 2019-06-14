@@ -1,6 +1,13 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 15:54:00 GMT and should not be manually modified.
+
+## 7.2.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
 
 ## 7.1.1
 Fri, 14 Jun 2019 12:26:30 GMT

@@ -2,6 +2,20 @@
   "name": "@uifabric/foundation",
   "entries": [
     {
+      "version": "7.0.1",
+      "tag": "@uifabric/foundation_v7.0.1",
+      "date": "Fri, 14 Jun 2019 15:54:00 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Major bumping the foundation package. (Though the tooling will report this as a patch.)",
+            "author": "David Zearing <dzearing@microsoft.com>",
+            "commit": "ef4b1d9bc7a63a9479cbf3d846a35d45627d7209"
+          }
+        ]
+      }
+    },
+    {
       "version": "0.109.2",
       "tag": "@uifabric/foundation_v0.109.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

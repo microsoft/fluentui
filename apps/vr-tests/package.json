@@ -39,10 +39,10 @@
     "@uifabric/build": "^7.0.0"
   },
   "dependencies": {
-    "@uifabric/experiments": "^7.0.3",
+    "@uifabric/experiments": "^7.1.0",
     "@uifabric/set-version": "^7.0.0",
-    "@uifabric/react-cards": "^0.106.2",
-    "office-ui-fabric-react": "^7.1.1",
+    "@uifabric/react-cards": "^0.107.0",
+    "office-ui-fabric-react": "^7.2.0",
     "react": "16.8.6",
     "react-dom": "16.8.6",
     "tslib": "^1.7.1",
