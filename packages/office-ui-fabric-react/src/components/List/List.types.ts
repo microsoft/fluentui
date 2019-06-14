@@ -127,7 +127,7 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
    * in pixels, which has been seen to cause browser performance issues.
    * In general, use `getPageSpecification` instead.
    */
-  getPageHeight?: (itemIndex?: number, itemCount?: number, visibleRect?: IRectangle) => number;
+  getPageHeight?: (itemIndex?: number, visibleRect?: IRectangle, itemCount?: number) => number;
 
   /**
    * Method called by the list to derive the page style object. For spacer pages, the list will derive

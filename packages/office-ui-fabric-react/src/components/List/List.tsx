@@ -856,7 +856,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
       const { itemCount = this._getItemCountForPage(itemIndex, visibleRect) } = pageData;
 
-      const { height = this._getPageHeight(itemIndex, itemCount, visibleRect) } = pageData;
+      const { height = this._getPageHeight(itemIndex, visibleRect, itemCount) } = pageData;
 
       return {
         itemCount: itemCount,
@@ -869,7 +869,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
 
       return {
         itemCount: itemCount,
-        height: this._getPageHeight(itemIndex, itemCount, visibleRect)
+        height: this._getPageHeight(itemIndex, visibleRect, itemCount)
       };
     }
   }
@@ -878,9 +878,9 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
    * Get the pixel height of a give page. Will use the props getPageHeight first, and if not provided, fallback to
    * cached height, or estimated page height, or default page height.
    */
-  private _getPageHeight(itemIndex: number, itemsPerPage: number, visibleRect: IRectangle): number {
+  private _getPageHeight(itemIndex: number, visibleRect: IRectangle, itemsPerPage: number): number {
     if (this.props.getPageHeight) {
-      return this.props.getPageHeight(itemIndex, itemsPerPage, visibleRect);
+      return this.props.getPageHeight(itemIndex, visibleRect, itemsPerPage);
     } else {
       const cachedHeight = this._cachedPageHeights[itemIndex];
 
