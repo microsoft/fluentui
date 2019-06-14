@@ -567,7 +567,6 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
    * This function is debounced.
    */
   private _onScrollingDone(): void {
-    this._onAsyncIdle(); // Guarantees the creation of lookahead images when scrolling is done
     this.setState({ isScrolling: false });
   }
 
@@ -606,7 +605,7 @@ export class List<T = any> extends BaseComponent<IListProps<T>, IListState<T>> i
           // Enqueue an idle bump.
           this._onAsyncIdle();
         }
-      } else if (!this.props.disableLookAhead) {
+      } else {
         // Enqueue an idle bump
         this._onAsyncIdle();
       }

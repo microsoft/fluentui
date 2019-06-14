@@ -161,13 +161,6 @@ export interface IListProps<T = any> extends React.HTMLAttributes<List<T> | HTML
   usePageCache?: boolean;
 
   /**
-   * Boolean to disable the onAsyncIdle call. Recommended to use when doing jumping through the list.
-   * As the user is moving through the list very quickly, creating lookaheads is heavy and unneccessary.
-   * @defaultvalue false
-   */
-  disableLookAhead?: boolean;
-
-  /**
    * Optional callback to determine whether the list should be rendered in full, or virtualized.
    * Virtualization will add and remove pages of items as the user scrolls them into the visible range.
    * This benefits larger list scenarios by reducing the DOM on the screen, but can negatively affect performance for smaller lists.
