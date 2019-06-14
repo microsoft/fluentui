@@ -21,6 +21,11 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
   enableShimmer?: boolean;
 
   /**
+   * Aria label for shimmer. Set on grid while shimmer is enabled.
+   */
+  ariaLabelForShimmer?: string;
+
+  /**
    * Determines whether to remove a fading out to bottom overlay over the shimmering items
    * used to further emphasize the unknown number of items that will be fetched.
    */
