@@ -125,6 +125,7 @@ exports[`Persona renders Persona children correctly 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -319,6 +320,7 @@ exports[`Persona renders Persona correctly with UnknownPersona coin 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -519,6 +521,7 @@ exports[`Persona renders Persona correctly with image 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -695,6 +698,7 @@ exports[`Persona renders Persona correctly with initials 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1128,6 +1132,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1155,6 +1160,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1183,6 +1189,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1211,6 +1218,7 @@ exports[`Persona renders Persona which calls onRenderCoin callback without image
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1447,6 +1455,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1474,6 +1483,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1502,6 +1512,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
@@ -1530,6 +1541,7 @@ exports[`Persona renders correctly with onRender callback 1`] = `
             }
         onBlurCapture={[Function]}
         onFocusCapture={[Function]}
+        onKeyDown={[Function]}
         onMouseEnter={[Function]}
         onMouseLeave={[Function]}
       >
