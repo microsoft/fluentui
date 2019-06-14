@@ -2,19 +2,25 @@ import { IButtonComponent, IButtonStylesReturnType, IButtonTokenReturnType } fro
 import { getFocusStyle, getGlobalClassNames, FontWeights, HighContrastSelector } from '../../Styling';
 import { IsFocusVisibleClassName } from '../../Utilities';
 
-const baseTokens: IButtonComponent['tokens'] = {
-  borderRadius: 0,
-  borderWidth: 1,
-  cursor: 'pointer',
-  minWidth: 100,
-  minHeight: 32,
-  lineHeight: 1,
-  contentPadding: '0px 16px',
-  textFamily: 'inherit',
-  textSize: 14,
-  textWeight: FontWeights.semibold,
-  iconSize: 14,
-  iconWeight: 400
+const baseTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { effects } = theme;
+
+  return {
+    borderRadius: effects.roundedCorner2,
+    borderStyle: 'solid',
+    borderStyleFocused: 'solid',
+    borderWidth: 1,
+    cursor: 'pointer',
+    minWidth: 100,
+    minHeight: 32,
+    lineHeight: 1,
+    contentPadding: '0px 20px',
+    textFamily: 'inherit',
+    textSize: 14,
+    textWeight: FontWeights.semibold,
+    iconSize: 16,
+    iconWeight: 400
+  };
 };
 
 const hrefTokens: IButtonComponent['tokens'] = {
@@ -22,12 +28,16 @@ const hrefTokens: IButtonComponent['tokens'] = {
 };
 
 const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+
   return {
     borderRadius: '50%',
+    borderStyleFocused: 'double',
+    borderWidthFocused: 3,
     minWidth: 32,
     minHeight: 32,
     contentPadding: '',
-    borderColorFocused: theme.palette.neutralSecondary,
+    borderColorFocused: semanticColors.focusBorder,
     outlineColor: 'transparent',
     contentPaddingFocused: 1,
     backgroundClip: 'content-box'
@@ -35,10 +45,10 @@ const circularTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenR
 };
 
 const enabledTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
-  const { semanticColors } = theme;
+  const { palette, semanticColors } = theme;
   return {
-    backgroundColor: semanticColors.buttonBackground,
-    backgroundColorHovered: semanticColors.buttonBackgroundHovered,
+    backgroundColor: palette.white,
+    backgroundColorHovered: palette.neutralLighter,
     backgroundColorPressed: semanticColors.buttonBackgroundPressed,
 
     iconColor: semanticColors.buttonText,
@@ -130,9 +140,50 @@ const primaryEnabledTokens: IButtonComponent['tokens'] = (props, theme): IButton
     highContrastIconColorHovered: 'Window',
     highContrastIconColorPressed: 'Window',
 
-    borderColor: semanticColors.primaryButtonBorder,
+    borderWidth: 0,
+
+    outlineColor: 'transparent',
 
     msHighContrastAdjust: 'none'
+  };
+};
+
+const primaryCircularTokens: IButtonComponent['tokens'] = {
+  borderStyleFocused: 'solid',
+  borderWidthFocused: 1
+};
+
+const checkedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.buttonBackgroundChecked,
+    backgroundColorHovered: semanticColors.buttonBackgroundCheckedHovered,
+    backgroundColorPressed: semanticColors.buttonBackgroundPressed,
+
+    color: semanticColors.buttonTextChecked,
+    colorHovered: semanticColors.buttonTextCheckedHovered,
+    colorPressed: semanticColors.buttonTextPressed,
+
+    iconColor: semanticColors.buttonTextChecked,
+    iconColorHovered: semanticColors.buttonTextCheckedHovered,
+    iconColorPressed: semanticColors.buttonTextPressed
+  };
+};
+
+const primaryCheckedTokens: IButtonComponent['tokens'] = (props, theme): IButtonTokenReturnType => {
+  const { semanticColors } = theme;
+  return {
+    backgroundColor: semanticColors.primaryButtonBackgroundPressed,
+    backgroundColorHovered: semanticColors.primaryButtonBackgroundHovered,
+    backgroundColorPressed: semanticColors.primaryButtonBackgroundPressed,
+
+    color: semanticColors.primaryButtonTextPressed,
+    colorHovered: semanticColors.primaryButtonTextHovered,
+    colorPressed: semanticColors.primaryButtonTextPressed,
+
+    iconColor: semanticColors.primaryButtonTextPressed,
+    iconColorHovered: semanticColors.primaryButtonTextHovered,
+    iconColorPressed: semanticColors.primaryButtonTextPressed
   };
 };
 
@@ -142,29 +193,39 @@ export const ButtonTokens: IButtonComponent['tokens'] = (props, theme): IButtonT
   !props.disabled && enabledTokens,
   props.primary && primaryEnabledTokens,
   props.circular && circularTokens,
+  props.circular && props.primary && primaryCircularTokens,
+  props.checked && checkedTokens,
+  props.checked && props.primary && primaryCheckedTokens,
   props.disabled && disabledTokens
 ];
+
+const GlobalClassNames = {
+  msButton: 'ms-Button',
+  msButtonIcon: 'ms-Button-icon'
+};
 
 export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): IButtonStylesReturnType => {
   const { className, circular } = props;
 
-  const globalClassNames = getGlobalClassNames(
-    {
-      icon: 'ms-Icon'
-    },
-    theme,
-    true
-  );
+  const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
-      !circular && getFocusStyle(theme),
+      globalClassNames.msButton,
+      !circular && getFocusStyle(theme, { inset: 1, outlineColor: tokens.outlineColor }),
+      circular && {
+        selectors: {
+          [`.${IsFocusVisibleClassName} &:focus`]: {
+            borderWidth: 1
+          }
+        }
+      },
       theme.fonts.medium,
       {
         backgroundColor: tokens.backgroundColor,
         borderColor: tokens.borderColor,
         borderRadius: tokens.borderRadius,
-        borderStyle: 'solid',
+        borderStyle: tokens.borderStyle,
         borderWidth: tokens.borderWidth,
         boxSizing: 'border-box',
         color: tokens.color,
@@ -189,8 +250,9 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
         selectors: {
           [HighContrastSelector]: {
             backgroundColor: tokens.highContrastBackgroundColor,
-            color: tokens.highContrastColor,
             borderColor: tokens.highContrastBorderColor,
+            borderWidth: 1,
+            color: tokens.highContrastColor,
             MsHighContrastAdjust: tokens.msHighContrastAdjust
           },
           ':hover': {
@@ -219,7 +281,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          [`:hover .${globalClassNames.icon}`]: {
+          [`:hover .${globalClassNames.msButtonIcon}`]: {
             color: tokens.iconColorHovered,
 
             selectors: {
@@ -228,7 +290,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
               }
             }
           },
-          [`:active .${globalClassNames.icon}`]: {
+          [`:active .${globalClassNames.msButtonIcon}`]: {
             color: tokens.iconColorPressed,
 
             selectors: {
@@ -242,6 +304,8 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
           // we don't have access to via getFocusStyle.
           [`.${IsFocusVisibleClassName} &:focus`]: {
             borderColor: tokens.borderColorFocused,
+            borderStyle: tokens.borderStyleFocused,
+            borderWidth: tokens.borderWidthFocused,
             outlineColor: tokens.outlineColor,
             backgroundClip: tokens.backgroundClip,
             padding: tokens.contentPaddingFocused
@@ -255,6 +319,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
       height: '100%'
     },
     icon: [
+      globalClassNames.msButtonIcon,
       {
         display: 'flex',
         fontSize: tokens.iconSize,
@@ -268,8 +333,7 @@ export const ButtonStyles: IButtonComponent['styles'] = (props, theme, tokens): 
             color: tokens.highContrastIconColor
           }
         }
-      },
-      globalClassNames.icon
+      }
     ],
     content: {
       overflow: 'visible',

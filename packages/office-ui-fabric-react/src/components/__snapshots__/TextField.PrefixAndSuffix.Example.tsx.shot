@@ -78,11 +78,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -105,7 +105,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -123,7 +124,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -134,8 +135,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-prefix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -171,7 +172,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -182,8 +183,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -195,11 +196,21 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField0"
@@ -249,11 +260,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #a6a6a6;
+                color: #a19f9d;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -278,10 +289,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               ms-TextField-fieldGroup
               {
                 align-items: stretch;
-                background-color: #f4f4f4;
+                background-color: #f3f2f1;
                 background: #ffffff;
-                border-color: #f4f4f4;
-                border: 1px solid #a6a6a6;
+                border-color: #f3f2f1;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: default;
@@ -307,8 +319,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-prefix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #a6a6a6;
+                  background: #f3f2f1;
+                  color: #a19f9d;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -345,7 +357,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #a6a6a6;
+                  color: #a19f9d;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -356,8 +368,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -369,11 +381,21 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   display: none;
                 }
                 &::placeholder {
-                  color: #a6a6a6;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #a6a6a6;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #a19f9d;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             disabled={true}
@@ -445,11 +467,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -472,7 +494,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -490,7 +513,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -511,7 +534,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -522,8 +545,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -535,11 +558,21 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField6"
@@ -555,8 +588,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-suffix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -615,11 +648,11 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 -webkit-font-smoothing: antialiased;
                 box-shadow: none;
                 box-sizing: border-box;
-                color: #333333;
+                color: #323130;
                 display: block;
                 font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                 font-size: 14px;
-                font-weight: 400;
+                font-weight: 600;
                 margin-bottom: 0px;
                 margin-left: 0px;
                 margin-right: 0px;
@@ -642,7 +675,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
               {
                 align-items: stretch;
                 background: #ffffff;
-                border: 1px solid #a6a6a6;
+                border-radius: 2px;
+                border: 1px solid #8a8886;
                 box-shadow: none;
                 box-sizing: border-box;
                 cursor: text;
@@ -660,7 +694,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 position: relative;
               }
               &:hover {
-                border-color: #333333;
+                border-color: #323130;
               }
               @media screen and (-ms-high-contrast: active){&:hover {
                 border-color: Highlight;
@@ -671,8 +705,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-prefix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;
@@ -708,7 +742,7 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   border: none;
                   box-shadow: none;
                   box-sizing: border-box;
-                  color: #333333;
+                  color: #323130;
                   font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
                   font-size: 14px;
                   font-weight: 400;
@@ -719,8 +753,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   min-width: 0px;
                   outline: 0px;
                   padding-bottom: 0;
-                  padding-left: 12px;
-                  padding-right: 12px;
+                  padding-left: 8px;
+                  padding-right: 8px;
                   padding-top: 0;
                   text-overflow: ellipsis;
                   width: 100%;
@@ -732,11 +766,21 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                   display: none;
                 }
                 &::placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
                 &:-ms-input-placeholder {
-                  color: #666666;
+                  -moz-osx-font-smoothing: grayscale;
+                  -webkit-font-smoothing: antialiased;
+                  color: #605e5c;
+                  font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+                  font-size: 14px;
+                  font-weight: 400;
                   opacity: 1;
                 }
             id="TextField9"
@@ -752,8 +796,8 @@ exports[`Component Examples renders TextField.PrefixAndSuffix.Example.tsx correc
                 ms-TextField-suffix
                 {
                   align-items: center;
-                  background: #f4f4f4;
-                  color: #666666;
+                  background: #f3f2f1;
+                  color: #605e5c;
                   display: flex;
                   flex-shrink: 0;
                   line-height: 1px;

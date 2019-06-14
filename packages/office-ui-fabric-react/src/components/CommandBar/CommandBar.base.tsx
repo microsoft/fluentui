@@ -124,15 +124,13 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
   };
 
   private _onRenderItem = (item: ICommandBarItemProps): JSX.Element | React.ReactNode => {
-    const CommandButtonType = this.props.buttonAs || item.commandBarButtonAs || CommandBarButton;
-
-    const itemText = item.text || item.name;
-
     if (item.onRender) {
       // These are the top level items, there is no relevant menu dismissing function to
       // provide for the IContextualMenuItem onRender function. Pass in a no op function instead.
       return item.onRender(item, () => undefined);
     }
+
+    const itemText = item.text || item.name;
     const commandButtonProps: ICommandBarItemProps = {
       allowDisabledFocus: true,
       role: 'menuitem',
@@ -147,12 +145,24 @@ export class CommandBarBase extends BaseComponent<ICommandBarProps, {}> implemen
     if (item.iconOnly && itemText !== undefined) {
       return (
         <TooltipHost content={itemText} {...item.tooltipHostProps}>
-          <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />
+          {this._commandButton(item, commandButtonProps)}
         </TooltipHost>
       );
     }
 
-    return <CommandButtonType {...commandButtonProps as IButtonProps} defaultRender={CommandBarButton} />;
+    return this._commandButton(item, commandButtonProps);
+  };
+
+  private _commandButton = (item: ICommandBarItemProps, props: ICommandBarItemProps): JSX.Element => {
+    if (this.props.buttonAs) {
+      const Type = this.props.buttonAs;
+      return <Type {...props as IButtonProps} defaultRender={CommandBarButton} />;
+    }
+    if (item.commandBarButtonAs) {
+      const Type = item.commandBarButtonAs;
+      return <Type {...props as ICommandBarItemProps} />;
+    }
+    return <CommandBarButton {...props as IButtonProps} defaultRender={CommandBarButton} />;
   };
 
   private _onButtonClick(item: ICommandBarItemProps): (ev: React.MouseEvent<HTMLButtonElement>) => void {

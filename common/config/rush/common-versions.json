@@ -16,13 +16,23 @@
      * instead of the latest version.
      */
     // "some-package": "1.2.3"
-    "@types/react": "16.3.16",
+
+    // Pinning a dependency here forces it to show up in the generated common/temp/package.json,
+    // which reduces the chance of duplicates being added to the dependency tree and can help fix
+    // issues with missing peer dependencies.
+    "@types/react": "16.8.11",
+    "@types/react-dom": "16.8.4",
     "@types/webpack-env": "1.13.9",
     "css-loader": "^0.28.7",
-    "enzyme": "^3.4.1",
-    "jest": "^23.1.0",
-    "react": "~16.6.3",
-    "react-dom": "~16.6.3",
+    // enzyme@3.10 causes issues with asAsync test in utilities
+    "enzyme": "~3.9.0",
+    "jest": "24.1.0",
+    // React deps are pinned to prevent Invalid Hook Warnings with duplicate React deps.
+    // https://reactjs.org/warnings/invalid-hook-call-warning.html#duplicate-react
+    // NOTE: If these are changed, the React versions in most index.html files (and EmptyIndexHtml.mustache)
+    // should also change.
+    "react": "16.8.6",
+    "react-dom": "16.8.6",
     "style-loader": "^0.21.0",
     "webpack": "4.29.5",
     "webpack-cli": "3.2.3",
@@ -43,8 +53,6 @@
      * For example, allow some projects to use an older TypeScript compiler
      * (in addition to whatever "usual" version is being used by other projects in the repo):
      */
-    "react": ["~16.8.0"],
-    "react-dom": ["~16.8.0"],
-    "office-ui-fabric-core": ["^9.0.0", "10.0.0"]
+    // "office-ui-fabric-core": ["^9.0.0", "10.0.0"]
   }
 }

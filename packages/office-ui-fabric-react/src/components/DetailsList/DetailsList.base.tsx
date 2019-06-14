@@ -29,6 +29,7 @@ import { List, IListProps, ScrollToMode } from '../../List';
 import { withViewport } from '../../utilities/decorators/withViewport';
 import { GetGroupCount } from '../../utilities/groupedList/GroupedListUtility';
 import { DEFAULT_CELL_STYLE_PROPS } from './DetailsRow.styles';
+import { CHECK_CELL_WIDTH as CHECKBOX_WIDTH } from './DetailsRowCheck.styles';
 // For every group level there is a GroupSpacer added. Importing this const to have the source value in one place.
 import { SPACER_WIDTH as GROUP_EXPAND_WIDTH } from '../GroupedList/GroupSpacer';
 
@@ -46,13 +47,9 @@ export interface IDetailsListState {
 }
 
 const MIN_COLUMN_WIDTH = 100; // this is the global min width
-const CHECKBOX_WIDTH = 40;
 
 const DEFAULT_RENDERED_WINDOWS_AHEAD = 2;
 const DEFAULT_RENDERED_WINDOWS_BEHIND = 2;
-
-const SHIMMER_INITIAL_ITEMS = 10;
-const SHIMMER_ITEMS = new Array(SHIMMER_INITIAL_ITEMS);
 
 @withViewport
 export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsListState> implements IDetailsList {
@@ -62,7 +59,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     constrainMode: ConstrainMode.horizontalConstrained,
     checkboxVisibility: CheckboxVisibility.onHover,
     isHeaderVisible: true,
-    enableShimmer: false,
     compact: false
   };
 
@@ -215,7 +211,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       dragDropEvents
     } = this.props;
     const { isAllGroupsCollapsed = undefined } = this.props.groupProps || {};
-
+    const newViewportWidth = (newProps.viewport && newProps.viewport.width) || 0;
+    const oldViewportWidth = (viewport && viewport.width) || 0;
     const shouldResetSelection = newProps.setKey !== setKey || newProps.setKey === undefined;
     let shouldForceUpdates = false;
 
@@ -238,7 +235,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
     if (
       newProps.checkboxVisibility !== checkboxVisibility ||
       newProps.columns !== columns ||
-      newProps.viewport!.width !== viewport!.width ||
+      newViewportWidth !== oldViewportWidth ||
       newProps.compact !== compact
     ) {
       shouldForceUpdates = true;
@@ -310,7 +307,6 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       listProps,
       usePageCache,
       onShouldVirtualize,
-      enableShimmer,
       viewport,
       minimumPixelsForDrag,
       getGroupHeight,
@@ -384,7 +380,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       <List
         ref={this._list}
         role="presentation"
-        items={enableShimmer && !items.length ? SHIMMER_ITEMS : items}
+        items={items}
         onRenderCell={this._onRenderListCell(0)}
         usePageCache={usePageCache}
         onShouldVirtualize={onShouldVirtualize}
@@ -712,7 +708,8 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   private _adjustColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): void {
     const adjustedColumns = this._getAdjustedColumns(newProps, forceUpdate, resizingColumnIndex);
-    const { width: viewportWidth } = this.props.viewport!;
+    const { viewport } = this.props;
+    const viewportWidth = viewport && viewport.width ? viewport.width : 0;
 
     if (adjustedColumns) {
       this.setState(
@@ -727,20 +724,16 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
 
   /** Returns adjusted columns, given the viewport size and layout mode. */
   private _getAdjustedColumns(newProps: IDetailsListProps, forceUpdate?: boolean, resizingColumnIndex?: number): IColumn[] {
-    const { items: newItems, layoutMode, selectionMode } = newProps;
+    const { items: newItems, layoutMode, selectionMode, viewport } = newProps;
+    const viewportWidth = viewport && viewport.width ? viewport.width : 0;
     let { columns: newColumns } = newProps;
-    let { width: viewportWidth } = newProps.viewport!;
 
     const columns = this.props ? this.props.columns : [];
     const lastWidth = this.state ? this.state.lastWidth : -1;
     const lastSelectionMode = this.state ? this.state.lastSelectionMode : undefined;
 
-    if (viewportWidth !== undefined) {
-      if (!forceUpdate && lastWidth === viewportWidth && lastSelectionMode === selectionMode && (!columns || newColumns === columns)) {
-        return [];
-      }
-    } else {
-      viewportWidth = this.props.viewport!.width;
+    if (!forceUpdate && lastWidth === viewportWidth && lastSelectionMode === selectionMode && (!columns || newColumns === columns)) {
+      return [];
     }
 
     newColumns = newColumns || buildColumns(newItems, true);

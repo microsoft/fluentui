@@ -1,6 +1,77 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Tue, 04 Jun 2019 12:22:17 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 15:54:00 GMT and should not be manually modified.
+
+## 7.1.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Experiments package: remove Shimmer component
+
+### Minor changes
+
+- Button: Adding allowDisabledFocus prop and adding @docCategory tags on exports.
+- Button: Changing style of all variants to be Fluent by default and removing use of palette in favor of semantic slots.
+- Button: Adding keytips to new Button.
+- Button: Making all MenuButton props optional.
+- Button: Adding uniqueId prop.
+- Convert foundation components that have state to hooks.
+- Support slots API changes.
+- Changes to support slots API refactoring.
+- SplitButton: Improving screenreader narration for secondary action and fixing styling in fabric 7 branch.
+- SplitButton: Adding ability to use Alt+Down key combination from first focus stop and cleaning up API.
+- Button: Adding toggle/checked functionality to Button.
+- Add FloatingSuggestions (FloatingPeoplePicker without inheritence)
+- SelectedItemsList: Add reworked Selected Items (no inheritence + hooks)
+
+### Patches
+
+- Button: Fixing SplitButton so that `root` and `button` slot props do not propagate to inner slots.
+- Button: Conditionally rendering KeytipData.
+- Button: Fixing some className assignments in styling.
+- Render demo app with Markdown instead of PageMarkdown
+- Revert unintended change to Button example.
+- Update and dedupe React deps.
+- Support changes to createComponent API.
+- Remove use of deprecated @autobind decorator
+- SplitButton: Fixing some styling bugs related to the divider.
+- Button: Adding documentation to tokens.
+
+## 6.78.7
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Patches
+
+- Updating snapshots to conform with `getNativeAttributes` changes which should filter out unexpected attributes from primatives more accurately.
+
+## 6.78.6
+Mon, 10 Jun 2019 12:23:59 GMT
+
+### Patches
+
+- Snapshot updates to components for adding aria-hidden to icon component conditionally
 
 ## 6.78.5
 Tue, 04 Jun 2019 12:22:17 GMT

@@ -23,12 +23,22 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
       'ms-ColorPicker-table',
       {
         tableLayout: 'fixed',
-        width: '100%'
+        width: '100%',
+        selectors: {
+          'tbody td:last-of-type .ms-ColorPicker-input': {
+            paddingRight: 0
+          }
+        }
       }
     ],
     tableHeader: [
       {
-        ...theme.fonts.small
+        ...theme.fonts.small,
+        selectors: {
+          td: {
+            paddingBottom: 4
+          }
+        }
       }
     ],
     tableHexCell: [
@@ -45,7 +55,7 @@ export const getStyles = (props: IColorPickerStyleProps): IColorPickerStyles => 
         height: 30,
         selectors: {
           '&.ms-TextField': {
-            paddingRight: 2
+            paddingRight: 4
           },
           '& .ms-TextField-field': {
             minWidth: 'auto',

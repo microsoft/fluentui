@@ -38,12 +38,12 @@ export class PersonaBasicExample extends React.Component<
           <Checkbox label="Include persona details" checked={renderPersonaDetails} onChange={this._onChange} />
         </div>
 
-        <Label className={exampleStyles.exampleLabel}>Size 10 Persona, with no presence</Label>
-        <Persona {...examplePersona} size={PersonaSize.size10} hidePersonaDetails={!renderPersonaDetails} />
-        <Label className={exampleStyles.exampleLabel}>Size 10 Persona, with presence</Label>
+        <Label className={exampleStyles.exampleLabel}>Size 8 Persona, with no presence</Label>
+        <Persona {...examplePersona} size={PersonaSize.size8} hidePersonaDetails={!renderPersonaDetails} />
+        <Label className={exampleStyles.exampleLabel}>Size 8 Persona, with presence</Label>
         <Persona
           {...examplePersona}
-          size={PersonaSize.size10}
+          size={PersonaSize.size8}
           presence={PersonaPresence.offline}
           hidePersonaDetails={!renderPersonaDetails}
         />
@@ -51,13 +51,6 @@ export class PersonaBasicExample extends React.Component<
         <Persona
           {...examplePersona}
           size={PersonaSize.size24}
-          presence={PersonaPresence.online}
-          hidePersonaDetails={!renderPersonaDetails}
-        />
-        <Label className={exampleStyles.exampleLabel}>Size 28 Persona</Label>
-        <Persona
-          {...examplePersona}
-          size={PersonaSize.size28}
           presence={PersonaPresence.online}
           hidePersonaDetails={!renderPersonaDetails}
         />
@@ -71,8 +64,17 @@ export class PersonaBasicExample extends React.Component<
 
         <Label className={exampleStyles.exampleLabel}>Size 40 Persona</Label>
         <Persona {...examplePersona} size={PersonaSize.size40} presence={PersonaPresence.away} hidePersonaDetails={!renderPersonaDetails} />
+
         <Label className={exampleStyles.exampleLabel}>Size 48 Persona (default) </Label>
         <Persona {...examplePersona} hidePersonaDetails={!renderPersonaDetails} presence={PersonaPresence.busy} />
+
+        <Label className={exampleStyles.exampleLabel}>Size 56 Persona (default) </Label>
+        <Persona
+          {...examplePersona}
+          size={PersonaSize.size56}
+          hidePersonaDetails={!renderPersonaDetails}
+          presence={PersonaPresence.online}
+        />
 
         <Label className={exampleStyles.exampleLabel}>Size 72 Persona</Label>
         <Persona {...examplePersona} size={PersonaSize.size72} presence={PersonaPresence.dnd} hidePersonaDetails={!renderPersonaDetails} />

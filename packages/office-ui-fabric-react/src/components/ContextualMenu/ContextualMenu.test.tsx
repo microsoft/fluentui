@@ -510,16 +510,16 @@ describe('ContextualMenu', () => {
     expect(menuItems.length).toEqual(3);
 
     menuItems[0].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 1');
-    expect(document.activeElement.className.split(' ')).not.toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 1');
+    expect(document.activeElement!.className.split(' ')).not.toContain('is-disabled');
 
     menuItems[1].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 2');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 2');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
 
     menuItems[2].focus();
-    expect(document.activeElement.textContent).toEqual('TestText 3');
-    expect(document.activeElement.className.split(' ')).toContain('is-disabled');
+    expect(document.activeElement!.textContent).toEqual('TestText 3');
+    expect(document.activeElement!.className.split(' ')).toContain('is-disabled');
   });
 
   it('cannot click on disabled items', () => {

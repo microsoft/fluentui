@@ -1,10 +1,10 @@
 import * as React from 'react';
+import { ActionButton } from '../../Button';
+import { buttonStyles } from './Nav.styles';
 import { classNamesFunction, divProperties, getNativeProps, getWindow } from '../../Utilities';
 import { FocusZone, FocusZoneDirection } from '../../FocusZone';
-import { ActionButton } from '../../Button';
 import { Icon } from '../../Icon';
-import { buttonStyles } from './Nav.styles';
-import { INav, INavProps, INavLinkGroup, INavLink, INavStyles, INavStyleProps } from './Nav.types';
+import { INav, INavLink, INavLinkGroup, INavProps, INavStyleProps, INavStyles } from './Nav.types';
 
 // The number pixels per indentation level for Nav links.
 const _indentationSize = 14;

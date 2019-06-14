@@ -1,16 +1,23 @@
 /** @jsx withSlots */
 import * as React from 'react';
 import { withSlots, createComponent, getSlots } from '../../Foundation';
-import StackItem from './StackItem/StackItem';
-import { IStackItemProps } from './StackItem/StackItem.types';
-import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
+import { getNativeProps, htmlElementProperties, warnDeprecations } from '../../Utilities';
 import { styles } from './Stack.styles';
-import { getNativeProps, htmlElementProperties } from '../../Utilities';
+import { IStackComponent, IStackProps, IStackSlots } from './Stack.types';
+import { StackItem } from './StackItem/StackItem';
+import { IStackItemProps } from './StackItem/StackItem.types';
 
 const StackItemType = (<StackItem /> as React.ReactElement<IStackItemProps>).type;
 
-const view: IStackComponent['view'] = props => {
+const StackView: IStackComponent['view'] = props => {
   const { as: RootType = 'div', disableShrink, wrap, ...rest } = props;
+
+  warnDeprecations('Stack', props, {
+    gap: 'tokens.childrenGap',
+    maxHeight: 'tokens.maxHeight',
+    maxWidth: 'tokens.maxWidth',
+    padding: 'tokens.padding'
+  });
 
   const stackChildren: (React.ReactChild | null)[] = React.Children.map(
     props.children,
@@ -34,7 +41,7 @@ const view: IStackComponent['view'] = props => {
     }
   );
 
-  const nativeProps = getNativeProps(rest, htmlElementProperties);
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
   const Slots = getSlots<IStackProps, IStackSlots>(props, {
     root: RootType,
@@ -58,10 +65,9 @@ const StackStatics = {
 
 export const Stack: React.StatelessComponent<IStackProps> & {
   Item: React.StatelessComponent<IStackItemProps>;
-} = createComponent({
+} = createComponent(StackView, {
   displayName: 'Stack',
   styles,
-  view,
   statics: StackStatics
 });
 

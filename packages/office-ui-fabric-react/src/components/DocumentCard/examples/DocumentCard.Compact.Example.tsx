@@ -9,7 +9,7 @@ import {
   DocumentCardType,
   IDocumentCardActivityPerson
 } from 'office-ui-fabric-react/lib/DocumentCard';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackTokens } from 'office-ui-fabric-react/lib/Stack';
 import { getTheme } from 'office-ui-fabric-react/lib/Styling';
 import { TestImages } from '../../../common/TestImages';
 
@@ -100,8 +100,10 @@ export class DocumentCardCompactExample extends React.PureComponent {
       }
     };
 
+    const stackTokens: IStackTokens = { childrenGap: 20 };
+
     return (
-      <Stack gap={20}>
+      <Stack tokens={stackTokens}>
         {/* Document preview */}
         <DocumentCard type={DocumentCardType.compact} onClickHref="http://bing.com">
           <DocumentCardPreview previewImages={[previewProps.previewImages[0]]} />

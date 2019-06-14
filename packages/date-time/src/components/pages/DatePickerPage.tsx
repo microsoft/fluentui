@@ -11,7 +11,6 @@ import { Markdown } from '@uifabric/example-app-base/lib/index2';
 
 const DatePickerBasicExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerDisabledExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Disabled.Example.tsx') as string;
-const DatePickerBasicExampleCodepen = require('!@uifabric/codepen-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Basic.Example.tsx') as string;
 const DatePickerWeekNumbersExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.WeekNumbers.Example.tsx') as string;
 const DatePickerRequiredExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Required.Example.tsx') as string;
 const DatePickerInputExampleCode = require('!raw-loader!@uifabric/date-time/src/components/DatePicker/examples/DatePicker.Input.Example.tsx') as string;
@@ -26,7 +25,7 @@ export class DatePickerPage extends React.Component<{}, {}> {
         componentName="DatePicker"
         exampleCards={
           <div>
-            <ExampleCard title="Default DatePicker" code={DatePickerBasicExampleCode} codepenJS={DatePickerBasicExampleCodepen}>
+            <ExampleCard title="Default DatePicker" code={DatePickerBasicExampleCode}>
               <DatePickerBasicExample />
             </ExampleCard>
             <ExampleCard title="Disabled DatePicker" code={DatePickerDisabledExampleCode}>

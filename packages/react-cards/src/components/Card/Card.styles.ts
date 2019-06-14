@@ -3,20 +3,19 @@ import { Depths } from '@uifabric/fluent-theme';
 import { ICardComponent, ICardStylesReturnType, ICardTokenReturnType } from './Card.types';
 
 const GlobalClassNames = {
-  root: 'ms-Card',
-  stack: 'ms-Card-stack'
+  root: 'ms-Card'
 };
 
 const baseTokens: ICardComponent['tokens'] = {
   boxShadow: Depths.depth4,
   childrenGap: 12,
+  childrenMargin: 0,
   cursor: 'default',
   height: 'inherit',
   highContrastBoxShadow: '0 1.6px 3.6px 0 Highlight, 0 0.3px 0.9px 0 Highlight',
   minHeight: '348px',
   minWidth: '212px',
-  maxWidth: '286px',
-  padding: 12
+  maxWidth: '286px'
 };
 
 const compactTokens: ICardComponent['tokens'] = {
@@ -48,7 +47,6 @@ export const CardStyles: ICardComponent['styles'] = (props, theme, tokens): ICar
         boxShadow: tokens.boxShadow,
         cursor: tokens.cursor,
         height: tokens.height,
-        padding: tokens.padding,
         width: tokens.width,
         minWidth: tokens.minWidth,
         maxWidth: tokens.maxWidth,

@@ -52,11 +52,12 @@ export class PanelHandleDismissTargetExample extends React.Component<{}, IPanelH
     }
 
     console.log('Close button clicked or light dismissed.');
-    if (ev.nativeEvent.srcElement && ev.nativeEvent.srcElement.className.indexOf('ms-Button-icon') !== -1) {
+    if (ev.nativeEvent.srcElement && (ev.nativeEvent.srcElement as Element).className.indexOf('ms-Button-icon') !== -1) {
       console.log('Close button clicked.');
     }
-    if (ev.nativeEvent.srcElement && ev.nativeEvent.srcElement.className.indexOf('ms-Overlay') !== -1) {
+    if (ev.nativeEvent.srcElement && (ev.nativeEvent.srcElement as Element).className.indexOf('ms-Overlay') !== -1) {
       console.log('Light dismissed.');
     }
+    this._hidePanel();
   };
 }

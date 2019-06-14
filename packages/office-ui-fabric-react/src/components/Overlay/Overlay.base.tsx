@@ -16,7 +16,7 @@ export class OverlayBase extends BaseComponent<IOverlayProps, {}> {
   public render(): JSX.Element {
     const { isDarkThemed: isDark, className, theme, styles } = this.props;
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const classNames = getClassNames(styles!, {
       theme: theme!,

@@ -277,7 +277,6 @@ export class Stylesheet {
     const styleElement = document.createElement('style');
 
     styleElement.setAttribute('data-merge-styles', 'true');
-    styleElement.type = 'text/css';
 
     const { cspSettings } = this._config;
     if (cspSettings) {
