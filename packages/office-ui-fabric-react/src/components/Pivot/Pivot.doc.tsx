@@ -15,6 +15,7 @@ import { PivotSeparateNoSelectedKeyExample } from './examples/Pivot.SeparateNoSe
 
 const PivotRemoveExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Remove.Example.tsx') as string;
 const PivotBasicExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
+const PivotBasicExampleCodepen = require('!@uifabric/codepen-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Basic.Example.tsx') as string;
 const PivotLargeExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Large.Example.tsx') as string;
 const PivotTabsExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.Tabs.Example.tsx') as string;
 const PivotTabsLargesExampleCode = require('!raw-loader!office-ui-fabric-react/src/components/Pivot/examples/Pivot.TabsLarge.Example.tsx') as string;
@@ -33,6 +34,7 @@ export const PivotPageProps: IDocPageProps = {
     {
       title: 'Default Pivot',
       code: PivotBasicExampleCode,
+      codepenJS: PivotBasicExampleCodepen,
       view: <PivotBasicExample />
     },
     {

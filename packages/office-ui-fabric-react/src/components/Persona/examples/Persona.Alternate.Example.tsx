@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
+import { Stack } from 'office-ui-fabric-react/lib/Stack';
 import { TestImages } from '../../../common/TestImages';
-import './PersonaExample.scss';
 
 const examplePersona: IPersonaSharedProps = {
   imageUrl: TestImages.personaMale,
@@ -13,33 +13,12 @@ const examplePersona: IPersonaSharedProps = {
   showSecondaryText: true
 };
 
-export class PersonaAlternateExample extends React.Component<
-  {},
-  {
-    renderPersonaDetails: boolean;
-  }
-> {
-  constructor(props: {}) {
-    super(props);
-    this.state = {
-      renderPersonaDetails: true
-    };
-  }
-
-  public render(): JSX.Element {
-    const { renderPersonaDetails } = this.state;
-
-    return (
-      <div className="ms-PersonaExample">
-        <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} hidePersonaDetails={!renderPersonaDetails} />
-        <Persona {...examplePersona} size={PersonaSize.size28} presence={PersonaPresence.none} hidePersonaDetails={!renderPersonaDetails} />
-        <Persona
-          {...examplePersona}
-          size={PersonaSize.size32}
-          presence={PersonaPresence.online}
-          hidePersonaDetails={!renderPersonaDetails}
-        />
-      </div>
-    );
-  }
-}
+export const PersonaAlternateExample: React.FunctionComponent = () => {
+  return (
+    <Stack horizontal gap={10}>
+      <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} />
+      <Persona {...examplePersona} size={PersonaSize.size28} presence={PersonaPresence.none} />
+      <Persona {...examplePersona} size={PersonaSize.size32} presence={PersonaPresence.online} />
+    </Stack>
+  );
+};

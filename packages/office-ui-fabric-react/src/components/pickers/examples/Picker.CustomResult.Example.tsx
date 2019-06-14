@@ -20,9 +20,6 @@ import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
 // Helper imports to generate data for this particular examples. Not exported by any package.
 import { TestImages } from '../../../common/TestImages';
 
-import * as exampleStylesImport from '../../../common/_exampleStyles.scss';
-const exampleStyles: any = exampleStylesImport;
-
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
   contextualMenuTarget?: HTMLElement;
@@ -297,10 +294,10 @@ export const SelectedDocumentItem: (documentProps: IPickerItemProps<IFullDocumen
 
   return (
     <DocumentCard onClick={log('You clicked the card.')}>
-      <DocumentCardPreview {...documentPreviewProps as IDocumentCardPreviewProps} />
+      <DocumentCardPreview {...(documentPreviewProps as IDocumentCardPreviewProps)} />
       <DocumentCardLocation location="Marketing Documents" locationHref="http://microsoft.com" ariaLabel="Location, Marketing Documents" />
-      <DocumentCardTitle {...documentTitleProps as IDocumentCardTitleProps} />
-      <DocumentCardActivity {...documentActivityProps as IDocumentCardActivityProps} />
+      <DocumentCardTitle {...(documentTitleProps as IDocumentCardTitleProps)} />
+      <DocumentCardActivity {...(documentActivityProps as IDocumentCardActivityProps)} />
       <DocumentCardActions actions={actions} />
     </DocumentCard>
   );
@@ -320,7 +317,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
     return (
       <div>
         <Checkbox
-          className={exampleStyles.exampleCheckbox}
+          styles={{ root: { margin: '10px 0' } }}
           label="Disable Document Picker"
           checked={this.state.isPickerDisabled}
           onChange={this._onDisabledButtonClick}
@@ -332,8 +329,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
           getTextFromItem={this._getTextFromItem}
           pickerSuggestionsProps={{
             suggestionsHeaderText: 'Suggested Documents',
-            noResultsFoundText: 'No Documents Found',
-            suggestionsItemClassName: 'ms-DocumentPicker-bigSuggestion'
+            noResultsFoundText: 'No Documents Found'
           }}
           disabled={this.state.isPickerDisabled}
           inputProps={{
