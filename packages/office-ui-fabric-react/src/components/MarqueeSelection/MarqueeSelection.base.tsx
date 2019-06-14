@@ -241,15 +241,21 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
           rectHeight = this._dragOrigin.y;
         }
 
-        if (rectTop + rectHeight > rootRect.height) {
-          rectHeight = rootRect.height - rectTop;
+        // constrain rect height to root rect width, if root rect height is valid.
+        if (rootRect.width > 0) {
+          if (rectTop + rectHeight > rootRect.height) {
+            rectHeight = rootRect.height - rectTop;
+          }
         }
 
-        // since we don't have a width pass down to the element, we use the _scrollableSurface width
-        // to constraint the marquee rect to not falls out the right boundary
-        const viewportWidth = rootRect.width > 0 ? rootRect.width : this._scrollableSurface!.clientWidth;
-        if (rectLeft + rectWidth > viewportWidth) {
-          rectWidth = viewportWidth - rectLeft;
+        // constrain rect width to root rect width, if root rect width is valid.
+        if (rootRect.width > 0) {
+          // since we don't have a width pass down to the element, we use the _scrollableSurface width
+          // to constraint the marquee rect to not falls out the right boundary
+          const viewportWidth = rootRect.width > 0 ? rootRect.width : this._scrollableSurface!.clientWidth;
+          if (rectLeft + rectWidth > viewportWidth) {
+            rectWidth = viewportWidth - rectLeft;
+          }
         }
 
         const dragRect = {
@@ -402,7 +408,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
     // check if needs to update selection, only when current _allSelectedIndices
     // is different than previousSelectedIndices
-    let needToUpdate = false;
+    let needToUpdate = true;
     for (const index in this._allSelectedIndices!) {
       if (this._allSelectedIndices![index] !== previousSelectedIndices![index]) {
         needToUpdate = true;
