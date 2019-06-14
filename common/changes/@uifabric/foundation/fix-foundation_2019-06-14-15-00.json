@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/foundation",
+      "comment": "Major bumping the foundation package. (Though the tooling will report this as a patch.)",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/foundation",
+  "email": "dzearing@microsoft.com"
+}
