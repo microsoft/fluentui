@@ -32,6 +32,7 @@ import { SearchBoxStyles } from './styles/SearchBox.styles';
 import { SliderStyles } from './styles/Slider.styles';
 import { SpinButtonStyles } from './styles/SpinButton.styles';
 import { SuggestionItemStyles, SuggestionsStyles } from './styles/PickerSuggestions.styles';
+import { SwatchColorPickerStyles } from './styles/SwatchColorPicker.styles';
 import { TagItemStyles } from './styles/TagPicker.styles';
 import { TeachingBubbleStyles } from './styles/TeachingBubble.styles';
 import { TextFieldStyles } from './styles/TextField.styles';
@@ -168,6 +169,9 @@ export const FluentStyles: any = {
   },
   SuggestionItem: {
     styles: SuggestionItemStyles
+  },
+  SwatchColorPicker: {
+    styles: SwatchColorPickerStyles
   },
   TagItem: {
     styles: TagItemStyles
