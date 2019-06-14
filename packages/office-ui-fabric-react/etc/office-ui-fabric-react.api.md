@@ -32,6 +32,7 @@ import { IStyleFunctionOrObject } from '@uifabric/utilities';
 import { IStyleSet } from '@uifabric/styling';
 import { ITheme } from '@uifabric/styling';
 import { KeyCodes } from '@uifabric/utilities';
+import { Omit } from '@uifabric/utilities';
 import * as PropTypes from 'prop-types';
 import * as React from 'react';
 import { Selection } from '@uifabric/utilities';
@@ -6584,13 +6585,15 @@ export interface IShimmerColors {
 }
 
 // @public
-export interface IShimmeredDetailsListProps extends IDetailsListProps {
+export type IShimmeredDetailsListProps = Omit<IDetailsListProps, 'styles'> & {
+    detailsListStyles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
     enableShimmer?: boolean;
-    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
     removeFadingOverlay?: boolean;
-    shimmerLines?: number;
+    onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
     shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
-}
+    styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
+    shimmerLines?: number;
+};
 
 // @public
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;
