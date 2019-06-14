@@ -1,38 +1,42 @@
+/** @prettier */
+// @ts-check
+/// <reference types="node"/>
+
 /*
   Creates a configuration JS file that exposes the build ID and base URL that the site should load.
  */
 
 const fs = require('fs');
 const path = require('path');
-const { argv, logger } = require('@uifabric/build').just;
 
-/**
- * A Task Function for Fabric Website that Generates a Manifest for UHF Public Site
- */
-module.exports.createPublicFlightConfigTask = function() {
-  return function() {
-    let date = new Date();
+const args = process.argv;
+const baseCDNUrlIndex = process.argv.indexOf('--baseCDNUrl');
+const baseCDNUrl = baseCDNUrlIndex === -1 ? undefined : process.argv[baseCDNUrlIndex + 1];
+if (!baseCDNUrl) {
+  console.error('Must specify --baseCDNUrl argument');
+  process.exit(1);
+}
 
-    // Produces date string of the form yyyyMMdd, e.g. 20180701
-    let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
+let date = new Date();
 
-    let configsToGenerate = ['fabric-website-v5-prod', 'fabric-website-v5-df'];
+// Produces date string of the form yyyyMMdd, e.g. 20180701
+let today = date.getFullYear() + ('0' + (date.getMonth() + 1)).slice(-2) + ('0' + date.getDate()).slice(-2);
 
-    let configData = {
-      version: process.env.BUILD_BUILDNUMBER || '0',
-      baseCDNUrl: argv().baseCDNUrl,
-      buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
-      createdDate: today
-    };
+let configsToGenerate = ['fabric-website-v5-prod', 'fabric-website-v5-df'];
 
-    logger.info('config data:');
-    logger.info(configData);
-
-    configsToGenerate.forEach(fileName => {
-      generateConfig(fileName, path.resolve(process.cwd(), 'flights'), configData);
-    });
-  };
+let configData = {
+  version: process.env.BUILD_BUILDNUMBER || '0',
+  baseCDNUrl: baseCDNUrl,
+  buildName: process.env.BUILD_DEFINITIONNAME || 'localbuild',
+  createdDate: today
 };
+
+console.log('config data:');
+console.log(configData);
+
+configsToGenerate.forEach(fileName => {
+  generateConfig(fileName, path.resolve(process.cwd(), 'flights'), configData);
+});
 
 function generateConfig(fileName, outDir, configData) {
   try {
@@ -44,13 +48,14 @@ function generateConfig(fileName, outDir, configData) {
 
     fs.writeFile(path.join(outDir, `${fileName}.js`), configInitializationCode, err => {
       if (err) {
-        logger.error(`Error writing ${outDir}/${fileName}.js: `, err);
-        return;
+        console.error(`Error writing ${outDir}/${fileName}.js: `, err);
+        process.exit(1);
       } else {
-        logger.info(`Wrote ${outDir}/${fileName}.js`);
+        console.log(`Wrote ${outDir}/${fileName}.js`);
       }
     });
   } catch (e) {
-    logger.error('Error creating output folder', e);
+    console.error('Error creating output folder', e);
+    process.exit(1);
   }
 }

@@ -115,3 +115,6 @@ gulp-cache
 npm-debug.log.*
 
 package-lock.json
+
+# Generated flight files
+/apps/fabric-website/flights
