@@ -10,7 +10,7 @@ export class FabricBase extends React.Component<
   {
     isFocusVisible: boolean;
   }
-  > {
+> {
   private _rootElement = React.createRef<HTMLDivElement>();
   private _disposables: (() => void)[] = [];
 
