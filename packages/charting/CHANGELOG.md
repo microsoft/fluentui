@@ -1,6 +1,14 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 0.131.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Resolved the issue of the legends repeating even with same color and legend
+- Fix missing assets in production build.
 
 ## 0.131.1
 Thu, 13 Jun 2019 00:24:48 GMT

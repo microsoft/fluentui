@@ -15,10 +15,10 @@ const CodepenComponentBase: React.StatelessComponent<ICodepenProps> = props => {
 
   // boilerplate for codepen API
   const htmlContent =
-    '<script src="//unpkg.com/office-ui-fabric-react@beta/dist/office-ui-fabric-react.js"></script>\n<div id="content"></div>';
+    '<script src="//unpkg.com/office-ui-fabric-react@7/dist/office-ui-fabric-react.js"></script>\n<div id="content"></div>';
 
   const headContent =
-    '<script type="text/javascript" src="https://unpkg.com/react@16/umd/react.development.js"></script>\n<script type="text/javascript" src="https://unpkg.com/react-dom@16/umd/react-dom.development.js"></script>';
+    '<script type="text/javascript" src="https://unpkg.com/react@16.8.6/umd/react.development.js"></script>\n<script type="text/javascript" src="https://unpkg.com/react-dom@16.8.6/umd/react-dom.development.js"></script>';
 
   const valueData = {
     title: 'Fabric Example Pen',

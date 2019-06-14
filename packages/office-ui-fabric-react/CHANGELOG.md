@@ -1,6 +1,34 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Thu, 13 Jun 2019 00:24:48 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 15:54:00 GMT and should not be manually modified.
+
+## 7.2.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Set context menu width when using a split button to calculation of total width minus the width of the split menu button
+- Coachmark: Bottom position coachmarks shouldn't be hidden/cut off by other elements on the page.
+- Updated DetailsList example code to provide getKey prop, needed to make seelction work correctly when sorting and filtering are enabled.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 12:20:34 GMT
+
+### Minor changes
+
+- HoverCard: Handle target being null in the case of unset ref
+
+### Patches
+
+- withViewport: Render composed component regardless of viewport height and width
 
 ## 7.0.2
 Thu, 13 Jun 2019 00:24:48 GMT

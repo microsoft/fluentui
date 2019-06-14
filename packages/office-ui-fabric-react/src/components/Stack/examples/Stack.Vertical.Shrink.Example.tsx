@@ -9,6 +9,39 @@ export interface IExampleState {
   stackHeight: number;
 }
 
+// Non-mutating styles definition
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    justifyContent: 'center',
+    overflow: 'hidden'
+  }
+};
+const containerStyles: IStyle = {
+  height: 200
+};
+const nonShrinkingStackItemStyles: IStackStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    height: 50,
+    justifyContent: 'center',
+    overflow: 'hidden'
+  }
+};
+
+// Tokens definition
+const outerStackTokens: IStackTokens = { childrenGap: 5 };
+const innerStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10
+};
+
 export class VerticalStackShrinkExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
     super(props);
@@ -18,42 +51,13 @@ export class VerticalStackShrinkExample extends React.Component<{}, IExampleStat
   }
 
   public render(): JSX.Element {
+    // Mutating styles definition
     const stackStyles: IStackStyles = {
       root: {
         background: DefaultPalette.themeTertiary,
         height: `${this.state.stackHeight}%`,
         overflow: 'hidden'
       }
-    };
-    const stackItemStyles: IStackItemStyles = {
-      root: {
-        alignItems: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        display: 'flex',
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }
-    };
-    const containerStyles: IStyle = {
-      height: 200
-    };
-    const nonShrinkingStackItemStyles: IStackStyles = {
-      root: {
-        alignItems: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        display: 'flex',
-        height: 50,
-        justifyContent: 'center',
-        overflow: 'hidden'
-      }
-    };
-
-    const outerStackTokens: IStackTokens = { childrenGap: 5 };
-    const innerStackTokens: IStackTokens = {
-      childrenGap: 5,
-      padding: 10
     };
 
     return (

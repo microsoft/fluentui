@@ -271,27 +271,27 @@ export function getWeekNumber(date: Date, firstDayOfWeek: DayOfWeek, firstWeekOf
 }
 
 /**
- * Gets a new date with the time portion zeroed out, i.e., set to midnight
- * @param {Date} date - The origin date
- * @returns {Date} A new date with the time set to midnight
- */
-function getDatePart(date: Date): Date {
-  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
-}
-
-/**
  * Gets the date for the first day of the week based on the given date assuming
  * the specified first day of the week.
  * @param {Date} date - The date to find the beginning of the week date for.
  * @return {Date} A new date object representing the first day of the week containing the input date.
  */
-function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
+export function getStartDateOfWeek(date: Date, firstDayOfWeek: DayOfWeek): Date {
   let daysOffset = firstDayOfWeek - date.getDay();
   if (daysOffset > 0) {
     // If first day of week is > date, go 1 week back, to ensure resulting date is in the past.
     daysOffset -= TimeConstants.DaysInOneWeek;
   }
   return addDays(date, daysOffset);
+}
+
+/**
+ * Gets a new date with the time portion zeroed out, i.e., set to midnight
+ * @param {Date} date - The origin date
+ * @returns {Date} A new date with the time set to midnight
+ */
+function getDatePart(date: Date): Date {
+  return new Date(date.getFullYear(), date.getMonth(), date.getDate());
 }
 
 /**
