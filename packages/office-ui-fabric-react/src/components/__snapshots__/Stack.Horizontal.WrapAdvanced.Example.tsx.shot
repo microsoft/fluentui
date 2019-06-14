@@ -1300,11 +1300,11 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
     </div>
   </div>
   <div
-    className=
-
-        {
-          height: 150px;
-        }
+    style={
+      Object {
+        "height": 150,
+      }
+    }
   >
     <div
       className=
@@ -1318,15 +1318,6 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
             justify-content: flex-start;
             overflow: visible;
             width: 100%;
-          }
-          & span {
-            align-items: center;
-            background: #0078d4;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
           }
     >
       <div
@@ -1360,34 +1351,154 @@ exports[`Component Examples renders Stack.Horizontal.WrapAdvanced.Example.tsx co
               flex-shrink: 1;
             }
       >
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           1
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           2
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           3
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           4
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           5
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           6
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           7
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           8
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           9
         </span>
-        <span>
+        <span
+          style={
+            Object {
+              "alignItems": "center",
+              "background": "#0078d4",
+              "color": "#ffffff",
+              "display": "flex",
+              "height": 50,
+              "justifyContent": "center",
+              "width": 50,
+            }
+          }
+        >
           10
         </span>
       </div>

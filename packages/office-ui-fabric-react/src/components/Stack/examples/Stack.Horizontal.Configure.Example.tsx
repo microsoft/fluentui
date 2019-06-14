@@ -1,12 +1,16 @@
 import * as React from 'react';
-import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
-import { Dropdown, IDropdownOption } from 'office-ui-fabric-react/lib/Dropdown';
-import { Slider } from 'office-ui-fabric-react/lib/Slider';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
-import { IStackItemStyles } from '../StackItem/StackItem.types';
-import { mergeStyles, DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
-import { TextField } from 'office-ui-fabric-react/lib/TextField';
+import {
+  Checkbox,
+  DefaultPalette,
+  Dropdown,
+  IDropdownOption,
+  Slider,
+  Stack,
+  IStackStyles,
+  IStackItemStyles,
+  IStackTokens,
+  TextField
+} from 'office-ui-fabric-react';
 
 export type HorizontalAlignment = 'start' | 'center' | 'end' | 'space-around' | 'space-between' | 'space-evenly';
 export type VerticalAlignment = 'start' | 'center' | 'end';
@@ -73,6 +77,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       emptyChildren
     } = this.state;
 
+    // Styles definition
     const stackStyles: IStackStyles = {
       root: [
         {
@@ -103,6 +108,7 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
       }
     };
 
+    // Tokens definition
     const sectionStackTokens: IStackTokens = { childrenGap: 10 };
     const configureStackTokens: IStackTokens = { childrenGap: 20 };
     const exampleStackTokens: IStackTokens = {
@@ -268,12 +274,12 @@ export class HorizontalStackConfigureExample extends React.Component<{}, IExampl
               return hideEmptyChildren ? (
                 <Stack.Item key={index} styles={stackItemStyles} />
               ) : (
-                <span key={index} className={mergeStyles(stackItemStyles.root)} />
+                <span key={index} style={stackItemStyles.root as React.CSSProperties} />
               );
             }
 
             return (
-              <span key={index} className={mergeStyles(stackItemStyles.root)}>
+              <span key={index} style={stackItemStyles.root as React.CSSProperties}>
                 {value}
               </span>
             );
