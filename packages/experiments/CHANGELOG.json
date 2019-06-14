@@ -2,6 +2,34 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "6.78.9",
+      "tag": "@uifabric/experiments_v6.78.9",
+      "date": "Fri, 14 Jun 2019 03:04:18 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button example updated.",
+            "author": "Jason Gore <jagore@microsoft.com>",
+            "commit": "2591368b43ad42b1fe422ca8b12354abbf560c1e"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/merge-styles\" from `^6.19.1` to `^6.19.2`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/utilities\" from `^6.41.1` to `^6.41.2`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^6.189.5` to `^6.190.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^6.23.2` to `^6.23.3`"
+          }
+        ]
+      }
+    },
+    {
       "version": "6.78.8",
       "tag": "@uifabric/experiments_v6.78.8",
       "date": "Wed, 12 Jun 2019 22:15:55 GMT",

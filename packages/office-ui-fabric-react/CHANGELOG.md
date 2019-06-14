@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+
+## 6.190.0
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Minor changes
+
+- HoverCard: Handle target being null in the case of unset ref
+
+### Patches
+
+- Addressing a variety of problems related to style recalculations.
+- withViewport: Render composed component regardless of viewport height and width
 
 ## 6.189.5
 Wed, 12 Jun 2019 22:15:55 GMT

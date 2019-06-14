@@ -1,6 +1,13 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+
+## 6.41.2
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Patches
+
+- The `getClassNames` function now returns memoized classnames, resulting in improved performance in high repeat scenarios (like lists rendering checks.) Reintroduction of #8761.
 
 ## 6.41.1
 Wed, 12 Jun 2019 22:15:55 GMT

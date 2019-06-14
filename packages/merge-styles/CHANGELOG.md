@@ -1,6 +1,13 @@
 # Change Log - @uifabric/merge-styles
 
-This log was last generated on Wed, 12 Jun 2019 22:15:55 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 03:04:18 GMT and should not be manually modified.
+
+## 6.19.2
+Fri, 14 Jun 2019 03:04:18 GMT
+
+### Patches
+
+- Reducing runtime overhead on kebab parsing. Reducing some concatStyleSets overhead.
 
 ## 6.19.1
 Wed, 12 Jun 2019 22:15:55 GMT
