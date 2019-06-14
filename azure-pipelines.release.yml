@@ -1,0 +1,76 @@
+pr: none
+trigger: none
+
+variables:
+  - group: "Github and NPM secrets"
+
+pool:
+  vmImage: "Ubuntu 16.04"
+
+steps:
+  - task: NodeTool@0
+    inputs:
+      versionSpec: "8.x"
+    displayName: "Install Node.js"
+
+  - script: |
+      git config user.name "UI Fabric Build"
+      git config user.email "fabrictactical@service.microsoft.com"
+      git remote set-url origin https://$(githubUser):$(githubPAT)@github.com/OfficeDev/office-ui-fabric-react.git
+    displayName: Authenticate git for pushes
+
+  - script: |
+      node common/scripts/install-run-rush.js install --bypass-policy
+    displayName: rush install
+
+  - script: |
+      npm run build
+    displayName: rush build (Create production build)
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website/dist
+      artifactName: "fabric-website"
+      publishLocation: "Container"
+    displayName: "Publish Artifact: Fabric Website"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website/index.html
+      artifactName: "fabric-website-index"
+      publishLocation: "Container"
+    displayName: "Publish Artifact: Fabric Website index.html"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: packages/office-ui-fabric-react/dist
+      artifactName: "fabric"
+      publishLocation: "Container"
+    displayName: "Publish Artifact: Fabric"
+
+  - script: |
+      node ./common/scripts/install-run-rush.js publish -a -p -b 5.0 -t lts -n $(npmToken) --add-commit-details --set-access-level public
+    displayName: "Publish Change Requests and Bump Versions"
+
+  - script: |
+      node scripts/updateReleaseNotes.js --token=$(githubPAT) --apply --debug
+    displayName: "Update github release notes"
+
+  - script: |
+      npm run create-public-flight-config -- --baseCDNUrl https://fabricweb.azureedge.net/fabric-website/$(Build.BuildNumber)/
+    workingDirectory: apps/fabric-website
+    displayName: "Generate Fabric Website Flight Manifest Files"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website/flights
+      artifactName: "fabric-website-manifests"
+      publishLocation: "Container"
+    displayName: "Publish Artifact: Website manifests"
+
+  - task: PublishBuildArtifacts@1
+    inputs:
+      pathtoPublish: apps/fabric-website-resources/dist
+      artifactName: "fabric-website-resources"
+      publishLocation: "Container"
+    displayName: "Publish Artifact: Fabric Website Resources"
