@@ -6585,15 +6585,16 @@ export interface IShimmerColors {
 }
 
 // @public
-export type IShimmeredDetailsListProps = Omit<IDetailsListProps, 'styles'> & {
-    detailsListStyles?: IStyleFunctionOrObject<IDetailsListStyleProps, IDetailsListStyles>;
+export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
+    detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
-    removeFadingOverlay?: boolean;
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
+    removeFadingOverlay?: boolean;
+    shimmerLines?: number;
+    // @deprecated
     shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
     styles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
-    shimmerLines?: number;
-};
+}
 
 // @public
 export type IShimmeredDetailsListStyleProps = Required<Pick<IShimmeredDetailsListProps, 'theme'>>;
