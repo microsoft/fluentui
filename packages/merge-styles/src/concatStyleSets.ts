@@ -132,7 +132,7 @@ export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | u
  * @param styleSets - One or more stylesets to be merged (each param can also be falsy).
  */
 export function concatStyleSets(...styleSets: (IStyleSet<any> | false | null | undefined)[]): IConcatenatedStyleSet<any> {
-  if (styleSets && styleSets.length === 1 && styleSets[0]) {
+  if (styleSets && styleSets.length === 1 && styleSets[0] && !(styleSets[0] as IStyleSet<any>).subComponentStyles) {
     return styleSets[0] as IConcatenatedStyleSet<any>;
   }
 
