@@ -34,7 +34,7 @@ export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'sty
 
   /**
    * Custom styles to override the styles specific to the ShimmeredDetailsList root area.
-   * @deprecated Use `styles` prop instead
+   * @deprecated Use `styles` prop instead. Any value provided will be ignored.
    */
   shimmerOverlayStyles?: IStyleFunctionOrObject<IShimmeredDetailsListStyleProps, IShimmeredDetailsListStyles>;
 
