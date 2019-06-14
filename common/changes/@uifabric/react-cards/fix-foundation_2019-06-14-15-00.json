@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/react-cards",
+      "comment": "Major bumping the foundation package.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/react-cards",
+  "email": "dzearing@microsoft.com"
+}
