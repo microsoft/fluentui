@@ -1,1 +1,1 @@
-Pickers are used to pick recipients.
+<a target='_blank' href='http://dev.office.com/fabric/components/Pickers'> Pickers</a> are used to pick recipients.

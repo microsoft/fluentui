@@ -1,1 +1,1 @@
-PeoplePickers are used to pick recipients.
+<a target='_blank' href='http://dev.office.com/fabric/components/PeoplePicker'> PeoplePickers</a> are used to pick recipients.
