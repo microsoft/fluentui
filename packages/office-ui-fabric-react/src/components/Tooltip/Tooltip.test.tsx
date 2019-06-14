@@ -28,7 +28,7 @@ describe('Tooltip', () => {
       return element;
     });
 
-    const component = renderer.create(<TooltipBase />);
+    const component = renderer.create(<TooltipBase delay={0} />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot();
 
