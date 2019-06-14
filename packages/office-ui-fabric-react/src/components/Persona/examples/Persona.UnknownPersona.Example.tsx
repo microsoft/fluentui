@@ -5,7 +5,7 @@ import { TestImages } from '../../../common/TestImages';
 
 export const UnknownPersonaExample: React.FunctionComponent = () => {
   return (
-    <Stack gap={10}>
+    <Stack tokens={{ childrenGap: 10 }}>
       <Persona showUnknownPersonaCoin={true} text="Maor Sharett" secondaryText="Designer" size={PersonaSize.size40} />
 
       <Persona

@@ -15,16 +15,19 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
           padding-right: 0;
           padding-top: 5px;
           word-wrap: break-word;
+        }
+        &:not(:first-child) {
+          margin-top: 24px;
         }
   >
     With no maxDisplayedItems
@@ -1048,10 +1051,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
@@ -1059,11 +1062,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           padding-top: 5px;
           word-wrap: break-word;
         }
-    style={
-      Object {
-        "marginTop": "24px",
-      }
-    }
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
   >
     With Custom Divider Icon
   </label>
@@ -2046,10 +2047,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
@@ -2057,11 +2058,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           padding-top: 5px;
           word-wrap: break-word;
         }
-    style={
-      Object {
-        "marginTop": "24px",
-      }
-    }
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
   >
     With maxDisplayedItems set to three
   </label>
@@ -2735,10 +2734,10 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
           font-size: 14px;
           font-weight: 600;
-          margin-bottom: 0px;
-          margin-left: 0px;
-          margin-right: 0px;
-          margin-top: 0px;
+          margin-bottom: 10px;
+          margin-left: 0;
+          margin-right: 0;
+          margin-top: 10px;
           overflow-wrap: break-word;
           padding-bottom: 5px;
           padding-left: 0;
@@ -2746,11 +2745,9 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
           padding-top: 5px;
           word-wrap: break-word;
         }
-    style={
-      Object {
-        "marginTop": "24px",
-      }
-    }
+        &:not(:first-child) {
+          margin-top: 24px;
+        }
   >
     With maxDisplayedItems set to two and overflowIndex set to 1 (second element)
   </label>
@@ -2772,7 +2769,7 @@ exports[`Component Examples renders Breadcrumb.Basic.Example.tsx correctly 1`] =
         }
       >
         <div
-          aria-label="Breadcrumb with maxDisplayedItems set to two and overflowIndex set to 1"
+          aria-label="Breadcrumb with maxDisplayedItems set to 2 and overflowIndex set to 1"
           className=
               ms-Breadcrumb
               {

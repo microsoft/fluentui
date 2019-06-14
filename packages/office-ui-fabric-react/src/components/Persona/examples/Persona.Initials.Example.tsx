@@ -16,7 +16,7 @@ const personaWithInitials: IPersonaSharedProps = {
 
 export const PersonaInitialsExample: React.FunctionComponent = () => {
   return (
-    <Stack gap={10}>
+    <Stack tokens={{ childrenGap: 10 }}>
       <Persona {...examplePersona} text="Kat Larrson" size={PersonaSize.size24} />
       <Persona {...examplePersona} text="Annie" size={PersonaSize.size24} />
       <Persona {...examplePersona} text="Annie Lind" size={PersonaSize.size32} />

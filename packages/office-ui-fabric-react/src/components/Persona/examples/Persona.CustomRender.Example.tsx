@@ -15,7 +15,7 @@ const examplePersona: IPersonaSharedProps = {
 
 export const PersonaCustomRenderExample: React.FunctionComponent = () => {
   return (
-    <Stack gap={10}>
+    <Stack tokens={{ childrenGap: 10 }}>
       <div>Custom icon in secondary text</div>
       <Persona
         {...examplePersona}

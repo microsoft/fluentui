@@ -21,7 +21,7 @@ export const PersonaBasicExample: React.FunctionComponent = () => {
   };
 
   return (
-    <Stack gap={10}>
+    <Stack tokens={{ childrenGap: 10 }}>
       <Checkbox label="Include persona details" checked={renderDetails} onChange={onChange} />
 
       <Label>Size 8 Persona, with no presence</Label>

@@ -15,7 +15,7 @@ const examplePersona: IPersonaSharedProps = {
 
 export const PersonaAlternateExample: React.FunctionComponent = () => {
   return (
-    <Stack horizontal gap={10}>
+    <Stack horizontal tokens={{ childrenGap: 10 }}>
       <Persona {...examplePersona} size={PersonaSize.size24} presence={PersonaPresence.none} />
       <Persona {...examplePersona} size={PersonaSize.size28} presence={PersonaPresence.none} />
       <Persona {...examplePersona} size={PersonaSize.size32} presence={PersonaPresence.online} />
