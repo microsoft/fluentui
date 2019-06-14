@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "kushaly@microsoft.com"
+}
