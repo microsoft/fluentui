@@ -10,10 +10,11 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
         background-color: #ffffff;
         box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
         box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
         font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
         font-size: 10px;
         font-weight: 400;
-        height: 103px;
         margin-bottom: 0px;
         margin-left: 0px;
         margin-right: 0px;
@@ -39,7 +40,6 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
 
         {
           background-color: 	#DCDCDC;
-          float: left;
           height: 30.32px;
           padding-bottom: 17.44px;
           padding-left: 17.44px;
@@ -53,8 +53,6 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
 
         {
           border-bottom: 1px solid gray;
-          float: left;
-          height: 63px;
           margin-left: 4px;
           width: 170px;
         }
@@ -64,14 +62,12 @@ exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
 
           {
             color: #323130;
-            float: left;
             font-size: 14px;
             height: 37px;
             letter-spacing: normal;
             line-height: 1.25;
             overflow: hidden;
             text-align: left;
-            width: 170px;
             word-wrap: break-word;
           }
     >
