@@ -9,7 +9,6 @@ import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
-import { ShowOnlyExamplesContext } from '../../utilities/showOnlyExamples';
 
 export interface IAppState {
   isMenuVisible: boolean;
@@ -68,7 +67,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
         {!isLargeDown && !showOnlyExamples && <div className={classNames.leftNavContainer}>{nav}</div>}
 
         <div className={classNames.content} data-is-scrollable="true">
-          <ShowOnlyExamplesContext.Provider value={{ showOnlyExamples }}>{this.props.children}</ShowOnlyExamplesContext.Provider>
+          {this.props.children}
         </div>
 
         {isLargeDown && (
