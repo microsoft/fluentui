@@ -1,8 +1,8 @@
 import { normalize } from '../../Styling';
 import { IChicletXsmallStyleProps, IChicletXsmallStyles } from './ChicletXsmall.types';
 
-export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles => {
-  const { theme, className } = props;
+export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallStyles => {
+  const { theme, className } = styleProps;
   const { palette } = theme;
 
   return {
@@ -11,11 +11,12 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
       theme.fonts.xSmall,
       normalize,
       {
+        display: 'flex',
+        flexWrap: 'wrap',
         backgroundColor: palette.white,
         boxShadow: '0 1px 3px 0 rgba(0, 0, 0, 0.3)',
         padding: 4,
         width: 250,
-        height: 103,
         userSelect: 'none',
         overflow: 'hidden',
         position: 'relative',
@@ -29,7 +30,6 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     ],
     icon: [
       {
-        float: 'left',
         height: 30.32,
         padding: '17.44px',
         backgroundColor: '	#DCDCDC'
@@ -37,22 +37,18 @@ export const getStyles = (props: IChicletXsmallStyleProps): IChicletXsmallStyles
     ],
     titleBox: [
       {
-        float: 'left',
         marginLeft: 4,
         borderBottom: '1px solid gray',
-        height: 63,
         width: 170
       }
     ],
     title: [
       {
-        float: 'left',
         fontSize: theme.fonts.medium.fontSize,
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
         height: 37, // Two lines of text, making sure the third line is hidden
-        width: 170,
         lineHeight: '1.25',
         overflow: 'hidden',
         wordWrap: 'break-word'

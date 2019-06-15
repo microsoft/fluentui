@@ -59,16 +59,14 @@ function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps): R
 
       <div className={exampleStyles.size}>{'4MB'}</div>
       <div className={exampleStyles.activities}>
-        <div className={exampleStyles.actions}>
-          {buttonProps &&
-            buttonProps.map((buttonProp: IButtonProps, index: number) => {
-              return (
-                <div className={exampleStyles.action} key={index}>
-                  <IconButton {...buttonProp} />
-                </div>
-              );
-            })}
-        </div>
+        {buttonProps &&
+          buttonProps.map((buttonProp: IButtonProps, index: number) => {
+            return (
+              <div className={exampleStyles.action} key={index}>
+                <IconButton {...buttonProp} />
+              </div>
+            );
+          })}
       </div>
     </div>
   );

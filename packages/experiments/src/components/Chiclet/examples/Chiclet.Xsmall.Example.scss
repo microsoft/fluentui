@@ -1,51 +1,35 @@
 .footer {
-  clear: both;
-  display: block;
-  height: 36px;
-  bottom: 1;
-  position: 'absolute';
+  display: flex;
 }
 
 .activities {
-  width: 184px;
-  height: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  width: 190px;
   font-size: 12px;
   line-height: 1.83;
   letter-spacing: normal;
-  float: right;
-}
-
-.actions {
-  margin-top: 5px;
-  position: relative;
 }
 
 .action {
-  float: right;
   cursor: pointer;
-  padding-top: 0px;
-  width: 30px;
-  height: 20px;
   background-color: white;
   color: #0078d7;
 }
 
 .attach {
-  float: left;
   width: 25px;
-  height: 20px;
-  padding-top: 5px;
+  align-self: center;
   cursor: pointer;
   background-color: white;
   color: #0078d7;
 }
 
 .size {
-  float: left;
-  width: 18px;
-  height: 1px;
+  width: 25px;
   font-size: 12px;
-  padding-top: 10.5px;
+  align-self: center;
   line-height: 1.83;
   letter-spacing: normal;
 }
