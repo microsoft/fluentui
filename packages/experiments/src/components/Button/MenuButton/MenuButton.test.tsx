@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { Stack, Text } from 'office-ui-fabric-react';
 import { MenuButton } from './MenuButton';
@@ -48,5 +49,27 @@ describe('MenuButton', () => {
     );
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
+  });
+
+  it('focuses correctly when focus is triggered via IMenuButton interface', () => {
+    const wrapper = mount(
+      <div>
+        <MenuButton content="Menu Button 1" />
+        <MenuButton content="Menu Button 2" />
+        <MenuButton content="Menu Button 3" />
+      </div>
+    );
+
+    const buttons = wrapper.getDOMNode().querySelectorAll('button.ms-MenuButton') as NodeListOf<HTMLButtonElement>;
+    expect(buttons.length).toEqual(3);
+
+    buttons[0].focus();
+    expect(document.activeElement!.children[0].children[0].textContent).toEqual('Menu Button 1');
+
+    buttons[1].focus();
+    expect(document.activeElement!.children[0].children[0].textContent).toEqual('Menu Button 2');
+
+    buttons[2].focus();
+    expect(document.activeElement!.children[0].children[0].textContent).toEqual('Menu Button 3');
   });
 });

@@ -1,5 +1,6 @@
 import * as React from 'react';
 import * as renderer from 'react-test-renderer';
+import { mount } from 'enzyme';
 
 import { CommandBar, Icon, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
@@ -98,5 +99,27 @@ describe('Button', () => {
     const component = renderer.create(<Button primary checked circular icon="Volume3" />);
     const tree = component.toJSON();
     expect(tree).toMatchSnapshot;
+  });
+
+  it('focuses correctly when focus is triggered via IButton interface', () => {
+    const wrapper = mount(
+      <div>
+        <Button content="Button 1" />
+        <Button content="Button 2" />
+        <Button content="Button 3" />
+      </div>
+    );
+
+    const buttons = wrapper.getDOMNode().querySelectorAll('button.ms-Button') as NodeListOf<HTMLButtonElement>;
+    expect(buttons.length).toEqual(3);
+
+    buttons[0].focus();
+    expect(document.activeElement!.textContent).toEqual('Button 1');
+
+    buttons[1].focus();
+    expect(document.activeElement!.textContent).toEqual('Button 2');
+
+    buttons[2].focus();
+    expect(document.activeElement!.textContent).toEqual('Button 3');
   });
 });
