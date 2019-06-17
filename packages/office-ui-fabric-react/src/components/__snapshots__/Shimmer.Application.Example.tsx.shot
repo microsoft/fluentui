@@ -213,8 +213,9 @@ exports[`Component Examples renders Shimmer.Application.Example.tsx correctly 1`
       >
         <div
           aria-colcount={1}
+          aria-label="Content is being fetched"
           aria-readonly="true"
-          aria-rowcount={11}
+          aria-rowcount={-1}
           role="grid"
         >
           <div
