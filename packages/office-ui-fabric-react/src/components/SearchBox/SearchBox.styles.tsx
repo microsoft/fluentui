@@ -1,9 +1,13 @@
-import { HighContrastSelector, AnimationVariables, normalize } from '../../Styling';
+import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
+  const placeholderStyles: IStyle = {
+    color: semanticColors.inputPlaceholderText,
+    opacity: 1
+  };
 
   return {
     root: [
@@ -149,13 +153,10 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           '::-ms-clear': {
             display: 'none'
           },
-          '::placeholder': {
-            color: semanticColors.inputPlaceholderText,
-            opacity: 1
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.inputPlaceholderText
-          }
+          // '::placeholder': placeholderStyles && { opacity: 1 }, // Chrome, Safari, Opera, Firefox
+          '::placeholder': placeholderStyles, // Chrome, Safari, Opera, Firefox
+          ':-ms-input-placeholder': placeholderStyles, // IE 10+
+          '::-ms-input-placeholder': placeholderStyles // Edge
         }
       },
       disabled && {

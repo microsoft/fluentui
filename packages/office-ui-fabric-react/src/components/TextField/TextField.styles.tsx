@@ -84,6 +84,18 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     flexShrink: 0
   };
 
+  const placeholderStyles: IStyle = [
+    theme.fonts.medium,
+    {
+      color: semanticColors.inputPlaceholderText,
+      opacity: 1
+    }
+  ];
+
+  const disabledPlaceholderStyles: IStyle = {
+    color: semanticColors.disabledText
+  };
+
   return {
     root: [
       classNames.root,
@@ -277,20 +289,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '::-ms-clear': {
             display: 'none'
           },
-          '::placeholder': [
-            theme.fonts.medium,
-            {
-              color: semanticColors.inputPlaceholderText,
-              opacity: 1
-            }
-          ],
-          ':-ms-input-placeholder': [
-            theme.fonts.medium,
-            {
-              color: semanticColors.inputPlaceholderText,
-              opacity: 1
-            }
-          ]
+          '::placeholder': placeholderStyles, // Chrome, Safari, Opera, Firefox
+          ':-ms-input-placeholder': placeholderStyles, // IE 10+
+          '::-ms-input-placeholder': placeholderStyles // Edge
         }
       },
       multiline &&
@@ -325,12 +326,9 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         borderColor: 'transparent',
         color: semanticColors.disabledText,
         selectors: {
-          '::placeholder': {
-            color: semanticColors.disabledText
-          },
-          ':-ms-input-placeholder': {
-            color: semanticColors.disabledText
-          }
+          '::placeholder': disabledPlaceholderStyles, // Chrome, Safari, Opera, Firefox
+          ':-ms-input-placeholder': disabledPlaceholderStyles, // IE 10+
+          '::-ms-input-placeholder': disabledPlaceholderStyles // Edge
         }
       },
       underlined && {

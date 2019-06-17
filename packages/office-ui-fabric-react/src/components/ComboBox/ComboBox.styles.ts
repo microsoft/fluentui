@@ -3,6 +3,7 @@ import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
+import { IStyle } from '@uifabric/styling';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
@@ -217,6 +218,15 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootColorErrored = semanticColors.errorText;
     const ComboBoxOptionHeaderTextColor = semanticColors.menuHeader;
     const ComboBoxOptionDividerBorderColor = semanticColors.bodyDivider;
+    const placeholderStyles: IStyle = {
+      color: semanticColors.inputPlaceholderText
+    };
+    const hoverPlaceholderStyles: IStyle = {
+      color: palette.neutralPrimary
+    };
+    const disabledPlaceholderStyles: IStyle = {
+      color: semanticColors.disabledText
+    };
 
     const ComboBoxRootHighContrastFocused = {
       color: 'HighlightText',
@@ -270,19 +280,6 @@ export const getStyles = memoizeFunction(
               display: 'inline-block',
               marginBottom: '8px'
             },
-            input: {
-              selectors: {
-                '::-ms-clear': {
-                  display: 'none'
-                },
-                '::placeholder': {
-                  color: semanticColors.inputPlaceholderText
-                },
-                ':-ms-input-placeholder': {
-                  color: semanticColors.inputPlaceholderText
-                }
-              }
-            },
             '&.is-open': {
               borderColor: ComboBoxRootBorderColorFocused,
               selectors: {
@@ -299,12 +296,9 @@ export const getStyles = memoizeFunction(
           '.ms-ComboBox-Input': {
             color: palette.neutralDark,
             selectors: {
-              '::placeholder': {
-                color: palette.neutralPrimary
-              },
-              ':-ms-input-placeholder': {
-                color: palette.neutralPrimary
-              }
+              '::placeholder': hoverPlaceholderStyles, // Chrome, Safari, Opera, Firefox
+              ':-ms-input-placeholder': hoverPlaceholderStyles, // IE 10+
+              '::-ms-input-placeholder': hoverPlaceholderStyles // Edge
             }
           },
           [HighContrastSelector]: {
@@ -349,19 +343,24 @@ export const getStyles = memoizeFunction(
         outline: 'none',
         font: 'inherit',
         textOverflow: 'ellipsis',
-        padding: '0'
+        padding: '0',
+        selectors: {
+          '::-ms-clear': {
+            display: 'none'
+          },
+          '::placeholder': placeholderStyles, // Chrome, Safari, Opera, Firefox
+          ':-ms-input-placeholder': placeholderStyles, // IE 10+
+          '::-ms-input-placeholder': placeholderStyles // Edge
+        }
       },
 
       inputDisabled: [
         getDisabledStyles(theme),
         {
           selectors: {
-            '::placeholder': {
-              color: semanticColors.disabledText
-            },
-            ':-ms-input-placeholder': {
-              color: semanticColors.disabledText
-            }
+            '::placeholder': disabledPlaceholderStyles, // Chrome, Safari, Opera, Firefox
+            ':-ms-input-placeholder': disabledPlaceholderStyles, // IE 10+
+            '::-ms-input-placeholder': disabledPlaceholderStyles // Edge
           }
         }
       ],
