@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[ms\_row\_divider in xml](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/layout/view_date_time_picker.xml)
+[ms\_row\_divider in XML](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/layout/view_date_time_picker.xml)
