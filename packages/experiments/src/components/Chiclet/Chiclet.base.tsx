@@ -13,6 +13,7 @@ export interface IChicletState {
 export class ChicletBase extends BaseComponent<IChicletProps, IChicletState> {
   constructor(props: IChicletProps) {
     super(props);
+
     const chicletCardProps = getOpenGraphProperties(this.props.url);
     this.state = { chicletCardProps: chicletCardProps };
   }

@@ -9,12 +9,6 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
   constructor(props: IFooterComponent) {
     super(props);
   }
-
-  public render(): JSX.Element {
-    const { buttonProps, attachProp } = this.props;
-
-    return _renderFooter(buttonProps, attachProp);
-  }
 }
 
 export interface IChicletXsmallExampleState {
@@ -31,45 +25,10 @@ export class ChicletXsmallExample extends React.Component<{}, IChicletXsmallExam
   }
 
   public render(): JSX.Element {
-    const footerButtonProps: IButtonProps[] = [{ iconProps: { iconName: 'More' } }, { iconProps: { iconName: 'CloudUpload' } }];
-
-    const attachButtonProp: IButtonProps = { iconProps: { iconName: 'Attach' } };
-
-    const footer = <FooterComponent buttonProps={footerButtonProps} attachProp={attachButtonProp} />;
-
     return (
       <Stack tokens={{ childrenGap: 16 }}>
-        <Chiclet url={TEST_URL} size={ChicletSize.xSmall} footer={footer} />
+        <Chiclet url={TEST_URL} size={ChicletSize.xSmall} />
       </Stack>
     );
   }
-}
-
-export interface IFooterComponent extends React.Props<FooterComponent> {
-  buttonProps: IButtonProps[];
-  attachProp: IButtonProps;
-}
-
-function _renderFooter(buttonProps: IButtonProps[], attachProp: IButtonProps): React.ReactElement<HTMLDivElement> {
-  return (
-    <div className={exampleStyles.footer}>
-      <div className={exampleStyles.attach}>
-        <IconButton {...attachProp} />
-      </div>
-
-      <div className={exampleStyles.size}>{'4MB'}</div>
-      <div className={exampleStyles.activities}>
-        <div className={exampleStyles.actions}>
-          {buttonProps &&
-            buttonProps.map((buttonProp: IButtonProps, index: number) => {
-              return (
-                <div className={exampleStyles.action} key={index}>
-                  <IconButton {...buttonProp} />
-                </div>
-              );
-            })}
-        </div>
-      </div>
-    </div>
-  );
 }
