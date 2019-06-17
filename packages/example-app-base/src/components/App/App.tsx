@@ -9,6 +9,7 @@ import { INavLink, Nav } from 'office-ui-fabric-react/lib/Nav';
 import { IProcessedStyleSet } from 'office-ui-fabric-react/lib/Styling';
 import { Panel, PanelType } from 'office-ui-fabric-react/lib/Panel';
 import { ResponsiveMode, withResponsiveMode } from 'office-ui-fabric-react/lib/utilities/decorators/withResponsiveMode';
+import { showOnlyExamples } from '../../utilities/showOnlyExamples';
 
 export interface IAppState {
   isMenuVisible: boolean;
@@ -34,9 +35,9 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const showOnlyExamples = this._baseUrl.indexOf('docsExample=true') > -1;
+    const onlyExamples = showOnlyExamples(this._baseUrl);
 
-    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples }));
+    const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples: onlyExamples }));
 
     const isLargeDown = responsiveMode <= ResponsiveMode.large;
 
@@ -51,7 +52,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
 
     const app = (
       <Fabric className={classNames.root}>
-        {!showOnlyExamples && (
+        {!onlyExamples && (
           <div className={classNames.headerContainer}>
             <Header
               isLargeDown={isLargeDown}
@@ -64,7 +65,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
           </div>
         )}
 
-        {!isLargeDown && !showOnlyExamples && <div className={classNames.leftNavContainer}>{nav}</div>}
+        {!isLargeDown && !onlyExamples && <div className={classNames.leftNavContainer}>{nav}</div>}
 
         <div className={classNames.content} data-is-scrollable="true">
           {this.props.children}
