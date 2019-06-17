@@ -3388,6 +3388,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     indentWidth?: number;
     initialFocusedIndex?: number;
     isHeaderVisible?: boolean;
+    isPlaceholderData?: boolean;
     items: any[];
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
@@ -6585,6 +6586,7 @@ export interface IShimmerColors {
 
 // @public
 export interface IShimmeredDetailsListProps extends IDetailsListProps {
+    ariaLabelForShimmer?: string;
     enableShimmer?: boolean;
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
     removeFadingOverlay?: boolean;
