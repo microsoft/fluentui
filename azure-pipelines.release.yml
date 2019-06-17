@@ -49,7 +49,7 @@ steps:
     displayName: "Publish Artifact: Fabric"
 
   - script: |
-      node ./common/scripts/install-run-rush.js publish -a -p -b 5.0 -t lts -n $(npmToken) --add-commit-details --set-access-level public
+      node ./common/scripts/install-run-rush.js publish -a -p -b 5.0 -n $(npmToken) --add-commit-details --set-access-level public
     displayName: "Publish Change Requests and Bump Versions"
 
   - script: |
