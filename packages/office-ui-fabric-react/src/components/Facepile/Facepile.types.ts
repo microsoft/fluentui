@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { FacepileBase } from './Facepile.base';
 import { IStyle, ITheme } from '../../Styling';
-import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';
+import { IRefObject, IRenderFunction, IStyleFunctionOrObject } from '../../Utilities';
 import { IButtonProps } from '../../Button';
 import { IPersonaSharedProps, PersonaInitialsColor, PersonaSize } from '../../Persona';
 import { IKeytipProps } from '../../Keytip';
@@ -73,6 +73,12 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
 
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;
+
+  /** Optional custom renderer for the persona */
+  onRenderPersona?: IRenderFunction<IFacepilePersona>;
+
+  /** Optional custom renderer for the persona coins */
+  onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
 
   /** Method to access properties on the underlying Persona control */
   getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
