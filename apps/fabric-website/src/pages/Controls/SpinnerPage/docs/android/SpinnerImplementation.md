@@ -18,7 +18,7 @@
 
 ### Source code
 
-[CiruclarProgress styles](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/values/styles.xml)
+[CircularProgress styles](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/res/values/styles.xml)
 
 ### Sample code
 
