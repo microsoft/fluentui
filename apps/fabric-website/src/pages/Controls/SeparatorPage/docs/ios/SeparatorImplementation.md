@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[MSTableViewCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)
+[Used in MSTableViewCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)

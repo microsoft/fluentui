@@ -22,4 +22,4 @@
 
 ### Sample code
 
-[Progress activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_progress.xml)
+[Progress demo xml](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_progress.xml)
