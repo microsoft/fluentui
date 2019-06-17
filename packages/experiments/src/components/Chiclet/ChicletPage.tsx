@@ -9,6 +9,8 @@ import { ChicletFooterExample } from './examples/Chiclet.Footer.Example';
 const ChicletFooterExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Footer.Example.tsx') as string;
 import { ChicletXsmallExample } from './examples/Chiclet.Xsmall.Example';
 const ChicletXsmallExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Xsmall.Example.tsx') as string;
+import { ChicletXsmallFooterExample } from './examples/Chiclet.Xsmall.Footer.Example';
+const ChicletXsmallFooterExampleCode = require('!raw-loader!@uifabric/experiments/src/components/Chiclet/examples/Chiclet.Xsmall.Footer.Example.tsx') as string;
 
 export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
   public render(): JSX.Element {
@@ -29,6 +31,9 @@ export class ChicletPage extends React.Component<IComponentDemoPageProps, {}> {
             </ExampleCard>
             <ExampleCard title="xSmall-sized Chiclet" isOptIn={true} code={ChicletXsmallExampleCode}>
               <ChicletXsmallExample />
+            </ExampleCard>
+            <ExampleCard title="xSmall-sized Chiclet with Footer" isOptIn={true} code={ChicletXsmallFooterExampleCode}>
+              <ChicletXsmallFooterExample />
             </ExampleCard>
           </div>
         }

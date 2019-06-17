@@ -18,25 +18,17 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
     const role = onClick ? 'button' : 'link';
     const tabIndex = onClick ? 0 : undefined;
 
-    /*return (
-      <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
-        {renderIcon(itemType, this._classNames.icon)}
-        <div className={this._classNames.titleBox}>
-          <div className={this._classNames.title}>{title ? title : null}</div>
+    if (!image && !imageAlt) {
+      return (
+        <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
+          {renderIcon(itemType, this._classNames.icon)}
+          <div className={this._classNames.titleBox}>
+            <div className={this._classNames.title}>{title ? title : null}</div>
+          </div>
+          {footer}
         </div>
-        {footer}
-      </div>
-    );*/
-
-    /*return (
-      <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
-        <div className={this._classNames.preview}>{renderPreview(image, imageHeight, imageWidth, itemType, imageAlt)}</div>
-        <div className={this._classNames.titleBox}>
-          <div className={this._classNames.title}>{title ? title : null}</div>
-        </div>
-        {footer}
-      </div>
-    );*/
+      );
+    }
 
     return (
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
