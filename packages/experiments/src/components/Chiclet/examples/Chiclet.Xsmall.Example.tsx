@@ -1,15 +1,8 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
-import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
-import * as exampleStyles from './Chiclet.Xsmall.Example.scss';
+import { Stack } from 'office-ui-fabric-react';
 
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
-
-export class FooterComponent extends React.Component<IFooterComponent, {}> {
-  constructor(props: IFooterComponent) {
-    super(props);
-  }
-}
 
 export interface IChicletXsmallExampleState {
   textFieldValue: string;

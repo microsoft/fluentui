@@ -2,9 +2,10 @@ import { normalize } from '../../Styling';
 import { IChicletXsmallStyleProps, IChicletXsmallStyles } from './ChicletXsmall.types';
 
 export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallStyles => {
-  const { theme, className } = styleProps;
+  const { theme, className, footer } = styleProps;
   const { palette } = theme;
 
+  console.log(footer);
   return {
     root: [
       'ms-ChicletXsmall',

@@ -17,7 +17,7 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
   }
 }
 
-export interface IChicletXsmallExampleState {
+export interface IChicletXsmallFooterExampleState {
   textFieldValue: string;
 }
 
