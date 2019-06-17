@@ -2,6 +2,47 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.3.0",
+      "tag": "office-ui-fabric-react_v7.3.0",
+      "date": "Mon, 17 Jun 2019 12:26:51 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "1b5f968113964678777cde8b693fad78849fd5e0"
+          },
+          {
+            "comment": "Stack: Improving examples so that they have better performance and removing anti-patterns from them.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "25d917a8ae982fe98044a4ae7029045c88d338d9"
+          },
+          {
+            "comment": "Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area.\"",
+            "author": "Aneesha Kommineni <aneeshak@microsoft.com>",
+            "commit": "210fbabee3045f1e8d06735c82e535816024b89a"
+          },
+          {
+            "comment": "Updates some documentation links.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "b93694e376beb0ae35f733d1038d1410fa22cf8a"
+          }
+        ],
+        "minor": [
+          {
+            "comment": "exposing datemath function to calculate beginning of week",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "59313f6e34af73f0141f4932bb71a39c778f5d55"
+          },
+          {
+            "comment": "ShimmeredDetailsList: fixes issue where fading overlay was not removed when real item passed.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "9242d23ffb2c050051a8f34400f276fe5c93e813"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.2.0",
       "tag": "office-ui-fabric-react_v7.2.0",
       "date": "Fri, 14 Jun 2019 15:54:00 GMT",
