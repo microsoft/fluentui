@@ -17,14 +17,17 @@ function dehydrateSarifReport(report: SarifLog): Result[] {
 async function testComponent(component: { name: string; pageName: string; elem: React.ReactElement<any> }) {
   it(`checks accessibility of ${component.name} (${component.pageName})`, async () => {
     const sarifReport: SarifLog = await getSarifReport(component.elem);
+    const errors = dehydrateSarifReport(sarifReport);
 
-    // Save the report into `dist/reports` folder
-    fs.writeFileSync(path.resolve(__dirname, `../../dist/reports/${component.pageName}.sarif`), JSON.stringify(sarifReport), {
-      encoding: 'utf8'
-    });
+    // Save the report into `dist/reports` folder (only when there're errors)
+    if (errors.length > 0) {
+      fs.writeFileSync(path.resolve(__dirname, `../../dist/reports/${component.pageName}.sarif`), JSON.stringify(sarifReport), {
+        encoding: 'utf8'
+      });
+    }
 
     // Match the 'errors' section with snapshot
-    expect(dehydrateSarifReport(sarifReport)).toMatchSnapshot();
+    expect(errors).toMatchSnapshot();
   });
 }
 
