@@ -403,7 +403,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         <div
           role="grid"
           aria-label={ariaLabelForGrid}
-          aria-rowcount={isPlaceholderData ? 0 : rowCount}
+          aria-rowcount={isPlaceholderData ? -1 : rowCount}
           aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
           aria-readonly="true"
         >
