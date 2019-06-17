@@ -13,6 +13,8 @@ export interface IChicletXsmallStyles {
    */
   icon?: IStyle;
 
+  innerIcon?: IStyle;
+
   /**
    * Style for preview information about the file, such as title and link.
    */

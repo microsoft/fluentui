@@ -35,11 +35,23 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
         backgroundColor: '	#DCDCDC'
       }
     ],
+    innerIcon: [
+      {
+        position: 'absolute',
+        height: 10,
+        alignSelf: 'baseline'
+      }
+    ],
+    preview: [
+      {
+        flexBasis: '25%'
+      }
+    ],
     titleBox: [
       {
         marginLeft: 4,
         borderBottom: '1px solid gray',
-        width: 170
+        flexBasis: '70%'
       }
     ],
     title: [
