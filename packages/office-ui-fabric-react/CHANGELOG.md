@@ -1,6 +1,56 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2019 12:26:51 GMT and should not be manually modified.
+
+## 7.3.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- exposing datemath function to calculate beginning of week
+- ShimmeredDetailsList: fixes issue where fading overlay was not removed when real item passed.
+
+### Patches
+
+- Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization
+- Stack: Improving examples so that they have better performance and removing anti-patterns from them.
+- Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area."
+- Updates some documentation links.
+
+## 7.2.0
+Fri, 14 Jun 2019 15:54:00 GMT
+
+### Minor changes
+
+- Major bumping the foundation package.
+
+## 7.1.1
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Set context menu width when using a split button to calculation of total width minus the width of the split menu button
+- Coachmark: Bottom position coachmarks shouldn't be hidden/cut off by other elements on the page.
+- Updated DetailsList example code to provide getKey prop, needed to make seelction work correctly when sorting and filtering are enabled.
+- Fix missing assets in production build.
+
+## 7.1.0
+Thu, 13 Jun 2019 12:20:34 GMT
+
+### Minor changes
+
+- HoverCard: Handle target being null in the case of unset ref
+
+### Patches
+
+- withViewport: Render composed component regardless of viewport height and width
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 7.0.0
 Wed, 12 Jun 2019 00:42:26 GMT

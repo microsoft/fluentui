@@ -19,7 +19,7 @@ storiesOf('Tooltip', module)
     </Screener>
   ))
   .addStory('Default', () => (
-    <TooltipHost content="This is the tooltip" id="myID" calloutProps={{ gapSpace: 0 }}>
+    <TooltipHost content="This is the tooltip" id="myID" delay={0} calloutProps={{ gapSpace: 0 }}>
       Hover over me
     </TooltipHost>
   ));
@@ -42,10 +42,10 @@ storiesOf('Tooltip - Multiple', module)
   ))
   .addStory('Two Tooltips', () => (
     <div>
-      <TooltipHost content="I am the outer tooltip">
+      <TooltipHost delay={0} content="I am the outer tooltip">
         <div id="outerTooltip">I am the outer tooltip text</div>
         <div id="innerTooltip" style={{ padding: '20px' }}>
-          <TooltipHost content="I am the inner tooltip">
+          <TooltipHost delay={0} content="I am the inner tooltip">
             and I am the inner tooltip text
           </TooltipHost>
         </div>

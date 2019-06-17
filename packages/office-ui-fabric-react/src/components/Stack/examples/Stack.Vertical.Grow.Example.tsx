@@ -4,30 +4,32 @@ import { IStackStyles, IStackTokens } from '../Stack.types';
 import { IStackItemStyles } from '../StackItem/StackItem.types';
 import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
 
+// Styles definition
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary,
+    height: 250
+  }
+};
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    alignItems: 'center',
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    display: 'flex',
+    justifyContent: 'center'
+  }
+};
+
+// Tokens definition
+const outerStackTokens: IStackTokens = { childrenGap: 5 };
+const innerStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10
+};
+
 export class VerticalStackGrowExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const stackStyles: IStackStyles = {
-      root: {
-        background: DefaultPalette.themeTertiary,
-        height: 250
-      }
-    };
-    const stackItemStyles: IStackItemStyles = {
-      root: {
-        alignItems: 'center',
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        display: 'flex',
-        justifyContent: 'center'
-      }
-    };
-
-    const outerStackTokens: IStackTokens = { childrenGap: 5 };
-    const innerStackTokens: IStackTokens = {
-      childrenGap: 5,
-      padding: 10
-    };
-
     return (
       <Stack tokens={outerStackTokens}>
         <Stack styles={stackStyles} tokens={innerStackTokens}>
