@@ -146,6 +146,11 @@ exports[`Component Examples renders OverflowSet.Custom.Example.tsx correctly 1`]
             }
             &:-ms-input-placeholder {
               color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
             }
         id="SearchBox1"
         onChange={[Function]}
