@@ -13,7 +13,7 @@ import {
   createTheme,
   DocumentCardTitle
 } from 'office-ui-fabric-react';
-import { Actionable as NewBaseButton, Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
+import { Actionable, Button as NewButton, MenuButton, SplitButton, Toggle as NewToggle } from '@uifabric/experiments';
 
 const defaultTheme = createTheme({});
 
@@ -75,7 +75,7 @@ export const Scenarios: IDropdownOption[] = [
     text: 'NewSplitButton',
     data: { timing: [], content: <SplitButton content="I am a button" menu={menuProps} /> }
   },
-  { key: 'newbasebutton', text: 'NewBaseButton', data: { timing: [], content: <NewBaseButton>I am a button</NewBaseButton> } },
+  { key: 'actionable', text: 'Actionable', data: { timing: [], content: <Actionable>I am a button</Actionable> } },
   { key: 'button', text: 'button', data: { timing: [], content: <button>I am a button</button> } },
   {
     key: 'rowsnostyles',

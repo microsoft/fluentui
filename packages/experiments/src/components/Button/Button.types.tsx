@@ -1,3 +1,4 @@
+import { IRawFontStyle, IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { ITextSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, ISlottableProps, ISlotProp, IStyleableComponentProps } from '../../Foundation';
 import { IIconSlot } from '../../utilities/factoryComponents.types';
@@ -53,13 +54,23 @@ export type INativeButtonProps = Omit<React.AllHTMLAttributes<HTMLAnchorElement 
  */
 export interface IButtonProps
   extends ISlottableProps<IButtonSlots>,
-    Pick<
-      IActionableProps,
-      'href' | 'primary' | 'circular' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'
-    >,
+    Pick<IActionableProps, 'href' | 'disabled' | 'checked' | 'allowDisabledFocus' | 'ariaLabel' | 'keytipProps' | 'uniqueId'>,
     IStyleableComponentProps<IButtonProps, IButtonTokens, IButtonStyles>,
     IBaseProps<IButton>,
-    INativeButtonProps {}
+    INativeButtonProps {
+  /**
+   * Defines whether the Button should be circular.
+   * In general, circular Buttons should not specify the menu and container slots.
+   * @defaultvalue false
+   */
+  circular?: boolean;
+
+  /**
+   * Defines whether the visual representation of the Button should be emphasized.
+   * @defaultvalue false
+   */
+  primary?: boolean;
+}
 
 /**
  * {@docCategory Button}
@@ -70,6 +81,31 @@ export interface IButtonViewProps extends Pick<IActionableViewProps, 'buttonRef'
  * {@docCategory Button}
  */
 export interface IButtonTokens extends IActionableTokens {
+  /**
+   * Defines how far should the background extend within the Button when the focus is on it.
+   */
+  backgroundClipFocused?: IRawStyleBase['backgroundClip'];
+
+  /**
+   * Defines the border color of the Button when the focus is on it.
+   */
+  borderColorFocused?: string;
+
+  /**
+   * Defines the border style of the Button when the focus is on it.
+   */
+  borderStyleFocused?: string;
+
+  /**
+   * Defines the border width of the Button when the focus is on it.
+   */
+  borderWidthFocused?: number | string;
+
+  /**
+   * Defines the padding of the Button, between the Button border and the Button contents, when the focus is on the Button.
+   */
+  contentPaddingFocused?: number | string;
+
   /**
    * Defines the icon color of the Button when in high contrast mode.
    */
@@ -108,7 +144,7 @@ export interface IButtonTokens extends IActionableTokens {
   /**
    * Defines the font weight of the icon inside the Button.
    */
-  iconWeight?: number;
+  iconWeight?: IRawFontStyle['fontWeight'];
 }
 
 /**

@@ -1,32 +1,62 @@
 import { getFocusStyle, getGlobalClassNames, HighContrastSelector } from '../../../Styling';
-import { IsFocusVisibleClassName } from '../../../Utilities';
-import { IActionableComponent, IActionableStylesReturnType } from './Actionable.types';
+import { IActionableComponent, IActionableStylesReturnType, IActionableTokenReturnType } from './Actionable.types';
 
-export const ButtonTokens: IActionableComponent['tokens'] = {
-  contentPadding: '1px 6px',
-  textSize: 13.333
+export const baseTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => {
+  const { semanticColors } = theme;
+
+  return {
+    backgroundColor: semanticColors.bodyBackground,
+    backgroundColorHovered: semanticColors.bodyStandoutBackground,
+    backgroundColorPressed: semanticColors.bodyStandoutBackground,
+
+    borderColor: semanticColors.variantBorder,
+    borderColorHovered: semanticColors.variantBorderHovered,
+    borderColorPressed: semanticColors.variantBorderHovered,
+
+    borderStyle: 'solid',
+
+    color: semanticColors.bodyText,
+    colorHovered: semanticColors.buttonTextChecked,
+    colorPressed: semanticColors.buttonTextChecked
+  };
 };
+
+export const disabledTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => {
+  const { semanticColors } = theme;
+
+  return {
+    backgroundColor: semanticColors.disabledBackground,
+    backgroundColorHovered: semanticColors.disabledBackground,
+    backgroundColorPressed: semanticColors.disabledBackground,
+
+    borderColor: semanticColors.variantBorder,
+    borderColorHovered: semanticColors.variantBorder,
+    borderColorPressed: semanticColors.variantBorder,
+
+    color: semanticColors.disabledBodyText,
+    colorHovered: semanticColors.disabledBodyText,
+    colorPressed: semanticColors.disabledBodyText
+  };
+};
+
+export const ActionableTokens: IActionableComponent['tokens'] = (props, theme): IActionableTokenReturnType => [
+  baseTokens,
+  props.disabled && disabledTokens
+];
 
 const GlobalClassNames = {
-  msButton: 'ms-Button'
+  msActionable: 'ms-Actionable'
 };
 
-export const ButtonStyles: IActionableComponent['styles'] = (props, theme, tokens): IActionableStylesReturnType => {
-  const { className, circular } = props;
+export const ActionableStyles: IActionableComponent['styles'] = (props, theme, tokens): IActionableStylesReturnType => {
+  const { className } = props;
 
   const globalClassNames = getGlobalClassNames(GlobalClassNames, theme);
 
   return {
     root: [
-      globalClassNames.msButton,
-      !circular && getFocusStyle(theme, { inset: 1, outlineColor: tokens.outlineColor }),
-      circular && {
-        selectors: {
-          [`.${IsFocusVisibleClassName} &:focus`]: {
-            borderWidth: 1
-          }
-        }
-      },
+      globalClassNames.msActionable,
+      getFocusStyle(theme, { inset: 1, outlineColor: tokens.outlineColor }),
       theme.fonts.medium,
       {
         backgroundColor: tokens.backgroundColor,
@@ -45,14 +75,14 @@ export const ButtonStyles: IActionableComponent['styles'] = (props, theme, token
         margin: 0,
         minWidth: tokens.minWidth,
         minHeight: tokens.minHeight,
+        outlineColor: tokens.outlineColor,
         overflow: 'hidden',
         padding: 0,
-        textDecoration: 'none',
         textAlign: 'center',
+        textDecoration: 'none',
         userSelect: 'none',
         verticalAlign: 'baseline',
         width: tokens.width,
-        outlineColor: tokens.outlineColor,
 
         selectors: {
           [HighContrastSelector]: {
@@ -64,48 +94,37 @@ export const ButtonStyles: IActionableComponent['styles'] = (props, theme, token
           },
           ':hover': {
             backgroundColor: tokens.backgroundColorHovered,
-            color: tokens.colorHovered,
             borderColor: tokens.borderColorHovered,
+            color: tokens.colorHovered,
 
             selectors: {
               [HighContrastSelector]: {
                 backgroundColor: tokens.highContrastBackgroundColorHovered,
-                color: tokens.highContrastColorHovered,
-                borderColor: tokens.highContrastBorderColorHovered
+                borderColor: tokens.highContrastBorderColorHovered,
+                color: tokens.highContrastColorHovered
               }
             }
           },
           ':active': {
             backgroundColor: tokens.backgroundColorPressed,
-            color: tokens.colorPressed,
             borderColor: tokens.borderColorPressed,
+            color: tokens.colorPressed,
 
             selectors: {
               [HighContrastSelector]: {
                 backgroundColor: tokens.highContrastBackgroundColorPressed,
-                color: tokens.highContrastColorPressed,
-                borderColor: tokens.highContrastBorderColorPressed
+                borderColor: tokens.highContrastBorderColorPressed,
+                color: tokens.highContrastColorPressed
               }
             }
-          },
-          // We have this here to establish the focus style of circular Buttons. If we use getFocusStyle to get the focus style, then the
-          // focus style for circular Buttons becomes busted, and the way to fix it is via the backgroundClip and padding attributes, which
-          // we don't have access to via getFocusStyle.
-          [`.${IsFocusVisibleClassName} &:focus`]: {
-            borderColor: tokens.borderColorFocused,
-            borderStyle: tokens.borderStyleFocused,
-            borderWidth: tokens.borderWidthFocused,
-            outlineColor: tokens.outlineColor,
-            backgroundClip: tokens.backgroundClip,
-            padding: tokens.contentPaddingFocused
           }
         }
       },
       className
     ],
     stack: {
-      padding: tokens.contentPadding,
-      height: '100%'
+      height: '100%',
+      padding: tokens.contentPadding
     }
   };
 };

@@ -1,4 +1,3 @@
-import { IRawStyleBase } from '@uifabric/merge-styles/lib/IRawStyleBase';
 import { IFontWeight, IKeytipProps, IStackSlot } from 'office-ui-fabric-react';
 import { IComponent, IComponentStyles, IHTMLElementSlot, ISlotProp, ISlottableProps, IStyleableComponentProps } from '../../../Foundation';
 import { IBaseProps } from '../../../Utilities';
@@ -69,19 +68,6 @@ export interface IActionableProps
   href?: string;
 
   /**
-   * Defines whether the visual representation of the Button should be emphasized.
-   * @defaultvalue false
-   */
-  primary?: boolean;
-
-  /**
-   * Defines whether the Button should be circular.
-   * In general, circular Buttons should not specify the menu and container slots.
-   * @defaultvalue false
-   */
-  circular?: boolean;
-
-  /**
    * Defines whether the Button is disabled.
    * @defaultvalue false
    */
@@ -89,6 +75,7 @@ export interface IActionableProps
 
   /**
    * Defines whether the Button is in a checked state (for toggle buttons).
+   * @defaultvalue false
    */
   checked?: boolean;
 
@@ -129,11 +116,6 @@ export interface IActionableViewProps extends IActionableProps {
  */
 export interface IActionableTokens {
   /**
-   * Defines how far should the background extend within the Button.
-   */
-  backgroundClip?: IRawStyleBase['backgroundClip'];
-
-  /**
    * Defines the background color of the Button.
    */
   backgroundColor?: string;
@@ -152,11 +134,6 @@ export interface IActionableTokens {
    * Defines the border color of the Button.
    */
   borderColor?: string;
-
-  /**
-   * Defines the border color of the Button when the focus is on it.
-   */
-  borderColorFocused?: string;
 
   /**
    * Defines the border color of the Button when it is in a hovered state.
@@ -179,19 +156,9 @@ export interface IActionableTokens {
   borderStyle?: string;
 
   /**
-   * Defines the border style of the Button when the focus is on it.
-   */
-  borderStyleFocused?: string;
-
-  /**
    * Defines the border width of the Button.
    */
   borderWidth?: number | string;
-
-  /**
-   * Defines the border width of the Button when the focus is on it.
-   */
-  borderWidthFocused?: number | string;
 
   /**
    * Defines the text color of elements inside the Button.
@@ -212,11 +179,6 @@ export interface IActionableTokens {
    * Defines the padding of the Button, between the Button border and the Button contents.
    */
   contentPadding?: number | string;
-
-  /**
-   * Defines the padding of the Button, between the Button border and the Button contents, when the focus is on the Button.
-   */
-  contentPaddingFocused?: number | string;
 
   /**
    * Defines the mouse cursor to be displayed when pointing over the Button.
