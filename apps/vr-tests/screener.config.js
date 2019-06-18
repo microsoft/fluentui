@@ -3,32 +3,8 @@ module.exports = {
   storybookConfigDir: ".storybook",
   apiKey: process.env.SCREENER_API_KEY,
   resolution: "1024x768",
-  baseBranch:
-    (process.env.TRAVIS_PULL_REQUEST !== "false" &&
-      process.env.TRAVIS_BRANCH) ||
-    "5.0",
+  baseBranch: (process.env.SYSTEM_PULLREQUEST_TARGETBRANCH
+    ? process.env.SYSTEM_PULLREQUEST_TARGETBRANCH.replace(/^refs\/heads\//, "")
+    : "5.0"),
   failureExitCode: 0
 };
-
-// if (process.env.TRAVIS_BRANCH === 'master') {
-// config.browsers = [
-//   {
-//     browserName: 'internet explorer',
-//     version: '11.103'
-//   },
-//   {
-//     browserName: 'chrome'
-//   },
-// {
-//   browserName: 'firefox'
-// },
-// {
-//   browserName: 'microsoftedge'
-// }
-// ];
-
-// config.sauce = {
-//   username: 'dzearing',
-//   accessKey: process.env.SAUCE_API_KEY
-// };
-// }

@@ -30,10 +30,6 @@ steps:
     displayName: build ci
 
   - script: |
-      npm run bundlesize
-    displayName: check bundle size
-
-  - script: |
       npm run vrtest
     displayName: run VR Test
     env:
