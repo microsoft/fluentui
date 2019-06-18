@@ -38,6 +38,7 @@ export interface ITileCell<TItem> {
   aspectRatio: number;
   grid: ITileGrid;
   isPlaceholder?: boolean;
+  desiredHeight?: number;
   onRender(content: TItem, finalSize: { width: number; height: number }): React.ReactNode;
 }
 
@@ -134,18 +135,26 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
   }
 
   public scrollToIndex(index: number, mode: ScrollToMode = ScrollToMode.auto): void {
-    if (this.listRef.current) {
-      this.listRef.current.scrollToIndex(
-        index,
-        (itemIndex: number) => {
-          let cellHeight = 0;
-          if (this.props.getItemHeight) {
-            cellHeight = this.props.getItemHeight(itemIndex);
-          }
-          return cellHeight;
-        },
-        mode
-      );
+    if (this.listRef && this.listRef.current) {
+      if (this.state.cells[index].grid.mode === TilesGridMode.none) {
+        // if we are using grid mode none, we reliably know the height of the cell,
+        // so we can implement the measureItem callback.
+        this.listRef.current.scrollToIndex(
+          index,
+          (itemIndex: number) => {
+            const cell = this.state.cells[index];
+            if (cell && cell.desiredHeight !== undefined) {
+              return cell.desiredHeight;
+            }
+            return 0;
+          },
+          mode
+        );
+      } else {
+        // otherwise, we do not implement the measure item callback,
+        // then the List will just scroll to the nearest page
+        this.listRef.current.scrollToIndex(index, undefined, mode);
+      }
     }
   }
 
@@ -379,11 +388,9 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
     }
 
     const { cells } = this.state;
+    const { cellsPerPage = CELLS_PER_PAGE } = this.props;
 
-    const endIndex = Math.min(
-      cells.length,
-      this.props.cellsPerPage && this.props.cellsPerPage > 0 ? startIndex + this.props.cellsPerPage : startIndex + CELLS_PER_PAGE
-    );
+    const endIndex = Math.min(cells.length, startIndex + cellsPerPage);
 
     let rowWidth = 0;
     let rowStart = 0;
@@ -637,7 +644,8 @@ export class TilesList<TItem> extends React.Component<ITilesListProps<TItem>, IT
             onRender: gridItem.onRender,
             grid: grid,
             key: gridItem.key,
-            isPlaceholder: gridItem.isPlaceholder
+            isPlaceholder: gridItem.isPlaceholder,
+            desiredHeight: desiredSize ? desiredSize.height : undefined
           });
         }
       } else {

@@ -241,7 +241,7 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
           rectHeight = this._dragOrigin.y;
         }
 
-        // constrain rect height to root rect width, if root rect height is valid.
+        // constrain rect height to root rect height, if root rect height is valid.
         if (rootRect.width > 0) {
           if (rectTop + rectHeight > rootRect.height) {
             rectHeight = rootRect.height - rectTop;

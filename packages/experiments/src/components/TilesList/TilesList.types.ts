@@ -125,11 +125,6 @@ export interface ITilesListProps<TItem> extends IBaseProps, React.Props<TilesLis
    */
   onActiveElementChanged?: (element: HTMLElement) => void;
   /**
-   * calback to return the height of a single item in pixels
-   */
-  getItemHeight?: (index: number) => number;
-
-  /**
    * props to pass through to the underlying List
    */
   listProps?: Partial<IListProps>;
