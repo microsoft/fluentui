@@ -282,7 +282,6 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       normalize,
       getPlaceholderStyles(placeholderStyles),
       {
-        fontSize: FontSizes.medium,
         borderRadius: 0,
         border: 'none',
         background: 'none',
