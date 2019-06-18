@@ -26,7 +26,7 @@ steps:
     displayName: check change
 
   - script: |
-      npm run buildci
+      npm run buildfast
     displayName: build ci
 
   - script: |
