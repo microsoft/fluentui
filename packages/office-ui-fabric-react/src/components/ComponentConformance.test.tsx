@@ -89,9 +89,6 @@ const requiredProps: { [key: string]: any } = {
   },
   Text: {
     children: 'TestText'
-  },
-  Tooltip: {
-    delay: 0
   }
 };
 
