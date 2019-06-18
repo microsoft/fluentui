@@ -12,9 +12,6 @@ export function getPlaceholderStyles(
   [key: string]: IStyle;
 } {
   return {
-    '::-ms-clear': {
-      display: 'none'
-    },
     '::placeholder': styles, // Chrome, Safari, Opera, Firefox
     ':-ms-input-placeholder': styles, // IE 10+
     '::-ms-input-placeholder': styles // Edge
