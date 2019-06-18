@@ -52,102 +52,30 @@ const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath
 
 // Steps (mustache template names and output file paths)
 const steps = [
-  {
-    template: 'NpmIgnore',
-    output: '.npmignore'
-  },
-  {
-    template: 'Npmrc',
-    output: '.npmrc'
-  },
-  {
-    template: 'ChangelogJson',
-    output: 'CHANGELOG.json'
-  },
-  {
-    template: 'ChangelogMarkdown',
-    output: 'CHANGELOG.md'
-  },
-  {
-    template: 'License',
-    output: 'LICENSE'
-  },
-  {
-    template: 'Readme',
-    output: 'README.md'
-  },
-  {
-    template: 'IndexHtml',
-    output: 'index.html'
-  },
-  {
-    template: 'JustConfig',
-    output: 'just.config.js'
-  },
-  {
-    template: 'JestConfig',
-    output: 'jest.config.js'
-  },
-  {
-    template: 'JsConfig',
-    output: 'jsconfig.json'
-  },
-  {
-    template: 'PackageJson',
-    output: 'package.json'
-  },
-  {
-    template: 'PrettierConfig',
-    output: 'prettier.config.js'
-  },
-  {
-    template: 'TsConfig',
-    output: 'tsconfig.json'
-  },
-  {
-    template: 'TsLint',
-    output: 'tslint.json'
-  },
-  {
-    template: 'WebpackConfig',
-    output: 'webpack.config.js'
-  },
-  {
-    template: 'WebpackServeConfig',
-    output: 'webpack.serve.config.js'
-  },
-  {
-    template: 'Tests',
-    output: path.join('config', 'tests.js')
-  },
-  {
-    template: 'PreCopy',
-    output: path.join('config', 'pre-copy.json')
-  },
-  {
-    template: 'Tests',
-    output: path.join('src', 'common', 'tests.js')
-  },
-  {
-    template: 'IndexTs',
-    output: path.join('src', 'index.ts')
-  },
-  {
-    template: 'Version',
-    output: path.join('src', 'version.ts')
-  },
-  {
-    template: 'AppDefinition',
-    output: path.join('src', 'demo', 'AppDefinition.tsx')
-  },
-  {
-    template: 'GettingStartedPage',
-    output: path.join('src', 'demo', 'GettingStartedPage.tsx')
-  },
-  {
-    template: 'Demo',
-    output: path.join('src', 'demo', 'index.tsx')
-  }
+  { template: 'NpmIgnore', output: '.npmignore' },
+  { template: 'Npmrc', output: '.npmrc' },
+  { template: 'ChangelogJson', output: 'CHANGELOG.json' },
+  { template: 'ChangelogMarkdown', output: 'CHANGELOG.md' },
+  { template: 'License', output: 'LICENSE' },
+  { template: 'Readme', output: 'README.md' },
+  { template: 'IndexHtml', output: 'index.html' },
+  { template: 'JestConfig', output: 'jest.config.js' },
+  { template: 'JestDomConfig', output: 'jest.dom.config.js' },
+  { template: 'JsConfig', output: 'jsconfig.json' },
+  { template: 'PackageJson', output: 'package.json' },
+  { template: 'PrettierConfig', output: 'prettier.config.js' },
+  { template: 'TsConfig', output: 'tsconfig.json' },
+  { template: 'TsLint', output: 'tslint.json' },
+  { template: 'WebpackConfig', output: 'webpack.config.js' },
+  { template: 'WebpackServeConfig', output: 'webpack.serve.config.js' },
+  { template: 'Tests', output: path.join('config', 'tests.js') },
+  { template: 'PreCopy', output: path.join('config', 'pre-copy.json') },
+  { template: 'Tests', output: path.join('src', 'common', 'tests.js') },
+  { template: 'IndexTs', output: path.join('src', 'index.ts') },
+  { template: 'Version', output: path.join('src', 'version.ts') },
+  { template: 'AppDefinition', output: path.join('src', 'demo', 'AppDefinition.tsx') },
+  { template: 'GettingStartedPage', output: path.join('src', 'demo', 'GettingStartedPage.tsx') },
+  { template: 'Demo', output: path.join('src', 'demo', 'index.tsx') }
 ];
 
 // Strings
@@ -213,14 +141,8 @@ function readFileCallback(error, data, templateName, outputFilePath, callback, r
     // As of writing, @uifabric/experiments also depends on all the packages the template needs,
     // so we grab the current versions from there and add tags for them in the view object.
     const templatePackageJson = JSON.parse(data);
-    const deps = {
-      ...templatePackageJson.devDependencies,
-      ...templatePackageJson.dependencies
-    };
-    const depVersions = {
-      ...experimentsPackageJson.devDependencies,
-      ...experimentsPackageJson.dependencies
-    };
+    const deps = { ...templatePackageJson.devDependencies, ...templatePackageJson.dependencies };
+    const depVersions = { ...experimentsPackageJson.devDependencies, ...experimentsPackageJson.dependencies };
     const packages = Object.keys(deps);
     for (const package of packages) {
       if (depVersions[package]) {
