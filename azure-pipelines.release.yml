@@ -37,13 +37,6 @@ steps:
 
   - task: PublishBuildArtifacts@1
     inputs:
-      pathtoPublish: apps/fabric-website/index.html
-      artifactName: "fabric-website-index"
-      publishLocation: "Container"
-    displayName: "Publish Artifact: Fabric Website index.html"
-
-  - task: PublishBuildArtifacts@1
-    inputs:
       pathtoPublish: packages/office-ui-fabric-react/dist
       artifactName: "fabric"
       publishLocation: "Container"
