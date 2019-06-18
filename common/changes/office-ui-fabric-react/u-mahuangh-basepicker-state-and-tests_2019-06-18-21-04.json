@@ -3,7 +3,7 @@
     {
       "packageName": "office-ui-fabric-react",
       "comment": "Fix tests for BasePicker + remove redundant state",
-      "type": "minor"
+      "type": "patch"
     }
   ],
   "packageName": "office-ui-fabric-react",
