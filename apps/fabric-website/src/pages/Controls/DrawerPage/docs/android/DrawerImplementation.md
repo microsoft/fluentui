@@ -2,8 +2,10 @@
 
 `Drawer`
 
-### Library
+### Source code
 
-[UI Fabric Android](https://github.com/OfficeDev/ui-fabric-android)
+[Drawer](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric/src/main/java/com/microsoft/officeuifabric/drawer/Drawer.kt)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DrawerActivity.kt)
+### Sample code
+
+[Drawer demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DrawerActivity.kt)

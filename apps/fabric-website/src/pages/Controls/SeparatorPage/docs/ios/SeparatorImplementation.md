@@ -2,8 +2,10 @@
 
 `MSSeparator`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSSeparator](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Controls/MSSeparator.swift)
 
-[Sample Code](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)
+### Sample code
+
+[Used in MSTableViewCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/Table%20View/MSTableViewCell.swift)
