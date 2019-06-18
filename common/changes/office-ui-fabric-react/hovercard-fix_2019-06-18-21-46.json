@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Moved setSate in _setHeightOffsetEveryFrame so it does not run more than necessary and added and if to check if there is a given position and final height, then stop running _updateAsyncPosition",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "esteban.230@hotmail.com"
+}
