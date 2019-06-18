@@ -12,6 +12,6 @@
 
 ### Sample code
 
-[MSActivityIndicatorView demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSActivityIndicatorViewDemoController.swift)
+[MSActivityIndicatorView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSActivityIndicatorViewDemoController.swift)
 
-[MSHUD demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSHUDDemoController.swift)
+[MSHUD demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSHUDDemoController.swift)

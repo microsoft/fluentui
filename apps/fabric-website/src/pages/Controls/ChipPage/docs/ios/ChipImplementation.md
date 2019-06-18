@@ -12,6 +12,6 @@
 
 ### Sample code
 
-[MSBadgeView demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeViewDemoController.swift)
+[MSBadgeView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeViewDemoController.swift)
 
-[MSBadgeField demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeFieldDemoController.swift)
+[MSBadgeField demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSBadgeFieldDemoController.swift)

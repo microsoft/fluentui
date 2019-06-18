@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[MSDrawer demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSDrawerDemoController.swift)
+[MSDrawerController demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSDrawerDemoController.swift)

@@ -24,6 +24,6 @@
 
 ### Sample code
 
-[MSTableViewCell demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSTableViewCellDemoController.swift)
+[MSTableViewCell demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSTableViewCellDemoController.swift)
 
-[Other cells demo controller](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/OtherCellsDemoController.swift)
+[Other cells demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/OtherCellsDemoController.swift)
