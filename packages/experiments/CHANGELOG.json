@@ -2,6 +2,31 @@
   "name": "@uifabric/experiments",
   "entries": [
     {
+      "version": "7.1.1",
+      "tag": "@uifabric/experiments_v7.1.1",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Button: Getting anchor native props if href prop is specified.",
+            "author": "Makoto Morimoto <Humberto.Morimoto@microsoft.com>",
+            "commit": "f666ee652c500f55caf7350bcf963eedceedd1f3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/charting\" from `^0.131.2` to `^0.131.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.3` to `^7.0.4`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.0",
       "tag": "@uifabric/experiments_v7.1.0",
       "date": "Fri, 14 Jun 2019 15:54:00 GMT",

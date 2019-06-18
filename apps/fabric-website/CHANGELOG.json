@@ -2,6 +2,41 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.2",
+      "tag": "@uifabric/fabric-website_v7.1.2",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Add overview and controls request sections to mobile pages.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "f5dee98562532e42770200076def7b25f923a047"
+          },
+          {
+            "comment": "Add theme slots page",
+            "author": "Jordan Janzen <jordancjanzen@gmail.com>",
+            "commit": "92abe8370a935219acf554c2f9454ae4a8f7735d"
+          },
+          {
+            "comment": "Add links to documentation pages.",
+            "author": "Vitalie Braga <vibraga@microsoft.com>",
+            "commit": "219b7fca507becd76c88d237c9b4271983797daf"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.3` to `^7.0.4`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/experiments\" from `^7.1.0` to `^7.1.1`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.3.0` to `^7.4.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.1",
       "tag": "@uifabric/fabric-website_v7.1.1",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",
