@@ -151,7 +151,7 @@ export class BaseSelectedItemsList<T, P extends IBaseSelectedItemsListProps<T>> 
     this.selection.setItems(this.state.items);
   }
 
-  public componentWillReceiveProps(newProps: P, nextContent: any): void {
+  public componentWillReceiveProps(newProps: P): void {
     const newItems = newProps.selectedItems;
 
     if (newItems) {
