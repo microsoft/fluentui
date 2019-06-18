@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization",
+      "comment": "Only run KeytipManager update when relevant keytip props have changed in KeytipData.",
       "type": "patch"
     }
   ],

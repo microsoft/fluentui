@@ -29,13 +29,14 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
 
   public render(): JSX.Element {
     const {
+      detailsListStyles,
       enableShimmer,
       items,
       listProps,
       onRenderCustomPlaceholder,
       removeFadingOverlay,
       shimmerLines,
-      shimmerOverlayStyles: styles,
+      styles,
       theme,
       ...restProps
     } = this.props;
@@ -48,13 +49,15 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
 
     const newListProps = {
       ...listProps,
-      // Adds to the optional listProp className a fading out overlay className only when shimmer enabled and not disabled.
-      className: enableShimmer && !removeFadingOverlay ? css(this._classNames.root, listClassName) : undefined
+      // Adds to the optional listProp className a fading out overlay className only when `enableShimmer` toggled on
+      // and the overlay is not disabled by `removeFadingOverlay` prop.
+      className: enableShimmer && !removeFadingOverlay ? css(this._classNames.root, listClassName) : listClassName
     };
 
     return (
       <DetailsList
         {...restProps}
+        styles={detailsListStyles}
         items={enableShimmer ? this._shimmerItems : items}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
         listProps={newListProps}

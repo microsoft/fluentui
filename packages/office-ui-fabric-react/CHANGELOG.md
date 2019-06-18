@@ -1,6 +1,21 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Fri, 14 Jun 2019 15:54:00 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2019 12:26:51 GMT and should not be manually modified.
+
+## 7.3.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- exposing datemath function to calculate beginning of week
+- ShimmeredDetailsList: fixes issue where fading overlay was not removed when real item passed.
+
+### Patches
+
+- Removing getClassNames method from SwatchColorPicker.base.tsx which improves perf. by about 10% because of memoization
+- Stack: Improving examples so that they have better performance and removing anti-patterns from them.
+- Tooltip: Improving performance by wrapping Callout inside with a DelayedRender so that nothing renders until after the delay's done and only if the mouse's still over the tooltip area."
+- Updates some documentation links.
 
 ## 7.2.0
 Fri, 14 Jun 2019 15:54:00 GMT
