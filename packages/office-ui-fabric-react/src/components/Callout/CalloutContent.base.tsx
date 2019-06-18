@@ -105,6 +105,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       if (!this._hasListeners) {
         this._addListeners();
       }
+      if (this.state.positions && this.props.finalHeight) {
+        return;
+      }
       this._updateAsyncPosition();
     } else {
       if (this._hasListeners) {
@@ -509,11 +512,10 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
         const cardCurrHeight: number = calloutMainElem.offsetHeight;
         const scrollDiff: number = cardScrollHeight - cardCurrHeight;
 
-        this.setState({
-          heightOffset: this.state.heightOffset! + scrollDiff
-        });
-
         if (calloutMainElem.offsetHeight < this.props.finalHeight!) {
+          this.setState({
+            heightOffset: this.state.heightOffset! + scrollDiff
+          });
           this._setHeightOffsetEveryFrame();
         } else {
           this._async.cancelAnimationFrame(this._setHeightOffsetTimer);
