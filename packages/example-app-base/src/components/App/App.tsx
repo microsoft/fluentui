@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { AppCustomizationsContext } from '../../utilities/customizations';
-import { classNamesFunction, css, styled, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { classNamesFunction, css, styled } from 'office-ui-fabric-react/lib/Utilities';
 import { ExampleStatus, IAppProps, IAppStyleProps, IAppStyles } from './App.types';
 import { Fabric } from 'office-ui-fabric-react/lib/Fabric';
 import { getStyles } from './App.styles';
@@ -21,13 +21,12 @@ const getClassNames = classNamesFunction<IAppStyleProps, IAppStyles>();
 export class AppBase extends React.Component<IAppProps, IAppState> {
   public state: IAppState = { isMenuVisible: false };
   private _classNames: IProcessedStyleSet<IAppStyles>;
-  private _baseUrl: string;
+  private _showOnlyExamples: boolean;
 
   constructor(props: IAppProps) {
     super(props);
 
-    const doc = getDocument();
-    this._baseUrl = doc ? document.location.href : '';
+    this._showOnlyExamples = showOnlyExamples();
   }
 
   public render(): JSX.Element {
@@ -35,7 +34,7 @@ export class AppBase extends React.Component<IAppProps, IAppState> {
     const { customizations } = appDefinition;
     const { isMenuVisible } = this.state;
 
-    const onlyExamples = showOnlyExamples(this._baseUrl);
+    const onlyExamples = this._showOnlyExamples;
 
     const classNames = (this._classNames = getClassNames(styles, { responsiveMode, theme, showOnlyExamples: onlyExamples }));
 
