@@ -299,11 +299,7 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
     const { stickyPosition } = this.props;
     const isHeader = stickyPosition === StickyPositionType.Header;
-    const isFooter = stickyPosition === StickyPositionType.Footer;
-    if (
-      isHeader !== isFooter /** position must not be 'Both'*/ &&
-      scrollablePane.verifyStickyContainerBehavior(isHeader, StickyContainerBehaviorType.StickyAlways)
-    ) {
+    if (scrollablePane.verifyStickyContainerBehavior(isHeader ? 'above' : 'below', StickyContainerBehaviorType.StickyAlways)) {
       // 1. ScrollablePane is mounted and has called notifySubscriber
       // 2. stickyAlways has to re-render if mutation could 've affected it's offsetHeight.
       this.setState({
@@ -312,11 +308,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
         distanceFromTop: 0 // must so that sorting happens.
       });
     } else if (
-      isHeader !== isFooter &&
-      scrollablePane.verifyStickyContainerBehavior(isHeader, StickyContainerBehaviorType.StickyOnScroll) &&
+      scrollablePane.verifyStickyContainerBehavior(isHeader ? 'above' : 'below', StickyContainerBehaviorType.StickyOnScroll) &&
       !scrollablePane.getUserInteractionStatus()
     ) {
-      // StickyOnScroll is not applicable for stickyPosition 'Both'
       // user interaction has not started
       // 1. ScrollablePane is mounted and has called notifySubscriber, sort is required.
       // 2. StickyOnScroll has to re-render if mutation could 've affected it's offsetHeight.
