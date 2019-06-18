@@ -18,7 +18,7 @@ if (!newPackageName) {
 
 // Convert any package names given in dash-case (e.g. my-new-package) to PascalCase (e.g. MyNewPackage)
 // for display purposes in certain template files (e.g. README.md)
-let pascalCasePackage = newPackageName.replace(/-[a-zA-Z]/g, function (match, index) {
+let pascalCasePackage = newPackageName.replace(/-[a-zA-Z]/g, function(match, index) {
   return newPackageName[index + 1].toUpperCase();
 });
 pascalCasePackage = pascalCasePackage[0].toUpperCase() + pascalCasePackage.substring(1);
@@ -51,7 +51,8 @@ if (!fs.existsSync(experimentsPackagePath)) {
 const experimentsPackageJson = JSON.parse(fs.readFileSync(experimentsPackagePath, 'utf8'));
 
 // Steps (mustache template names and output file paths)
-const steps = [{
+const steps = [
+  {
     template: 'NpmIgnore',
     output: '.npmignore'
   },
@@ -78,6 +79,10 @@ const steps = [{
   {
     template: 'IndexHtml',
     output: 'index.html'
+  },
+  {
+    template: 'JustConfig',
+    output: 'just.config.js'
   },
   {
     template: 'JestConfig',
