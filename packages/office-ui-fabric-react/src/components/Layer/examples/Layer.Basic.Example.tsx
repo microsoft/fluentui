@@ -4,7 +4,6 @@ import { AnimationClassNames } from 'office-ui-fabric-react/lib/Styling';
 import { BaseComponent, css } from 'office-ui-fabric-react/lib/Utilities';
 import { Layer } from 'office-ui-fabric-react/lib/Layer';
 import { Toggle } from 'office-ui-fabric-react/lib/Toggle';
-import 'office-ui-fabric-react/lib/common/_exampleStyles.scss';
 
 interface ILayerBasicExampleContext {
   message?: string;
