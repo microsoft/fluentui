@@ -2,6 +2,25 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.4.1",
+      "tag": "office-ui-fabric-react_v7.4.1",
+      "date": "Tue, 18 Jun 2019 19:00:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Facepile: Introducing OnRenderPersona and OnRenderPersonaCoin to override default implementation of Persona and PersonaCoin. ",
+            "author": "makathur <51442505+makathur@users.noreply.github.com>",
+            "commit": "21cca397dcbfbf89b762f23dd7b9e61123f98423"
+          },
+          {
+            "comment": "Tooltip: reverts commit 210fbabee ",
+            "author": "Natalie Ethell <natalie.ethell@microsoft.com>",
+            "commit": "4be6e7f28fccc601048d00dc98878c58a0cbf97e"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.4.0",
       "tag": "office-ui-fabric-react_v7.4.0",
       "date": "Tue, 18 Jun 2019 12:26:19 GMT",

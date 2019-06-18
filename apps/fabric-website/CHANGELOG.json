@@ -2,6 +2,25 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.3",
+      "tag": "@uifabric/fabric-website_v7.1.3",
+      "date": "Tue, 18 Jun 2019 19:00:04 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Mobile: Added source code links, removed generic library link.",
+            "author": "lynamemi <lynam.emily@gmail.com>",
+            "commit": "69b4f8dd2f2dc416d4b287bf7b140f34991ca1c3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.0` to `^7.4.1`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.2",
       "tag": "@uifabric/fabric-website_v7.1.2",
       "date": "Tue, 18 Jun 2019 12:26:19 GMT",
