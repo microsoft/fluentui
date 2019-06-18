@@ -2,6 +2,25 @@
   "name": "@uifabric/date-time",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "@uifabric/date-time_v7.1.0",
+      "date": "Mon, 17 Jun 2019 12:26:51 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component",
+            "author": "John Lorenz <lorejoh12@gmail.com>",
+            "commit": "59313f6e34af73f0141f4932bb71a39c778f5d55"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.2.0` to `^7.3.0`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.2",
       "tag": "@uifabric/date-time_v7.0.2",
       "date": "Fri, 14 Jun 2019 12:26:30 GMT",

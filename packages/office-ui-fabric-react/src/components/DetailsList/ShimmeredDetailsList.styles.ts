@@ -5,21 +5,19 @@ export const getStyles = (props: IShimmeredDetailsListStyleProps): IShimmeredDet
   const { palette } = theme;
 
   return {
-    root: [
-      theme.fonts.small,
-      {
-        selectors: {
-          ':after': {
-            content: '""',
-            position: 'absolute',
-            top: 0,
-            right: 0,
-            bottom: 0,
-            left: 0,
-            backgroundImage: `linear-gradient(to bottom, transparent 30%, ${palette.whiteTranslucent40} 65%,${palette.white} 100%)`
-          }
+    root: {
+      position: 'relative',
+      selectors: {
+        ':after': {
+          content: '""',
+          position: 'absolute',
+          top: 0,
+          right: 0,
+          bottom: 0,
+          left: 0,
+          backgroundImage: `linear-gradient(to bottom, transparent 30%, ${palette.whiteTranslucent40} 65%,${palette.white} 100%)`
         }
       }
-    ]
+    }
   };
 };

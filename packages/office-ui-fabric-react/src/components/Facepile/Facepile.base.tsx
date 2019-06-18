@@ -84,8 +84,11 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
   }
 
   private _onRenderVisiblePersonas(personas: IFacepilePersona[], singlePersona: boolean): JSX.Element[] {
+    const { onRenderPersona = this._getPersonaControl, onRenderPersonaCoin = this._getPersonaCoinControl } = this.props;
     return personas.map((persona: IFacepilePersona, index: number) => {
-      const personaControl: JSX.Element = singlePersona ? this._getPersonaControl(persona) : this._getPersonaCoinControl(persona);
+      const personaControl: JSX.Element | null = singlePersona
+        ? onRenderPersona(persona, this._getPersonaControl)
+        : onRenderPersonaCoin(persona, this._getPersonaCoinControl);
       return (
         <li role="option" key={`${singlePersona ? 'persona' : 'personaCoin'}-${index}`} className={this._classNames.member}>
           {persona.onClick
@@ -96,7 +99,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     });
   }
 
-  private _getPersonaControl(persona: IFacepilePersona): JSX.Element {
+  private _getPersonaControl = (persona: IFacepilePersona): JSX.Element | null => {
     const { getPersonaProps, personaSize } = this.props;
     const personaStyles: Partial<IPersonaStyles> = {
       details: {
@@ -116,9 +119,9 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         styles={personaStyles}
       />
     );
-  }
+  };
 
-  private _getPersonaCoinControl(persona: IFacepilePersona): JSX.Element {
+  private _getPersonaCoinControl = (persona: IFacepilePersona): JSX.Element | null => {
     const { getPersonaProps, personaSize } = this.props;
     return (
       <PersonaCoin
@@ -131,9 +134,9 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
         {...(getPersonaProps ? getPersonaProps(persona) : null)}
       />
     );
-  }
+  };
 
-  private _getElementWithOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithOnClickEvent(personaControl: JSX.Element | null, persona: IFacepilePersona, index: number): JSX.Element {
     const { keytipProps } = persona;
     return (
       <FacepileButton
@@ -147,7 +150,7 @@ export class FacepileBase extends BaseComponent<IFacepileProps, {}> {
     );
   }
 
-  private _getElementWithoutOnClickEvent(personaControl: JSX.Element, persona: IFacepilePersona, index: number): JSX.Element {
+  private _getElementWithoutOnClickEvent(personaControl: JSX.Element | null, persona: IFacepilePersona, index: number): JSX.Element {
     return (
       <div {...getNativeProps(persona, buttonProperties)} {...this._getElementProps(persona, index)}>
         {personaControl}

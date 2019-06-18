@@ -23,6 +23,10 @@ export const getHorizontalBarChartStyles = (props: IHorizontalBarChartStyleProps
       height: '8px',
       marginBottom: '11px'
     },
+    barWrapper: {
+      stroke: theme.palette.white,
+      strokeWidth: 2
+    },
     chartTitle: {
       display: 'flex',
       justifyContent: 'space-between',

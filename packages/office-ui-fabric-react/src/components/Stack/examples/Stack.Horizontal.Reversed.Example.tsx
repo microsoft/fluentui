@@ -1,43 +1,42 @@
 import * as React from 'react';
-import { Stack } from '../Stack';
-import { IStackStyles, IStackTokens } from '../Stack.types';
-import { IStackItemStyles } from '../StackItem/StackItem.types';
-import { DefaultPalette } from 'office-ui-fabric-react/lib/Styling';
+import { DefaultPalette, Stack, IStackStyles, IStackTokens, IStackItemStyles } from 'office-ui-fabric-react';
+
+// Styles definition
+const stackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary
+  }
+};
+const stackItemStyles: IStackItemStyles = {
+  root: {
+    background: DefaultPalette.themePrimary,
+    color: DefaultPalette.white,
+    padding: 5
+  }
+};
+const itemAlignmentsStackStyles: IStackStyles = {
+  root: {
+    background: DefaultPalette.themeTertiary,
+    height: 100
+  }
+};
+
+// Tokens definition
+const containerStackTokens: IStackTokens = { childrenGap: 5 };
+const horizontalGapStackTokens: IStackTokens = {
+  childrenGap: 10,
+  padding: 10
+};
+const itemAlignmentsStackTokens: IStackTokens = {
+  childrenGap: 5,
+  padding: 10
+};
+const clickableStackTokens: IStackTokens = {
+  padding: 10
+};
 
 export class HorizontalStackReversedExample extends React.Component<{}, {}> {
   public render(): JSX.Element {
-    const stackStyles: IStackStyles = {
-      root: {
-        background: DefaultPalette.themeTertiary
-      }
-    };
-    const stackItemStyles: IStackItemStyles = {
-      root: {
-        background: DefaultPalette.themePrimary,
-        color: DefaultPalette.white,
-        padding: 5
-      }
-    };
-    const itemAlignmentStackStyles: IStackStyles = {
-      root: {
-        background: DefaultPalette.themeTertiary,
-        height: 100
-      }
-    };
-
-    const containerStackTokens: IStackTokens = { childrenGap: 5 };
-    const horizontalGapStackTokens: IStackTokens = {
-      childrenGap: 10,
-      padding: 10
-    };
-    const itemAlignmentStackTokens: IStackTokens = {
-      childrenGap: 5,
-      padding: 10
-    };
-    const clickableStackTokens: IStackTokens = {
-      padding: 10
-    };
-
     return (
       <Stack tokens={containerStackTokens}>
         <span>Default horizontal stack</span>
@@ -55,7 +54,7 @@ export class HorizontalStackReversedExample extends React.Component<{}, {}> {
         </Stack>
 
         <span>Item alignments</span>
-        <Stack horizontal reversed disableShrink styles={itemAlignmentStackStyles} tokens={itemAlignmentStackTokens}>
+        <Stack horizontal reversed disableShrink styles={itemAlignmentsStackStyles} tokens={itemAlignmentsStackTokens}>
           <Stack.Item align="auto" styles={stackItemStyles}>
             <span>Auto-aligned item</span>
           </Stack.Item>
