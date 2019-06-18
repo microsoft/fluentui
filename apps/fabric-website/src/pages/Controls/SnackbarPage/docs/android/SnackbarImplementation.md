@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[Snackbar activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/SnackbarActivity.kt)
+[Snackbar demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/SnackbarActivity.kt)

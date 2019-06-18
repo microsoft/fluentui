@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[DateTimePickerDialog activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DateTimePickerDialogActivity.kt)
+[DateTimePickerDialog demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DateTimePickerDialogActivity.kt)

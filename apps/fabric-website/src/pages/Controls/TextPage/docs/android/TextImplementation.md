@@ -24,6 +24,6 @@
 
 ### Sample code
 
-[TextAppearance in activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TypographyActivity.kt)
+[TextAppearance in demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/TypographyActivity.kt)
 
 [TextAppearance in XML](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/res/layout/activity_typography.xml)

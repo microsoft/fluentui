@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[PersonaChipView activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaChipViewActivity.kt)
+[PersonaChipView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/PersonaChipViewActivity.kt)

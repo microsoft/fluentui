@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[Drawer activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DrawerActivity.kt)
+[Drawer demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/DrawerActivity.kt)

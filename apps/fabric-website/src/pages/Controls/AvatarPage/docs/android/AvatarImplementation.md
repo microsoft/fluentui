@@ -8,4 +8,4 @@
 
 ### Sample code
 
-[AvatarView activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/AvatarViewActivity.kt)
+[AvatarView demo activity](https://github.com/OfficeDev/ui-fabric-android/blob/master/OfficeUIFabric.Demo/src/main/java/com/microsoft/officeuifabricdemo/demos/AvatarViewActivity.kt)
