@@ -1,14 +1,24 @@
-import { normalize } from '../../Styling';
+import { normalize, getGlobalClassNames } from '../../Styling';
 import { IChicletXsmallStyleProps, IChicletXsmallStyles } from './ChicletXsmall.types';
 
+const GlobalClassNames = {
+  root: 'ms-ChicletXsmall',
+  icon: 'ms-ChicletXsmall-icon',
+  innerIcon: 'ms-Chiclet-innerIcon',
+  preview: 'ms-ChicletXsmall-preview',
+  titleBox: 'ms-ChicletXsmall-titleBox',
+  title: 'ms-ChicletXsmall-title'
+};
+
 export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallStyles => {
-  const { theme, className, footer } = styleProps;
+  const { theme, className, footerProvided } = styleProps;
   const { palette } = theme;
 
-  console.log(footer);
+  const classNames = getGlobalClassNames(GlobalClassNames, theme);
+
   return {
     root: [
-      'ms-ChicletXsmall',
+      classNames.root,
       theme.fonts.xSmall,
       normalize,
       {
@@ -30,13 +40,16 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
       className
     ],
     icon: [
+      classNames.icon,
       {
         height: 30.32,
         padding: '17.44px',
-        backgroundColor: '	#DCDCDC'
+        // revisit
+        backgroundColor: theme.palette.neutralLight
       }
     ],
     innerIcon: [
+      classNames.innerIcon,
       {
         position: 'absolute',
         height: 10,
@@ -44,18 +57,23 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
       }
     ],
     preview: [
+      classNames.preview,
       {
         flexBasis: '25%'
       }
     ],
     titleBox: [
+      classNames.titleBox,
       {
         marginLeft: 4,
-        borderBottom: '1px solid gray',
         flexBasis: '70%'
+      },
+      footerProvided && {
+        borderBottom: '1px solid gray'
       }
     ],
     title: [
+      classNames.title,
       {
         fontSize: theme.fonts.medium.fontSize,
         color: palette.neutralPrimary,

@@ -36,7 +36,7 @@ export interface IChicletXsmallStyleProps {
    */
   theme: ITheme;
 
-  footer?: boolean;
+  footerProvided?: boolean;
 
   /**
    * Accept custom classNames

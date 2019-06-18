@@ -12,41 +12,19 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   public render(): JSX.Element {
     const { onClick, title, image, imageWidth, imageHeight, imageAlt, itemType, className, footer, theme, styles } = this.props;
 
-    this._classNames = getClassNames(styles, { theme: theme!, className });
+    const footerProvided: boolean = footer !== undefined;
+    this._classNames = getClassNames(styles, { theme: theme!, className, footerProvided });
 
     // if this element is actionable it should have an aria role
     const role = onClick ? 'button' : 'link';
     const tabIndex = onClick ? 0 : undefined;
-
-    let tmpTitle: string | undefined = title;
-
-    if (tmpTitle) {
-      if (tmpTitle.length > 40) {
-        let i = 20;
-        let wSpaceFront = undefined;
-        let wSpaceBack = undefined;
-        while (i < 40 && (!wSpaceFront || !wSpaceBack)) {
-          if (tmpTitle.charAt(i) === ' ') {
-            wSpaceFront = i;
-          }
-          if (tmpTitle.charAt(tmpTitle.length - i) === ' ') {
-            wSpaceBack = tmpTitle.length - i + 1;
-          }
-          i++;
-        }
-        if (!wSpaceBack) {
-          wSpaceBack = i;
-        }
-        tmpTitle = tmpTitle.substring(0, wSpaceFront) + '...' + tmpTitle.substring(wSpaceBack, tmpTitle.length);
-      }
-    }
 
     if (!image && !imageAlt) {
       return (
         <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
           {renderIcon(itemType, this._classNames.icon)}
           <div className={this._classNames.titleBox}>
-            <div className={this._classNames.title}>{tmpTitle ? tmpTitle : null}</div>
+            <div className={this._classNames.title}>{title ? title : null}</div>
           </div>
           {footer}
         </div>
@@ -57,7 +35,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
       <div tabIndex={tabIndex} role={role} onClick={this._onClick} className={this._classNames.root}>
         <div className={this._classNames.preview}>{renderPreview(image, imageHeight, imageWidth, itemType, imageAlt)}</div>
         <div className={this._classNames.titleBox}>
-          <div className={this._classNames.title}>{tmpTitle ? tmpTitle : null}</div>
+          <div className={this._classNames.title}>{title ? title : null}</div>
         </div>
         {footer}
       </div>
