@@ -6587,8 +6587,8 @@ export interface IShimmerColors {
 
 // @public
 export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
-    detailsListStyles?: IDetailsListProps['styles'];
     ariaLabelForShimmer?: string;
+    detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
     removeFadingOverlay?: boolean;
