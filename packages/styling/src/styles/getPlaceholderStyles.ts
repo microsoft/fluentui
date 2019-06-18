@@ -6,14 +6,12 @@ import { IStyle } from '@uifabric/merge-styles';
  * @returns The style object with the placeholder directive as key and the style passed in as value,
  * for each browser depending on the placeholder directive it uses.
  */
-export function getPlaceholderStyles(
-  styles: IStyle
-): {
-  [key: string]: IStyle;
-} {
+export function getPlaceholderStyles(styles: IStyle): IStyle {
   return {
-    '::placeholder': styles, // Chrome, Safari, Opera, Firefox
-    ':-ms-input-placeholder': styles, // IE 10+
-    '::-ms-input-placeholder': styles // Edge
+    selectors: {
+      '::placeholder': styles, // Chrome, Safari, Opera, Firefox
+      ':-ms-input-placeholder': styles, // IE 10+
+      '::-ms-input-placeholder': styles // Edge
+    }
   };
 }

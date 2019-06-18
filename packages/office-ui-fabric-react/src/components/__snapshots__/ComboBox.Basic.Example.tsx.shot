@@ -122,18 +122,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &:hover .ms-ComboBox-Input {
               color: #201f1e;
             }
-            &:hover .ms-ComboBox-Input::-ms-clear {
-              display: none;
-            }
-            &:hover .ms-ComboBox-Input::placeholder {
-              color: #323130;
-            }
-            &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-              color: #323130;
-            }
-            &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-              color: #323130;
-            }
             @media screen and (-ms-high-contrast: active){&:hover {
               -ms-high-contrast-adjust: none;
               background-color: Window;
@@ -201,15 +189,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
               }
               &::-ms-clear {
                 display: none;
-              }
-              &::placeholder {
-                color: #605e5c;
-              }
-              &:-ms-input-placeholder {
-                color: #605e5c;
-              }
-              &::-ms-input-placeholder {
-                color: #605e5c;
               }
           data-is-interactable={true}
           data-lpignore={true}
@@ -589,18 +568,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
-          &:hover .ms-ComboBox-Input::-ms-clear {
-            display: none;
-          }
-          &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
-          }
-          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
-          }
-          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -668,15 +635,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &::-ms-clear {
               display: none;
-            }
-            &::placeholder {
-              color: #605e5c;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -924,18 +882,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
-          &:hover .ms-ComboBox-Input::-ms-clear {
-            display: none;
-          }
-          &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
-          }
-          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
-          }
-          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -1003,15 +949,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &::-ms-clear {
               display: none;
-            }
-            &::placeholder {
-              color: #605e5c;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -1260,18 +1197,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
-          &:hover .ms-ComboBox-Input::-ms-clear {
-            display: none;
-          }
-          &:hover .ms-ComboBox-Input::placeholder {
-            color: #323130;
-          }
-          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
-            color: #323130;
-          }
-          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
-            color: #323130;
-          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -1339,15 +1264,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &::-ms-clear {
               display: none;
-            }
-            &::placeholder {
-              color: #605e5c;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
             }
         data-is-interactable={true}
         data-lpignore={true}
@@ -3475,15 +3391,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             &::-ms-clear {
               display: none;
             }
-            &::placeholder {
-              color: #605e5c;
-            }
-            &:-ms-input-placeholder {
-              color: #605e5c;
-            }
-            &::-ms-input-placeholder {
-              color: #605e5c;
-            }
         data-is-interactable={true}
         data-lpignore={true}
         id="ComboBox19-input"
@@ -3771,15 +3678,6 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
             }
             &::-ms-clear {
               display: none;
-            }
-            &::placeholder {
-              color: #a19f9d;
-            }
-            &:-ms-input-placeholder {
-              color: #a19f9d;
-            }
-            &::-ms-input-placeholder {
-              color: #a19f9d;
             }
             @media screen and (-ms-high-contrast: active){& {
               border-color: GrayText;

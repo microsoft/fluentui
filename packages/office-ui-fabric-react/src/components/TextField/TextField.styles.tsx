@@ -1,8 +1,15 @@
-import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelector, IStyle, normalize } from '../../Styling';
+import {
+  AnimationClassNames,
+  FontSizes,
+  getGlobalClassNames,
+  HighContrastSelector,
+  IStyle,
+  normalize,
+  getPlaceholderStyles
+} from '../../Styling';
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
-import { getPlaceholderStyles } from '@uifabric/styling';
 
 const globalClassNames = {
   root: 'ms-TextField',
@@ -85,8 +92,8 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
     flexShrink: 0
   };
 
+  // placeholder style constants
   const placeholderStyles: IStyle = [
-    theme.fonts.medium,
     {
       color: semanticColors.inputPlaceholderText,
       opacity: 1
@@ -273,6 +280,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
       theme.fonts.medium,
       classNames.field,
       normalize,
+      getPlaceholderStyles(placeholderStyles),
       {
         fontSize: FontSizes.medium,
         borderRadius: 0,
@@ -289,8 +297,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '&:active, &:focus, &:hover': { outline: 0 },
           '::-ms-clear': {
             display: 'none'
-          },
-          ...getPlaceholderStyles(placeholderStyles)
+          }
         }
       },
       multiline &&
@@ -320,16 +327,14 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
         hasIcon && {
           paddingRight: 40
         },
-      disabled && {
-        backgroundColor: 'transparent',
-        borderColor: 'transparent',
-        color: semanticColors.disabledText,
-        selectors: {
-          '::placeholder': disabledPlaceholderStyles, // Chrome, Safari, Opera, Firefox
-          ':-ms-input-placeholder': disabledPlaceholderStyles, // IE 10+
-          '::-ms-input-placeholder': disabledPlaceholderStyles // Edge
-        }
-      },
+      disabled && [
+        {
+          backgroundColor: 'transparent',
+          borderColor: 'transparent',
+          color: semanticColors.disabledText
+        },
+        getPlaceholderStyles(disabledPlaceholderStyles)
+      ],
       underlined && {
         textAlign: 'left'
       },

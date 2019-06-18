@@ -112,18 +112,6 @@ exports[`SearchBox renders SearchBox correctly 1`] = `
         &::-ms-clear {
           display: none;
         }
-        &::placeholder {
-          color: #605e5c;
-          opacity: 1;
-        }
-        &:-ms-input-placeholder {
-          color: #605e5c;
-          opacity: 1;
-        }
-        &::-ms-input-placeholder {
-          color: #605e5c;
-          opacity: 1;
-        }
     id="SearchBox0"
     onChange={[Function]}
     onInput={[Function]}
@@ -242,18 +230,6 @@ exports[`SearchBox renders SearchBox without animation correctly 1`] = `
         }
         &::-ms-clear {
           display: none;
-        }
-        &::placeholder {
-          color: #605e5c;
-          opacity: 1;
-        }
-        &:-ms-input-placeholder {
-          color: #605e5c;
-          opacity: 1;
-        }
-        &::-ms-input-placeholder {
-          color: #605e5c;
-          opacity: 1;
         }
     id="SearchBox5"
     onChange={[Function]}

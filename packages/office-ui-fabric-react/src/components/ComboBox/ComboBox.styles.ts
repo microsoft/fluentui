@@ -1,9 +1,18 @@
-import { FontSizes, FontWeights, IRawStyle, ITheme, concatStyleSets, getFocusStyle, HighContrastSelector } from '../../Styling';
+import {
+  FontSizes,
+  FontWeights,
+  IRawStyle,
+  ITheme,
+  concatStyleSets,
+  getFocusStyle,
+  HighContrastSelector,
+  IStyle,
+  getPlaceholderStyles
+} from '../../Styling';
 import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
-import { IStyle, getPlaceholderStyles } from '@uifabric/styling';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
@@ -218,6 +227,8 @@ export const getStyles = memoizeFunction(
     const ComboBoxRootColorErrored = semanticColors.errorText;
     const ComboBoxOptionHeaderTextColor = semanticColors.menuHeader;
     const ComboBoxOptionDividerBorderColor = semanticColors.bodyDivider;
+
+    // placeholder style variables
     const placeholderStyles: IStyle = {
       color: semanticColors.inputPlaceholderText
     };
@@ -293,10 +304,7 @@ export const getStyles = memoizeFunction(
       rootHovered: {
         borderColor: ComboBoxRootBorderColorHovered,
         selectors: {
-          '.ms-ComboBox-Input': {
-            color: palette.neutralDark,
-            selectors: getPlaceholderStyles(hoverPlaceholderStyles)
-          },
+          '.ms-ComboBox-Input': [{ color: palette.neutralDark }, getPlaceholderStyles(hoverPlaceholderStyles)],
           [HighContrastSelector]: {
             color: 'HighlightText',
             borderColor: 'Highlight',
@@ -329,31 +337,28 @@ export const getStyles = memoizeFunction(
 
       rootDisallowFreeForm: {},
 
-      input: {
-        backgroundColor: ComboBoxRootBackground,
-        color: ComboBoxRootTextColor,
-        boxSizing: 'border-box',
-        width: '100%',
-        height: '28px',
-        borderStyle: 'none',
-        outline: 'none',
-        font: 'inherit',
-        textOverflow: 'ellipsis',
-        padding: '0',
-        selectors: {
-          '::-ms-clear': {
-            display: 'none'
-          },
-          ...getPlaceholderStyles(placeholderStyles)
-        }
-      },
-
-      inputDisabled: [
-        getDisabledStyles(theme),
+      input: [
+        getPlaceholderStyles(placeholderStyles),
         {
-          selectors: getPlaceholderStyles(disabledPlaceholderStyles)
+          backgroundColor: ComboBoxRootBackground,
+          color: ComboBoxRootTextColor,
+          boxSizing: 'border-box',
+          width: '100%',
+          height: '28px',
+          borderStyle: 'none',
+          outline: 'none',
+          font: 'inherit',
+          textOverflow: 'ellipsis',
+          padding: '0',
+          selectors: {
+            '::-ms-clear': {
+              display: 'none'
+            }
+          }
         }
       ],
+
+      inputDisabled: [getDisabledStyles(theme), getPlaceholderStyles(disabledPlaceholderStyles)],
       errorMessage: {
         color: ComboBoxRootColorErrored
       },

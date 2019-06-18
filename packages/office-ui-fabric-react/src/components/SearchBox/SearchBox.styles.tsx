@@ -5,6 +5,8 @@ import { getPlaceholderStyles } from '@uifabric/styling';
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
   const { palette, fonts, semanticColors, effects } = theme;
+
+  // placeholder style constants
   const placeholderStyles: IStyle = {
     color: semanticColors.inputPlaceholderText,
     opacity: 1
@@ -133,6 +135,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
     field: [
       'ms-SearchBox-field',
       normalize,
+      getPlaceholderStyles(placeholderStyles),
       {
         backgroundColor: 'transparent',
         border: 'none',
@@ -153,8 +156,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
         selectors: {
           '::-ms-clear': {
             display: 'none'
-          },
-          ...getPlaceholderStyles(placeholderStyles)
+          }
         }
       },
       disabled && {

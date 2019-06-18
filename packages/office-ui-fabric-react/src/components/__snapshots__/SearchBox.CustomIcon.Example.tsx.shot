@@ -116,18 +116,6 @@ exports[`Component Examples renders SearchBox.CustomIcon.Example.tsx correctly 1
           &::-ms-clear {
             display: none;
           }
-          &::placeholder {
-            color: #605e5c;
-            opacity: 1;
-          }
-          &:-ms-input-placeholder {
-            color: #605e5c;
-            opacity: 1;
-          }
-          &::-ms-input-placeholder {
-            color: #605e5c;
-            opacity: 1;
-          }
       id="SearchBox0"
       onChange={[Function]}
       onInput={[Function]}
