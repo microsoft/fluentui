@@ -17,7 +17,8 @@ steps:
     displayName: 'Install Node.js'
 
   - script: |
-      npm install -- --bypass-policy
+      npm install --ignore-scripts
+      node node_modules/@microsoft/rush/bin/rush install --bypass-policy
     displayName: rush install
 
   - script: |
