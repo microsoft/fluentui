@@ -6201,7 +6201,7 @@ export interface IScrollablePaneContext {
         sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
         notifySubscribers: (sort?: boolean) => void;
         syncScrollSticky: (sticky: Sticky) => void;
-        usePlaceholderForSticky: (isTop: boolean) => boolean;
+        usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
         verifyStickyContainerBehavior: (isTop: boolean, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
         getUserInteractionStatus: () => boolean;
         getScrollPosition: (horizontal?: boolean) => number;
@@ -6213,11 +6213,8 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
     className?: string;
     componentRef?: IRefObject<IScrollablePane>;
     initialScrollPosition?: number;
-    // (undocumented)
     scrollbarVisibility?: ScrollbarVisibility;
-    // (undocumented)
     stickyAboveContainerBehavior?: IStickyContainerBehavior;
-    // (undocumented)
     stickyBelowContainerBehavior?: IStickyContainerBehavior;
     styles?: IStyleFunctionOrObject<IScrollablePaneStyleProps, IScrollablePaneStyles>;
     theme?: ITheme;
@@ -8227,6 +8224,9 @@ export enum PivotLinkSize {
 }
 
 // @public (undocumented)
+export type PlaceholderPosition = 'top' | 'bottom';
+
+// @public (undocumented)
 export const PlainCard: React_2.StatelessComponent<IPlainCardProps>;
 
 // @public (undocumented)
@@ -8438,7 +8438,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     // (undocumented)
     updateStickyRefHeights: () => void;
     // (undocumented)
-    usePlaceholderForSticky: (isTop: boolean) => boolean;
+    usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
     // (undocumented)
     verifyStickyContainerBehavior: (isTop: boolean, stickyContainerBehavior: StickyContainerBehaviorType) => boolean;
 }
@@ -8851,9 +8851,11 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
     }
 
 // @public (undocumented)
+export type StickyConatinerPosition = 'above' | 'below';
+
+// @public (undocumented)
 export enum StickyContainerBehaviorType {
     StickyAlways = 2,
-    // (undocumented)
     StickyOnScroll = 1,
 }
 
