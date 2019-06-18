@@ -5,7 +5,6 @@ import { getDocument } from 'office-ui-fabric-react/lib/Utilities';
  */
 export function getCurrentUrl(): string {
   const doc = getDocument();
-  console.log('doc: ', doc);
   const url = doc ? document.location.href : '';
 
   return url;
