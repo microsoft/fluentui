@@ -1,15 +1,15 @@
-### Design
-
-Coming soon
-
 ### Control names
 
 `MSPersonaListView`
 
 `MSPersonaCell`
 
-### Library
+### Source code
 
-[UI Fabric iOS](https://github.com/OfficeDev/ui-fabric-ios)
+[MSPersonaListView](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSPersonaListView.swift)
 
-[Sample Code for Persona List View](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPersonaListViewDemoController.swift)
+[MSPersonaCell](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric/People%20Picker/MSPersonaCell.swift)
+
+### Sample code
+
+[MSPersonaListView demo](https://github.com/OfficeDev/ui-fabric-ios/blob/master/OfficeUIFabric.Demo/OfficeUIFabric.Demo/Demos/MSPersonaListViewDemoController.swift)

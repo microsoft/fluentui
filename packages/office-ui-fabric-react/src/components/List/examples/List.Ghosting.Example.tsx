@@ -38,7 +38,7 @@ const classNames = mergeStyleSets({
     flexGrow: 1
   },
   itemName: [
-    DefaultFontStyles.mediumPlus,
+    DefaultFontStyles.xLarge,
     {
       whiteSpace: 'nowrap',
       overflow: 'hidden',
@@ -46,7 +46,7 @@ const classNames = mergeStyleSets({
     }
   ],
   itemIndex: {
-    fontSize: FontSizes.xSmall,
+    fontSize: FontSizes.small,
     color: theme.palette.neutralTertiary,
     marginBottom: 10
   },
@@ -54,7 +54,7 @@ const classNames = mergeStyleSets({
     alignSelf: 'center',
     marginLeft: 10,
     color: theme.palette.neutralTertiary,
-    fontSize: FontSizes.medium,
+    fontSize: FontSizes.large,
     flexShrink: 0
   }
 });

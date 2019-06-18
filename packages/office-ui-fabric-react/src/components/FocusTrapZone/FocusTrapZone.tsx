@@ -74,7 +74,7 @@ export class FocusTrapZone extends React.Component<IFocusTrapZoneProps, {}> impl
 
   public render(): JSX.Element {
     const { className, disabled = false, ariaLabelledBy } = this.props;
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     const bumperProps = {
       style: {

@@ -28,6 +28,15 @@ export interface IPageState {
   isMountedOffset?: boolean;
 }
 
+// TODO: I think this component should be templated to forward the TPlatform type to props.
+//        It can then be used in JSX like this:
+//        <Page<Platform> {...props} />
+// https://mariusschulz.com/blog/typescript-2-9-passing-generics-to-jsx-elements
+// This change will expose a domino effect where other page components in this package should use
+//    IPageSection props with a templated arg rather than just defaulting to string. These
+//    issues could probably be more easily found by removing the default TPlatform generic type.
+// To work around this issue for now, a bunch of "as IPageSectionProps[]" casts were added to fabric-website package.
+// export class Page<TPlatform extends string> extends React.Component<IPageProps<TPlatform>, IPageState> {
 export class Page extends React.Component<IPageProps, IPageState> {
   public static defaultProps: Partial<IPageProps> = {
     showSideRail: true

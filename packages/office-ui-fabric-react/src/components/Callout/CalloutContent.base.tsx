@@ -79,6 +79,7 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
   private _hasListeners = false;
   private _maxHeight: number | undefined;
   private _blockResetHeight: boolean;
+  private _isMouseDownOnPopup: boolean;
 
   private _async: Async;
   private _disposables: (() => void)[] = [];
@@ -242,6 +243,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
             onScroll={onScroll}
             shouldRestoreFocus={true}
             style={overflowStyle}
+            onMouseDown={this._mouseDownOnPopup}
+            onMouseUp={this._mouseUpOnPopup}
           >
             {children}
           </Popup>
@@ -303,6 +306,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const target = ev.target as HTMLElement;
     const isEventTargetOutsideCallout = this._hostElement.current && !elementContains(this._hostElement.current, target);
 
+    // If mouse is pressed down on callout but moved outside then released, don't dismiss the callout.
+    if (isEventTargetOutsideCallout && this._isMouseDownOnPopup) {
+      this._isMouseDownOnPopup = false;
+      return;
+    }
+
     if (
       (!this._target && isEventTargetOutsideCallout) ||
       (ev.target !== this._targetWindow &&
@@ -323,8 +332,8 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       this._disposables.push(
         on(this._targetWindow, 'scroll', this._dismissOnScroll, true),
         on(this._targetWindow, 'resize', this._dismissOnResize, true),
-        on(this._targetWindow.document.documentElement, 'focus', this._dismissOnLostFocus, true),
-        on(this._targetWindow.document.documentElement, 'click', this._dismissOnLostFocus, true)
+        on(this._targetWindow.document.documentElement as any, 'focus', this._dismissOnLostFocus, true), // FABRIC7TODO remove any
+        on(this._targetWindow.document.documentElement as any, 'click', this._dismissOnLostFocus, true) // FABRIC7TODO remove any
       );
       this._hasListeners = true;
     }, 0);
@@ -517,4 +526,12 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
     const { target } = props;
     return target!;
   }
+
+  private _mouseDownOnPopup = () => {
+    this._isMouseDownOnPopup = true;
+  };
+
+  private _mouseUpOnPopup = () => {
+    this._isMouseDownOnPopup = false;
+  };
 }

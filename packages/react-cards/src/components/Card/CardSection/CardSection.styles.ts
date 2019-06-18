@@ -23,7 +23,7 @@ export const CardSectionStyles: ICardSectionComponent['styles'] = (props, theme,
 
   return {
     root: [
-      theme.fonts.medium,
+      theme.fonts.large,
       classNames.root,
       {
         margin: tokens.margin,

@@ -175,13 +175,13 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
       : `${effects.roundedCorner2} ${effects.roundedCorner2} 0 0`;
 
   return {
-    root: globalClassnames.root,
+    root: [globalClassnames.root, className],
     label: globalClassnames.label,
     dropdown: [
       globalClassnames.dropdown,
       normalize,
       {
-        ...theme.fonts.small,
+        ...theme.fonts.medium,
         color: palette.neutralPrimary,
         borderColor: palette.neutralSecondary,
         position: 'relative',
@@ -223,7 +223,6 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
           ['&:focus .' + globalClassnames.titleHasError]: borderColorError
         }
       },
-      className,
       isOpen && 'is-open',
       disabled && 'is-disabled',
       required && 'is-required',
@@ -291,10 +290,10 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     ],
     caretDown: [
       globalClassnames.caretDown,
-      { color: palette.neutralSecondary, fontSize: FontSizes.xSmall, pointerEvents: 'none' },
+      { color: palette.neutralSecondary, fontSize: FontSizes.small, pointerEvents: 'none' },
       disabled && { color: semanticColors.disabledText, selectors: { [HighContrastSelector]: { color: 'GrayText' } } }
     ],
-    errorMessage: { color: semanticColors.errorText, ...theme.fonts.xSmall, paddingTop: 5 },
+    errorMessage: { color: semanticColors.errorText, ...theme.fonts.small, paddingTop: 5 },
     callout: [
       globalClassnames.callout,
       {
@@ -330,7 +329,7 @@ export const getStyles: IStyleFunction<IDropdownStyleProps, IDropdownStyles> = p
     dropdownItemHeader: [
       globalClassnames.dropdownItemHeader,
       {
-        ...theme.fonts.small,
+        ...theme.fonts.medium,
         fontWeight: FontWeights.semibold,
         color: semanticColors.menuHeader,
         background: 'none',

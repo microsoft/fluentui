@@ -116,6 +116,11 @@ const SelectedPersonaInner = React.memo(<TPersona extends IPersonaProps = IPerso
 });
 
 // export casting back to typeof inner to preserve generics.
-export const SelectedPersona = styled(SelectedPersonaInner, getStyles, undefined, {
-  scope: 'SelectedPersona'
-}) as typeof SelectedPersonaInner;
+export const SelectedPersona = styled<ISelectedPersonaProps<any>, ISelectedPersonaStyleProps, ISelectedPersonaStyles>(
+  SelectedPersonaInner,
+  getStyles,
+  undefined,
+  {
+    scope: 'SelectedPersona'
+  }
+) as typeof SelectedPersonaInner;

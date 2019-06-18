@@ -57,7 +57,7 @@ export const getStyles = (props: IDocumentCardActionsStyleProps): IDocumentCardA
     ],
     viewsIcon: {
       marginRight: '8px',
-      fontSize: FontSizes.small,
+      fontSize: FontSizes.medium,
       verticalAlign: 'top'
     }
   };

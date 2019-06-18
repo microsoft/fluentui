@@ -30,6 +30,10 @@ export interface IExampleState {
   emptyChildren: string[];
 }
 
+// Non-mutating tokens definition
+const sectionStackTokens: IStackTokens = { childrenGap: 10 };
+const configureStackTokens: IStackTokens = { childrenGap: 20 };
+
 export class VerticalStackConfigureExample extends React.Component<{}, IExampleState> {
   constructor(props: {}) {
     super(props);
@@ -73,6 +77,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       emptyChildren
     } = this.state;
 
+    // Styles definition
     const stackStyles: IStackStyles = {
       root: [
         {
@@ -99,8 +104,7 @@ export class VerticalStackConfigureExample extends React.Component<{}, IExampleS
       }
     };
 
-    const sectionStackTokens: IStackTokens = { childrenGap: 10 };
-    const configureStackTokens: IStackTokens = { childrenGap: 20 };
+    // Tokens definition
     const exampleStackTokens: IStackTokens = {
       childrenGap: childrenGap + ' ' + 0,
       padding: `${paddingTop}px ${paddingRight}px ${paddingBottom}px ${paddingLeft}px`

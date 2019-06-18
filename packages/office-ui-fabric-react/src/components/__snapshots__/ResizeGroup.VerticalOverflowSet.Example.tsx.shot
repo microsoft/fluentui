@@ -54,7 +54,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -158,6 +157,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -220,7 +220,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -324,6 +323,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -386,7 +386,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -490,6 +489,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -552,7 +552,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -656,6 +655,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -718,7 +718,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -822,6 +821,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -884,7 +884,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -988,6 +987,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1050,7 +1050,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -1154,6 +1153,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1216,7 +1216,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -1320,6 +1319,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1382,7 +1382,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -1486,6 +1485,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1548,7 +1548,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -1652,6 +1651,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1714,7 +1714,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -1818,6 +1817,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -1880,7 +1880,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -1984,6 +1983,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2046,7 +2046,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -2150,6 +2149,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2212,7 +2212,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -2316,6 +2315,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2378,7 +2378,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -2482,6 +2481,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2544,7 +2544,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -2648,6 +2647,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2710,7 +2710,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -2814,6 +2813,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -2876,7 +2876,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -2980,6 +2979,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -3042,7 +3042,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -3146,6 +3145,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {
@@ -3208,7 +3208,6 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
               }
         >
           <button
-            checked={false}
             className=
                 ms-Button
                 ms-Button--commandBar
@@ -3312,6 +3311,7 @@ exports[`Component Examples renders ResizeGroup.VerticalOverflowSet.Example.tsx 
                   }
             >
               <i
+                aria-hidden={true}
                 className=
                     ms-Button-icon
                     {

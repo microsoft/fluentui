@@ -75,9 +75,16 @@ export const controlsPagesIos: INavPage[] = [
     pages: [
       {
         title: 'Pivot',
-        url: '#/controls/ios/Pivot',
+        url: '#/controls/ios/pivot',
         component: () => <LoadingComponent title="Pivot" />,
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/PivotPage/PivotPage').PivotPage))
+      },
+      {
+        title: 'Popup Menu',
+        url: '#/controls/ios/popupmenu',
+        component: () => <LoadingComponent title="Popup Menu" />,
+        getComponent: cb =>
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
       }
     ]
   },
@@ -106,11 +113,30 @@ export const controlsPagesIos: INavPage[] = [
         getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/DrawerPage/DrawerPage').DrawerPage))
       },
       {
-        title: 'Popup Menu',
-        url: '#/controls/ios/popupmenu',
-        component: () => <LoadingComponent title="Popup Menu" />,
+        title: 'Tooltip',
+        url: '#/controls/ios/tooltip',
+        component: () => <LoadingComponent title="Tooltip" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TooltipPage/TooltipPage').TooltipPage))
+      }
+    ]
+  },
+  {
+    title: 'Utilities',
+    url: '#/controls/ios/separator',
+    isCategory: true,
+    pages: [
+      {
+        title: 'Separator',
+        url: '#/controls/ios/separator',
+        component: () => <LoadingComponent title="Separator" />,
         getComponent: cb =>
-          require.ensure([], require => cb(require<any>('../../../pages/Controls/PopupMenuPage/PopupMenuPage').PopupMenuPage))
+          require.ensure([], require => cb(require<any>('../../../pages/Controls/SeparatorPage/SeparatorPage').SeparatorPage))
+      },
+      {
+        title: 'Text',
+        url: '#/controls/ios/text',
+        component: () => <LoadingComponent title="Text" />,
+        getComponent: cb => require.ensure([], require => cb(require<any>('../../../pages/Controls/TextPage/TextPage').TextPage))
       }
     ]
   }

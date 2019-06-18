@@ -5,7 +5,7 @@
  */
 export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | undefined | false)[]): T {
   for (const arg of args) {
-    _merge(target || {}, arg);
+    _merge(target || {}, arg as Partial<T>);
   }
 
   return target as T;
@@ -18,7 +18,7 @@ export function merge<T = {}>(target: Partial<T>, ...args: (Partial<T> | null | 
  * the reference.
  */
 // tslint:disable-next-line:no-any
-function _merge<T>(target: T, source: T, circularReferences: any[] = []): T {
+function _merge<T extends Object>(target: T, source: T, circularReferences: any[] = []): T {
   circularReferences.push(source);
 
   for (let name in source) {

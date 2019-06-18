@@ -47,14 +47,15 @@ export const SiteDefinition: ISiteDefinition<Platforms> = {
     { from: '#/components', to: '#/controls/web' },
     { from: '#/styles/animation', to: '#/styles/web/motion' },
     { from: '#/styles/brand-icons', to: '#/styles/web/office-brand-icons' },
-    { from: '#/styles/colors', to: '#/styles/web/colors/products' },
+    { from: '#/styles/colors', to: '#/styles/web/colors/theme-slots' },
     { from: '#/styles/icons', to: '#/styles/web/icons' },
     { from: '#/styles/layout', to: '#/styles/web/layout' },
     { from: '#/styles/localization', to: '#/styles/web/localization' },
     { from: '#/styles/themegenerator', to: '#/styles/web' },
     { from: '#/styles/typography', to: '#/styles/web/typography' },
     { from: '#/styles/utilities', to: '#/styles/web' },
-    { from: '#/controls/web/fluent-theme', to: '#/styles/web/fluent-theme' }
+    { from: '#/controls/web/fluent-theme', to: '#/styles/web/fluent-theme' },
+    { from: '#/examples', to: '#/controls/web' }
   ],
   messageBars: [
     {

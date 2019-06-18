@@ -8,13 +8,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i"],
+      "args": ["-i", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
-      "sourceMaps": true
+      "sourceMaps": true,
+      "outputCapture": "std",
+      "console": "integratedTerminal"
     },
     {
       "name": "Debug current open test",
@@ -23,14 +25,15 @@
       "program": "${workspaceRoot}/scripts/debug-test.js",
       "cwd": "${fileDirname}",
       "stopOnEntry": false,
-      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}"],
+      "args": ["-i", "--testPathPattern=${fileBasenameNoExtension}", "--watch"],
       "runtimeExecutable": null,
       "runtimeArgs": ["--nolazy", "--debug"],
       "env": {
         "NODE_ENV": "development"
       },
       "sourceMaps": true,
-      "outputCapture": "std"
+      "outputCapture": "std",
+      "console": "integratedTerminal"
     },
     {
       "name": "Run server",
@@ -51,7 +54,7 @@
       "name": "Build fabric",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/just.js",
+      "program": "${workspaceRoot}/scripts/just-scripts.js",
       "cwd": "${workspaceRoot}/packages/office-ui-fabric-react",
       "stopOnEntry": false,
       "args": ["ts"],
@@ -66,7 +69,7 @@
       "name": "Debug build Production",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/just.js",
+      "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
       "args": ["tslint"],
       "cwd": "${workspaceRoot}/packages/styling",
@@ -80,7 +83,7 @@
       "name": "Debug build Dogfood",
       "type": "node",
       "request": "launch",
-      "program": "${workspaceRoot}/scripts/just.js",
+      "program": "${workspaceRoot}/scripts/just-scripts.js",
       "stopOnEntry": false,
       "args": ["webpack", "--", "--production", "--dogfood"],
       "cwd": "${workspaceRoot}/apps/fabric-website",

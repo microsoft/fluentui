@@ -51,5 +51,8 @@ export const SuggestionsItemInner: <TSuggestion>(props: ISuggestionItemProps<TSu
   );
 };
 
-export const SuggestionsItem = styled(SuggestionsItemInner, getStyles);
+export const SuggestionsItem = styled<ISuggestionItemProps<any>, ISuggestionsItemStyleProps, ISuggestionsItemStyles>(
+  SuggestionsItemInner,
+  getStyles
+);
 export type SuggestionsItem<T> = React.ComponentType<ISuggestionItemProps<T>>;

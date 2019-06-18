@@ -24,7 +24,7 @@ const styles = mergeStyleSets({
     padding: '18px 24px 12px'
   },
   title: [
-    theme.fonts.mediumPlus,
+    theme.fonts.xLarge,
     {
       margin: 0,
       color: theme.palette.neutralPrimary,
@@ -42,7 +42,7 @@ const styles = mergeStyleSets({
     whiteSpace: 'nowrap'
   },
   link: [
-    theme.fonts.small,
+    theme.fonts.medium,
     {
       color: theme.palette.neutralPrimary
     }
@@ -92,7 +92,7 @@ export class CalloutBasicExample extends React.Component<{}, ICalloutBasicExampl
               </p>
             </div>
             <div className="ms-CalloutExample-actions">
-              <Link className="ms-CalloutExample-link" href="http://microsoft.com">
+              <Link className="ms-CalloutExample-link" href="http://microsoft.com" target="_blank">
                 Go to microsoft
               </Link>
             </div>

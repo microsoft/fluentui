@@ -70,15 +70,17 @@ const LanguageToFontMap = {
 // Standard font sizes.
 export namespace FontSizes {
   export const mini: string = '10px';
-  export const xSmall: string = '12px';
-  export const small: string = '14px';
-  export const smallPlus: string = '16px';
-  export const medium: string = '18px';
-  export const mediumPlus: string = '20px';
+  export const xSmall: string = '10px';
+  export const small: string = '12px';
+  export const smallPlus: string = '12px';
+  export const medium: string = '14px';
+  export const mediumPlus: string = '16px';
   export const icon: string = '16px';
-  export const large: string = '24px';
-  export const xLarge: string = '28px';
-  export const xxLarge: string = '32px';
+  export const large: string = '18px';
+  export const xLarge: string = '20px';
+  export const xLargePlus: string = '24px';
+  export const xxLarge: string = '28px';
+  export const xxLargePlus: string = '32px';
   export const superLarge: string = '42px';
   export const mega: string = '68px';
 }
@@ -114,10 +116,12 @@ export function createFontStyles(localeCode: string | null): IFontStyles {
     small: _createFont(FontSizes.small, FontWeights.regular, fontFamilyWithFallback),
     smallPlus: _createFont(FontSizes.smallPlus, FontWeights.regular, fontFamilyWithFallback),
     medium: _createFont(FontSizes.medium, FontWeights.regular, fontFamilyWithFallback),
-    mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.semibold, fontFamilyWithFallback),
-    large: _createFont(FontSizes.large, FontWeights.semibold, fontFamilyWithFallback),
+    mediumPlus: _createFont(FontSizes.mediumPlus, FontWeights.regular, fontFamilyWithFallback),
+    large: _createFont(FontSizes.large, FontWeights.regular, fontFamilyWithFallback),
     xLarge: _createFont(FontSizes.xLarge, FontWeights.semibold, fontFamilyWithFallback),
+    xLargePlus: _createFont(FontSizes.xLargePlus, FontWeights.semibold, fontFamilyWithFallback),
     xxLarge: _createFont(FontSizes.xxLarge, FontWeights.semibold, fontFamilyWithFallback),
+    xxLargePlus: _createFont(FontSizes.xxLargePlus, FontWeights.semibold, fontFamilyWithFallback),
     superLarge: _createFont(FontSizes.superLarge, FontWeights.semibold, fontFamilyWithFallback),
     mega: _createFont(FontSizes.mega, FontWeights.semibold, fontFamilyWithFallback)
   };

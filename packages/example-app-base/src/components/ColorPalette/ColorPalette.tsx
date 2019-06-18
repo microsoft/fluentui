@@ -113,7 +113,7 @@ class ColorPaletteBase extends React.Component<IColorPaletteProps, IColorPalette
             <span className={classNames.detailHex}>{hex}</span>
             {code && (
               <span className={classNames.detailCode} aria-label={this._getCodeAriaLabel(code)}>
-                {code.react.split('.')[1]}{' '}
+                {code.react && code.react.indexOf('.') > -1 ? code.react.split('.')[1] : code.react}{' '}
                 <TooltipHost
                   tooltipProps={{
                     onRenderContent: () => this._renderCodeDetails(code)

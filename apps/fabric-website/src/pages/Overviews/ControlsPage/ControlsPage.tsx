@@ -15,7 +15,7 @@ const ControlsPageBase: React.StatelessComponent<IPageProps<Platforms>> = props 
       title="Controls"
       platform={platform}
       subTitle={getSubTitle(platform)}
-      otherSections={_otherSections(platform)}
+      otherSections={_otherSections(platform) as IPageSectionProps[]}
       showSideRail={false}
       {...ControlsPageProps[platform]}
     />
@@ -45,13 +45,28 @@ function _otherSections(platform: Platforms): IPageSectionProps<Platforms>[] {
           }
       );
 
-    if (platform === 'web') {
-      sections.push({
+    sections.push(_otherControlsRequestSections(platform));
+    return sections;
+  }
+}
+
+function _otherControlsRequestSections(platform: Platforms): IPageSectionProps<Platforms> {
+  switch (platform) {
+    case 'web':
+      return {
         sectionName: 'Need a control Fabric React doesn’t have?',
         content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/web/ControlsRequest.md') as string
-      });
-    }
-    return sections;
+      };
+    case 'ios':
+      return {
+        sectionName: 'Need a control Fabric iOS doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/ios/ControlsRequest.md') as string
+      };
+    case 'android':
+      return {
+        sectionName: 'Need a control Fabric Android doesn’t have?',
+        content: require('!raw-loader!@uifabric/fabric-website/src/pages/Overviews/ControlsPage/docs/android/ControlsRequest.md') as string
+      };
   }
 }
 

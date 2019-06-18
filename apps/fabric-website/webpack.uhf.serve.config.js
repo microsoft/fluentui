@@ -30,11 +30,6 @@ module.exports = resources.createServeConfig({
 
   devServer: devServer,
 
-  externals: {
-    react: 'React',
-    'react-dom': 'ReactDOM'
-  },
-
   resolve: {
     alias: {
       '@uifabric/fabric-website/src': path.join(__dirname, 'src'),

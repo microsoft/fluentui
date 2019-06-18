@@ -216,7 +216,7 @@ export interface ISuggestionsProps<T> extends React.Props<any> {
   suggestionsListId?: string;
 
   /** Call to provide customized styling that will layer on top of the variant rules. */
-  styles?: IStyleFunctionOrObject<{}, {}>;
+  styles?: IStyleFunctionOrObject<any, any>;
 
   /** Theme provided by High-Order Component. */
   theme?: ITheme;

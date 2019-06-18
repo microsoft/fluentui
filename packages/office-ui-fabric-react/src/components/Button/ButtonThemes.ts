@@ -88,6 +88,10 @@ export function standardStyles(theme: ITheme): IButtonStyles {
       backgroundColor: p.neutralTertiaryAlt
     },
 
+    splitButtonDividerDisabled: {
+      backgroundColor: theme.palette.neutralTertiaryAlt
+    },
+
     splitButtonMenuButtonChecked: {
       backgroundColor: p.neutralQuaternaryAlt,
       selectors: {

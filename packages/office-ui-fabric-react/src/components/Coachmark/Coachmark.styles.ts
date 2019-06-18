@@ -155,7 +155,7 @@ export function getStyles(props: ICoachmarkStyleProps): ICoachmarkStyles {
 
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         position: 'relative'
       },

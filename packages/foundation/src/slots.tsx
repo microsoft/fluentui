@@ -217,7 +217,8 @@ function _renderSlot<
   if (ComponentType.create !== undefined) {
     return ComponentType.create(componentProps, userProps, slotOptions, defaultStyles);
   } else {
-    return (defaultFactory(ComponentType) as ISlotFactory<TSlotProps, TSlotShorthand>)(
+    // TODO: need to resolve typing / generic issues passing through memoizeFunction. for now, cast to 'unknown'
+    return ((defaultFactory(ComponentType) as unknown) as ISlotFactory<TSlotProps, TSlotShorthand>)(
       componentProps,
       userProps,
       slotOptions,

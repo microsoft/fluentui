@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IIconProps } from '../../Icon';
 import { ISelectableOption } from '../../utilities/selectableOption/SelectableOption.types';
 import { ISelectableDroppableTextProps } from '../../utilities/selectableOption/SelectableDroppableText.types';

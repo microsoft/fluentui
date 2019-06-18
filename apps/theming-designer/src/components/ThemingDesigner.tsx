@@ -3,16 +3,16 @@ import { AccessibilityChecker } from './AccessibilityChecker';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { FabricPalette } from './FabricPalette';
+import { ThemeSlots } from './ThemeSlots';
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
 import { Header } from './Header';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Samples } from './Samples/index';
-import { SemanticSlots } from './SemanticSlots';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
+import { Text } from 'office-ui-fabric-react';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
 
@@ -24,29 +24,49 @@ export interface IThemingDesignerState {
   themeRules?: IThemeRules;
 }
 
-const outerMostStack = mergeStyles({
-  width: '100%'
-});
+const Page = (props: IStackProps) => (
+  <Stack
+    gap={10}
+    className={mergeStyles({
+      height: '100vh',
+      overflow: 'hidden',
+      selectors: {
+        ':global(body)': {
+          padding: 0,
+          margin: 0
+        }
+      }
+    })}
+    {...props}
+  />
+);
 
-const sidebarStyles = mergeStyles({
-  marginTop: '35px',
-  width: '300px'
-});
+const Content = (props: IStackProps) => <Stack horizontal gap={10} className={mergeStyles({ overflow: 'hidden' })} {...props} />;
 
-const sidebarContentStyles = mergeStyles({
-  borderRight: '1px solid #ddd',
-  minHeight: '100%',
-  paddingRight: '1rem',
-  position: 'fixed',
-  top: '60px',
-  left: '10px',
-  width: '300px'
-});
+const Sidebar = (props: IStackProps) => (
+  <Stack
+    disableShrink
+    gap={20}
+    grow={0}
+    className={mergeStyles({
+      borderRight: '1px solid #ddd',
+      paddingRight: '1rem'
+    })}
+    {...props}
+  />
+);
 
-const cardsBlockStyles = mergeStyles({
-  minWidth: MainPanelWidth,
-  marginTop: '35px'
-});
+const Main = (props: IStackProps) => (
+  <Stack
+    grow={1}
+    disableShrink
+    className={mergeStyles({
+      minWidth: MainPanelWidth,
+      overflow: 'scroll'
+    })}
+    {...props}
+  />
+);
 
 let colorChangeTimeout: number;
 
@@ -55,69 +75,60 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
     super(props);
 
     this.state = this._buildInitialState();
-
-    this._onPrimaryColorPickerChange = this._onPrimaryColorPickerChange.bind(this);
-    this._onTextColorPickerChange = this._onTextColorPickerChange.bind(this);
-    this._onBkgColorPickerChange = this._onBkgColorPickerChange.bind(this);
   }
 
   public render() {
     return (
-      <Stack gap={10} className={outerMostStack}>
+      <Page>
         <Header themeRules={this.state.themeRules} />
-        <Stack horizontal gap={10}>
-          <Stack.Item shrink={false} grow={false} className={sidebarStyles}>
-            <Stack gap={20} className={sidebarContentStyles}>
-              <h1>
-                <IconButton
-                  disabled={false}
-                  checked={false}
-                  iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px' } } }}
-                  title="Colors"
-                  ariaLabel="Colors"
-                />
-                Color
-              </h1>
-              {/* the three base slots, prominently displayed at the top of the page */}
-              <ThemeDesignerColorPicker
-                color={this.state.primaryColor}
-                onColorChange={this._onPrimaryColorPickerChange}
-                label={'Primary color'}
+        <Content>
+          <Sidebar>
+            <Text variant={'xLarge'} styles={{ root: { fontWeight: 600, marginLeft: 20 } }}>
+              <IconButton
+                disabled={false}
+                checked={false}
+                iconProps={{ iconName: 'Color', styles: { root: { fontSize: '20px', marginRight: 12 } } }}
+                title="Colors"
+                ariaLabel="Colors"
               />
-              <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
-              <ThemeDesignerColorPicker
-                color={this.state.backgroundColor}
-                onColorChange={this._onBkgColorPickerChange}
-                label={'Background color'}
-              />
-            </Stack>
-          </Stack.Item>
-          <Stack.Item grow={1} disableShrink className={cardsBlockStyles}>
-            <Stack>
-              <ThemeProvider theme={this.state.theme}>
-                <Samples backgroundColor={this.state.backgroundColor.str} />
-              </ThemeProvider>
-              <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
-              <FabricPalette themeRules={this.state.themeRules} />
-              <SemanticSlots theme={this.state.theme} />;
-            </Stack>
-          </Stack.Item>
-        </Stack>
-      </Stack>
+              Color
+            </Text>
+            {/* the three base slots, prominently displayed at the top of the page */}
+            <ThemeDesignerColorPicker
+              color={this.state.primaryColor}
+              onColorChange={this._onPrimaryColorPickerChange}
+              label={'Primary color'}
+            />
+            <ThemeDesignerColorPicker color={this.state.textColor} onColorChange={this._onTextColorPickerChange} label={'Text color'} />
+            <ThemeDesignerColorPicker
+              color={this.state.backgroundColor}
+              onColorChange={this._onBkgColorPickerChange}
+              label={'Background color'}
+            />
+          </Sidebar>
+          <Main>
+            <ThemeProvider theme={this.state.theme}>
+              <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
+            </ThemeProvider>
+            <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
+            <ThemeSlots theme={this.state.theme} themeRules={this.state.themeRules} />
+          </Main>
+        </Content>
+      </Page>
     );
   }
 
-  private _onPrimaryColorPickerChange(newColor: IColor | undefined) {
+  private _onPrimaryColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.primaryColor, BaseSlots.primaryColor, newColor);
-  }
+  };
 
-  private _onTextColorPickerChange(newColor: IColor | undefined) {
+  private _onTextColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.textColor, BaseSlots.foregroundColor, newColor);
-  }
+  };
 
-  private _onBkgColorPickerChange(newColor: IColor | undefined) {
+  private _onBkgColorPickerChange = (newColor: IColor | undefined) => {
     this._onColorChange(this.state.backgroundColor, BaseSlots.backgroundColor, newColor);
-  }
+  };
 
   private _makeNewTheme = (): void => {
     if (this.state.themeRules) {

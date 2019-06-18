@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, Markdown, PropertiesTableSet } from '@uifabric/example-app-base';
 import { KeytipLayer } from 'office-ui-fabric-react';
 
 import { ButtonExample } from './examples/Button.Example';
@@ -70,14 +70,10 @@ export class ButtonPage extends React.Component<IComponentDemoPageProps, {}> {
             ]}
           />
         }
-        overview={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonOverview.md')}</PageMarkdown>
-        }
+        overview={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonOverview.md')}</Markdown>}
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDos.md')}</PageMarkdown>}
-        donts={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDonts.md')}</PageMarkdown>
-        }
+        dos={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!@uifabric/experiments/src/components/Button/docs/ButtonDonts.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

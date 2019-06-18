@@ -78,7 +78,14 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       disableAnimation
     });
 
-    const nativeProps = getNativeProps(this.props, inputProperties, ['id', 'className', 'placeholder', 'onFocus', 'onBlur', 'value']);
+    const nativeProps = getNativeProps<React.InputHTMLAttributes<HTMLInputElement>>(this.props, inputProperties, [
+      'id',
+      'className',
+      'placeholder',
+      'onFocus',
+      'onBlur',
+      'value'
+    ]);
 
     return (
       <div ref={this._rootElement} className={classNames.root} onFocusCapture={this._onFocusCapture}>
@@ -187,8 +194,10 @@ export class SearchBoxBase extends BaseComponent<ISearchBoxProps, ISearchBoxStat
       case KeyCodes.enter:
         if (this.props.onSearch) {
           this.props.onSearch(this.state.value);
+          break;
         }
-        break;
+        // if we don't handle the enter press then we shouldn't prevent default
+        return;
 
       default:
         this.props.onKeyDown && this.props.onKeyDown(ev);

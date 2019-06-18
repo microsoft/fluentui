@@ -38,8 +38,8 @@ const _names: string[] = [
   'Makenzie Sharett'
 ];
 
-function generateRandomDate(): string {
-  return new Date(new Date(2010, 0, 1).getTime() + Math.random() * (new Date().getTime() - new Date(2010, 0, 1).getTime())).toDateString();
+function getMockDateString(): string {
+  return 'Thu Jan 05 2017‌';
 }
 
 export interface IAnnouncedQuickActionsExampleItem {
@@ -72,7 +72,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
         _items.push({
           key: i,
           name: 'Item ' + i,
-          modified: generateRandomDate(),
+          modified: getMockDateString(),
           modifiedby: _names[Math.floor(Math.random() * _names.length)],
           filesize: Math.floor(Math.random() * 30).toString() + ' MB'
         });
@@ -180,7 +180,7 @@ export class AnnouncedQuickActionsExample extends React.Component<{}, IAnnounced
       renameDialogOpen: true,
       dialogContent: (
         <>
-          <TextField componentRef={this._textField} label="Rename" value={item.name} />
+          <TextField componentRef={this._textField} label="Rename" defaultValue={item.name} />
           <DialogFooter>
             <PrimaryButton onClick={this._updateItemName.bind(this, index)} text="Save" />
           </DialogFooter>

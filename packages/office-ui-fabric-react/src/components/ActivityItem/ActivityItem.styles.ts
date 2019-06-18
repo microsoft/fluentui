@@ -58,7 +58,7 @@ export const getStyles = memoizeFunction(
 
     const ActivityItemStyles: IActivityItemStyles = {
       root: [
-        theme.fonts.xSmall,
+        theme.fonts.small,
         {
           display: 'flex',
           justifyContent: 'flex-start',

@@ -4,7 +4,7 @@ export const VerticalPersonaTokens: IVerticalPersonaComponent['tokens'] = (props
   return {
     verticalPersonaWidth: 122,
     // TODO: typing exposed this error, ask Mark what it should be?
-    // font: theme.fonts.medium,
+    // font: theme.fonts.large,
     horizontalTextPadding: 8,
     primaryTextPaddingTop: '8px',
     primaryTextFontSize: '14px',

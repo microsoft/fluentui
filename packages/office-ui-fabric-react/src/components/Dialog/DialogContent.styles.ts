@@ -33,7 +33,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
 
     subText: [
       classNames.subText,
-      isLargeHeader ? fonts.small : fonts.xSmall,
+      isLargeHeader ? fonts.medium : fonts.small,
       {
         margin: '0 0 20px 0',
         paddingTop: '8px',
@@ -95,7 +95,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
 
     title: [
       classNames.title,
-      fonts.mediumPlus,
+      fonts.xLarge,
       {
         color: palette.neutralPrimary,
         margin: '0',
@@ -105,7 +105,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
         lineHeight: 'normal'
       },
       isLargeHeader && [
-        fonts.xLarge,
+        fonts.xxLarge,
         {
           color: palette.white,
           marginBottom: '8px',
@@ -113,7 +113,7 @@ export const getStyles = (props: IDialogContentStyleProps): IDialogContentStyles
           fontWeight: FontWeights.semibold
         }
       ],
-      isMultiline && fonts.xLarge
+      isMultiline && fonts.xxLarge
     ],
 
     topButton: [

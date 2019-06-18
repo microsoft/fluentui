@@ -2,7 +2,7 @@
 import * as React from 'react';
 import { withSlots, getSlots } from '@uifabric/foundation';
 import { getNativeProps, htmlElementProperties, warn } from '@uifabric/utilities';
-import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { Stack, IStackComponent } from 'office-ui-fabric-react/lib/Stack';
 
 import { ICardComponent, ICardProps, ICardSlots, ICardTokens } from './Card.types';
 import { CardItem } from './CardItem/CardItem';
@@ -17,7 +17,7 @@ export const CardView: ICardComponent['view'] = props => {
 
   const { children, styles, tokens, compact, ...rest } = props;
 
-  const nativeProps = getNativeProps(rest, htmlElementProperties);
+  const nativeProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(rest, htmlElementProperties);
 
   const CardItemType = (<CardItem /> as React.ReactElement<ICardItemProps>).type;
   const CardSectionType = (<CardSection /> as React.ReactElement<ICardSectionProps>).type;
@@ -86,7 +86,7 @@ export const CardView: ICardComponent['view'] = props => {
     <Slots.root
       {...nativeProps}
       horizontal={compact}
-      tokens={tokens}
+      tokens={tokens as IStackComponent['tokens']}
       verticalFill
       verticalAlign="space-between"
       horizontalAlign="space-between"

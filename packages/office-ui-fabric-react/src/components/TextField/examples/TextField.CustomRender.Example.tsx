@@ -39,7 +39,7 @@ export class TextFieldCustomRenderExample extends React.Component<{}, ITextField
   private _onRenderDescription = (props: ITextFieldProps): JSX.Element => {
     const theme = getTheme();
     return (
-      <Text variant="xSmall" styles={{ root: { color: theme.palette.green, fontWeight: FontWeights.bold } }}>
+      <Text variant="small" styles={{ root: { color: theme.palette.green, fontWeight: FontWeights.bold } }}>
         {props.description}
       </Text>
     );

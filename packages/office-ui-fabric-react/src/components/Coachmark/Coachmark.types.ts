@@ -1,3 +1,4 @@
+import * as React from 'react';
 import { IStyle, ITheme } from '../../Styling';
 import { IPositioningContainerProps } from './PositioningContainer/PositioningContainer.types';
 import { IRefObject, IStyleFunctionOrObject } from '../../Utilities';

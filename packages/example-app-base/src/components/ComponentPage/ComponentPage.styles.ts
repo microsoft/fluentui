@@ -19,15 +19,13 @@ const globalClassNames = {
   variantsTitle: 'ComponentPage-variantsTitle',
   variantsList: 'ComponentPage-variantsList',
   implementationSection: 'ComponentPage-implementationSection',
-  implementationExamplesSection: 'ComponentPage-implementationExamplesSection',
   feedbackSection: 'ComponentPage-feedbackSection',
   bestPracticesSection: 'ComponentPage-bestPracticesSection',
   doSections: 'ComponentPage-doSections',
   dosDontsSection: 'ComponentPage-doSection',
   dosDontsHeading: 'ComponentPage-doSectionHeader',
   dosDontsLine: 'ComponentPage-doSectionLine',
-  dontsSection: 'ComponentPage-doSection--dont',
-  statusSection: 'ComponentPage-componentStatusSection'
+  dontsSection: 'ComponentPage-doSection--dont'
 };
 
 const componentPageColor = '#0f8387';
@@ -35,7 +33,7 @@ const componentPagePadding = 50;
 const ulLeftPadding = 18;
 
 export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageStyles> = props => {
-  const { theme = getTheme(), componentStatus } = props;
+  const { theme = getTheme() } = props;
   return {
     body: globalClassNames.body,
     root: [
@@ -97,7 +95,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       {
         maxWidth: '60em'
       },
-      !!componentStatus && { paddingTop: 15 },
       globalClassNames.overviewSection
     ],
     overviewText: [
@@ -154,7 +151,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
       globalClassNames.variantsList
     ],
     implementationSection: globalClassNames.implementationSection,
-    implementationExamplesSection: globalClassNames.implementationExamplesSection,
     feedbackSection: globalClassNames.feedbackSection,
     bestPracticesSection: [
       {
@@ -215,12 +211,6 @@ export const getStyles: IStyleFunction<IComponentPageStyleProps, IComponentPageS
     dontsLine: {
       backgroundColor: '#e74856'
     },
-    dontsSection: globalClassNames.dontsSection,
-    statusSection: [
-      {
-        paddingBottom: 0
-      },
-      globalClassNames.statusSection
-    ]
+    dontsSection: globalClassNames.dontsSection
   };
 };

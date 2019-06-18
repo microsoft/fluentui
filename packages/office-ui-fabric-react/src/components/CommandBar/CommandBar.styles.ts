@@ -8,7 +8,7 @@ export const getStyles = (props: ICommandBarStyleProps): ICommandBarStyles => {
 
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       'ms-CommandBar',
       {
         display: 'flex',

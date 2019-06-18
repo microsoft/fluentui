@@ -3,15 +3,15 @@ import { IVerticalBarChartStyleProps, IVerticalBarChartStyles } from './Vertical
 export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChartStyles => {
   const { className, theme, width, height } = props;
 
-  const chartWidth = width + 30;
+  const chartWidth = width + 50;
   const chartPadding = 20;
-  const chartHeight = height + 10;
+  const chartHeight = height + 50;
   const xOffset = 30;
-  const yOffset = 20;
+  const yOffset = 23;
 
   return {
     root: [
-      theme.fonts.small,
+      theme.fonts.medium,
       'ms-VerticalBarChart',
       className,
       {
@@ -29,7 +29,7 @@ export const getStyles = (props: IVerticalBarChartStyleProps): IVerticalBarChart
     chartLabel: [
       {
         textAlign: 'center',
-        ...theme.fonts.smallPlus
+        ...theme.fonts.mediumPlus
       }
     ],
     xAxis: [

@@ -169,6 +169,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Button-icon
                   {
@@ -232,6 +233,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
         <input
           aria-describedby="TextFieldDescription3"
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel4"
           className=
               ms-TextField-field
               {
@@ -361,7 +363,8 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
               padding-top: 5px;
               word-wrap: break-word;
             }
-        htmlFor="TextField7"
+        htmlFor="TextField8"
+        id="TextFieldLabel10"
       >
         Custom description rendering
       </label>
@@ -397,8 +400,9 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
             }
       >
         <input
-          aria-describedby="TextFieldDescription8"
+          aria-describedby="TextFieldDescription9"
           aria-invalid={false}
+          aria-labelledby="TextFieldLabel10"
           className=
               ms-TextField-field
               {
@@ -451,7 +455,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
                 font-weight: 400;
                 opacity: 1;
               }
-          id="TextField7"
+          id="TextField8"
           onBlur={[Function]}
           onChange={[Function]}
           onFocus={[Function]}
@@ -462,7 +466,7 @@ exports[`Component Examples renders TextField.CustomRender.Example.tsx correctly
       </div>
     </div>
     <span
-      id="TextFieldDescription8"
+      id="TextFieldDescription9"
     >
       <span
         className=

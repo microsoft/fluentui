@@ -1,6 +1,4 @@
-/* tslint:disable:no-unused-variable */
 import * as React from 'react';
-/* tslint:enable:no-unused-variable */
 import * as ReactDOM from 'react-dom';
 import * as ReactTestUtils from 'react-dom/test-utils';
 import {
@@ -12,7 +10,6 @@ import {
   getFocusableByIndexPath,
   getLastTabbable
 } from './focus';
-import { nullRender } from './BaseComponent';
 
 let _hiddenElement: HTMLElement | undefined;
 let _visibleElement: HTMLElement | undefined;
@@ -220,7 +217,7 @@ describe('getFocusableByIndexPath', () => {
     </div>
   `;
 
-    const child = parent.querySelector('#child') as HTMLElement;
+    parent.querySelector('#child') as HTMLElement;
 
     expect(getFocusableByIndexPath(parent, [0, 2, 1])).toEqual(null);
   });

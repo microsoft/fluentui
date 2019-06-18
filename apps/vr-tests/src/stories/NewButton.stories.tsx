@@ -66,7 +66,7 @@ storiesOf('Button', module)
       <Button icon="Share">
         <Stack as="span" horizontalAlign="start" tokens={{ padding: '8px 0px' }}>
           <Text>Compound multiline button</Text>
-          <Text variant="small">Caption</Text>
+          <Text variant="medium">Caption</Text>
         </Stack>
       </Button>
     ),
@@ -207,8 +207,8 @@ storiesOf('BaseButton', module)
       {story()}
     </Screener>
   ))
-  .addStory('Default', () => <BaseButton {...baseProps} />, { rtl: true })
-  .addStory('Disabled', () => <BaseButton disabled {...baseProps} />);
+  .addStory('Default', () => <BaseButton>Button</BaseButton>)
+  .addStory('Disabled', () => <BaseButton disabled>Button</BaseButton>);
 
 storiesOf('CommandBarButton', module)
   .addDecorator(FabricDecorator)

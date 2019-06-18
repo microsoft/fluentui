@@ -46,7 +46,7 @@ export class VerticalBarChartStyledExample extends React.Component<IVerticalBarC
         },
         chartLabel: {
           color: DefaultPalette.orange,
-          ...DefaultFontStyles.medium
+          ...DefaultFontStyles.large
         },
         xAxisDomain: axisStyle,
         xAxisTicks: axisStyle,

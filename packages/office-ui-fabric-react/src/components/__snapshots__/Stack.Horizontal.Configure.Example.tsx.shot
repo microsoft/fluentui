@@ -457,6 +457,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -594,6 +595,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -791,6 +793,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -928,6 +931,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                     }
               >
                 <i
+                  aria-hidden={true}
                   className=
                       ms-Checkbox-checkmark
                       {
@@ -3085,7 +3089,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Horizontal Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -3143,6 +3146,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -3313,7 +3317,6 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           onFocus={[Function]}
           onKeyDown={[Function]}
           onKeyUp={[Function]}
-          placeholder="Select Vertical Alignment"
           role="listbox"
           tabIndex={0}
         >
@@ -3371,6 +3374,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Dropdown-caretDown
                   {
@@ -3508,6 +3512,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                 }
           >
             <i
+              aria-hidden={true}
               className=
                   ms-Checkbox-checkmark
                   {
@@ -3612,6 +3617,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
                   word-wrap: break-word;
                 }
             htmlFor="TextField15"
+            id="TextFieldLabel17"
           >
             Enter a space-separated list of empty children (e.g. 1 2 3):
           </label>
@@ -3648,6 +3654,7 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
           >
             <input
               aria-invalid={false}
+              aria-labelledby="TextFieldLabel17"
               className=
                   ms-TextField-field
                   {
@@ -3745,82 +3752,82 @@ exports[`Component Examples renders Stack.Horizontal.Configure.Example.tsx corre
         }
   >
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            box-shadow: ;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "boxShadow": "",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       1
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            box-shadow: ;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "boxShadow": "",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       2
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            box-shadow: ;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "boxShadow": "",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       3
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            box-shadow: ;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "boxShadow": "",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       4
     </span>
     <span
-      className=
-
-          {
-            align-items: center;
-            background: #0078d4;
-            box-shadow: ;
-            color: #ffffff;
-            display: flex;
-            height: 50px;
-            justify-content: center;
-            width: 50px;
-          }
+      style={
+        Object {
+          "alignItems": "center",
+          "background": "#0078d4",
+          "boxShadow": "",
+          "color": "#ffffff",
+          "display": "flex",
+          "height": 50,
+          "justifyContent": "center",
+          "width": 50,
+        }
+      }
     >
       5
     </span>

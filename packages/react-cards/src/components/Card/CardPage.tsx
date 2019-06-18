@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { ExampleCard, IComponentDemoPageProps, ComponentPage, PageMarkdown, PropertiesTableSet } from '@uifabric/example-app-base';
+import { ExampleCard, IComponentDemoPageProps, ComponentPage, Markdown, PropertiesTableSet } from '@uifabric/example-app-base';
 
 import { CardVerticalExample } from './examples/Card.Vertical.Example';
 const CardVerticalExampleCode = require('!raw-loader!@uifabric/react-cards/src/components/Card/examples/Card.Vertical.Example.tsx') as string;
@@ -32,13 +32,10 @@ export class CardPage extends React.Component<IComponentDemoPageProps, {}> {
         propertiesTables={
           <PropertiesTableSet sources={[require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/Card.types.ts')]} />
         }
-        // tslint:disable:deprecation
-        overview={
-          <PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md')}</PageMarkdown>
-        }
+        overview={<Markdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardOverview.md')}</Markdown>}
         bestPractices={<div />}
-        dos={<PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDos.md')}</PageMarkdown>}
-        donts={<PageMarkdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDonts.md')}</PageMarkdown>}
+        dos={<Markdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDos.md')}</Markdown>}
+        donts={<Markdown>{require<string>('!raw-loader!@uifabric/react-cards/src/components/Card/docs/CardDonts.md')}</Markdown>}
         isHeaderVisible={this.props.isHeaderVisible}
       />
     );

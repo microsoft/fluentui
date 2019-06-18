@@ -326,7 +326,7 @@ export class ResizeGroupBase extends BaseComponent<IResizeGroupProps, IResizeGro
   public render(): JSX.Element {
     const { className, onRenderData } = this.props;
     const { dataToMeasure, renderedData } = this.state;
-    const divProps = getNativeProps(this.props, divProperties, ['data']);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties, ['data']);
 
     const dataNeedsMeasuring = this._nextResizeGroupStateProvider.shouldRenderDataForMeasurement(dataToMeasure);
 

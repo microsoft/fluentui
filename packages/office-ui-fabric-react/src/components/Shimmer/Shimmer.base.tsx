@@ -79,7 +79,7 @@ export class ShimmerBase extends BaseComponent<IShimmerProps, IShimmerState> {
       shimmerWaveColor: shimmerColors && shimmerColors.shimmerWave
     });
 
-    const divProps = getNativeProps(this.props, divProperties);
+    const divProps = getNativeProps<React.HTMLAttributes<HTMLDivElement>>(this.props, divProperties);
 
     return (
       <div {...divProps} className={this._classNames.root}>

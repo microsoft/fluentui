@@ -102,7 +102,7 @@ export const ToggleStyles: IToggleComponent['styles'] = (props, theme, tokens): 
       checked && 'is-checked',
       !disabled && 'is-enabled',
       disabled && 'is-disabled',
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         marginBottom: '8px'
       },

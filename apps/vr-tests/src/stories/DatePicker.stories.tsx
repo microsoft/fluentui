@@ -4,7 +4,7 @@ import Screener from 'screener-storybook/src/screener';
 import { storiesOf } from '@storybook/react';
 import { FabricDecoratorFixedWidth } from '../utilities';
 import { Fabric } from 'office-ui-fabric-react';
-import { DatePicker } from '@uifabric/legacy';
+import { DatePicker } from 'office-ui-fabric-react';
 
 const date = new Date(2010, 1, 12);
 storiesOf('DatePicker', module)

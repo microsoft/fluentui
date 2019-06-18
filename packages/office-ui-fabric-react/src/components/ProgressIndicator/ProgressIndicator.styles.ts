@@ -42,7 +42,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         fontWeight: FontWeights.regular
       },
@@ -54,7 +54,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       noWrap,
       {
         color: semanticColors.bodyText,
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         paddingTop: marginBetweenText / 2,
         lineHeight: textHeight + 2
       }
@@ -64,7 +64,7 @@ export const getStyles = (props: IProgressIndicatorStyleProps): IProgressIndicat
       classNames.itemDescription,
       {
         color: semanticColors.bodySubtext,
-        fontSize: FontSizes.mini,
+        fontSize: FontSizes.xSmall,
         lineHeight: textHeight
       }
     ],

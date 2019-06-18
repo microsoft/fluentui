@@ -14,7 +14,7 @@ export const getStyles = (props: ILabelStyleProps): ILabelStyles => {
   return {
     root: [
       'ms-Label',
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         fontWeight: labelFontWeight,
         color: labelColor,

@@ -78,7 +78,7 @@ export const getStyles = (props: IDocumentCardStyleProps): IDocumentCardStyles =
             },
             [`.${titleClassNames.root}`]: {
               paddingBottom: '12px 16px 8px 16px',
-              fontSize: FontSizes.smallPlus,
+              fontSize: FontSizes.mediumPlus,
               lineHeight: '16px'
             }
           }

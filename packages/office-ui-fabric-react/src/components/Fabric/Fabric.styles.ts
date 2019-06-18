@@ -20,7 +20,7 @@ export const getStyles = (props: IFabricStyleProps): IFabricStyles => {
     root: [
       classNames.root,
       isFocusVisible && 'is-focusVisible',
-      theme.fonts.small,
+      theme.fonts.medium,
       {
         color: theme.palette.neutralPrimary,
         selectors: {

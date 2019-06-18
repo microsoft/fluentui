@@ -1,6 +1,62 @@
 # Change Log - @uifabric/utilities
 
-This log was last generated on Wed, 29 May 2019 12:21:24 GMT and should not be manually modified.
+This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+
+## 7.0.3
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.2
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+
+## 7.0.0
+Wed, 12 Jun 2019 00:42:26 GMT
+
+### Breaking changes
+
+- Remove deprecated `autobind` decorator.
+- createRef: removed (use React.createRef instead)
+
+### Minor changes
+
+- Add utility for checking controlled/uncontrolled prop usage
+
+### Patches
+
+- Update and dedupe React deps.
+
+## 6.41.0
+Tue, 11 Jun 2019 12:21:35 GMT
+
+### Minor changes
+
+- Updating `getNativeAttributes` element allow lists to be more refined, reducing unexpected attributes from being injected on primative elements. For example, `min` and `max` were being allowed to be injected for `div` elements. Now they are only injected for `input` elements.
+
+### Patches
+
+- Setting the styles props only when either of defaultProps or componentProps have it defined
+- upgrade to api-extractor 7.1.6
+
+## 6.40.1
+Thu, 06 Jun 2019 12:22:24 GMT
+
+### Patches
+
+- Fix ./index import from selection
+
+## 6.40.0
+Wed, 05 Jun 2019 12:22:30 GMT
+
+### Minor changes
+
+- Migrate Selection to Utilities
 
 ## 6.39.3
 Wed, 29 May 2019 12:21:24 GMT

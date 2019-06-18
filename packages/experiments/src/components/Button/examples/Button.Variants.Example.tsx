@@ -1,16 +1,9 @@
 import * as React from 'react';
-import {
-  ActionButton,
-  BaseButton,
-  CommandBarButton,
-  CompoundButton,
-  DefaultButton,
-  IconButton,
-  MessageBarButton,
-  PrimaryButton
-} from '../index';
-import { MenuButton } from '../MenuButton/index';
-import { SplitButton, ISplitButtonProps } from '../SplitButton/index';
+import { ActionButton, CommandBarButton, CompoundButton, DefaultButton, IconButton, MessageBarButton, PrimaryButton } from '../index';
+import { BaseButton } from '../BaseButton/BaseButton';
+import { MenuButton } from '../MenuButton/MenuButton';
+import { SplitButton } from '../SplitButton/SplitButton';
+import { ISplitButtonProps } from '../SplitButton/SplitButton.types';
 import { Stack, Text } from 'office-ui-fabric-react';
 
 const tokens = {
@@ -55,8 +48,8 @@ export class ButtonVariantsExample extends React.Component<{}, {}> {
             <PrimaryButton disabled text="Disabled primary button" />
           </ButtonStack>
           <ButtonStack>
-            <BaseButton text="Base Button" />
-            <BaseButton disabled text="Disabled Base Button" />
+            <BaseButton content="Base Button" />
+            <BaseButton disabled content="Disabled Base Button" />
           </ButtonStack>
           <ButtonStack>
             <ActionButton text="Action button" />

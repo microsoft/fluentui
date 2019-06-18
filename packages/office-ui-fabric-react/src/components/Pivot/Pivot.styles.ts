@@ -21,7 +21,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
     {
       color: semanticColors.actionLink,
       display: 'inline-block',
-      fontSize: FontSizes.small,
+      fontSize: FontSizes.medium,
       fontWeight: FontWeights.regular,
       lineHeight: 44,
       height: 44,
@@ -75,7 +75,7 @@ const linkStyles = (props: IPivotStyleProps): IStyle[] => {
       }
     },
     rootIsLarge && {
-      fontSize: FontSizes.medium
+      fontSize: FontSizes.large
     },
     rootIsTabs && [
       {
@@ -109,10 +109,10 @@ export const getStyles = (props: IPivotStyleProps): IPivotStyles => {
   return {
     root: [
       classNames.root,
-      theme.fonts.small,
+      theme.fonts.medium,
       normalize,
       {
-        fontSize: FontSizes.small,
+        fontSize: FontSizes.medium,
         fontWeight: FontWeights.regular,
         position: 'relative',
         color: palette.themePrimary,
