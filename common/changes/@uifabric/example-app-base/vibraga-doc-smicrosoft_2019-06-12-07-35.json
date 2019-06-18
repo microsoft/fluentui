@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/example-app-base",
+      "comment": "Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/example-app-base",
+  "email": "vibraga@microsoft.com"
+}
