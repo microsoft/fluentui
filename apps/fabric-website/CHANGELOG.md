@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2019 19:00:04 GMT and should not be manually modified.
+
+## 7.1.3
+Tue, 18 Jun 2019 19:00:04 GMT
+
+### Patches
+
+- Mobile: Added source code links, removed generic library link.
 
 ## 7.1.2
 Tue, 18 Jun 2019 12:26:19 GMT
