@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+
+## 7.0.4
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- ColorPalette: fix missing react code breaking rendering
 
 ## 7.0.3
 Fri, 14 Jun 2019 12:26:30 GMT

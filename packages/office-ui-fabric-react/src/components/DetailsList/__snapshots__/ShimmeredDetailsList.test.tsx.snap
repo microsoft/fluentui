@@ -37,7 +37,7 @@ exports[`ShimmeredDetailsList renders List correctly 1`] = `
     <div
       aria-colcount={1}
       aria-readonly="true"
-      aria-rowcount={11}
+      aria-rowcount={-1}
       role="grid"
     >
       <div

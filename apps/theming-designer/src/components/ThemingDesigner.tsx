@@ -3,20 +3,18 @@ import { AccessibilityChecker } from './AccessibilityChecker';
 import { BaseComponent } from 'office-ui-fabric-react/lib/Utilities';
 import { BaseSlots, IThemeRules, ThemeGenerator, themeRulesStandardCreator } from 'office-ui-fabric-react/lib/ThemeGenerator';
 import { createTheme, ITheme } from 'office-ui-fabric-react/lib/Styling';
-import { FabricPalette } from './FabricPalette';
+import { ThemeSlots } from './ThemeSlots';
 import { getColorFromString, IColor } from 'office-ui-fabric-react/lib/Color';
 import { Header } from './Header';
 import { IconButton } from 'office-ui-fabric-react/lib/Button';
 import { isDark } from 'office-ui-fabric-react/lib/utilities/color/shades';
 import { mergeStyles } from '@uifabric/merge-styles';
 import { Samples } from './Samples/index';
-import { SemanticSlots } from './SemanticSlots';
 import { Stack, IStackProps } from 'office-ui-fabric-react/lib/Stack';
 import { ThemeDesignerColorPicker } from './ThemeDesignerColorPicker';
-import { Text, Pivot, PivotItem } from 'office-ui-fabric-react';
+import { Text } from 'office-ui-fabric-react';
 import { ThemeProvider } from 'office-ui-fabric-react/lib/Foundation';
 import { MainPanelWidth } from '../shared/MainPanelStyles';
-import { TitleText } from '../shared/Typography';
 
 export interface IThemingDesignerState {
   primaryColor: IColor;
@@ -64,8 +62,7 @@ const Main = (props: IStackProps) => (
     disableShrink
     className={mergeStyles({
       minWidth: MainPanelWidth,
-      overflow: 'scroll',
-      marginTop: '35px'
+      overflow: 'scroll'
     })}
     {...props}
   />
@@ -114,15 +111,7 @@ export class ThemingDesigner extends BaseComponent<{}, IThemingDesignerState> {
               <Samples backgroundColor={this.state.backgroundColor.str} textColor={this.state.textColor.str} />
             </ThemeProvider>
             <AccessibilityChecker theme={this.state.theme} themeRules={this.state.themeRules} />
-            <TitleText>Theme Slots</TitleText>
-            <Pivot>
-              <PivotItem headerText="Fabric palette slots">
-                <FabricPalette themeRules={this.state.themeRules} />
-              </PivotItem>
-              <PivotItem headerText="Semantic slots">
-                <SemanticSlots theme={this.state.theme} />
-              </PivotItem>
-            </Pivot>
+            <ThemeSlots theme={this.state.theme} themeRules={this.state.themeRules} />
           </Main>
         </Content>
       </Page>

@@ -2,6 +2,32 @@
   "name": "office-ui-fabric-react",
   "entries": [
     {
+      "version": "7.4.0",
+      "tag": "office-ui-fabric-react_v7.4.0",
+      "date": "Tue, 18 Jun 2019 12:26:19 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "DetailsList accessibility now reports 0 rows while placeholder data is being displayed. Also added a prop to ShimmeredDetailsList to specify aria label (such as a \"loading data\" message) while shimmer is being displayed.",
+            "author": "Rajeev-K <Rajeev-K@users.noreply.github.com>",
+            "commit": "a785dc9fb9b76eae1220cae633e4b7f50b26293e"
+          }
+        ],
+        "patch": [
+          {
+            "comment": "Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released. ",
+            "author": "jiangwan <wan.jiang00@gmail.com>",
+            "commit": "89b1bf04626b40a81858ffcdf55e64649e66f2c7"
+          },
+          {
+            "comment": "Only run KeytipManager update when relevant keytip props have changed in KeytipData.",
+            "author": "Kushal Yarlagadda <whykushal93@gmail.com>",
+            "commit": "9e50b048b2c781d46573f6b0af89af3277f8dac2"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.3.0",
       "tag": "office-ui-fabric-react_v7.3.0",
       "date": "Mon, 17 Jun 2019 12:26:51 GMT",

@@ -1576,6 +1576,8 @@ exports[`Component Examples renders ComboBox.Basic.Example.tsx correctly 1`] = `
                     position: relative;
                   }
               onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               onScroll={[Function]}
               style={
                 Object {

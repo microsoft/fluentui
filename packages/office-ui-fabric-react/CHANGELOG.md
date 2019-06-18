@@ -1,6 +1,18 @@
 # Change Log - office-ui-fabric-react
 
-This log was last generated on Mon, 17 Jun 2019 12:26:51 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+
+## 7.4.0
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Minor changes
+
+- DetailsList accessibility now reports 0 rows while placeholder data is being displayed. Also added a prop to ShimmeredDetailsList to specify aria label (such as a "loading data" message) while shimmer is being displayed.
+
+### Patches
+
+- Prevent the callout from being dismissed when the mouse is pressed inside, but then moved outside (while keeping pressed) and released. 
+- Only run KeytipManager update when relevant keytip props have changed in KeytipData.
 
 ## 7.3.0
 Mon, 17 Jun 2019 12:26:51 GMT

@@ -1,13 +1,21 @@
 import * as React from 'react';
-import { buttonProperties, getNativeProps } from '../../../Utilities';
+import { buttonProperties, getNativeProps, memoizeFunction } from '../../../Utilities';
 import { ContextualMenuItemWrapper } from './ContextualMenuItemWrapper';
 import { KeytipData } from '../../../KeytipData';
 import { getIsChecked, isItemDisabled, hasSubmenu } from '../../../utilities/contextualMenu/index';
 import { ContextualMenuItem } from '../ContextualMenuItem';
 import { IKeytipDataProps } from '../../KeytipData/KeytipData.types';
+import { IKeytipProps } from '../../Keytip/Keytip.types';
 
 export class ContextualMenuButton extends ContextualMenuItemWrapper {
   private _btn = React.createRef<HTMLButtonElement>();
+
+  private _getMemoizedMenuButtonKeytipProps = memoizeFunction((keytipProps: IKeytipProps) => {
+    return {
+      ...keytipProps,
+      hasMenu: true
+    };
+  });
 
   public render() {
     const {
@@ -63,10 +71,7 @@ export class ContextualMenuButton extends ContextualMenuItemWrapper {
 
     let { keytipProps } = item;
     if (keytipProps && itemHasSubmenu) {
-      keytipProps = {
-        ...keytipProps,
-        hasMenu: true
-      };
+      keytipProps = this._getMemoizedMenuButtonKeytipProps(keytipProps);
     }
 
     return (

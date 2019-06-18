@@ -230,6 +230,8 @@ exports[`ContextualMenu ContextualMenu snapshot ContextualMenu should be present
                     position: relative;
                   }
               onKeyDown={[Function]}
+              onMouseDown={[Function]}
+              onMouseUp={[Function]}
               onScroll={[Function]}
               style={
                 Object {

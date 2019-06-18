@@ -1,6 +1,15 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+
+## 7.1.2
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add overview and controls request sections to mobile pages.
+- Add theme slots page
+- Add links to documentation pages.
 
 ## 7.1.1
 Fri, 14 Jun 2019 12:26:30 GMT
