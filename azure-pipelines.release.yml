@@ -43,7 +43,7 @@ steps:
     displayName: "Publish Artifact: Fabric"
 
   - script: |
-    node node_modules/@microsoft/rush/bin/rush publish -a -p -b 5.0 -n $(npmToken) --add-commit-details
+    node node_modules/@microsoft/rush/bin/rush publish -a -p -b 5.0 -t 5.0 -n $(npmToken) --add-commit-details
     displayName: "Publish Change Requests and Bump Versions"
 
   - script: |
