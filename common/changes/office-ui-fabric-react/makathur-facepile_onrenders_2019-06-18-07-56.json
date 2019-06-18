@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "office-ui-fabric-react",
+      "comment": "Facepile:Introducing two new optional props 1) OnRenderPersona - Callback to override default implementation when facepile renders only 1 persona 2) OnRenderPersonaCoin - Callback to ovverride default implementation when facepile renders more than 1 personas i.e personaCoins. ",
+      "type": "patch"
+    }
+  ],
+  "packageName": "office-ui-fabric-react",
+  "email": "makathur@microsoft.com"
+}

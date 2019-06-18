@@ -74,10 +74,10 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
   /** Type of overflow icon to use */
   overflowButtonType?: OverflowButtonType;
 
-  /** Optional custom renderer for the persona */
+  /** Optional custom renderer for the persona , gets called only when their is one persona in personas array*/
   onRenderPersona?: IRenderFunction<IFacepilePersona>;
 
-  /** Optional custom renderer for the persona coins */
+  /** Optional custom renderer for the persona coins, gets called only when their is more than one persona in personas array*/
   onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
 
   /** Method to access properties on the underlying Persona control */
