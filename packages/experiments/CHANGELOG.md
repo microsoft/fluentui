@@ -1,6 +1,13 @@
 # Change Log - @uifabric/experiments
 
-This log was last generated on Fri, 14 Jun 2019 15:54:00 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+
+## 7.1.1
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Button: Getting anchor native props if href prop is specified.
 
 ## 7.1.0
 Fri, 14 Jun 2019 15:54:00 GMT

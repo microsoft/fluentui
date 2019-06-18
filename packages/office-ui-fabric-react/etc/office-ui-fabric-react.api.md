@@ -3389,6 +3389,7 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
     indentWidth?: number;
     initialFocusedIndex?: number;
     isHeaderVisible?: boolean;
+    isPlaceholderData?: boolean;
     items: any[];
     layoutMode?: DetailsListLayoutMode;
     listProps?: IListProps;
@@ -4435,6 +4436,8 @@ export interface IFacepileProps extends React.ClassAttributes<FacepileBase> {
     componentRef?: IRefObject<IFacepile>;
     getPersonaProps?: (persona: IFacepilePersona) => IPersonaSharedProps;
     maxDisplayablePersonas?: number;
+    onRenderPersona?: IRenderFunction<IFacepilePersona>;
+    onRenderPersonaCoin?: IRenderFunction<IFacepilePersona>;
     overflowButtonProps?: IButtonProps;
     overflowButtonType?: OverflowButtonType;
     overflowPersonas?: IFacepilePersona[];
@@ -6586,6 +6589,7 @@ export interface IShimmerColors {
 
 // @public
 export interface IShimmeredDetailsListProps extends Omit<IDetailsListProps, 'styles'> {
+    ariaLabelForShimmer?: string;
     detailsListStyles?: IDetailsListProps['styles'];
     enableShimmer?: boolean;
     onRenderCustomPlaceholder?: (rowProps: IDetailsRowProps) => React.ReactNode;
@@ -7729,7 +7733,7 @@ export class KeytipData extends React.Component<IKeytipDataProps & IRenderCompon
     // (undocumented)
     componentDidMount(): void;
     // (undocumented)
-    componentDidUpdate(): void;
+    componentDidUpdate(prevProps: IKeytipDataProps & IRenderComponent<{}>): void;
     // (undocumented)
     componentWillUnmount(): void;
     // (undocumented)
