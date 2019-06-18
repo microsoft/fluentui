@@ -542,6 +542,7 @@ export interface ISemanticTextColors {
     primaryButtonTextDisabled: string;
     primaryButtonTextHovered: string;
     primaryButtonTextPressed: string;
+    successText: string;
     warningText: string;
 }
 
