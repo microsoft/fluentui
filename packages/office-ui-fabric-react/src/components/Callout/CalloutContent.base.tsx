@@ -105,10 +105,9 @@ export class CalloutContentBase extends React.Component<ICalloutProps, ICalloutS
       if (!this._hasListeners) {
         this._addListeners();
       }
-      if (this.state.positions && this.props.finalHeight) {
-        return;
+      if (!this.state.positions || !this.props.finalHeight) {
+        this._updateAsyncPosition();
       }
-      this._updateAsyncPosition();
     } else {
       if (this._hasListeners) {
         this._removeListeners();
