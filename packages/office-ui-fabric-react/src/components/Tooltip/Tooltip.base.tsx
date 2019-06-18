@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { classNamesFunction, divProperties, getNativeProps, DelayedRender } from '../../Utilities';
+import { classNamesFunction, divProperties, getNativeProps } from '../../Utilities';
 import { IProcessedStyleSet } from '../../Styling';
 import { ITooltipProps, ITooltipStyleProps, ITooltipStyles, TooltipDelay } from './Tooltip.types';
 import { Callout } from '../../Callout';
@@ -42,19 +42,11 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
     this._classNames = getClassNames(styles!, {
       theme: theme!,
       className: className || (calloutProps && calloutProps.className),
+      delay: delay!,
       maxWidth: maxWidth!
     });
 
-    let renderDelay;
-    if (delay === TooltipDelay.zero) {
-      renderDelay = 0;
-    } else if (delay === TooltipDelay.medium) {
-      renderDelay = 300;
-    } else if (delay === TooltipDelay.long) {
-      renderDelay = 500;
-    }
-
-    const RenderedCallout = (
+    return (
       <Callout
         target={targetElement}
         directionalHint={directionalHint}
@@ -74,8 +66,6 @@ export class TooltipBase extends React.Component<ITooltipProps, any> {
         </div>
       </Callout>
     );
-
-    return delay === TooltipDelay.zero ? RenderedCallout : <DelayedRender delay={renderDelay}> {RenderedCallout} </DelayedRender>;
   }
 
   private _onRenderContent = (props: ITooltipProps): JSX.Element => {
