@@ -3,7 +3,7 @@ import * as renderer from 'react-test-renderer';
 import { mount } from 'enzyme';
 
 import { SplitButton } from './SplitButton';
-import { ISplitButtonProps } from './SplitButton.types';
+import { ISplitButton, ISplitButtonProps } from './SplitButton.types';
 
 const menuProps: ISplitButtonProps['menu'] = {
   items: [
@@ -60,24 +60,28 @@ describe('SplitButton', () => {
   });
 
   it('focuses correctly when focus is triggered via ISplitButton interface', () => {
+    const button1 = React.createRef<ISplitButton>();
+    const button2 = React.createRef<ISplitButton>();
+    const button3 = React.createRef<ISplitButton>();
+
     const wrapper = mount(
       <div>
-        <SplitButton content="Split Button 1" />
-        <SplitButton content="Split Button 2" />
-        <SplitButton content="Split Button 3" />
+        <SplitButton content="Button 1" componentRef={button1} />
+        <SplitButton content="Button 2" componentRef={button2} />
+        <SplitButton content="Button 3" componentRef={button3} />
       </div>
     );
 
     const buttons = wrapper.getDOMNode().querySelectorAll('span.ms-SplitButton > button.ms-Button') as NodeListOf<HTMLButtonElement>;
     expect(buttons.length).toEqual(3);
 
-    buttons[0].focus();
-    expect(document.activeElement!.textContent).toEqual('Split Button 1');
+    button1.current!.focus();
+    expect(document.activeElement!).toBe(buttons[0]);
 
-    buttons[1].focus();
-    expect(document.activeElement!.textContent).toEqual('Split Button 2');
+    button2.current!.focus();
+    expect(document.activeElement!).toBe(buttons[1]);
 
-    buttons[2].focus();
-    expect(document.activeElement!.textContent).toEqual('Split Button 3');
+    button3.current!.focus();
+    expect(document.activeElement!).toBe(buttons[2]);
   });
 });

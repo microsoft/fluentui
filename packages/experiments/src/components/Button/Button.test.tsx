@@ -4,6 +4,7 @@ import { mount } from 'enzyme';
 
 import { CommandBar, Icon, Text } from 'office-ui-fabric-react';
 import { Button } from './Button';
+import { IButton } from './Button.types';
 
 describe('Button', () => {
   it('renders a default Button with content correctly', () => {
@@ -102,24 +103,28 @@ describe('Button', () => {
   });
 
   it('focuses correctly when focus is triggered via IButton interface', () => {
+    const button1 = React.createRef<IButton>();
+    const button2 = React.createRef<IButton>();
+    const button3 = React.createRef<IButton>();
+
     const wrapper = mount(
       <div>
-        <Button content="Button 1" />
-        <Button content="Button 2" />
-        <Button content="Button 3" />
+        <Button content="Button 1" componentRef={button1} />
+        <Button content="Button 2" componentRef={button2} />
+        <Button content="Button 3" componentRef={button3} />
       </div>
     );
 
     const buttons = wrapper.getDOMNode().querySelectorAll('button.ms-Button') as NodeListOf<HTMLButtonElement>;
     expect(buttons.length).toEqual(3);
 
-    buttons[0].focus();
-    expect(document.activeElement!.textContent).toEqual('Button 1');
+    button1.current!.focus();
+    expect(document.activeElement!).toBe(buttons[0]);
 
-    buttons[1].focus();
-    expect(document.activeElement!.textContent).toEqual('Button 2');
+    button2.current!.focus();
+    expect(document.activeElement!).toBe(buttons[1]);
 
-    buttons[2].focus();
-    expect(document.activeElement!.textContent).toEqual('Button 3');
+    button3.current!.focus();
+    expect(document.activeElement!).toBe(buttons[2]);
   });
 });

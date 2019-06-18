@@ -4,7 +4,7 @@ import { mount } from 'enzyme';
 
 import { Stack, Text } from 'office-ui-fabric-react';
 import { MenuButton } from './MenuButton';
-import { IMenuButtonProps } from './MenuButton.types';
+import { IMenuButton, IMenuButtonProps } from './MenuButton.types';
 
 const menuProps: IMenuButtonProps['menu'] = {
   items: [
@@ -52,24 +52,28 @@ describe('MenuButton', () => {
   });
 
   it('focuses correctly when focus is triggered via IMenuButton interface', () => {
+    const button1 = React.createRef<IMenuButton>();
+    const button2 = React.createRef<IMenuButton>();
+    const button3 = React.createRef<IMenuButton>();
+
     const wrapper = mount(
       <div>
-        <MenuButton content="Menu Button 1" />
-        <MenuButton content="Menu Button 2" />
-        <MenuButton content="Menu Button 3" />
+        <MenuButton content="Button 1" componentRef={button1} />
+        <MenuButton content="Button 2" componentRef={button2} />
+        <MenuButton content="Button 3" componentRef={button3} />
       </div>
     );
 
     const buttons = wrapper.getDOMNode().querySelectorAll('button.ms-MenuButton') as NodeListOf<HTMLButtonElement>;
     expect(buttons.length).toEqual(3);
 
-    buttons[0].focus();
-    expect(document.activeElement!.children[0].children[0].textContent).toEqual('Menu Button 1');
+    button1.current!.focus();
+    expect(document.activeElement!).toBe(buttons[0]);
 
-    buttons[1].focus();
-    expect(document.activeElement!.children[0].children[0].textContent).toEqual('Menu Button 2');
+    button2.current!.focus();
+    expect(document.activeElement!).toBe(buttons[1]);
 
-    buttons[2].focus();
-    expect(document.activeElement!.children[0].children[0].textContent).toEqual('Menu Button 3');
+    button3.current!.focus();
+    expect(document.activeElement!).toBe(buttons[2]);
   });
 });
