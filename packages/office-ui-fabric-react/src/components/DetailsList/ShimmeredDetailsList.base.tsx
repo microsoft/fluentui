@@ -38,6 +38,8 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
       shimmerLines,
       styles,
       theme,
+      ariaLabelForGrid,
+      ariaLabelForShimmer,
       ...restProps
     } = this.props;
 
@@ -59,6 +61,8 @@ export class ShimmeredDetailsListBase extends BaseComponent<IShimmeredDetailsLis
         {...restProps}
         styles={detailsListStyles}
         items={enableShimmer ? this._shimmerItems : items}
+        isPlaceholderData={enableShimmer}
+        ariaLabelForGrid={(enableShimmer && ariaLabelForShimmer) || ariaLabelForGrid}
         onRenderMissingItem={this._onRenderShimmerPlaceholder}
         listProps={newListProps}
       />

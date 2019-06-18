@@ -102,6 +102,8 @@ exports[`HoverCard renders ExpandingCard correctly 1`] = `
                 position: relative;
               }
           onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={
             Object {
               "maxHeight": 720,
@@ -263,6 +265,8 @@ exports[`HoverCard renders PlainCard correctly 1`] = `
                 position: relative;
               }
           onKeyDown={[Function]}
+          onMouseDown={[Function]}
+          onMouseUp={[Function]}
           style={
             Object {
               "maxHeight": 720,

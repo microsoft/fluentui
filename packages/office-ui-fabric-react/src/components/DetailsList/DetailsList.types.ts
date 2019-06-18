@@ -86,6 +86,9 @@ export interface IDetailsListProps extends IBaseProps<IDetailsList>, IWithViewpo
   /** The items to render. */
   items: any[];
 
+  /** Set this to true to indicate that the items being displayed is placeholder data. */
+  isPlaceholderData?: boolean;
+
   /** Optional properties to pass through to the list components being rendered. */
   listProps?: IListProps;
 

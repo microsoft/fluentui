@@ -290,6 +290,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
       groupProps,
       indentWidth,
       items,
+      isPlaceholderData,
       isHeaderVisible,
       layoutMode,
       onItemInvoked,
@@ -402,7 +403,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
         <div
           role="grid"
           aria-label={ariaLabelForGrid}
-          aria-rowcount={rowCount}
+          aria-rowcount={isPlaceholderData ? -1 : rowCount}
           aria-colcount={(selectAllVisibility !== SelectAllVisibility.none ? 1 : 0) + (adjustedColumns ? adjustedColumns.length : 0)}
           aria-readonly="true"
         >
@@ -457,7 +458,7 @@ export class DetailsListBase extends BaseComponent<IDetailsListProps, IDetailsLi
                   onItemInvoked={onItemInvoked}
                   onItemContextMenu={onItemContextMenu}
                   enterModalOnTouch={this.props.enterModalSelectionOnTouch}
-                  {...selectionZoneProps || {}}
+                  {...(selectionZoneProps || {})}
                 >
                   {list}
                 </SelectionZone>

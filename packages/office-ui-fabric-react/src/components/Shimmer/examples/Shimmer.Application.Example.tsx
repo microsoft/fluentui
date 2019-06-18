@@ -68,6 +68,8 @@ export class ShimmerApplicationExample extends BaseComponent<{}, IShimmerApplica
             selectionMode={SelectionMode.none}
             onRenderItemColumn={this._onRenderItemColumn}
             enableShimmer={!isDataLoaded}
+            ariaLabelForShimmer="Content is being fetched"
+            ariaLabelForGrid="Item details"
             listProps={{ renderedWindowsAhead: 0, renderedWindowsBehind: 0 }}
           />
         </div>
