@@ -1,5 +1,5 @@
 import * as React from 'react';
-import { IRenderFunction, getDocument } from 'office-ui-fabric-react/lib/Utilities';
+import { IRenderFunction } from 'office-ui-fabric-react/lib/Utilities';
 import {
   DetailsList,
   DetailsRow,
