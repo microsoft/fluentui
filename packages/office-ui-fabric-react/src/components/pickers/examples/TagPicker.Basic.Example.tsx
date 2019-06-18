@@ -2,6 +2,11 @@ import * as React from 'react';
 
 import { TagPicker, IBasePicker, ITag } from 'office-ui-fabric-react/lib/Pickers';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
+
+const rootClass = mergeStyles({
+  maxWidth: 500
+});
 
 const _testTags: ITag[] = [
   'black',
@@ -38,7 +43,7 @@ export class TagPickerBasicExample extends React.Component<{}, ITagPickerDemoPag
 
   public render() {
     return (
-      <div>
+      <div className={rootClass}>
         <Checkbox
           styles={{ root: { margin: '10px 0' } }}
           label="Disable Tag Picker"

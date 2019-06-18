@@ -19,7 +19,7 @@ const examplePersona: IPersonaSharedProps = {
 export const PersonaCustomCoinRenderExample: React.FunctionComponent = () => {
   return (
     <Stack tokens={{ childrenGap: 10 }}>
-      <div>Custom functional element in place of persona coin's image</div>
+      <div>Custom render function in place of persona coin's image</div>
       <Persona
         {...examplePersona}
         size={PersonaSize.size72}

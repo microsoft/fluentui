@@ -17,8 +17,7 @@ import { Persona, PersonaSize } from 'office-ui-fabric-react/lib/Persona';
 import { Checkbox } from 'office-ui-fabric-react/lib/Checkbox';
 import { IBasePickerProps, BasePickerListBelow, IPickerItemProps, ISuggestionItemProps } from 'office-ui-fabric-react/lib/Pickers';
 import { IButtonProps } from 'office-ui-fabric-react/lib/Button';
-// Helper imports to generate data for this particular examples. Not exported by any package.
-import { TestImages } from '../../../common/TestImages';
+import { mergeStyles } from 'office-ui-fabric-react/lib/Styling';
 
 export interface IPeoplePickerExampleState {
   contextualMenuVisible?: boolean;
@@ -35,6 +34,19 @@ export interface IFullDocumentCardProps {
 }
 
 export interface IDocumentPickerProps extends IBasePickerProps<IFullDocumentCardProps> {}
+
+const rootClass = mergeStyles({
+  maxWidth: 500
+});
+
+const baseProductionCdnUrl = 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/';
+const TestImages = {
+  documentPreview: baseProductionCdnUrl + 'document-preview.png',
+  documentPreviewTwo: baseProductionCdnUrl + 'document-preview2.png',
+  documentPreviewThree: baseProductionCdnUrl + 'document-preview3.png',
+  iconPpt: baseProductionCdnUrl + 'icon-ppt.png',
+  personaFemale: baseProductionCdnUrl + 'persona-female.png'
+};
 
 const data: IFullDocumentCardProps[] = [
   {
@@ -315,7 +327,7 @@ export class PickerCustomResultExample extends React.Component<{}, IPeoplePicker
 
   public render(): JSX.Element {
     return (
-      <div>
+      <div className={rootClass}>
         <Checkbox
           styles={{ root: { margin: '10px 0' } }}
           label="Disable Document Picker"
