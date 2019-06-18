@@ -378,6 +378,18 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &::placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &:-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &::-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
                           &:active, &:focus, &:hover {
                             outline: 0px;
                           }
@@ -507,6 +519,18 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             padding-top: 0;
                             text-overflow: ellipsis;
                             width: 100%;
+                          }
+                          &::placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &:-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &::-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
                           }
                           &:active, &:focus, &:hover {
                             outline: 0px;
@@ -638,6 +662,18 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &::placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &:-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &::-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
                           &:active, &:focus, &:hover {
                             outline: 0px;
                           }
@@ -768,6 +804,18 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             text-overflow: ellipsis;
                             width: 100%;
                           }
+                          &::placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &:-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &::-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
                           &:active, &:focus, &:hover {
                             outline: 0px;
                           }
@@ -897,6 +945,18 @@ exports[`Component Examples renders ColorPicker.Basic.Example.tsx correctly 1`] 
                             padding-top: 0;
                             text-overflow: ellipsis;
                             width: 100%;
+                          }
+                          &::placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &:-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
+                          }
+                          &::-ms-input-placeholder {
+                            color: #605e5c;
+                            opacity: 1;
                           }
                           &:active, &:focus, &:hover {
                             outline: 0px;

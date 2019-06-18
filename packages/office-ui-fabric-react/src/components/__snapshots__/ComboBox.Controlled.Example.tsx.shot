@@ -119,6 +119,15 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
+          &:hover .ms-ComboBox-Input::placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: #323130;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -183,6 +192,15 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               padding-top: 0;
               text-overflow: ellipsis;
               width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
             }
             &::-ms-clear {
               display: none;
@@ -433,6 +451,15 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
+          &:hover .ms-ComboBox-Input::placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input:-ms-input-placeholder {
+            color: #323130;
+          }
+          &:hover .ms-ComboBox-Input::-ms-input-placeholder {
+            color: #323130;
+          }
           @media screen and (-ms-high-contrast: active){&:hover {
             -ms-high-contrast-adjust: none;
             background-color: Window;
@@ -497,6 +524,15 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
               padding-top: 0;
               text-overflow: ellipsis;
               width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
             }
             &::-ms-clear {
               display: none;

@@ -121,6 +121,18 @@ exports[`TextField snapshots renders correctly 1`] = `
               text-overflow: ellipsis;
               width: 100%;
             }
+            &::placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
             &:active, &:focus, &:hover {
               outline: 0px;
             }
@@ -308,6 +320,18 @@ exports[`TextField snapshots renders multiline correctly with errorMessage 1`] =
               text-align: left;
               text-overflow: ellipsis;
               width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
             }
             &:active, &:focus, &:hover {
               outline: 0px;
@@ -531,6 +555,18 @@ exports[`TextField snapshots renders multiline correctly with props affecting st
               text-overflow: ellipsis;
               width: 100%;
             }
+            &::placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
             &:active, &:focus, &:hover {
               outline: 0px;
             }
@@ -708,6 +744,18 @@ exports[`TextField snapshots renders multiline resizable correctly 1`] = `
               text-overflow: ellipsis;
               width: 100%;
             }
+            &::placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
             &:active, &:focus, &:hover {
               outline: 0px;
             }
@@ -851,6 +899,18 @@ exports[`TextField snapshots renders multiline unresizable correctly 1`] = `
               resize: none;
               text-overflow: ellipsis;
               width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
             }
             &:active, &:focus, &:hover {
               outline: 0px;
@@ -1040,6 +1100,18 @@ exports[`TextField snapshots should resepect user component and subcomponent sty
               text-align: left;
               text-overflow: ellipsis;
               width: 100%;
+            }
+            &::placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &:-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
+            }
+            &::-ms-input-placeholder {
+              color: #605e5c;
+              opacity: 1;
             }
             &:active, &:focus, &:hover {
               outline: 0px;
