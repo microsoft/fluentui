@@ -119,6 +119,9 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
           }
+          &:hover .ms-ComboBox-Input::-ms-clear {
+            display: none;
+          }
           &:hover .ms-ComboBox-Input::placeholder {
             color: #323130;
           }
@@ -450,6 +453,9 @@ exports[`Component Examples renders ComboBox.Controlled.Example.tsx correctly 1`
           }
           &:hover .ms-ComboBox-Input {
             color: #201f1e;
+          }
+          &:hover .ms-ComboBox-Input::-ms-clear {
+            display: none;
           }
           &:hover .ms-ComboBox-Input::placeholder {
             color: #323130;

@@ -2,6 +2,7 @@ import { AnimationClassNames, FontSizes, getGlobalClassNames, HighContrastSelect
 import { ILabelStyles, ILabelStyleProps } from '../../Label';
 import { ITextFieldStyleProps, ITextFieldStyles } from './TextField.types';
 import { IStyleFunctionOrObject } from '@uifabric/utilities';
+import { getPlaceholderStyles } from '@uifabric/styling';
 
 const globalClassNames = {
   root: 'ms-TextField',
@@ -289,9 +290,7 @@ export function getStyles(props: ITextFieldStyleProps): ITextFieldStyles {
           '::-ms-clear': {
             display: 'none'
           },
-          '::placeholder': placeholderStyles, // Chrome, Safari, Opera, Firefox
-          ':-ms-input-placeholder': placeholderStyles, // IE 10+
-          '::-ms-input-placeholder': placeholderStyles // Edge
+          ...getPlaceholderStyles(placeholderStyles)
         }
       },
       multiline &&

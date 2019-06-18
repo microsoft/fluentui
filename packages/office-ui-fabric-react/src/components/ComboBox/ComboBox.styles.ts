@@ -3,7 +3,7 @@ import { IComboBoxOptionStyles, IComboBoxStyles } from './ComboBox.types';
 
 import { IButtonStyles } from '../../Button';
 import { memoizeFunction } from '../../Utilities';
-import { IStyle } from '@uifabric/styling';
+import { IStyle, getPlaceholderStyles } from '@uifabric/styling';
 
 const ComboBoxHeight = 32;
 const ComboBoxLineHeight = 30;
@@ -295,11 +295,7 @@ export const getStyles = memoizeFunction(
         selectors: {
           '.ms-ComboBox-Input': {
             color: palette.neutralDark,
-            selectors: {
-              '::placeholder': hoverPlaceholderStyles, // Chrome, Safari, Opera, Firefox
-              ':-ms-input-placeholder': hoverPlaceholderStyles, // IE 10+
-              '::-ms-input-placeholder': hoverPlaceholderStyles // Edge
-            }
+            selectors: getPlaceholderStyles(hoverPlaceholderStyles)
           },
           [HighContrastSelector]: {
             color: 'HighlightText',
@@ -348,20 +344,14 @@ export const getStyles = memoizeFunction(
           '::-ms-clear': {
             display: 'none'
           },
-          '::placeholder': placeholderStyles, // Chrome, Safari, Opera, Firefox
-          ':-ms-input-placeholder': placeholderStyles, // IE 10+
-          '::-ms-input-placeholder': placeholderStyles // Edge
+          ...getPlaceholderStyles(placeholderStyles)
         }
       },
 
       inputDisabled: [
         getDisabledStyles(theme),
         {
-          selectors: {
-            '::placeholder': disabledPlaceholderStyles, // Chrome, Safari, Opera, Firefox
-            ':-ms-input-placeholder': disabledPlaceholderStyles, // IE 10+
-            '::-ms-input-placeholder': disabledPlaceholderStyles // Edge
-          }
+          selectors: getPlaceholderStyles(disabledPlaceholderStyles)
         }
       ],
       errorMessage: {

@@ -1,5 +1,6 @@
 import { HighContrastSelector, AnimationVariables, normalize, IStyle } from '../../Styling';
 import { ISearchBoxStyleProps, ISearchBoxStyles } from './SearchBox.types';
+import { getPlaceholderStyles } from '@uifabric/styling';
 
 export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
   const { theme, underlined, disabled, hasFocus, className, hasInput, disableAnimation } = props;
@@ -153,10 +154,7 @@ export function getStyles(props: ISearchBoxStyleProps): ISearchBoxStyles {
           '::-ms-clear': {
             display: 'none'
           },
-          // '::placeholder': placeholderStyles && { opacity: 1 }, // Chrome, Safari, Opera, Firefox
-          '::placeholder': placeholderStyles, // Chrome, Safari, Opera, Firefox
-          ':-ms-input-placeholder': placeholderStyles, // IE 10+
-          '::-ms-input-placeholder': placeholderStyles // Edge
+          ...getPlaceholderStyles(placeholderStyles)
         }
       },
       disabled && {
