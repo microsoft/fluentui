@@ -10,7 +10,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
   private _classNames: { [key in keyof IChicletXsmallStyles]: string };
 
   public render(): JSX.Element {
-    const { onClick, title, image, imageWidth, imageHeight, imageAlt, itemType, className, footer, theme, styles } = this.props;
+    const { onClick, title, image, imageWidth, imageHeight, imageAlt, itemType, className, footer, theme, styles, url } = this.props;
 
     const footerProvided: boolean = footer !== undefined;
     this._classNames = getClassNames(styles, { theme: theme!, className, footerProvided });
@@ -36,6 +36,7 @@ export class ChicletXsmallBase extends React.Component<IChicletCardProps, {}> {
         <div className={this._classNames.preview}>{renderPreview(image, imageHeight, imageWidth, itemType, imageAlt)}</div>
         <div className={this._classNames.titleBox}>
           <div className={this._classNames.title}>{title ? title : null}</div>
+          <div className={this._classNames.url}>{url ? url : null}</div>
         </div>
         {footer}
       </div>

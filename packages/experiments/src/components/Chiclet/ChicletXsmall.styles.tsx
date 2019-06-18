@@ -65,11 +65,23 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
     titleBox: [
       classNames.titleBox,
       {
+        display: 'flex',
+        flexWrap: 'wrap',
         marginLeft: 4,
         flexBasis: '70%'
       },
       footerProvided && {
         borderBottom: '1px solid gray'
+      }
+    ],
+    url: [
+      {
+        fontSize: theme.fonts.small.fontSize,
+        width: 170,
+        height: 17,
+        overflow: 'hidden',
+        whiteSpace: 'nowrap',
+        textOverflow: 'ellipsis'
       }
     ],
     title: [
@@ -79,6 +91,7 @@ export const getStyles = (styleProps: IChicletXsmallStyleProps): IChicletXsmallS
         color: palette.neutralPrimary,
         letterSpacing: 'normal',
         textAlign: 'left',
+        width: 170,
         height: 37, // Two lines of text, making sure the third line is hidden
         lineHeight: '1.25',
         overflow: 'hidden',
