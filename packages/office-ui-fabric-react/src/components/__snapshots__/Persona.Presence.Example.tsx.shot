@@ -2,7 +2,14 @@
 
 exports[`Component Examples renders Persona.Presence.Example.tsx correctly 1`] = `
 <div
-  className="ms-PersonaExample"
+  className=
+
+      & .ms-Persona {
+        margin-bottom: 20px;
+        margin-left: 0;
+        margin-right: 20px;
+        margin-top: 0;
+      }
 >
   <div
     className=
