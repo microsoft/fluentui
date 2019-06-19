@@ -29,9 +29,6 @@ export const DropdownStyles = (props: IDropdownStyleProps): Partial<IDropdownSty
 
   const itemSelectors = (isSelected: boolean = false) => {
     return {
-      // TODO
-      // After moving fluent to become the default design of Fabric we should revisit this selectors to match the fluent redlines.
-      // Currently whenever you hover over an item it forces focus on it so we style the background change through focus selector.
       selectors: {
         '&:hover:focus': {
           color: palette.neutralDark,

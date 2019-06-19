@@ -2,7 +2,7 @@ import { createTheme, ITheme } from '@uifabric/styling';
 import { NeutralColors, SharedColors } from './Mdl2Colors';
 import { Depths } from './Mdl2Depths';
 
-export const FluentTheme: ITheme = createTheme({
+export const Mdl2Theme: ITheme = createTheme({
   palette: {
     neutralDark: NeutralColors.gray190,
     neutralPrimary: NeutralColors.gray160,
@@ -29,4 +29,4 @@ export const FluentTheme: ITheme = createTheme({
   }
 });
 
-export default FluentTheme;
+export default Mdl2Theme;

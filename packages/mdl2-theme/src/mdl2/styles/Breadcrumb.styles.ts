@@ -16,8 +16,6 @@ export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcr
       backgroundColor: palette.neutralLight,
       textDecoration: 'none'
     },
-    // Needs to be revised with designers when moving to default OUFR styles.
-    // Now used only to override the default ones to follow fluent specs.
     '&:active:hover': {
       color: palette.neutralPrimary,
       backgroundColor: palette.neutralLight,
