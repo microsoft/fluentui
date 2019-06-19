@@ -26,6 +26,7 @@ export const App = () => {
             className="scenario"
             options={Scenarios}
             selectedKey={scenario.key}
+            data-automationid="scenario"
             onChange={(ev, option) => {
               setItemsVisible(false);
               if (option) {
