@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "add inline tag to ISelectableDroppableTextProps",
+      "comment": "ISelectableDroppableTextProps: surface API reference in website documentation.",
       "type": "none"
     }
   ],
