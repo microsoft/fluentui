@@ -64,12 +64,12 @@ const sampleSize = 50;
 const urlFromDeployJob = process.env.BUILD_SOURCEBRANCH
   ? `http://fabricweb.z5.web.core.windows.net/pr-deploy-site/${process.env.BUILD_SOURCEBRANCH}/perf-test/`
   : // : 'http://localhost:4322/#/PrimaryButton';
-    'http://localhost:4322/#/';
+    'file://' + path.resolve(__dirname, '../dist/index.html?scenario=');
 // const urlForMaster = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/perf-test/';
 const urlForMaster = 'file:///C:/git/oufr-jg-issues/apps/pr-deploy-site/dist/perf-test/index.html';
 
-const resultsPath = path.join(__dirname, '../../../apps/perf-test/dist');
-const logPath = path.join(__dirname, '../../../apps/perf-test/logfiles');
+const resultsPath = path.join(__dirname, '../dist');
+const logPath = path.join(__dirname, '../logfiles');
 const logFilePath = path.join(logPath, '/puppeteer.log');
 
 module.exports = async function getPerfRegressions() {
@@ -93,7 +93,7 @@ module.exports = async function getPerfRegressions() {
   }
 
   const scenarios = fs
-    .readdirSync('../src/scenarios')
+    .readdirSync(path.join(__dirname, '../src/scenarios'))
     .filter(name => name.indexOf('scenarioList') < 0)
     .map(name => path.basename(name, '.tsx'));
 

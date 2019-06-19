@@ -1,7 +1,8 @@
 const perfTest = require('./tasks/perf-test');
 const { preset, just } = require('@uifabric/build');
-const { task } = just;
+const { task, series } = just;
 
 preset();
 
-task('perf-test', perfTest);
+task('run-perf-test', perfTest);
+task('perf-test', series('build', 'run-perf-test'));
