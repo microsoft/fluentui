@@ -2,7 +2,7 @@
   "changes": [
     {
       "packageName": "office-ui-fabric-react",
-      "comment": "TooltipHost: clear dismiss timer in _onTooltipMouseEnter before portals if condition to fix the closeDelay Tooltip bug.",
+      "comment": "TooltipHost: fix the closeDelay Tooltip bug where a user could not interact with the Tooltip because it would close.",
       "type": "patch"
     }
   ],
