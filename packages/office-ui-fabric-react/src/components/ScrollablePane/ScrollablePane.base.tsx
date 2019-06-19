@@ -21,6 +21,8 @@ export interface IScrollablePaneState {
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
+  private _scrollLeft: number;
+  private _scrollTop: number;
   private _isMounted: boolean;
   private _listeningToEvents: boolean;
   private _root = React.createRef<HTMLDivElement>();
@@ -43,7 +45,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       scrollbarWidth: 0,
       scrollbarHeight: 0
     };
-
+    this._scrollLeft = this._scrollTop = 0;
     this._notifyThrottled = this._async.throttle(this.notifySubscribers, 50);
   }
 
@@ -252,7 +254,7 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public getScrollPosition = (horizontal?: boolean): number => {
     if (this.contentContainer) {
-      return horizontal ? this.contentContainer.scrollLeft : this.contentContainer.scrollTop;
+      return horizontal ? this._scrollLeft : this._scrollTop;
     }
 
     return 0;
@@ -440,12 +442,18 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     const { contentContainer } = this;
 
     if (contentContainer) {
-      this._stickies.forEach((sticky: Sticky) => {
-        sticky.syncScroll(contentContainer);
-      });
+      // sync Sticky scroll if contentContainer has scrolled horizontally
+      if (this._scrollLeft !== contentContainer.scrollLeft) {
+        this._scrollLeft = contentContainer.scrollLeft;
+        this._stickies.forEach((sticky: Sticky) => {
+          sticky.syncScroll(contentContainer);
+        });
+      }
+      if (this._scrollTop !== contentContainer.scrollTop) {
+        this._scrollTop = contentContainer.scrollTop;
+        this._notifyThrottled();
+      }
     }
-
-    this._notifyThrottled();
   };
 
   private _listenToEventsAndObserveMutations() {
