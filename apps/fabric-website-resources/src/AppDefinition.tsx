@@ -131,12 +131,17 @@ export const AppDefinition: IAppDefinition = {
           name: 'DetailsList - Basic',
           url: '#/examples/detailslist/basic'
         },
-
         {
           component: require<any>('./components/pages/DetailsList/DetailsListAdvancedPage').DetailsListAdvancedPage,
           key: 'DetailsList - Advanced',
           name: 'DetailsList - Advanced',
           url: '#/examples/detailslist/advanced'
+        },
+        {
+          component: require<any>('./components/pages/DetailsList/DetailsListAnimationPage').DetailsListAnimationPage,
+          key: 'DetailsList - Animation',
+          name: 'DetailsList - Animation',
+          url: '#/examples/detailslist/animation'
         },
         {
           component: require<any>('./components/pages/DetailsList/DetailsListCompactPage').DetailsListCompactPage,
