@@ -29,6 +29,13 @@ export interface IStickyProps extends React.Props<Sticky> {
    * @defaultvalue true
    */
   isScrollSynced?: boolean;
+
+  /**
+   * It decides the order (top to bottom) in which a Sticky element will be arranged when it is sticky,
+   * compared to other Sticky elements when they are sticky. When Sticky elements become sticky,
+   * they are sorted in ascending order based on this prop.
+   */
+  order?: number;
 }
 
 export enum StickyPositionType {

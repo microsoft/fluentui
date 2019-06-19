@@ -118,9 +118,16 @@ export interface IStickyContainerBehavior {
    * It's a trade off- cost of replicating the element vs. cost of calculating placeholder height & width.
    */
   notUsePlaceHolder: boolean;
+
+  /**
+   * If true, arranges Sticky component(s) based on Sticky's 'order' prop in ascending order.
+   */
+  arrangeStickiesBasedOnOrder: boolean;
 }
 
 export type PlaceholderPosition = 'top' | 'bottom';
+
+export type StickyContainerPosition = 'above' | 'below';
 
 /**
  * {@docCategory ScrollablePane}
