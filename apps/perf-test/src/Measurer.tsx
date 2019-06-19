@@ -9,13 +9,16 @@ export interface ITimings {
   individualTime: number;
 }
 
-const _createTimings = (): ITimings => ({
-  count: 0,
-  initialTime: 0,
-  latestTime: 0,
-  totalTime: 0,
-  individualTime: 0
-});
+const _createTimings = (): ITimings => {
+  console.log('clearing timings');
+  return {
+    count: 0,
+    initialTime: 0,
+    latestTime: 0,
+    totalTime: 0,
+    individualTime: 0
+  };
+};
 
 const _round = (num: number, decimals: number): number => Number.parseFloat(num.toFixed(decimals));
 
@@ -26,6 +29,8 @@ export class Measurer extends React.Component<{}, {}> {
     const timings = Measurer._timings;
 
     Measurer._timings = _createTimings();
+
+    console.log(JSON.stringify(timings));
 
     timings.totalTime = _round(timings.latestTime - timings.initialTime, 3);
     timings.individualTime = _round(timings.totalTime / timings.count, 3);
@@ -50,18 +55,3 @@ export class Measurer extends React.Component<{}, {}> {
     Measurer._timings.latestTime = performance.now();
   }
 }
-
-export const MeasurerTimings = () => {
-  const timings = Measurer.getTimings();
-
-  return (
-    <Stack gap={20}>
-      <Text className="total">
-        <b>Total time:</b> {timings.totalTime}ms
-      </Text>
-      <Text className="peritem">
-        <b>Per Item:</b> {timings.individualTime}ms
-      </Text>
-    </Stack>
-  );
-};

@@ -12,5 +12,14 @@ module.exports = resources.createConfig(BUNDLE_NAME, IS_PRODUCTION, {
   output: {
     libraryTarget: 'var',
     library: 'Fabric'
-  }
+  },
+
+  externals: [
+    {
+      react: 'React'
+    },
+    {
+      'react-dom': 'ReactDOM'
+    }
+  ]
 });

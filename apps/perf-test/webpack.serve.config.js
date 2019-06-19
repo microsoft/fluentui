@@ -4,11 +4,18 @@ const isProduction = process.argv.indexOf('--production') > -1;
 const PACKAGE_NAME = 'perf-test';
 
 module.exports = resources.createServeConfig({
-  entry: './src/index.tsx',
+  entry: './src/index.scenarios.tsx',
+  mode: 'production',
+  optimization: {
+    minimize: false,
+    namedModules: true,
+    namedChunks: true
+  },
   output: {
     filename: 'perf-test.js'
   },
-  mode: 'production',
+  // TODO: decide whether to leave these aliases in. if in, minified results show up, like ~Tg
+  // if taken out, "unknown" shows up. one or the other may make processing easier.
   resolve: {
     alias: {
       '@uifabric/experiments/src': path.resolve(__dirname, '../../packages/experiments/src'),
