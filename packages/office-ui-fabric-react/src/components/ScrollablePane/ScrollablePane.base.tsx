@@ -21,6 +21,8 @@ export interface IScrollablePaneState {
 const getClassNames = classNamesFunction<IScrollablePaneStyleProps, IScrollablePaneStyles>();
 
 export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScrollablePaneState> implements IScrollablePane {
+  private _isMounted: boolean;
+  private _listeningToEvents: boolean;
   private _root = React.createRef<HTMLDivElement>();
   private _stickyAboveRef = React.createRef<HTMLDivElement>();
   private _stickyBelowRef = React.createRef<HTMLDivElement>();
@@ -63,8 +65,11 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
   public componentDidMount() {
     const { initialScrollPosition } = this.props;
-    this._events.on(this.contentContainer, 'scroll', this._onScroll);
-    this._events.on(window, 'resize', this._onWindowResize);
+    if (this._stickies.size) {
+      this._events.on(this.contentContainer, 'scroll', this._onScroll);
+      this._events.on(window, 'resize', this._onWindowResize);
+      this._listeningToEvents = true;
+    }
     if (this.contentContainer && initialScrollPosition) {
       this.contentContainer.scrollTop = initialScrollPosition;
     }
@@ -75,62 +80,15 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
       this.sortSticky(sticky);
     });
     this.notifySubscribers();
-
-    if ('MutationObserver' in window) {
-      this._mutationObserver = new MutationObserver(mutation => {
-        // Function to check if mutation is occuring in stickyAbove or stickyBelow
-        function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
-          if (this.stickyAbove !== null && this.stickyBelow !== null) {
-            return this.stickyAbove.contains(mutationRecord.target) || this.stickyBelow.contains(mutationRecord.target);
-          }
-          return false;
-        }
-
-        // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
-        const scrollbarHeight = this._getScrollbarHeight();
-        const scrollbarWidth = this._getScrollbarWidth();
-        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
-        if (scrollbarHeight !== this.state.scrollbarHeight || scrollbarWidth !== this.state.scrollbarWidth) {
-          this.setState({
-            scrollbarHeight: scrollbarHeight,
-            scrollbarWidth: scrollbarWidth
-          });
-        }
-
-        // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
-        this.notifySubscribers();
-
-        // If mutation occurs in sticky header or footer, then update sticky top/bottom heights
-        if (mutation.some(checkIfMutationIsSticky.bind(this))) {
-          this.updateStickyRefHeights();
-        } else {
-          // If mutation occurs in scrollable region, then find Sticky it belongs to and force update
-          const stickyList: Sticky[] = [];
-          this._stickies.forEach(sticky => {
-            if (sticky.root && sticky.root.contains(mutation[0].target)) {
-              stickyList.push(sticky);
-            }
-          });
-          if (stickyList.length) {
-            stickyList.forEach(sticky => {
-              sticky.forceUpdate();
-            });
-          }
-        }
-      });
-
-      if (this.root) {
-        this._mutationObserver.observe(this.root, {
-          childList: true,
-          attributes: true,
-          subtree: true,
-          characterData: true
-        });
-      }
+    if (this._stickies.size) {
+      this._listenToEventsAndObserveMutations();
     }
+    this._isMounted = true;
   }
 
   public componentWillUnmount() {
+    this._isMounted = false;
+    this._listeningToEvents = false;
     this._events.off(this.contentContainer);
     this._events.off(window);
 
@@ -162,8 +120,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
     if (prevState.stickyTopHeight !== this.state.stickyTopHeight || prevState.stickyBottomHeight !== this.state.stickyBottomHeight) {
       this.notifySubscribers();
     }
-
-    this._async.setTimeout(this._onWindowResize, 0);
+    if (this._mutationObserver || this._stickies.size) {
+      this._async.setTimeout(this._onWindowResize, 0);
+    }
   }
 
   public render(): JSX.Element {
@@ -209,6 +168,9 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   public addSticky = (sticky: Sticky): void => {
+    if (this._isMounted) {
+      this._listenToEventsAndObserveMutations();
+    }
     const { stickyPosition } = sticky.props;
     const { stickyAboveContainerBehavior, stickyBelowContainerBehavior } = this.props;
     if (
@@ -485,4 +447,63 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
 
     this._notifyThrottled();
   };
+
+  private _listenToEventsAndObserveMutations() {
+    if (!this._listeningToEvents) {
+      this._listeningToEvents = true;
+      this._events.on(this.contentContainer, 'scroll', this._onScroll);
+      this._events.on(window, 'resize', this._onWindowResize);
+    }
+    if (!this._mutationObserver && 'MutationObserver' in window) {
+      this._mutationObserver = new MutationObserver(mutation => {
+        // Function to check if mutation is occuring in stickyAbove or stickyBelow
+        function checkIfMutationIsSticky(mutationRecord: MutationRecord): boolean {
+          if (this.stickyAbove !== null && this.stickyBelow !== null) {
+            return this.stickyAbove.contains(mutationRecord.target) || this.stickyBelow.contains(mutationRecord.target);
+          }
+          return false;
+        }
+        // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
+        const scrollbarHeight = this._getScrollbarHeight();
+        const scrollbarWidth = this._getScrollbarWidth();
+        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
+        if (scrollbarHeight !== this.state.scrollbarHeight || scrollbarWidth !== this.state.scrollbarWidth) {
+          this.setState({
+            scrollbarHeight: scrollbarHeight,
+            scrollbarWidth: scrollbarWidth
+          });
+        }
+
+        // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
+        this.notifySubscribers();
+
+        // If mutation occurs in sticky header or footer, then update sticky top/bottom heights
+        if (mutation.some(checkIfMutationIsSticky.bind(this))) {
+          this.updateStickyRefHeights();
+        } else {
+          // If mutation occurs in scrollable region, then find Sticky it belongs to and force update
+          const stickyList: Sticky[] = [];
+          this._stickies.forEach(sticky => {
+            if (sticky.root && sticky.root.contains(mutation[0].target)) {
+              stickyList.push(sticky);
+            }
+          });
+          if (stickyList.length) {
+            stickyList.forEach(sticky => {
+              sticky.forceUpdate();
+            });
+          }
+        }
+      });
+
+      if (this.root) {
+        this._mutationObserver.observe(this.root, {
+          childList: true,
+          attributes: true,
+          subtree: true,
+          characterData: true
+        });
+      }
+    }
+  }
 }
