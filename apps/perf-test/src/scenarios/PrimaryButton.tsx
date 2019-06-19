@@ -5,12 +5,6 @@ import { PrimaryButton } from 'office-ui-fabric-react';
 //   <Button> I am a button</Button>
 // );
 
-const scenario = () => (
-  <div>
-    {Array.from({ length: 5000 }, () => (
-      <PrimaryButton> I am a button</PrimaryButton>
-    ))}
-  </div>
-);
+const scenario = () => <PrimaryButton> I am a button</PrimaryButton>;
 
 export default scenario;

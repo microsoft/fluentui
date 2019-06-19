@@ -25,11 +25,7 @@ const Columns: IColumn[] = [
 ];
 
 const scenario = () => (
-  <div>
-    {Array.from({ length: 5000 }, () => (
-      <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
-    ))}
-  </div>
+  <DetailsRow itemIndex={0} item={Items[0]} columns={Columns} selection={selection} selectionMode={SelectionMode.single} />
 );
 
 export default scenario;

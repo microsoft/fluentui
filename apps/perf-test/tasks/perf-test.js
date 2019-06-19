@@ -3,8 +3,6 @@ const fs = require('fs');
 const path = require('path');
 const generateFlamegraph = require('./flamegraph/generateFlamegraph');
 
-const scenarios = require('../src/scenarios/scenarioList');
-
 const componentCount = 1000;
 const iterations = 100;
 const sampleSize = 50;
@@ -93,6 +91,11 @@ module.exports = async function getPerfRegressions() {
       fs.unlinkSync(logFilePath);
     });
   }
+
+  const scenarios = fs
+    .readdirSync('../src/scenarios')
+    .filter(name => name.indexOf('scenarioList') < 0)
+    .map(name => path.basename(name, '.tsx'));
 
   // TODO: need to find a way to associate logs with tabs/scenarios.
   // const extraV8Flags = '--log-source-code --log-timer-events';
