@@ -7,7 +7,8 @@ import {
   IScrollablePaneStyleProps,
   IScrollablePaneStyles,
   ScrollablePaneContext,
-  PlaceholderPosition
+  PlaceholderPosition,
+  ScrollbarVisibility
 } from './ScrollablePane.types';
 import { Sticky } from '../../Sticky';
 
@@ -66,7 +67,15 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   }
 
   public componentDidMount() {
-    const { initialScrollPosition } = this.props;
+    const { initialScrollPosition, scrollbarVisibility } = this.props;
+    if (scrollbarVisibility === ScrollbarVisibility.always) {
+      // after first render, scrollbars are visible
+      // it is needed to position stickyContainers correctly
+      this.setState({
+        scrollbarHeight: this._getScrollbarHeight(),
+        scrollbarWidth: this._getScrollbarWidth()
+      });
+    }
     if (this._stickies.size) {
       this._events.on(this.contentContainer, 'scroll', this._onScroll);
       this._events.on(window, 'resize', this._onWindowResize);
@@ -390,12 +399,16 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
   };
 
   private _onWindowResize = (): void => {
-    const scrollbarWidth = this._getScrollbarWidth();
-    const scrollbarHeight = this._getScrollbarHeight();
-
+    const { scrollbarHeight, scrollbarWidth } = this.state;
+    let newScrollbarWidth: number = scrollbarHeight;
+    let newScrollbarHeight: number = scrollbarWidth;
+    if (this.props.scrollbarVisibility !== ScrollbarVisibility.always) {
+      newScrollbarHeight = this._getScrollbarHeight();
+      newScrollbarWidth = this._getScrollbarWidth();
+    }
     this.setState({
-      scrollbarWidth,
-      scrollbarHeight
+      scrollbarHeight: newScrollbarHeight,
+      scrollbarWidth: newScrollbarWidth
     });
 
     this.notifySubscribers();
@@ -471,15 +484,17 @@ export class ScrollablePaneBase extends BaseComponent<IScrollablePaneProps, IScr
           }
           return false;
         }
-        // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
-        const scrollbarHeight = this._getScrollbarHeight();
-        const scrollbarWidth = this._getScrollbarWidth();
-        // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
-        if (scrollbarHeight !== this.state.scrollbarHeight || scrollbarWidth !== this.state.scrollbarWidth) {
-          this.setState({
-            scrollbarHeight: scrollbarHeight,
-            scrollbarWidth: scrollbarWidth
-          });
+        if (this.props.scrollbarVisibility !== ScrollbarVisibility.always) {
+          // Compute the scrollbar height which might have changed due to change in width of the content which might cause overflow
+          const scrollbarHeight = this._getScrollbarHeight();
+          const scrollbarWidth = this._getScrollbarWidth();
+          // check if the scroll bar height has changed and update the state so that it's postioned correctly below sticky footer
+          if (scrollbarHeight !== this.state.scrollbarHeight || scrollbarWidth !== this.state.scrollbarWidth) {
+            this.setState({
+              scrollbarHeight: scrollbarHeight,
+              scrollbarWidth: scrollbarWidth
+            });
+          }
         }
 
         // Notify subscribers again to re-check whether Sticky should be Sticky'd or not
