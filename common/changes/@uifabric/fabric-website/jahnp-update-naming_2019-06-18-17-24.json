@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/fabric-website",
+      "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
+      "type": "patch"
+    }
+  ],
+  "packageName": "@uifabric/fabric-website",
+  "email": "pejahn@microsoft.com"
+}
