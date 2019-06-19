@@ -10,35 +10,29 @@ export const SearchBoxStyles = (props: ISearchBoxStyleProps): Partial<ISearchBox
         borderRadius: effects.roundedCorner2,
         borderColor: palette.neutralTertiary
       },
-      underlined && [
-        {
-          borderRadius: '0px'
-        }
-      ]
-    ],
-    iconContainer: [
-      {
-        color: palette.themeDarkAlt
+      underlined && {
+        borderRadius: '0px'
       }
     ],
-    clearButton: [
-      {
-        selectors: {
-          '&:hover': {
-            selectors: {
-              '.ms-Button': {
-                backgroundColor: 'transparent'
-              },
-              '.ms-Button-icon': {
-                color: palette.black
-              }
+    iconContainer: {
+      color: palette.themeDarkAlt
+    },
+    clearButton: {
+      selectors: {
+        '&:hover': {
+          selectors: {
+            '.ms-Button': {
+              backgroundColor: 'transparent'
+            },
+            '.ms-Button-icon': {
+              color: palette.black
             }
-          },
-          '.ms-Button-icon': {
-            color: palette.neutralSecondary
           }
+        },
+        '.ms-Button-icon': {
+          color: palette.neutralSecondary
         }
       }
-    ]
+    }
   };
 };
