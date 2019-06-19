@@ -1,6 +1,13 @@
 # Change Log - @uifabric/example-app-base
 
-This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2019 12:27:03 GMT and should not be manually modified.
+
+## 7.1.0
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Minor changes
+
+- Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.
 
 ## 7.0.4
 Tue, 18 Jun 2019 12:26:19 GMT
