@@ -57,16 +57,14 @@ export interface ICalendar {
 }
 
 // Warning: (ae-forgotten-export) The symbol "ICalendarDay" needs to be exported by the entry point index.d.ts
+// Warning: (ae-forgotten-export) The symbol "ICalendarDayGridProps" needs to be exported by the entry point index.d.ts
 // 
 // @public (undocumented)
-export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay> {
+export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay>, ICalendarDayGridProps {
     allFocusable?: boolean;
     className?: string;
     componentRef?: IRefObject_2<ICalendarDay>;
-    dateRangeType: DateRangeType;
     dateTimeFormatter: ICalendarFormatDateCallbacks;
-    firstDayOfWeek: DayOfWeek;
-    firstWeekOfYear: FirstWeekOfYear;
     maxDate?: Date;
     minDate?: Date;
     navigatedDate: Date;
@@ -74,9 +72,7 @@ export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay> {
     onDismiss?: () => void;
     onHeaderSelect?: () => void;
     onNavigateDate: (date: Date, focusOnNavigatedDay: boolean) => void;
-    onSelectDate?: (date: Date, selectedDateRangeArray?: Date[]) => void;
     restrictedDates?: Date[];
-    selectedDate: Date;
     showCloseButton?: boolean;
     showSixWeeksByDefault?: boolean;
     showWeekNumbers?: boolean;
@@ -85,8 +81,6 @@ export interface ICalendarDayProps extends IBaseProps_2<ICalendarDay> {
     // Warning: (ae-forgotten-export) The symbol "ICalendarDayStyles" needs to be exported by the entry point index.d.ts
     styles?: IStyleFunctionOrObject_2<ICalendarDayStyleProps, ICalendarDayStyles>;
     theme?: ITheme;
-    today?: Date;
-    workWeekDays?: DayOfWeek[];
 }
 
 // @public (undocumented)
@@ -297,6 +291,57 @@ export interface IDatePickerStyles {
     // (undocumented)
     textField: IStyle;
 }
+
+// @public (undocumented)
+export interface IWeeklyDayPicker {
+    // (undocumented)
+    focus(): void;
+}
+
+// @public (undocumented)
+export interface IWeeklyDayPickerProps extends IBaseProps_2<IWeeklyDayPicker> {
+    className?: string;
+    componentRef?: IRefObject_2<IWeeklyDayPicker>;
+    dateTimeFormatter?: ICalendarFormatDateCallbacks;
+    firstDayOfWeek?: DayOfWeek;
+    initialDate?: Date;
+    maxDate?: Date;
+    minDate?: Date;
+    navigationIcons?: ICalendarIconStrings;
+    onNavigateDate?: (date: Date) => void;
+    onSelectDate?: (date: Date) => void;
+    restrictedDates?: Date[];
+    strings: IWeeklyDayPickerStrings;
+    styles?: IStyleFunctionOrObject_2<IWeeklyDayPickerStyleProps, IWeeklyDayPickerStyles>;
+    theme?: ITheme;
+    today?: Date;
+}
+
+// @public (undocumented)
+export interface IWeeklyDayPickerStrings extends ICalendarStrings {
+    nextWeekAriaLabel?: string;
+    prevWeekAriaLabel?: string;
+}
+
+// Warning: (ae-forgotten-export) The symbol "ICalendarDayGridStyleProps" needs to be exported by the entry point index.d.ts
+// 
+// @public (undocumented)
+export interface IWeeklyDayPickerStyleProps extends ICalendarDayGridStyleProps {
+    className?: string;
+    theme: ITheme;
+}
+
+// Warning: (ae-forgotten-export) The symbol "ICalendarDayGridStyles" needs to be exported by the entry point index.d.ts
+// 
+// @public (undocumented)
+export interface IWeeklyDayPickerStyles extends Partial<ICalendarDayGridStyles> {
+    disabledStyle: IStyle;
+    navigationIconButton: IStyle;
+    root: IStyle;
+}
+
+// @public
+export const WeeklyDayPicker: React.FunctionComponent<IWeeklyDayPickerProps>;
 
 
 export * from "office-ui-fabric-react/lib/utilities/dateMath/DateMath";

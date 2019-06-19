@@ -1,6 +1,29 @@
 # Change Log - @uifabric/charting
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Tue, 18 Jun 2019 12:26:19 GMT and should not be manually modified.
+
+## 0.131.3
+Tue, 18 Jun 2019 12:26:19 GMT
+
+### Patches
+
+- Add data viz separator for HorizontalBarChart 
+
+## 0.131.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Resolved the issue of the legends repeating even with same color and legend
+- Fix missing assets in production build.
+
+## 0.131.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
+- Fix verticalBarChart x-axis description cut off issue
 
 ## 0.30.3
 Wed, 12 Jun 2019 00:42:26 GMT

@@ -1,6 +1,27 @@
 # Change Log - @uifabric/date-time
 
-This log was last generated on Wed, 12 Jun 2019 00:42:26 GMT and should not be manually modified.
+This log was last generated on Mon, 17 Jun 2019 12:26:51 GMT and should not be manually modified.
+
+## 7.1.0
+Mon, 17 Jun 2019 12:26:51 GMT
+
+### Minor changes
+
+- adding new weekdaypicker component, refactoring calendardaygrid out of calendarday to share with new component
+
+## 7.0.2
+Fri, 14 Jun 2019 12:26:30 GMT
+
+### Patches
+
+- Fix missing assets in production build.
+
+## 7.0.1
+Thu, 13 Jun 2019 00:24:48 GMT
+
+### Patches
+
+- Initial release of Fabric 7
 
 ## 6.3.3
 Wed, 12 Jun 2019 00:42:26 GMT
