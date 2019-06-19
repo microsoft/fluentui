@@ -312,6 +312,7 @@ exports[`Component Examples renders DetailsList.CustomFooter.Example.tsx correct
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {
