@@ -31,8 +31,9 @@ const activitiesStyle = mergeStyles({
   lineHeight: 1.83,
   letterSpacing: 'normal',
   float: 'left',
-  paddingTop: 8,
-  paddingBottom: 12
+  paddingTop: 18,
+  paddingBottom: 12,
+  marginTop: 0
 });
 const actions = mergeStyles({
   paddingRight: 6,
