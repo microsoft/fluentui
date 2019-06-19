@@ -1,4 +1,4 @@
-import { FontSizes } from '../FluentType';
+import { FontSizes } from '../Mdl2Type';
 import { FontWeights } from '@uifabric/styling';
 import { IDetailsColumnStyles } from 'office-ui-fabric-react/lib/components/DetailsList/DetailsColumn.types';
 

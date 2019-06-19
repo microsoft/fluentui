@@ -1,6 +1,6 @@
 import { createTheme, ITheme } from '@uifabric/styling';
-import { NeutralColors, SharedColors } from './FluentColors';
-import { Depths } from './FluentDepths';
+import { NeutralColors, SharedColors } from './Mdl2Colors';
+import { Depths } from './Mdl2Depths';
 
 export const FluentTheme: ITheme = createTheme({
   palette: {

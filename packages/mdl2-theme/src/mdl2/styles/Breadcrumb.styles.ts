@@ -1,6 +1,6 @@
 import { IBreadcrumbStyleProps, IBreadcrumbStyles } from 'office-ui-fabric-react/lib/Breadcrumb';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
-import { FontSizes } from '../FluentType';
+import { FontSizes } from '../Mdl2Type';
 import { MediumScreenSelector, MinimumScreenSelector } from './styleConstants';
 
 export const BreadcrumbStyles = (props: IBreadcrumbStyleProps): Partial<IBreadcrumbStyles> => {

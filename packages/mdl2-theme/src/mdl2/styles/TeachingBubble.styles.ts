@@ -1,4 +1,4 @@
-import { FontSizes } from '../FluentType';
+import { FontSizes } from '../Mdl2Type';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 import { ITeachingBubbleStyleProps, ITeachingBubbleStyles } from 'office-ui-fabric-react/lib/TeachingBubble';
 

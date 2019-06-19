@@ -6,7 +6,7 @@ import {
 } from 'office-ui-fabric-react/lib/ContextualMenu';
 import { IsFocusVisibleClassName } from 'office-ui-fabric-react/lib/Utilities';
 import { MinimumScreenSelector } from './styleConstants';
-import { FontSizes } from '../FluentType';
+import { FontSizes } from '../Mdl2Type';
 
 export const ContextualMenuStyles = (props: IContextualMenuStyleProps): Partial<IContextualMenuStyles> => {
   const { theme } = props;

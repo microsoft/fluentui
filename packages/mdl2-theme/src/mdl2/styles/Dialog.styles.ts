@@ -5,7 +5,7 @@ import {
   IDialogFooterStyles
 } from 'office-ui-fabric-react/lib/Dialog';
 import { FontWeights } from '@uifabric/styling';
-import { FontSizes } from '../FluentType';
+import { FontSizes } from '../Mdl2Type';
 
 export const DialogContentStyles = (props: IDialogContentStyleProps): Partial<IDialogContentStyles> => {
   const { theme } = props;

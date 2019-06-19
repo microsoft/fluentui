@@ -1,5 +1,5 @@
 import { IPanelStyleProps, IPanelStyles } from 'office-ui-fabric-react/lib/Panel';
-import { FontSizes } from '../FluentType';
+import { FontSizes } from '../Mdl2Type';
 import { FontWeights } from 'office-ui-fabric-react/lib/Styling';
 
 export const PanelStyles = (props: IPanelStyleProps): Partial<IPanelStyles> => {
