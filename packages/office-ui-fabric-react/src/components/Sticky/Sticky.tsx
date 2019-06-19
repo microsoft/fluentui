@@ -266,7 +266,9 @@ export class Sticky extends BaseComponent<IStickyProps, IStickyState> {
 
   private _getNonStickyPlaceholderHeightAndWidth(): React.CSSProperties {
     const { isStickyTop, isStickyBottom } = this.state;
-    if (isStickyTop || isStickyBottom) {
+    const usePlaceholderForStickyTop = this.context.scrollablePane.usePlaceholderForSticky('top');
+    const usePlaceholderForStickyBottom = this.context.scrollablePane.usePlaceholderForSticky('bottom');
+    if ((isStickyTop && usePlaceholderForStickyTop) || (isStickyBottom && usePlaceholderForStickyBottom)) {
       let height = 0,
         width = 0;
       // Why is placeHolder width needed?
