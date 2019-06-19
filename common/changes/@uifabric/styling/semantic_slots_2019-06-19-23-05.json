@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/styling",
+      "comment": "Cherry-pick from fabric 6.0 branch to fabric 7.0 (master)",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/styling",
+  "email": "aneeshak@microsoft.com"
+}
