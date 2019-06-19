@@ -1,31 +1,83 @@
-import { createTheme, ITheme } from '@uifabric/styling';
-import { NeutralColors, SharedColors } from './Mdl2Colors';
-import { Depths } from './Mdl2Depths';
+import { createTheme, ITheme, FontWeights } from '@uifabric/styling';
+import { FontSizes } from './Mdl2Type';
 
 export const Mdl2Theme: ITheme = createTheme({
   palette: {
-    neutralDark: NeutralColors.gray190,
-    neutralPrimary: NeutralColors.gray160,
-    neutralPrimaryAlt: NeutralColors.gray150,
-    neutralSecondary: NeutralColors.gray130,
-    neutralSecondaryAlt: NeutralColors.gray110,
-    neutralTertiary: NeutralColors.gray90,
-    neutralTertiaryAlt: NeutralColors.gray60,
-    neutralQuaternary: NeutralColors.gray50,
-    neutralQuaternaryAlt: NeutralColors.gray40,
-    neutralLight: NeutralColors.gray30,
-    neutralLighter: NeutralColors.gray20,
-    neutralLighterAlt: NeutralColors.gray10,
+    neutralDark: '#212121',
+    neutralPrimary: '#333333',
+    neutralPrimaryAlt: '#3c3c3c',
+    neutralSecondary: '#666666',
+    neutralSecondaryAlt: '#767676',
+    neutralTertiary: '#a6a6a6',
+    neutralTertiaryAlt: '#c8c8c8',
+    neutralQuaternary: '#d0d0d0',
+    neutralQuaternaryAlt: '#dadada',
+    neutralLight: '#eaeaea',
+    neutralLighter: '#f4f4f4',
+    neutralLighterAlt: '#f8f8f8',
     // Shared Colors
-    red: SharedColors.red10,
-    redDark: SharedColors.red20
+    red: '#e81123',
+    redDark: '#a80000'
+  },
+  semanticColors: {
+    buttonBorder: 'transparent',
+    buttonBorderDisabled: 'transparent'
   },
   effects: {
-    roundedCorner2: '2px',
-    elevation4: Depths.depth4,
-    elevation8: Depths.depth8,
-    elevation16: Depths.depth16,
-    elevation64: Depths.depth64
+    roundedCorner2: '0px',
+    elevation4: '0 0 5px 0 rgba(0,0,0,.4)',
+    elevation8: '0 0 5px 0 rgba(0,0,0,.4)',
+    elevation16: '0 0 5px 0 rgba(0,0,0,.4)',
+    elevation64: '0 0 5px 0 rgba(0,0,0,.4)'
+  },
+  fonts: {
+    tiny: {
+      fontSize: FontSizes.mini,
+      fontWeight: FontWeights.semibold
+    },
+    xSmall: {
+      fontSize: FontSizes.xSmall
+    },
+    small: {
+      fontSize: FontSizes.small
+    },
+    smallPlus: {
+      fontSize: FontSizes.smallPlus
+    },
+    medium: {
+      fontSize: FontSizes.medium
+    },
+    mediumPlus: {
+      fontSize: FontSizes.mediumPlus
+    },
+    large: {
+      fontSize: FontSizes.large,
+      fontWeight: FontWeights.semilight
+    },
+    xLarge: {
+      fontSize: FontSizes.xLarge,
+      fontWeight: FontWeights.light
+    },
+    xLargePlus: {
+      fontSize: FontSizes.xLargePlus,
+      fontWeight: FontWeights.light
+    },
+    xxLarge: {
+      fontSize: FontSizes.xxLarge,
+      fontWeight: FontWeights.light
+    },
+    xxLargePlus: {
+      fontSize: FontSizes.xxLargePlus,
+      fontWeight: FontWeights.light
+    },
+    superLarge: {
+      fontSize: FontSizes.superLarge,
+      fontWeight: FontWeights.light
+    },
+    mega: {
+      fontSize: FontSizes.mega,
+      fontWeight: FontWeights.light
+    }
   }
 });
 
