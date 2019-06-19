@@ -1,11 +1,11 @@
 import * as React from 'react';
 import { IPersonaSharedProps, Persona, PersonaSize, PersonaPresence } from 'office-ui-fabric-react/lib/Persona';
 import { Label } from 'office-ui-fabric-react/lib/Label';
-import { TestImages } from '../../../common/TestImages';
 import { Stack } from 'office-ui-fabric-react/lib/Stack';
+import { mergeStyles } from '@uifabric/merge-styles';
 
 const examplePersona: IPersonaSharedProps = {
-  imageUrl: TestImages.personaFemale,
+  imageUrl: 'https://static2.sharepointonline.com/files/fabric/office-ui-fabric-react-assets/persona-female.png',
   imageInitials: 'AL',
   text: 'Annie Lindqvist',
   secondaryText: 'Software Engineer',
@@ -13,10 +13,18 @@ const examplePersona: IPersonaSharedProps = {
   optionalText: 'Available at 4:00pm'
 };
 
+const rootClass = mergeStyles({
+  selectors: {
+    '.ms-Persona': {
+      margin: '0 20px 20px 0'
+    }
+  }
+});
+
 export class PersonaPresenceExample extends React.Component<{}> {
   public render(): JSX.Element {
     return (
-      <div className="ms-PersonaExample">
+      <div className={rootClass}>
         <Stack horizontal>
           <Stack>
             <Label>Online</Label>

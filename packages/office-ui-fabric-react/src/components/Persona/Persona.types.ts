@@ -326,35 +326,9 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 /**
  * {@docCategory Persona}
  */
-export interface IPersonaPresenceStyleProps {
-  /**
-   * Theme provided by High-Order Component.
-   */
-  theme: ITheme;
-
-  /**
-   * Custom class name.
-   */
-  className?: string;
-
-  /**
-   * Presence of the person to display - will not display presence if undefined.
-   * @defaultvalue PersonaPresence.none
-   */
-  presence?: PersonaPresence;
-
-  /**
-   * This flag can be used to signal the persona is out of office.
-   * This will change the way the presence icon looks for statuses that support dual-presence.
-   */
-  isOutOfOffice: boolean;
-
-  /**
-   * Decides the size of the control.
-   * @defaultvalue PersonaSize.size48
-   */
-  size?: PersonaSize;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> &
+  Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> &
+  Pick<IPersonaProps, 'className'>;
 
 /**
  * {@docCategory Persona}

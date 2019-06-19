@@ -26,7 +26,10 @@ export namespace personaPresenceSize {
   export const size16 = '16px';
   export const size20 = '20px';
   export const size28 = '28px';
-  export const border = '2px'; // TODO: deprecated (unused)
+  /**
+   * @deprecated This is now unused
+   */
+  export const border = '2px';
 }
 
 // TODO: remove the deprecated parts in a future major release.

@@ -59,7 +59,7 @@ export class PersonaPresenceBase extends BaseComponent<IPersonaPresenceProps, {}
       theme: theme!,
       presence,
       size: this.props.size,
-      isOutOfOffice: Boolean(isOutOfOffice)
+      isOutOfOffice
     });
 
     if (presence === PersonaPresenceEnum.none) {
