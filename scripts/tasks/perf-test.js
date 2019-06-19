@@ -75,10 +75,6 @@ async function runAvailableScenarios(page, componentCount, iterations, sampleSiz
 
   const perfNumbers = {};
 
-  // Iterate through scenarios available
-  await page.evaluate(() => {
-    debugger;
-  });
   const scenarioDropdown = await page.$('div[data-automationid="scenario"]');
   let scenarioName = (await page.$eval('div[data-automationid="scenario"]', dropdown => dropdown.textContent)).replace(/[^a-zA-Z\s]/g, '');
   while (!perfNumbers[scenarioName]) {
