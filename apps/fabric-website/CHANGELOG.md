@@ -1,6 +1,13 @@
 # Change Log - @uifabric/fabric-website
 
-This log was last generated on Tue, 18 Jun 2019 19:00:04 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2019 12:27:03 GMT and should not be manually modified.
+
+## 7.1.4
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
 
 ## 7.1.3
 Tue, 18 Jun 2019 19:00:04 GMT

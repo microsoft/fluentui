@@ -2,6 +2,25 @@
   "name": "@uifabric/example-app-base",
   "entries": [
     {
+      "version": "7.1.0",
+      "tag": "@uifabric/example-app-base_v7.1.0",
+      "date": "Wed, 19 Jun 2019 12:27:03 GMT",
+      "comments": {
+        "minor": [
+          {
+            "comment": "Adds conditional logic to the render of specific regions on the page to enable use of the examples on docs.microsoft portal for OUFR.",
+            "author": "Vitalie Braga <vitaliebraga@gmail.com>",
+            "commit": "bac4e15786b93efb5868db397ae7c0d20ad3800c"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.1` to `^7.4.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.0.4",
       "tag": "@uifabric/example-app-base_v7.0.4",
       "date": "Tue, 18 Jun 2019 12:26:19 GMT",

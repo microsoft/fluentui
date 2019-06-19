@@ -2,10 +2,10 @@
   "changes": [
     {
       "packageName": "@uifabric/fabric-website",
-      "comment": "Get rid of references to _exampleStyles.scss",
+      "comment": "Renamed instances of \"Microsoft UI Fabric\" to \"UI Fabric\"",
       "type": "patch"
     }
   ],
   "packageName": "@uifabric/fabric-website",
-  "email": "elcraig@microsoft.com"
+  "email": "pejahn@microsoft.com"
 }

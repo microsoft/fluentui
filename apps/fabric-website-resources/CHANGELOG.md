@@ -1,6 +1,14 @@
 # Change Log - @uifabric/fabric-website-resources
 
-This log was last generated on Fri, 14 Jun 2019 12:26:30 GMT and should not be manually modified.
+This log was last generated on Wed, 19 Jun 2019 12:27:03 GMT and should not be manually modified.
+
+## 7.0.3
+Wed, 19 Jun 2019 12:27:03 GMT
+
+### Patches
+
+- Get rid of references to _exampleStyles.scss
+- AppDefinition: fixes urls to align to the ones on the website.
 
 ## 7.0.2
 Fri, 14 Jun 2019 12:26:30 GMT

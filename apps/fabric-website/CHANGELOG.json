@@ -2,6 +2,31 @@
   "name": "@uifabric/fabric-website",
   "entries": [
     {
+      "version": "7.1.4",
+      "tag": "@uifabric/fabric-website_v7.1.4",
+      "date": "Wed, 19 Jun 2019 12:27:03 GMT",
+      "comments": {
+        "patch": [
+          {
+            "comment": "Get rid of references to _exampleStyles.scss",
+            "author": "Elizabeth Craig <elcraig@microsoft.com>",
+            "commit": "8bd274ad2c5df42865bc0254b11ec7ab9df2a5b3"
+          }
+        ],
+        "dependency": [
+          {
+            "comment": "Updating dependency \"@uifabric/example-app-base\" from `^7.0.4` to `^7.1.0`"
+          },
+          {
+            "comment": "Updating dependency \"@uifabric/fabric-website-resources\" from `^7.0.2` to `^7.0.3`"
+          },
+          {
+            "comment": "Updating dependency \"office-ui-fabric-react\" from `^7.4.1` to `^7.4.2`"
+          }
+        ]
+      }
+    },
+    {
       "version": "7.1.3",
       "tag": "@uifabric/fabric-website_v7.1.3",
       "date": "Tue, 18 Jun 2019 19:00:04 GMT",
