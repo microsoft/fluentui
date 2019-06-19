@@ -1,0 +1,121 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Dialog renders chiclet with title, icon, onClick, and url 1`] = `
+<div
+  className=
+      ms-ChicletXsmall
+      {
+        -moz-osx-font-smoothing: grayscale;
+        -webkit-font-smoothing: antialiased;
+        background-color: #ffffff;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.3);
+        box-sizing: border-box;
+        display: flex;
+        flex-wrap: wrap;
+        font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+        font-size: 10px;
+        font-weight: 400;
+        margin-bottom: 0px;
+        margin-left: 0px;
+        margin-right: 0px;
+        margin-top: 0px;
+        overflow: hidden;
+        padding-bottom: 4px;
+        padding-left: 4px;
+        padding-right: 4px;
+        padding-top: 4px;
+        position: relative;
+        user-select: none;
+        width: 250px;
+      }
+      &:hover {
+        cursor: pointer;
+      }
+  onClick={[Function]}
+  role="button"
+  tabIndex={0}
+>
+  <div
+    className=
+        ms-ChicletXsmall-preview
+        {
+          flex-basis: 25%;
+        }
+  >
+    <div
+      className=
+          ms-Image
+          {
+            -moz-osx-font-smoothing: grayscale;
+            -webkit-font-smoothing: antialiased;
+            font-family: 'Segoe UI', 'Segoe UI Web (West European)', 'Segoe UI', -apple-system, BlinkMacSystemFont, 'Roboto', 'Helvetica Neue', sans-serif;
+            font-size: 14px;
+            font-weight: 400;
+            overflow: hidden;
+          }
+      style={
+        Object {
+          "height": undefined,
+          "width": undefined,
+        }
+      }
+    >
+      <img
+        className=
+            ms-Image-image
+            ms-Image-image--portrait
+            is-notLoaded
+            is-fadeIn
+            {
+              display: block;
+              opacity: 0;
+            }
+        onError={[Function]}
+        onLoad={[Function]}
+        role="presentation"
+        src="https://imaging.nikon.com/lineup/dslr/df/img/sample/img_01.jpg"
+      />
+    </div>
+  </div>
+  <div
+    className=
+        ms-ChicletXsmall-titleBox
+        {
+          display: flex;
+          flex-basis: 70%;
+          flex-wrap: wrap;
+          margin-left: 4px;
+        }
+  >
+    <div
+      className=
+          ms-ChicletXsmall-title
+          {
+            color: #323130;
+            font-size: 14px;
+            height: 37px;
+            letter-spacing: normal;
+            line-height: 1.25;
+            overflow: hidden;
+            text-align: left;
+            width: 170px;
+            word-wrap: break-word;
+          }
+    >
+      My Daily Notes
+    </div>
+    <div
+      className=
+
+          {
+            font-size: 12px;
+            height: 17px;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+            width: 170px;
+          }
+    />
+  </div>
+</div>
+`;

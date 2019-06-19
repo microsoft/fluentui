@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { IButtonProps, IconButton, Stack } from 'office-ui-fabric-react';
-import * as exampleStyles from './Chiclet.Basic.Example.scss';
+import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
 
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
@@ -16,6 +16,36 @@ export class FooterComponent extends React.Component<IFooterComponent, {}> {
     return _renderFooter(buttonProps, activities);
   }
 }
+
+const footerStyle = mergeStyles({
+  height: 36,
+  paddingLeft: 11
+});
+const activitiesStyle = mergeStyles({
+  width: 184,
+  height: 16,
+  fontSize: 12,
+  fontWeight: 'normal',
+  fontStyle: 'normal',
+  fontStretch: 'normal',
+  lineHeight: 1.83,
+  letterSpacing: 'normal',
+  float: 'left',
+  paddingTop: 8,
+  paddingBottom: 12
+});
+const actions = mergeStyles({
+  paddingRight: 6,
+  position: 'relative'
+});
+const action = mergeStyles({
+  float: 'right',
+  cursor: 'pointer',
+  width: 32,
+  height: 36,
+  backgroundColor: 'white',
+  color: '#0078d7'
+});
 
 export interface IChicletFooterExampleState {
   textFieldValue: string;
@@ -53,13 +83,13 @@ export interface IFooterComponent extends React.Props<FooterComponent> {
 
 function _renderFooter(buttonProps: IButtonProps[], activities: string): React.ReactElement<HTMLDivElement> {
   return (
-    <div className={exampleStyles.footer}>
-      <div className={exampleStyles.activities}>{activities ? activities : null}</div>
-      <div className={exampleStyles.actions}>
+    <div className={footerStyle}>
+      <div className={activitiesStyle}>{activities ? activities : null}</div>
+      <div className={actions}>
         {buttonProps &&
           buttonProps.map((buttonProp: IButtonProps, index: number) => {
             return (
-              <div className={exampleStyles.action} key={index}>
+              <div className={action} key={index}>
                 <IconButton {...buttonProp} />
               </div>
             );

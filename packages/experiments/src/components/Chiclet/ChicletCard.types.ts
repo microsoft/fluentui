@@ -86,6 +86,9 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
   itemType?: string;
   image?: string;
   imageSecureUrl?: string;
+  imageType?: string;
+  imageAlt?: string;
+  url?: string;
 
   /**
    * The width of the preview image.
@@ -98,10 +101,6 @@ export interface IChicletCardProps extends React.Props<ChicletCardBase> {
    * @default '122px'
    */
   imageHeight?: string;
-
-  imageType?: string;
-  imageAlt?: string;
-  url?: string;
 }
 
 export interface IChicletCardStyleProps {
@@ -109,6 +108,12 @@ export interface IChicletCardStyleProps {
    * Accept theme prop.
    */
   theme: ITheme;
+
+  /**
+   * Accept image props.
+   */
+  imageProvided?: boolean;
+  imageAltProvided?: boolean;
 
   /**
    * Accept custom classNames

@@ -38,6 +38,9 @@ export interface IChicletXsmallStyleProps {
    */
   theme: ITheme;
 
+  /**
+   * Accept footer prop.
+   */
   footerProvided?: boolean;
 
   /**

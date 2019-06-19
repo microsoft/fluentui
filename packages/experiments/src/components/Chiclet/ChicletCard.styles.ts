@@ -2,7 +2,7 @@ import { normalize } from '../../Styling';
 import { IChicletCardStyleProps, IChicletCardStyles } from './ChicletCard.types';
 
 export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => {
-  const { theme, className } = props;
+  const { theme, className, imageProvided, imageAltProvided } = props;
   const { palette } = theme;
 
   return {
@@ -11,6 +11,8 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       theme.fonts.medium,
       normalize,
       {
+        display: 'flex',
+        flexWrap: 'wrap',
         WebkitFontSmoothing: 'antialiased',
         backgroundColor: palette.white,
         borderRadius: 2,
@@ -28,23 +30,37 @@ export const getStyles = (props: IChicletCardStyleProps): IChicletCardStyles => 
       className
     ],
     icon: [
-      {
+      (imageAltProvided || imageProvided) && {
         height: 24,
         left: 10,
         bottom: 10,
         position: 'absolute'
-      }
+      },
+      !imageAltProvided &&
+        !imageProvided && {
+          width: 190,
+          height: 80,
+          // revisit
+          backgroundColor: theme.palette.neutralLight
+        }
     ],
     preview: [
       {
-        float: 'left',
         height: 122,
         width: 198,
+        padding: '2px 0px 2px 2px'
+      },
+      (imageAltProvided || imageProvided) && {
         position: 'relative',
         backgroundColor: palette.white,
-        display: 'block',
-        padding: '2px 0px 2px 2px'
-      }
+        display: 'block'
+      },
+      !imageAltProvided &&
+        !imageProvided && {
+          display: 'flex',
+          alignItems: 'center',
+          backgroundColor: theme.palette.neutralLight
+        }
     ],
     info: [
       {

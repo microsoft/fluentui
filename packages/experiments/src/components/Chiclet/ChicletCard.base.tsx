@@ -1,7 +1,7 @@
 import * as React from 'react';
 import { BaseComponent, classNamesFunction } from '../../Utilities';
 import { IChicletCardStyles, IChicletCardStyleProps, IChicletCardProps } from './ChicletCard.types';
-import { renderIcon, renderPreview } from './ChicletGeneral';
+import { renderIcon, renderPreview } from '../../utilities/chicletHelper';
 
 const getClassNames = classNamesFunction<IChicletCardStyleProps, IChicletCardStyles>();
 
@@ -34,7 +34,10 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     } = this.props;
     const actionable = onClick ? true : false;
 
-    this._classNames = getClassNames(styles, { theme: theme!, className });
+    const imageProvided: boolean = image !== undefined;
+    const imageAltProvided: boolean = imageAlt !== undefined;
+
+    this._classNames = getClassNames(styles, { theme: theme!, className, imageProvided, imageAltProvided });
 
     // if this element is actionable it should have an aria role
     const role = actionable ? (onClick ? 'button' : 'link') : undefined;
@@ -43,8 +46,8 @@ export class ChicletCardBase extends BaseComponent<IChicletCardProps, {}> {
     return (
       <div tabIndex={tabIndex} role={role} onClick={actionable ? this._onClick : undefined} className={this._classNames.root}>
         <div className={this._classNames.preview}>
-          {renderPreview(image, imageHeight, imageWidth, itemType, imageAlt)}
-          {renderIcon(itemType, this._classNames.icon)}
+          {renderPreview(image, imageHeight, imageWidth, imageAlt)}
+          {renderIcon(itemType, this._classNames.icon, false)}
         </div>
         <div className={this._classNames.info}>
           <div className={this._classNames.title}>{title ? title : null}</div>

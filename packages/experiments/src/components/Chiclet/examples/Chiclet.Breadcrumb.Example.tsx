@@ -2,16 +2,13 @@ import * as React from 'react';
 import { Chiclet, ChicletSize } from '@uifabric/experiments';
 import { Breadcrumb, getRTL, IBreadcrumbItem, Icon, TooltipHost, TooltipOverflowMode } from 'office-ui-fabric-react';
 import { mergeStyles } from '@uifabric/merge-styles/lib/mergeStyles';
-import * as exampleStyles from './Chiclet.Basic.Example.scss';
-import { example } from '../../signals/examples/Signals.Example.scss';
 
 const TEST_URL = 'http://fabricweb.z5.web.core.windows.net/pr-deploy-site/refs/heads/master/chiclet-test.html';
 
 const chevronStyle = mergeStyles({
   fontSize: 8,
   paddingLeft: 3,
-  paddingRight: 3,
-  marginTop: 0
+  paddingRight: 3
 });
 const descriptionStyle = mergeStyles({
   fontSize: 12,
@@ -25,8 +22,7 @@ const descriptionStyle = mergeStyles({
   width: 248,
   height: 16,
   whiteSpace: 'nowrap',
-  textOverflow: 'ellipsis',
-  marginTop: 0
+  textOverflow: 'ellipsis'
 });
 
 export class ChicletBreadcrumbExample extends React.Component<{}, {}> {

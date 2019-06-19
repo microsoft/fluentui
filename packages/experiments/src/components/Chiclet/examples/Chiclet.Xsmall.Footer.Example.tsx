@@ -33,11 +33,6 @@ const activities = mergeStyles({
   lineHeight: 1.83,
   letterSpacing: 'normal'
 });
-const action = mergeStyles({
-  cursor: 'pointer',
-  backgroundColor: 'white',
-  color: '#0078d7'
-});
 const attach = mergeStyles({
   width: 25,
   alignSelf: 'center',
