@@ -350,10 +350,6 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       this._itemRectCache = {};
     }
 
-    // Stop change events, clear selection to re-populate.
-    selection.setChangeEvents(false);
-    selection.setAllSelected(false);
-
     for (let i = 0; i < allElements.length; i++) {
       const element = allElements[i];
       const index = element.getAttribute('data-selection-index') as string;
@@ -402,8 +398,10 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
       }
     }
 
-    for (const index of this._preservedIndicies!) {
-      this._allSelectedIndices![index] = true;
+    if (this._preservedIndicies) {
+      for (const index of this._preservedIndicies!) {
+        this._allSelectedIndices![index] = true;
+      }
     }
 
     // check if needs to update selection, only when current _allSelectedIndices
@@ -437,7 +435,5 @@ export class MarqueeSelectionBase extends BaseComponent<IMarqueeSelectionProps, 
 
       selection.setChangeEvents(true);
     }
-
-    selection.setChangeEvents(true);
   }
 }
