@@ -1,0 +1,11 @@
+{
+  "changes": [
+    {
+      "packageName": "@uifabric/variants",
+      "comment": "Semantic Slots: adding successText and changing errorText, warningText.",
+      "type": "minor"
+    }
+  ],
+  "packageName": "@uifabric/variants",
+  "email": "aneeshak@microsoft.com"
+}
