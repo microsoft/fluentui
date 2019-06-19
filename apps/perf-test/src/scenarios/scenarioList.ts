@@ -1,4 +1,4 @@
-const reqContext = require.context('./', false, /^(?!scenarioList).*\.(t|j)sx?$/);
+const reqContext = require.context('./', false, /^\.\/(?!scenarioList)[^\.]*\.(j|t)sx?$/);
 
 const scenarios: { [scenarioName: string]: string } = {};
 

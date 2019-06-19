@@ -4,7 +4,7 @@ const isProduction = process.argv.indexOf('--production') > -1;
 const PACKAGE_NAME = 'perf-test';
 
 module.exports = resources.createServeConfig({
-  entry: './src/index.scenarios.tsx',
+  entry: './src/index.tsx',
   mode: 'production',
   optimization: {
     minimize: false,
