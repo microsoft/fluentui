@@ -46,7 +46,21 @@ export interface IScrollablePaneProps extends React.HTMLAttributes<HTMLElement |
    */
   initialScrollPosition?: number;
 
+  /**
+   * Determines the visibility of vertical and horizontal scrollbars.
+   * If set to ScrollbarVisibility.always, scrollbars are visible always, independent of content overflow.
+   */
   scrollbarVisibility?: ScrollbarVisibility;
+
+  /**
+   * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Header
+   */
+  stickyAboveContainerBehavior?: IStickyContainerBehavior;
+
+  /**
+   * Determies the behavior of Sticky component(s) having stickyPosition StickyPosition.Footer
+   */
+  stickyBelowContainerBehavior?: IStickyContainerBehavior;
 }
 
 /**
@@ -97,6 +111,20 @@ export interface IScrollablePaneStyles {
 /**
  * {@docCategory ScrollablePane}
  */
+export interface IStickyContainerBehavior {
+  /**
+   * If true, it replicates actual element instead of keeping placeholder for the component which is to be sticky'ed.
+   * Calculating placeholder height & width could be an expensive operation.
+   * It's a trade off- cost of replicating the element vs. cost of calculating placeholder height & width.
+   */
+  notUsePlaceHolder: boolean;
+}
+
+export type PlaceholderPosition = 'top' | 'bottom';
+
+/**
+ * {@docCategory ScrollablePane}
+ */
 export const ScrollbarVisibility = {
   auto: 'auto' as 'auto',
   always: 'always' as 'always'
@@ -117,6 +145,8 @@ export interface IScrollablePaneContext {
     sortSticky: (sticky: Sticky, sortAgain?: boolean) => void;
     notifySubscribers: (sort?: boolean) => void;
     syncScrollSticky: (sticky: Sticky) => void;
+    usePlaceholderForSticky: (placeholderPosition: PlaceholderPosition) => boolean;
+    getScrollPosition: (horizontal?: boolean) => number;
   };
 }
 
