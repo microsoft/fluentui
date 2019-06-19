@@ -257,11 +257,11 @@ export class DetailsHeaderBase extends BaseComponent<IDetailsHeaderBaseProps, ID
               </div>,
               !this.props.onRenderColumnHeaderTooltip ? (
                 ariaLabelForSelectAllCheckbox && !isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
                     {ariaLabelForSelectAllCheckbox}
                   </label>
                 ) : ariaLabelForSelectionColumn && isCheckboxHidden ? (
-                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel}>
+                  <label key="__checkboxLabel" id={`${this._id}-checkTooltip`} className={classNames.accessibleLabel} aria-hidden={true}>
                     {ariaLabelForSelectionColumn}
                   </label>
                 ) : null

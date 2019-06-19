@@ -311,6 +311,7 @@ exports[`Component Examples renders DetailsList.NavigatingFocus.Example.tsx corr
             </span>
           </div>
           <label
+            aria-hidden={true}
             className=
 
                 {

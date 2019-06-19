@@ -374,6 +374,7 @@ exports[`Component Examples renders Announced.BulkOperations.Example.tsx correct
                 </span>
               </div>
               <label
+                aria-hidden={true}
                 className=
 
                     {

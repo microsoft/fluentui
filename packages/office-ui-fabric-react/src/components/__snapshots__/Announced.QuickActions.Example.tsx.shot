@@ -320,6 +320,7 @@ exports[`Component Examples renders Announced.QuickActions.Example.tsx correctly
               </span>
             </div>
             <label
+              aria-hidden={true}
               className=
 
                   {
