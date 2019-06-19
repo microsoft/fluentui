@@ -5863,13 +5863,7 @@ export interface IPersonaPresenceProps extends IPersonaSharedProps {
 }
 
 // @public (undocumented)
-export interface IPersonaPresenceStyleProps {
-    className?: string;
-    isOutOfOffice: boolean;
-    presence?: PersonaPresence;
-    size?: PersonaSize;
-    theme: ITheme;
-}
+export type IPersonaPresenceStyleProps = Required<Pick<IPersonaSharedProps, 'theme'>> & Pick<IPersonaSharedProps, 'presence' | 'isOutOfOffice' | 'size'> & Pick<IPersonaProps, 'className'>;
 
 // @public (undocumented)
 export interface IPersonaPresenceStyles {
@@ -8215,7 +8209,7 @@ export namespace personaPresenceSize {
     size20 = "20px";
     const // (undocumented)
     size28 = "28px";
-    const // (undocumented)
+    const // @deprecated (undocumented)
     border = "2px";
 }
 
