@@ -22,7 +22,11 @@ const StaticListExample = () => {
       <Profiler id={'StaticList-Basic'} onRender={logProfilerRender}>
         <StaticList items={ITEMS}>
           {(_item: number, index: number) => {
-            return <li key={index}>{`Item #${index}`}</li>;
+            return (
+              <Profiler id={'StaticList-Ordered-row'} onRender={logProfilerRender}>
+                <li key={index}>{`Item #${index}`}</li>
+              </Profiler>
+            );
           }}
         </StaticList>
       </Profiler>
