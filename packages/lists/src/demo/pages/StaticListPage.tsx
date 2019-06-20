@@ -1,7 +1,13 @@
 import * as React from 'react';
 import { ComponentPage, ExampleCard, Markdown } from '@uifabric/example-app-base';
 
-import { StaticListExample, StaticOrderedListExample, StaticListTableExample } from '../../components/StaticList/StaticList.Example';
+import { StaticListExample } from '../../components/StaticList/examples/StaticList.Example';
+import { StaticOrderedListExample } from '../../components/StaticList/examples/StaticOrderedList.Example';
+import { StaticListTableExample } from '../../components/StaticList/examples/StaticTable.Example';
+
+const StaticListExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticList.Example.tsx') as string;
+const StaticOrderedListExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticOrderedList.Example.tsx') as string;
+const StaticListTableExampleCode = require('!raw-loader!@uifabric/lists/src/components/StaticList/examples/StaticTable.Example.tsx') as string;
 
 export const StaticListPage = () => (
   <ComponentPage
@@ -9,13 +15,13 @@ export const StaticListPage = () => (
     componentName="StaticList examples"
     exampleCards={
       <>
-        <ExampleCard title="StaticList example">
+        <ExampleCard title="StaticList example" code={StaticListExampleCode}>
           <StaticListExample />
         </ExampleCard>
-        <ExampleCard title="StaticList ordered list">
+        <ExampleCard title="StaticList ordered list" code={StaticOrderedListExampleCode}>
           <StaticOrderedListExample />
         </ExampleCard>
-        <ExampleCard title="StaticList table">
+        <ExampleCard title="StaticList table" code={StaticListTableExampleCode}>
           <StaticListTableExample />
         </ExampleCard>
       </>
