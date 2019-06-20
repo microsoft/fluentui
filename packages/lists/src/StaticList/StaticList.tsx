@@ -1,10 +1,5 @@
 import * as React from 'react';
-
-interface IStaticListProps<T> {
-  as?: keyof JSX.IntrinsicElements;
-  items?: ReadonlyArray<T>;
-  children?: (item: T, index: number) => React.ReactNode;
-}
+import { IStaticListProps } from './StaticList.types';
 
 function defaultRowRenderer<T>(item: T, index: number): JSX.Element {
   return <li key={index}>{item}</li>;
@@ -18,4 +13,4 @@ class StaticList<T> extends React.PureComponent<IStaticListProps<T>> {
   }
 }
 
-export { StaticList, IStaticListProps };
+export { StaticList };
